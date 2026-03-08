@@ -1,0 +1,61 @@
+{
+  "_comment": "Aruvi project configuration. This file lives at your project root: /Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi/aruvi_config.json",
+
+  "project_root": "/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi",
+
+  "paths": {
+    "textbooks":    "data/textbooks",
+    "framework":    "data/framework",
+    "mappings":     "data/mappings",
+    "token_log":    "data/mappings/token_log.csv",
+    "knowledge_commons": "knowledge commons"
+  },
+
+  "subject_groups": {
+    "social_sciences": {
+      "constitution_key": "constitution_social_sciences",
+      "framework_subdir":  "social_sciences",
+      "textbook_subdir":   "social_sciences",
+      "stages": {
+        "middle":    ["vi", "vii", "viii"],
+        "secondary": ["ix", "x"]
+      }
+    },
+    "mathematics": {
+      "constitution_key": "constitution_mathematics",
+      "framework_subdir":  "mathematics",
+      "textbook_subdir":   "mathematics",
+      "stages": {
+        "middle":    ["vi", "vii", "viii"],
+        "secondary": ["ix", "x"]
+      }
+    },
+    "science": {
+      "constitution_key": "constitution_science",
+      "framework_subdir":  "science",
+      "textbook_subdir":   "science",
+      "stages": {
+        "middle":    ["vi", "vii", "viii"],
+        "secondary": ["ix", "x"]
+      }
+    },
+    "languages": {
+      "constitution_key": "constitution_languages",
+      "framework_subdir":  "languages",
+      "textbook_subdir":   "languages",
+      "stages": {
+        "foundational": ["i", "ii"],
+        "preparatory":  ["iii", "iv", "v"],
+        "middle":       ["vi", "vii", "viii"],
+        "secondary":    ["ix", "x"]
+      }
+    }
+  },
+
+  "framework_filenames": {
+    "curricular_goals": "curricular_goals.pdf",
+    "pedagogy":         "pedagogy.pdf"
+  },
+
+  "mapping_output_pattern": "chapter_mappings_{subject_group}_{grade}.json"
+}
