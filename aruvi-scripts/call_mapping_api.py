@@ -226,12 +226,28 @@ Grade         : {grade}
 Chapter Number: {chapter_number}
 Chapter Title : {chapter_title}
 
+---
+
+## PASS 1 — TRANSFORMATION INVENTORY (complete before reading the CG document)
+
+Read the chapter summary below section by section. For each named section and subsection, state:
+- Section name
+- Cognitive operation the section requires the student to perform
+- Content object the operation is performed on
+
+Produce this inventory in full before proceeding. Do not consult or reference the CG document during this step.
+
 ### Chapter Content Summary
 {summary}
 
 ---
 
-## CURRICULAR GOALS AND C-CODES (your sole framework reference)
+## PASS 2 — C-CODE MATCHING (open the CG document only after Pass 1 is complete)
+
+Using your transformation inventory from Pass 1, match each transformation statement to a C-code below.
+For each match: identify the architectural container (named section or subsection), read the full C-code definition including every distinct demand it contains, and apply the weight tests from the constitution.
+
+## CURRICULAR GOALS AND C-CODES (your sole framework reference — Pass 2 only)
 
 {cg_text}
 
@@ -239,29 +255,37 @@ Chapter Title : {chapter_title}
 
 ## REQUIRED OUTPUT
 
-Respond with this exact JSON structure and nothing else:
+After completing both passes, respond with your reasoning followed by the JSON record.
+
+Your response MUST follow this structure:
+1. PASS 1 INVENTORY — your section-by-section transformation statements
+2. PASS 2 MATCHING — your C-code matches with architectural container and weight reasoning
+3. JSON RECORD — the final output, enclosed in ```json fences
+
+The JSON record must conform exactly to this schema:
 
 {{
   "min_viable_periods": <integer: minimum periods needed to teach this chapter at all>,
   "primary": [
     {{
-      "cg": "<CG code e.g. CG-2>",
+      "cg": "<parent CG code e.g. CG-2>",
       "c_code": "<C-code e.g. C-2.1>",
       "weight": <3 | 2 | 1>,
-      "justification": "<one sentence explaining the structural match per constitution rules>"
+      "justification": "<one sentence: names the architectural container and states the structural match>"
     }}
   ],
   "incidental": [
-    {{ "cg": "<CG code>", "c_code": "<C-code>" }}
+    {{ "cg": "<parent CG code>", "c_code": "<C-code>" }}
   ],
   "chapter_weight": <sum of all primary weight scores>
 }}
 
 CRITICAL CONSTRAINTS:
-- Apply the constitution rules exactly. Weight 3 only if the competency structurally dissolves the chapter if removed.
+- Complete Pass 1 inventory before opening the CG document.
+- Read every distinct demand in each C-code before accepting or rejecting a match.
+- cg field MUST be the parent CG of the c_code (e.g. C-3.1 has cg: CG-3, not CG-2).
 - chapter_weight MUST equal the arithmetic sum of all primary weight scores.
-- Only use C-codes that appear in the Curricular Goals list provided above.
-- Respond with JSON only — no text before or after."""
+- Only use C-codes that appear in the Curricular Goals list provided above."""
 
 
 def _validate_mapping(mapping: dict) -> list:
@@ -332,7 +356,7 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
         try:
             response = client.messages.create(
                 model="claude-sonnet-4-6",
-                max_tokens=2048,
+                max_tokens=4096,
                 system=system_prompt,
                 messages=[{"role": "user", "content": user_prompt}]
             )
@@ -340,10 +364,18 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
             input_tokens  = response.usage.input_tokens
             output_tokens = response.usage.output_tokens
             raw_text = response.content[0].text.strip()
-            raw_text = re.sub(r'^```(?:json)?\s*', '', raw_text)
-            raw_text = re.sub(r'\s*```$', '', raw_text)
 
-            mapping = json.loads(raw_text)
+            # Response now contains Pass 1 + Pass 2 reasoning followed by ```json fenced record.
+            # Extract JSON from fences first; fall back to raw parse for backwards compatibility.
+            fenced = re.search(r'```json\s*(.*?)\s*```', raw_text, re.DOTALL)
+            if fenced:
+                json_str = fenced.group(1).strip()
+            else:
+                # Fallback: strip any accidental fences and try raw parse
+                json_str = re.sub(r'^```(?:json)?\s*', '', raw_text)
+                json_str = re.sub(r'\s*```$', '', json_str).strip()
+
+            mapping = json.loads(json_str)
 
             errors = _validate_mapping(mapping)
             if errors and attempt < max_retries:
