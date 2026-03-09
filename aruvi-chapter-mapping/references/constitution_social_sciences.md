@@ -9,15 +9,15 @@
 
 ---
 
-**Rule 1.** The system MUST execute the following primary inquiry upon the chapter's content and structure prior to consulting any framework document: "What cognitive transformation does this chapter's content inherently require to be understood and applied?"
+**Rule 1.** The system MUST execute the following primary inquiry upon the chapter's content and structure prior to consulting any framework document: "What cognitive transformation does this chapter's content inherently require to be understood and applied?" Rule 1 determines candidacy only — it establishes which competencies are genuinely present in the chapter. It does not determine weight. Weight is determined solely by the architectural tests in Rules 3–6.
 
-**Rule 2.** The system SHALL map the identified chapter purpose to a C-code by verifying a structural match, defined as the precise alignment between the cognitive action demanded by the chapter's structural exercises and the specific analytical verb and object defined in the Social Sciences C-code.
+**Rule 2.** Before applying any weight test, the system MUST identify the architectural container of the content evidence — the named section, subsection, or activity block within which the supporting content sits. The weight test is applied to that container, not to the content element within it.
 
 **Rule 3.** The system WILL reject any surface match reliant on shared vocabulary if the chapter's structural architecture does not compel the student to execute the specific analytical process defined by the corresponding C-code.
 
 **Rule 4.** The system MUST assign Weight 3 (Central) ONLY IF the complete removal of the competency structurally dissolves the chapter's fundamental organizing purpose.
 
-**Rule 5.** The system MUST assign Weight 2 (Substantive) ONLY IF the chapter constructs dedicated, architecturally distinct sections or activity blocks to develop the competency — sections that could stand alone as a learning unit — while sharing its overarching structural framework with other substantive competencies.
+**Rule 5.** The system MUST assign Weight 2 (Substantive) in either of the following two conditions: (a) the chapter constructs a dedicated, architecturally distinct named section or activity block to develop the competency — one that could stand alone as a learning unit; OR (b) the competency is developed substantively and deliberately across multiple named sections of the chapter, with the chapter's own organising logic making continuity of this competency evident across those sections, even without a dedicated section of its own. In both cases the competency must share the chapter's overarching structural framework with other substantive competencies.
 
 **Rule 6.** The system MUST assign Weight 1 (Present) ONLY IF both conditions are satisfied: the chapter includes at least one explicitly designated structural element — a textbook exercise, guided question, or student task — organised around this competency; AND that structural element does not constitute a dedicated section or architecturally distinct activity block. Weight 1 is assigned when the competency is genuinely taught through a single activity or question but is not sustained across a dedicated section.
 
