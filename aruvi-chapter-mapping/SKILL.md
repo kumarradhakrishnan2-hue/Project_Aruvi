@@ -100,7 +100,6 @@ One JSON record per chapter appended to `data/mappings/chapter_mappings_{subject
   "chapter_number": 1,
   "chapter_title": "Geographical Diversity of India",
   "chapter_summary": "600-900 word structured summary mirroring every textbook heading...",
-  "min_viable_periods": 5,
   "primary": [
     { "cg": "CG-3", "c_code": "C-4.1", "weight": 3,
       "justification": "The chapter's core structural activity requires..." }

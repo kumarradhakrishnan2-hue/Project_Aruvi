@@ -8,7 +8,7 @@ Call 1 — Summarise:
 
 Call 2 — Map:
   Input : chapter_summary (NOT raw chapter text) + CG document
-  Output: primary, incidental, chapter_weight, min_viable_periods
+  Output: primary, incidental, chapter_weight
 
 The final record merges both outputs with stage/subject/grade/chapter_number
 added from context. The two-call split is invisible to downstream consumers.
@@ -265,7 +265,7 @@ Your response MUST follow this structure:
 The JSON record must conform exactly to this schema:
 
 {{
-  "min_viable_periods": <integer: minimum periods needed to teach this chapter at all>,
+  
   "primary": [
     {{
       "cg": "<parent CG code e.g. CG-2>",
@@ -291,7 +291,7 @@ CRITICAL CONSTRAINTS:
 def _validate_mapping(mapping: dict) -> list:
     """Validate Call 2 output. Returns list of error strings."""
     errors = []
-    for field in ["min_viable_periods", "primary", "incidental", "chapter_weight"]:
+    for field in ["primary", "incidental", "chapter_weight"]:
         if field not in mapping:
             errors.append(f"Missing field: {field}")
 
@@ -397,6 +397,12 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
             print(f"    Tokens: {input_tokens} in + {output_tokens} out = "
                   f"{input_tokens+output_tokens} total | Cost: Rs.{cost:.4f}")
 
+            # Auto-correct cg field from c_code — e.g. C-6.1 → CG-6
+            for entry in mapping.get("primary", []):
+                entry["cg"] = "CG-" + entry["c_code"].split("-")[1].split(".")[0]
+            for entry in mapping.get("incidental", []):
+                entry["cg"] = "CG-" + entry["c_code"].split("-")[1].split(".")[0]
+
             # ── Merge into final record ──────────────────────────────────────
             record = {
                 "stage":              stage,
@@ -405,7 +411,6 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
                 "chapter_number":     chapter_number,
                 "chapter_title":      chapter_title,
                 "chapter_summary":    chapter_summary,
-                "min_viable_periods": mapping["min_viable_periods"],
                 "primary":            mapping["primary"],
                 "incidental":         mapping["incidental"],
                 "chapter_weight":     mapping["chapter_weight"],
