@@ -7,30 +7,30 @@ You never need to specify PDF paths, output paths, or token log paths manually.
 
 Usage:
   # Map specific chapters by number (pilot run)
-  python run_mapping.py \
+  python3 run_mapping.py \
     --config  "/Users/.../Project Aruvi/aruvi_config.json" \
     --subject social_sciences \
     --grade   vii \
     --chapters 1 4 8
 
   # Map ALL chapters in the chapter directory
-  python run_mapping.py \
+  python3 run_mapping.py \
     --config  "/Users/.../Project Aruvi/aruvi_config.json" \
     --subject social_sciences \
     --grade   vii \
     --all
 
   # Dry run: resolve and print all paths without calling API
-  python run_mapping.py \
+  python3 run_mapping.py \
     --config  "/Users/.../Project Aruvi/aruvi_config.json" \
     --subject mathematics \
     --grade   ix \
     --dry-run
 
   # Works identically for any subject/grade combination:
-  python run_mapping.py --config aruvi_config.json --subject mathematics --grade ix --all
-  python run_mapping.py --config aruvi_config.json --subject science --grade vi --chapters 1 2 3
-  python run_mapping.py --config aruvi_config.json --subject languages --grade viii --all
+  python3 run_mapping.py --config aruvi_config.json --subject mathematics --grade ix --all
+  python3 run_mapping.py --config aruvi_config.json --subject science --grade vi --chapters 1 2 3
+  python3 run_mapping.py --config aruvi_config.json --subject languages --grade viii --all
 """
 
 import argparse

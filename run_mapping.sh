@@ -10,7 +10,7 @@ unset ALL_PROXY all_proxy
 SKILL_DIR=$(find /sessions -type d -name "aruvi-chapter-mapping" -path "*/.skills/*" 2>/dev/null | head -1)
 # Run from aruvi-scripts/ — full writable copies of all skill scripts,
 # including the patched call_mapping_api.py (verify=False + socks proxy fix)
-python "$SESSION_ROOT/aruvi-scripts/run_mapping.py" \
+python3.11 "$SESSION_ROOT/aruvi-scripts/run_mapping.py" \
   --config "$SESSION_ROOT/aruvi_config.json" \
   --skill-dir "$SKILL_DIR" \
   "$@"
