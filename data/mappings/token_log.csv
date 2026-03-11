@@ -1,24 +1,31 @@
-timestamp,call_type,subject,grade,chapter_number,chapter_title,input_tokens,output_tokens,total_tokens,cost_inr
-2026-03-08T06:26:25.084373,chapter_mapping,social_sciences,vii,1,Geographical Diversity of India,16543,2457,19000,7.7836
-2026-03-08T07:11:31.755354,chapter_mapping,social_sciences,vii,1,Geographical Diversity of India,14334,2303,16637,6.9792
-2026-03-08T07:30:32.586016,chapter_mapping,social_sciences,vii,4,New Beginnings: Cities and States,10585,2605,13190,6.3747
-2026-03-08T11:21:25.891748,chapter_mapping,social_sciences,vii,4,New Beginnings: Cities and States,10561,2297,12858,5.9524
-2026-03-08T11:52:30.169724,chapter_mapping,social_sciences,vii,4,New Beginnings: Cities and States,10561,2439,13000,6.1441
-2026-03-08T12:18:24.967076,chapter_mapping,social_sciences,vii,4,New Beginnings: Cities and States,10561,2151,12712,5.7553
-2026-03-08T12:44:33.013741,summary_call,social_sciences,vii,4,New Beginnings: Cities and States,7372,1967,9339,4.6459
-2026-03-08T12:44:45.914714,mapping_call,social_sciences,vii,4,New Beginnings: Cities and States,4792,699,5491,2.2375
-2026-03-09T09:41:03.869278,summary_call,social_sciences,vii,4,New Beginnings: Cities and States,7378,1903,9281,4.5611
-2026-03-09T09:41:16.165652,mapping_call,social_sciences,vii,4,New Beginnings: Cities and States,4740,617,5357,2.1128
-2026-03-09T14:34:51.068849,summary_call,social_sciences,vii,4,New Beginnings: Cities and States,7378,1954,9332,4.6300
-2026-03-09T14:35:53.040768,mapping_call,social_sciences,vii,4,New Beginnings: Cities and States,5100,3022,8122,5.4567
-2026-03-10T10:34:13.797304,summary_call,social_sciences,vii,1,Geographical Diversity of India,11366,2429,13795,6.3480
-2026-03-10T10:35:03.433998,mapping_call,social_sciences,vii,1,Geographical Diversity of India,5547,2483,8030,4.8497
-2026-03-10T20:43:17.402293,summary_call,social_sciences,vii,2,Understanding the Weather,9844,1947,11791,5.2863
-2026-03-10T20:44:03.688973,mapping_call,social_sciences,vii,2,Understanding the Weather,5361,2277,7638,4.5214
-2026-03-11T10:40:47.405415,summary_call,social_sciences,vii,3,Climates of India,10955,2412,13367,6.2141
-2026-03-11T10:41:57.523633,mapping_call,social_sciences,vii,3,Climates of India,5813,3636,9449,6.4781
-2026-03-11T11:56:17.558200,summary_call,social_sciences,vii,5,The Rise of Empires,16760,2326,19086,7.6653
-2026-03-11T11:57:24.838089,mapping_call,social_sciences,vii,5,The Rise of Empires,5754,3428,9182,6.1814
-2026-03-11T14:55:59.258123,summary_call,social_sciences,vii,6,The Age of Reorganisation,12695,2217,14912,6.4206
-2026-03-11T15:10:26.922399,summary_call,social_sciences,vii,6,The Age of Reorganisation,12695,2063,14758,6.2127
-2026-03-11T15:11:43.664963,mapping_call,social_sciences,vii,6,The Age of Reorganisation,5486,4084,9570,6.9946
+timestamp,call_type,subject,grade,chapter_number,chapter_title,attempt,status,input_tokens,output_tokens,total_tokens,cost_inr
+2026-03-08T06:26:25.084373,chapter_mapping,social_sciences,vii,1,Geographical Diversity of India,1,success,16543,2457,19000,7.7836
+2026-03-08T07:11:31.755354,chapter_mapping,social_sciences,vii,1,Geographical Diversity of India,1,success,14334,2303,16637,6.9792
+2026-03-08T07:30:32.586016,chapter_mapping,social_sciences,vii,4,New Beginnings: Cities and States,1,success,10585,2605,13190,6.3747
+2026-03-08T11:21:25.891748,chapter_mapping,social_sciences,vii,4,New Beginnings: Cities and States,1,success,10561,2297,12858,5.9524
+2026-03-08T11:52:30.169724,chapter_mapping,social_sciences,vii,4,New Beginnings: Cities and States,1,success,10561,2439,13000,6.1441
+2026-03-08T12:18:24.967076,chapter_mapping,social_sciences,vii,4,New Beginnings: Cities and States,1,success,10561,2151,12712,5.7553
+2026-03-08T12:44:33.013741,summary_call,social_sciences,vii,4,New Beginnings: Cities and States,1,success,7372,1967,9339,4.6459
+2026-03-08T12:44:45.914714,mapping_call,social_sciences,vii,4,New Beginnings: Cities and States,1,success,4792,699,5491,2.2375
+2026-03-09T09:41:03.869278,summary_call,social_sciences,vii,4,New Beginnings: Cities and States,1,success,7378,1903,9281,4.5611
+2026-03-09T09:41:16.165652,mapping_call,social_sciences,vii,4,New Beginnings: Cities and States,1,success,4740,617,5357,2.1128
+2026-03-09T14:34:51.068849,summary_call,social_sciences,vii,4,New Beginnings: Cities and States,1,success,7378,1954,9332,4.6300
+2026-03-09T14:35:53.040768,mapping_call,social_sciences,vii,4,New Beginnings: Cities and States,1,success,5100,3022,8122,5.4567
+2026-03-10T10:34:13.797304,summary_call,social_sciences,vii,1,Geographical Diversity of India,1,success,11366,2429,13795,6.3480
+2026-03-10T10:35:03.433998,mapping_call,social_sciences,vii,1,Geographical Diversity of India,1,success,5547,2483,8030,4.8497
+2026-03-10T20:43:17.402293,summary_call,social_sciences,vii,2,Understanding the Weather,1,success,9844,1947,11791,5.2863
+2026-03-10T20:44:03.688973,mapping_call,social_sciences,vii,2,Understanding the Weather,1,success,5361,2277,7638,4.5214
+2026-03-11T10:40:47.405415,summary_call,social_sciences,vii,3,Climates of India,1,success,10955,2412,13367,6.2141
+2026-03-11T10:41:57.523633,mapping_call,social_sciences,vii,3,Climates of India,1,success,5813,3636,9449,6.4781
+2026-03-11T11:56:17.558200,summary_call,social_sciences,vii,5,The Rise of Empires,1,success,16760,2326,19086,7.6653
+2026-03-11T11:57:24.838089,mapping_call,social_sciences,vii,5,The Rise of Empires,1,success,5754,3428,9182,6.1814
+2026-03-11T14:55:59.258123,summary_call,social_sciences,vii,6,The Age of Reorganisation,1,success,12695,2217,14912,6.4206
+2026-03-11T15:10:26.922399,summary_call,social_sciences,vii,6,The Age of Reorganisation,1,success,12695,2063,14758,6.2127
+2026-03-11T15:11:43.664963,mapping_call,social_sciences,vii,6,The Age of Reorganisation,1,success,5486,4084,9570,6.9946
+2026-03-11T16:29:51.100220,summary_call,social_sciences,vii,7,The Gupta Era: An Age of Tireless Creativity,1,success,12090,2174,14264,6.1992
+2026-03-11T16:31:09.901235,mapping_call,social_sciences,vii,7,The Gupta Era: An Age of Tireless Creativity,1,success,5563,3952,9515,6.8372
+2026-03-11T16:51:21.692049,summary_call,social_sciences,vii,8,How the Land Becomes Sacred,1,success,9678,2251,11929,5.6519
+2026-03-11T17:13:23.235362,summary_call,social_sciences,vii,8,How the Land Becomes Sacred,1,success,9678,2244,11922,5.6425
+2026-03-11T17:14:24.900719,mapping_call,social_sciences,vii,8,How the Land Becomes Sacred,1,success,5656,3385,9041,6.0969
+2026-03-11T18:19:16.539478,summary_call,social_sciences,vii,8,How the Land Becomes Sacred,1,success,9678,2385,12063,5.8328
+2026-03-11T18:21:38.465586,mapping_call,social_sciences,vii,8,How the Land Becomes Sacred,1,success,5803,3166,8969,5.8409

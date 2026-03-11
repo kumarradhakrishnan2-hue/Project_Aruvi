@@ -163,26 +163,28 @@ def call_summary_api(chapter_data: dict, chapter_number: int,
             result = json.loads(raw_text)
 
             errors = _validate_summary(result, chapter_data)
-            if errors and attempt < max_retries:
+            is_retry = bool(errors) and attempt < max_retries
+            status = "retry" if is_retry else ("warning" if errors else "success")
+            cost = _log_tokens(
+                token_log_path, "summary_call", subject_group, grade,
+                chapter_number, result.get("chapter_title", "unknown"),
+                input_tokens, output_tokens,
+                attempt=attempt, status=status
+            )
+            print(f"    Tokens: {input_tokens} in + {output_tokens} out = "
+                  f"{input_tokens+output_tokens} total | Cost: Rs.{cost:.4f} [{status}]")
+
+            if is_retry:
                 print(f"    Validation issues (attempt {attempt}): {errors}")
                 repair_note = "REPAIR REQUIRED: " + "; ".join(errors)
                 user_prompt = user_prompt + f"\n\n{repair_note}\nPlease fix and return corrected JSON only."
                 continue
-
-            cost = _log_tokens(
-                token_log_path, "summary_call", subject_group, grade,
-                chapter_number, result.get("chapter_title", "unknown"),
-                input_tokens, output_tokens
-            )
 
             if errors:
                 print(f"    Warning (logged): {errors}")
             else:
                 wc = len(result.get("chapter_summary", "").split())
                 print(f"    Summary valid: {wc} words")
-
-            print(f"    Tokens: {input_tokens} in + {output_tokens} out = "
-                  f"{input_tokens+output_tokens} total | Cost: Rs.{cost:.4f}")
 
             return result
 
@@ -325,7 +327,12 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
         chapter_number = chapter_number
     )
 
-    client = _make_client()
+        client = _make_client()
+
+    _estimated_prompt_tokens = (len(system_prompt) + len(user_prompt)) // 4
+    print(f"    Estimated prompt size: ~{_estimated_prompt_tokens} tokens")
+    if _estimated_prompt_tokens > 170_000:
+        print(f"    WARNING: prompt may be near context limit")
 
     for attempt in range(1, max_retries + 1):
         print(f"    Mapping call attempt {attempt}/{max_retries}...")
@@ -339,23 +346,63 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
 
             input_tokens  = response.usage.input_tokens
             output_tokens = response.usage.output_tokens
+
+            if output_tokens == 0 or not response.content:
+                print(f"    Empty response (attempt {attempt}): 0 output tokens.")
+                if attempt < max_retries:
+                    words = chapter_summary.split()
+                    trimmed = " ".join(words[:int(len(words) * 0.8)])
+                    print(f"    Trimming summary to {len(trimmed.split())} words and retrying...")
+                    user_prompt = build_mapping_user_prompt(
+                        summary        = trimmed,
+                        chapter_title  = chapter_title,
+                        cg_data        = cg_data,
+                        subject_group  = subject_group,
+                        stage          = stage,
+                        grade          = grade,
+                        chapter_number = chapter_number
+                    )
+                    continue
+                else:
+                    raise RuntimeError(
+                        f"Mapping call: empty response after {max_retries} attempts. "
+                        f"Input tokens: {input_tokens}."
+                    )
+
             raw_text = response.content[0].text.strip()
             raw_text = re.sub(r'^```(?:json)?\s*', '', raw_text)
             raw_text = re.sub(r'\s*```$', '', raw_text)
 
+            if not raw_text:
+                print(f"    Blank response text (attempt {attempt})")
+                if attempt < max_retries:
+                    continue
+                else:
+                    raise RuntimeError(f"Mapping call: blank response after {max_retries} attempts")
+
             mapping = json.loads(raw_text)
 
             errors = _validate_mapping(mapping)
-            if errors and attempt < max_retries:
+            is_retry = bool(errors) and attempt < max_retries
+            status = "retry" if is_retry else ("warning" if errors else "success")
+            cost = _log_tokens(
+                token_log_path, "mapping_call", subject_group, grade,
+                chapter_number, chapter_title, input_tokens, output_tokens,
+                attempt=attempt, status=status
+            )
+            print(f"    Tokens: {input_tokens} in + {output_tokens} out = "
+                  f"{input_tokens+output_tokens} total | Cost: Rs.{cost:.4f} [{status}]")
+
+            if is_retry:
                 print(f"    Validation issues (attempt {attempt}): {errors}")
                 repair_note = "REPAIR REQUIRED: " + "; ".join(errors)
                 user_prompt = user_prompt + f"\n\n{repair_note}\nPlease fix and return corrected JSON only."
                 continue
 
-            cost = _log_tokens(
-                token_log_path, "mapping_call", subject_group, grade,
-                chapter_number, chapter_title, input_tokens, output_tokens
-            )
+            if errors:
+                print(f"    Warning (logged): {errors}")
+            else:
+                print(f"    Mapping valid")
 
             if errors:
                 print(f"    Warning (logged): {errors}")
@@ -365,7 +412,6 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
             print(f"    Tokens: {input_tokens} in + {output_tokens} out = "
                   f"{input_tokens+output_tokens} total | Cost: Rs.{cost:.4f}")
 
-            # ── Merge into final record ──────────────────────────────────────
             record = {
                 "stage":              stage,
                 "subject":            subject_group,
@@ -382,8 +428,10 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
 
         except json.JSONDecodeError as e:
             print(f"    JSON parse error (attempt {attempt}): {e}")
-            if attempt == max_retries:
-                raise RuntimeError(f"Mapping call: failed to parse JSON after {max_retries} attempts") from e
+            if attempt < max_retries:
+                user_prompt = user_prompt + "\n\nREPAIR REQUIRED: Return JSON only, no preamble."
+                continue
+            raise RuntimeError(f"Mapping call: failed to parse JSON after {max_retries} attempts") from e
         except Exception as e:
             print(f"    API error (attempt {attempt}): {e}")
             if attempt == max_retries:
@@ -399,7 +447,8 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
 
 def _log_tokens(log_path: str, call_type: str, subject: str, grade: str,
                 chapter_number: int, chapter_title: str,
-                input_tokens: int, output_tokens: int) -> float:
+                input_tokens: int, output_tokens: int,
+                attempt: int = 1, status: str = "success") -> float:
     """Append one row to the token log CSV. Returns cost in INR."""
     cost_inr = (
         (input_tokens  / 1000) * INPUT_COST_PER_1K_INR +
@@ -412,6 +461,8 @@ def _log_tokens(log_path: str, call_type: str, subject: str, grade: str,
         "grade":          grade,
         "chapter_number": chapter_number,
         "chapter_title":  chapter_title,
+        "attempt":        attempt,
+        "status":         status,
         "input_tokens":   input_tokens,
         "output_tokens":  output_tokens,
         "total_tokens":   input_tokens + output_tokens,
