@@ -19,7 +19,7 @@
 
 **Rule 5.** The system MUST assign Weight 2 (Substantive) in either of the following two conditions: (a) the chapter constructs a dedicated, architecturally distinct named section or activity block to develop the competency — one that could stand alone as a learning unit; OR (b) the competency is developed substantively and deliberately across multiple named sections of the chapter, with the chapter's own organising logic making continuity of this competency evident across those sections, even without a dedicated section of its own. In both cases the competency must share the chapter's overarching structural framework with other substantive competencies.
 
-**Rule 6.** The system MUST assign Weight 1 (Present) ONLY IF both conditions are satisfied: the chapter includes at least one explicitly designated structural element — a textbook exercise, guided question, or student task — organised around this competency; AND that structural element does not constitute a dedicated section or architecturally distinct activity block. Weight 1 is assigned when the competency is genuinely taught through a single activity or question but is not sustained across a dedicated section.
+**Rule 6.** The system MUST assign Weight 1 (Present) ONLY IF the chapter contains at least one named structural element — a subsection, sidebar, or designated passage — whose primary subject is this competency, AND that element does not constitute a dedicated section or architecturally distinct activity block.
 
 **Rule 7.** The system SHALL classify a competency as Incidental ONLY IF the chapter's content surfaces the competency but the chapter's architecture includes zero explicitly designated structural elements organised around its development.
 
