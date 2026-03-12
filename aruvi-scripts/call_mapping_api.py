@@ -70,7 +70,7 @@ The summary must faithfully represent what the chapter teaches — its concepts,
 
 CRITICAL: This is a content summary only. Do not describe exercises, questions, activities, or student tasks. Summarise only what the chapter teaches, not what students are asked to do.
 
-You MUST respond with valid JSON only — no preamble, no explanation, no markdown fences."""
+Respond with plain text only — the summary itself, nothing else. No preamble, no JSON, no markdown fences around the response."""
 
 
 def build_summary_user_prompt(chapter_data: dict, chapter_number: int,
@@ -89,49 +89,60 @@ Chapter Number: {chapter_number}
 
 ## REQUIRED OUTPUT
 
-Respond with this exact JSON structure and nothing else:
-
-{{
-  "chapter_title": "<exact chapter title as it appears in the textbook>",
-  "chapter_summary": "<structured content summary. Follow the chapter's own heading and subheading structure exactly — use markdown heading markers (## for major headings, ### for subheadings). Under each heading write 2-3 sentences summarising the key concepts, terms, significant people, events, phenomena, or principles in that section. Cover every section. Content only — no exercises, no student activities, no task descriptions.>"
-}}
-
-CRITICAL CONSTRAINTS:
-- chapter_summary MUST be at least 800 words — cover every section heading; use as many words as the chapter's structure requires
-- Use ## and ### markers to mirror the textbook's heading structure
+Write a structured content summary of this chapter. Requirements:
+- Minimum 900 words, no upper limit — cover every section heading the chapter contains
+- Use ## for major headings and ### for subheadings, mirroring the textbook's own structure exactly
+- Under each heading write 2-3 sentences summarising the key concepts, terms, significant people, events, phenomena, or principles in that section
 - Content only — no exercises, no student activities, no task descriptions
-- Respond with JSON only — no text before or after"""
+- Begin the summary with: TITLE: <exact chapter title as it appears in the textbook>
+- Then write the summary directly — plain text with markdown heading markers only
+
+Do not wrap in JSON. Do not add any preamble or closing remarks. Start with TITLE: and then the summary."""
+
+
+def _parse_summary_text(raw_text: str) -> dict:
+    """
+    Parse plain-text Call 1 response into {chapter_title, chapter_summary}.
+    Expects response to begin with: TITLE: <title>
+    Everything after the title line is the summary.
+    """
+    lines = raw_text.strip().splitlines()
+    chapter_title = ""
+    summary_start = 0
+    for i, line in enumerate(lines):
+        if line.strip().upper().startswith("TITLE:"):
+            chapter_title = line.split(":", 1)[1].strip()
+            summary_start = i + 1
+            break
+    chapter_summary = "\n".join(lines[summary_start:]).strip()
+    return {"chapter_title": chapter_title, "chapter_summary": chapter_summary}
 
 
 def _validate_summary(result: dict, chapter_data: dict) -> list:
     """Validate Call 1 output. Returns list of error strings."""
     errors = []
-    for field in ["chapter_title", "chapter_summary"]:
-        if field not in result:
-            errors.append(f"Missing field: {field}")
+    if not result.get("chapter_title"):
+        errors.append("Missing or empty chapter_title (expected TITLE: line at start of response)")
+    if not result.get("chapter_summary"):
+        errors.append("Missing or empty chapter_summary")
 
-    if "chapter_summary" in result:
+    if result.get("chapter_summary"):
         wc = len(result["chapter_summary"].split())
         if wc < 800:
             errors.append(f"chapter_summary too short: {wc} words (minimum 800)")
-        else:
-            print(f"    chapter_summary: {wc} words")
 
         if "section_headings" in chapter_data:
-            # Known PDF artefact and sidebar patterns — never real content headings
-            ARTEFACT_PATTERNS = {
-                "retpahc", "do you know", "let's explore", "think about it",
-                "let us", "activity", "exercise", "summary", "keywords",
-                "glossary", "prelims", "let's recall", "let's discuss",
-            }
             summary_lower = result["chapter_summary"].lower()
             headings = chapter_data["section_headings"][:8]
             uncovered = []
+            ARTEFACT_PATTERNS = {
+                "retpahc", "do you know", "let's explore", "think about it",
+                "let us", "activity", "exercise", "summary", "keywords",
+                "explore more", "think and discuss"
+            }
             for h in headings[1:]:
                 h_lower = h.lower()
                 if any(pat in h_lower for pat in ARTEFACT_PATTERNS):
-                    continue
-                if len(h.split()) <= 2:
                     continue
                 key_words = [w.lower() for w in h.split() if len(w) > 4]
                 if key_words and not any(w in summary_lower for w in key_words):
@@ -148,40 +159,36 @@ def call_summary_api(chapter_data: dict, chapter_number: int,
     """
     Call 1: Summarise the chapter from full text.
     Returns dict with chapter_title and chapter_summary.
-
-    Uses multi-turn messages for retries so the model sees its prior response
-    and corrects specific fields — prevents it from dropping chapter_title on retry.
+    Model returns plain text (not JSON) to avoid JSON encoding failures
+    on long summaries with special characters and markdown.
     """
     client = _make_client()
     system_prompt = build_summary_system_prompt()
-    initial_user_prompt = build_summary_user_prompt(
+    user_prompt   = build_summary_user_prompt(
         chapter_data, chapter_number, subject_group, stage, grade
     )
 
-    last_result = None
-    total_input_tokens = 0
-    total_output_tokens = 0
+    last_result = {}
 
     for attempt in range(1, max_retries + 1):
         print(f"    Summary call attempt {attempt}/{max_retries}...")
-
-        # On retry: send a fresh single-turn message with just the prior summary
-        # to avoid re-sending 43k+ chars of chapter text and hitting context limits.
-        if attempt == 1:
-            messages = [{"role": "user", "content": initial_user_prompt}]
-        else:
-            prior_summary = last_result.get("chapter_summary", "") if last_result else ""
-            prior_title   = last_result.get("chapter_title", "") if last_result else ""
-            retry_prompt = (
-                f"You previously produced this chapter summary but it had validation issues.\n\n"
-                f"Prior chapter_title: {prior_title}\n\n"
-                f"Prior chapter_summary:\n{prior_summary}\n\n"
-                f"Please return corrected JSON with BOTH fields (chapter_title AND chapter_summary).\n"
-                f"Issues to fix: {'; '.join(retry_errors)}"
-            )
-            messages = [{"role": "user", "content": retry_prompt}]
-
         try:
+            # On retry: send a fresh minimal message with just the prior
+            # output and the issues — do NOT resend the full chapter text.
+            if attempt > 1 and last_result:
+                prior_summary = last_result.get("chapter_summary", "")
+                prior_title   = last_result.get("chapter_title", "")
+                retry_prompt  = (
+                    f"The previous summary attempt had these issues:\n{'; '.join(retry_errors)}\n\n"
+                    f"The title was: {prior_title}\n\n"
+                    f"The summary so far:\n{prior_summary}\n\n"
+                    f"Please return a corrected version. Begin with TITLE: <title> then the summary. "
+                    f"Plain text only, no JSON, no markdown fences."
+                )
+                messages = [{"role": "user", "content": retry_prompt}]
+            else:
+                messages = [{"role": "user", "content": user_prompt}]
+
             response = client.messages.create(
                 model="claude-sonnet-4-6",
                 max_tokens=4096,
@@ -191,32 +198,34 @@ def call_summary_api(chapter_data: dict, chapter_number: int,
 
             input_tokens  = response.usage.input_tokens
             output_tokens = response.usage.output_tokens
-            total_input_tokens  += input_tokens
-            total_output_tokens += output_tokens
-
             raw_text = response.content[0].text.strip()
-            clean_text = re.sub(r'^```(?:json)?\s*', '', raw_text)
-            clean_text = re.sub(r'\s*```$', '', clean_text)
 
-            result = json.loads(clean_text)
+            # Strip any accidental markdown fences
+            raw_text = re.sub(r'^```(?:json|markdown|text)?\s*', '', raw_text)
+            raw_text = re.sub(r'\s*```$', '', raw_text).strip()
 
-            # If retry dropped any fields, recover them from the previous good parse
-            if attempt > 1 and last_result is not None:
-                for field in ["chapter_title", "chapter_summary"]:
-                    if field not in result and field in last_result:
-                        result[field] = last_result[field]
+            if not raw_text:
+                raise RuntimeError("Empty response from model")
 
+            # Parse plain text — no JSON involved
+            result = _parse_summary_text(raw_text)
+
+            # Recover title from last attempt if retry dropped it
+            if not result.get("chapter_title") and last_result.get("chapter_title"):
+                result["chapter_title"] = last_result["chapter_title"]
+
+            last_result = result
             errors = _validate_summary(result, chapter_data)
+
             if errors and attempt < max_retries:
                 print(f"    Validation issues (attempt {attempt}): {errors}")
                 retry_errors = errors
-                last_result = result
                 continue
 
             cost = _log_tokens(
                 token_log_path, "summary_call", subject_group, grade,
                 chapter_number, result.get("chapter_title", "unknown"),
-                total_input_tokens, total_output_tokens
+                input_tokens, output_tokens
             )
 
             if errors:
@@ -225,16 +234,16 @@ def call_summary_api(chapter_data: dict, chapter_number: int,
                 wc = len(result.get("chapter_summary", "").split())
                 print(f"    Summary valid: {wc} words")
 
-            print(f"    Tokens: {total_input_tokens} in + {total_output_tokens} out = "
-                  f"{total_input_tokens+total_output_tokens} total | Cost: Rs.{cost:.4f}")
+            print(f"    Tokens: {input_tokens} in + {output_tokens} out = "
+                  f"{input_tokens+output_tokens} total | Cost: Rs.{cost:.4f}")
 
             return result
 
-        except json.JSONDecodeError as e:
-            print(f"    JSON parse error (attempt {attempt}): {e}")
+        except RuntimeError as e:
+            print(f"    Error (attempt {attempt}): {e}")
             if attempt == max_retries:
-                raise RuntimeError(f"Summary call: failed to parse JSON after {max_retries} attempts") from e
-            retry_errors = [f"Response was not valid JSON: {e}"]
+                raise RuntimeError(f"Summary call: failed after {max_retries} attempts: {e}") from e
+            time.sleep(2)
         except Exception as e:
             print(f"    API error (attempt {attempt}): {e}")
             if attempt == max_retries:
@@ -242,6 +251,7 @@ def call_summary_api(chapter_data: dict, chapter_number: int,
             time.sleep(2)
 
     raise RuntimeError("Summary call failed after all retries")
+
 
 # ═══════════════════════════════════════════════════════════════════════════
 # CALL 2 — MAP
