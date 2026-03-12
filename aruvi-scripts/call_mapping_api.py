@@ -8,7 +8,7 @@ Call 1 — Summarise:
 
 Call 2 — Map:
   Input : chapter_summary (NOT raw chapter text) + CG document
-  Output: primary, incidental, chapter_weight
+  Output: primary, incidental, chapter_weight, min_viable_periods
 
 The final record merges both outputs with stage/subject/grade/chapter_number
 added from context. The two-call split is invisible to downstream consumers.
@@ -93,11 +93,11 @@ Respond with this exact JSON structure and nothing else:
 
 {{
   "chapter_title": "<exact chapter title as it appears in the textbook>",
-  "chapter_summary": "<structured content summary, 900-1200 words. Follow the chapter's own heading and subheading structure exactly — use markdown heading markers (## for major headings, ### for subheadings). Under each heading write 2-3 sentences summarising the key concepts, terms, significant people, events, phenomena, or principles in that section. Content only — no exercises, no student activities, no task descriptions.>"
+  "chapter_summary": "<structured content summary. Follow the chapter's own heading and subheading structure exactly — use markdown heading markers (## for major headings, ### for subheadings). Under each heading write 2-3 sentences summarising the key concepts, terms, significant people, events, phenomena, or principles in that section. Cover every section. Content only — no exercises, no student activities, no task descriptions.>"
 }}
 
 CRITICAL CONSTRAINTS:
-- chapter_summary MUST be 900-1200 words
+- chapter_summary MUST be at least 800 words — cover every section heading; use as many words as the chapter's structure requires
 - Use ## and ### markers to mirror the textbook's heading structure
 - Content only — no exercises, no student activities, no task descriptions
 - Respond with JSON only — no text before or after"""
@@ -114,14 +114,25 @@ def _validate_summary(result: dict, chapter_data: dict) -> list:
         wc = len(result["chapter_summary"].split())
         if wc < 800:
             errors.append(f"chapter_summary too short: {wc} words (minimum 800)")
-        elif wc > 1400:
-            errors.append(f"chapter_summary too long: {wc} words (maximum 1400)")
+        else:
+            print(f"    chapter_summary: {wc} words")
 
         if "section_headings" in chapter_data:
+            # Known PDF artefact and sidebar patterns — never real content headings
+            ARTEFACT_PATTERNS = {
+                "retpahc", "do you know", "let's explore", "think about it",
+                "let us", "activity", "exercise", "summary", "keywords",
+                "glossary", "prelims", "let's recall", "let's discuss",
+            }
             summary_lower = result["chapter_summary"].lower()
             headings = chapter_data["section_headings"][:8]
             uncovered = []
             for h in headings[1:]:
+                h_lower = h.lower()
+                if any(pat in h_lower for pat in ARTEFACT_PATTERNS):
+                    continue
+                if len(h.split()) <= 2:
+                    continue
                 key_words = [w.lower() for w in h.split() if len(w) > 4]
                 if key_words and not any(w in summary_lower for w in key_words):
                     uncovered.append(h)
@@ -137,42 +148,75 @@ def call_summary_api(chapter_data: dict, chapter_number: int,
     """
     Call 1: Summarise the chapter from full text.
     Returns dict with chapter_title and chapter_summary.
+
+    Uses multi-turn messages for retries so the model sees its prior response
+    and corrects specific fields — prevents it from dropping chapter_title on retry.
     """
     client = _make_client()
     system_prompt = build_summary_system_prompt()
-    user_prompt   = build_summary_user_prompt(
+    initial_user_prompt = build_summary_user_prompt(
         chapter_data, chapter_number, subject_group, stage, grade
     )
 
+    last_result = None
+    total_input_tokens = 0
+    total_output_tokens = 0
+
     for attempt in range(1, max_retries + 1):
         print(f"    Summary call attempt {attempt}/{max_retries}...")
+
+        # On retry: send a fresh single-turn message with just the prior summary
+        # to avoid re-sending 43k+ chars of chapter text and hitting context limits.
+        if attempt == 1:
+            messages = [{"role": "user", "content": initial_user_prompt}]
+        else:
+            prior_summary = last_result.get("chapter_summary", "") if last_result else ""
+            prior_title   = last_result.get("chapter_title", "") if last_result else ""
+            retry_prompt = (
+                f"You previously produced this chapter summary but it had validation issues.\n\n"
+                f"Prior chapter_title: {prior_title}\n\n"
+                f"Prior chapter_summary:\n{prior_summary}\n\n"
+                f"Please return corrected JSON with BOTH fields (chapter_title AND chapter_summary).\n"
+                f"Issues to fix: {'; '.join(retry_errors)}"
+            )
+            messages = [{"role": "user", "content": retry_prompt}]
+
         try:
             response = client.messages.create(
                 model="claude-sonnet-4-6",
                 max_tokens=4096,
                 system=system_prompt,
-                messages=[{"role": "user", "content": user_prompt}]
+                messages=messages
             )
 
             input_tokens  = response.usage.input_tokens
             output_tokens = response.usage.output_tokens
-            raw_text = response.content[0].text.strip()
-            raw_text = re.sub(r'^```(?:json)?\s*', '', raw_text)
-            raw_text = re.sub(r'\s*```$', '', raw_text)
+            total_input_tokens  += input_tokens
+            total_output_tokens += output_tokens
 
-            result = json.loads(raw_text)
+            raw_text = response.content[0].text.strip()
+            clean_text = re.sub(r'^```(?:json)?\s*', '', raw_text)
+            clean_text = re.sub(r'\s*```$', '', clean_text)
+
+            result = json.loads(clean_text)
+
+            # If retry dropped any fields, recover them from the previous good parse
+            if attempt > 1 and last_result is not None:
+                for field in ["chapter_title", "chapter_summary"]:
+                    if field not in result and field in last_result:
+                        result[field] = last_result[field]
 
             errors = _validate_summary(result, chapter_data)
             if errors and attempt < max_retries:
                 print(f"    Validation issues (attempt {attempt}): {errors}")
-                repair_note = "REPAIR REQUIRED: " + "; ".join(errors)
-                user_prompt = user_prompt + f"\n\n{repair_note}\nPlease fix and return corrected JSON only."
+                retry_errors = errors
+                last_result = result
                 continue
 
             cost = _log_tokens(
                 token_log_path, "summary_call", subject_group, grade,
                 chapter_number, result.get("chapter_title", "unknown"),
-                input_tokens, output_tokens
+                total_input_tokens, total_output_tokens
             )
 
             if errors:
@@ -181,8 +225,8 @@ def call_summary_api(chapter_data: dict, chapter_number: int,
                 wc = len(result.get("chapter_summary", "").split())
                 print(f"    Summary valid: {wc} words")
 
-            print(f"    Tokens: {input_tokens} in + {output_tokens} out = "
-                  f"{input_tokens+output_tokens} total | Cost: Rs.{cost:.4f}")
+            print(f"    Tokens: {total_input_tokens} in + {total_output_tokens} out = "
+                  f"{total_input_tokens+total_output_tokens} total | Cost: Rs.{cost:.4f}")
 
             return result
 
@@ -190,6 +234,7 @@ def call_summary_api(chapter_data: dict, chapter_number: int,
             print(f"    JSON parse error (attempt {attempt}): {e}")
             if attempt == max_retries:
                 raise RuntimeError(f"Summary call: failed to parse JSON after {max_retries} attempts") from e
+            retry_errors = [f"Response was not valid JSON: {e}"]
         except Exception as e:
             print(f"    API error (attempt {attempt}): {e}")
             if attempt == max_retries:
@@ -197,7 +242,6 @@ def call_summary_api(chapter_data: dict, chapter_number: int,
             time.sleep(2)
 
     raise RuntimeError("Summary call failed after all retries")
-
 
 # ═══════════════════════════════════════════════════════════════════════════
 # CALL 2 — MAP
@@ -226,28 +270,12 @@ Grade         : {grade}
 Chapter Number: {chapter_number}
 Chapter Title : {chapter_title}
 
----
-
-## PASS 1 — TRANSFORMATION INVENTORY (complete before reading the CG document)
-
-Read the chapter summary below section by section. For each named section and subsection, state:
-- Section name
-- Cognitive operation the section requires the student to perform
-- Content object the operation is performed on
-
-Produce this inventory in full before proceeding. Do not consult or reference the CG document during this step.
-
 ### Chapter Content Summary
 {summary}
 
 ---
 
-## PASS 2 — C-CODE MATCHING (open the CG document only after Pass 1 is complete)
-
-Using your transformation inventory from Pass 1, match each transformation statement to a C-code below.
-For each match: identify the architectural container (named section or subsection), read the full C-code definition including every distinct demand it contains, and apply the weight tests from the constitution.
-
-## CURRICULAR GOALS AND C-CODES (your sole framework reference — Pass 2 only)
+## CURRICULAR GOALS AND C-CODES (your sole framework reference)
 
 {cg_text}
 
@@ -255,43 +283,35 @@ For each match: identify the architectural container (named section or subsectio
 
 ## REQUIRED OUTPUT
 
-After completing both passes, respond with your reasoning followed by the JSON record.
-
-Your response MUST follow this structure:
-1. PASS 1 INVENTORY — your section-by-section transformation statements
-2. PASS 2 MATCHING — your C-code matches with architectural container and weight reasoning
-3. JSON RECORD — the final output, enclosed in ```json fences
-
-The JSON record must conform exactly to this schema:
+Respond with this exact JSON structure and nothing else:
 
 {{
-  
+  "min_viable_periods": <integer: minimum periods needed to teach this chapter at all>,
   "primary": [
     {{
-      "cg": "<parent CG code e.g. CG-2>",
+      "cg": "<CG code e.g. CG-2>",
       "c_code": "<C-code e.g. C-2.1>",
       "weight": <3 | 2 | 1>,
-      "justification": "<one sentence: names the architectural container and states the structural match>"
+      "justification": "<one sentence explaining the structural match per constitution rules>"
     }}
   ],
   "incidental": [
-    {{ "cg": "<parent CG code>", "c_code": "<C-code>" }}
+    {{ "cg": "<CG code>", "c_code": "<C-code>" }}
   ],
   "chapter_weight": <sum of all primary weight scores>
 }}
 
 CRITICAL CONSTRAINTS:
-- Complete Pass 1 inventory before opening the CG document.
-- Read every distinct demand in each C-code before accepting or rejecting a match.
-- cg field MUST be the parent CG of the c_code (e.g. C-3.1 has cg: CG-3, not CG-2).
+- Apply the constitution rules exactly. Weight 3 only if the competency structurally dissolves the chapter if removed.
 - chapter_weight MUST equal the arithmetic sum of all primary weight scores.
-- Only use C-codes that appear in the Curricular Goals list provided above."""
+- Only use C-codes that appear in the Curricular Goals list provided above.
+- Respond with JSON only — no text before or after."""
 
 
 def _validate_mapping(mapping: dict) -> list:
     """Validate Call 2 output. Returns list of error strings."""
     errors = []
-    for field in ["primary", "incidental", "chapter_weight"]:
+    for field in ["min_viable_periods", "primary", "incidental", "chapter_weight"]:
         if field not in mapping:
             errors.append(f"Missing field: {field}")
 
@@ -356,7 +376,7 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
         try:
             response = client.messages.create(
                 model="claude-sonnet-4-6",
-                max_tokens=4096,
+                max_tokens=2048,
                 system=system_prompt,
                 messages=[{"role": "user", "content": user_prompt}]
             )
@@ -364,18 +384,10 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
             input_tokens  = response.usage.input_tokens
             output_tokens = response.usage.output_tokens
             raw_text = response.content[0].text.strip()
+            raw_text = re.sub(r'^```(?:json)?\s*', '', raw_text)
+            raw_text = re.sub(r'\s*```$', '', raw_text)
 
-            # Response now contains Pass 1 + Pass 2 reasoning followed by ```json fenced record.
-            # Extract JSON from fences first; fall back to raw parse for backwards compatibility.
-            fenced = re.search(r'```json\s*(.*?)\s*```', raw_text, re.DOTALL)
-            if fenced:
-                json_str = fenced.group(1).strip()
-            else:
-                # Fallback: strip any accidental fences and try raw parse
-                json_str = re.sub(r'^```(?:json)?\s*', '', raw_text)
-                json_str = re.sub(r'\s*```$', '', json_str).strip()
-
-            mapping = json.loads(json_str)
+            mapping = json.loads(raw_text)
 
             errors = _validate_mapping(mapping)
             if errors and attempt < max_retries:
@@ -397,12 +409,6 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
             print(f"    Tokens: {input_tokens} in + {output_tokens} out = "
                   f"{input_tokens+output_tokens} total | Cost: Rs.{cost:.4f}")
 
-            # Auto-correct cg field from c_code — e.g. C-6.1 → CG-6
-            for entry in mapping.get("primary", []):
-                entry["cg"] = "CG-" + entry["c_code"].split("-")[1].split(".")[0]
-            for entry in mapping.get("incidental", []):
-                entry["cg"] = "CG-" + entry["c_code"].split("-")[1].split(".")[0]
-
             # ── Merge into final record ──────────────────────────────────────
             record = {
                 "stage":              stage,
@@ -411,6 +417,7 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
                 "chapter_number":     chapter_number,
                 "chapter_title":      chapter_title,
                 "chapter_summary":    chapter_summary,
+                "min_viable_periods": mapping["min_viable_periods"],
                 "primary":            mapping["primary"],
                 "incidental":         mapping["incidental"],
                 "chapter_weight":     mapping["chapter_weight"],
