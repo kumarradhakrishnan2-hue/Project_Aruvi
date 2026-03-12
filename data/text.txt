@@ -1,0 +1,10 @@
+cd "/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi"
+git add .
+git commit -m "Add two-call pipeline: separate summarise and map API calls"
+git push
+
+chapter prompt
+
+cd "/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi" && bash run_mapping.sh --subject social_sciences --grade vii --chapters 12 --skill-dir "/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi/aruvi-chapter-mapping"
+
+export ANTHROPIC_API_KEY="sk-ant-"
