@@ -8,3 +8,11 @@ chapter prompt
 cd "/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi" && bash run_mapping.sh --subject social_sciences --grade vii --chapters 12 --skill-dir "/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi/aruvi-chapter-mapping"
 
 export ANTHROPIC_API_KEY="sk-ant-"
+
+cd "/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi"
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/kumarradhakrishnan2-hue/Project_Aruvi.git
+git push -u origin main
