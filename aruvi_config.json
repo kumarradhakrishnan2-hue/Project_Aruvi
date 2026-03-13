@@ -1,14 +1,20 @@
 {
-  "_comment": "Aruvi project configuration. This file lives at your project root: /Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi/aruvi_config.json",
+  "_comment": "Aruvi project configuration. project_root is DYNAMIC — derived from this file's own location at runtime.",
 
   "project_root": "DYNAMIC",
 
   "paths": {
-    "textbooks":    "data/textbooks",
-    "framework":    "data/framework",
-    "mappings":     "data/mappings",
-    "token_log":    "data/mappings/token_log.csv",
-    "knowledge_commons": "knowledge commons"
+    "textbooks":            "knowledge_commons/textbooks",
+    "framework":            "knowledge_commons/framework",
+    "mappings":             "knowledge_commons/evaluation_mappings",
+    "token_log":            "knowledge_commons/evaluation_mappings/token_log.csv",
+    "knowledge_commons":    "knowledge_commons",
+    "mirror":               "mirror",
+    "mirror_framework":     "mirror/framework",
+    "mirror_chapters":      "mirror/chapters",
+    "mirror_constitutions": "mirror/constitutions",
+    "mirror_summaries_dir": "mirror/chapters",
+    "mirror_mappings_dir":  "mirror/chapters"
   },
 
   "subject_groups": {
@@ -55,6 +61,11 @@
   "framework_filenames": {
     "curricular_goals": "curricular_goals.pdf",
     "pedagogy":         "pedagogy.pdf"
+  },
+
+  "mirror_framework_filenames": {
+    "cg":      "cg_{stage}_{subject_group}.txt",
+    "pedagogy": "pedagogy_{stage}_{subject_group}.txt"
   },
 
   "mapping_output_pattern": "chapter_mappings_{subject_group}_{grade}.json"

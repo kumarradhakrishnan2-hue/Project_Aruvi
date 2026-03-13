@@ -41,22 +41,23 @@ def _make_client():
     return anthropic.Anthropic(http_client=_http_client)
 
 
-def load_constitution(subject_group: str, skill_dir: str) -> str:
-    """Load the correct constitution for the subject group."""
-    constitution_map = {
-        "social_sciences": "constitution_social_sciences.md",
-        "languages":       "constitution_languages.md",
-        "mathematics":     "constitution_mathematics.md",
-        "science":         "constitution_science.md",
-    }
-    filename = constitution_map.get(subject_group)
-    if not filename:
-        raise ValueError(f"Unknown subject group: {subject_group}. "
-                        f"Must be one of: {list(constitution_map.keys())}")
-    constitution_path = Path(skill_dir) / "references" / filename
-    if not constitution_path.exists():
-        raise FileNotFoundError(f"Constitution file not found: {constitution_path}")
-    return constitution_path.read_text(encoding="utf-8")
+def load_constitution(constitution_path: str) -> str:
+    """
+    Load constitution text from the resolved mirror path.
+
+    constitution_path is provided by config_resolver.resolve_paths() as
+    paths["constitution_path"] — always points to:
+      mirror/constitutions/competency_mapping/{subject_group}/
+      mapping_constitution_{subject_group}.txt
+    """
+    path = Path(constitution_path)
+    if not path.exists():
+        raise FileNotFoundError(
+            f"Constitution file not found: {path}\n"
+            f"Expected a .txt file extracted from the DOCX source in "
+            f"knowledge_commons/constitutions/competency_mapping/."
+        )
+    return path.read_text(encoding="utf-8")
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -345,7 +346,7 @@ def _validate_mapping(mapping: dict) -> list:
 
 def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
                      stage: str, grade: str, chapter_number: int,
-                     skill_dir: str, token_log_path: str,
+                     constitution_path: str, token_log_path: str,
                      max_retries: int = 2) -> dict:
     """
     Full two-call pipeline. Orchestrates Call 1 (summarise) then Call 2 (map).
@@ -367,7 +368,7 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
 
     # ── Call 2: Map ──────────────────────────────────────────────────────────
     print("  [Call 2/2] Mapping competencies from summary...")
-    constitution  = load_constitution(subject_group, skill_dir)
+    constitution  = load_constitution(constitution_path)
     system_prompt = build_mapping_system_prompt(constitution)
     user_prompt   = build_mapping_user_prompt(
         summary        = chapter_summary,

@@ -1,0 +1,44 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "vii",
+  "chapter_number": 12,
+  "chapter_title": "Understanding Markets",
+  "min_viable_periods": 6,
+  "primary": [
+    {
+      "cg": "CG-9",
+      "c_code": "C-9.1",
+      "weight": 3,
+      "justification": "The chapter's entire organising purpose is to explain the key elements of trade and commerce — markets, prices, buyers, sellers, wholesale and retail channels, domestic and international trade — making C-9.1 the structural core whose removal dissolves the chapter."
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1",
+      "weight": 2,
+      "justification": "The chapter constructs a dedicated architecturally distinct section ('Government's Role in the Market') that systematically collects and interprets information about how government institutions function as regulators, price controllers, quality enforcers, and public-goods providers, constituting a stand-alone learning unit."
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.2",
+      "weight": 2,
+      "justification": "The chapter devotes a named section to assessing the influence of political and social institutions (government price controls, MSP, minimum wages, quality standards, Ima Keithal as social institution) on market life, developed substantively across multiple subsections."
+    }
+  ],
+  "incidental": [
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.2"
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.1"
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.4"
+    }
+  ],
+  "chapter_weight": 7,
+  "summary_path": "mirror/chapters/middle/social_sciences/grade_vii/summaries/ch_12_summary.txt"
+}

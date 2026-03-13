@@ -1,0 +1,59 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "vii",
+  "chapter_number": 3,
+  "chapter_title": "Climates of India",
+  "primary": [
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.1",
+      "weight": 3,
+      "justification": "All major named sections — Weather/Seasons/Climate, Types of Climates, all five Factors subsections, The Monsoons, and Climates and Disasters — are architecturally unified around explaining climate and weather as key natural phenomena, making this the chapter's sole organising purpose."
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.4",
+      "weight": 2,
+      "justification": "The 'Types of Climates in India' section links regional climate zones to agricultural livelihoods (wheat, rice, spices), and the dedicated 'Climate and our Lives' section substantively develops the correlation between monsoon patterns and agricultural labour, food prices, and industrial activity across two architecturally distinct named sections."
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.3",
+      "weight": 2,
+      "justification": "The dedicated 'Climate Change' section constitutes an architecturally distinct named section that substantively analyses Indian government efforts toward mitigation — renewable energy, tree planting, emission reduction, and sustainable lifestyles — framed as conservation and climate response."
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.2",
+      "weight": 2,
+      "justification": "The dedicated 'Factors Determining the Climate — Topography' subsection and the 'Types of Climates in India' section together constitute substantive, architecturally distinct coverage of India's topographical diversity (Himalayas, Western Ghats, Thar Desert, coastal strips, Deccan Plateau) as the driver of climatic variation."
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.2",
+      "weight": 1,
+      "justification": "The 'Types of Climates in India' section identifies agricultural resource distribution by climate zone (wheat, rice, spices) and the 'Climate and our Lives' section surfaces water scarcity, but no architecturally distinct activity block is organised around resource distribution as a primary task."
+    }
+  ],
+  "incidental": [
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.1"
+    },
+    {
+      "cg": "CG-10",
+      "c_code": "C-10.1"
+    },
+    {
+      "cg": "CG-5",
+      "c_code": "C-5.2"
+    },
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.2"
+    }
+  ],
+  "chapter_weight": 10,
+  "summary_path": "mirror/chapters/middle/social_sciences/grade_vii/summaries/ch_03_summary.txt"
+}

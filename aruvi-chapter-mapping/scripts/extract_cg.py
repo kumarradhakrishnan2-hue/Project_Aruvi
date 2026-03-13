@@ -1,33 +1,25 @@
 """
 extract_cg.py
-Extracts the Curricular Goals and C-codes from the NCF CG document PDF.
+Extracts the Curricular Goals and C-codes from the pre-extracted CG mirror .txt.
 Returns a structured list of CGs with their competency sub-codes and
 cognitive demand descriptions — the sole framework input to the mapping prompt.
+
+txt_path is provided by config_resolver.resolve_paths() as paths["cg_text_path"],
+which always points to:
+  mirror/framework/{subject_group}/{stage}/cg_{stage}_{subject_group}.txt
+
+No runtime PDF extraction — the mirror .txt is the source of truth.
 """
 
 import sys
 import json
 import re
-import pdfplumber
+from pathlib import Path
 
 
-def none_ratio(table):
-    if not table or not table[0]:
-        return 1.0
-    total = sum(len(row) for row in table)
-    nones = sum(1 for row in table for cell in row if cell is None)
-    return nones / total if total > 0 else 1.0
-
-
-def clean_cell(cell):
-    if cell is None:
-        return ""
-    return re.sub(r'\s+', ' ', cell.strip())
-
-
-def extract_cg(pdf_path: str) -> dict:
+def extract_cg(txt_path: str) -> dict:
     """
-    Extract Curricular Goals and C-codes from the CG PDF.
+    Extract Curricular Goals and C-codes from the pre-extracted mirror .txt.
 
     Returns:
         {
@@ -44,32 +36,14 @@ def extract_cg(pdf_path: str) -> dict:
                     ]
                 }
             ],
-            "raw_text": str   (full extracted text, for fallback)
+            "cg_count": int,
+            "c_code_count": int,
+            "raw_text": str   (full text, for fallback)
         }
     """
-    all_text_parts = []
+    raw_text = Path(txt_path).read_text(encoding="utf-8")
+
     cg_records = []
-
-    with pdfplumber.open(pdf_path) as pdf:
-        for page in pdf.pages:
-            text = page.extract_text()
-            if text:
-                all_text_parts.append(text)
-
-            tables = page.extract_tables()
-            for table in tables:
-                if none_ratio(table) >= 0.5:
-                    continue
-                # Parse CG tables: look for rows containing C-code patterns
-                for row in table:
-                    cleaned = [clean_cell(c) for c in row]
-                    row_text = " | ".join(c for c in cleaned if c)
-                    # Detect C-code rows: e.g. "C-1.1", "C-2.3"
-                    c_code_match = re.search(r'C-(\d+)\.(\d+)', row_text)
-                    if c_code_match:
-                        all_text_parts.append(f"[TABLE ROW] {row_text}")
-
-    raw_text = "\n".join(all_text_parts)
 
     # Parse CGs from raw text using regex patterns
     # Pattern: CG-N followed by title, then C-N.N entries
@@ -130,13 +104,13 @@ def extract_cg(pdf_path: str) -> dict:
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python extract_cg.py <cg_pdf_path> [--json]")
+        print("Usage: python extract_cg.py <cg_txt_path> [--json]")
         sys.exit(1)
 
-    pdf_path = sys.argv[1]
+    txt_path = sys.argv[1]
     output_json = "--json" in sys.argv
 
-    result = extract_cg(pdf_path)
+    result = extract_cg(txt_path)
 
     if output_json:
         # Don't dump raw_text in JSON mode — too verbose

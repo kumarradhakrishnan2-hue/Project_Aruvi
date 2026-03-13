@@ -1,0 +1,55 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "vii",
+  "chapter_number": 6,
+  "chapter_title": "The Age of Reorganisation",
+  "primary": [
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.1",
+      "weight": 3,
+      "justification": "The chapter's entire architectural spine — from the Introduction through every named kingdom section — is organised around explaining and analysing major political changes following Maurya decline and their impacts on trade, culture, art, and society, such that removing this competency structurally dissolves the chapter's fundamental organising purpose."
+    },
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.2",
+      "weight": 2,
+      "justification": "Multiple named sections (The Sātavāhanas/Life under the Sātavāhanas, The Cholas, Invasions of the Indo-Greeks) deliberately surface elements of continued prevalence — the Kallaṇai still in use, Śhaka Samvat as the Indian National Calendar, and modern numerals traced to Brahmi inscriptions — making continuity a substantively recurring strand across the chapter's architectural logic."
+    },
+    {
+      "cg": "CG-10",
+      "c_code": "C-10.1",
+      "weight": 2,
+      "justification": "Significant Indian contributions to art (Bharhut Stūpa, Gāndhāra and Mathurā schools), engineering (Kallaṇai), mathematics (Brahmi numerals as origin of modern numbers), and literature (Silappadikāram, Mahābhārata, Rāmāyaṇa) are explained across multiple named sections, constituting a substantively deliberate strand in the chapter's architecture."
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.3",
+      "weight": 2,
+      "justification": "India's tradition of inclusion across communities and schools of thought is developed substantively and deliberately across multiple named sections — Life under the Sātavāhanas, Coming of the Chedis, The Pānḍyas, and The Emergence of the Kuṣhāṇas — each explicitly recording patronage of or protection for multiple religious communities."
+    },
+    {
+      "cg": "CG-9",
+      "c_code": "C-9.1",
+      "weight": 2,
+      "justification": "Key elements of trade and commerce — commodities, maritime and Silk Route networks, trading partners (Roman Empire, West Asia, Greeks) — are explained across multiple named sections (The Sātavāhanas, The Cheras, The Pānḍyas, The Emergence of the Kuṣhāṇas), constituting a substantively recurring architectural strand."
+    }
+  ],
+  "incidental": [
+    {
+      "cg": "CG-3",
+      "c_code": "C-3.2"
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.4"
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1"
+    }
+  ],
+  "chapter_weight": 11,
+  "summary_path": "mirror/chapters/middle/social_sciences/grade_vii/summaries/ch_06_summary.txt"
+}

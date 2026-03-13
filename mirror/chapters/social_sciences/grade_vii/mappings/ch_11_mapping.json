@@ -1,0 +1,42 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "vii",
+  "chapter_number": 11,
+  "chapter_title": "From Barter to Money",
+  "min_viable_periods": 5,
+  "primary": [
+    {
+      "cg": "CG-9",
+      "c_code": "C-9.1",
+      "weight": 3,
+      "justification": "The chapter's entire organizing purpose is to explain the key elements of trade and commerce — specifically the evolution of exchange systems from barter to money, the functions of money, coinage, paper currency, and digital payments — such that removing this competency structurally dissolves the chapter."
+    },
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.1",
+      "weight": 2,
+      "justification": "The chapter constructs a dedicated and architecturally distinct section 'The Journey of Money' (including Coinage and Paper Money subsections) that explains and analyses major changes in exchange systems over time and their impact on trade, functioning as a standalone learning unit."
+    }
+  ],
+  "incidental": [
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.1"
+    },
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.2"
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.1"
+    },
+    {
+      "cg": "CG-10",
+      "c_code": "C-10.1"
+    }
+  ],
+  "chapter_weight": 5,
+  "summary_path": "mirror/chapters/middle/social_sciences/grade_vii/summaries/ch_11_summary.txt"
+}

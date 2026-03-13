@@ -1,0 +1,46 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "vii",
+  "chapter_number": 9,
+  "chapter_title": "From the Rulers to the Ruled: Types of Governments",
+  "min_viable_periods": 6,
+  "primary": [
+    {
+      "cg": "CG-8",
+      "c_code": "C-8.2",
+      "weight": 2,
+      "justification": "The chapter constructs a substantive, architecturally distinct section on democratic governments' fundamental principles, parliamentary vs presidential forms, separation of powers, and the working of constitutions, directly addressing the formation and functioning of constitutional governance."
+    },
+    {
+      "cg": "CG-5",
+      "c_code": "C-5.2",
+      "weight": 2,
+      "justification": "The dedicated Why Democracy Matters section, supported by an exercise, constitutes an architecturally distinct block that explicitly identifies democracy as the political mechanism ensuring equity, inclusion, universal franchise, and equal rights, and analyses what individuals can do within democratic systems to uphold these — directly addressing political mechanisms for equity and inclusion."
+    },
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.1",
+      "weight": 2,
+      "justification": "The dedicated 'A Peek into History: Early Republics' section and the monarchy section explicitly explain and analyse major changes in governance forms across ancient India, Greece, Rome, and the Chola period, and their impact, constituting an architecturally distinct historical analysis block."
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1",
+      "weight": 1,
+      "justification": "The 'What Makes Governments Different?' section and the key-terms subsection organise and interpret comparative information about governmental structures across multiple countries, providing a named structural element requiring the student to collect and interpret information about political institutions."
+    }
+  ],
+  "incidental": [
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.2"
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.2"
+    }
+  ],
+  "chapter_weight": 8,
+  "summary_path": "mirror/chapters/middle/social_sciences/grade_vii/summaries/ch_09_summary.txt"
+}

@@ -1,0 +1,53 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "vii",
+  "chapter_number": 8,
+  "chapter_title": "How the Land Becomes Sacred",
+  "primary": [
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.3",
+      "weight": 3,
+      "justification": "The chapter’s Sacred Ecology section (with subsections on Rivers and Sangams, Mountains and Forests, Trees/Forests/Sacred Groves) and the closing section ‘Restoring and Conserving the Sacred’ together form the structural spine of the chapter — the argument that India’s sacred perception of the land produced ecological stewardship is what the chapter is fundamentally organised around; removing C-6.3 dissolves the chapter’s organising purpose."
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.1",
+      "weight": 2,
+      "justification": "The dedicated top-level named section ‘Becoming Aware of Sacred Geography’ is architecturally distinct and organised entirely around the argument that networks of sacred sites spanning India’s length and breadth produced cultural integration; Nehru’s observation in ‘Pilgrimages’ that these traditions fostered ‘a feeling of one country and one culture’ provides supporting evidence across sections."
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.3",
+      "weight": 2,
+      "justification": "The dedicated named section 'Sacred Places Across Religions' is architecturally distinct in developing India's tradition of inclusion across communities and faiths, evidenced by cross-faith visitation at Ajmer Dargah and Velankanni Church, and this theme is sustained across multiple sections including 'Pilgrimages' and 'Becoming Aware of Sacred Geography'."
+    },
+    {
+      "cg": "CG-9",
+      "c_code": "C-9.1",
+      "weight": 1,
+      "justification": "The named section 'From Pilgrimage to Trade' is a designated structural element whose primary subject is the overlap of pilgrimage and trade routes (Uttarapatha, Dakṣhinapātha) and the goods exchanged along them, requiring the student to engage with key elements of trade and commerce."
+    }
+  ],
+  "incidental": [
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.2"
+    },
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.1"
+    },
+    {
+      "cg": "CG-3",
+      "c_code": "C-3.2"
+    },
+    {
+      "cg": "CG-10",
+      "c_code": "C-10.1"
+    }
+  ],
+  "chapter_weight": 8,
+  "summary_path": "mirror/chapters/middle/social_sciences/grade_vii/summaries/ch_08_summary.txt"
+}

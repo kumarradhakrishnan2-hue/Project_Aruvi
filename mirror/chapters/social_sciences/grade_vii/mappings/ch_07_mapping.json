@@ -1,0 +1,49 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "vii",
+  "chapter_number": 7,
+  "chapter_title": "The Gupta Era: An Age of Tireless Creativity",
+  "primary": [
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.1",
+      "weight": 3,
+      "justification": "The chapter's entire architecture — from 'A New Power Emerges' through 'The Decline of the Guptas' — is organised around explaining and analysing the Gupta Empire as a major historical change and its impact on Indian civilisation across governance, culture, science, and art; removing this competency structurally dissolves the chapter's fundamental organising purpose."
+    },
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.1",
+      "weight": 2,
+      "justification": "The dedicated named section 'A Traveller's Account of Indian Society in the Gupta Age' is organised entirely around interpreting Faxian's travelogue as a primary source and critiquing its one-sided perspective, while the 'Samudragupta' subsection is structured around interpreting the prayāga praśhasti inscription, making source interpretation a substantive competency developed across multiple named architectural containers."
+    },
+    {
+      "cg": "CG-10",
+      "c_code": "C-10.1",
+      "weight": 2,
+      "justification": "The dedicated named section 'New Ideas and Wonders: The Classical Age' with its subsections on Āryabhaṭa, Varāhamihira, and Kālidāsa, and the separate named section 'The Quest for Beauty,' are architecturally distinct blocks whose primary purpose is explaining India's significant contributions to mathematics, astronomy, medicine, literature, and art during the Gupta era."
+    },
+    {
+      "cg": "CG-9",
+      "c_code": "C-9.1",
+      "weight": 1,
+      "justification": "The named subsection 'Thriving Trade' within 'Glimpses of the Gupta Empire' is the primary structural element explaining key elements of Gupta-era trade — commodities (textiles, spices, ivory, gemstones), trade networks (Mediterranean, Southeast Asia, China), and the Indian Ocean route via Socotra — satisfying Rule 6 as a named subsection whose primary subject is trade and commerce."
+    }
+  ],
+  "incidental": [
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.2"
+    },
+    {
+      "cg": "CG-3",
+      "c_code": "C-3.2"
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.3"
+    }
+  ],
+  "chapter_weight": 8,
+  "summary_path": "mirror/chapters/middle/social_sciences/grade_vii/summaries/ch_07_summary.txt"
+}

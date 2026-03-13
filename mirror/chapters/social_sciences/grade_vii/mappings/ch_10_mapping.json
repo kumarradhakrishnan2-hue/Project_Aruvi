@@ -1,0 +1,62 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "vii",
+  "chapter_number": 10,
+  "chapter_title": "The Constitution of India — An Introduction",
+  "min_viable_periods": 6,
+  "primary": [
+    {
+      "cg": "CG-8",
+      "c_code": "C-8.2",
+      "weight": 3,
+      "justification": "The chapter dedicates architecturally distinct named sections ('Writing the Constitution of India', 'How Was Our Constitution Developed?', 'What Shaped and Influenced the Indian Constitution?', 'Key Features') to explaining the formation process and features of the Indian Constitution, directly matching C-8.2's full demand; removing this competency would structurally dissolve the chapter's second organising pillar."
+    },
+    {
+      "cg": "CG-8",
+      "c_code": "C-8.1",
+      "weight": 2,
+      "justification": "The entire chapter is architecturally organised around explaining why a constitution is needed, making C-8.1's demand — understanding the need for a constitution — the chapter's fundamental organising purpose whose removal would dissolve the chapter entirely."
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.1",
+      "weight": 2,
+      "justification": "The chapter constructs a dedicated architecturally distinct section ('India's Civilisational Heritage and History') and weaves recognition of unity in diversity through the Preamble and Fundamental Rights sections, substantively developing the competency of explaining India's unity in diversity by recognising commonalities across its diverse communities."
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.3",
+      "weight": 2,
+      "justification": "The chapter's dedicated sections on civilisational heritage, the Preamble's values of fraternity and pluralism, and the discussion of Fundamental Rights collectively constitute substantive, deliberate development of appreciation for India's tradition of inclusion across communities, satisfying Weight 2 through continuity across multiple named sections."
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1",
+      "weight": 2,
+      "justification": "The chapter's architecturally distinct 'Key Features' section and its subsections on Fundamental Rights, DPSP, and Fundamental Duties require students to collect and interpret information about various constitutional institutions and their functioning, meeting Weight 2 as a dedicated learning unit."
+    },
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.1",
+      "weight": 1,
+      "justification": "The subsection 'Influence of the Indian Freedom Movement' constitutes a named structural element requiring students to explain how major historical changes (the freedom struggle) impacted the formation of the Constitution, satisfying Weight 1 as a named passage whose primary subject is this historical causation."
+    }
+  ],
+  "incidental": [
+    {
+      "cg": "CG-10",
+      "c_code": "C-10.1"
+    },
+    {
+      "cg": "CG-5",
+      "c_code": "C-5.2"
+    },
+    {
+      "cg": "CG-5",
+      "c_code": "C-5.1"
+    }
+  ],
+  "chapter_weight": 12,
+  "summary_path": "mirror/chapters/middle/social_sciences/grade_vii/summaries/ch_10_summary.txt"
+}

@@ -1,0 +1,61 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "vii",
+  "chapter_number": 4,
+  "chapter_title": "New Beginnings: Cities and States",
+  "primary": [
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.1",
+      "weight": 3,
+      "justification": "The entire chapter is architecturally organised around explaining and analysing major historical changes — the shift from First to Second Urbanisation, rise of janapadas/mahājanapadas, technological innovations, and subcontinental spread — whose removal would dissolve the chapter's fundamental purpose."
+    },
+    {
+      "cg": "CG-3",
+      "c_code": "C-3.1",
+      "weight": 2,
+      "justification": "The dedicated 'Varṇa–Jāti System' section and the 'More Innovations' section together form architecturally distinct blocks that analyse the effects of technological, economic, and social changes on early Indian society."
+    },
+    {
+      "cg": "CG-5",
+      "c_code": "C-5.1",
+      "weight": 2,
+      "justification": "The dedicated 'Early Democratic Traditions' section constitutes an architecturally distinct block that identifies and explains different forms of governance — monarchies versus early republics (gaṇas/sanghas) — and the role of assemblies."
+    },
+    {
+      "cg": "CG-9",
+      "c_code": "C-9.1",
+      "weight": 1,
+      "justification": "The 'Coins and Trade' subsection provides a focused structural element explaining the key elements of trade and commerce — the origin of punch-marked coins, their materials, and the spread of trade networks across India and beyond."
+    }
+  ],
+  "incidental": [
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.2"
+    },
+    {
+      "cg": "CG-3",
+      "c_code": "C-3.2"
+    },
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.1"
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1"
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.1"
+    },
+    {
+      "cg": "CG-10",
+      "c_code": "C-10.1"
+    }
+  ],
+  "chapter_weight": 8,
+  "summary_path": "mirror/chapters/middle/social_sciences/grade_vii/summaries/ch_04_summary.txt"
+}

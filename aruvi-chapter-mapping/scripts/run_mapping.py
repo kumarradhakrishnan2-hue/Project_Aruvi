@@ -7,30 +7,30 @@ You never need to specify PDF paths, output paths, or token log paths manually.
 
 Usage:
   # Map specific chapters by number (pilot run)
-  python run_mapping.py \
+  python3 run_mapping.py \
     --config  "/Users/.../Project Aruvi/aruvi_config.json" \
     --subject social_sciences \
     --grade   vii \
     --chapters 1 4 8
 
   # Map ALL chapters in the chapter directory
-  python run_mapping.py \
+  python3 run_mapping.py \
     --config  "/Users/.../Project Aruvi/aruvi_config.json" \
     --subject social_sciences \
     --grade   vii \
     --all
 
   # Dry run: resolve and print all paths without calling API
-  python run_mapping.py \
+  python3 run_mapping.py \
     --config  "/Users/.../Project Aruvi/aruvi_config.json" \
     --subject mathematics \
     --grade   ix \
     --dry-run
 
   # Works identically for any subject/grade combination:
-  python run_mapping.py --config aruvi_config.json --subject mathematics --grade ix --all
-  python run_mapping.py --config aruvi_config.json --subject science --grade vi --chapters 1 2 3
-  python run_mapping.py --config aruvi_config.json --subject languages --grade viii --all
+  python3 run_mapping.py --config aruvi_config.json --subject mathematics --grade ix --all
+  python3 run_mapping.py --config aruvi_config.json --subject science --grade vi --chapters 1 2 3
+  python3 run_mapping.py --config aruvi_config.json --subject languages --grade viii --all
 """
 
 import argparse
@@ -75,7 +75,7 @@ def save_mappings(output_path: str, mappings: dict):
     p.write_text(json.dumps(sorted_records, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-def run_single_chapter(chapter_pdf: str, chapter_number: int, paths: dict, skill_dir: str):
+def run_single_chapter(chapter_pdf: str, chapter_number: int, paths: dict):
     """Full pipeline for one chapter. Returns record or None on failure."""
     print(f"\n{'='*60}")
     print(f"Chapter {chapter_number}: {Path(chapter_pdf).name}")
@@ -88,7 +88,7 @@ def run_single_chapter(chapter_pdf: str, chapter_number: int, paths: dict, skill
           f"{chapter_data['page_count']} pages")
 
     print("  [2/4] Loading Curricular Goals...")
-    cg_data = extract_cg(paths["cg_pdf"])
+    cg_data = extract_cg(paths["cg_text_path"])
     if cg_data["cg_count"] == 0:
         print("        ✗ ERROR: No CGs extracted — check CG PDF")
         return None
@@ -96,17 +96,39 @@ def run_single_chapter(chapter_pdf: str, chapter_number: int, paths: dict, skill
 
     print("  [3/4 + 4/4] Two-call Claude pipeline...")
     record = call_mapping_api(
-        chapter_data   = chapter_data,
-        cg_data        = cg_data,
-        subject_group  = paths["subject_group"],
-        stage          = paths["stage"],
-        grade          = paths["grade"],
-        chapter_number = chapter_number,
-        skill_dir      = skill_dir,
-        token_log_path = paths["token_log"]
+        chapter_data      = chapter_data,
+        cg_data           = cg_data,
+        subject_group     = paths["subject_group"],
+        stage             = paths["stage"],
+        grade             = paths["grade"],
+        chapter_number    = chapter_number,
+        constitution_path = paths["constitution_path"],
+        token_log_path    = paths["token_log"]
     )
 
-    # Save after each chapter (incremental — safe to interrupt)
+    # ── Write mirror summary .txt ────────────────────────────────────────────
+    nn = f"{chapter_number:02d}"
+    project_root = Path(paths["project_root"])
+
+    summary_dir = Path(paths["mirror_summaries"])
+    summary_dir.mkdir(parents=True, exist_ok=True)
+    summary_file = summary_dir / f"ch_{nn}_summary.txt"
+    summary_file.write_text(record["chapter_summary"], encoding="utf-8")
+
+    # relative path from project root — stored as summary_path in mapping JSON
+    summary_path_rel = str(summary_file.relative_to(project_root))
+
+    # ── Write mirror mapping .json (no chapter_summary, adds summary_path) ───
+    mappings_out_dir = Path(paths["mirror_mappings_out"])
+    mappings_out_dir.mkdir(parents=True, exist_ok=True)
+    mapping_file = mappings_out_dir / f"ch_{nn}_mapping.json"
+    mapping_record = {k: v for k, v in record.items() if k != "chapter_summary"}
+    mapping_record["summary_path"] = summary_path_rel
+    mapping_file.write_text(
+        json.dumps(mapping_record, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+
+    # ── Update combined master JSON (archive — includes summary) ─────────────
     mappings = load_existing_mappings(paths["output_json"])
     mappings[str(chapter_number)] = record
     save_mappings(paths["output_json"], mappings)
@@ -114,49 +136,68 @@ def run_single_chapter(chapter_pdf: str, chapter_number: int, paths: dict, skill
     print(f"\n  ✓ Saved  |  weight={record['chapter_weight']}  "
           f"primary={len(record['primary'])}  "
           f"summary={len(record['chapter_summary'].split())}w")
+    print(f"    Summary : {summary_path_rel}")
+    print(f"    Mapping : {str(mapping_file.relative_to(project_root))}")
     for comp in record["primary"]:
         print(f"    [{comp['weight']}] {comp['c_code']} — {comp['justification'][:70]}...")
 
     return record
 
 
+def _find_config() -> str | None:
+    """Auto-detect aruvi_config.json from cwd, script dir, or script's parent."""
+    for candidate in [Path.cwd(), Path(__file__).parent, Path(__file__).parent.parent]:
+        p = candidate / "aruvi_config.json"
+        if p.exists():
+            return str(p)
+    return None
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Aruvi Chapter Mapping — auto-resolves all paths from config"
     )
-    parser.add_argument("--config",  required=True,
-                        help="Path to aruvi_config.json at project root")
+    parser.add_argument("--config",  default=None,
+                        help="Path to aruvi_config.json (auto-detected if omitted)")
     parser.add_argument("--subject", required=True,
                         choices=["social_sciences", "languages", "mathematics", "science"])
     parser.add_argument("--grade",   required=True,
                         help="Grade in roman numerals e.g. vii, ix")
-    parser.add_argument("--chapters", nargs="+", type=int,
+    parser.add_argument("--chapters", "--chapter", nargs="+", type=int,
                         help="Specific chapter numbers to map (e.g. --chapters 1 4 8)")
     parser.add_argument("--all",     action="store_true",
                         help="Map all chapters found in the chapter directory")
     parser.add_argument("--dry-run", action="store_true",
                         help="Resolve paths and list chapters without calling API")
     parser.add_argument("--skill-dir", default=None,
-                        help="Override skill directory path (auto-detected by default)")
+                        help="Deprecated — no longer used. Kept for backward compatibility.")
     args = parser.parse_args()
 
     if not args.chapters and not args.all and not args.dry_run:
         parser.error("Specify --chapters N [N ...], --all, or --dry-run")
 
+    # ── Resolve config path ──────────────────────────────────────────────────
+    config_path = args.config or _find_config()
+    if not config_path:
+        parser.error(
+            "Could not auto-detect aruvi_config.json — provide --config PATH"
+        )
+
     # ── Resolve all paths ────────────────────────────────────────────────────
-    skill_dir = args.skill_dir or str(Path(__file__).parent.parent)
-    paths = resolve_paths(args.config, args.subject, args.grade, skill_dir)
+    paths = resolve_paths(config_path, args.subject, args.grade)
     warnings = validate_paths(paths)
 
     print(f"\nAruvi Chapter Mapping")
     print(f"Subject : {paths['subject_group']}  |  Grade: {paths['grade'].upper()}  "
           f"|  Stage: {paths['stage']}")
-    print(f"Config  : {args.config}")
-    print(f"CG PDF  : {paths['cg_pdf']}  {'✓' if paths['cg_pdf_exists'] else '✗'}")
+    print(f"Config  : {config_path}")
+    print(f"CG text : {paths['cg_text_path']}  {'✓' if paths['cg_text_path_exists'] else '✗'}")
+    print(f"Pedagogy: {paths['pedagogy_text_path']}  {'✓' if paths['pedagogy_text_path_exists'] else '✗'}")
     print(f"Chapters: {paths['chapter_dir']}  {'✓' if paths['chapter_dir_exists'] else '✗'}")
     print(f"Output  : {paths['output_json']}")
     print(f"Tokens  : {paths['token_log']}")
-    print(f"Constitution: {paths['constitution_key']}")
+    print(f"Constitution: {paths['constitution_path']}  "
+          f"{'✓' if paths['constitution_path_exists'] else '✗'}")
 
     if warnings:
         print(f"\n⚠ Path warnings:")
@@ -218,7 +259,7 @@ def main():
 
     for chapter_pdf, chapter_num in to_process:
         try:
-            record = run_single_chapter(chapter_pdf, chapter_num, paths, skill_dir)
+            record = run_single_chapter(chapter_pdf, chapter_num, paths)
             if record:
                 succeeded.append(chapter_num)
             else:

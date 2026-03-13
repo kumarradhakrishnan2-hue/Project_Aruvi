@@ -41,22 +41,23 @@ def _make_client():
     return anthropic.Anthropic(http_client=_http_client)
 
 
-def load_constitution(subject_group: str, skill_dir: str) -> str:
-    """Load the correct constitution for the subject group."""
-    constitution_map = {
-        "social_sciences": "constitution_social_sciences.md",
-        "languages":       "constitution_languages.md",
-        "mathematics":     "constitution_mathematics.md",
-        "science":         "constitution_science.md",
-    }
-    filename = constitution_map.get(subject_group)
-    if not filename:
-        raise ValueError(f"Unknown subject group: {subject_group}. "
-                        f"Must be one of: {list(constitution_map.keys())}")
-    constitution_path = Path(skill_dir) / "references" / filename
-    if not constitution_path.exists():
-        raise FileNotFoundError(f"Constitution file not found: {constitution_path}")
-    return constitution_path.read_text(encoding="utf-8")
+def load_constitution(constitution_path: str) -> str:
+    """
+    Load constitution text from the resolved mirror path.
+
+    constitution_path is provided by config_resolver.resolve_paths() as
+    paths["constitution_path"] — always points to:
+      mirror/constitutions/competency_mapping/{subject_group}/
+      mapping_constitution_{subject_group}.txt
+    """
+    path = Path(constitution_path)
+    if not path.exists():
+        raise FileNotFoundError(
+            f"Constitution file not found: {path}\n"
+            f"Expected a .txt file extracted from the DOCX source in "
+            f"knowledge_commons/constitutions/competency_mapping/."
+        )
+    return path.read_text(encoding="utf-8")
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -70,7 +71,7 @@ The summary must faithfully represent what the chapter teaches — its concepts,
 
 CRITICAL: This is a content summary only. Do not describe exercises, questions, activities, or student tasks. Summarise only what the chapter teaches, not what students are asked to do.
 
-You MUST respond with valid JSON only — no preamble, no explanation, no markdown fences."""
+Respond with plain text only — the summary itself, nothing else. No preamble, no JSON, no markdown fences around the response."""
 
 
 def build_summary_user_prompt(chapter_data: dict, chapter_number: int,
@@ -89,39 +90,61 @@ Chapter Number: {chapter_number}
 
 ## REQUIRED OUTPUT
 
-Respond with this exact JSON structure and nothing else:
-
-{{
-  "chapter_title": "<exact chapter title as it appears in the textbook>",
-  "chapter_summary": "<structured content summary, 900-1200 words. Follow the chapter's own heading and subheading structure exactly — use markdown heading markers (## for major headings, ### for subheadings). Under each heading write 2-3 sentences summarising the key concepts, terms, significant people, events, phenomena, or principles in that section. Content only — no exercises, no student activities, no task descriptions.>"
-}}
-
-CRITICAL CONSTRAINTS:
-- chapter_summary MUST be 900-1200 words
-- Use ## and ### markers to mirror the textbook's heading structure
+Write a structured content summary of this chapter. Requirements:
+- Minimum 900 words, no upper limit — cover every section heading the chapter contains
+- Use ## for major headings and ### for subheadings, mirroring the textbook's own structure exactly
+- Under each heading write 2-3 sentences summarising the key concepts, terms, significant people, events, phenomena, or principles in that section
 - Content only — no exercises, no student activities, no task descriptions
-- Respond with JSON only — no text before or after"""
+- Begin the summary with: TITLE: <exact chapter title as it appears in the textbook>
+- Then write the summary directly — plain text with markdown heading markers only
+
+Do not wrap in JSON. Do not add any preamble or closing remarks. Start with TITLE: and then the summary."""
+
+
+def _parse_summary_text(raw_text: str) -> dict:
+    """
+    Parse plain-text Call 1 response into {chapter_title, chapter_summary}.
+    Expects response to begin with: TITLE: <title>
+    Everything after the title line is the summary.
+    """
+    lines = raw_text.strip().splitlines()
+    chapter_title = ""
+    summary_start = 0
+    for i, line in enumerate(lines):
+        if line.strip().upper().startswith("TITLE:"):
+            chapter_title = line.split(":", 1)[1].strip()
+            summary_start = i + 1
+            break
+    chapter_summary = "\n".join(lines[summary_start:]).strip()
+    return {"chapter_title": chapter_title, "chapter_summary": chapter_summary}
 
 
 def _validate_summary(result: dict, chapter_data: dict) -> list:
     """Validate Call 1 output. Returns list of error strings."""
     errors = []
-    for field in ["chapter_title", "chapter_summary"]:
-        if field not in result:
-            errors.append(f"Missing field: {field}")
+    if not result.get("chapter_title"):
+        errors.append("Missing or empty chapter_title (expected TITLE: line at start of response)")
+    if not result.get("chapter_summary"):
+        errors.append("Missing or empty chapter_summary")
 
-    if "chapter_summary" in result:
+    if result.get("chapter_summary"):
         wc = len(result["chapter_summary"].split())
         if wc < 800:
             errors.append(f"chapter_summary too short: {wc} words (minimum 800)")
-        elif wc > 1400:
-            errors.append(f"chapter_summary too long: {wc} words (maximum 1400)")
 
         if "section_headings" in chapter_data:
             summary_lower = result["chapter_summary"].lower()
             headings = chapter_data["section_headings"][:8]
             uncovered = []
+            ARTEFACT_PATTERNS = {
+                "retpahc", "do you know", "let's explore", "think about it",
+                "let us", "activity", "exercise", "summary", "keywords",
+                "explore more", "think and discuss"
+            }
             for h in headings[1:]:
+                h_lower = h.lower()
+                if any(pat in h_lower for pat in ARTEFACT_PATTERNS):
+                    continue
                 key_words = [w.lower() for w in h.split() if len(w) > 4]
                 if key_words and not any(w in summary_lower for w in key_words):
                     uncovered.append(h)
@@ -137,6 +160,8 @@ def call_summary_api(chapter_data: dict, chapter_number: int,
     """
     Call 1: Summarise the chapter from full text.
     Returns dict with chapter_title and chapter_summary.
+    Model returns plain text (not JSON) to avoid JSON encoding failures
+    on long summaries with special characters and markdown.
     """
     client = _make_client()
     system_prompt = build_summary_system_prompt()
@@ -144,41 +169,65 @@ def call_summary_api(chapter_data: dict, chapter_number: int,
         chapter_data, chapter_number, subject_group, stage, grade
     )
 
+    last_result = {}
+
     for attempt in range(1, max_retries + 1):
         print(f"    Summary call attempt {attempt}/{max_retries}...")
         try:
+            # On retry: send a fresh minimal message with just the prior
+            # output and the issues — do NOT resend the full chapter text.
+            if attempt > 1 and last_result:
+                prior_summary = last_result.get("chapter_summary", "")
+                prior_title   = last_result.get("chapter_title", "")
+                retry_prompt  = (
+                    f"The previous summary attempt had these issues:\n{'; '.join(retry_errors)}\n\n"
+                    f"The title was: {prior_title}\n\n"
+                    f"The summary so far:\n{prior_summary}\n\n"
+                    f"Please return a corrected version. Begin with TITLE: <title> then the summary. "
+                    f"Plain text only, no JSON, no markdown fences."
+                )
+                messages = [{"role": "user", "content": retry_prompt}]
+            else:
+                messages = [{"role": "user", "content": user_prompt}]
+
             response = client.messages.create(
                 model="claude-sonnet-4-6",
                 max_tokens=4096,
                 system=system_prompt,
-                messages=[{"role": "user", "content": user_prompt}]
+                messages=messages
             )
 
             input_tokens  = response.usage.input_tokens
             output_tokens = response.usage.output_tokens
             raw_text = response.content[0].text.strip()
-            raw_text = re.sub(r'^```(?:json)?\s*', '', raw_text)
-            raw_text = re.sub(r'\s*```$', '', raw_text)
 
-            result = json.loads(raw_text)
+            # Strip any accidental markdown fences
+            raw_text = re.sub(r'^```(?:json|markdown|text)?\s*', '', raw_text)
+            raw_text = re.sub(r'\s*```$', '', raw_text).strip()
 
+            if not raw_text:
+                raise RuntimeError("Empty response from model")
+
+            # Parse plain text — no JSON involved
+            result = _parse_summary_text(raw_text)
+
+            # Recover title from last attempt if retry dropped it
+            if not result.get("chapter_title") and last_result.get("chapter_title"):
+                result["chapter_title"] = last_result["chapter_title"]
+
+            last_result = result
             errors = _validate_summary(result, chapter_data)
-            is_retry = bool(errors) and attempt < max_retries
-            status = "retry" if is_retry else ("warning" if errors else "success")
+
+            if errors and attempt < max_retries:
+                print(f"    Validation issues (attempt {attempt}): {errors}")
+                retry_errors = errors
+                continue
+
             cost = _log_tokens(
                 token_log_path, "summary_call", subject_group, grade,
                 chapter_number, result.get("chapter_title", "unknown"),
-                input_tokens, output_tokens,
-                attempt=attempt, status=status
+                input_tokens, output_tokens
             )
-            print(f"    Tokens: {input_tokens} in + {output_tokens} out = "
-                  f"{input_tokens+output_tokens} total | Cost: Rs.{cost:.4f} [{status}]")
-
-            if is_retry:
-                print(f"    Validation issues (attempt {attempt}): {errors}")
-                repair_note = "REPAIR REQUIRED: " + "; ".join(errors)
-                user_prompt = user_prompt + f"\n\n{repair_note}\nPlease fix and return corrected JSON only."
-                continue
 
             if errors:
                 print(f"    Warning (logged): {errors}")
@@ -186,12 +235,16 @@ def call_summary_api(chapter_data: dict, chapter_number: int,
                 wc = len(result.get("chapter_summary", "").split())
                 print(f"    Summary valid: {wc} words")
 
+            print(f"    Tokens: {input_tokens} in + {output_tokens} out = "
+                  f"{input_tokens+output_tokens} total | Cost: Rs.{cost:.4f}")
+
             return result
 
-        except json.JSONDecodeError as e:
-            print(f"    JSON parse error (attempt {attempt}): {e}")
+        except RuntimeError as e:
+            print(f"    Error (attempt {attempt}): {e}")
             if attempt == max_retries:
-                raise RuntimeError(f"Summary call: failed to parse JSON after {max_retries} attempts") from e
+                raise RuntimeError(f"Summary call: failed after {max_retries} attempts: {e}") from e
+            time.sleep(2)
         except Exception as e:
             print(f"    API error (attempt {attempt}): {e}")
             if attempt == max_retries:
@@ -293,7 +346,7 @@ def _validate_mapping(mapping: dict) -> list:
 
 def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
                      stage: str, grade: str, chapter_number: int,
-                     skill_dir: str, token_log_path: str,
+                     constitution_path: str, token_log_path: str,
                      max_retries: int = 2) -> dict:
     """
     Full two-call pipeline. Orchestrates Call 1 (summarise) then Call 2 (map).
@@ -315,7 +368,7 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
 
     # ── Call 2: Map ──────────────────────────────────────────────────────────
     print("  [Call 2/2] Mapping competencies from summary...")
-    constitution  = load_constitution(subject_group, skill_dir)
+    constitution  = load_constitution(constitution_path)
     system_prompt = build_mapping_system_prompt(constitution)
     user_prompt   = build_mapping_user_prompt(
         summary        = chapter_summary,
@@ -327,12 +380,7 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
         chapter_number = chapter_number
     )
 
-        client = _make_client()
-
-    _estimated_prompt_tokens = (len(system_prompt) + len(user_prompt)) // 4
-    print(f"    Estimated prompt size: ~{_estimated_prompt_tokens} tokens")
-    if _estimated_prompt_tokens > 170_000:
-        print(f"    WARNING: prompt may be near context limit")
+    client = _make_client()
 
     for attempt in range(1, max_retries + 1):
         print(f"    Mapping call attempt {attempt}/{max_retries}...")
@@ -346,63 +394,23 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
 
             input_tokens  = response.usage.input_tokens
             output_tokens = response.usage.output_tokens
-
-            if output_tokens == 0 or not response.content:
-                print(f"    Empty response (attempt {attempt}): 0 output tokens.")
-                if attempt < max_retries:
-                    words = chapter_summary.split()
-                    trimmed = " ".join(words[:int(len(words) * 0.8)])
-                    print(f"    Trimming summary to {len(trimmed.split())} words and retrying...")
-                    user_prompt = build_mapping_user_prompt(
-                        summary        = trimmed,
-                        chapter_title  = chapter_title,
-                        cg_data        = cg_data,
-                        subject_group  = subject_group,
-                        stage          = stage,
-                        grade          = grade,
-                        chapter_number = chapter_number
-                    )
-                    continue
-                else:
-                    raise RuntimeError(
-                        f"Mapping call: empty response after {max_retries} attempts. "
-                        f"Input tokens: {input_tokens}."
-                    )
-
             raw_text = response.content[0].text.strip()
             raw_text = re.sub(r'^```(?:json)?\s*', '', raw_text)
             raw_text = re.sub(r'\s*```$', '', raw_text)
 
-            if not raw_text:
-                print(f"    Blank response text (attempt {attempt})")
-                if attempt < max_retries:
-                    continue
-                else:
-                    raise RuntimeError(f"Mapping call: blank response after {max_retries} attempts")
-
             mapping = json.loads(raw_text)
 
             errors = _validate_mapping(mapping)
-            is_retry = bool(errors) and attempt < max_retries
-            status = "retry" if is_retry else ("warning" if errors else "success")
-            cost = _log_tokens(
-                token_log_path, "mapping_call", subject_group, grade,
-                chapter_number, chapter_title, input_tokens, output_tokens,
-                attempt=attempt, status=status
-            )
-            print(f"    Tokens: {input_tokens} in + {output_tokens} out = "
-                  f"{input_tokens+output_tokens} total | Cost: Rs.{cost:.4f} [{status}]")
-
-            if is_retry:
+            if errors and attempt < max_retries:
                 print(f"    Validation issues (attempt {attempt}): {errors}")
                 repair_note = "REPAIR REQUIRED: " + "; ".join(errors)
                 user_prompt = user_prompt + f"\n\n{repair_note}\nPlease fix and return corrected JSON only."
                 continue
 
-            if errors:
-                print(f"    Warning (logged): {errors}")
-            else:
-                print(f"    Mapping valid")
+            cost = _log_tokens(
+                token_log_path, "mapping_call", subject_group, grade,
+                chapter_number, chapter_title, input_tokens, output_tokens
+            )
 
             if errors:
                 print(f"    Warning (logged): {errors}")
@@ -412,6 +420,7 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
             print(f"    Tokens: {input_tokens} in + {output_tokens} out = "
                   f"{input_tokens+output_tokens} total | Cost: Rs.{cost:.4f}")
 
+            # ── Merge into final record ──────────────────────────────────────
             record = {
                 "stage":              stage,
                 "subject":            subject_group,
@@ -428,10 +437,8 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
 
         except json.JSONDecodeError as e:
             print(f"    JSON parse error (attempt {attempt}): {e}")
-            if attempt < max_retries:
-                user_prompt = user_prompt + "\n\nREPAIR REQUIRED: Return JSON only, no preamble."
-                continue
-            raise RuntimeError(f"Mapping call: failed to parse JSON after {max_retries} attempts") from e
+            if attempt == max_retries:
+                raise RuntimeError(f"Mapping call: failed to parse JSON after {max_retries} attempts") from e
         except Exception as e:
             print(f"    API error (attempt {attempt}): {e}")
             if attempt == max_retries:
@@ -447,8 +454,7 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
 
 def _log_tokens(log_path: str, call_type: str, subject: str, grade: str,
                 chapter_number: int, chapter_title: str,
-                input_tokens: int, output_tokens: int,
-                attempt: int = 1, status: str = "success") -> float:
+                input_tokens: int, output_tokens: int) -> float:
     """Append one row to the token log CSV. Returns cost in INR."""
     cost_inr = (
         (input_tokens  / 1000) * INPUT_COST_PER_1K_INR +
@@ -461,8 +467,6 @@ def _log_tokens(log_path: str, call_type: str, subject: str, grade: str,
         "grade":          grade,
         "chapter_number": chapter_number,
         "chapter_title":  chapter_title,
-        "attempt":        attempt,
-        "status":         status,
         "input_tokens":   input_tokens,
         "output_tokens":  output_tokens,
         "total_tokens":   input_tokens + output_tokens,

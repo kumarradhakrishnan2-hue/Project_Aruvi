@@ -35,17 +35,21 @@ Project Aruvi/
 ├── aruvi-scripts/                ← canonical patched scripts
 │   ├── run_mapping.py
 │   ├── call_mapping_api.py       ← patched: verify=False + socks proxy fix
-│   ├── config_resolver.py        ← patched: DYNAMIC root support
+│   ├── config_resolver.py        ← patched: DYNAMIC root + mirror constitution
 │   ├── extract_chapter.py
 │   ├── extract_cg.py
 │   └── run_wrapper.py
-├── data/
+├── knowledge_commons/
+│   ├── constitutions/competency_mapping/{subject}/   ← DOCX source files
 │   ├── framework/{subject}/{stage}/curricular_goals.pdf
 │   ├── framework/{subject}/{stage}/pedagogy.pdf
-│   ├── mappings/chapter_mappings_{subject}_{grade}.json
-│   ├── mappings/token_log.csv
+│   ├── evaluation_mappings/chapter_mappings_{subject}_{grade}.json
+│   ├── evaluation_mappings/token_log.csv
 │   └── textbooks/{subject}/{grade}/Chapter NN - Title.pdf
-└── knowledge commons/            ← constitutional documents
+└── mirror/
+    ├── constitutions/competency_mapping/{subject}/   ← ACTIVE: .txt constitutions
+    │   └── mapping_constitution_{subject}.txt
+    └── framework/{subject}/{stage}/                  ← extracted CG text
 ```
 
 ## How to Run in Cowork
@@ -71,8 +75,9 @@ bash run_mapping.sh --subject science --grade viii --all
 bash run_mapping.sh --subject social_sciences --grade vii --dry-run
 ```
 
-The script sources `.env` automatically, unsets the socks proxy, locates
-the skill dir for constitution files, and delegates to `aruvi-scripts/run_mapping.py`.
+The script sources `.env` automatically, unsets the socks proxy, and delegates
+to `aruvi-scripts/run_mapping.py`. Constitution files are read from `mirror/`
+at runtime — no skill dir or references/ folder is involved.
 
 ## Cowork Session Setup
 
@@ -82,15 +87,13 @@ The `.env` file with the API key also lives there and persists.
 
 No setup is needed at the start of a new session — just run the command above.
 
-If the skill dir lookup fails (no active Cowork session), pass it explicitly:
-```bash
-bash run_mapping.sh --subject social_sciences --grade vii --chapters 1 \
-  --skill-dir /path/to/.skills/skills/aruvi-chapter-mapping
-```
+The `--skill-dir` flag is deprecated and no longer needed. Constitutions are
+read from `mirror/constitutions/competency_mapping/` via config — no skill dir required.
 
 ## What the Skill Produces
 
-One JSON record per chapter appended to `data/mappings/chapter_mappings_{subject}_{grade}.json`:
+One JSON record per chapter appended to
+`knowledge_commons/evaluation_mappings/chapter_mappings_{subject}_{grade}.json`:
 
 ```json
 {
@@ -109,7 +112,7 @@ One JSON record per chapter appended to `data/mappings/chapter_mappings_{subject
 }
 ```
 
-One token log row per call appended to `data/mappings/token_log.csv`.
+One token log row per call appended to `knowledge_commons/evaluation_mappings/token_log.csv`.
 
 ## How Path Resolution Works
 
@@ -119,21 +122,23 @@ When `project_root` is `"DYNAMIC"`, it derives root from the config file's locat
 | What | Resolved to |
 |------|-------------|
 | Stage | Looked up from grade (e.g. vii → middle) |
-| CG PDF | `data/framework/{subject}/{stage}/curricular_goals.pdf` |
-| Chapter dir | `data/textbooks/{subject}/{grade}/` |
-| Output JSON | `data/mappings/chapter_mappings_{subject}_{grade}.json` |
-| Token log | `data/mappings/token_log.csv` |
-| Constitution | Bundled in skill: `references/constitution_{subject}.md` |
+| CG PDF | `knowledge_commons/framework/{subject}/{stage}/curricular_goals.pdf` |
+| Chapter dir | `knowledge_commons/textbooks/{subject}/{grade}/` |
+| Output JSON | `knowledge_commons/evaluation_mappings/chapter_mappings_{subject}_{grade}.json` |
+| Token log | `knowledge_commons/evaluation_mappings/token_log.csv` |
+| Constitution | `mirror/constitutions/competency_mapping/{subject}/mapping_constitution_{subject}.txt` |
 
 ## First-Time Setup for a New Subject/Grade
 
-1. Place the Curricular Goals PDF (Middle Stage only — remove Secondary Stage pages):
-   `data/framework/{subject_group}/{stage}/curricular_goals.pdf`
-2. Place chapter PDFs:
-   `data/textbooks/{subject_group}/{grade}/Chapter 01 - Title.pdf`
-3. Run `--dry-run` to confirm all paths resolve before spending tokens.
-4. Run pilot chapters 1, 4, 8 — review each against review_checklist.md before proceeding.
-5. Run `--all` only after pilot review passes.
+1. Extract the competency mapping constitution DOCX with pandoc and save to:
+   `mirror/constitutions/competency_mapping/{subject_group}/mapping_constitution_{subject_group}.txt`
+2. Place the Curricular Goals PDF (correct stage only — no mixed stages):
+   `knowledge_commons/framework/{subject_group}/{stage}/curricular_goals.pdf`
+3. Place chapter PDFs:
+   `knowledge_commons/textbooks/{subject_group}/{grade}/Chapter 01 - Title.pdf`
+4. Run `--dry-run` to confirm all paths resolve before spending tokens.
+5. Run pilot chapters 1, 4, 8 — review each against review_checklist.md before proceeding.
+6. Run `--all` only after pilot review passes.
 
 ## IMPORTANT: CG PDF Must Contain Only the Correct Stage
 
@@ -162,16 +167,36 @@ See `references/review_checklist.md` for the go/no-go criteria after each pilot 
 Note: chapter mapping tokens are higher than lesson plan tokens because the full
 chapter text is passed to the mapping prompt. This is correct and expected.
 
-## Constitution Snapshot Policy
+## Constitution Source Policy
 
-Constitutions are bundled as snapshots in `references/`. Extracted from
-`Aruvi_Competency_Mapping_Constitutions_V1.1` in knowledge commons.
-To update: edit the relevant `references/constitution_{subject}.md` and repackage.
+Constitutions are read at runtime from the mirror layer — never bundled inside
+this skill. `config_resolver.py` resolves the path automatically from config as:
 
-- `references/constitution_social_sciences.md` — Rules 1-10 (Section I)
-- `references/constitution_languages.md`       — Rules 1-11 (Section II)
-- `references/constitution_mathematics.md`     — Rules 1-6  (Section III)
-- `references/constitution_science.md`         — Rules 1-7  (Section IV)
+```
+mirror/constitutions/competency_mapping/{subject_group}/
+    mapping_constitution_{subject_group}.txt
+```
+
+The source of truth is the DOCX file in:
+```
+knowledge_commons/constitutions/competency_mapping/{subject_group}/
+    Aruvi_Competency_Mapping_Constitutions_{subject_group}_V*.docx
+```
+
+To update a constitution: edit the DOCX source, then re-extract with:
+```bash
+pandoc "knowledge_commons/constitutions/competency_mapping/{subject}/..." \
+  --to plain --wrap=none \
+  -o "mirror/constitutions/competency_mapping/{subject}/mapping_constitution_{subject}.txt"
+```
+The updated .txt will be picked up automatically on the next pipeline run.
+No script changes, no repackaging required.
+
+Active mirror constitution paths:
+- `mirror/constitutions/competency_mapping/social_sciences/mapping_constitution_social_sciences.txt`
+- `mirror/constitutions/competency_mapping/languages/mapping_constitution_languages.txt`
+- `mirror/constitutions/competency_mapping/mathematics/mapping_constitution_mathematics.txt`
+- `mirror/constitutions/competency_mapping/science/mapping_constitution_science.txt`
 
 ## Hard Constraints (Constitutional)
 
