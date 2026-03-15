@@ -183,127 +183,29 @@ st.markdown("""
     letter-spacing: 0.01em;
     cursor: pointer;
     transition: background 0.15s, color 0.15s;
-    color: #5a5754;
+    color: #6b6866;          /* warm grey matching logo palette */
     background: transparent;
     border: none;
-    text-decoration: none;
+    text-decoration: none !important;
     user-select: none;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
                  "Helvetica Neue", Arial, sans-serif;
 }
-.aruvi-pill:hover {
-    color: #1a1a1a;
-    background: rgba(0,0,0,0.04);
+.aruvi-pill:hover,
+.aruvi-pill:focus,
+.aruvi-pill:visited,
+.aruvi-pill:active,
+.aruvi-pill:link {
+    text-decoration: none !important;
 }
+.aruvi-pill:hover { color: #2c2a27; background: rgba(0,0,0,0.04); }
 .aruvi-pill.active {
     background: #ffffff;
-    color: #1a1a1a;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.10);
+    color: #2c2a27;          /* same dark tone as topnav wordmark */
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
 }
 
-/* ═══════════════════════════════════════════════════
-   ROLE PILLS  — real st.radio widget, CSS-floated into the topnav center.
-   position:fixed works because all Streamlit ancestor containers already
-   have transform:none !important (see GLOBAL section below).
-   ═══════════════════════════════════════════════════ */
-
-/* ── Outer container: fixed, horizontally centred in topnav ─────────────────
-   • top: 20px  → vertically centred inside 72 px topnav  ((72-32)/2)
-   • translateX(-50%) only — no Y offset that fights 'top'
-   • width: max-content stops position:fixed from collapsing the box        */
-.st-key-role_pills {
-    position: fixed !important;
-    top: 20px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    z-index: 100000 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    width: max-content !important;
-}
-
-/* Flatten every intermediate Streamlit wrapper div so they don't constrain */
-.st-key-role_pills > div,
-.st-key-role_pills [data-testid="stRadio"],
-.st-key-role_pills [data-testid="stRadio"] > div {
-    width: max-content !important;
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-/* Hide the Streamlit widget label text */
-.st-key-role_pills [data-testid="stWidgetLabel"] {
-    display: none !important;
-}
-
-/* Pill group: horizontal flex row with the capsule background */
-.st-key-role_pills [role="radiogroup"],
-.st-key-role_pills [data-baseweb="radio-group"] {
-    display: inline-flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    flex-wrap: nowrap !important;
-    background: #e8e5e0 !important;
-    border-radius: 999px !important;
-    padding: 3px 4px !important;
-    gap: 2px !important;
-    width: max-content !important;
-}
-
-/* Each option label — pill look */
-.st-key-role_pills [role="radiogroup"] label,
-.st-key-role_pills [data-baseweb="radio-group"] label {
-    display: inline-flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 0.3rem 1.45rem !important;
-    border-radius: 999px !important;
-    font-size: 0.82rem !important;
-    font-weight: 500 !important;
-    letter-spacing: 0.01em !important;
-    cursor: pointer !important;
-    color: #5a5754 !important;
-    background: transparent !important;
-    border: none !important;
-    transition: background 0.15s, color 0.15s !important;
-    white-space: nowrap !important;
-    min-width: 90px !important;
-    width: max-content !important;
-}
-.st-key-role_pills [role="radiogroup"] label:hover {
-    color: #1a1a1a !important;
-    background: rgba(0,0,0,0.04) !important;
-}
-
-/* Hide everything inside a label EXCEPT the markdown text node.
-   This covers the orange/coloured radio circle regardless of how
-   Streamlit 1.55 names it internally (BaseUI, st-*, span, svg, etc.) */
-.st-key-role_pills label > *:not([data-testid="stMarkdownContainer"]) {
-    display: none !important;
-}
-/* Also nuke the input (it has no data-testid so caught above, but explicit) */
-.st-key-role_pills label input[type="radio"] {
-    display: none !important;
-}
-
-/* Remove paragraph margin inside label text */
-.st-key-role_pills label p {
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: inherit !important;
-    font-weight: inherit !important;
-    color: inherit !important;
-    line-height: 1 !important;
-}
-
-/* Active (checked) pill */
-.st-key-role_pills label:has(input:checked) {
-    background: #ffffff !important;
-    color: #1a1a1a !important;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.10) !important;
-}
 
 /* ═══════════════════════════════════════════════════
    HIDDEN ADD-BLOCK BUTTON  (triggered by JS via ⊕ icon)
@@ -764,16 +666,6 @@ hr { border-color: #d9d6d0 !important; }
 
 </style>
 
-<script>
-/* ── aruviAddBlock ────────────────────────────────────────────────────────────
-   Called by the ⊕ period icon onclick.
-   Clicks the hidden add_block_icon button to trigger Streamlit's rerun.
-   ─────────────────────────────────────────────────────────────────────────── */
-function aruviAddBlock() {
-    var btn = document.querySelector('.st-key-add_block_icon button');
-    if (btn) btn.click();
-}
-</script>
 """, unsafe_allow_html=True)
 
 # ── Data loading ──────────────────────────────────────────────────────────────
@@ -827,8 +719,11 @@ has_chapter_data = (
 )
 
 # ── Fixed top nav bar ─────────────────────────────────────────────────────────
-# Logo + brand rendered as HTML.  The role toggle is a real st.radio widget
-# (key="role_pills") that CSS floats into the topnav center — no JS needed.
+# Pure HTML pills — no Streamlit radio widget, no orange circles.
+# onclick calls aruviSetRole() which clicks a hidden st.button in the sidebar.
+
+t_active = "active" if st.session_state.role == "Teacher"   else ""
+p_active = "active" if st.session_state.role == "Principal" else ""
 
 logo_img_tag = (
     f'<img src="{LOGO_SRC}" alt="Aruvi logo">'
@@ -846,32 +741,22 @@ st.markdown(f"""
     </div>
   </div>
 
+  <div class="topnav-center">
+    <div class="aruvi-topnav-inner">
+      <a class="aruvi-pill {t_active}" href="?role=Teacher">Teacher</a>
+      <a class="aruvi-pill {p_active}" href="?role=Principal">Principal</a>
+    </div>
+  </div>
+
   <div class="topnav-right"></div>
 
 </div>
 """, unsafe_allow_html=True)
 
-# Role toggle — real Streamlit radio, CSS-positioned into topnav center.
-# Streamlit handles the click → session_state update → rerun natively.
-_role_opts = ["Teacher", "Principal"]
-_role_input = st.radio(
-    "Role",
-    _role_opts,
-    horizontal=True,
-    key="role_pills",
-    label_visibility="collapsed",
-    index=_role_opts.index(st.session_state.role),
-)
-if _role_input != st.session_state.role:
-    st.session_state.role = _role_input
-    st.rerun()
-
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 # Change 3: Grade / Subject / Chapter selectboxes use label_visibility="visible".
 #           CSS floats each label inside the selectbox border at top-left.
 #           No separate icon-label-row div above each selectbox.
-
-role_opts = ["Teacher", "Principal"]
 
 with st.sidebar:
 
