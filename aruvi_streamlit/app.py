@@ -3,8 +3,8 @@ Aruvi · NCF 2023-Aligned Pedagogical Platform
 Streamlit prototype shell — UI only, no API calls wired.
 
 Layout
-  Fixed top bar : [Logo · ARUVI] left  |  Teacher/Principal pills centre  |  empty right
-  Left sidebar  : Grade · Subject · contextual inputs
+  Fixed top bar : [Logo + wordmark/slogan row] left  |  Teacher/Principal pills centre  |  empty right
+  Left sidebar  : Grade · Subject · contextual inputs · user footer
   Right workspace: tab content for the active role
 """
 
@@ -19,7 +19,8 @@ import streamlit as st
 PROJECT_ROOT  = Path("/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi")
 MAPPINGS_DIR  = PROJECT_ROOT / "mirror/chapters/social_sciences/grade_vii/mappings"
 SUMMARIES_DIR = PROJECT_ROOT / "mirror/chapters/social_sciences/grade_vii/summaries"
-LOGO_PATH     = PROJECT_ROOT / "miscellaneous/aruvi_logo.png"
+MISC_DIR      = PROJECT_ROOT / "miscellaneous"
+LOGO_PATH     = MISC_DIR / "aruvi_logo-transparent.png"
 
 DURATION_OPTIONS = [30, 35, 40, 45, 50, 60]
 WEIGHT_LABEL     = {3: "Central", 2: "Substantive", 1: "Present"}
@@ -43,56 +44,88 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ── Logo: encode PNG to base64 for inline embedding ───────────────────────────
+# ── Role from URL ─────────────────────────────────────────────────────────────
 
-def _logo_b64() -> str:
+query = st.query_params
+
+if "role" in query:
+    st.session_state.role = query["role"]
+
+# Default role on first load
+if "role" not in st.session_state:
+    st.session_state.role = "Teacher"
+
+# ── Image helpers ─────────────────────────────────────────────────────────────
+
+def _img_src(path: Path) -> str:
+    """Load a PNG file as a base64 data URI. Returns '' if the file is missing."""
     try:
-        return base64.b64encode(LOGO_PATH.read_bytes()).decode()
+        b64 = base64.b64encode(path.read_bytes()).decode()
+        return f"data:image/png;base64,{b64}"
     except Exception:
         return ""
 
-LOGO_B64 = _logo_b64()
-LOGO_SRC  = f"data:image/png;base64,{LOGO_B64}" if LOGO_B64 else ""
 
-# ── CSS ───────────────────────────────────────────────────────────────────────
-# All curly braces in CSS rules are doubled ({{ }}) because this is an f-string.
+LOGO_SRC    = _img_src(LOGO_PATH)
+GRADE_SRC   = _img_src(MISC_DIR / "grade.png")
+SUBJECT_SRC = _img_src(MISC_DIR / "subject.png")
+CHAPTER_SRC = _img_src(MISC_DIR / "chapter.png")
+PERIOD_SRC  = _img_src(MISC_DIR / "period.png")
+
+
+# ── CSS + JS ───────────────────────────────────────────────────────────────────
 
 st.markdown("""
 <style>
 
 /* ═══════════════════════════════════════════════════
    FIXED TOP NAV BAR
-   Three-column flex: [Logo+ARUVI] | [Pills] | [empty]
+   Change 1: width 100vw, left 0 — spans full viewport
+   including over the sidebar. overflow:visible ensures
+   logo/brand are never clipped regardless of sidebar state.
    ═══════════════════════════════════════════════════ */
 .aruvi-topnav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 9999;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    z-index: 99999 !important;
     background: #f5f3ef;
     border-bottom: 1px solid #d9d6d0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1.5rem;
+    padding: 0.6rem 1.5rem;
     box-sizing: border-box;
-    height: 52px;
+    min-height: 72px;
+    overflow: visible;
 }
 
-/* Left column: logo + ARUVI wordmark */
+/* Left: logo + brand — never clip or hide */
 .topnav-left {
-    flex: 1;
+    flex: 0 0 auto;
+    min-width: 180px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.75rem;
+    overflow: visible;
 }
 .topnav-left img {
-    width: 28px;
-    height: 28px;
+    width: 56px;
+    height: 56px;
     object-fit: contain;
     display: block;
+    background: transparent;
+    flex-shrink: 0;
+}
+/* Brand: wordmark above slogan */
+.topnav-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.18rem;
+    overflow: visible;
+    white-space: nowrap;
 }
 .topnav-wordmark {
     font-size: 0.65rem;
@@ -103,19 +136,31 @@ st.markdown("""
     white-space: nowrap;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
                  "Helvetica Neue", Arial, sans-serif;
+    line-height: 1;
+}
+.topnav-slogan {
+    font-size: 0.55rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: #5a5754;
+    white-space: nowrap;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    line-height: 1;
 }
 
-/* Centre column: pill container */
+/* Centre: pill toggle */
 .topnav-center {
-    flex: 0 0 auto;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Right column: balances layout */
+/* Right: empty balancer */
 .topnav-right {
-    flex: 1;
+    flex: 0 0 auto;
+    min-width: 180px;
 }
 
 /* Pill container */
@@ -157,67 +202,133 @@ st.markdown("""
 }
 
 /* ═══════════════════════════════════════════════════
-   HIDDEN ROLE RADIO
-   Invisible but clickable — sits on top of the pills
-   at z-index 10000, overlapping the topnav.
-   opacity:0 makes it invisible; pointer-events:auto
-   means clicks pass through to the radio inputs.
-   position:fixed removes it from document flow.
+   ROLE PILLS  — real st.radio widget, CSS-floated into the topnav center.
+   position:fixed works because all Streamlit ancestor containers already
+   have transform:none !important (see GLOBAL section below).
    ═══════════════════════════════════════════════════ */
-.main [data-testid="stRadio"] {
+
+/* ── Outer container: fixed, horizontally centred in topnav ─────────────────
+   • top: 20px  → vertically centred inside 72 px topnav  ((72-32)/2)
+   • translateX(-50%) only — no Y offset that fights 'top'
+   • width: max-content stops position:fixed from collapsing the box        */
+.st-key-role_pills {
     position: fixed !important;
-    top: 8px !important;
+    top: 20px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
-    z-index: 10000 !important;
-    opacity: 0 !important;
-    pointer-events: auto !important;
-    width: 220px !important;
-    height: 36px !important;
-    overflow: hidden !important;
+    z-index: 100000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: max-content !important;
+}
+
+/* Flatten every intermediate Streamlit wrapper div so they don't constrain */
+.st-key-role_pills > div,
+.st-key-role_pills [data-testid="stRadio"],
+.st-key-role_pills [data-testid="stRadio"] > div {
+    width: max-content !important;
+    max-width: none !important;
     margin: 0 !important;
     padding: 0 !important;
 }
-/* Collapse any Streamlit wrapper that still occupies space in the flow */
-.main [data-testid="stRadio"] > label { display: none !important; }
-.main [data-testid="stRadio"] [role="radiogroup"] {
+
+/* Hide the Streamlit widget label text */
+.st-key-role_pills [data-testid="stWidgetLabel"] {
+    display: none !important;
+}
+
+/* Pill group: horizontal flex row with the capsule background */
+.st-key-role_pills [role="radiogroup"],
+.st-key-role_pills [data-baseweb="radio-group"] {
+    display: inline-flex !important;
     flex-direction: row !important;
-    width: 220px !important;
-    height: 36px !important;
-    gap: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    background: #e8e5e0 !important;
+    border-radius: 999px !important;
+    padding: 3px 4px !important;
+    gap: 2px !important;
+    width: max-content !important;
 }
-.main [data-testid="stRadio"] [role="radiogroup"] label {
-    flex: 1 !important;
-    height: 36px !important;
+
+/* Each option label — pill look */
+.st-key-role_pills [role="radiogroup"] label,
+.st-key-role_pills [data-baseweb="radio-group"] label {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.3rem 1.45rem !important;
+    border-radius: 999px !important;
+    font-size: 0.82rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.01em !important;
     cursor: pointer !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    color: #5a5754 !important;
+    background: transparent !important;
+    border: none !important;
+    transition: background 0.15s, color 0.15s !important;
+    white-space: nowrap !important;
+    min-width: 90px !important;
+    width: max-content !important;
 }
-/* Collapse the outer element wrapper Streamlit inserts */
-.main [data-testid="element-container"]:has([data-testid="stRadio"]),
-.main [data-testid="stVerticalBlockBorderWrapper"]:has([data-testid="stRadio"]) {
-    height: 0 !important;
-    min-height: 0 !important;
-    overflow: hidden !important;
-    padding: 0 !important;
+.st-key-role_pills [role="radiogroup"] label:hover {
+    color: #1a1a1a !important;
+    background: rgba(0,0,0,0.04) !important;
+}
+
+/* Hide everything inside a label EXCEPT the markdown text node.
+   This covers the orange/coloured radio circle regardless of how
+   Streamlit 1.55 names it internally (BaseUI, st-*, span, svg, etc.) */
+.st-key-role_pills label > *:not([data-testid="stMarkdownContainer"]) {
+    display: none !important;
+}
+/* Also nuke the input (it has no data-testid so caught above, but explicit) */
+.st-key-role_pills label input[type="radio"] {
+    display: none !important;
+}
+
+/* Remove paragraph margin inside label text */
+.st-key-role_pills label p {
     margin: 0 !important;
+    padding: 0 !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    color: inherit !important;
+    line-height: 1 !important;
+}
+
+/* Active (checked) pill */
+.st-key-role_pills label:has(input:checked) {
+    background: #ffffff !important;
+    color: #1a1a1a !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.10) !important;
 }
 
 /* ═══════════════════════════════════════════════════
-   PUSH CONTENT DOWN below 52px top nav
+   HIDDEN ADD-BLOCK BUTTON  (triggered by JS via ⊕ icon)
+   ═══════════════════════════════════════════════════ */
+.st-key-add_block_icon {
+    display: none !important;
+}
+
+/* ═══════════════════════════════════════════════════
+   PUSH CONTENT DOWN below the fixed top nav
    ═══════════════════════════════════════════════════ */
 section[data-testid="stSidebar"] > div:first-child {
-    padding-top: 4rem !important;
+    padding-top: 5.8rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100vh !important;
+    box-sizing: border-box !important;
 }
 .main .block-container {
-    padding: 4rem 3rem 2rem 2.5rem !important;
+    padding: 5.8rem 3rem 2rem 2.5rem !important;
     max-width: none;
 }
 header[data-testid="stHeader"] {
     background: rgba(0,0,0,0) !important;
-    top: 52px !important;
+    top: 72px !important;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -230,11 +341,180 @@ html, body, .stApp {
 }
 
 /* ═══════════════════════════════════════════════════
-   SIDEBAR
+   SIDEBAR — must render below our topnav
    ═══════════════════════════════════════════════════ */
 section[data-testid="stSidebar"] {
     background-color: #eeece8;
     border-right: 1px solid #d9d6d0;
+    z-index: 100 !important;
+}
+
+/* ═══════════════════════════════════════════════════
+   PREVENT STACKING-CONTEXT BREAKS
+   Streamlit may apply CSS transforms to app containers
+   for animations. Any ancestor with transform:non-none
+   makes position:fixed children act like position:absolute,
+   breaking left:0/width:100vw on the topnav.
+   Force transforms off on every Streamlit wrapper.
+   ═══════════════════════════════════════════════════ */
+.stApp,
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"],
+[data-testid="block-container"],
+.main {
+    transform: none !important;
+    will-change: auto !important;
+}
+
+/* ═══════════════════════════════════════════════════
+   SIDEBAR FIELD LABEL ROW  (icon + uppercase name)
+   Rendered above each selectbox via st.markdown.
+   ═══════════════════════════════════════════════════ */
+.sidebar-field-label {
+    display: flex;
+    align-items: center;
+    gap: 0.38rem;
+    margin-top: 0.85rem;
+    margin-bottom: 0.05rem;
+}
+.field-icon {
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
+    opacity: 0.72;
+    flex-shrink: 0;
+}
+.field-label-text {
+    font-size: 0.70rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #5a5754;
+    line-height: 1;
+}
+
+/* ═══════════════════════════════════════════════════
+   SIDEBAR SELECTBOX: flat / no-box style
+   The box border and background are stripped away.
+   Value sits flush-left directly below the label row.
+   A › chevron (via ::after) signals the dropdown.
+   ═══════════════════════════════════════════════════ */
+section[data-testid="stSidebar"] [data-testid="stSelectbox"] {
+    position: relative !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.5rem !important;
+}
+/* Strip box chrome from the BaseUI select control */
+section[data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] > div:first-child {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 1.2rem 0 0 !important;
+    min-height: 28px !important;
+}
+section[data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"],
+section[data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="base-input"] {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+/* Value text: flush left, medium-dark grey */
+section[data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] [data-baseweb="input"],
+section[data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] [data-baseweb="value"],
+section[data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] span,
+section[data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] > div > div > div {
+    color: #3d3b38 !important;
+    font-size: 0.84rem !important;
+    padding: 0 !important;
+    line-height: 1.4 !important;
+}
+/* › chevron via pseudo-element, right-aligned */
+section[data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] {
+    position: relative !important;
+}
+section[data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"]::after {
+    content: '›';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9c9693;
+    font-size: 1.0rem;
+    pointer-events: none;
+    line-height: 1;
+}
+
+/* ═══════════════════════════════════════════════════
+   SIDEBAR SECTION LABEL
+   ═══════════════════════════════════════════════════ */
+.sect-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: #9c9693;
+    margin: 1rem 0 0.35rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+/* ═══════════════════════════════════════════════════
+   PERIOD ⊕ ICON  (clickable, adds a period block)
+   ═══════════════════════════════════════════════════ */
+.period-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    cursor: pointer;
+    opacity: 0.65;
+    transition: opacity 0.15s;
+    flex-shrink: 0;
+    vertical-align: middle;
+}
+.period-icon:hover { opacity: 1.0; }
+/* Text fallback when PNG is missing */
+.period-icon-text {
+    font-size: 1.0rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #9c9693;
+    user-select: none;
+    transition: color 0.15s, opacity 0.15s;
+    opacity: 0.75;
+}
+.period-icon-text:hover { color: #c96442; opacity: 1.0; }
+
+/* ═══════════════════════════════════════════════════
+   PERIOD BLOCK COLUMN HEADERS  (Change 4)
+   Match .sect-label style but zero top-margin for first row
+   ═══════════════════════════════════════════════════ */
+.block-col-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: #9c9693;
+    margin: 0.5rem 0 0.15rem 0;
+    line-height: 1;
+    display: block;
+}
+
+/* ═══════════════════════════════════════════════════
+   REMOVE DROPDOWN ARROW from all sidebar selectboxes
+   ═══════════════════════════════════════════════════ */
+section[data-testid="stSidebar"] [data-baseweb="select"] svg {
+    display: none !important;
+}
+section[data-testid="stSidebar"] [data-baseweb="select"] [class*="arrow"],
+section[data-testid="stSidebar"] [data-baseweb="select"] [class*="Arrow"],
+section[data-testid="stSidebar"] [data-baseweb="select"] [data-testid="stIcon"] {
+    display: none !important;
+}
+section[data-testid="stSidebar"] [data-baseweb="select"] > div > div:last-child svg,
+section[data-testid="stSidebar"] [data-baseweb="select"] [class*="indicator"] {
+    display: none !important;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -276,18 +556,6 @@ section[data-testid="stSidebar"] {
 }
 
 /* ═══════════════════════════════════════════════════
-   SIDEBAR SECTION LABEL
-   ═══════════════════════════════════════════════════ */
-.sect-label {
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #9c9693;
-    margin: 1rem 0 0.35rem 0;
-}
-
-/* ═══════════════════════════════════════════════════
    BUTTONS
    ═══════════════════════════════════════════════════ */
 div.stButton > button {
@@ -318,22 +586,6 @@ div.stButton > button:disabled {
     border: 1px solid #d9d6d0 !important;
     color: #c8c4be !important;
 }
-
-/* ═══════════════════════════════════════════════════
-   PERIOD BLOCK COLUMN HEADER
-   ═══════════════════════════════════════════════════ */
-.block-header {
-    display: flex;
-    font-size: 0.66rem;
-    color: #9c9693;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 0.15rem;
-    padding: 0 0.1rem;
-}
-.block-header-dur { flex: 3; }
-.block-header-cnt { flex: 2; }
-.block-header-rm  { flex: 1; }
 
 /* ═══════════════════════════════════════════════════
    TOTAL / ALLOCATION LINE
@@ -456,11 +708,72 @@ div[data-testid="stWarning"] {
 hr { border-color: #d9d6d0 !important; }
 
 /* ═══════════════════════════════════════════════════
+   SIDEBAR USER FOOTER
+   Sticky at bottom of sidebar via flex-column parent
+   ═══════════════════════════════════════════════════ */
+.sidebar-spacer {
+    flex: 1 1 auto;
+    min-height: 1.5rem;
+}
+.sidebar-user-footer {
+    flex-shrink: 0;
+    position: sticky;
+    bottom: 0;
+    padding-top: 0;
+    padding-bottom: 1rem;
+    background: #eeece8;
+}
+.user-footer-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding-top: 0.65rem;
+}
+.user-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #d9d6d0;
+    color: #5a5754;
+    font-size: 0.72rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+    user-select: none;
+}
+.user-info { display: flex; flex-direction: column; gap: 0.1rem; }
+.user-name {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    line-height: 1;
+}
+.user-plan {
+    font-size: 0.72rem;
+    color: #9c9693;
+    line-height: 1;
+}
+
+/* ═══════════════════════════════════════════════════
    HIDE STREAMLIT CHROME
    ═══════════════════════════════════════════════════ */
 #MainMenu, footer { visibility: hidden; }
 
 </style>
+
+<script>
+/* ── aruviAddBlock ────────────────────────────────────────────────────────────
+   Called by the ⊕ period icon onclick.
+   Clicks the hidden add_block_icon button to trigger Streamlit's rerun.
+   ─────────────────────────────────────────────────────────────────────────── */
+function aruviAddBlock() {
+    var btn = document.querySelector('.st-key-add_block_icon button');
+    if (btn) btn.click();
+}
+</script>
 """, unsafe_allow_html=True)
 
 # ── Data loading ──────────────────────────────────────────────────────────────
@@ -481,7 +794,7 @@ chapters = load_all_chapters()
 
 
 def ch_label(ch: dict) -> str:
-    return f"Ch {ch['chapter_number']:02d}  —  {ch['chapter_title']}"
+    return f"Ch {ch['chapter_number']:02d} — {ch['chapter_title']}"
 
 
 def ch_short(ch: dict) -> str:
@@ -514,22 +827,12 @@ has_chapter_data = (
 )
 
 # ── Fixed top nav bar ─────────────────────────────────────────────────────────
-# Pure HTML injected via st.markdown. Three-column layout:
-#   Left  → logo (28px) + ARUVI wordmark
-#   Centre → Teacher / Principal pill toggle
-#   Right  → empty (balances layout)
-#
-# The visible pills are purely decorative. The actual role switching is
-# handled by the hidden st.radio below, which overlaps the pills at
-# z-index 10000 via CSS. Clicking a pill physically clicks the invisible radio.
-
-role_opts = ["Teacher", "Principal"]
-t_active  = "active" if st.session_state.role == "Teacher"   else ""
-p_active  = "active" if st.session_state.role == "Principal" else ""
+# Logo + brand rendered as HTML.  The role toggle is a real st.radio widget
+# (key="role_pills") that CSS floats into the topnav center — no JS needed.
 
 logo_img_tag = (
     f'<img src="{LOGO_SRC}" alt="Aruvi logo">'
-    if LOGO_SRC else ""
+    if LOGO_SRC else '<div style="width:56px;height:56px;"></div>'
 )
 
 st.markdown(f"""
@@ -537,13 +840,9 @@ st.markdown(f"""
 
   <div class="topnav-left">
     {logo_img_tag}
-    <span class="topnav-wordmark">Aruvi</span>
-  </div>
-
-  <div class="topnav-center">
-    <div class="aruvi-topnav-inner">
-      <span class="aruvi-pill {t_active}">Teacher</span>
-      <span class="aruvi-pill {p_active}">Principal</span>
+    <div class="topnav-brand">
+      <span class="topnav-wordmark">Aruvi</span>
+      <span class="topnav-slogan">AI powered teaching assistant</span>
     </div>
   </div>
 
@@ -552,35 +851,43 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# ── Hidden role radio ─────────────────────────────────────────────────────────
-# CSS rule `.main [data-testid="stRadio"]` fixes this element to position:fixed,
-# overlapping the topnav pills at z-index 10000 with opacity:0.
-# The radio is fully transparent but fully clickable — it IS the click target.
-
-role = st.radio(
+# Role toggle — real Streamlit radio, CSS-positioned into topnav center.
+# Streamlit handles the click → session_state update → rerun natively.
+_role_opts = ["Teacher", "Principal"]
+_role_input = st.radio(
     "Role",
-    role_opts,
+    _role_opts,
     horizontal=True,
-    key="role_nav",
+    key="role_pills",
     label_visibility="collapsed",
-    index=role_opts.index(st.session_state.role),
+    index=_role_opts.index(st.session_state.role),
 )
-
-if role != st.session_state.role:
-    st.session_state.role = role
+if _role_input != st.session_state.role:
+    st.session_state.role = _role_input
     st.rerun()
 
 # ── Sidebar ───────────────────────────────────────────────────────────────────
-# Logo and ARUVI name are now in the topnav bar — sidebar starts at Grade.
+# Change 3: Grade / Subject / Chapter selectboxes use label_visibility="visible".
+#           CSS floats each label inside the selectbox border at top-left.
+#           No separate icon-label-row div above each selectbox.
+
+role_opts = ["Teacher", "Principal"]
 
 with st.sidebar:
 
-    # Grade
-    st.markdown('<div class="sect-label">Grade</div>', unsafe_allow_html=True)
+    # ── Grade selector — flat style, icon + label above, no box ──────────────
+    _g_icon = f'<img src="{GRADE_SRC}" class="field-icon" alt="">' if GRADE_SRC else ""
+    st.markdown(
+        f'<div class="sidebar-field-label">{_g_icon}'
+        f'<span class="field-label-text">Grade</span></div>',
+        unsafe_allow_html=True,
+    )
     grade = st.selectbox(
-        "Grade", GRADES,
+        "Grade",
+        GRADES,
         index=GRADES.index(st.session_state.grade),
-        label_visibility="collapsed", key="grade_select",
+        label_visibility="collapsed",
+        key="grade_select",
     )
     if grade != st.session_state.grade:
         st.session_state.grade             = grade
@@ -589,12 +896,19 @@ with st.sidebar:
         st.session_state.principal_generated = False
         st.rerun()
 
-    # Subject
-    st.markdown('<div class="sect-label">Subject</div>', unsafe_allow_html=True)
+    # ── Subject selector — flat style, icon + label above, no box ────────────
+    _s_icon = f'<img src="{SUBJECT_SRC}" class="field-icon" alt="">' if SUBJECT_SRC else ""
+    st.markdown(
+        f'<div class="sidebar-field-label">{_s_icon}'
+        f'<span class="field-label-text">Subject</span></div>',
+        unsafe_allow_html=True,
+    )
     subject = st.selectbox(
-        "Subject", SUBJECTS,
+        "Subject",
+        SUBJECTS,
         index=SUBJECTS.index(st.session_state.subject),
-        label_visibility="collapsed", key="subject_select",
+        label_visibility="collapsed",
+        key="subject_select",
     )
     if subject != st.session_state.subject:
         st.session_state.subject           = subject
@@ -603,7 +917,7 @@ with st.sidebar:
         st.session_state.principal_generated = False
         st.rerun()
 
-    # ── No data for this combination ─────────────────────────────────────────
+    # ── No data for this combination ──────────────────────────────────────────
     if not has_chapter_data:
         st.markdown(
             '<div class="no-data-notice">'
@@ -618,12 +932,20 @@ with st.sidebar:
 
         st.divider()
 
-        st.markdown('<div class="sect-label">Chapter</div>', unsafe_allow_html=True)
+        # Chapter selector — flat style, icon + label above, no box
+        _c_icon = f'<img src="{CHAPTER_SRC}" class="field-icon" alt="">' if CHAPTER_SRC else ""
+        st.markdown(
+            f'<div class="sidebar-field-label">{_c_icon}'
+            f'<span class="field-label-text">Chapter</span></div>',
+            unsafe_allow_html=True,
+        )
         ch_labels = [ch_label(ch) for ch in chapters]
         sel_label = st.selectbox(
-            "Chapter", ch_labels,
+            "Chapter",
+            ch_labels,
             index=st.session_state.teacher_ch_idx,
-            label_visibility="collapsed", key="teacher_ch_select",
+            label_visibility="collapsed",
+            key="teacher_ch_select",
         )
         new_idx = ch_labels.index(sel_label)
         if new_idx != st.session_state.teacher_ch_idx:
@@ -632,16 +954,41 @@ with st.sidebar:
 
         st.divider()
 
-        # Period blocks
-        st.markdown('<div class="sect-label">Period Blocks</div>', unsafe_allow_html=True)
+        # ── Available Time section ─────────────────────────────────────────────
+        # Change 5: no visible "+ Add period block" button.
+        # Change 6: ⊕ icon (period.png or Unicode fallback) triggers add via JS.
+        # Hidden button stays in DOM so aruviAddBlock() has something to click.
+        add_via_icon = st.button("", key="add_block_icon")
+
+        if PERIOD_SRC:
+            period_icon_html = (
+                f'<img src="{PERIOD_SRC}" class="period-icon"'
+                f' onclick="aruviAddBlock()" title="Add period block" alt="⊕">'
+            )
+        else:
+            period_icon_html = (
+                '<span class="period-icon-text"'
+                ' onclick="aruviAddBlock()" title="Add period block">⊕</span>'
+            )
+
         st.markdown(
-            '<div class="block-header">'
-            '<span class="block-header-dur">Duration</span>'
-            '<span class="block-header-cnt">Periods</span>'
-            '<span class="block-header-rm"></span>'
-            '</div>',
+            f'<div class="sect-label">{period_icon_html}'
+            f'<span>Available time</span></div>',
             unsafe_allow_html=True,
         )
+
+        # Change 4: column headers styled like sect-label (block-col-label)
+        hdr_dur, hdr_cnt, hdr_rm = st.columns([3, 3, 1])
+        with hdr_dur:
+            st.markdown(
+                '<span class="block-col-label">Time per period</span>',
+                unsafe_allow_html=True,
+            )
+        with hdr_cnt:
+            st.markdown(
+                '<span class="block-col-label">No. of periods</span>',
+                unsafe_allow_html=True,
+            )
 
         block_to_remove = None
 
@@ -650,28 +997,35 @@ with st.sidebar:
             dk  = f"dur_{bid}"
             ck  = f"cnt_{bid}"
 
-            c_dur, c_cnt, c_rm = st.columns([3, 2, 1])
+            c_dur, c_cnt, c_rm = st.columns([3, 3, 1])
 
             with c_dur:
                 dur_idx = DURATION_OPTIONS.index(block["duration"]) \
                           if block["duration"] in DURATION_OPTIONS else 3
                 dur = st.selectbox(
-                    "dur", DURATION_OPTIONS, index=dur_idx,
-                    label_visibility="collapsed", key=dk,
+                    "Time per period",
+                    DURATION_OPTIONS,
+                    index=dur_idx,
+                    label_visibility="collapsed",
+                    key=dk,
                     format_func=lambda x: f"{x} min",
                 )
 
             with c_cnt:
                 cnt = st.number_input(
-                    "cnt", min_value=1, max_value=60,
-                    value=block["count"], step=1,
-                    label_visibility="collapsed", key=ck,
+                    "No. of Periods",
+                    min_value=1,
+                    max_value=60,
+                    value=block["count"],
+                    step=1,
+                    label_visibility="collapsed",
+                    key=ck,
                 )
 
             with c_rm:
                 st.markdown('<div style="padding-top:0.3rem;">', unsafe_allow_html=True)
                 if len(st.session_state.period_blocks) > 1:
-                    if st.button("✕", key=f"rm_{bid}", help="Remove"):
+                    if st.button("✕", key=f"rm_{bid}", help="Remove block"):
                         block_to_remove = i
                 else:
                     st.markdown(
@@ -690,7 +1044,8 @@ with st.sidebar:
                 st.session_state.pop(k, None)
             st.rerun()
 
-        if st.button("＋  Add period block", key="add_block", use_container_width=True):
+        # Change 5: only the hidden icon-triggered add remains (no visible button)
+        if add_via_icon:
             nid = st.session_state.next_block_id
             st.session_state.next_block_id += 1
             st.session_state.period_blocks.append({"id": nid, "duration": 45, "count": 1})
@@ -717,8 +1072,10 @@ with st.sidebar:
         )
         if st.button(
             "Generate Lesson Plan & Assessment",
-            disabled=not can_gen, type="primary",
-            use_container_width=True, key="teacher_gen",
+            disabled=not can_gen,
+            type="primary",
+            use_container_width=True,
+            key="teacher_gen",
         ):
             st.session_state.teacher_generated = True
             st.rerun()
@@ -728,18 +1085,27 @@ with st.sidebar:
 
         st.divider()
 
-        st.markdown('<div class="sect-label">Period Budget</div>', unsafe_allow_html=True)
+        st.markdown(
+            '<div class="sect-label">📊 &nbsp;Period Budget</div>',
+            unsafe_allow_html=True,
+        )
         total_available = st.number_input(
             "Total periods available",
-            min_value=1, max_value=999,
-            value=st.session_state.principal_total, step=1,
-            label_visibility="collapsed", key="principal_total_input",
+            min_value=1,
+            max_value=999,
+            value=st.session_state.principal_total,
+            step=1,
+            label_visibility="collapsed",
+            key="principal_total_input",
         )
         st.session_state.principal_total = total_available
 
         st.divider()
 
-        st.markdown('<div class="sect-label">Chapter Selection</div>', unsafe_allow_html=True)
+        st.markdown(
+            '<div class="sect-label">📋 &nbsp;Chapter Selection</div>',
+            unsafe_allow_html=True,
+        )
 
         sa_col, da_col = st.columns(2)
         with sa_col:
@@ -769,9 +1135,12 @@ with st.sidebar:
             with p_col:
                 if checked:
                     p = st.number_input(
-                        "p", min_value=1, max_value=60,
+                        "p",
+                        min_value=1,
+                        max_value=60,
                         value=st.session_state.ch_periods.get(ch_num, 6),
-                        step=1, label_visibility="collapsed",
+                        step=1,
+                        label_visibility="collapsed",
                         key=f"per_{ch_num}",
                     )
                     st.session_state.ch_periods[ch_num] = p
@@ -802,10 +1171,27 @@ with st.sidebar:
 
         if st.button(
             "Generate Allocation Report",
-            type="primary", use_container_width=True, key="principal_gen",
+            type="primary",
+            use_container_width=True,
+            key="principal_gen",
         ):
             st.session_state.principal_generated = True
             st.rerun()
+
+    # ── Sidebar spacer + user footer (sticky at bottom) ───────────────────────
+    st.markdown('<div class="sidebar-spacer"></div>', unsafe_allow_html=True)
+    st.markdown("""
+<div class="sidebar-user-footer">
+  <hr style="border:none;border-top:1px solid #d9d6d0;margin:0;" />
+  <div class="user-footer-inner">
+    <div class="user-avatar">RT</div>
+    <div class="user-info">
+      <span class="user-name">Ramesh Tripathi</span>
+      <span class="user-plan">Free plan</span>
+    </div>
+  </div>
+</div>
+""", unsafe_allow_html=True)
 
 
 # ── Workspace ─────────────────────────────────────────────────────────────────
@@ -821,8 +1207,9 @@ if not has_chapter_data:
 
 # ═════════════════════════════════════════════════
 #  TEACHER WORKSPACE
+#  Change 2: tabs = Competencies · Lesson Plan · Assessment
 # ═════════════════════════════════════════════════
-elif role == "Teacher":
+elif st.session_state.role == "Teacher":
 
     selected_ch = chapters[st.session_state.teacher_ch_idx]
     tab_comp, tab_lp, tab_assess = st.tabs(
@@ -893,11 +1280,12 @@ elif role == "Teacher":
 
 # ═════════════════════════════════════════════════
 #  PRINCIPAL WORKSPACE
+#  tabs = Period Allocation · Competency Report
 # ═════════════════════════════════════════════════
 else:
 
     tab_alloc, tab_cov = st.tabs(
-        ["Period Allocation", "Competency Coverage"]
+        ["Period Allocation", "Competency Report"]
     )
 
     with tab_alloc:
@@ -909,15 +1297,15 @@ else:
                 unsafe_allow_html=True,
             )
         else:
-            st.info("Allocation report will appear here once the API call is wired.")
+            st.info("Period allocation will appear here once the API call is wired.")
 
     with tab_cov:
         if not st.session_state.principal_generated:
             st.markdown(
                 '<div class="ws-placeholder">'
-                'Generate the allocation report to see competency coverage.'
+                'Generate the period allocation to see competency coverage.'
                 '</div>',
                 unsafe_allow_html=True,
             )
         else:
-            st.info("Competency coverage will appear here once the API call is wired.")
+            st.info("Competency report will appear here once the API call is wired.")
