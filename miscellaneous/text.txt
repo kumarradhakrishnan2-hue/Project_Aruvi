@@ -16,3 +16,5 @@ git commit -m "Initial commit"
 git branch -M main
 git remote add origin https://github.com/kumarradhakrishnan2-hue/Project_Aruvi.git
 git push -u origin main
+
+python3 -m streamlit run aruvi_streamlit/app.py

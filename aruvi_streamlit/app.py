@@ -244,6 +244,19 @@ html, body, .stApp {
 }
 
 /* ═══════════════════════════════════════════════════
+   MAIN BODY GRID
+   Light vertical + horizontal lines, Claude-desktop style.
+   Targeted at stMain only — sidebar and topnav untouched.
+   ═══════════════════════════════════════════════════ */
+[data-testid="stMain"] {
+    background-color: #f5f3ef;
+    background-image:
+        linear-gradient(rgba(180, 174, 165, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(180, 174, 165, 0.12) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+/* ═══════════════════════════════════════════════════
    SIDEBAR — must render below our topnav
    ═══════════════════════════════════════════════════ */
 section[data-testid="stSidebar"] {
@@ -278,7 +291,7 @@ section[data-testid="stSidebar"] {
     align-items: center;
     gap: 0.38rem;
     margin-top: 0.85rem;
-    margin-bottom: 0.05rem;
+    margin-bottom: 0.75rem;
 }
 .field-icon {
     width: 23px;
@@ -338,6 +351,89 @@ section[data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="sele
     font-size: 0.84rem !important;
     padding: 0 !important;
     line-height: 1.4 !important;
+}
+
+/* ═══════════════════════════════════════════════════
+   GRADE / SUBJECT / CHAPTER SELECTBOX
+   Grey rounded box (filled with sidebar bg) + smaller
+   dark-grey value font.
+   ═══════════════════════════════════════════════════ */
+section[data-testid="stSidebar"] div[class*="st-key-grade_select"] [data-baseweb="select"] > div:first-child,
+section[data-testid="stSidebar"] div[class*="st-key-subject_select"] [data-baseweb="select"] > div:first-child,
+section[data-testid="stSidebar"] div[class*="st-key-teacher_ch_select"] [data-baseweb="select"] > div:first-child {
+    border: 1px solid #d0cdc9 !important;
+    border-radius: 8px !important;
+    background: #eeece8 !important;
+    padding: 6px 8px 6px 10px !important;
+    box-shadow: none !important;
+    min-height: 34px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+/* Value text + placeholder: legible size, high-contrast dark */
+section[data-testid="stSidebar"] div[class*="st-key-grade_select"] [data-baseweb="select"] [data-baseweb="value"],
+section[data-testid="stSidebar"] div[class*="st-key-grade_select"] [data-baseweb="select"] [data-baseweb="placeholder"],
+section[data-testid="stSidebar"] div[class*="st-key-grade_select"] [data-baseweb="select"] span,
+section[data-testid="stSidebar"] div[class*="st-key-subject_select"] [data-baseweb="select"] [data-baseweb="value"],
+section[data-testid="stSidebar"] div[class*="st-key-subject_select"] [data-baseweb="select"] [data-baseweb="placeholder"],
+section[data-testid="stSidebar"] div[class*="st-key-subject_select"] [data-baseweb="select"] span,
+section[data-testid="stSidebar"] div[class*="st-key-teacher_ch_select"] [data-baseweb="select"] [data-baseweb="value"],
+section[data-testid="stSidebar"] div[class*="st-key-teacher_ch_select"] [data-baseweb="select"] [data-baseweb="placeholder"],
+section[data-testid="stSidebar"] div[class*="st-key-teacher_ch_select"] [data-baseweb="select"] span {
+    font-size: 0.76rem !important;
+    color: #2c2a27 !important;
+}
+
+/* ═══════════════════════════════════════════════════
+   DURATION SELECTBOX  — centre value text
+   Targets dur_sel_0 (Teacher) and dur_sel_p0 (Principal).
+   Strategy:
+     • Remove the right-offset padding on the control container
+       (the arrow div is a flex-sibling, so it stays right naturally).
+     • Give the VALUE sub-container flex:1 + justify-content:center
+       so it fills remaining space and centres its content.
+     • Force every text node inside it to centre.
+   ═══════════════════════════════════════════════════ */
+
+/* 1. Control container: flex row, no extra right padding */
+section[data-testid="stSidebar"] div[class*="st-key-dur_sel_"] [data-baseweb="select"] > div:first-child {
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+}
+/* 2. Value sub-container (first child of control): fill width, centre */
+section[data-testid="stSidebar"] div[class*="st-key-dur_sel_"] [data-baseweb="select"] > div:first-child > div:first-child {
+    flex: 1 1 0% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-width: 0 !important;
+}
+/* 3. Value / placeholder text nodes — block + centred */
+section[data-testid="stSidebar"] div[class*="st-key-dur_sel_"] [data-baseweb="value"],
+section[data-testid="stSidebar"] div[class*="st-key-dur_sel_"] [data-baseweb="placeholder"],
+section[data-testid="stSidebar"] div[class*="st-key-dur_sel_"] [data-baseweb="select"] > div:first-child span {
+    display: block !important;
+    text-align: center !important;
+    width: 100% !important;
+}
+/* 4. Grey rounded box — overrides the flat/no-border style */
+section[data-testid="stSidebar"] div[class*="st-key-dur_sel_"] [data-baseweb="select"] > div:first-child {
+    border: 1px solid #d0cdc9 !important;
+    border-radius: 8px !important;
+    background: #eeece8 !important;
+    padding: 4px 6px !important;
+}
+
+/* ═══════════════════════════════════════════════════
+   COUNT NUMBER INPUT  — centre value, hide built-in steps
+   Applies to all cnt_ keys (Teacher cnt_0/1/… and
+   Principal cnt_p0/1/…). Custom +/− buttons are used.
+   ═══════════════════════════════════════════════════ */
+/* Hide Streamlit's built-in step buttons — custom ±
+   st.buttons are used on both Teacher and Principal. */
+section[data-testid="stSidebar"] [class*="st-key-cnt_"] [data-testid="stNumberInput"] button {
+    display: none !important;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -496,6 +592,23 @@ section[data-testid="stSidebar"] [class*="st-key-cnt_"] input::-webkit-inner-spi
     -webkit-appearance: none !important;
     margin: 0 !important;
 }
+/* Grey rounded box on all count inputs (Teacher + Principal) */
+section[data-testid="stSidebar"] [class*="st-key-cnt_"] [data-baseweb="input"] {
+    background: #eeece8 !important;
+    border: 1px solid #d0cdc9 !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+}
+/* BaseUI renders a nested inner-wrapper div inside [data-baseweb="input"]
+   that carries its own white background — override it to match sidebar. */
+section[data-testid="stSidebar"] [class*="st-key-cnt_"] [data-baseweb="input"] > div {
+    background: #eeece8 !important;
+}
+/* Keep the inner <input> element transparent so the
+   container background shows through cleanly */
+section[data-testid="stSidebar"] [class*="st-key-cnt_"] input {
+    background: transparent !important;
+}
 
 /* ═══════════════════════════════════════════════════
    PERIOD BLOCK COLUMN HEADERS  (Change 4)
@@ -527,8 +640,8 @@ section[data-testid="stSidebar"] [class*="st-key-cnt_"] input::-webkit-inner-spi
     box-shadow: 0 4px 12px rgba(0,0,0,0.10) !important;
 }
 [data-baseweb="popover"] [role="option"] {
-    font-size: 0.84rem !important;
-    color: #3d3b38 !important;
+    font-size: 0.76rem !important;
+    color: #2c2a27 !important;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
                  "Helvetica Neue", Arial, sans-serif !important;
     background: transparent !important;
@@ -625,8 +738,7 @@ div.stButton > button[kind="primary"]:hover {
 
 /* ═══════════════════════════════════════════════════
    GENERATE BUTTONS  — Teacher + Principal, tall pill style
-   Orange background · dark-grey text · font two notches
-   below 0.62 rem  →  0.52 rem
+   Orange background · dark-grey text · bold · centred
    ═══════════════════════════════════════════════════ */
 section[data-testid="stSidebar"] div[class*="st-key-teacher_gen"] button,
 section[data-testid="stSidebar"] div[class*="st-key-principal_gen"] button {
@@ -635,12 +747,12 @@ section[data-testid="stSidebar"] div[class*="st-key-principal_gen"] button {
     border-radius: 12px !important;
     background: #c96442 !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.14) !important;
-    font-size: 0.52rem !important;
+    font-size: 0.36rem !important;
     font-weight: 700 !important;
     color: #2c2a27 !important;
     letter-spacing: 0.02em !important;
-    padding-left: 1.1rem !important;
-    justify-content: flex-start !important;
+    padding-left: 0 !important;
+    justify-content: center !important;
     gap: 0.5rem !important;
 }
 section[data-testid="stSidebar"] div[class*="st-key-teacher_gen"] button:hover,
@@ -1001,6 +1113,34 @@ def ch_short(ch: dict) -> str:
     return f"Ch {ch['chapter_number']:02d} · {t}"
 
 
+# ── Period-row callbacks (run before script on each interaction) ───────────────
+
+def _cb_add_row():
+    _new_id = st.session_state["_next_row_id"]
+    st.session_state["_next_row_id"] = _new_id + 1
+    st.session_state["period_rows"] = st.session_state["period_rows"] + [_new_id]
+
+def _cb_del_row(rid):
+    st.session_state["period_rows"] = [
+        r for r in st.session_state["period_rows"] if r != rid
+    ]
+
+def _cb_inc_cnt(rid, delta):
+    st.session_state[f"cnt_{rid}"] = max(
+        1, min(999, st.session_state.get(f"cnt_{rid}", 1) + delta)
+    )
+
+def _cb_add_row_p():
+    _new_id = st.session_state["_next_row_id_p"]
+    st.session_state["_next_row_id_p"] = _new_id + 1
+    st.session_state["period_rows_p"] = st.session_state["period_rows_p"] + [_new_id]
+
+def _cb_del_row_p(rid):
+    st.session_state["period_rows_p"] = [
+        r for r in st.session_state["period_rows_p"] if r != rid
+    ]
+
+
 # ── Session state ─────────────────────────────────────────────────────────────
 
 if "role"              not in st.session_state: st.session_state.role              = "Teacher"
@@ -1081,7 +1221,7 @@ st.markdown(f"""
 
 with st.sidebar:
 
-    # ── Grade selector — flat style, icon + label above, no box ──────────────
+    # ── Grade selector — label above, value below (left-aligned) ─────────────
     _g_icon = f'<img src="{GRADE_SRC}" class="field-icon-grade" alt="">' if GRADE_SRC else ""
     st.markdown(
         f'<div class="sidebar-field-label">{_g_icon}'
@@ -1106,7 +1246,7 @@ with st.sidebar:
             st.query_params["grade"] = grade
         st.rerun()
 
-    # ── Subject selector — flat style, icon + label above, no box ────────────
+    # ── Subject selector — label above, value below (left-aligned) ───────────
     _s_icon = f'<img src="{SUBJECT_SRC}" class="field-icon" alt="">' if SUBJECT_SRC else ""
     st.markdown(
         f'<div class="sidebar-field-label">{_s_icon}'
@@ -1146,7 +1286,7 @@ with st.sidebar:
 
         st.divider()
 
-        # Chapter selector — flat style, icon + label above, no box
+        # Chapter selector — label above, value below (left-aligned)
         _c_icon = f'<img src="{CHAPTER_SRC}" class="field-icon" alt="">' if CHAPTER_SRC else ""
         st.markdown(
             f'<div class="sidebar-field-label">{_c_icon}'
@@ -1183,40 +1323,41 @@ with st.sidebar:
             unsafe_allow_html=True,
         )
 
-        # Inject dynamic CSS so the add-row button shows period.png as its face
-        if PERIOD_SRC:
-            st.markdown(f"""
-            <style>
-            div[class*="st-key-add_row_btn"] button {{
-                background-image: url('{PERIOD_SRC}') !important;
-                background-size: contain !important;
-                background-repeat: no-repeat !important;
-                background-position: center !important;
-                background-color: transparent !important;
-                border: none !important;
-                width: 22px !important;
-                height: 22px !important;
-                min-height: 22px !important;
-                padding: 0 !important;
-                cursor: pointer !important;
-                opacity: 1.0 !important;
-            }}
-            div[class*="st-key-add_row_btn"] button p {{
-                display: none !important;
-            }}
-            div[class*="st-key-add_row_btn"] button:hover {{
-                opacity: 0.7 !important;
-            }}
-            </style>
-            """, unsafe_allow_html=True)
+        # ── Multi-row period state bootstrap ──────────────────────────────────
+        if "period_rows" not in st.session_state:
+            st.session_state["period_rows"] = [0]
+            st.session_state["_next_row_id"] = 1
 
-        # Column headers — [4, 3, 1]: "Time per period" | "No. of periods" | add-row btn
-        # Data rows use [4, 1, 1, 1, 1] which totals 8 units — the 3-unit "No. of periods"
-        # header visually spans the −, count, + columns of each data row.
-        hdr_dur, hdr_cnt, hdr_rm = st.columns([4, 3, 1])
+        # Ensure cnt is initialised for every active row (new rows only)
+        for _rid in st.session_state["period_rows"]:
+            if f"cnt_{_rid}" not in st.session_state:
+                st.session_state[f"cnt_{_rid}"] = 1
+
+        # Inject dynamic CSS: add-row button shows period.png icon
+        if PERIOD_SRC:
+            st.markdown(
+                f"""<style>
+section[data-testid="stSidebar"] div[class*="st-key-add_period_row"] button {{
+    background: url('{PERIOD_SRC}') center / 16px 16px no-repeat transparent !important;
+    color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    min-height: 22px !important;
+}}
+section[data-testid="stSidebar"] div[class*="st-key-add_period_row"] button:hover {{
+    opacity: 0.60;
+    background: url('{PERIOD_SRC}') center / 16px 16px no-repeat transparent !important;
+}}
+</style>""",
+                unsafe_allow_html=True,
+            )
+
+        # Column headers — [4, 4, 1]: dur | cnt | add-row icon
+        hdr_dur, hdr_cnt, hdr_add = st.columns([4, 4, 1])
         with hdr_dur:
             st.markdown(
-                '<span class="block-col-label">Time per period</span>',
+                '<span class="block-col-label">Time per period (min)</span>',
                 unsafe_allow_html=True,
             )
         with hdr_cnt:
@@ -1224,102 +1365,55 @@ with st.sidebar:
                 '<span class="block-col-label">No. of periods</span>',
                 unsafe_allow_html=True,
             )
-        with hdr_rm:
-            add_row = st.button("＋", key="add_row_btn", help="Add row")
+        with hdr_add:
+            st.button("⊕", key="add_period_row", use_container_width=True,
+                      help="Add another period type",
+                      on_click=_cb_add_row)
 
-        block_to_remove = None
-
-        for i, block in enumerate(st.session_state.period_blocks):
-            bid  = block["id"]
-            ck   = f"cnt_{bid}"
-            cnt  = st.session_state.get(ck, block["count"])
-
-            c_dur, c_cnt, c_rm = st.columns([4, 3, 1])
+        # ── Period rows — all [4, 4, 1]; first row's delete slot stays empty ──
+        for _rid in st.session_state["period_rows"]:
+            _is_first = (_rid == st.session_state["period_rows"][0])
+            c_dur, c_cnt, c_del = st.columns([4, 4, 1])
 
             with c_dur:
-                # Dropdown of preset durations; empty slot (index=None) → manual entry below
-                dur_pick = st.selectbox(
+                st.selectbox(
                     "Time per period",
                     options=DURATION_OPTIONS,
-                    index=None,
-                    placeholder="min",
+                    index=DURATION_OPTIONS.index(40),
                     label_visibility="collapsed",
-                    key=f"dur_sel_{bid}",
+                    key=f"dur_sel_{_rid}",
                 )
-                if dur_pick is None:
-                    st.number_input(
-                        "Custom duration",
-                        min_value=1,
-                        max_value=300,
-                        step=1,
-                        value=None,
-                        placeholder="enter min",
-                        label_visibility="collapsed",
-                        key=f"dur_{bid}",
-                    )
 
             with c_cnt:
-                # Nested [1, 2, 1]: − | editable count | +
-                cm, cv, cp = st.columns([1, 2, 1])
+                cm, cv, cp = st.columns([1, 3, 1])
                 with cm:
-                    if st.button("−", key=f"minus_{bid}", use_container_width=True):
-                        new_val = max(1, (cnt or 1) - 1)
-                        st.session_state.period_blocks[i]["count"] = new_val
-                        st.session_state[ck] = new_val
-                        st.rerun()
+                    st.button("−", key=f"minus_{_rid}",
+                              use_container_width=True,
+                              on_click=_cb_inc_cnt, args=(_rid, -1))
                 with cv:
-                    # Editable number input; native spin arrows hidden by CSS
-                    new_cnt = st.number_input(
+                    st.number_input(
                         "count",
                         min_value=1,
-                        max_value=60,
+                        max_value=999,
                         step=1,
-                        value=block["count"],
-                        placeholder="n",
                         label_visibility="collapsed",
-                        key=ck,
+                        key=f"cnt_{_rid}",
                     )
-                    if new_cnt != block["count"]:
-                        st.session_state.period_blocks[i]["count"] = new_cnt
                 with cp:
-                    if st.button("+", key=f"plus_{bid}", use_container_width=True):
-                        new_val = min(60, (cnt or 0) + 1)
-                        st.session_state.period_blocks[i]["count"] = new_val
-                        st.session_state[ck] = new_val
-                        st.rerun()
+                    st.button("+", key=f"plus_{_rid}",
+                              use_container_width=True,
+                              on_click=_cb_inc_cnt, args=(_rid, 1))
 
-            with c_rm:
-                if len(st.session_state.period_blocks) > 1:
-                    if st.button("✕", key=f"rm_{bid}", help="Remove block"):
-                        block_to_remove = i
-                else:
-                    st.markdown(
-                        '<div style="color:#9c9693;font-size:0.85rem;'
-                        'text-align:center;">✕</div>',
-                        unsafe_allow_html=True,
-                    )
+            with c_del:
+                if not _is_first:
+                    st.button("×", key=f"del_{_rid}",
+                              use_container_width=True,
+                              on_click=_cb_del_row, args=(_rid,))
 
-            st.session_state.period_blocks[i]["duration"] = (
-                st.session_state.get(f"dur_sel_{bid}")
-                or st.session_state.get(f"dur_{bid}")
-            )
-
-        if block_to_remove is not None:
-            removed = st.session_state.period_blocks.pop(block_to_remove)
-            for k in [f"dur_sel_{removed['id']}", f"dur_{removed['id']}", f"cnt_{removed['id']}"]:
-                st.session_state.pop(k, None)
-            st.rerun()
-
-        if add_row:
-            nid = st.session_state.next_block_id
-            st.session_state.next_block_id += 1
-            st.session_state.period_blocks.append({"id": nid, "duration": None, "count": None})
-            st.rerun()
-
+        # Total across all rows
         total_m = sum(
-            (st.session_state.get(f"dur_sel_{b['id']}") or st.session_state.get(f"dur_{b['id']}") or 0) *
-            (st.session_state.get(f"cnt_{b['id']}") or 0)
-            for b in st.session_state.period_blocks
+            (st.session_state.get(f"dur_sel_{r}") or 0) * (st.session_state.get(f"cnt_{r}") or 0)
+            for r in st.session_state["period_rows"]
         )
         if total_m > 0:
             _h, _min = divmod(total_m, 60)
@@ -1338,10 +1432,13 @@ with st.sidebar:
 
         st.divider()
 
-        can_gen = any(
-            (st.session_state.get(f"cnt_{b['id']}") or b["count"] or 0) >= 1
-            and (st.session_state.get(f"dur_sel_{b['id']}") or st.session_state.get(f"dur_{b['id']}") or b["duration"] or 0) >= 1
-            for b in st.session_state.period_blocks
+        can_gen = (
+            len(st.session_state.get("period_rows", [])) > 0
+            and all(
+                (st.session_state.get(f"dur_sel_{r}") or 0) >= 1
+                and (st.session_state.get(f"cnt_{r}") or 0) >= 1
+                for r in st.session_state.get("period_rows", [])
+            )
         )
         if st.button(
             "Generate Lesson Plan & Assessment",
@@ -1362,142 +1459,92 @@ with st.sidebar:
         else:
             fp_icon_html = ''
         st.markdown(
-            f'<div class="sect-label">{fp_icon_html}'
+            f'<div class="sect-label" style="margin-bottom:1.25rem;">{fp_icon_html}'
             f'<span>Period Budget</span></div>',
             unsafe_allow_html=True,
         )
 
-        # CSS so the add-row button shows period.png
+        # ── Multi-row period state bootstrap (Principal) ──────────────────────
+        if "period_rows_p" not in st.session_state:
+            st.session_state["period_rows_p"] = [0]
+            st.session_state["_next_row_id_p"] = 1
+
+        # Ensure cnt is initialised (default 1) for every active row (new rows only)
+        for _rid_p in st.session_state["period_rows_p"]:
+            if f"cnt_p{_rid_p}" not in st.session_state:
+                st.session_state[f"cnt_p{_rid_p}"] = 1
+
+        # Dynamic CSS: ⊕ add-row button shows period.png icon (Principal)
         if PERIOD_SRC:
-            st.markdown(f"""
-            <style>
-            div[class*="st-key-add_row_btn_p"] button {{
-                background-image: url('{PERIOD_SRC}') !important;
-                background-size: contain !important;
-                background-repeat: no-repeat !important;
-                background-position: center !important;
-                background-color: transparent !important;
-                border: none !important;
-                width: 22px !important;
-                height: 22px !important;
-                min-height: 22px !important;
-                padding: 0 !important;
-                cursor: pointer !important;
-                opacity: 1.0 !important;
-            }}
-            div[class*="st-key-add_row_btn_p"] button p {{
-                display: none !important;
-            }}
-            div[class*="st-key-add_row_btn_p"] button:hover {{
-                opacity: 0.7 !important;
-            }}
-            </style>
-            """, unsafe_allow_html=True)
-
-        # Column headers
-        phdr_dur, phdr_cnt, phdr_rm = st.columns([4, 3, 1])
-        with phdr_dur:
-            st.markdown('<span class="block-col-label">Time per period</span>', unsafe_allow_html=True)
-        with phdr_cnt:
-            st.markdown('<span class="block-col-label">No. of periods</span>', unsafe_allow_html=True)
-        with phdr_rm:
-            add_row_p = st.button("＋", key="add_row_btn_p", help="Add row")
-
-        p_block_to_remove = None
-
-        for i, block in enumerate(st.session_state.principal_period_blocks):
-            bid  = block["id"]
-            ck_p = f"cnt_p{bid}"
-            cnt  = st.session_state.get(ck_p, block["count"])
-
-            c_dur_p, c_cnt_p, c_rm_p = st.columns([4, 3, 1])
-
-            with c_dur_p:
-                # Dropdown of preset durations; empty slot (index=None) → manual entry below
-                dur_pick_p = st.selectbox(
-                    "Time per period",
-                    options=DURATION_OPTIONS,
-                    index=None,
-                    placeholder="min",
-                    label_visibility="collapsed",
-                    key=f"dur_sel_p{bid}",
-                )
-                if dur_pick_p is None:
-                    st.number_input(
-                        "Custom duration",
-                        min_value=1,
-                        max_value=300,
-                        step=1,
-                        value=None,
-                        placeholder="enter min",
-                        label_visibility="collapsed",
-                        key=f"dur_p{bid}",
-                    )
-
-            with c_cnt_p:
-                cm_p, cv_p, cp_p = st.columns([1, 2, 1])
-                with cm_p:
-                    if st.button("−", key=f"minus_p{bid}", use_container_width=True):
-                        new_val = max(1, (cnt or 1) - 1)
-                        st.session_state.principal_period_blocks[i]["count"] = new_val
-                        st.session_state[ck_p] = new_val
-                        st.rerun()
-                with cv_p:
-                    new_cnt_p = st.number_input(
-                        "count",
-                        min_value=1,
-                        max_value=60,
-                        step=1,
-                        value=block["count"],
-                        placeholder="n",
-                        label_visibility="collapsed",
-                        key=ck_p,
-                    )
-                    if new_cnt_p != block["count"]:
-                        st.session_state.principal_period_blocks[i]["count"] = new_cnt_p
-                with cp_p:
-                    if st.button("+", key=f"plus_p{bid}", use_container_width=True):
-                        new_val = min(60, (cnt or 0) + 1)
-                        st.session_state.principal_period_blocks[i]["count"] = new_val
-                        st.session_state[ck_p] = new_val
-                        st.rerun()
-
-            with c_rm_p:
-                if len(st.session_state.principal_period_blocks) > 1:
-                    if st.button("✕", key=f"rm_p{bid}", help="Remove block"):
-                        p_block_to_remove = i
-                else:
-                    st.markdown(
-                        '<div style="color:#9c9693;font-size:0.85rem;'
-                        'text-align:center;">✕</div>',
-                        unsafe_allow_html=True,
-                    )
-
-            st.session_state.principal_period_blocks[i]["duration"] = (
-                st.session_state.get(f"dur_sel_p{bid}")
-                or st.session_state.get(f"dur_p{bid}")
+            st.markdown(
+                f"""<style>
+section[data-testid="stSidebar"] div[class*="st-key-add_period_row_p"] button {{
+    background: url('{PERIOD_SRC}') center / 16px 16px no-repeat transparent !important;
+    color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    min-height: 22px !important;
+}}
+section[data-testid="stSidebar"] div[class*="st-key-add_period_row_p"] button:hover {{
+    opacity: 0.60;
+    background: url('{PERIOD_SRC}') center / 16px 16px no-repeat transparent !important;
+}}
+</style>""",
+                unsafe_allow_html=True,
             )
 
-        if p_block_to_remove is not None:
-            removed_p = st.session_state.principal_period_blocks.pop(p_block_to_remove)
-            for k in [f"dur_sel_p{removed_p['id']}", f"dur_p{removed_p['id']}", f"cnt_p{removed_p['id']}"]:
-                st.session_state.pop(k, None)
-            st.rerun()
+        # Column headers — [4, 4, 1]: dur | cnt | add-row icon
+        phdr_dur, phdr_cnt, phdr_add = st.columns([4, 4, 1])
+        with phdr_dur:
+            st.markdown(
+                '<span class="block-col-label">Time per period (min)</span>',
+                unsafe_allow_html=True,
+            )
+        with phdr_cnt:
+            st.markdown(
+                '<span class="block-col-label">No. of periods</span>',
+                unsafe_allow_html=True,
+            )
+        with phdr_add:
+            st.button("⊕", key="add_period_row_p", use_container_width=True,
+                      help="Add another period type",
+                      on_click=_cb_add_row_p)
 
-        if add_row_p:
-            nid_p = st.session_state.principal_next_block_id
-            st.session_state.principal_next_block_id += 1
-            st.session_state.principal_period_blocks.append({"id": nid_p, "duration": None, "count": None})
-            st.rerun()
+        # ── Period rows — all [4, 4, 1]; first row's delete slot stays empty ──
+        for _rid_p in st.session_state["period_rows_p"]:
+            _is_first_p = (_rid_p == st.session_state["period_rows_p"][0])
+            pc_dur, pc_cnt, pc_del = st.columns([4, 4, 1])
 
-        total_available = sum(
-            (st.session_state.get(f"cnt_p{b['id']}") or 0)
-            for b in st.session_state.principal_period_blocks
-        )
+            with pc_dur:
+                st.selectbox(
+                    "Time per period",
+                    options=DURATION_OPTIONS,
+                    index=DURATION_OPTIONS.index(40),
+                    label_visibility="collapsed",
+                    key=f"dur_sel_p{_rid_p}",
+                )
+
+            with pc_cnt:
+                st.number_input(
+                    "count",
+                    min_value=1,
+                    max_value=999,
+                    step=1,
+                    label_visibility="collapsed",
+                    key=f"cnt_p{_rid_p}",
+                )
+
+            with pc_del:
+                if not _is_first_p:
+                    st.button("×", key=f"del_p{_rid_p}",
+                              use_container_width=True,
+                              on_click=_cb_del_row_p, args=(_rid_p,))
+
+        # Total across all rows
         p_total_m = sum(
-            (st.session_state.get(f"dur_sel_p{b['id']}") or st.session_state.get(f"dur_p{b['id']}") or 0) *
-            (st.session_state.get(f"cnt_p{b['id']}") or 0)
-            for b in st.session_state.principal_period_blocks
+            (st.session_state.get(f"dur_sel_p{r}") or 0) * (st.session_state.get(f"cnt_p{r}") or 0)
+            for r in st.session_state["period_rows_p"]
         )
         if p_total_m > 0:
             _ph, _pmin = divmod(p_total_m, 60)
@@ -1535,7 +1582,7 @@ with st.sidebar:
                     st.session_state.ch_selected[ch["chapter_number"]] = False
                 st.rerun()
 
-        st.markdown('<div style="height:0.45rem;"></div>', unsafe_allow_html=True)
+        st.markdown('<div style="height:1.80rem;"></div>', unsafe_allow_html=True)
 
         for ch in chapters:
             ch_num = ch["chapter_number"]
