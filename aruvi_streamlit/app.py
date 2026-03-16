@@ -48,7 +48,7 @@ st.set_page_config(
 
 query = st.query_params
 
-if "role"    in query and query["role"]    in ("Teacher", "Principal"):
+if "role"    in query and query["role"]    in ("Teach", "Plan"):
     st.session_state.role    = query["role"]
 if "grade"   in query and query["grade"]   in GRADES:
     st.session_state.grade   = query["grade"]
@@ -59,7 +59,7 @@ if "ch"      in query:
     except ValueError: pass
 
 # Defaults on first load
-if "role"    not in st.session_state: st.session_state.role    = "Teacher"
+if "role"    not in st.session_state: st.session_state.role    = "Plan"
 if "grade"   not in st.session_state: st.session_state.grade   = None
 if "subject" not in st.session_state: st.session_state.subject = None
 
@@ -81,6 +81,7 @@ CHAPTER_SRC = _img_src(MISC_DIR / "chapter.png")
 PERIOD_SRC      = _img_src(MISC_DIR / "period.png")       # row header add-icon
 TIME_SRC        = _img_src(MISC_DIR / "time.png")         # "Available time" label icon
 FULL_PERIOD_SRC = _img_src(MISC_DIR / "full_period.png")  # Principal "Period Budget" label icon
+WATERMARK_SRC   = _img_src(MISC_DIR / "aruvi_logo-transparent.png")  # Main body watermark
 
 
 # ── CSS + JS ───────────────────────────────────────────────────────────────────
@@ -226,6 +227,7 @@ section[data-testid="stSidebar"] > div:first-child {
     box-sizing: border-box !important;
 }
 .main .block-container {
+    background-color: #ffffff !important;
     padding: 5.8rem 3rem 2rem 2.5rem !important;
     max-width: none;
 }
@@ -237,23 +239,42 @@ header[data-testid="stHeader"] {
 /* ═══════════════════════════════════════════════════
    GLOBAL
    ═══════════════════════════════════════════════════ */
-html, body, .stApp {
+html, body {
     background-color: #f5f3ef;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
                  "Helvetica Neue", Arial, sans-serif;
 }
+.stApp {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+}
+[data-testid="stAppViewContainer"] {
+    background-color: #ffffff !important;
+}
 
 /* ═══════════════════════════════════════════════════
-   MAIN BODY GRID
-   Light vertical + horizontal lines, Claude-desktop style.
-   Targeted at stMain only — sidebar and topnav untouched.
+   MAIN BODY WATERMARK
+   Aruvi logo rendered as a very-light-grey centred
+   watermark behind all content. Uses ::before so the
+   opacity does not bleed through to child elements.
    ═══════════════════════════════════════════════════ */
 [data-testid="stMain"] {
-    background-color: #f5f3ef;
+    background-color: #ffffff !important;
+    position: relative;
+}
+/* watermark rule injected below via f-string */
+
+/* 24 × 24 px grid — very faint lines */
+[data-testid="stMain"]::after {
+    content: "";
+    position: fixed;
+    inset: 0;
     background-image:
-        linear-gradient(rgba(180, 174, 165, 0.12) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(180, 174, 165, 0.12) 1px, transparent 1px);
+        linear-gradient(rgba(180, 174, 165, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(180, 174, 165, 0.07) 1px, transparent 1px);
     background-size: 24px 24px;
+    pointer-events: none;
+    z-index: 0;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -363,7 +384,7 @@ section[data-testid="stSidebar"] div[class*="st-key-subject_select"] [data-basew
 section[data-testid="stSidebar"] div[class*="st-key-teacher_ch_select"] [data-baseweb="select"] > div:first-child {
     border: 1px solid #d0cdc9 !important;
     border-radius: 8px !important;
-    background: #eeece8 !important;
+    background: #ffffff !important;
     padding: 6px 8px 6px 10px !important;
     box-shadow: none !important;
     min-height: 34px !important;
@@ -417,12 +438,15 @@ section[data-testid="stSidebar"] div[class*="st-key-dur_sel_"] [data-baseweb="se
     text-align: center !important;
     width: 100% !important;
 }
-/* 4. Grey rounded box — overrides the flat/no-border style */
+/* 4. White rounded box — overrides the flat/no-border style */
 section[data-testid="stSidebar"] div[class*="st-key-dur_sel_"] [data-baseweb="select"] > div:first-child {
     border: 1px solid #d0cdc9 !important;
     border-radius: 8px !important;
-    background: #eeece8 !important;
+    background: #ffffff !important;
     padding: 4px 6px !important;
+}
+section[data-testid="stSidebar"] div[class*="st-key-dur_sel_"] [data-baseweb="select"] > div:first-child > div {
+    background: #ffffff !important;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -444,11 +468,38 @@ section[data-testid="stSidebar"] [class*="st-key-cnt_"] [data-testid="stNumberIn
     font-weight: 500;
     letter-spacing: 0.10em;
     text-transform: uppercase;
-    color: #9c9693;
-    margin: 1rem 0 0.35rem 0;
+    color: #5a5754 !important;
+    margin: 0.5rem 0 0.5rem 0;
     display: flex;
     align-items: center;
     gap: 0.35rem;
+}
+
+/* ═══════════════════════════════════════════════════
+   TIGHTER SIDEBAR VERTICAL RHYTHM
+   Reduces Streamlit's default block-container gaps
+   so Grade / Subject / Chapter / Generate sit closer.
+   ═══════════════════════════════════════════════════ */
+section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] > div[data-testid="element-container"] {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+/* Collapse space between a sect-label row and the row immediately below it */
+section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] > div[data-testid="element-container"]:has(.sect-label) + div[data-testid="element-container"] {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+section[data-testid="stSidebar"] .sidebar-field-label {
+    margin-top: 0.55rem !important;
+    margin-bottom: 0.45rem !important;
+}
+section[data-testid="stSidebar"] [data-testid="stSelectbox"] {
+    margin-bottom: 0.3rem !important;
+}
+section[data-testid="stSidebar"] hr,
+section[data-testid="stSidebar"] [data-testid="stDivider"] {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -592,17 +643,17 @@ section[data-testid="stSidebar"] [class*="st-key-cnt_"] input::-webkit-inner-spi
     -webkit-appearance: none !important;
     margin: 0 !important;
 }
-/* Grey rounded box on all count inputs (Teacher + Principal) */
+/* White rounded box on all count inputs (Teacher + Principal) */
 section[data-testid="stSidebar"] [class*="st-key-cnt_"] [data-baseweb="input"] {
-    background: #eeece8 !important;
+    background: #ffffff !important;
     border: 1px solid #d0cdc9 !important;
     border-radius: 8px !important;
     box-shadow: none !important;
 }
 /* BaseUI renders a nested inner-wrapper div inside [data-baseweb="input"]
-   that carries its own white background — override it to match sidebar. */
+   that carries its own background — override it to match white. */
 section[data-testid="stSidebar"] [class*="st-key-cnt_"] [data-baseweb="input"] > div {
-    background: #eeece8 !important;
+    background: #ffffff !important;
 }
 /* Keep the inner <input> element transparent so the
    container background shows through cleanly */
@@ -700,7 +751,7 @@ section[data-testid="stSidebar"] [data-baseweb="select"] svg {
 }
 .stTabs [aria-selected="true"] {
     color: #1a1a1a !important;
-    border-bottom: 2px solid #1a1a1a !important;
+    border-bottom: 2px solid #2c3e50 !important;
 }
 .stTabs [data-baseweb="tab-highlight"],
 .stTabs [data-baseweb="tab-border"] {
@@ -738,31 +789,29 @@ div.stButton > button[kind="primary"]:hover {
 
 /* ═══════════════════════════════════════════════════
    GENERATE BUTTONS  — Teacher + Principal, tall pill style
-   Orange background · dark-grey text · bold · centred
+   Dark slate background · white text · bold · centred
    ═══════════════════════════════════════════════════ */
 section[data-testid="stSidebar"] div[class*="st-key-teacher_gen"] button,
 section[data-testid="stSidebar"] div[class*="st-key-principal_gen"] button {
     height: 56px !important;
     min-height: 56px !important;
     border-radius: 12px !important;
-    background: #c96442 !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.14) !important;
-    font-size: 0.36rem !important;
-    font-weight: 700 !important;
-    color: #2c2a27 !important;
+    background: #2c3e50 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18) !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
     letter-spacing: 0.02em !important;
-    padding-left: 0 !important;
     justify-content: center !important;
-    gap: 0.5rem !important;
 }
 section[data-testid="stSidebar"] div[class*="st-key-teacher_gen"] button:hover,
 section[data-testid="stSidebar"] div[class*="st-key-principal_gen"] button:hover {
-    background: #d97050 !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.20) !important;
+    background: #3d5166 !important;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.24) !important;
 }
 section[data-testid="stSidebar"] div[class*="st-key-teacher_gen"] button *,
 section[data-testid="stSidebar"] div[class*="st-key-principal_gen"] button * {
-    color: #2c2a27 !important;
+    color: #ffffff !important;
     visibility: visible !important;
 }
 /* ✦ icon via ::before — theme-proof on both buttons */
@@ -770,10 +819,10 @@ section[data-testid="stSidebar"] div[class*="st-key-teacher_gen"] button::before
 section[data-testid="stSidebar"] div[class*="st-key-principal_gen"] button::before {
     content: "✦";
     font-size: 0.85rem;
-    color: #2c2a27;
+    color: #ffffff;
     flex-shrink: 0;
     visibility: visible !important;
-    margin-right: 0.1rem;
+    margin-right: 0.35rem;
 }
 div.stButton > button[disabled],
 div.stButton > button:disabled {
@@ -930,20 +979,28 @@ section[data-testid="stSidebar"] [data-baseweb="checkbox"] [role="checkbox"] {
     border-color: #c8c4be !important;   /* unchecked border warm grey */
 }
 section[data-testid="stSidebar"] [data-baseweb="checkbox"] [role="checkbox"][aria-checked="true"] {
-    border-color: #3d3b38 !important;
+    border-color: #2c3e50 !important;
+    background: #2c3e50 !important;
+    background-color: #2c3e50 !important;
     position: relative !important;
     overflow: hidden !important;
 }
-/* ::before covers the orange inline-style background */
+/* ::before covers any BaseUI inline-style orange injection */
 section[data-testid="stSidebar"] [data-baseweb="checkbox"] [role="checkbox"][aria-checked="true"]::before {
     content: "" !important;
     position: absolute !important;
     inset: 0 !important;
-    background: #3d3b38 !important;
+    background: #2c3e50 !important;
+    background-color: #2c3e50 !important;
     z-index: 0 !important;
     pointer-events: none !important;
 }
-/* SVG sits above the ::before layer so the tick stays white */
+/* Also target the inner div BaseUI may use as the colour layer */
+section[data-testid="stSidebar"] [data-baseweb="checkbox"] [role="checkbox"][aria-checked="true"] > div {
+    background: #2c3e50 !important;
+    background-color: #2c3e50 !important;
+}
+/* SVG sits above all layers so the tick stays white */
 section[data-testid="stSidebar"] [data-baseweb="checkbox"] [role="checkbox"][aria-checked="true"] svg {
     position: relative !important;
     z-index: 1 !important;
@@ -982,40 +1039,61 @@ section[data-testid="stSidebar"] [data-testid="stVerticalBlock"]:has(.stCheckbox
 }
 
 /* ═══════════════════════════════════════════════════
-   SELECT ALL / DESELECT ALL  — match sidebar label style
-   Must target button p/span to override the global
-   sidebar button text rule above.
+   SELECT ALL / DESELECT ALL  — workspace body (Plan workspace)
+   Dark slate, matches Generate button
    ═══════════════════════════════════════════════════ */
-section[data-testid="stSidebar"] div[class*="st-key-sel_all"] button,
-section[data-testid="stSidebar"] div[class*="st-key-sel_all"] button p,
-section[data-testid="stSidebar"] div[class*="st-key-sel_all"] button span,
-section[data-testid="stSidebar"] div[class*="st-key-desel_all"] button,
-section[data-testid="stSidebar"] div[class*="st-key-desel_all"] button p,
-section[data-testid="stSidebar"] div[class*="st-key-desel_all"] button span {
-    font-size: 0.70rem !important;
+div[class*="st-key-sel_all"] button,
+div[class*="st-key-desel_all"] button {
+    background: #2c3e50 !important;
+    border: none !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+    font-size: 0.72rem !important;
     font-weight: 500 !important;
-    letter-spacing: 0.01em !important;
-    text-transform: none !important;
-    color: #5a5754 !important;
+    height: 28px !important;
+    min-height: 28px !important;
+    padding: 0 10px !important;
 }
-section[data-testid="stSidebar"] div[class*="st-key-sel_all"] button,
-section[data-testid="stSidebar"] div[class*="st-key-desel_all"] button {
-    background: transparent !important;
-    border: 1px solid #d9d6d0 !important;
-    border-radius: 5px !important;
-    min-height: 26px !important;
-    padding: 0.12rem 0.6rem !important;
-    box-shadow: none !important;
+div[class*="st-key-sel_all"] button:hover,
+div[class*="st-key-desel_all"] button:hover {
+    background: #3d5166 !important;
 }
-section[data-testid="stSidebar"] div[class*="st-key-sel_all"] button:hover,
-section[data-testid="stSidebar"] div[class*="st-key-sel_all"] button:hover p,
-section[data-testid="stSidebar"] div[class*="st-key-sel_all"] button:hover span,
-section[data-testid="stSidebar"] div[class*="st-key-desel_all"] button:hover,
-section[data-testid="stSidebar"] div[class*="st-key-desel_all"] button:hover p,
-section[data-testid="stSidebar"] div[class*="st-key-desel_all"] button:hover span {
-    color: #3d3b38 !important;
-    border-color: #9c9693 !important;
-    background: rgba(0,0,0,0.03) !important;
+div[class*="st-key-sel_all"] button *,
+div[class*="st-key-desel_all"] button * {
+    color: #ffffff !important;
+    visibility: visible !important;
+}
+
+/* ═══════════════════════════════════════════════════
+   CHAPTER TILE CHECKBOXES — styled as clean tiles
+   ═══════════════════════════════════════════════════ */
+[data-testid="stMain"] div[class*="st-key-chk_"] label {
+    background: #f5f3ef !important;
+    border: 1px solid #d0cdc9 !important;
+    border-radius: 8px !important;
+    padding: 10px 12px !important;
+    width: 100% !important;
+    margin-bottom: 8px !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    min-height: 52px !important;
+}
+[data-testid="stMain"] div[class*="st-key-chk_"] label:hover {
+    border-color: #2c3e50 !important;
+    background: #f0f3f6 !important;
+}
+[data-testid="stMain"] div[class*="st-key-chk_"] input:checked + label,
+[data-testid="stMain"] div[class*="st-key-chk_"] [aria-checked="true"] ~ div {
+    border-color: #2c3e50 !important;
+    background: #f0f3f6 !important;
+}
+[data-testid="stMain"] div[class*="st-key-chk_"] label span,
+[data-testid="stMain"] div[class*="st-key-chk_"] label p {
+    font-size: 0.76rem !important;
+    color: #2c2a27 !important;
+    line-height: 1.35 !important;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -1082,6 +1160,90 @@ hr { border-color: #d9d6d0 !important; }
 
 """, unsafe_allow_html=True)
 
+# ── MutationObserver: override BaseUI inline-style orange on checkboxes ───────
+st.markdown("""<script>
+(function() {
+    var TARGET_COLOR = '#2c3e50';
+    var SIDEBAR_SELECTOR = 'section[data-testid="stSidebar"]';
+
+    function fixCheckbox(el) {
+        if (el && el.getAttribute('role') === 'checkbox' &&
+                el.getAttribute('aria-checked') === 'true') {
+            el.style.setProperty('background', TARGET_COLOR, 'important');
+            el.style.setProperty('background-color', TARGET_COLOR, 'important');
+            el.style.setProperty('border-color', TARGET_COLOR, 'important');
+            var inner = el.querySelector('div');
+            if (inner) {
+                inner.style.setProperty('background', TARGET_COLOR, 'important');
+                inner.style.setProperty('background-color', TARGET_COLOR, 'important');
+            }
+        }
+    }
+
+    function fixAll() {
+        var sidebar = document.querySelector(SIDEBAR_SELECTOR);
+        if (!sidebar) return;
+        sidebar.querySelectorAll('[role="checkbox"][aria-checked="true"]')
+               .forEach(fixCheckbox);
+    }
+
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(m) {
+            if (m.type === 'attributes') {
+                fixCheckbox(m.target);
+            } else {
+                m.addedNodes.forEach(function(n) {
+                    if (n.nodeType === 1) {
+                        if (n.getAttribute && n.getAttribute('role') === 'checkbox') {
+                            fixCheckbox(n);
+                        }
+                        n.querySelectorAll && n.querySelectorAll('[role="checkbox"]')
+                                               .forEach(fixCheckbox);
+                    }
+                });
+            }
+        });
+    });
+
+    function attach() {
+        var sidebar = document.querySelector(SIDEBAR_SELECTOR);
+        if (sidebar) {
+            fixAll();
+            observer.observe(sidebar, {
+                childList: true, subtree: true,
+                attributes: true, attributeFilter: ['aria-checked', 'style']
+            });
+        } else {
+            setTimeout(attach, 300);
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', attach);
+    } else {
+        attach();
+    }
+})();
+</script>""", unsafe_allow_html=True)
+
+# ── Watermark: inject separately so we can embed the base64 data URI ──────────
+if WATERMARK_SRC:
+    st.markdown(f"""<style>
+[data-testid="stMain"]::before {{
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url('{WATERMARK_SRC}');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 480px auto;
+    opacity: 0.025;
+    filter: grayscale(100%);
+    pointer-events: none;
+    z-index: 0;
+}}
+</style>""", unsafe_allow_html=True)
+
 # ── Data loading ──────────────────────────────────────────────────────────────
 
 @st.cache_data
@@ -1143,7 +1305,7 @@ def _cb_del_row_p(rid):
 
 # ── Session state ─────────────────────────────────────────────────────────────
 
-if "role"              not in st.session_state: st.session_state.role              = "Teacher"
+if "role"              not in st.session_state: st.session_state.role              = "Plan"
 if "grade"             not in st.session_state: st.session_state.grade             = None
 if "subject"           not in st.session_state: st.session_state.subject           = None
 
@@ -1156,7 +1318,7 @@ if "teacher_ch_idx"    not in st.session_state: st.session_state.teacher_ch_idx 
 # Principal
 if "principal_period_blocks"  not in st.session_state: st.session_state.principal_period_blocks  = [{"id": 0, "duration": None, "count": None}]
 if "principal_next_block_id"  not in st.session_state: st.session_state.principal_next_block_id  = 1
-if "ch_selected"              not in st.session_state: st.session_state.ch_selected              = {ch["chapter_number"]: True for ch in chapters}
+if "ch_selected"              not in st.session_state: st.session_state.ch_selected              = {ch["chapter_number"]: False for ch in chapters}
 if "ch_periods"               not in st.session_state: st.session_state.ch_periods               = {ch["chapter_number"]: 6    for ch in chapters}
 if "principal_generated"      not in st.session_state: st.session_state.principal_generated      = False
 
@@ -1170,8 +1332,8 @@ has_chapter_data = (
 # Pure HTML pills — no Streamlit radio widget, no orange circles.
 # onclick calls aruviSetRole() which clicks a hidden st.button in the sidebar.
 
-t_active = "active" if st.session_state.role == "Teacher"   else ""
-p_active = "active" if st.session_state.role == "Principal" else ""
+t_active = "active" if st.session_state.role == "Teach" else ""
+p_active = "active" if st.session_state.role == "Plan"  else ""
 
 # Build shared query params so grade/subject survive a pill-click reload
 import urllib.parse as _up
@@ -1182,8 +1344,8 @@ _ch_idx = st.session_state.get("teacher_ch_idx")
 if _ch_idx is not None:      _qs_dict["ch"]       = _ch_idx
 _qs = _up.urlencode(_qs_dict)
 _sep = "&" if _qs else ""
-_t_href = f"?role=Teacher{_sep}{_qs}"
-_p_href = f"?role=Principal{_sep}{_qs}"
+_t_href = f"?role=Teach{_sep}{_qs}"
+_p_href = f"?role=Plan{_sep}{_qs}"
 
 logo_img_tag = (
     f'<img src="{LOGO_SRC}" alt="Aruvi logo">'
@@ -1203,8 +1365,8 @@ st.markdown(f"""
 
   <div class="topnav-center">
     <div class="aruvi-topnav-inner">
-      <a class="aruvi-pill {t_active}" href="{_t_href}">Teacher</a>
-      <a class="aruvi-pill {p_active}" href="{_p_href}">Principal</a>
+      <a class="aruvi-pill {p_active}" href="{_p_href}">Plan</a>
+      <a class="aruvi-pill {t_active}" href="{_t_href}">Teach</a>
     </div>
   </div>
 
@@ -1282,7 +1444,7 @@ with st.sidebar:
         )
 
     # ── Teacher inputs ────────────────────────────────────────────────────────
-    elif st.session_state.role == "Teacher":
+    elif st.session_state.role == "Teach":
 
         st.divider()
 
@@ -1353,22 +1515,20 @@ section[data-testid="stSidebar"] div[class*="st-key-add_period_row"] button:hove
                 unsafe_allow_html=True,
             )
 
-        # Column headers — [4, 4, 1]: dur | cnt | add-row icon
-        hdr_dur, hdr_cnt, hdr_add = st.columns([4, 4, 1])
-        with hdr_dur:
-            st.markdown(
-                '<span class="block-col-label">Time per period (min)</span>',
-                unsafe_allow_html=True,
+        # ── Column header labels — rendered once above the first row ──────────
+        _hc_dur, _hc_cnt, _hc_add = st.columns([4, 4, 1])
+        with _hc_dur:
+            st.markdown('<div style="font-size:0.68rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#5a5754;margin-bottom:0.15rem;">Mins / Period</div>', unsafe_allow_html=True)
+        with _hc_cnt:
+            st.markdown('<div style="font-size:0.68rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#5a5754;margin-bottom:0.15rem;">No. of Periods</div>', unsafe_allow_html=True)
+        with _hc_add:
+            st.button(
+                "⊕",
+                key="add_period_row",
+                use_container_width=True,
+                help="Add another period type",
+                on_click=_cb_add_row,
             )
-        with hdr_cnt:
-            st.markdown(
-                '<span class="block-col-label">No. of periods</span>',
-                unsafe_allow_html=True,
-            )
-        with hdr_add:
-            st.button("⊕", key="add_period_row", use_container_width=True,
-                      help="Add another period type",
-                      on_click=_cb_add_row)
 
         # ── Period rows — all [4, 4, 1]; first row's delete slot stays empty ──
         for _rid in st.session_state["period_rows"]:
@@ -1376,13 +1536,8 @@ section[data-testid="stSidebar"] div[class*="st-key-add_period_row"] button:hove
             c_dur, c_cnt, c_del = st.columns([4, 4, 1])
 
             with c_dur:
-                st.selectbox(
-                    "Time per period",
-                    options=DURATION_OPTIONS,
-                    index=DURATION_OPTIONS.index(40),
-                    label_visibility="collapsed",
-                    key=f"dur_sel_{_rid}",
-                )
+                st.selectbox("Time per period", options=DURATION_OPTIONS, index=DURATION_OPTIONS.index(40),
+                             label_visibility="collapsed", key=f"dur_sel_{_rid}")
 
             with c_cnt:
                 cm, cv, cp = st.columns([1, 3, 1])
@@ -1459,7 +1614,7 @@ section[data-testid="stSidebar"] div[class*="st-key-add_period_row"] button:hove
         else:
             fp_icon_html = ''
         st.markdown(
-            f'<div class="sect-label" style="margin-bottom:1.25rem;">{fp_icon_html}'
+            f'<div class="sect-label" style="margin-bottom:0.45rem;">{fp_icon_html}'
             f'<span>Period Budget</span></div>',
             unsafe_allow_html=True,
         )
@@ -1474,7 +1629,7 @@ section[data-testid="stSidebar"] div[class*="st-key-add_period_row"] button:hove
             if f"cnt_p{_rid_p}" not in st.session_state:
                 st.session_state[f"cnt_p{_rid_p}"] = 1
 
-        # Dynamic CSS: ⊕ add-row button shows period.png icon (Principal)
+        # Dynamic CSS: ⊕ add-row button shows period.png icon (Plan)
         if PERIOD_SRC:
             st.markdown(
                 f"""<style>
@@ -1494,22 +1649,20 @@ section[data-testid="stSidebar"] div[class*="st-key-add_period_row_p"] button:ho
                 unsafe_allow_html=True,
             )
 
-        # Column headers — [4, 4, 1]: dur | cnt | add-row icon
-        phdr_dur, phdr_cnt, phdr_add = st.columns([4, 4, 1])
-        with phdr_dur:
-            st.markdown(
-                '<span class="block-col-label">Time per period (min)</span>',
-                unsafe_allow_html=True,
+        # ── Column header labels — rendered once above the first row ──────────
+        _hc_dur_p, _hc_cnt_p, _hc_add_p = st.columns([4, 4, 1])
+        with _hc_dur_p:
+            st.markdown('<div style="font-size:0.68rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#5a5754;margin-bottom:0.15rem;">Mins / Period</div>', unsafe_allow_html=True)
+        with _hc_cnt_p:
+            st.markdown('<div style="font-size:0.68rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#5a5754;margin-bottom:0.15rem;">No. of Periods</div>', unsafe_allow_html=True)
+        with _hc_add_p:
+            st.button(
+                "⊕",
+                key="add_period_row_p",
+                use_container_width=True,
+                help="Add another period type",
+                on_click=_cb_add_row_p,
             )
-        with phdr_cnt:
-            st.markdown(
-                '<span class="block-col-label">No. of periods</span>',
-                unsafe_allow_html=True,
-            )
-        with phdr_add:
-            st.button("⊕", key="add_period_row_p", use_container_width=True,
-                      help="Add another period type",
-                      on_click=_cb_add_row_p)
 
         # ── Period rows — all [4, 4, 1]; first row's delete slot stays empty ──
         for _rid_p in st.session_state["period_rows_p"]:
@@ -1517,13 +1670,8 @@ section[data-testid="stSidebar"] div[class*="st-key-add_period_row_p"] button:ho
             pc_dur, pc_cnt, pc_del = st.columns([4, 4, 1])
 
             with pc_dur:
-                st.selectbox(
-                    "Time per period",
-                    options=DURATION_OPTIONS,
-                    index=DURATION_OPTIONS.index(40),
-                    label_visibility="collapsed",
-                    key=f"dur_sel_p{_rid_p}",
-                )
+                st.selectbox("Time per period", options=DURATION_OPTIONS, index=DURATION_OPTIONS.index(40),
+                             label_visibility="collapsed", key=f"dur_sel_p{_rid_p}")
 
             with pc_cnt:
                 st.number_input(
@@ -1563,46 +1711,17 @@ section[data-testid="stSidebar"] div[class*="st-key-add_period_row_p"] button:ho
 
         st.divider()
 
-        _ch_sel_icon = f'<img src="{CHAPTER_SRC}" class="field-icon" alt="">' if CHAPTER_SRC else ''
-        st.markdown(
-            f'<div class="sect-label" style="margin-bottom:0.90rem;">{_ch_sel_icon}'
-            f'<span>Chapter Selection</span></div>',
-            unsafe_allow_html=True,
-        )
-
-        sa_col, da_col = st.columns(2)
-        with sa_col:
-            if st.button("Select All", key="sel_all", use_container_width=True):
-                for ch in chapters:
-                    st.session_state.ch_selected[ch["chapter_number"]] = True
-                st.rerun()
-        with da_col:
-            if st.button("Deselect All", key="desel_all", use_container_width=True):
-                for ch in chapters:
-                    st.session_state.ch_selected[ch["chapter_number"]] = False
-                st.rerun()
-
-        st.markdown('<div style="height:1.80rem;"></div>', unsafe_allow_html=True)
-
-        for ch in chapters:
-            ch_num = ch["chapter_number"]
-            checked = st.checkbox(
-                ch_short(ch),
-                value=st.session_state.ch_selected.get(ch_num, True),
-                key=f"chk_{ch_num}",
+        if st.button("Generate Allocation Report", type="primary",
+                     use_container_width=True, key="principal_gen"):
+            any_selected = any(
+                st.session_state.ch_selected.get(ch["chapter_number"], False)
+                for ch in chapters
             )
-            st.session_state.ch_selected[ch_num] = checked
-
-        st.divider()
-
-        if st.button(
-            "Generate Allocation Report",
-            type="primary",
-            use_container_width=True,
-            key="principal_gen",
-        ):
-            st.session_state.principal_generated = True
-            st.rerun()
+            if not any_selected:
+                st.warning("Please select at least one chapter before generating.")
+            else:
+                st.session_state.principal_generated = True
+                st.rerun()
 
     # ── Sidebar spacer + user footer (sticky at bottom) ───────────────────────
     st.markdown('<div class="sidebar-spacer"></div>', unsafe_allow_html=True)
@@ -1636,7 +1755,7 @@ if not has_chapter_data:
 #  TEACHER WORKSPACE
 #  Change 2: tabs = Competencies · Lesson Plan · Assessment
 # ═════════════════════════════════════════════════
-elif st.session_state.role == "Teacher":
+elif st.session_state.role == "Teach":
 
     if st.session_state.teacher_ch_idx is None:
         st.markdown(
@@ -1712,14 +1831,59 @@ elif st.session_state.role == "Teacher":
                 st.info("Assessment will appear here once the API call is wired.")
 
 # ═════════════════════════════════════════════════
-#  PRINCIPAL WORKSPACE
-#  tabs = Period Allocation · Competency Report
+#  PLAN WORKSPACE
 # ═════════════════════════════════════════════════
 else:
 
-    tab_alloc, tab_cov = st.tabs(
-        ["Period Allocation", "Competency Report"]
-    )
+    # ── Chapter selection panel (always visible, above tabs) ──────────────────
+
+    # Header row: label left, Select All / Deselect All right
+    _cs_head_l, _cs_head_r = st.columns([1, 1])
+    with _cs_head_l:
+        _ch_sel_icon = f'<img src="{CHAPTER_SRC}" class="field-icon" alt="">' if CHAPTER_SRC else ''
+        st.markdown(
+            f'<div class="sect-label" style="margin-bottom:0;">{_ch_sel_icon}'
+            f'<span>Chapter Selection</span></div>',
+            unsafe_allow_html=True,
+        )
+    with _cs_head_r:
+        _sa2, _da2 = st.columns(2)
+        with _sa2:
+            if st.button("Select All", key="sel_all", use_container_width=True):
+                for ch in chapters:
+                    st.session_state.ch_selected[ch["chapter_number"]] = True
+                    st.session_state[f"chk_{ch['chapter_number']}"] = True
+                st.rerun()
+        with _da2:
+            if st.button("Deselect All", key="desel_all", use_container_width=True):
+                for ch in chapters:
+                    st.session_state.ch_selected[ch["chapter_number"]] = False
+                    st.session_state[f"chk_{ch['chapter_number']}"] = False
+                st.rerun()
+
+    st.markdown('<div style="height:0.5rem;"></div>', unsafe_allow_html=True)
+
+    # 3-column chapter tile grid
+    _cols = st.columns(3)
+    for _i, ch in enumerate(chapters):
+        ch_num = ch["chapter_number"]
+        _is_sel = st.session_state.get(f"chk_{ch_num}",
+                  st.session_state.ch_selected.get(ch_num, False))
+        with _cols[_i % 3]:
+            _new_val = st.checkbox(
+                f"Ch {ch_num:02d} · {ch['chapter_title']}",
+                value=_is_sel,
+                key=f"chk_{ch_num}",
+            )
+            if _new_val != _is_sel:
+                st.session_state.ch_selected[ch_num] = _new_val
+                st.rerun()
+
+    st.markdown('<div style="height:0.5rem;"></div>', unsafe_allow_html=True)
+    st.divider()
+
+    # ── Allocation tabs ────────────────────────────────────────────────────────
+    tab_alloc, tab_cov = st.tabs(["Period Allocation", "Competency Report"])
 
     with tab_alloc:
         if not st.session_state.principal_generated:
