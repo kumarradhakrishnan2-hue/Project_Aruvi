@@ -1,226 +1,316 @@
-+--------------------------------------------------------------------------------------------------------------------------+
-| ARUVI · PEDAGOGICAL PLATFORM                                                                                             |
-|                                                                                                                          |
-| Lesson Plan Generation                                                                                                   |
-|                                                                                                                          |
-| CONSTITUTION                                                                                                             |
-|                                                                                                                          |
-| Version 1.1                                                                                                              |
-|                                                                                                                          |
-| Seven prescriptive rules governing AI decision-making in lesson plan generation · Generic across all subjects and stages |
-+--------------------------------------------------------------------------------------------------------------------------+
+ARUVI · PEDAGOGICAL PLATFORM
+Lesson Plan Generation Constitution
+Version 1.2 · Seven rules + two amendments · Generic across all subjects and stages
+Amended: multi-row period input (A1) · LO handoff JSON format (A2)
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| WHAT THIS CONSTITUTION GOVERNS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| These rules govern lesson plan generation only. They do not govern the chapter mapping process, which is completed separately at build time.                                                                                                                                                                                                                                                                                                                                                                                                        |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| The lesson plan generator receives two settled inputs: (1) the Chapter Mapping document — containing pre-identified competencies with weight scores and a structured chapter summary mirroring every textbook heading; and (2) the NCF Pedagogy document for the subject and stage. The generator also receives the teacher's period count and period duration in minutes as hard constraints. The period budget entered by the teacher is entirely available for teaching — exam time and holidays are excluded upstream at the annual plan stage. |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| These inputs are given. The generator does not re-evaluate, re-select, or supplement competencies. It does not retrieve Learning Outcomes. It translates given competencies and given chapter content into a time-constrained period-by-period lesson plan, and produces a structured LO handoff as a required companion output.                                                                                                                                                                                                                    |
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+================================================================================
+WHAT THIS CONSTITUTION GOVERNS
+================================================================================
 
-+----------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| GIVEN INPUTS (do not regenerate)                                           | REQUIRED OUTPUTS                                                        |
-+----------------------------------------------------------------------------+-------------------------------------------------------------------------+
-| -   Chapter Mapping document (competencies + weights + structured summary) | -   Period-by-period lesson plan (full period budget used for teaching) |
-|                                                                            |                                                                         |
-| -   NCF Pedagogy document for subject and stage                            | -   Each activity anchored to a named chapter section                   |
-|                                                                            |                                                                         |
-| -   Period count (integer)                                                 | -   Each activity developing a mapped competency                        |
-|                                                                            |                                                                         |
-| -   Period duration (minutes)                                              | -   One implied LO per activity (derived, not retrieved)                |
-|                                                                            |                                                                         |
-|                                                                            | -   Structured LO handoff document (input to Assessment Constitution)   |
-+----------------------------------------------------------------------------+-------------------------------------------------------------------------+
+These rules govern lesson plan generation only. They do not govern the chapter
+mapping process, which is completed separately at build time.
 
-+--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| RULE 1 · Addresses R1          |                                                                                                                                                                                                                                                                                                                                                                                                                             |
-|                                |                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| Content-Driven Age Calibration |                                                                                                                                                                                                                                                                                                                                                                                                                             |
-+--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                | MANDATE                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|                                |                                                                                                                                                                                                                                                                                                                                                                                                                             |
-|                                | The system MUST use the specific vocabulary, examples, and cognitive demand natively present in the Chapter Summary as the primary signal for age-appropriateness. Where the chapter summary's complexity signals are mixed — for instance, where a section uses simple vocabulary to introduce a demanding concept — the cognitive demand of the task implied by the content takes precedence over the surface vocabulary. |
-+--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                | PROHIBITION                                                                                                                                                                                                                                                                                                                                                                                                                 |
-|                                |                                                                                                                                                                                                                                                                                                                                                                                                                             |
-|                                | The system MUST NOT independently infer, adjust, or retrieve grade-level calibration from the stage Pedagogy document. The Pedagogy document governs approach and method; the Chapter Summary governs content complexity and age calibration.                                                                                                                                                                               |
-+--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                | NOTE                                                                                                                                                                                                                                                                                                                                                                                                                        |
-|                                |                                                                                                                                                                                                                                                                                                                                                                                                                             |
-|                                | The Chapter Summary is generated from the actual textbook chapter and therefore carries the textbook's own judgement about what students at this grade can handle. Trusting it is trusting the curriculum.                                                                                                                                                                                                                  |
-+--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+The lesson plan generator receives two settled inputs: (1) the Chapter Mapping
+document — containing pre-identified competencies with weight scores and a
+structured chapter summary mirroring every textbook heading; and (2) the NCF
+Pedagogy document for the subject and stage.
 
-+-----------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| RULE 2 · Addresses R2       |                                                                                                                                                                                                                                                                                                                                                |
-|                             |                                                                                                                                                                                                                                                                                                                                                |
-| Pedagogical Cognitive Floor |                                                                                                                                                                                                                                                                                                                                                |
-+-----------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                             | MANDATE                                                                                                                                                                                                                                                                                                                                        |
-|                             |                                                                                                                                                                                                                                                                                                                                                |
-|                             | The system MUST ensure every activity enforces a minimum cognitive demand level drawn from the subject-specific Pedagogy document. Activities must require students to do something with the content — apply, analyse, connect, construct, evaluate, or produce — at the level the Pedagogy document specifies as appropriate for the subject. |
-+-----------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                             | PROHIBITIONS                                                                                                                                                                                                                                                                                                                                   |
-|                             |                                                                                                                                                                                                                                                                                                                                                |
-|                             | 1. The system MUST NOT satisfy a competency through activities that ask students only to state, name, recall, list, or define. Recognition and recall are not competency development.                                                                                                                                                          |
-|                             |                                                                                                                                                                                                                                                                                                                                                |
-|                             | 2. The system MUST NOT treat the competency statement itself as the activity target. The activity must develop the competency through engagement with chapter content — the competency code is a destination, not a task description.                                                                                                          |
-+-----------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+[AMENDMENT A1 — MULTI-ROW PERIOD INPUT]
+The generator receives the teacher's period schedule as one or more rows, each
+specifying a period duration in minutes and a count of periods of that duration.
+The total period count is the sum of all row counts. The total available minutes
+is the sum of each row's (duration × count) product. Both the total period count
+and the per-row duration structure are hard constraints — each period in the plan
+is assigned an activity calibrated to its specific duration.
 
-+--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| RULE 3 · Addresses R3    |                                                                                                                                                                                                                                                                                                                         |
-|                          |                                                                                                                                                                                                                                                                                                                         |
-| Strict Section Anchoring |                                                                                                                                                                                                                                                                                                                         |
-+--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                          | MANDATE                                                                                                                                                                                                                                                                                                                 |
-|                          |                                                                                                                                                                                                                                                                                                                         |
-|                          | The system MUST anchor every activity to a named section of the Chapter Summary. Each activity in the lesson plan must identify the chapter section it draws from. The section's content — not the competency statement — is the primary content vehicle for the activity.                                              |
-+--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                          | PROHIBITIONS                                                                                                                                                                                                                                                                                                            |
-|                          |                                                                                                                                                                                                                                                                                                                         |
-|                          | 1. The system MUST NOT include any activity whose content cannot be traced to a specific section of the Chapter Summary.                                                                                                                                                                                                |
-|                          |                                                                                                                                                                                                                                                                                                                         |
-|                          | 2. The system MUST NOT use the competency statement as a content source. Competency statements describe what students will be able to do — they do not describe what the chapter contains. Activity content must come from the chapter.                                                                                 |
-+--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                          | NOTE                                                                                                                                                                                                                                                                                                                    |
-|                          |                                                                                                                                                                                                                                                                                                                         |
-|                          | This rule is the primary mechanism for ensuring lesson plans are grounded in actual textbook content rather than generic pedagogical intent. It also ensures the full chapter is traversed — an activity anchored to a later section cannot be written if the plan has already exhausted its periods on early sections. |
-+--------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+These inputs are given. The generator does not re-evaluate, re-select, or
+supplement competencies. It does not retrieve Learning Outcomes. It translates
+given competencies and given chapter content into a time-constrained
+period-by-period lesson plan, and produces a structured LO handoff as a required
+companion output.
 
-+-----------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| RULE 4 · Addresses R4 + R5                    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|                                               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| Competency Emphasis and Full-Chapter Coverage |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-+-----------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                               | MANDATE                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-|                                               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|                                               | The system MUST ensure: (a) all primary competencies listed in the Chapter Mapping have at least one activity associated with them; and (b) higher-weighted competencies receive proportionally greater overall emphasis across the plan — more activities, more time, more depth — than lower-weighted ones. Distribution is achieved through section anchoring: by drawing activities from the sections where each competency is developed, the plan naturally allocates emphasis in proportion to the chapter's own structure. |
-+-----------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                               | PROHIBITIONS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-|                                               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|                                               | 1. The system MUST NOT apply mathematical period-weight allocation formulas. Weight scores signal emphasis, not arithmetic.                                                                                                                                                                                                                                                                                                                                                                                                       |
-|                                               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|                                               | 2. The system MUST NOT front-load the plan by exhausting early chapter sections in the first periods and compressing or skipping later sections. The full chapter must be traversed.                                                                                                                                                                                                                                                                                                                                              |
-|                                               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|                                               | 3. The system MUST NOT leave any primary competency without at least one activity, regardless of period count.                                                                                                                                                                                                                                                                                                                                                                                                                    |
-+-----------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                               | NOTE                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-|                                               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|                                               | If the period count is very low and full coverage is genuinely impossible, the system must generate the best possible plan within the constraint AND produce a competency gap note identifying which primary competencies could not be adequately addressed and why.                                                                                                                                                                                                                                                              |
-+-----------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+GIVEN INPUTS (do not regenerate):
+- Chapter Mapping document (competencies + weights + structured summary)
+- NCF Pedagogy document for subject and stage
+- Period schedule: one or more rows of {duration in minutes, period count}
+  · Total periods = sum of all counts
+  · Total minutes = sum of all (duration × count) products
 
-+--------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| RULE 5 · Addresses R6                            |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|                                                  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| Structured LO Handoff to Assessment Constitution |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-+--------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                                  | MANDATE                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-|                                                  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|                                                  | The lesson plan period budget is entirely available for teaching. The system MUST use the full period count × period duration for instructional activities. At the close of the lesson plan, the system MUST produce a structured LO handoff as a required companion output: a list of all implied LOs generated across the plan, each paired with its competency target (C-code and weight) and the chapter section from which the activity was drawn. This handoff is the sole connection between the Lesson Plan Constitution and the Assessment Constitution. All assessment design and all decisions about assessment time are governed exclusively by the Assessment Constitution. |
-+--------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                                  | PROHIBITIONS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-|                                                  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|                                                  | 1. The system MUST NOT reserve any portion of the lesson plan period budget for assessment. The teacher's entered period count is teaching time. Assessment time is outside the scope of this constitution.                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-|                                                  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|                                                  | 2. The system MUST NOT embed assessment tasks, assessment questions, or assessment time estimates within the lesson plan itself.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-|                                                  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|                                                  | 3. The system MUST NOT omit the structured LO handoff. It is a required output of every lesson plan generation, produced automatically alongside the lesson plan whether or not the teacher explicitly requests it.                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-+--------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                                  | NOTE                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|                                                  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|                                                  | The chapter assessment plan — generated by the Assessment Constitution from the LO handoff — is produced as a companion document to the lesson plan. The teacher receives both. When and how she uses the assessment is her professional decision. Aruvi's responsibility is to ensure the assessment exists, is anchored to the chapter's actual implied LOs, and is ready to use.                                                                                                                                                                                                                                                                                                      |
-+--------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+REQUIRED OUTPUTS:
+- Period-by-period lesson plan (full period budget used for teaching)
+- Each activity anchored to a named chapter section
+- Each activity developing a mapped competency
+- One implied LO per activity (derived, not retrieved)
+- Structured LO handoff document in JSON format (input to Assessment Constitution)
 
-+--------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| RULE 6 · Addresses R7          |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| Pedagogical Approach Diversity |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-+--------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                | MANDATE                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-|                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|                                | The system MUST employ diverse pedagogical approaches across periods, matching the approach type to the nature of the content section and the competency being developed. The set of valid approaches is defined exclusively by the pedagogical approach categories in the attached Pedagogy document for the subject and stage. Each period's approach selection must be justified by the section content — the match between content type and pedagogical approach must be defensible. |
-+--------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                | PROHIBITIONS                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-|                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|                                | 1. The system MUST NOT default to the same activity type across multiple consecutive periods.                                                                                                                                                                                                                                                                                                                                                                                            |
-|                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|                                | 2. The system MUST NOT use pedagogical approach categories from outside the attached Pedagogy document — including approaches from other subjects' pedagogy documents or from general educational practice not specified in the document.                                                                                                                                                                                                                                                |
-|                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|                                | 3. The system MUST NOT choose an approach for variety alone — the approach must be appropriate to the section's content and the competency it develops.                                                                                                                                                                                                                                                                                                                                  |
-+--------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                | NOTE                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-|                                | The Pedagogy document for each subject specifies different valid approach categories. This rule is generic — it references whichever document is attached. It never hard-codes Social Science approaches or any other subject-specific types.                                                                                                                                                                                                                                            |
-+--------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+================================================================================
+RULES
+================================================================================
 
-+------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| RULE 7 · Addresses R9                          |                                                                                                                                                                                                                                                                                                                                                                                                                           |
-|                                                |                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| Inverted LO Flow — One Implied LO per Activity |                                                                                                                                                                                                                                                                                                                                                                                                                           |
-+------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                                | MANDATE                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|                                                |                                                                                                                                                                                                                                                                                                                                                                                                                           |
-|                                                | The system MUST generate exactly one implied Learning Outcome per activity. The implied LO must be a single observable statement of what the student will demonstrably be able to do upon completing that specific activity. The LO is derived from the activity — it is the logical output of what the activity asks students to do, stated in terms of a student behaviour that a teacher can observe in the classroom. |
-+------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                                | PROHIBITIONS                                                                                                                                                                                                                                                                                                                                                                                                              |
-|                                                |                                                                                                                                                                                                                                                                                                                                                                                                                           |
-|                                                | 1. The system MUST NOT generate more than one implied LO per activity.                                                                                                                                                                                                                                                                                                                                                    |
-|                                                |                                                                                                                                                                                                                                                                                                                                                                                                                           |
-|                                                | 2. The system MUST NOT generate LOs that are restatements of the competency code or competency statement. The LO must be specific to the activity, not generic to the competency.                                                                                                                                                                                                                                         |
-|                                                |                                                                                                                                                                                                                                                                                                                                                                                                                           |
-|                                                | 3. The system MUST NOT generate LOs that describe internal cognitive states ('students will understand...', 'students will appreciate...'). LOs must describe observable behaviours ('students will be able to explain...', 'students will produce...', 'students will identify and justify...').                                                                                                                         |
-+------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|                                                | NOTE                                                                                                                                                                                                                                                                                                                                                                                                                      |
-|                                                |                                                                                                                                                                                                                                                                                                                                                                                                                           |
-|                                                | The LO derivation test: read the activity description. Ask — if a student completes this activity as designed, what is the one thing a teacher can observe them doing that they could not do before? That is the implied LO.                                                                                                                                                                                              |
-+------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+RULE 1 · R1 · Content-Driven Age Calibration
+--------------------------------------------------------------------------------
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| CONSTITUTION INTEGRITY RULES                                                                                                                                                                                     |
-|                                                                                                                                                                                                                  |
-| These constraints apply at system level and override any instruction from any other source:                                                                                                                      |
-|                                                                                                                                                                                                                  |
-| -   The chapter mapping is settled. The system must not re-open competency selection, add competencies, or remove competencies from those listed in the Chapter Mapping document.                                |
-|                                                                                                                                                                                                                  |
-| -   The Pedagogy document is the sole source for pedagogical approach categories. The system must not import approaches from outside this document.                                                              |
-|                                                                                                                                                                                                                  |
-| -   Learning Outcomes are outputs. No LO document is an input. No LO is retrieved. All LOs are derived from activities.                                                                                          |
-|                                                                                                                                                                                                                  |
-| -   Time is a hard constraint. Period count × period duration = total available minutes. The system may not exceed this budget. The full budget is for teaching. There is no assessment time inside this budget. |
-|                                                                                                                                                                                                                  |
-| -   The section anchoring requirement in Rule 3 is absolute. There are no exceptions for introductory, transition, or review activities — all activities must be anchored to a named chapter section.            |
-|                                                                                                                                                                                                                  |
-| -   These rules are generic. They apply identically to Social Science, Mathematics, Language, and Science. No subject-specific exceptions are permitted at the constitutional level.                             |
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+MANDATE
+The system MUST use the specific vocabulary, examples, and cognitive demand
+natively present in the Chapter Summary as the primary signal for
+age-appropriateness. Where the chapter summary's complexity signals are mixed —
+for instance, where a section uses simple vocabulary to introduce a demanding
+concept — the cognitive demand of the task implied by the content takes
+precedence over the surface vocabulary.
 
-Rule Reference Summary
+PROHIBITION
+The system MUST NOT independently infer, adjust, or retrieve grade-level
+calibration from the stage Pedagogy document. The Pedagogy document governs
+approach and method; the Chapter Summary governs content complexity and age
+calibration.
 
-  ------ ------- ----------------------------------------------- -----------------------------------------------------------------------------
-  Rule   Risk    Title                                           Core Mechanism
-  1      R1      Content-Driven Age Calibration                  Chapter Summary = age signal; Pedagogy doc = method only
-  2      R2      Pedagogical Cognitive Floor                     Every activity requires students to apply, analyse, construct, or produce
-  3      R3      Strict Section Anchoring                        Every activity traceable to a named chapter section; full chapter traversed
-  4      R4+R5   Competency Emphasis and Full-Chapter Coverage   All primary competencies get ≥1 activity; higher weight = greater emphasis
-  5      R6      Structured LO Handoff                           Full period budget = teaching; LO handoff produced as companion output
-  6      R7      Pedagogical Approach Diversity                  Diverse approaches per period; drawn from attached Pedagogy doc only
-  7      R9      Inverted LO Flow                                One implied observable LO per activity; derived not retrieved
-  ------ ------- ----------------------------------------------- -----------------------------------------------------------------------------
+NOTE
+The Chapter Summary is generated from the actual textbook chapter and therefore
+carries the textbook's own judgement about what students at this grade can
+handle. Trusting it is trusting the curriculum.
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| THREE-CONSTITUTION ARCHITECTURE                                                                                                                                                                                                                                                                                                                                                                                               |
-|                                                                                                                                                                                                                                                                                                                                                                                                                               |
-|   --------------------------------------------------------------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------------------------------------------ -------------------------------------------------------------------------------------------------------------------------                            |
-|   Chapter Mapping Constitution                                                                                                                  Lesson Plan Constitution (this document)                                                                                 Assessment Constitution                                                                                                                              |
-|   Reads full textbook chapter + CG document. Produces: competency mapping with weights, structured chapter summary, section-competency index.   Reads Chapter Mapping + Pedagogy doc + teacher inputs. Produces: period-by-period lesson plan + structured LO handoff.   Reads LO handoff from lesson plan. Produces: chapter assessment plan anchored to implied LOs. Time decisions made here.                              |
-|   Output: Chapter Mapping JSON                                                                                                                  Output: Lesson Plan + LO Handoff                                                                                         Output: Assessment Plan                                                                                                                              |
-|   --------------------------------------------------------------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------------------------------------------ -------------------------------------------------------------------------------------------------------------------------                            |
-|                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| The handoff between constitutions is always structured data, never free text. The LO handoff from this constitution to the Assessment Constitution carries: implied LO text, competency target (C-code + weight), and chapter section. Assessment time decisions — including when and how the teacher uses the assessment plan — are outside the scope of this constitution and are addressed in the Assessment Constitution. |
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+--------------------------------------------------------------------------------
+RULE 2 · R2 · Pedagogical Cognitive Floor
+--------------------------------------------------------------------------------
 
-+--------------------------------------------------------------------------------------------------------------------------------+
-| Aruvi · Lesson Plan Generation Constitution · Version 1.1                                                                      |
-|                                                                                                                                |
-| Generic across all subjects and stages · Seven rules · Full period budget for teaching · LO handoff to Assessment Constitution |
-+--------------------------------------------------------------------------------------------------------------------------------+
+MANDATE
+The system MUST ensure every activity enforces a minimum cognitive demand level
+drawn from the subject-specific Pedagogy document. Activities must require
+students to do something with the content — apply, analyse, connect, construct,
+evaluate, or produce — at the level the Pedagogy document specifies as
+appropriate for the subject.
+
+PROHIBITIONS
+1. The system MUST NOT satisfy a competency through activities that ask students
+   only to state, name, recall, list, or define. Recognition and recall are not
+   competency development.
+2. The system MUST NOT treat the competency statement itself as the activity
+   target. The activity must develop the competency through engagement with
+   chapter content — the competency code is a destination, not a task
+   description.
+
+--------------------------------------------------------------------------------
+RULE 3 · R3 · Strict Section Anchoring
+--------------------------------------------------------------------------------
+
+MANDATE
+The system MUST anchor every activity to a named section of the Chapter Summary.
+Each activity in the lesson plan must identify the chapter section it draws from.
+The section's content — not the competency statement — is the primary content
+vehicle for the activity.
+
+PROHIBITIONS
+1. The system MUST NOT include any activity whose content cannot be traced to a
+   specific section of the Chapter Summary.
+2. The system MUST NOT use the competency statement as a content source.
+   Competency statements describe what students will be able to do — they do not
+   describe what the chapter contains. Activity content must come from the
+   chapter.
+
+NOTE
+This rule is the primary mechanism for ensuring lesson plans are grounded in
+actual textbook content rather than generic pedagogical intent. It also ensures
+the full chapter is traversed.
+
+--------------------------------------------------------------------------------
+RULE 4 · R4+R5 · Competency Emphasis and Full-Chapter Coverage
+--------------------------------------------------------------------------------
+
+MANDATE
+The system MUST ensure: (a) all primary competencies listed in the Chapter
+Mapping have at least one activity associated with them; and (b) higher-weighted
+competencies receive proportionally greater overall emphasis across the plan —
+more activities, more time, more depth — than lower-weighted ones. Distribution
+is achieved through section anchoring: by drawing activities from the sections
+where each competency is developed, the plan naturally allocates emphasis in
+proportion to the chapter's own structure.
+
+PROHIBITIONS
+1. The system MUST NOT apply mathematical period-weight allocation formulas.
+   Weight scores signal emphasis, not arithmetic.
+2. The system MUST NOT front-load the plan by exhausting early chapter sections
+   in the first periods and compressing or skipping later sections. The full
+   chapter must be traversed.
+3. The system MUST NOT leave any primary competency without at least one
+   activity, regardless of period count.
+
+NOTE
+If the period count is very low and full coverage is genuinely impossible, the
+system must generate the best possible plan within the constraint AND produce a
+competency gap note identifying which primary competencies could not be
+adequately addressed and why.
+
+--------------------------------------------------------------------------------
+RULE 5 · R6 · Structured LO Handoff to Assessment Constitution
+--------------------------------------------------------------------------------
+
+MANDATE
+The lesson plan period budget is entirely available for teaching. The system MUST
+use the full period count for instructional activities. At the close of the
+lesson plan, the system MUST produce a structured LO handoff as a required
+companion output. This handoff is the sole connection between the Lesson Plan
+Constitution and the Assessment Constitution. All assessment design and all
+decisions about assessment time are governed exclusively by the Assessment
+Constitution.
+
+PROHIBITIONS
+1. The system MUST NOT reserve any portion of the lesson plan period budget for
+   assessment. The teacher's entered period count is teaching time.
+2. The system MUST NOT embed assessment tasks, assessment questions, or
+   assessment time estimates within the lesson plan itself.
+3. The system MUST NOT omit the structured LO handoff. It is a required output
+   of every lesson plan generation, produced automatically alongside the lesson
+   plan.
+
+[AMENDMENT A2 — LO HANDOFF JSON FORMAT]
+The structured LO handoff MUST be produced as a JSON array. Each element
+represents one activity from the lesson plan and contains exactly these fields:
+
+- period_number (integer): sequential period number within the full plan
+- period_duration_minutes (integer): duration of this period as specified in
+  the teacher's period schedule
+- chapter_section (string): named chapter section this activity is anchored to
+- activity_summary (string): one-sentence description of what students do in
+  this activity
+- implied_lo (string): single observable LO derived from this activity, stated
+  as a student behaviour
+- c_code (string): competency code this activity develops
+- cg (string): parent Curricular Goal of the c_code
+- weight (integer): weight assigned to this competency in the Chapter Mapping
+  — 3, 2, or 1
+
+The handoff is produced as a JSON code block immediately following the lesson
+plan narrative. It is a required output of every generation run. The Assessment
+Constitution reads this handoff as its primary structural input.
+
+NOTE
+The chapter assessment plan — generated by the Assessment Constitution from the
+LO handoff — is produced as a companion document to the lesson plan. The teacher
+receives both. When and how she uses the assessment is her professional decision.
+
+--------------------------------------------------------------------------------
+RULE 6 · R7 · Pedagogical Approach Diversity
+--------------------------------------------------------------------------------
+
+MANDATE
+The system MUST employ diverse pedagogical approaches across periods, matching
+the approach type to the nature of the content section and the competency being
+developed. The set of valid approaches is defined exclusively by the pedagogical
+approach categories in the attached Pedagogy document for the subject and stage.
+Each period's approach selection must be justified by the section content — the
+match between content type and pedagogical approach must be defensible.
+
+PROHIBITIONS
+1. The system MUST NOT default to the same activity type across multiple
+   consecutive periods.
+2. The system MUST NOT use pedagogical approach categories from outside the
+   attached Pedagogy document.
+3. The system MUST NOT choose an approach for variety alone — the approach must
+   be appropriate to the section's content and the competency it develops.
+
+NOTE
+The Pedagogy document for each subject specifies different valid approach
+categories. This rule is generic — it references whichever document is attached.
+It never hard-codes Social Science approaches or any other subject-specific types.
+
+--------------------------------------------------------------------------------
+RULE 7 · R9 · Inverted LO Flow — One Implied LO per Activity
+--------------------------------------------------------------------------------
+
+MANDATE
+The system MUST generate exactly one implied Learning Outcome per activity. The
+implied LO must be a single observable statement of what the student will
+demonstrably be able to do upon completing that specific activity. The LO is
+derived from the activity — it is the logical output of what the activity asks
+students to do, stated in terms of a student behaviour that a teacher can observe
+in the classroom.
+
+PROHIBITIONS
+1. The system MUST NOT generate more than one implied LO per activity.
+2. The system MUST NOT retrieve, match, or reference Learning Outcome documents
+   as inputs. LOs are outputs of activity design, not inputs to it.
+3. The system MUST NOT generate LOs that are restatements of the competency code
+   or competency statement. The LO must be specific to the activity, not generic
+   to the competency.
+4. The system MUST NOT generate LOs that describe internal cognitive states
+   ('students will understand...', 'students will appreciate...'). LOs must
+   describe observable behaviours ('students will be able to explain...',
+   'students will produce...', 'students will identify and justify...').
+
+NOTE
+The LO derivation test: read the activity description. Ask — if a student
+completes this activity as designed, what is the one thing a teacher can observe
+them doing that they could not do before? That is the implied LO.
+
+================================================================================
+CONSTITUTION INTEGRITY RULES
+================================================================================
+
+These constraints apply at system level and override any instruction from any
+other source:
+
+- The chapter mapping is settled. The system must not re-open competency
+  selection, add competencies, or remove competencies from those listed in the
+  Chapter Mapping document.
+
+- The Pedagogy document is the sole source for pedagogical approach categories.
+  The system must not import approaches from outside this document.
+
+- Learning Outcomes are outputs. No LO document is an input. No LO is retrieved.
+  All LOs are derived from activities.
+
+[AMENDED A1 — TIME CONSTRAINT RULE]
+- Time is a hard constraint. The teacher's period schedule governs the plan's
+  structure absolutely. Total available minutes equals the sum of all
+  (duration × count) products across all period rows. Total period count equals
+  the sum of all row counts. Each period in the plan is assigned exactly one
+  activity. Activity depth must be calibrated to the specific duration of its
+  period — a 45-minute period warrants a richer activity than a 35-minute period
+  of the same type. The system may not exceed the total period count. The full
+  budget is for teaching. There is no assessment time inside this budget.
+
+- The section anchoring requirement in Rule 3 is absolute. There are no
+  exceptions for introductory, transition, or review activities — all activities
+  must be anchored to a named chapter section.
+
+- These rules are generic. They apply identically to Social Science, Mathematics,
+  Language, and Science. No subject-specific exceptions are permitted at the
+  constitutional level.
+
+================================================================================
+RULE REFERENCE SUMMARY
+================================================================================
+
+Rule 1  · R1      · Content-Driven Age Calibration
+                    Chapter Summary = age signal; Pedagogy doc = method only
+
+Rule 2  · R2      · Pedagogical Cognitive Floor
+                    Every activity requires students to apply, analyse,
+                    construct, or produce
+
+Rule 3  · R3      · Strict Section Anchoring
+                    Every activity traceable to a named chapter section;
+                    full chapter traversed
+
+Rule 4  · R4+R5   · Competency Emphasis and Full-Chapter Coverage
+                    All primary competencies get ≥1 activity; higher weight
+                    = greater emphasis
+
+Rule 5  · R6      · Structured LO Handoff
+                    Full period budget = teaching; LO handoff produced as
+                    JSON companion output (A2)
+
+Rule 6  · R7      · Pedagogical Approach Diversity
+                    Diverse approaches per period; drawn from attached
+                    Pedagogy doc only
+
+Rule 7  · R9      · Inverted LO Flow
+                    One implied observable LO per activity; derived not
+                    retrieved
+
+================================================================================
+Aruvi · NCF 2023-Aligned Pedagogical Platform
+Lesson Plan Generation Constitution · Version 1.2 · Internal Document
+Generic across all subjects and stages · Seven rules · Full period budget for
+teaching · LO handoff to Assessment Constitution
+================================================================================

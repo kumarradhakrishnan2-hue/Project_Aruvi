@@ -1,6 +1,6 @@
 """
 Aruvi · NCF 2023-Aligned Pedagogical Platform
-Streamlit prototype shell — UI only, no API calls wired.
+Streamlit prototype — LP and Assessment generation wired via Anthropic API.
 
 Layout
   Fixed top bar : [Logo + wordmark/slogan row] left  |  Teacher/Principal pills centre  |  empty right
@@ -1152,6 +1152,77 @@ hr { border-color: #d9d6d0 !important; }
 }
 
 /* ═══════════════════════════════════════════════════
+   ASK ARUVI PANEL  — session-state driven, fixed right
+   ═══════════════════════════════════════════════════ */
+/* Toggle button — fixed vertical tab on right edge */
+div[class*="st-key-ask_aruvi_toggle"] button {
+    position: fixed !important;
+    right: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 99999 !important;
+    width: 28px !important;
+    height: 88px !important;
+    padding: 0 !important;
+    border-radius: 6px 0 0 6px !important;
+    border: 1px solid #d9d6d0 !important;
+    border-right: none !important;
+    background: #f5f3ef !important;
+    color: #5a5754 !important;
+    font-size: 0.62rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    writing-mode: vertical-rl !important;
+    white-space: nowrap !important;
+    cursor: pointer !important;
+    box-shadow: -2px 0 6px rgba(0,0,0,0.06) !important;
+}
+div[class*="st-key-ask_aruvi_toggle"] button:hover {
+    background: #eae8e4 !important;
+    color: #2c2a27 !important;
+    border-color: #2c3e50 !important;
+}
+div[class*="st-key-ask_aruvi_toggle"] button * {
+    writing-mode: vertical-rl !important;
+    text-orientation: mixed !important;
+}
+/* Panel — slides in from right */
+.aruvi-chat-panel {
+    position: fixed;
+    top: 72px;
+    right: 0;
+    width: 260px;
+    height: calc(100vh - 72px);
+    background: #f5f3ef;
+    border-left: 1px solid #d9d6d0;
+    z-index: 99998;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -4px 0 16px rgba(0,0,0,0.08);
+}
+.aruvi-chat-panel-header {
+    padding: 14px 16px 10px;
+    border-bottom: 1px solid #d9d6d0;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #5a5754;
+}
+.aruvi-chat-panel-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-size: 0.72rem;
+    color: #9c9693;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════
    HIDE STREAMLIT CHROME
    ═══════════════════════════════════════════════════ */
 #MainMenu, footer { visibility: hidden; }
@@ -1321,6 +1392,7 @@ if "principal_next_block_id"  not in st.session_state: st.session_state.principa
 if "ch_selected"              not in st.session_state: st.session_state.ch_selected              = {ch["chapter_number"]: False for ch in chapters}
 if "ch_periods"               not in st.session_state: st.session_state.ch_periods               = {ch["chapter_number"]: 6    for ch in chapters}
 if "principal_generated"      not in st.session_state: st.session_state.principal_generated      = False
+if "ask_aruvi_open"           not in st.session_state: st.session_state.ask_aruvi_open           = False
 
 # Only Grade VII + Social Science has chapter data currently
 has_chapter_data = (
@@ -1906,3 +1978,19 @@ else:
             )
         else:
             st.info("Competency report will appear here once the API call is wired.")
+
+# ── Ask Aruvi toggle button (always visible, fixed to right edge) ─────────────
+_toggle_label = "Close" if st.session_state.ask_aruvi_open else "Ask Aruvi"
+if st.button(_toggle_label, key="ask_aruvi_toggle", help="Ask Aruvi"):
+    st.session_state.ask_aruvi_open = not st.session_state.ask_aruvi_open
+    st.rerun()
+
+# ── Ask Aruvi panel content (shown when open) ─────────────────────────────────
+if st.session_state.ask_aruvi_open:
+    st.markdown(
+        '<div class="aruvi-chat-panel">'
+        '<div class="aruvi-chat-panel-header">Ask Aruvi</div>'
+        '<div class="aruvi-chat-panel-body">Chat coming soon</div>'
+        '</div>',
+        unsafe_allow_html=True,
+    )
