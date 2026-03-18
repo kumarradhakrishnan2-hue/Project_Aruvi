@@ -106,7 +106,7 @@ def log_tokens(
     chapter_title:  str,
     input_tokens:   int,
     output_tokens:  int,
-    model:          str = "claude-sonnet-4-6",
+    model:          str = "claude-haiku-4-5-20251001",
 ):
     cost_inr = calculate_cost_inr(model, input_tokens, output_tokens)
     row = [
@@ -425,8 +425,8 @@ Output format:
     try:
         client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
         response = client.messages.create(
-            model="claude-sonnet-4-6",
-            max_tokens=8000,
+            model="claude-haiku-4-5-20251001",
+            max_tokens=16000,
             system=system_prompt,
             messages=[{"role": "user", "content": user_prompt}],
         )
@@ -466,7 +466,7 @@ Output format:
             "input_tokens": response.usage.input_tokens,
             "output_tokens":response.usage.output_tokens,
             "cost_inr":     calculate_cost_inr(
-                                "claude-sonnet-4-6",
+                                "claude-haiku-4-5-20251001",
                                 response.usage.input_tokens,
                                 response.usage.output_tokens,
                             ),
