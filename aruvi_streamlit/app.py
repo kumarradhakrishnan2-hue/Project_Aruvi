@@ -1,25 +1,488 @@
-"""
-Aruvi · NCF 2023-Aligned Pedagogical Platform
-Streamlit prototype — LP and Assessment generation wired via Anthropic API.
-
-Layout
-  Fixed top bar : [Logo + wordmark/slogan row] left  |  Teacher/Principal pills centre  |  empty right
-  Left sidebar  : Grade · Subject · contextual inputs · user footer
-  Right workspace: tab content for the active role
-"""
+from dotenv import load_dotenv
+load_dotenv("/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi/.env")
 
 import base64
+import csv
+import io
 import json
+import re
+from datetime import datetime
 from pathlib import Path
+from fpdf import FPDF
+from docx import Document
+from docx.shared import Pt, RGBColor
+from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 import streamlit as st
+import anthropic
+import os
+
+# ── Project root (needed by helper functions below) ───────────────────────────
+
+PROJECT_ROOT = Path("/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi")
+MISC_DIR     = PROJECT_ROOT / "miscellaneous"
+
+# ── Stage derivation ──────────────────────────────────────────────────────────
+
+def get_stage(grade: str) -> str:
+    preparatory = {"Grade III", "Grade IV", "Grade V"}
+    middle       = {"Grade VI", "Grade VII", "Grade VIII"}
+    if grade in preparatory: return "preparatory"
+    if grade in middle:      return "middle"
+    return "secondary"
+
+def grade_to_folder(grade: str) -> str:
+    return grade.lower().replace(" ", "_")
+
+def subject_to_folder(subject: str) -> str:
+    mapping = {
+        "Social Science": "social_sciences",
+        "Mathematics":    "mathematics",
+        "Science":        "science",
+        "English":        "languages",
+        "Second Language":"languages",
+        "EVS":            "science",
+    }
+    return mapping.get(subject, subject.lower().replace(" ", "_"))
+
+# ── Path resolver ─────────────────────────────────────────────────────────────
+
+def resolve_paths(grade: str, subject: str, chapter_number: int) -> dict:
+    stage   = get_stage(grade)
+    grade_f = grade_to_folder(grade)
+    subj_f  = subject_to_folder(subject)
+    mirror  = PROJECT_ROOT / "mirror"
+    nn      = f"{chapter_number:02d}"
+    return {
+        "lp_constitution":  mirror / "constitutions/lesson_plan/lesson_plan_constitution.txt",
+        "assessment_const": mirror / "constitutions/assessment/assessment_constitution.txt",
+        "pedagogy":         mirror / f"framework/{subj_f}/{stage}/pedagogy_{stage}_{subj_f}.txt",
+        "cg_doc":           mirror / f"framework/{subj_f}/{stage}/cg_{stage}_{subj_f}.txt",
+        "chapter_summary":  mirror / f"chapters/{subj_f}/{grade_f}/summaries/ch_{nn}_summary.txt",
+        "chapter_mapping":  mirror / f"chapters/{subj_f}/{grade_f}/mappings/ch_{nn}_mapping.json",
+    }
+
+def read_file(path: Path) -> str:
+    try:
+        return path.read_text(encoding="utf-8")
+    except Exception as e:
+        return f"[FILE NOT FOUND: {path}]"
+
+# ── API rates and token logging ───────────────────────────────────────────────
+
+API_RATES_PATH = PROJECT_ROOT / "knowledge_commons/evaluation_mappings/api_rates.json"
+TOKEN_LOG_PATH = PROJECT_ROOT / "knowledge_commons/evaluation_mappings/token_log.csv"
+
+@st.cache_data
+def load_api_rates() -> dict:
+    try:
+        return json.loads(API_RATES_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+def calculate_cost_inr(model: str, input_tokens: int, output_tokens: int) -> float:
+    rates       = load_api_rates()
+    usd_to_inr  = rates.get("usd_to_inr", 84.0)
+    model_rates = rates.get("models", {}).get(model, {})
+    input_rate  = model_rates.get("input_per_1k_usd",  0.003)
+    output_rate = model_rates.get("output_per_1k_usd", 0.015)
+    cost_usd    = (input_tokens  / 1000) * input_rate + \
+                  (output_tokens / 1000) * output_rate
+    return round(cost_usd * usd_to_inr, 4)
+
+def grade_to_roman(grade: str) -> str:
+    mapping = {
+        "Grade III": "iii", "Grade IV": "iv",  "Grade V":   "v",
+        "Grade VI":  "vi",  "Grade VII": "vii", "Grade VIII":"viii",
+        "Grade IX":  "ix",  "Grade X":   "x",
+    }
+    return mapping.get(grade, grade.lower().replace("grade ", ""))
+
+def log_tokens(
+    call_type:      str,
+    grade:          str,
+    subject:        str,
+    chapter_number: int,
+    chapter_title:  str,
+    input_tokens:   int,
+    output_tokens:  int,
+    model:          str = "claude-sonnet-4-6",
+):
+    cost_inr = calculate_cost_inr(model, input_tokens, output_tokens)
+    row = [
+        datetime.now().isoformat(timespec="seconds"),
+        call_type,
+        subject_to_folder(subject),
+        grade_to_roman(grade),
+        chapter_number,
+        chapter_title,
+        input_tokens,
+        output_tokens,
+        input_tokens + output_tokens,
+        cost_inr,
+    ]
+    try:
+        with open(TOKEN_LOG_PATH, "a", newline="", encoding="utf-8") as f:
+            csv.writer(f).writerow(row)
+    except Exception:
+        pass  # never crash the app over a logging failure
+
+# ── Export helpers ────────────────────────────────────────────────────────────
+
+# ── Export helpers ────────────────────────────────────────────────────────────
+
+def add_markdown_content(doc, text):
+    """Add markdown text to a python-docx Document — handles headings, bullets, bold."""
+    for line in text.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            doc.add_paragraph()
+            continue
+        if stripped.startswith("### "):
+            doc.add_heading(stripped[4:], level=3)
+        elif stripped.startswith("## "):
+            doc.add_heading(stripped[3:], level=2)
+        elif stripped.startswith("# "):
+            doc.add_heading(stripped[2:], level=1)
+        elif stripped.startswith("- ") or stripped.startswith("* "):
+            doc.add_paragraph(stripped[2:], style="List Bullet")
+        elif re.match(r"^\d+\.\s", stripped):
+            doc.add_paragraph(
+                re.sub(r"^\d+\.\s", "", stripped),
+                style="List Number"
+            )
+        else:
+            para = doc.add_paragraph()
+            parts = re.split(r"\*\*(.+?)\*\*", stripped)
+            for j, part in enumerate(parts):
+                run = para.add_run(part)
+                if j % 2 == 1:
+                    run.bold = True
+
+
+def generate_docx_bytes_lp(result: dict, chapter: dict, grade: str, subject: str) -> bytes:
+    """DOCX export — Lesson Plan only, no Assessment."""
+    doc = Document()
+
+    title = doc.add_heading("Aruvi · Lesson Plan", level=1)
+    title.runs[0].font.color.rgb = RGBColor(0x2C, 0x3E, 0x50)
+
+    meta = doc.add_table(rows=4, cols=2)
+    meta.style = "Table Grid"
+    for i, (lbl, val) in enumerate(zip(
+        ["Grade", "Subject", "Chapter", "Chapter Weight"],
+        [grade, subject, chapter.get("chapter_title", ""), str(chapter.get("chapter_weight", ""))]
+    )):
+        meta.rows[i].cells[0].text = lbl
+        meta.rows[i].cells[1].text = val
+        meta.rows[i].cells[0].paragraphs[0].runs[0].bold = True
+    doc.add_paragraph()
+
+    lp = result.get("lesson_plan", "")
+    if "```json" in lp:
+        lp = lp[:lp.index("```json")].strip()
+    add_markdown_content(doc, lp)
+
+    buf = io.BytesIO()
+    doc.save(buf)
+    return buf.getvalue()
+
+
+def generate_pdf_bytes_lp(result: dict, chapter: dict, grade: str, subject: str) -> bytes:
+    """PDF export — Lesson Plan only, no Assessment."""
+    pdf = FPDF()
+    pdf.set_auto_page_break(auto=True, margin=15)
+    pdf.add_page()
+
+    pdf.set_font("Helvetica", "B", 16)
+    pdf.set_text_color(44, 62, 80)
+    pdf.set_x(10)
+    pdf.cell(190, 10, "Aruvi - Lesson Plan", ln=True)
+    pdf.ln(2)
+
+    pdf.set_font("Helvetica", "", 10)
+    pdf.set_text_color(80, 80, 80)
+    pdf.set_x(10)
+    pdf.cell(190, 6, f"Grade: {grade}   Subject: {subject}", ln=True)
+    pdf.set_x(10)
+    pdf.cell(190, 6, f"Chapter: {chapter.get('chapter_title', '')}", ln=True)
+    pdf.set_x(10)
+    pdf.cell(190, 6, f"Chapter Weight: {chapter.get('chapter_weight', '')}", ln=True)
+    pdf.ln(4)
+    pdf.set_draw_color(44, 62, 80)
+    pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+    pdf.ln(4)
+
+    lp = result.get("lesson_plan", "")
+    if "```json" in lp:
+        lp = lp[:lp.index("```json")].strip()
+
+    pdf.set_text_color(30, 30, 30)
+    for line in lp.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            pdf.ln(3)
+            continue
+        stripped = re.sub(r"\*\*(.+?)\*\*", r"\1", stripped)
+        stripped = re.sub(r"^#{1,3}\s+", "", stripped)
+        stripped = re.sub(r"^[-*]\s+", "- ", stripped)
+        if line.startswith("## "):
+            pdf.set_font("Helvetica", "B", 13)
+            pdf.set_text_color(44, 62, 80)
+        elif line.startswith("### "):
+            pdf.set_font("Helvetica", "B", 11)
+            pdf.set_text_color(44, 62, 80)
+        else:
+            pdf.set_font("Helvetica", "", 10)
+            pdf.set_text_color(30, 30, 30)
+        pdf.set_x(10)
+        try:
+            pdf.multi_cell(190, 5, stripped)
+        except Exception:
+            try:
+                pdf.set_x(10)
+                pdf.multi_cell(190, 5, stripped.encode("latin-1", "replace").decode("latin-1"))
+            except Exception:
+                pass  # skip lines that cannot render
+
+    buf = io.BytesIO()
+    pdf.output(buf)
+    return buf.getvalue()
+
+
+def generate_docx_bytes_assess(result: dict, chapter: dict, grade: str, subject: str) -> bytes:
+    """DOCX export — Assessment only, no Lesson Plan."""
+    doc = Document()
+
+    title = doc.add_heading("Aruvi · Chapter Assessment", level=1)
+    title.runs[0].font.color.rgb = RGBColor(0x2C, 0x3E, 0x50)
+
+    meta = doc.add_table(rows=4, cols=2)
+    meta.style = "Table Grid"
+    for i, (lbl, val) in enumerate(zip(
+        ["Grade", "Subject", "Chapter", "Chapter Weight"],
+        [grade, subject, chapter.get("chapter_title", ""), str(chapter.get("chapter_weight", ""))]
+    )):
+        meta.rows[i].cells[0].text = lbl
+        meta.rows[i].cells[1].text = val
+        meta.rows[i].cells[0].paragraphs[0].runs[0].bold = True
+    doc.add_paragraph()
+
+    asmt = result.get("assessment", "")
+    add_markdown_content(doc, asmt)
+
+    buf = io.BytesIO()
+    doc.save(buf)
+    return buf.getvalue()
+
+
+def generate_pdf_bytes_assess(result: dict, chapter: dict, grade: str, subject: str) -> bytes:
+    """PDF export — Assessment only, no Lesson Plan."""
+    pdf = FPDF()
+    pdf.set_auto_page_break(auto=True, margin=15)
+    pdf.add_page()
+
+    pdf.set_font("Helvetica", "B", 16)
+    pdf.set_text_color(44, 62, 80)
+    pdf.set_x(10)
+    pdf.cell(190, 10, "Aruvi - Chapter Assessment", ln=True)
+    pdf.ln(2)
+
+    pdf.set_font("Helvetica", "", 10)
+    pdf.set_text_color(80, 80, 80)
+    pdf.set_x(10)
+    pdf.cell(190, 6, f"Grade: {grade}   Subject: {subject}", ln=True)
+    pdf.set_x(10)
+    pdf.cell(190, 6, f"Chapter: {chapter.get('chapter_title', '')}", ln=True)
+    pdf.set_x(10)
+    pdf.cell(190, 6, f"Chapter Weight: {chapter.get('chapter_weight', '')}", ln=True)
+    pdf.ln(4)
+    pdf.set_draw_color(44, 62, 80)
+    pdf.line(10, pdf.get_y(), 200, pdf.get_y())
+    pdf.ln(4)
+
+    asmt = result.get("assessment", "")
+    pdf.set_text_color(30, 30, 30)
+    for line in asmt.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            pdf.ln(3)
+            continue
+        stripped = re.sub(r"\*\*(.+?)\*\*", r"\1", stripped)
+        stripped = re.sub(r"^#{1,3}\s+", "", stripped)
+        stripped = re.sub(r"^[-*]\s+", "- ", stripped)
+        if line.startswith("## "):
+            pdf.set_font("Helvetica", "B", 13)
+            pdf.set_text_color(44, 62, 80)
+        elif line.startswith("### "):
+            pdf.set_font("Helvetica", "B", 11)
+            pdf.set_text_color(44, 62, 80)
+        else:
+            pdf.set_font("Helvetica", "", 10)
+            pdf.set_text_color(30, 30, 30)
+        pdf.set_x(10)
+        try:
+            pdf.multi_cell(190, 5, stripped)
+        except Exception:
+            try:
+                pdf.set_x(10)
+                pdf.multi_cell(190, 5, stripped.encode("latin-1", "replace").decode("latin-1"))
+            except Exception:
+                pass  # skip lines that cannot render
+
+    buf = io.BytesIO()
+    pdf.output(buf)
+    return buf.getvalue()
+
+
+def format_period_schedule(period_rows: list, session: dict) -> str:
+    lines = []
+    total_periods = 0
+    total_minutes = 0
+    for i, rid in enumerate(period_rows):
+        dur = session.get(f"dur_sel_{rid}", 40)
+        cnt = session.get(f"cnt_{rid}", 1)
+        total_periods += cnt
+        total_minutes += dur * cnt
+        lines.append(
+            f"  Row {i+1}: {dur} minutes × {cnt} period{'s' if cnt != 1 else ''} = {dur*cnt} minutes"
+        )
+    h, m = divmod(total_minutes, 60)
+    time_str = f"{h}h {m}min" if h > 0 else f"{m} minutes"
+    return (
+        f"Period schedule:\n" + "\n".join(lines) +
+        f"\nTotal: {total_periods} periods · {time_str}"
+    )
+
+def generate_lpa(
+    grade: str,
+    subject: str,
+    chapter: dict,
+    period_rows: list,
+    session: dict,
+) -> dict:
+    paths = resolve_paths(grade, subject, chapter["chapter_number"])
+
+    lp_const     = read_file(paths["lp_constitution"])
+    assess_const = read_file(paths["assessment_const"])
+    pedagogy     = read_file(paths["pedagogy"])
+    cg_doc       = read_file(paths["cg_doc"])
+    summary      = read_file(paths["chapter_summary"])
+    mapping_raw  = read_file(paths["chapter_mapping"])
+    period_sched = format_period_schedule(period_rows, session)
+
+    system_prompt = f"""You are Aruvi's lesson plan and assessment generator.
+
+You operate under two constitutions that govern every decision you make.
+These constitutions are binding. No instruction in the user prompt overrides them.
+
+=== LESSON PLAN GENERATION CONSTITUTION ===
+{lp_const}
+
+=== ASSESSMENT CONSTITUTION ===
+{assess_const}
+"""
+
+    user_prompt = f"""Generate a complete lesson plan and chapter assessment for the following chapter.
+
+=== PEDAGOGY DOCUMENT ===
+{pedagogy}
+
+=== CURRICULAR GOALS DOCUMENT ===
+{cg_doc}
+
+=== CHAPTER SUMMARY ===
+{summary}
+
+=== CHAPTER MAPPING JSON ===
+{mapping_raw}
+
+=== TEACHER PERIOD SCHEDULE ===
+{period_sched}
+
+=== INSTRUCTIONS ===
+1. Generate the period-by-period lesson plan first. Every period gets exactly one activity. Each activity must be anchored to a named section from the chapter summary. Each activity must develop a mapped competency. Activity depth must be calibrated to that period's specific duration.
+
+2. Immediately after the lesson plan, produce the LO handoff as a JSON code block. The JSON must follow the schema defined in Amendment A2 of the Lesson Plan Constitution exactly — one object per period with fields: period_number, period_duration_minutes, chapter_section, activity_summary, implied_lo, c_code, cg, weight.
+
+3. After the LO handoff JSON, generate the chapter assessment. Use the LO handoff as the sole structural input. Competency weight governs question type, question count, and annotation depth exactly as the Assessment Constitution specifies.
+
+4. State each implied LO clearly in the lesson plan against its activity, and again in the assessment as the stated purpose of each question cluster.
+
+Output format:
+## Lesson Plan
+[period-by-period plan]
+
+## LO Handoff
+```json
+[array]
+```
+
+## Assessment
+[assessment with full annotation layer]
+"""
+
+    try:
+        client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
+        response = client.messages.create(
+            model="claude-sonnet-4-6",
+            max_tokens=8000,
+            system=system_prompt,
+            messages=[{"role": "user", "content": user_prompt}],
+        )
+        full_output = response.content[0].text
+
+        log_tokens(
+            call_type      = "lpa_generation",
+            grade          = grade,
+            subject        = subject,
+            chapter_number = chapter["chapter_number"],
+            chapter_title  = chapter.get("chapter_title", ""),
+            input_tokens   = response.usage.input_tokens,
+            output_tokens  = response.usage.output_tokens,
+        )
+
+        lo_handoff = []
+        if "```json" in full_output:
+            try:
+                json_block = full_output.split("```json")[1].split("```")[0].strip()
+                lo_handoff = json.loads(json_block)
+            except Exception:
+                lo_handoff = []
+
+        lp_part = ""
+        assess_part = ""
+        if "## Assessment" in full_output:
+            parts       = full_output.split("## Assessment", 1)
+            lp_part     = parts[0].strip()
+            assess_part = "## Assessment" + parts[1]
+        else:
+            lp_part = full_output
+
+        return {
+            "lesson_plan":  lp_part,
+            "lo_handoff":   lo_handoff,
+            "assessment":   assess_part,
+            "input_tokens": response.usage.input_tokens,
+            "output_tokens":response.usage.output_tokens,
+            "cost_inr":     calculate_cost_inr(
+                                "claude-sonnet-4-6",
+                                response.usage.input_tokens,
+                                response.usage.output_tokens,
+                            ),
+            "error":        None,
+        }
+
+    except Exception as e:
+        return {
+            "lesson_plan": "",
+            "lo_handoff":  [],
+            "assessment":  "",
+            "error":       str(e),
+        }
 
 # ── Constants ─────────────────────────────────────────────────────────────────
 
-PROJECT_ROOT  = Path("/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi")
-MAPPINGS_DIR  = PROJECT_ROOT / "mirror/chapters/social_sciences/grade_vii/mappings"
-SUMMARIES_DIR = PROJECT_ROOT / "mirror/chapters/social_sciences/grade_vii/summaries"
-MISC_DIR      = PROJECT_ROOT / "miscellaneous"
 LOGO_PATH     = MISC_DIR / "aruvi_logo-transparent.png"
 
 DURATION_OPTIONS = [30, 35, 40, 45, 50, 60]
@@ -1223,6 +1686,31 @@ div[class*="st-key-ask_aruvi_toggle"] button * {
 }
 
 /* ═══════════════════════════════════════════════════
+   EXPORT BUTTONS
+   ═══════════════════════════════════════════════════ */
+div[class*="st-key-export_docx"] button,
+div[class*="st-key-export_pdf"] button {
+    background: transparent !important;
+    border: 1px solid #2c3e50 !important;
+    border-radius: 6px !important;
+    color: #2c3e50 !important;
+    font-size: 0.76rem !important;
+    font-weight: 500 !important;
+    height: 32px !important;
+    min-height: 32px !important;
+}
+div[class*="st-key-export_docx"] button:hover,
+div[class*="st-key-export_pdf"] button:hover {
+    background: #2c3e50 !important;
+    color: #ffffff !important;
+}
+div[class*="st-key-export_docx"] button *,
+div[class*="st-key-export_pdf"] button * {
+    color: inherit !important;
+    visibility: visible !important;
+}
+
+/* ═══════════════════════════════════════════════════
    HIDE STREAMLIT CHROME
    ═══════════════════════════════════════════════════ */
 #MainMenu, footer { visibility: hidden; }
@@ -1318,18 +1806,29 @@ if WATERMARK_SRC:
 # ── Data loading ──────────────────────────────────────────────────────────────
 
 @st.cache_data
-def load_all_chapters() -> list[dict]:
+def load_all_chapters(grade: str, subject: str) -> list[dict]:
+    """Load chapter mapping JSONs for the given grade and subject."""
+    subj_f  = subject_to_folder(subject)
+    grade_f = grade_to_folder(grade)
+    mappings_dir = PROJECT_ROOT / f"mirror/chapters/{subj_f}/{grade_f}/mappings"
     chapters = []
-    for i in range(1, 13):
-        path = MAPPINGS_DIR / f"ch_{i:02d}_mapping.json"
-        with open(path, encoding="utf-8") as fh:
-            data = json.load(fh)
-        chapters.append(data)
+    if not mappings_dir.exists():
+        return []
+    for path in sorted(mappings_dir.glob("ch_*_mapping.json")):
+        try:
+            with open(path, encoding="utf-8") as fh:
+                data = json.load(fh)
+            chapters.append(data)
+        except Exception:
+            continue
     chapters.sort(key=lambda c: c["chapter_number"])
     return chapters
 
 
-chapters = load_all_chapters()
+if st.session_state.grade and st.session_state.subject:
+    chapters = load_all_chapters(st.session_state.grade, st.session_state.subject)
+else:
+    chapters = []
 
 
 def ch_label(ch: dict) -> str:
@@ -1393,12 +1892,11 @@ if "ch_selected"              not in st.session_state: st.session_state.ch_selec
 if "ch_periods"               not in st.session_state: st.session_state.ch_periods               = {ch["chapter_number"]: 6    for ch in chapters}
 if "principal_generated"      not in st.session_state: st.session_state.principal_generated      = False
 if "ask_aruvi_open"           not in st.session_state: st.session_state.ask_aruvi_open           = False
+if "lpa_confirm_pending"      not in st.session_state: st.session_state.lpa_confirm_pending      = False
+if "lpa_result"               not in st.session_state: st.session_state.lpa_result               = None
+if "lpa_generating"           not in st.session_state: st.session_state.lpa_generating           = False
 
-# Only Grade VII + Social Science has chapter data currently
-has_chapter_data = (
-    st.session_state.grade   == "Grade VII" and
-    st.session_state.subject == "Social Science"
-)
+has_chapter_data = len(chapters) > 0
 
 # ── Fixed top nav bar ─────────────────────────────────────────────────────────
 # Pure HTML pills — no Streamlit radio widget, no orange circles.
@@ -1674,7 +2172,8 @@ section[data-testid="stSidebar"] div[class*="st-key-add_period_row"] button:hove
             use_container_width=True,
             key="teacher_gen",
         ):
-            st.session_state.teacher_generated = True
+            st.session_state.lpa_confirm_pending = True
+            st.session_state.lpa_result          = None
             st.rerun()
 
     # ── Principal inputs ──────────────────────────────────────────────────────
@@ -1836,6 +2335,68 @@ elif st.session_state.role == "Teach":
         )
     else:
         selected_ch = chapters[st.session_state.teacher_ch_idx]
+
+        # ── Confirmation panel ────────────────────────────────────────────────
+        if st.session_state.lpa_confirm_pending:
+            period_rows = st.session_state.get("period_rows", [0])
+            sched_str   = format_period_schedule(
+                period_rows, st.session_state
+            )
+            st.markdown(
+                '<div style="background:#fef8f5;border:1px solid #e8d0c0;'
+                'border-radius:8px;padding:1.2rem 1.5rem;margin-bottom:1.5rem;">'
+                '<div style="font-size:0.72rem;font-weight:500;letter-spacing:0.08em;'
+                'text-transform:uppercase;color:#8b5e4a;margin-bottom:0.75rem;">'
+                'Confirm Generation</div>',
+                unsafe_allow_html=True,
+            )
+            st.markdown(f"""
+| Parameter | Value |
+|---|---|
+| Grade | {st.session_state.grade} |
+| Subject | {st.session_state.subject} |
+| Chapter | {selected_ch['chapter_title']} |
+| Chapter weight | {selected_ch.get('chapter_weight', '—')} |
+""")
+            st.code(sched_str, language=None)
+            st.markdown('</div>', unsafe_allow_html=True)
+
+            col_confirm, col_cancel = st.columns(2)
+            with col_confirm:
+                if st.button(
+                    "Confirm — Generate",
+                    type="primary",
+                    use_container_width=True,
+                    key="lpa_confirm",
+                ):
+                    st.session_state.lpa_confirm_pending = False
+                    st.session_state.lpa_generating      = True
+                    st.rerun()
+            with col_cancel:
+                if st.button(
+                    "Cancel",
+                    use_container_width=True,
+                    key="lpa_cancel",
+                ):
+                    st.session_state.lpa_confirm_pending = False
+                    st.rerun()
+
+        # ── Generation ────────────────────────────────────────────────────────
+        if st.session_state.lpa_generating:
+            with st.spinner("Generating lesson plan and assessment — this takes about 30 seconds…"):
+                result = generate_lpa(
+                    grade       = st.session_state.grade,
+                    subject     = st.session_state.subject,
+                    chapter     = selected_ch,
+                    period_rows = st.session_state.get("period_rows", [0]),
+                    session     = st.session_state,
+                )
+            st.session_state.lpa_result        = result
+            st.session_state.lpa_generating    = False
+            st.session_state.teacher_generated = True
+            st.rerun()
+
+        # ── Workspace tabs ────────────────────────────────────────────────────
         tab_comp, tab_lp, tab_assess = st.tabs(
             ["Competencies", "Lesson Plan", "Assessment"]
         )
@@ -1846,16 +2407,14 @@ elif st.session_state.role == "Teach":
                 unsafe_allow_html=True,
             )
             st.markdown(
-                f'<div class="ch-meta">Grade VII · Social Sciences · '
+                f'<div class="ch-meta">{st.session_state.grade} · {st.session_state.subject} · '
                 f'Chapter weight: {selected_ch.get("chapter_weight", "—")}</div>',
                 unsafe_allow_html=True,
             )
-
             st.markdown(
                 '<div class="sect-label" style="margin-top:0;">Primary Competencies</div>',
                 unsafe_allow_html=True,
             )
-
             for comp in selected_ch.get("primary", []):
                 w      = comp.get("weight", "—")
                 wlabel = WEIGHT_LABEL.get(w, str(w))
@@ -1881,26 +2440,111 @@ elif st.session_state.role == "Teach":
                 )
 
         with tab_lp:
-            if not st.session_state.teacher_generated:
+            result = st.session_state.lpa_result
+            if result is None:
                 st.markdown(
                     '<div class="ws-placeholder">'
                     'Select a chapter and period budget, then generate.'
                     '</div>',
                     unsafe_allow_html=True,
                 )
+            elif result.get("error"):
+                st.error(f"Generation failed: {result['error']}")
             else:
-                st.info("Lesson plan will appear here once the API call is wired.")
+                # ── Export buttons ────────────────────────────────────────────────────────
+                _exp_col1, _exp_col2, _exp_spacer = st.columns([1, 1, 3])
+
+                _chapter_export = chapters[st.session_state.teacher_ch_idx]
+                _safe_title = re.sub(r"[^\w\s-]", "", _chapter_export.get("chapter_title", "chapter")).strip().replace(" ", "_")[:40]
+                _filename_stem = f"Aruvi_{_safe_title}"
+
+                with _exp_col1:
+                    st.download_button(
+                        label="⬇ Download DOCX",
+                        data=generate_docx_bytes_lp(
+                            result, _chapter_export,
+                            st.session_state.grade, st.session_state.subject,
+                        ),
+                        file_name=f"{_filename_stem}_LP.docx",
+                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                        key="export_docx",
+                        use_container_width=True,
+                    )
+
+                with _exp_col2:
+                    st.download_button(
+                        label="⬇ Download PDF",
+                        data=generate_pdf_bytes_lp(
+                            result, _chapter_export,
+                            st.session_state.grade, st.session_state.subject,
+                        ),
+                        file_name=f"{_filename_stem}_LP.pdf",
+                        mime="application/pdf",
+                        key="export_pdf",
+                        use_container_width=True,
+                    )
+
+                st.markdown('<div style="height:0.75rem;"></div>', unsafe_allow_html=True)
+
+                st.markdown(result["lesson_plan"])
+                st.markdown(
+                    f'<div style="font-size:0.70rem;color:#9c9693;margin-top:2rem;'
+                    f'border-top:1px solid #e8e5e0;padding-top:0.75rem;">'
+                    f'Tokens — input: {result["input_tokens"]:,} · '
+                    f'output: {result["output_tokens"]:,} · '
+                    f'cost: ₹{result["cost_inr"]}'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
 
         with tab_assess:
-            if not st.session_state.teacher_generated:
+            result = st.session_state.lpa_result
+            if result is None:
                 st.markdown(
                     '<div class="ws-placeholder">'
                     'Generate a lesson plan first — the assessment follows automatically.'
                     '</div>',
                     unsafe_allow_html=True,
                 )
+            elif result.get("error"):
+                st.error(f"Generation failed: {result['error']}")
             else:
-                st.info("Assessment will appear here once the API call is wired.")
+                # ── Export buttons ────────────────────────────────────────────────────────
+                _exp_col1a, _exp_col2a, _exp_spacer_a = st.columns([1, 1, 3])
+
+                _chapter_export_a = chapters[st.session_state.teacher_ch_idx]
+                _safe_title_a = re.sub(r"[^\w\s-]", "", _chapter_export_a.get("chapter_title", "chapter")).strip().replace(" ", "_")[:40]
+                _filename_stem_a = f"Aruvi_{_safe_title_a}"
+
+                with _exp_col1a:
+                    st.download_button(
+                        label="⬇ Download DOCX",
+                        data=generate_docx_bytes_assess(
+                            result, _chapter_export_a,
+                            st.session_state.grade, st.session_state.subject,
+                        ),
+                        file_name=f"{_filename_stem_a}_Assessment.docx",
+                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                        key="export_docx_a",
+                        use_container_width=True,
+                    )
+
+                with _exp_col2a:
+                    st.download_button(
+                        label="⬇ Download PDF",
+                        data=generate_pdf_bytes_assess(
+                            result, _chapter_export_a,
+                            st.session_state.grade, st.session_state.subject,
+                        ),
+                        file_name=f"{_filename_stem_a}_Assessment.pdf",
+                        mime="application/pdf",
+                        key="export_pdf_a",
+                        use_container_width=True,
+                    )
+
+                st.markdown('<div style="height:0.75rem;"></div>', unsafe_allow_html=True)
+
+                st.markdown(result["assessment"])
 
 # ═════════════════════════════════════════════════
 #  PLAN WORKSPACE

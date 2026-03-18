@@ -1,0 +1,14 @@
+{
+  "last_updated": "2026-03-18",
+  "usd_to_inr": 84.0,
+  "models": {
+    "claude-sonnet-4-6": {
+      "input_per_1k_usd":  0.003,
+      "output_per_1k_usd": 0.015
+    },
+    "claude-haiku-4-5-20251001": {
+      "input_per_1k_usd":  0.001,
+      "output_per_1k_usd": 0.005
+    }
+  }
+}
