@@ -57,7 +57,6 @@ def resolve_paths(grade: str, subject: str, chapter_number: int) -> dict:
         "lp_constitution":  mirror / "constitutions/lesson_plan/lesson_plan_constitution.txt",
         "assessment_const": mirror / "constitutions/assessment/assessment_constitution.txt",
         "pedagogy":         mirror / f"framework/{subj_f}/{stage}/pedagogy_{stage}_{subj_f}.txt",
-        "cg_doc":           mirror / f"framework/{subj_f}/{stage}/cg_{stage}_{subj_f}.txt",
         "chapter_summary":  mirror / f"chapters/{subj_f}/{grade_f}/summaries/ch_{nn}_summary.txt",
         "chapter_mapping":  mirror / f"chapters/{subj_f}/{grade_f}/mappings/ch_{nn}_mapping.json",
     }
@@ -106,7 +105,7 @@ def log_tokens(
     chapter_title:  str,
     input_tokens:   int,
     output_tokens:  int,
-    model:          str = "claude-haiku-4-5-20251001",
+    model:          str = "claude-sonnet-4-6",
 ):
     cost_inr = calculate_cost_inr(model, input_tokens, output_tokens)
     row = [
@@ -354,6 +353,65 @@ def format_period_schedule(period_rows: list, session: dict) -> str:
         f"\nTotal: {total_periods} periods · {time_str}"
     )
 
+# ── Saved plans — local file storage ─────────────────────────────────────────
+
+def _saved_plans_dir(grade: str, subject: str) -> Path:
+    subj_f  = subject_to_folder(subject)
+    grade_f = grade_to_folder(grade)
+    d = PROJECT_ROOT / "mirror" / "saved_plans" / subj_f / grade_f
+    d.mkdir(parents=True, exist_ok=True)
+    return d
+
+def save_plan(
+    grade:       str,
+    subject:     str,
+    chapter:     dict,
+    period_rows: list,
+    session:     dict,
+    result:      dict,
+) -> None:
+    d        = _saved_plans_dir(grade, subject)
+    nn       = f"{chapter['chapter_number']:02d}"
+    ts       = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"ch_{nn}_{ts}.json"
+    sched    = format_period_schedule(period_rows, session)
+    payload  = {
+        "filename":               filename,
+        "saved_at":               datetime.now().isoformat(timespec="seconds"),
+        "grade":                  grade,
+        "subject":                subject,
+        "chapter_number":         chapter["chapter_number"],
+        "chapter_title":          chapter.get("chapter_title", ""),
+        "period_schedule_display": sched,
+        "result": {
+            "lesson_plan":   result.get("lesson_plan", ""),
+            "lo_handoff":    result.get("lo_handoff", []),
+            "assessment":    result.get("assessment", ""),
+            "input_tokens":  result.get("input_tokens", 0),
+            "output_tokens": result.get("output_tokens", 0),
+            "cost_inr":      result.get("cost_inr", 0),
+        },
+    }
+    (d / filename).write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
+def load_saved_plans(grade: str, subject: str) -> list:
+    d = _saved_plans_dir(grade, subject)
+    plans = []
+    for f in sorted(d.glob("ch_*.json")):
+        try:
+            plans.append(json.loads(f.read_text(encoding="utf-8")))
+        except Exception:
+            pass
+    return plans
+
+def delete_saved_plan(grade: str, subject: str, filename: str) -> None:
+    d = _saved_plans_dir(grade, subject)
+    target = d / filename
+    try:
+        target.unlink(missing_ok=True)
+    except Exception:
+        pass
+
 def generate_lpa(
     grade: str,
     subject: str,
@@ -366,7 +424,6 @@ def generate_lpa(
     lp_const     = read_file(paths["lp_constitution"])
     assess_const = read_file(paths["assessment_const"])
     pedagogy     = read_file(paths["pedagogy"])
-    cg_doc       = read_file(paths["cg_doc"])
     summary      = read_file(paths["chapter_summary"])
     mapping_raw  = read_file(paths["chapter_mapping"])
     period_sched = format_period_schedule(period_rows, session)
@@ -388,9 +445,6 @@ These constitutions are binding. No instruction in the user prompt overrides the
 === PEDAGOGY DOCUMENT ===
 {pedagogy}
 
-=== CURRICULAR GOALS DOCUMENT ===
-{cg_doc}
-
 === CHAPTER SUMMARY ===
 {summary}
 
@@ -401,15 +455,24 @@ These constitutions are binding. No instruction in the user prompt overrides the
 {period_sched}
 
 === INSTRUCTIONS ===
-1. Generate the period-by-period lesson plan first. Every period gets exactly one activity. Each activity must be anchored to a named section from the chapter summary. Each activity must develop a mapped competency. Activity depth must be calibrated to that period's specific duration.
+You are generating an integrated lesson plan and assessment for the chapter above.
 
-2. Immediately after the lesson plan, produce the LO handoff as a JSON code block. The JSON must follow the schema defined in Amendment A2 of the Lesson Plan Constitution exactly — one object per period with fields: period_number, period_duration_minutes, chapter_section, activity_summary, implied_lo, c_code, cg, weight.
+LESSON PLAN — follow the Lesson Plan Constitution exactly.
+- Generate one activity per period. Every activity must be anchored to a named section from the chapter summary above.
+- Every activity must develop a competency from the chapter mapping JSON above.
+- Calibrate activity depth to that period's specific duration.
+- For each activity write: activity name (5 words max), material needed if any, time-slot breakdown in 5–10 minute increments (each slot: 1–2 sentences), and one implied LO at the end stated as an observable student behaviour.
+- Keep each activity description compact: time slots are the detail layer, not the activity header.
 
-3. After the LO handoff JSON, generate the chapter assessment. Use the LO handoff as the sole structural input. Competency weight governs question type, question count, and annotation depth exactly as the Assessment Constitution specifies.
+LO HANDOFF — immediately after the lesson plan, output a JSON code block using exactly this schema (Amendment A2): one object per period with fields: period_number, period_duration_minutes, chapter_section, activity_summary (one sentence), implied_lo, c_code, cg, weight.
 
-4. State each implied LO clearly in the lesson plan against its activity, and again in the assessment as the stated purpose of each question cluster.
+ASSESSMENT — follow the Assessment Constitution exactly.
+- Use only the LO handoff and the chapter summary as inputs. Do not use the chapter mapping JSON or CG document for assessment design.
+- Every question must test one or more implied LOs from the LO handoff. Name the source period(s) in the annotation for every question.
+- Competency weight governs question type, count, and annotation depth exactly as the Assessment Constitution specifies. Use only Central / Substantive / Present — never show weight numbers to the user.
+- MCQ: question + 4 options. Short CR: question + expected response elements in bullet form. Extended CR: question + what to look for. Open Task: task instructions + partially completed scaffold if applicable. Annotation: structured fields, not prose paragraphs.
 
-Output format:
+OUTPUT FORMAT — use exactly these section markers:
 ## Lesson Plan
 [period-by-period plan]
 
@@ -419,18 +482,37 @@ Output format:
 ```
 
 ## Assessment
-[assessment with full annotation layer]
+[full assessment with annotation layer]
+
+Keep output compact. Target 5000–6000 tokens total. Activity time slots: 1–2 sentences each. Annotation fields: 1 sentence each. Do not repeat information across sections.
 """
 
     try:
         client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
-        response = client.messages.create(
-            model="claude-haiku-4-5-20251001",
-            max_tokens=16000,
+
+        full_output = ""
+        input_tokens = 0
+        output_tokens = 0
+
+        stream_placeholder = st.empty()
+        streamed_text = ""
+
+        with client.messages.stream(
+            model="claude-sonnet-4-6",
+            max_tokens=8000,
             system=system_prompt,
             messages=[{"role": "user", "content": user_prompt}],
-        )
-        full_output = response.content[0].text
+        ) as stream:
+            for text in stream.text_stream:
+                streamed_text += text
+                stream_placeholder.markdown(streamed_text + "▌")
+
+        stream_placeholder.empty()
+        full_output = streamed_text
+
+        usage = stream.get_final_message().usage
+        input_tokens  = usage.input_tokens
+        output_tokens = usage.output_tokens
 
         log_tokens(
             call_type      = "lpa_generation",
@@ -438,8 +520,9 @@ Output format:
             subject        = subject,
             chapter_number = chapter["chapter_number"],
             chapter_title  = chapter.get("chapter_title", ""),
-            input_tokens   = response.usage.input_tokens,
-            output_tokens  = response.usage.output_tokens,
+            input_tokens   = input_tokens,
+            output_tokens  = output_tokens,
+            model          = "claude-sonnet-4-6",
         )
 
         lo_handoff = []
@@ -460,17 +543,17 @@ Output format:
             lp_part = full_output
 
         return {
-            "lesson_plan":  lp_part,
-            "lo_handoff":   lo_handoff,
-            "assessment":   assess_part,
-            "input_tokens": response.usage.input_tokens,
-            "output_tokens":response.usage.output_tokens,
-            "cost_inr":     calculate_cost_inr(
-                                "claude-haiku-4-5-20251001",
-                                response.usage.input_tokens,
-                                response.usage.output_tokens,
-                            ),
-            "error":        None,
+            "lesson_plan":   lp_part,
+            "lo_handoff":    lo_handoff,
+            "assessment":    assess_part,
+            "input_tokens":  input_tokens,
+            "output_tokens": output_tokens,
+            "cost_inr":      calculate_cost_inr(
+                                 "claude-sonnet-4-6",
+                                 input_tokens,
+                                 output_tokens,
+                             ),
+            "error": None,
         }
 
     except Exception as e:
@@ -2383,22 +2466,26 @@ elif st.session_state.role == "Teach":
 
         # ── Generation ────────────────────────────────────────────────────────
         if st.session_state.lpa_generating:
-            with st.spinner("Generating lesson plan and assessment — this takes about 30 seconds…"):
-                result = generate_lpa(
-                    grade       = st.session_state.grade,
-                    subject     = st.session_state.subject,
-                    chapter     = selected_ch,
-                    period_rows = st.session_state.get("period_rows", [0]),
-                    session     = st.session_state,
-                )
+            st.markdown(
+                '<div style="font-size:0.82rem;color:#5a5754;padding:0.5rem 0;">'
+                'Generating — output will appear below as it streams…</div>',
+                unsafe_allow_html=True,
+            )
+            result = generate_lpa(
+                grade       = st.session_state.grade,
+                subject     = st.session_state.subject,
+                chapter     = selected_ch,
+                period_rows = st.session_state.get("period_rows", [0]),
+                session     = st.session_state,
+            )
             st.session_state.lpa_result        = result
             st.session_state.lpa_generating    = False
             st.session_state.teacher_generated = True
             st.rerun()
 
         # ── Workspace tabs ────────────────────────────────────────────────────
-        tab_comp, tab_lp, tab_assess = st.tabs(
-            ["Competencies", "Lesson Plan", "Assessment"]
+        tab_comp, tab_lp, tab_plans = st.tabs(
+            ["Competencies", "Lesson & Assessment", "My Plans"]
         )
 
         with tab_comp:
@@ -2451,100 +2538,97 @@ elif st.session_state.role == "Teach":
             elif result.get("error"):
                 st.error(f"Generation failed: {result['error']}")
             else:
-                # ── Export buttons ────────────────────────────────────────────────────────
-                _exp_col1, _exp_col2, _exp_spacer = st.columns([1, 1, 3])
-
                 _chapter_export = chapters[st.session_state.teacher_ch_idx]
                 _safe_title = re.sub(r"[^\w\s-]", "", _chapter_export.get("chapter_title", "chapter")).strip().replace(" ", "_")[:40]
                 _filename_stem = f"Aruvi_{_safe_title}"
 
+                _exp_col1, _exp_col2, _save_col, _exp_spacer = st.columns([1, 1, 1, 2])
                 with _exp_col1:
                     st.download_button(
-                        label="⬇ Download DOCX",
-                        data=generate_docx_bytes_lp(
-                            result, _chapter_export,
-                            st.session_state.grade, st.session_state.subject,
-                        ),
+                        label="⬇ LP (DOCX)",
+                        data=generate_docx_bytes_lp(result, _chapter_export, st.session_state.grade, st.session_state.subject),
                         file_name=f"{_filename_stem}_LP.docx",
                         mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                        key="export_docx",
+                        key="export_docx_lp",
                         use_container_width=True,
                     )
-
                 with _exp_col2:
                     st.download_button(
-                        label="⬇ Download PDF",
-                        data=generate_pdf_bytes_lp(
-                            result, _chapter_export,
-                            st.session_state.grade, st.session_state.subject,
-                        ),
-                        file_name=f"{_filename_stem}_LP.pdf",
-                        mime="application/pdf",
-                        key="export_pdf",
+                        label="⬇ Assessment (DOCX)",
+                        data=generate_docx_bytes_assess(result, _chapter_export, st.session_state.grade, st.session_state.subject),
+                        file_name=f"{_filename_stem}_Assessment.docx",
+                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                        key="export_docx_assess",
                         use_container_width=True,
                     )
+                with _save_col:
+                    if st.button("💾 Save Plan", key="save_plan_btn", use_container_width=True):
+                        save_plan(
+                            grade        = st.session_state.grade,
+                            subject      = st.session_state.subject,
+                            chapter      = _chapter_export,
+                            period_rows  = st.session_state.get("period_rows", [0]),
+                            session      = st.session_state,
+                            result       = result,
+                        )
+                        st.success("Plan saved.")
 
                 st.markdown('<div style="height:0.75rem;"></div>', unsafe_allow_html=True)
-
                 st.markdown(result["lesson_plan"])
+
+                if result.get("assessment"):
+                    st.markdown("---")
+                    st.markdown(result["assessment"])
+
                 st.markdown(
                     f'<div style="font-size:0.70rem;color:#9c9693;margin-top:2rem;'
                     f'border-top:1px solid #e8e5e0;padding-top:0.75rem;">'
-                    f'Tokens — input: {result["input_tokens"]:,} · '
-                    f'output: {result["output_tokens"]:,} · '
-                    f'cost: ₹{result["cost_inr"]}'
+                    f'Tokens — input: {result.get("input_tokens",0):,} · '
+                    f'output: {result.get("output_tokens",0):,} · '
+                    f'cost: ₹{result.get("cost_inr",0)}'
                     f'</div>',
                     unsafe_allow_html=True,
                 )
 
-        with tab_assess:
-            result = st.session_state.lpa_result
-            if result is None:
+        with tab_plans:
+            saved = load_saved_plans(
+                grade   = st.session_state.grade,
+                subject = st.session_state.subject,
+            )
+            if not saved:
                 st.markdown(
                     '<div class="ws-placeholder">'
-                    'Generate a lesson plan first — the assessment follows automatically.'
+                    'No saved plans yet for this grade and subject. '
+                    'Generate a plan and click Save Plan to store it here.'
                     '</div>',
                     unsafe_allow_html=True,
                 )
-            elif result.get("error"):
-                st.error(f"Generation failed: {result['error']}")
             else:
-                # ── Export buttons ────────────────────────────────────────────────────────
-                _exp_col1a, _exp_col2a, _exp_spacer_a = st.columns([1, 1, 3])
-
-                _chapter_export_a = chapters[st.session_state.teacher_ch_idx]
-                _safe_title_a = re.sub(r"[^\w\s-]", "", _chapter_export_a.get("chapter_title", "chapter")).strip().replace(" ", "_")[:40]
-                _filename_stem_a = f"Aruvi_{_safe_title_a}"
-
-                with _exp_col1a:
-                    st.download_button(
-                        label="⬇ Download DOCX",
-                        data=generate_docx_bytes_assess(
-                            result, _chapter_export_a,
-                            st.session_state.grade, st.session_state.subject,
-                        ),
-                        file_name=f"{_filename_stem_a}_Assessment.docx",
-                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                        key="export_docx_a",
-                        use_container_width=True,
-                    )
-
-                with _exp_col2a:
-                    st.download_button(
-                        label="⬇ Download PDF",
-                        data=generate_pdf_bytes_assess(
-                            result, _chapter_export_a,
-                            st.session_state.grade, st.session_state.subject,
-                        ),
-                        file_name=f"{_filename_stem_a}_Assessment.pdf",
-                        mime="application/pdf",
-                        key="export_pdf_a",
-                        use_container_width=True,
-                    )
-
-                st.markdown('<div style="height:0.75rem;"></div>', unsafe_allow_html=True)
-
-                st.markdown(result["assessment"])
+                for plan in sorted(saved, key=lambda p: p["saved_at"], reverse=True):
+                    ch_title   = plan.get("chapter_title", "Unknown chapter")
+                    saved_at   = plan.get("saved_at", "")[:16].replace("T", " ")
+                    sched_disp = plan.get("period_schedule_display", "")
+                    with st.expander(f"Ch {plan.get('chapter_number',''):02d} · {ch_title}  —  {saved_at}"):
+                        st.markdown(
+                            f'**Grade:** {plan.get("grade","")}  ·  '
+                            f'**Subject:** {plan.get("subject","")}  ·  '
+                            f'**Period schedule:** {sched_disp}'
+                        )
+                        col_load, col_del = st.columns([1, 1])
+                        with col_load:
+                            if st.button("Load this plan", key=f"load_{plan['filename']}"):
+                                st.session_state.lpa_result = plan["result"]
+                                st.session_state.teacher_generated = True
+                                st.success(f"Loaded: {ch_title}")
+                                st.rerun()
+                        with col_del:
+                            if st.button("Delete", key=f"del_{plan['filename']}"):
+                                delete_saved_plan(
+                                    grade   = st.session_state.grade,
+                                    subject = st.session_state.subject,
+                                    filename= plan["filename"],
+                                )
+                                st.rerun()
 
 # ═════════════════════════════════════════════════
 #  PLAN WORKSPACE
