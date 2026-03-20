@@ -15,3 +15,12 @@ git push -u origin main
 OPENING SITE FROM TERMINAL
 cd "/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi"
 python3 -m streamlit run aruvi_streamlit/app.py
+
+RUN CHAPTER MAPPING
+cd "/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi"
+bash run_mapping.sh --subject social_sciences --grade vii --chapters 1
+
+RUN LESSON PLAN AND ASSESSMENT
+run from the Streamlit UI by invoking generate_lpa()
+
+
