@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    padding: 10px 14px 4px 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+                 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.8rem;
+    color: #1a1a1a;
+    background: #ffffff;
+  }
+
+  /* ═══════════════════════════════════════════
+     MODAL
+     ═══════════════════════════════════════════ */
+  #modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+  #modal-overlay.active { display: flex; }
+
+  #modal-box {
+    background: #fffbeb;
+    border: 1.5px solid #f59e0b;
+    border-radius: 8px;
+    padding: 20px 24px 16px 24px;
+    max-width: 340px;
+    width: 90%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+  }
+  #modal-msg {
+    font-size: 0.82rem;
+    color: #78350f;
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+  .modal-ok {
+    display: block;
+    margin-left: auto;
+    padding: 5px 20px;
+    background: #f59e0b;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 0.78rem;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .modal-ok:hover { background: #d97706; }
+
+  /* ═══════════════════════════════════════════
+     SECTION: CHAPTER SELECTION
+     ═══════════════════════════════════════════ */
+  .sel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .sel-title {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .sel-btns { display: flex; gap: 6px; }
+  .sel-btn {
+    padding: 3px 10px;
+    background: #f0f3f6;
+    border: 1px solid #c8d2dc;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    color: #2c3e50;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .sel-btn:hover { background: #dde5ee; }
+
+  /* ═══════════════════════════════════════════
+     CHAPTER TILE GRID
+     ═══════════════════════════════════════════ */
+  .chapter-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .chapter-tile {
+    padding: 7px 10px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #f9fafb;
+    transition: border-color 0.12s, background 0.12s;
+    user-select: none;
+    line-height: 1.4;
+    position: relative;
+  }
+  .chapter-tile:hover { border-color: #93c5fd; background: #eff6ff; }
+  .chapter-tile.selected { border-color: #1a1917; background: #f0efec; }
+
+  .tile-num {
+    font-size: 0.64rem;
+    color: #6b7280;
+    margin-bottom: 1px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .tile-title { font-size: 0.72rem; color: #1a1a1a; }
+
+  .chapter-tile.selected .tile-num  { color: #1a1917; }
+  .chapter-tile.selected .tile-title { color: #1a1917; font-weight: 500; }
+
+  .tile-check {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    font-size: 0.75rem;
+    color: #1a1917;
+    display: none;
+  }
+  .chapter-tile.selected .tile-check { display: block; }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 10px 0;
+  }
+
+  .generate-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 4px;
+  }
+  .btn-generate {
+    padding: 6px 20px;
+    background: #2c3e50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.78rem;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .btn-generate:hover { background: #1a252f; }
+
+  /* ═══════════════════════════════════════════
+     MAIN ALLOCATION TABLE
+     ═══════════════════════════════════════════ */
+  #alloc-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  #alloc-table thead th {
+    background: #2c3e50;
+    color: #ffffff;
+    padding: 7px 10px;
+    text-align: center;
+    font-size: 0.63rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  #alloc-table thead th.left { text-align: left; }
+
+  #alloc-table tbody td {
+    padding: 6px 10px;
+    text-align: center;
+    border-bottom: 1px solid #e8e5e0;
+    vertical-align: middle;
+  }
+  #alloc-table tbody td.left { text-align: left; }
+  #alloc-table tbody td.wrap { white-space: normal; }
+
+  #alloc-table tfoot td {
+    padding: 7px 10px;
+    text-align: center;
+    background: #e8f0fe;
+    font-weight: 600;
+    border-top: 2px solid #b8ccee;
+    font-size: 0.78rem;
+  }
+  #alloc-table tfoot td.left { text-align: left; }
+
+  /* ═══════════════════════════════════════════
+     WEIGHT TOGGLE BUTTON
+     ═══════════════════════════════════════════ */
+  .wt-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px 2px 5px;
+    background: #f0f3f6;
+    border: 1px solid #c8d2dc;
+    border-radius: 4px;
+    font-size: 0.77rem;
+    color: #2c3e50;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+    transition: background 0.15s;
+    line-height: 1.5;
+  }
+  .wt-btn:hover { background: #dde5ee; border-color: #a8bfd4; }
+
+  .wt-btn .arr {
+    font-size: 0.56rem;
+    display: inline-block;
+    transition: transform 0.18s;
+    color: #7a8fa6;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .wt-btn.open .arr { transform: rotate(90deg); }
+
+  /* ═══════════════════════════════════════════
+     DRAWER ROW
+     ═══════════════════════════════════════════ */
+  .drawer-cell {
+    padding: 0 !important;
+    background: #f4f6fa !important;
+    border-bottom: 2px solid #c8d2dc !important;
+  }
+  .drawer-inner { padding: 10px 18px 12px 40px; }
+
+  /* ═══════════════════════════════════════════
+     COMPETENCY DETAIL TABLE (inside drawer)
+     ═══════════════════════════════════════════ */
+  .cmp-table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.72rem;
+  }
+  .cmp-table thead th {
+    background: transparent;
+    color: #6b7280;
+    padding: 3px 6px 4px 6px;
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    border-bottom: 1px solid #d1d5db;
+  }
+  .cmp-table tbody tr   { border-bottom: 1px solid #e5e7eb; }
+  .cmp-table tbody td   { padding: 5px 6px; vertical-align: top; }
+
+  /* ── column headers ── */
+  .cmp-seq-h  { text-align: right;  width: 22px; }
+  .cmp-code-h { text-align: left;   width: 58px; }
+  .cmp-desc-h { text-align: left; }
+  .cmp-just-h { text-align: center; }
+  .cmp-dots-h { text-align: center; width: 52px; }
+
+  /* ── column cells ── */
+  .cmp-seq  { text-align: right; color: #9ca3af; font-size: 0.64rem; width: 22px; }
+  .cmp-code {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #1a1917;
+    white-space: nowrap;
+    width: 58px;
+  }
+  .cmp-desc { text-align: left !important; color: #1a1a1a; line-height: 1.5; }
+  .cmp-just {
+    text-align: left !important;
+    font-style: italic;
+    color: #6b7280;
+    font-size: 0.66rem;
+    line-height: 1.5;
+  }
+  .cmp-dots { text-align: center; white-space: nowrap; width: 52px; vertical-align: middle; }
+
+  /* ── weight dots ── */
+  .dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    border: 1.5px solid #374151;
+    background: transparent;
+    margin: 0 1.5px;
+    vertical-align: middle;
+  }
+  .dot.dot-fill { background: #1a1917; border-color: #1a1917; }
+
+  /* ── drawer tfoot ── */
+  .cmp-table tfoot td      { padding: 4px 6px; border-top: 1px solid #d1d5db; font-size: 0.68rem; }
+  .cmp-foot-lbl { text-align: right; color: #6b7280; }
+  .cmp-foot-val { text-align: center; font-weight: 700; color: #1a1917; }
+
+  .ok   { color: #059669; font-size: 0.74rem; }
+  .warn { color: #d97706; font-size: 0.69rem; }
+
+  .no-cmp {
+    font-size: 0.71rem;
+    color: #9ca3af;
+    font-style: italic;
+    padding: 4px 0;
+  }
+
+  /* ═══════════════════════════════════════════
+     FOOTNOTES
+     ═══════════════════════════════════════════ */
+  .footnotes {
+    margin-top: 10px;
+    font-size: 0.66rem;
+    color: #6b7280;
+    line-height: 1.75;
+  }
+
+  /* ═══════════════════════════════════════════
+     ACTIONS
+     ═══════════════════════════════════════════ */
+  .actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    padding-bottom: 8px;
+    align-items: center;
+  }
+  .btn-pdf {
+    padding: 5px 15px;
+    background: #2c3e50;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.73rem;
+    font-family: inherit;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+  }
+  .btn-pdf:hover { background: #1a252f; }
+  .btn-clear {
+    padding: 5px 15px;
+    background: #ffffff;
+    color: #374151;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    font-size: 0.73rem;
+    font-family: inherit;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+  }
+  .btn-clear:hover { background: #f3f4f6; border-color: #9ca3af; }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+
+<!-- ═══ MODAL ═══════════════════════════════════════════════════════════════ -->
+<div id="modal-overlay">
+  <div id="modal-box">
+    <p id="modal-msg"></p>
+    <button class="modal-ok" onclick="closeModal()">OK</button>
+  </div>
+</div>
+
+<!-- ═══ SECTION: CHAPTER SELECTION ════════════════════════════════════════ -->
+<div id="section-select">
+  <div class="sel-header">
+    <span class="sel-title">Chapter Selection</span>
+    <div class="sel-btns">
+      <button class="sel-btn" onclick="selectAll()">Select All</button>
+      <button class="sel-btn" onclick="deselectAll()">Deselect All</button>
+    </div>
+  </div>
+  <div class="chapter-grid" id="chapter-grid"></div>
+  <hr class="divider">
+  <div class="generate-row">
+    <button class="btn-generate" onclick="generateReport()">Generate Allocation Report</button>
+  </div>
+</div>
+
+<!-- ═══ SECTION: REPORT ═════════════════════════════════════════════════════ -->
+<div id="section-report" style="display:none">
+  <div id="root"></div>
+  <div class="footnotes">
+    <p id="fn1">Periods allocated using the Largest Remainder Method (LRM), weighted by chapter competency load (W3&nbsp;&times;&nbsp;3&nbsp;+&nbsp;W2&nbsp;&times;&nbsp;2&nbsp;+&nbsp;W1&nbsp;&times;&nbsp;1).</p>
+    <p id="fn2"></p>
+  </div>
+  <div class="actions">
+    <button class="btn-pdf" onclick="downloadPDF()">&#8595;&nbsp;Download PDF</button>
+    <button class="btn-clear" onclick="clearReport()">Clear</button>
+  </div>
+</div>
+
+<script>
+/* __CHAPTERS_DATA__ */
+
+/* ── LRM algorithm ──────────────────────────────────────────────────────── */
+function _lrm(rawFloats, total) {
+  var floors = rawFloats.map(function (f) { return Math.floor(f); });
+  var rems   = rawFloats.map(function (f, i) { return { i: i, r: f - Math.floor(f) }; });
+  rems.sort(function (a, b) { return b.r - a.r; });
+  var deficit = total - floors.reduce(function (s, v) { return s + v; }, 0);
+  var result  = floors.slice();
+  for (var k = 0; k < deficit; k++) result[rems[k].i]++;
+  return result;
+}
+
+function _chapterWeight(cd) {
+  return cd.chapter_weight || 0;
+}
+
+function _computeAllocation(selNums) {
+  /* preserve CHAPTERS_DATA display order */
+  var orderedChapters = [];
+  CHAPTERS_DATA.forEach(function (cd) {
+    if (selNums.indexOf(cd.chapter_number) >= 0) orderedChapters.push(cd);
+  });
+
+  var weights     = orderedChapters.map(_chapterWeight);
+  var totalWeight = weights.reduce(function (s, w) { return s + w; }, 0);
+
+  var results = orderedChapters.map(function (cd) {
+    return { chapter_number: cd.chapter_number, total: 0 };
+  });
+
+  PERIOD_TYPES.forEach(function (pt) {
+    if (orderedChapters.length === 0) return;
+
+    var allotted;
+    if (orderedChapters.length === 1) {
+      allotted = [pt.count];
+    } else if (totalWeight === 0) {
+      var even = Math.floor(pt.count / orderedChapters.length);
+      var rem  = pt.count % orderedChapters.length;
+      allotted = orderedChapters.map(function (_, i) { return even + (i < rem ? 1 : 0); });
+    } else {
+      var rawFloats = weights.map(function (w) { return (w / totalWeight) * pt.count; });
+      allotted = _lrm(rawFloats, pt.count);
+    }
+
+    allotted.forEach(function (n, i) {
+      results[i][String(pt.mins)] = n;
+      results[i].total += n;
+    });
+  });
+
+  return results;
+}
+
+/* ── tiny helpers ───────────────────────────────────────────────────────── */
+function pad2(n) { return String(n).padStart(2, '0'); }
+function esc(s) {
+  return String(s || '')
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+function fmtTime(m) {
+  var h = Math.floor(m / 60), r = m % 60;
+  return h > 0 ? h + 'h\u00a0' + r + 'min' : r + '\u00a0min';
+}
+
+/* ── selection state ────────────────────────────────────────────────────── */
+var selected       = new Set();
+var reportGenerated = false;
+
+/* ── chapter tile grid ──────────────────────────────────────────────────── */
+function renderChapterGrid() {
+  var grid = document.getElementById('chapter-grid');
+  var html = '';
+  CHAPTERS_DATA.forEach(function (cd) {
+    var isSel = selected.has(cd.chapter_number);
+    html +=
+      '<div id="tile-' + cd.chapter_number + '"'
+      + ' class="chapter-tile' + (isSel ? ' selected' : '') + '"'
+      + ' onclick="toggleTile(' + cd.chapter_number + ')">'
+      + '<span class="tile-check">&#10003;</span>'
+      + '<div class="tile-num">Ch\u00a0' + pad2(cd.chapter_number) + '</div>'
+      + '<div class="tile-title">' + esc(cd.chapter_title) + '</div>'
+      + '</div>';
+  });
+  grid.innerHTML = html;
+}
+
+function toggleTile(num) {
+  var el = document.getElementById('tile-' + num);
+  if (!el) return;
+  if (selected.has(num)) {
+    selected.delete(num);
+    el.classList.remove('selected');
+  } else {
+    selected.add(num);
+    el.classList.add('selected');
+  }
+}
+
+function selectAll() {
+  CHAPTERS_DATA.forEach(function (cd) {
+    selected.add(cd.chapter_number);
+    var el = document.getElementById('tile-' + cd.chapter_number);
+    if (el) el.classList.add('selected');
+  });
+}
+
+function deselectAll() {
+  selected.clear();
+  CHAPTERS_DATA.forEach(function (cd) {
+    var el = document.getElementById('tile-' + cd.chapter_number);
+    if (el) el.classList.remove('selected');
+  });
+}
+
+/* ── modal ──────────────────────────────────────────────────────────────── */
+function openModal(msg) {
+  document.getElementById('modal-msg').textContent = msg;
+  document.getElementById('modal-overlay').classList.add('active');
+}
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('active');
+}
+
+/* ── generate report ────────────────────────────────────────────────────── */
+function generateReport() {
+  if (selected.size === 0) {
+    openModal('Please select at least one chapter before generating.');
+    return;
+  }
+  if (!PERIOD_TYPES || PERIOD_TYPES.length === 0) {
+    openModal('Please configure at least one period type in the sidebar.');
+    return;
+  }
+
+  /* sorted numerically so table rows are in chapter order */
+  var selNums = [];
+  selected.forEach(function (n) { selNums.push(n); });
+  selNums.sort(function (a, b) { return a - b; });
+
+  var allocResults = _computeAllocation(selNums);
+  var allocMap     = {};
+  allocResults.forEach(function (r) { allocMap[r.chapter_number] = r; });
+
+  var sortedPts = PERIOD_TYPES.slice().sort(function (a, b) { return b.mins - a.mins; });
+
+  /* filter CHAPTERS_DATA to selected, preserving display order */
+  var selChapters = CHAPTERS_DATA.filter(function (cd) {
+    return selected.has(cd.chapter_number);
+  });
+
+  var nPtCols   = sortedPts.length;
+  var totalCols = 5 + nPtCols;
+
+  var grandPeriods = 0, grandMinutes = 0;
+  var colSums = {};
+  sortedPts.forEach(function (pt) { colSums[pt.mins] = 0; });
+
+  /* ── build body rows ── */
+  var bodyHTML = '';
+  selChapters.forEach(function (cd, idx) {
+    var primary = Array.isArray(cd.primary) ? cd.primary : [];
+    var wt      = _chapterWeight(cd);
+    var alloc   = allocMap[cd.chapter_number] || {};
+    var total   = alloc.total || 0;
+    var minutes = sortedPts.reduce(function (s, pt) {
+      return s + (alloc[String(pt.mins)] || 0) * pt.mins;
+    }, 0);
+
+    grandPeriods += total;
+    grandMinutes += minutes;
+    sortedPts.forEach(function (pt) { colSums[pt.mins] += (alloc[String(pt.mins)] || 0); });
+
+    var rowBg = idx % 2 === 0 ? '#f9f8f6' : '#ffffff';
+    bodyHTML += '<tr style="background:' + rowBg + '">';
+    bodyHTML += '<td>' + pad2(cd.chapter_number) + '</td>';
+    bodyHTML += '<td class="left wrap">' + esc(cd.chapter_title) + '</td>';
+    bodyHTML += '<td>'
+      + '<button class="wt-btn" onclick="toggleDrawer(' + cd.chapter_number + ',this)">'
+      + '<span class="arr">&#9658;</span>' + wt
+      + '</button></td>';
+    sortedPts.forEach(function (pt) {
+      bodyHTML += '<td>' + (alloc[String(pt.mins)] || 0) + '</td>';
+    });
+    bodyHTML += '<td>' + total   + '</td>';
+    bodyHTML += '<td>' + minutes + '</td>';
+    bodyHTML += '</tr>';
+
+    /* ── competency drawer row ── */
+    var drawerWt = 0, cmpRowsHTML = '';
+    primary.forEach(function (comp, ci) {
+      var w = comp.weight || 0;
+      drawerWt += w;
+      /* three dot positions: filled then empty */
+      var dots = '';
+      for (var d = 0; d < 3; d++) {
+        dots += '<span class="dot' + (d < w ? ' dot-fill' : '') + '"></span>';
+      }
+      cmpRowsHTML +=
+        '<tr>'
+        + '<td class="cmp-seq">'  + (ci + 1)                                  + '</td>'
+        + '<td class="cmp-code">' + esc(comp.c_code       || '')               + '</td>'
+        + '<td class="cmp-desc">' + esc(comp.description  || comp.cg || '')    + '</td>'
+        + '<td class="cmp-just">' + esc(comp.justification || '')               + '</td>'
+        + '<td class="cmp-dots">' + dots                                        + '</td>'
+        + '</tr>';
+    });
+
+    var wtCheck = (drawerWt === wt)
+      ? ' <span class="ok">&#10003;</span>'
+      : ' <span class="warn">&#9888;\u00a0' + drawerWt + '</span>';
+
+    var drawerContent;
+    if (primary.length === 0) {
+      drawerContent = '<p class="no-cmp">No primary competency entries found in mapping.</p>';
+    } else {
+      drawerContent =
+        '<table class="cmp-table">'
+        + '<thead><tr>'
+        + '<th class="cmp-seq-h">#</th>'
+        + '<th class="cmp-code-h">Code</th>'
+        + '<th class="cmp-desc-h">Competency</th>'
+        + '<th class="cmp-just-h">Justification</th>'
+        + '<th class="cmp-dots-h">Weight</th>'
+        + '</tr></thead>'
+        + '<tbody>' + cmpRowsHTML + '</tbody>'
+        + '<tfoot><tr>'
+        + '<td colspan="4" class="cmp-foot-lbl">Total chapter weight</td>'
+        + '<td class="cmp-foot-val"><strong>' + wt + '</strong>' + wtCheck + '</td>'
+        + '</tr></tfoot>'
+        + '</table>';
+    }
+
+    bodyHTML +=
+      '<tr id="dr-' + cd.chapter_number + '" class="drawer-row" style="display:none">'
+      + '<td colspan="' + totalCols + '" class="drawer-cell">'
+      + '<div class="drawer-inner">' + drawerContent + '</div>'
+      + '</td></tr>';
+  });
+
+  /* ── tfoot totals row ── */
+  var footHTML = '<tfoot><tr>';
+  footHTML += '<td>&#8212;</td>';
+  footHTML += '<td class="left"><strong>Total</strong></td>';
+  footHTML += '<td></td>';
+  sortedPts.forEach(function (pt) {
+    footHTML += '<td><strong>' + colSums[pt.mins] + '</strong></td>';
+  });
+  footHTML += '<td><strong>' + grandPeriods + '</strong></td>';
+  footHTML += '<td><strong>' + grandMinutes + '</strong></td>';
+  footHTML += '</tr></tfoot>';
+
+  /* ── thead ── */
+  var headHTML = '<thead><tr>';
+  headHTML += '<th>#</th>';
+  headHTML += '<th class="left">Chapter</th>';
+  headHTML += '<th>Weight</th>';
+  sortedPts.forEach(function (pt) { headHTML += '<th>' + pt.mins + '-min</th>'; });
+  headHTML += '<th>Total</th>';
+  headHTML += '<th>Minutes</th>';
+  headHTML += '</tr></thead>';
+
+  /* ── inject into #root ── */
+  document.getElementById('root').innerHTML =
+    '<table id="alloc-table">'
+    + headHTML
+    + '<tbody>' + bodyHTML + '</tbody>'
+    + footHTML
+    + '</table>';
+
+  /* ── footnote #fn2 ── */
+  var fn2 = document.getElementById('fn2');
+  if (fn2) {
+    fn2.textContent =
+      'Budget:\u00a0' + grandPeriods + '\u00a0periods\u00a0\u00b7\u00a0'
+      + fmtTime(grandMinutes)
+      + '\u00a0\u00b7\u00a0' + (GRADE_LABEL   || '')
+      + '\u00a0\u00b7\u00a0' + (SUBJECT_LABEL || '');
+  }
+
+  /* ── switch sections ── */
+  document.getElementById('section-select').style.display = 'none';
+  document.getElementById('section-report').style.display = '';
+  reportGenerated = true;
+}
+
+/* ── clear report ───────────────────────────────────────────────────────── */
+function clearReport() {
+  document.getElementById('section-report').style.display = 'none';
+  document.getElementById('root').innerHTML = '';
+  document.getElementById('section-select').style.display = '';
+  selected.clear();
+  renderChapterGrid();
+  reportGenerated = false;
+}
+
+/* ── download PDF ───────────────────────────────────────────────────────── */
+/* PDF is generated server-side by Streamlit (pdf_generator.py).            */
+/* This stub signals the parent frame; Streamlit's st.download_button       */
+/* handles the actual file delivery.                                        */
+function downloadPDF() {
+  window.parent.postMessage({ type: 'aruvi_download_pdf' }, '*');
+}
+
+/* ── legacy jsPDF scaffold (kept for reference, never executed) ── */
+function _downloadPDF_legacy_unused() {
+  var { jsPDF } = window.jspdf;
+  var doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+  var pageW = 210, pageH = 297;
+  var mL = 14, mR = 14;
+  var mTop = 15.5;   /* 44pt */
+  var mBot = 28.2;   /* 80pt */
+  var CP   = 4;      /* cell padding mm — Fix 10 */
+
+  var sortedPts = PERIOD_TYPES.slice().sort(function (a, b) { return b.mins - a.mins; });
+  var selNums   = [];
+  selected.forEach(function (n) { selNums.push(n); });
+  selNums.sort(function (a, b) { return a - b; });
+
+  var selChapters = CHAPTERS_DATA.filter(function (cd) { return selected.has(cd.chapter_number); });
+  var allocResults = _computeAllocation(selNums);
+  var allocMap = {};
+  allocResults.forEach(function (r) { allocMap[r.chapter_number] = r; });
+
+  var grandPeriods = 0, grandMinutes = 0, grandWeight = 0;
+  selChapters.forEach(function (cd) {
+    var al = allocMap[cd.chapter_number] || {};
+    grandPeriods += al.total || 0;
+    grandMinutes += sortedPts.reduce(function (s, pt) { return s + (al[String(pt.mins)] || 0) * pt.mins; }, 0);
+    grandWeight  += cd.chapter_weight || 0;
+  });
+
+  var today   = new Date();
+  var dateStr = today.toISOString().slice(0, 10);
+
+  /* ── helpers ── */
+  function rule(y, w, col) {
+    doc.setLineWidth(w);
+    doc.setDrawColor(col, col, col);
+    doc.line(mL, y, pageW - mR, y);
+  }
+
+  /* Fix 4: dots drawn with explicit cellX/cellY/cellHeight; r=1.8mm; xs spaced ±8mm from col centre */
+  function drawDots(cellX, cellY, cellHeight, wt) {
+    var r   = 1.8;
+    var cY  = cellY + cellHeight / 2;
+    var mid = cellX + CW.dots / 2;
+    var xs  = [mid - 8, mid, mid + 8];
+    for (var d = 0; d < 3; d++) {
+      if (d < wt) {
+        doc.setFillColor(26, 25, 23);
+        doc.circle(xs[d], cY, r, 'F');
+      } else {
+        doc.setDrawColor(140, 140, 140);
+        doc.setLineWidth(0.15);
+        doc.circle(xs[d], cY, r, 'S');
+      }
+    }
+  }
+
+  /* ── page header (called each new page) ── */
+  function addHeader() {
+    if (ARUVI_LOGO_B64) {
+      try { doc.addImage('data:image/png;base64,' + ARUVI_LOGO_B64, 'PNG', mL, 9, 10, 10); }
+      catch (e) {}
+    }
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor(26, 25, 23);
+    doc.text('ARUVI', mL + 12, 15);
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(6); doc.setTextColor(107, 114, 128);
+    doc.text('NCF 2023 \u00b7 Pedagogical Platform', mL + 12, 19);
+
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor(26, 25, 23);
+    doc.text('Period Allocation Report', pageW - mR, 14, { align: 'right' });
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(6); doc.setTextColor(107, 114, 128);
+    doc.text((GRADE_LABEL || '') + ' \u00b7 ' + (SUBJECT_LABEL || '') + ' \u00b7 ' + dateStr, pageW - mR, 18, { align: 'right' });
+
+    rule(22,   0.53, 26);   /* 1.5pt dark rule */
+    rule(22.7, 0.18, 180);  /* 0.5pt light rule */
+  }
+
+  /* ── page footer (applied retroactively at end) ── */
+  function addFooter(pn, total) {
+    doc.setPage(pn);
+    rule(pageH - 10, 0.18, 180);
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(6); doc.setTextColor(107, 114, 128);
+    doc.text('Aruvi \u00b7 Period Allocation Report \u00b7 ' + (GRADE_LABEL || '') + ' \u00b7 ' + (SUBJECT_LABEL || ''), mL, pageH - 7);
+    doc.text('Page ' + pn + ' of ' + total + ' \u00b7 Confidential', pageW - mR, pageH - 7, { align: 'right' });
+  }
+
+  /* ── page 1: header + summary strip ── */
+  addHeader();
+  var y = mTop + 8;
+
+  /* summary strip — Fix 8: values bold/11pt, labels normal/6.5pt */
+  var ptBreak = sortedPts.map(function (pt) {
+    var c = selChapters.reduce(function (s, cd) { return s + ((allocMap[cd.chapter_number] || {})[String(pt.mins)] || 0); }, 0);
+    return c + '\u00d7' + pt.mins + 'min';
+  }).join(' \u00b7 ');
+  var stripItems = [
+    { lbl: 'Chapters',     val: String(selChapters.length) },
+    { lbl: 'Periods',      val: String(grandPeriods) },
+    { lbl: 'Minutes',      val: String(grandMinutes) },
+    { lbl: 'Period types', val: ptBreak },
+    { lbl: 'Total weight', val: String(grandWeight) },
+  ];
+  var sx = mL;
+  stripItems.forEach(function (item) {
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor(26, 25, 23);
+    doc.text(item.val, sx, y);
+    var vw = doc.getTextWidth(item.val);
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(107, 114, 128);
+    doc.text(item.lbl, sx, y + 4);
+    sx += Math.max(vw, doc.getTextWidth(item.lbl)) + 8;
+  });
+  y += 10;
+  rule(y, 0.18, 180); y += 4;
+
+  /* ── column widths — Fix 2: explicit mm, total 172mm ── */
+  /* # | Code | Competency | Justification | Weight */
+  var CW = { seq: 8, code: 14, desc: 62, just: 72, dots: 16 };
+
+  /* ── one block per chapter ── */
+  selChapters.forEach(function (cd) {
+    if (!cd.primary) return;   /* Fix 5: guard against missing primary array */
+    var primary = Array.isArray(cd.primary) ? cd.primary : [];
+    var alloc   = allocMap[cd.chapter_number] || {};
+    var total   = alloc.total || 0;
+    var minutes = sortedPts.reduce(function (s, pt) { return s + (alloc[String(pt.mins)] || 0) * pt.mins; }, 0);
+    var wt      = cd.chapter_weight || 0;
+
+    /* Fix 7: page break when < 40mm remaining */
+    if (pageH - mBot - y < 40) { doc.addPage(); addHeader(); y = mTop + 8; }
+
+    /* allocation string */
+    var allocStr = sortedPts.map(function (pt) {
+      return (alloc[String(pt.mins)] || 0) + '\u00d7' + pt.mins + 'min';
+    }).join(' \u00b7 ') + ' \u00b7 ' + total + ' periods \u00b7 ' + minutes + 'min';
+
+    /* Fix 1: compute pill and weight label — track allocFS so draw matches measurement */
+    var wlText  = 'Weight\u00a0' + wt;
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(7);
+    var wlWidth = doc.getTextWidth(wlText);
+
+    /* measure pill text at default 6.5pt */
+    var allocFS   = 6.5;
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(allocFS);
+    var pillTextW = doc.getTextWidth(allocStr);
+    var pillW     = pillTextW + 8;   /* 4mm pad each side */
+
+    /* measure chapter title to check for overlap */
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5);
+    var chTitleW = doc.getTextWidth('Ch\u00a0' + pad2(cd.chapter_number) + '\u2002' + cd.chapter_title);
+
+    /* pill left edge: [pill][4mm gap][weightLabel] ends flush at pageW-mR */
+    var pillX = pageW - mR - wlWidth - 4 - pillW;
+    if (pillX < mL + chTitleW + 4) {
+      /* title would overlap pill — shrink alloc string to 7pt and remeasure */
+      allocFS   = 7;
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(allocFS);
+      pillTextW = doc.getTextWidth(allocStr);
+      pillW     = pillTextW + 8;
+      pillX     = pageW - mR - wlWidth - 4 - pillW;
+    }
+
+    /* Fix 9: chapter title with setCharSpace(0) before/after each draw */
+    y += 6;
+    doc.setCharSpace(0);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor(26, 25, 23);
+    doc.text('Ch\u00a0' + pad2(cd.chapter_number) + '\u2002' + cd.chapter_title, mL, y);
+    doc.setCharSpace(0);
+
+    /* draw alloc pill — must use allocFS (same size used to measure pillW) */
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(allocFS);
+    doc.setFillColor(26, 25, 23);
+    doc.roundedRect(pillX, y - 2.5, pillW, 4, 0.8, 0.8, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.text(allocStr, pillX + pillW - CP, y, { align: 'right' });
+    doc.setCharSpace(0);
+
+    /* draw weight label starting at pillX + pillW + 4 — never overlaps pill */
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(100, 100, 100);
+    doc.text(wlText, pillX + pillW + 4, y);
+    doc.setCharSpace(0);
+
+    y += 2;
+    rule(y, 0.53, 26); y += 3;
+
+    /* competency column headers */
+    var hx = mL;
+    var headers = ['#', 'Code', 'Competency', 'Justification', 'Weight'];
+    var hWidths = [CW.seq, CW.code, CW.desc, CW.just, CW.dots];
+    var hAligns = ['right', 'left', 'left', 'center', 'center'];
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(5.5); doc.setTextColor(107, 114, 128);
+    headers.forEach(function (h, i) {
+      if (hAligns[i] === 'right')       doc.text(h, hx + hWidths[i] - CP, y, { align: 'right' });
+      else if (hAligns[i] === 'center') doc.text(h, hx + hWidths[i] / 2,  y, { align: 'center' });
+      else                              doc.text(h, hx + CP, y);
+      hx += hWidths[i];
+    });
+    y += 1.5; rule(y, 0.1, 210); y += 2.5;
+
+    /* competency rows — Fix 2: use CP padding; Fix 3: explicit font per cell */
+    primary.forEach(function (comp, ci) {
+      var w         = comp.weight || 0;
+      var descText  = comp.description || comp.cg || '';
+      var justText  = comp.justification || '';
+      var descLines = doc.splitTextToSize(descText, CW.desc - CP * 2);
+      var justLines = doc.splitTextToSize(justText, CW.just - CP * 2);
+      var rowH      = Math.max(8, Math.max(descLines.length, justLines.length) * 3.6 + CP * 2);
+
+      if (y + rowH > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
+
+      var midY = y + rowH / 2;
+      var cx   = mL;
+
+      /* # col — Fix 3: normal font explicitly */
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6); doc.setTextColor(80, 80, 80);
+      doc.text(String(ci + 1), cx + CW.seq - CP, midY, { align: 'right', baseline: 'middle' });
+      cx += CW.seq;
+
+      /* Code col — Fix 3: normal then bold */
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
+      doc.setFont('helvetica', 'bold');
+      doc.text(comp.c_code || '', cx + CP, midY, { baseline: 'middle' });
+      cx += CW.code;
+
+      /* Competency col — Fix 3: normal */
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
+      doc.text(descLines, cx + CP, y + CP, { lineHeightFactor: 1.3 });
+      cx += CW.desc;
+
+      /* Justification col — Fix 3: italic + (100,100,100) */
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6); doc.setTextColor(100, 100, 100);
+      doc.setFont('helvetica', 'italic');
+      doc.text(justLines, cx + CP, y + CP, { lineHeightFactor: 1.3 });
+      cx += CW.just;
+
+      /* Dots col — Fix 4: drawDots with cell coords */
+      drawDots(cx, y, rowH, w);
+
+      y += rowH;
+      rule(y, 0.1, 220); /* hairline between rows */
+    });
+
+    y += 4;
+  });
+
+  /* ── footnotes on last page — Fix 6: (1)/(2) instead of Unicode circled numbers ── */
+  var fn1 = '(1) Periods allocated using the Largest Remainder Method (LRM), weighted by chapter competency load (W3\u00d73 + W2\u00d72 + W1\u00d71).';
+  var fn2 = '(2) Budget: ' + grandPeriods + ' periods \u00b7 ' + fmtTime(grandMinutes) + ' \u00b7 ' + (GRADE_LABEL || '') + ' \u00b7 ' + (SUBJECT_LABEL || '');
+  var fnY = pageH - mBot + 2;
+  rule(fnY - 2, 0.18, 180);
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(6); doc.setTextColor(107, 114, 128);
+  doc.text(fn1, mL, fnY, { maxWidth: pageW - mL - mR });
+  doc.text(fn2, mL, fnY + 3.5);
+
+  /* ── add footers to all pages ── */
+  var totalPages = doc.internal.getNumberOfPages();
+  for (var p = 1; p <= totalPages; p++) addFooter(p, totalPages);
+
+  doc.save('Aruvi_Allocation_' + dateStr + '.pdf');
+}
+
+/* ── drawer toggle — global, called from onclick ────────────────────────── */
+function toggleDrawer(chNum, btn) {
+  var row = document.getElementById('dr-' + chNum);
+  if (!row) return;
+  var isOpen = row.style.display !== 'none';
+  row.style.display = isOpen ? 'none' : 'table-row';
+  if (btn) btn.classList.toggle('open', !isOpen);
+}
+
+/* ── initialise ─────────────────────────────────────────────────────────── */
+renderChapterGrid();
+</script>
+
+</body>
+</html>

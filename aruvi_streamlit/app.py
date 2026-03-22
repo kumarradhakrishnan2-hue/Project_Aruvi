@@ -6,14 +6,17 @@ import csv
 import io
 import json
 import re
-from datetime import datetime
+from datetime import datetime, date
 from pathlib import Path
 from fpdf import FPDF
 from docx import Document
 from docx.shared import Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 
+import math
+
 import streamlit as st
+import streamlit.components.v1 as components
 import anthropic
 import os
 
@@ -564,6 +567,176 @@ Keep output compact. Target 5000–6000 tokens total. Activity time slots: 1–2
             "error":       str(e),
         }
 
+# ── LRM allocation helpers ────────────────────────────────────────────────────
+
+def _ch_w3_codes(ch: dict) -> list:
+    return [item["c_code"] for item in ch.get("primary", []) if item.get("weight") == 3]
+
+def _ch_w2_codes(ch: dict) -> list:
+    return [item["c_code"] for item in ch.get("primary", []) if item.get("weight") == 2]
+
+def _ch_w1_codes(ch: dict) -> list:
+    return [item["c_code"] for item in ch.get("primary", []) if item.get("weight") == 1]
+
+def _alloc_chapter_weight(ch: dict) -> int:
+    """Competency-load weight: W3×3 + W2×2 + W1×1, using pre-stored chapter_weight if available."""
+    stored = ch.get("chapter_weight")
+    if isinstance(stored, (int, float)) and stored > 0:
+        return int(stored)
+    return sum(item.get("weight", 0) for item in ch.get("primary", []))
+
+def _lrm(raw_floats: list, total: int) -> list:
+    """Largest Remainder Method: distribute `total` integer slots proportionally."""
+    floors = [math.floor(f) for f in raw_floats]
+    remainders = sorted(enumerate(raw_floats), key=lambda x: -(x[1] - math.floor(x[1])))
+    deficit = total - sum(floors)
+    result = floors[:]
+    for k in range(deficit):
+        result[remainders[k][0]] += 1
+    return result
+
+def _compute_allocation(chs: list, period_types: list) -> list:
+    """
+    Returns one allocation dict per chapter.
+    Each dict has {mins: count, ..., 'total': int}.
+    """
+    if not chs or not period_types:
+        return []
+    if len(chs) == 1:
+        alloc = {pt["mins"]: pt["count"] for pt in period_types}
+        alloc["total"] = sum(pt["count"] for pt in period_types)
+        return [alloc]
+
+    weights  = [_alloc_chapter_weight(ch) for ch in chs]
+    sum_w    = sum(weights) or 1
+    sorted_types  = sorted(period_types, key=lambda pt: -pt["mins"])
+    total_periods = sum(pt["count"] for pt in sorted_types)
+
+    pass1     = _lrm([w / sum_w * total_periods for w in weights], total_periods)
+    remaining = pass1[:]
+    allocs    = [{} for _ in chs]
+
+    for pt in sorted_types[:-1]:
+        raw    = [min(w / sum_w * pt["count"], remaining[i]) for i, w in enumerate(weights)]
+        result = _lrm(raw, pt["count"])
+        for i, v in enumerate(result):
+            allocs[i][pt["mins"]]  = v
+            remaining[i]          -= v
+
+    shortest = sorted_types[-1]
+    for i, v in enumerate(remaining):
+        allocs[i][shortest["mins"]] = max(0, v)
+
+    for i in range(len(chs)):
+        allocs[i]["total"] = pass1[i]
+
+    return allocs
+
+
+def _generate_pdf_bytes_alloc(
+    chs: list,
+    allocs: list,
+    sorted_pts: list,
+    grade: str,
+    subject: str,
+) -> bytes:
+    """PDF export for the period allocation report (landscape)."""
+    pdf = FPDF(orientation="L", unit="mm", format="A4")
+    pdf.set_auto_page_break(auto=True, margin=12)
+    pdf.add_page()
+
+    # Title
+    pdf.set_font("Helvetica", "B", 14)
+    pdf.set_text_color(44, 62, 80)
+    pdf.cell(0, 9, "Aruvi - Period Allocation Report", ln=True)
+    pdf.set_font("Helvetica", "", 9)
+    pdf.set_text_color(80, 80, 80)
+    pdf.cell(0, 6, f"Grade: {grade}   Subject: {subject}", ln=True)
+    pdf.ln(3)
+
+    # Column layout
+    pt_headers  = [f"{pt['mins']}min" for pt in sorted_pts]
+    all_headers = ["#", "Chapter", "W3", "W2", "W1"] + pt_headers + ["Total", "Minutes"]
+    fixed_w     = [8, 68, 28, 28, 28]
+    pt_w        = [16] * len(sorted_pts)
+    tail_w      = [16, 18]
+    col_widths  = fixed_w + pt_w + tail_w
+
+    # Header row
+    pdf.set_font("Helvetica", "B", 7)
+    pdf.set_fill_color(44, 62, 80)
+    pdf.set_text_color(255, 255, 255)
+    for h, w in zip(all_headers, col_widths):
+        pdf.cell(w, 7, h, border=1, fill=True, align="C")
+    pdf.ln()
+
+    # Data rows
+    pdf.set_font("Helvetica", "", 7)
+    pdf.set_text_color(30, 30, 30)
+    grand_p = 0
+    grand_m = 0
+    col_sums = {pt["mins"]: 0 for pt in sorted_pts}
+
+    for idx, (ch, alloc) in enumerate(zip(chs, allocs)):
+        w3 = ", ".join(_ch_w3_codes(ch)) or "-"
+        w2 = ", ".join(_ch_w2_codes(ch)) or "-"
+        w1 = ", ".join(_ch_w1_codes(ch)) or "-"
+        tp = alloc.get("total", 0)
+        tm = sum(alloc.get(pt["mins"], 0) * pt["mins"] for pt in sorted_pts)
+        grand_p += tp
+        grand_m += tm
+        fill = (idx % 2 == 0)
+        if fill:
+            pdf.set_fill_color(248, 247, 245)
+
+        row_vals = [
+            f"{ch['chapter_number']:02d}",
+            ch.get("chapter_title", "")[:44],
+            w3[:22], w2[:22], w1[:22],
+        ]
+        for pt in sorted_pts:
+            v = alloc.get(pt["mins"], 0)
+            col_sums[pt["mins"]] += v
+            row_vals.append(str(v))
+        row_vals += [str(tp), str(tm)]
+
+        for val, w in zip(row_vals, col_widths):
+            align = "L" if w >= 40 else "C"
+            try:
+                pdf.cell(w, 6, val, border=1, fill=fill, align=align)
+            except Exception:
+                pdf.cell(w, 6, val.encode("latin-1", "replace").decode("latin-1"),
+                         border=1, fill=fill, align=align)
+        pdf.ln()
+
+    # Footer row
+    pdf.set_font("Helvetica", "B", 7)
+    pdf.set_fill_color(214, 228, 248)
+    foot_vals = ["", "Total", "", "", ""]
+    for pt in sorted_pts:
+        foot_vals.append(str(col_sums[pt["mins"]]))
+    foot_vals += [str(grand_p), str(grand_m)]
+    for val, w in zip(foot_vals, col_widths):
+        pdf.cell(w, 6, val, border=1, fill=True, align="C")
+    pdf.ln()
+
+    # Footnote
+    pdf.ln(3)
+    pdf.set_font("Helvetica", "I", 7)
+    pdf.set_text_color(100, 100, 100)
+    h_g, m_g = divmod(grand_m, 60)
+    time_str = f"{h_g}h {m_g}min" if h_g else f"{m_g} min"
+    pdf.cell(0, 5,
+             "Periods allocated using the Largest Remainder Method (LRM) "
+             f"weighted by chapter competency load.   "
+             f"Total: {grand_p} periods · {time_str}",
+             ln=True)
+
+    buf = io.BytesIO()
+    pdf.output(buf)
+    return buf.getvalue()
+
+
 # ── Constants ─────────────────────────────────────────────────────────────────
 
 LOGO_PATH     = MISC_DIR / "aruvi_logo-transparent.png"
@@ -594,7 +767,7 @@ st.set_page_config(
 
 query = st.query_params
 
-if "role"    in query and query["role"]    in ("Teach", "Plan"):
+if "role"    in query and query["role"]    in ("Allocate", "Generate", "My Plans"):
     st.session_state.role    = query["role"]
 if "grade"   in query and query["grade"]   in GRADES:
     st.session_state.grade   = query["grade"]
@@ -605,7 +778,7 @@ if "ch"      in query:
     except ValueError: pass
 
 # Defaults on first load
-if "role"    not in st.session_state: st.session_state.role    = "Plan"
+if "role"    not in st.session_state: st.session_state.role    = "Allocate"
 if "grade"   not in st.session_state: st.session_state.grade   = None
 if "subject" not in st.session_state: st.session_state.subject = None
 
@@ -1958,7 +2131,7 @@ def _cb_del_row_p(rid):
 
 # ── Session state ─────────────────────────────────────────────────────────────
 
-if "role"              not in st.session_state: st.session_state.role              = "Plan"
+if "role"              not in st.session_state: st.session_state.role              = "Allocate"
 if "grade"             not in st.session_state: st.session_state.grade             = None
 if "subject"           not in st.session_state: st.session_state.subject           = None
 
@@ -1978,6 +2151,7 @@ if "ask_aruvi_open"           not in st.session_state: st.session_state.ask_aruv
 if "lpa_confirm_pending"      not in st.session_state: st.session_state.lpa_confirm_pending      = False
 if "lpa_result"               not in st.session_state: st.session_state.lpa_result               = None
 if "lpa_generating"           not in st.session_state: st.session_state.lpa_generating           = False
+if "plan_just_saved"          not in st.session_state: st.session_state.plan_just_saved          = False
 
 has_chapter_data = len(chapters) > 0
 
@@ -1985,8 +2159,9 @@ has_chapter_data = len(chapters) > 0
 # Pure HTML pills — no Streamlit radio widget, no orange circles.
 # onclick calls aruviSetRole() which clicks a hidden st.button in the sidebar.
 
-t_active = "active" if st.session_state.role == "Teach" else ""
-p_active = "active" if st.session_state.role == "Plan"  else ""
+a_active  = "active" if st.session_state.role == "Allocate"   else ""
+g_active  = "active" if st.session_state.role == "Generate"   else ""
+mp_active = "active" if st.session_state.role == "My Plans"   else ""
 
 # Build shared query params so grade/subject survive a pill-click reload
 import urllib.parse as _up
@@ -1997,8 +2172,9 @@ _ch_idx = st.session_state.get("teacher_ch_idx")
 if _ch_idx is not None:      _qs_dict["ch"]       = _ch_idx
 _qs = _up.urlencode(_qs_dict)
 _sep = "&" if _qs else ""
-_t_href = f"?role=Teach{_sep}{_qs}"
-_p_href = f"?role=Plan{_sep}{_qs}"
+_a_href  = f"?role=Allocate{_sep}{_qs}"
+_g_href  = f"?role=Generate{_sep}{_qs}"
+_mp_href = f"?role=My+Plans{_sep}{_qs}"
 
 logo_img_tag = (
     f'<img src="{LOGO_SRC}" alt="Aruvi logo">'
@@ -2018,8 +2194,9 @@ st.markdown(f"""
 
   <div class="topnav-center">
     <div class="aruvi-topnav-inner">
-      <a class="aruvi-pill {p_active}" href="{_p_href}">Plan</a>
-      <a class="aruvi-pill {t_active}" href="{_t_href}">Teach</a>
+      <a class="aruvi-pill {a_active}"  href="{_a_href}">Allocate</a>
+      <a class="aruvi-pill {g_active}"  href="{_g_href}">Generate</a>
+      <a class="aruvi-pill {mp_active}" href="{_mp_href}">My Plans</a>
     </div>
   </div>
 
@@ -2097,7 +2274,7 @@ with st.sidebar:
         )
 
     # ── Teacher inputs ────────────────────────────────────────────────────────
-    elif st.session_state.role == "Teach":
+    elif st.session_state.role == "Generate":
 
         st.divider()
 
@@ -2363,20 +2540,6 @@ section[data-testid="stSidebar"] div[class*="st-key-add_period_row_p"] button:ho
                 unsafe_allow_html=True,
             )
 
-        st.divider()
-
-        if st.button("Generate Allocation Report", type="primary",
-                     use_container_width=True, key="principal_gen"):
-            any_selected = any(
-                st.session_state.ch_selected.get(ch["chapter_number"], False)
-                for ch in chapters
-            )
-            if not any_selected:
-                st.warning("Please select at least one chapter before generating.")
-            else:
-                st.session_state.principal_generated = True
-                st.rerun()
-
     # ── Sidebar spacer + user footer (sticky at bottom) ───────────────────────
     st.markdown('<div class="sidebar-spacer"></div>', unsafe_allow_html=True)
     st.markdown("""
@@ -2393,6 +2556,36 @@ section[data-testid="stSidebar"] div[class*="st-key-add_period_row_p"] button:ho
 """, unsafe_allow_html=True)
 
 
+# ── Confirmation dialog ───────────────────────────────────────────────────────
+
+@st.dialog("Confirm Generation")
+def _lpa_confirm_dialog():
+    selected_ch = chapters[st.session_state.teacher_ch_idx]
+    period_rows = st.session_state.get("period_rows", [0])
+    sched_str   = format_period_schedule(period_rows, st.session_state)
+
+    st.markdown(
+        f"**Grade:** {st.session_state.grade}  \n"
+        f"**Subject:** {st.session_state.subject}  \n"
+        f"**Chapter:** {selected_ch['chapter_title']}  \n"
+        f"**Chapter weight:** {selected_ch.get('chapter_weight', '—')}"
+    )
+    st.markdown("---")
+    st.code(sched_str, language=None)
+    st.markdown('<div style="height:0.5rem;"></div>', unsafe_allow_html=True)
+
+    col_confirm, col_cancel = st.columns(2)
+    with col_confirm:
+        if st.button("Confirm — Generate", type="primary",
+                     use_container_width=True, key="lpa_confirm"):
+            st.session_state.lpa_confirm_pending = False
+            st.session_state.lpa_generating      = True
+            st.rerun()
+    with col_cancel:
+        if st.button("Cancel", use_container_width=True, key="lpa_cancel"):
+            st.session_state.lpa_confirm_pending = False
+            st.rerun()
+
 # ── Workspace ─────────────────────────────────────────────────────────────────
 
 if not has_chapter_data:
@@ -2406,10 +2599,10 @@ if not has_chapter_data:
     )
 
 # ═════════════════════════════════════════════════
-#  TEACHER WORKSPACE
+#  GENERATE WORKSPACE
 #  Change 2: tabs = Competencies · Lesson Plan · Assessment
 # ═════════════════════════════════════════════════
-elif st.session_state.role == "Teach":
+elif st.session_state.role == "Generate":
 
     if st.session_state.teacher_ch_idx is None:
         st.markdown(
@@ -2421,48 +2614,7 @@ elif st.session_state.role == "Teach":
 
         # ── Confirmation panel ────────────────────────────────────────────────
         if st.session_state.lpa_confirm_pending:
-            period_rows = st.session_state.get("period_rows", [0])
-            sched_str   = format_period_schedule(
-                period_rows, st.session_state
-            )
-            st.markdown(
-                '<div style="background:#fef8f5;border:1px solid #e8d0c0;'
-                'border-radius:8px;padding:1.2rem 1.5rem;margin-bottom:1.5rem;">'
-                '<div style="font-size:0.72rem;font-weight:500;letter-spacing:0.08em;'
-                'text-transform:uppercase;color:#8b5e4a;margin-bottom:0.75rem;">'
-                'Confirm Generation</div>',
-                unsafe_allow_html=True,
-            )
-            st.markdown(f"""
-| Parameter | Value |
-|---|---|
-| Grade | {st.session_state.grade} |
-| Subject | {st.session_state.subject} |
-| Chapter | {selected_ch['chapter_title']} |
-| Chapter weight | {selected_ch.get('chapter_weight', '—')} |
-""")
-            st.code(sched_str, language=None)
-            st.markdown('</div>', unsafe_allow_html=True)
-
-            col_confirm, col_cancel = st.columns(2)
-            with col_confirm:
-                if st.button(
-                    "Confirm — Generate",
-                    type="primary",
-                    use_container_width=True,
-                    key="lpa_confirm",
-                ):
-                    st.session_state.lpa_confirm_pending = False
-                    st.session_state.lpa_generating      = True
-                    st.rerun()
-            with col_cancel:
-                if st.button(
-                    "Cancel",
-                    use_container_width=True,
-                    key="lpa_cancel",
-                ):
-                    st.session_state.lpa_confirm_pending = False
-                    st.rerun()
+            _lpa_confirm_dialog()
 
         # ── Generation ────────────────────────────────────────────────────────
         if st.session_state.lpa_generating:
@@ -2483,229 +2635,389 @@ elif st.session_state.role == "Teach":
             st.session_state.teacher_generated = True
             st.rerun()
 
-        # ── Workspace tabs ────────────────────────────────────────────────────
-        tab_comp, tab_lp, tab_plans = st.tabs(
-            ["Competencies", "Lesson & Assessment", "My Plans"]
-        )
-
-        with tab_comp:
+        # ── Result block ──────────────────────────────────────────────────────
+        result = st.session_state.lpa_result
+        if result is None:
             st.markdown(
-                f'<div class="ch-title">{selected_ch["chapter_title"]}</div>',
+                '<div class="ws-placeholder">'
+                'Choose a chapter and set your period budget, then click '
+                'Generate Lesson Plan &amp; Assessment.'
+                '</div>',
                 unsafe_allow_html=True,
             )
-            st.markdown(
-                f'<div class="ch-meta">{st.session_state.grade} · {st.session_state.subject} · '
-                f'Chapter weight: {selected_ch.get("chapter_weight", "—")}</div>',
-                unsafe_allow_html=True,
-            )
-            st.markdown(
-                '<div class="sect-label" style="margin-top:0;">Primary Competencies</div>',
-                unsafe_allow_html=True,
-            )
-            for comp in selected_ch.get("primary", []):
-                w      = comp.get("weight", "—")
-                wlabel = WEIGHT_LABEL.get(w, str(w))
-                st.markdown(
-                    f'<div class="comp-row">'
-                    f'<span class="comp-code">{comp["c_code"]}</span>'
-                    f'<span class="comp-cg">{comp["cg"]}</span>'
-                    f'<span class="comp-weight">{wlabel}</span>'
-                    f'</div>',
-                    unsafe_allow_html=True,
-                )
-                with st.expander("Justification"):
-                    st.write(comp.get("justification", ""))
-                st.markdown('<div style="height:0.4rem;"></div>', unsafe_allow_html=True)
+        elif result.get("error"):
+            st.error(f"Generation failed: {result['error']}")
+        else:
+            _chapter_export = chapters[st.session_state.teacher_ch_idx]
+            _safe_title = re.sub(r"[^\w\s-]", "", _chapter_export.get("chapter_title", "chapter")).strip().replace(" ", "_")[:40]
+            _filename_stem = f"Aruvi_{_safe_title}"
 
-            incidental = selected_ch.get("incidental", [])
-            if incidental:
-                codes = "  ·  ".join(c["c_code"] for c in incidental)
-                st.markdown(
-                    f'<div class="incidental-line">'
-                    f'Incidental (not assessed)&ensp;·&ensp;{codes}</div>',
-                    unsafe_allow_html=True,
+            _exp_col1, _exp_col2, _exp_spacer = st.columns([1, 1, 3])
+            with _exp_col1:
+                st.download_button(
+                    label="⬇ LP (DOCX)",
+                    data=generate_docx_bytes_lp(result, _chapter_export, st.session_state.grade, st.session_state.subject),
+                    file_name=f"{_filename_stem}_LP.docx",
+                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                    key="export_docx_lp",
+                    use_container_width=True,
+                )
+            with _exp_col2:
+                st.download_button(
+                    label="⬇ Assessment (DOCX)",
+                    data=generate_docx_bytes_assess(result, _chapter_export, st.session_state.grade, st.session_state.subject),
+                    file_name=f"{_filename_stem}_Assessment.docx",
+                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                    key="export_docx_assess",
+                    use_container_width=True,
                 )
 
-        with tab_lp:
-            result = st.session_state.lpa_result
-            if result is None:
-                st.markdown(
-                    '<div class="ws-placeholder">'
-                    'Select a chapter and period budget, then generate.'
-                    '</div>',
-                    unsafe_allow_html=True,
-                )
-            elif result.get("error"):
-                st.error(f"Generation failed: {result['error']}")
-            else:
-                _chapter_export = chapters[st.session_state.teacher_ch_idx]
-                _safe_title = re.sub(r"[^\w\s-]", "", _chapter_export.get("chapter_title", "chapter")).strip().replace(" ", "_")[:40]
-                _filename_stem = f"Aruvi_{_safe_title}"
+            st.markdown('<div style="height:0.75rem;"></div>', unsafe_allow_html=True)
+            st.markdown(result["lesson_plan"])
 
-                _exp_col1, _exp_col2, _save_col, _exp_spacer = st.columns([1, 1, 1, 2])
-                with _exp_col1:
-                    st.download_button(
-                        label="⬇ LP (DOCX)",
-                        data=generate_docx_bytes_lp(result, _chapter_export, st.session_state.grade, st.session_state.subject),
-                        file_name=f"{_filename_stem}_LP.docx",
-                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                        key="export_docx_lp",
-                        use_container_width=True,
+            if result.get("assessment"):
+                st.markdown("---")
+                st.markdown(result["assessment"])
+
+            st.markdown('<div style="height:1.5rem;"></div>', unsafe_allow_html=True)
+            st.divider()
+            _save_l, _save_r = st.columns([3, 1])
+            with _save_r:
+                if st.button(
+                    "💾 Save to My Plans",
+                    key="save_plan_btn",
+                    use_container_width=True,
+                    type="primary",
+                ):
+                    save_plan(
+                        grade       = st.session_state.grade,
+                        subject     = st.session_state.subject,
+                        chapter     = chapters[st.session_state.teacher_ch_idx],
+                        period_rows = st.session_state.get("period_rows", [0]),
+                        session     = st.session_state,
+                        result      = result,
                     )
-                with _exp_col2:
-                    st.download_button(
-                        label="⬇ Assessment (DOCX)",
-                        data=generate_docx_bytes_assess(result, _chapter_export, st.session_state.grade, st.session_state.subject),
-                        file_name=f"{_filename_stem}_Assessment.docx",
-                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                        key="export_docx_assess",
-                        use_container_width=True,
-                    )
-                with _save_col:
-                    if st.button("💾 Save Plan", key="save_plan_btn", use_container_width=True):
-                        save_plan(
-                            grade        = st.session_state.grade,
-                            subject      = st.session_state.subject,
-                            chapter      = _chapter_export,
-                            period_rows  = st.session_state.get("period_rows", [0]),
-                            session      = st.session_state,
-                            result       = result,
-                        )
-                        st.success("Plan saved.")
+                    st.session_state.plan_just_saved = True
+                    st.rerun()
+            if st.session_state.get("plan_just_saved"):
+                with _save_l:
+                    st.success("Saved — view it in My Plans.")
+                st.session_state.plan_just_saved = False
 
-                st.markdown('<div style="height:0.75rem;"></div>', unsafe_allow_html=True)
-                st.markdown(result["lesson_plan"])
-
-                if result.get("assessment"):
-                    st.markdown("---")
-                    st.markdown(result["assessment"])
-
-                st.markdown(
-                    f'<div style="font-size:0.70rem;color:#9c9693;margin-top:2rem;'
-                    f'border-top:1px solid #e8e5e0;padding-top:0.75rem;">'
-                    f'Tokens — input: {result.get("input_tokens",0):,} · '
-                    f'output: {result.get("output_tokens",0):,} · '
-                    f'cost: ₹{result.get("cost_inr",0)}'
-                    f'</div>',
-                    unsafe_allow_html=True,
-                )
-
-        with tab_plans:
-            saved = load_saved_plans(
-                grade   = st.session_state.grade,
-                subject = st.session_state.subject,
+            st.markdown(
+                f'<div style="font-size:0.70rem;color:#9c9693;margin-top:2rem;'
+                f'border-top:1px solid #e8e5e0;padding-top:0.75rem;">'
+                f'Tokens — input: {result.get("input_tokens",0):,} · '
+                f'output: {result.get("output_tokens",0):,} · '
+                f'cost: ₹{result.get("cost_inr",0)}'
+                f'</div>',
+                unsafe_allow_html=True,
             )
-            if not saved:
-                st.markdown(
-                    '<div class="ws-placeholder">'
-                    'No saved plans yet for this grade and subject. '
-                    'Generate a plan and click Save Plan to store it here.'
-                    '</div>',
-                    unsafe_allow_html=True,
-                )
-            else:
-                for plan in sorted(saved, key=lambda p: p["saved_at"], reverse=True):
-                    ch_title   = plan.get("chapter_title", "Unknown chapter")
-                    saved_at   = plan.get("saved_at", "")[:16].replace("T", " ")
-                    sched_disp = plan.get("period_schedule_display", "")
-                    with st.expander(f"Ch {plan.get('chapter_number',''):02d} · {ch_title}  —  {saved_at}"):
-                        st.markdown(
-                            f'**Grade:** {plan.get("grade","")}  ·  '
-                            f'**Subject:** {plan.get("subject","")}  ·  '
-                            f'**Period schedule:** {sched_disp}'
-                        )
-                        col_load, col_del = st.columns([1, 1])
-                        with col_load:
-                            if st.button("Load this plan", key=f"load_{plan['filename']}"):
-                                st.session_state.lpa_result = plan["result"]
-                                st.session_state.teacher_generated = True
-                                st.success(f"Loaded: {ch_title}")
-                                st.rerun()
-                        with col_del:
-                            if st.button("Delete", key=f"del_{plan['filename']}"):
-                                delete_saved_plan(
-                                    grade   = st.session_state.grade,
-                                    subject = st.session_state.subject,
-                                    filename= plan["filename"],
-                                )
-                                st.rerun()
 
 # ═════════════════════════════════════════════════
-#  PLAN WORKSPACE
+#  ALLOCATE WORKSPACE
+# ═════════════════════════════════════════════════
+elif st.session_state.role == "Allocate":
+
+    # ── Gather period types from sidebar state ─────────────────────────────────
+    _pt_rows = st.session_state.get("period_rows_p", [0])
+    _period_types = [
+        {
+            "mins":  int(st.session_state.get(f"dur_sel_p{r}") or 40),
+            "count": int(st.session_state.get(f"cnt_p{r}")     or 1),
+        }
+        for r in _pt_rows
+    ]
+    _period_types = [pt for pt in _period_types if pt["mins"] > 0 and pt["count"] > 0]
+    _sorted_pts   = sorted(_period_types, key=lambda pt: -pt["mins"])
+
+    # ── Load full mapping JSONs for all chapters ───────────────────────────────
+    def _load_chapter_mappings(grade, subject):
+        _stage  = get_stage(grade)
+        _subj_f = subject_to_folder(subject)
+
+        # Load competency descriptions lookup (keyed by c_code → description text)
+        _comp_desc_path = (
+            PROJECT_ROOT
+            / f"mirror/framework/{_subj_f}/{_stage}"
+            / f"competency_descriptions_{_stage}.json"
+        )
+        try:
+            _comp_descs = json.loads(_comp_desc_path.read_text(encoding="utf-8"))
+        except Exception:
+            _comp_descs = {}
+
+        _result = []
+        for _ch in chapters:
+            _paths = resolve_paths(grade, subject, _ch["chapter_number"])
+            try:
+                _mapping = json.loads(
+                    _paths["chapter_mapping"].read_text(encoding="utf-8")
+                )
+            except Exception:
+                _mapping = {}
+
+            # Enrich primary competencies with full description text
+            _enriched_primary = []
+            for _entry in _mapping.get("primary", []):
+                _e = dict(_entry)
+                _e["description"] = _comp_descs.get(_entry.get("c_code", ""), "")
+                _enriched_primary.append(_e)
+
+            _result.append({
+                "chapter_number": _ch["chapter_number"],
+                "chapter_title":  _ch.get("chapter_title", ""),
+                "chapter_weight": _mapping.get("chapter_weight", 0),
+                "primary":        _enriched_primary,
+                "incidental":     _mapping.get("incidental", []),
+            })
+        return _result
+
+    _chapters_data = _load_chapter_mappings(
+        st.session_state.grade, st.session_state.subject
+    )
+
+    # ── Load HTML template and inject data ────────────────────────────────────
+    _html_path = PROJECT_ROOT / "knowledge_commons/allocate_page.html"
+    _html_tpl  = _html_path.read_text(encoding="utf-8")
+
+    import base64 as _b64
+    _logo_path = PROJECT_ROOT / "miscellaneous/aruvi_logo-transparent.png"
+    try:
+        _logo_b64 = _b64.b64encode(_logo_path.read_bytes()).decode()
+    except Exception:
+        _logo_b64 = ""
+
+    _inject = (
+        f"const CHAPTERS_DATA  = {json.dumps(_chapters_data, ensure_ascii=False)};\n"
+        f"const PERIOD_TYPES   = {json.dumps(_sorted_pts)};\n"
+        f"const GRADE_LABEL    = {json.dumps(st.session_state.grade    or '')};\n"
+        f"const SUBJECT_LABEL  = {json.dumps(st.session_state.subject  or '')};\n"
+        f"const ARUVI_LOGO_B64 = {json.dumps(_logo_b64)};\n"
+    )
+    _html = _html_tpl.replace("/* __CHAPTERS_DATA__ */", _inject)
+
+    # ── Server-side PDF generation ─────────────────────────────────────────────
+    import sys as _sys
+    if str(PROJECT_ROOT) not in _sys.path:
+        _sys.path.insert(0, str(PROJECT_ROOT))
+    from knowledge_commons.pdf_generator import build_allocation_pdf
+
+    def generate_allocation_pdf_server():
+        sel_chapters = [
+            ch for ch in _chapters_data
+            if ch["chapter_number"] in st.session_state.get("alloc_selected_chapters", set())
+        ]
+        if not sel_chapters:
+            return None
+
+        # Attach allocation results to each chapter
+        period_types = st.session_state.get("alloc_period_types", [{"mins": 40, "count": 1}])
+        allocs = _compute_allocation(sel_chapters, period_types)
+        for i, ch in enumerate(sel_chapters):
+            ch["_alloc"] = allocs[i]
+
+        logo_path = str(PROJECT_ROOT / "miscellaneous/aruvi_logo-transparent.png")
+
+        return build_allocation_pdf(
+            chapters_data=sel_chapters,
+            period_types=period_types,
+            grade=st.session_state.grade,
+            subject=st.session_state.subject,
+            logo_path=logo_path
+        )
+
+    if st.session_state.get("alloc_report_generated"):
+        _pdf_bytes = generate_allocation_pdf_server()
+        if _pdf_bytes:
+            st.download_button(
+                label="Download PDF",
+                data=_pdf_bytes,
+                file_name=f"Aruvi_Allocation_{date.today().isoformat()}.pdf",
+                mime="application/pdf",
+                key="alloc_pdf_download"
+            )
+
+    components.html(_html, height=950, scrolling=True)
+
+# ═════════════════════════════════════════════════
+#  MY PLANS WORKSPACE
 # ═════════════════════════════════════════════════
 else:
 
-    # ── Chapter selection panel (always visible, above tabs) ──────────────────
+    # ── Filter state ──────────────────────────────────────────────────────────
+    if "mp_grade_filter"   not in st.session_state: st.session_state.mp_grade_filter   = "Grade"
+    if "mp_subject_filter" not in st.session_state: st.session_state.mp_subject_filter = "Subject"
 
-    # Header row: label left, Select All / Deselect All right
-    _cs_head_l, _cs_head_r = st.columns([1, 1])
-    with _cs_head_l:
-        _ch_sel_icon = f'<img src="{CHAPTER_SRC}" class="field-icon" alt="">' if CHAPTER_SRC else ''
+    # ── Header row ────────────────────────────────────────────────────────────
+    _mp_h_l, _mp_h_r = st.columns([2, 1])
+    with _mp_h_l:
         st.markdown(
-            f'<div class="sect-label" style="margin-bottom:0;">{_ch_sel_icon}'
-            f'<span>Chapter Selection</span></div>',
+            '<div style="font-size:1.35rem;font-weight:400;color:#1a1a1a;'
+            'margin-bottom:0.2rem;">My saved plans</div>',
             unsafe_allow_html=True,
         )
-    with _cs_head_r:
-        _sa2, _da2 = st.columns(2)
-        with _sa2:
-            if st.button("Select All", key="sel_all", use_container_width=True):
-                for ch in chapters:
-                    st.session_state.ch_selected[ch["chapter_number"]] = True
-                    st.session_state[f"chk_{ch['chapter_number']}"] = True
-                st.rerun()
-        with _da2:
-            if st.button("Deselect All", key="desel_all", use_container_width=True):
-                for ch in chapters:
-                    st.session_state.ch_selected[ch["chapter_number"]] = False
-                    st.session_state[f"chk_{ch['chapter_number']}"] = False
-                st.rerun()
 
-    st.markdown('<div style="height:0.5rem;"></div>', unsafe_allow_html=True)
+    # Load all saved plans for the current grade+subject context
+    saved_all = load_saved_plans(
+        grade   = st.session_state.grade,
+        subject = st.session_state.subject,
+    ) if (st.session_state.grade and st.session_state.subject) else []
 
-    # 3-column chapter tile grid
-    _cols = st.columns(3)
-    for _i, ch in enumerate(chapters):
-        ch_num = ch["chapter_number"]
-        _is_sel = st.session_state.get(f"chk_{ch_num}",
-                  st.session_state.ch_selected.get(ch_num, False))
-        with _cols[_i % 3]:
-            _new_val = st.checkbox(
-                f"Ch {ch_num:02d} · {ch['chapter_title']}",
-                value=_is_sel,
-                key=f"chk_{ch_num}",
-            )
-            if _new_val != _is_sel:
-                st.session_state.ch_selected[ch_num] = _new_val
-                st.rerun()
+    with _mp_h_r:
+        _plan_count = len(saved_all)
+        _ctx = ""
+        if st.session_state.grade and st.session_state.subject:
+            _ctx = f"{st.session_state.grade} · {st.session_state.subject} · {_plan_count} plan{'s' if _plan_count != 1 else ''} saved"
+        st.markdown(
+            f'<div style="font-size:0.78rem;color:#9c9693;text-align:right;'
+            f'padding-top:0.6rem;">{_ctx}</div>',
+            unsafe_allow_html=True,
+        )
 
-    st.markdown('<div style="height:0.5rem;"></div>', unsafe_allow_html=True)
-    st.divider()
+    st.markdown('<div style="height:0.75rem;"></div>', unsafe_allow_html=True)
 
-    # ── Allocation tabs ────────────────────────────────────────────────────────
-    tab_alloc, tab_cov = st.tabs(["Period Allocation", "Competency Report"])
+    # ── Filter pills (All / Grade dropdown / Subject dropdown) ────────────────
+    _f_grade, _f_subject, _f_spacer = st.columns([2, 2, 5])
+    with _f_grade:
+        _grade_opts = ["Grade"] + GRADES
+        _g_idx = _grade_opts.index(st.session_state.mp_grade_filter) if st.session_state.mp_grade_filter in _grade_opts else 0
+        _new_g = st.selectbox("Grade filter", _grade_opts, index=_g_idx,
+                              label_visibility="collapsed", key="mp_grade_sel")
+        if _new_g != st.session_state.mp_grade_filter:
+            st.session_state.mp_grade_filter = _new_g
+            st.rerun()
+    with _f_subject:
+        _subj_opts = ["Subject"] + SUBJECTS
+        _s_idx = _subj_opts.index(st.session_state.mp_subject_filter) if st.session_state.mp_subject_filter in _subj_opts else 0
+        _new_s = st.selectbox("Subject filter", _subj_opts, index=_s_idx,
+                              label_visibility="collapsed", key="mp_subject_sel")
+        if _new_s != st.session_state.mp_subject_filter:
+            st.session_state.mp_subject_filter = _new_s
+            st.rerun()
 
-    with tab_alloc:
-        if not st.session_state.principal_generated:
-            st.markdown(
-                '<div class="ws-placeholder">'
-                'Configure the period budget and chapter selection, then generate.'
-                '</div>',
+    st.markdown('<div style="height:0.75rem;"></div>', unsafe_allow_html=True)
+
+    # ── Apply filters ─────────────────────────────────────────────────────────
+    def _mp_matches(plan: dict) -> bool:
+        if st.session_state.mp_grade_filter not in ("Grade", "All") and plan.get("grade") != st.session_state.mp_grade_filter:
+            return False
+        if st.session_state.mp_subject_filter not in ("Subject", "All") and plan.get("subject") != st.session_state.mp_subject_filter:
+            return False
+        return True
+
+    visible = [p for p in sorted(saved_all, key=lambda p: p["saved_at"], reverse=True) if _mp_matches(p)]
+
+    if not visible:
+        st.markdown(
+            '<div class="ws-placeholder">'
+            'No saved plans match the current filter. '
+            'Generate a plan in the Generate tab and click Save to My Plans.'
+            '</div>',
+            unsafe_allow_html=True,
+        )
+    else:
+        # ── Table header ──────────────────────────────────────────────────────
+        _th = st.columns([4, 2, 2, 2, 2, 2])
+        for _label, _col in zip(
+            ["CHAPTER", "GRADE", "SUBJECT", "PERIODS", "SAVED", "ACTIONS"],
+            _th
+        ):
+            _col.markdown(
+                f'<div style="font-size:0.68rem;font-weight:500;letter-spacing:0.08em;'
+                f'text-transform:uppercase;color:#5a5754;padding:0.4rem 0 0.3rem 0;'
+                f'border-bottom:1px solid #d9d6d0;">{_label}</div>',
                 unsafe_allow_html=True,
             )
-        else:
-            st.info("Period allocation will appear here once the API call is wired.")
 
-    with tab_cov:
-        if not st.session_state.principal_generated:
-            st.markdown(
-                '<div class="ws-placeholder">'
-                'Generate the period allocation to see competency coverage.'
-                '</div>',
-                unsafe_allow_html=True,
-            )
-        else:
-            st.info("Competency report will appear here once the API call is wired.")
+        st.markdown('<div style="height:0.25rem;"></div>', unsafe_allow_html=True)
+
+        # ── Rows ──────────────────────────────────────────────────────────────
+        for plan in visible:
+            ch_title   = plan.get("chapter_title", "Unknown chapter")
+            ch_num     = plan.get("chapter_number", "")
+            grade_val  = plan.get("grade", "")
+            subj_val   = plan.get("subject", "")
+            saved_at   = plan.get("saved_at", "")[:10]
+            # Format saved date as "18 Mar 2026"
+            try:
+                from datetime import datetime as _dt
+                _d = _dt.fromisoformat(saved_at)
+                saved_disp = _d.strftime("%-d %b %Y")
+            except Exception:
+                saved_disp = saved_at
+            # Period schedule: extract compact summary
+            sched_raw  = plan.get("period_schedule_display", "")
+            # Pull "Total: N periods · Xh Ymin" from the schedule string
+            _total_line = ""
+            for _ln in sched_raw.splitlines():
+                if _ln.strip().startswith("Total:"):
+                    _total_line = _ln.strip().replace("Total:", "").strip()
+                    break
+            if not _total_line:
+                _total_line = sched_raw[:40]
+
+            _rc = st.columns([4, 2, 2, 2, 2, 2])
+            with _rc[0]:
+                st.markdown(
+                    f'<div style="font-size:0.88rem;font-weight:500;color:#1a1a1a;'
+                    f'line-height:1.3;padding:0.5rem 0 0.1rem 0;">{ch_title}</div>'
+                    f'<div style="font-size:0.72rem;color:#9c9693;">Ch {ch_num:02d} · {subj_val}</div>',
+                    unsafe_allow_html=True,
+                )
+            with _rc[1]:
+                st.markdown(
+                    f'<div style="font-size:0.82rem;color:#3d3b38;padding-top:0.5rem;">{grade_val}</div>',
+                    unsafe_allow_html=True,
+                )
+            with _rc[2]:
+                st.markdown(
+                    f'<div style="font-size:0.82rem;color:#3d3b38;padding-top:0.5rem;">{subj_val}</div>',
+                    unsafe_allow_html=True,
+                )
+            with _rc[3]:
+                st.markdown(
+                    f'<div style="font-size:0.82rem;color:#3d3b38;padding-top:0.5rem;">{_total_line}</div>',
+                    unsafe_allow_html=True,
+                )
+            with _rc[4]:
+                st.markdown(
+                    f'<div style="font-size:0.82rem;color:#3d3b38;padding-top:0.5rem;">{saved_disp}</div>',
+                    unsafe_allow_html=True,
+                )
+            with _rc[5]:
+                _a1, _a2 = st.columns(2)
+                with _a1:
+                    if st.button("View", key=f"view_{plan['filename']}", use_container_width=True):
+                        st.session_state.lpa_result        = plan["result"]
+                        st.session_state.teacher_ch_idx    = next(
+                            (i for i, c in enumerate(chapters)
+                             if c["chapter_number"] == plan.get("chapter_number")), None
+                        )
+                        st.session_state.teacher_generated = True
+                        st.session_state.role              = "Generate"
+                        st.rerun()
+                with _a2:
+                    if st.button("PDF", key=f"pdf_{plan['filename']}", use_container_width=True):
+                        _ch_for_pdf = next(
+                            (c for c in chapters if c["chapter_number"] == plan.get("chapter_number")),
+                            {"chapter_title": ch_title, "chapter_weight": ""}
+                        )
+                        _pdf_bytes = generate_pdf_bytes_lp(
+                            plan["result"], _ch_for_pdf,
+                            plan.get("grade", ""), plan.get("subject", "")
+                        )
+                        _safe = re.sub(r"[^\w\s-]", "", ch_title).strip().replace(" ", "_")[:40]
+                        st.download_button(
+                            label="⬇ Download",
+                            data=_pdf_bytes,
+                            file_name=f"Aruvi_{_safe}_LP.pdf",
+                            mime="application/pdf",
+                            key=f"dl_{plan['filename']}",
+                            use_container_width=True,
+                        )
+
+            st.markdown('<div style="height:0.1rem;border-bottom:1px solid #f0ede9;"></div>', unsafe_allow_html=True)
 
 # ── Ask Aruvi toggle button (always visible, fixed to right edge) ─────────────
 _toggle_label = "Close" if st.session_state.ask_aruvi_open else "Ask Aruvi"
