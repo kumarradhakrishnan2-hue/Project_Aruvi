@@ -333,18 +333,37 @@
     padding-bottom: 8px;
     align-items: center;
   }
-  .btn-clear {
-    padding: 5px 15px;
-    background: #ffffff;
-    color: #374151;
-    border: 1px solid #d1d5db;
-    border-radius: 5px;
-    font-size: 0.73rem;
-    font-family: inherit;
+  .btn-clear, .btn-pdf {
+    height: 56px;
+    min-height: 56px;
+    border-radius: 12px;
+    background: #2c3e50;
+    border: none;
+    color: #ffffff;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
     cursor: pointer;
-    letter-spacing: 0.01em;
+    padding: 0 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: background 0.15s, box-shadow 0.15s;
+    font-family: inherit;
   }
-  .btn-clear:hover { background: #f3f4f6; border-color: #9ca3af; }
+  .btn-clear:hover, .btn-pdf:hover {
+    background: #3d5166;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.24);
+  }
+  .btn-clear::before {
+    content: "✦";
+    font-size: 0.85rem;
+  }
+  .btn-pdf::before {
+    content: "✦";
+    font-size: 0.85rem;
+  }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
@@ -383,7 +402,7 @@
     <p id="fn2"></p>
   </div>
   <div class="actions">
-    <button class="btn-pdf" onclick="downloadPDF()">⬇ Download PDF</button>
+    <button class="btn-pdf" onclick="downloadPDF()">Download PDF</button>
     <button class="btn-clear" onclick="clearReport()">Clear</button>
   </div>
 </div>
@@ -710,6 +729,33 @@ function downloadPDF() {
 
 /* ── legacy jsPDF scaffold (kept for reference, never executed) ── */
 function _downloadPDF_legacy_unused() {
+  function cleanText(str) {
+    if (!str) return '';
+    return str
+      .replace(/ā/g, 'a').replace(/Ā/g, 'A')
+      .replace(/ī/g, 'i').replace(/Ī/g, 'I')
+      .replace(/ū/g, 'u').replace(/Ū/g, 'U')
+      .replace(/ṇ/g, 'n').replace(/Ṇ/g, 'N')
+      .replace(/ṭ/g, 't').replace(/Ṭ/g, 'T')
+      .replace(/ḍ/g, 'd').replace(/Ḍ/g, 'D')
+      .replace(/ṣ/g, 's').replace(/Ṣ/g, 'S')
+      .replace(/ṛ/g, 'r').replace(/Ṛ/g, 'R')
+      .replace(/ñ/g, 'n').replace(/Ñ/g, 'N')
+      .replace(/ś/g, 's').replace(/Ś/g, 'S')
+      .replace(/ṃ/g, 'm').replace(/Ṃ/g, 'M')
+      .replace(/ḥ/g, 'h').replace(/Ḥ/g, 'H')
+      .replace(/\u015b/g, 's').replace(/\u015a/g, 'S')
+      .replace(/\u1e63/g, 's').replace(/\u1e62/g, 'S')
+      .replace(/\u1e47/g, 'n').replace(/\u1e46/g, 'N')
+      .replace(/\u1e6d/g, 't').replace(/\u1e6c/g, 'T')
+      .replace(/\u1e0d/g, 'd').replace(/\u1e0c/g, 'D')
+      .replace(/\u1e5b/g, 'r').replace(/\u1e5a/g, 'R')
+      .replace(/\u1e43/g, 'm').replace(/\u1e42/g, 'M')
+      .replace(/\u1e25/g, 'h').replace(/\u1e24/g, 'H')
+      .replace(/\u0301|\u0303|\u0304|\u0307|\u0308|\u0323|\u0325|\u0331/g, '')
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '').normalize('NFC');
+  }
+
   var { jsPDF } = window.jspdf;
   var doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
 
@@ -773,13 +819,17 @@ function _downloadPDF_legacy_unused() {
     }
     doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor(26, 25, 23);
     doc.text('ARUVI', mL + 12, 15);
+    doc.setCharSpace(0);
     doc.setFont('helvetica', 'normal'); doc.setFontSize(6); doc.setTextColor(107, 114, 128);
     doc.text('NCF 2023 \u00b7 Pedagogical Platform', mL + 12, 19);
+    doc.setCharSpace(0);
 
     doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor(26, 25, 23);
     doc.text('Period Allocation Report', pageW - mR, 14, { align: 'right' });
+    doc.setCharSpace(0);
     doc.setFont('helvetica', 'normal'); doc.setFontSize(6); doc.setTextColor(107, 114, 128);
     doc.text((GRADE_LABEL || '') + ' \u00b7 ' + (SUBJECT_LABEL || '') + ' \u00b7 ' + dateStr, pageW - mR, 18, { align: 'right' });
+    doc.setCharSpace(0);
 
     rule(22,   0.53, 26);   /* 1.5pt dark rule */
     rule(22.7, 0.18, 180);  /* 0.5pt light rule */
@@ -791,12 +841,14 @@ function _downloadPDF_legacy_unused() {
     rule(pageH - 10, 0.18, 180);
     doc.setFont('helvetica', 'normal'); doc.setFontSize(6); doc.setTextColor(107, 114, 128);
     doc.text('Aruvi \u00b7 Period Allocation Report \u00b7 ' + (GRADE_LABEL || '') + ' \u00b7 ' + (SUBJECT_LABEL || ''), mL, pageH - 7);
+    doc.setCharSpace(0);
     doc.text('Page ' + pn + ' of ' + total + ' \u00b7 Confidential', pageW - mR, pageH - 7, { align: 'right' });
+    doc.setCharSpace(0);
   }
 
   /* ── page 1: header + summary strip ── */
   addHeader();
-  var y = mTop + 8;
+  var y = mTop + 14;
 
   /* summary strip — Fix 8: values bold/11pt, labels normal/6.5pt */
   var ptBreak = sortedPts.map(function (pt) {
@@ -814,9 +866,11 @@ function _downloadPDF_legacy_unused() {
   stripItems.forEach(function (item) {
     doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor(26, 25, 23);
     doc.text(item.val, sx, y);
+    doc.setCharSpace(0);
     var vw = doc.getTextWidth(item.val);
     doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(107, 114, 128);
     doc.text(item.lbl, sx, y + 4);
+    doc.setCharSpace(0);
     sx += Math.max(vw, doc.getTextWidth(item.lbl)) + 8;
   });
   y += 10;
@@ -835,8 +889,8 @@ function _downloadPDF_legacy_unused() {
     var minutes = sortedPts.reduce(function (s, pt) { return s + (alloc[String(pt.mins)] || 0) * pt.mins; }, 0);
     var wt      = cd.chapter_weight || 0;
 
-    /* Fix 7: page break when < 40mm remaining */
-    if (pageH - mBot - y < 40) { doc.addPage(); addHeader(); y = mTop + 8; }
+    /* Fix 7: page break when < 60mm remaining */
+    if (pageH - mBot - y < 60) { doc.addPage(); addHeader(); y = mTop + 8; }
 
     /* allocation string */
     var allocStr = sortedPts.map(function (pt) {
@@ -856,7 +910,7 @@ function _downloadPDF_legacy_unused() {
 
     /* measure chapter title to check for overlap */
     doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5);
-    var chTitleW = doc.getTextWidth('Ch\u00a0' + pad2(cd.chapter_number) + '\u2002' + cd.chapter_title);
+    var chTitleW = doc.getTextWidth('Ch\u00a0' + pad2(cd.chapter_number) + '\u2002' + cleanText(cd.chapter_title));
 
     /* pill left edge: [pill][4mm gap][weightLabel] ends flush at pageW-mR */
     var pillX = pageW - mR - wlWidth - 4 - pillW;
@@ -873,7 +927,10 @@ function _downloadPDF_legacy_unused() {
     y += 6;
     doc.setCharSpace(0);
     doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor(26, 25, 23);
-    doc.text('Ch\u00a0' + pad2(cd.chapter_number) + '\u2002' + cd.chapter_title, mL, y);
+    var _titleFull  = 'Ch\u00a0' + pad2(cd.chapter_number) + '\u2002' + cleanText(cd.chapter_title);
+    var _titleMaxW  = pillX - mL - 6;
+    var _titleLines = doc.splitTextToSize(_titleFull, _titleMaxW);
+    doc.text(_titleLines[0], mL, y);
     doc.setCharSpace(0);
 
     /* draw alloc pill — must use allocFS (same size used to measure pillW) */
@@ -881,36 +938,46 @@ function _downloadPDF_legacy_unused() {
     doc.setFillColor(26, 25, 23);
     doc.roundedRect(pillX, y - 2.5, pillW, 4, 0.8, 0.8, 'F');
     doc.setTextColor(255, 255, 255);
+    doc.setCharSpace(0);
     doc.text(allocStr, pillX + pillW - CP, y, { align: 'right' });
     doc.setCharSpace(0);
 
     /* draw weight label starting at pillX + pillW + 4 — never overlaps pill */
     doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(100, 100, 100);
+    doc.setCharSpace(0);
     doc.text(wlText, pillX + pillW + 4, y);
     doc.setCharSpace(0);
 
     y += 2;
-    rule(y, 0.53, 26); y += 3;
+    rule(y, 0.53, 26); y += 6;
 
     /* competency column headers */
     var hx = mL;
     var headers = ['#', 'Code', 'Competency', 'Justification', 'Weight'];
     var hWidths = [CW.seq, CW.code, CW.desc, CW.just, CW.dots];
-    var hAligns = ['right', 'left', 'left', 'center', 'center'];
+    var hAligns = ['right', 'left', 'center', 'center', 'center'];
     doc.setFont('helvetica', 'bold'); doc.setFontSize(5.5); doc.setTextColor(107, 114, 128);
     headers.forEach(function (h, i) {
-      if (hAligns[i] === 'right')       doc.text(h, hx + hWidths[i] - CP, y, { align: 'right' });
-      else if (hAligns[i] === 'center') doc.text(h, hx + hWidths[i] / 2,  y, { align: 'center' });
-      else                              doc.text(h, hx + CP, y);
+      doc.setCharSpace(0);
+      if (hAligns[i] === 'right') {
+        doc.text(h, hx + hWidths[i] - CP, y, { align: 'right' });
+        doc.setCharSpace(0);
+      } else if (hAligns[i] === 'center') {
+        doc.text(h, hx + hWidths[i] / 2, y, { align: 'center' });
+        doc.setCharSpace(0);
+      } else {
+        doc.text(h, hx + CP, y);
+        doc.setCharSpace(0);
+      }
       hx += hWidths[i];
     });
-    y += 1.5; rule(y, 0.1, 210); y += 2.5;
+    y += 2; rule(y, 0.1, 210); y += 3;
 
     /* competency rows — Fix 2: use CP padding; Fix 3: explicit font per cell */
     primary.forEach(function (comp, ci) {
       var w         = comp.weight || 0;
-      var descText  = comp.description || comp.cg || '';
-      var justText  = comp.justification || '';
+      var descText  = cleanText(comp.description || comp.cg || '');
+      var justText  = cleanText(comp.justification || '');
       var descLines = doc.splitTextToSize(descText, CW.desc - CP * 2);
       var justLines = doc.splitTextToSize(justText, CW.just - CP * 2);
       var rowH      = Math.max(8, Math.max(descLines.length, justLines.length) * 3.6 + CP * 2);
@@ -921,25 +988,29 @@ function _downloadPDF_legacy_unused() {
       var cx   = mL;
 
       /* # col — Fix 3: normal font explicitly */
-      doc.setFont('helvetica', 'normal'); doc.setFontSize(6); doc.setTextColor(80, 80, 80);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6); doc.setTextColor(40, 40, 40);
       doc.text(String(ci + 1), cx + CW.seq - CP, midY, { align: 'right', baseline: 'middle' });
+      doc.setCharSpace(0);
       cx += CW.seq;
 
       /* Code col — Fix 3: normal then bold */
       doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
       doc.setFont('helvetica', 'bold');
       doc.text(comp.c_code || '', cx + CP, midY, { baseline: 'middle' });
+      doc.setCharSpace(0);
       cx += CW.code;
 
       /* Competency col — Fix 3: normal */
       doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
       doc.text(descLines, cx + CP, y + CP, { lineHeightFactor: 1.3 });
+      doc.setCharSpace(0);
       cx += CW.desc;
 
-      /* Justification col — Fix 3: italic + (100,100,100) */
-      doc.setFont('helvetica', 'normal'); doc.setFontSize(6); doc.setTextColor(100, 100, 100);
+      /* Justification col — Fix 3: italic + (60,60,60) */
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6); doc.setTextColor(60, 60, 60);
       doc.setFont('helvetica', 'italic');
       doc.text(justLines, cx + CP, y + CP, { lineHeightFactor: 1.3 });
+      doc.setCharSpace(0);
       cx += CW.just;
 
       /* Dots col — Fix 4: drawDots with cell coords */
@@ -959,7 +1030,9 @@ function _downloadPDF_legacy_unused() {
   rule(fnY - 2, 0.18, 180);
   doc.setFont('helvetica', 'normal'); doc.setFontSize(6); doc.setTextColor(107, 114, 128);
   doc.text(fn1, mL, fnY, { maxWidth: pageW - mL - mR });
+  doc.setCharSpace(0);
   doc.text(fn2, mL, fnY + 3.5);
+  doc.setCharSpace(0);
 
   /* ── add footers to all pages ── */
   var totalPages = doc.internal.getNumberOfPages();

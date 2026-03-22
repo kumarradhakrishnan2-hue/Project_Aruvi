@@ -26,7 +26,7 @@ def render_html_to_pdf(html_content: str) -> bytes:
         page.set_content(html_content, wait_until="networkidle")
         pdf_bytes = page.pdf(
             format="A4",
-            print_background=False,
+            print_background=True,
             margin={
                 "top": "20mm",
                 "bottom": "20mm",
@@ -136,8 +136,33 @@ def build_allocation_pdf(
 <head>
 <meta charset="UTF-8">
 <style>
+  @font-face {{
+    font-family: 'DejaVu Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('file:///usr/share/fonts/truetype/dejavu/DejaVuSans.ttf') format('truetype');
+  }}
+  @font-face {{
+    font-family: 'DejaVu Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: url('file:///usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf') format('truetype');
+  }}
+  @font-face {{
+    font-family: 'DejaVu Serif';
+    font-style: normal;
+    font-weight: 400;
+    src: url('file:///usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf') format('truetype');
+  }}
+  @font-face {{
+    font-family: 'DejaVu Serif';
+    font-style: italic;
+    font-weight: 400;
+    src: url('file:///usr/share/fonts/truetype/dejavu/DejaVuSerif-Italic.ttf') format('truetype');
+  }}
+
   * {{ box-sizing: border-box; margin: 0; padding: 0; }}
-  body {{ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 8pt; color: #1a1917; background: white; }}
+  body {{ font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 8pt; color: #1a1917; background: white; }}
 
   .page-header {{ display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 6px; border-bottom: 2px solid #1a1917; margin-bottom: 3px; }}
   .brand {{ display: flex; align-items: center; gap: 8px; }}
@@ -146,57 +171,64 @@ def build_allocation_pdf(
   .report-right {{ text-align: right; }}
   .report-title {{ font-size: 9pt; font-weight: 700; }}
   .report-sub {{ font-size: 6pt; color: #999; margin-top: 2px; }}
-  .header-rule2 {{ border: none; border-top: 0.5px solid #1a1917; margin-bottom: 14px; }}
+  .header-rule2 {{ height: 0; border: none; border-top: 0.5px solid #1a1917; margin: 3px 0 10px 0; }}
 
-  .summary {{ display: flex; gap: 0; margin-bottom: 16px; border: 0.5px solid #ddd; }}
-  .sum-cell {{ flex: 1; padding: 5px 8px; border-right: 0.5px solid #ddd; text-align: center; }}
+  /* ── Summary strip ── */
+  .summary {{ display: flex; gap: 0; margin-bottom: 10px; border: 0.5px solid #ddd; }}
+  .sum-cell {{ flex: 1; padding: 4px 8px; border-right: 0.5px solid #ddd; text-align: center; }}
   .sum-cell:last-child {{ border-right: none; }}
   .sum-val {{ font-size: 10pt; font-weight: 700; display: block; }}
   .sum-key {{ font-size: 5.5pt; color: #999; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 1px; display: block; }}
 
-  .chapter-block {{ margin-bottom: 18px; page-break-inside: avoid; }}
+  /* ── Chapter block ── #4: tighter spacing between chapters */
+  .chapter-block {{ margin-bottom: 12px; page-break-inside: avoid; }}
   .chapter-header {{
-    display: flex; align-items: baseline; gap: 6px;
-    padding-bottom: 4px; border-bottom: 1.5px solid #1a1917;
+    display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap;
+    padding-bottom: 3px; border-bottom: 1.5px solid #1a1917;
     margin-bottom: 0;
   }}
-  .ch-num {{ font-size: 6.5pt; color: #999; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }}
-  .ch-title {{ font-size: 9.5pt; font-weight: 700; font-family: Georgia, serif; flex: 1; }}
+  .ch-num {{ font-size: 6.5pt; color: #aaa; font-weight: 500; white-space: nowrap; }}
+  .ch-title {{ font-size: 8.5pt; font-weight: 700; font-family: 'DejaVu Serif', Georgia, serif; flex: 1; min-width: 0; word-break: break-word; }}
   .ch-alloc {{
-    font-size: 7pt; font-weight: 600; color: white;
-    background: #1a1917; padding: 2px 7px; border-radius: 3px;
+    font-size: 6.5pt; font-weight: 600; color: white;
+    background: #1a1917; padding: 2px 6px; border-radius: 3px;
     white-space: nowrap;
   }}
-  .ch-weight {{ font-size: 7pt; color: #888; white-space: nowrap; padding-left: 6px; }}
+  .ch-weight {{ font-size: 6.5pt; color: #aaa; white-space: nowrap; padding-left: 6px; }}
 
+  /* ── Competency table ── */
   .comp-table {{ width: 100%; border-collapse: collapse; }}
   .comp-table th {{
-    font-size: 6pt; font-weight: 600; letter-spacing: 0.06em;
-    text-transform: uppercase; color: #999;
-    padding: 5px 6px; text-align: left;
+    font-size: 6pt; font-weight: 600; letter-spacing: 0.05em;
+    text-transform: uppercase; color: #bbb;
+    padding: 4px 6px; text-align: left;
     border-bottom: 0.5px solid #e0ddd8;
   }}
-  .th-seq {{ width: 18px; }}
-  .th-code {{ width: 38px; }}
-  .th-comp {{ width: 34%; }}
+  .th-seq {{ width: 16px; }}
+  .th-code {{ width: 36px; }}
+  .th-comp {{ width: 32%; }}
   .th-just {{ text-align: left; }}
-  .th-wt {{ width: 40px; text-align: center; }}
+  /* ── #3: explicit min-width prevents dots column from collapsing into justification */
+  .th-wt {{ width: 42px; min-width: 42px; text-align: center; }}
 
+  /* ── #4: reduce cell padding — was 6px, now 4px top/bottom */
+  .comp-table tr {{ break-inside: avoid; page-break-inside: avoid; }}
   .comp-table td {{
-    padding: 6px 6px; vertical-align: top;
+    padding: 4px 6px; vertical-align: top;
     border-bottom: 0.5px solid #f0ede9;
-    font-size: 7pt; line-height: 1.5;
+    font-size: 7pt; line-height: 1.45;
   }}
   .comp-table tr:last-child td {{ border-bottom: none; }}
   .seq {{ color: #bbb; font-size: 6.5pt; text-align: right; padding-right: 4px; }}
   .code {{ font-weight: 700; font-size: 7.5pt; white-space: nowrap; }}
   .competency {{ color: #2a2a2a; }}
-  .justification {{ color: #666; font-style: italic; }}
-  .weight-dots {{ text-align: center; vertical-align: middle; }}
-  .dots {{ display: flex; gap: 3px; justify-content: center; align-items: center; padding-top: 2px; }}
-  .dot {{ width: 6px; height: 6px; border-radius: 50%; display: inline-block; flex-shrink: 0; }}
-  .dot.filled {{ background: #1a1917; }}
-  .dot.empty {{ border: 1px solid #bbb; background: transparent; }}
+  .justification {{ color: #555; font-style: italic; font-family: 'DejaVu Serif', Georgia, serif; padding-right: 4px; }}
+  /* ── #3: overflow:hidden + explicit width keeps dots inside their column */
+  .weight-dots {{ width: 42px; min-width: 42px; text-align: center; vertical-align: middle; overflow: hidden; }}
+  .dots {{ display: flex; gap: 3px; justify-content: center; align-items: center; padding-top: 3px; }}
+  .dot {{ width: 5px; height: 5px; border-radius: 50%; display: inline-block; flex-shrink: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; color-adjust: exact; }}
+  .dot.filled {{ background: #1a1917 !important; }}
+  .dot.empty {{ border: 1px solid #ccc; background: transparent; }}
 
   .footnotes {{ margin-top: 20px; padding-top: 8px; border-top: 0.5px solid #ddd; }}
   .fn {{ font-size: 6pt; color: #bbb; line-height: 1.6; margin-bottom: 3px; }}
@@ -225,7 +257,7 @@ def build_allocation_pdf(
     <div class="report-sub">{grade} · {subject} · {today}</div>
   </div>
 </div>
-<hr class="header-rule2">
+<div class="header-rule2"></div>
 
 <div class="summary">
   <div class="sum-cell"><span class="sum-val">{len(chapters_data)}</span><span class="sum-key">Chapters</span></div>
