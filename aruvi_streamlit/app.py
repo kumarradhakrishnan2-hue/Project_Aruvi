@@ -769,6 +769,10 @@ query = st.query_params
 
 if "role"    in query and query["role"]    in ("Allocate", "Generate", "My Plans"):
     st.session_state.role    = query["role"]
+if "grade" not in query and st.session_state.get("grade"):
+    pass  # keep existing session state grade
+if "subject" not in query and st.session_state.get("subject"):
+    pass  # keep existing session state subject
 if "grade"   in query and query["grade"]   in GRADES:
     st.session_state.grade   = query["grade"]
 if "subject" in query and query["subject"] in SUBJECTS:
@@ -776,6 +780,17 @@ if "subject" in query and query["subject"] in SUBJECTS:
 if "ch"      in query:
     try: st.session_state.teacher_ch_idx = int(query["ch"])
     except ValueError: pass
+
+# Persist alloc_chs and alloc_pts from URL into session state
+# so they survive across reruns and are available wherever the tab renders
+if "alloc_chs" in query and query["alloc_chs"]:
+    st.session_state["alloc_chs"] = query["alloc_chs"]
+if "alloc_pts" in query and query["alloc_pts"]:
+    st.session_state["alloc_pts"] = query["alloc_pts"]
+# Clear them if a fresh load (no alloc params in URL)
+if "alloc_chs" not in query and "alloc_pts" not in query:
+    if "alloc_chs" in st.session_state: del st.session_state["alloc_chs"]
+    if "alloc_pts" in st.session_state: del st.session_state["alloc_pts"]
 
 # Defaults on first load
 if "role"    not in st.session_state: st.session_state.role    = "Allocate"
@@ -2778,7 +2793,7 @@ elif st.session_state.role == "Allocate":
     )
 
     # ── Load HTML template and inject data ────────────────────────────────────
-    _html_path = PROJECT_ROOT / "knowledge_commons/allocate_page.html"
+    _html_path = PROJECT_ROOT / "allocate_page.html"
     _html_tpl  = _html_path.read_text(encoding="utf-8")
 
     import base64 as _b64
@@ -2797,48 +2812,113 @@ elif st.session_state.role == "Allocate":
     )
     _html = _html_tpl.replace("/* __CHAPTERS_DATA__ */", _inject)
 
-    # ── Server-side PDF generation ─────────────────────────────────────────────
-    import sys as _sys
-    if str(PROJECT_ROOT) not in _sys.path:
-        _sys.path.insert(0, str(PROJECT_ROOT))
-    from knowledge_commons.pdf_generator import build_allocation_pdf
+    components.html(_html, height=950, scrolling=True)
 
-    def generate_allocation_pdf_server():
-        sel_chapters = [
-            ch for ch in _chapters_data
-            if ch["chapter_number"] in st.session_state.get("alloc_selected_chapters", set())
-        ]
-        if not sel_chapters:
-            return None
-
-        # Attach allocation results to each chapter
-        period_types = st.session_state.get("alloc_period_types", [{"mins": 40, "count": 1}])
-        allocs = _compute_allocation(sel_chapters, period_types)
-        for i, ch in enumerate(sel_chapters):
-            ch["_alloc"] = allocs[i]
-
-        logo_path = str(PROJECT_ROOT / "miscellaneous/aruvi_logo-transparent.png")
-
-        return build_allocation_pdf(
-            chapters_data=sel_chapters,
-            period_types=period_types,
-            grade=st.session_state.grade,
-            subject=st.session_state.subject,
-            logo_path=logo_path
+    # ── Download PDF trigger ──────────────────────────────────────────────
+    _st_col1, _st_col2 = st.columns([1, 4])
+    with _st_col1:
+        _get_pdf = st.button(
+            "⬇ Get Allocation PDF",
+            key="alloc_get_pdf_btn",
+            help="Click after generating the report to download PDF"
         )
 
-    if st.session_state.get("alloc_report_generated"):
-        _pdf_bytes = generate_allocation_pdf_server()
-        if _pdf_bytes:
-            st.download_button(
-                label="Download PDF",
-                data=_pdf_bytes,
-                file_name=f"Aruvi_Allocation_{date.today().isoformat()}.pdf",
-                mime="application/pdf",
-                key="alloc_pdf_download"
-            )
+    if _get_pdf:
+        # Read what's currently in the URL — set by the HTML via replaceState
+        _alloc_chs_raw = st.query_params.get("alloc_chs", "")
+        _alloc_pts_raw = st.query_params.get("alloc_pts", "")
 
-    components.html(_html, height=950, scrolling=True)
+        if not _alloc_chs_raw or not _alloc_pts_raw:
+            st.warning("Please generate the allocation report first, then click Get PDF.")
+        else:
+            try:
+                import math as _math
+
+                _sel_nums = [int(x) for x in _alloc_chs_raw.split(",") if x.strip()]
+                _period_types = []
+                for _pt in _alloc_pts_raw.split(","):
+                    if "x" in _pt:
+                        _m, _c = _pt.split("x")
+                        _period_types.append({"mins": int(_m), "count": int(_c)})
+
+                _sel_chapters = [
+                    ch for ch in _chapters_data
+                    if ch["chapter_number"] in _sel_nums
+                ]
+
+                if _sel_chapters and _period_types:
+                    def _lrm(raw_floats, total):
+                        floors = [_math.floor(f) for f in raw_floats]
+                        remainders = sorted(
+                            enumerate(raw_floats),
+                            key=lambda x: -(x[1] - _math.floor(x[1]))
+                        )
+                        deficit = total - sum(floors)
+                        result = floors[:]
+                        for k in range(deficit):
+                            result[remainders[k][0]] += 1
+                        return result
+
+                    def _compute_alloc(chs, pts):
+                        if len(chs) == 1:
+                            alloc = {pt["mins"]: pt["count"] for pt in pts}
+                            alloc["total"] = sum(pt["count"] for pt in pts)
+                            alloc["total_mins"] = sum(
+                                pt["mins"] * pt["count"] for pt in pts
+                            )
+                            return [alloc]
+                        weights = [ch.get("chapter_weight", 0) for ch in chs]
+                        sum_w = sum(weights) or 1
+                        sorted_pts = sorted(pts, key=lambda x: -x["mins"])
+                        total_p = sum(pt["count"] for pt in sorted_pts)
+                        pass1 = _lrm(
+                            [w / sum_w * total_p for w in weights], total_p
+                        )
+                        remaining = pass1[:]
+                        allocs = [{} for _ in chs]
+                        for pt in sorted_pts[:-1]:
+                            raw = [
+                                min(w / sum_w * pt["count"], remaining[i])
+                                for i, w in enumerate(weights)
+                            ]
+                            res = _lrm(raw, pt["count"])
+                            for i, v in enumerate(res):
+                                allocs[i][pt["mins"]] = v
+                                remaining[i] -= v
+                        shortest = sorted_pts[-1]
+                        for i, v in enumerate(remaining):
+                            allocs[i][shortest["mins"]] = v
+                        for i in range(len(chs)):
+                            allocs[i]["total"] = pass1[i]
+                            allocs[i]["total_mins"] = sum(
+                                allocs[i].get(pt["mins"], 0) * pt["mins"]
+                                for pt in sorted_pts
+                            )
+                        return allocs
+
+                    _allocs = _compute_alloc(_sel_chapters, _period_types)
+                    for _i, _ch in enumerate(_sel_chapters):
+                        _ch["_alloc"] = _allocs[_i]
+
+                    from knowledge_commons.pdf_generator import build_allocation_pdf
+                    _pdf_bytes = build_allocation_pdf(
+                        chapters_data=_sel_chapters,
+                        period_types=_period_types,
+                        grade=st.session_state.grade,
+                        subject=st.session_state.subject,
+                        logo_path=str(
+                            PROJECT_ROOT / "miscellaneous/aruvi_logo-transparent.png"
+                        )
+                    )
+                    st.download_button(
+                        label="⬇ Download Allocation PDF",
+                        data=_pdf_bytes,
+                        file_name=f"Aruvi_Allocation_{date.today().isoformat()}.pdf",
+                        mime="application/pdf",
+                        key="alloc_pdf_final_dl"
+                    )
+            except Exception as _e:
+                st.error(f"PDF generation failed: {_e}")
 
 # ═════════════════════════════════════════════════
 #  MY PLANS WORKSPACE

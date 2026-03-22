@@ -333,18 +333,6 @@
     padding-bottom: 8px;
     align-items: center;
   }
-  .btn-pdf {
-    padding: 5px 15px;
-    background: #2c3e50;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    font-size: 0.73rem;
-    font-family: inherit;
-    cursor: pointer;
-    letter-spacing: 0.01em;
-  }
-  .btn-pdf:hover { background: #1a252f; }
   .btn-clear {
     padding: 5px 15px;
     background: #ffffff;
@@ -395,7 +383,7 @@
     <p id="fn2"></p>
   </div>
   <div class="actions">
-    <button class="btn-pdf" onclick="downloadPDF()">&#8595;&nbsp;Download PDF</button>
+    <button class="btn-pdf" onclick="downloadPDF()">⬇ Download PDF</button>
     <button class="btn-clear" onclick="clearReport()">Clear</button>
   </div>
 </div>
@@ -687,6 +675,18 @@ function generateReport() {
   document.getElementById('section-select').style.display = 'none';
   document.getElementById('section-report').style.display = '';
   reportGenerated = true;
+
+  // Notify Streamlit of selection via URL — delayed so report renders first
+  const chNums = Array.from(selected).sort((a,b) => a-b).join(',');
+  const ptStr = PERIOD_TYPES.map(pt => pt.mins + 'x' + pt.count).join(',');
+  const newUrl = '?role=Allocate&alloc_chs=' + chNums + '&alloc_pts=' + ptStr;
+  setTimeout(function() {
+    window.parent.history.replaceState(null, '', newUrl);
+    // Force Streamlit rerun by fetching its heartbeat endpoint
+    fetch('/healthz').catch(function(){});
+    // Fallback: dispatch a popstate event so Streamlit detects the URL change
+    window.parent.dispatchEvent(new PopStateEvent('popstate', { state: null }));
+  }, 300);
 }
 
 /* ── clear report ───────────────────────────────────────────────────────── */
@@ -697,6 +697,7 @@ function clearReport() {
   selected.clear();
   renderChapterGrid();
   reportGenerated = false;
+  window.parent.history.replaceState(null, '', '?role=Allocate');
 }
 
 /* ── download PDF ───────────────────────────────────────────────────────── */
@@ -704,7 +705,7 @@ function clearReport() {
 /* This stub signals the parent frame; Streamlit's st.download_button       */
 /* handles the actual file delivery.                                        */
 function downloadPDF() {
-  window.parent.postMessage({ type: 'aruvi_download_pdf' }, '*');
+  _downloadPDF_legacy_unused();
 }
 
 /* ── legacy jsPDF scaffold (kept for reference, never executed) ── */
