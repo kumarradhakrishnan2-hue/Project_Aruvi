@@ -1,0 +1,301 @@
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.lpa { font-family: system-ui, -apple-system, sans-serif; background: #fff; border-radius: 12px; border: 0.5px solid #e8e5e0; overflow: hidden; }
+.banner { background: #2c3e50; padding: 12px 16px; position: sticky; top: 0; z-index: 10; }
+.banner-title { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 4px; }
+.banner-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+.bchip { font-size: 10px; color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 10px; }
+.bchip.hi { color: #fff; background: rgba(255,255,255,0.2); }
+.lp-panel { padding: 12px; }
+
+/* Period cards */
+.period-card { border: 0.5px solid #e8e5e0; border-radius: 8px; margin-bottom: 8px; overflow: hidden; }
+.period-card.open { border-color: #2c3e50; }
+.period-header { display: flex; align-items: center; gap: 8px; padding: 9px 12px; cursor: pointer; user-select: none; background: #f5f3ef; }
+.period-card.open .period-header { background: #f0f3f5; }
+.pnum { font-size: 11px; font-weight: 600; color: #fff; background: #9c9693; border-radius: 5px; padding: 2px 8px; white-space: nowrap; flex-shrink: 0; }
+.period-card.open .pnum { background: #2c3e50; }
+.pname { font-size: 12px; font-weight: 500; color: #1a1917; flex: 1; }
+.pdur { font-size: 10px; color: #5a5754; white-space: nowrap; }
+.ptag { font-size: 12px; font-weight: 500; color: #1a1917; white-space: nowrap; max-width: 260px; overflow: hidden; text-overflow: ellipsis; }
+.pchev { font-size: 10px; color: #5a5754; transition: transform 0.15s; flex-shrink: 0; }
+.period-card.open .pchev { transform: rotate(180deg); }
+.pbody { display: none; padding: 12px; border-top: 0.5px solid #e8e5e0; }
+.period-card.open .pbody { display: block; }
+
+/* Material row */
+.matrow { display: flex; gap: 6px; margin-bottom: 10px; padding: 6px 10px; background: #fef9e7; border-radius: 8px; border: 0.5px solid #f0c040; }
+.matlabel { font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: #854f0b; white-space: nowrap; }
+.mattext { font-size: 11px; color: #633806; line-height: 1.4; }
+
+/* Time slots */
+.ts { display: flex; gap: 8px; margin-bottom: 6px; }
+.ttime { font-size: 9px; font-weight: 500; color: #5a5754; white-space: nowrap; min-width: 50px; padding-top: 2px; text-transform: uppercase; letter-spacing: 0.04em; }
+.tdesc { font-size: 11px; color: #1a1917; line-height: 1.5; }
+
+/* Learning Outcome bar */
+.lobar { margin-top: 12px; padding: 8px 10px; background: #f5f3ef; border-radius: 8px; border-left: 3px solid #2c3e50; }
+.lolabel { font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: #2c3e50; margin-bottom: 3px; }
+.lotext { font-size: 11px; color: #1a1917; line-height: 1.5; font-style: italic; }
+
+/* Competency link — at bottom after LO */
+.clinkrow { display: flex; align-items: baseline; gap: 6px; margin-top: 10px; padding-top: 8px; border-top: 0.5px solid #f0ede9; flex-wrap: wrap; }
+.clinkcode { font-size: 11px; font-weight: 500; color: #2c3e50; white-space: nowrap; }
+.clinktext { font-size: 11px; color: #5a5754; line-height: 1.4; }
+
+/* Assessment */
+.assess-divider { margin-top: 16px; padding-top: 12px; border-top: 2px solid #2c3e50; }
+.adivlabel { font-size: 9px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #2c3e50; margin-bottom: 12px; }
+.asec { margin-bottom: 18px; }
+.asec-hdr { background: #f5f3ef; border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; border: 0.5px solid #e8e5e0; }
+.asec-title { font-size: 12px; font-weight: 500; color: #1a1917; margin-bottom: 2px; }
+.asec-meta { font-size: 10px; color: #5a5754; }
+
+/* Column header row per section */
+.q-col-hdr { display: flex; background: #faf9f6; border: 0.5px solid #e8e5e0; border-radius: 6px 6px 0 0; border-bottom: none; }
+.qch-type { width: 160px; flex-shrink: 0; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #9c9693; padding: 6px 10px; border-right: 0.5px solid #e8e5e0; }
+.qch-q { flex: 1; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #9c9693; padding: 6px 10px; border-right: 0.5px solid #e8e5e0; }
+.qch-ref { width: 110px; flex-shrink: 0; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #9c9693; padding: 6px 10px; }
+
+/* Question cards */
+.qcard { border: 0.5px solid #e8e5e0; border-top: none; margin-bottom: 0; overflow: hidden; }
+.qcard:last-child { border-radius: 0 0 6px 6px; }
+.qhdr { display: flex; align-items: center; cursor: pointer; background: #f5f3ef; border-top: 0.5px solid #e8e5e0; }
+.qhdr:hover { background: #eeecea; }
+.qhdr-type { width: 160px; flex-shrink: 0; padding: 8px 10px; border-right: 0.5px solid #e8e5e0; }
+.qhdr-title { flex: 1; padding: 8px 10px; font-size: 11px; color: #1a1917; line-height: 1.4; border-right: 0.5px solid #e8e5e0; }
+.qhdr-ref { width: 110px; flex-shrink: 0; padding: 8px 10px; font-size: 10px; color: #9c9693; display: flex; align-items: center; justify-content: space-between; }
+.qchev { font-size: 9px; color: #9c9693; transition: transform 0.15s; }
+.qtbadge { font-size: 9px; padding: 2px 7px; border-radius: 8px; background: #e8e5de; color: #5f5e5a; white-space: nowrap; display: inline-block; }
+
+/* Question body */
+.qbody { display: none; padding: 10px 12px; border-top: 0.5px solid #e8e5e0; background: #fff; }
+.qbody.open { display: block; }
+.qtext { font-size: 11px; color: #1a1917; line-height: 1.6; margin-bottom: 8px; }
+.qopt { font-size: 11px; color: #5a5754; margin: 3px 0; }
+.qopt.correct { color: #0f6e56; font-weight: 500; }
+.qexpected { font-size: 10px; color: #5a5754; background: #f5f3ef; padding: 6px 8px; border-radius: 5px; margin-top: 6px; line-height: 1.5; }
+.qexpected strong { color: #1a1917; }
+.atoggle { font-size: 10px; color: #2c3e50; cursor: pointer; border: none; background: none; padding: 6px 0 2px; display: flex; align-items: center; gap: 4px; margin-top: 4px; }
+.abox { display: none; margin-top: 6px; padding: 8px; background: #e8f4f5; border-radius: 8px; font-size: 10px; color: #085041; line-height: 1.6; }
+.abox.open { display: block; }
+.no-data { padding: 24px; text-align: center; font-size: 12px; color: #9c9693; }
+</style>
+
+<div class="lpa">
+  <div class="banner">
+    <div class="banner-title" id="banner-title">—</div>
+    <div class="banner-meta" id="banner-meta"></div>
+  </div>
+  <div class="lp-panel" id="lp-panel">
+    <div class="no-data">Generate a lesson plan to see it here.</div>
+  </div>
+</div>
+
+<script>
+/* __LPA_DATA__ */
+
+var WEIGHT_LABEL = {3:'Central', 2:'Substantive', 1:'Present'};
+
+function escHtml(s) {
+  if (!s) return '';
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+/* Expand question-type abbreviations */
+function expandType(t) {
+  if (!t) return t;
+  return t
+    .replace(/\bECR\b/g, 'Extended Constructed Response')
+    .replace(/\bExtended CR\b/g, 'Extended Constructed Response')
+    .replace(/\bShort CR\b/g, 'Short Constructed Response')
+    .replace(/\bCR\b/g, 'Constructed Response');
+}
+
+function toggleP(id) {
+  var card = document.getElementById(id);
+  var wasOpen = card.classList.contains('open');
+  document.querySelectorAll('.period-card').forEach(function(c){ c.classList.remove('open'); });
+  if (!wasOpen) card.classList.add('open');
+}
+
+function toggleQ(hdr) {
+  var body = hdr.closest('.qcard').querySelector('.qbody');
+  body.classList.toggle('open');
+  var chev = hdr.querySelector('.qchev');
+  if (chev) chev.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : '';
+}
+
+function toggleA(btn) {
+  var box = btn.nextElementSibling;
+  box.classList.toggle('open');
+  btn.textContent = box.classList.contains('open') ? '▲ Hide annotation' : '▼ Teacher annotation';
+}
+
+function renderTimeSlots(slots) {
+  if (!slots || !slots.length) return '';
+  return slots.map(function(s){
+    var desc = (s.desc || '').trim().replace(/^\||\|$/g, '').trim();
+    return '<div class="ts"><div class="ttime">' + escHtml(s.time) + '</div><div class="tdesc">' + escHtml(desc) + '</div></div>';
+  }).join('');
+}
+
+function renderAssessment(sections) {
+  if (!sections || !sections.length) return '';
+  var html = '<div class="assess-divider"><div class="adivlabel">Chapter Assessment</div>';
+
+  sections.forEach(function(sec) {
+    /* ── Section header ────────────────────────────────────────────────── */
+    var secTitle = escHtml(sec.c_code);
+    if (sec.weight_label)     secTitle += ' · ' + escHtml(sec.weight_label);
+    if (sec.competency_short) secTitle += ' — ' + escHtml(sec.competency_short);
+
+    var metaLine = '';
+    if (sec.drawing_on)     metaLine += 'Drawing on ' + escHtml(sec.drawing_on);
+    if (sec.question_types) metaLine += (metaLine ? ' · ' : '') + escHtml(sec.question_types);
+
+    html += '<div class="asec">';
+    html += '<div class="asec-hdr">';
+    html +=   '<div class="asec-title">' + secTitle + '</div>';
+    if (metaLine) html += '<div class="asec-meta">' + metaLine + '</div>';
+    html += '</div>';
+
+    /* ── Question cards ────────────────────────────────────────────────── */
+    if (sec.questions && sec.questions.length) {
+      /* Column header row */
+      html += '<div class="q-col-hdr">';
+      html +=   '<div class="qch-type">Question type</div>';
+      html +=   '<div class="qch-q">Question</div>';
+      html +=   '<div class="qch-ref">Reference period</div>';
+      html += '</div>';
+
+      sec.questions.forEach(function(q) {
+        var typeLbl = escHtml(expandType(q.type || ''));
+
+        html += '<div class="qcard">';
+
+        /* Collapsed header row (always visible) */
+        html += '<div class="qhdr" onclick="toggleQ(this)">';
+        html +=   '<div class="qhdr-type"><span class="qtbadge">' + typeLbl + '</span></div>';
+        html +=   '<div class="qhdr-title">' + escHtml(q.title || '') + '</div>';
+        html +=   '<div class="qhdr-ref">' + escHtml(q.period_ref || '') + '<span class="qchev">▼</span></div>';
+        html += '</div>';
+
+        /* Expanded body — hidden by default, toggled via .open class */
+        html += '<div class="qbody">';
+
+        if (q.question) {
+          html += '<div class="qtext">' + escHtml(q.question) + '</div>';
+        }
+
+        if (q.options && q.options.length) {
+          q.options.forEach(function(opt) {
+            var cls = 'qopt' + (opt.correct ? ' correct' : '');
+            var suffix = opt.correct ? ' ✓' : '';
+            html += '<div class="' + cls + '">' + escHtml(opt.text) + suffix + '</div>';
+          });
+        }
+
+        if (q.expected) {
+          html += '<div class="qexpected"><strong>Look for:</strong> ' + escHtml(q.expected) + '</div>';
+        }
+
+        if (q.annotation) {
+          html += '<button class="atoggle" onclick="toggleA(this)">▼ Teacher annotation</button>';
+          html += '<div class="abox">' + escHtml(q.annotation) + '</div>';
+        }
+
+        html += '</div>'; /* .qbody */
+        html += '</div>'; /* .qcard */
+      });
+    }
+
+    html += '</div>'; /* .asec */
+  });
+
+  html += '</div>'; /* .assess-divider */
+  return html;
+}
+
+function renderLPA() {
+  if (!window.LPA_DATA) return;
+  var d = window.LPA_DATA;
+
+  document.getElementById('banner-title').textContent = d.chapter_title || '—';
+  var metaEl = document.getElementById('banner-meta');
+  metaEl.innerHTML =
+    '<span class="bchip">Ch ' + String(d.chapter_number||'').padStart(2,'0') + '</span>' +
+    '<span class="bchip">' + escHtml(d.grade) + '</span>' +
+    '<span class="bchip">' + escHtml(d.subject) + '</span>' +
+    '<span class="bchip hi">' + escHtml(d.period_schedule) + '</span>';
+
+  var panel = document.getElementById('lp-panel');
+  panel.innerHTML = '';
+
+  var periods = d.lo_handoff || [];
+  periods.forEach(function(p, idx) {
+    var id = 'p' + p.period_number;
+    var wlbl = WEIGHT_LABEL[p.weight] || '';
+    var card = document.createElement('div');
+    card.className = 'period-card';
+    card.id = id;
+
+    var _rawSection = (p.chapter_section || '')
+      .replace(/^Anchored to:\s*/i, '').replace(/^Activity:\s*/i, '').trim();
+    var sectionTag = _rawSection
+      ? '<div class="ptag">' + escHtml(_rawSection) + '</div>'
+      : '';
+
+    var _rawActivity = (p.activity_name || (p.activity_summary||'').split(',')[0].substring(0,60))
+      .replace(/^Anchored to:\s*/i, '').replace(/^Activity:\s*/i, '').trim();
+    var activityLabel = '<div class="pname">' + escHtml(_rawActivity) + '</div>';
+
+    var materialRow = p.material
+      ? '<div class="matrow"><div class="matlabel">Material</div><div class="mattext">' + escHtml(p.material) + '</div></div>'
+      : '';
+
+    var timeSlotsHtml = renderTimeSlots(p.time_slots || []);
+
+    /* Learning Outcome bar */
+    var loBar = '<div class="lobar"><div class="lolabel">Learning Outcome</div><div class="lotext">' + escHtml(p.implied_lo) + '</div></div>';
+
+    /* Competency link — placed AFTER the LO bar */
+    var competencyRow =
+      '<div class="clinkrow">' +
+      '<span class="clinkcode">Targeted competency: ' + escHtml(p.c_code) + ' (' + escHtml(wlbl) + ')</span>' +
+      (p.competency_text ? '<span class="clinktext"> — ' + escHtml(p.competency_text) + '</span>' : '') +
+      '</div>';
+
+    card.innerHTML =
+      '<div class="period-header" onclick="toggleP(\'' + id + '\')">' +
+        '<div class="pnum">Period ' + p.period_number + '</div>' +
+        '<div class="pdur">' + p.period_duration_minutes + ' min</div>' +
+        activityLabel +
+        sectionTag +
+        '<div class="pchev">▼</div>' +
+      '</div>' +
+      '<div class="pbody">' +
+        materialRow +
+        timeSlotsHtml +
+        loBar +
+        competencyRow +
+      '</div>';
+    panel.appendChild(card);
+  });
+
+  if (d.assessment_sections && d.assessment_sections.length) {
+    var assessDiv = document.createElement('div');
+    assessDiv.innerHTML = renderAssessment(d.assessment_sections);
+    panel.appendChild(assessDiv);
+  } else if (d.assessment_html) {
+    var assessDiv2 = document.createElement('div');
+    assessDiv2.className = 'assess-divider';
+    assessDiv2.innerHTML = '<div class="adivlabel">Chapter Assessment</div>' + d.assessment_html;
+    panel.appendChild(assessDiv2);
+  }
+}
+
+renderLPA();
+</script>
