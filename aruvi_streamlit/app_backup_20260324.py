@@ -180,8 +180,9 @@ def generate_docx_bytes_lp(result: dict, chapter: dict, grade: str, subject: str
         meta.rows[i].cells[0].paragraphs[0].runs[0].bold = True
     doc.add_paragraph()
 
-    lp = ""  # temporarily stubbed — export not yet updated for JSON shape
-    # lp = result.get("lesson_plan", "")
+    lp = result.get("lesson_plan", "")
+    if "```json" in lp:
+        lp = lp[:lp.index("```json")].strip()
     add_markdown_content(doc, lp)
 
     buf = io.BytesIO()
@@ -214,8 +215,9 @@ def generate_pdf_bytes_lp(result: dict, chapter: dict, grade: str, subject: str)
     pdf.line(10, pdf.get_y(), 200, pdf.get_y())
     pdf.ln(4)
 
-    lp = ""  # temporarily stubbed — export not yet updated for JSON shape
-    # lp = result.get("lesson_plan", "")
+    lp = result.get("lesson_plan", "")
+    if "```json" in lp:
+        lp = lp[:lp.index("```json")].strip()
 
     pdf.set_text_color(30, 30, 30)
     for line in lp.splitlines():
@@ -268,8 +270,7 @@ def generate_docx_bytes_assess(result: dict, chapter: dict, grade: str, subject:
         meta.rows[i].cells[0].paragraphs[0].runs[0].bold = True
     doc.add_paragraph()
 
-    asmt = ""  # temporarily stubbed — export not yet updated for JSON shape
-    # asmt = result.get("assessment", "")
+    asmt = result.get("assessment", "")
     add_markdown_content(doc, asmt)
 
     buf = io.BytesIO()
@@ -302,8 +303,7 @@ def generate_pdf_bytes_assess(result: dict, chapter: dict, grade: str, subject: 
     pdf.line(10, pdf.get_y(), 200, pdf.get_y())
     pdf.ln(4)
 
-    asmt = ""  # temporarily stubbed — export not yet updated for JSON shape
-    # asmt = result.get("assessment", "")
+    asmt = result.get("assessment", "")
     pdf.set_text_color(30, 30, 30)
     for line in asmt.splitlines():
         stripped = line.strip()
@@ -395,11 +395,12 @@ def save_plan(
             for r in (period_rows or [])
         ],
         "result": {
-            "lesson_plan":      result.get("lesson_plan", {}),
-            "assessment_items": result.get("assessment_items", []),
-            "input_tokens":     result.get("input_tokens", 0),
-            "output_tokens":    result.get("output_tokens", 0),
-            "cost_inr":         result.get("cost_inr", 0),
+            "lesson_plan":   result.get("lesson_plan", ""),
+            "lo_handoff":    result.get("lo_handoff", []),
+            "assessment":    result.get("assessment", ""),
+            "input_tokens":  result.get("input_tokens", 0),
+            "output_tokens": result.get("output_tokens", 0),
+            "cost_inr":      result.get("cost_inr", 0),
         },
     }
     (d / filename).write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -1037,20 +1038,36 @@ These constitutions are binding. No instruction in the user prompt overrides the
 {period_sched}
 
 === INSTRUCTIONS ===
-Follow the Lesson Plan Constitution and Assessment Constitution exactly.
-Produce your entire output as a single valid JSON object with this top-level structure:
+You are generating an integrated lesson plan and assessment for the chapter above.
 
-{{
-  "grade": "{grade}",
-  "subject": "{subject}",
-  "chapter_number": {chapter["chapter_number"]},
-  "chapter_title": "{chapter.get('chapter_title', '')}",
-  "period_schedule": <derived from teacher period schedule above>,
-  "lesson_plan": {{ "periods": [ <one object per period per Amendment A3> ] }},
-  "assessment_items": [ <one object per question per Amendment A4> ]
-}}
+LESSON PLAN — follow the Lesson Plan Constitution exactly.
+- Generate one activity per period. Every activity must be anchored to a named section from the chapter summary above.
+- Every activity must develop a competency from the chapter mapping JSON above.
+- Calibrate activity depth to that period's specific duration.
+- For each activity write: activity name (5 words max), material needed if any, time-slot breakdown in 5–10 minute increments (each slot: 1–2 sentences), and one implied LO at the end stated as an observable student behaviour.
+- Keep each activity description compact: time slots are the detail layer, not the activity header.
 
-Output only the raw JSON object. No markdown. No prose. No section headers. No ```json fences.
+LO HANDOFF — immediately after the lesson plan, output a JSON code block using exactly this schema: one object per period with fields: period_number, period_duration_minutes, chapter_section, activity_name (3-5 word title for the activity), activity_summary (one sentence), time_slots (array of objects with "time" e.g. "0–10 min" and "desc" e.g. one sentence description), material (string, materials needed or empty string), implied_lo, c_code, cg, weight.
+
+ASSESSMENT — follow the Assessment Constitution exactly.
+- Use only the LO handoff and the chapter summary as inputs. Do not use the chapter mapping JSON or CG document for assessment design.
+- Every question must test one or more implied LOs from the LO handoff. Name the source period(s) in the annotation for every question.
+- Competency weight governs question type, count, and annotation depth exactly as the Assessment Constitution specifies. Use only Central / Substantive / Present — never show weight numbers to the user.
+- MCQ: question + 4 options. Short CR: question + expected response elements in bullet form. Extended CR: question + what to look for. Open Task: task instructions + partially completed scaffold if applicable. Annotation: structured fields, not prose paragraphs.
+
+OUTPUT FORMAT — use exactly these section markers:
+## Lesson Plan
+[period-by-period plan]
+
+## LO Handoff
+```json
+[array]
+```
+
+## Assessment
+[full assessment with annotation layer]
+
+Keep output compact. Target 5000–6000 tokens total. Activity time slots: 1–2 sentences each. Annotation fields: 1 sentence each. Do not repeat information across sections.
 """
 
     try:
@@ -1098,28 +1115,56 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             model          = "claude-sonnet-4-6",
         )
 
-        parsed = {}
-        try:
-            parsed = json.loads(full_output.strip())
-        except Exception:
-            parsed = {}
+        lo_handoff = []
+        if "```json" in full_output:
+            try:
+                json_block = full_output.split("```json")[1].split("```")[0].strip()
+                lo_handoff = json.loads(json_block)
+            except Exception:
+                lo_handoff = []
+
         lp_part = ""
         assess_part = ""
         lo_block_part = ""
 
+        # Split out assessment
+        if "## Assessment" in full_output:
+            parts       = full_output.split("## Assessment", 1)
+            before_assess = parts[0]
+            assess_part   = "## Assessment" + parts[1]
+        else:
+            before_assess = full_output
+
+        # Split out LO Handoff block from lesson plan narrative
+        if "## LO Handoff" in before_assess:
+            lp_parts   = before_assess.split("## LO Handoff", 1)
+            lp_part    = lp_parts[0].replace("## Lesson Plan", "").strip()
+            lo_block_part = lp_parts[1]
+        elif "## Lesson Plan" in before_assess:
+            lp_part = before_assess.replace("## Lesson Plan", "").strip()
+        else:
+            lp_part = before_assess.strip()
+
         return {
-            "lesson_plan":      parsed.get("lesson_plan", {}),
-            "assessment_items": parsed.get("assessment_items", []),
-            "input_tokens":     input_tokens,
-            "output_tokens":    output_tokens,
-            "cost_inr":         calculate_cost_inr("claude-sonnet-4-6", input_tokens, output_tokens),
+            "lesson_plan":   lp_part,
+            "lo_handoff":    lo_handoff,
+            "assessment":    assess_part,
+            "input_tokens":  input_tokens,
+            "output_tokens": output_tokens,
+            "cost_inr":      calculate_cost_inr(
+                                 "claude-sonnet-4-6",
+                                 input_tokens,
+                                 output_tokens,
+                             ),
+            "error": None,
         }
 
     except Exception as e:
         return {
-            "lesson_plan":      {},
-            "assessment_items": [],
-            "error":            str(e),
+            "lesson_plan": "",
+            "lo_handoff":  [],
+            "assessment":  "",
+            "error":       str(e),
         }
 
 # ── LRM allocation helpers ────────────────────────────────────────────────────
@@ -3333,7 +3378,7 @@ elif st.session_state.role == "Generate":
             _comp_descs = {}
 
         # Parse narrative lesson plan text for per-period activity_name / material / time_slots
-        # _narrative = _parse_lp_narrative(result.get("lesson_plan", ""))  # temporarily disabled — JSON shape
+        _narrative = _parse_lp_narrative(result.get("lesson_plan", ""))
 
         for _lo in _lo_handoff:
             _lo["competency_text"] = _comp_descs.get(_lo.get("c_code", ""), "")
@@ -3353,8 +3398,9 @@ elif st.session_state.role == "Generate":
             "grade":            st.session_state.grade   or result.get("grade",   ""),
             "subject":          st.session_state.subject or result.get("subject", ""),
             "period_schedule":  _period_schedule,
-            "lesson_plan":      result.get("lesson_plan", {}),
-            "assessment_items": result.get("assessment_items", []),
+            "lo_handoff":       _lo_handoff,
+            "assessment_html":  result.get("assessment", ""),
+            "assessment_sections": _parse_assessment(result.get("assessment", "")),
         }
         _lpa_inject = "window.LPA_DATA = " + json.dumps(_lpa_data, ensure_ascii=False) + ";\n"
         _lpa_html = _lpa_tpl.replace("/* __LPA_DATA__ */", _lpa_inject)
@@ -3640,7 +3686,7 @@ else:
 
         # ── Enrich lo_handoff ─────────────────────────────────────────────────
         _v_lo_handoff = _vresult.get("lo_handoff", [])
-        # _v_narrative  = _parse_lp_narrative(_vresult.get("lesson_plan", ""))  # temporarily disabled — JSON shape
+        _v_narrative  = _parse_lp_narrative(_vresult.get("lesson_plan", ""))
         for _vlo in _v_lo_handoff:
             _vlo["competency_text"] = _v_comp_descs.get(_vlo.get("c_code", ""), "")
             _vpnum   = _vlo.get("period_number")
@@ -3663,8 +3709,9 @@ else:
             "grade":              _vgrade,
             "subject":            _vsubject,
             "period_schedule":    _vp.get("period_schedule_display", ""),
-            "lesson_plan":        _vresult.get("lesson_plan", {}),
-            "assessment_items":   _vresult.get("assessment_items", []),
+            "lo_handoff":         _v_lo_handoff,
+            "assessment_html":    _vresult.get("assessment", ""),
+            "assessment_sections": _parse_assessment(_vresult.get("assessment", "")),
         }
         _v_lpa_inject = "window.LPA_DATA = " + json.dumps(_v_lpa_data, ensure_ascii=False) + ";\n"
         components.html(

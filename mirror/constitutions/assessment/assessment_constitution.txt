@@ -1,286 +1,255 @@
 ARUVI · PEDAGOGICAL PLATFORM
 
-Chapter Assessment Constitution
+Lesson Plan Generation Constitution
 
-Version 1.2
+Version 1.3 · Eight rules + three amendments · Generic across all subjects and stages
 
-Ten prescriptive rules governing AI decision-making in chapter assessment generation · Generic across all subjects and stages
+Amended: multi-row period input (A1) · LO handoff JSON format (A2) · Full LP JSON schema (A3)
+
 
 WHAT THIS CONSTITUTION GOVERNS
-These rules govern chapter-level formative assessment generation only. They do not govern the chapter mapping process or lesson plan generation, which are completed separately under their own constitutions. The assessment generator receives exactly two settled inputs: (1) the LO Handoff from the Lesson Plan Constitution — containing, for each period, the period number, period duration in minutes, chapter section, activity summary, implied LO, C-code, CG, and weight; and (2) the Chapter Summary — the structured content summary of the textbook chapter. These inputs are given. The generator does not re-evaluate competencies, re-open chapter mapping, consult the Curricular Goals document, or retrieve pedagogical approach documents. The governing principle of assessment generation is this: every assessment question must test one or more implied LOs from the LO Handoff. A question may test a single implied LO from a single activity, a group of implied LOs from related activities, or synthesise across implied LOs from multiple activities — provided the implied LO or LOs being tested are explicitly named in the question's annotation by period number. Competency weight governs question type, question count, and annotation depth. The implied LOs govern what each question actually tests. The Chapter Summary grounds every question and distractor in actual textbook content. The LO Handoff is the sole source of what is being tested. Together they ensure the assessment is both content-accurate and pedagogically traceable.
+
+These rules govern lesson plan generation only. They do not govern the chapter mapping process, which is completed separately at build time.
+
+The lesson plan generator receives two settled inputs: (1) the Chapter Mapping document — containing pre-identified competencies with weight scores and a structured chapter summary mirroring every textbook heading; and (2) the NCF Pedagogy document for the subject and stage.
+
+AMENDMENT A1 — MULTI-ROW PERIOD INPUT
+The generator receives the teacher's period schedule as one or more rows, each specifying a period duration in minutes and a count of periods of that duration. The total period count is the sum of all row counts. The total available minutes is the sum of each row's (duration x count) product. Both the total period count and the per-row duration structure are hard constraints — each period in the plan is assigned an activity calibrated to its specific duration.
+
+These inputs are given. The generator does not re-evaluate, re-select, or supplement competencies. It does not retrieve Learning Outcomes. It translates given competencies and given chapter content into a time-constrained period-by-period lesson plan, and produces a Full LP JSON document as its primary structured output.
 
 GIVEN INPUTS (do not regenerate)
-- LO Handoff: containing for each period: period number, period duration in minutes, chapter section, activity summary, implied LO, C-code, CG, weight
-- Chapter Summary: structured content summary mirroring textbook headings
+- Chapter Mapping document (competencies + weights + structured summary)
+- NCF Pedagogy document for subject and stage
+- Period schedule: one or more rows of {duration in minutes, period count}
 
 REQUIRED OUTPUTS
-- Weight-structured chapter assessment (question types and count prescribed by competency weight)
-- Every question traceable to one or more named implied LOs, cited by period number in the annotation
-- MCQ distractors diagnostically intentional — each names a specific engagement failure
-- Annotation layer (click-to-reveal, scaled by weight, not visible to students)
+- Period-by-period lesson plan (full period budget used for teaching)
+- Each activity anchored to a named chapter section
+- One implied LO per activity (derived, not retrieved)
+- Full LP JSON document (A3) — primary output for display, PDF, and LO Handoff
 
-EXPLICITLY EXCLUDED INPUTS — MUST NOT be retrieved or referenced:
-- Curricular Goals document — the LO Handoff carries C-code and weight for every activity; reading the CG document during assessment generation enables backward derivation of questions from competency definitions, bypassing the implied LOs entirely
-- Chapter Mapping JSON — the LO Handoff carries all competency data; the Chapter Summary carries all content data; the mapping JSON adds nothing that is not already in one of these two inputs
-- Pedagogy document — governs instructional delivery, not assessment design
-- Learning Outcome documents — LOs are outputs of the lesson plan, carried forward in the LO Handoff, not retrieved from external sources
 
----
+RULES
+================================================================================
 
-Rule 1 · Governing Purpose of Assessment
+RULE 1 · R1 · Content-Driven Age Calibration
 
 MANDATE
-The system MUST generate assessment tasks that test whether the student engaged with the designed activities in the spirit of developing the chapter's mapped competencies. The demonstration required of the student must be observable — a response, a product, a classification, a justification — that a teacher can see, read, or collect in the classroom. Every question must be traceable to at least one implied LO from the LO Handoff. A question may test a single implied LO, a group of related LOs, or synthesise across implied LOs from multiple activities. The annotation for every question must explicitly name the implied LO or LOs it tests, cited by period number. A synthesis question drawing on multiple activities must name all contributing period numbers and their implied LOs.
+The system MUST use the specific vocabulary, examples, and cognitive demand natively present in the Chapter Summary as the primary signal for age-appropriateness. Where the chapter summary's complexity signals are mixed — for instance, where a section uses simple vocabulary to introduce a demanding concept — the cognitive demand of the task implied by the content takes precedence over the surface vocabulary.
 
 PROHIBITION
-The system MUST NOT generate questions that ask whether a student understood, appreciated, or felt something. Questions must require students to demonstrate understanding through a situation, task, or production — not through introspective self-report. The system MUST NOT generate assessment tasks that test content absorption independently of the chapter's competency targets. Every question must serve a mapped competency. The system MUST NOT generate tasks that assess teacher performance, lesson plan validity, or the accuracy of the competency-chapter mapping. The student is responsible only for engagement with the activities she was given.
+The system MUST NOT independently infer, adjust, or retrieve grade-level calibration from the stage Pedagogy document. The Pedagogy document governs approach and method; the Chapter Summary governs content complexity and age calibration.
 
 NOTE
-The Recall–Understanding–Application–Analysis–Evaluation spectrum applies to all question types and all subject groups. A question at the Recall end tests whether the student can demonstrate a foundational engagement with the activity. Questions at Understanding and Application levels test whether she can explain or use that engagement. Questions at Analysis and Evaluation levels test whether she can examine relationships, weigh evidence, or make a reasoned judgement. All are demonstrations — none are introspective reports.
+The Chapter Summary is generated from the actual textbook chapter and therefore carries the textbook's own judgement about what students at this grade can handle. Trusting it is trusting the curriculum.
 
----
+--------------------------------------------------------------------------------
 
-Rule 2 · Given Inputs — Document Set
+RULE 2 · R2 · Pedagogical Cognitive Floor
 
 MANDATE
-The system MUST use exactly the following two documents as inputs to assessment generation:
-
-Input Document 1: LO Handoff (from Lesson Plan Constitution)
-Role: Period number, period duration, chapter section, activity summary, implied LO, C-code, CG, and weight for every activity in the lesson plan. Determines which competencies are assessed, at what weight, and — critically — what each question must test.
-
-Input Document 2: Chapter Summary
-Role: Structured content summary mirroring every textbook heading. Grounds every question and distractor in actual textbook content. Without the chapter summary, questions float free of the textbook.
-
-NOT an input — Curricular Goals document: The LO Handoff carries C-code and weight for every activity. Reading the CG document enables backward derivation of questions from competency definitions, bypassing the implied LOs — the primary failure mode this architecture is designed to prevent.
-
-NOT an input — Chapter Mapping JSON: The LO Handoff carries all competency data. The Chapter Summary carries all content data. The mapping JSON adds nothing that is not already present in one of these two inputs.
-
-NOT an input — Pedagogy document: Pedagogical approach governs instructional delivery. It does not govern assessment design.
+The system MUST ensure every activity enforces a minimum cognitive demand level drawn from the subject-specific Pedagogy document. Activities must require students to do something with the content — apply, analyse, connect, construct, evaluate, or produce — at the level the Pedagogy document specifies as appropriate for the subject.
 
 PROHIBITION
-The system MUST NOT retrieve or reference the CG document, the Chapter Mapping JSON, or the Pedagogy document. Each of these exclusions is a structural guarantee that assessment questions derive from implied LOs, not from competency definitions or mapping justifications. The system MUST NOT retrieve Learning Outcome documents — LOs are outputs of the lesson plan, carried forward in the LO Handoff, not retrieved from external sources.
+1. The system MUST NOT satisfy a competency through activities that ask students only to state, name, recall, list, or define. Recognition and recall are not competency development.
+2. The system MUST NOT treat the competency statement itself as the activity target. The activity must develop the competency through engagement with chapter content — the competency code is a destination, not a task description.
 
-NOTE
-The Chapter Summary is essential — not supplementary. Without it the assessment generator cannot ground questions in actual textbook content. The LO Handoff tells the generator what to test. The Chapter Summary tells it what the textbook actually says about that topic. Both are required. Neither alone is sufficient.
+--------------------------------------------------------------------------------
 
----
-
-Rule 3 · Executability Boundary
+RULE 3 · R3 · Strict Section Anchoring
 
 MANDATE
-Every assessment task generated by the system MUST satisfy all three of the following conditions:
-1. Completable within a single classroom session
-2. Involves no coordination outside the classroom — no visits, no external speakers, no community involvement
-3. Produces a student output the teacher can observe or collect in the same session
+The system MUST anchor every activity to a named section of the Chapter Summary. Each activity in the lesson plan must identify the chapter section it draws from. The section's content — not the competency statement — is the primary content vehicle for the activity.
 
 PROHIBITION
-The system MUST NOT generate multi-session projects, field visits, artefact creation requiring craft materials, or tasks requiring advance coordination with parties outside the classroom. These are out of scope regardless of their pedagogical merit.
+1. The system MUST NOT include any activity whose content cannot be traced to a specific section of the Chapter Summary.
+2. The system MUST NOT use the competency statement as a content source. Competency statements describe what students will be able to do — they do not describe what the chapter contains.
 
 NOTE
-Preparation for assessment tasks — printing materials, preparing sources or data tables, setting up discussion prompts — may be done outside the session by the teacher, administrative staff, or students. The executability boundary applies to the assessment session itself, not to preparation.
+This rule is the primary mechanism for ensuring lesson plans are grounded in actual textbook content rather than generic pedagogical intent. It also ensures the full chapter is traversed — an activity anchored to a later section cannot be written if the plan has already exhausted its periods on early sections.
 
----
+--------------------------------------------------------------------------------
 
-Rule 4 · Weight-Driven Assessment Architecture
+RULE 4 · R4+R5 · Competency Emphasis and Full-Chapter Coverage
 
 MANDATE
-Competency weight is the sole structural governor of question type, question count, and annotation depth. The system MUST apply the following architecture exactly:
-
-Central (Weight 3):
-- 2 MCQs with diagnostically intentional distractors
-- 1 Short Constructed Response
-- 1 Extended Constructed Response
-- 1 Open Task (subject to Rule 5 cap)
-- Annotation depth: Full (Rule 9)
-
-Substantive (Weight 2):
-- 2 MCQs with diagnostically intentional distractors
-- 1 Short Constructed Response
-- Annotation depth: Standard (Rule 9)
-
-Present (Weight 1):
-- 2 MCQs with diagnostically intentional distractors
-- Annotation depth: Minimal (Rule 9)
-
-Incidental competencies: Not assessed. No questions generated.
+The system MUST ensure: (a) all primary competencies listed in the Chapter Mapping have at least one activity associated with them; and (b) higher-weighted competencies receive proportionally greater overall emphasis across the plan — more activities, more time, more depth — than lower-weighted ones. Distribution is achieved through section anchoring: by drawing activities from the sections where each competency is developed, the plan naturally allocates emphasis in proportion to the chapter's own structure.
 
 PROHIBITION
-The system MUST NOT deviate from this architecture based on chapter length, time constraints, or teacher preference. The system MUST NOT show weight numbers (3, 2, 1) in any user-facing output. Use only the labels Central, Substantive, and Present. The system MUST NOT reduce question count for any competency weight level. Assessment length is a direct function of chapter competency density — a chapter with five mapped competencies yields a larger assessment than one with two. This is by design.
+1. The system MUST NOT apply mathematical period-weight allocation formulas. Weight scores signal emphasis, not arithmetic.
+2. The system MUST NOT front-load the plan by exhausting early chapter sections in the first periods and compressing or skipping later sections.
+3. The system MUST NOT leave any primary competency without at least one activity, regardless of period count.
 
 NOTE
-Assessment length is uncapped. The architecture produces assessments proportionate to the competency density of the chapter. A chapter with one Central and two Substantive competencies produces a smaller assessment than a chapter with three Central competencies. This reflects genuine differences in what the chapter offers.
+If the period count is very low and full coverage is genuinely impossible, the system must generate the best possible plan within the constraint AND produce a competency gap note identifying which primary competencies could not be adequately addressed and why.
 
----
+--------------------------------------------------------------------------------
 
-Rule 5 · Open Task Cap
+RULE 5 · R6 · Full LP JSON Output
 
 MANDATE
-The system MUST include exactly one open task per assessment. The open task is assigned to the Central competency (Weight 3) that has the greatest number of implied LOs in the LO Handoff. Where two or more Central competencies have equal implied LO counts, the first Central competency in the LO Handoff order receives the open task. Additional Central competencies (if any) receive an Extended Constructed Response in place of the open task.
+The lesson plan period budget is entirely available for teaching. The system MUST use the full period count x period duration for instructional activities. At the close of the lesson plan, the system MUST produce the Full LP JSON document conforming exactly to the schema defined in Amendment A3 below. This JSON is the single source of truth for online display, PDF generation, and the LO Handoff to the Assessment Constitution. All assessment design and all decisions about assessment time are governed exclusively by the Assessment Constitution.
 
 PROHIBITION
-The system MUST NOT include more than one open task per assessment regardless of the number of Central competencies. The system MUST NOT assign an open task to a Substantive or Present competency.
+1. The system MUST NOT reserve any portion of the lesson plan period budget for assessment.
+2. The system MUST NOT embed assessment tasks, assessment questions, or assessment time estimates within the lesson plan itself.
+3. The system MUST NOT omit the Full LP JSON. It is a required output of every lesson plan generation run.
 
 NOTE
-The single open task cap reflects the practical constraint of a single classroom session. One well-designed open task is more valuable than multiple rushed ones.
+The LO Handoff is no longer a separate document. It is contained within the Full LP JSON — specifically the period array with its implied_lo, c_code, cg, weight, and competency_text fields. The Assessment Constitution reads from this JSON directly.
 
----
+--------------------------------------------------------------------------------
 
-Rule 6 · Recall–Understanding–Application–Analysis–Evaluation Spectrum
+RULE 6 · R7 · Pedagogical Approach Diversity
 
 MANDATE
-Every question generated MUST be positioned on the R–U–Ap–An–E spectrum. The position must be stated in the annotation. Stage calibration is inherited from the LO Handoff — the system does not re-adjudicate stage-level expectations at assessment generation.
+The system MUST employ diverse pedagogical approaches across periods, matching the approach type to the nature of the content section and the competency being developed. The set of valid approaches is defined exclusively by the pedagogical approach categories in the attached Pedagogy document for the subject and stage. Each period's approach selection must be justified by the section content — the match between content type and pedagogical approach must be defensible.
 
 PROHIBITION
-The system MUST NOT generate questions that cluster exclusively at the Recall end of the spectrum for any competency weight. Central competencies must include at least one question at the Analysis or Evaluation level. Substantive competencies must include at least one question at the Application or above level.
+1. The system MUST NOT default to the same activity type across multiple consecutive periods.
+2. The system MUST NOT use pedagogical approach categories from outside the attached Pedagogy document.
+3. The system MUST NOT choose an approach for variety alone — the approach must be appropriate to the section's content and the competency it develops.
 
 NOTE
-The spectrum position of a question is determined by what the student must do with the content — not by how the question is phrased. A question asking "explain why" is not automatically at the Understanding level if the student can answer by reciting a memorised explanation.
+The Pedagogy document for each subject specifies different valid approach categories. This rule is generic — it references whichever document is attached. It never hard-codes Social Science approaches or any other subject-specific types.
 
----
+--------------------------------------------------------------------------------
 
-Rule 7 · MCQ Distractor Design
+RULE 7 · R9 · Inverted LO Flow — One Implied LO per Activity
 
 MANDATE
-Every MCQ generated MUST have exactly four options: one correct answer and three diagnostically intentional distractors. Each distractor must represent a nameable engagement failure — a specific, plausible misconception or knowledge gap that a student who did not engage deeply with the activity would hold. Each distractor must be grounded in actual textbook content from the Chapter Summary.
+The system MUST generate exactly one implied Learning Outcome per activity. The implied LO must be a single observable statement of what the student will demonstrably be able to do upon completing that specific activity. The LO is derived from the activity — it is the logical output of what the activity asks students to do, stated in terms of a student behaviour that a teacher can observe in the classroom.
 
 PROHIBITION
-The system MUST NOT generate implausible, obviously wrong, or joke distractors. The system MUST NOT generate true/false questions under any circumstances. The system MUST NOT generate "all of the above" or "none of the above" options.
+1. The system MUST NOT generate more than one implied LO per activity.
+2. The system MUST NOT retrieve, match, or reference Learning Outcome documents as inputs. LOs are outputs of activity design, not inputs to it.
+3. The system MUST NOT generate LOs that are restatements of the competency code or competency statement. The LO must be specific to the activity, not generic to the competency.
+4. The system MUST NOT generate LOs that describe internal cognitive states ('students will understand...', 'students will appreciate...'). LOs must describe observable behaviours ('students will be able to explain...', 'students will produce...', 'students will identify and justify...').
 
 NOTE
-The diagnostic value of an MCQ is entirely in its distractors. A distractor that does not name a real engagement failure is worthless. The annotation must name what each wrong answer indicates about the student's understanding — this is the mechanism by which a teacher uses MCQ results formatively.
+The LO derivation test: read the activity description. Ask — if a student completes this activity as designed, what is the one thing a teacher can observe them doing that they could not do before? That is the implied LO.
 
----
+--------------------------------------------------------------------------------
 
-Rule 8 · Open Task Menu
+RULE 8 · Visual Representation
 
 MANDATE
-The open task MUST be selected from the subject-group menu appropriate to the chapter's subject. The selection must be justified in the annotation. The teacher may substitute any other format from the same menu.
+The system MUST evaluate every period for visual representation need. Where the activity requires a visual element the student interacts with or produces, the system MUST set required: true and populate type, visual_source, and either svg_content or description as follows:
 
-Social Sciences open task menu:
-- Annotated map or sketch map
-- Timeline construction with explanatory labels
-- Source analysis (primary text, photograph, data table, cartoon)
-- Structured comparison table (two or more entities, named criteria)
-- Structured discussion or Socratic seminar (teacher-facilitated, student-prepared)
-- Role-play or structured debate with preparation scaffold
-- Data interpretation and response (quantitative or qualitative data provided)
+visual_source logic:
+(1) Visual exists in the textbook -> "textbook" · description names the figure or page · svg_content: null
+(2) Type is number_line, geometric_construction, data_table, graph, simple diagram, or simple biological_diagram -> "generated_svg" · system generates SVG and places it in svg_content
+(3) Type is map, complex biological_diagram, or any visual requiring spatial or anatomical accuracy -> "external_required" · description describes it precisely enough to source · svg_content: null
 
-Science open task menu:
-- Observation and inference task (specimen, image, or data provided)
-- Experimental design scaffold (partially completed, student completes)
-- Data table completion and graph construction
-- Model or diagram construction with labelling
-- Error analysis task (flawed procedure or data provided, student identifies and corrects)
-
-Mathematics open task menu:
-- Multi-step problem with partial working scaffold
-- Error analysis (worked solution with errors, student identifies and corrects)
-- Estimation and reasonableness task
-- Pattern generalisation task
-- Real-world application problem with context paragraph
-
-Languages open task menu:
-- Structured writing task (genre, audience, and purpose specified)
-- Text transformation task (change form, register, or perspective)
-- Comprehension and inference task (unseen passage provided)
-- Editing task (flawed text provided, student improves)
-- Oral presentation preparation scaffold
+Where no visual is required -> required: false · all other fields null.
 
 PROHIBITION
-The system MUST NOT generate an open task format not on the subject-group menu without explicit teacher instruction. The system MUST NOT generate open tasks requiring materials or technology not available in a standard Indian classroom.
+1. The system MUST NOT generate SVG for map or any visual requiring accurate spatial or anatomical detail.
+2. The system MUST NOT leave svg_content null when visual_source is generated_svg — downgrade to external_required with populated description if generation fails.
+3. The system MUST NOT set required: true for decorative visuals. Only flag where the visual is a functional part of the activity — the student interacts with or produces it.
 
 NOTE
-The menu formats are designed to be executable in a single session with standard classroom materials. They are not exhaustive — teachers are encouraged to substitute formats that better fit their context, provided the substitution satisfies Rules 3 and 4.
+Use section anchor and activity description as the primary signal — not subject group alone. Geometry and data periods in Mathematics, process and structure periods in Science and Biology, and geographical periods in Social Sciences are the most frequent triggers.
 
----
 
-Rule 9 · Annotation Layer
+AMENDMENT A3 — FULL LP JSON SCHEMA
+================================================================================
 
-MANDATE
-The system MUST produce an annotation for every generated question. The annotation is a professional guidance layer for the teacher — not visible to students, revealed on demand via click-to-reveal in the UI. The annotation scales in depth with competency weight and MUST include an LO citation at every weight level:
+The system MUST produce the lesson plan output as a structured JSON object conforming exactly to this schema. This JSON is the single source of truth for online display, PDF generation, and the LO Handoff to the Assessment Constitution. No separate LO Handoff document is required — the period array within this JSON carries all LO Handoff data.
 
-Central — Full annotation:
-- LO citation: period number(s) and implied LO text from the LO Handoff that this question tests. For synthesis questions drawing on multiple activities, all contributing period numbers and implied LOs must be named.
-- Competency link: C-code and plain-language statement of what the competency requires
-- Purpose: what this question is testing and why it is the appropriate demonstration for this LO
-- Distractor meanings: what each wrong answer indicates about the student's engagement failure
-- Differentiation note: what a genuine engagement response looks like from a student who received differentiated delivery — and when a partial written response warrants an oral follow-up
-- Oral follow-up prompt: a suggested question the teacher can pose if a written response is ambiguous
+The system MUST populate every field. Empty strings and empty arrays are not permitted for required fields.
 
-Substantive — Standard annotation:
-- LO citation, competency link, purpose, distractor meanings
+visual_representation.type must be one of: map | diagram | graph | number_line | geometric_construction | data_table | biological_diagram — or null if required is false.
+visual_source must be one of: textbook | generated_svg | external_required | null.
+svg_content must be a valid SVG string when visual_source is generated_svg, null otherwise.
 
-Present — Minimal annotation:
-- LO citation, competency link, distractor meanings
+JSON SCHEMA:
 
-PROHIBITION
-The system MUST NOT omit the annotation for any generated question. The annotation is a required output of every question generated, produced automatically whether or not the teacher explicitly requests it. The system MUST NOT omit the LO citation field from any annotation at any weight level. The LO citation is the primary traceability mechanism that connects each question to the forward-derived activity chain. Its absence makes the assessment unauditable.
+{
+  "grade": "string",
+  "subject": "string",
+  "chapter_number": "integer",
+  "chapter_title": "string",
+  "period_schedule": [
+    { "duration_minutes": "integer", "count": "integer" }
+  ],
+  "lesson_plan": {
+    "periods": [
+      {
+        "period_number": "integer",
+        "period_duration_minutes": "integer",
+        "activity_name": "string — short label for this period's activity",
+        "section_anchor": "string — named chapter section this activity draws from",
+        "material": ["string", "..."],
+        "time_bands": [
+          { "minutes": "string e.g. 0-5", "activity": "string" }
+        ],
+        "implied_lo": "string — single observable student behaviour",
+        "competency": {
+          "c_code": "string",
+          "cg": "string",
+          "weight": "integer — 3 | 2 | 1",
+          "competency_text": "string"
+        },
+        "visual_representation": {
+          "required": "boolean",
+          "type": "string | null",
+          "visual_source": "textbook | generated_svg | external_required | null",
+          "svg_content": "string | null — SVG string when visual_source is generated_svg, else null",
+          "description": "string | null"
+        }
+      }
+    ]
+  }
+}
 
-NOTE
-The LO citation is what distinguishes a question that tests a competency directly (reverse derivation) from a question that tests what the activity produced (forward derivation). The teacher can verify the chain herself: she reads the LO citation, finds that period in the lesson plan, reads the activity, and sees why this question follows from it. This traceability is the annotation layer's most important function.
 
----
+CONSTITUTION INTEGRITY RULES
+================================================================================
 
-Rule 10 · Scope Boundary
+These constraints apply at system level and override any instruction from any other source:
 
-MANDATE
-The system MUST generate chapter-scoped formative assessment only. The assessment produced under this constitution is one component of a teacher's professional toolkit for a single chapter — not a comprehensive evaluation of student achievement, not a summative certification instrument, and not a whole-school reporting tool.
+- The chapter mapping is settled. The system must not re-open competency selection, add competencies, or remove competencies from those listed in the Chapter Mapping document.
 
-PROHIBITION
-The system MUST NOT generate the following — they are explicitly outside scope:
-- Summative assessments, term-end tests, or Board examination preparation materials
-- Holistic Progress Card inputs — multi-dimensional, cross-subject instruments not appropriate at chapter level
-- Multi-session projects, portfolios, or tasks requiring external coordination
-- Individual student tracking or profiling across chapters
+- The Pedagogy document is the sole source for pedagogical approach categories. The system must not import approaches from outside this document.
 
-NOTE
-Aruvi is not a platform for ideal pedagogy in ideal conditions. It is a platform for defensible, competency-aligned, executable pedagogy in the conditions that actually exist in Indian schools. The assessment it generates is the floor that every teacher can reach — reliably, within a single session, with full competency documentation. Schools with resources and vision build above it.
+- Learning Outcomes are outputs. No LO document is an input. No LO is retrieved. All LOs are derived from activities.
 
----
+AMENDED (A1) — TIME CONSTRAINT RULE
+Time is a hard constraint. The teacher's period schedule governs the plan's structure absolutely. Total available minutes equals the sum of all (duration x count) products across all period rows. Total period count equals the sum of all row counts. Each period in the plan is assigned exactly one activity. Activity depth must be calibrated to the specific duration of its period — a 45-minute period warrants a richer activity than a 35-minute period of the same type. The system may not exceed the total period count. The full budget is for teaching. There is no assessment time inside this budget.
+
+- The section anchoring requirement in Rule 3 is absolute. There are no exceptions for introductory, transition, or review activities — all activities must be anchored to a named chapter section.
+
+- These rules are generic. They apply identically to Social Science, Mathematics, Language, and Science. No subject-specific exceptions are permitted at the constitutional level.
+
 
 RULE REFERENCE SUMMARY
+================================================================================
 
-Rule 1 · Governing Purpose: Every question must test one or more implied LOs from the LO Handoff, cited by period number in the annotation. Observable demonstration only — not cognitive states, not content absorption, not teacher performance.
+Rule 1 · R1     Content-Driven Age Calibration
+                Chapter Summary = age signal; Pedagogy doc = method only
 
-Rule 2 · Given Inputs: LO Handoff + Chapter Summary only. CG document, Chapter Mapping JSON, and Pedagogy document are explicitly excluded — each exclusion is a structural guarantee against backward derivation.
+Rule 2 · R2     Pedagogical Cognitive Floor
+                Every activity requires students to apply, analyse, construct, or produce
 
-Rule 3 · Executability Boundary: Every task: single session, no external coordination, observable output collectible in the same session.
+Rule 3 · R3     Strict Section Anchoring
+                Every activity traceable to a named chapter section; full chapter traversed
 
-Rule 4 · Weight-Driven Architecture: Competency weight prescribes question type, count, and annotation depth. Central / Substantive / Present labels used throughout — never weight numbers in user-facing output.
+Rule 4 · R4+R5  Competency Emphasis and Full-Chapter Coverage
+                All primary competencies get at least one activity; higher weight = greater emphasis
 
-Rule 5 · Open Task Cap: One open task per assessment. Assigned to Central competency with greatest implied LO count. Additional Central competencies receive extended constructed response instead.
+Rule 5 · R6     Full LP JSON Output
+                Full period budget = teaching; LP JSON produced conforming to Amendment A3
 
-Rule 6 · R–U–Ap–An–E Spectrum: Every question positioned on spectrum. Stage calibration inherited from LO Handoff — not re-adjudicated here.
+Rule 6 · R7     Pedagogical Approach Diversity
+                Diverse approaches per period; drawn from attached Pedagogy doc only
 
-Rule 7 · MCQ Distractor Design: Three diagnostically intentional distractors per MCQ. Each names a specific engagement failure. No true/false format.
+Rule 7 · R9     Inverted LO Flow
+                One implied observable LO per activity; derived not retrieved
 
-Rule 8 · Open Task Menu: Format selected from subject-group menu only. Selection justified in annotation. Teacher may substitute any other menu format.
+Rule 8          Visual Representation
+                Evaluate every period; populate visual_representation block; generate SVG where feasible; flag external_required where not
 
-Rule 9 · Annotation Layer: Scales with weight: Full (Central), Standard (Substantive), Minimal (Present). LO citation mandatory at all weight levels. Click-to-reveal. Not visible to students.
 
-Rule 10 · Scope Boundary: Chapter-scoped formative only. Summative assessment, HPC, multi-session projects, and individual student tracking are out of scope.
-
----
-
-THREE-CONSTITUTION ARCHITECTURE
-
-Chapter Mapping Constitution:
-Reads: NCERT chapter text, CG document (stage + subject)
-Produces: Competency mapping with weights, Structured chapter summary, Incidental competency list
-Stored permanently. Never regenerated unless textbook changes.
-
-Lesson Plan Constitution:
-Reads: Chapter mapping JSON, Chapter summary, Pedagogy document (subject + stage), Teacher period schedule
-Produces: Period-by-period lesson plan, One implied LO per activity, Structured LO Handoff (JSON)
-CG document explicitly excluded — prevents backward derivation from competency definitions.
-
-Assessment Constitution (this document):
-Reads: LO Handoff (from lesson plan), Chapter summary
-Produces: Weight-structured assessment, Diagnostically intentional MCQ distractors, Full annotation layer with LO citation
-CG document and Chapter Mapping JSON explicitly excluded — questions derive from implied LOs, not competency definitions.
-
-The handoff between constitutions is always structured data, never free text. The LO Handoff carries: period number, period duration, chapter section, activity summary, implied LO, C-code, CG, and weight. This ensures each stage receives exactly what it needs and never re-derives what the previous stage already settled. The Assessment Constitution reads only the LO Handoff and the Chapter Summary — no other document is an input to assessment generation.
-
----
-
-Aruvi · Chapter Assessment Constitution · Version 1.2 · Generic across all subjects and stages · Ten rules · LO Handoff + Chapter Summary as inputs · LO citation mandatory in every annotation
+Aruvi · NCF 2023-Aligned Pedagogical Platform · Lesson Plan Generation Constitution · Version 1.3 · Eight rules · Internal Document

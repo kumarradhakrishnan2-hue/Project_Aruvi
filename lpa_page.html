@@ -45,17 +45,23 @@
 
 /* Assessment */
 .assess-divider { margin-top: 16px; padding-top: 12px; border-top: 2px solid #2c3e50; }
-.adivlabel { font-size: 9px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #2c3e50; margin-bottom: 12px; }
+/* CHANGE 1+2: Section labels — centred, same style for both "Lesson Plan" and "Chapter Assessment" */
+.adivlabel { font-size: 9px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #2c3e50; margin-bottom: 12px; text-align: center; }
+.lp-section-label { font-size: 9px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #2c3e50; margin-bottom: 12px; text-align: center; }
 .asec { margin-bottom: 18px; }
-.asec-hdr { background: #f5f3ef; border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; border: 0.5px solid #e8e5e0; }
-.asec-title { font-size: 12px; font-weight: 500; color: #1a1917; margin-bottom: 2px; }
-.asec-meta { font-size: 10px; color: #5a5754; }
+/* CHANGE 3: Competency row uses same colour scheme as chapter title banner */
+.asec-hdr { background: #2c3e50; border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; border: none; }
+.asec-title { font-size: 12px; font-weight: 500; color: #fff; margin-bottom: 2px; }
+/* CHANGE 4: Competency wording on its own line inside the same row */
+.asec-wording { font-size: 11px; color: rgba(255,255,255,0.88); line-height: 1.4; margin-top: 3px; }
+.asec-meta { font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 2px; }
 
-/* Column header row per section */
-.q-col-hdr { display: flex; background: #faf9f6; border: 0.5px solid #e8e5e0; border-radius: 6px 6px 0 0; border-bottom: none; }
-.qch-type { width: 160px; flex-shrink: 0; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #9c9693; padding: 6px 10px; border-right: 0.5px solid #e8e5e0; }
-.qch-q { flex: 1; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #9c9693; padding: 6px 10px; border-right: 0.5px solid #e8e5e0; }
-.qch-ref { width: 110px; flex-shrink: 0; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #9c9693; padding: 6px 10px; }
+/* CHANGE 5: Column header row — dark grey with white text */
+.q-col-hdr { display: flex; background: #4a4a4a; border: 0.5px solid #4a4a4a; border-radius: 6px 6px 0 0; border-bottom: none; }
+.qch-type { width: 160px; flex-shrink: 0; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; padding: 6px 10px; border-right: 0.5px solid rgba(255,255,255,0.2); }
+/* CHANGE 6: "Question" column header centred */
+.qch-q { flex: 1; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; padding: 6px 10px; border-right: 0.5px solid rgba(255,255,255,0.2); text-align: center; }
+.qch-ref { width: 110px; flex-shrink: 0; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; padding: 6px 10px; }
 
 /* Question cards */
 .qcard { border: 0.5px solid #e8e5e0; border-top: none; margin-bottom: 0; overflow: hidden; }
@@ -63,10 +69,17 @@
 .qhdr { display: flex; align-items: center; cursor: pointer; background: #f5f3ef; border-top: 0.5px solid #e8e5e0; }
 .qhdr:hover { background: #eeecea; }
 .qhdr-type { width: 160px; flex-shrink: 0; padding: 8px 10px; border-right: 0.5px solid #e8e5e0; }
-.qhdr-title { flex: 1; padding: 8px 10px; font-size: 11px; color: #1a1917; line-height: 1.4; border-right: 0.5px solid #e8e5e0; }
-.qhdr-ref { width: 110px; flex-shrink: 0; padding: 8px 10px; font-size: 10px; color: #9c9693; display: flex; align-items: center; justify-content: space-between; }
+.qhdr-title { flex: 1; padding: 8px 10px; border-right: 0.5px solid #e8e5e0; }
+/* CHANGE 8: LO tested and cognitive demand inside title column */
+.qhdr-lo { font-size: 11px; color: #1a1917; line-height: 1.4; margin-bottom: 3px; }
+.lo-lbl { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: #2c3e50; margin-right: 3px; }
+.qhdr-cog { font-size: 10px; color: #5a5754; }
+.cog-lbl { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: #2c3e50; }
+/* CHANGE 7: Period reference font two notches darker */
+.qhdr-ref { width: 110px; flex-shrink: 0; padding: 8px 10px; font-size: 10px; color: #5a5754; display: flex; align-items: center; justify-content: space-between; }
 .qchev { font-size: 9px; color: #9c9693; transition: transform 0.15s; }
-.qtbadge { font-size: 9px; padding: 2px 7px; border-radius: 8px; background: #e8e5de; color: #5f5e5a; white-space: nowrap; display: inline-block; }
+/* Question type — plain text, no badge background */
+.qtype-lbl { font-size: 11px; color: #1a1917; }
 
 /* Question body */
 .qbody { display: none; padding: 10px 12px; border-top: 0.5px solid #e8e5e0; background: #fff; }
@@ -77,7 +90,7 @@
 .qexpected { font-size: 10px; color: #5a5754; background: #f5f3ef; padding: 6px 8px; border-radius: 5px; margin-top: 6px; line-height: 1.5; }
 .qexpected strong { color: #1a1917; }
 .atoggle { font-size: 10px; color: #2c3e50; cursor: pointer; border: none; background: none; padding: 6px 0 2px; display: flex; align-items: center; gap: 4px; margin-top: 4px; }
-.abox { display: none; margin-top: 6px; padding: 8px; background: #e8f4f5; border-radius: 8px; font-size: 10px; color: #085041; line-height: 1.6; }
+.abox { display: none; margin-top: 6px; padding: 8px; background: #e8f4f5; border-radius: 8px; font-size: 10px; color: #085041; line-height: 1.6; white-space: pre-wrap; }
 .abox.open { display: block; }
 .no-data { padding: 24px; text-align: center; font-size: 12px; color: #9c9693; }
 </style>
@@ -142,15 +155,119 @@ function renderTimeSlots(slots) {
   }).join('');
 }
 
+/* ── Annotation helpers ──────────────────────────────────────────────────── */
+
+/* CHANGE 8: Extract "LO tested" from annotation — handles all three LLM output formats */
+function extractLO(ann) {
+  if (!ann) return '';
+  var lines = ann.split('\n');
+  for (var i = 0; i < lines.length; i++) {
+    var l = lines[i].trim();
+    /* Format 2 / 3: "LO tested: ..." */
+    var m = l.match(/^LO tested:\s*(.+)/i);
+    if (m) return m[1].trim();
+    /* Format 1: "*LO citation:* Period N — ..." — strip the period prefix */
+    m = l.match(/^\*LO citation:\*\s*(.+)/i);
+    if (m) return m[1].replace(/^Period\s+\d+\s*[—\-]\s*/i, '').trim();
+  }
+  return '';
+}
+
+/* CHANGE 8: Extract "Cognitive demand" from annotation — handles all three formats */
+function extractCogDemand(ann) {
+  if (!ann) return '';
+  var lines = ann.split('\n');
+  for (var i = 0; i < lines.length; i++) {
+    var l = lines[i].trim();
+    /* Format 2 / 3: "Cognitive demand: ..." */
+    var m = l.match(/^Cognitive demand:\s*(.+)/i);
+    if (m) return m[1].trim();
+    /* Format 1: "*Spectrum position:* ..." */
+    m = l.match(/^\*Spectrum position:\*\s*(.+)/i);
+    if (m) return m[1].trim();
+  }
+  return '';
+}
+
+/* CHANGES 9+10: Filter annotation content by question type
+   Always strips: LO tested, Cognitive demand / Spectrum position, LO citation,
+     Competency/Weight tier lines, Format 3 header rows.
+   MCQ:    keeps only "why this option / question?" and distractor reasoning lines.
+   CR/ECR: keeps all remaining lines; prepends "Look for" from q.expected if provided.
+*/
+function filterAnnotation(ann, qtype, expected) {
+  if (!ann) ann = '';
+  var lines = ann.split('\n');
+
+  /* Lines to strip unconditionally */
+  var STRIP_ALWAYS = [
+    /^LO tested:/i,
+    /^\*LO citation:\*/i,
+    /^Cognitive demand:/i,
+    /^\*Spectrum position:\*/i,
+    /^Competency tier:/i,      /* CHANGE 10 */
+    /^Weight tier:/i,           /* CHANGE 10 */
+    /^\*Competency link:\*/i,   /* CHANGE 10 */
+    /^Field:\s*Detail/i,        /* Format 3 header row */
+    /^Source period:/i,         /* Format 3 source period */
+  ];
+
+  var type = (qtype || '').toUpperCase();
+  var isMCQ = type === 'MCQ';
+
+  var result;
+  if (isMCQ) {
+    /* CHANGE 9 MCQ: keep only "why this option?", distractor reasoning, oral follow-up */
+    var MCQ_KEEP = [
+      /^Why this option:/i,
+      /^Why this question:/i,
+      /^Distractor logic:/i,
+      /^\*Distractor [A-D]:/i,
+      /^\*Oral follow-up:\*/i,
+      /^Acceptable variation:/i,
+    ];
+    result = lines.filter(function(l) {
+      var lt = l.trim();
+      if (!lt) return false;
+      return MCQ_KEEP.some(function(re) { return re.test(lt); });
+    });
+  } else {
+    /* CHANGE 9 CR/ECR: strip always-remove lines; prepend "Look for" from expected */
+    result = lines.filter(function(l) {
+      var lt = l.trim();
+      if (!lt) return false;
+      return !STRIP_ALWAYS.some(function(re) { return re.test(lt); });
+    });
+    if (expected && expected.trim()) {
+      result.unshift('Look for: ' + expected.trim());
+    }
+  }
+
+  return result.join('\n').trim();
+}
+
+/* CHANGE 8: Build the title-column HTML — shows LO tested + Cognitive Demand */
+function buildTitleCell(q) {
+  var lo  = extractLO(q.annotation);
+  var cog = extractCogDemand(q.annotation);
+  var html = '';
+  if (lo)  html += '<div class="qhdr-lo"><span class="lo-lbl">Learning Outcome: </span>' + escHtml(lo) + '</div>';
+  if (cog) html += '<div class="qhdr-cog"><span class="cog-lbl">Cognitive demand: </span>' + escHtml(cog) + '</div>';
+  /* Fallback to title if annotation yields nothing */
+  if (!html) html = '<div class="qhdr-lo"><span class="lo-lbl">Learning Outcome: </span>' + escHtml(q.title || '') + '</div>';
+  return html;
+}
+
 function renderAssessment(sections) {
   if (!sections || !sections.length) return '';
+  /* CHANGE 2: adivlabel is centred via CSS */
   var html = '<div class="assess-divider"><div class="adivlabel">Chapter Assessment</div>';
 
   sections.forEach(function(sec) {
     /* ── Section header ────────────────────────────────────────────────── */
-    var secTitle = escHtml(sec.c_code);
-    if (sec.weight_label)     secTitle += ' · ' + escHtml(sec.weight_label);
-    if (sec.competency_short) secTitle += ' — ' + escHtml(sec.competency_short);
+    /* CHANGE 3: row has banner colours; CHANGE 4: wording on its own sub-line */
+    var codeAndWeight = escHtml(sec.c_code);
+    if (sec.weight_label) codeAndWeight += ' · ' + escHtml(sec.weight_label);
 
     var metaLine = '';
     if (sec.drawing_on)     metaLine += 'Drawing on ' + escHtml(sec.drawing_on);
@@ -158,13 +275,16 @@ function renderAssessment(sections) {
 
     html += '<div class="asec">';
     html += '<div class="asec-hdr">';
-    html +=   '<div class="asec-title">' + secTitle + '</div>';
+    html +=   '<div class="asec-title">' + codeAndWeight + '</div>';
+    if (sec.competency_short) {
+      html += '<div class="asec-wording">' + escHtml(sec.competency_short) + '</div>';
+    }
     if (metaLine) html += '<div class="asec-meta">' + metaLine + '</div>';
     html += '</div>';
 
     /* ── Question cards ────────────────────────────────────────────────── */
     if (sec.questions && sec.questions.length) {
-      /* Column header row */
+      /* CHANGE 5+6: column header row — dark grey, white text, "Question" centred */
       html += '<div class="q-col-hdr">';
       html +=   '<div class="qch-type">Question type</div>';
       html +=   '<div class="qch-q">Question</div>';
@@ -173,17 +293,21 @@ function renderAssessment(sections) {
 
       sec.questions.forEach(function(q) {
         var typeLbl = escHtml(expandType(q.type || ''));
+        var type    = (q.type || '').toUpperCase();
+        var isMCQ   = type === 'MCQ';
 
         html += '<div class="qcard">';
 
         /* Collapsed header row (always visible) */
         html += '<div class="qhdr" onclick="toggleQ(this)">';
-        html +=   '<div class="qhdr-type"><span class="qtbadge">' + typeLbl + '</span></div>';
-        html +=   '<div class="qhdr-title">' + escHtml(q.title || '') + '</div>';
+        html +=   '<div class="qhdr-type"><span class="qtype-lbl">' + typeLbl + '</span></div>';
+        /* CHANGE 8: LO tested + Cognitive Demand instead of raw title */
+        html +=   '<div class="qhdr-title">' + buildTitleCell(q) + '</div>';
+        /* CHANGE 7: qhdr-ref colour darkened via CSS */
         html +=   '<div class="qhdr-ref">' + escHtml(q.period_ref || '') + '<span class="qchev">▼</span></div>';
         html += '</div>';
 
-        /* Expanded body — hidden by default, toggled via .open class */
+        /* Expanded body — hidden by default */
         html += '<div class="qbody">';
 
         if (q.question) {
@@ -198,13 +322,20 @@ function renderAssessment(sections) {
           });
         }
 
-        if (q.expected) {
+        /* CHANGE 9: MCQ keeps "Look for" in body; CR/ECR moves it into annotation */
+        if (q.expected && isMCQ) {
           html += '<div class="qexpected"><strong>Look for:</strong> ' + escHtml(q.expected) + '</div>';
         }
 
-        if (q.annotation) {
+        /* CHANGES 9+10: show filtered annotation only */
+        var filteredAnn = filterAnnotation(
+          q.annotation,
+          q.type,
+          isMCQ ? null : q.expected   /* CR/ECR: pass expected to prepend as "Look for" */
+        );
+        if (filteredAnn) {
           html += '<button class="atoggle" onclick="toggleA(this)">▼ Teacher annotation</button>';
-          html += '<div class="abox">' + escHtml(q.annotation) + '</div>';
+          html += '<div class="abox">' + escHtml(filteredAnn) + '</div>';
         }
 
         html += '</div>'; /* .qbody */
@@ -233,6 +364,12 @@ function renderLPA() {
 
   var panel = document.getElementById('lp-panel');
   panel.innerHTML = '';
+
+  /* CHANGE 1: "Lesson Plan" label — centred, same style as "Chapter Assessment" */
+  var lpLabelDiv = document.createElement('div');
+  lpLabelDiv.className = 'lp-section-label';
+  lpLabelDiv.textContent = 'Lesson Plan';
+  panel.appendChild(lpLabelDiv);
 
   var periods = d.lo_handoff || [];
   periods.forEach(function(p, idx) {
