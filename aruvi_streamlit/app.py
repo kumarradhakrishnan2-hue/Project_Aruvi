@@ -422,578 +422,6 @@ def delete_saved_plan(grade: str, subject: str, filename: str) -> None:
     except Exception:
         pass
 
-def _parse_lp_narrative(lp_text: str) -> dict:
-    """
-    Parse the narrative lesson plan text and extract per-period structured data.
-
-    Returns a dict keyed by period_number (int) with fields:
-        activity_name (str)   — short title from first heading/bold in the period block
-        material      (str)   — materials/resources line, or ""
-        time_slots    (list)  — [{"time": "0–10 min", "desc": "..."}, …]
-
-    Fails gracefully: any period whose block can't be parsed is simply absent
-    from the returned dict, so callers should use .get(pnum, {}).
-    """
-    import re
-    result: dict = {}
-    if not lp_text:
-        return result
-
-    # Split on period headings such as:
-    #   ### Period 1  /  **Period 1**  /  Period 1:  /  PERIOD 1
-    segments = re.split(
-        r'(?:^|\n)(?:#{1,4}\s*|\*{1,2}\s*)?[Pp][Ee][Rr][Ii][Oo][Dd]\s+(\d+)',
-        lp_text,
-    )
-    # segments = [preamble, pnum_str, body, pnum_str, body, ...]
-    i = 1
-    while i < len(segments) - 1:
-        try:
-            pnum = int(segments[i])
-            body = segments[i + 1]
-
-            # ── activity name ──────────────────────────────────────────────
-            # First heading or bold phrase in the block (5–80 chars)
-            act_m = re.search(
-                r'(?:^|\n)(?:#{1,4}\s*|\*{1,2}\s*)([^\n*#]{5,80})(?:\*{0,2})',
-                body,
-            )
-            activity_name = act_m.group(1).strip().rstrip("*").strip() if act_m else ""
-
-            # ── material ───────────────────────────────────────────────────
-            mat_m = re.search(
-                r'(?:material|materials|resource|resources)[s]?[:\s]+([^\n]+)',
-                body, re.IGNORECASE,
-            )
-            material = mat_m.group(1).strip() if mat_m else ""
-
-            # ── time slots ─────────────────────────────────────────────────
-            # Lines like "0–10 min: Do something" or "0-10 min — description"
-            time_slots = []
-            for ts_m in re.finditer(
-                r'(\d+\s*[–\-]\s*\d+\s*min)[:\s\-–]+([^\n]+)',
-                body, re.IGNORECASE,
-            ):
-                time_slots.append({
-                    "time": ts_m.group(1).strip(),
-                    "desc": ts_m.group(2).strip(),
-                })
-
-            result[pnum] = {
-                "activity_name": activity_name,
-                "material":      material,
-                "time_slots":    time_slots,
-            }
-        except Exception:
-            pass
-        i += 2
-
-    return result
-
-
-def _parse_assessment(assessment_text: str) -> list:
-    """
-    Parse raw assessment markdown into a list of section dicts.
-    Handles three formats produced by different LLM runs:
-
-    Format 1 (current constitution):
-        ### Central Competency — C-7.2
-        *(Discovering India's topographical diversity)*
-        Drawing on Periods 1, 3, 4 · 2 MCQ + 1 Short CR
-        **MCQ 1** ...
-
-    Format 2 (older — per-question C-code annotation):
-        #### Section A — Multiple Choice Questions
-        **Q1.** *(Source: Period 1 | C-7.2 — Central)*
-        question text
-        A. option  B. option  C. option  D. option
-        **Correct answer:** B
-        | Annotation field | Content | ...
-
-    Format 3 (older — inline ✓ + annotation table):
-        ### Section A — Multiple Choice Questions
-        **Q1.**
-        question text
-        A. option  B. option  C. option ✓  D. option
-        **Annotation**
-        | Field | Detail | ... (includes Source period / Weight tier rows)
-
-    Field names match lpa_page.html exactly:
-        sections: c_code, weight_label, competency_short, drawing_on,
-                  question_types, questions
-        questions: type, title, period_ref, question, options, expected,
-                   annotation
-        options: text, correct
-    """
-    import re, sys
-
-    try:
-        if not assessment_text:
-            return []
-
-        # ── shared helpers ───────────────────────────────────────────────────
-
-        def _expand_cr(t: str) -> str:
-            t = re.sub(r'\bSCR\b',         'Short Constructed Response', t)
-            t = re.sub(r'\bECR\b',         'Extended Constructed Response', t)
-            t = re.sub(r'\bExtended CR\b', 'Extended Constructed Response', t)
-            t = re.sub(r'\bShort CR\b',    'Short Constructed Response',    t)
-            return t
-
-        def _parse_options_and_correct(q_body: str):
-            """Return (options_list, correct_letter_or_empty).
-            Handles: 'A. ★ text', 'A. text ✓', '(A) text ✓', plain 'A. text'
-            + separate '**Correct answer:** B' line."""
-            options = []
-            correct_letter = ""
-            ca_m = re.search(r'\*\*Correct answer:\*\*\s*([A-D])', q_body, re.IGNORECASE)
-            if ca_m:
-                correct_letter = ca_m.group(1).upper()
-            for om in re.finditer(
-                r'(?:^|\n)\s*(?:\(([A-D])\)|([A-D])[\.\)])\s*(★|✓)?\s*([^\n]+)',
-                q_body, re.MULTILINE,
-            ):
-                letter    = (om.group(1) or om.group(2)).upper()
-                opt_text  = om.group(4).strip()
-                star_mark = bool(om.group(3))
-                correct   = star_mark or '✓' in opt_text or '★' in opt_text or letter == correct_letter
-                opt_clean = opt_text.replace(' ✓','').replace('✓','') \
-                                    .replace(' ★','').replace('★','').strip()
-                options.append({"text": f"({letter}) {opt_clean}", "correct": correct})
-            return options
-
-        def _parse_expected(q_body: str) -> str:
-            exp_m = re.search(
-                r'(?:\*{0,2}Expected response elements?\*{0,2}'
-                r'|Look for|Expected response'
-                r'|What to look for)[:\s*]+(.+?)'
-                r'(?=\n\n>|\n\n---|\*{1,2}(?:Annotation|Teacher annotation)\b'
-                r'|\|\s*(?:Annotation field|Field)\s*\||\Z)',
-                q_body, re.IGNORECASE | re.DOTALL,
-            )
-            if not exp_m:
-                return ""
-            exp_lines = [
-                re.sub(r'^[-*•]\s*', '', ln.strip().strip('*')).strip()
-                for ln in exp_m.group(1).strip().splitlines()
-                if ln.strip() and ln.strip() not in ('*', '-', '—')
-                and not ln.strip().startswith('|')
-            ]
-            return ' '.join(exp_lines).strip()
-
-        def _parse_annotation(q_body: str) -> str:
-            """Extract annotation text. Tries three sub-formats:
-            (a) > **Annotation ...** blockquote (Format 1)
-            (b) **Annotation** followed by markdown table (Formats 2/3)
-            (c) inline **Annotation:** plain text"""
-            # (a) blockquote
-            bq_m = re.search(
-                r'>\s*\*{1,2}Annotation[^\n]*\*{0,2}\n((?:>[ \t]*[^\n]*\n?)+)',
-                q_body, re.IGNORECASE,
-            )
-            if bq_m:
-                lines = [
-                    re.sub(r'^>\s*', '', ln).strip()
-                    for ln in bq_m.group(1).splitlines()
-                    if ln.strip() and ln.strip() != '>'
-                ]
-                return '\n'.join(lines).strip()
-            # (b) **Annotation** or **Annotation field** then table / plain text
-            ann_start_m = re.search(
-                r'\*{1,2}(?:Annotation|Teacher annotation)[^\n]*\*{0,2}\s*\n',
-                q_body, re.IGNORECASE,
-            )
-            if ann_start_m:
-                ann_raw = q_body[ann_start_m.end():]
-                out = []
-                for ln in ann_raw.splitlines():
-                    ln_s = ln.strip()
-                    if not ln_s:
-                        continue
-                    if re.match(r'^\|[-\s|]+\|$', ln_s):   # separator row
-                        continue
-                    if ln_s.startswith('|'):
-                        cells = [c.strip() for c in ln_s.strip('|').split('|') if c.strip()]
-                        if len(cells) == 2:
-                            out.append(f'{cells[0]}: {cells[1]}')
-                        elif cells:
-                            out.append(' | '.join(cells))
-                    else:
-                        out.append(ln_s.strip('*').strip())
-                return '\n'.join(out).strip()
-            # (c) inline
-            ann_m = re.search(
-                r'(?:\*{1,2}Annotation\*{0,2}|^Annotation:)[ \t]*\n?(.*)',
-                q_body, re.IGNORECASE | re.DOTALL | re.MULTILINE,
-            )
-            if ann_m:
-                return ann_m.group(1).strip().strip('*').strip()
-            # (d) Format 2: bare annotation table with no **Annotation** header
-            # e.g. "| Annotation field | Content |" directly in q_body
-            bare_tbl_m = re.search(r'\|\s*Annotation field\s*\|', q_body, re.IGNORECASE)
-            if bare_tbl_m:
-                out = []
-                for ln in q_body[bare_tbl_m.start():].splitlines():
-                    ln_s = ln.strip()
-                    if not ln_s:
-                        break
-                    if re.match(r'^\|[-\s|]+\|$', ln_s):   # separator row
-                        continue
-                    if ln_s.startswith('|'):
-                        cells = [c.strip() for c in ln_s.strip('|').split('|') if c.strip()]
-                        # Skip the column header row: | Annotation field | Content |
-                        if len(cells) == 2 and cells[0].lower() == 'annotation field' and cells[1].lower() == 'content':
-                            continue
-                        if len(cells) == 2:
-                            out.append(f'{cells[0]}: {cells[1]}')
-                        elif cells:
-                            out.append(' | '.join(cells))
-                return '\n'.join(out).strip()
-            return ""
-
-        # ════════════════════════════════════════════════════════════════════
-        # PATH 1 — Format 1: C-code section-header splitting
-        # Split on lines like: ### Central Competency — C-7.2
-        #                       ## C-7.2 — Central
-        #                       **C-7.2 · Central**
-        # re.split with 2 capture groups → [preamble, g1, g2, body, …]
-        # ════════════════════════════════════════════════════════════════════
-        parts = re.split(
-            r'\n(?:#{1,4}\s+(?:\w+\s+)?(?:Competency\s+[—-]\s+)?(C-\d+\.\d+)'
-            r'|\*{1,2}(C-\d+\.\d+)\s*[·—])',
-            assessment_text,
-        )
-
-        sections_f1 = []
-        if len(parts) >= 4:
-            i = 1
-            while i + 2 < len(parts):
-                try:
-                    c_code = (parts[i] or parts[i + 1] or '').strip()
-                    body   = parts[i + 2] if i + 2 < len(parts) else ''
-                    if not c_code:
-                        i += 3
-                        continue
-
-                    hdr_m = re.search(
-                        r'(?:#{1,4}\s+[^\n]*?' + re.escape(c_code) + r'[^\n]*'
-                        r'|\*{1,2}' + re.escape(c_code) + r'[^\n]*)',
-                        assessment_text,
-                    )
-                    header = hdr_m.group(0).strip().strip('*') if hdr_m else c_code
-
-                    weight_m     = re.search(r'\b(Central|Substantive|Present)\b', header, re.IGNORECASE)
-                    weight_label = weight_m.group(1).title() if weight_m else ""
-
-                    competency_short = ""
-                    c_pos = header.find(c_code)
-                    if c_pos >= 0:
-                        after = header[c_pos + len(c_code):].strip().lstrip('—·-–').strip().strip('*').strip()
-                        if after and not re.match(r'^\W*$', after) and not after.startswith('('):
-                            competency_short = after
-                    if not competency_short:
-                        for ln in body.splitlines()[:6]:
-                            ln_s = ln.strip().strip('*').strip()
-                            if not ln_s or re.match(r'(?:Drawing on|#{1,4}|\*{1,2}|MCQ|Short|Extended|Open|Q\d)', ln_s, re.I):
-                                continue
-                            if re.match(r'^---', ln_s):
-                                continue
-                            paren_m = re.match(r'^\*?\((.+)\)\*?$', ln_s)
-                            if paren_m:
-                                competency_short = paren_m.group(1).strip()
-                                break
-                            competency_short = ln_s
-                            break
-
-                    drawing_on = question_types = ""
-                    do_m = re.search(r'Drawing on\s+([^\n]+)', body, re.IGNORECASE)
-                    if do_m:
-                        _do_p = re.split(r'\s*·\s*', do_m.group(1).strip(), maxsplit=1)
-                        drawing_on     = _do_p[0].strip()
-                        question_types = _expand_cr(_do_p[1].strip()) if len(_do_p) > 1 else ""
-
-                    Q_START = re.compile(
-                        r'(?:^|\n)[ \t]*(?:#{1,4}[ \t]*|\*{1,2}[ \t]*)'
-                        r'((?:MCQ\s*\d*|Short Constructed Response|Extended Constructed Response'
-                        r'|Short CR|Extended CR|Open Task|Q\d+)\b[^\n]*)',
-                        re.IGNORECASE | re.MULTILINE,
-                    )
-                    q_matches = list(Q_START.finditer(body))
-                    questions = []
-
-                    for q_idx, qm in enumerate(q_matches):
-                        try:
-                            q_hdr_raw    = qm.group(1).strip().strip('*').strip()
-                            q_body_start = qm.end()
-                            q_body_end   = q_matches[q_idx + 1].start() if q_idx + 1 < len(q_matches) else len(body)
-                            q_body       = body[q_body_start:q_body_end]
-
-                            type_m   = re.match(
-                                r'(MCQ\s*\d*|Short Constructed Response|Extended Constructed Response'
-                                r'|Short CR|Extended CR|Open Task|Q\d+)',
-                                q_hdr_raw, re.IGNORECASE,
-                            )
-                            raw_type = type_m.group(1).strip() if type_m else q_hdr_raw.split()[0]
-                            q_type   = _expand_cr(raw_type)
-
-                            title = ""
-                            if type_m:
-                                rest = q_hdr_raw[type_m.end():].strip().lstrip('·—:-').strip().strip('*').strip()
-                                rest = re.sub(r'\(Periods?\s+[\d,\s&and]+\)\s*$', '', rest, flags=re.IGNORECASE).strip()
-                                if re.match(r'^\d+$', rest):
-                                    rest = ""
-                                title = rest
-
-                            q_lines = []
-                            for ln in q_body.splitlines():
-                                ln_s = ln.strip()
-                                if re.match(r'(?:\([A-D]\)|[A-D]\.\s)', ln_s):
-                                    break
-                                if re.match(r'(?:Look for|Expected response elements?|Expected response|Annotation)\b', ln_s, re.I):
-                                    break
-                                if re.match(r'(?:#{1,4}|\*{1,2})(?:MCQ|Short|Extended|Open|Q\d|Annotation)', ln_s, re.I):
-                                    break
-                                if re.match(r'>\s*\*{1,2}Annotation', ln_s, re.I):
-                                    break
-                                if ln_s:
-                                    q_lines.append(ln_s.strip('*').strip())
-                            question_text = ' '.join(q_lines).strip()
-
-                            if not title and question_text:
-                                first_sent = re.split(r'(?<=[.?!])\s', question_text, maxsplit=1)[0]
-                                title = first_sent[:90].rstrip('.?! ') if len(first_sent) > 90 else first_sent
-
-                            options    = _parse_options_and_correct(q_body)
-                            expected   = _parse_expected(q_body)
-                            annotation = _parse_annotation(q_body)
-
-                            period_ref = ""
-                            pr_m = re.search(r'\(?(Periods?\s+[\d,\s&and]+)\)?',
-                                             q_hdr_raw + ' ' + q_body[:120], re.IGNORECASE)
-                            if pr_m:
-                                period_ref = pr_m.group(1).strip()
-                            if not period_ref and annotation:
-                                lc_m = re.search(r'\*?LO citation[:\s*]+Period\s+(\d+)', annotation, re.IGNORECASE)
-                                if lc_m:
-                                    period_ref = f"Period {lc_m.group(1)}"
-
-                            questions.append({
-                                "type": q_type, "title": title, "period_ref": period_ref,
-                                "question": question_text, "options": options,
-                                "expected": expected, "annotation": annotation,
-                            })
-                        except Exception:
-                            pass
-
-                    sections_f1.append({
-                        "c_code": c_code, "weight_label": weight_label,
-                        "competency_short": competency_short, "drawing_on": drawing_on,
-                        "question_types": question_types, "questions": questions,
-                    })
-                except Exception:
-                    pass
-                i += 3   # advance past: g1, g2, body
-
-        total_q_f1 = sum(len(s["questions"]) for s in sections_f1)
-        if sections_f1 and total_q_f1 > 0:
-            print(f"_parse_assessment: returning {len(sections_f1)} sections, total {total_q_f1} questions",
-                  file=sys.stderr)
-            return sections_f1
-
-        # ════════════════════════════════════════════════════════════════════
-        # PATH 2 — Formats 2/3: Section A/B/C/D + **Q\d+** blocks
-        # ════════════════════════════════════════════════════════════════════
-
-        # ── Build weight → C-code map from the preamble (first ~1200 chars) ─
-        # Looks for: "Central (C-7.2, weight 3)" or "Central: C-7.2"
-        weight_c_map: dict = {}
-        preamble = assessment_text[:1200]
-        for m in re.finditer(
-            r'\b(Central|Substantive|Present)\s*[:(]\s*(C-\d+\.\d+)',
-            preamble, re.IGNORECASE,
-        ):
-            weight_c_map[m.group(1).title()] = m.group(2)
-        if not weight_c_map:
-            # Alternative: "C-7.2 ... weight N ... Central"
-            for m in re.finditer(
-                r'(C-\d+\.\d+)[^\n]*?\b(Central|Substantive|Present)\b',
-                preamble, re.IGNORECASE,
-            ):
-                weight_c_map[m.group(2).title()] = m.group(1)
-
-        # ── Section header → question type ───────────────────────────────────
-        def _sec_type(hdr: str) -> str:
-            h = hdr.lower()
-            if 'section a' in h or 'multiple choice' in h or 'mcq' in h:
-                return 'MCQ'
-            if 'section b' in h or 'short constructed' in h or 'short cr' in h or 'short answer' in h:
-                return 'Short Constructed Response'
-            if 'section c' in h or 'extended constructed' in h or 'extended cr' in h or 'long answer' in h:
-                return 'Extended Constructed Response'
-            if 'section d' in h or 'open task' in h or 'open-ended' in h or 'reflective' in h:
-                return 'Open Task'
-            return 'MCQ'
-
-        # ── Locate all section headers ────────────────────────────────────────
-        SECT_PAT = re.compile(
-            r'(?:^|\n)(#{2,4}\s+(?:Section\s+[A-D]\b[^\n]*'
-            r'|[^\n]*Multiple Choice[^\n]*'
-            r'|[^\n]*Short Constructed[^\n]*'
-            r'|[^\n]*Extended Constructed[^\n]*'
-            r'|[^\n]*Open Task[^\n]*))',
-            re.IGNORECASE | re.MULTILINE,
-        )
-        sect_matches = list(SECT_PAT.finditer(assessment_text))
-
-        def _q_type_at(pos: int) -> str:
-            """Return question type for the section that precedes pos."""
-            last = None
-            for sm in sect_matches:
-                if sm.start() <= pos:
-                    last = sm
-                else:
-                    break
-            return _sec_type(last.group(1)) if last else 'MCQ'
-
-        # ── Locate all **Q\d+** question headers ─────────────────────────────
-        Q_HDR_PAT = re.compile(
-            r'(?:^|\n)(\*{1,2}Q\d+[.\s—–][^\n]*)',
-            re.MULTILINE,
-        )
-        q_hdr_list = list(Q_HDR_PAT.finditer(assessment_text))
-        if not q_hdr_list:
-            print("_parse_assessment: returning 0 sections, total 0 questions", file=sys.stderr)
-            return []
-
-        # ── Parse each question block ─────────────────────────────────────────
-        all_questions = []
-        for qi, qm in enumerate(q_hdr_list):
-            try:
-                q_block_start = qm.start()
-                q_block_end   = q_hdr_list[qi + 1].start() if qi + 1 < len(q_hdr_list) else len(assessment_text)
-                q_block       = assessment_text[q_block_start:q_block_end]
-                default_type  = _q_type_at(q_block_start)
-
-                lines    = q_block.strip('\n').splitlines()
-                q_header = lines[0].strip() if lines else ''
-                q_body   = '\n'.join(lines[1:]) if len(lines) > 1 else ''
-
-                # ── source annotation: *(Source: Period N | C-X.X — Weight)* ─
-                c_code = weight_lbl = period_ref = ''
-                src_m = re.search(
-                    r'\*\(Source:\s*Periods?\s*([\d,\s&+]+)\s*\|\s*(C-\d+\.\d+)\s*[—-]\s*(\w+)\)\*',
-                    q_header + '\n' + q_body[:80], re.IGNORECASE,
-                )
-                if src_m:
-                    raw_pnums = re.split(r'[\s,+&]+', src_m.group(1).strip())
-                    period_ref  = 'Period ' + raw_pnums[0]
-                    c_code      = src_m.group(2).strip()
-                    weight_lbl  = src_m.group(3).strip().title()
-
-                # ── title: text on header line after "**Q\d+.**" ──────────────
-                title = re.sub(r'^\*{1,2}Q\d+\.?\*{0,2}\s*', '', q_header).strip()
-                title = re.sub(r'\*\(Source:[^)]+\)\*', '', title).strip('—– *').strip()
-                # Remove open-task subtitle markers like "— Open Task: ..."
-                title = re.sub(r'^[—–]\s*', '', title).strip()
-
-                # ── question text ─────────────────────────────────────────────
-                q_lines = []
-                for ln in q_body.splitlines():
-                    ln_s = ln.strip()
-                    if not ln_s:
-                        continue
-                    if re.match(r'^[A-D][\.\)]\s', ln_s):      # option line
-                        break
-                    if re.match(r'\*{0,2}(?:Correct answer|Expected response elements?'
-                                r'|Look for|What to look for)\s*[\*:]', ln_s, re.I):
-                        break
-                    if re.match(r'\*{1,2}(?:Annotation|Teacher annotation)\*{0,2}\s*$', ln_s, re.I):
-                        break
-                    if re.match(r'>\s*\*{1,2}Annotation', ln_s, re.I):
-                        break
-                    if re.match(r'\*\(Source:', ln_s, re.I):    # skip source line if on own line
-                        continue
-                    q_lines.append(ln_s.strip('*').strip())
-                question_text = ' '.join(q_lines).strip()
-
-                # ── title fallback ────────────────────────────────────────────
-                if not title and question_text:
-                    first_sent = re.split(r'(?<=[.?!])\s', question_text, maxsplit=1)[0]
-                    title = first_sent[:90].rstrip('.?! ') if len(first_sent) > 90 else first_sent
-
-                # ── options, expected, annotation ─────────────────────────────
-                options    = _parse_options_and_correct(q_body)
-                expected   = _parse_expected(q_body)
-                annotation = _parse_annotation(q_body)
-
-                # ── extract C-code + period from annotation table if missing ──
-                if not c_code and annotation:
-                    wt_m = re.search(r'Weight(?:\s+tier)?:\s*(\w+)', annotation, re.IGNORECASE)
-                    if wt_m:
-                        weight_lbl = wt_m.group(1).strip().title()
-                        c_code     = weight_c_map.get(weight_lbl, '')
-                if not period_ref and annotation:
-                    sp_m = re.search(r'Source\s+period[s]?:\s*(Period[s]?\s*\d+)', annotation, re.IGNORECASE)
-                    if sp_m:
-                        pn_m = re.search(r'\d+', sp_m.group(1))
-                        if pn_m:
-                            period_ref = f'Period {pn_m.group(0)}'
-                if not period_ref and annotation:
-                    lc_m = re.search(r'\*?LO citation[:\s*]+Period\s+(\d+)', annotation, re.IGNORECASE)
-                    if lc_m:
-                        period_ref = f'Period {lc_m.group(1)}'
-
-                all_questions.append({
-                    "type":       _expand_cr(default_type),
-                    "title":      title,
-                    "period_ref": period_ref,
-                    "question":   question_text,
-                    "options":    options,
-                    "expected":   expected,
-                    "annotation": annotation,
-                    "_c_code":    c_code,
-                    "_weight":    weight_lbl,
-                })
-            except Exception:
-                pass
-
-        # ── Group questions by C-code into sections ───────────────────────────
-        seen_codes:  list  = []
-        code_groups: dict  = {}
-        for q in all_questions:
-            cc = q["_c_code"] or "UNKNOWN"
-            if cc not in code_groups:
-                seen_codes.append(cc)
-                code_groups[cc] = []
-            code_groups[cc].append(q)
-
-        sections_f2 = []
-        for cc in seen_codes:
-            qs  = code_groups[cc]
-            wt  = next((q["_weight"] for q in qs if q.get("_weight")), "")
-            clean_qs = [
-                {k: v for k, v in q.items() if not k.startswith("_")}
-                for q in qs
-            ]
-            sections_f2.append({
-                "c_code":           cc if cc != "UNKNOWN" else "",
-                "weight_label":     wt,
-                "competency_short": "",
-                "drawing_on":       "",
-                "question_types":   "",
-                "questions":        clean_qs,
-            })
-
-        total_q_f2 = sum(len(s["questions"]) for s in sections_f2)
-        print(f"_parse_assessment: returning {len(sections_f2)} sections, total {total_q_f2} questions",
-              file=sys.stderr)
-        return sections_f2
-
-    except Exception as e:
-        print(f"_parse_assessment error: {e}", file=sys.stderr)
-        return []
-
-
 def generate_lpa(
     grade: str,
     subject: str,
@@ -1195,8 +623,7 @@ def _normalise_assessment_sections(result: dict) -> list:
                  Each item must have: c_code, question_type, question_text,
                  options[], annotation, period_ref, weight_label,
                  competency_text, chapter_section.
-    Old format:  _parse_assessment() was already called upstream and the
-                 result stored in result["assessment_sections"] — return as-is.
+    Legacy:      result["assessment_sections"] already populated — return as-is.
     Falls back to [] when neither is present.
     """
     if result.get("assessment_sections"):
@@ -1206,26 +633,99 @@ def _normalise_assessment_sections(result: dict) -> list:
     if not items:
         return []
 
+    # ── Fix 1 helper: short title ≤ 60 chars from type + first words of text ──
+    def _build_title(qtype: str, qtext: str) -> str:
+        prefix = (qtype or "Q").strip()
+        budget = 58 - len(prefix)          # leaves 2 chars for ": "
+        if budget <= 0:
+            return prefix[:60]
+        snippet = (qtext or "").strip()
+        if len(snippet) > budget:
+            snippet = snippet[:budget].rsplit(" ", 1)[0]
+        return (prefix + ": " + snippet) if snippet else prefix
+
+    # ── Fix 2 helper: derive expected-answer text by question type ─────────────
+    def _build_expected(item: dict) -> str:
+        qtype = (item.get("question_type") or "").strip().upper()
+        if qtype == "MCQ":
+            for opt in (item.get("options") or []):
+                if opt.get("is_correct"):
+                    label = opt.get("label", opt.get("key", ""))
+                    text  = opt.get("text",  opt.get("value", ""))
+                    return (label + ": " + text).strip(": ") if label else text
+            return ""
+        if qtype == "SCR":
+            elems = item.get("expected_elements") or []
+            return "\n".join(str(e) for e in elems)
+        if qtype == "ECR":
+            elems = item.get("look_for") or []
+            return "\n".join(str(e) for e in elems)
+        if qtype == "OPEN_TASK":
+            guide = item.get("guide") or {}
+            return str(guide.get("strong_vs_weak_markers", ""))
+        return ""
+
+    # Weight integer → label, mirroring WEIGHT_LABEL in lpa_page.html
+    _WLBL = {3: "Central", 2: "Substantive", 1: "Present"}
+
     from collections import OrderedDict
     sections: dict = OrderedDict()
     for item in items:
-        c_code = item.get("c_code", "")
+        # c_code may be a top-level field OR nested under item["competency"]["c_code"],
+        # exactly as in lesson-plan periods (see _normalise_lo_handoff).
+        _comp = item.get("competency") or {}
+        if not isinstance(_comp, dict):
+            _comp = {}
+        c_code = item.get("c_code") or _comp.get("c_code", "")
+
         if c_code not in sections:
+            # weight_label: prefer explicit string; fall back to integer from competency
+            _wlabel = item.get("weight_label") or ""
+            if not _wlabel:
+                _w = _comp.get("weight")
+                try:
+                    _wlabel = _WLBL.get(int(_w), "") if _w is not None else ""
+                except (TypeError, ValueError):
+                    _wlabel = ""
+
+            # competency_text: prefer top-level; fall back to nested object fields
+            _ctext = (item.get("competency_text") or
+                      _comp.get("competency_text", "") or
+                      _comp.get("text", ""))
+
             sections[c_code] = {
                 "c_code":           c_code,
-                "weight_label":     item.get("weight_label", ""),
-                "competency_short": item.get("competency_text", ""),
+                "weight_label":     _wlabel,
+                "competency_short": _ctext,
                 "drawing_on":       item.get("chapter_section", ""),
                 "question_types":   "",
                 "questions":        [],
             }
+        qtype = item.get("question_type", "")
         sections[c_code]["questions"].append({
-            "type":       item.get("question_type", ""),
-            "question":   item.get("question_text", ""),
-            "options":    item.get("options", []),
-            "annotation": item.get("annotation", ""),
-            "period_ref": item.get("period_ref", ""),
+            "type":               qtype,
+            "question":           item.get("question_text", ""),
+            "task_instructions":  item.get("task_instructions", ""),
+            "options":            item.get("options", []),
+            "annotation":         item.get("annotation", ""),
+            "period_ref":         item.get("period_ref", ""),
+            "title":              _build_title(qtype, item.get("question_text", "")),
+            "expected":           _build_expected(item),
+            "cognitive_demand":   item.get("cognitive_demand", ""),
+            "guide":              item.get("guide", {}),
+            "expected_elements":  item.get("expected_elements", []),
+            "look_for":           item.get("look_for", []),
         })
+
+    # Fix 3: populate question_types — unique types in order of first appearance
+    for sec in sections.values():
+        seen: list = []
+        for q in sec["questions"]:
+            t = q["type"]
+            if t and t not in seen:
+                seen.append(t)
+        sec["question_types"] = " · ".join(seen)
+
     return list(sections.values())
 
 
