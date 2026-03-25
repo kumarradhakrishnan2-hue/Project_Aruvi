@@ -1,0 +1,782 @@
+{
+  "filename": "ch_01_20260325_111943.json",
+  "saved_at": "2026-03-25T11:19:43",
+  "grade": "Grade VII",
+  "subject": "Social Science",
+  "chapter_number": 1,
+  "chapter_title": "Geographical Diversity of India",
+  "period_schedule_display": "Period schedule:\n  Row 1: 40 minutes × 4 periods = 160 minutes\nTotal: 4 periods · 2h 40min",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 40,
+      "count": 4
+    }
+  ],
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 40,
+          "activity_name": "India's Subcontinent Frame: Mapping Boundaries and Regions",
+          "section_anchor": "Introduction: India as a Subcontinent",
+          "material": [
+            "Outline map of India and the Indian Subcontinent (one per student)",
+            "Coloured pencils",
+            "Blackboard or chart with the five regional divisions"
+          ],
+          "time_bands": [
+            {
+              "minutes": "0-5",
+              "activity": "Teacher poses the question: 'What makes India a subcontinent rather than just a country?' Students share initial responses."
+            },
+            {
+              "minutes": "5-15",
+              "activity": "Students examine the outline map and use the chapter text to identify and mark the six neighbouring countries, the four surrounding water bodies, and the four cardinal natural boundaries (Himalayas, Thar Desert, Arabian Sea, Bay of Bengal). Each boundary is labelled with a short phrase explaining what kind of geographical feature it is."
+            },
+            {
+              "minutes": "15-28",
+              "activity": "Students divide their map into India's five broad geographical regions (great mountain zone, Ganga-Indus plains, desert region, southern peninsula, islands) using different colours and create a colour-coded legend. They then write one sentence per region predicting how that region's terrain might shape the lives of people living there."
+            },
+            {
+              "minutes": "28-37",
+              "activity": "Pair share: partners compare maps and predictions, noting agreements and disagreements. Two pairs share one prediction with the class; teacher draws out the idea that geography shapes culture, climate, and history."
+            },
+            {
+              "minutes": "37-40",
+              "activity": "Teacher closes with the framing question for the chapter: 'By the end of this chapter, how many of your predictions will the chapter confirm, revise, or complicate?'"
+            }
+          ],
+          "implied_lo": "Students will be able to locate India's natural boundaries and six neighbouring countries on an outline map and explain how these boundaries divide the country into five broad geographical regions.",
+          "competency": {
+            "c_code": "C-7.2",
+            "cg": "CG-7",
+            "weight": 3,
+            "competency_text": "Systematic survey and analysis of India's topographical regions as the organising structure of geographical study."
+          },
+          "visual_representation": {
+            "required": true,
+            "type": "map",
+            "visual_source": "external_required",
+            "svg_content": null,
+            "description": "Outline map of the Indian Subcontinent showing India and its six neighbouring countries, surrounding water bodies (Arabian Sea, Bay of Bengal, Indian Ocean), and the five broad geographical regions used in the chapter."
+          }
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 40,
+          "activity_name": "The Himalayas: From Gondwana to Growing Peaks",
+          "section_anchor": "The Himalayas / Formation of the Himalayas / Three Main Ranges of the Himalayas",
+          "material": [
+            "Chapter text (relevant sections)",
+            "Three-column comparison table worksheet (one per student)",
+            "Blackboard"
+          ],
+          "time_bands": [
+            {
+              "minutes": "0-7",
+              "activity": "Teacher presents the carpet-wrinkling analogy: push two books toward each other on a flat surface and observe the pages crumpling upward. Students connect this to the Gondwana-Eurasia collision described in the chapter and identify what was between the two landmasses that crumpled."
+            },
+            {
+              "minutes": "7-18",
+              "activity": "Students read the Formation section and the Three Main Ranges section independently. They complete a three-column table (Himadri / Himachal / Shivalik) with rows for: altitude and physical character, climate, presence of human settlement, and one example of a feature or place from the text. They must use textbook evidence for each cell."
+            },
+            {
+              "minutes": "18-30",
+              "activity": "Class discussion: teacher asks — 'Why do very few human settlements exist in the Himadri but many in the Himachal?' Students must answer using at least two column entries from their table as evidence. Teacher then introduces the continuity question: 'The Himalayas are still growing. What evidence does the chapter give for this claim, and what does it imply about the forces still acting under India?'"
+            },
+            {
+              "minutes": "30-38",
+              "activity": "Students write a short paragraph (3–4 sentences) comparing any two of the three ranges, using their table as a scaffold. The paragraph must include a causal explanation — not just a description — of why the two ranges differ."
+            },
+            {
+              "minutes": "38-40",
+              "activity": "Quick exit check: each student states one fact they can now explain (not just name) about the Himalayas."
+            }
+          ],
+          "implied_lo": "Students will be able to compare the three Himalayan ranges using physical, climatic, and settlement characteristics drawn from the chapter, and explain the tectonic process that formed them.",
+          "competency": {
+            "c_code": "C-6.1",
+            "cg": "CG-5",
+            "weight": 2,
+            "competency_text": "Understanding key natural phenomena — tectonic processes, glacial river systems, and landform formation — through dedicated explanatory content sections."
+          },
+          "visual_representation": {
+            "required": true,
+            "type": "diagram",
+            "visual_source": "generated_svg",
+            "svg_content": "<svg xmlns='http://www.w3.org/2000/svg' width='520' height='200' viewBox='0 0 520 200'><rect width='520' height='200' fill='#f9f6f0'/><text x='260' y='18' text-anchor='middle' font-size='13' font-weight='bold' fill='#333'>Three Ranges of the Himalayas (South to North)</text><polygon points='30,160 100,130 170,160' fill='#c8d8a8' stroke='#6a8a3a' stroke-width='1.5'/><text x='100' y='178' text-anchor='middle' font-size='11' fill='#4a6a1a'>Shivalik Hills</text><text x='100' y='190' text-anchor='middle' font-size='9' fill='#555'>(Outer / Lowest)</text><polygon points='180,160 290,80 400,160' fill='#a8bcd0' stroke='#3a5a7a' stroke-width='1.5'/><text x='290' y='178' text-anchor='middle' font-size='11' fill='#2a4a6a'>Himachal</text><text x='290' y='190' text-anchor='middle' font-size='9' fill='#555'>(Lower Himalayas)</text><polygon points='410,160 465,40 520,160' fill='#d0d8e8' stroke='#5a6a8a' stroke-width='1.5'/><text x='465' y='178' text-anchor='middle' font-size='11' fill='#3a4a6a'>Himadri</text><text x='465' y='190' text-anchor='middle' font-size='9' fill='#555'>(Greater / Highest)</text><text x='465' y='55' text-anchor='middle' font-size='9' fill='#333'>8000m+</text><text x='290' y='90' text-anchor='middle' font-size='9' fill='#333'>Moderate</text><text x='100' y='135' text-anchor='middle' font-size='9' fill='#333'>Rolling hills</text><line x1='170' y1='160' x2='180' y2='160' stroke='#aaa' stroke-width='1'/><line x1='400' y1='160' x2='410' y2='160' stroke='#aaa' stroke-width='1'/></svg>",
+            "description": "Cross-section diagram showing the three Himalayan ranges from south (Shivalik) to north (Himadri), with relative heights and brief labels."
+          }
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 40,
+          "activity_name": "The Himalayas as Water Tower and Ladakh's Cold Desert Landscape",
+          "section_anchor": "The Himalayas as a Water Tower / The Cold Desert of India — Ladakh",
+          "material": [
+            "Chapter text (relevant sections)",
+            "Blank cause-effect organiser (one per student)",
+            "Blackboard"
+          ],
+          "time_bands": [
+            {
+              "minutes": "0-6",
+              "activity": "Teacher asks: 'If the Gangotri Glacier disappeared, what would happen downstream? Think through water for drinking, farming, industry.' Students respond briefly. Teacher uses the 'Water Tower of Asia' label to frame the inquiry."
+            },
+            {
+              "minutes": "6-18",
+              "activity": "Students read the Water Tower section. They complete a cause-effect organiser: CAUSE — Himalayan glaciers melt in summer → EFFECTS (list three, drawn from text: water for drinking, farming, industry to hundreds of millions). They then add a second chain: CAUSE — Pangong Tso and Ladakh's terrain → EFFECT — unique wildlife and human adaptations. Students draw on the Ladakh section to complete the second chain."
+            },
+            {
+              "minutes": "18-30",
+              "activity": "Class inquiry discussion: 'The chapter says India continues to push into Asia at 5 cm per year. The Himalayas are growing. Yet glaciers are water towers that people depend on. What happens if the glaciers shrink over time?' Students are not expected to know the answer — they are expected to reason from chapter content and connect the formation process to water supply consequences. Teacher records emerging ideas on the blackboard."
+            },
+            {
+              "minutes": "30-37",
+              "activity": "Students add a 'So What?' row to their organiser: 'If the Himalayan water tower weakens, which populations are most at risk and why?' Students write 2–3 sentences using evidence from the chapter."
+            },
+            {
+              "minutes": "37-40",
+              "activity": "Teacher connects Ladakh's formation (ancient ocean floor uplifted by the same tectonic collision) to the Himalayan formation process, closing the geological thread across both sections."
+            }
+          ],
+          "implied_lo": "Students will be able to construct a cause-effect chain explaining how Himalayan glaciers function as a water tower for hundreds of millions of people, and connect Ladakh's landscape formation to the same tectonic process described in the Himalayan formation section.",
+          "competency": {
+            "c_code": "C-6.1",
+            "cg": "CG-5",
+            "weight": 2,
+            "competency_text": "Understanding key natural phenomena — tectonic processes, glacial river systems, and landform formation — through dedicated explanatory content sections."
+          },
+          "visual_representation": {
+            "required": false,
+            "type": null,
+            "visual_source": null,
+            "svg_content": null,
+            "description": null
+          }
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 40,
+          "activity_name": "Gangetic Plains, Thar Desert, and Aravallis: Region Portraits",
+          "section_anchor": "The Gangetic Plains / The Great Indian Desert — Thar Desert / The Aravalli Hills",
+          "material": [
+            "Chapter text (relevant sections)",
+            "Region portrait template (one per student — three columns: Gangetic Plains, Thar Desert, Aravallis)",
+            "Blackboard"
+          ],
+          "time_bands": [
+            {
+              "minutes": "0-5",
+              "activity": "Teacher introduces the three regions with a locating question: 'What direction do you travel from the Himalayas to reach the Gangetic Plains? From the Gangetic Plains to reach the Thar Desert? What sits between the Thar and the rest of India?' Students respond from memory or map."
+            },
+            {
+              "minutes": "5-20",
+              "activity": "Students read all three sections. For each region, they complete a portrait entry with: (a) one physical characteristic that makes it distinctive, (b) one reason this region matters for human life — economy, agriculture, trade, or ecology — using textual evidence, and (c) one surprising or counterintuitive detail from the text (e.g. that Aravallis are 2.5 billion years old; that the Thar taanka system conserves water; that the Gangetic Plains host endangered gharials)."
+            },
+            {
+              "minutes": "20-32",
+              "activity": "Structured discussion: 'The Aravallis prevent the Thar Desert from expanding eastward. What would happen to the Gangetic Plains if the Aravallis were not there?' Students must reason across all three region portraits to answer, linking terrain, barrier function, agriculture, and population. Teacher uses the blackboard to map the chain of consequences students generate."
+            },
+            {
+              "minutes": "32-38",
+              "activity": "Students revise one portrait entry based on the discussion — adding or correcting a consequence they had not initially identified."
+            },
+            {
+              "minutes": "38-40",
+              "activity": "Rapid round: each student names the one human activity that depends most directly on one of the three regions, with a one-word justification."
+            }
+          ],
+          "implied_lo": "Students will be able to identify the distinctive physical characteristics of the Gangetic Plains, Thar Desert, and Aravalli Hills and analyse how each region's terrain directly supports or constrains human activity.",
+          "competency": {
+            "c_code": "C-7.2",
+            "cg": "CG-7",
+            "weight": 3,
+            "competency_text": "Systematic survey and analysis of India's topographical regions as the organising structure of geographical study."
+          },
+          "visual_representation": {
+            "required": false,
+            "type": null,
+            "visual_source": null,
+            "svg_content": null,
+            "description": null
+          }
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 60,
+          "activity_name": "The Peninsular Plateau, Coastlines, and Islands: A Structured Inquiry into Southern India's Geography",
+          "section_anchor": "The Peninsular Plateau / India's Amazing Coastlines / Indian Islands / The Delta in West Bengal and the Sundarbans",
+          "material": [
+            "Chapter text (relevant sections)",
+            "Outline map of peninsular India (one per student)",
+            "Coloured pencils",
+            "Inquiry question card (one per group of three students)"
+          ],
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher presents the inquiry frame: 'India's south is bounded by three water bodies and divided by two ghats. Water shapes everything here — which way rivers flow, where deltas form, which coastline gets what kind of shore.' Students locate the Western Ghats, Eastern Ghats, and Deccan Plateau on their outline maps."
+            },
+            {
+              "minutes": "8-22",
+              "activity": "Students read the Peninsular Plateau and Coastlines sections independently. They annotate their maps: draw and label the Western and Eastern Ghats; mark the direction of river flow (east-flowing: Godavari, Krishna, Kaveri, Mahanadi; west-flowing: Narmada, Tapti); mark the West Coast (Gujarat to Kerala) and East Coast with one characteristic each; and mark the delta regions on the east coast."
+            },
+            {
+              "minutes": "22-35",
+              "activity": "Groups of three each receive an inquiry question card. Questions include: (a) 'Why do most peninsular rivers flow east rather than west? Use the chapter's description of the plateau's tilt to explain.' (b) 'The West Coast has estuaries; the East Coast has deltas. What does this difference tell you about the rivers on each side?' (c) 'The chapter says the Sundarbans are a UNESCO Heritage Site. Using the delta section, explain what combination of features makes this region ecologically unique.' (d) 'What makes the Andaman and Nicobar Islands strategically important? Draw on the islands section.' Groups discuss and prepare a two-minute verbal response."
+            },
+            {
+              "minutes": "35-48",
+              "activity": "Groups present responses. Teacher facilitates connections between groups' answers — showing how river direction, coastline type, and delta formation are all products of the same plateau tilt described in the chapter."
+            },
+            {
+              "minutes": "48-56",
+              "activity": "Individual task: students write a short explanation (4–5 sentences) answering: 'How does the shape and tilt of the Peninsular Plateau determine where India's major deltas form and why the west and east coasts have different shoreline characters?' They must cite at least two rivers and one coastline feature from the chapter."
+            },
+            {
+              "minutes": "56-60",
+              "activity": "Teacher closes by connecting the Sundarbans delta formation to the Gangetic Plains river system studied in Period 4, threading the water journey from Himalayan glaciers to Bay of Bengal delta."
+            }
+          ],
+          "implied_lo": "Students will be able to explain how the eastward tilt of the Peninsular Plateau determines the flow direction of India's major rivers and the contrasting character of the east and west coastlines, citing specific rivers and landforms from the chapter.",
+          "competency": {
+            "c_code": "C-7.2",
+            "cg": "CG-7",
+            "weight": 3,
+            "competency_text": "Systematic survey and analysis of India's topographical regions as the organising structure of geographical study."
+          },
+          "visual_representation": {
+            "required": true,
+            "type": "map",
+            "visual_source": "external_required",
+            "svg_content": null,
+            "description": "Outline map of peninsular India showing the Western and Eastern Ghats, the Deccan Plateau, major east-flowing rivers (Godavari, Krishna, Kaveri, Mahanadi) and west-flowing rivers (Narmada, Tapti), delta regions on the east coast, and the two island groups."
+          }
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 60,
+          "activity_name": "People and Terrain: Livelihoods Across India's Geographical Regions",
+          "section_anchor": "The Cold Desert of India — Ladakh / The Great Indian Desert — Thar Desert / The Peninsular Plateau / The Hills of the Northeast",
+          "material": [
+            "Chapter text (relevant sections)",
+            "Livelihood-geography connection table (one per student)",
+            "Blackboard for class mapping"
+          ],
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher opens with a concrete scenario for each of four regions: 'In Ladakh, a herder leads yaks across rocky terrain at –20°C. In the Thar, a family collects rainwater in a taanka. In the Peninsular Plateau forests, a Gond family gathers forest produce. In Meghalaya, a Khasi elder tends living root bridges. What do all four have in common?' Students discuss in pairs. Teacher draws out: all four are examples of people whose livelihoods are directly shaped by and adapted to their physical environment."
+            },
+            {
+              "minutes": "8-22",
+              "activity": "Students read the relevant sections and complete a four-row livelihood-geography connection table (rows: Ladakh, Thar Desert, Peninsular Plateau tribal communities, Northeast Hills). Columns: (a) physical challenge or feature of the terrain, (b) specific livelihood or adaptation described in the chapter, (c) what would make this livelihood unviable — i.e., what change in the environment would break the connection. Students must draw column (c) entries from reasoning with the text, not from prior knowledge."
+            },
+            {
+              "minutes": "22-36",
+              "activity": "Class discussion anchored by two questions: First — 'The chapter describes the Khasi people celebrating Shad Suk Mynsiem as gratitude toward nature. What does this tell us about the relationship between a community's culture and its physical environment?' Second — 'Mawlynnong Village is called the cleanest village in Asia for its eco-friendly practices. What might eco-friendly mean in a region with the world's highest rainfall?' Students are expected to reason from textual evidence, not give generic answers."
+            },
+            {
+              "minutes": "36-50",
+              "activity": "Students work individually on an analysis task: 'The chapter presents four communities — Ladakhi herders, Thar Desert dwellers, Peninsular Plateau tribal communities, and Khasi people of the Northeast — each with livelihoods tied to specific terrain. Choose two of these communities and write a comparison (5–6 sentences) showing how similar dependence on nature produces very different specific livelihoods because the terrains are different.' Students must name at least one specific practice from the chapter for each community."
+            },
+            {
+              "minutes": "50-57",
+              "activity": "Two or three students share their comparisons. Class identifies which terrain features most directly constrain or enable livelihood choices. Teacher creates a class map on the blackboard: terrain feature → livelihood type → cultural expression."
+            },
+            {
+              "minutes": "57-60",
+              "activity": "Closing reflection: 'We have now traversed India's entire geography — from the Himalayas to the islands, from the Thar to the Northeast. Which region surprised you most about the connection between terrain and the way people live there, and why?' One student responds."
+            }
+          ],
+          "implied_lo": "Students will be able to compare the livelihoods of two communities from different geographical regions of India and explain how contrasting terrain features produce different livelihood adaptations despite a similar dependence on the natural environment.",
+          "competency": {
+            "c_code": "C-6.4",
+            "cg": "CG-6",
+            "weight": 1,
+            "competency_text": "Livelihood-geography correlations surfaced through the topographical survey — yak herding in Ladakh, taanka water harvesting in the Thar, tribal communities in the Peninsular Plateau, and Khasi livelihoods in the Northeast Hills."
+          },
+          "visual_representation": {
+            "required": false,
+            "type": null,
+            "visual_source": null,
+            "svg_content": null,
+            "description": null
+          }
+        }
+      ]
+    },
+    "assessment_items": [
+      {
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-7.2",
+          "competency_text": "Systematic survey and analysis of India's topographical regions as the organising structure of geographical study."
+        },
+        "cognitive_demand": "understanding",
+        "visual_representation": {
+          "required": false,
+          "type": null,
+          "visual_source": null,
+          "svg_content": null,
+          "description": null
+        },
+        "question_text": "India is described as a subcontinent partly because of its natural boundaries. Which of the following correctly matches a natural boundary of India with the direction it lies in?",
+        "options": [
+          {
+            "label": "A",
+            "text": "The Thar Desert — to the north",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "The Himalayan range — to the north",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "The Bay of Bengal — to the west",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "The Arabian Sea — to the east",
+            "is_correct": false
+          }
+        ],
+        "guide": {
+          "learning_outcome": {
+            "period": 1
+          },
+          "what_each_option_reveals": {
+            "A": "The student has confused the Thar Desert's position (northwest) with the north, possibly conflating two western features of India's boundary.",
+            "C": "The student has confused the Bay of Bengal with the Arabian Sea, reversing the east and west water bodies — a common directional confusion when labelling India's coastlines.",
+            "D": "The student has reversed the positions of the two seas, placing the Arabian Sea to the east instead of the west — indicating incomplete map orientation during the activity."
+          },
+          "inclusivity": "Students who struggle with directional orientation can re-engage with this question by physically facing north and placing their arms to indicate east and west before answering. The map produced in Period 1 serves as a legitimate reference scaffold."
+        }
+      },
+      {
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-7.2",
+          "competency_text": "Systematic survey and analysis of India's topographical regions as the organising structure of geographical study."
+        },
+        "cognitive_demand": "application",
+        "visual_representation": {
+          "required": false,
+          "type": null,
+          "visual_source": null,
+          "svg_content": null,
+          "description": null
+        },
+        "question_text": "The Peninsular Plateau tilts slightly eastward. Which of the following is a direct consequence of this tilt?",
+        "options": [
+          {
+            "label": "A",
+            "text": "The Narmada and Tapti rivers flow toward the Bay of Bengal.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "The Western Ghats receive heavier rainfall than the Eastern Ghats.",
+            "is_correct": false
+          },
+          {
+            "label": "C",
+            "text": "Most peninsular rivers flow eastward and form deltas on the east coast.",
+            "is_correct": true
+          },
+          {
+            "label": "D",
+            "text": "The Deccan Plateau sits at a higher elevation than the Western Ghats.",
+            "is_correct": false
+          }
+        ],
+        "guide": {
+          "learning_outcome": {
+            "period": 5
+          },
+          "what_each_option_reveals": {
+            "A": "The student recalls that the Narmada and Tapti are mentioned in the chapter but has confused their direction of flow — they flow westward, not eastward toward the Bay of Bengal. This suggests the student read the river names but did not process the directional detail.",
+            "B": "The student has introduced a rainfall concept not directly stated in the chapter in relation to the tilt, confusing the role of the Ghats as altitude barriers with the mechanism of plateau tilt — indicating a genuine but misapplied understanding of how mountains affect rainfall.",
+            "D": "The student has inverted the elevation relationship, likely misreading the chapter's description of the Western Ghats as 'tall and continuous' as meaning higher than the plateau itself, conflating the relative heights of different landforms."
+          },
+          "inclusivity": "Students who find directional reasoning difficult can be invited to draw a simple slope diagram — a tilted rectangle with an arrow showing which way water would run — before selecting their answer. This converts an abstract directional question into a physical reasoning task."
+        }
+      },
+      {
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-7.2",
+          "competency_text": "Systematic survey and analysis of India's topographical regions as the organising structure of geographical study."
+        },
+        "cognitive_demand": "recall",
+        "visual_representation": {
+          "required": false,
+          "type": null,
+          "visual_source": null,
+          "svg_content": null,
+          "description": null
+        },
+        "question_text": "Which of the following ecological functions does the Aravalli Hills perform according to the chapter?",
+        "options": [
+          {
+            "label": "A",
+            "text": "They channel monsoon rainfall into the Gangetic Plains.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "They act as the source of the Indus and Ganga rivers.",
+            "is_correct": false
+          },
+          {
+            "label": "C",
+            "text": "They prevent the Thar Desert from expanding eastward.",
+            "is_correct": true
+          },
+          {
+            "label": "D",
+            "text": "They form the western boundary of the Deccan Plateau.",
+            "is_correct": false
+          }
+        ],
+        "guide": {
+          "learning_outcome": {
+            "period": 4
+          },
+          "what_each_option_reveals": {
+            "A": "The student has applied the idea of mountains channelling rainfall — correct in general — but attributed it to the Aravallis rather than the Himalayas, conflating two different mountain ranges' roles.",
+            "B": "The student has confused the Aravallis with the Himalayas, which are the actual source of the Indus and Ganga rivers, suggesting that different mountain sections were not clearly differentiated during study.",
+            "D": "The student has placed the Aravallis on the western edge of the Deccan Plateau, possibly confusing them with the Western Ghats, indicating incomplete spatial differentiation between the two western ranges."
+          },
+          "inclusivity": "Students who have difficulty recalling specific ecological roles can be encouraged to reason by elimination — asking which option describes something associated with the Aravallis' location relative to the Thar Desert as discussed in the class discussion."
+        }
+      },
+      {
+        "question_type": "SCR",
+        "competency": {
+          "c_code": "C-7.2",
+          "competency_text": "Systematic survey and analysis of India's topographical regions as the organising structure of geographical study."
+        },
+        "cognitive_demand": "analysis",
+        "visual_representation": {
+          "required": false,
+          "type": null,
+          "visual_source": null,
+          "svg_content": null,
+          "description": null
+        },
+        "question_text": "The Gangetic Plains are described in the chapter as one of the most important regions in India's history and civilisation. Using evidence from the chapter, give two reasons why the physical characteristics of the plains make them so significant for human settlement and economic activity.",
+        "expected_elements": [
+          "Reference to the fertility of the soil created by mineral-laden waters of the Ganga, Indus, or Brahmaputra, and its connection to agriculture supporting a large population.",
+          "Reference to the flat terrain enabling the development of an elaborate road and railway network, facilitating trade and movement.",
+          "Each reason must be connected to a specific physical characteristic of the plains — not stated as a general claim."
+        ],
+        "guide": {
+          "learning_outcome": {
+            "period": 4
+          },
+          "inclusivity": "Students who find written explanation difficult can be permitted to present their two reasons as a labelled diagram with arrows showing the connection between physical feature and human outcome. The demonstration requirement is the causal link — not the written form."
+        }
+      },
+      {
+        "question_type": "ECR",
+        "competency": {
+          "c_code": "C-7.2",
+          "competency_text": "Systematic survey and analysis of India's topographical regions as the organising structure of geographical study."
+        },
+        "cognitive_demand": "analysis",
+        "visual_representation": {
+          "required": false,
+          "type": null,
+          "visual_source": null,
+          "svg_content": null,
+          "description": null
+        },
+        "question_text": "The chapter surveys India's geography from the Himalayas in the north to the islands in the south and east. Across this survey, the Himalayas, the Gangetic Plains, the Aravalli Hills, and the Peninsular Plateau all play distinct roles in shaping the rest of India's geography. Using evidence from the chapter, explain how these four regions together create the geographical framework within which the rest of India's regions — deserts, coasts, and deltas — exist.",
+        "look_for": [
+          "The student identifies the Himalayas as a northern barrier and water tower whose meltwater feeds the Gangetic Plains, making the plains fertile — showing a causal chain, not just a list.",
+          "The student explains the Aravallis' role as a barrier preventing the Thar Desert from expanding eastward, and places this in relation to the plains (i.e., the barrier protects the agricultural heartland).",
+          "The student connects the Peninsular Plateau's tilt to the direction of river flow and the formation of deltas on the east coast — showing that the plateau's physical character generates its coastline's character.",
+          "The response synthesises across at least three of the four regions, showing how each creates conditions for what lies beyond it, rather than describing each region independently.",
+          "All claims are grounded in textual evidence — specific rivers, specific directions, specific features named from the chapter."
+        ],
+        "guide": {
+          "learning_outcome": {
+            "period": 5
+          },
+          "inclusivity": "Students who find extended writing difficult can be offered a structured scaffold: four boxes labelled with each region, with arrows between them asking 'What does this region make possible for the next?' This converts a synthesis essay into a sequenced chain-building task that tests the same analytical capacity."
+        }
+      },
+      {
+        "question_type": "open_task",
+        "competency": {
+          "c_code": "C-7.2",
+          "competency_text": "Systematic survey and analysis of India's topographical regions as the organising structure of geographical study."
+        },
+        "cognitive_demand": "evaluation",
+        "visual_representation": {
+          "required": false,
+          "type": null,
+          "visual_source": null,
+          "svg_content": null,
+          "description": null
+        },
+        "task_instructions": "A student claims: 'India's geography is really just one story — mountains in the north, plains below them, and coasts at the edges.' Using what you have studied in this chapter about India's geographical regions, evaluate this claim. Which parts of it are accurate? Which parts oversimplify or miss important features of India's geographical diversity? Write your evaluation in 150–200 words. You must refer to at least four specific geographical regions or features from the chapter and explain, for each one, whether it supports, complicates, or contradicts the student's claim.",
+        "open_task_format": {
+          "format_type": "Structured discussion prompt with written output",
+          "rationale": "The implied LOs from the chapter's topographical survey require students to evaluate how individual regions relate to a whole — making a structured evaluation prompt that tests the accuracy of a simplified claim the most natural vehicle for demonstrating whether students can assess geographical evidence rather than merely recall it."
+        },
+        "scaffold": {
+          "provided": true,
+          "description": "A three-column table scaffold is provided: Column 1 — 'Region or Feature from the Chapter'; Column 2 — 'Does it support, complicate, or contradict the claim?'; Column 3 — 'Evidence from the chapter.' Students may use this table to organise their thinking before writing their response, or proceed directly to writing without it."
+        },
+        "guide": {
+          "learning_outcome": {
+            "periods": [
+              1,
+              4,
+              5
+            ]
+          },
+          "what_this_demonstrates": "This task shows whether the student can evaluate a geographical generalisation against specific textual evidence — moving from recall of individual regions to a judgment about how they collectively support or complicate a claim about India's geographical structure.",
+          "reading_the_scaffold": "A student who uses the scaffold and populates all three columns with textbook-grounded entries before writing demonstrates organised thinking and secure knowledge. A student who ignores the scaffold and writes fluently with accurate citations demonstrates confident synthesis. A student who uses the scaffold but leaves Column 3 empty or vague is showing surface engagement — they can categorise but not yet evidence their categorisation.",
+          "strong_vs_weak_markers": "A strong response names at least four specific regions or features (e.g., Sundarbans delta, Thar Desert, Northeast Hills, Lakshadweep), correctly identifies which part of the claim each supports or complicates, and provides a textual warrant for each judgment. A weak response either restates descriptions of regions without connecting them to the claim, or accepts the claim without testing it against the chapter's evidence for interior diversity (Aravallis, plateau tilt, island groups, cold desert).",
+          "inclusivity": "Students who find extended writing challenging may submit a fully completed scaffold table in place of the written response — the evidence and categorisation columns, if properly completed, demonstrate the same evaluative capacity. The teacher may also conduct this task as a structured oral discussion for students for whom written production is a barrier. Any other format from the Social Sciences menu — such as a comparison table or cause-effect map — may be substituted by the teacher if it better suits her classroom context."
+        }
+      },
+      {
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-6.1",
+          "competency_text": "Understanding key natural phenomena — tectonic processes, glacial river systems, and landform formation — through dedicated explanatory content sections."
+        },
+        "cognitive_demand": "understanding",
+        "visual_representation": {
+          "required": false,
+          "type": null,
+          "visual_source": null,
+          "svg_content": null,
+          "description": null
+        },
+        "question_text": "The chapter explains that the Himalayas were formed when the Indian landmass collided with Eurasia. What happened to the land between the two colliding masses?",
+        "options": [
+          {
+            "label": "A",
+            "text": "It sank downward, forming a deep ocean trench between the two continents.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "It crumpled and folded upward, forming the Himalayan mountain range.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "It remained flat, becoming the Gangetic Plains that lie south of the Himalayas.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "It broke apart and drifted to form the Indian islands in the Bay of Bengal.",
+            "is_correct": false
+          }
+        ],
+        "guide": {
+          "learning_outcome": {
+            "period": 2
+          },
+          "what_each_option_reveals": {
+            "A": "The student understands that tectonic collisions produce dramatic geological outcomes but has applied a subduction model (sinking) rather than the folding model described in the chapter — showing partial understanding of tectonic processes.",
+            "C": "The student has identified the Gangetic Plains as a real feature south of the Himalayas but has incorrectly attributed their formation to the collision zone, confusing two different geographical outcomes of the same tectonic event.",
+            "D": "The student has introduced the island groups — which are volcanically formed — into the tectonic collision narrative, conflating two distinct geological formation stories present in the same chapter."
+          },
+          "inclusivity": "Students who find abstract geological processes difficult can be invited to recreate the carpet-wrinkling demonstration used in class — pushing two notebooks together on a desk — and describe what they observe before selecting their answer. This re-embeds the concept in a physical model."
+        }
+      },
+      {
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-6.1",
+          "competency_text": "Understanding key natural phenomena — tectonic processes, glacial river systems, and landform formation — through dedicated explanatory content sections."
+        },
+        "cognitive_demand": "application",
+        "visual_representation": {
+          "required": false,
+          "type": null,
+          "visual_source": null,
+          "svg_content": null,
+          "description": null
+        },
+        "question_text": "The chapter states that India continues to push into Asia at approximately five centimetres per year. What is the direct geological consequence of this ongoing movement, as stated in the chapter?",
+        "options": [
+          {
+            "label": "A",
+            "text": "The Gangotri Glacier is growing larger each year.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "The Himalayas are still growing by approximately five millimetres annually.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "The Indian subcontinent is moving further away from the Eurasian plate.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "New islands are forming in the Bay of Bengal as land rises from the sea.",
+            "is_correct": false
+          }
+        ],
+        "guide": {
+          "learning_outcome": {
+            "period": 2
+          },
+          "what_each_option_reveals": {
+            "A": "The student has correctly associated glaciers with the Himalayas but has confused the glacial water system with the tectonic growth process, applying the 'growing' concept to the glacier rather than to the mountain range.",
+            "C": "The student has reversed the direction of movement, misreading the collision as a separation — possibly confusing the original drifting-away from Gondwana with the current ongoing collision into Eurasia.",
+            "D": "The student has applied the idea of geological uplift to island formation in the Bay of Bengal, confusing the Himalayan uplift mechanism with the volcanic island formation described separately in the chapter."
+          },
+          "inclusivity": "Students can be invited to re-read the specific sentence in the Formation section that links the rate of India's movement to the rate of Himalayan growth before selecting an answer — locating the specific textual claim is a legitimate reading strategy, not a shortcut."
+        }
+      },
+      {
+        "question_type": "SCR",
+        "competency": {
+          "c_code": "C-6.1",
+          "competency_text": "Understanding key natural phenomena — tectonic processes, glacial river systems, and landform formation — through dedicated explanatory content sections."
+        },
+        "cognitive_demand": "analysis",
+        "visual_representation": {
+          "required": false,
+          "type": null,
+          "visual_source": null,
+          "svg_content": null,
+          "description": null
+        },
+        "question_text": "The chapter describes the Himalayas as the 'Water Tower of Asia.' Using the chapter's description of glaciers and river systems, explain what this title means and why the hundreds of millions of people living downstream depend on it.",
+        "expected_elements": [
+          "Identification that Himalayan glaciers melt in summer and feed major rivers including the Ganga, Indus, and Brahmaputra.",
+          "Explanation that these rivers supply water for drinking, farming, and industry — not just one of these uses.",
+          "Reference to the Gangotri Glacier and/or the Bhagirathi River as a specific textual example of the glacier-river connection.",
+          "The answer must explain the mechanism (glacial melt feeding rivers) rather than simply restating the title."
+        ],
+        "guide": {
+          "learning_outcome": {
+            "period": 3
+          },
+          "inclusivity": "Students who have difficulty constructing a written explanation can organise their answer as a flow diagram: Glaciers → [process] → Rivers → [uses] → People. The demonstration is the causal chain — the written or diagrammatic form is secondary."
+        }
+      },
+      {
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-6.4",
+          "competency_text": "Livelihood-geography correlations surfaced through the topographical survey — yak herding in Ladakh, taanka water harvesting in the Thar, tribal communities in the Peninsular Plateau, and Khasi livelihoods in the Northeast Hills."
+        },
+        "cognitive_demand": "understanding",
+        "visual_representation": {
+          "required": false,
+          "type": null,
+          "visual_source": null,
+          "svg_content": null,
+          "description": null
+        },
+        "question_text": "The chapter describes the taanka or kund system used by people living in the Thar Desert. What does this system demonstrate about how people adapt to their physical environment?",
+        "options": [
+          {
+            "label": "A",
+            "text": "It shows that desert communities depend entirely on rivers flowing through the desert for their water supply.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "It shows that traditional communities can develop local solutions to environmental scarcity without external help.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "It shows that the Thar Desert receives enough seasonal rainfall to support large-scale agriculture.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "It shows that the Thar Desert has underground water reserves that communities have learned to tap.",
+            "is_correct": false
+          }
+        ],
+        "guide": {
+          "learning_outcome": {
+            "period": 6
+          },
+          "what_each_option_reveals": {
+            "A": "The student has recalled that rivers are important water sources elsewhere in the chapter (Gangetic Plains, Himalayan water tower) and incorrectly applied this to the Thar Desert, failing to distinguish between different regions' water access strategies.",
+            "C": "The student has misread the taanka system as evidence of adequate rainfall, reversing its actual significance — it is a conservation response to scarcity, not evidence of abundance. This indicates the student processed the existence of the system but not its cause.",
+            "D": "The student has introduced a plausible but unsupported explanation — underground water — that is not present in the chapter's description of the taanka system, suggesting the student reasoned beyond the text rather than engaging with what the chapter actually says."
+          },
+          "inclusivity": "Students who are unsure about what the taanka system is can be invited to re-read the one or two sentences in the Thar Desert section that describe it before answering. Locating and rereading the specific evidence is a legitimate comprehension strategy."
+        }
+      },
+      {
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-6.4",
+          "competency_text": "Livelihood-geography correlations surfaced through the topographical survey — yak herding in Ladakh, taanka water harvesting in the Thar, tribal communities in the Peninsular Plateau, and Khasi livelihoods in the Northeast Hills."
+        },
+        "cognitive_demand": "application",
+        "visual_representation": {
+          "required": false,
+          "type": null,
+          "visual_source": null,
+          "svg_content": null,
+          "description": null
+        },
+        "question_text": "The chapter mentions that the Khasi people of Meghalaya celebrate the festival of Shad Suk Mynsiem as an expression of gratitude toward nature. What does this cultural practice most directly suggest about the relationship between the Khasi community and their physical environment?",
+        "options": [
+          {
+            "label": "A",
+            "text": "The Khasi people celebrate the festival because Meghalaya is known for receiving very little rainfall, making any rain a reason for celebration.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "The festival reflects a cultural relationship in which the community's identity and gratitude are shaped by their dependence on the natural environment for their livelihood.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "The festival is a political event organised by the government to promote tourism in the northeastern states.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "The Khasi people celebrate this festival because the Northeast Hills have the lowest biodiversity in India, making nature rare and precious.",
+            "is_correct": false
+          }
+        ],
+        "guide": {
+          "learning_outcome": {
+            "period": 6
+          },
+          "what_each_option_reveals": {
+            "A": "The student has inverted the chapter's description of Meghalaya — which states it receives some of the highest rainfall in the world — possibly confusing the Northeast Hills with the Thar Desert's rainfall scarcity, conflating two regions studied in the same period.",
+            "C": "The student has introduced a governmental tourism framing not present in the chapter, possibly drawing on general knowledge about how festivals are promoted rather than engaging with the chapter's specific framing of the festival as a cultural-natural relationship.",
+            "D": "The student has again inverted the chapter's description — the Northeast Hills are described as rich in forests, unique wildlife, and fertile land — suggesting the student recalled that 'nature is important' but did not retain the specific character of the region."
+          },
+          "inclusivity": "Students who find the connection between culture and environment abstract can be invited to complete a simple two-step chain: 'The Khasi people depend on [what from the environment?] for [what aspect of their livelihood or life?]' before selecting the answer that best matches this chain."
+        }
+      }
+    ],
+    "input_tokens": 20668,
+    "output_tokens": 11645,
+    "cost_inr": 19.881
+  }
+}

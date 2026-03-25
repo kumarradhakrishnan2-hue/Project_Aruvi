@@ -1067,7 +1067,7 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
 
         with client.messages.stream(
             model="claude-sonnet-4-6",
-            max_tokens=8000,
+            max_tokens=16000,
             system=system_prompt,
             messages=[{"role": "user", "content": user_prompt}],
         ) as stream:
@@ -1099,9 +1099,21 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
         )
 
         parsed = {}
+        _raw = full_output.strip()
+        # Strip ```json ... ``` fences if the model wrapped output despite instructions
+        if _raw.startswith("```"):
+            _fence_end = _raw.find("```", 3)
+            _raw = (_raw[_raw.index("\n") + 1 : _fence_end] if _fence_end > 3 else _raw).strip()
         try:
-            parsed = json.loads(full_output.strip())
-        except Exception:
+            parsed = json.loads(_raw)
+        except Exception as _je:
+            # Log first 500 chars + last 200 chars so truncation is visible in Streamlit logs
+            _preview = _raw[:500] + (" … [truncated] … " + _raw[-200:] if len(_raw) > 700 else "")
+            st.warning(
+                f"⚠️ JSON parse failed ({_je}). "
+                f"output_tokens={output_tokens}. "
+                f"Raw output preview:\n\n```\n{_preview}\n```"
+            )
             parsed = {}
         lp_part = ""
         assess_part = ""
@@ -1121,6 +1133,101 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             "assessment_items": [],
             "error":            str(e),
         }
+
+# ── LPA normalisation helpers ─────────────────────────────────────────────────
+# These bridge the old (lo_handoff flat list) and new (A3 lesson_plan.periods)
+# JSON shapes so that lpa_page.html always receives the same field names.
+
+def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
+    """
+    Return per-period dicts in the shape lpa_page.html lo_handoff expects.
+
+    New A3 format:  result["lesson_plan"]["periods"]  — nested competency{},
+                    time_bands[{minutes,activity}], material as list,
+                    section_anchor, visual_representation{}
+    Old format:     result["lo_handoff"]              — flat per-period objects
+    """
+    lp = result.get("lesson_plan")
+    if isinstance(lp, dict) and lp.get("periods"):
+        out = []
+        for p in lp["periods"]:
+            comp = p.get("competency") or {}
+            # time_bands [{minutes, activity}] → time_slots [{time, desc}]
+            time_slots = [
+                {"time": tb.get("minutes", ""), "desc": tb.get("activity", "")}
+                for tb in (p.get("time_bands") or [])
+            ]
+            # material: list → comma-joined string
+            mat = p.get("material", "")
+            if isinstance(mat, list):
+                mat = ", ".join(mat)
+            c_code = comp.get("c_code", "")
+            out.append({
+                "period_number":           p.get("period_number"),
+                "period_duration_minutes": p.get("period_duration_minutes"),
+                "chapter_section":         p.get("section_anchor", ""),
+                "activity_name":           p.get("activity_name", ""),
+                "activity_summary":        p.get("activity_name", ""),
+                "time_slots":              time_slots,
+                "material":                mat,
+                "implied_lo":              p.get("implied_lo", ""),
+                "c_code":                  c_code,
+                "cg":                      comp.get("cg", ""),
+                "weight":                  comp.get("weight", 1),
+                "competency_text":         comp_descs.get(c_code, "") or comp.get("competency_text", ""),
+                "visual_representation":   p.get("visual_representation"),
+            })
+        return out
+
+    # Old flat lo_handoff — enrich competency_text from comp_descs
+    lo_list = result.get("lo_handoff", [])
+    for lo in lo_list:
+        if not lo.get("competency_text"):
+            lo["competency_text"] = comp_descs.get(lo.get("c_code", ""), "")
+    return lo_list
+
+
+def _normalise_assessment_sections(result: dict) -> list:
+    """
+    Return assessment_sections[] in the shape lpa_page.html renderAssessment() expects.
+
+    New format:  result["assessment_items"] — flat list of question objects.
+                 Each item must have: c_code, question_type, question_text,
+                 options[], annotation, period_ref, weight_label,
+                 competency_text, chapter_section.
+    Old format:  _parse_assessment() was already called upstream and the
+                 result stored in result["assessment_sections"] — return as-is.
+    Falls back to [] when neither is present.
+    """
+    if result.get("assessment_sections"):
+        return result["assessment_sections"]
+
+    items = result.get("assessment_items", [])
+    if not items:
+        return []
+
+    from collections import OrderedDict
+    sections: dict = OrderedDict()
+    for item in items:
+        c_code = item.get("c_code", "")
+        if c_code not in sections:
+            sections[c_code] = {
+                "c_code":           c_code,
+                "weight_label":     item.get("weight_label", ""),
+                "competency_short": item.get("competency_text", ""),
+                "drawing_on":       item.get("chapter_section", ""),
+                "question_types":   "",
+                "questions":        [],
+            }
+        sections[c_code]["questions"].append({
+            "type":       item.get("question_type", ""),
+            "question":   item.get("question_text", ""),
+            "options":    item.get("options", []),
+            "annotation": item.get("annotation", ""),
+            "period_ref": item.get("period_ref", ""),
+        })
+    return list(sections.values())
+
 
 # ── LRM allocation helpers ────────────────────────────────────────────────────
 
@@ -3315,46 +3422,31 @@ elif st.session_state.role == "Generate":
             for r in st.session_state.get("period_rows", [0])
         )
 
-        # Enrich lo_handoff with competency text + parse narrative for structured fields
-        _lo_handoff = result.get("lo_handoff", [])
-        # Load competency descriptions for full text
+        # ── Normalise to lpa_page.html-compatible shape (handles old + new JSON) ─
         _grade_ctx   = st.session_state.grade   or result.get("grade",   "Grade VII")
         _subject_ctx = st.session_state.subject or result.get("subject", "Social Science")
         _stage  = get_stage(_grade_ctx)
         _subj_f = subject_to_folder(_subject_ctx)
-        _comp_desc_path = (
-            PROJECT_ROOT
-            / f"mirror/framework/{_subj_f}/{_stage}"
-            / f"competency_descriptions_{_stage}.json"
-        )
         try:
-            _comp_descs = json.loads(_comp_desc_path.read_text(encoding="utf-8"))
+            _comp_descs = json.loads(
+                (PROJECT_ROOT / f"mirror/framework/{_subj_f}/{_stage}"
+                 / f"competency_descriptions_{_stage}.json")
+                .read_text(encoding="utf-8")
+            )
         except Exception:
             _comp_descs = {}
 
-        # Parse narrative lesson plan text for per-period activity_name / material / time_slots
-        # _narrative = _parse_lp_narrative(result.get("lesson_plan", ""))  # temporarily disabled — JSON shape
-
-        for _lo in _lo_handoff:
-            _lo["competency_text"] = _comp_descs.get(_lo.get("c_code", ""), "")
-            _pnum = _lo.get("period_number")
-            # Try both int and str keys since JSON may deserialise period_number differently
-            _parsed = _narrative.get(_pnum) or _narrative.get(str(_pnum)) or {}
-            _act = _parsed.get("activity_name", "")
-            # Only use parsed value if it is a short title (under 80 chars)
-            # Long values indicate the parser picked up the wrong line
-            _lo["activity_name"] = _act if (0 < len(_act) < 80) else ""
-            _lo["material"]   = _parsed.get("material", "") or _lo.get("material", "")
-            _lo["time_slots"] = _parsed.get("time_slots") or _lo.get("time_slots") or []
+        _lo_handoff          = _normalise_lo_handoff(result, _comp_descs)
+        _assessment_sections = _normalise_assessment_sections(result)
 
         _lpa_data = {
-            "chapter_title":    _ch_data.get("chapter_title", ""),
-            "chapter_number":   _ch_data.get("chapter_number", ""),
-            "grade":            st.session_state.grade   or result.get("grade",   ""),
-            "subject":          st.session_state.subject or result.get("subject", ""),
-            "period_schedule":  _period_schedule,
-            "lesson_plan":      result.get("lesson_plan", {}),
-            "assessment_items": result.get("assessment_items", []),
+            "chapter_title":       _ch_data.get("chapter_title", ""),
+            "chapter_number":      _ch_data.get("chapter_number", ""),
+            "grade":               st.session_state.grade   or result.get("grade",   ""),
+            "subject":             st.session_state.subject or result.get("subject", ""),
+            "period_schedule":     _period_schedule,
+            "lo_handoff":          _lo_handoff,
+            "assessment_sections": _assessment_sections,
         }
         _lpa_inject = "window.LPA_DATA = " + json.dumps(_lpa_data, ensure_ascii=False) + ";\n"
         _lpa_html = _lpa_tpl.replace("/* __LPA_DATA__ */", _lpa_inject)
@@ -3638,18 +3730,9 @@ else:
         except Exception:
             _v_comp_descs = {}
 
-        # ── Enrich lo_handoff ─────────────────────────────────────────────────
-        _v_lo_handoff = _vresult.get("lo_handoff", [])
-        # _v_narrative  = _parse_lp_narrative(_vresult.get("lesson_plan", ""))  # temporarily disabled — JSON shape
-        for _vlo in _v_lo_handoff:
-            _vlo["competency_text"] = _v_comp_descs.get(_vlo.get("c_code", ""), "")
-            _vpnum   = _vlo.get("period_number")
-            # Try both int and str keys (JSON deserialisation may vary)
-            _vparsed = _v_narrative.get(_vpnum) or _v_narrative.get(str(_vpnum)) or {}
-            _v_act   = _vparsed.get("activity_name", "")
-            _vlo["activity_name"] = _v_act if (0 < len(_v_act) < 80) else ""
-            _vlo["material"]   = _vparsed.get("material",   "") or _vlo.get("material",   "")
-            _vlo["time_slots"] = _vparsed.get("time_slots") or _vlo.get("time_slots") or []
+        # ── Normalise to lpa_page.html-compatible shape (handles old + new JSON) ─
+        _v_lo_handoff          = _normalise_lo_handoff(_vresult, _v_comp_descs)
+        _v_assessment_sections = _normalise_assessment_sections(_vresult)
 
         # ── Render LPA HTML page ──────────────────────────────────────────────
         try:
@@ -3658,13 +3741,13 @@ else:
             _v_lpa_tpl = "<p>lpa_page.html not found.</p>"
 
         _v_lpa_data = {
-            "chapter_title":      _v_ch_title,
-            "chapter_number":     _v_ch_num,
-            "grade":              _vgrade,
-            "subject":            _vsubject,
-            "period_schedule":    _vp.get("period_schedule_display", ""),
-            "lesson_plan":        _vresult.get("lesson_plan", {}),
-            "assessment_items":   _vresult.get("assessment_items", []),
+            "chapter_title":       _v_ch_title,
+            "chapter_number":      _v_ch_num,
+            "grade":               _vgrade,
+            "subject":             _vsubject,
+            "period_schedule":     _vp.get("period_schedule_display", ""),
+            "lo_handoff":          _v_lo_handoff,
+            "assessment_sections": _v_assessment_sections,
         }
         _v_lpa_inject = "window.LPA_DATA = " + json.dumps(_v_lpa_data, ensure_ascii=False) + ";\n"
         components.html(
