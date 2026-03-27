@@ -2,439 +2,221 @@ ARUVI · PEDAGOGICAL PLATFORM
 
 Lesson Plan Generation Constitution
 
-Version 1.3 · Eight rules + three amendments · Generic across all
-subjects and stages
+Version 1.4 · Seven rules + three amendments · Generic across all subjects and stages
 
-Amended: multi-row period input (A1) · LO handoff JSON format (A2) ·
-Full LP JSON schema (A3)
+Amended: multi-row period input (A1) · LO handoff JSON format (A2) · Full LP JSON schema (A3)
 
-What This Constitution Governs
 
-These rules govern lesson plan generation only. They do not govern the
-chapter mapping process, which is completed separately at build time.
+WHAT THIS CONSTITUTION GOVERNS
 
-The lesson plan generator receives two settled inputs: (1) the Chapter
-Mapping document — containing pre-identified competencies with weight
-scores and a structured chapter summary mirroring every textbook
-heading; and (2) the NCF Pedagogy document for the subject and stage.
+These rules govern lesson plan generation only. They do not govern the chapter mapping process, which is completed separately at build time.
 
-  -----------------------------------------------------------------------
-  Amendment A1 — Multi-Row Period Input
+The lesson plan generator receives two settled inputs: (1) the Chapter Mapping document — containing pre-identified competencies with weight scores and a structured chapter summary mirroring every textbook heading; and (2) the NCF Pedagogy document for the subject and stage.
 
-  The generator receives the teacher's period schedule as one or more
-  rows, each specifying a period duration in minutes and a count of
-  periods of that duration. The total period count is the sum of all row
-  counts. The total available minutes is the sum of each row's (duration
-  × count) product. Both the total period count and the per-row duration
-  structure are hard constraints — each period in the plan is assigned an
-  activity calibrated to its specific duration.
-  -----------------------------------------------------------------------
+AMENDMENT A1 — MULTI-ROW PERIOD INPUT
+The generator receives the teacher's period schedule as one or more rows, each specifying a period duration in minutes and a count of periods of that duration. The total period count is the sum of all row counts. The total available minutes is the sum of each row's (duration x count) product. Both the total period count and the per-row duration structure are hard constraints — each period in the plan is assigned an activity calibrated to its specific duration.
 
-These inputs are given. The generator does not re-evaluate, re-select,
-or supplement competencies. It does not retrieve Learning Outcomes. It
-translates given competencies and given chapter content into a
-time-constrained period-by-period lesson plan, and produces a structured
-LP JSON as a required companion output.
+These inputs are given. The generator does not re-evaluate, re-select, or supplement competencies. It does not retrieve Learning Outcomes. It translates given competencies and given chapter content into a time-constrained period-by-period lesson plan, and produces a Full LP JSON document as its primary structured output.
 
-+-----------------------------------+-----------------------------------+
-| Given Inputs (do not regenerate)  | Required Outputs                  |
-+-----------------------------------+-----------------------------------+
-| Chapter Mapping document          | Period-by-period lesson plan      |
-| (competencies + weights +         | (full period budget used for      |
-| structured summary)               | teaching)                         |
-|                                   |                                   |
-| NCF Pedagogy document for subject | Each activity anchored to a named |
-| and stage                         | chapter section                   |
-|                                   |                                   |
-| Period schedule: one or more rows | One implied LO per activity       |
-| of {duration in minutes, period   | (derived, not retrieved)          |
-| count}                            |                                   |
-|                                   | Full LP JSON document (A3) —      |
-|                                   | primary output for display, PDF,  |
-|                                   | and LO Handoff                    |
-+-----------------------------------+-----------------------------------+
+GIVEN INPUTS (do not regenerate)
+- Chapter Mapping document (competencies + weights + structured summary)
+- NCF Pedagogy document for subject and stage
+- Period schedule: one or more rows of {duration in minutes, period count}
 
-Rules
+REQUIRED OUTPUTS
+- Period-by-period lesson plan (full period budget used for teaching)
+- Each activity anchored to a named chapter section
+- One implied LO per activity (derived, not retrieved)
+- Full LP JSON document (A3) — primary output for display, PDF, and LO Handoff
 
-  ---------------- ------------------------------------------------------------
-  Rule 1 · R1 ·    
-  Content-Driven   
-  Age Calibration  
 
-  MANDATE          The system MUST use the specific vocabulary, examples, and
-                   cognitive demand natively present in the Chapter Summary as
-                   the primary signal for age-appropriateness. Where the
-                   chapter summary's complexity signals are mixed — for
-                   instance, where a section uses simple vocabulary to
-                   introduce a demanding concept — the cognitive demand of the
-                   task implied by the content takes precedence over the
-                   surface vocabulary.
+RULES
+================================================================================
 
-  PROHIBITION      The system MUST NOT independently infer, adjust, or retrieve
-                   grade-level calibration from the stage Pedagogy document.
-                   The Pedagogy document governs approach and method; the
-                   Chapter Summary governs content complexity and age
-                   calibration.
+RULE 1 · R1 · Content-Driven Age Calibration
 
-  NOTE             The Chapter Summary is generated from the actual textbook
-                   chapter and therefore carries the textbook's own judgement
-                   about what students at this grade can handle. Trusting it is
-                   trusting the curriculum.
-  ---------------- ------------------------------------------------------------
+MANDATE
+The system MUST use the specific vocabulary, examples, and cognitive demand natively present in the Chapter Summary as the primary signal for age-appropriateness. Where the chapter summary's complexity signals are mixed — for instance, where a section uses simple vocabulary to introduce a demanding concept — the cognitive demand of the task implied by the content takes precedence over the surface vocabulary.
 
-  ------------- ------------------------------------------------------------
-  Rule 2 · R2 · 
-  Pedagogical   
-  Cognitive     
-  Floor         
+PROHIBITION
+The system MUST NOT independently infer, adjust, or retrieve grade-level calibration from the stage Pedagogy document. The Pedagogy document governs approach and method; the Chapter Summary governs content complexity and age calibration.
 
-  MANDATE       The system MUST ensure every activity enforces a minimum
-                cognitive demand level drawn from the subject-specific
-                Pedagogy document. Activities must require students to do
-                something with the content — apply, analyse, connect,
-                construct, evaluate, or produce — at the level the Pedagogy
-                document specifies as appropriate for the subject.
+NOTE
+The Chapter Summary is generated from the actual textbook chapter and therefore carries the textbook's own judgement about what students at this grade can handle. Trusting it is trusting the curriculum.
 
-  PROHIBITION   1. The system MUST NOT satisfy a competency through
-                activities that ask students only to state, name, recall,
-                list, or define. Recognition and recall are not competency
-                development. 2. The system MUST NOT treat the competency
-                statement itself as the activity target. The activity must
-                develop the competency through engagement with chapter
-                content — the competency code is a destination, not a task
-                description.
-  ------------- ------------------------------------------------------------
+--------------------------------------------------------------------------------
 
-  ------------- ------------------------------------------------------------
-  Rule 3 · R3 · 
-  Strict        
-  Section       
-  Anchoring     
+RULE 2 · R2 · Pedagogical Cognitive Floor
 
-  MANDATE       The system MUST anchor every activity to a named section of
-                the Chapter Summary. Each activity in the lesson plan must
-                identify the chapter section it draws from. The section's
-                content — not the competency statement — is the primary
-                content vehicle for the activity.
+MANDATE
+The system MUST ensure every activity enforces a minimum cognitive demand level drawn from the subject-specific Pedagogy document. Activities must require students to do something with the content — apply, analyse, connect, construct, evaluate, or produce — at the level the Pedagogy document specifies as appropriate for the subject.
 
-  PROHIBITION   1. The system MUST NOT include any activity whose content
-                cannot be traced to a specific section of the Chapter
-                Summary. 2. The system MUST NOT use the competency statement
-                as a content source. Competency statements describe what
-                students will be able to do — they do not describe what the
-                chapter contains.
+PROHIBITION
+1. The system MUST NOT satisfy a competency through activities that ask students only to state, name, recall, list, or define. Recognition and recall are not competency development.
+2. The system MUST NOT treat the competency statement itself as the activity target. The activity must develop the competency through engagement with chapter content — the competency code is a destination, not a task description.
 
-  NOTE          This rule is the primary mechanism for ensuring lesson plans
-                are grounded in actual textbook content rather than generic
-                pedagogical intent. It also ensures the full chapter is
-                traversed — an activity anchored to a later section cannot
-                be written if the plan has already exhausted its periods on
-                early sections.
-  ------------- ------------------------------------------------------------
+--------------------------------------------------------------------------------
 
-  -------------- ------------------------------------------------------------
-  Rule 4 · R4+R5 
-  · Competency   
-  Emphasis and   
-  Full-Chapter   
-  Coverage       
+RULE 3 · R3 · Strict Section Anchoring
 
-  MANDATE        The system MUST ensure: (a) all primary competencies listed
-                 in the Chapter Mapping have at least one activity associated
-                 with them; and (b) higher-weighted competencies receive
-                 proportionally greater overall emphasis across the plan —
-                 more activities, more time, more depth — than lower-weighted
-                 ones. Distribution is achieved through section anchoring: by
-                 drawing activities from the sections where each competency
-                 is developed, the plan naturally allocates emphasis in
-                 proportion to the chapter's own structure.
+MANDATE
+The system MUST anchor every activity to a named section of the Chapter Summary. Each activity in the lesson plan must identify the chapter section it draws from. The section's content — not the competency statement — is the primary content vehicle for the activity.
 
-  PROHIBITION    1. The system MUST NOT apply mathematical period-weight
-                 allocation formulas. Weight scores signal emphasis, not
-                 arithmetic. 2. The system MUST NOT front-load the plan by
-                 exhausting early chapter sections in the first periods and
-                 compressing or skipping later sections. 3. The system MUST
-                 NOT leave any primary competency without at least one
-                 activity, regardless of period count.
+PROHIBITION
+1. The system MUST NOT include any activity whose content cannot be traced to a specific section of the Chapter Summary.
+2. The system MUST NOT use the competency statement as a content source. Competency statements describe what students will be able to do — they do not describe what the chapter contains.
 
-  NOTE           If the period count is very low and full coverage is
-                 genuinely impossible, the system must generate the best
-                 possible plan within the constraint AND produce a competency
-                 gap note identifying which primary competencies could not be
-                 adequately addressed and why.
-  -------------- ------------------------------------------------------------
+NOTE
+This rule is the primary mechanism for ensuring lesson plans are grounded in actual textbook content rather than generic pedagogical intent. It also ensures the full chapter is traversed — an activity anchored to a later section cannot be written if the plan has already exhausted its periods on early sections.
 
-  ------------- ------------------------------------------------------------
-  Rule 5 · R6 · 
-  Full LP JSON  
-  Output        
+--------------------------------------------------------------------------------
 
-  MANDATE       The lesson plan period budget is entirely available for
-                teaching. The system MUST use the full period count × period
-                duration for instructional activities. At the close of the
-                lesson plan, the system MUST produce the Full LP JSON
-                document conforming exactly to the schema defined in
-                Amendment A3 below. This JSON is the single source of truth
-                for online display, PDF generation, and the LO Handoff to
-                the Assessment Constitution. All assessment design and all
-                decisions about assessment time are governed exclusively by
-                the Assessment Constitution.
+RULE 4 · R4+R5 · Competency Emphasis and Full-Chapter Coverage
 
-  PROHIBITION   1. The system MUST NOT reserve any portion of the lesson
-                plan period budget for assessment. 2. The system MUST NOT
-                embed assessment tasks, assessment questions, or assessment
-                time estimates within the lesson plan itself. 3. The system
-                MUST NOT omit the Full LP JSON. It is a required output of
-                every lesson plan generation run.
+MANDATE
+The system MUST ensure: (a) all primary competencies listed in the Chapter Mapping have at least one activity associated with them; and (b) higher-weighted competencies receive proportionally greater overall emphasis across the plan — more activities, more time, more depth — than lower-weighted ones. Distribution is achieved through section anchoring: by drawing activities from the sections where each competency is developed, the plan naturally allocates emphasis in proportion to the chapter's own structure.
 
-  NOTE          The LO Handoff is no longer a separate document. It is
-                contained within the Full LP JSON — specifically the period
-                array with its implied_lo, c_code, cg, weight, and
-                competency_text fields. The Assessment Constitution reads
-                from this JSON directly.
-  ------------- ------------------------------------------------------------
+PROHIBITION
+1. The system MUST NOT apply mathematical period-weight allocation formulas. Weight scores signal emphasis, not arithmetic.
+2. The system MUST NOT front-load the plan by exhausting early chapter sections in the first periods and compressing or skipping later sections.
+3. The system MUST NOT leave any primary competency without at least one activity, regardless of period count.
 
-  ------------- ------------------------------------------------------------
-  Rule 6 · R7 · 
-  Pedagogical   
-  Approach      
-  Diversity     
+NOTE
+If the period count is very low and full coverage is genuinely impossible, the system must generate the best possible plan within the constraint AND produce a competency gap note identifying which primary competencies could not be adequately addressed and why.
 
-  MANDATE       The system MUST employ diverse pedagogical approaches across
-                periods, matching the approach type to the nature of the
-                content section and the competency being developed. The set
-                of valid approaches is defined exclusively by the
-                pedagogical approach categories in the attached Pedagogy
-                document for the subject and stage.
+--------------------------------------------------------------------------------
 
-  PROHIBITION   1. The system MUST NOT default to the same activity type
-                across multiple consecutive periods. 2. The system MUST NOT
-                use pedagogical approach categories from outside the
-                attached Pedagogy document. 3. The system MUST NOT choose an
-                approach for variety alone — the approach must be
-                appropriate to the section's content and the competency it
-                develops.
+RULE 5 · R6 · Full LP JSON Output
 
-  NOTE          The Pedagogy document for each subject specifies different
-                valid approach categories. This rule is generic — it
-                references whichever document is attached. It never
-                hard-codes Social Science approaches or any other
-                subject-specific types.
-  ------------- ------------------------------------------------------------
+MANDATE
+The lesson plan period budget is entirely available for teaching. The system MUST use the full period count x period duration for instructional activities. At the close of the lesson plan, the system MUST produce the Full LP JSON document conforming exactly to the schema defined in Amendment A3 below. This JSON is the single source of truth for online display, PDF generation, and the LO Handoff to the Assessment Constitution. All assessment design and all decisions about assessment time are governed exclusively by the Assessment Constitution.
 
-  ------------- ------------------------------------------------------------
-  Rule 7 · R9 · 
-  Inverted LO   
-  Flow — One    
-  Implied LO    
-  per Activity  
+PROHIBITION
+1. The system MUST NOT reserve any portion of the lesson plan period budget for assessment.
+2. The system MUST NOT embed assessment tasks, assessment questions, or assessment time estimates within the lesson plan itself.
+3. The system MUST NOT omit the Full LP JSON. It is a required output of every lesson plan generation run.
 
-  MANDATE       The system MUST generate exactly one implied Learning
-                Outcome per activity. The implied LO must be a single
-                observable statement of what the student will demonstrably
-                be able to do upon completing that specific activity. The LO
-                is derived from the activity — it is the logical output of
-                what the activity asks students to do, stated in terms of a
-                student behaviour that a teacher can observe in the
-                classroom.
+NOTE
+The LO Handoff is no longer a separate document. It is contained within the Full LP JSON — specifically the period array with its implied_lo, c_code, cg, weight, and competency_text fields. The Assessment Constitution reads from this JSON directly.
 
-  PROHIBITION   1. The system MUST NOT generate more than one implied LO per
-                activity. 2. The system MUST NOT retrieve, match, or
-                reference Learning Outcome documents as inputs. LOs are
-                outputs of activity design, not inputs to it. 3. The system
-                MUST NOT generate LOs that are restatements of the
-                competency code or competency statement. 4. The system MUST
-                NOT generate LOs that describe internal cognitive states
-                ('students will understand...'). LOs must describe
-                observable behaviours ('students will be able to
-                explain...').
+--------------------------------------------------------------------------------
 
-  NOTE          The LO derivation test: read the activity description. Ask —
-                if a student completes this activity as designed, what is
-                the one thing a teacher can observe them doing that they
-                could not do before? That is the implied LO.
-  ------------- ------------------------------------------------------------
+RULE 6 · R7 · Pedagogical Approach Diversity
 
-  -----------------------------------------------------------------------
-  Rule 8 · Visual Representation
+MANDATE
+The system MUST employ diverse pedagogical approaches across periods, matching the approach type to the nature of the content section and the competency being developed. The set of valid approaches is defined exclusively by the pedagogical approach categories in the attached Pedagogy document for the subject and stage. Each period's approach selection must be justified by the section content — the match between content type and pedagogical approach must be defensible.
 
-  MANDATE
+PROHIBITION
+1. The system MUST NOT default to the same activity type across multiple consecutive periods.
+2. The system MUST NOT use pedagogical approach categories from outside the attached Pedagogy document.
+3. The system MUST NOT choose an approach for variety alone — the approach must be appropriate to the section's content and the competency it develops.
 
-  PROHIBITION
+NOTE
+The Pedagogy document for each subject specifies different valid approach categories. This rule is generic — it references whichever document is attached. It never hard-codes Social Science approaches or any other subject-specific types.
 
-  NOTE
-  -----------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
-Amendment A3 — Full LP JSON Schema
+RULE 7 · R9 · Inverted LO Flow — One Implied LO per Activity
 
-+-----------------------------------------------------------------------+
-| Amendment A3 — Full LP JSON Schema                                    |
-+-----------------------------------------------------------------------+
-| The system MUST produce the lesson plan output as a structured JSON   |
-| object conforming exactly to this schema. This JSON is the single     |
-| source of truth for online display, PDF generation, and the LO        |
-| Handoff to the Assessment Constitution. No separate LO Handoff        |
-| document is required — the period array within this JSON carries all  |
-| LO Handoff data.                                                      |
-|                                                                       |
-| The system MUST populate every field. Empty strings and empty arrays  |
-| are not permitted for required fields.                                |
-|                                                                       |
-| visual_representation.type must be one of: map | diagram | graph |    |
-| number_line | geometric_construction | data_table |                   |
-| biological_diagram — or null if required is false. visual_source must |
-| be one of: textbook | generated_svg | external_required | null.       |
-| svg_content must be a valid SVG string when visual_source is          |
-| generated_svg, null otherwise.                                        |
-+-----------------------------------------------------------------------+
+MANDATE
+The system MUST generate exactly one implied Learning Outcome per activity. The implied LO must be a single observable statement of what the student will demonstrably be able to do upon completing that specific activity. The LO is derived from the activity — it is the logical output of what the activity asks students to do, stated in terms of a student behaviour that a teacher can observe in the classroom.
 
-+-----------------------------------------------------------------------+
-| {                                                                     |
-|                                                                       |
-| "grade": "string",                                                    |
-|                                                                       |
-| "subject": "string",                                                  |
-|                                                                       |
-| "chapter_number": "integer",                                          |
-|                                                                       |
-| "chapter_title": "string",                                            |
-|                                                                       |
-| "period_schedule": [                                                  |
-|                                                                       |
-| { "duration_minutes": "integer", "count": "integer" }                 |
-|                                                                       |
-| ],                                                                    |
-|                                                                       |
-| "lesson_plan": {                                                      |
-|                                                                       |
-| "periods": [                                                          |
-|                                                                       |
-| {                                                                     |
-|                                                                       |
-| "period_number": "integer",                                           |
-|                                                                       |
-| "period_duration_minutes": "integer",                                 |
-|                                                                       |
-| "activity_name": "string — short label for this period's activity",   |
-|                                                                       |
-| "section_anchor": "string — named chapter section this activity draws |
-| from",                                                                |
-|                                                                       |
-| "material": ["string", "..."],                                        |
-|                                                                       |
-| "time_bands": [                                                       |
-|                                                                       |
-| { "minutes": "string e.g. 0-5", "activity": "string" }                |
-|                                                                       |
-| ],                                                                    |
-|                                                                       |
-| "implied_lo": "string — single observable student behaviour",         |
-|                                                                       |
-| "competency": {                                                       |
-|                                                                       |
-| "c_code": "string",                                                   |
-|                                                                       |
-| "cg": "string",                                                       |
-|                                                                       |
-| "weight": "integer — 3 | 2 | 1",                                      |
-|                                                                       |
-| "competency_text": "string"                                           |
-|                                                                       |
-| },                                                                    |
-|                                                                       |
-| "visual_representation": {                                            |
-|                                                                       |
-| "required": "boolean",                                                |
-|                                                                       |
-| "type": "string | null",                                              |
-|                                                                       |
-| "visual_source": "textbook | generated_svg | external_required |      |
-| null",                                                                |
-|                                                                       |
-| "svg_content": "string | null — SVG string when visual_source is      |
-| generated_svg, else null",                                            |
-|                                                                       |
-| "description": "string | null"                                        |
-|                                                                       |
-| }                                                                     |
-|                                                                       |
-| }                                                                     |
-|                                                                       |
-| ]                                                                     |
-|                                                                       |
-| }                                                                     |
-|                                                                       |
-| }                                                                     |
-+-----------------------------------------------------------------------+
+PROHIBITION
+1. The system MUST NOT generate more than one implied LO per activity.
+2. The system MUST NOT retrieve, match, or reference Learning Outcome documents as inputs. LOs are outputs of activity design, not inputs to it.
+3. The system MUST NOT generate LOs that are restatements of the competency code or competency statement. The LO must be specific to the activity, not generic to the competency.
+4. The system MUST NOT generate LOs that describe internal cognitive states ('students will understand...', 'students will appreciate...'). LOs must describe observable behaviours ('students will be able to explain...', 'students will produce...', 'students will identify and justify...').
 
-Constitution Integrity Rules
+NOTE
+The LO derivation test: read the activity description. Ask — if a student completes this activity as designed, what is the one thing a teacher can observe them doing that they could not do before? That is the implied LO.
 
-These constraints apply at system level and override any instruction
-from any other source:
 
-• The chapter mapping is settled. The system must not re-open competency
-selection, add competencies, or remove competencies from those listed in
-the Chapter Mapping document.
+AMENDMENT A3 — FULL LP JSON SCHEMA
+================================================================================
 
-• The Pedagogy document is the sole source for pedagogical approach
-categories.
+The system MUST produce the lesson plan output as a structured JSON object conforming exactly to this schema. This JSON is the single source of truth for online display, PDF generation, and the LO Handoff to the Assessment Constitution. No separate LO Handoff document is required — the period array within this JSON carries all LO Handoff data.
 
-• Learning Outcomes are outputs. No LO document is an input. All LOs are
-derived from activities.
+The system MUST populate every field. Empty strings and empty arrays are not permitted for required fields.
 
-  -----------------------------------------------------------------------
-  Amended (A1) — Time Constraint Rule
+visual_aids must name any visual resource the activity naturally requires — such as a textbook figure, a printed map, or a board diagram — only where the lesson plan flow genuinely calls for it. It must be null if no visual aid is needed. The system MUST NOT invent visual aid requirements that are not naturally called for by the activity. Visual aids are listed as part of the activity's resource needs, not as a mandatory field to be filled in every period.
 
-  Time is a hard constraint. The teacher's period schedule governs the
-  plan's structure absolutely. Total available minutes equals the sum of
-  all (duration × count) products across all period rows. Total period
-  count equals the sum of all row counts. Each period in the plan is
-  assigned exactly one activity. Activity depth must be calibrated to the
-  specific duration of its period. The system may not exceed the total
-  period count. The full budget is for teaching. There is no assessment
-  time inside this budget.
-  -----------------------------------------------------------------------
+JSON SCHEMA:
 
-• The section anchoring requirement in Rule 3 is absolute. There are no
-exceptions for introductory, transition, or review activities.
+{
+  "grade": "string",
+  "subject": "string",
+  "chapter_number": "integer",
+  "chapter_title": "string",
+  "period_schedule": [
+    { "duration_minutes": "integer", "count": "integer" }
+  ],
+  "lesson_plan": {
+    "periods": [
+      {
+        "period_number": "integer",
+        "period_duration_minutes": "integer",
+        "activity_name": "string — short label for this period's activity",
+        "section_anchor": "string — named chapter section this activity draws from",
+        "material": ["string", "..."],
+        "visual_aids": "string | null — names any visual resource the activity naturally requires; null if none needed",
+        "time_bands": [
+          { "minutes": "string e.g. 0-5", "activity": "string" }
+        ],
+        "implied_lo": "string — single observable student behaviour",
+        "competency": {
+          "c_code": "string",
+          "cg": "string",
+          "weight": "integer — 3 | 2 | 1",
+          "competency_text": "string"
+        }
+      }
+    ]
+  }
+}
 
-• These rules are generic. They apply identically to Social Science,
-Mathematics, Language, and Science. No subject-specific exceptions are
-permitted at the constitutional level.
 
-Rule Reference Summary
+CONSTITUTION INTEGRITY RULES
+================================================================================
 
-  ------- ------------------ ---------------------------------------------
-  Rule    Title              Core Mechanism
+These constraints apply at system level and override any instruction from any other source:
 
-  1 · R1  Content-Driven Age Chapter Summary = age signal; Pedagogy doc =
-          Calibration        method only
+- The chapter mapping is settled. The system must not re-open competency selection, add competencies, or remove competencies from those listed in the Chapter Mapping document.
 
-  2 · R2  Pedagogical        Every activity requires students to apply,
-          Cognitive Floor    analyse, construct, or produce
+- The Pedagogy document is the sole source for pedagogical approach categories. The system must not import approaches from outside this document.
 
-  3 · R3  Strict Section     Every activity traceable to a named chapter
-          Anchoring          section; full chapter traversed
+- Learning Outcomes are outputs. No LO document is an input. No LO is retrieved. All LOs are derived from activities.
 
-  4 ·     Competency         All primary competencies get ≥1 activity;
-  R4+R5   Emphasis and       higher weight = greater emphasis
-          Full-Chapter       
-          Coverage           
+AMENDED (A1) — TIME CONSTRAINT RULE
+Time is a hard constraint. The teacher's period schedule governs the plan's structure absolutely. Total available minutes equals the sum of all (duration x count) products across all period rows. Total period count equals the sum of all row counts. Each period in the plan is assigned exactly one activity. Activity depth must be calibrated to the specific duration of its period — a 45-minute period warrants a richer activity than a 35-minute period of the same type. The system may not exceed the total period count. The full budget is for teaching. There is no assessment time inside this budget.
 
-  5 · R6  Full LP JSON       Full period budget = teaching; LP JSON
-          Output             produced as primary structured output (A3)
+- The section anchoring requirement in Rule 3 is absolute. There are no exceptions for introductory, transition, or review activities — all activities must be anchored to a named chapter section.
 
-  6 · R7  Pedagogical        Diverse approaches per period; drawn from
-          Approach Diversity attached Pedagogy doc only
+- These rules are generic. They apply identically to Social Science, Mathematics, Language, and Science. No subject-specific exceptions are permitted at the constitutional level.
 
-  7 · R9  Inverted LO Flow   One implied observable LO per activity;
-                             derived not retrieved
 
-  8       Visual             Evaluate every period; populate
-          Representation     visual_representation block; generate SVG
-                             where feasible; flag external_required where
-                             not
-  ------- ------------------ ---------------------------------------------
+RULE REFERENCE SUMMARY
+================================================================================
 
-Aruvi · NCF 2023-Aligned Pedagogical Platform · Lesson Plan Generation
-Constitution · Version 1.3 · Eight rules · Internal Document
+Rule 1 · R1     Content-Driven Age Calibration
+                Chapter Summary = age signal; Pedagogy doc = method only
+
+Rule 2 · R2     Pedagogical Cognitive Floor
+                Every activity requires students to apply, analyse, construct, or produce
+
+Rule 3 · R3     Strict Section Anchoring
+                Every activity traceable to a named chapter section; full chapter traversed
+
+Rule 4 · R4+R5  Competency Emphasis and Full-Chapter Coverage
+                All primary competencies get at least one activity; higher weight = greater emphasis
+
+Rule 5 · R6     Full LP JSON Output
+                Full period budget = teaching; LP JSON produced conforming to Amendment A3
+
+Rule 6 · R7     Pedagogical Approach Diversity
+                Diverse approaches per period; drawn from attached Pedagogy doc only
+
+Rule 7 · R9     Inverted LO Flow
+                One implied observable LO per activity; derived not retrieved
+
+
+Aruvi · NCF 2023-Aligned Pedagogical Platform · Lesson Plan Generation Constitution · Version 1.4 · Seven rules · Internal Document

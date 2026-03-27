@@ -403,12 +403,26 @@ function renderLPA() {
   });
 
   document.getElementById('banner-title').textContent = d.chapter_title || '—';
+
+  /* Compute total time + period count from lo_handoff */
+  var _periods = d.lo_handoff || [];
+  var _numP    = _periods.length;
+  var _totMins = 0;
+  _periods.forEach(function(p) { _totMins += (p.period_duration_minutes || 0); });
+  var _bh = Math.floor(_totMins / 60), _bm = _totMins % 60;
+  var _timeStr = _bh === 0 ? (_bm + ' min') :
+                 _bm === 0 ? (_bh + ' hr') :
+                 (_bh + ' hr ' + _bm + ' min');
+  var _schedChip = _numP > 0
+    ? 'Total · ' + _timeStr + ', ' + _numP + ' period' + (_numP !== 1 ? 's' : '')
+    : (d.period_schedule || '');
+
   var metaEl = document.getElementById('banner-meta');
   metaEl.innerHTML =
     '<span class="bchip">Ch ' + String(d.chapter_number||'').padStart(2,'0') + '</span>' +
     '<span class="bchip">' + escHtml(d.grade) + '</span>' +
     '<span class="bchip">' + escHtml(d.subject) + '</span>' +
-    '<span class="bchip hi">' + escHtml(d.period_schedule) + '</span>';
+    '<span class="bchip hi">' + escHtml(_schedChip) + '</span>';
 
   var panel = document.getElementById('lp-panel');
   panel.innerHTML = '';

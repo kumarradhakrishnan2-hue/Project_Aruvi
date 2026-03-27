@@ -2,7 +2,7 @@ ARUVI · PEDAGOGICAL PLATFORM
 
 Chapter Assessment Constitution
 
-Version 1.3 · Eleven rules · Generic across all subjects and stages
+Version 1.4 · Ten rules · Generic across all subjects and stages
 
 Amended: Guide schema replacing annotation layer (A4) · Terminology update: annotation -> guide, differentiation -> inclusivity (A5)
 
@@ -11,7 +11,7 @@ WHAT THIS CONSTITUTION GOVERNS
 
 These rules govern chapter-level formative assessment generation only. They do not govern the chapter mapping process or lesson plan generation, which are completed separately under their own constitutions.
 
-The assessment generator receives exactly two settled inputs: (1) the LP JSON from the Lesson Plan Constitution — containing, for each period, all LP JSON fields including period number, period duration in minutes, section anchor, activity name, time bands, material, implied LO, C-code, CG, weight, competency text, and visual representation; and (2) the Chapter Summary — the structured content summary of the textbook chapter.
+The assessment generator receives exactly two settled inputs: (1) the LP JSON from the Lesson Plan Constitution — containing, for each period, all LP JSON fields including period number, period duration in minutes, section anchor, activity name, time bands, material, visual aids, implied LO, C-code, CG, weight, and competency text; and (2) the Chapter Summary — the structured content summary of the textbook chapter.
 
 The governing principle: every assessment question must test one or more implied LOs from the LP JSON. Competency weight governs question type and question count. Guide structure is governed by question type. The implied LOs govern what each question actually tests.
 
@@ -216,33 +216,6 @@ The system MUST NOT generate:
 NOTE
 Aruvi is not a platform for ideal pedagogy in ideal conditions. It is a platform for defensible, competency-aligned, executable pedagogy in the conditions that actually exist in Indian schools. The assessment it generates is the floor that every teacher can reach — reliably, within a single session, with full competency documentation.
 
---------------------------------------------------------------------------------
-
-RULE 11 · Visual Representation in Assessment
-
-MANDATE
-The system MUST evaluate every question for visual representation need. Set required: true only where the student must read, interpret, complete, or produce a visual to demonstrate the implied LO.
-
-Two cases:
-
-(1) Stimulus — question presents a visual the student reads or interprets. description describes it precisely. visual_source assigned as:
-- Textbook figure -> "textbook"
-- number_line, geometric_construction, data_table, graph, simple diagram, simple biological_diagram -> "generated_svg" · SVG generated in svg_content
-- map, complex biological_diagram, or spatially/anatomically detailed visual -> "external_required" · svg_content: null
-
-(2) Response — open task requires the student to produce a visual artefact. required: true · visual_source describes the stimulus or scaffold provided to the student, not what the student produces. Same visual_source logic applies.
-
-Where no visual is required -> required: false · all other fields null.
-
-PROHIBITION
-1. The system MUST NOT add visuals to MCQ, SCR, or ECR unless the implied LO explicitly requires reading or interpreting a visual. Text is the predominant medium.
-2. The system MUST NOT generate SVG for map or any visual requiring spatial or anatomical accuracy.
-3. The system MUST NOT leave svg_content null when visual_source is generated_svg — downgrade to external_required with populated description if generation fails.
-4. The system MUST NOT set required: true solely because the corresponding LP period used a visual. The question must independently require it.
-
-NOTE
-The threshold is functional necessity. A question answerable from text alone stays text-only. Visual is warranted only where reading, completing, or interpreting it is the demonstration itself.
-
 
 AMENDMENT A4 — ASSESSMENT JSON SCHEMA
 ================================================================================
@@ -250,17 +223,15 @@ AMENDMENT A4 — ASSESSMENT JSON SCHEMA
 The system MUST produce the assessment output as a structured JSON object conforming exactly to this schema. The guide block replaces the former annotation layer entirely.
 
 cognitive_demand must be one of: recall | understanding | application | analysis | evaluation
-visual_representation.type must be one of: map | diagram | graph | number_line | geometric_construction | data_table | biological_diagram — or null if required is false.
-visual_source must be one of: textbook | generated_svg | external_required | null.
-svg_content must be a valid SVG string when visual_source is generated_svg, null otherwise.
 learning_outcome is a single integer for MCQ, SCR, ECR; an array of integers for open_task and synthesis questions.
+visual_stimulus must be null for text-only questions. Where a question requires a student to read or interpret a visual, name the specific textbook figure or resource in plain language. Do not generate or describe visuals — reference them by name only.
 
 MCQ SCHEMA:
 {
   "question_type": "MCQ",
   "competency": { "c_code": "string", "competency_text": "string" },
   "cognitive_demand": "string — recall | understanding | application | analysis | evaluation",
-  "visual_representation": { "required": "boolean", "type": "string | null", "visual_source": "textbook | generated_svg | external_required | null", "svg_content": "string | null", "description": "string | null" },
+  "visual_stimulus": "string | null — names the textbook figure or resource the student needs; null if text-only",
   "question_text": "string",
   "options": [
     { "label": "A", "text": "string", "is_correct": "boolean" },
@@ -284,7 +255,7 @@ SCR SCHEMA:
   "question_type": "SCR",
   "competency": { "c_code": "string", "competency_text": "string" },
   "cognitive_demand": "string",
-  "visual_representation": { "required": "boolean", "type": "string | null", "visual_source": "textbook | generated_svg | external_required | null", "svg_content": "string | null", "description": "string | null" },
+  "visual_stimulus": "string | null",
   "question_text": "string",
   "expected_elements": ["string", "string", "..."],
   "guide": {
@@ -298,7 +269,7 @@ ECR SCHEMA:
   "question_type": "ECR",
   "competency": { "c_code": "string", "competency_text": "string" },
   "cognitive_demand": "string",
-  "visual_representation": { "required": "boolean", "type": "string | null", "visual_source": "textbook | generated_svg | external_required | null", "svg_content": "string | null", "description": "string | null" },
+  "visual_stimulus": "string | null",
   "question_text": "string",
   "look_for": ["string", "string", "..."],
   "guide": {
@@ -312,7 +283,7 @@ OPEN TASK SCHEMA:
   "question_type": "open_task",
   "competency": { "c_code": "string", "competency_text": "string" },
   "cognitive_demand": "string",
-  "visual_representation": { "required": "boolean", "type": "string | null", "visual_source": "textbook | generated_svg | external_required | null", "svg_content": "string | null", "description": "string | null" },
+  "visual_stimulus": "string | null",
   "task_instructions": "string",
   "open_task_format": {
     "format_type": "string — from subject-group menu only",
@@ -380,8 +351,5 @@ Rule 9    Guide Layer
 Rule 10   Scope Boundary
           Chapter-scoped formative only. Summative assessment, HPC, multi-session projects, and individual student tracking are out of scope.
 
-Rule 11   Visual Representation
-          Evaluate every question; required only where LO demands it; text remains predominant; generate SVG where feasible; flag external_required where not.
 
-
-Aruvi · Chapter Assessment Constitution · Version 1.3 · Generic across all subjects and stages · Eleven rules · Guide layer replacing annotation · LP JSON as primary input
+Aruvi · Chapter Assessment Constitution · Version 1.4 · Generic across all subjects and stages · Ten rules · Guide layer replacing annotation · LP JSON as primary input

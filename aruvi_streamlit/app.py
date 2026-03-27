@@ -2621,6 +2621,10 @@ section[data-testid="stSidebar"] div[class*="st-key-add_period_row"] button:hove
                 (st.session_state.get(f"dur_sel_{r}") or 0) * (st.session_state.get(f"cnt_{r}") or 0)
                 for r in st.session_state.get("period_rows", [])
             )
+            total_p = sum(
+                (st.session_state.get(f"cnt_{r}") or 0)
+                for r in st.session_state.get("period_rows", [])
+            )
             if total_m > 0:
                 _h, _min = divmod(total_m, 60)
                 if _h == 0:
@@ -2629,9 +2633,10 @@ section[data-testid="stSidebar"] div[class*="st-key-add_period_row"] button:hove
                     _time_str = f"{_h} hour{'s' if _h != 1 else ''}"
                 else:
                     _time_str = f"{_h} hour{'s' if _h != 1 else ''} and {_min} minute{'s' if _min != 1 else ''}"
+                _p_label = f"{total_p} period{'s' if total_p != 1 else ''}"
                 st.markdown(
                     f'<div style="font-size:0.79rem;color:#3d3b38;margin:0.4rem 0 0.25rem 0;">'
-                    f'Total · {_time_str}'
+                    f'Total · {_time_str}, {_p_label}'
                     f'</div>',
                     unsafe_allow_html=True,
                 )
@@ -2746,6 +2751,10 @@ section[data-testid="stSidebar"] div[class*="st-key-add_period_row"] button:hove
                 (st.session_state.get(f"dur_sel_p{r}") or 0) * (st.session_state.get(f"cnt_p{r}") or 0)
                 for r in st.session_state["period_rows_p"]
             )
+            p_total_p = sum(
+                (st.session_state.get(f"cnt_p{r}") or 0)
+                for r in st.session_state["period_rows_p"]
+            )
             if p_total_m > 0:
                 _ph, _pmin = divmod(p_total_m, 60)
                 if _ph == 0:
@@ -2754,9 +2763,10 @@ section[data-testid="stSidebar"] div[class*="st-key-add_period_row"] button:hove
                     _p_time_str = f"{_ph} hour{'s' if _ph != 1 else ''}"
                 else:
                     _p_time_str = f"{_ph} hour{'s' if _ph != 1 else ''} and {_pmin} minute{'s' if _pmin != 1 else ''}"
+                _pp_label = f"{p_total_p} period{'s' if p_total_p != 1 else ''}"
                 st.markdown(
                     f'<div style="font-size:0.79rem;color:#3d3b38;margin:0.4rem 0 0.25rem 0;">'
-                    f'Total · {_p_time_str}'
+                    f'Total · {_p_time_str}, {_pp_label}'
                     f'</div>',
                     unsafe_allow_html=True,
                 )
@@ -2859,7 +2869,7 @@ elif st.session_state.role == "Generate":
         _safe_title = re.sub(r"[^\w\s-]", "", _chapter_export.get("chapter_title", "chapter")).strip().replace(" ", "_")[:40]
         _filename_stem = f"Aruvi_{_safe_title}"
 
-        _exp_col1, _exp_col2, _exp_col3, _exp_spacer = st.columns([1, 1, 1, 2])
+        _exp_col1, _exp_col2, _exp_col3, _exp_col4, _exp_spacer = st.columns([1, 1, 1, 1, 1])
         with _exp_col1:
             st.download_button(
                 label="⬇ LP (DOCX)",
@@ -2903,8 +2913,79 @@ elif st.session_state.role == "Generate":
                 key="export_pdf_combined",
                 use_container_width=True,
             )
+        with _exp_col4:
+            # ── LP PDF (ReportLab) ────────────────────────────────────────────
+            try:
+                from lp_pdf_generator import build_lp_pdf_bytes as _build_lp_pdf_bytes
+                _lp_json_payload = {
+                    "saved_at":       datetime.now().isoformat(timespec="seconds"),
+                    "grade":          st.session_state.grade   or result.get("grade",   "Grade VII"),
+                    "subject":        st.session_state.subject or result.get("subject", "Social Science"),
+                    "chapter_number": _chapter_export.get("chapter_number", 0),
+                    "chapter_title":  _chapter_export.get("chapter_title",  ""),
+                    "result":         {"lesson_plan": result.get("lesson_plan", {})},
+                }
+                _lp_pdf_bytes = _build_lp_pdf_bytes(_lp_json_payload)
+                st.download_button(
+                    label="⬇ LP (PDF)",
+                    data=_lp_pdf_bytes,
+                    file_name=f"{_filename_stem}_LP.pdf",
+                    mime="application/pdf",
+                    key="export_pdf_lp_rl",
+                    use_container_width=True,
+                )
+            except Exception as _lp_pdf_err:
+                st.caption(f"LP PDF unavailable: {_lp_pdf_err}")
 
         st.markdown('<div style="height:0.75rem;"></div>', unsafe_allow_html=True)
+
+        # ── Primary-style LP / Assessment download buttons ────────────────────
+        # CSS: match Generate button colour scheme, but font 2 sizes smaller
+        st.markdown("""<style>
+div[data-testid="stDownloadButton"] button[kind="primary"] {
+    font-size: 0.82rem !important;
+}
+</style>""", unsafe_allow_html=True)
+        _pdl_c1, _pdl_c2, _pdl_spc = st.columns([1, 1, 3])
+        with _pdl_c1:
+            try:
+                from lp_pdf_generator import build_lp_pdf_bytes as _blpb_gen
+                _gen_lp_payload = {
+                    "saved_at":       datetime.now().isoformat(timespec="seconds"),
+                    "grade":          st.session_state.grade   or result.get("grade",   "Grade VII"),
+                    "subject":        st.session_state.subject or result.get("subject", "Social Science"),
+                    "chapter_number": _chapter_export.get("chapter_number", 0),
+                    "chapter_title":  _chapter_export.get("chapter_title",  ""),
+                    "result":         {"lesson_plan": result.get("lesson_plan", {})},
+                }
+                _gen_lp_bytes = _blpb_gen(_gen_lp_payload)
+                st.download_button(
+                    label="Lesson plan  ⬇",
+                    data=_gen_lp_bytes,
+                    file_name=f"{_filename_stem}_LP.pdf",
+                    mime="application/pdf",
+                    key="gen_lp_primary_dl",
+                    type="primary",
+                    use_container_width=True,
+                )
+            except Exception as _gen_lp_err:
+                st.caption(f"LP PDF error: {_gen_lp_err}")
+        with _pdl_c2:
+            _gen_assess_bytes = generate_pdf_bytes_assess(
+                result, _chapter_export,
+                st.session_state.grade   or result.get("grade",   ""),
+                st.session_state.subject or result.get("subject", ""),
+            )
+            st.download_button(
+                label="Assessment  ⬇",
+                data=_gen_assess_bytes if _gen_assess_bytes else b"",
+                file_name=f"{_filename_stem}_Assessment.pdf",
+                mime="application/pdf",
+                key="gen_assess_primary_dl",
+                type="primary",
+                use_container_width=True,
+            )
+        st.markdown('<div style="height:0.5rem;"></div>', unsafe_allow_html=True)
 
         # ── LPA HTML page ─────────────────────────────────────────────────
         _lpa_html_path = PROJECT_ROOT / "lpa_page.html"
@@ -3319,11 +3400,13 @@ else:
 """, unsafe_allow_html=True)
 
         # Header row
-        _hc = st.columns([4, 1.5, 2, 1.5, 1, 1])
-        _hc[0].markdown('<div class="mp-th">Chapter</div>',  unsafe_allow_html=True)
-        _hc[1].markdown('<div class="mp-th">Grade</div>',    unsafe_allow_html=True)
-        _hc[2].markdown('<div class="mp-th">Periods</div>',  unsafe_allow_html=True)
-        _hc[3].markdown('<div class="mp-th">Saved</div>',    unsafe_allow_html=True)
+        _hc = st.columns([3, 1, 1.5, 0.8, 1.2, 1.2])
+        _hc[0].markdown('<div class="mp-th">Chapter</div>',       unsafe_allow_html=True)
+        _hc[1].markdown('<div class="mp-th">Grade</div>',         unsafe_allow_html=True)
+        _hc[2].markdown('<div class="mp-th">Saved</div>',         unsafe_allow_html=True)
+        _hc[3].markdown('<div class="mp-th">Display</div>',       unsafe_allow_html=True)
+        _hc[4].markdown('<div class="mp-th" style="text-align:center;">Lesson plan</div>',   unsafe_allow_html=True)
+        _hc[5].markdown('<div class="mp-th" style="text-align:center;">Assessment</div>',    unsafe_allow_html=True)
         st.markdown(
             '<hr style="margin:4px 0 6px;border:none;border-top:1px solid #e8e5e0;">',
             unsafe_allow_html=True,
@@ -3343,63 +3426,63 @@ else:
                 _saved_disp = _dt.fromisoformat(_saved_at).strftime("%-d %b %Y")
             except Exception:
                 _saved_disp = _saved_at
-            _sched_raw = _p.get("period_schedule_display", "")
-            _periods = ""
-            for _ln in _sched_raw.splitlines():
-                if _ln.strip().startswith("Total:"):
-                    _periods = _ln.strip().replace("Total:", "").strip()
-                    break
-            if not _periods:
-                _periods = _sched_raw[:30]
             _ch_for_pdf = next(
                 (c for c in chapters if c["chapter_number"] == _ch_num),
                 {"chapter_title": _ch_title, "chapter_weight": "",
                  "chapter_number": _ch_num, "primary": []}
             )
+            # LP PDF via lp_pdf_generator (new ReportLab format)
             try:
-                _pdf_lp = generate_pdf_bytes_lp(
-                    _p["result"], _ch_for_pdf, _grade, _subject
-                )
-                _pdf_as = generate_pdf_bytes_assess(
-                    _p["result"], _ch_for_pdf, _grade, _subject
-                )
-                # Merge both PDFs using pypdf
-                from pypdf import PdfWriter, PdfReader
-                import io as _io
-                _writer = PdfWriter()
-                for _pb in [_pdf_lp, _pdf_as]:
-                    if _pb:
-                        _reader = PdfReader(_io.BytesIO(_pb))
-                        for _page in _reader.pages:
-                            _writer.add_page(_page)
-                _merged = _io.BytesIO()
-                _writer.write(_merged)
-                _pdf_b = _merged.getvalue()
+                from lp_pdf_generator import build_lp_pdf_bytes as _blpb_mp
+                _mp_lp_payload = {
+                    "saved_at":       _p.get("saved_at", datetime.now().isoformat(timespec="seconds")),
+                    "grade":          _grade,
+                    "subject":        _subject,
+                    "chapter_number": _ch_num,
+                    "chapter_title":  _ch_title,
+                    "result":         {"lesson_plan": _p["result"].get("lesson_plan", {})},
+                }
+                _mp_lp_bytes = _blpb_mp(_mp_lp_payload)
             except Exception:
-                _pdf_b = b""
+                _mp_lp_bytes = b""
+            # Assessment PDF
+            try:
+                _mp_assess_bytes = generate_pdf_bytes_assess(
+                    _p["result"], _ch_for_pdf, _grade, _subject
+                )
+            except Exception:
+                _mp_assess_bytes = b""
             _safe_t = re.sub(r"[^\w\s-]", "", _ch_title).strip().replace(" ", "_")[:40]
 
-            _rc = st.columns([4, 1.5, 2, 1.5, 1, 1])
+            _rc = st.columns([3, 1, 1.5, 0.8, 1.2, 1.2])
             _rc[0].markdown(
                 f'<div class="mp-ch-title">{_ch_title}</div>'
                 f'<div class="mp-ch-meta">Ch {str(_ch_num).zfill(2)} · {_subject}</div>',
                 unsafe_allow_html=True,
             )
             _rc[1].markdown(f'<div class="mp-cell">{_grade}</div>',       unsafe_allow_html=True)
-            _rc[2].markdown(f'<div class="mp-cell">{_periods}</div>',     unsafe_allow_html=True)
-            _rc[3].markdown(f'<div class="mp-cell">{_saved_disp}</div>',  unsafe_allow_html=True)
-            with _rc[4]:
+            _rc[2].markdown(f'<div class="mp-cell">{_saved_disp}</div>',  unsafe_allow_html=True)
+            with _rc[3]:
                 if st.button("View", key=f"view_{_safe_fn}", use_container_width=True):
                     st.session_state.mp_viewing_plan = _p
                     st.rerun()
-            with _rc[5]:
+            with _rc[4]:
                 st.download_button(
-                    label="⬇ PDF",
-                    data=_pdf_b if _pdf_b else b"",
+                    label="PDF ⬇",
+                    data=_mp_lp_bytes,
                     file_name=f"Aruvi_{_safe_t}_LP.pdf",
                     mime="application/pdf",
-                    key=f"pdf_{_safe_fn}",
-                    use_container_width=True,
+                    key=f"mp_lp_{_safe_fn}",
+                    type="primary",
+                )
+            with _rc[5]:
+                st.download_button(
+                    label="PDF ⬇",
+                    data=_mp_assess_bytes if _mp_assess_bytes else b"",
+                    file_name=f"Aruvi_{_safe_t}_Assessment.pdf",
+                    mime="application/pdf",
+                    key=f"mp_assess_{_safe_fn}",
+                    type="primary",
                 )
             st.markdown(
                 '<hr style="margin:2px 0;border:none;border-top:0.5px solid #f0ede9;">',
