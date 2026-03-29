@@ -197,9 +197,11 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
             story.append(Paragraph(task_txt, AST["ot_txt"]))
             story.append(Spacer(1, 3))
 
-        scaffold = item.get("scaffold", {})
-        scaf_txt = (_clean_text(scaffold.get("description", ""))
-                    if isinstance(scaffold, dict) else "")
+        scaffold = item.get("scaffold", "")
+        if isinstance(scaffold, dict):
+            scaf_txt = _clean_text(scaffold.get("description", ""))
+        else:
+            scaf_txt = _clean_text(str(scaffold)) if scaffold else ""
         if scaf_txt:
             story.append(Paragraph("<b>Scaffold</b>", AST["ot_lbl"]))
             story.append(Paragraph(scaf_txt, AST["ot_txt"]))

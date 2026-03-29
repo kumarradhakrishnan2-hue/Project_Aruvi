@@ -86,6 +86,7 @@
 .qbody { display: none; padding: 10px 12px; border-top: 0.5px solid #e8e5e0; background: #fff; }
 .qbody.open { display: block; }
 .qtext { font-size: 11px; color: #1a1917; line-height: 1.6; margin-bottom: 8px; }
+.qtext-bullet { padding-left: 1.2rem; }
 .qopt { font-size: 11px; color: #5a5754; margin: 3px 0; }
 .qopt.correct { color: #0f6e56; font-weight: 500; }
 .atoggle { font-size: 10px; color: #2c3e50; cursor: pointer; border: none; background: none; padding: 6px 0 2px; display: flex; align-items: center; gap: 4px; margin-top: 4px; }
@@ -349,12 +350,34 @@ function renderAssessment(sections) {
         /* Expanded body */
         html += '<div class="qbody">';
 
-        /* Main question text — open_task prefers task_instructions field */
-        var bodyText = (type === 'OPEN_TASK')
-          ? (q.task_instructions || q.question || '')
-          : (q.question || '');
-        if (bodyText) {
-          html += '<div class="qtext">' + escHtml(bodyText) + '</div>';
+        /* Main question text */
+        if (type === 'OPEN_TASK') {
+          /* New schema: render task / scaffold / format_of_output as labelled sections */
+          var taskText = q.task || q.task_instructions || q.question || '';
+          if (taskText) {
+            html += '<div class="qtext"><strong>Task</strong></div>';
+            html += '<div class="qtext">' + escHtml(taskText) + '</div>';
+          }
+          if (q.scaffold) {
+            html += '<div class="qtext"><strong>Scaffold</strong></div>';
+            html += '<div class="qtext">' + escHtml(q.scaffold) + '</div>';
+          }
+          var fof = q.format_of_output;
+          if (fof && fof.length) {
+            html += '<div class="qtext"><strong>Format of output</strong></div>';
+            if (Array.isArray(fof)) {
+              fof.forEach(function(f) {
+                html += '<div class="qtext qtext-bullet">• ' + escHtml(f) + '</div>';
+              });
+            } else {
+              html += '<div class="qtext">' + escHtml(String(fof)) + '</div>';
+            }
+          }
+        } else {
+          var bodyText = q.question || '';
+          if (bodyText) {
+            html += '<div class="qtext">' + escHtml(bodyText) + '</div>';
+          }
         }
 
         /* Options (MCQ): A. text / B. text … green tick ✓ on correct option */

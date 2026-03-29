@@ -115,37 +115,148 @@ script never traverses the folder tree independently.
 
 ---
 
-## How to Run (Cowork)
+## Two-Stage Workflow
 
-### Step 1 — Verify paths
+This skill operates in two mandatory stages with a human review gate between
+them. Nothing is written to any file until Stage 2 is explicitly cleared.
+
+---
+
+### Stage 1 — Generate the Proposals Report
 
 ```bash
-# Check KB file exists
+# Verify paths first
 ls mnt/data/mirror/ask_aruvi/qa_knowledge_base.json
-
-# Check output dir exists
 ls mnt/data/knowledge_commons/other_commons/
-
-# Check knowledge sources exist
 ls mnt/data/knowledge_commons/*.docx
-```
 
-### Step 2 — Run the refresh script
-
-```bash
+# Run Stage 1 — analysis only, no writes
 cd mnt/data
-python3 aruvi-scripts/refresh_kb.py --dry-run
+python3 aruvi-scripts/refresh_kb.py --propose
 ```
 
-The `--dry-run` flag produces the diff report only — no files are written.
-Review the report with Kumar before proceeding.
+This produces a **Proposals Report** printed to the console and saved as
+`mirror/ask_aruvi/kb_proposals_pending.json` for Stage 2 to consume.
+
+#### Proposals Report format
+
+The report is organised **category by category** in fixed order:
+cat_a → cat_b → cat_c → cat_d → cat_e.
+
+Every proposed change is a **numbered proposal** — numbering is global and
+sequential across all categories (Proposal 1, 2, 3 … N) so Kumar can
+reference any item by number.
+
+```
+════════════════════════════════════════════════════════
+ASK ARUVI — Q&A KNOWLEDGE BASE: PROPOSALS REPORT
+Generated: 2026-03-29
+════════════════════════════════════════════════════════
+
+CATEGORY A — How Aruvi plans lessons
+  Unchanged: 8 pairs
+
+  Proposal 1 — AMEND
+    Q: Why does my lesson have 5 periods?
+    Current A: [existing answer]
+    Proposed A: [revised answer]
+    Reason: LP Constitution V1.4 now uses visual_aids field; answer
+            referenced old visual representation language.
+
+  Proposal 2 — DELETE
+    Q: Can I add a sixth period to my lesson?
+    Current A: [existing answer]
+    Reason: Contradicts current period allocation logic in Optimizer doc.
+
+──────────────────────────────────────────────────────
+CATEGORY B — How Aruvi builds assessments
+  Unchanged: 6 pairs
+
+  Proposal 3 — AMEND
+    Q: What is a Central competency?
+    Current A: [existing answer]
+    Proposed A: [revised answer]
+    Reason: Weight terminology updated in Assessment Constitution V1.4.
+
+  Proposal 4 — ADD  [source: forwarded_queries/2026-03.json, query #7]
+    Proposed Q: Why do some chapters have more open-task questions?
+    Proposed A: [new answer]
+    Reason: Recurring unmatched query; derivable from Assessment
+            Constitution competency weight rules.
+
+──────────────────────────────────────────────────────
+CATEGORY C — The competency framework
+  Unchanged: 14 pairs  |  No proposals.
+
+──────────────────────────────────────────────────────
+CATEGORY D — Using the platform
+  Unchanged: 9 pairs
+
+  Proposal 5 — ADD
+    Proposed Q: ...
+    Proposed A: ...
+    Reason: ...
+
+──────────────────────────────────────────────────────
+CATEGORY E — What Aruvi cannot do
+  Unchanged: 7 pairs  |  No proposals.
+
+════════════════════════════════════════════════════════
+SUMMARY: 5 proposals across 3 categories
+  AMEND: 2   DELETE: 1   ADD: 2   Unchanged pairs: 44
+
+Awaiting clearance. Reply with: "Clear all", "Clear N,M,P",
+"Clear all except N,M", or inline amendments per proposal.
+════════════════════════════════════════════════════════
+```
+
+---
+
+### Review Gate — Kumar's Instructions
+
+After reading the Proposals Report, Kumar responds with one of:
+
+- **"Clear all"** — accept every proposal as shown; proceed to Stage 2.
+- **"Clear all except N, M"** — accept all; hold proposals N and M
+  (dropped from this cycle, not applied).
+- **"Clear N, M, P"** — accept only the listed proposals; drop the rest.
+- **Inline amendment** — Kumar may revise any proposed answer text before
+  clearing: "Clear 1 but change the answer to: [text]". The revised text
+  replaces Haiku's proposed answer.
+
+The skill waits at this gate. Nothing is written until Kumar has explicitly
+cleared at least one proposal or confirmed no action is needed.
+
+If there are zero proposals across all categories, confirm this to Kumar
+and close the cycle without writing.
+
+---
+
+### Stage 2 — Write Cleared Proposals
 
 ```bash
-# After Kumar confirms, write the outputs:
-python3 aruvi-scripts/refresh_kb.py --write
+# Apply specific proposal numbers
+python3 aruvi-scripts/refresh_kb.py --write --proposals 1,3,4,5
+# or apply all proposals in the pending file
+python3 aruvi-scripts/refresh_kb.py --write --proposals all
 ```
 
-### Step 3 — Verify outputs
+Stage 2 applies only the cleared proposals. It:
+
+- Applies AMEND changes (using Kumar's revised text if provided, else
+  Haiku's proposed text)
+- Applies ADD pairs into the correct category
+- For DELETE proposals: marks the pair `"flagged_for_deletion": true`
+  rather than removing it — Kumar removes flagged pairs manually
+- Enforces 80-word limit on all answers (truncates at word boundary with
+  ellipsis; logs a warning per truncation)
+- Updates `"last_refreshed"` to today's date (ISO format)
+- Writes updated JSON to `mirror/ask_aruvi/qa_knowledge_base.json`
+- Writes Word document to
+  `knowledge_commons/other_commons/qa_knowledge_base.docx`
+- Deletes `mirror/ask_aruvi/kb_proposals_pending.json` on success
+
+### Verify outputs
 
 ```bash
 # Confirm JSON updated
@@ -164,44 +275,36 @@ create it. The full specification follows.
 
 ### Script purpose
 
-A Python script that:
+A Python script with two modes: `--propose` and `--write`.
+
+**`--propose` mode:**
 
 1. Loads the current `qa_knowledge_base.json`.
 2. Extracts the authoritative text from each knowledge source document
    using `python-docx` (for .docx files).
-3. For each Q&A pair, calls `claude-haiku-4-5` with:
-   - System prompt: *You are an editorial assistant for the Ask Aruvi platform
-     helpline. Your job is to judge whether each Q&A pair is accurate,
-     current, and correctly scoped against the provided knowledge sources.
-     Respond in JSON only.*
-   - Context: the pair's question and answer, plus the relevant section of
-     the knowledge source for that category.
-   - Output schema:
-     ```json
-     {
-       "verdict": "keep" | "amend" | "delete",
-       "reason": "one sentence",
-       "revised_answer": "amended answer text if verdict is amend, else null"
-     }
-     ```
-4. Separately scans `forwarded_queries/` (if present) and proposes new
-   Q&A pairs for unmatched recurring queries. Presents them as ADD
-   candidates in the diff report.
-5. Generates a diff report (plain text, printed to stdout) listing:
-   - KEEP: count of pairs with no changes
-   - AMEND: each amended pair with old → new answer
-   - DELETE: each pair flagged for deletion with reason
-   - ADD: each proposed new pair with source (forwarded query reference)
-6. In `--write` mode:
-   - Applies all AMEND and ADD changes
-   - Does NOT delete flagged pairs automatically — marks them with a
-     `"flagged_for_deletion": true` field instead. Kumar removes manually.
-   - Enforces 80-word limit on all answers (truncate at word boundary with
-     ellipsis if needed; log a warning per truncation)
-   - Updates `"last_refreshed"` to today's date (ISO format)
-   - Writes updated JSON to `mirror/ask_aruvi/qa_knowledge_base.json`
-   - Writes Word document to
-     `knowledge_commons/other_commons/qa_knowledge_base.docx`
+3. For each Q&A pair, calls `claude-haiku-4-5` with a system prompt
+   instructing it to judge accuracy against the knowledge source excerpt.
+   Output schema per pair:
+   ```json
+   {
+     "verdict": "keep" | "amend" | "delete",
+     "reason": "one sentence",
+     "revised_answer": "amended answer text if verdict is amend, else null"
+   }
+   ```
+4. Scans `forwarded_queries/` (if present) and proposes new ADD pairs for
+   recurring unmatched queries.
+5. Assembles proposals in category order with global sequential numbering.
+6. Prints the Proposals Report to stdout.
+7. Saves proposals to `mirror/ask_aruvi/kb_proposals_pending.json`.
+
+**`--write --proposals N,M,P` (or `--proposals all`) mode:**
+
+1. Loads `kb_proposals_pending.json`.
+2. Filters to the cleared proposal numbers only.
+3. Applies changes as specified in Stage 2 above.
+4. Writes JSON and Word doc outputs.
+5. Deletes `kb_proposals_pending.json`.
 
 ### Word document format
 
@@ -267,9 +370,13 @@ If running directly from Mac terminal (lower cost, no Cowork overhead):
 ```bash
 cd "/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi"
 source .env  # or: export $(cat .env | xargs)
-python3 aruvi-scripts/refresh_kb.py --dry-run
-# review diff report
-python3 aruvi-scripts/refresh_kb.py --write
+
+# Stage 1 — generate proposals, review with Kumar
+python3 aruvi-scripts/refresh_kb.py --propose
+
+# Stage 2 — after Kumar's clearance
+python3 aruvi-scripts/refresh_kb.py --write --proposals 1,3,4
+# or: --proposals all
 ```
 
 ---

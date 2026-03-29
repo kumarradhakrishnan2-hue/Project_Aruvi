@@ -872,8 +872,11 @@ def _normalise_assessment_sections(result: dict) -> list:
             elems = item.get("look_for") or []
             return "\n".join(str(e) for e in elems)
         if qtype == "OPEN_TASK":
-            guide = item.get("guide") or {}
-            return str(guide.get("strong_vs_weak_markers", ""))
+            # New schema: format_of_output is a list; join for display
+            fof = item.get("format_of_output") or []
+            if isinstance(fof, list):
+                return "\n".join(str(f) for f in fof)
+            return str(fof)
         return ""
 
     # Weight integer → label, mirroring WEIGHT_LABEL in lpa_page.html
@@ -916,11 +919,14 @@ def _normalise_assessment_sections(result: dict) -> list:
         sections[c_code]["questions"].append({
             "type":               qtype,
             "question":           item.get("question_text", ""),
+            "task":               item.get("task", ""),
+            "scaffold":           item.get("scaffold", ""),
+            "format_of_output":   item.get("format_of_output", []),
             "task_instructions":  item.get("task_instructions", ""),
             "options":            item.get("options", []),
             "annotation":         item.get("annotation", ""),
             "period_ref":         item.get("period_ref", ""),
-            "title":              _build_title(qtype, item.get("question_text", "")),
+            "title":              _build_title(qtype, item.get("task", "") or item.get("question_text", "")),
             "expected":           _build_expected(item),
             "cognitive_demand":   item.get("cognitive_demand", ""),
             "guide":              item.get("guide", {}),
@@ -3076,96 +3082,21 @@ elif st.session_state.role == "Generate":
         _safe_title = re.sub(r"[^\w\s-]", "", _chapter_export.get("chapter_title", "chapter")).strip().replace(" ", "_")[:40]
         _filename_stem = f"Aruvi_{_safe_title}"
 
-        _exp_col1, _exp_col2, _exp_col3, _exp_col4, _exp_spacer = st.columns([1, 1, 1, 1, 1])
-        with _exp_col1:
-            st.download_button(
-                label="⬇ LP (DOCX)",
-                data=generate_docx_bytes_lp(result, _chapter_export, st.session_state.grade or result.get("grade",""), st.session_state.subject or result.get("subject","")),
-                file_name=f"{_filename_stem}_LP.docx",
-                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                key="export_docx_lp",
-                use_container_width=True,
-            )
-        with _exp_col2:
-            st.download_button(
-                label="⬇ Assessment (DOCX)",
-                data=generate_docx_bytes_assess(result, _chapter_export, st.session_state.grade or result.get("grade",""), st.session_state.subject or result.get("subject","")),
-                file_name=f"{_filename_stem}_Assessment.docx",
-                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                key="export_docx_assess",
-                use_container_width=True,
-            )
-        with _exp_col3:
-            try:
-                from pypdf import PdfWriter, PdfReader
-                from assessment_pdf_generator import build_assessment_pdf_bytes as _bapb_comb
-                import io as _io2
-                _plp = generate_pdf_bytes_lp(result, _chapter_export, st.session_state.grade or result.get("grade",""), st.session_state.subject or result.get("subject",""))
-                _comb_assess_payload = {
-                    "saved_at":       datetime.now().isoformat(timespec="seconds"),
-                    "grade":          st.session_state.grade   or result.get("grade",   "Grade VII"),
-                    "subject":        st.session_state.subject or result.get("subject", "Social Science"),
-                    "chapter_number": _chapter_export.get("chapter_number", 0),
-                    "chapter_title":  _chapter_export.get("chapter_title",  ""),
-                    "result": {
-                        "lesson_plan":      result.get("lesson_plan", {}),
-                        "assessment_items": result.get("assessment_items", []),
-                    },
-                }
-                _pas = _bapb_comb(_comb_assess_payload)
-                _pw = PdfWriter()
-                for _pb2 in [_plp, _pas]:
-                    if _pb2:
-                        _pr2 = PdfReader(_io2.BytesIO(_pb2))
-                        for _pg in _pr2.pages:
-                            _pw.add_page(_pg)
-                _mb = _io2.BytesIO()
-                _pw.write(_mb)
-                _combined_pdf = _mb.getvalue()
-            except Exception:
-                _combined_pdf = b""
-            st.download_button(
-                label="⬇ Combined PDF",
-                data=_combined_pdf if _combined_pdf else b"",
-                file_name=f"{_filename_stem}_Full.pdf",
-                mime="application/pdf",
-                key="export_pdf_combined",
-                use_container_width=True,
-            )
-        with _exp_col4:
-            # ── LP PDF (ReportLab) ────────────────────────────────────────────
-            try:
-                from lp_pdf_generator import build_lp_pdf_bytes as _build_lp_pdf_bytes
-                _lp_json_payload = {
-                    "saved_at":       datetime.now().isoformat(timespec="seconds"),
-                    "grade":          st.session_state.grade   or result.get("grade",   "Grade VII"),
-                    "subject":        st.session_state.subject or result.get("subject", "Social Science"),
-                    "chapter_number": _chapter_export.get("chapter_number", 0),
-                    "chapter_title":  _chapter_export.get("chapter_title",  ""),
-                    "result":         {"lesson_plan": result.get("lesson_plan", {})},
-                }
-                _lp_pdf_bytes = _build_lp_pdf_bytes(_lp_json_payload)
-                st.download_button(
-                    label="⬇ LP (PDF)",
-                    data=_lp_pdf_bytes,
-                    file_name=f"{_filename_stem}_LP.pdf",
-                    mime="application/pdf",
-                    key="export_pdf_lp_rl",
-                    use_container_width=True,
-                )
-            except Exception as _lp_pdf_err:
-                st.caption(f"LP PDF unavailable: {_lp_pdf_err}")
-
-        st.markdown('<div style="height:0.75rem;"></div>', unsafe_allow_html=True)
-
-        # ── Primary-style LP / Assessment download buttons ────────────────────
-        # CSS: match Generate button colour scheme, but font 2 sizes smaller
+        # ── Primary-style LP / Assessment / Save buttons ─────────────────────
+        # CSS: match Generate button colour scheme; orange for Save button
         st.markdown("""<style>
 div[data-testid="stDownloadButton"] button[kind="primary"] {
     font-size: 0.82rem !important;
 }
+div[class*="st-key-gen_save_top"] button,
+div[class*="st-key-gen_save_bot"] button {
+    background-color: #E87722 !important;
+    color: #ffffff !important;
+    border: none !important;
+    font-size: 0.82rem !important;
+}
 </style>""", unsafe_allow_html=True)
-        _pdl_c1, _pdl_c2, _pdl_spc = st.columns([1, 1, 3])
+        _pdl_c1, _pdl_c2, _pdl_c3, _pdl_spc = st.columns([1, 1, 1, 2])
         with _pdl_c1:
             try:
                 from lp_pdf_generator import build_lp_pdf_bytes as _blpb_gen
@@ -3215,6 +3146,22 @@ div[data-testid="stDownloadButton"] button[kind="primary"] {
                 type="primary",
                 use_container_width=True,
             )
+        with _pdl_c3:
+            if st.button(
+                "Save to my plans",
+                key="gen_save_top",
+                use_container_width=True,
+            ):
+                save_plan(
+                    grade       = st.session_state.grade,
+                    subject     = st.session_state.subject,
+                    chapter     = chapters[st.session_state.teacher_ch_idx],
+                    period_rows = st.session_state.get("period_rows", [0]),
+                    session     = st.session_state,
+                    result      = result,
+                )
+                st.session_state.plan_just_saved = True
+                st.rerun()
         st.markdown('<div style="height:0.5rem;"></div>', unsafe_allow_html=True)
 
         # ── LPA HTML page ─────────────────────────────────────────────────
@@ -3263,15 +3210,62 @@ div[data-testid="stDownloadButton"] button[kind="primary"] {
         _lpa_html = _lpa_tpl.replace("/* __LPA_DATA__ */", _lpa_inject)
         components.html(_lpa_html, height=900, scrolling=True)
 
-        st.markdown('<div style="height:1.5rem;"></div>', unsafe_allow_html=True)
-        st.divider()
-        _save_l, _save_r = st.columns([3, 1])
-        with _save_r:
-            if st.button(
-                "💾 Save to My Plans",
-                key="save_plan_btn",
-                use_container_width=True,
+        st.markdown('<div style="height:0.5rem;"></div>', unsafe_allow_html=True)
+        _bot_c1, _bot_c2, _bot_c3, _bot_spc = st.columns([1, 1, 1, 2])
+        with _bot_c1:
+            try:
+                from lp_pdf_generator import build_lp_pdf_bytes as _blpb_bot
+                _bot_lp_payload = {
+                    "saved_at":       datetime.now().isoformat(timespec="seconds"),
+                    "grade":          st.session_state.grade   or result.get("grade",   "Grade VII"),
+                    "subject":        st.session_state.subject or result.get("subject", "Social Science"),
+                    "chapter_number": _chapter_export.get("chapter_number", 0),
+                    "chapter_title":  _chapter_export.get("chapter_title",  ""),
+                    "result":         {"lesson_plan": result.get("lesson_plan", {})},
+                }
+                _bot_lp_bytes = _blpb_bot(_bot_lp_payload)
+                st.download_button(
+                    label="Lesson plan  ⬇",
+                    data=_bot_lp_bytes,
+                    file_name=f"{_filename_stem}_LP.pdf",
+                    mime="application/pdf",
+                    key="gen_lp_bot_dl",
+                    type="primary",
+                    use_container_width=True,
+                )
+            except Exception as _bot_lp_err:
+                st.caption(f"LP PDF error: {_bot_lp_err}")
+        with _bot_c2:
+            try:
+                from assessment_pdf_generator import build_assessment_pdf_bytes as _bapb_bot
+                _bot_assess_payload = {
+                    "saved_at":       datetime.now().isoformat(timespec="seconds"),
+                    "grade":          st.session_state.grade   or result.get("grade",   "Grade VII"),
+                    "subject":        st.session_state.subject or result.get("subject", "Social Science"),
+                    "chapter_number": _chapter_export.get("chapter_number", 0),
+                    "chapter_title":  _chapter_export.get("chapter_title",  ""),
+                    "result": {
+                        "lesson_plan":      result.get("lesson_plan", {}),
+                        "assessment_items": result.get("assessment_items", []),
+                    },
+                }
+                _bot_assess_bytes = _bapb_bot(_bot_assess_payload)
+            except Exception:
+                _bot_assess_bytes = b""
+            st.download_button(
+                label="Assessment  ⬇",
+                data=_bot_assess_bytes if _bot_assess_bytes else b"",
+                file_name=f"{_filename_stem}_Assessment.pdf",
+                mime="application/pdf",
+                key="gen_assess_bot_dl",
                 type="primary",
+                use_container_width=True,
+            )
+        with _bot_c3:
+            if st.button(
+                "Save to my plans",
+                key="gen_save_bot",
+                use_container_width=True,
             ):
                 save_plan(
                     grade       = st.session_state.grade,
@@ -3284,19 +3278,9 @@ div[data-testid="stDownloadButton"] button[kind="primary"] {
                 st.session_state.plan_just_saved = True
                 st.rerun()
         if st.session_state.get("plan_just_saved"):
-            with _save_l:
-                st.success("Saved — view it in My Plans.")
+            st.success("Saved — view it in My Plans.")
             st.session_state.plan_just_saved = False
 
-        st.markdown(
-            f'<div style="font-size:0.70rem;color:#9c9693;margin-top:2rem;'
-            f'border-top:1px solid #e8e5e0;padding-top:0.75rem;">'
-            f'Tokens — input: {result.get("input_tokens",0):,} · '
-            f'output: {result.get("output_tokens",0):,} · '
-            f'cost: ₹{result.get("cost_inr",0)}'
-            f'</div>',
-            unsafe_allow_html=True,
-        )
 
 # ═════════════════════════════════════════════════
 #  ALLOCATE WORKSPACE
