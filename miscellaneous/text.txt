@@ -23,4 +23,30 @@ bash run_mapping.sh --subject social_sciences --grade vii --chapters 1
 RUN LESSON PLAN AND ASSESSMENT
 run from the Streamlit UI by invoking generate_lpa()
 
+BEGINNING OF CONVERSATION
+
+* Be concise
+* No repetition
+* No explanations unless asked
+* Output minimal patch only (no full files)
+* Assume prior context from PROJECT SUMMARY below
+* If unclear, ask one short question only
+* NO coding strictly unless specifically asked for.
+
+PROJECT SUMMARY:
+"<PASTE LAST SUMMARY HERE>"
+
+END OF CONVERSATION
+Summarize the updated project state in under 150 words.
+
+Return only:
+
+* goal
+* current state
+* files touched
+* decisions made
+* next step
+
+
+
 

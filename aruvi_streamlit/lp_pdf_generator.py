@@ -94,8 +94,9 @@ def make_styles():
     st("lo_text",     fontName="Helvetica-Oblique", fontSize=8.5, leading=13, textColor=INK)
     st("lo_tag",      fontName="Helvetica-Bold", fontSize=5.5,  leading=8,  textColor=MUTE)
     # Competency table
-    st("comp_hdr",    fontName="Helvetica-Bold", fontSize=6.5,  leading=9,  textColor=INK)
-    st("comp_code",   fontName="Helvetica-Bold", fontSize=7.5,  leading=11, textColor=BLUE_TAG, alignment=TA_CENTER)
+    st("comp_hdr",     fontName="Helvetica-Bold", fontSize=6.5,  leading=9,  textColor=INK)
+    st("comp_hdr_ctr", fontName="Helvetica-Bold", fontSize=6.5,  leading=9,  textColor=INK, alignment=TA_CENTER)
+    st("comp_code",    fontName="Helvetica-Bold", fontSize=7.5,  leading=11, textColor=BLUE_TAG, alignment=TA_CENTER)
     st("comp_text",   fontName="Helvetica",      fontSize=7.5,  leading=11, textColor=INK)
     # Section label
     st("section_lbl", fontName="Helvetica-Bold", fontSize=6.5,  leading=9,  textColor=MUTE,
@@ -305,13 +306,12 @@ def meta_strip(chapter_num, title, weight, periods, total_time):
 def meta_strip_full(chapter_num, title, weight, periods, total_time, date_str):
     """Version with date filled in."""
     uw = PAGE_W - L_MAR - R_MAR
-    col_ws = [uw * f for f in [0.09, 0.38, 0.09, 0.16, 0.14, 0.14]]
+    col_ws = [uw * f for f in [0.09, 0.44, 0.19, 0.14, 0.14]]
     lbl_row = [Paragraph(x, ST["meta_lbl"]) for x in
-               ["Chapter", "Title", "Weight", "Total periods", "Total time", "Date"]]
+               ["Chapter", "Title", "Total periods", "Total time", "Date"]]
     val_row = [
         Paragraph(f"Ch {chapter_num:02d}",   ST["meta_val"]),
         Paragraph(_clean_text(title),         ST["meta_val"]),
-        Paragraph(_clean_text(str(weight)),   ST["meta_val"]),
         Paragraph(str(periods),               ST["meta_val"]),
         Paragraph(f"{total_time} min",        ST["meta_val"]),
         Paragraph(_clean_text(date_str),      ST["meta_val"]),
@@ -339,7 +339,7 @@ def competency_table(competencies):
     """
     uw = PAGE_W - L_MAR - R_MAR
     col_ws = [uw * 0.12, uw * 0.88]
-    hdr = [Paragraph("C No.", ST["comp_hdr"]), Paragraph("Text of competency", ST["comp_hdr"])]
+    hdr = [Paragraph("C No.", ST["comp_hdr"]), Paragraph("Targeted competencies", ST["comp_hdr_ctr"])]
     rows = [hdr]
     for code, text in competencies:
         rows.append([
@@ -376,14 +376,13 @@ def period_card(period_num, duration_min, activity_name, anchored_section,
     # Fix 4: first sentence of anchored section only (split at '/')
     sec_short = _clean_text(anchored_section.split("/")[0].strip())
 
-    # ── Period header row — same look as time rows ────────────────────────────
+    # ── Period header row — Period | Duration | Activity (3 cols, no Section) ─
     hdr_data = [[
         Paragraph(f"<b>Period {period_num}</b>",              ST["period_lbl"]),
         Paragraph(f"{duration_min} min",                       ST["period_time"]),
         Paragraph(f"<b>{_clean_text(activity_name)}</b>",      ST["period_act"]),
-        Paragraph(f"<b>Section:</b> {sec_short}",              ST["period_sec"]),
     ]]
-    hdr_t = Table(hdr_data, colWidths=[uw * f for f in [0.13, 0.09, 0.40, 0.38]])
+    hdr_t = Table(hdr_data, colWidths=[uw * f for f in [0.13, 0.09, 0.78]])
     hdr_t.setStyle(TableStyle([
         ("BACKGROUND",    (0, 0), (-1, -1), BG_META),
         ("LINEABOVE",     (0, 0), (-1, -1), 1.0, INK),
@@ -395,10 +394,18 @@ def period_card(period_num, duration_min, activity_name, anchored_section,
         ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
     ]))
 
-    # ── Materials row — shown first so teacher can prepare before class ───────
+    # ── Materials row — inject "(Section: ...)" after "Textbook" ─────────────
+    import re as _re
+    mat_display = _clean_text(str(materials))
+    if sec_short:
+        mat_display = _re.sub(
+            r'(Textbook)',
+            f'Textbook (Section: {sec_short})',
+            mat_display, count=1, flags=_re.IGNORECASE,
+        )
     mat_row = [[
-        Paragraph("<b>Material</b>",          ST["mat_label"]),
-        Paragraph(_clean_text(str(materials)), ST["mat_text"]),
+        Paragraph("<b>Material</b>", ST["mat_label"]),
+        Paragraph(mat_display,       ST["mat_text"]),
     ]]
     mat_t = Table(mat_row, colWidths=[uw * 0.10, uw * 0.90])
     mat_t.setStyle(TableStyle([
@@ -471,9 +478,6 @@ def build_lp_pdf(output_path, data):
         data["date"],
     ))
     story.append(Spacer(1, 3 * mm))
-    # Competencies targeted
-    story.append(Paragraph("COMPETENCIES TARGETED", ST["section_lbl"]))
-    story.append(HLine(uw, thickness=0.4, color=HAIRLINE, sb=1, sa=3))
     story.append(competency_table(data["competencies"]))
     story.append(Spacer(1, 4 * mm))
     # Period cards — period_card() returns a list; extend so each flowable

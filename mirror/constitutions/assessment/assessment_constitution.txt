@@ -284,20 +284,19 @@ OPEN TASK SCHEMA:
   "competency": { "c_code": "string", "competency_text": "string" },
   "cognitive_demand": "string",
   "visual_stimulus": "string | null",
-  "task_instructions": "string",
-  "open_task_format": {
-    "format_type": "string — from subject-group menu only",
-    "rationale": "string — one sentence justifying format selection"
-  },
-  "scaffold": {
-    "provided": "boolean",
-    "description": "string | null"
-  },
+  "task": "string — plain imperative language, max 3 sentences. Names chapter content and cognitive operation required.",
+  "scaffold": "string — what support is provided and whether optional or required. If none: 'No scaffold provided.'  Max 2 sentences.",
+  "format_of_output": [
+    "string — first required output format",
+    "string — second required output format if any"
+  ],
   "guide": {
-    "learning_outcome": { "periods": ["integer", "integer", "..."] },
-    "what_this_demonstrates": "string — competency evidence in this artefact format",
-    "reading_the_scaffold": "string — what scaffold use / non-use reveals about the student",
-    "strong_vs_weak_markers": "string — qualitative markers distinguishing strong from weak production",
+    "learning_outcome": { "periods": ["integer"] },
+    "format_type": "string — from subject-group menu only",
+    "format_rationale": "string — one sentence justifying format selection per Rule 8",
+    "what_this_demonstrates": "string",
+    "reading_the_scaffold": "string",
+    "strong_vs_weak_markers": "string",
     "inclusivity": "string"
   }
 }

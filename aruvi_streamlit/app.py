@@ -15,10 +15,13 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 import math
 
+import uuid
 import streamlit as st
 import streamlit.components.v1 as components
 import anthropic
 import os
+from ask_aruvi_qa import ask as aruvi_ask
+from ask_aruvi_feedback import write_thumbs_feedback, write_general_feedback
 
 # ── Project root (needed by helper functions below) ───────────────────────────
 
@@ -489,9 +492,114 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
         output_tokens = 0
 
         import time as _time
-        stream_placeholder = st.empty()
+        progress_placeholder = st.empty()
+
+        # ── Shared CSS (animations) ───────────────────────────────────────────
+        _pcss = (
+            "<style>"
+            "@keyframes aruviPulse{0%,100%{opacity:1}50%{opacity:.3}}"
+            "@keyframes spin{to{transform:rotate(360deg)}}"
+            "</style>"
+        )
+        # ── Icon snippets ─────────────────────────────────────────────────────
+        _tick_icon = (
+            '<div style="width:12px;height:12px;border-radius:50%;background:#d4f0e4;'
+            'display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">'
+            '<div style="width:5px;height:3px;border-left:1.5px solid #2d8a5e;'
+            'border-bottom:1.5px solid #2d8a5e;transform:rotate(-45deg);'
+            'margin-top:-1px;"></div></div>'
+        )
+        _spin_icon = (
+            '<div style="width:12px;height:12px;border-radius:50%;'
+            'border:1.5px solid #e8a83e;border-top-color:transparent;'
+            'animation:spin 0.7s linear infinite;flex-shrink:0;'
+            'margin-top:1px;box-sizing:border-box;"></div>'
+        )
+        _dot_icon = (
+            '<div style="width:12px;height:12px;display:flex;align-items:center;'
+            'justify-content:center;flex-shrink:0;margin-top:1px;">'
+            '<div style="width:6px;height:6px;background:#d9d6d0;border-radius:50%;"></div></div>'
+        )
+
+        def _row_done(text):
+            return (
+                f'<div style="display:flex;align-items:flex-start;gap:8px;'
+                f'font-size:12px;color:#9c9895;">{_tick_icon}<span>{text}</span></div>'
+            )
+        def _row_active(text):
+            return (
+                f'<div style="display:flex;align-items:flex-start;gap:8px;'
+                f'font-size:12px;color:#3d3b38;font-weight:500;">'
+                f'{_spin_icon}<span>{text}</span></div>'
+            )
+        def _row_pending(text):
+            return (
+                f'<div style="display:flex;align-items:flex-start;gap:8px;'
+                f'font-size:12px;opacity:0.45;">{_dot_icon}<span>{text}</span></div>'
+            )
+
+        _steps = [
+            "Reading LP &amp; Assessment Constitutions",
+            "Reading chapter summary",
+            "Loading matched competencies",
+            "Loading stage pedagogy",
+            "Building period-by-period activities&#8230;",
+            "Writing assessment questions",
+        ]
+        _note_html = (
+            '<div style="height:1px;background:#ece9e4;margin:8px 0;"></div>'
+            '<div style="font-size:11px;color:#9c9895;font-style:italic;line-height:1.5;'
+            'background:#f7f5f2;border-radius:6px;padding:7px 9px;">'
+            'Not random generation &#8212; every activity and question traces to '
+            'your chapter&#8217;s competency map.</div>'
+        )
+        _box_open = (
+            '<div class="aruvi-progress-box" style="position:fixed;top:80px;right:24px;'
+            'width:280px;z-index:9999;background:white;border:1px solid #d9d6d0;'
+            'border-radius:10px;overflow:hidden;">'
+        )
+        _hdr_working = (
+            '<div style="padding:8px 12px;border-bottom:1px solid #ece9e4;'
+            'display:flex;gap:8px;align-items:center;">'
+            '<div style="width:10px;height:10px;border-radius:50%;background:#e8a83e;'
+            'animation:aruviPulse 1.4s infinite;flex-shrink:0;"></div>'
+            '<span style="font-size:11px;color:#7a776f;font-weight:500;">'
+            'Aruvi is working&#8230;</span></div>'
+        )
+        _body_open = (
+            '<div style="padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px;">'
+        )
+
+        # Phase 1: 4 ticked · step 5 (activities) active · step 6 (assessment) pending
+        PROGRESS_HTML_WORKING = (
+            _pcss + _box_open + _hdr_working + _body_open
+            + _row_done(_steps[0])
+            + _row_done(_steps[1])
+            + _row_done(_steps[2])
+            + _row_done(_steps[3])
+            + _row_active(_steps[4])
+            + _row_pending(_steps[5])
+            + _note_html
+            + '</div></div>'
+        )
+        # Phase 2: 5 ticked · step 6 (assessment questions) active
+        PROGRESS_HTML_ASSESSMENT_ACTIVE = (
+            _pcss + _box_open + _hdr_working + _body_open
+            + _row_done(_steps[0])
+            + _row_done(_steps[1])
+            + _row_done(_steps[2])
+            + _row_done(_steps[3])
+            + _row_done(_steps[4])
+            + _row_active(_steps[5])
+            + _note_html
+            + '</div></div>'
+        )
+
+        progress_placeholder.markdown(PROGRESS_HTML_WORKING, unsafe_allow_html=True)
+
+        # ── Stream loop ───────────────────────────────────────────────────────
         streamed_text = ""
-        _start = _time.time()
+        _assessment_triggered = False
 
         with client.messages.stream(
             model="claude-sonnet-4-6",
@@ -501,14 +609,12 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
         ) as stream:
             for text in stream.text_stream:
                 streamed_text += text
-                _elapsed = int(_time.time() - _start)
-                stream_placeholder.markdown(
-                    f'<div style="font-size:0.78rem;color:#5a5754;padding:0.5rem 0;">'
-                    f'✦ Generating… {_elapsed}s</div>',
-                    unsafe_allow_html=True
-                )
+                if not _assessment_triggered and '"assessment_items"' in streamed_text:
+                    _assessment_triggered = True
+                    progress_placeholder.markdown(
+                        PROGRESS_HTML_ASSESSMENT_ACTIVE, unsafe_allow_html=True
+                    )
 
-        stream_placeholder.empty()
         full_output = streamed_text
 
         usage = stream.get_final_message().usage
@@ -534,7 +640,71 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             _raw = (_raw[_raw.index("\n") + 1 : _fence_end] if _fence_end > 3 else _raw).strip()
         try:
             parsed = json.loads(_raw)
+            # ── Phase 3: completion box (built after parse so numbers are real) ─
+            _n_periods = len(parsed.get("lesson_plan", {}).get("periods", []))
+            _n_acts    = sum(
+                len(p.get("activities", []))
+                for p in parsed.get("lesson_plan", {}).get("periods", [])
+            )
+            _c_codes   = {
+                (_c.get("c_code", "") if isinstance(_c, dict) else str(_c))
+                for _p2 in parsed.get("lesson_plan", {}).get("periods", [])
+                for _c  in _p2.get("competencies", [])
+            }
+            _n_comps   = len(_c_codes - {""})
+            _n_qs      = len(parsed.get("assessment_items", []))
+            _sv        = "color:#2d8a5e;font-weight:500;"
+            _summary   = (
+                '<div style="font-family:monospace;font-size:10.5px;background:#f7f5f2;'
+                'border-radius:6px;padding:8px 10px;margin-bottom:8px;">'
+                f'Lesson plan: <span style="{_sv}">{_n_periods}</span> periods'
+                f' &#183; <span style="{_sv}">{_n_acts}</span> activities<br>'
+                f'Competencies: <span style="{_sv}">{_n_comps}</span> mapped<br>'
+                f'Assessment: <span style="{_sv}">{_n_qs}</span> questions'
+                '</div>'
+            )
+            _tick_sm   = (
+                '<div style="width:10px;height:10px;border-radius:50%;background:#d4f0e4;'
+                'display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">'
+                '<div style="width:4px;height:2.5px;border-left:1.5px solid #2d8a5e;'
+                'border-bottom:1.5px solid #2d8a5e;transform:rotate(-45deg);'
+                'margin-top:-0.5px;"></div></div>'
+            )
+            def _row_sm(text):
+                return (
+                    f'<div style="display:flex;align-items:flex-start;gap:8px;'
+                    f'font-size:11px;color:#b0ada8;">'
+                    f'{_tick_sm}<span>{text}</span></div>'
+                )
+            PROGRESS_HTML_DONE = (
+                _pcss
+                + '<div class="aruvi-progress-box" style="position:fixed;top:80px;right:24px;'
+                'width:280px;z-index:9999;background:white;border:1px solid #d9d6d0;'
+                'border-radius:10px;overflow:hidden;">'
+                '<div style="padding:8px 12px;border-bottom:1px solid #ece9e4;'
+                'display:flex;gap:8px;align-items:center;">'
+                '<div style="width:10px;height:10px;border-radius:50%;background:#2d8a5e;'
+                'flex-shrink:0;"></div>'
+                '<span style="font-size:11px;color:#7a776f;font-weight:500;flex:1;">'
+                'Generation complete</span>'
+                '<button onclick="this.closest(\'.aruvi-progress-box\').style.display=\'none\'"'
+                ' style="font-size:10px;background:#f2f0ec;border:1px solid #dddad5;'
+                'border-radius:4px;padding:3px 7px;cursor:pointer;color:#9c9895;">'
+                'collapse &#8250;</button>'
+                '</div>'
+                '<div style="padding:10px 12px 12px;display:flex;flex-direction:column;gap:3px;">'
+                + _summary
+                + _row_sm(_steps[0])
+                + _row_sm(_steps[1])
+                + _row_sm(_steps[2])
+                + _row_sm(_steps[3])
+                + _row_sm(_steps[4])
+                + _row_sm(_steps[5])
+                + '</div></div>'
+            )
+            progress_placeholder.markdown(PROGRESS_HTML_DONE, unsafe_allow_html=True)
         except Exception as _je:
+            progress_placeholder.empty()
             # Log first 500 chars + last 200 chars so truncation is visible in Streamlit logs
             _preview = _raw[:500] + (" … [truncated] … " + _raw[-200:] if len(_raw) > 700 else "")
             st.warning(
@@ -2058,40 +2228,26 @@ hr { border-color: #d9d6d0 !important; }
 }
 
 /* ═══════════════════════════════════════════════════
-   ASK ARUVI PANEL  — session-state driven, fixed right
+   ASK ARUVI FAB  — fixed bottom-right floating button
    ═══════════════════════════════════════════════════ */
-/* Toggle button — fixed vertical tab on right edge */
-div[class*="st-key-ask_aruvi_toggle"] button {
+div[class*="st-key-ask_aruvi_fab"] button {
     position: fixed !important;
-    right: 0 !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
+    bottom: 28px !important;
+    right: 28px !important;
+    width: 52px !important;
+    height: 52px !important;
+    border-radius: 50% !important;
+    background: #1B2A3B !important;
+    color: #ffffff !important;
+    font-size: 1.3rem !important;
+    border: none !important;
     z-index: 99999 !important;
-    width: 28px !important;
-    height: 88px !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18) !important;
+    min-height: unset !important;
     padding: 0 !important;
-    border-radius: 6px 0 0 6px !important;
-    border: 1px solid #d9d6d0 !important;
-    border-right: none !important;
-    background: #f5f3ef !important;
-    color: #5a5754 !important;
-    font-size: 0.62rem !important;
-    font-weight: 500 !important;
-    letter-spacing: 0.08em !important;
-    text-transform: uppercase !important;
-    writing-mode: vertical-rl !important;
-    white-space: nowrap !important;
-    cursor: pointer !important;
-    box-shadow: -2px 0 6px rgba(0,0,0,0.06) !important;
 }
-div[class*="st-key-ask_aruvi_toggle"] button:hover {
-    background: #eae8e4 !important;
-    color: #2c2a27 !important;
-    border-color: #2c3e50 !important;
-}
-div[class*="st-key-ask_aruvi_toggle"] button * {
-    writing-mode: vertical-rl !important;
-    text-orientation: mixed !important;
+div[class*="st-key-ask_aruvi_fab"] button:hover {
+    background: #2C7A7B !important;
 }
 /* Panel — slides in from right */
 .aruvi-chat-panel {
@@ -2365,6 +2521,14 @@ if "ch_selected"              not in st.session_state: st.session_state.ch_selec
 if "ch_periods"               not in st.session_state: st.session_state.ch_periods               = {ch["chapter_number"]: 6    for ch in chapters}
 if "principal_generated"      not in st.session_state: st.session_state.principal_generated      = False
 if "ask_aruvi_open"           not in st.session_state: st.session_state.ask_aruvi_open           = False
+st.session_state.setdefault("ask_aruvi_session_id",   str(uuid.uuid4()))
+st.session_state.setdefault("ask_aruvi_category",     None)
+st.session_state.setdefault("ask_aruvi_response",     "")
+st.session_state.setdefault("ask_aruvi_last_query",   "")
+st.session_state.setdefault("ask_aruvi_show_thumbs",  False)
+st.session_state.setdefault("ask_aruvi_thumb_done",   False)
+st.session_state.setdefault("ask_aruvi_show_followup", False)
+st.session_state.setdefault("ask_aruvi_detail_cat", None)
 if "lpa_result"               not in st.session_state: st.session_state.lpa_result               = None
 if "lpa_generating"           not in st.session_state: st.session_state.lpa_generating           = False
 if "plan_just_saved"          not in st.session_state: st.session_state.plan_just_saved          = False
@@ -2891,9 +3055,21 @@ elif st.session_state.role == "Generate":
         with _exp_col3:
             try:
                 from pypdf import PdfWriter, PdfReader
+                from assessment_pdf_generator import build_assessment_pdf_bytes as _bapb_comb
                 import io as _io2
                 _plp = generate_pdf_bytes_lp(result, _chapter_export, st.session_state.grade or result.get("grade",""), st.session_state.subject or result.get("subject",""))
-                _pas = generate_pdf_bytes_assess(result, _chapter_export, st.session_state.grade or result.get("grade",""), st.session_state.subject or result.get("subject",""))
+                _comb_assess_payload = {
+                    "saved_at":       datetime.now().isoformat(timespec="seconds"),
+                    "grade":          st.session_state.grade   or result.get("grade",   "Grade VII"),
+                    "subject":        st.session_state.subject or result.get("subject", "Social Science"),
+                    "chapter_number": _chapter_export.get("chapter_number", 0),
+                    "chapter_title":  _chapter_export.get("chapter_title",  ""),
+                    "result": {
+                        "lesson_plan":      result.get("lesson_plan", {}),
+                        "assessment_items": result.get("assessment_items", []),
+                    },
+                }
+                _pas = _bapb_comb(_comb_assess_payload)
                 _pw = PdfWriter()
                 for _pb2 in [_plp, _pas]:
                     if _pb2:
@@ -2971,11 +3147,22 @@ div[data-testid="stDownloadButton"] button[kind="primary"] {
             except Exception as _gen_lp_err:
                 st.caption(f"LP PDF error: {_gen_lp_err}")
         with _pdl_c2:
-            _gen_assess_bytes = generate_pdf_bytes_assess(
-                result, _chapter_export,
-                st.session_state.grade   or result.get("grade",   ""),
-                st.session_state.subject or result.get("subject", ""),
-            )
+            try:
+                from assessment_pdf_generator import build_assessment_pdf_bytes as _bapb_gen
+                _gen_assess_payload = {
+                    "saved_at":       datetime.now().isoformat(timespec="seconds"),
+                    "grade":          st.session_state.grade   or result.get("grade",   "Grade VII"),
+                    "subject":        st.session_state.subject or result.get("subject", "Social Science"),
+                    "chapter_number": _chapter_export.get("chapter_number", 0),
+                    "chapter_title":  _chapter_export.get("chapter_title",  ""),
+                    "result": {
+                        "lesson_plan":      result.get("lesson_plan", {}),
+                        "assessment_items": result.get("assessment_items", []),
+                    },
+                }
+                _gen_assess_bytes = _bapb_gen(_gen_assess_payload)
+            except Exception as _gen_assess_err:
+                _gen_assess_bytes = b""
             st.download_button(
                 label="Assessment  ⬇",
                 data=_gen_assess_bytes if _gen_assess_bytes else b"",
@@ -3445,11 +3632,10 @@ else:
                 _mp_lp_bytes = _blpb_mp(_mp_lp_payload)
             except Exception:
                 _mp_lp_bytes = b""
-            # Assessment PDF
+            # Assessment PDF — new ReportLab format
             try:
-                _mp_assess_bytes = generate_pdf_bytes_assess(
-                    _p["result"], _ch_for_pdf, _grade, _subject
-                )
+                from assessment_pdf_generator import build_assessment_pdf_bytes as _bapb_mp
+                _mp_assess_bytes = _bapb_mp(_p)
             except Exception:
                 _mp_assess_bytes = b""
             _safe_t = re.sub(r"[^\w\s-]", "", _ch_title).strip().replace(" ", "_")[:40]
@@ -3489,18 +3675,620 @@ else:
                 unsafe_allow_html=True,
             )
 
-# ── Ask Aruvi toggle button (always visible, fixed to right edge) ─────────────
-_toggle_label = "Close" if st.session_state.ask_aruvi_open else "Ask Aruvi"
-if st.button(_toggle_label, key="ask_aruvi_toggle", help="Ask Aruvi"):
-    st.session_state.ask_aruvi_open = not st.session_state.ask_aruvi_open
-    st.rerun()
+# ── Ask Aruvi FAB + Bottom Drawer ────────────────────────────────────────────
+CATEGORY_LABELS = {
+    "cat_a": "How Aruvi plans lessons",
+    "cat_b": "How Aruvi builds assessments",
+    "cat_c": "The competency framework",
+    "cat_d": "Using the platform",
+    "cat_e": "What Aruvi cannot do",
+}
+st.markdown("""
+<style>
+/* ── Popup card ── */
+div[class*="st-key-ask_aruvi_popup"] {
+    position: fixed !important;
+    bottom: 90px !important;
+    right: 28px !important;
+    width: 320px !important;
+    max-height: 75vh !important;
+    background: #FFFFFF !important;
+    border-radius: 16px !important;
+    border: 1px solid #E0DDD8 !important;
+    z-index: 99998 !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.20), 0 4px 16px rgba(0,0,0,0.10) !important;
+    overflow-y: auto !important;
+    padding: 0 !important;
+}
+/* Kill all Streamlit internal spacing */
+div[class*="st-key-ask_aruvi_popup"] [data-testid="stVerticalBlock"] {
+    gap: 0px !important;
+    row-gap: 0px !important;
+}
+div[class*="st-key-ask_aruvi_popup"] [data-testid="element-container"],
+div[class*="st-key-ask_aruvi_popup"] [data-testid="stVerticalBlockBorderWrapper"] {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+/* Header bar */
+.aa-header {
+    padding: 14px 16px 10px 16px;
+    border-bottom: 1px solid #F0EDE9;
+}
+.aa-header-title {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #2C7A7B;
+    margin: 0;
+}
+.aa-header-sub {
+    font-size: 0.7rem;
+    color: #9C9693;
+    margin-top: 2px;
+}
+/* Category cards */
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-chip_"] {
+    margin: 0 !important;
+    padding: 0 8px !important;
+}
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-chip_"] button,
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-chip_"] [data-testid="stBaseButton-secondary"],
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-chip_"] [data-testid="stBaseButton-primary"] {
+    background: #FAFAF8 !important;
+    border: none !important;
+    border-bottom: 1px solid #F0EDE9 !important;
+    border-radius: 0 !important;
+    color: #2C2A27 !important;
+    font-size: 0.75rem !important;
+    font-weight: 400 !important;
+    padding: 11px 12px !important;
+    width: 100% !important;
+    min-height: 40px !important;
+    height: auto !important;
+    text-align: left !important;
+    justify-content: space-between !important;
+    letter-spacing: 0 !important;
+    line-height: 1.3 !important;
+}
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-chip_"] button *,
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-chip_"] [data-testid] * {
+    font-size: 0.75rem !important;
+    color: #2C2A27 !important;
+    line-height: 1.3 !important;
+}
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-chip_"] button:hover,
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-chip_"] button:hover * {
+    background: #F0F7F7 !important;
+    color: #1B2A3B !important;
+}
+div[class*="st-key-ask_aruvi_popup"] [data-testid="stBaseButton-primary"],
+div[class*="st-key-ask_aruvi_popup"] [data-testid="stBaseButton-primary"] * {
+    background: #EAF4F4 !important;
+    color: #2C7A7B !important;
+    font-weight: 600 !important;
+    border: none !important;
+    border-bottom: 1px solid #C8E8E8 !important;
+}
+/* Query box area */
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_query_input"] {
+    padding: 0 12px 0 12px !important;
+    margin: 0 !important;
+    overflow: visible !important;
+}
+/* BaseWeb textarea wrapper has overflow:hidden by default — must override or bottom border clips */
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_query_input"] [data-baseweb="textarea"],
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_query_input"] > div {
+    overflow: visible !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_query_input"] textarea {
+    height: 80px !important;
+    min-height: 80px !important;
+    font-size: 0.75rem !important;
+    border-radius: 10px !important;
+    border: 1px solid #E0DDD8 !important;
+    resize: none !important;
+    line-height: 1.5 !important;
+    padding: 10px 36px 10px 12px !important;
+    background: #FAFAF8 !important;
+    color: #2C2A27 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_query_input"] textarea::placeholder {
+    color: #C0BCB8 !important;
+    opacity: 1 !important;
+}
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_query_input"] textarea:focus {
+    border-color: #2C7A7B !important;
+    outline: none !important;
+}
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_query_input"] p,
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_query_input"] small {
+    font-size: 0.58rem !important;
+    color: #B8B4B0 !important;
+}
+/* Send button — CRITICAL: width:100% prevents fit-content from breaking right: anchor */
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_submit"] {
+    position: relative !important;
+    height: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_submit"] > div,
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_submit"] > div > div {
+    height: 0 !important;
+    width: 100% !important;
+    overflow: visible !important;
+}
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_submit"] button {
+    position: absolute !important;
+    top: 4px !important;
+    right: 14px !important;
+    width: 26px !important;
+    height: 26px !important;
+    min-height: 26px !important;
+    min-width: 26px !important;
+    max-width: 26px !important;
+    border-radius: 50% !important;
+    background: #E8682A !important;
+    border: none !important;
+    color: #FFFFFF !important;
+    font-size: 0.85rem !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 20 !important;
+    pointer-events: all !important;
+}
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_submit"] button:hover {
+    background: #C95820 !important;
+}
+/* Response box */
+.aa-response-wrap {
+    padding: 0 12px 8px 12px;
+}
+.aruvi-response-box {
+    background: #F5F9F9;
+    border-left: 3px solid #2C7A7B;
+    padding: 10px 13px;
+    font-size: 0.75rem;
+    color: #2C2A27;
+    margin-top: 6px;
+    border-radius: 0 8px 8px 0;
+    line-height: 1.6;
+}
+/* Clear button */
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_clear"] button {
+    background: transparent !important;
+    border: none !important;
+    color: #B8B4B0 !important;
+    font-size: 0.62rem !important;
+    padding: 2px 0 0 0 !important;
+    min-height: unset !important;
+    text-decoration: underline !important;
+}
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_clear"] button:hover {
+    color: #5A5754 !important;
+}
+/* Divider — hidden to reduce gap */
+.aa-divider {
+    display: none !important;
+    margin: 0 !important;
+}
+/* Feedback section label */
+.aa-fb-label {
+    padding: 4px 16px 0 16px;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #2C7A7B;
+}
+/* Feedback textarea */
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_fb_text"] {
+    padding: 0 12px 0 12px !important;
+    margin: 0 !important;
+    overflow: visible !important;
+}
+/* BaseWeb textarea wrapper has overflow:hidden by default — must override or bottom border clips */
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_fb_text"] [data-baseweb="textarea"],
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_fb_text"] > div {
+    overflow: visible !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_fb_text"] textarea {
+    height: 80px !important;
+    min-height: 80px !important;
+    font-size: 0.75rem !important;
+    border-radius: 10px !important;
+    border: 1px solid #E0DDD8 !important;
+    resize: none !important;
+    line-height: 1.5 !important;
+    padding: 10px 36px 10px 12px !important;
+    background: #FAFAF8 !important;
+    color: #2C2A27 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_fb_text"] textarea::placeholder {
+    color: #C0BCB8 !important;
+    opacity: 1 !important;
+}
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_fb_text"] textarea:focus {
+    border-color: #2C7A7B !important;
+    outline: none !important;
+}
+/* Feedback send button — CRITICAL: width:100% prevents fit-content from breaking right: anchor */
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_fb_submit"] {
+    position: relative !important;
+    height: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_fb_submit"] > div,
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_fb_submit"] > div > div {
+    height: 0 !important;
+    width: 100% !important;
+    overflow: visible !important;
+}
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_fb_submit"] button {
+    position: absolute !important;
+    top: 4px !important;
+    right: 14px !important;
+    width: 26px !important;
+    height: 26px !important;
+    min-height: 26px !important;
+    min-width: 26px !important;
+    max-width: 26px !important;
+    border-radius: 50% !important;
+    background: #E8682A !important;
+    border: none !important;
+    color: #FFFFFF !important;
+    font-size: 0.85rem !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 20 !important;
+    pointer-events: all !important;
+}
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_fb_submit"] button:hover {
+    background: #C95820 !important;
+}
+/* Thumbs buttons */
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-thumb_"] button {
+    background: transparent !important;
+    border: 1px solid #E0DDD8 !important;
+    border-radius: 50% !important;
+    font-size: 0.75rem !important;
+    width: 28px !important;
+    height: 28px !important;
+    min-height: 28px !important;
+    padding: 0 !important;
+}
+/* FAB */
+div[class*="st-key-ask_aruvi_fab"] button {
+    position: fixed !important;
+    bottom: 28px !important;
+    right: 28px !important;
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 50% !important;
+    background: #1B2A3B !important;
+    color: #ffffff !important;
+    font-size: 1.2rem !important;
+    border: none !important;
+    z-index: 99999 !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.20) !important;
+    min-height: unset !important;
+    padding: 0 !important;
+}
+div[class*="st-key-ask_aruvi_fab"] button:hover {
+    background: #2C7A7B !important;
+}
+html { overflow-y: scroll !important; }
+/* ── Detail view panel ── */
+.aa-detail-panel {
+    padding: 0;
+}
+.aa-detail-back {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 16px 10px 16px;
+    border-bottom: 1px solid #F0EDE9;
+    cursor: pointer;
+}
+.aa-detail-back-arrow {
+    font-size: 0.85rem;
+    color: #2C7A7B;
+}
+.aa-detail-back-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #2C7A7B;
+}
+.aa-detail-cat-title {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #1B2A3B;
+    padding: 14px 16px 4px 16px;
+}
+.aa-detail-cat-desc {
+    font-size: 0.68rem;
+    color: #9C9693;
+    padding: 0 16px 12px 16px;
+    border-bottom: 1px solid #F0EDE9;
+}
+.aa-qa-pair {
+    padding: 12px 16px;
+    border-bottom: 1px solid #F5F3EF;
+}
+.aa-qa-q {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #1B2A3B;
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+.aa-qa-a {
+    font-size: 0.72rem;
+    color: #5A5754;
+    line-height: 1.6;
+}
+/* Back button inside popup */
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-aa_back_btn"] button {
+    background: transparent !important;
+    border: none !important;
+    color: #2C7A7B !important;
+    font-size: 0.7rem !important;
+    font-weight: 600 !important;
+    padding: 12px 16px 10px 16px !important;
+    min-height: unset !important;
+    width: 100% !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
+    border-bottom: 1px solid #F0EDE9 !important;
+    border-radius: 0 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+}
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-aa_back_btn"] button:hover {
+    background: #F5F9F9 !important;
+    color: #1B2A3B !important;
+}
+/* Hide CMD+Enter hint — keep 0/140 counter (it's the last child) */
+div[class*="st-key-ask_aruvi_popup"] [data-testid="InputInstructions"] > *:first-child {
+    display: none !important;
+}
+</style>
+""", unsafe_allow_html=True)
 
-# ── Ask Aruvi panel content (shown when open) ─────────────────────────────────
+# FAB button — Streamlit button styled to look like FAB
+_fab_label = "✕" if st.session_state.ask_aruvi_open else "💬"
+_fab_col = st.container()
+with _fab_col:
+    if st.button(_fab_label, key="ask_aruvi_fab"):
+        st.session_state.ask_aruvi_open = not st.session_state.ask_aruvi_open
+        st.session_state.ask_aruvi_response = ""
+        st.session_state.ask_aruvi_show_thumbs = False
+        st.session_state.ask_aruvi_thumb_done = False
+        st.session_state.ask_aruvi_show_followup = False
+        st.rerun()
+
 if st.session_state.ask_aruvi_open:
-    st.markdown(
-        '<div class="aruvi-chat-panel">'
-        '<div class="aruvi-chat-panel-header">Ask Aruvi</div>'
-        '<div class="aruvi-chat-panel-body">Chat coming soon</div>'
-        '</div>',
-        unsafe_allow_html=True,
-    )
+    with st.container(key="ask_aruvi_popup"):
+
+        # ── Load Q&A knowledge base for detail view ───────────────────────────
+        import json as _json
+        _qa_kb_path = PROJECT_ROOT / "mirror/ask_aruvi/qa_knowledge_base.json"
+        try:
+            _qa_kb = _json.loads(_qa_kb_path.read_text(encoding="utf-8"))
+        except Exception:
+            _qa_kb = {"categories": {}}
+
+        # ── DETAIL VIEW — show Q&A pairs for selected category ────────────────
+        if st.session_state.ask_aruvi_detail_cat is not None:
+            _dcat_key = st.session_state.ask_aruvi_detail_cat
+            _dcat     = _qa_kb.get("categories", {}).get(_dcat_key, {})
+            _dcat_label = CATEGORY_LABELS.get(_dcat_key, "")
+            _dcat_desc  = _dcat.get("description", "")
+            _dpairs     = _dcat.get("pairs", [])
+
+            # Back button
+            if st.button("‹  Back to Ask Aruvi", key="aa_back_btn",
+                          use_container_width=True):
+                st.session_state.ask_aruvi_detail_cat = None
+                st.rerun()
+
+            # Category title and description
+            st.markdown(
+                f'<div class="aa-detail-cat-title">{_dcat_label}</div>'
+                f'<div class="aa-detail-cat-desc">{_dcat_desc}</div>',
+                unsafe_allow_html=True,
+            )
+
+            # Q&A pairs
+            for _pair in _dpairs:
+                st.markdown(
+                    f'<div class="aa-qa-pair">'
+                    f'<div class="aa-qa-q">{_pair.get("q", "")}</div>'
+                    f'<div class="aa-qa-a">{_pair.get("a", "")}</div>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+
+            st.markdown('<div style="height:12px"></div>', unsafe_allow_html=True)
+
+        # ── RESPONSE VIEW — Q&A detail after submitting a question ───────────
+        elif st.session_state.ask_aruvi_response:
+
+            # Back button — resets to the state before the question was typed
+            if st.button("‹  Back to Ask Aruvi", key="aa_back_btn",
+                          use_container_width=True):
+                st.session_state.ask_aruvi_response      = ""
+                st.session_state.ask_aruvi_last_query    = ""
+                st.session_state.ask_aruvi_show_thumbs   = False
+                st.session_state.ask_aruvi_thumb_done    = False
+                st.session_state.ask_aruvi_show_followup = False
+                st.rerun()
+
+            # Question + answer in the same Q&A pair format as category detail
+            st.markdown(
+                f'<div class="aa-qa-pair">'
+                f'<div class="aa-qa-q">{st.session_state.ask_aruvi_last_query}</div>'
+                f'<div class="aa-qa-a">{st.session_state.ask_aruvi_response}</div>'
+                f'</div>',
+                unsafe_allow_html=True,
+            )
+
+            # Thumbs
+            if st.session_state.ask_aruvi_show_thumbs and \
+                    not st.session_state.ask_aruvi_thumb_done:
+                _t1, _t2, _t3 = st.columns([1, 1, 8])
+                with _t1:
+                    if st.button("👍", key="thumb_up"):
+                        write_thumbs_feedback(
+                            session_id=st.session_state.ask_aruvi_session_id,
+                            rating="up",
+                            query=st.session_state.ask_aruvi_last_query,
+                            response_excerpt=st.session_state.ask_aruvi_response[:200],
+                            category_selected=st.session_state.ask_aruvi_category or "",
+                        )
+                        st.session_state.ask_aruvi_thumb_done = True
+                        st.rerun()
+                with _t2:
+                    if st.button("👎", key="thumb_down"):
+                        st.session_state.ask_aruvi_show_followup = True
+                        st.rerun()
+
+            if st.session_state.ask_aruvi_show_followup and \
+                    not st.session_state.ask_aruvi_thumb_done:
+                _fu_text = st.text_input(
+                    "followup",
+                    placeholder="What was missing? (optional)",
+                    label_visibility="collapsed",
+                    key="ask_aruvi_followup",
+                    max_chars=140,
+                )
+                _fu1, _fu2 = st.columns([1, 1])
+                with _fu1:
+                    if st.button("Submit", key="fu_submit"):
+                        write_thumbs_feedback(
+                            session_id=st.session_state.ask_aruvi_session_id,
+                            rating="down",
+                            query=st.session_state.ask_aruvi_last_query,
+                            response_excerpt=st.session_state.ask_aruvi_response[:200],
+                            category_selected=st.session_state.ask_aruvi_category or "",
+                            follow_up_text=_fu_text or None,
+                        )
+                        st.session_state.ask_aruvi_thumb_done = True
+                        st.rerun()
+                with _fu2:
+                    if st.button("Skip", key="fu_skip"):
+                        write_thumbs_feedback(
+                            session_id=st.session_state.ask_aruvi_session_id,
+                            rating="down",
+                            query=st.session_state.ask_aruvi_last_query,
+                            response_excerpt=st.session_state.ask_aruvi_response[:200],
+                            category_selected=st.session_state.ask_aruvi_category or "",
+                        )
+                        st.session_state.ask_aruvi_thumb_done = True
+                        st.rerun()
+
+            st.markdown('<div style="height:12px"></div>', unsafe_allow_html=True)
+
+        # ── MAIN VIEW ─────────────────────────────────────────────────────────
+        else:
+
+            # Header
+            st.markdown(
+                '<div class="aa-header">'
+                '<div class="aa-header-title">Ask Aruvi</div>'
+                '</div>',
+                unsafe_allow_html=True,
+            )
+
+            # Category cards — click opens detail view
+            for _i, (_key, _label) in enumerate(CATEGORY_LABELS.items(), start=1):
+                _active = st.session_state.ask_aruvi_category == _key
+                _chip_text = f"{_i}. {_label}  ›"
+                if st.button(
+                    ("✓  " if _active else "") + _chip_text,
+                    key=f"chip_{_key}",
+                    type="primary" if _active else "secondary",
+                    use_container_width=True,
+                ):
+                    st.session_state.ask_aruvi_detail_cat = _key
+                    st.rerun()
+
+            # Query box
+            st.markdown('<div class="aa-fb-label">Ask a question</div>', unsafe_allow_html=True)
+            _query_input = st.text_area(
+                "query",
+                placeholder="Type your question on the platform.",
+                label_visibility="collapsed",
+                key="ask_aruvi_query_input",
+                height=80,
+                max_chars=140,
+            )
+            _ask_clicked = st.button("↑", key="ask_aruvi_submit",
+                                      use_container_width=False)
+
+            if _ask_clicked and _query_input.strip():
+                with st.spinner(""):
+                    _response = aruvi_ask(
+                        query=_query_input.strip(),
+                        category=st.session_state.ask_aruvi_category,
+                        session_id=st.session_state.ask_aruvi_session_id,
+                        tab=st.session_state.role,
+                        subject=st.session_state.get("subject", ""),
+                        grade=st.session_state.get("grade", ""),
+                    )
+                st.session_state.ask_aruvi_response      = _response
+                st.session_state.ask_aruvi_last_query    = _query_input.strip()
+                st.session_state.ask_aruvi_show_thumbs   = True
+                st.session_state.ask_aruvi_thumb_done    = False
+                st.session_state.ask_aruvi_show_followup = False
+                st.rerun()
+
+            # Feedback section
+            st.markdown('<hr class="aa-divider">', unsafe_allow_html=True)
+            st.markdown('<div class="aa-fb-label">Share feedback on Aruvi</div>',
+                        unsafe_allow_html=True)
+            _fb_text = st.text_area(
+                "feedback",
+                placeholder="Tell us anything about your experience.",
+                label_visibility="collapsed",
+                key="ask_aruvi_fb_text",
+                height=80,
+                max_chars=840,
+            )
+            if st.button("↑", key="ask_aruvi_fb_submit"):
+                if _fb_text.strip():
+                    write_general_feedback(
+                        session_id=st.session_state.ask_aruvi_session_id,
+                        feedback_text=_fb_text.strip(),
+                        tab=st.session_state.role,
+                        subject=st.session_state.get("subject", ""),
+                        grade=st.session_state.get("grade", ""),
+                    )
+                    st.success("Thank you. Your feedback has been received.")
+            st.markdown('<div style="height:12px"></div>', unsafe_allow_html=True)
+
