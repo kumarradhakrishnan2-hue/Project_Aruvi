@@ -80,13 +80,13 @@
         },
         {
           "id": "a13",
-          "q": "What does the lesson plan constitution prohibit, and why does that matter?",
-          "a": "The lesson plan constitution explicitly prohibits reading the NCF Curricular Goals document during lesson plan generation. This prohibition is a structural guarantee: the lesson plan must derive activities from chapter content and the pedagogy document, not from competency definitions. Without this prohibition, the AI could design activities that look competency-aligned but are not grounded in what the chapter actually requires students to do."
+          "q": "What is the essence of the Lesson Plan constitution??",
+          "a": "The Lesson Plan constitution is a scheme to ground the lesson plans in NCF’s & pedagogical framework. The constitution drives the generation of lesson plan to target cognitive transformation in the students, by doing which, they would achieved the targeted competencies over the entire stage (example: middle school). The constitution also emphasizes pedagogical diversity, chapter orientation for activity development and comprehensiveness aimed at competency achievement and not content completion." 
         },
         {
           "id": "a14",
-          "q": "What is the LO Handoff and why is it structured as JSON?",
-          "a": "The LO Handoff is the structured document produced at the close of every lesson plan. It carries every implied Learning Outcome, tagged by period number, chapter section, competency, and weight. It is JSON because it is machine-readable \u2014 the assessment constitution reads it directly as its primary input. It is the sole bridge between lesson plan and assessment, ensuring no information is lost or re-derived between the two stages."
+          "q": "Why are Board advised or other publicly available Learning Outcomes not used by Aruvi?",
+          "a": "Learning Outcomes (LO) are not ‘imported’ targets to achieve. Rather LOs are the cognitive outcome of an lesson plan activity. Hence, it is natural that Los are derived by Aruvi as implied by a particular activity. In short, a chapter’s inherent opportunity to achieve a competency is first identified. The lesson plan activities are generated so as to achieve those competencies over the full stage. At the level of activity, the student realizes certain Learning Outcomes (called ‘Implied Los’) which are then tested in the assessment."
         }
       ]
     },
@@ -131,8 +131,8 @@
         },
         {
           "id": "b08",
-          "q": "What is the annotation layer I see in the assessment?",
-          "a": "The annotation layer is teacher-facing information attached to every assessment question \u2014 not visible to students. It includes the implied LO being tested (cited by period number), the competency and its weight, and what each MCQ distractor reveals about student understanding. Annotation depth scales with competency weight: full for Central, standard for Substantive, minimal for Present."
+          "q": "Explain the Teacher guide functionality that I see in the online assessment?",
+          "a": "The Guide layer is teacher-facing information attached to every assessment question \u2014 not visible to students. It includes the implied LO being tested (cited by period number), the competency and its weight, and what each MCQ distractor reveals about student understanding. Annotation depth scales with competency weight: full for Central, standard for Substantive, minimal for Present.It is not available in the downloaded PDF report to reduce content in printed form but can be accessed by opening the saved plans anytime."
         },
         {
           "id": "b09",
@@ -156,8 +156,8 @@
         },
         {
           "id": "b13",
-          "q": "Why does the assessment constitution exclude the chapter mapping JSON?",
-          "a": "If the assessment constitution could read the chapter mapping JSON, it could derive questions directly from competency definitions \u2014 bypassing the implied Learning Outcomes entirely. This would break the forward-derivation principle. Every question must test what the lesson plan's activities produced, not what the competency says students should do. Excluding the mapping JSON is the structural guarantee that assessment is grounded in teaching, not in competency labels."
+          "q": "What is the essence of Assessment Constitution?",
+          "a": "The Assessment Constitution establishes a governing framework to develop formative chapter-scoped assessment. It is grounded in the Learning Outcomes implied in the lesson plan activitites and are designed to test those learning outcomes. The constitution gives detailed guidance for design of various question types, depth of assessment needed for different competency weights and provides design rules for the teacher guide notes."
         },
         {
           "id": "b14",
@@ -279,7 +279,7 @@
         {
           "id": "d05",
           "q": "How does the Allocate tab work?",
-          "a": "In the Allocate tab, you select a subject, grade, and the chapters you want to plan for. You enter the total number of periods available \u2014 the total teaching time budget. Aruvi calculates each chapter's proportional share of that budget based on competency weights. The result is a suggested period allocation across all selected chapters. You can override any chapter's allocation manually \u2014 the remaining chapters' allocations do not automatically rebalance when you do."
+          "a": "In the Allocate tab, you select a subject, grade, and the chapters you want to plan for. You enter the total number of periods available \u2014 the total teaching time budget. Aruvi calculates each chapter's proportional share of that budget based on competency weights. The result is a suggested period allocation across all selected chapters."
         },
         {
           "id": "d06",
@@ -288,8 +288,8 @@
         },
         {
           "id": "d07",
-          "q": "What subjects and grades does Aruvi currently cover?",
-          "a": "Aruvi currently has chapter mappings for Social Sciences Grade VII \u2014 twelve chapters mapped and available for lesson plan and assessment generation. The platform is designed to scale across subjects (Social Sciences, Languages, Mathematics, Science) and grades (VI through X) by replicating the same pipeline. Additional subjects and grades will be added progressively."
+          "q": "Can I access the various constitutions to study them?",
+          "a": "No. The constitutions are not accessible for public viewing. However, in the Q&A under different sections they have been described in high level of details. Any specific queries can be forwarded to the Support team through online feedback portal on Ask Aruvi."
         },
         {
           "id": "d08",
