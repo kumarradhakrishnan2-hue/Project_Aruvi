@@ -136,7 +136,7 @@ def ask(
     tab:        str = "",
     subject:    str = "",
     grade:      str = "",
-) -> str:
+) -> dict:
     """
     Answers a teacher's question using the Ask Aruvi knowledge base.
 
@@ -145,7 +145,7 @@ def ask(
         2. Build system prompt
         3. Call claude-haiku-4-5-20251001 (max_tokens=300)
         4. Detect forwarded / out-of-scope responses and log them
-        5. Return the response text
+        5. Return a dict with keys: "response", "input_tokens", "output_tokens"
 
     Args:
         query:      The teacher's question.
@@ -156,7 +156,10 @@ def ask(
         grade:      Current grade context.
 
     Returns:
-        The model's response string.
+        dict with keys:
+            "response"      — the model's answer text
+            "input_tokens"  — tokens consumed on the input side
+            "output_tokens" — tokens consumed on the output side
     """
     kb_text       = load_knowledge_base(category)
     system_prompt = build_system_prompt()
@@ -170,7 +173,9 @@ def ask(
         messages   = [{"role": "user", "content": user_content}],
     )
 
-    response_text = response.content[0].text
+    response_text  = response.content[0].text
+    input_tokens   = response.usage.input_tokens
+    output_tokens  = response.usage.output_tokens
 
     forwarded, reason = is_forwarded_response(response_text)
     if forwarded:
@@ -186,4 +191,8 @@ def ask(
         except Exception:
             pass  # logging failure must never surface to the teacher
 
-    return response_text
+    return {
+        "response":      response_text,
+        "input_tokens":  input_tokens,
+        "output_tokens": output_tokens,
+    }

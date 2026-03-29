@@ -132,6 +132,47 @@ def log_tokens(
     except Exception:
         pass  # never crash the app over a logging failure
 
+ASK_ARUVI_LOG_PATH = PROJECT_ROOT / "knowledge_commons/evaluation_mappings/ask_aruvi.csv"
+
+def log_ask_aruvi_tokens(
+    session_id:    str,
+    query:         str,
+    category:      str,
+    tab:           str,
+    subject:       str,
+    grade:         str,
+    input_tokens:  int,
+    output_tokens: int,
+) -> None:
+    try:
+        cost_inr      = calculate_cost_inr("claude-haiku-4-5-20251001", input_tokens, output_tokens)
+        query_snippet = query[:60]
+        category_val  = category if category else "none"
+        write_header  = not ASK_ARUVI_LOG_PATH.exists()
+        with open(ASK_ARUVI_LOG_PATH, "a", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            if write_header:
+                writer.writerow([
+                    "timestamp", "session_id", "tab", "subject", "grade",
+                    "category", "query_snippet",
+                    "input_tokens", "output_tokens", "total_tokens", "cost_inr",
+                ])
+            writer.writerow([
+                datetime.now().isoformat(timespec="seconds"),
+                session_id,
+                tab,
+                subject,
+                grade,
+                category_val,
+                query_snippet,
+                input_tokens,
+                output_tokens,
+                input_tokens + output_tokens,
+                cost_inr,
+            ])
+    except Exception:
+        pass  # never crash the app over a logging failure
+
 # ── Export helpers ────────────────────────────────────────────────────────────
 
 # ── Export helpers ────────────────────────────────────────────────────────────
@@ -2529,6 +2570,8 @@ st.session_state.setdefault("ask_aruvi_show_thumbs",  False)
 st.session_state.setdefault("ask_aruvi_thumb_done",   False)
 st.session_state.setdefault("ask_aruvi_show_followup", False)
 st.session_state.setdefault("ask_aruvi_detail_cat", None)
+st.session_state.setdefault("ask_aruvi_fb_sent",    False)
+st.session_state.setdefault("ask_aruvi_fb_reset",   0)
 if "lpa_result"               not in st.session_state: st.session_state.lpa_result               = None
 if "lpa_generating"           not in st.session_state: st.session_state.lpa_generating           = False
 if "plan_just_saved"          not in st.session_state: st.session_state.plan_just_saved          = False
@@ -3592,8 +3635,8 @@ else:
         _hc[1].markdown('<div class="mp-th">Grade</div>',         unsafe_allow_html=True)
         _hc[2].markdown('<div class="mp-th">Saved</div>',         unsafe_allow_html=True)
         _hc[3].markdown('<div class="mp-th">Display</div>',       unsafe_allow_html=True)
-        _hc[4].markdown('<div class="mp-th" style="text-align:center;">Lesson plan</div>',   unsafe_allow_html=True)
-        _hc[5].markdown('<div class="mp-th" style="text-align:center;">Assessment</div>',    unsafe_allow_html=True)
+        _hc[4].markdown('<div class="mp-th" style="text-align:left;">Lesson plan</div>',   unsafe_allow_html=True)
+        _hc[5].markdown('<div class="mp-th" style="text-align:left;">Assessment</div>',    unsafe_allow_html=True)
         st.markdown(
             '<hr style="margin:4px 0 6px;border:none;border-top:1px solid #e8e5e0;">',
             unsafe_allow_html=True,
@@ -3979,6 +4022,7 @@ div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-thumb_"] button {
     height: 28px !important;
     min-height: 28px !important;
     padding: 0 !important;
+    filter: grayscale(1) brightness(0.42) !important;
 }
 /* FAB */
 div[class*="st-key-ask_aruvi_fab"] button {
@@ -4076,6 +4120,49 @@ div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-aa_back_btn"] button:hov
 /* Hide CMD+Enter hint — keep 0/140 counter (it's the last child) */
 div[class*="st-key-ask_aruvi_popup"] [data-testid="InputInstructions"] > *:first-child {
     display: none !important;
+}
+/* Follow-up textarea font size */
+div[class*="st-key-ask_aruvi_followup"] textarea {
+    font-size: 0.65rem !important;
+}
+/* Follow-up Submit and Skip buttons */
+div[class*="st-key-fu_submit"] button,
+div[class*="st-key-fu_skip"] button {
+    background-color: #4A4A4A !important;
+    color: #FFFFFF !important;
+    font-size: 0.62rem !important;
+    border-radius: 6px !important;
+    border: none !important;
+}
+/* Feedback confirmation div */
+.aruvi-fb-confirm {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 12px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: #2C7A7B;
+    background: transparent;
+}
+.aruvi-fb-confirm-text {
+    flex: 1;
+}
+/* Character counter padding — query input */
+div[class*="st-key-ask_aruvi_query_input"] small,
+div[class*="st-key-ask_aruvi_query_input"] p {
+    padding-right: 10px !important;
+    margin-right: 10px !important;
+    width: calc(100% - 12px) !important;
+}
+/* Character counter padding — feedback textarea */
+div[class*="st-key-ask_aruvi_fb_text"] small,
+div[class*="st-key-ask_aruvi_fb_text"] p {
+    padding-right: 10px !important;
+    margin-right: 10px !important;
+    width: calc(100% - 12px) !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -4180,12 +4267,13 @@ if st.session_state.ask_aruvi_open:
 
             if st.session_state.ask_aruvi_show_followup and \
                     not st.session_state.ask_aruvi_thumb_done:
-                _fu_text = st.text_input(
+                _fu_text = st.text_area(
                     "followup",
-                    placeholder="What was missing? (optional)",
+                    placeholder="Please provide feedback on what is missing?",
                     label_visibility="collapsed",
                     key="ask_aruvi_followup",
                     max_chars=140,
+                    height=90,
                 )
                 _fu1, _fu2 = st.columns([1, 1])
                 with _fu1:
@@ -4253,7 +4341,7 @@ if st.session_state.ask_aruvi_open:
 
             if _ask_clicked and _query_input.strip():
                 with st.spinner(""):
-                    _response = aruvi_ask(
+                    _result = aruvi_ask(
                         query=_query_input.strip(),
                         category=st.session_state.ask_aruvi_category,
                         session_id=st.session_state.ask_aruvi_session_id,
@@ -4261,11 +4349,21 @@ if st.session_state.ask_aruvi_open:
                         subject=st.session_state.get("subject", ""),
                         grade=st.session_state.get("grade", ""),
                     )
-                st.session_state.ask_aruvi_response      = _response
+                st.session_state.ask_aruvi_response      = _result["response"]
                 st.session_state.ask_aruvi_last_query    = _query_input.strip()
                 st.session_state.ask_aruvi_show_thumbs   = True
                 st.session_state.ask_aruvi_thumb_done    = False
                 st.session_state.ask_aruvi_show_followup = False
+                log_ask_aruvi_tokens(
+                    session_id    = st.session_state.ask_aruvi_session_id,
+                    query         = _query_input.strip(),
+                    category      = st.session_state.ask_aruvi_category or "none",
+                    tab           = st.session_state.role,
+                    subject       = st.session_state.get("subject", ""),
+                    grade         = st.session_state.get("grade", ""),
+                    input_tokens  = _result.get("input_tokens", 0),
+                    output_tokens = _result.get("output_tokens", 0),
+                )
                 st.rerun()
 
             # Feedback section
@@ -4276,9 +4374,9 @@ if st.session_state.ask_aruvi_open:
                 "feedback",
                 placeholder="Tell us anything about your experience.",
                 label_visibility="collapsed",
-                key="ask_aruvi_fb_text",
+                key=f"ask_aruvi_fb_text_{st.session_state.ask_aruvi_fb_reset}",
                 height=80,
-                max_chars=840,
+                max_chars=140,
             )
             if st.button("↑", key="ask_aruvi_fb_submit"):
                 if _fb_text.strip():
@@ -4289,6 +4387,18 @@ if st.session_state.ask_aruvi_open:
                         subject=st.session_state.get("subject", ""),
                         grade=st.session_state.get("grade", ""),
                     )
-                    st.success("Thank you. Your feedback has been received.")
+                    st.session_state.ask_aruvi_fb_sent = True
+                    st.session_state.ask_aruvi_fb_reset += 1
+                    st.rerun()
+            if st.session_state.ask_aruvi_fb_sent:
+                st.markdown(
+                    '<div class="aruvi-fb-confirm">'
+                    '<span class="aruvi-fb-confirm-text">thank you. your feedback has been received.</span>'
+                    '</div>',
+                    unsafe_allow_html=True,
+                )
+                if st.button("✕", key="ask_aruvi_fb_dismiss"):
+                    st.session_state.ask_aruvi_fb_sent = False
+                    st.rerun()
             st.markdown('<div style="height:12px"></div>', unsafe_allow_html=True)
 
