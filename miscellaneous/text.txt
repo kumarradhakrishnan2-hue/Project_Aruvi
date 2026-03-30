@@ -20,8 +20,6 @@ RUN CHAPTER MAPPING
 cd "/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi"
 bash run_mapping.sh --subject social_sciences --grade vii --chapters 1
 
-RUN SS CHAPTER EVAL
-python run_eval.py --subject social_sciences --grade vii --chapter 10 --mode rubberstamp
 
 RUN LESSON PLAN AND ASSESSMENT
 run from the Streamlit UI by invoking generate_lpa()
