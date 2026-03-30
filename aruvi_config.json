@@ -15,8 +15,7 @@
     "mirror_constitutions": "mirror/constitutions",
     "mirror_summaries_dir": "mirror/chapters",
     "mirror_mappings_dir":  "mirror/chapters",
-    "ask_aruvi_qa":         "mirror/ask_aruvi/qa_knowledge_base.json",
-    "paths.mirror_eval_learnings_dir": "mirror/chapters/{subject}/grade_{grade}/evaluation_learnings/"
+    "ask_aruvi_qa":         "mirror/ask_aruvi/qa_knowledge_base.json"    
   },
 
   "subject_groups": {
