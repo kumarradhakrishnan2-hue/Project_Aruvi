@@ -636,6 +636,63 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             + '</div></div>'
         )
 
+        # Stage 0 (immediately): step 1 active, steps 2–6 pending
+        progress_placeholder.markdown(
+            _pcss + _box_open + _hdr_working + _body_open
+            + _row_active(_steps[0])
+            + _row_pending(_steps[1])
+            + _row_pending(_steps[2])
+            + _row_pending(_steps[3])
+            + _row_pending(_steps[4])
+            + _row_pending(_steps[5])
+            + _note_html + '</div></div>',
+            unsafe_allow_html=True,
+        )
+        _time.sleep(5)
+
+        # Stage 1: step 1 done, step 2 active, steps 3–6 pending
+        progress_placeholder.markdown(
+            _pcss + _box_open + _hdr_working + _body_open
+            + _row_done(_steps[0])
+            + _row_active(_steps[1])
+            + _row_pending(_steps[2])
+            + _row_pending(_steps[3])
+            + _row_pending(_steps[4])
+            + _row_pending(_steps[5])
+            + _note_html + '</div></div>',
+            unsafe_allow_html=True,
+        )
+        _time.sleep(5)
+
+        # Stage 2: steps 1–2 done, step 3 active, steps 4–6 pending
+        progress_placeholder.markdown(
+            _pcss + _box_open + _hdr_working + _body_open
+            + _row_done(_steps[0])
+            + _row_done(_steps[1])
+            + _row_active(_steps[2])
+            + _row_pending(_steps[3])
+            + _row_pending(_steps[4])
+            + _row_pending(_steps[5])
+            + _note_html + '</div></div>',
+            unsafe_allow_html=True,
+        )
+        _time.sleep(5)
+
+        # Stage 3: steps 1–3 done, step 4 active, steps 5–6 pending
+        progress_placeholder.markdown(
+            _pcss + _box_open + _hdr_working + _body_open
+            + _row_done(_steps[0])
+            + _row_done(_steps[1])
+            + _row_done(_steps[2])
+            + _row_active(_steps[3])
+            + _row_pending(_steps[4])
+            + _row_pending(_steps[5])
+            + _note_html + '</div></div>',
+            unsafe_allow_html=True,
+        )
+        _time.sleep(5)
+
+        # Stage 4: steps 1–4 done, step 5 active, step 6 pending — PROGRESS_HTML_WORKING
         progress_placeholder.markdown(PROGRESS_HTML_WORKING, unsafe_allow_html=True)
 
         # ── Stream loop ───────────────────────────────────────────────────────
@@ -1875,6 +1932,54 @@ section[data-testid="stSidebar"] [data-baseweb="select"] svg {
 }
 
 /* ═══════════════════════════════════════════════════
+   NAV PILL BUTTONS — lift into fixed top nav bar
+   ═══════════════════════════════════════════════════ */
+div[class*="st-key-nav_allocate"],
+div[class*="st-key-nav_generate"],
+div[class*="st-key-nav_myplans"] {
+    position: fixed !important;
+    top: 18px !important;
+    z-index: 100000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+div[class*="st-key-nav_allocate"] { left: calc(50% - 148px) !important; }
+div[class*="st-key-nav_generate"] { left: calc(50% - 44px)  !important; }
+div[class*="st-key-nav_myplans"]  { left: calc(50% + 60px)  !important; }
+
+/* Style all three as pill-shaped */
+div[class*="st-key-nav_allocate"] button,
+div[class*="st-key-nav_generate"] button,
+div[class*="st-key-nav_myplans"]  button {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 999px !important;
+    color: #6b6866 !important;
+    font-size: 0.82rem !important;
+    font-weight: 500 !important;
+    padding: 0.3rem 1.45rem !important;
+    box-shadow: none !important;
+    transition: background 0.15s, color 0.15s !important;
+}
+div[class*="st-key-nav_allocate"] button:hover,
+div[class*="st-key-nav_generate"] button:hover,
+div[class*="st-key-nav_myplans"]  button:hover {
+    background: rgba(0,0,0,0.04) !important;
+    color: #2c2a27 !important;
+    border: none !important;
+}
+/* Active pill — white background with shadow, matching original design */
+div[class*="st-key-nav_allocate"] button[kind="primary"],
+div[class*="st-key-nav_generate"] button[kind="primary"],
+div[class*="st-key-nav_myplans"]  button[kind="primary"] {
+    background: #ffffff !important;
+    color: #2c2a27 !important;
+    font-weight: 600 !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12) !important;
+    border: none !important;
+}
+
+/* ═══════════════════════════════════════════════════
    BUTTONS
    ═══════════════════════════════════════════════════ */
 div.stButton > button {
@@ -2587,25 +2692,7 @@ if "period_rows"              not in st.session_state: st.session_state["period_
 has_chapter_data = len(chapters) > 0
 
 # ── Fixed top nav bar ─────────────────────────────────────────────────────────
-# Pure HTML pills — no Streamlit radio widget, no orange circles.
-# onclick calls aruviSetRole() which clicks a hidden st.button in the sidebar.
-
-a_active  = "active" if st.session_state.role == "Allocate"   else ""
-g_active  = "active" if st.session_state.role == "Generate"   else ""
-mp_active = "active" if st.session_state.role == "My Plans"   else ""
-
-# Build shared query params so grade/subject survive a pill-click reload
-import urllib.parse as _up
-_qs_dict = {}
-if st.session_state.grade:   _qs_dict["grade"]   = st.session_state.grade
-if st.session_state.subject: _qs_dict["subject"]  = st.session_state.subject
-_ch_idx = st.session_state.get("teacher_ch_idx")
-if _ch_idx is not None:      _qs_dict["ch"]       = _ch_idx
-_qs = _up.urlencode(_qs_dict)
-_sep = "&" if _qs else ""
-_a_href  = f"?role=Allocate{_sep}{_qs}"
-_g_href  = f"?role=Generate{_sep}{_qs}"
-_mp_href = f"?role=My+Plans{_sep}{_qs}"
+# Logo/brand rendered as HTML; pill buttons rendered as CSS-positioned st.buttons.
 
 logo_img_tag = (
     f'<img src="{LOGO_SRC}" alt="Aruvi logo">'
@@ -2614,7 +2701,6 @@ logo_img_tag = (
 
 st.markdown(f"""
 <div class="aruvi-topnav">
-
   <div class="topnav-left">
     {logo_img_tag}
     <div class="topnav-brand">
@@ -2622,19 +2708,27 @@ st.markdown(f"""
       <span class="topnav-slogan">AI powered teaching assistant</span>
     </div>
   </div>
-
-  <div class="topnav-center">
-    <div class="aruvi-topnav-inner">
-      <a class="aruvi-pill {a_active}"  href="{_a_href}">Allocate</a>
-      <a class="aruvi-pill {g_active}"  href="{_g_href}">Generate</a>
-      <a class="aruvi-pill {mp_active}" href="{_mp_href}">My Plans</a>
-    </div>
-  </div>
-
+  <div class="topnav-center" id="aruvi-pill-anchor"></div>
   <div class="topnav-right"></div>
-
 </div>
 """, unsafe_allow_html=True)
+
+_nc1, _nc2, _nc3, _nc4, _nc5 = st.columns([2, 1, 1, 1, 2])
+with _nc2:
+    if st.button("Allocate", key="nav_allocate", type="primary" if st.session_state.role == "Allocate" else "secondary"):
+        st.session_state.role = "Allocate"
+        st.query_params["role"] = "Allocate"
+        st.rerun()
+with _nc3:
+    if st.button("Generate", key="nav_generate", type="primary" if st.session_state.role == "Generate" else "secondary"):
+        st.session_state.role = "Generate"
+        st.query_params["role"] = "Generate"
+        st.rerun()
+with _nc4:
+    if st.button("My Plans", key="nav_myplans", type="primary" if st.session_state.role == "My Plans" else "secondary"):
+        st.session_state.role = "My Plans"
+        st.query_params["role"] = "My Plans"
+        st.rerun()
 
 
 # ── Sidebar ───────────────────────────────────────────────────────────────────
@@ -3022,11 +3116,6 @@ elif st.session_state.role == "Generate":
     if st.session_state.lpa_generating and st.session_state.teacher_ch_idx is not None:
         selected_ch = chapters[st.session_state.teacher_ch_idx]
         if st.session_state.lpa_generating:
-            st.markdown(
-                '<div style="font-size:0.82rem;color:#5a5754;padding:0.5rem 0;">'
-                'Generating — output will appear below as it streams…</div>',
-                unsafe_allow_html=True,
-            )
             result = generate_lpa(
                 grade       = st.session_state.grade,
                 subject     = st.session_state.subject,
