@@ -89,6 +89,16 @@ def resolve_paths(config_path: str, subject_group: str, grade: str,
             f"Extract the source DOCX with pandoc and save it there first."
         )
 
+    # ── Lesson plan and assessment constitution paths ──────────────────────────
+    lp_const_root = root / config["paths"]["lp_constitution_root"]
+    ac_const_root = root / config["paths"]["assessment_constitution_root"]
+    lp_constitution = (
+        lp_const_root / subject_group / "lesson_plan_constitution.txt"
+    )
+    assessment_const = (
+        ac_const_root / subject_group / "assessment_constitution.txt"
+    )
+
     # ── CG and Pedagogy text paths — resolved from mirror/framework ───────────
     mirror_fw_base = root / config["paths"]["mirror_framework"] / fw_subdir / stage
     cg_filename  = config["mirror_framework_filenames"]["cg"].format(
@@ -131,9 +141,12 @@ def resolve_paths(config_path: str, subject_group: str, grade: str,
         # Mirror chapter outputs
         "mirror_summaries":          str(mirror_summaries),
         "mirror_mappings_out":       str(mirror_mappings_out),
-        # Constitution
+        # Competency mapping constitution
         "constitution_path":         str(constitution_path),
         "constitution_key":          constitution_key,
+        # Lesson plan and assessment constitutions
+        "lp_constitution":           str(lp_constitution),
+        "assessment_const":          str(assessment_const),
         # Existence flags
         "cg_pdf_exists":             cg_pdf.exists(),
         "pedagogy_pdf_exists":       ped_pdf.exists(),
@@ -141,6 +154,8 @@ def resolve_paths(config_path: str, subject_group: str, grade: str,
         "pedagogy_text_path_exists": pedagogy_text_path.exists(),
         "chapter_dir_exists":        chapter_dir.exists(),
         "constitution_path_exists":  constitution_path.exists(),
+        "lp_constitution_exists":    lp_constitution.exists(),
+        "assessment_const_exists":   assessment_const.exists(),
     }
 
 

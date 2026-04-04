@@ -1,0 +1,113 @@
+ARUVI — Science Competency Mapping Constitution
+Version 1.0 · Middle Stage · Secondary Stage
+Knowledge Commons · Chapter-to-Competency Mapping
+
+Subject group:  science
+Stages:         Middle Stage · Secondary Stage
+Task:           chapter_to_competency_mapping
+Fetch key:      competency_constitution_science
+Downstream:     lesson_plan_constitution_science_mathematics · assessment_constitution_science_mathematics
+
+Call 1 reads the chapter PDF, produces the chapter summary, and computes effort index signal values passed in memory to Call 2. Call 2 reads the summary, the signals, this constitution, and the NCF Curricular Goals document, and writes the competency mapping JSON to mirror.
+
+────────────────────────────────────────────────────────────────────────
+
+RULE 1 — Call 1: Evidence base
+
+The system SHALL read the full chapter PDF. The evidence base comprises four elements:
+
+(a) Embedded student activities — boxed tasks labelled "Let us explore / investigate / construct / experiment" and equivalents, classified as student-executed or teacher-demonstrated.
+
+(b) End-of-chapter exercises ("Let Us Enhance Our Learning").
+
+(c) Embedded diagram tasks — questions placed beneath body-text figures requiring the student to read or reason from the diagram.
+
+(d) Body-text thought prompts — italicised questions or "can you think of" invitations in the explanatory text.
+
+Explanatory prose with no accompanying student task and informational sidebar boxes with no student task are excluded from the evidence base.
+
+────────────────────────────────────────────────────────────────────────
+
+RULE 2 — Call 1: Effort index computation
+
+The system SHALL compute four signal values from the evidence base and pass them in memory to Call 2.
+
+conceptual_demand (1–3): Score 1 if recall and familiar-context questions dominate the exercise (>60%). Score 2 if causal explanation or application to familiar context dominates or demand is evenly spread. Score 3 if unfamiliar-context transfer, multi-step causal chain reasoning, or investigative design questions constitute 30% or more of the exercise.
+
+activity_count (integer): Count student-executed physical activities only. Exclude teacher demonstrations and discussion tasks.
+
+demo_count (integer): Count teacher-performed demonstrations.
+
+exec_load (0–2): Score 0 if exercise is predominantly written reasoning. Score 1 if multi-step calculation or diagram production is 30–60% of questions. Score 2 if >60%.
+
+effort_index = (conceptual_demand × 2) + (activity_count × 1) + (demo_count × 1.5) + (exec_load × 2).
+
+This value is the sole period allocation input for the Planning Tool.
+
+────────────────────────────────────────────────────────────────────────
+
+RULE 3 — Call 1: Chapter summary
+
+The system SHALL produce a chapter summary of 600–900 words mirroring the textbook's section headings in order. The summary describes what the chapter teaches — its concepts, phenomena, and content organisation. It notes the existence of activities without elaborating them. It does not describe exercises. Written to mirror as ch_NN_summary.txt.
+
+────────────────────────────────────────────────────────────────────────
+
+RULE 4 — Call 1: Chapter 1 flag
+
+Chapter 1 (The Ever-Evolving World of Science) is an orientation chapter with no exercise and no content domain. It goes through the standard pipeline. The mapper assigns the closest available C-code and sets orientation_chapter: true in the JSON. The Planning Tool ignores the effort index for this chapter and assigns a fixed 3 periods.
+
+────────────────────────────────────────────────────────────────────────
+
+RULE 5 — Call 2: Pass 1 — Dissolution test (C-code blind)
+
+Before opening the CG document, the system MUST read the chapter summary and state the central cognitive operation as one precise sentence:
+
+"This chapter builds the student's ability to [verb] [object] by [cognitive mechanism]."
+
+This is the dissolution test result. It is recorded before any C-code is consulted.
+
+The system MUST NOT name more than one operation unless the chapter's task architecture provides genuinely equal structural weight to two distinct operations across both the activity layer and the exercise layer — both conditions must be satisfied simultaneously. Where two operations qualify, both are recorded and co_central is set to true.
+
+────────────────────────────────────────────────────────────────────────
+
+RULE 6 — Call 2: Pass 2 — C-code matching
+
+Pass 2 opens the NCF Curricular Goals document. The system MUST:
+
+1. Read the full C-code definition for every candidate.
+2. Verify that the dissolution test operation structurally mirrors the verb and cognitive demand of the C-code — shared vocabulary or shared subject matter is not sufficient.
+3. Select the C-code whose full definition most precisely corresponds to the dissolution test operation.
+4. Record its parent CG.
+
+Direction is always: chapter operation first, then C-code verification. A C-code that requires cognitive demands the chapter's task architecture does not build MUST be rejected.
+
+────────────────────────────────────────────────────────────────────────
+
+COMPETENCY MAPPING JSON SCHEMA (Science)
+
+Field                   Type            Description
+─────────────────────────────────────────────────────────────────────────────
+stage                   string          "middle" — fixed token
+subject                 string          "science" — fixed token
+grade                   string          "vii" — Roman numeral, no prefix inside JSON
+chapter_number          integer         NCERT chapter number
+chapter_title           string          Full chapter title as it appears in the textbook
+summary_path            string          Relative path to ch_NN_summary.txt in mirror
+orientation_chapter     boolean         true for Chapter 1 only; false for all others
+co_central              boolean         true only when Rule 5 co-central conditions are both satisfied
+primary                 array           { cg, c_code, justification } — one object normally;
+                                        two when co_central is true. No weight field.
+dissolution_test        string          The one-sentence Pass 1 result — auditable reasoning
+                                        chain from chapter to C-code.
+conceptual_demand       integer 1–3     Effort index signal. Computed in Call 1 per Rule 2.
+activity_count          integer         Effort index signal. Student-executed activities.
+demo_count              integer         Effort index signal. Teacher demonstrations.
+exec_load               integer 0–2     Effort index signal. Exercise execution load.
+effort_index            number          (conceptual_demand×2)+(activity_count×1)+
+                                        (demo_count×1.5)+(exec_load×2). Planning Tool input only.
+min_viable_periods      integer         Minimum periods floor for Planning Tool. Default 0.
+
+────────────────────────────────────────────────────────────────────────
+
+Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
+Science Competency Mapping Constitution · Version 1.0 · Internal Document

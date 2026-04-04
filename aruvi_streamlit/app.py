@@ -54,14 +54,14 @@ def subject_to_folder(subject: str) -> str:
 # ── Path resolver ─────────────────────────────────────────────────────────────
 
 def resolve_paths(grade: str, subject: str, chapter_number: int) -> dict:
-    stage   = get_stage(grade)
+    stage  = get_stage(grade)
     grade_f = grade_to_folder(grade)
     subj_f  = subject_to_folder(subject)
     mirror  = PROJECT_ROOT / "mirror"
     nn      = f"{chapter_number:02d}"
     return {
-        "lp_constitution":  mirror / "constitutions/lesson_plan/lesson_plan_constitution.txt",
-        "assessment_const": mirror / "constitutions/assessment/assessment_constitution.txt",
+        "lp_constitution":  mirror / f"constitutions/lesson_plan/{subj_f}/lesson_plan_constitution.txt",
+        "assessment_const": mirror / f"constitutions/assessment/{subj_f}/assessment_constitution.txt",
         "pedagogy":         mirror / f"framework/{subj_f}/{stage}/pedagogy_{stage}_{subj_f}.txt",
         "chapter_summary":  mirror / f"chapters/{subj_f}/{grade_f}/summaries/ch_{nn}_summary.txt",
         "chapter_mapping":  mirror / f"chapters/{subj_f}/{grade_f}/mappings/ch_{nn}_mapping.json",

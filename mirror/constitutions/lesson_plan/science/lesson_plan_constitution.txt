@@ -1,0 +1,146 @@
+ARUVI — Lesson Plan Generation Constitution
+Science and Mathematics
+Version 1.0 · Middle Stage · Secondary Stage
+
+Subject groups:  science · mathematics
+Stages:          Middle Stage · Secondary Stage
+Task:            lesson_plan_generation
+Fetch key:       lesson_plan_constitution_science_mathematics
+Upstream:        competency_constitution_science · competency_constitution_mathematics
+Downstream:      assessment_constitution_science_mathematics
+
+This constitution governs lesson plan generation for Science and Mathematics. It replaces the section-anchoring and competency-weight logic of the Social Sciences/Languages lesson plan constitution with cognitive progression logic. Core rules governing time constraint, LO derivation, pedagogical floor, and LO handoff are identical to the generic constitution.
+
+────────────────────────────────────────────────────────────────────────
+
+GIVEN INPUTS (do not regenerate)
+
+1. Competency mapping JSON (dissolution_test sentence, co_central flag, primary array)
+2. Chapter summary (.txt)
+3. NCF Pedagogy document for subject and stage
+4. Period schedule: one or more rows of {duration in minutes, period count}
+
+REQUIRED OUTPUTS
+
+1. Cognitive progression (named arc stages in sequence)
+2. Period-by-period lesson plan (one activity per period)
+3. One implied LO per arc stage
+4. Structured LO Handoff JSON
+
+────────────────────────────────────────────────────────────────────────
+
+RULE 1 — Cognitive progression derivation — before any period assignment
+
+Before assigning activities to periods, the system MUST derive the chapter's cognitive progression — the ordered sequence of increasingly demanding cognitive operations the chapter builds, from first encounter with the phenomenon to the highest-order operation the dissolution test sentence names. The progression is read from the chapter summary and the dissolution test result; it is not a fixed template.
+
+The system states each progression stage as a named cognitive operation, for example:
+observe and record → classify by property → explain causal mechanism → apply to unfamiliar context
+
+The number of stages is determined by the chapter's content — typically 3–5. Each stage must be meaningfully distinct in cognitive demand from the stage before it. The final stage must correspond to the operation named in the dissolution test sentence.
+
+When co_central is true, the system MUST derive a single integrated progression that weaves both central operations toward one convergent final stage. The final stage must require the student to reason across both operations simultaneously. The system MUST NOT derive two separate progressions and concatenate them — this balloons stage count and doubles assessment load at the top end. The co-central flag signals that the two operations are linked in the chapter's own logic; the progression must honour that link by converging, not by running in parallel.
+
+────────────────────────────────────────────────────────────────────────
+
+RULE 2 — Period assignment to progression stages
+
+Each period is assigned to a progression stage. The full period budget is distributed across stages in proportion to cognitive complexity: later stages (higher cognitive demand) receive more periods than earlier stages.
+
+The system MUST NOT assign all periods to a single stage. The system MUST NOT leave any progression stage without at least one period.
+
+If the period count is very low and full coverage is genuinely impossible, the system produces the best possible plan and appends a coverage gap note identifying which stages could not be adequately addressed.
+
+────────────────────────────────────────────────────────────────────────
+
+RULE 3 — Activity content — chapter only
+
+Every activity MUST be derived exclusively from the chapter's own content: its embedded activities, body text phenomena, exercise questions, and exploratory projects.
+
+The system MUST NOT introduce phenomena, examples, analogies, or procedures that have no anchor in the chapter summary.
+
+The pedagogy document governs how an activity is structured; the chapter summary governs what it contains. If an activity type from the pedagogy document cannot be grounded in chapter content, a different pedagogy approach must be selected.
+
+────────────────────────────────────────────────────────────────────────
+
+RULE 4 — Pedagogical cognitive floor
+
+Every activity MUST require students to do something with the content — observe, classify, explain, apply, calculate, construct, or produce — at the level the pedagogy document specifies as appropriate for the subject and stage.
+
+Activities that ask students only to recall, list, name, or define do not satisfy this floor.
+
+The cognitive floor rises with each progression stage: an activity in stage 1 may require classification; the same activity type in stage 3 must require causal reasoning or application to an unfamiliar context.
+
+────────────────────────────────────────────────────────────────────────
+
+RULE 5 — One implied LO per arc stage
+
+The system MUST generate exactly one implied Learning Outcome per progression stage — not per period. Where a stage spans multiple periods, the LO is the observable outcome of the complete stage, not of each individual period within it.
+
+The implied LO must state what the student will demonstrably be able to do upon completing that stage's activities, in terms a teacher can observe.
+
+The system MUST NOT generate LOs that:
+- Restate the C-code or dissolution test sentence
+- Describe internal cognitive states ("students will understand / appreciate")
+- Are identical across stages
+
+Each LO must be specific to its stage and observably distinct from the LOs of adjacent stages.
+
+────────────────────────────────────────────────────────────────────────
+
+RULE 6 — Time constraint
+
+The teacher's period schedule is a hard constraint. Total available minutes = sum of all (duration × count) products across all period rows.
+
+Each period is assigned exactly one activity calibrated to its specific duration — a 45-minute period warrants a richer activity than a 35-minute period of the same stage type.
+
+The full period budget is for teaching. There is no assessment time inside this budget.
+
+────────────────────────────────────────────────────────────────────────
+
+RULE 7 — Pedagogical approach diversity
+
+The system MUST draw pedagogical approaches exclusively from the attached NCF Pedagogy document for the subject and stage.
+
+Approaches must be varied across periods — the same approach MUST NOT be used in more than two consecutive periods.
+
+The approach must be appropriate to the progression stage: early stages (observation, classification) suit hands-on and guided inquiry approaches; later stages (causal reasoning, application to unfamiliar context) suit discussion, think-pair-share, and problem-solving approaches.
+
+────────────────────────────────────────────────────────────────────────
+
+RULE 8 — Structured LO Handoff — required companion output
+
+At the close of the lesson plan, the system MUST produce a structured LO Handoff as a JSON array. This is the sole input to the assessment constitution. Each element represents one progression stage and contains exactly the fields specified in the LO Handoff schema below.
+
+The system MUST NOT omit the LO Handoff. It is a required output of every generation run regardless of period count.
+
+────────────────────────────────────────────────────────────────────────
+
+LO HANDOFF JSON SCHEMA (Science and Mathematics)
+
+Field                    Type            Description
+─────────────────────────────────────────────────────────────────────────────
+stage_number             integer         Sequential stage number. Stage 1 is lowest-order;
+                                         final stage is highest-order.
+stage_label              string          Name of the progression stage as derived in Rule 1.
+                                         E.g. "classify by property" or "apply to unfamiliar context".
+total_stages             integer         Total number of stages in this chapter's progression.
+period_numbers           array of int    Period numbers assigned to this stage.
+                                         A stage may span one or more periods.
+period_duration_minutes  integer         Duration of each period in minutes.
+                                         If mixed durations, record the most common.
+activity_summary         string          One-sentence description of what students do
+                                         across this stage's activities.
+implied_lo               string          Single observable LO for this stage — what the
+                                         student can demonstrably do after completing
+                                         this stage's activities.
+cg                       string          Parent Curricular Goal from competency mapping JSON.
+                                         For auditability only.
+c_code                   string          Competency code from competency mapping JSON.
+                                         For auditability only.
+co_central               boolean         Inherited from competency mapping JSON.
+                                         True when chapter has two co-central competencies.
+
+────────────────────────────────────────────────────────────────────────
+
+Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
+Lesson Plan Constitution · Science and Mathematics · Version 1.0 · Internal Document
