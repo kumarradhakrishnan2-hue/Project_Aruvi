@@ -1,15 +1,15 @@
 ARUVI — Lesson Plan Generation Constitution
-Science and Mathematics
+Science
 Version 1.0 · Middle Stage · Secondary Stage
 
-Subject groups:  science · mathematics
+Subject groups:  science
 Stages:          Middle Stage · Secondary Stage
 Task:            lesson_plan_generation
-Fetch key:       lesson_plan_constitution_science_mathematics
-Upstream:        competency_constitution_science · competency_constitution_mathematics
-Downstream:      assessment_constitution_science_mathematics
+Fetch key:       lesson_plan_constitution_science
+Upstream:        competency_constitution_science · competency_constitution
+Downstream:      assessment_constitution_science
 
-This constitution governs lesson plan generation for Science and Mathematics. It replaces the section-anchoring and competency-weight logic of the Social Sciences/Languages lesson plan constitution with cognitive progression logic. Core rules governing time constraint, LO derivation, pedagogical floor, and LO handoff are identical to the generic constitution.
+This constitution governs lesson plan generation for Science. It replaces the section-anchoring and competency-weight logic of the Social Sciences/Languages lesson plan constitution with cognitive progression logic. Core rules governing time constraint, LO derivation, pedagogical floor, and LO handoff are identical to the generic constitution.
 
 ────────────────────────────────────────────────────────────────────────
 
@@ -115,7 +115,7 @@ The system MUST NOT omit the LO Handoff. It is a required output of every genera
 
 ────────────────────────────────────────────────────────────────────────
 
-LO HANDOFF JSON SCHEMA (Science and Mathematics)
+LO HANDOFF JSON SCHEMA (Science)
 
 Field                    Type            Description
 ─────────────────────────────────────────────────────────────────────────────
@@ -143,4 +143,4 @@ co_central               boolean         Inherited from competency mapping JSON.
 ────────────────────────────────────────────────────────────────────────
 
 Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
-Lesson Plan Constitution · Science and Mathematics · Version 1.0 · Internal Document
+Lesson Plan Constitution · Science · Version 1.0 · Internal Document

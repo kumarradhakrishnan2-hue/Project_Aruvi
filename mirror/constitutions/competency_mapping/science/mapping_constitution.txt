@@ -6,7 +6,7 @@ Subject group:  science
 Stages:         Middle Stage · Secondary Stage
 Task:           chapter_to_competency_mapping
 Fetch key:      competency_constitution_science
-Downstream:     lesson_plan_constitution_science_mathematics · assessment_constitution_science_mathematics
+Downstream:     lesson_plan_constitution_science
 
 Call 1 reads the chapter PDF, produces the chapter summary, and computes effort index signal values passed in memory to Call 2. Call 2 reads the summary, the signals, this constitution, and the NCF Curricular Goals document, and writes the competency mapping JSON to mirror.
 

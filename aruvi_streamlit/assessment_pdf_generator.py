@@ -301,15 +301,7 @@ def build_assessment_pdf(output_path, data):
                 header_items=header_items,
             ))
 
-        story.append(Spacer(1, 4 * mm))
-
-    # ── Footnote ──────────────────────────────────────────────────────────────
-    story.append(Paragraph(
-        "(1) Assessment designed per Aruvi Assessment Constitution V1.4 "
-        "\u00b7 Competency weight governs question distribution "
-        "\u00b7 One open task per assessment.",
-        ST["footer"],
-    ))
+    story.append(Spacer(1, 4 * mm))
 
     # ── Pass 1: build PDF without page numbers ─────────────────────────────────
     doc.build(
