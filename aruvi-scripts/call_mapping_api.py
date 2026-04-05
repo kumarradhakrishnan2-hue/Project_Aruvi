@@ -8,7 +8,7 @@ Call 1 — Summarise:
 
 Call 2 — Map:
   Input : chapter_summary (NOT raw chapter text) + CG document
-  Output: primary, incidental, chapter_weight, min_viable_periods
+  Output: primary, min_viable_periods (+ incidental, chapter_weight for SS; + effort signals for Science)
 
 The final record merges both outputs with stage/subject/grade/chapter_number
 added from context. The two-call split is invisible to downstream consumers.
@@ -94,6 +94,7 @@ Write a structured content summary of this chapter. Requirements:
 - Minimum 900 words, no upper limit — cover every section heading the chapter contains
 - Use ## for major headings and ### for subheadings, mirroring the textbook's own structure exactly
 - Under each heading write 2-3 sentences summarising the key concepts, terms, significant people, events, phenomena, or principles in that section
+- Within each section include all named substances, chemicals, acids, bases, organisms, scientists, processes, and specific examples that the textbook explicitly provides — these are content anchors the lesson plan will need to reference
 - Content only — no exercises, no student activities, no task descriptions
 - Begin the summary with: TITLE: <exact chapter title as it appears in the textbook>
 - Then write the summary directly — plain text with markdown heading markers only
@@ -273,7 +274,7 @@ def build_mapping_user_prompt(summary: str, chapter_title: str, cg_data: dict,
                                chapter_number: int) -> str:
     cg_text = json.dumps(cg_data["curricular_goals"], ensure_ascii=False, indent=2)
 
-    return f"""## CHAPTER TO MAP
+    base = f"""## CHAPTER TO MAP
 
 Subject Group : {subject_group}
 Stage         : {stage}
@@ -296,21 +297,53 @@ Chapter Title : {chapter_title}
 
 Respond with this exact JSON structure and nothing else:
 
-{{
+"""
+
+    if subject_group == "science":
+        schema_block = """\
+{
+  "content_inventory": ["<noun phrase 1>", "<noun phrase 2>", "..."],
+  "co_central": <true | false>,
+  "min_viable_periods": <integer>,
+  "primary": [
+    {
+      "cg": "<CG code e.g. CG-1>",
+      "c_code": "<C-code e.g. C-1.1>",
+      "justification": "<cite the specific inventory items that fully satisfy this C-code>"
+    }
+  ],
+  "conceptual_demand": <1 | 2 | 3>,
+  "activity_count": <integer>,
+  "demo_count": <integer>,
+  "exec_load": <0 | 1 | 2>,
+  "effort_index": <number: (conceptual_demand×2)+(activity_count×1)+(demo_count×1.5)+(exec_load×2)>
+}
+
+CRITICAL CONSTRAINTS:
+- No weight field. No incidental field.
+- content_inventory must list every distinct concept, phenomenon, process, or operation the chapter teaches as noun phrases only.
+- A C-code is primary only if specific inventory items fully and exactly satisfy its definition word for word. Partial or inferential matches are excluded.
+- co_central is false unless two C-codes are both fully satisfied by the inventory.
+- effort_index MUST be computed as the exact arithmetic result of (conceptual_demand × 2) + (activity_count × 1) + (demo_count × 1.5) + (exec_load × 2). Compute this yourself step by step before writing the value. Do not estimate or round.
+- Only use C-codes that appear in the Curricular Goals list provided above.
+- Respond with JSON only — no text before or after."""
+    else:
+        schema_block = """\
+{
   "min_viable_periods": <integer: minimum periods needed to teach this chapter at all>,
   "primary": [
-    {{
+    {
       "cg": "<CG code e.g. CG-2>",
       "c_code": "<C-code e.g. C-2.1>",
       "weight": <3 | 2 | 1>,
       "justification": "<one sentence explaining the structural match per constitution rules>"
-    }}
+    }
   ],
   "incidental": [
-    {{ "cg": "<CG code>", "c_code": "<C-code>" }}
+    { "cg": "<CG code>", "c_code": "<C-code>" }
   ],
   "chapter_weight": <sum of all primary weight scores>
-}}
+}
 
 CRITICAL CONSTRAINTS:
 - Apply the constitution rules exactly. Weight 3 only if the competency structurally dissolves the chapter if removed.
@@ -318,28 +351,52 @@ CRITICAL CONSTRAINTS:
 - Only use C-codes that appear in the Curricular Goals list provided above.
 - Respond with JSON only — no text before or after."""
 
+    return base + schema_block
 
-def _validate_mapping(mapping: dict) -> list:
+
+def _validate_mapping(mapping: dict, subject_group: str = "social_sciences") -> list:
     """Validate Call 2 output. Returns list of error strings."""
     errors = []
-    for field in ["min_viable_periods", "primary", "incidental", "chapter_weight"]:
-        if field not in mapping:
-            errors.append(f"Missing field: {field}")
 
-    if "primary" in mapping and "chapter_weight" in mapping:
-        computed = sum(p.get("weight", 0) for p in mapping["primary"])
-        if computed != mapping["chapter_weight"]:
-            errors.append(
-                f"chapter_weight mismatch: stated {mapping['chapter_weight']}, "
-                f"computed {computed}"
-            )
+    if subject_group == "science":
+        # ── Science schema validation ─────────────────────────────────────────
+        required_fields = [
+            "content_inventory", "primary", "min_viable_periods",
+            "conceptual_demand", "activity_count", "demo_count",
+            "exec_load", "effort_index",
+        ]
+        for field in required_fields:
+            if field not in mapping:
+                errors.append(f"Missing field: {field}")
 
-    if "primary" in mapping:
-        if len(mapping["primary"]) == 0:
-            errors.append("No primary competencies — every valid NCERT chapter must have at least one")
-        for p in mapping["primary"]:
-            if p.get("weight") not in [1, 2, 3]:
-                errors.append(f"Invalid weight {p.get('weight')} for {p.get('c_code')}")
+        if "primary" in mapping:
+            if len(mapping["primary"]) == 0:
+                errors.append("No primary competencies — every valid NCERT chapter must have at least one")
+            for p in mapping["primary"]:
+                for sub_field in ["cg", "c_code", "justification"]:
+                    if not p.get(sub_field):
+                        errors.append(f"primary entry missing '{sub_field}': {p}")
+
+    else:
+        # ── Social Sciences (and all other subject groups) schema validation ──
+        for field in ["min_viable_periods", "primary", "incidental", "chapter_weight"]:
+            if field not in mapping:
+                errors.append(f"Missing field: {field}")
+
+        if "primary" in mapping and "chapter_weight" in mapping:
+            computed = sum(p.get("weight", 0) for p in mapping["primary"])
+            if computed != mapping["chapter_weight"]:
+                errors.append(
+                    f"chapter_weight mismatch: stated {mapping['chapter_weight']}, "
+                    f"computed {computed}"
+                )
+
+        if "primary" in mapping:
+            if len(mapping["primary"]) == 0:
+                errors.append("No primary competencies — every valid NCERT chapter must have at least one")
+            for p in mapping["primary"]:
+                if p.get("weight") not in [1, 2, 3]:
+                    errors.append(f"Invalid weight {p.get('weight')} for {p.get('c_code')}")
 
     return errors
 
@@ -400,7 +457,17 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
 
             mapping = json.loads(raw_text)
 
-            errors = _validate_mapping(mapping)
+            # Compute effort_index in Python — do not trust model arithmetic
+            if subject_group == "science":
+                mapping["effort_index"] = round(
+                    mapping.get("conceptual_demand", 0) * 2 +
+                    mapping.get("activity_count", 0) * 1 +
+                    mapping.get("demo_count", 0) * 1.5 +
+                    mapping.get("exec_load", 0) * 2,
+                    1
+                )
+
+            errors = _validate_mapping(mapping, subject_group)
             if errors and attempt < max_retries:
                 print(f"    Validation issues (attempt {attempt}): {errors}")
                 repair_note = "REPAIR REQUIRED: " + "; ".join(errors)
@@ -430,9 +497,18 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
                 "chapter_summary":    chapter_summary,
                 "min_viable_periods": mapping["min_viable_periods"],
                 "primary":            mapping["primary"],
-                "incidental":         mapping["incidental"],
-                "chapter_weight":     mapping["chapter_weight"],
             }
+            if subject_group == "science":
+                record["content_inventory"] = mapping.get("content_inventory")
+                record["co_central"]        = mapping.get("co_central")
+                record["conceptual_demand"] = mapping.get("conceptual_demand")
+                record["activity_count"]    = mapping.get("activity_count")
+                record["demo_count"]        = mapping.get("demo_count")
+                record["exec_load"]         = mapping.get("exec_load")
+                record["effort_index"]      = mapping.get("effort_index")
+            else:
+                record["incidental"]         = mapping["incidental"]
+                record["chapter_weight"]     = mapping["chapter_weight"]
             return record
 
         except json.JSONDecodeError as e:

@@ -1,0 +1,24 @@
+{
+  "stage": "middle",
+  "subject": "science",
+  "grade": "vii",
+  "chapter_number": 1,
+  "chapter_title": "The Ever-Evolving World of Science",
+  "min_viable_periods": 0,
+  "orientation_chapter": true,
+  "co_central": false,
+  "primary": [
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.1",
+      "justification": "This chapter is an orientation to the nature of science — how scientific knowledge has changed over time, what scientific inquiry looks like, and what values science embodies. C-6.1 directly matches: it covers how scientific knowledge and ideas have changed over time and identifies the scientific values inherent across the evolution of scientific knowledge (scientific temper, science as a collective endeavour). No CG-1 through CG-5 content domain is the subject of this chapter; it is an epistemological orientation, not a content chapter."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's awareness of how scientific knowledge evolves over time and the values and processes that define science as a collective human endeavour.",
+  "conceptual_demand": 2,
+  "activity_count": 0,
+  "demo_count": 0,
+  "exec_load": 0,
+  "effort_index": 4.0,
+  "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_01_summary.txt"
+}

@@ -1,0 +1,24 @@
+{
+  "stage": "middle",
+  "subject": "science",
+  "grade": "vii",
+  "chapter_number": 8,
+  "chapter_title": "Measurement of Time and Motion",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": false,
+  "primary": [
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.1",
+      "justification": "The chapter's entire domain is one-dimensional motion — measuring time and distance, calculating speed, distinguishing uniform from non-uniform motion, and representing motion through distance-time graphs. C-2.1 is a verbatim match: it covers describing one-dimensional motion (uniform, non-uniform) using physical measurements (position, speed, and changes in speed) through mathematical and diagrammatic representations. The chapter's activities, exercises, and diagram tasks all operate within this definition."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to describe and compare uniform and non-uniform motion by measuring time and distance, calculating speed, and representing motion through distance-time graphs.",
+  "conceptual_demand": 1,
+  "activity_count": 2,
+  "demo_count": 0,
+  "exec_load": 2,
+  "effort_index": 8.0,
+  "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_08_summary.txt"
+}

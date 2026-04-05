@@ -1,0 +1,315 @@
+[
+  {
+    "stage": "middle",
+    "subject": "science",
+    "grade": "vii",
+    "chapter_number": 1,
+    "chapter_title": "The Ever-Evolving World of Science",
+    "min_viable_periods": 0,
+    "orientation_chapter": true,
+    "co_central": false,
+    "primary": [
+      {
+        "cg": "CG-6",
+        "c_code": "C-6.1",
+        "justification": "This chapter is an orientation to the nature of science — how scientific knowledge has changed over time, what scientific inquiry looks like, and what values science embodies. C-6.1 directly matches: it covers how scientific knowledge and ideas have changed over time and identifies the scientific values inherent across the evolution of scientific knowledge (scientific temper, science as a collective endeavour). No CG-1 through CG-5 content domain is the subject of this chapter; it is an epistemological orientation, not a content chapter."
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's awareness of how scientific knowledge evolves over time and the values and processes that define science as a collective human endeavour.",
+    "conceptual_demand": 0,
+    "activity_count": 0,
+    "demo_count": 0,
+    "exec_load": 0,
+    "effort_index": 0,
+    "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_01_summary.txt"
+  },
+  {
+    "stage": "middle",
+    "subject": "science",
+    "grade": "vii",
+    "chapter_number": 2,
+    "chapter_title": "Exploring Substances: Acidic, Basic, and Neutral",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": true,
+    "primary": [
+      {
+        "cg": "CG-1",
+        "c_code": "C-1.1",
+        "justification": "The chapter's central content domain is the classification of matter by chemical characteristics. C-1.1 explicitly lists 'acid, base' and 'metal, non-metal' as examples of chemical classification. The chapter classifies substances as acidic, basic, or neutral using indicators (litmus, red rose extract, turmeric paper, olfactory indicators), identifies chemical characteristics (sour taste, soapy feel, colour change behaviour), and lists acids present in common edible substances. This is a direct, complete match to C-1.1's chemical classification definition."
+      },
+      {
+        "cg": "CG-1",
+        "c_code": "C-1.2",
+        "justification": "The chapter's second structural strand is the neutralisation reaction — a chemical change where acid and base react to produce salt, water, and heat. C-1.2 covers changes in matter (physical and chemical). The chapter dedicates a full section to the neutralisation reaction, its chemical equation (Acid + Base → Salt + Water + Heat), and its applications in daily life (ant bite treatment, soil correction, industrial waste treatment). This is an independently developed chemical change strand, not a vehicle for classification."
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's ability to classify substances as acidic, basic, or neutral using chemical indicators and to explain the neutralisation reaction as a chemical change with everyday applications.",
+    "conceptual_demand": 0,
+    "activity_count": 0,
+    "demo_count": 0,
+    "exec_load": 0,
+    "effort_index": 0,
+    "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_02_summary.txt"
+  },
+  {
+    "stage": "middle",
+    "subject": "science",
+    "grade": "vii",
+    "chapter_number": 3,
+    "chapter_title": "Electricity — Circuits and their Components",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": false,
+    "primary": [
+      {
+        "cg": "CG-2",
+        "c_code": "C-2.2",
+        "justification": "The chapter's domain is electricity — how it flows through circuits, what components make up circuits, and the effects of electric current (heating and magnetic). C-2.2 is an exact match: it covers describing how electricity works through manipulating different elements in simple circuits and demonstrating the heating and magnetic effects of electricity. The chapter covers circuit construction, conductors and insulators, switches, and the effects of current — all squarely within C-2.2's definition."
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's ability to describe how electricity flows through simple circuits by manipulating circuit components and identifying the heating and magnetic effects of electric current.",
+    "conceptual_demand": 0,
+    "activity_count": 0,
+    "demo_count": 0,
+    "exec_load": 0,
+    "effort_index": 0,
+    "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_03_summary.txt"
+  },
+  {
+    "stage": "middle",
+    "subject": "science",
+    "grade": "vii",
+    "chapter_number": 4,
+    "chapter_title": "The World of Metals and Non-metals",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": true,
+    "primary": [
+      {
+        "cg": "CG-1",
+        "c_code": "C-1.1",
+        "justification": "The chapter's primary domain is classification of matter by physical and chemical characteristics — specifically the metal/non-metal distinction. C-1.1 explicitly lists 'metal, non-metal', 'conducting, non-conducting', and 'magnetic, non-magnetic' as examples of classification by physical and chemical characteristics. The chapter systematically distinguishes metals and non-metals by lustre, hardness, malleability, ductility, conductivity, and reactivity — a direct and complete match to C-1.1."
+      },
+      {
+        "cg": "CG-1",
+        "c_code": "C-1.2",
+        "justification": "The chapter develops a second distinct strand: chemical changes involving metals — reactions of metals with oxygen, water, and acids, and the formation of oxides and salts. C-1.2 covers changes in matter including chemical changes. This strand is independently developed through the chapter's sections on metal reactivity and corrosion, and is not merely a vehicle for the classification in C-1.1."
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's ability to classify materials as metals or non-metals based on physical and chemical properties and to explain the chemical changes metals undergo through reactions with oxygen, water, and acids.",
+    "conceptual_demand": 0,
+    "activity_count": 0,
+    "demo_count": 0,
+    "exec_load": 0,
+    "effort_index": 0,
+    "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_04_summary.txt"
+  },
+  {
+    "stage": "middle",
+    "subject": "science",
+    "grade": "vii",
+    "chapter_number": 5,
+    "chapter_title": "Changes Around Us — Physical and Chemical",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": true,
+    "primary": [
+      {
+        "cg": "CG-1",
+        "c_code": "C-1.2",
+        "justification": "The chapter's central domain is changes in matter — the distinction between physical changes (reversible, no new substance formed) and chemical changes (irreversible, new substance formed). C-1.2 is a direct match: it covers describing changes in matter (physical and chemical) and using particulate nature to represent properties and changes. The entire chapter is organised around identifying, distinguishing, and explaining these two types of change with examples."
+      },
+      {
+        "cg": "CG-1",
+        "c_code": "C-1.1",
+        "justification": "The chapter also develops classification of matter by observable characteristics as a supporting strand — students classify substances and changes by properties that are observable (colour change, gas evolution, temperature change, precipitate formation). C-1.1 covers classification by observable physical and chemical characteristics. This classification strand is developed through the chapter's activities and exercises and is independently present, not merely implied by the changes strand."
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's ability to distinguish physical changes from chemical changes in matter by identifying observable evidence of each, and to explain why chemical changes are irreversible using particulate reasoning.",
+    "conceptual_demand": 0,
+    "activity_count": 0,
+    "demo_count": 0,
+    "exec_load": 0,
+    "effort_index": 0,
+    "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_05_summary.txt"
+  },
+  {
+    "stage": "middle",
+    "subject": "science",
+    "grade": "vii",
+    "chapter_number": 6,
+    "chapter_title": "Adolescence — A Stage of Growth and Change",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": false,
+    "primary": [
+      {
+        "cg": "CG-4",
+        "c_code": "C-4.3",
+        "justification": "The chapter's entire domain is the biological and hormonal changes that occur during adolescence — physical growth, hormonal changes, reproductive maturity, and measures for overall well-being during this stage. C-4.3 is a verbatim match: it covers describing biological changes (growth, hormonal) during adolescence and measures to ensure overall well-being. No other CG domain is the subject of this chapter."
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's ability to describe the biological and hormonal changes that occur during adolescence and identify measures for maintaining overall well-being through this stage of development.",
+    "conceptual_demand": 0,
+    "activity_count": 0,
+    "demo_count": 0,
+    "exec_load": 0,
+    "effort_index": 0,
+    "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_06_summary.txt"
+  },
+  {
+    "stage": "middle",
+    "subject": "science",
+    "grade": "vii",
+    "chapter_number": 7,
+    "chapter_title": "Heat Transfer in Nature",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": true,
+    "primary": [
+      {
+        "cg": "CG-1",
+        "c_code": "C-1.4",
+        "justification": "The chapter's central domain is phenomena caused by differences in temperature — how heat moves through conduction, convection, and radiation, and the natural phenomena these processes drive (land breeze, sea breeze, formation of winds, cooling of objects). C-1.4 is a direct match: it covers observing and explaining phenomena caused due to differences in temperature (e.g., cooling of things, formation of winds). These examples from C-1.4 are structurally present as the chapter's organising content."
+      },
+      {
+        "cg": "CG-1",
+        "c_code": "C-1.3",
+        "justification": "The chapter also develops measurement of temperature as an independently present strand — use of thermometers, temperature scales (Celsius, Fahrenheit), and measurement of heat in standard units. C-1.3 covers explaining the importance of measurement and measuring physical properties of matter including temperature using simple instruments. This measurement strand is developed through the chapter's activities and is distinct from the phenomena explanation strand."
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's ability to explain natural phenomena caused by temperature differences by understanding the three modes of heat transfer — conduction, convection, and radiation — and to measure temperature using appropriate instruments.",
+    "conceptual_demand": 0,
+    "activity_count": 0,
+    "demo_count": 0,
+    "exec_load": 0,
+    "effort_index": 0,
+    "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_07_summary.txt"
+  },
+  {
+    "stage": "middle",
+    "subject": "science",
+    "grade": "vii",
+    "chapter_number": 8,
+    "chapter_title": "Measurement of Time and Motion",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": false,
+    "primary": [
+      {
+        "cg": "CG-2",
+        "c_code": "C-2.1",
+        "justification": "The chapter's entire domain is one-dimensional motion — measuring time and distance, calculating speed, distinguishing uniform from non-uniform motion, and representing motion through distance-time graphs. C-2.1 is a verbatim match: it covers describing one-dimensional motion (uniform, non-uniform) using physical measurements (position, speed, and changes in speed) through mathematical and diagrammatic representations. The chapter's activities, exercises, and diagram tasks all operate within this definition."
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's ability to describe and compare uniform and non-uniform motion by measuring time and distance, calculating speed, and representing motion through distance-time graphs.",
+    "conceptual_demand": 0,
+    "activity_count": 0,
+    "demo_count": 0,
+    "exec_load": 0,
+    "effort_index": 0,
+    "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_08_summary.txt"
+  },
+  {
+    "stage": "middle",
+    "subject": "science",
+    "grade": "vii",
+    "chapter_number": 9,
+    "chapter_title": "Life Processes in Animals",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": false,
+    "primary": [
+      {
+        "cg": "CG-3",
+        "c_code": "C-3.2",
+        "justification": "The chapter's domain is life processes in animals — nutrition, respiration, circulation, excretion, and how these processes define and sustain animal life. C-3.2 is a direct match: it covers distinguishing the characteristics of living organisms including need for nutrition, growth and development, need for respiration, response to stimuli, reproduction, excretion, and cellular organisation. The chapter develops these characteristics as the central content, explaining how each life process works in animals."
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's ability to explain the major life processes in animals — nutrition, respiration, circulation, and excretion — and understand how these processes collectively sustain animal life.",
+    "conceptual_demand": 0,
+    "activity_count": 0,
+    "demo_count": 0,
+    "exec_load": 0,
+    "effort_index": 0,
+    "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_09_summary.txt"
+  },
+  {
+    "stage": "middle",
+    "subject": "science",
+    "grade": "vii",
+    "chapter_number": 10,
+    "chapter_title": "Life Processes in Plants",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": true,
+    "primary": [
+      {
+        "cg": "CG-3",
+        "c_code": "C-3.2",
+        "justification": "The chapter's primary domain is life processes in plants — photosynthesis, respiration, transportation of water and nutrients, and reproduction. C-3.2 covers characteristics of living organisms including need for nutrition, growth and development, need for respiration, and cellular organisation. The chapter explains how plants carry out these same life processes that define living things, making C-3.2 the direct match for the chapter's central content."
+      },
+      {
+        "cg": "CG-3",
+        "c_code": "C-3.3",
+        "justification": "The chapter develops a second distinct strand: the relationship between plants and their environment — how plants depend on sunlight, water, and soil nutrients, and how they in turn support other organisms through oxygen production and as food sources. C-3.3 covers analysing patterns of relationships between living organisms and their environments in terms of dependence on and response to each other. This environmental relationship strand is independently developed and not merely implied by the life processes strand."
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's ability to explain how plants carry out life processes — particularly photosynthesis, respiration, and transportation — and how these processes establish plants as producers that sustain other living organisms.",
+    "conceptual_demand": 0,
+    "activity_count": 0,
+    "demo_count": 0,
+    "exec_load": 0,
+    "effort_index": 0,
+    "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_10_summary.txt"
+  },
+  {
+    "stage": "middle",
+    "subject": "science",
+    "grade": "vii",
+    "chapter_number": 11,
+    "chapter_title": "Light — Shadows and Reflections",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": false,
+    "primary": [
+      {
+        "cg": "CG-2",
+        "c_code": "C-2.4",
+        "justification": "The chapter's entire domain is the behaviour of light — rectilinear propagation, shadow formation, and reflection. C-2.4 is a verbatim match: it covers demonstrating rectilinear propagation of light from different sources and verifying the laws of reflection through manipulation of light sources and objects and the use of apparatus and artefacts such as plane mirrors, pinhole camera, kaleidoscope, and periscope. These specific apparatus examples from C-2.4 are structurally present as the chapter's activities and content."
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's ability to demonstrate that light travels in straight lines and to verify the laws of reflection through systematic manipulation of light sources, mirrors, and optical apparatus.",
+    "conceptual_demand": 0,
+    "activity_count": 0,
+    "demo_count": 0,
+    "exec_load": 0,
+    "effort_index": 0,
+    "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_11_summary.txt"
+  },
+  {
+    "stage": "middle",
+    "subject": "science",
+    "grade": "vii",
+    "chapter_number": 12,
+    "chapter_title": "Earth, Moon, and the Sun",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": false,
+    "primary": [
+      {
+        "cg": "CG-2",
+        "c_code": "C-2.5",
+        "justification": "The chapter's entire domain is celestial objects — the Earth, Moon, and Sun — and the phenomena they produce: phases of the Moon, solar and lunar eclipses, tides, and their role in calendars and navigation. C-2.5 is a verbatim match: it covers observing and identifying celestial objects and explaining their role in navigation, calendars, and other phenomena including phases of the moon and eclipses. These specific phenomena from C-2.5 are structurally present as the chapter's central content."
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's ability to explain the phenomena caused by the relative positions and movements of the Earth, Moon, and Sun — including phases of the Moon, eclipses, and tides — and their significance for calendars and navigation.",
+    "conceptual_demand": 0,
+    "activity_count": 0,
+    "demo_count": 0,
+    "exec_load": 0,
+    "effort_index": 0,
+    "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_12_summary.txt"
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "stage": "middle",
+  "subject": "science",
+  "grade": "vii",
+  "chapter_number": 7,
+  "chapter_title": "Heat Transfer in Nature",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": true,
+  "primary": [
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.4",
+      "justification": "The chapter's central domain is phenomena caused by differences in temperature — how heat moves through conduction, convection, and radiation, and the natural phenomena these processes drive (land breeze, sea breeze, formation of winds, cooling of objects). C-1.4 is a direct match: it covers observing and explaining phenomena caused due to differences in temperature (e.g., cooling of things, formation of winds). These examples from C-1.4 are structurally present as the chapter's organising content."
+    },
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.3",
+      "justification": "The chapter also develops measurement of temperature as an independently present strand — use of thermometers, temperature scales (Celsius, Fahrenheit), and measurement of heat in standard units. C-1.3 covers explaining the importance of measurement and measuring physical properties of matter including temperature using simple instruments. This measurement strand is developed through the chapter's activities and is distinct from the phenomena explanation strand."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to explain natural phenomena caused by temperature differences by understanding the three modes of heat transfer — conduction, convection, and radiation — and to measure temperature using appropriate instruments.",
+  "conceptual_demand": 2,
+  "activity_count": 5,
+  "demo_count": 0,
+  "exec_load": 0,
+  "effort_index": 9.0,
+  "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_07_summary.txt"
+}

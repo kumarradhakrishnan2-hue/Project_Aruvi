@@ -1,0 +1,29 @@
+{
+  "stage": "middle",
+  "subject": "science",
+  "grade": "vii",
+  "chapter_number": 5,
+  "chapter_title": "Changes Around Us — Physical and Chemical",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": true,
+  "primary": [
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.2",
+      "justification": "The chapter's central domain is changes in matter — the distinction between physical changes (reversible, no new substance formed) and chemical changes (irreversible, new substance formed). C-1.2 is a direct match: it covers describing changes in matter (physical and chemical) and using particulate nature to represent properties and changes. The entire chapter is organised around identifying, distinguishing, and explaining these two types of change with examples."
+    },
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.1",
+      "justification": "The chapter also develops classification of matter by observable characteristics as a supporting strand — students classify substances and changes by properties that are observable (colour change, gas evolution, temperature change, precipitate formation). C-1.1 covers classification by observable physical and chemical characteristics. This classification strand is developed through the chapter's activities and exercises and is independently present, not merely implied by the changes strand."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to distinguish physical changes from chemical changes in matter by identifying observable evidence of each, and to explain why chemical changes are irreversible using particulate reasoning.",
+  "conceptual_demand": 2,
+  "activity_count": 5,
+  "demo_count": 0,
+  "exec_load": 0,
+  "effort_index": 9.0,
+  "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_05_summary.txt"
+}

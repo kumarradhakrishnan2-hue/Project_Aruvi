@@ -74,10 +74,7 @@ def extract_chapter(pdf_path: str) -> dict:
             and sum(1 for w in line.split() if w[0].isupper()) / max(len(line.split()), 1) > 0.5
         )
         if is_all_caps or is_title_case:
-            # Exclude lines that are clearly sentences (contain common sentence words)
-            sentence_indicators = [" is ", " are ", " was ", " were ", " the ", " and ", " of "]
-            if not any(ind in line.lower() for ind in sentence_indicators):
-                section_headings.append(line)
+            section_headings.append(line)
 
     # Deduplicate while preserving order
     seen = set()

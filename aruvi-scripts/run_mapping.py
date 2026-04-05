@@ -129,17 +129,18 @@ def run_single_chapter(chapter_pdf: str, chapter_number: int, paths: dict):
     )
 
     # ── Update combined master JSON (archive — includes summary) ─────────────
-    mappings = load_existing_mappings(paths["output_json"])
-    mappings[str(chapter_number)] = record
-    save_mappings(paths["output_json"], mappings)
+   # mappings = load_existing_mappings(paths["output_json"])
+    #mappings[str(chapter_number)] = record
+    #save_mappings(paths["output_json"], mappings)
 
-    print(f"\n  ✓ Saved  |  weight={record['chapter_weight']}  "
+    weight_display = record.get('chapter_weight', record.get('effort_index', '—'))
+    print(f"\n  ✓ Saved  |  weight={weight_display}  "
           f"primary={len(record['primary'])}  "
           f"summary={len(record['chapter_summary'].split())}w")
     print(f"    Summary : {summary_path_rel}")
     print(f"    Mapping : {str(mapping_file.relative_to(project_root))}")
     for comp in record["primary"]:
-        print(f"    [{comp['weight']}] {comp['c_code']} — {comp['justification'][:70]}...")
+        print(f"    [{comp.get('weight', '—')}] {comp['c_code']} — {comp['justification'][:70]}...")
 
     return record
 
@@ -194,7 +195,6 @@ def main():
     print(f"CG text : {paths['cg_text_path']}  {'✓' if paths['cg_text_path_exists'] else '✗'}")
     print(f"Pedagogy: {paths['pedagogy_text_path']}  {'✓' if paths['pedagogy_text_path_exists'] else '✗'}")
     print(f"Chapters: {paths['chapter_dir']}  {'✓' if paths['chapter_dir_exists'] else '✗'}")
-    print(f"Output  : {paths['output_json']}")
     print(f"Tokens  : {paths['token_log']}")
     print(f"Constitution: {paths['constitution_path']}  "
           f"{'✓' if paths['constitution_path_exists'] else '✗'}")
@@ -276,7 +276,6 @@ def main():
         print(f"Failed    : {len(failed)}")
         for num, err in failed:
             print(f"  Chapter {num}: {err}")
-    print(f"Output    : {paths['output_json']}")
 
     # Token log totals for this run
     token_log = Path(paths["token_log"])

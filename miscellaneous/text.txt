@@ -51,6 +51,11 @@ Return only:
 * next step
 
 
+CONFIDENCE (part of prompt)
+"Do not make any changes until you have 95% confidence in what you need to build. Ask me follow-up questions until you reach that confidence."
 
-
-
+/clear - to cut off two parts of same conversation to reduce tokens
+/cost - to find out cost of current conversation
+/context- to find what part of the conversations are contributing to token usage now
+/statusline - to see running bar on current status
+/compact-to compact conversation

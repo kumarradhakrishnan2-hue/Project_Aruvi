@@ -1,0 +1,188 @@
+ARUVI
+Science Competency Mapping Constitution
+Knowledge Commons · Chapter-to-Competency Mapping · Version 2.0 · Middle Stage
+
+Subject group   : science
+Stages          : Middle Stage · Secondary Stage
+Task            : chapter_to_competency_mapping
+Fetch key       : competency_constitution_science
+Version         : 2.0 — supersedes Version 1.0
+Downstream      : lesson_plan_constitution_science · assessment_constitution_science
+
+================================================================================
+INTRODUCTION
+================================================================================
+
+Each Grade VII Science chapter is studied against the NCF Middle Stage Curricular
+Goals document. Call 1 reads the chapter PDF: it builds the chapter summary and
+computes four effort index signals that govern period allocation. Call 2 determines
+competency: it identifies the CG whose domain matches the chapter, then selects up
+to two C-codes within that CG whose definitions the chapter substantively addresses.
+A dissolution test sentence records the reasoning. The resulting competency record —
+CG, C-codes, dissolution test, co_central flag — is fixed per chapter and held as a
+pre-authorised reference for Grade VII.
+
+================================================================================
+CALL 1 — CHAPTER PDF: SUMMARY AND EFFORT INDEX
+================================================================================
+
+Rule 1 | Evidence base
+--------------------------------------------------------------------------------
+The system SHALL read the full chapter PDF. The evidence base comprises four
+elements:
+  (a) Embedded student activities — boxed tasks labelled "Let us explore /
+      investigate / construct / experiment" and equivalents, classified as
+      student-executed or teacher-demonstrated.
+  (b) End-of-chapter exercises ("Let Us Enhance Our Learning").
+  (c) Embedded diagram tasks — questions placed beneath body-text figures
+      requiring the student to read or reason from the diagram.
+  (d) Body-text thought prompts — italicised questions or "can you think of"
+      invitations in the explanatory text.
+Explanatory prose with no accompanying student task and informational sidebar
+boxes with no student task are excluded.
+
+Rule 2 | Effort index signals
+--------------------------------------------------------------------------------
+The system SHALL compute four signal values from the evidence base and pass them
+in memory to Call 2.
+
+  conceptual_demand (1–3):
+    Score 1 if recall and familiar-context questions dominate the exercise (>60%).
+    Score 2 if causal explanation or application to familiar context dominates, or
+            demand is evenly spread.
+    Score 3 if unfamiliar-context transfer, multi-step causal chain reasoning, or
+            investigative design questions constitute 30% or more of the exercise.
+
+  activity_count (integer):
+    Count student-executed physical activities only. Exclude teacher demonstrations
+    and discussion tasks.
+
+  demo_count (integer):
+    Count teacher-performed demonstrations only.
+
+  exec_load (0–2):
+    Score 0 if exercise is predominantly written reasoning.
+    Score 1 if multi-step calculation or diagram production is 30–60% of questions.
+    Score 2 if >60%.
+
+  effort_index = (conceptual_demand × 2) + (activity_count × 1)
+               + (demo_count × 1.5) + (exec_load × 2)
+
+effort_index is the sole period allocation input for the Planning Tool.
+
+Rule 3 | Chapter summary
+--------------------------------------------------------------------------------
+The system SHALL produce a chapter summary of 600–900 words mirroring the
+textbook's section headings in order. The summary describes what the chapter
+teaches — its concepts, phenomena, and content organisation. It notes the
+existence of activities without elaborating them. It does not describe exercises.
+Written to mirror as ch_NN_summary.txt.
+
+================================================================================
+CALL 2 — COMPETENCY MAPPING
+================================================================================
+
+Rule 4 | Pre-authorised competency list — development method
+--------------------------------------------------------------------------------
+The competency assignment for each Grade VII Science chapter was determined by a
+two-step process applied to every chapter.
+
+  Step 1 — CG identification:
+    The chapter summary is read and the single CG whose domain description matches
+    the chapter's subject matter is selected. Selection is made from CG-level
+    headings only; C-code definitions are not opened at this step. CG-6 through
+    CG-9 are eligible only if no CG-1 through CG-5 domain matches — which applies
+    only to orientation or epistemology chapters. The selected CG is locked.
+
+  Step 2 — C-code selection:
+    Only the C-codes under the locked CG are read. A maximum of two C-codes are
+    selected — those whose definitions the chapter summary substantively addresses.
+    A second C-code requires independent justification from a distinct strand of
+    the chapter, not as a vehicle for the first.
+
+The dissolution test sentence is then written:
+    "This chapter builds the student's ability to [verb] [object]
+     by [cognitive mechanism]."
+
+co_central is set to true when two C-codes are selected.
+
+The resulting assignments for all 12 Grade VII chapters are fixed in the
+pre-authorised reference table below and are not re-derived at runtime.
+
+Rule 5 | Effort index merge
+--------------------------------------------------------------------------------
+The effort index signals computed in Call 1 (conceptual_demand, activity_count,
+demo_count, exec_load, effort_index) are merged into the pre-authorised competency
+record for the chapter. All competency fields remain unchanged.
+
+Rule 6 | Summary path
+--------------------------------------------------------------------------------
+The summary_path field in the output JSON points to the ch_NN_summary.txt file
+written in Call 1, Rule 3.
+Format: mirror/chapters/science/grade_vii/summaries/ch_NN_summary.txt
+
+Rule 7 | Output write
+--------------------------------------------------------------------------------
+The completed JSON record is written to:
+  mirror/chapters/science/grade_vii/mappings/ch_NN_mapping.json
+
+The record is also appended to the consolidated file:
+  mirror/chapters/science/grade_vii/mappings/chapter_mappings_science_vii.json
+
+================================================================================
+PRE-AUTHORISED COMPETENCY REFERENCE — GRADE VII SCIENCE
+================================================================================
+
+The table below is the output of the development method in Rule 4, applied to all
+12 chapters. It is the authoritative competency assignment for Grade VII.
+Justifications are held in the reference JSON at:
+  mirror/chapters/science/grade_vii/mappings/grade_vii_science_mappings.json
+
+Ch  | Chapter Title                                    | CG    | C-codes (primary)
+----|--------------------------------------------------|-------|------------------
+01  | The Ever-Evolving World of Science               | CG-6  | C-6.1
+02  | Exploring Substances: Acidic, Basic, and Neutral | CG-1  | C-1.1 · C-1.2
+03  | Electricity — Circuits and their Components      | CG-2  | C-2.2
+04  | The World of Metals and Non-metals               | CG-1  | C-1.1 · C-1.2
+05  | Changes Around Us — Physical and Chemical        | CG-1  | C-1.2 · C-1.1
+06  | Adolescence — A Stage of Growth and Change       | CG-4  | C-4.3
+07  | Heat Transfer in Nature                          | CG-1  | C-1.4 · C-1.3
+08  | Measurement of Time and Motion                   | CG-2  | C-2.1
+09  | Life Processes in Animals                        | CG-3  | C-3.2
+10  | Life Processes in Plants                         | CG-3  | C-3.2 · C-3.3
+11  | Light — Shadows and Reflections                  | CG-2  | C-2.4
+12  | Earth, Moon, and the Sun                         | CG-2  | C-2.5
+
+================================================================================
+COMPETENCY MAPPING JSON SCHEMA — SCIENCE
+================================================================================
+
+Field                 | Type          | Description
+----------------------|---------------|------------------------------------------
+stage                 | string        | "middle" — fixed token
+subject               | string        | "science" — fixed token
+grade                 | string        | Roman numeral, no prefix (e.g. "vii")
+chapter_number        | integer       | NCERT chapter number
+chapter_title         | string        | Full title as in the textbook
+summary_path          | string        | Relative path to ch_NN_summary.txt
+orientation_chapter   | boolean       | true for Chapter 1 only; false for all others
+co_central            | boolean       | true when two independently justified C-codes
+primary               | array         | { cg, c_code, justification } — one entry
+                      |               | normally; two when co_central is true.
+                      |               | No weight field.
+dissolution_test      | string        | "This chapter builds the student's ability to
+                      |               | [verb] [object] by [cognitive mechanism]."
+                      |               | Pre-authorised for Grade VII.
+conceptual_demand     | integer 1–3   | Effort index signal. Computed in Call 1, Rule 2.
+activity_count        | integer       | Effort index signal. Student-executed activities.
+demo_count            | integer       | Effort index signal. Teacher demonstrations.
+exec_load             | integer 0–2   | Effort index signal. Exercise execution load.
+effort_index          | number        | (conceptual_demand×2) + (activity_count×1)
+                      |               | + (demo_count×1.5) + (exec_load×2).
+                      |               | Planning Tool input only.
+min_viable_periods    | integer       | Minimum periods floor for Planning Tool. Default 0.
+
+================================================================================
+Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
+Science Competency Mapping Constitution · Version 2.0 · Internal Document
+================================================================================

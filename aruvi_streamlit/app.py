@@ -1019,6 +1019,10 @@ def _alloc_chapter_weight(ch: dict) -> int:
     stored = ch.get("chapter_weight")
     if isinstance(stored, (int, float)) and stored > 0:
         return int(stored)
+    # Science: use effort_index as allocation weight
+    effort = ch.get("effort_index")
+    if isinstance(effort, (int, float)) and effort > 0:
+        return int(round(effort))
     return sum(item.get("weight", 0) for item in ch.get("primary", []))
 
 def _lrm(raw_floats: list, total: int) -> list:
@@ -3422,11 +3426,16 @@ elif st.session_state.role == "Allocate":
                 _enriched_primary.append(_e)
 
             _result.append({
-                "chapter_number": _ch["chapter_number"],
-                "chapter_title":  _ch.get("chapter_title", ""),
-                "chapter_weight": _mapping.get("chapter_weight", 0),
-                "primary":        _enriched_primary,
-                "incidental":     _mapping.get("incidental", []),
+                "chapter_number":    _ch["chapter_number"],
+                "chapter_title":     _ch.get("chapter_title", ""),
+                "chapter_weight":    _mapping.get("chapter_weight", 0),
+                "effort_index":      _mapping.get("effort_index", 0),
+                "conceptual_demand": _mapping.get("conceptual_demand", 0),
+                "activity_count":    _mapping.get("activity_count", 0),
+                "demo_count":        _mapping.get("demo_count", 0),
+                "exec_load":         _mapping.get("exec_load", 0),
+                "primary":           _enriched_primary,
+                "incidental":        _mapping.get("incidental", []),
             })
         return _result
 
@@ -3450,11 +3459,32 @@ elif st.session_state.role == "Allocate":
         f"const PERIOD_TYPES   = {json.dumps(_sorted_pts)};\n"
         f"const GRADE_LABEL    = {json.dumps(st.session_state.grade    or '')};\n"
         f"const SUBJECT_LABEL  = {json.dumps(st.session_state.subject  or '')};\n"
+        f"const IS_SCIENCE     = {json.dumps(st.session_state.subject == 'Science')};\n"
         f"const ARUVI_LOGO_B64 = {json.dumps(_logo_b64)};\n"
     )
     _html = _html_tpl.replace("/* __CHAPTERS_DATA__ */", _inject)
 
     components.html(_html, height=950, scrolling=True)
+
+    # ── Science: effort breakdown by chapter ─────────────────────────────────
+    if st.session_state.subject == "Science" and _chapters_data:
+        st.markdown("**Effort breakdown by chapter**")
+        for _sci_ch in _chapters_data:
+            _ei  = _sci_ch.get("effort_index", 0)
+            _cd  = _sci_ch.get("conceptual_demand", 0)
+            _ac  = _sci_ch.get("activity_count", 0)
+            _dc  = _sci_ch.get("demo_count", 0)
+            _el  = _sci_ch.get("exec_load", 0)
+            _lbl = f"Ch {_sci_ch['chapter_number']:02d} · {_sci_ch.get('chapter_title', '')}"
+            with st.expander(_lbl):
+                st.code(
+                    f"Effort index: {_ei}\n"
+                    f"  Conceptual demand : {_cd}\n"
+                    f"  Student activities: {_ac}\n"
+                    f"  Demonstrations    : {_dc}\n"
+                    f"  Execution load    : {_el}",
+                    language=None,
+                )
 
     # ── Download PDF trigger ──────────────────────────────────────────────
     _st_col1, _st_col2 = st.columns([1, 4])

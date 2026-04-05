@@ -1,0 +1,29 @@
+{
+  "stage": "middle",
+  "subject": "science",
+  "grade": "vii",
+  "chapter_number": 10,
+  "chapter_title": "Life Processes in Plants",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": true,
+  "primary": [
+    {
+      "cg": "CG-3",
+      "c_code": "C-3.2",
+      "justification": "The chapter's primary domain is life processes in plants — photosynthesis, respiration, transportation of water and nutrients, and reproduction. C-3.2 covers characteristics of living organisms including need for nutrition, growth and development, need for respiration, and cellular organisation. The chapter explains how plants carry out these same life processes that define living things, making C-3.2 the direct match for the chapter's central content."
+    },
+    {
+      "cg": "CG-3",
+      "c_code": "C-3.3",
+      "justification": "The chapter develops a second distinct strand: the relationship between plants and their environment — how plants depend on sunlight, water, and soil nutrients, and how they in turn support other organisms through oxygen production and as food sources. C-3.3 covers analysing patterns of relationships between living organisms and their environments in terms of dependence on and response to each other. This environmental relationship strand is independently developed and not merely implied by the life processes strand."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to explain how plants carry out life processes — particularly photosynthesis, respiration, and transportation — and how these processes establish plants as producers that sustain other living organisms.",
+  "conceptual_demand": 3,
+  "activity_count": 3,
+  "demo_count": 4,
+  "exec_load": 0,
+  "effort_index": 15.0,
+  "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_10_summary.txt"
+}

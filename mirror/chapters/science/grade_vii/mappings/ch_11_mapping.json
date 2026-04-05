@@ -1,0 +1,24 @@
+{
+  "stage": "middle",
+  "subject": "science",
+  "grade": "vii",
+  "chapter_number": 11,
+  "chapter_title": "Light — Shadows and Reflections",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": false,
+  "primary": [
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.4",
+      "justification": "The chapter's entire domain is the behaviour of light — rectilinear propagation, shadow formation, and reflection. C-2.4 is a verbatim match: it covers demonstrating rectilinear propagation of light from different sources and verifying the laws of reflection through manipulation of light sources and objects and the use of apparatus and artefacts such as plane mirrors, pinhole camera, kaleidoscope, and periscope. These specific apparatus examples from C-2.4 are structurally present as the chapter's activities and content."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to demonstrate that light travels in straight lines and to verify the laws of reflection through systematic manipulation of light sources, mirrors, and optical apparatus.",
+  "conceptual_demand": 2,
+  "activity_count": 10,
+  "demo_count": 0,
+  "exec_load": 0,
+  "effort_index": 14.0,
+  "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_11_summary.txt"
+}

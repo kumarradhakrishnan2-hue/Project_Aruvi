@@ -70,7 +70,7 @@ def extract_cg(txt_path: str) -> dict:
             c_code = c_match.group(1).strip()
             c_desc_raw = c_match.group(2).strip()
             # Clean up multi-line descriptions
-            c_desc = re.sub(r'\s+', ' ', c_desc_raw.split('\n')[0]).strip()
+            c_desc = re.sub(r'\s+', ' ', c_desc_raw).strip()
             # Try to detect cognitive demand verb from description
             demand_verbs = ['analyse', 'analyze', 'evaluate', 'explain', 'describe',
                            'identify', 'compare', 'interpret', 'construct', 'apply',
@@ -83,7 +83,7 @@ def extract_cg(txt_path: str) -> dict:
 
             competencies.append({
                 "c_code": c_code,
-                "description": c_desc[:300],  # cap at 300 chars
+                "description": c_desc[:600],  # cap at 600 chars
                 "cognitive_demand": cognitive_demand
             })
 

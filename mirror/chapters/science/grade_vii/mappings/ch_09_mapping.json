@@ -1,0 +1,24 @@
+{
+  "stage": "middle",
+  "subject": "science",
+  "grade": "vii",
+  "chapter_number": 9,
+  "chapter_title": "Life Processes in Animals",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": false,
+  "primary": [
+    {
+      "cg": "CG-3",
+      "c_code": "C-3.2",
+      "justification": "The chapter's domain is life processes in animals — nutrition, respiration, circulation, excretion, and how these processes define and sustain animal life. C-3.2 is a direct match: it covers distinguishing the characteristics of living organisms including need for nutrition, growth and development, need for respiration, response to stimuli, reproduction, excretion, and cellular organisation. The chapter develops these characteristics as the central content, explaining how each life process works in animals."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to explain the major life processes in animals — nutrition, respiration, circulation, and excretion — and understand how these processes collectively sustain animal life.",
+  "conceptual_demand": 3,
+  "activity_count": 2,
+  "demo_count": 1,
+  "exec_load": 0,
+  "effort_index": 9.5,
+  "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_09_summary.txt"
+}

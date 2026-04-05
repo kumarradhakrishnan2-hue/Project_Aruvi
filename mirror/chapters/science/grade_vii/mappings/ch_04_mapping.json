@@ -1,0 +1,29 @@
+{
+  "stage": "middle",
+  "subject": "science",
+  "grade": "vii",
+  "chapter_number": 4,
+  "chapter_title": "The World of Metals and Non-metals",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": true,
+  "primary": [
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.1",
+      "justification": "The chapter's primary domain is classification of matter by physical and chemical characteristics — specifically the metal/non-metal distinction. C-1.1 explicitly lists 'metal, non-metal', 'conducting, non-conducting', and 'magnetic, non-magnetic' as examples of classification by physical and chemical characteristics. The chapter systematically distinguishes metals and non-metals by lustre, hardness, malleability, ductility, conductivity, and reactivity — a direct and complete match to C-1.1."
+    },
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.2",
+      "justification": "The chapter develops a second distinct strand: chemical changes involving metals — reactions of metals with oxygen, water, and acids, and the formation of oxides and salts. C-1.2 covers changes in matter including chemical changes. This strand is independently developed through the chapter's sections on metal reactivity and corrosion, and is not merely a vehicle for the classification in C-1.1."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to classify materials as metals or non-metals based on physical and chemical properties and to explain the chemical changes metals undergo through reactions with oxygen, water, and acids.",
+  "conceptual_demand": 2,
+  "activity_count": 6,
+  "demo_count": 2,
+  "exec_load": 0,
+  "effort_index": 13.0,
+  "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_04_summary.txt"
+}

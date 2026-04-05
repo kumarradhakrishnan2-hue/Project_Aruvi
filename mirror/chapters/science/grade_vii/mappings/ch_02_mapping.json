@@ -1,0 +1,29 @@
+{
+  "stage": "middle",
+  "subject": "science",
+  "grade": "vii",
+  "chapter_number": 2,
+  "chapter_title": "Exploring Substances: Acidic, Basic, and Neutral",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": true,
+  "primary": [
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.1",
+      "justification": "The chapter's central content domain is the classification of matter by chemical characteristics. C-1.1 explicitly lists 'acid, base' and 'metal, non-metal' as examples of chemical classification. The chapter classifies substances as acidic, basic, or neutral using indicators (litmus, red rose extract, turmeric paper, olfactory indicators), identifies chemical characteristics (sour taste, soapy feel, colour change behaviour), and lists acids present in common edible substances. This is a direct, complete match to C-1.1's chemical classification definition."
+    },
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.2",
+      "justification": "The chapter's second structural strand is the neutralisation reaction — a chemical change where acid and base react to produce salt, water, and heat. C-1.2 covers changes in matter (physical and chemical). The chapter dedicates a full section to the neutralisation reaction, its chemical equation (Acid + Base → Salt + Water + Heat), and its applications in daily life (ant bite treatment, soil correction, industrial waste treatment). This is an independently developed chemical change strand, not a vehicle for classification."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to classify substances as acidic, basic, or neutral using chemical indicators and to explain the neutralisation reaction as a chemical change with everyday applications.",
+  "conceptual_demand": 2,
+  "activity_count": 7,
+  "demo_count": 0,
+  "exec_load": 0,
+  "effort_index": 11.0,
+  "summary_path": "mirror/chapters/science/grade_vii/summaries/ch_02_summary.txt"
+}
