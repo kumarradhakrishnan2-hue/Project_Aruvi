@@ -1094,13 +1094,22 @@ def _generate_pdf_bytes_alloc(
     pdf.cell(0, 6, f"Grade: {grade}   Subject: {subject}", ln=True)
     pdf.ln(3)
 
-    # Column layout
-    pt_headers  = [f"{pt['mins']}min" for pt in sorted_pts]
-    all_headers = ["#", "Chapter", "W3", "W2", "W1"] + pt_headers + ["Total", "Minutes"]
-    fixed_w     = [8, 68, 28, 28, 28]
-    pt_w        = [16] * len(sorted_pts)
-    tail_w      = [16, 18]
-    col_widths  = fixed_w + pt_w + tail_w
+    # Detect subject group: Science and Mathematics use effort_index, others use competency weight
+    is_science = subject in ("Science", "Mathematics")
+
+    # Column layout — switches on subject group
+    pt_headers = [f"{pt['mins']}min" for pt in sorted_pts]
+    if is_science:
+        # Single Effort Index column replaces the three W3/W2/W1 columns
+        all_headers = ["#", "Chapter", "Effort Idx"] + pt_headers + ["Total", "Minutes"]
+        fixed_w     = [8, 96, 24]
+    else:
+        # Social Sciences / Languages: three competency-weight columns
+        all_headers = ["#", "Chapter", "W3", "W2", "W1"] + pt_headers + ["Total", "Minutes"]
+        fixed_w     = [8, 68, 28, 28, 28]
+    pt_w       = [16] * len(sorted_pts)
+    tail_w     = [16, 18]
+    col_widths = fixed_w + pt_w + tail_w
 
     # Header row
     pdf.set_font("Helvetica", "B", 7)
@@ -1118,9 +1127,13 @@ def _generate_pdf_bytes_alloc(
     col_sums = {pt["mins"]: 0 for pt in sorted_pts}
 
     for idx, (ch, alloc) in enumerate(zip(chs, allocs)):
-        w3 = ", ".join(_ch_w3_codes(ch)) or "-"
-        w2 = ", ".join(_ch_w2_codes(ch)) or "-"
-        w1 = ", ".join(_ch_w1_codes(ch)) or "-"
+        if is_science:
+            ei = ch.get("effort_index", 0)
+            ei_str = str(ei) if (isinstance(ei, (int, float)) and ei > 0) else "-"
+        else:
+            w3 = ", ".join(_ch_w3_codes(ch)) or "-"
+            w2 = ", ".join(_ch_w2_codes(ch)) or "-"
+            w1 = ", ".join(_ch_w1_codes(ch)) or "-"
         tp = alloc.get("total", 0)
         tm = sum(alloc.get(pt["mins"], 0) * pt["mins"] for pt in sorted_pts)
         grand_p += tp
@@ -1129,11 +1142,14 @@ def _generate_pdf_bytes_alloc(
         if fill:
             pdf.set_fill_color(248, 247, 245)
 
-        row_vals = [
-            f"{ch['chapter_number']:02d}",
-            ch.get("chapter_title", "")[:44],
-            w3[:22], w2[:22], w1[:22],
-        ]
+        if is_science:
+            row_vals = [f"{ch['chapter_number']:02d}", ch.get("chapter_title", "")[:54], ei_str]
+        else:
+            row_vals = [
+                f"{ch['chapter_number']:02d}",
+                ch.get("chapter_title", "")[:44],
+                w3[:22], w2[:22], w1[:22],
+            ]
         for pt in sorted_pts:
             v = alloc.get(pt["mins"], 0)
             col_sums[pt["mins"]] += v
@@ -1152,7 +1168,8 @@ def _generate_pdf_bytes_alloc(
     # Footer row
     pdf.set_font("Helvetica", "B", 7)
     pdf.set_fill_color(214, 228, 248)
-    foot_vals = ["", "Total", "", "", ""]
+    # Number of blank cells before the period-type sums mirrors the fixed column count
+    foot_vals = ["", "Total"] + [""] * (len(fixed_w) - 2)
     for pt in sorted_pts:
         foot_vals.append(str(col_sums[pt["mins"]]))
     foot_vals += [str(grand_p), str(grand_m)]
@@ -1160,17 +1177,25 @@ def _generate_pdf_bytes_alloc(
         pdf.cell(w, 6, val, border=1, fill=True, align="C")
     pdf.ln()
 
-    # Footnote
+    # Footnote — wording depends on subject group
     pdf.ln(3)
     pdf.set_font("Helvetica", "I", 7)
     pdf.set_text_color(100, 100, 100)
     h_g, m_g = divmod(grand_m, 60)
     time_str = f"{h_g}h {m_g}min" if h_g else f"{m_g} min"
-    pdf.cell(0, 5,
-             "Periods allocated using the Largest Remainder Method (LRM) "
-             f"weighted by chapter competency load.   "
-             f"Total: {grand_p} periods · {time_str}",
-             ln=True)
+    if is_science:
+        footnote = (
+            "Periods allocated using the Largest Remainder Method (LRM) "
+            f"weighted by chapter effort index.   "
+            f"Total: {grand_p} periods · {time_str}"
+        )
+    else:
+        footnote = (
+            "Periods allocated using the Largest Remainder Method (LRM) "
+            f"weighted by chapter competency load.   "
+            f"Total: {grand_p} periods · {time_str}"
+        )
+    pdf.cell(0, 5, footnote, ln=True)
 
     buf = io.BytesIO()
     pdf.output(buf)
@@ -3404,7 +3429,17 @@ elif st.session_state.role == "Allocate":
             / f"competency_descriptions_{_stage}.json"
         )
         try:
-            _comp_descs = json.loads(_comp_desc_path.read_text(encoding="utf-8"))
+            _raw_descs = json.loads(_comp_desc_path.read_text(encoding="utf-8"))
+            # Two formats exist:
+            #   nested (Science): {curricular_goals: [{competencies: [{code, description}]}]}
+            #   flat   (SS/Lang): {c_code: description_string, ...}
+            if "curricular_goals" in _raw_descs:
+                _comp_descs = {}
+                for _cg in _raw_descs["curricular_goals"]:
+                    for _comp in _cg.get("competencies", []):
+                        _comp_descs[_comp.get("code", "")] = _comp.get("description", "")
+            else:
+                _comp_descs = _raw_descs
         except Exception:
             _comp_descs = {}
 
@@ -3459,138 +3494,12 @@ elif st.session_state.role == "Allocate":
         f"const PERIOD_TYPES   = {json.dumps(_sorted_pts)};\n"
         f"const GRADE_LABEL    = {json.dumps(st.session_state.grade    or '')};\n"
         f"const SUBJECT_LABEL  = {json.dumps(st.session_state.subject  or '')};\n"
-        f"const IS_SCIENCE     = {json.dumps(st.session_state.subject == 'Science')};\n"
+        f"const IS_SCIENCE     = {json.dumps(st.session_state.subject in ('Science', 'Mathematics'))};\n"
         f"const ARUVI_LOGO_B64 = {json.dumps(_logo_b64)};\n"
     )
     _html = _html_tpl.replace("/* __CHAPTERS_DATA__ */", _inject)
 
     components.html(_html, height=950, scrolling=True)
-
-    # ── Science: effort breakdown by chapter ─────────────────────────────────
-    if st.session_state.subject == "Science" and _chapters_data:
-        st.markdown("**Effort breakdown by chapter**")
-        for _sci_ch in _chapters_data:
-            _ei  = _sci_ch.get("effort_index", 0)
-            _cd  = _sci_ch.get("conceptual_demand", 0)
-            _ac  = _sci_ch.get("activity_count", 0)
-            _dc  = _sci_ch.get("demo_count", 0)
-            _el  = _sci_ch.get("exec_load", 0)
-            _lbl = f"Ch {_sci_ch['chapter_number']:02d} · {_sci_ch.get('chapter_title', '')}"
-            with st.expander(_lbl):
-                st.code(
-                    f"Effort index: {_ei}\n"
-                    f"  Conceptual demand : {_cd}\n"
-                    f"  Student activities: {_ac}\n"
-                    f"  Demonstrations    : {_dc}\n"
-                    f"  Execution load    : {_el}",
-                    language=None,
-                )
-
-    # ── Download PDF trigger ──────────────────────────────────────────────
-    _st_col1, _st_col2 = st.columns([1, 4])
-    with _st_col1:
-        _get_pdf = st.button(
-            "⬇ Get Allocation PDF",
-            key="alloc_get_pdf_btn",
-            help="Click after generating the report to download PDF"
-        )
-
-    if _get_pdf:
-        # Read what's currently in the URL — set by the HTML via replaceState
-        _alloc_chs_raw = st.query_params.get("alloc_chs", "")
-        _alloc_pts_raw = st.query_params.get("alloc_pts", "")
-
-        if not _alloc_chs_raw or not _alloc_pts_raw:
-            st.warning("Please generate the allocation report first, then click Get PDF.")
-        else:
-            try:
-                import math as _math
-
-                _sel_nums = [int(x) for x in _alloc_chs_raw.split(",") if x.strip()]
-                _period_types = []
-                for _pt in _alloc_pts_raw.split(","):
-                    if "x" in _pt:
-                        _m, _c = _pt.split("x")
-                        _period_types.append({"mins": int(_m), "count": int(_c)})
-
-                _sel_chapters = [
-                    ch for ch in _chapters_data
-                    if ch["chapter_number"] in _sel_nums
-                ]
-
-                if _sel_chapters and _period_types:
-                    def _lrm(raw_floats, total):
-                        floors = [_math.floor(f) for f in raw_floats]
-                        remainders = sorted(
-                            enumerate(raw_floats),
-                            key=lambda x: -(x[1] - _math.floor(x[1]))
-                        )
-                        deficit = total - sum(floors)
-                        result = floors[:]
-                        for k in range(deficit):
-                            result[remainders[k][0]] += 1
-                        return result
-
-                    def _compute_alloc(chs, pts):
-                        if len(chs) == 1:
-                            alloc = {pt["mins"]: pt["count"] for pt in pts}
-                            alloc["total"] = sum(pt["count"] for pt in pts)
-                            alloc["total_mins"] = sum(
-                                pt["mins"] * pt["count"] for pt in pts
-                            )
-                            return [alloc]
-                        weights = [ch.get("chapter_weight", 0) for ch in chs]
-                        sum_w = sum(weights) or 1
-                        sorted_pts = sorted(pts, key=lambda x: -x["mins"])
-                        total_p = sum(pt["count"] for pt in sorted_pts)
-                        pass1 = _lrm(
-                            [w / sum_w * total_p for w in weights], total_p
-                        )
-                        remaining = pass1[:]
-                        allocs = [{} for _ in chs]
-                        for pt in sorted_pts[:-1]:
-                            raw = [
-                                min(w / sum_w * pt["count"], remaining[i])
-                                for i, w in enumerate(weights)
-                            ]
-                            res = _lrm(raw, pt["count"])
-                            for i, v in enumerate(res):
-                                allocs[i][pt["mins"]] = v
-                                remaining[i] -= v
-                        shortest = sorted_pts[-1]
-                        for i, v in enumerate(remaining):
-                            allocs[i][shortest["mins"]] = v
-                        for i in range(len(chs)):
-                            allocs[i]["total"] = pass1[i]
-                            allocs[i]["total_mins"] = sum(
-                                allocs[i].get(pt["mins"], 0) * pt["mins"]
-                                for pt in sorted_pts
-                            )
-                        return allocs
-
-                    _allocs = _compute_alloc(_sel_chapters, _period_types)
-                    for _i, _ch in enumerate(_sel_chapters):
-                        _ch["_alloc"] = _allocs[_i]
-
-                    from knowledge_commons.pdf_generator import build_allocation_pdf
-                    _pdf_bytes = build_allocation_pdf(
-                        chapters_data=_sel_chapters,
-                        period_types=_period_types,
-                        grade=st.session_state.grade,
-                        subject=st.session_state.subject,
-                        logo_path=str(
-                            PROJECT_ROOT / "miscellaneous/aruvi_logo-transparent.png"
-                        )
-                    )
-                    st.download_button(
-                        label="⬇ Download Allocation PDF",
-                        data=_pdf_bytes,
-                        file_name=f"Aruvi_Allocation_{date.today().isoformat()}.pdf",
-                        mime="application/pdf",
-                        key="alloc_pdf_final_dl"
-                    )
-            except Exception as _e:
-                st.error(f"PDF generation failed: {_e}")
 
 else:
     # ═════════════════════════════════════════════════

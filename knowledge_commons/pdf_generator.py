@@ -48,12 +48,25 @@ def build_allocation_pdf(
     """
     Builds the Period Allocation Report PDF.
     chapters_data: list of dicts with chapter_number, chapter_title,
-                   chapter_weight, primary (list of competency entries
-                   each with c_code, description, justification, weight)
+                   chapter_weight / effort_index + signal fields,
+                   primary (list of competency entries with c_code,
+                   description, justification, weight)
     period_types: list of dicts with mins and count
     grade, subject: strings for header
     logo_path: absolute path to aruvi_logo-transparent.png
+
+    Subject-group switching
+    -----------------------
+    Science / Mathematics → effort_index drives allocation; chapter blocks
+    show an effort-index breakdown table instead of the competency table.
+    All other subjects → chapter_weight drives allocation; competency table
+    is shown as before.
+    Adding a new subject group: add its name to the is_science condition
+    below and supply its own block-rendering logic inside build_chapter_block.
     """
+
+    # ── Subject-group detection ────────────────────────────────────────────────
+    is_science = subject in ("Science", "Mathematics")
 
     # Encode logo as base64 if available
     logo_b64 = ""
@@ -67,9 +80,16 @@ def build_allocation_pdf(
     total_hrs = total_mins // 60
     total_min_rem = total_mins % 60
     time_str = f"{total_hrs}h {total_min_rem}min" if total_min_rem else f"{total_hrs}h"
-    total_weight = sum(ch.get("chapter_weight", 0) for ch in chapters_data)
     period_type_str = " · ".join(f"{pt['count']}×{pt['mins']}min" for pt in sorted_types)
     today = date.today().strftime("%d %B %Y")
+
+    # Summary strip metric: weight for social sciences, effort index sum for science
+    if is_science:
+        summary_metric_val = sum(ch.get("effort_index", 0) for ch in chapters_data)
+        summary_metric_key = "Sum of effort idx"
+    else:
+        summary_metric_val = sum(ch.get("chapter_weight", 0) for ch in chapters_data)
+        summary_metric_key = "Sum of weights"
 
     logo_html = ""
     if logo_b64:
@@ -77,19 +97,68 @@ def build_allocation_pdf(
     else:
         logo_html = '<div style="width:32px;height:32px;border:2px solid #1a1917;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:11px;font-weight:700;">A</div>'
 
-    # Build chapter blocks
-    chapter_blocks = ""
-    for ch in chapters_data:
-        alloc = ch.get("_alloc", {})
+    def _build_chapter_block_science(ch: dict, alloc: dict) -> str:
+        """Chapter block for Science / Mathematics: C-code + justification lines,
+        followed by a compact effort-index summary line. No weight column or label."""
+        period_cells = " · ".join(
+            f'{alloc.get(pt["mins"], 0)}&times;{pt["mins"]}min'
+            for pt in sorted_types
+        )
+        total_ch_periods = alloc.get("total", 0)
+        total_ch_mins = sum(alloc.get(pt["mins"], 0) * pt["mins"] for pt in sorted_types)
+        ei  = ch.get("effort_index", 0) or 0
+        cd  = ch.get("conceptual_demand", 0) or 0
+        ac  = ch.get("activity_count", 0) or 0
+        dc  = ch.get("demo_count", 0) or 0
+        el  = ch.get("exec_load", 0) or 0
+
+        # Build one line per C-code entry: bold code + normal justification text
+        comp_lines_html = ""
+        for comp in ch.get("primary", []):
+            c_code = comp.get("c_code", "")
+            justification = comp.get("justification", "") or comp.get("description", "")
+            comp_lines_html += (
+                f'<div style="margin-bottom:5px;font-size:7.5pt;line-height:1.55;">'
+                f'<span style="font-weight:700;">{c_code}</span>'
+                f'&nbsp;&nbsp;{justification}'
+                f'</div>'
+            )
+
+        # Compact effort index breakdown line (small grey)
+        if ei:
+            ei_summary = (
+                f'Effort index: {ei}&nbsp;&nbsp;'
+                f'Conceptual demand: {cd}&nbsp;&nbsp;'
+                f'Activities: {ac}&nbsp;&nbsp;'
+                f'Demos: {dc}&nbsp;&nbsp;'
+                f'Exec load: {el}'
+            )
+        else:
+            ei_summary = 'Effort index: not yet computed'
+
+        return (
+            f'<div class="chapter-block">'
+            f'<div class="chapter-header">'
+            f'<span class="ch-num">Ch {str(ch["chapter_number"]).zfill(2)}</span>'
+            f'<span class="ch-title">{ch["chapter_title"]}</span>'
+            f'<span class="ch-alloc">{period_cells} &middot; {total_ch_periods} periods &middot; {total_ch_mins}min</span>'
+            f'</div>'
+            f'<div style="padding:6px 0 3px 0;">'
+            f'{comp_lines_html}'
+            f'<div style="font-size:7pt;color:rgb(120,120,120);margin-top:3px;">{ei_summary}</div>'
+            f'</div>'
+            f'<hr style="border:none;border-top:0.5px solid rgb(220,220,220);margin:6px 0 0 0;">'
+            f'</div>'
+        )
+
+    def _build_chapter_block_social(ch: dict, alloc: dict) -> str:
+        """Chapter block for Social Sciences / Languages: competency mapping table."""
         period_cells = " · ".join(
             f'{alloc.get(pt["mins"], 0)}×{pt["mins"]}min'
             for pt in sorted_types
         )
         total_ch_periods = alloc.get("total", 0)
-        total_ch_mins = sum(
-            alloc.get(pt["mins"], 0) * pt["mins"] for pt in sorted_types
-        )
-
+        total_ch_mins = sum(alloc.get(pt["mins"], 0) * pt["mins"] for pt in sorted_types)
         comp_rows = ""
         for idx, comp in enumerate(ch.get("primary", []), 1):
             weight_val = comp.get("weight", 0)
@@ -99,7 +168,6 @@ def build_allocation_pdf(
                     dots_html += '<span class="dot filled"></span>'
                 else:
                     dots_html += '<span class="dot empty"></span>'
-
             comp_rows += f"""
             <tr>
                 <td class="seq">{idx}</td>
@@ -108,8 +176,7 @@ def build_allocation_pdf(
                 <td class="justification">{comp.get("justification","")}</td>
                 <td class="weight-dots"><div class="dots">{dots_html}</div></td>
             </tr>"""
-
-        chapter_blocks += f"""
+        return f"""
         <div class="chapter-block">
             <div class="chapter-header">
                 <span class="ch-num">Ch {str(ch["chapter_number"]).zfill(2)}</span>
@@ -130,6 +197,44 @@ def build_allocation_pdf(
                 <tbody>{comp_rows}</tbody>
             </table>
         </div>"""
+
+    # Build chapter blocks using the appropriate renderer
+    chapter_blocks = ""
+    for ch in chapters_data:
+        alloc = ch.get("_alloc", {})
+        if is_science:
+            chapter_blocks += _build_chapter_block_science(ch, alloc)
+        else:
+            chapter_blocks += _build_chapter_block_social(ch, alloc)
+
+    # Footnote wording switches on subject group
+    if is_science:
+        fn1_text = (
+            "(1) Periods allocated using the Largest Remainder Method (LRM), "
+            "weighted by chapter effort index "
+            "(conceptual demand\u00d72 + student activities\u00d71 + teacher demos\u00d71.5 + exercise load\u00d72)."
+        )
+    else:
+        fn1_text = (
+            "(1) Periods allocated using the Largest Remainder Method (LRM), "
+            "weighted by chapter competency load (W3\u00d73 + W2\u00d72 + W1\u00d71)."
+        )
+
+    # Explanatory paragraph (Science only) — appears after summary strip, before chapter blocks
+    if is_science:
+        explanatory_para = (
+            '<p style="font-size:8pt;font-style:italic;color:rgb(100,100,100);'
+            'margin:10px 0 14px 0;line-height:1.6;">'
+            'About effort index: Each chapter&rsquo;s effort index is a composite of four signals '
+            'read from the chapter content &mdash; conceptual demand of the exercise (&times;2), '
+            'number of student-executed activities (&times;1), number of teacher demonstrations '
+            '(&times;1.5), and exercise execution load (&times;2). Higher effort index = more '
+            'classroom time needed. Periods are allocated proportionally across chapters using '
+            'the Largest Remainder Method (LRM).'
+            '</p>'
+        )
+    else:
+        explanatory_para = ""
 
     html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -264,13 +369,14 @@ def build_allocation_pdf(
   <div class="sum-cell"><span class="sum-val">{total_periods}</span><span class="sum-key">Periods</span></div>
   <div class="sum-cell"><span class="sum-val">{time_str}</span><span class="sum-key">Total time</span></div>
   <div class="sum-cell"><span class="sum-val">{period_type_str}</span><span class="sum-key">Period types</span></div>
-  <div class="sum-cell"><span class="sum-val">{total_weight}</span><span class="sum-key">Sum of weights</span></div>
+  <div class="sum-cell"><span class="sum-val">{summary_metric_val}</span><span class="sum-key">{summary_metric_key}</span></div>
 </div>
 
+{explanatory_para}
 {chapter_blocks}
 
 <div class="footnotes">
-  <div class="fn">(1) Periods allocated using the Largest Remainder Method (LRM), weighted by chapter competency load (W3×3 + W2×2 + W1×1).</div>
+  <div class="fn">{fn1_text}</div>
   <div class="fn">(2) Budget: {total_periods} periods · {time_str} · {grade} · {subject}</div>
 </div>
 
