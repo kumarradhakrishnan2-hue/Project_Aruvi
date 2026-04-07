@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aruvi — Lesson Plan Viewer</title>
+  <style>
+    /* ── Design tokens ─────────────────────────────────────── */
+    :root {
+      --sci-accent:  #1a6fb3;
+      --sci-light:   #e8f2fb;
+      --ss-accent:   #2e7d4f;
+      --ss-light:    #e6f4ec;
+      --stage-bg:    #fff8e1;
+      --stage-border:#f0b429;
+      --radius: 10px;
+      --shadow: 0 2px 10px rgba(0,0,0,.09);
+      --mono: 'Courier New', monospace;
+      --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    /* ── Reset & base ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--sans); background: #f4f6f9; color: #1a1a2e; min-height: 100vh; }
+
+    /* ── Layout ────────────────────────────────────────────── */
+    #app { max-width: 1100px; margin: 0 auto; padding: 24px 16px 60px; }
+
+    /* ── Header ────────────────────────────────────────────── */
+    .site-header {
+      display: flex; align-items: center; gap: 14px;
+      background: #1a1a2e; color: #fff;
+      padding: 16px 24px; border-radius: var(--radius);
+      margin-bottom: 24px;
+    }
+    .site-header .logo { font-size: 22px; font-weight: 800; letter-spacing: -.5px; }
+    .site-header .sub  { font-size: 13px; opacity: .7; margin-top: 2px; }
+    .subject-badge {
+      margin-left: auto; padding: 5px 14px; border-radius: 20px;
+      font-size: 12px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase;
+    }
+    .badge-science        { background: var(--sci-accent); }
+    .badge-social_sciences{ background: var(--ss-accent); }
+
+    /* ── Paste panel ───────────────────────────────────────── */
+    #paste-panel {
+      background: #fff; border: 2px dashed #ccc; border-radius: var(--radius);
+      padding: 32px; text-align: center; margin-bottom: 24px;
+      transition: border-color .2s;
+    }
+    #paste-panel.dragover { border-color: #1a6fb3; background: #f0f7ff; }
+    #paste-panel h2 { font-size: 17px; color: #444; margin-bottom: 8px; }
+    #paste-panel p  { font-size: 13px; color: #888; margin-bottom: 16px; }
+    #json-input {
+      width: 100%; min-height: 140px; font-family: var(--mono); font-size: 12px;
+      padding: 12px; border: 1px solid #ddd; border-radius: 6px; resize: vertical;
+      color: #222; outline: none;
+    }
+    #json-input:focus { border-color: #1a6fb3; }
+    .btn-row { display: flex; gap: 10px; justify-content: center; margin-top: 14px; }
+    .btn {
+      padding: 9px 22px; border: none; border-radius: 6px; cursor: pointer;
+      font-size: 14px; font-weight: 600; transition: opacity .15s;
+    }
+    .btn:hover { opacity: .85; }
+    .btn-primary   { background: #1a1a2e; color: #fff; }
+    .btn-secondary { background: #eee; color: #333; }
+    .error-msg { color: #c0392b; font-size: 13px; margin-top: 10px; display:none; }
+
+    /* ── Chapter meta card ─────────────────────────────────── */
+    .meta-card {
+      background: #fff; border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 20px 24px; margin-bottom: 22px;
+      border-left: 5px solid #1a1a2e;
+    }
+    .meta-card.science        { border-color: var(--sci-accent); }
+    .meta-card.social_sciences{ border-color: var(--ss-accent); }
+    .meta-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px;
+      margin-top: 12px;
+    }
+    .meta-item label { font-size: 10px; text-transform: uppercase; letter-spacing: .6px; color: #888; }
+    .meta-item span  { font-size: 15px; font-weight: 600; display: block; margin-top: 2px; }
+
+    /* ── Tab bar ───────────────────────────────────────────── */
+    .tab-bar {
+      display: flex; gap: 4px; margin-bottom: 18px;
+      border-bottom: 2px solid #e0e0e0; padding-bottom: 0;
+    }
+    .tab-btn {
+      padding: 9px 20px; border: none; background: none; cursor: pointer;
+      font-size: 14px; font-weight: 600; color: #888; border-bottom: 3px solid transparent;
+      margin-bottom: -2px; transition: color .15s, border-color .15s;
+    }
+    .tab-btn.active { color: #1a1a2e; border-bottom-color: #1a1a2e; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── Period grid ───────────────────────────────────────── */
+    .periods-grid {
+      display: grid; gap: 18px;
+    }
+
+    /* ── Period card ───────────────────────────────────────── */
+    .period-card {
+      background: #fff; border-radius: var(--radius); box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .period-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 18px; cursor: pointer;
+      user-select: none; transition: background .15s;
+    }
+    .period-header:hover { background: #f9f9f9; }
+    .period-badge {
+      width: 38px; height: 38px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 14px; color: #fff; flex-shrink: 0;
+    }
+    .science         .period-badge { background: var(--sci-accent); }
+    .social_sciences .period-badge { background: var(--ss-accent); }
+    .period-title-block { flex: 1; min-width: 0; }
+    .period-title { font-size: 15px; font-weight: 700; }
+    .period-meta  {
+      font-size: 12px; color: #777; margin-top: 2px;
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .pill {
+      padding: 2px 9px; border-radius: 12px; font-size: 11px; font-weight: 600;
+    }
+    .pill-stage { background: var(--stage-bg); color: #8a6000; }
+    .pill-approach { background: #ede9fe; color: #5b21b6; }
+    .pill-duration { background: #f0f0f0; color: #555; }
+    .pill-section { background: #e0f2fe; color: #075985; }
+    .pill-weight-3 { background: #dcfce7; color: #166534; }
+    .pill-weight-2 { background: #fef9c3; color: #854d0e; }
+    .pill-weight-1 { background: #fee2e2; color: #991b1b; }
+    .chevron { margin-left: auto; font-size: 14px; color: #aaa; transition: transform .2s; }
+    .period-card.open .chevron { transform: rotate(180deg); }
+
+    /* ── Period body ───────────────────────────────────────── */
+    .period-body { display: none; padding: 0 18px 18px; }
+    .period-card.open .period-body { display: block; }
+
+    .section-label {
+      font-size: 10px; text-transform: uppercase; letter-spacing: .7px;
+      color: #999; font-weight: 700; margin: 14px 0 6px;
+    }
+    .rich-text {
+      font-size: 14px; line-height: 1.65; color: #2d2d2d;
+      background: #fafafa; border-radius: 6px; padding: 10px 14px;
+      border: 1px solid #ececec;
+    }
+
+    /* Science-specific: teacher/student side-by-side */
+    .actions-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 0;
+    }
+    @media (max-width: 600px) { .actions-grid { grid-template-columns: 1fr; } }
+    .action-box {
+      border-radius: 8px; padding: 12px 14px; border: 1px solid #e0e0e0;
+    }
+    .action-box.teacher { background: #f0f7ff; border-color: #bee3f8; }
+    .action-box.student { background: #f0fff4; border-color: #9ae6b4; }
+    .action-box .action-lbl {
+      font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px;
+      margin-bottom: 6px;
+    }
+    .action-box.teacher .action-lbl { color: var(--sci-accent); }
+    .action-box.student .action-lbl { color: #276749; }
+    .action-box p { font-size: 13px; line-height: 1.6; }
+
+    /* Materials tags */
+    .materials-list { display: flex; flex-wrap: wrap; gap: 6px; }
+    .material-tag {
+      background: #f0f0f0; border-radius: 5px; padding: 3px 10px;
+      font-size: 12px; color: #444;
+    }
+
+    /* Time bands table (SS) */
+    .timeband-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .timeband-table th {
+      background: #f0f4f8; text-align: left; padding: 7px 10px;
+      font-size: 11px; text-transform: uppercase; letter-spacing: .5px; color: #555;
+    }
+    .timeband-table td { padding: 7px 10px; border-top: 1px solid #ececec; vertical-align: top; }
+    .timeband-table tr:hover td { background: #fafafa; }
+    .timeband-minutes {
+      font-family: var(--mono); font-size: 12px; color: #777; white-space: nowrap;
+    }
+
+    /* LO / competency block */
+    .lo-block {
+      background: linear-gradient(135deg, #fffbea 0%, #fff9db 100%);
+      border: 1px solid var(--stage-border); border-radius: 8px; padding: 12px 14px;
+    }
+    .lo-block .lo-label { font-size: 10px; text-transform: uppercase; letter-spacing: .7px; color: #8a6000; font-weight: 700; margin-bottom: 4px; }
+    .lo-block .lo-text  { font-size: 14px; font-weight: 600; color: #1a1a2e; }
+    .competency-meta { font-size: 12px; color: #666; margin-top: 8px; }
+    .competency-meta span { font-weight: 600; }
+
+    /* Cognitive demand note */
+    .cog-demand {
+      background: #fdf4ff; border: 1px solid #e9d5ff; border-radius: 8px;
+      padding: 10px 14px; font-size: 13px; font-style: italic; color: #6b21a8;
+    }
+
+    /* ── Stage handoff section (Science A4) ─────────────────── */
+    .stage-handoff { margin-top: 4px; }
+    .stage-card {
+      background: var(--stage-bg); border: 1px solid var(--stage-border);
+      border-radius: var(--radius); padding: 18px 20px; margin-bottom: 14px;
+    }
+    .stage-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .stage-num {
+      width: 36px; height: 36px; background: var(--stage-border); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 15px; color: #fff;
+    }
+    .stage-name { font-size: 16px; font-weight: 700; }
+    .stage-periods { font-size: 12px; color: #888; margin-top: 2px; }
+    .stage-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 600px) { .stage-fields { grid-template-columns: 1fr; } }
+    .stage-field label { font-size: 10px; text-transform: uppercase; letter-spacing: .6px; color: #888; }
+    .stage-field p { font-size: 13px; margin-top: 4px; line-height: 1.55; }
+    .co-central-badge {
+      display: inline-block; background: #7c3aed; color: #fff;
+      padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 700;
+    }
+
+    /* ── Section divider ───────────────────────────────────── */
+    .section-title {
+      font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px;
+      color: #666; margin-bottom: 14px; padding-bottom: 8px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* ── Empty / hidden states ─────────────────────────────── */
+    #output { display: none; }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- Site header -->
+  <header class="site-header">
+    <div>
+      <div class="logo">Aruvi</div>
+      <div class="sub">Lesson Plan Viewer</div>
+    </div>
+    <span id="subject-badge" class="subject-badge hidden"></span>
+  </header>
+
+  <!-- Paste panel -->
+  <section id="paste-panel">
+    <h2>Paste Lesson Plan JSON</h2>
+    <p>Accepts Science (A3 + A4) or Social Sciences (A3) output. Auto-detects subject.</p>
+    <textarea id="json-input" placeholder='{ "subject": "science", "lesson_plan": { "periods": [...] }, "lo_handoff": [...] }'></textarea>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="renderJSON()">Render</button>
+      <button class="btn btn-secondary" onclick="loadSample('science')">Sample — Science</button>
+      <button class="btn btn-secondary" onclick="loadSample('social_sciences')">Sample — Social Sciences</button>
+      <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+    </div>
+    <div id="error-msg" class="error-msg"></div>
+  </section>
+
+  <!-- Output -->
+  <div id="output">
+
+    <!-- Chapter metadata -->
+    <div id="meta-card" class="meta-card">
+      <div id="meta-title" style="font-size:20px;font-weight:800;"></div>
+      <div class="meta-grid" id="meta-grid"></div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('lp',this)">📋 Lesson Plan</button>
+      <button class="tab-btn" id="handoff-tab" onclick="switchTab('handoff',this)">🎯 LO Handoff</button>
+    </div>
+
+    <!-- LP tab -->
+    <div id="tab-lp" class="tab-panel active">
+      <div class="section-title" id="periods-heading">Periods</div>
+      <div class="periods-grid" id="periods-container"></div>
+    </div>
+
+    <!-- Handoff tab -->
+    <div id="tab-handoff" class="tab-panel">
+      <div class="section-title">Learning Outcome Handoff</div>
+      <div class="stage-handoff" id="handoff-container"></div>
+    </div>
+
+  </div><!-- /output -->
+</div><!-- /app -->
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════════════════════ */
+let currentData = null;
+let currentSubject = null;
+
+/* ═══════════════════════════════════════════════════════════
+   ENTRY — parse & route
+═══════════════════════════════════════════════════════════ */
+function renderJSON() {
+  const raw = document.getElementById('json-input').value.trim();
+  const errEl = document.getElementById('error-msg');
+  errEl.style.display = 'none';
+
+  let data;
+  try { data = JSON.parse(raw); }
+  catch(e) { showError('Invalid JSON — ' + e.message); return; }
+
+  // Auto-detect subject
+  const subject = (data.subject || '').toLowerCase();
+  if (!['science','social_sciences'].includes(subject)) {
+    showError('Could not detect subject. Ensure JSON has "subject": "science" or "social_sciences".');
+    return;
+  }
+
+  // Validate minimal structure
+  if (!data.lesson_plan || !Array.isArray(data.lesson_plan.periods)) {
+    showError('Missing lesson_plan.periods array.');
+    return;
+  }
+
+  currentData = data;
+  currentSubject = subject;
+
+  renderMeta(data, subject);
+  renderPeriods(data.lesson_plan.periods, subject);
+  renderHandoff(data.lo_handoff || null, subject, data.lesson_plan.periods);
+  document.getElementById('output').style.display = 'block';
+  document.getElementById('output').scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ═══════════════════════════════════════════════════════════
+   META CARD
+═══════════════════════════════════════════════════════════ */
+function renderMeta(data, subject) {
+  const card = document.getElementById('meta-card');
+  card.className = 'meta-card ' + subject;
+
+  document.getElementById('meta-title').textContent =
+    (data.chapter_number ? 'Ch ' + data.chapter_number + ' — ' : '') +
+    (data.chapter_title || 'Lesson Plan');
+
+  const badge = document.getElementById('subject-badge');
+  badge.textContent = subject === 'science' ? '🔬 Science' : '🌍 Social Sciences';
+  badge.className = 'subject-badge badge-' + subject;
+  badge.classList.remove('hidden');
+
+  // Period schedule summary
+  let scheduleStr = '—';
+  if (data.period_schedule && data.period_schedule.length) {
+    scheduleStr = data.period_schedule.map(s => s.count + '×' + s.duration_minutes + 'min').join(', ');
+  } else if (data.lesson_plan.periods.length) {
+    const p = data.lesson_plan.periods;
+    const total = p.length;
+    const dur = p[0].period_duration_minutes;
+    scheduleStr = total + ' periods × ' + dur + ' min';
+  }
+
+  const fields = [
+    { label: 'Grade',    value: data.grade || '—' },
+    { label: 'Subject',  value: formatSubjectName(subject) },
+    { label: 'Chapter',  value: data.chapter_number || '—' },
+    { label: 'Schedule', value: scheduleStr },
+    { label: 'Periods',  value: data.lesson_plan.periods.length },
+  ];
+
+  if (subject === 'science' && data.lo_handoff) {
+    const stages = new Set(data.lo_handoff.map(s => s.stage_number)).size;
+    fields.push({ label: 'Stages', value: stages });
+  }
+
+  document.getElementById('meta-grid').innerHTML = fields.map(f =>
+    `<div class="meta-item"><label>${f.label}</label><span>${f.value}</span></div>`
+  ).join('');
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PERIOD RENDERER — routes by subject
+═══════════════════════════════════════════════════════════ */
+function renderPeriods(periods, subject) {
+  document.getElementById('periods-heading').textContent =
+    periods.length + ' Period' + (periods.length !== 1 ? 's' : '');
+
+  const container = document.getElementById('periods-container');
+  container.innerHTML = '';
+
+  periods.forEach((p, idx) => {
+    const card = subject === 'science'
+      ? buildSciencePeriodCard(p, idx)
+      : buildSSPeriodCard(p, idx);
+    container.appendChild(card);
+  });
+}
+
+/* ── Science period card ─────────────────────────────────── */
+function buildSciencePeriodCard(p, idx) {
+  const div = document.createElement('div');
+  div.className = 'period-card science';
+  div.id = 'period-' + idx;
+
+  // Normalise field names (handles both activity_title and activity_name)
+  const actTitle = p.activity_title || p.activity_name || 'Period ' + p.period_number;
+  const materials = p.materials || p.material || [];
+  const hasPedagogy = p.pedagogical_approach;
+  const hasStage    = p.progression_stage !== undefined;
+
+  const pillsHTML = [
+    hasPedagogy ? `<span class="pill pill-approach">📚 ${p.pedagogical_approach}</span>` : '',
+    hasStage    ? `<span class="pill pill-stage">Stage ${p.progression_stage}: ${p.stage_label || ''}</span>` : '',
+    p.period_duration_minutes ? `<span class="pill pill-duration">${p.period_duration_minutes} min</span>` : '',
+  ].filter(Boolean).join('');
+
+  div.innerHTML = `
+    <div class="period-header" onclick="toggleCard(this)">
+      <div class="period-badge">${p.period_number || idx+1}</div>
+      <div class="period-title-block">
+        <div class="period-title">${actTitle}</div>
+        <div class="period-meta">${pillsHTML}</div>
+      </div>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="period-body">
+      ${p.activity_description ? `
+        <div class="section-label">Activity</div>
+        <div class="rich-text">${p.activity_description}</div>
+      ` : ''}
+
+      ${(p.teacher_actions || p.student_actions) ? `
+        <div class="section-label">Actions</div>
+        <div class="actions-grid">
+          ${p.teacher_actions ? `
+            <div class="action-box teacher">
+              <div class="action-lbl">👩‍🏫 Teacher</div>
+              <p>${p.teacher_actions}</p>
+            </div>
+          ` : ''}
+          ${p.student_actions ? `
+            <div class="action-box student">
+              <div class="action-lbl">🧑‍🎓 Students</div>
+              <p>${p.student_actions}</p>
+            </div>
+          ` : ''}
+        </div>
+      ` : ''}
+
+      ${materials.length ? `
+        <div class="section-label">Materials</div>
+        <div class="materials-list">
+          ${materials.map(m => `<span class="material-tag">📎 ${m}</span>`).join('')}
+        </div>
+      ` : ''}
+
+      ${p.visual_aids ? `
+        <div class="section-label">Visual Aids</div>
+        <div class="rich-text">🖼 ${p.visual_aids}</div>
+      ` : ''}
+
+      ${p.cognitive_demand_note ? `
+        <div class="section-label">Cognitive Demand</div>
+        <div class="cog-demand">💡 ${p.cognitive_demand_note}</div>
+      ` : ''}
+    </div>
+  `;
+  return div;
+}
+
+/* ── Social Sciences period card ─────────────────────────── */
+function buildSSPeriodCard(p, idx) {
+  const div = document.createElement('div');
+  div.className = 'period-card social_sciences';
+  div.id = 'period-' + idx;
+
+  const actTitle = p.activity_title || p.activity_name || 'Period ' + p.period_number;
+  const materials = p.materials || p.material || [];
+  const comp = p.competency || {};
+  const weightPill = comp.weight ? `<span class="pill pill-weight-${comp.weight}">Wt ${comp.weight}</span>` : '';
+  const sectionPill = p.section_anchor ? `<span class="pill pill-section">§ ${p.section_anchor}</span>` : '';
+  const durPill = p.period_duration_minutes ? `<span class="pill pill-duration">${p.period_duration_minutes} min</span>` : '';
+  const approachPill = p.pedagogical_approach ? `<span class="pill pill-approach">📚 ${p.pedagogical_approach}</span>` : '';
+
+  // Time bands table
+  const timeBandsHTML = (p.time_bands && p.time_bands.length) ? `
+    <div class="section-label">Time Bands</div>
+    <table class="timeband-table">
+      <thead><tr><th>Min</th><th>Activity</th></tr></thead>
+      <tbody>
+        ${p.time_bands.map(tb => `
+          <tr>
+            <td class="timeband-minutes">${tb.minutes}</td>
+            <td>${tb.activity}</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  ` : '';
+
+  const loHTML = p.implied_lo ? `
+    <div class="section-label">Implied Learning Outcome</div>
+    <div class="lo-block">
+      <div class="lo-label">Observable LO</div>
+      <div class="lo-text">${p.implied_lo}</div>
+      ${comp.c_code ? `
+        <div class="competency-meta">
+          <span>${comp.c_code}</span> — ${comp.competency_text || ''}
+          ${comp.cg ? `<br><em>CG: ${comp.cg}</em>` : ''}
+        </div>
+      ` : ''}
+    </div>
+  ` : '';
+
+  div.innerHTML = `
+    <div class="period-header" onclick="toggleCard(this)">
+      <div class="period-badge">${p.period_number || idx+1}</div>
+      <div class="period-title-block">
+        <div class="period-title">${actTitle}</div>
+        <div class="period-meta">${sectionPill}${approachPill}${weightPill}${durPill}</div>
+      </div>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="period-body">
+      ${timeBandsHTML}
+
+      ${materials.length ? `
+        <div class="section-label">Materials</div>
+        <div class="materials-list">
+          ${materials.map(m => `<span class="material-tag">📎 ${m}</span>`).join('')}
+        </div>
+      ` : ''}
+
+      ${p.visual_aids ? `
+        <div class="section-label">Visual Aids</div>
+        <div class="rich-text">🖼 ${p.visual_aids}</div>
+      ` : ''}
+
+      ${p.cognitive_demand_note ? `
+        <div class="section-label">Cognitive Demand</div>
+        <div class="cog-demand">💡 ${p.cognitive_demand_note}</div>
+      ` : ''}
+
+      ${loHTML}
+    </div>
+  `;
+  return div;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HANDOFF RENDERER — Science A4 or synthesised from SS
+═══════════════════════════════════════════════════════════ */
+function renderHandoff(handoff, subject, periods) {
+  const tab = document.getElementById('handoff-tab');
+  const container = document.getElementById('handoff-container');
+  container.innerHTML = '';
+
+  // For Social Sciences: synthesise a period-level handoff if no explicit handoff
+  if (!handoff && subject === 'social_sciences') {
+    handoff = synthesiseSSHandoff(periods);
+    tab.textContent = '🎯 LO Handoff (synthesised)';
+  } else if (!handoff) {
+    tab.style.opacity = '.4';
+    tab.title = 'No LO Handoff in this JSON';
+    return;
+  } else {
+    tab.textContent = '🎯 LO Handoff';
+  }
+
+  handoff.forEach(stage => {
+    const card = document.createElement('div');
+    card.className = 'stage-card';
+
+    const periodNums = (stage.period_numbers || []).join(', ');
+    const totalStages = stage.total_stages || handoff.length;
+    const coCentral = stage.co_central ? `<span class="co-central-badge">Co-Central</span>` : '';
+
+    card.innerHTML = `
+      <div class="stage-header">
+        <div class="stage-num">${stage.stage_number}</div>
+        <div>
+          <div class="stage-name">${stage.stage_label || 'Stage ' + stage.stage_number} ${coCentral}</div>
+          <div class="stage-periods">
+            Periods: ${periodNums} &nbsp;·&nbsp;
+            Stage ${stage.stage_number} of ${totalStages}
+            ${stage.period_duration_minutes ? ' · ' + stage.period_duration_minutes + ' min each' : ''}
+          </div>
+        </div>
+      </div>
+      <div class="stage-fields">
+        <div class="stage-field" style="grid-column:1/-1;">
+          <label>Implied Learning Outcome</label>
+          <div class="lo-block" style="margin-top:6px;">
+            <div class="lo-label">Observable LO</div>
+            <div class="lo-text">${stage.implied_lo || '—'}</div>
+          </div>
+        </div>
+        ${stage.activity_summary ? `
+          <div class="stage-field" style="grid-column:1/-1;">
+            <label>Activity Summary</label>
+            <p>${stage.activity_summary}</p>
+          </div>
+        ` : ''}
+        ${stage.c_code ? `
+          <div class="stage-field">
+            <label>Competency Code</label>
+            <p><strong>${stage.c_code}</strong></p>
+          </div>
+        ` : ''}
+        ${stage.cg ? `
+          <div class="stage-field">
+            <label>Curricular Goal</label>
+            <p>${stage.cg}</p>
+          </div>
+        ` : ''}
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+/* Synthesise a period-level handoff from SS periods for the handoff tab */
+function synthesiseSSHandoff(periods) {
+  return periods.map((p, idx) => {
+    const comp = p.competency || {};
+    return {
+      stage_number:            p.period_number || idx + 1,
+      stage_label:             p.activity_title || p.activity_name || 'Period ' + (p.period_number || idx+1),
+      total_stages:            periods.length,
+      period_numbers:          [p.period_number || idx+1],
+      period_duration_minutes: p.period_duration_minutes,
+      activity_summary:        (p.time_bands && p.time_bands.length)
+                                 ? p.time_bands.map(t => t.activity).join(' → ')
+                                 : '—',
+      implied_lo: p.implied_lo || '—',
+      cg:         comp.cg || '',
+      c_code:     comp.c_code || '',
+      co_central: false,
+    };
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════
+   UI HELPERS
+═══════════════════════════════════════════════════════════ */
+function toggleCard(header) {
+  const card = header.closest('.period-card');
+  card.classList.toggle('open');
+}
+
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+}
+
+function showError(msg) {
+  const el = document.getElementById('error-msg');
+  el.textContent = msg; el.style.display = 'block';
+  document.getElementById('output').style.display = 'none';
+}
+
+function clearAll() {
+  document.getElementById('json-input').value = '';
+  document.getElementById('error-msg').style.display = 'none';
+  document.getElementById('output').style.display = 'none';
+  document.getElementById('subject-badge').classList.add('hidden');
+}
+
+function formatSubjectName(s) {
+  return s === 'science' ? 'Science' : 'Social Sciences';
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SAMPLE DATA
+═══════════════════════════════════════════════════════════ */
+function loadSample(subject) {
+  const samples = {
+    science: {
+      "grade": "VII",
+      "subject": "science",
+      "chapter_number": 2,
+      "chapter_title": "Nutrition in Animals",
+      "lesson_plan": {
+        "periods": [
+          {
+            "period_number": 1,
+            "period_duration_minutes": 45,
+            "progression_stage": 1,
+            "stage_label": "Orientation",
+            "pedagogical_approach": "Exploratory Discussion",
+            "activity_title": "What Do Animals Eat?",
+            "activity_description": "Students observe images of diverse animals and their feeding habits. Teacher facilitates discussion on why different animals eat different things and how food is related to body design.",
+            "materials": ["Textbook", "Whiteboard", "Animal food chart"],
+            "teacher_actions": "Displays animal images, asks guiding questions, records student responses on board.",
+            "student_actions": "Observe images, discuss in pairs, share observations with class.",
+            "cognitive_demand_note": "Recall and classify — students categorise known animals by diet type.",
+            "visual_aids": "Textbook Figure 2.1 — Animal Diet Chart"
+          },
+          {
+            "period_number": 2,
+            "period_duration_minutes": 45,
+            "progression_stage": 1,
+            "stage_label": "Orientation",
+            "pedagogical_approach": "Structured Investigation",
+            "activity_title": "The Digestive Journey",
+            "activity_description": "Students trace the path of food through the human digestive system using a labelled diagram, identifying the function of each organ.",
+            "materials": ["Textbook", "Blank body outline worksheet"],
+            "teacher_actions": "Guides students through the diagram, clarifies organ names and functions.",
+            "student_actions": "Label the blank diagram, write one function per organ.",
+            "cognitive_demand_note": "Comprehend and sequence — mapping a physical process onto a spatial diagram."
+          },
+          {
+            "period_number": 3,
+            "period_duration_minutes": 45,
+            "progression_stage": 2,
+            "stage_label": "Application",
+            "pedagogical_approach": "Collaborative Problem-Solving",
+            "activity_title": "Grass to Glucose",
+            "activity_description": "Small groups trace how grass becomes energy for a cow, identifying each digestion step and the key nutrients absorbed. Groups present their flow-chart to the class.",
+            "materials": ["Chart paper", "Markers", "Textbook"],
+            "teacher_actions": "Assigns groups, circulates and probes with questions, manages presentations.",
+            "student_actions": "Create a digestion flow-chart for a cow, present to peers, ask questions.",
+            "cognitive_demand_note": "Apply and analyse — students transfer human digestion knowledge to a ruminant context.",
+            "visual_aids": "Textbook Figure 2.4 — Ruminant Digestive System"
+          }
+        ]
+      },
+      "lo_handoff": [
+        {
+          "stage_number": 1,
+          "stage_label": "Orientation",
+          "total_stages": 2,
+          "period_numbers": [1, 2],
+          "period_duration_minutes": 45,
+          "activity_summary": "Students observe, classify and map the human digestive system.",
+          "implied_lo": "Students can label the human digestive system and state one function for each organ.",
+          "cg": "CG-3: Understanding life processes in living organisms",
+          "c_code": "SC-VII-C3-2",
+          "co_central": false
+        },
+        {
+          "stage_number": 2,
+          "stage_label": "Application",
+          "total_stages": 2,
+          "period_numbers": [3],
+          "period_duration_minutes": 45,
+          "activity_summary": "Groups create flow-charts tracing digestion in a ruminant.",
+          "implied_lo": "Students can construct a digestion flow-chart for a ruminant and identify where nutrient absorption differs from humans.",
+          "cg": "CG-3: Understanding life processes in living organisms",
+          "c_code": "SC-VII-C3-3",
+          "co_central": false
+        }
+      ]
+    },
+    social_sciences: {
+      "grade": "VII",
+      "subject": "social_sciences",
+      "chapter_number": 3,
+      "chapter_title": "Our Environment",
+      "period_schedule": [{ "duration_minutes": 45, "count": 3 }],
+      "lesson_plan": {
+        "periods": [
+          {
+            "period_number": 1,
+            "period_duration_minutes": 45,
+            "activity_title": "Mapping Our World",
+            "section_anchor": "1.1 Components of Environment",
+            "materials": ["Textbook", "Blank world map", "Coloured pencils"],
+            "visual_aids": "Textbook Figure 3.1 — Biosphere diagram",
+            "pedagogical_approach": "Exploratory Discussion",
+            "time_bands": [
+              { "minutes": "0-5",  "activity": "Warm-up: Teacher asks students to name three things they see outside the window." },
+              { "minutes": "5-20", "activity": "Class reads section 1.1 together; teacher pauses to discuss each component." },
+              { "minutes": "20-35","activity": "Students shade a world map to mark lithosphere, hydrosphere, atmosphere zones." },
+              { "minutes": "35-45","activity": "Pair-share: each pair explains one component to another pair." }
+            ],
+            "implied_lo": "Students can identify and describe the four components of the environment using a labelled map.",
+            "competency": {
+              "c_code": "SS-VII-CG2-1",
+              "cg": "CG-2: Spatial and environmental understanding",
+              "weight": 3,
+              "competency_text": "Identifies and locates major components of the natural environment."
+            }
+          },
+          {
+            "period_number": 2,
+            "period_duration_minutes": 45,
+            "activity_title": "Human Footprint",
+            "section_anchor": "1.2 Human-Made Environment",
+            "materials": ["Newspaper clippings", "Textbook", "Sticky notes"],
+            "visual_aids": null,
+            "pedagogical_approach": "Critical Analysis",
+            "time_bands": [
+              { "minutes": "0-10", "activity": "Gallery walk: students read newspaper clippings on environmental change pinned around the room." },
+              { "minutes": "10-25","activity": "Group discussion: classify each clipping as natural or human-made change." },
+              { "minutes": "25-40","activity": "Groups present classification with justification; teacher facilitates debate on borderline cases." },
+              { "minutes": "40-45","activity": "Exit ticket: one example of positive and one negative human impact on environment." }
+            ],
+            "implied_lo": "Students can distinguish between natural and human-made environmental changes and justify their classification with evidence.",
+            "competency": {
+              "c_code": "SS-VII-CG2-2",
+              "cg": "CG-2: Spatial and environmental understanding",
+              "weight": 2,
+              "competency_text": "Analyses how human activities modify the natural environment."
+            }
+          },
+          {
+            "period_number": 3,
+            "period_duration_minutes": 45,
+            "activity_title": "Stewards of the Earth",
+            "section_anchor": "1.3 Protecting Our Environment",
+            "materials": ["Chart paper", "Markers", "Textbook"],
+            "visual_aids": "Board diagram: causes → effects → solutions chain",
+            "pedagogical_approach": "Collaborative Problem-Solving",
+            "time_bands": [
+              { "minutes": "0-5",  "activity": "Recap: quick quiz on previous two periods." },
+              { "minutes": "5-25", "activity": "Groups design an action plan for one local environmental issue, using the causes-effects-solutions framework." },
+              { "minutes": "25-40","activity": "Groups present action plans; class votes on most feasible and most impactful." },
+              { "minutes": "40-45","activity": "Whole-class reflection: what can we personally do this week?" }
+            ],
+            "implied_lo": "Students can devise a structured action plan addressing a local environmental issue, linking causes, effects, and solutions.",
+            "competency": {
+              "c_code": "SS-VII-CG2-3",
+              "cg": "CG-2: Spatial and environmental understanding",
+              "weight": 3,
+              "competency_text": "Proposes evidence-based solutions to environmental challenges at a local scale."
+            }
+          }
+        ]
+      }
+    }
+  };
+
+  document.getElementById('json-input').value = JSON.stringify(samples[subject], null, 2);
+  renderJSON();
+}
+</script>
+</body>
+</html>

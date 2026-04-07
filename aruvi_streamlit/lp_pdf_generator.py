@@ -332,32 +332,14 @@ def meta_strip_full(chapter_num, title, weight, periods, total_time, date_str):
     return t
 
 
-def competency_table(competencies, subject=""):
+def competency_table(competencies):
     """
-    Two-column table.
-
-    SS / default:  col1 = "C No."   (narrow, 12%)  | col2 = "Targeted competencies"
-    Science:       col1 = "Stage"   (wider,  20%)  | col2 = "Periods & Activities"
-
-    competencies = [("C-8.1", "Understands..."), ...]   — for SS
-                 = [("Relational", "Period 1 — ..., Period 2 — ..."), ...]  — for Science
+    Two-column table: C no. | Text of competency
+    competencies = [("C-8.1", "Understands the need for a constitution..."), ...]
     """
     uw = PAGE_W - L_MAR - R_MAR
-    _is_science = str(subject).strip().lower() == "science"
-
-    if _is_science:
-        col_ws = [uw * 0.20, uw * 0.80]
-        hdr = [
-            Paragraph("Stage",               ST["comp_hdr"]),
-            Paragraph("Periods &amp; Activities", ST["comp_hdr_ctr"]),
-        ]
-    else:
-        col_ws = [uw * 0.12, uw * 0.88]
-        hdr = [
-            Paragraph("C No.",               ST["comp_hdr"]),
-            Paragraph("Targeted competencies", ST["comp_hdr_ctr"]),
-        ]
-
+    col_ws = [uw * 0.12, uw * 0.88]
+    hdr = [Paragraph("C No.", ST["comp_hdr"]), Paragraph("Targeted competencies", ST["comp_hdr_ctr"])]
     rows = [hdr]
     for code, text in competencies:
         rows.append([
@@ -496,7 +478,7 @@ def build_lp_pdf(output_path, data):
         data["date"],
     ))
     story.append(Spacer(1, 3 * mm))
-    story.append(competency_table(data["competencies"], subject=data.get("subject", "")))
+    story.append(competency_table(data["competencies"]))
     story.append(Spacer(1, 4 * mm))
     # Period cards — period_card() returns a list; extend so each flowable
     # is added individually and can split naturally across page boundaries.
@@ -506,6 +488,12 @@ def build_lp_pdf(output_path, data):
             p["activity_name"], p["anchored_section"],
             p["time_breakdown"], p["materials"], p["learning_outcome"],
         ))
+    # Footnote
+    story.append(Paragraph(
+        "(1) Period plan designed per Aruvi Lesson Plan Constitution V1.2 "
+        "· NCF 2023 Middle Stage pedagogy principles applied throughout.",
+        ST["footer"]
+    ))
 
     # ── Pass 1: build PDF without page numbers ────────────────────────────────
     doc.build(
@@ -586,28 +574,13 @@ def json_to_lp_data(j: dict) -> dict:
     except Exception:
         pass   # file not found or malformed — fall back to "—"
 
-    # Collect unique competencies in order of first appearance.
-    # Science: group by stage label (c_code); col2 = comma-joined "P1 — Activity, P2 — Activity"
-    # SS/default: col2 = competency_text (long description)
+    # Collect unique competencies in order of first appearance
     seen = OrderedDict()
-    _is_science = str(j.get("subject", "")).strip().lower() == "science"
     for p in j["result"]["lesson_plan"]["periods"]:
         c = p["competency"]
-        key = c["c_code"]
-        if _is_science:
-            entry = f"P{p['period_number']} \u2014 {p.get('activity_name', '')}"
-            if key not in seen:
-                seen[key] = [entry]
-            else:
-                seen[key].append(entry)
-        else:
-            if key not in seen:
-                seen[key] = c.get("competency_text", "")
-
-    if _is_science:
-        competencies = [(k, "  ·  ".join(v)) for k, v in seen.items()]
-    else:
-        competencies = list(seen.items())   # list of (c_code, text)
+        if c["c_code"] not in seen:
+            seen[c["c_code"]] = c["competency_text"]
+    competencies = list(seen.items())   # list of (c_code, text)
 
     # Build period list
     periods = []

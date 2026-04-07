@@ -1,0 +1,992 @@
+{
+  "filename": "ch_09_20260407_140003.json",
+  "saved_at": "2026-04-07T14:00:03",
+  "grade": "Grade VII",
+  "subject": "Science",
+  "chapter_number": 9,
+  "chapter_title": "Life Processes in Animals",
+  "period_schedule_display": "Period schedule:\n  Row 1: 40 minutes × 6 periods = 240 minutes\nTotal: 6 periods · 4h 0min",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 40,
+      "count": 6
+    }
+  ],
+  "result": {
+    "lesson_plan": {
+      "cognitive_progression": [
+        {
+          "stage_number": 1,
+          "stage_label": "Observe and identify life process structures",
+          "description": "Students encounter the organs and structures associated with nutrition, respiration, circulation, and excretion, making first-hand observations and identifying their names and locations."
+        },
+        {
+          "stage_number": 2,
+          "stage_label": "Classify and sequence process steps",
+          "description": "Students order and classify the steps within each life process — the five stages of nutrition, the mechanism of breathing, the double circuit of circulation, and the waste-removal pathways of excretion — distinguishing one process from another."
+        },
+        {
+          "stage_number": 3,
+          "stage_label": "Explain causal mechanisms within each system",
+          "description": "Students explain why and how each system works: enzyme action in digestion, pressure changes driving breathing, the role of capillaries in gas and nutrient exchange, and the liver-kidney pathway for urea production and excretion."
+        },
+        {
+          "stage_number": 4,
+          "stage_label": "Reason across integrated systems to explain whole-organism sustenance",
+          "description": "Students reason about how nutrition, respiration, circulation, and excretion function as interdependent systems — tracing how a glucose molecule ingested during digestion is transported by circulation, oxidised in cellular respiration, and how the resulting waste is excreted — explaining how collective system integration sustains animal life."
+        }
+      ],
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 40,
+          "progression_stage": 1,
+          "stage_label": "Observe and identify life process structures",
+          "pedagogical_approach": "Discovery approach",
+          "activity_title": "What Keeps an Animal Alive? First Observations",
+          "activity_description": "Students examine a labelled outline diagram of the human body and, guided by their own prior knowledge, attempt to locate and name organs they associate with eating, breathing, pumping blood, and removing waste. Observations are recorded on an individual worksheet before any formal instruction.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Distributes the outline diagram, poses the opening question, and circulates to note students' existing ideas without correcting them."
+            },
+            {
+              "actor": "Students (Individual)",
+              "role_description": "Label organs on the outline diagram using their own prior knowledge and note one question they have about each organ system."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Outline diagram distributed; the opening question — 'What must an animal do every day to stay alive?' — is posed and students share brief initial responses."
+            },
+            {
+              "minutes": "5–20",
+              "description": "Students individually label the diagram, placing organ names and drawing arrows to indicate location for each of the four life process areas."
+            },
+            {
+              "minutes": "20–30",
+              "description": "Students write one question they have about each of the four areas on a sticky note or in their notebook."
+            },
+            {
+              "minutes": "30–40",
+              "description": "Whole-class sharing of labels and questions; the teacher records the class's existing vocabulary on the board to establish a baseline for the chapter."
+            }
+          ],
+          "materials": [
+            "Printed outline diagram of the human body (one per student)",
+            "Pencils and coloured pens",
+            "Sticky notes or notebook"
+          ]
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 40,
+          "progression_stage": 1,
+          "stage_label": "Observe and identify life process structures",
+          "pedagogical_approach": "Hands-on Science",
+          "activity_title": "Starch in Saliva — Observing Enzyme Action",
+          "activity_description": "Students carry out the embedded iodine-test activity from the chapter: they test a piece of regular chapati and a piece of chapati chewed or treated with saliva for the presence of starch using iodine solution. Students record the colour change observed and the conclusion it implies about what saliva does to starch.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Demonstrates the iodine test procedure, distributes materials, and ensures safety while students work."
+            },
+            {
+              "actor": "Students (Groups)",
+              "role_description": "Conduct the iodine test on both chapati samples, observe and record colour changes, and write an initial conclusion statement about what changed."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Teacher demonstrates the iodine test on plain chapati so all students can see the blue-black colour change indicating starch."
+            },
+            {
+              "minutes": "8–25",
+              "description": "Groups test both chapati samples, observe colour differences, and record observations on their worksheets."
+            },
+            {
+              "minutes": "25–35",
+              "description": "Groups compare results across the class and record what the difference in colour change implies about saliva's action."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Brief whole-class consolidation: students identify the mouth as the first site of chemical digestion and name amylase as the enzyme involved."
+            }
+          ],
+          "materials": [
+            "Regular chapati (small pieces)",
+            "Chewed or saliva-treated chapati (small pieces)",
+            "Iodine solution",
+            "Dropper",
+            "Two white tiles or small plates per group",
+            "Observation worksheet"
+          ]
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 40,
+          "progression_stage": 2,
+          "stage_label": "Classify and sequence process steps",
+          "pedagogical_approach": "Inquiry approach",
+          "activity_title": "Mapping the Journey — Sequencing Nutrition and Respiration Steps",
+          "activity_description": "Students receive a set of shuffled cards, each describing one step in the nutrition process (ingestion to egestion) or one event in the breathing mechanism (muscle contraction to gas exchange in alveoli). They work in groups to sort and sequence the cards into correct order, justifying each placement before committing to a final arrangement.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Distributes card sets, poses the sequencing challenge, and probes groups with questions about why they placed each card where they did."
+            },
+            {
+              "actor": "Students (Groups)",
+              "role_description": "Sort and sequence the cards, discuss justifications for each placement, and produce a written rationale for the final order."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Card sets distributed; the task is explained — students must produce two correctly ordered sequences with written justifications."
+            },
+            {
+              "minutes": "5–25",
+              "description": "Groups sort cards, debate placements, and write a one-sentence justification for each card's position in the sequence."
+            },
+            {
+              "minutes": "25–35",
+              "description": "Groups share their sequences; any disagreements about order are discussed using evidence from the chapter."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Class agrees on the correct sequences; key vocabulary (peristalsis, alveoli, diaphragm) is confirmed on the board."
+            }
+          ],
+          "materials": [
+            "Pre-printed card sets — one set per group (nutrition steps and breathing mechanism steps)",
+            "Adhesive tape or flat surface for arranging cards",
+            "Worksheet for written justifications"
+          ]
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 40,
+          "progression_stage": 2,
+          "stage_label": "Classify and sequence process steps",
+          "pedagogical_approach": "Hands-on Science",
+          "activity_title": "Building the Chest Cavity Model",
+          "activity_description": "Students construct the chapter's lung model using a plastic bottle, Y-shaped tube, two small balloons, and a larger balloon stretched over the bottle's open base. By pulling and pushing the base balloon, they observe the small balloons inflating and deflating, and classify which physical action corresponds to inhalation and which to exhalation.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Guides assembly of the model and prompts students to connect the movement of the base balloon to the movement of the diaphragm."
+            },
+            {
+              "actor": "Students (Groups)",
+              "role_description": "Assemble the model, manipulate it, observe balloon behaviour, and record which direction of diaphragm movement corresponds to each phase of breathing."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Materials distributed; teacher guides step-by-step assembly of the chest cavity model with groups following along."
+            },
+            {
+              "minutes": "10–25",
+              "description": "Students manipulate the model, observe the small balloons, and record observations about what happens during inhalation and exhalation phases."
+            },
+            {
+              "minutes": "25–35",
+              "description": "Students classify each movement as inhalation or exhalation, linking balloon behaviour to the mechanism described in the chapter."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Class discussion: how does this model represent what the diaphragm and intercostal muscles do during real breathing?"
+            }
+          ],
+          "materials": [
+            "Plastic bottle (500 ml, with base cut off) per group",
+            "Y-shaped tube per group",
+            "Two small balloons per group",
+            "One large balloon per group",
+            "Rubber bands",
+            "Observation and classification worksheet"
+          ]
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 40,
+          "progression_stage": 3,
+          "stage_label": "Explain causal mechanisms within each system",
+          "pedagogical_approach": "Inquiry approach",
+          "activity_title": "Why Does the Heart Need Two Circuits? Explaining the Double Circulation",
+          "activity_description": "Students are given a partial diagram of the heart and blood vessels with labels for the four chambers, pulmonary circuit, and systemic circuit. They trace the path of a red blood cell through both circuits, annotating the diagram to explain at each step why the blood must go to that location and what it gains or loses there.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Poses the driving question — 'Why must blood make two separate journeys instead of one?' — and guides students to use the diagram to construct their explanation."
+            },
+            {
+              "actor": "Students (Individual)",
+              "role_description": "Annotate the diagram by tracing the path of a red blood cell and writing a causal explanation at each stage of both circuits."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Driving question posed; partial diagram distributed; students predict an answer before annotating."
+            },
+            {
+              "minutes": "5–25",
+              "description": "Students trace and annotate the diagram individually, providing a causal explanation for each stage of both circuits."
+            },
+            {
+              "minutes": "25–35",
+              "description": "Think-pair-share: students compare annotations with a partner, identifying any differences in causal reasoning."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Class consolidation: the role of capillaries in exchange of oxygen, nutrients, and waste is highlighted as the mechanism linking circulation to both nutrition and excretion."
+            }
+          ],
+          "materials": [
+            "Partial diagram of the heart and circulatory circuits (one per student)",
+            "Coloured pens (red and blue)",
+            "Annotation worksheet"
+          ]
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 40,
+          "progression_stage": 3,
+          "stage_label": "Explain causal mechanisms within each system",
+          "pedagogical_approach": "Didactic approach",
+          "activity_title": "From Ammonia to Urea — Explaining Excretion Mechanisms",
+          "activity_description": "Students analyse the four excretion pathways described in the chapter — kidneys, lungs, skin, and liver — by constructing a cause-and-effect chart that connects each metabolic waste product to the organ that removes it and the mechanism by which removal occurs, including the liver's conversion of ammonia to urea.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Explains the liver-kidney urea pathway and the roles of the lungs and skin as excretory organs, using the cause-and-effect chart structure as an organising framework."
+            },
+            {
+              "actor": "Students (Individual)",
+              "role_description": "Complete the cause-and-effect chart by filling in waste products, excretory organs, and mechanisms, then write a brief explanation of why the liver's role is essential to the process."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–15",
+              "description": "Teacher presents the four excretion pathways using a structured explanation, emphasising causation: what metabolic process produces each waste, and what structural feature of each organ enables its removal."
+            },
+            {
+              "minutes": "15–30",
+              "description": "Students individually complete the cause-and-effect chart for all four pathways from memory and chapter reference."
+            },
+            {
+              "minutes": "30–38",
+              "description": "Students write two to three sentences explaining why the liver's ammonia-to-urea conversion is essential before the kidneys can act."
+            },
+            {
+              "minutes": "38–40",
+              "description": "Quick check: teacher asks two or three students to read their explanation aloud and the class identifies if the causal link between liver and kidney is correctly stated."
+            }
+          ],
+          "materials": [
+            "Cause-and-effect chart template (one per student)",
+            "Chapter text or summary for reference",
+            "Notebook or worksheet for written explanation"
+          ]
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 60,
+          "progression_stage": 4,
+          "stage_label": "Reason across integrated systems to explain whole-organism sustenance",
+          "pedagogical_approach": "Inquiry approach",
+          "activity_title": "Tracing a Glucose Molecule — A Cross-System Journey",
+          "activity_description": "Students are given a scenario: a glucose molecule absorbed in the small intestine must reach a muscle cell, be used for energy, and have its waste products removed. Working in groups, students construct a narrative flow diagram tracing the molecule's journey across the nutrition, circulation, respiration, and excretion systems, identifying where each system hands off to the next.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Launches the scenario, circulates to probe the reasoning at each system boundary, and asks groups to justify each hand-off point in their diagram."
+            },
+            {
+              "actor": "Students (Groups)",
+              "role_description": "Construct the flow diagram collaboratively, annotating each system boundary with an explanation of what the next system contributes and why the previous system alone would be insufficient."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Scenario introduced; groups receive blank flow diagram templates and discuss where to start and which systems must be included."
+            },
+            {
+              "minutes": "8–30",
+              "description": "Groups construct the narrative flow diagram, annotating system boundaries and recording the reason each hand-off is necessary."
+            },
+            {
+              "minutes": "30–45",
+              "description": "Groups exchange diagrams with another group for peer review, marking any system boundary where the causal link is missing or incorrect."
+            },
+            {
+              "minutes": "45–58",
+              "description": "Whole-class discussion: one group presents their diagram; the class collectively fills in any missing links and evaluates whether the explanation is complete."
+            },
+            {
+              "minutes": "58–60",
+              "description": "Students individually write one sentence answering the question: 'What would happen to the muscle cell if any one of these four systems stopped working?'"
+            }
+          ],
+          "materials": [
+            "Blank flow diagram template (one per group and one per student for individual reflection)",
+            "Coloured markers",
+            "Chapter summary for reference"
+          ]
+        },
+        {
+          "period_number": 8,
+          "period_duration_minutes": 40,
+          "progression_stage": 4,
+          "stage_label": "Reason across integrated systems to explain whole-organism sustenance",
+          "pedagogical_approach": "Demonstration",
+          "activity_title": "System Failure Scenarios — Applying Integration Reasoning",
+          "activity_description": "The teacher presents three short scenarios — a blocked kidney, damaged alveoli, and a weakened heart — and students reason about the cascading effects on the other systems, producing written explanations that show how failure in one system disrupts the whole-organism integration described in the chapter.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Presents each scenario in turn on the board, poses the question 'Which other systems are affected and why?', and facilitates the class discussion after each student response."
+            },
+            {
+              "actor": "Students (Individual)",
+              "role_description": "Write a causal explanation for each scenario identifying which other systems are disrupted, the mechanism of disruption, and the consequence for the whole organism."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "First scenario presented: blocked kidneys — students are asked to write their reasoning before any discussion begins."
+            },
+            {
+              "minutes": "5–15",
+              "description": "Students write individual causal explanations for all three scenarios."
+            },
+            {
+              "minutes": "15–30",
+              "description": "Class discussion of each scenario in turn; the teacher probes for multi-system reasoning, asking students to name the specific process disrupted and the knock-on effect."
+            },
+            {
+              "minutes": "30–38",
+              "description": "Students revise and improve their explanations based on the discussion, adding any missing causal links."
+            },
+            {
+              "minutes": "38–40",
+              "description": "Closing reflection: students state in one sentence how this chapter answers the question posed in Period 1 — 'What must an animal do every day to stay alive?'"
+            }
+          ],
+          "materials": [
+            "Three scenario cards written on the board or printed handout",
+            "Notebook or response sheet"
+          ]
+        }
+      ]
+    },
+    "assessment_items": [
+      {
+        "progression_stage": 1,
+        "stage_label": "Observe and identify life process structures",
+        "implied_lo_assessed": "Students can identify and locate the major organs associated with nutrition, respiration, circulation, and excretion on a body diagram, and can record the observed result of the iodine test as evidence that saliva chemically changes starch.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-3.2",
+          "competency_text": "Distinguishing the characteristics of living organisms including need for nutrition, growth and development, need for respiration, response to stimuli, reproduction, excretion, and cellular organisation."
+        },
+        "cognitive_demand": "Recall",
+        "visual_stimulus": null,
+        "question_text": "During the iodine test activity, a piece of chapati that had been chewed showed little or no blue-black colour change when iodine solution was added. What does this observation indicate?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Chewing physically breaks the chapati into smaller pieces, making it easier to swallow.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "The enzyme amylase in saliva chemically converts starch into simpler molecules, so less starch is available to react with iodine.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "Iodine solution reacts with the water in saliva rather than with starch, producing a diluted colour.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "The stomach's acid had already begun breaking down the starch before the iodine test was done.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 1
+            },
+            "what_each_option_reveals": {
+              "A": "Selecting A indicates the student conflates physical (mechanical) digestion with chemical digestion — they observed that chewing changed the chapati but did not distinguish between breaking it physically and chemically transforming starch.",
+              "C": "Selecting C indicates a misconception about how iodine solution works — the student does not understand that the blue-black reaction is specific to starch and cannot be simply diluted away by water or saliva.",
+              "D": "Selecting D indicates a confusion between the location of digestion stages — the student incorrectly attributes the starch breakdown to the stomach's acid rather than to the enzyme amylase acting in the mouth."
+            },
+            "inclusivity": "Students who did not perform the activity firsthand can answer based on the described observation in the question stem. Students who struggle with reading can have the question read aloud; the colour-change observation provides a concrete, single-evidence anchor that does not require extended recall."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 1,
+        "stage_label": "Observe and identify life process structures",
+        "implied_lo_assessed": "Students can identify and locate the major organs associated with nutrition, respiration, circulation, and excretion on a body diagram, and can record the observed result of the iodine test as evidence that saliva chemically changes starch.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-3.2",
+          "competency_text": "Distinguishing the characteristics of living organisms including need for nutrition, growth and development, need for respiration, response to stimuli, reproduction, excretion, and cellular organisation."
+        },
+        "cognitive_demand": "Understanding",
+        "visual_stimulus": null,
+        "question_text": "Which of the following correctly pairs an organ with the life process it primarily performs?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Kidneys — circulation",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "Alveoli — excretion of urea",
+            "is_correct": false
+          },
+          {
+            "label": "C",
+            "text": "Small intestine — absorption of digested nutrients",
+            "is_correct": true
+          },
+          {
+            "label": "D",
+            "text": "Large intestine — digestion of proteins",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 1
+            },
+            "what_each_option_reveals": {
+              "A": "Selecting A indicates the student confuses the kidneys' function — filtering blood — with a circulatory function, reflecting a failure to correctly associate the kidneys with excretion.",
+              "B": "Selecting B indicates confusion between the two excretory roles of the lungs (carbon dioxide and water vapour) and the kidneys (urea), showing that the student has not yet correctly mapped each organ to its specific waste product.",
+              "D": "Selecting D indicates confusion about where protein digestion occurs — protein digestion begins in the stomach and is completed in the small intestine; the large intestine is responsible for water absorption, not protein breakdown."
+            },
+            "inclusivity": "Students who are still developing their reading skills can focus on the single keyword in each option (Kidneys, Alveoli, Small intestine, Large intestine) and match it to the function they observed or recorded on their body diagram during the activity."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 2,
+        "stage_label": "Classify and sequence process steps",
+        "implied_lo_assessed": "Students can arrange the five stages of animal nutrition in correct order with written justification and correctly classify diaphragm movements in the chest model as corresponding to inhalation or exhalation.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-3.2",
+          "competency_text": "Distinguishing the characteristics of living organisms including need for nutrition, growth and development, need for respiration, response to stimuli, reproduction, excretion, and cellular organisation."
+        },
+        "cognitive_demand": "Understanding",
+        "visual_stimulus": null,
+        "question_text": "A student lists the stages of nutrition as: ingestion → absorption → digestion → assimilation → egestion. Which stage is out of order, and what is the correct position?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Egestion is out of order; it should come before assimilation.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "Absorption is out of order; it should come after digestion.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "Assimilation is out of order; it should come before absorption.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Ingestion is out of order; it should come after digestion.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 2
+            },
+            "what_each_option_reveals": {
+              "A": "Selecting A indicates the student does not understand the role of egestion — they may confuse it with excretion or believe waste removal occurs before cellular use of nutrients, showing a sequence-level misunderstanding of the nutrition process.",
+              "C": "Selecting C indicates confusion between the sequence positions of absorption and assimilation — the student does not grasp that nutrients must first be absorbed from the alimentary canal into the bloodstream before cells can assimilate them.",
+              "D": "Selecting D is a highly implausible response that may indicate the student is guessing rather than reasoning about the sequence; it reveals a fundamental gap in understanding that food must enter the body before it can be chemically changed."
+            },
+            "inclusivity": "Students who found the card-sequencing activity challenging can approach this question by reasoning from the one process they feel confident about (ingestion = first, egestion = last) and eliminating options that contradict those anchors."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 2,
+        "stage_label": "Classify and sequence process steps",
+        "implied_lo_assessed": "Students can arrange the five stages of animal nutrition in correct order with written justification and correctly classify diaphragm movements in the chest model as corresponding to inhalation or exhalation.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-3.2",
+          "competency_text": "Distinguishing the characteristics of living organisms including need for nutrition, growth and development, need for respiration, response to stimuli, reproduction, excretion, and cellular organisation."
+        },
+        "cognitive_demand": "Understanding",
+        "visual_stimulus": null,
+        "question_text": "In the chest cavity model, when the large balloon at the base is pulled downward, the small balloons inside the bottle inflate. Which phase of breathing does this represent, and why?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Exhalation, because the volume of the bottle decreases when the base balloon is pulled down.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "Inhalation, because pulling the base balloon down increases the volume inside the bottle, reducing air pressure so air flows into the small balloons.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "Inhalation, because pulling the base balloon pushes air directly into the small balloons through the Y-shaped tube.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Exhalation, because the diaphragm contracts and pushes air out of the lungs during inhalation.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 2
+            },
+            "what_each_option_reveals": {
+              "A": "Selecting A indicates the student has the volume-pressure relationship reversed — they do not understand that pulling the base balloon down increases volume and decreases pressure, and have misclassified the phase.",
+              "C": "Selecting C indicates the student correctly classifies the phase as inhalation but holds a misconception about the mechanism — believing air is pushed in directly rather than drawn in by a pressure difference created by increased volume.",
+              "D": "Selecting D indicates two simultaneous confusions: the student misclassifies the phase as exhalation and also incorrectly states that the diaphragm contracts during inhalation to push air out, inverting both the phase and the action."
+            },
+            "inclusivity": "Students who found the model difficult to interpret can be encouraged to recall which direction the base balloon moved before the small balloons inflated and reason from that single observable event rather than from the full mechanism."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 2,
+        "stage_label": "Classify and sequence process steps",
+        "implied_lo_assessed": "Students can arrange the five stages of animal nutrition in correct order with written justification and correctly classify diaphragm movements in the chest model as corresponding to inhalation or exhalation.",
+        "question_type": "SCR",
+        "competency": {
+          "c_code": "C-3.2",
+          "competency_text": "Distinguishing the characteristics of living organisms including need for nutrition, growth and development, need for respiration, response to stimuli, reproduction, excretion, and cellular organisation."
+        },
+        "cognitive_demand": "Understanding",
+        "visual_stimulus": null,
+        "question_text": "Riya says that breathing and respiration are the same process because both involve air and the lungs. Using the stages of each process described in the chapter, explain why Riya is incorrect. Your answer must refer to at least two differences.",
+        "options": [],
+        "expected_elements": [
+          "States that breathing is a physical mechanism (movement of the diaphragm and intercostal muscles) that moves air into and out of the lungs.",
+          "States that respiration is a cellular chemical process in which oxygen is used to release energy from glucose, producing carbon dioxide and water.",
+          "Identifies at least one structural difference: breathing occurs at the level of the chest cavity and lungs; cellular respiration occurs inside body cells.",
+          "Identifies at least one process difference: breathing moves air; respiration releases energy from glucose."
+        ],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": null,
+          "SCR": {
+            "learning_outcome": {
+              "stage": 2
+            },
+            "inclusivity": "Students who struggle to write extended prose can present their answer as two labelled rows in a table (Breathing / Respiration) with a brief phrase in each cell. This format still demonstrates the required classification without requiring essay-style writing."
+          },
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 3,
+        "stage_label": "Explain causal mechanisms within each system",
+        "implied_lo_assessed": "Students can produce a causal explanation of why blood must travel both the pulmonary and systemic circuits, and can explain the role of the liver in converting ammonia to urea as a prerequisite for renal excretion.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-3.2",
+          "competency_text": "Distinguishing the characteristics of living organisms including need for nutrition, growth and development, need for respiration, response to stimuli, reproduction, excretion, and cellular organisation."
+        },
+        "cognitive_demand": "Application",
+        "visual_stimulus": null,
+        "question_text": "Blood returning to the heart from the body tissues is pumped to the lungs before it is sent to the body again. Which of the following correctly explains why this intermediate stop at the lungs is necessary?",
+        "options": [
+          {
+            "label": "A",
+            "text": "The lungs pump the blood with additional force so it can reach all body tissues in the systemic circuit.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "At the lungs, carbon dioxide diffuses from the blood into the air in the alveoli and oxygen diffuses from the air into the blood, re-oxygenating it for delivery to body tissues.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "The lungs filter out urea and other waste products from the blood before it circulates to the body tissues.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Blood picks up glucose from the alveoli during its passage through the lungs to supply energy to body tissues.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 3
+            },
+            "what_each_option_reveals": {
+              "A": "Selecting A indicates the student confuses the structural role of the lungs (gas exchange) with the pumping function of the heart, suggesting they have not understood the purpose of the pulmonary circuit.",
+              "C": "Selecting C indicates a confusion between the functions of the lungs and the kidneys — the student incorrectly attributes urea filtration (a renal function) to the lungs, merging two separate excretory mechanisms.",
+              "D": "Selecting D indicates a misconception about what the alveoli exchange — the student conflates nutrient supply (a function of the alimentary canal and circulation) with the gas-exchange function of the alveoli."
+            },
+            "inclusivity": "Students who annotated the circulation diagram during the lesson can recall which arrows they drew entering and leaving the lung region and use that spatial memory to reason about what changed in the blood during that passage."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 3,
+        "stage_label": "Explain causal mechanisms within each system",
+        "implied_lo_assessed": "Students can produce a causal explanation of why blood must travel both the pulmonary and systemic circuits, and can explain the role of the liver in converting ammonia to urea as a prerequisite for renal excretion.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-3.2",
+          "competency_text": "Distinguishing the characteristics of living organisms including need for nutrition, growth and development, need for respiration, response to stimuli, reproduction, excretion, and cellular organisation."
+        },
+        "cognitive_demand": "Analysis",
+        "visual_stimulus": null,
+        "question_text": "The liver converts ammonia produced by protein catabolism into urea before urea is excreted by the kidneys. If the liver were unable to perform this conversion, what would be the direct consequence for excretion?",
+        "options": [
+          {
+            "label": "A",
+            "text": "The kidneys would excrete ammonia directly, and excretion would continue normally.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "Ammonia, which is more toxic than urea, would accumulate in the blood because the kidneys are designed to excrete urea rather than large quantities of raw ammonia.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "The skin would take over the entire excretion of protein waste products through sweat.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Protein catabolism would stop, so no waste product would be produced.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 3
+            },
+            "what_each_option_reveals": {
+              "A": "Selecting A indicates the student has not grasped the liver's preparatory role — they assume the kidneys can handle any form of nitrogenous waste, failing to see that the liver-kidney sequence is a causal dependency.",
+              "C": "Selecting C indicates the student has overgeneralised the skin's excretory function from the chapter — the chapter states the skin excretes only salts and a small amount of urea in sweat, not that it can compensate for full loss of another organ's function.",
+              "D": "Selecting D indicates a fundamental misunderstanding of metabolic processes — the student conflates the removal of a waste-processing step with the cessation of the metabolic process that generates the waste."
+            },
+            "inclusivity": "Students who completed the cause-and-effect excretion chart can locate their entry for ammonia-to-urea and use it directly; students who struggle with the conditional phrasing of the stem can restate it as 'the liver does not work — what happens to ammonia?' before selecting an answer."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 3,
+        "stage_label": "Explain causal mechanisms within each system",
+        "implied_lo_assessed": "Students can produce a causal explanation of why blood must travel both the pulmonary and systemic circuits, and can explain the role of the liver in converting ammonia to urea as a prerequisite for renal excretion.",
+        "question_type": "ECR",
+        "competency": {
+          "c_code": "C-3.2",
+          "competency_text": "Distinguishing the characteristics of living organisms including need for nutrition, growth and development, need for respiration, response to stimuli, reproduction, excretion, and cellular organisation."
+        },
+        "cognitive_demand": "Analysis",
+        "visual_stimulus": null,
+        "question_text": "Using the chapter's description of the double circulatory system, explain why having two separate circuits — pulmonary and systemic — is more effective at supplying oxygen to body tissues than a single circuit would be. Your answer should refer to what happens to blood in each circuit and why the separation between them matters.",
+        "options": [],
+        "expected_elements": [],
+        "look_for": [
+          "Correctly describes the pulmonary circuit: blood travels from the right ventricle to the lungs, where it is re-oxygenated, and returns to the left atrium.",
+          "Correctly describes the systemic circuit: oxygen-rich blood is pumped from the left ventricle to all body tissues and returns deoxygenated to the right atrium.",
+          "Explains why separation matters: if oxygenated and deoxygenated blood mixed, tissues would receive blood with lower oxygen concentration, reducing efficiency of delivery.",
+          "References the role of capillaries as the site where oxygen, nutrients, and waste products are exchanged between blood and body cells.",
+          "Uses causal language to connect circuit structure to outcome (e.g., 'because', 'which means that', 'as a result')."
+        ],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": null,
+          "SCR": null,
+          "ECR": {
+            "learning_outcome": {
+              "stage": 3
+            },
+            "inclusivity": "Students who find extended writing difficult can structure their response as an annotated diagram of both circuits with labels and brief causal notes at each stage rather than continuous prose; this format equally demonstrates causal reasoning about the double circuit."
+          },
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 4,
+        "stage_label": "Reason across integrated systems to explain whole-organism sustenance",
+        "implied_lo_assessed": "Students can reason across the nutrition, respiration, circulation, and excretion systems — tracing nutrient and waste pathways — to explain how the four systems collectively sustain animal life and predict the multi-system consequences of failure in any one system.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-3.2",
+          "competency_text": "Distinguishing the characteristics of living organisms including need for nutrition, growth and development, need for respiration, response to stimuli, reproduction, excretion, and cellular organisation."
+        },
+        "cognitive_demand": "Analysis",
+        "visual_stimulus": null,
+        "question_text": "A glucose molecule absorbed in the small intestine must reach a muscle cell to release energy. Which sequence correctly traces the systems through which this glucose travels before it can be used in cellular respiration?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Nutrition (absorption in small intestine) → Excretion (removal of glucose from blood) → Respiration (energy release in muscle cell)",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "Nutrition (absorption in small intestine) → Circulation (transport to muscle cell via blood) → Respiration (energy release using oxygen inside the cell)",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "Respiration (oxygen absorbed in alveoli) → Circulation (transport of glucose to muscle) → Nutrition (glucose digested in muscle cell)",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Nutrition (absorption in small intestine) → Circulation (transport of glucose) → Excretion (glucose expelled as waste)",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 4
+            },
+            "what_each_option_reveals": {
+              "A": "Selecting A indicates the student incorrectly positions excretion in the glucose pathway, failing to understand that excretion removes metabolic waste products (carbon dioxide, urea, water) and does not remove glucose from the blood as a normal step.",
+              "C": "Selecting C indicates the student has confused the sequence of system activation and conflated the role of the alveoli (gas exchange) with the starting point of glucose transport, and incorrectly places digestion at the cellular level rather than in the alimentary canal.",
+              "D": "Selecting D indicates the student has confused the end product of cellular respiration (waste products such as carbon dioxide and water, which are excreted) with glucose itself being excreted, suggesting they do not understand that glucose is used, not expelled."
+            },
+            "inclusivity": "Students who constructed the cross-system flow diagram during Period 7 can refer to that diagram mentally and simply match the sequence in each option to the flow they built; students who struggle with multi-step reasoning can eliminate options by checking where each option places excretion."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 4,
+        "stage_label": "Reason across integrated systems to explain whole-organism sustenance",
+        "implied_lo_assessed": "Students can reason across the nutrition, respiration, circulation, and excretion systems — tracing nutrient and waste pathways — to explain how the four systems collectively sustain animal life and predict the multi-system consequences of failure in any one system.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-3.2",
+          "competency_text": "Distinguishing the characteristics of living organisms including need for nutrition, growth and development, need for respiration, response to stimuli, reproduction, excretion, and cellular organisation."
+        },
+        "cognitive_demand": "Evaluation",
+        "visual_stimulus": null,
+        "question_text": "If the alveoli in a person's lungs were severely damaged and could no longer exchange gases efficiently, which of the following best describes the cascading consequence for the other life processes?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Only excretion would be affected, because the lungs excrete carbon dioxide and water vapour.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "Less oxygen would enter the blood, reducing cellular respiration in all body cells, which would reduce energy available for digestion and circulation, and allow carbon dioxide and other wastes to accumulate.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "Digestion would stop immediately because the stomach requires oxygen to produce digestive enzymes.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Circulation would stop because the heart needs carbon dioxide from the alveoli to pump blood.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 4
+            },
+            "what_each_option_reveals": {
+              "A": "Selecting A indicates the student recognises one function of the lungs (excretion of carbon dioxide) but reasons in isolation — they fail to trace the knock-on effect that reduced oxygen intake has on cellular respiration and then on all other systems.",
+              "C": "Selecting C indicates a misconception introduced by overapplying the role of oxygen — the student has generalised that oxygen deprivation immediately stops digestion without understanding the indirect cascade mechanism described in the chapter.",
+              "D": "Selecting D indicates a fundamental factual error: the student inverts the role of carbon dioxide in circulation, incorrectly proposing that the heart depends on carbon dioxide from the alveoli, which is not described anywhere in the chapter."
+            },
+            "inclusivity": "Students who found the system-failure scenario discussion in Period 8 helpful can replay the class reasoning about the 'damaged alveoli' scenario mentally before choosing; students who process information visually can sketch a quick arrow diagram connecting alveoli failure to reduced oxygen to cellular effects before selecting."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 4,
+        "stage_label": "Reason across integrated systems to explain whole-organism sustenance",
+        "implied_lo_assessed": "Students can reason across the nutrition, respiration, circulation, and excretion systems — tracing nutrient and waste pathways — to explain how the four systems collectively sustain animal life and predict the multi-system consequences of failure in any one system.",
+        "question_type": "ECR",
+        "competency": {
+          "c_code": "C-3.2",
+          "competency_text": "Distinguishing the characteristics of living organisms including need for nutrition, growth and development, need for respiration, response to stimuli, reproduction, excretion, and cellular organisation."
+        },
+        "cognitive_demand": "Evaluation",
+        "visual_stimulus": null,
+        "question_text": "A student claims: 'Circulation is the most important life process because without it, none of the other three processes — nutrition, respiration, or excretion — would work.' Using evidence from the chapter, evaluate this claim. Your answer should address what circulation provides to or removes from each of the other three systems, and state whether you agree, partially agree, or disagree with the claim — with justification.",
+        "options": [],
+        "expected_elements": [],
+        "look_for": [
+          "States what circulation provides to nutrition: absorbed nutrients from the small intestine are transported by the blood to all body cells, so without circulation, absorbed nutrients cannot reach cells.",
+          "States what circulation provides to respiration: oxygen picked up in the lungs is delivered to cells by the blood, and carbon dioxide produced by cellular respiration is carried from cells to the lungs for removal.",
+          "States what circulation provides to excretion: the blood carries urea from the liver to the kidneys and carries carbon dioxide from cells to the lungs, making circulation necessary for all excretory pathways.",
+          "Engages critically with the claim rather than simply accepting it — for example, noting that circulation itself depends on energy produced by cellular respiration and on oxygen exchanged by the lungs, showing that all systems are mutually interdependent.",
+          "Uses a clear logical structure: each of the three 'other systems' is addressed with at least one specific example from the chapter."
+        ],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": null,
+          "SCR": null,
+          "ECR": {
+            "learning_outcome": {
+              "stage": 4
+            },
+            "inclusivity": "Students who find open-ended evaluation questions difficult can scaffold their response by first writing one sentence for each of the three other systems and then a final sentence taking a position; this modular structure achieves the same cross-system reasoning as a flowing paragraph."
+          },
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 4,
+        "stage_label": "Reason across integrated systems to explain whole-organism sustenance",
+        "implied_lo_assessed": "Students can reason across the nutrition, respiration, circulation, and excretion systems — tracing nutrient and waste pathways — to explain how the four systems collectively sustain animal life and predict the multi-system consequences of failure in any one system.",
+        "question_type": "OPEN_TASK",
+        "competency": {
+          "c_code": "C-3.2",
+          "competency_text": "Distinguishing the characteristics of living organisms including need for nutrition, growth and development, need for respiration, response to stimuli, reproduction, excretion, and cellular organisation."
+        },
+        "cognitive_demand": "Evaluation",
+        "visual_stimulus": "A data table provided to students showing four columns: System, Input to the system, Output of the system, Waste produced. Rows are partially completed for Nutrition, Respiration, Circulation, and Excretion with some cells intentionally left blank.",
+        "question_text": "",
+        "options": [],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "The table below shows the four major life process systems in animals. Some cells have been filled in; others are blank. Step 1 — Complete the table by filling in all blank cells using your knowledge from the chapter. Step 2 — Using the completed table, identify TWO places where the output of one system becomes the input of another system, and explain in writing why this link is necessary for the animal to stay alive. Step 3 — A mountain climber reaches a very high altitude where the air contains less oxygen. Using the completed table and the links you identified, predict and explain what would happen to at least two other systems in the climber's body.",
+        "scaffold": "The table has some cells already filled: Nutrition row — Input: Food; Output: Absorbed nutrients (glucose, amino acids, fats); Waste: Undigested matter (egested). Respiration row — Input: [blank]; Output: Energy (ATP); Waste: [blank]. Circulation row — Input: [blank]; Output: [blank]; Waste: None (transport only). Excretion row — Input: Metabolic waste in blood (urea, CO2, excess salts); Output: [blank]; Waste: Urine, exhaled air, sweat.",
+        "format_of_output": [
+          "Completed data table with all blank cells filled.",
+          "Two written sentences identifying system-to-system links and explaining their necessity.",
+          "A written prediction and explanation of the effect of low oxygen on at least two other systems."
+        ],
+        "guide": {
+          "MCQ": null,
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": {
+            "learning_outcome": {
+              "stage": 4
+            },
+            "format_type": "Data interpretation task (provided table)",
+            "format_rationale": "The data interpretation format is the most natural demonstration vehicle for the Final Stage LO because it requires students to represent the inputs, outputs, and waste of all four systems in a single structured space and then reason across the completed table — directly evidencing their ability to trace nutrient and waste pathways across integrated systems.",
+            "what_this_demonstrates": "A complete response demonstrates that the student can reason simultaneously across all four life process systems — correctly identifying what each system takes in and produces, tracing the hand-off points between systems, and applying that integrated understanding to a novel scenario (low-oxygen environment) to generate a reasoned prediction.",
+            "reading_the_scaffold": "The partially completed table serves two purposes: it reduces the cognitive load of recalling all systems from scratch so students can focus on the cross-system reasoning required in Steps 2 and 3, and it reveals what students actually know about each system's inputs and outputs through the cells they fill in. The teacher should note which blank cells students leave empty or fill incorrectly as evidence of specific system-level gaps.",
+            "strong_vs_weak_markers": "Strong responses: complete and accurate table with correct blanks filled (e.g., Respiration input = glucose and oxygen; Respiration waste = carbon dioxide and water; Circulation input = absorbed nutrients and oxygen; Circulation output = nutrients and oxygen to all cells and waste removal from cells; Excretion output = urine, exhaled CO2 and water vapour, sweat); identification of at least two inter-system links with a causal explanation of necessity (e.g., 'Circulation receives absorbed glucose from nutrition and delivers it to cells for respiration — without this, cells could not release energy'); prediction in Step 3 that references reduced oxygen → reduced cellular respiration → reduced energy for circulation and digestion and/or accumulation of carbon dioxide waste, with causal language. Weak responses: incomplete table with several blank cells; system links stated without explanation of why they are necessary; Step 3 prediction that only restates 'less oxygen is bad' without tracing the mechanism across systems.",
+            "inclusivity": "Students who struggle with writing can complete Step 2 and Step 3 as annotated arrows drawn on a copy of the completed table rather than as prose sentences, pointing from one system's output cell to the next system's input cell and adding a brief note. This format demonstrates the same cross-system reasoning through a visual mode."
+          }
+        }
+      }
+    ],
+    "input_tokens": 11499,
+    "output_tokens": 14940,
+    "cost_inr": 21.7221
+  }
+}

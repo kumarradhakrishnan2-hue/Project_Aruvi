@@ -327,7 +327,7 @@ def build_allocation_pdf(
   .seq {{ color: #bbb; font-size: 6.5pt; text-align: right; padding-right: 4px; }}
   .code {{ font-weight: 700; font-size: 7.5pt; white-space: nowrap; }}
   .competency {{ color: #2a2a2a; }}
-  .justification {{ color: #555; font-style: italic; font-family: 'DejaVu Serif', Georgia, serif; padding-right: 4px; }}
+  .justification {{ color: #2a2a2a; padding-right: 4px; }}
   /* ── #3: overflow:hidden + explicit width keeps dots inside their column */
   .weight-dots {{ width: 42px; min-width: 42px; text-align: center; vertical-align: middle; overflow: hidden; }}
   .dots {{ display: flex; gap: 3px; justify-content: center; align-items: center; padding-top: 3px; }}

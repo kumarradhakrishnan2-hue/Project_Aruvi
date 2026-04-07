@@ -423,6 +423,123 @@
   }
 
   /* ═══════════════════════════════════════════
+     OPTION A: INLINE BAR BREAKDOWN (Science rows)
+     ═══════════════════════════════════════════ */
+
+  /* All tds in Science rows sit at the top so the chapter cell can expand freely */
+  .sci-row td { vertical-align: top !important; }
+
+  /* Pill that lives in the EI cell */
+  .ei-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 2px 8px;
+    background: #eaf2ff;
+    border: 0.5px solid #93bce8;
+    border-radius: 20px;
+    font-size: 12px;
+    color: #1a4480;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s;
+    line-height: 1.5;
+    margin-top: 2px;
+  }
+  .ei-pill:hover { background: #d6e8ff; }
+
+  /* Chevron inside the pill — rotates when open */
+  .ei-chev {
+    font-size: 14px;
+    display: inline-block;
+    transition: transform 0.18s;
+    color: #5a80b0;
+    line-height: 1;
+  }
+  .ei-pill.open .ei-chev { transform: rotate(90deg); }
+
+  /* Breakdown container — rendered inside the chapter name <td> */
+  .ei-bar-breakdown {
+    margin-top: 8px;
+    padding: 6px 0 4px 0;
+    min-width: 260px;
+  }
+
+  /* One signal row */
+  .ei-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+  .ei-bar-lbl {
+    width: 110px;
+    flex-shrink: 0;
+    font-size: 11px;
+    color: #6b7280;
+    white-space: nowrap;
+  }
+  .ei-bar-track {
+    flex: 1;
+    height: 6px;
+    border-radius: 3px;
+    background: #e5e7eb;
+    overflow: hidden;
+  }
+  .ei-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: #1D9E75;
+  }
+  .ei-bar-rawval {
+    width: 28px;
+    text-align: right;
+    font-size: 11px;
+    color: #374151;
+    flex-shrink: 0;
+  }
+  .ei-bar-mult {
+    width: 28px;
+    font-size: 10px;
+    color: #9ca3af;
+    flex-shrink: 0;
+  }
+  .ei-bar-cont {
+    width: 28px;
+    text-align: right;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+  .ei-bar-cont.pos  { color: #1D9E75; }
+  .ei-bar-cont.zero { color: #9ca3af; }
+
+  /* Divider + total row */
+  .ei-bar-divider {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 4px 0;
+  }
+  .ei-bar-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 600;
+    color: #1D9E75;
+    padding: 0 0 3px 0;
+  }
+
+  /* Footer note */
+  .ei-bar-note {
+    font-size: 10px;
+    color: #9ca3af;
+    font-style: italic;
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+
+  /* ═══════════════════════════════════════════
      FOOTNOTES
      ═══════════════════════════════════════════ */
   .footnotes {
@@ -695,55 +812,69 @@ function generateReport() {
     sortedPts.forEach(function (pt) { colSums[pt.mins] += (alloc[String(pt.mins)] || 0); });
 
     var rowBg = idx % 2 === 0 ? '#f9f8f6' : '#ffffff';
-    bodyHTML += '<tr style="background:' + rowBg + '">';
+    bodyHTML += '<tr' + (IS_SCIENCE ? ' class="sci-row"' : '') + ' style="background:' + rowBg + '">';
     bodyHTML += '<td>' + pad2(cd.chapter_number) + '</td>';
-    bodyHTML += '<td class="left wrap">' + esc(cd.chapter_title) + '</td>';
-    /* ── third column: Effort Index (Science/Maths) or Weight button (others) ── */
+    /* ── second + third columns: Chapter name (+ optional breakdown) and EI/Weight ── */
     if (IS_SCIENCE) {
-      /* ── Science / Mathematics: effort index with inline breakdown panel ── */
+      /* ── Science / Mathematics: Option A — pill in EI cell, bar breakdown inside chapter name cell ── */
       var ei = (typeof cd.effort_index === 'number' && cd.effort_index > 0) ? cd.effort_index : 0;
+      var cdVal  = cd.conceptual_demand || 0;
+      var acVal  = cd.activity_count    || 0;
+      var dcVal  = cd.demo_count        || 0;
+      var elVal  = cd.exec_load         || 0;
+      var cdCont = parseFloat((cdVal * 2).toFixed(1));
+      var acCont = parseFloat((acVal * 1).toFixed(1));
+      var dcCont = parseFloat((dcVal * 1.5).toFixed(1));
+      var elCont = parseFloat((elVal * 2).toFixed(1));
+
+      /* chapter name cell — holds the title + hidden bar breakdown */
+      bodyHTML += '<td class="left wrap">';
+      bodyHTML += '<div>' + esc(cd.chapter_title) + '</div>';
+      if (ei) {
+        var _signals = [
+          { label: 'Conceptual demand', val: cdVal, mult: '\u00d72',   cont: cdCont },
+          { label: 'Student activities', val: acVal, mult: '\u00d71',   cont: acCont },
+          { label: 'Teacher demos',      val: dcVal, mult: '\u00d71.5', cont: dcCont },
+          { label: 'Exercise load',      val: elVal, mult: '\u00d72',   cont: elCont }
+        ];
+        var _bdHTML = '';
+        _signals.forEach(function(sig) {
+          var pct = Math.min(sig.cont / 8 * 100, 100);
+          var contCls = sig.cont > 0 ? 'pos' : 'zero';
+          _bdHTML +=
+            '<div class="ei-bar-row">'
+            + '<span class="ei-bar-lbl">' + sig.label + '</span>'
+            + '<div class="ei-bar-track"><div class="ei-bar-fill" style="width:' + pct.toFixed(1) + '%"></div></div>'
+            + '<span class="ei-bar-rawval">' + sig.val + '</span>'
+            + '<span class="ei-bar-mult">' + sig.mult + '</span>'
+            + '<span class="ei-bar-cont ' + contCls + '">' + sig.cont.toFixed(1) + '</span>'
+            + '</div>';
+        });
+        _bdHTML +=
+          '<hr class="ei-bar-divider">'
+          + '<div class="ei-bar-total"><span>Effort index</span><span>' + ei + '</span></div>'
+          + '<p class="ei-bar-note">Higher effort index\u00a0= more periods allocated via Largest Remainder Method.</p>';
+        bodyHTML +=
+          '<div id="ei-bd-' + cd.chapter_number + '" class="ei-bar-breakdown" style="display:none">'
+          + _bdHTML + '</div>';
+      }
+      bodyHTML += '</td>';
+
+      /* EI pill cell */
       if (!ei) {
-        /* Missing or zero effort index: show placeholder, no drill-down */
         bodyHTML += '<td class="ei-cell">&#8212;</td>';
       } else {
-        var cdVal  = cd.conceptual_demand || 0;
-        var acVal  = cd.activity_count    || 0;
-        var dcVal  = cd.demo_count        || 0;
-        var elVal  = cd.exec_load         || 0;
-        var cdCont = (cdVal * 2).toFixed(1);
-        var acCont = (acVal * 1).toFixed(1);
-        var dcCont = (dcVal * 1.5).toFixed(1);
-        var elCont = (elVal * 2).toFixed(1);
         bodyHTML +=
           '<td class="ei-cell">'
-          + '<details class="ei-details">'
-          + '<summary class="ei-val">' + ei + '</summary>'
-          + '<div class="ei-panel">'
-          + '<table class="ei-brkdn">'
-          + '<thead><tr>'
-          + '<th>Signal</th><th>Value</th><th>Mult.</th><th>Contribution</th>'
-          + '</tr></thead>'
-          + '<tbody>'
-          + '<tr><td>Conceptual demand</td><td>' + cdVal + '</td><td>\u00d72</td><td>' + cdCont + '</td></tr>'
-          + '<tr><td>Student activities</td><td>' + acVal + '</td><td>\u00d71</td><td>' + acCont + '</td></tr>'
-          + '<tr><td>Teacher demos</td><td>'      + dcVal + '</td><td>\u00d71.5</td><td>' + dcCont + '</td></tr>'
-          + '<tr><td>Exercise load</td><td>'      + elVal + '</td><td>\u00d72</td><td>' + elCont + '</td></tr>'
-          + '</tbody>'
-          + '<tfoot><tr>'
-          + '<td colspan="3"><strong>Effort Index</strong></td>'
-          + '<td><strong>' + ei + '</strong></td>'
-          + '</tr></tfoot>'
-          + '</table>'
-          + '<p class="ei-note">Higher effort index\u00a0= more classroom time needed. '
-          + 'Allocation is proportional to effort index across all chapters '
-          + 'using the Largest Remainder Method.</p>'
-          + '</div>'
-          + '</details>'
+          + '<button class="ei-pill" onclick="toggleEI(' + cd.chapter_number + ',this)">'
+          + '<span class="ei-chev">\u203a</span>\u00a0' + ei
+          + '</button>'
           + '</td>';
       }
       /* No competency drawer for Science/Mathematics chapters */
     } else {
       /* ── Social Sciences / Languages: weight button opens competency drawer ── */
+      bodyHTML += '<td class="left wrap">' + esc(cd.chapter_title) + '</td>';
       bodyHTML += '<td>'
         + '<button class="wt-btn" onclick="toggleDrawer(' + cd.chapter_number + ',this)">'
         + '<span class="arr">&#9658;</span>' + wt
@@ -1227,10 +1358,8 @@ function _downloadPDF_legacy_unused() {
         doc.setCharSpace(0);
         sciCx += sciCW.desc;
 
-        /* Justification col — Change 2.3: 1pt larger (7pt), 1 notch darker (35,35,35) */
-        /* Change 2.8: reset font state to normal before setting italic, mirrors Social Sciences garbling fix */
-        doc.setFont('helvetica', 'normal'); doc.setFontSize(7); doc.setTextColor(35, 35, 35);
-        doc.setFont('helvetica', 'italic');
+        /* Justification col — identical font state to Competency col */
+        doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
         doc.text(justLines, sciCx + CP, y + CP, { lineHeightFactor: 1.3 });
         doc.setCharSpace(0);
 
@@ -1319,9 +1448,8 @@ function _downloadPDF_legacy_unused() {
         doc.setCharSpace(0);
         cx += CW.desc;
 
-        /* Justification col — Fix 3: italic + (60,60,60) */
-        doc.setFont('helvetica', 'normal'); doc.setFontSize(6); doc.setTextColor(60, 60, 60);
-        doc.setFont('helvetica', 'italic');
+        /* Justification col — identical font state to Competency col */
+        doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
         doc.text(justLines, cx + CP, y + CP, { lineHeightFactor: 1.3 });
         doc.setCharSpace(0);
         cx += CW.just;
@@ -1344,6 +1472,25 @@ function _downloadPDF_legacy_unused() {
   for (var p = 1; p <= totalPages; p++) addFooter(p, totalPages);
 
   doc.save('Aruvi_Allocation_' + dateStr + '.pdf');
+}
+
+/* ── EI pill toggle (Science rows) — one open at a time ────────────────── */
+function toggleEI(chNum, btn) {
+  /* close every other open breakdown */
+  var allBds   = document.querySelectorAll('.ei-bar-breakdown');
+  var allPills = document.querySelectorAll('.ei-pill');
+  allBds.forEach(function(bd) {
+    if (bd.id !== 'ei-bd-' + chNum) bd.style.display = 'none';
+  });
+  allPills.forEach(function(p) {
+    if (p !== btn) p.classList.remove('open');
+  });
+  /* toggle the clicked one */
+  var bd = document.getElementById('ei-bd-' + chNum);
+  if (!bd) return;
+  var nowOpen = bd.style.display === 'none';
+  bd.style.display = nowOpen ? 'block' : 'none';
+  btn.classList.toggle('open', nowOpen);
 }
 
 /* ── drawer toggle — global, called from onclick ────────────────────────── */

@@ -1,0 +1,923 @@
+{
+  "filename": "ch_02_20260407_131638.json",
+  "saved_at": "2026-04-07T13:16:38",
+  "grade": "Grade VII",
+  "subject": "Social Science",
+  "chapter_number": 2,
+  "chapter_title": "Understanding the Weather",
+  "period_schedule_display": "Period schedule:\n  Row 1: 40 minutes × 1 period = 40 minutes\nTotal: 1 periods · 40 minutes",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 40,
+      "count": 1
+    }
+  ],
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 40,
+          "section_anchor": "Weather and its Elements",
+          "visual_aids": "Board diagram showing the five elements of weather arranged around the word 'Weather' at centre",
+          "time_bands": [
+            {
+              "minutes": "0-5",
+              "activity": "Teacher poses an opening question: 'What did you notice about the weather this morning on your way to school?' Students share brief observations; teacher notes responses on the board without correcting."
+            },
+            {
+              "minutes": "5-12",
+              "activity": "Teacher introduces the definition of weather and the troposphere using the chapter summary. Students locate where weather phenomena occur and why the troposphere is thinner at poles and thicker in tropical regions, connecting this to their own geographic location."
+            },
+            {
+              "minutes": "12-25",
+              "activity": "Structured pair discussion: each pair is assigned one of the five weather elements (temperature, precipitation, atmospheric pressure, wind, humidity). Each pair discusses: What does this element describe? When have you experienced a day when this element stood out? Pairs then share one concrete example with the class. Teacher records all five elements with student examples on the board."
+            },
+            {
+              "minutes": "25-35",
+              "activity": "Whole-class analysis: teacher asks students to look at all five examples on the board and identify — 'Which element most affected your day today and why?' Students must justify their choice using the definition of that element, not just preference."
+            },
+            {
+              "minutes": "35-40",
+              "activity": "Exit task: each student writes one sentence completing the prompt — 'Weather at a particular place and time is defined by _____ because _____.' Teacher collects as formative check."
+            }
+          ],
+          "implied_lo": "Students explain the five elements of weather by connecting each element to a specific observable atmospheric condition they have experienced.",
+          "competency": {
+            "c_code": "C-6.1",
+            "cg": "CG-6",
+            "weight": 3,
+            "competency_text": "Explain key natural phenomena — weather, its elements, and how they are measured and predicted."
+          },
+          "activity_name": "What Is Weather? Unpacking the Five Elements",
+          "material": [
+            "Textbook",
+            "Whiteboard and markers",
+            "Printed or projected list of five weather elements"
+          ]
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 40,
+          "section_anchor": "Weather and its Elements",
+          "visual_aids": null,
+          "time_bands": [
+            {
+              "minutes": "0-5",
+              "activity": "Brief recall: teacher asks two students to name one weather element from the previous period and state what it measures. Teacher confirms without re-teaching."
+            },
+            {
+              "minutes": "5-12",
+              "activity": "Teacher reads aloud the chapter passage on traditional weather signs (ants carrying eggs, frogs croaking, pine cones opening/closing, birds flying low, squirrels gathering nuts). Teacher asks: 'What kind of evidence is this — direct measurement or observation of behaviour?' Students distinguish between the two types."
+            },
+            {
+              "minutes": "12-28",
+              "activity": "Group inquiry task (groups of 4): each group receives a scenario card describing one traditional sign. Groups must: (a) identify which weather element the sign is probably responding to, (b) explain the likely connection between the animal or plant behaviour and that weather element, and (c) evaluate whether this sign could be used reliably in their own region today and why or why not. Groups record their reasoning on chart paper."
+            },
+            {
+              "minutes": "28-36",
+              "activity": "Gallery-style share: one member from each group reads their group's reasoning. Class discussion on whether traditional signs and scientific instruments are measuring the same underlying phenomenon, just differently."
+            },
+            {
+              "minutes": "36-40",
+              "activity": "Teacher poses a closing question for students to think about overnight: 'Why might people in monsoon-dependent farming communities still use traditional signs even when IMD forecasts are available?' No written response required — seeds thinking for Period 3."
+            }
+          ],
+          "implied_lo": "Students evaluate a traditional weather sign by identifying which weather element it responds to and assessing its reliability as an information source in a specific context.",
+          "competency": {
+            "c_code": "C-1.1",
+            "cg": "CG-1",
+            "weight": 2,
+            "competency_text": "Collect and interpret information from multiple sources, including traditional observational knowledge and modern meteorological data."
+          },
+          "activity_name": "Traditional Weather Signs: Reading Nature as Evidence",
+          "material": [
+            "Textbook",
+            "Chart paper",
+            "Markers",
+            "Printed scenario cards (one per group) describing an animal or natural sign"
+          ]
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 40,
+          "section_anchor": "Weather Instruments — Temperature",
+          "visual_aids": "Board diagram of a maximum-minimum thermometer with labelled parts",
+          "time_bands": [
+            {
+              "minutes": "0-6",
+              "activity": "Teacher displays a simple table of maximum and minimum temperatures for five days (teacher-created sample data consistent with chapter content). Students are asked to look at the table silently for two minutes and note anything they find interesting or puzzling."
+            },
+            {
+              "minutes": "6-15",
+              "activity": "Teacher introduces types of thermometers from the chapter (ambient, maximum-minimum, digital), explains the Celsius and Fahrenheit relationship using the chapter's own example (15°C = 59°F), and introduces the formulae for temperature range (max minus min) and mean daily temperature ((max + min) ÷ 2). Brief, focused explanation — not lecture."
+            },
+            {
+              "minutes": "15-30",
+              "activity": "Individual application task: students use the sample data table to calculate (a) the temperature range for each of the five days and (b) the mean daily temperature for each day. They then identify which day had the greatest temperature swing and propose a reason (season, cloud cover, rainfall) drawing on what they know about weather elements."
+            },
+            {
+              "minutes": "30-37",
+              "activity": "Pair check: students compare their calculations with a neighbour, resolve any differences, and then jointly explain the IMD motto (ādityāt jāyate vriṣhti) in their own words, connecting it to the chapter's explanation of the sun's role in the water cycle."
+            },
+            {
+              "minutes": "37-40",
+              "activity": "Teacher asks one pair to share their explanation of the IMD motto. Teacher affirms the connection to the water cycle and previews that the next period will extend instrument work to rainfall and pressure."
+            }
+          ],
+          "implied_lo": "Students calculate temperature range and mean daily temperature from a data table and justify which day shows the greatest atmospheric variability.",
+          "competency": {
+            "c_code": "C-1.2",
+            "cg": "CG-1",
+            "weight": 2,
+            "competency_text": "Engage with data representation and analysis, including calculating derived statistics from weather instrument readings."
+          },
+          "activity_name": "Temperature Instruments and Derived Statistics",
+          "material": [
+            "Textbook",
+            "Whiteboard",
+            "Printed or projected temperature data table (sample daily max/min readings for one week)",
+            "Rulers or straight edges for calculation work"
+          ]
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 40,
+          "section_anchor": "Weather Instruments — Precipitation and Atmospheric Pressure",
+          "visual_aids": "Labelled diagram of a rain gauge and a side-by-side comparison showing pressure values at sea level versus Khardung La",
+          "time_bands": [
+            {
+              "minutes": "0-7",
+              "activity": "Teacher displays the labelled rain gauge diagram. Students are asked to trace what happens to rain water from the moment it hits the funnel to the moment a reading is taken, narrating the path in sequence. Two or three students share their narration; teacher fills gaps without lecturing."
+            },
+            {
+              "minutes": "7-18",
+              "activity": "Teacher introduces atmospheric pressure, the barometer, and the millibar unit using the chapter content. Teacher writes on the board: 1013 mb (sea level) and 650 mb (Khardung La). Students calculate the pressure difference and then discuss in pairs: 'What physical experiences — breathlessness, dizziness, fatigue — result from this difference and why?' Each pair must use the word 'acclimatise' correctly in their explanation."
+            },
+            {
+              "minutes": "18-30",
+              "activity": "Issues-based discussion (whole class): 'Indian army personnel are stationed at Khardung La, above 5,600 m. Given the pressure difference we calculated, what challenges does the body face, and how is this relevant to weather monitoring in that region?' Students connect the instrument reading to a real human situation, drawing on both the pressure data and the AWS example from the chapter's Weather Stations section."
+            },
+            {
+              "minutes": "30-37",
+              "activity": "Students individually write three sentences: one explaining how a rain gauge reading of 5 mm is obtained, one explaining what a barometer reading below 1000 mb signals to a meteorologist, and one connecting pressure change to weather events (storm or cyclone)."
+            },
+            {
+              "minutes": "37-40",
+              "activity": "Teacher selects two student responses at random, reads them aloud, and the class identifies whether the three sentences are accurate and complete. Corrections are made collectively on the board."
+            }
+          ],
+          "implied_lo": "Students explain how a rain gauge measurement is obtained and interpret a barometer reading in terms of its implications for weather events.",
+          "competency": {
+            "c_code": "C-6.1",
+            "cg": "CG-6",
+            "weight": 3,
+            "competency_text": "Explain key natural phenomena — weather, its elements, and how they are measured and predicted."
+          },
+          "activity_name": "Measuring Rain and Pressure: Instruments, Readings, and Altitude",
+          "material": [
+            "Textbook",
+            "Whiteboard",
+            "Printed diagram of a rain gauge (labelled)",
+            "Printed or projected altitude-pressure data strip (sea level 1013 mb; Khardung La ~650 mb)"
+          ]
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 40,
+          "section_anchor": "Weather Instruments — Wind and Humidity",
+          "visual_aids": "Side-by-side labelled diagrams of a wind vane, wind sock, and anemometer; and a hygrometer",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher displays the four instrument cards without labels. In pairs, students attempt to match each instrument to what it measures (direction only, speed only, or both) and where they might have seen it (airport, weather station, port). Pairs share guesses; teacher reveals correct matches using the chapter."
+            },
+            {
+              "minutes": "8-18",
+              "activity": "Teacher explains how an anemometer works (cup rotation, counting rotations, converting to km/h) and how a hygrometer measures relative humidity. Teacher introduces the 0–100% relative humidity scale and the practical ranges (dry: 20–40%; humid: 60–80%) from the chapter."
+            },
+            {
+              "minutes": "18-30",
+              "activity": "Structured analysis task (individual): teacher poses three scenarios drawn from the chapter — (a) a wet shirt takes two hours to dry on a humid day, (b) soil in a field dries out rapidly on a windy afternoon, (c) museum staff lower humidity in storage rooms. For each scenario, students identify which weather element is the dominant factor, which instrument would measure it, and what consequence would follow if the reading worsened. Students record responses in a three-column table (Scenario | Element and Instrument | Consequence)."
+            },
+            {
+              "minutes": "30-37",
+              "activity": "Class discussion: teacher selects the soil-drying scenario and asks students to connect it to agriculture and to the livelihood of farmers, following the chapter's own link between wind speed and soil drying. Students articulate the connection between an instrument reading and a real-world human consequence."
+            },
+            {
+              "minutes": "37-40",
+              "activity": "Teacher previews Period 6: 'Next, we will look at how all these instruments are brought together in a weather station and what automated stations can do that manual ones cannot.'"
+            }
+          ],
+          "implied_lo": "Students identify the correct instrument for measuring wind and humidity and connect a specific instrument reading to its consequence for agriculture or industry.",
+          "competency": {
+            "c_code": "C-6.4",
+            "cg": "CG-6",
+            "weight": 1,
+            "competency_text": "Connect weather elements and their measurements to the livelihoods of pilots, sailors, farmers, and fishermen."
+          },
+          "activity_name": "Wind and Humidity: Instruments, Data, and Consequences",
+          "material": [
+            "Textbook",
+            "Whiteboard",
+            "Printed or projected instrument identification cards (wind vane, wind sock, anemometer, hygrometer — labelled diagrams)"
+          ]
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 40,
+          "section_anchor": "Weather Stations",
+          "visual_aids": "Schematic diagram of a weather station layout with all five instrument types labelled",
+          "time_bands": [
+            {
+              "minutes": "0-6",
+              "activity": "Quick recap activity: teacher reads out five descriptions (one for each weather element instrument covered in Periods 3–5) and students call out the instrument name. This is a fast-paced oral exercise — not written."
+            },
+            {
+              "minutes": "6-16",
+              "activity": "Teacher introduces the concept of a weather station as an integrated system, using the schematic. Students examine the schematic and discuss: 'Why must all instruments be co-located at the same station rather than spread across a region?' Students propose reasons (simultaneous readings, same-location data, correlation between elements) drawing on the chapter."
+            },
+            {
+              "minutes": "16-28",
+              "activity": "Inquiry discussion (small groups of 3): teacher poses the question — 'The National Disaster Management Authority placed an Automated Weather Station at a glacial lake in Sikkim at over 4,800 m altitude in 2023. What problem was it trying to solve, and why would a human-staffed station have been inadequate in that location?' Groups discuss and record two reasons for choosing an AWS over a manual station and one specific weather risk the AWS addresses in Sikkim."
+            },
+            {
+              "minutes": "28-36",
+              "activity": "Groups share their responses. Teacher consolidates the key features of an AWS (self-operating sensors, no human intervention required, real-time data) and connects to the chapter's mention of AWS use in agriculture, aviation, navigation, and environmental monitoring."
+            },
+            {
+              "minutes": "36-40",
+              "activity": "Students write one sentence explaining why placing an AWS at a high-altitude glacial lake is an example of weather monitoring serving a specific human safety need."
+            }
+          ],
+          "implied_lo": "Students justify why an Automated Weather Station is more appropriate than a manual weather station for high-altitude or remote monitoring, citing specific features of an AWS.",
+          "competency": {
+            "c_code": "C-6.1",
+            "cg": "CG-6",
+            "weight": 3,
+            "competency_text": "Explain key natural phenomena — weather, its elements, and how they are measured and predicted."
+          },
+          "activity_name": "Weather Stations and Automated Monitoring",
+          "material": [
+            "Textbook",
+            "Whiteboard",
+            "Printed or projected schematic of a weather station showing instrument placement"
+          ]
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 60,
+          "section_anchor": "Predicting the Weather",
+          "visual_aids": "Printed or projected IMD colour-coded warning system table showing weather event types and alert levels (no warning, watch, alert, warning)",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher displays the IMD colour-coded warning table. Students silently read it for two minutes. Teacher then asks: 'What does it mean to move from watch to alert to warning? What changes for a person or a community at each level?' Students share initial responses; teacher records key phrases on the board without evaluating them yet."
+            },
+            {
+              "minutes": "8-20",
+              "activity": "Teacher explains how meteorologists use long-period instrument data to generate predictions, connecting this explicitly to the instruments studied in Periods 3–6. Teacher highlights that increasing extreme weather due to climate change makes accurate prediction more critical, as stated in the chapter. Students are asked to recall one instrument from their notes and explain what data it contributes to a cyclone forecast."
+            },
+            {
+              "minutes": "20-38",
+              "activity": "Role play and simulation: class is divided into four groups representing (a) coastal fishermen, (b) an airport operations team, (c) a district government office, and (d) a farming community in north India. Each group is given a scenario card describing an approaching weather event drawn from chapter examples (e.g., cyclone approaching coast; dust storm and loo forecast; extremely heavy rain alert). Groups must decide: what action does their community take at each warning level (watch, alert, warning)? They role-play a brief internal meeting and prepare to announce their community's response plan."
+            },
+            {
+              "minutes": "38-50",
+              "activity": "Groups present their response plans in sequence. After each group presents, the rest of the class may challenge or add one action the group may have missed. Teacher facilitates, ensuring responses connect to specific weather elements and instrument readings rather than general caution."
+            },
+            {
+              "minutes": "50-57",
+              "activity": "Whole-class debrief: teacher asks 'How does the IMD warning system change the relationship between weather prediction and human action?' Students articulate the role of the warning system as a bridge between meteorological data and community response."
+            },
+            {
+              "minutes": "57-60",
+              "activity": "Students individually note one weather event type from the IMD table and write which element is dominant in that event, as preparation for the next period."
+            }
+          ],
+          "implied_lo": "Students apply the IMD colour-coded warning system to a specific weather scenario by identifying the dominant weather element and describing the appropriate community response at each alert level.",
+          "competency": {
+            "c_code": "C-1.1",
+            "cg": "CG-1",
+            "weight": 2,
+            "competency_text": "Collect and interpret information from multiple sources, including traditional observational knowledge and modern meteorological data."
+          },
+          "activity_name": "IMD Warning System: Interpreting Colour-Coded Forecasts",
+          "material": [
+            "Textbook",
+            "Printed or projected IMD colour-coded warning table (listing warning types and four alert levels)",
+            "Printed scenario cards for group work (one per group)",
+            "Whiteboard"
+          ]
+        },
+        {
+          "period_number": 8,
+          "period_duration_minutes": 60,
+          "section_anchor": "Predicting the Weather",
+          "visual_aids": "Board diagram listing six weather situations from the chapter (July rainfall, May temperature, cyclone pressure, loo wind, forest fire wind, museum humidity) alongside the dominant element",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher introduces the chapter's closing argument: in different situations, one weather element is dominant. Teacher writes the six examples from the chapter on the board (July rainfall, May/December temperature, cyclone pressure, loo wind, forest fire spread, museum preservation). Students read the relevant passage independently."
+            },
+            {
+              "minutes": "8-22",
+              "activity": "Individual mapping task: students receive the cause-effect mapping template. For each of the six situations, they must identify: (a) the dominant weather element, (b) the instrument that would be most closely monitored, (c) one effect on human activity or livelihood, and (d) whether a traditional weather sign or a modern instrument would be more useful in this situation and why. Students complete the map independently."
+            },
+            {
+              "minutes": "22-35",
+              "activity": "Pair analysis: students exchange their maps with a partner and critique one row each — they must identify whether their partner's instrument choice matches the dominant element and whether the livelihood connection is specific or generic. Partners give one written comment on each other's map."
+            },
+            {
+              "minutes": "35-48",
+              "activity": "Class discussion focused on the chapter's link between traditional signs and modern instruments: 'In the six situations on the board, for which would traditional signs be most useful and for which would they be least useful?' Students debate, citing specific signs from Period 2 and specific instruments from Periods 3–5. Teacher facilitates without imposing a single correct answer."
+            },
+            {
+              "minutes": "48-56",
+              "activity": "Students individually add one more real-life situation from their own experience (weather they have encountered in their region) to their cause-effect map, completing all four columns for that new row."
+            },
+            {
+              "minutes": "56-60",
+              "activity": "Teacher collects cause-effect maps. Previews that the final period will bring all chapter threads together through a comparative analysis task."
+            }
+          ],
+          "implied_lo": "Students construct a cause-effect map linking a dominant weather element to its measurement instrument, its effect on human activity, and the relative usefulness of traditional versus modern observation for that situation.",
+          "competency": {
+            "c_code": "C-1.2",
+            "cg": "CG-1",
+            "weight": 2,
+            "competency_text": "Engage with data representation and analysis, including calculating derived statistics from weather instrument readings."
+          },
+          "activity_name": "Which Element Dominates? Connecting Weather Data to Real Situations",
+          "material": [
+            "Textbook",
+            "Whiteboard",
+            "Printed cause-effect mapping template (one per student)",
+            "Markers"
+          ]
+        },
+        {
+          "period_number": 9,
+          "period_duration_minutes": 60,
+          "section_anchor": "Weather and its Elements",
+          "visual_aids": null,
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher returns cause-effect maps from Period 8 with brief comments. Students review the comments for three minutes, then teacher asks two volunteers to share the personal weather situation they added and explain which element dominated and why."
+            },
+            {
+              "minutes": "8-20",
+              "activity": "Teacher re-introduces the closing argument of the chapter: weather connects to climate, and all five elements together define weather at any place and time. Students are asked to identify from their cause-effect maps which element they personally find most complex to measure and explain why, drawing on the instrument descriptions they have studied. Brief pair share, then three students contribute to a whole-class list on the board."
+            },
+            {
+              "minutes": "20-42",
+              "activity": "Structured debate: class is divided into two groups. Group A argues: 'Traditional ecological knowledge of weather signs is as valuable as modern meteorological instruments for communities in rural India.' Group B argues: 'Modern meteorological instruments and IMD data are indispensable and cannot be replaced by traditional signs.' Each group has eight minutes to prepare, drawing on evidence from both the traditional signs section and the instruments and prediction sections of the chapter. Groups then present their opening arguments (3 minutes each), followed by one round of rebuttals (2 minutes each). Teacher facilitates and ensures both sides cite specific chapter content."
+            },
+            {
+              "minutes": "42-52",
+              "activity": "Post-debate synthesis: teacher asks students individually — 'Having heard both sides, what is your personal position and what specific evidence from the chapter supports it?' Students write three sentences responding to this prompt. This is not a continuation of the debate but an individual evidence-based position statement."
+            },
+            {
+              "minutes": "52-58",
+              "activity": "Teacher draws together the chapter's arc: from the definition of weather and its elements, through the instruments that measure each element, to weather stations, automated monitoring, and the IMD prediction and warning system. Students contribute one sentence each to complete a collaborative summary on the board, with each sentence covering a different chapter section."
+            },
+            {
+              "minutes": "58-60",
+              "activity": "Teacher closes with the IMD motto — ādityāt jāyate vriṣhti — and asks students to explain in one spoken sentence how the ancient understanding of the sun's role in the water cycle connects to modern weather prediction. Two students respond."
+            }
+          ],
+          "implied_lo": "Students construct an evidence-based position statement on the comparative value of traditional weather knowledge and modern meteorological instruments, citing specific examples from the chapter.",
+          "competency": {
+            "c_code": "C-1.1",
+            "cg": "CG-1",
+            "weight": 2,
+            "competency_text": "Collect and interpret information from multiple sources, including traditional observational knowledge and modern meteorological data."
+          },
+          "activity_name": "Weather Knowledge Across Time: Synthesis and Multidisciplinary Debate",
+          "material": [
+            "Textbook",
+            "Whiteboard",
+            "Printed debate brief cards (two positions: traditional ecological knowledge vs. modern meteorological systems)",
+            "Student cause-effect maps from Period 8 (returned)"
+          ]
+        }
+      ]
+    },
+    "assessment_items": [
+      {
+        "question_type": "MCQ",
+        "question_text": "The troposphere is thinner at the poles and thicker near the equator. Which of the following best explains this difference?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Cold air at the poles contracts, so the troposphere extends less high; warm air near the equator expands, pushing the troposphere higher.",
+            "is_correct": true
+          },
+          {
+            "label": "B",
+            "text": "The poles receive more sunlight than the equator, causing the atmosphere to expand at the poles.",
+            "is_correct": false
+          },
+          {
+            "label": "C",
+            "text": "The troposphere is thicker at the poles because ice and snow add extra layers to the atmosphere.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "The Earth spins faster near the equator, compressing the atmosphere and making the troposphere thinner there.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "Tests whether students have connected the chapter's explanation of air expansion and contraction to the variable thickness of the troposphere. Correct answer is A. Distractors probe three common confusions identifiable from the chapter section.",
+        "cognitive_demand": "Understanding",
+        "period_ref": [
+          1
+        ],
+        "chapter_section": "Weather and its Elements",
+        "weight_label": "Central",
+        "competency": {
+          "c_code": "C-6.1",
+          "competency_text": "Explain key natural phenomena — weather, its elements, and how they are measured and predicted.",
+          "weight": 3
+        },
+        "guide": {
+          "what_each_option_reveals": {
+            "B": "Student has reversed the chapter's explanation — confusing poles and equator in terms of sunlight intensity and atmospheric expansion.",
+            "C": "Student is conflating physical surface features (ice and snow) with atmospheric structure, indicating a misconception about what the troposphere is.",
+            "D": "Student is introducing rotational speed as a mechanism, which is not part of the chapter's explanation; suggests confusion with a different geographic concept (e.g., centrifugal effects) not covered here."
+          }
+        }
+      },
+      {
+        "question_type": "MCQ",
+        "question_text": "A meteorologist observes that the barometer at a coastal weather station drops from 1010 mb to 988 mb over six hours. What does this reading most likely signal?",
+        "options": [
+          {
+            "label": "A",
+            "text": "The weather will become calm and clear because pressure is falling towards a stable level.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "A depression or low-pressure system is developing, which could intensify into a storm or cyclone.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "The station is at a higher altitude than before, so the barometer naturally shows a lower reading.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Humidity has increased, and the water vapour in the air is pressing down more on the barometer.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "Tests application of the chapter's specific barometer threshold (below 1000 mb = depression) to a reading that has crossed into low-pressure territory. Correct answer is B.",
+        "cognitive_demand": "Application",
+        "period_ref": [
+          4
+        ],
+        "chapter_section": "Weather Instruments — Atmospheric Pressure",
+        "weight_label": "Central",
+        "competency": {
+          "c_code": "C-6.1",
+          "competency_text": "Explain key natural phenomena — weather, its elements, and how they are measured and predicted.",
+          "weight": 3
+        },
+        "guide": {
+          "what_each_option_reveals": {
+            "A": "Student has misunderstood the relationship between falling pressure and weather; confuses a drop in pressure with a stable or improving condition.",
+            "C": "Student is applying the altitude-pressure relationship correctly in isolation but has not attended to the context (same coastal station over time), indicating confusion between spatial pressure variation and temporal pressure change.",
+            "D": "Student is conflating humidity and atmospheric pressure — two distinct weather elements — suggesting the chapter's distinction between these elements has not been internalised."
+          }
+        }
+      },
+      {
+        "question_type": "MCQ",
+        "question_text": "All weather phenomena occur almost entirely within the troposphere. Which statement best explains why this layer, rather than any layer above it, is so important for weather?",
+        "options": [
+          {
+            "label": "A",
+            "text": "The troposphere contains the most oxygen, which is needed for weather processes to occur.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "The troposphere is the layer closest to the Earth's surface, where all land-based life exists and atmospheric behaviour is directly experienced.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "The troposphere is the coldest layer of the atmosphere, and cold air is what generates weather events.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "The troposphere reflects sunlight back to Earth, which is the primary driver of weather phenomena.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "Tests whether students can explain the significance of the troposphere using the chapter's own reasoning (proximity to the surface, location of land-based life) rather than misattributing chemical or reflective properties. Correct answer is B.",
+        "cognitive_demand": "Understanding",
+        "period_ref": [
+          1
+        ],
+        "chapter_section": "Weather and its Elements",
+        "weight_label": "Central",
+        "competency": {
+          "c_code": "C-6.1",
+          "competency_text": "Explain key natural phenomena — weather, its elements, and how they are measured and predicted.",
+          "weight": 3
+        },
+        "guide": {
+          "what_each_option_reveals": {
+            "A": "Student is substituting a biology-adjacent explanation (oxygen for life) for the chapter's atmospheric-structure explanation, indicating the two explanations have been conflated.",
+            "C": "Student may have inferred from the chapter's note about cold air at the poles contracting that cold air in general drives weather — a partial and incorrect generalisation.",
+            "D": "Student may be confusing the troposphere's role with that of the ozone layer or clouds, indicating a gap in understanding of atmospheric layering."
+          }
+        }
+      },
+      {
+        "question_type": "SCR",
+        "question_text": "A farmer in a semi-arid region of India notices that ants have been moving their eggs to higher ground and that frogs have begun croaking loudly. Using the chapter's account of traditional weather signs, explain what the farmer can infer, which weather element these signs most likely respond to, and one reason why a meteorologist would want to cross-check this inference with instrument data.",
+        "options": [],
+        "expected_elements": [
+          "Student identifies that both signs (ants moving eggs, frogs croaking) indicate the likely approach of rain or a storm, as stated in the chapter.",
+          "Student names precipitation (or humidity) as the weather element these signs most plausibly respond to.",
+          "Student provides one valid reason why instrument data (e.g., rain gauge, barometer, hygrometer reading) would be needed to verify the inference — such as the need for precision, the possibility that signs could be triggered by other causes, or the fact that instrument data provides quantifiable measurements that can be shared across a region."
+        ],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "Assesses whether students can interpret a traditional information source, link it to a specific weather element, and articulate why modern instruments complement rather than simply replace traditional knowledge. Award full credit if all three expected elements are present; partial credit if two are present.",
+        "cognitive_demand": "Analysis",
+        "period_ref": [
+          2,
+          9
+        ],
+        "chapter_section": "Weather and its Elements",
+        "weight_label": "Substantive",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Collect and interpret information from multiple sources, including traditional observational knowledge and modern meteorological data.",
+          "weight": 2
+        },
+        "guide": {
+          "expected_elements": [
+            "Correct identification of inference: approaching rain or storm based on animal behaviour signs listed in the chapter.",
+            "Correct identification of the relevant weather element: precipitation (or humidity as a secondary acceptable answer, since both are linked in the chapter to pre-rain conditions).",
+            "A valid, specific reason for cross-checking with instrument data — not simply stating 'instruments are more accurate' but explaining what the instrument provides that the sign cannot (e.g., quantified measurement, advance warning in hours, area-wide data)."
+          ]
+        }
+      },
+      {
+        "question_type": "MCQ",
+        "question_text": "A weather station records the following temperatures on a single day: maximum 34°C and minimum 22°C. What is the mean daily temperature and the temperature range for that day?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Mean daily temperature: 28°C; Temperature range: 12°C",
+            "is_correct": true
+          },
+          {
+            "label": "B",
+            "text": "Mean daily temperature: 56°C; Temperature range: 12°C",
+            "is_correct": false
+          },
+          {
+            "label": "C",
+            "text": "Mean daily temperature: 28°C; Temperature range: 56°C",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Mean daily temperature: 12°C; Temperature range: 28°C",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "Tests accurate application of both formulae introduced in the chapter: mean = (max + min) ÷ 2; range = max − min. Correct answer is A. Distractors correspond to specific calculation errors students commonly make.",
+        "cognitive_demand": "Application",
+        "period_ref": [
+          3
+        ],
+        "chapter_section": "Weather Instruments — Temperature",
+        "weight_label": "Substantive",
+        "competency": {
+          "c_code": "C-1.2",
+          "competency_text": "Engage with data representation and analysis, including calculating derived statistics from weather instrument readings.",
+          "weight": 2
+        },
+        "guide": {
+          "what_each_option_reveals": {
+            "B": "Student has added max and min (34 + 22 = 56) without dividing by 2, indicating the mean formula has not been applied — only the addition step was performed.",
+            "C": "Student has correctly computed the mean but has added max and min instead of subtracting for the range, swapping the operations for the two formulae.",
+            "D": "Student has reversed the two answers — applying subtraction for the mean and division for the range — indicating the two formulae have been confused with each other."
+          }
+        }
+      },
+      {
+        "question_type": "MCQ",
+        "question_text": "The table below shows maximum and minimum temperatures for three consecutive days.\n\nDay 1: Max 38°C, Min 26°C\nDay 2: Max 29°C, Min 27°C\nDay 3: Max 42°C, Min 18°C\n\nOn which day was the temperature range the greatest, and what does a large temperature range indicate about the atmosphere on that day?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Day 1; a range of 12°C shows moderate variation, suggesting partly cloudy conditions.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "Day 2; a range of 2°C shows stable conditions, suggesting the atmosphere was most variable on that day.",
+            "is_correct": false
+          },
+          {
+            "label": "C",
+            "text": "Day 3; a range of 24°C shows the greatest atmospheric variability, suggesting conditions such as clear skies, intense daytime heating, and rapid night-time cooling.",
+            "is_correct": true
+          },
+          {
+            "label": "D",
+            "text": "Day 3; a range of 24°C shows the atmosphere was most stable because higher temperatures indicate more energy in the system.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "Tests both correct calculation of temperature range across a multi-day dataset and interpretation of what a large range indicates — as practised in Period 3's activity. Correct answer is C.",
+        "cognitive_demand": "Analysis",
+        "period_ref": [
+          3,
+          8
+        ],
+        "chapter_section": "Weather Instruments — Temperature",
+        "weight_label": "Substantive",
+        "competency": {
+          "c_code": "C-1.2",
+          "competency_text": "Engage with data representation and analysis, including calculating derived statistics from weather instrument readings.",
+          "weight": 2
+        },
+        "guide": {
+          "what_each_option_reveals": {
+            "A": "Student has correctly identified Day 1's range but selected the wrong day, suggesting the range formula was applied only to Day 1 rather than all three days.",
+            "B": "Student has selected the day with the smallest range and attributed variability to it, indicating a reversal in the meaning of temperature range.",
+            "D": "Student has correctly identified Day 3 and calculated the range but misinterpreted the meaning of a large range as evidence of stability rather than variability, suggesting the concept of atmospheric variability has not been internalised."
+          }
+        }
+      },
+      {
+        "question_type": "SCR",
+        "question_text": "A weather station records a relative humidity of 78% at midday. A farmer is deciding whether to harvest wheat that day. Using the chapter's explanation of humidity and its effects, explain what the humidity reading tells the farmer about drying conditions, and identify one other weather element whose reading the farmer should also check before deciding.",
+        "options": [],
+        "expected_elements": [
+          "Student correctly identifies 78% as falling in the humid range (60–80% as stated in the chapter), meaning water evaporates slowly.",
+          "Student explains the consequence for the farmer: harvested wheat will dry slowly in humid conditions, which could affect grain quality or storage.",
+          "Student names one other relevant weather element — wind speed (higher wind accelerates drying, as stated in the chapter) or temperature (higher temperature accelerates evaporation) — and states why that element matters for the drying decision."
+        ],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "Tests whether students can read a humidity value using the chapter's own classification ranges, draw a practical consequence for agriculture, and connect to a second weather element. Full credit for all three elements; partial for two.",
+        "cognitive_demand": "Application",
+        "period_ref": [
+          5,
+          8
+        ],
+        "chapter_section": "Weather Instruments — Humidity",
+        "weight_label": "Substantive",
+        "competency": {
+          "c_code": "C-1.2",
+          "competency_text": "Engage with data representation and analysis, including calculating derived statistics from weather instrument readings.",
+          "weight": 2
+        },
+        "guide": {
+          "expected_elements": [
+            "Correct classification of 78% as humid using the chapter's 60–80% range, with the inference that evaporation is slow.",
+            "Specific agricultural consequence: slow drying of harvested grain, risk of moisture retention in stored grain.",
+            "One named additional weather element (wind speed or temperature) with a stated reason connecting that element to drying speed."
+          ]
+        }
+      },
+      {
+        "question_type": "MCQ",
+        "question_text": "Fishermen along the Indian coast are warned by the India Meteorological Department not to venture out to sea. The IMD colour-coded warning for their area has moved from 'watch' to 'warning'. Which of the following best describes what this change in warning level requires fishermen to do?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Continue monitoring updates but no immediate change in plans is necessary.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "Begin preparing equipment and boats for possible rough weather but wait for confirmation.",
+            "is_correct": false
+          },
+          {
+            "label": "C",
+            "text": "Take immediate action — stay ashore, secure boats, and follow evacuation or safety instructions.",
+            "is_correct": true
+          },
+          {
+            "label": "D",
+            "text": "The warning level change applies only to the aviation sector, not to fishermen.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "Tests whether students can apply the IMD warning level definitions from the chapter (watch = be updated; alert = be prepared; warning = take action) to a specific livelihood group. Correct answer is C.",
+        "cognitive_demand": "Application",
+        "period_ref": [
+          7
+        ],
+        "chapter_section": "Predicting the Weather",
+        "weight_label": "Present",
+        "competency": {
+          "c_code": "C-6.4",
+          "competency_text": "Connect weather elements and their measurements to the livelihoods of pilots, sailors, farmers, and fishermen.",
+          "weight": 1
+        },
+        "guide": {
+          "what_each_option_reveals": {
+            "A": "Student has applied the 'watch' level definition (be updated) to the 'warning' level, suggesting the three levels have not been differentiated.",
+            "B": "Student has applied the 'alert' level definition (be prepared) to the 'warning' level, indicating partial learning of the warning hierarchy but incorrect assignment of action to level.",
+            "D": "Student has either not read the chapter passage on fishermen being warned or has confused the sectors mentioned in the chapter, suggesting the connection between weather warnings and specific livelihoods was not retained."
+          }
+        }
+      },
+      {
+        "question_type": "MCQ",
+        "question_text": "Greater wind speed causes soil to dry faster. Which instrument measures wind speed, and which livelihood group from the chapter depends most directly on wind data for agricultural planning?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Wind vane; sailors",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "Anemometer; farmers",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "Hygrometer; farmers",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Anemometer; pilots",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "Tests both instrument identification (anemometer for wind speed, as distinct from wind vane for direction) and the chapter's explicit link between wind speed, soil drying, and agriculture. Correct answer is B.",
+        "cognitive_demand": "Understanding",
+        "period_ref": [
+          5
+        ],
+        "chapter_section": "Weather Instruments — Wind",
+        "weight_label": "Present",
+        "competency": {
+          "c_code": "C-6.4",
+          "competency_text": "Connect weather elements and their measurements to the livelihoods of pilots, sailors, farmers, and fishermen.",
+          "weight": 1
+        },
+        "guide": {
+          "what_each_option_reveals": {
+            "A": "Student has confused the wind vane (measures direction) with the anemometer (measures speed), and has also selected the wrong livelihood group, suggesting both instrument function and livelihood linkage are unclear.",
+            "C": "Student has substituted the hygrometer for the anemometer, indicating confusion between humidity and wind as weather elements, or between the instruments that measure them.",
+            "D": "Student has correctly identified the anemometer but selected pilots rather than farmers for the agricultural-soil-drying link, suggesting the chapter's specific livelihoods passage was read partially."
+          }
+        }
+      },
+      {
+        "question_type": "ECR",
+        "question_text": "The chapter states that weather prediction has become increasingly important as climate change makes extreme weather events — droughts, floods, and cyclones — more frequent. Using evidence from the chapter's accounts of weather instruments, the IMD warning system, and Automated Weather Stations, explain how modern weather monitoring enables communities and governments to prepare for and respond to extreme weather events. In your response, refer to at least two specific instruments and one specific example from the chapter.",
+        "options": [],
+        "expected_elements": [],
+        "look_for": [
+          "Response names at least two specific instruments (e.g., barometer, anemometer, rain gauge, hygrometer, AWS sensors) and correctly states what each measures.",
+          "Response explains how the data from these instruments feeds into prediction — specifically, how instrument readings inform meteorologists about approaching extreme events (e.g., pressure drop below 1000 mb signalling a cyclone; heavy rainfall readings triggering flood warnings).",
+          "Response references the IMD warning system's four levels (no warning, watch, alert, warning) and explains how these translate instrument data into actionable guidance for communities.",
+          "Response includes at least one specific chapter example (e.g., fishermen warned against venturing out; coastal evacuation before cyclones; AWS at glacial lake in Sikkim for disaster management).",
+          "Response demonstrates understanding that the warning system bridges scientific data and human action — not merely that instruments exist and warnings are issued."
+        ],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "Extended response item for C-6.1 (Central). Assesses synthesis across instrument function, prediction, and warning systems — the integrative learning target of the chapter. Strong responses will show a chain from instrument reading to forecast to warning level to community action. Award highest marks when all five look_for markers are present; reduce for each missing element.",
+        "cognitive_demand": "Analysis",
+        "period_ref": [
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "chapter_section": "Predicting the Weather",
+        "weight_label": "Central",
+        "competency": {
+          "c_code": "C-6.1",
+          "competency_text": "Explain key natural phenomena — weather, its elements, and how they are measured and predicted.",
+          "weight": 3
+        },
+        "guide": {
+          "look_for": [
+            "Two or more instruments named correctly with accurate description of what each measures.",
+            "Explicit connection drawn between instrument data and the process of weather prediction (not just listing instruments).",
+            "Reference to the IMD warning hierarchy with at least two levels named and their meanings used correctly.",
+            "At least one specific chapter example used as evidence (not a generic or invented example).",
+            "A closing statement or argument that explains why monitoring and prediction matter specifically in the context of more frequent extreme weather — not just as a general benefit."
+          ]
+        }
+      },
+      {
+        "question_type": "OPEN_TASK",
+        "question_text": "",
+        "options": [],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "The table below lists five weather situations described in the chapter. For each situation, complete all four columns: (1) the dominant weather element, (2) the instrument a meteorologist would monitor most closely, (3) the human activity or livelihood most affected, and (4) whether traditional signs OR modern instruments are more useful for detecting this situation early — and why.\n\nSituation 1: July in a coastal district — heavy rain is expected.\nSituation 2: May in north India — extreme heat is forecast.\nSituation 3: A cyclone is forming in the Bay of Bengal.\nSituation 4: A loo (hot, dusty wind) is expected in the afternoon.\nSituation 5: A museum curator needs to protect ancient exhibits overnight.",
+        "scaffold": "Use the four-column format below for each situation.\n\nColumn 1 — Dominant Element: Name one of the five weather elements (temperature, precipitation, atmospheric pressure, wind, humidity).\nColumn 2 — Instrument to Monitor: Name the specific instrument from the chapter used to measure this element.\nColumn 3 — Human Activity / Livelihood Affected: Name one livelihood group or human activity from the chapter that is most directly affected by this element in this situation.\nColumn 4 — Traditional Signs OR Modern Instruments? State which is more useful for early detection of this situation, and give one specific reason drawing on the chapter.\n\nFor Situation 5, if you cannot identify a traditional sign, explain why modern instruments are indispensable for this specific use case.",
+        "format_of_output": [
+          "A completed table with five rows (one per situation) and four columns.",
+          "Each cell must contain a specific answer — single words or short phrases are acceptable for Columns 1–3; Column 4 requires one sentence of justification.",
+          "No additional writing outside the table is required, but students may add one sentence below the table if they wish to note a personal weather observation from their own experience."
+        ],
+        "visual_stimulus": "",
+        "annotation": "Open task for C-1.1 (Central, highest implied LO count). Assesses the integrative skill of interpreting multiple information sources — traditional signs and modern instruments — across diverse real-world situations. Strong responses will show accurate instrument identification, specific livelihood connection, and a reasoned comparison between traditional and modern sources. Weak responses will complete the table with correct Columns 1–3 but offer generic or unsupported comparisons in Column 4.",
+        "cognitive_demand": "Evaluation",
+        "period_ref": [
+          2,
+          5,
+          7,
+          8,
+          9
+        ],
+        "chapter_section": "Weather and its Elements",
+        "weight_label": "Central",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Collect and interpret information from multiple sources, including traditional observational knowledge and modern meteorological data.",
+          "weight": 2
+        },
+        "guide": {
+          "what_this_demonstrates": "A complete response demonstrates that the student can evaluate the relative strengths and limitations of traditional observational knowledge versus modern instrument-based meteorology across diverse real-world situations, and can connect weather element data to specific human livelihoods.",
+          "reading_the_scaffold": "The four-column structure scaffolds the task so that Columns 1–3 (identification and classification) are prerequisite to Column 4 (evaluation). A teacher reading completed tables should look first at whether Columns 1–3 are internally consistent (does the instrument named actually measure the element named?) before evaluating the quality of Column 4 reasoning. Situation 5 (museum) is intentionally included to test whether students can apply humidity knowledge to a non-livelihood, industrial context — this tests breadth of transfer.",
+          "strong_vs_weak_markers": "Strong responses: Column 4 contains a specific reason grounded in the chapter (e.g., 'traditional signs like birds flying low may indicate rain but cannot provide the quantified pressure reading needed to predict a cyclone's intensity'); instruments named in Column 2 are consistently correct; Column 3 references a specific livelihood group named in the chapter. Weak responses: Column 4 states 'modern instruments are better' without any reason; instrument names are confused (e.g., hygrometer for wind); Column 3 gives generic answers not connected to the chapter.",
+          "inclusivity": "Students who struggle with the table format may dictate their responses orally to the teacher or a peer scribe, or may draw labelled diagrams in place of written responses for Columns 1–3, supplemented by a spoken Column 4. Students with strong local knowledge may draw on weather patterns from their own region to complete the optional sentence below the table, allowing them to demonstrate the same evaluative thinking through personally relevant experience.",
+          "format_type": "Comparison table",
+          "format_rationale": "A comparison table is the most natural demonstration vehicle for this implied LO because the LO requires students to evaluate traditional signs against modern instruments across multiple situations simultaneously — a side-by-side format makes the comparative cognitive operation visible and structured, and mirrors the cause-effect mapping activity the students completed in Period 8."
+        }
+      }
+    ],
+    "input_tokens": 15555,
+    "output_tokens": 13210,
+    "cost_inr": 20.5645
+  }
+}

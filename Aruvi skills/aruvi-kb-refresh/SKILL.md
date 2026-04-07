@@ -106,7 +106,7 @@ script never traverses the folder tree independently.
 | `knowledge_commons/Aruvi_Assessment_Constitution_V1_2_1.docx` (or latest) | Assessment design, question types, scope |
 | `knowledge_commons/Aruvi_Ask_Aruvi_Design_V1_1.docx` | Ask Aruvi feature scope, category structure, 80-word rule |
 | `knowledge_commons/Aruvi_Optimizer_PeriodAllocation_V1.docx` | Period allocation logic (cat_a and cat_d) |
-| `knowledge_commons/Aruvi_Storage_Protocol_V2.docx` | Saving, loading, file formats (cat_d) |
+| `knowledge_commons/Aruvi_Storage_Protocol_V3.docx` | Saving, loading, file formats (cat_d) |
 | `mirror/ask_aruvi/forwarded_queries/` | Gaps in current KB — unmatched teacher questions |
 
 > The forwarded_queries/ directory is read as supplementary input only —

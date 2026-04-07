@@ -588,11 +588,14 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             "Writing assessment questions",
         ]
         _note_html = (
-            '<div style="height:1px;background:#ece9e4;margin:8px 0;"></div>'
-            '<div style="font-size:11px;color:#9c9895;font-style:italic;line-height:1.5;'
-            'background:#f7f5f2;border-radius:6px;padding:7px 9px;">'
-            'Not random generation &#8212; every activity and question traces to '
-            'your chapter&#8217;s competency map.</div>'
+            '<div style="display:flex;flex-direction:column;align-items:center;'
+            'gap:0.5rem;padding:8px 0 4px 0;">'
+            f'<img src="{_rotate_logo_src}" style="width:48px;height:48px;'
+            'animation:aruviSpin 3.5s linear infinite;" alt="Aruvi">'
+            '<style>@keyframes aruviSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}</style>'
+            '<span style="font-size:12px;color:#5c5a56;font-style:italic;">'
+            'Running in the background \u2014 keep this tab open until complete.'
+            '</span></div>'
         )
         _box_open = (
             '<div class="aruvi-progress-box" style="position:fixed;top:80px;right:24px;'
@@ -847,32 +850,58 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
     if isinstance(lp, dict) and lp.get("periods"):
         out = []
         for p in lp["periods"]:
-            comp = p.get("competency") or {}
-            # time_bands [{minutes, activity}] → time_slots [{time, desc}]
-            time_slots = [
-                {"time": tb.get("minutes", ""), "desc": tb.get("activity", "")}
-                for tb in (p.get("time_bands") or [])
-            ]
-            # material: list → comma-joined string
-            mat = p.get("material", "")
-            if isinstance(mat, list):
-                mat = ", ".join(mat)
-            c_code = comp.get("c_code", "")
-            out.append({
-                "period_number":           p.get("period_number"),
-                "period_duration_minutes": p.get("period_duration_minutes"),
-                "chapter_section":         p.get("section_anchor", ""),
-                "activity_name":           p.get("activity_name", ""),
-                "activity_summary":        p.get("activity_name", ""),
-                "time_slots":              time_slots,
-                "material":                mat,
-                "implied_lo":              p.get("implied_lo", ""),
-                "c_code":                  c_code,
-                "cg":                      comp.get("cg", ""),
-                "weight":                  comp.get("weight", 1),
-                "competency_text":         comp_descs.get(c_code, "") or comp.get("competency_text", ""),
-                "visual_representation":   p.get("visual_representation"),
-            })
+            # ── Science format detection ────────────────────────────────────
+            if p.get("activity_title") is not None or p.get("stage_label") is not None:
+                mat = p.get("materials", "")
+                if isinstance(mat, list):
+                    mat = ", ".join(mat)
+                time_slots = [
+                    {"time": ph.get("minutes", ""), "desc": ph.get("description", "")}
+                    for ph in (p.get("phases") or [])
+                ]
+                out.append({
+                    "period_number":           p.get("period_number"),
+                    "period_duration_minutes": p.get("period_duration_minutes"),
+                    "chapter_section":         p.get("stage_label", ""),
+                    "activity_name":           p.get("activity_title", ""),
+                    "activity_summary":        p.get("activity_title", ""),
+                    "time_slots":              time_slots,
+                    "material":                mat,
+                    "implied_lo":              (p.get("activity_description") or "")[:200],
+                    "c_code":                  "",
+                    "cg":                      "",
+                    "weight":                  p.get("progression_stage", 1),
+                    "competency_text":         p.get("pedagogical_approach", ""),
+                    "visual_representation":   None,
+                })
+            else:
+                # ── Social Sciences A3 format ────────────────────────────────
+                comp = p.get("competency") or {}
+                # time_bands [{minutes, activity}] → time_slots [{time, desc}]
+                time_slots = [
+                    {"time": tb.get("minutes", ""), "desc": tb.get("activity", "")}
+                    for tb in (p.get("time_bands") or [])
+                ]
+                # material: list → comma-joined string
+                mat = p.get("material", "")
+                if isinstance(mat, list):
+                    mat = ", ".join(mat)
+                c_code = comp.get("c_code", "")
+                out.append({
+                    "period_number":           p.get("period_number"),
+                    "period_duration_minutes": p.get("period_duration_minutes"),
+                    "chapter_section":         p.get("section_anchor", ""),
+                    "activity_name":           p.get("activity_name", ""),
+                    "activity_summary":        p.get("activity_name", ""),
+                    "time_slots":              time_slots,
+                    "material":                mat,
+                    "implied_lo":              p.get("implied_lo", ""),
+                    "c_code":                  c_code,
+                    "cg":                      comp.get("cg", ""),
+                    "weight":                  comp.get("weight", 1),
+                    "competency_text":         comp_descs.get(c_code, "") or comp.get("competency_text", ""),
+                    "visual_representation":   p.get("visual_representation"),
+                })
         return out
 
     # Old flat lo_handoff — enrich competency_text from comp_descs
@@ -916,7 +945,15 @@ def _normalise_assessment_sections(result: dict) -> list:
     def _build_expected(item: dict) -> str:
         qtype = (item.get("question_type") or "").strip().upper()
         if qtype == "MCQ":
-            for opt in (item.get("options") or []):
+            opts = item.get("options") or []
+            if isinstance(opts, dict):
+                # Science format: {"A": "text", ...} + separate "correct_answer" key
+                correct_key = item.get("correct_answer", "")
+                text = opts.get(correct_key, "")
+                return (correct_key + ": " + text).strip(": ") if correct_key else ""
+            for opt in opts:
+                if not isinstance(opt, dict):
+                    continue
                 if opt.get("is_correct"):
                     label = opt.get("label", opt.get("key", ""))
                     text  = opt.get("text",  opt.get("value", ""))
@@ -942,38 +979,54 @@ def _normalise_assessment_sections(result: dict) -> list:
     from collections import OrderedDict
     sections: dict = OrderedDict()
     for item in items:
-        # c_code may be a top-level field OR nested under item["competency"]["c_code"],
-        # exactly as in lesson-plan periods (see _normalise_lo_handoff).
-        _comp = item.get("competency") or {}
-        if not isinstance(_comp, dict):
-            _comp = {}
-        c_code = item.get("c_code") or _comp.get("c_code", "")
+        # ── Science format detection ────────────────────────────────────────
+        _is_science = (item.get("stage_label") is not None or
+                       item.get("implied_lo_assessed") is not None)
 
-        if c_code not in sections:
-            # weight_label: prefer explicit string; fall back to integer from competency
-            _wlabel = item.get("weight_label") or ""
-            if not _wlabel:
-                _w = _comp.get("weight")
-                try:
-                    _wlabel = _WLBL.get(int(_w), "") if _w is not None else ""
-                except (TypeError, ValueError):
-                    _wlabel = ""
+        if _is_science:
+            _comp      = {}
+            c_code     = ""
+            _group_key = item.get("stage_label") or item.get("implied_lo_assessed") or f"_sci_{len(sections)}"
+        else:
+            # c_code may be a top-level field OR nested under item["competency"]["c_code"],
+            # exactly as in lesson-plan periods (see _normalise_lo_handoff).
+            _comp = item.get("competency") or {}
+            if not isinstance(_comp, dict):
+                _comp = {}
+            c_code     = item.get("c_code") or _comp.get("c_code", "")
+            _group_key = c_code
 
-            # competency_text: prefer top-level; fall back to nested object fields
-            _ctext = (item.get("competency_text") or
-                      _comp.get("competency_text", "") or
-                      _comp.get("text", ""))
+        if _group_key not in sections:
+            if _is_science:
+                _wlabel     = item.get("stage_label", "")
+                _ctext      = item.get("implied_lo_assessed", "")
+                _drawing_on = item.get("stage_label", "")
+            else:
+                # weight_label: prefer explicit string; fall back to integer from competency
+                _wlabel = item.get("weight_label") or ""
+                if not _wlabel:
+                    _w = _comp.get("weight")
+                    try:
+                        _wlabel = _WLBL.get(int(_w), "") if _w is not None else ""
+                    except (TypeError, ValueError):
+                        _wlabel = ""
 
-            sections[c_code] = {
+                # competency_text: prefer top-level; fall back to nested object fields
+                _ctext = (item.get("competency_text") or
+                          _comp.get("competency_text", "") or
+                          _comp.get("text", ""))
+                _drawing_on = item.get("chapter_section", "")
+
+            sections[_group_key] = {
                 "c_code":           c_code,
                 "weight_label":     _wlabel,
                 "competency_short": _ctext,
-                "drawing_on":       item.get("chapter_section", ""),
+                "drawing_on":       _drawing_on,
                 "question_types":   "",
                 "questions":        [],
             }
         qtype = item.get("question_type", "")
-        sections[c_code]["questions"].append({
+        sections[_group_key]["questions"].append({
             "type":               qtype,
             "question":           item.get("question_text", ""),
             "task":               item.get("task", ""),
@@ -981,7 +1034,7 @@ def _normalise_assessment_sections(result: dict) -> list:
             "format_of_output":   item.get("format_of_output", []),
             "task_instructions":  item.get("task_instructions", ""),
             "options":            item.get("options", []),
-            "annotation":         item.get("annotation", ""),
+            "annotation":         item.get("marking_guidance", "") if _is_science else item.get("annotation", ""),
             "period_ref":         item.get("period_ref", ""),
             "title":              _build_title(qtype, item.get("task", "") or item.get("question_text", "")),
             "expected":           _build_expected(item),
@@ -1281,6 +1334,9 @@ PERIOD_SRC      = _img_src(MISC_DIR / "period.png")       # row header add-icon
 TIME_SRC        = _img_src(MISC_DIR / "time.png")         # "Available time" label icon
 FULL_PERIOD_SRC = _img_src(MISC_DIR / "full_period.png")  # Principal "Period Budget" label icon
 WATERMARK_SRC   = _img_src(MISC_DIR / "aruvi_logo-transparent.png")  # Main body watermark
+_rotate_logo_src = _img_src(
+    PROJECT_ROOT / "aruvi_streamlit" / "static" / "aruvi_logo_rotate.png"
+)                                                                        # Progress popup spinning logo
 
 
 # ── CSS + JS ───────────────────────────────────────────────────────────────────
@@ -3142,7 +3198,11 @@ if not has_chapter_data and st.session_state.role != "My Plans" and st.session_s
 elif st.session_state.role == "Generate":
 
     # ── Generation (needs chapter selected) ──────────────────────────────────
-    if st.session_state.lpa_generating and st.session_state.teacher_ch_idx is not None:
+    if st.session_state.lpa_generating and st.session_state.teacher_ch_idx is not None and st.session_state.teacher_ch_idx < len(chapters):
+        if st.session_state.teacher_ch_idx >= len(chapters):
+            st.session_state.lpa_generating = False
+            st.session_state.teacher_ch_idx = None
+            st.rerun()
         selected_ch = chapters[st.session_state.teacher_ch_idx]
         if st.session_state.lpa_generating:
             result = generate_lpa(
@@ -3155,7 +3215,6 @@ elif st.session_state.role == "Generate":
             st.session_state.lpa_result        = result
             st.session_state.lpa_generating    = False
             st.session_state.teacher_generated = True
-            st.session_state.teacher_ch_idx    = None
             st.session_state.grade             = None
             st.session_state.subject           = None
             st.session_state.period_rows       = []
@@ -3180,7 +3239,7 @@ elif st.session_state.role == "Generate":
         st.error(f"Generation failed: {result['error']}")
     else:
         # Get chapter data — from index if available, else reconstruct from lo_handoff
-        if st.session_state.teacher_ch_idx is not None:
+        if st.session_state.teacher_ch_idx is not None and st.session_state.teacher_ch_idx < len(chapters):
             _chapter_export = chapters[st.session_state.teacher_ch_idx]
         else:
             _lo_list = result.get("lo_handoff", [])
@@ -3270,16 +3329,17 @@ div[class*="st-key-gen_save_bot"] button {
                 key="gen_save_top",
                 use_container_width=True,
             ):
-                save_plan(
-                    grade       = st.session_state.grade,
-                    subject     = st.session_state.subject,
-                    chapter     = chapters[st.session_state.teacher_ch_idx],
-                    period_rows = st.session_state.get("period_rows", [0]),
-                    session     = st.session_state,
-                    result      = result,
-                )
-                st.session_state.plan_just_saved = True
-                st.rerun()
+                if st.session_state.teacher_ch_idx is not None and st.session_state.teacher_ch_idx < len(chapters):
+                    save_plan(
+                        grade       = st.session_state.grade,
+                        subject     = st.session_state.subject,
+                        chapter     = chapters[st.session_state.teacher_ch_idx],
+                        period_rows = st.session_state.get("period_rows", [0]),
+                        session     = st.session_state,
+                        result      = result,
+                    )
+                    st.session_state.plan_just_saved = True
+                    st.rerun()
         st.markdown('<div style="height:0.5rem;"></div>', unsafe_allow_html=True)
 
         # ── LPA HTML page ─────────────────────────────────────────────────
@@ -3289,7 +3349,7 @@ div[class*="st-key-gen_save_bot"] button {
         except Exception:
             _lpa_tpl = "<p>lpa_page.html not found.</p>"
 
-        if st.session_state.teacher_ch_idx is not None:
+        if st.session_state.teacher_ch_idx is not None and st.session_state.teacher_ch_idx < len(chapters):
             _ch_data = chapters[st.session_state.teacher_ch_idx]
         else:
             _ch_data = _chapter_export
@@ -3385,16 +3445,17 @@ div[class*="st-key-gen_save_bot"] button {
                 key="gen_save_bot",
                 use_container_width=True,
             ):
-                save_plan(
-                    grade       = st.session_state.grade,
-                    subject     = st.session_state.subject,
-                    chapter     = chapters[st.session_state.teacher_ch_idx],
-                    period_rows = st.session_state.get("period_rows", [0]),
-                    session     = st.session_state,
-                    result      = result,
-                )
-                st.session_state.plan_just_saved = True
-                st.rerun()
+                if st.session_state.teacher_ch_idx is not None and st.session_state.teacher_ch_idx < len(chapters):
+                    save_plan(
+                        grade       = st.session_state.grade,
+                        subject     = st.session_state.subject,
+                        chapter     = chapters[st.session_state.teacher_ch_idx],
+                        period_rows = st.session_state.get("period_rows", [0]),
+                        session     = st.session_state,
+                        result      = result,
+                    )
+                    st.session_state.plan_just_saved = True
+                    st.rerun()
         if st.session_state.get("plan_just_saved"):
             st.success("Saved — view it in My Plans.")
             st.session_state.plan_just_saved = False
