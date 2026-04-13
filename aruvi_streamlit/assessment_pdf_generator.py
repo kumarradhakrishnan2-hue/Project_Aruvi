@@ -3,6 +3,12 @@ Aruvi Chapter Assessment PDF — v2
 
 Imports all reusable constants, styles, and helpers from lp_pdf_generator.
 Adds only assessment-specific styles; never redefines what is already there.
+
+Science support added (v2.1):
+  - _group_science()         groups items by stage_label
+  - build_assessment_pdf()   branches on is_science for section headers / LO source
+  - question_block()         normalises OPEN_TASK → open_task; handles visual_stimulus
+  - json_to_assessment_data() skips period-based lo_map for Science
 """
 import io
 import os
@@ -111,6 +117,34 @@ def assessment_meta_strip(chapter_num, title, total_questions, date_str):
 
 
 # ──────────────────────────────────────────────────────────────────────────────
+# Science grouping helper
+# ──────────────────────────────────────────────────────────────────────────────
+def _group_science(items):
+    """
+    Groups Science assessment items by stage_label, preserving insertion order
+    (dict is ordered in Python 3.7+).
+
+    Returns a list of 3-tuples:
+        (stage_label: str, progression_stage: int, items: list[dict])
+
+    Each tuple becomes one rendered section in the PDF, with section header:
+        "Stage {progression_stage} · {stage_label}"
+
+    Missing / null stage_label values are handled gracefully (grouped under "").
+    """
+    groups     = {}   # stage_label → [item, ...]
+    stage_meta = {}   # stage_label → progression_stage
+    for item in items:
+        label = item.get("stage_label") or ""
+        stage = item.get("progression_stage") or 0
+        if label not in groups:
+            groups[label]     = []
+            stage_meta[label] = stage
+        groups[label].append(item)
+    return [(label, stage_meta[label], grp) for label, grp in groups.items()]
+
+
+# ──────────────────────────────────────────────────────────────────────────────
 # Question block — returns a list of flowables for one assessment item
 # ──────────────────────────────────────────────────────────────────────────────
 def question_block(q_num, item, lo_text, uw, header_items=None):
@@ -122,9 +156,21 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
     Fix 9: Q number plain INK; option labels 'A.', 'B.', etc. in INK, tighter cols.
     Fix 1: No 'Look for' blocks for SCR or ECR.
     Fix 2: open_task backward-compatible ('task' key first, then 'task_instructions').
+
+    Science v2.1 additions (no-op for SS):
+    - OPEN_TASK (uppercase) normalised to open_task before branching so the
+      same rendering path handles both subjects.
+    - visual_stimulus: if present and non-empty, a note is printed after the
+      question stem. SS items never carry this field so the check is always
+      a no-op for SS.
     """
     story = []
     qtype = item.get("question_type", "")
+
+    # Science uses OPEN_TASK (uppercase); normalise to open_task so the shared
+    # rendering path below handles both subjects identically.
+    if qtype == "OPEN_TASK":
+        qtype = "open_task"
 
     # ── Fix 7: 2-row single-col meta table (BG_META background, dark grey text) ─
     lo_disp  = f"<b>LO assessed:</b> {_clean_text(lo_text)}" if lo_text else "<b>LO assessed:</b> \u2014"
@@ -157,6 +203,16 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
         story.extend(header_items)
     # Single narrow KeepTogether: only meta_block + q_para prevents LO orphaning
     story.append(KeepTogether([meta_block, Spacer(1, 2), q_para]))
+
+    # ── Visual stimulus note ──────────────────────────────────────────────────
+    # Science items carry visual_stimulus; SS items do not — this is always a
+    # no-op for SS since .get() returns None and the branch is never entered.
+    visual = item.get("visual_stimulus") or ""
+    if visual:
+        story.append(Paragraph(
+            "<i>A visual stimulus is provided for this question.</i>",
+            AST["combo_note"],
+        ))
 
     # ── MCQ options ───────────────────────────────────────────────────────────
     if qtype == "MCQ":
@@ -265,43 +321,68 @@ def build_assessment_pdf(output_path, data):
     ))
     story.append(Spacer(1, 5 * mm))
 
-    # ── Question groups in fixed order: MCQ → SCR → ECR → open_task ──────────
-    items     = data["assessment_items"]
-    lo_map    = data["lo_map"]
-    q_counter = 0
+    items      = data["assessment_items"]
+    lo_map     = data["lo_map"]
+    is_science = data.get("is_science", False)
+    q_counter  = 0
 
-    for qtype in TYPE_ORDER:
-        group = [it for it in items if it.get("question_type") == qtype]
-        if not group:
-            continue
+    if is_science:
+        # ── Science: sections grouped by stage_label ───────────────────────────
+        # Section header: "STAGE N · LABEL"
+        # LO label:       item["implied_lo_assessed"]  (carried on each item)
+        groups = _group_science(items)
+        for stage_label, progression_stage, group_items in groups:
+            sec_text  = f"Stage {progression_stage} \u00b7 {stage_label}"
+            sec_para  = Paragraph(sec_text.upper(), AST["sec_hdr"])
+            sec_hline = HLine(uw, thickness=0.4, color=HAIRLINE, sb=1, sa=3)
 
-        # Fix 8: section header flowables — dark grey (#444444), 7.5pt, bold
-        sec_para  = Paragraph(TYPE_NAMES[qtype].upper(), AST["sec_hdr"])
-        sec_hline = HLine(uw, thickness=0.4, color=HAIRLINE, sb=1, sa=3)
+            for idx, item in enumerate(group_items):
+                q_counter += 1
+                lo_text = item.get("implied_lo_assessed") or ""
 
-        for idx, item in enumerate(group):
-            q_counter += 1
+                header_items = [sec_para, sec_hline] if idx == 0 else None
+                story.extend(question_block(
+                    q_counter, item, lo_text, uw,
+                    header_items=header_items,
+                ))
 
-            # Resolve implied LO from LP period(s)
-            lo_ref = item.get("guide", {}).get("learning_outcome", {})
-            if "periods" in lo_ref:
-                lo_text = "Multiple periods"
-            else:
-                pn = lo_ref.get("period")
-                lo_text = lo_map.get(pn, "") if pn is not None else ""
+            story.append(Spacer(1, 4 * mm))
 
-            # Fix 4: pass section header into first question of each group only
-            if idx == 0:
-                header_items = [sec_para, sec_hline]
-            else:
-                header_items = None
+    else:
+        # ── SS: sections grouped by question_type in fixed order ───────────────
+        # This block is identical to the original code — do not modify.
+        for qtype in TYPE_ORDER:
+            group = [it for it in items if it.get("question_type") == qtype]
+            if not group:
+                continue
 
-            story.extend(question_block(
-                q_counter, item, lo_text, uw,
-                header_items=header_items,
-            ))
+            # Fix 8: section header flowables — dark grey (#444444), 7.5pt, bold
+            sec_para  = Paragraph(TYPE_NAMES[qtype].upper(), AST["sec_hdr"])
+            sec_hline = HLine(uw, thickness=0.4, color=HAIRLINE, sb=1, sa=3)
 
-        story.append(Spacer(1, 4 * mm))
+            for idx, item in enumerate(group):
+                q_counter += 1
+
+                # Resolve implied LO from LP period(s)
+                lo_ref = item.get("guide", {}).get("learning_outcome", {})
+                if "periods" in lo_ref:
+                    lo_text = "Multiple periods"
+                else:
+                    pn = lo_ref.get("period")
+                    lo_text = lo_map.get(pn, "") if pn is not None else ""
+
+                # Fix 4: pass section header into first question of each group only
+                if idx == 0:
+                    header_items = [sec_para, sec_hline]
+                else:
+                    header_items = None
+
+                story.extend(question_block(
+                    q_counter, item, lo_text, uw,
+                    header_items=header_items,
+                ))
+
+            story.append(Spacer(1, 4 * mm))
 
     # ── Footnote ──────────────────────────────────────────────────────────────
     story.append(Paragraph(
@@ -353,27 +434,38 @@ def json_to_assessment_data(j: dict) -> dict:
     Converts the Aruvi LPA output JSON dict into the data dict expected by
     build_assessment_pdf().  Mirrors the pattern of json_to_lp_data() in
     lp_pdf_generator.
+
+    Science v2.1: skips period-based lo_map construction for Science payloads
+    (Science items carry implied_lo_assessed directly on each item).
     """
     from datetime import datetime
 
     dt = datetime.fromisoformat(j["saved_at"])
     date_str = dt.strftime("%-d %B %Y")
 
-    # Build LO lookup: period_number → implied_lo  (from LP periods in same JSON)
-    lo_map = {
-        p["period_number"]: p["implied_lo"]
-        for p in j["result"]["lesson_plan"]["periods"]
-    }
+    subject    = j.get("subject", "")
+    is_science = (subject == "Science")
+
+    if is_science:
+        # Science items carry implied_lo_assessed directly — no period map needed.
+        lo_map = {}
+    else:
+        # SS: Build LO lookup: period_number → implied_lo  (from LP periods in same JSON)
+        lo_map = {
+            p["period_number"]: p["implied_lo"]
+            for p in j["result"]["lesson_plan"]["periods"]
+        }
 
     return {
         "chapter_num":      j["chapter_number"],
         "chapter_title":    j["chapter_title"],
         "grade":            str(j["grade"]).replace("Grade ", ""),  # "Grade VII" → "VII"
-        "subject":          j["subject"],
+        "subject":          subject,
         "date":             date_str,
         "total_questions":  len(j["result"]["assessment_items"]),
         "assessment_items": j["result"]["assessment_items"],
         "lo_map":           lo_map,
+        "is_science":       is_science,
     }
 
 

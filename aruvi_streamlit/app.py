@@ -38,7 +38,14 @@ def get_stage(grade: str) -> str:
     return "secondary"
 
 def grade_to_folder(grade: str) -> str:
-    return grade.lower().replace(" ", "_")
+    """Return the folder name for a grade — matches the roman-numeral dirs in mirror/."""
+    _mapping = {
+        "Grade I":    "i",    "Grade II":   "ii",   "Grade III": "iii",
+        "Grade IV":   "iv",   "Grade V":    "v",    "Grade VI":  "vi",
+        "Grade VII":  "vii",  "Grade VIII": "viii",
+        "Grade IX":   "ix",   "Grade X":    "x",
+    }
+    return _mapping.get(grade, grade.lower().replace("grade ", ""))
 
 def subject_to_folder(subject: str) -> str:
     mapping = {
@@ -819,6 +826,10 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
         lo_block_part = ""
 
         return {
+            "grade":            grade,
+            "subject":          subject,
+            "chapter_number":   chapter["chapter_number"],
+            "chapter_title":    chapter.get("chapter_title", ""),
             "lesson_plan":      parsed.get("lesson_plan", {}),
             "assessment_items": parsed.get("assessment_items", []),
             "input_tokens":     input_tokens,
@@ -828,6 +839,10 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
 
     except Exception as e:
         return {
+            "grade":            grade,
+            "subject":          subject,
+            "chapter_number":   chapter["chapter_number"],
+            "chapter_title":    chapter.get("chapter_title", ""),
             "lesson_plan":      {},
             "assessment_items": [],
             "error":            str(e),
@@ -873,6 +888,17 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
                     "weight":                  p.get("progression_stage", 1),
                     "competency_text":         p.get("pedagogical_approach", ""),
                     "visual_representation":   None,
+                    # ── Science-detection fields for lpa_page.html ───────────────
+                    # The HTML checks periods[0].stage_label / activity_title to
+                    # detect Science; these must be present as top-level keys.
+                    "stage_label":             p.get("stage_label", ""),
+                    "activity_title":          p.get("activity_title", ""),
+                    "progression_stage":       p.get("progression_stage", 0),
+                    "description":             p.get("description", ""),
+                    # ── Lesson view panel fields for lpa_page.html ───────────────
+                    "activity_description":    p.get("activity_description", ""),
+                    "actors":                  p.get("roles", []),
+                    "pedagogical_approach":    p.get("pedagogical_approach", ""),
                 })
             else:
                 # ── Social Sciences A3 format ────────────────────────────────
@@ -980,8 +1006,14 @@ def _normalise_assessment_sections(result: dict) -> list:
     sections: dict = OrderedDict()
     for item in items:
         # ── Science format detection ────────────────────────────────────────
-        _is_science = (item.get("stage_label") is not None or
-                       item.get("implied_lo_assessed") is not None)
+        # Science items carry at least one of these fields; SS items never do.
+        _is_science = (
+            item.get("stage_label") is not None or
+            item.get("implied_lo_assessed") is not None or
+            bool(item.get("marking_guidance")) or          # Science-only field
+            bool(item.get("what_each_option_reveals")) or  # Science MCQ top-level
+            bool(item.get("correct_answer"))               # Science MCQ correct key
+        )
 
         if _is_science:
             _comp      = {}
@@ -1024,6 +1056,10 @@ def _normalise_assessment_sections(result: dict) -> list:
                 "drawing_on":       _drawing_on,
                 "question_types":   "",
                 "questions":        [],
+                # ── Science-detection fields for lpa_page.html renderAssessment() ──
+                # is_science is the canonical flag; stage_label carried for display.
+                "is_science":  _is_science,
+                "stage_label": item.get("stage_label", "") if _is_science else None,
             }
         qtype = item.get("question_type", "")
         sections[_group_key]["questions"].append({
@@ -1039,9 +1075,34 @@ def _normalise_assessment_sections(result: dict) -> list:
             "title":              _build_title(qtype, item.get("task", "") or item.get("question_text", "")),
             "expected":           _build_expected(item),
             "cognitive_demand":   item.get("cognitive_demand", ""),
-            "guide":              item.get("guide", {}),
-            "expected_elements":  item.get("expected_elements", []),
-            "look_for":           item.get("look_for", []),
+            "guide":                    item.get("guide", {}),
+            "expected_elements":        item.get("expected_elements", []),
+            "look_for":                 item.get("look_for", []),
+            # Science-specific fields for HTML rendering.
+            # Science MCQ stores distractor notes at item["guide"]["MCQ"][...];
+            # try top-level first (flat schema), fall back to the nested path.
+            "what_each_option_reveals": (
+                item.get("what_each_option_reveals")
+                or (item.get("guide") or {}).get(qtype.upper() if qtype else "MCQ", {}).get("what_each_option_reveals", {})
+                or {}
+            ),
+            "inclusivity": (
+                item.get("inclusivity")
+                or (item.get("guide") or {}).get(qtype.upper() if qtype else "MCQ", {}).get("inclusivity", "")
+                or ""
+            ),
+            "correct_answer":           item.get("correct_answer", ""),
+            # Learning Outcome for Assessment Question column display.
+            # Science: sourced from implied_lo_assessed on the item itself.
+            # Social Science: sourced from competency_text (top-level or nested),
+            #   same value used for the section header competency_short.
+            "implied_lo": (
+                item.get("implied_lo_assessed", "")
+                if _is_science else
+                (item.get("competency_text") or
+                 _comp.get("competency_text", "") or
+                 _comp.get("text", ""))
+            ),
         })
 
     # Fix 3: populate question_types — unique types in order of first appearance
@@ -1286,7 +1347,10 @@ st.set_page_config(
 query = st.query_params
 
 if "role"    in query and query["role"]    in ("Allocate", "Generate", "My Plans"):
+    _prev_role = st.session_state.get("role", "")
     st.session_state.role    = query["role"]
+    if query["role"] == "My Plans" and _prev_role != "My Plans":
+        st.session_state.myplans_should_collapse = True
 if "grade" not in query and st.session_state.get("grade"):
     pass  # keep existing session state grade
 if "subject" not in query and st.session_state.get("subject"):
@@ -2579,6 +2643,12 @@ div[class*="st-key-mp_back_"] button:hover {
    ═══════════════════════════════════════════════════ */
 #MainMenu, footer { visibility: hidden; }
 
+/* Hide Streamlit's built-in running / status indicator (cyclist / runner animation) */
+[data-testid="stStatusWidget"],
+[data-testid="stDecoration"],
+div[class*="StatusWidget"],
+.stSpinner > div > div { display: none !important; }
+
 </style>
 
 """, unsafe_allow_html=True)
@@ -2773,6 +2843,8 @@ if "lpa_generating"           not in st.session_state: st.session_state.lpa_gene
 if "plan_just_saved"          not in st.session_state: st.session_state.plan_just_saved          = False
 if "mp_viewing_plan"          not in st.session_state: st.session_state.mp_viewing_plan          = None
 if "period_rows"              not in st.session_state: st.session_state["period_rows"]            = []
+if "myplans_should_collapse"  not in st.session_state: st.session_state.myplans_should_collapse  = False
+if "show_save_prompt"         not in st.session_state: st.session_state.show_save_prompt         = False
 
 has_chapter_data = len(chapters) > 0
 
@@ -2812,6 +2884,7 @@ with _nc3:
 with _nc4:
     if st.button("My Plans", key="nav_myplans", type="primary" if st.session_state.role == "My Plans" else "secondary"):
         st.session_state.role = "My Plans"
+        st.session_state.myplans_should_collapse = True
         st.query_params["role"] = "My Plans"
         st.rerun()
 
@@ -3215,6 +3288,7 @@ elif st.session_state.role == "Generate":
             st.session_state.lpa_result        = result
             st.session_state.lpa_generating    = False
             st.session_state.teacher_generated = True
+            st.session_state.show_save_prompt  = True   # trigger save dialog
             st.session_state.grade             = None
             st.session_state.subject           = None
             st.session_state.period_rows       = []
@@ -3238,26 +3312,89 @@ elif st.session_state.role == "Generate":
     elif result.get("error"):
         st.error(f"Generation failed: {result['error']}")
     else:
-        # Get chapter data — from index if available, else reconstruct from lo_handoff
+        # Get chapter data — from index if available, else use result metadata
         if st.session_state.teacher_ch_idx is not None and st.session_state.teacher_ch_idx < len(chapters):
             _chapter_export = chapters[st.session_state.teacher_ch_idx]
         else:
-            _lo_list = result.get("lo_handoff", [])
-            _ch_num_from_lo = _lo_list[0].get("chapter_number") if _lo_list else None
+            # result now carries grade/subject/chapter_title/chapter_number from generate_lpa
+            _ch_num_from_result = result.get("chapter_number")
             _chapter_export = next(
-                (c for c in chapters if c["chapter_number"] == _ch_num_from_lo),
+                (c for c in chapters if c["chapter_number"] == _ch_num_from_result),
                 None
             )
             if _chapter_export is None:
-                # Reconstruct minimal chapter dict from saved result metadata
+                # Fallback: also try lo_handoff for backwards compat with old saved results
+                _lo_list = result.get("lo_handoff", [])
+                _ch_num_from_lo = _lo_list[0].get("chapter_number") if _lo_list else None
+                _chapter_export = next(
+                    (c for c in chapters if c["chapter_number"] == _ch_num_from_lo),
+                    None
+                )
+            if _chapter_export is None:
+                # Reconstruct minimal chapter dict from result metadata
                 _chapter_export = {
                     "chapter_title":   result.get("chapter_title", "Chapter"),
-                    "chapter_number":  _ch_num_from_lo or 0,
+                    "chapter_number":  result.get("chapter_number") or 0,
                     "chapter_weight":  "",
                     "primary":         [],
                 }
         _safe_title = re.sub(r"[^\w\s-]", "", _chapter_export.get("chapter_title", "chapter")).strip().replace(" ", "_")[:40]
         _filename_stem = f"Aruvi_{_safe_title}"
+
+        # ── Resolve grade / subject for PDF and save operations ───────────────
+        # After generation, session grade/subject are cleared; use result's own copy.
+        _res_grade   = st.session_state.grade   or result.get("grade",   "Grade VII")
+        _res_subject = st.session_state.subject or result.get("subject", "Social Science")
+
+        # ── "Do you want to save the plan?" popup — shown once after generation ─
+        if st.session_state.get("show_save_prompt"):
+            st.markdown("""<style>
+div[class*="st-key-save_prompt_box"] {
+    background:#fff;
+    border:1px solid #d9d6d0;
+    border-radius:10px;
+    padding:1rem 1.25rem;
+    margin-bottom:1rem;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+div[class*="st-key-save_prompt_yes"] button {
+    background-color:#2c3e50 !important;
+    color:#fff !important;
+    border:none !important;
+}
+div[class*="st-key-save_prompt_no"] button {
+    background-color:#f2f0ec !important;
+    color:#3d3b38 !important;
+    border:1px solid #d9d6d0 !important;
+}
+</style>""", unsafe_allow_html=True)
+            with st.container(key="save_prompt_box"):
+                st.markdown(
+                    '<div style="font-size:0.95rem;font-weight:500;color:#3d3b38;'
+                    'margin-bottom:0.75rem;">Do you want to save the plan?</div>',
+                    unsafe_allow_html=True,
+                )
+                _sp_c1, _sp_c2, _sp_rest = st.columns([1, 1, 3])
+                with _sp_c1:
+                    if st.button("Yes", key="save_prompt_yes", type="primary",
+                                 use_container_width=True):
+                        save_plan(
+                            grade       = _res_grade,
+                            subject     = _res_subject,
+                            chapter     = _chapter_export,
+                            period_rows = st.session_state.get("period_rows_snapshot",
+                                          st.session_state.get("period_rows", [])),
+                            session     = st.session_state,
+                            result      = result,
+                        )
+                        st.session_state.show_save_prompt = False
+                        st.session_state.plan_just_saved  = True
+                        st.rerun()
+                with _sp_c2:
+                    if st.button("No", key="save_prompt_no",
+                                 use_container_width=True):
+                        st.session_state.show_save_prompt = False
+                        st.rerun()
 
         # ── Primary-style LP / Assessment / Save buttons ─────────────────────
         # CSS: match Generate button colour scheme; orange for Save button
@@ -3279,8 +3416,8 @@ div[class*="st-key-gen_save_bot"] button {
                 from lp_pdf_generator import build_lp_pdf_bytes as _blpb_gen
                 _gen_lp_payload = {
                     "saved_at":       datetime.now().isoformat(timespec="seconds"),
-                    "grade":          st.session_state.grade   or result.get("grade",   "Grade VII"),
-                    "subject":        st.session_state.subject or result.get("subject", "Social Science"),
+                    "grade":          _res_grade,
+                    "subject":        _res_subject,
                     "chapter_number": _chapter_export.get("chapter_number", 0),
                     "chapter_title":  _chapter_export.get("chapter_title",  ""),
                     "result":         {"lesson_plan": result.get("lesson_plan", {})},
@@ -3302,8 +3439,8 @@ div[class*="st-key-gen_save_bot"] button {
                 from assessment_pdf_generator import build_assessment_pdf_bytes as _bapb_gen
                 _gen_assess_payload = {
                     "saved_at":       datetime.now().isoformat(timespec="seconds"),
-                    "grade":          st.session_state.grade   or result.get("grade",   "Grade VII"),
-                    "subject":        st.session_state.subject or result.get("subject", "Social Science"),
+                    "grade":          _res_grade,
+                    "subject":        _res_subject,
                     "chapter_number": _chapter_export.get("chapter_number", 0),
                     "chapter_title":  _chapter_export.get("chapter_title",  ""),
                     "result": {
@@ -3329,17 +3466,16 @@ div[class*="st-key-gen_save_bot"] button {
                 key="gen_save_top",
                 use_container_width=True,
             ):
-                if st.session_state.teacher_ch_idx is not None and st.session_state.teacher_ch_idx < len(chapters):
-                    save_plan(
-                        grade       = st.session_state.grade,
-                        subject     = st.session_state.subject,
-                        chapter     = chapters[st.session_state.teacher_ch_idx],
-                        period_rows = st.session_state.get("period_rows", [0]),
-                        session     = st.session_state,
-                        result      = result,
-                    )
-                    st.session_state.plan_just_saved = True
-                    st.rerun()
+                save_plan(
+                    grade       = _res_grade,
+                    subject     = _res_subject,
+                    chapter     = _chapter_export,
+                    period_rows = st.session_state.get("period_rows", [0]),
+                    session     = st.session_state,
+                    result      = result,
+                )
+                st.session_state.plan_just_saved = True
+                st.rerun()
         st.markdown('<div style="height:0.5rem;"></div>', unsafe_allow_html=True)
 
         # ── LPA HTML page ─────────────────────────────────────────────────
@@ -3359,8 +3495,8 @@ div[class*="st-key-gen_save_bot"] button {
         )
 
         # ── Normalise to lpa_page.html-compatible shape (handles old + new JSON) ─
-        _grade_ctx   = st.session_state.grade   or result.get("grade",   "Grade VII")
-        _subject_ctx = st.session_state.subject or result.get("subject", "Social Science")
+        _grade_ctx   = _res_grade
+        _subject_ctx = _res_subject
         _stage  = get_stage(_grade_ctx)
         _subj_f = subject_to_folder(_subject_ctx)
         try:
@@ -3378,15 +3514,89 @@ div[class*="st-key-gen_save_bot"] button {
         _lpa_data = {
             "chapter_title":       _ch_data.get("chapter_title", ""),
             "chapter_number":      _ch_data.get("chapter_number", ""),
-            "grade":               st.session_state.grade   or result.get("grade",   ""),
-            "subject":             st.session_state.subject or result.get("subject", ""),
+            "grade":               _res_grade,
+            "subject":             _res_subject,
             "period_schedule":     _period_schedule,
             "lo_handoff":          _lo_handoff,
             "assessment_sections": _assessment_sections,
         }
         _lpa_inject = "window.LPA_DATA = " + json.dumps(_lpa_data, ensure_ascii=False) + ";\n"
         _lpa_html = _lpa_tpl.replace("/* __LPA_DATA__ */", _lpa_inject)
-        components.html(_lpa_html, height=900, scrolling=True)
+        _lpa_height_script = """
+<script>
+(function() {
+  /* Measure the actual .lpa content element — avoids the scrollHeight==viewport
+     problem (scrollHeight equals iframe height when content is shorter). */
+  function fitIframe() {
+    var lpa = document.querySelector('.lpa');
+    if (!lpa) return;
+    var h = Math.ceil(lpa.getBoundingClientRect().height) + 24;
+    if (h < 100) return;
+
+    /* Method A: window.frameElement (works when Streamlit serves component
+       via a same-origin URL, i.e. localhost:8501/component/...) */
+    try {
+      var fe = window.frameElement;
+      if (fe) {
+        fe.style.height = h + 'px';
+        var p1 = fe.parentElement;
+        if (p1) { p1.style.height = h + 'px'; p1.style.minHeight = '0'; }
+        var p2 = p1 && p1.parentElement;
+        if (p2) { p2.style.height = h + 'px'; p2.style.minHeight = '0'; }
+      }
+    } catch(e) {}
+
+    /* Method B: access the Streamlit page DOM directly from the parent window
+       (same-origin: Streamlit app and component URL share localhost:8501).
+       Find the component iframe by its Streamlit-assigned height attribute and
+       collapse it + its wrapper containers to the measured content height. */
+    try {
+      var pDoc = window.parent.document;
+      /* Streamlit renders: <iframe height="2200" ...> inside a wrapper div */
+      var targets = pDoc.querySelectorAll('iframe[height="2200"]');
+      for (var i = 0; i < targets.length; i++) {
+        var fr = targets[i];
+        fr.setAttribute('height', String(h));
+        fr.style.height = h + 'px';
+        var w1 = fr.parentElement;
+        if (w1) { w1.style.height = h + 'px'; w1.style.minHeight = '0'; }
+        var w2 = w1 && w1.parentElement;
+        if (w2) { w2.style.height = h + 'px'; w2.style.minHeight = '0'; }
+      }
+    } catch(e) {}
+
+    /* Method C: Streamlit postMessage protocol (both recognised formats) */
+    try {
+      window.parent.postMessage({ type: 'streamlit:setFrameHeight', height: h }, '*');
+      window.parent.postMessage(
+        { isStreamlitMessage: true, type: 'streamlit:setFrameHeight', height: h }, '*'
+      );
+    } catch(e) {}
+  }
+
+  /* lpa_page.html fires its own (broken) reportHeight at 100 ms, 400 ms, 800 ms.
+     Those calls measure scrollHeight which equals the 2200 px viewport height and
+     would override a correct value. We fire JUST AFTER each one to win the race,
+     plus an early shot and a late cleanup pass. */
+  setTimeout(fitIframe,   50);
+  setTimeout(fitIframe,  150);  /* override broken 100 ms call  */
+  setTimeout(fitIframe,  450);  /* override broken 400 ms call  */
+  setTimeout(fitIframe,  850);  /* override broken 800 ms call  */
+  setTimeout(fitIframe, 1200);  /* final cleanup                */
+
+  /* Re-fit on every collapsible expand / collapse */
+  var t = null;
+  function dFit() { clearTimeout(t); t = setTimeout(fitIframe, 150); }
+  if (document.body) {
+    new MutationObserver(dFit).observe(
+      document.body, { childList: true, subtree: true, attributes: true }
+    );
+  }
+})();
+</script>
+"""
+        _lpa_html = _lpa_html + _lpa_height_script
+        components.html(_lpa_html, height=2200, scrolling=False)
 
         st.markdown('<div style="height:0.5rem;"></div>', unsafe_allow_html=True)
         _bot_c1, _bot_c2, _bot_c3, _bot_spc = st.columns([1, 1, 1, 2])
@@ -3395,8 +3605,8 @@ div[class*="st-key-gen_save_bot"] button {
                 from lp_pdf_generator import build_lp_pdf_bytes as _blpb_bot
                 _bot_lp_payload = {
                     "saved_at":       datetime.now().isoformat(timespec="seconds"),
-                    "grade":          st.session_state.grade   or result.get("grade",   "Grade VII"),
-                    "subject":        st.session_state.subject or result.get("subject", "Social Science"),
+                    "grade":          _res_grade,
+                    "subject":        _res_subject,
                     "chapter_number": _chapter_export.get("chapter_number", 0),
                     "chapter_title":  _chapter_export.get("chapter_title",  ""),
                     "result":         {"lesson_plan": result.get("lesson_plan", {})},
@@ -3418,8 +3628,8 @@ div[class*="st-key-gen_save_bot"] button {
                 from assessment_pdf_generator import build_assessment_pdf_bytes as _bapb_bot
                 _bot_assess_payload = {
                     "saved_at":       datetime.now().isoformat(timespec="seconds"),
-                    "grade":          st.session_state.grade   or result.get("grade",   "Grade VII"),
-                    "subject":        st.session_state.subject or result.get("subject", "Social Science"),
+                    "grade":          _res_grade,
+                    "subject":        _res_subject,
                     "chapter_number": _chapter_export.get("chapter_number", 0),
                     "chapter_title":  _chapter_export.get("chapter_title",  ""),
                     "result": {
@@ -3445,17 +3655,16 @@ div[class*="st-key-gen_save_bot"] button {
                 key="gen_save_bot",
                 use_container_width=True,
             ):
-                if st.session_state.teacher_ch_idx is not None and st.session_state.teacher_ch_idx < len(chapters):
-                    save_plan(
-                        grade       = st.session_state.grade,
-                        subject     = st.session_state.subject,
-                        chapter     = chapters[st.session_state.teacher_ch_idx],
-                        period_rows = st.session_state.get("period_rows", [0]),
-                        session     = st.session_state,
-                        result      = result,
-                    )
-                    st.session_state.plan_just_saved = True
-                    st.rerun()
+                save_plan(
+                    grade       = _res_grade,
+                    subject     = _res_subject,
+                    chapter     = _chapter_export,
+                    period_rows = st.session_state.get("period_rows", [0]),
+                    session     = st.session_state,
+                    result      = result,
+                )
+                st.session_state.plan_just_saved = True
+                st.rerun()
         if st.session_state.get("plan_just_saved"):
             st.success("Saved — view it in My Plans.")
             st.session_state.plan_just_saved = False
@@ -3634,9 +3843,52 @@ else:
             "assessment_sections": _v_assessment_sections,
         }
         _v_lpa_inject = "window.LPA_DATA = " + json.dumps(_v_lpa_data, ensure_ascii=False) + ";\n"
+        _v_lpa_height_script = """
+<script>
+(function() {
+  /* Measure the .lpa content element directly — avoids the scrollHeight==viewport
+     problem that occurs when the iframe is taller than its content. */
+  function fitIframe() {
+    var lpa = document.querySelector('.lpa');
+    if (!lpa) return;
+    var h = Math.ceil(lpa.getBoundingClientRect().height) + 20;
+    if (h < 100) return;
+    /* Primary: set the parent <iframe> height directly (same-origin) */
+    try {
+      if (window.frameElement) {
+        window.frameElement.style.height = h + 'px';
+      }
+    } catch(e) {}
+    /* Fallback: Streamlit postMessage protocol */
+    try {
+      window.parent.postMessage(
+        { isStreamlitMessage: true, type: 'streamlit:setFrameHeight', height: h }, '*'
+      );
+    } catch(e) {}
+  }
+  /* Fire at staggered intervals to cover all JS rendering phases */
+  setTimeout(fitIframe, 50);
+  setTimeout(fitIframe, 250);
+  setTimeout(fitIframe, 600);
+  setTimeout(fitIframe, 1000);
+  /* Re-fit whenever collapsible sections expand / collapse */
+  var debounceTimer = null;
+  function debouncedFit() {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(fitIframe, 150);
+  }
+  if (document.body) {
+    new MutationObserver(debouncedFit).observe(
+      document.body, { childList: true, subtree: true, attributes: true }
+    );
+  }
+})();
+</script>
+"""
+        _v_lpa_html = _v_lpa_tpl.replace("/* __LPA_DATA__ */", _v_lpa_inject) + _v_lpa_height_script
         components.html(
-            _v_lpa_tpl.replace("/* __LPA_DATA__ */", _v_lpa_inject),
-            height=900, scrolling=True,
+            _v_lpa_html,
+            height=2200, scrolling=False,
         )
 
         st.markdown('<div style="height:1rem;"></div>', unsafe_allow_html=True)
@@ -3647,149 +3899,149 @@ else:
             st.session_state.mp_viewing_plan = None
             st.rerun()
 
-        st.stop()   # prevent list view from rendering below
 
-    # Load ALL saved plans across all grades/subjects
-    _all_plans = []
-    if _sp_root.exists():
-        for _f in sorted(_sp_root.rglob("ch_*.json"), reverse=True):
-            try:
-                _all_plans.append(json.loads(_f.read_text(encoding="utf-8")))
-            except Exception:
-                pass
+    if st.session_state.mp_viewing_plan is None:
+        # Load ALL saved plans across all grades/subjects
+        _all_plans = []
+        if _sp_root.exists():
+            for _f in sorted(_sp_root.rglob("ch_*.json"), reverse=True):
+                try:
+                    _all_plans.append(json.loads(_f.read_text(encoding="utf-8")))
+                except Exception:
+                    pass
 
-    # Filter dropdowns — inline, no sidebar
-    _f_grade, _f_subject, _f_spacer = st.columns([2, 2, 5])
-    with _f_grade:
-        _grade_opts = ["All"] + GRADES
-        _g_idx = _grade_opts.index(st.session_state.mp_grade_filter) if st.session_state.mp_grade_filter in _grade_opts else 0
-        _new_g = st.selectbox("Grade", _grade_opts, index=_g_idx, label_visibility="collapsed", key="mp_grade_sel")
-        if _new_g != st.session_state.mp_grade_filter:
-            st.session_state.mp_grade_filter = _new_g
-            st.rerun()
-    with _f_subject:
-        _subj_opts = ["All"] + SUBJECTS
-        _s_idx = _subj_opts.index(st.session_state.mp_subject_filter) if st.session_state.mp_subject_filter in _subj_opts else 0
-        _new_s = st.selectbox("Subject", _subj_opts, index=_s_idx, label_visibility="collapsed", key="mp_subject_sel")
-        if _new_s != st.session_state.mp_subject_filter:
-            st.session_state.mp_subject_filter = _new_s
-            st.rerun()
+        # Filter dropdowns — inline, no sidebar
+        _f_grade, _f_subject, _f_spacer = st.columns([2, 2, 5])
+        with _f_grade:
+            _grade_opts = ["All"] + GRADES
+            _g_idx = _grade_opts.index(st.session_state.mp_grade_filter) if st.session_state.mp_grade_filter in _grade_opts else 0
+            _new_g = st.selectbox("Grade", _grade_opts, index=_g_idx, label_visibility="collapsed", key="mp_grade_sel")
+            if _new_g != st.session_state.mp_grade_filter:
+                st.session_state.mp_grade_filter = _new_g
+                st.rerun()
+        with _f_subject:
+            _subj_opts = ["All"] + SUBJECTS
+            _s_idx = _subj_opts.index(st.session_state.mp_subject_filter) if st.session_state.mp_subject_filter in _subj_opts else 0
+            _new_s = st.selectbox("Subject", _subj_opts, index=_s_idx, label_visibility="collapsed", key="mp_subject_sel")
+            if _new_s != st.session_state.mp_subject_filter:
+                st.session_state.mp_subject_filter = _new_s
+                st.rerun()
 
-    # Apply filters
-    _visible = [
-        p for p in _all_plans
-        if (st.session_state.mp_grade_filter   == "All" or p.get("grade")   == st.session_state.mp_grade_filter)
-        and (st.session_state.mp_subject_filter == "All" or p.get("subject") == st.session_state.mp_subject_filter)
-    ]
+        # Apply filters
+        _visible = [
+            p for p in _all_plans
+            if (st.session_state.mp_grade_filter   == "All" or p.get("grade")   == st.session_state.mp_grade_filter)
+            and (st.session_state.mp_subject_filter == "All" or p.get("subject") == st.session_state.mp_subject_filter)
+        ]
 
-    st.markdown('<div style="height:0.5rem;"></div>', unsafe_allow_html=True)
+        st.markdown('<div style="height:0.5rem;"></div>', unsafe_allow_html=True)
 
-    if not _visible:
-        st.markdown(
-            '<div class="ws-placeholder">No saved plans yet. '
-            'Generate a plan and click Save to My Plans.</div>',
-            unsafe_allow_html=True,
-        )
-    else:
-        # ── Pure-Streamlit column table (header + inline buttons per row) ───────
-        st.markdown("""
-<style>
-.mp-th       { font-size:0.65rem; font-weight:600; letter-spacing:0.08em;
-               text-transform:uppercase; color:#5a5754; padding-bottom:2px; }
-.mp-ch-title { font-size:0.88rem; font-weight:500; color:#1a1917; margin-bottom:2px; }
-.mp-ch-meta  { font-size:0.72rem; color:#9c9693; }
-.mp-cell     { font-size:0.82rem; color:#3d3b38; padding-top:6px; }
-</style>
-""", unsafe_allow_html=True)
-
-        # Header row
-        _hc = st.columns([3, 1, 1.5, 0.8, 1.2, 1.2])
-        _hc[0].markdown('<div class="mp-th">Chapter</div>',       unsafe_allow_html=True)
-        _hc[1].markdown('<div class="mp-th">Grade</div>',         unsafe_allow_html=True)
-        _hc[2].markdown('<div class="mp-th">Saved</div>',         unsafe_allow_html=True)
-        _hc[3].markdown('<div class="mp-th">Display</div>',       unsafe_allow_html=True)
-        _hc[4].markdown('<div class="mp-th" style="text-align:left;">Lesson plan</div>',   unsafe_allow_html=True)
-        _hc[5].markdown('<div class="mp-th" style="text-align:left;">Assessment</div>',    unsafe_allow_html=True)
-        st.markdown(
-            '<hr style="margin:4px 0 6px;border:none;border-top:1px solid #e8e5e0;">',
-            unsafe_allow_html=True,
-        )
-
-        # One row per plan
-        for _p in _visible:
-            _ch_num   = _p.get("chapter_number", 0)
-            _ch_title = _p.get("chapter_title", "")
-            _grade    = _p.get("grade", "")
-            _subject  = _p.get("subject", "")
-            _saved_at = _p.get("saved_at", "")[:10]
-            _filename = _p.get("filename", "")
-            _safe_fn  = re.sub(r"[^a-zA-Z0-9_]", "_", _filename)
-            try:
-                from datetime import datetime as _dt
-                _saved_disp = _dt.fromisoformat(_saved_at).strftime("%-d %b %Y")
-            except Exception:
-                _saved_disp = _saved_at
-            _ch_for_pdf = next(
-                (c for c in chapters if c["chapter_number"] == _ch_num),
-                {"chapter_title": _ch_title, "chapter_weight": "",
-                 "chapter_number": _ch_num, "primary": []}
-            )
-            # LP PDF via lp_pdf_generator (new ReportLab format)
-            try:
-                from lp_pdf_generator import build_lp_pdf_bytes as _blpb_mp
-                _mp_lp_payload = {
-                    "saved_at":       _p.get("saved_at", datetime.now().isoformat(timespec="seconds")),
-                    "grade":          _grade,
-                    "subject":        _subject,
-                    "chapter_number": _ch_num,
-                    "chapter_title":  _ch_title,
-                    "result":         {"lesson_plan": _p["result"].get("lesson_plan", {})},
-                }
-                _mp_lp_bytes = _blpb_mp(_mp_lp_payload)
-            except Exception:
-                _mp_lp_bytes = b""
-            # Assessment PDF — new ReportLab format
-            try:
-                from assessment_pdf_generator import build_assessment_pdf_bytes as _bapb_mp
-                _mp_assess_bytes = _bapb_mp(_p)
-            except Exception:
-                _mp_assess_bytes = b""
-            _safe_t = re.sub(r"[^\w\s-]", "", _ch_title).strip().replace(" ", "_")[:40]
-
-            _rc = st.columns([3, 1, 1.5, 0.8, 1.2, 1.2])
-            _rc[0].markdown(
-                f'<div class="mp-ch-title">{_ch_title}</div>'
-                f'<div class="mp-ch-meta">Ch {str(_ch_num).zfill(2)} · {_subject}</div>',
-                unsafe_allow_html=True,
-            )
-            _rc[1].markdown(f'<div class="mp-cell">{_grade}</div>',       unsafe_allow_html=True)
-            _rc[2].markdown(f'<div class="mp-cell">{_saved_disp}</div>',  unsafe_allow_html=True)
-            with _rc[3]:
-                if st.button("View", key=f"view_{_safe_fn}", use_container_width=True):
-                    st.session_state.mp_viewing_plan = _p
-                    st.rerun()
-            with _rc[4]:
-                st.download_button(
-                    label="PDF ⬇",
-                    data=_mp_lp_bytes,
-                    file_name=f"Aruvi_{_safe_t}_LP.pdf",
-                    mime="application/pdf",
-                    key=f"mp_lp_{_safe_fn}",
-                    type="primary",
-                )
-            with _rc[5]:
-                st.download_button(
-                    label="PDF ⬇",
-                    data=_mp_assess_bytes if _mp_assess_bytes else b"",
-                    file_name=f"Aruvi_{_safe_t}_Assessment.pdf",
-                    mime="application/pdf",
-                    key=f"mp_assess_{_safe_fn}",
-                    type="primary",
-                )
+        if not _visible:
             st.markdown(
-                '<hr style="margin:2px 0;border:none;border-top:0.5px solid #f0ede9;">',
+                '<div class="ws-placeholder">No saved plans yet. '
+                'Generate a plan and click Save to My Plans.</div>',
                 unsafe_allow_html=True,
             )
+        else:
+            # ── Pure-Streamlit column table (header + inline buttons per row) ───────
+            st.markdown("""
+    <style>
+    .mp-th       { font-size:0.65rem; font-weight:600; letter-spacing:0.08em;
+                   text-transform:uppercase; color:#5a5754; padding-bottom:2px; }
+    .mp-ch-title { font-size:0.88rem; font-weight:500; color:#1a1917; margin-bottom:2px; }
+    .mp-ch-meta  { font-size:0.72rem; color:#9c9693; }
+    .mp-cell     { font-size:0.82rem; color:#3d3b38; padding-top:6px; }
+    </style>
+    """, unsafe_allow_html=True)
+
+            # Header row
+            _hc = st.columns([3, 1, 1.5, 0.8, 1.2, 1.2])
+            _hc[0].markdown('<div class="mp-th">Chapter</div>',       unsafe_allow_html=True)
+            _hc[1].markdown('<div class="mp-th">Grade</div>',         unsafe_allow_html=True)
+            _hc[2].markdown('<div class="mp-th">Saved</div>',         unsafe_allow_html=True)
+            _hc[3].markdown('<div class="mp-th">Display</div>',       unsafe_allow_html=True)
+            _hc[4].markdown('<div class="mp-th" style="text-align:left;">Lesson plan</div>',   unsafe_allow_html=True)
+            _hc[5].markdown('<div class="mp-th" style="text-align:left;">Assessment</div>',    unsafe_allow_html=True)
+            st.markdown(
+                '<hr style="margin:4px 0 6px;border:none;border-top:1px solid #e8e5e0;">',
+                unsafe_allow_html=True,
+            )
+
+            # One row per plan
+            for _p in _visible:
+                _ch_num   = _p.get("chapter_number", 0)
+                _ch_title = _p.get("chapter_title", "")
+                _grade    = _p.get("grade", "")
+                _subject  = _p.get("subject", "")
+                _saved_at = _p.get("saved_at", "")[:10]
+                _filename = _p.get("filename", "")
+                _safe_fn  = re.sub(r"[^a-zA-Z0-9_]", "_", _filename)
+                try:
+                    from datetime import datetime as _dt
+                    _saved_disp = _dt.fromisoformat(_saved_at).strftime("%-d %b %Y")
+                except Exception:
+                    _saved_disp = _saved_at
+                _ch_for_pdf = next(
+                    (c for c in chapters if c["chapter_number"] == _ch_num),
+                    {"chapter_title": _ch_title, "chapter_weight": "",
+                     "chapter_number": _ch_num, "primary": []}
+                )
+                # LP PDF via lp_pdf_generator (new ReportLab format)
+                try:
+                    from lp_pdf_generator import build_lp_pdf_bytes as _blpb_mp
+                    _mp_lp_payload = {
+                        "saved_at":       _p.get("saved_at", datetime.now().isoformat(timespec="seconds")),
+                        "grade":          _grade,
+                        "subject":        _subject,
+                        "chapter_number": _ch_num,
+                        "chapter_title":  _ch_title,
+                        "result":         {"lesson_plan": _p["result"].get("lesson_plan", {})},
+                    }
+                    _mp_lp_bytes = _blpb_mp(_mp_lp_payload)
+                except Exception:
+                    _mp_lp_bytes = b""
+                # Assessment PDF — new ReportLab format
+                try:
+                    from assessment_pdf_generator import build_assessment_pdf_bytes as _bapb_mp
+                    _mp_assess_bytes = _bapb_mp(_p)
+                except Exception:
+                    _mp_assess_bytes = b""
+                _safe_t = re.sub(r"[^\w\s-]", "", _ch_title).strip().replace(" ", "_")[:40]
+
+                _rc = st.columns([3, 1, 1.5, 0.8, 1.2, 1.2])
+                _rc[0].markdown(
+                    f'<div class="mp-ch-title">{_ch_title}</div>'
+                    f'<div class="mp-ch-meta">Ch {str(_ch_num).zfill(2)} · {_subject}</div>',
+                    unsafe_allow_html=True,
+                )
+                _rc[1].markdown(f'<div class="mp-cell">{_grade}</div>',       unsafe_allow_html=True)
+                _rc[2].markdown(f'<div class="mp-cell">{_saved_disp}</div>',  unsafe_allow_html=True)
+                with _rc[3]:
+                    if st.button("View", key=f"view_{_safe_fn}", use_container_width=True):
+                        st.session_state.mp_viewing_plan = _p
+                        st.rerun()
+                with _rc[4]:
+                    st.download_button(
+                        label="PDF ⬇",
+                        data=_mp_lp_bytes,
+                        file_name=f"Aruvi_{_safe_t}_LP.pdf",
+                        mime="application/pdf",
+                        key=f"mp_lp_{_safe_fn}",
+                        type="primary",
+                    )
+                with _rc[5]:
+                    st.download_button(
+                        label="PDF ⬇",
+                        data=_mp_assess_bytes if _mp_assess_bytes else b"",
+                        file_name=f"Aruvi_{_safe_t}_Assessment.pdf",
+                        mime="application/pdf",
+                        key=f"mp_assess_{_safe_fn}",
+                        type="primary",
+                    )
+                st.markdown(
+                    '<hr style="margin:2px 0;border:none;border-top:0.5px solid #f0ede9;">',
+                    unsafe_allow_html=True,
+                )
 
 # ── Ask Aruvi FAB + Bottom Drawer ────────────────────────────────────────────
 CATEGORY_LABELS = {

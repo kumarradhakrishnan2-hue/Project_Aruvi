@@ -103,6 +103,8 @@ def make_styles():
        alignment=TA_CENTER, spaceBefore=4, spaceAfter=4, letterSpacing=1.5)
     # Footer
     st("footer",      fontName="Helvetica",      fontSize=5.5,  leading=8,  textColor=colors.HexColor("#bbbbbb"))
+    # Science stage header (centre-aligned, bold, same size as period_act)
+    st("sci_stage_hdr", fontName="Helvetica-Bold", fontSize=8.5, leading=12, textColor=INK, alignment=TA_CENTER)
     return s
 
 
@@ -453,9 +455,283 @@ def period_card(period_num, duration_min, activity_name, anchored_section,
 
 
 # ──────────────────────────────────────────────────────────────────────────────
+# Science-specific building blocks
+# ──────────────────────────────────────────────────────────────────────────────
+
+def _science_stage_summary(stages, uw):
+    """
+    Section 1 for Science PDFs.
+    Three-column table: Stage No. | Progression Stage | Description
+    One header row + one data row per progression stage.
+    """
+    col_ws = [uw * 0.12, uw * 0.25, uw * 0.63]
+    hdr = [
+        Paragraph("Stage No.",         ST["comp_hdr"]),
+        Paragraph("Progression Stage", ST["comp_hdr"]),
+        Paragraph("Description",       ST["comp_hdr"]),
+    ]
+    rows = [hdr]
+    for stage in stages:
+        rows.append([
+            Paragraph(_clean_text(str(stage.get("stage_number") or "—")), ST["comp_code"]),
+            Paragraph(_clean_text(str(stage.get("stage_label")  or "—")), ST["comp_text"]),
+            Paragraph(_clean_text(str(stage.get("description")  or "—")), ST["comp_text"]),
+        ])
+    t = Table(rows, colWidths=col_ws)
+    t.setStyle(TableStyle([
+        ("BOX",           (0, 0), (-1, -1), 0.5, HAIRLINE),
+        ("INNERGRID",     (0, 0), (-1, -1), 0.5, HAIRLINE),
+        ("BACKGROUND",    (0, 0), (-1,  0), BG_META),
+        ("BACKGROUND",    (0, 1), (-1, -1), colors.white),
+        ("VALIGN",        (0, 0), (-1, -1), "TOP"),
+        ("TOPPADDING",    (0, 0), (-1, -1), 4),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+        ("LEFTPADDING",   (0, 0), (-1, -1), 6),
+        ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+        ("LINEBELOW",     (0, 0), (-1, -2), 0.3, ROW_LINE),
+    ]))
+    return t
+
+
+def _science_period_block(period, uw):
+    """
+    Returns a list of flowables for one Science period block.
+
+    Row 1  — Period header  (Period | Time | Activity Name)
+    Row 2  — Materials      (single full-width cell, "Materials:" bold prefix)
+    Row 3  — Activity Desc  (single full-width cell, "Activity Description:" bold prefix)
+    Row 4+ — Phase rows     (Minutes | Activity), mirroring SS time_bands style
+    No LO row for Science.
+    """
+    story = []
+
+    period_num  = period.get("period_number") or "—"
+    duration    = period.get("period_duration_minutes") or "—"
+    act_title   = _clean_text(str(period.get("activity_title") or "—"))
+    materials   = period.get("materials") or ""
+    act_desc    = _clean_text(str(period.get("activity_description") or "—"))
+    phases      = period.get("phases") or []
+
+    # ── Row 1: Period header (same proportions / style as SS) ─────────────────
+    hdr_data = [[
+        Paragraph(f"<b>Period {period_num}</b>",  ST["period_lbl"]),
+        Paragraph(f"{duration} min",               ST["period_time"]),
+        Paragraph(f"<b>{act_title}</b>",           ST["period_act"]),
+    ]]
+    hdr_t = Table(hdr_data, colWidths=[uw * f for f in [0.13, 0.09, 0.78]])
+    hdr_t.setStyle(TableStyle([
+        ("BACKGROUND",    (0, 0), (-1, -1), BG_META),
+        ("LINEABOVE",     (0, 0), (-1, -1), 1.0, INK),
+        ("LINEBELOW",     (0, 0), (-1, -1), 0.5, HAIRLINE),
+        ("VALIGN",        (0, 0), (-1, -1), "MIDDLE"),
+        ("TOPPADDING",    (0, 0), (-1, -1), 6),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+        ("LEFTPADDING",   (0, 0), (-1, -1), 6),
+        ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+    ]))
+
+    # ── Row 2: Materials (single full-width cell, same bg/padding as SS mat) ──
+    mat_t = Table(
+        [[Paragraph(f"<b>Materials:</b> {_clean_text(str(materials))}", ST["mat_text"])]],
+        colWidths=[uw],
+    )
+    mat_t.setStyle(TableStyle([
+        ("BACKGROUND",    (0, 0), (-1, -1), colors.white),
+        ("LINEABOVE",     (0, 0), (-1,  0), 0.5, HAIRLINE),
+        ("LINEBELOW",     (0, 0), (-1, -1), 0.5, HAIRLINE),
+        ("VALIGN",        (0, 0), (-1, -1), "MIDDLE"),
+        ("TOPPADDING",    (0, 0), (-1, -1), 4),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+        ("LEFTPADDING",   (0, 0), (-1, -1), 8),
+        ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+    ]))
+
+    # Anchor: keep period header + materials together (mirrors SS anchor pattern)
+    story.append(KeepTogether([hdr_t, Spacer(1, 3), mat_t]))
+
+    # ── Row 3: Activity Description (same styling as Materials row) ───────────
+    act_t = Table(
+        [[Paragraph(f"<b>Activity Description:</b> {act_desc}", ST["mat_text"])]],
+        colWidths=[uw],
+    )
+    act_t.setStyle(TableStyle([
+        ("BACKGROUND",    (0, 0), (-1, -1), colors.white),
+        ("LINEABOVE",     (0, 0), (-1,  0), 0.5, HAIRLINE),
+        ("LINEBELOW",     (0, 0), (-1, -1), 0.5, HAIRLINE),
+        ("VALIGN",        (0, 0), (-1, -1), "MIDDLE"),
+        ("TOPPADDING",    (0, 0), (-1, -1), 4),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+        ("LEFTPADDING",   (0, 0), (-1, -1), 8),
+        ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+    ]))
+    story.append(act_t)
+
+    # ── Rows 4+: Phase rows (mirrors SS time_bands style) ────────────────────
+    if phases:
+        phase_rows = []
+        for ph in phases:
+            mins = _clean_text(str(ph.get("minutes") or "—"))
+            desc = _clean_text(str(ph.get("description") or "—"))
+            phase_rows.append([
+                Paragraph(mins, ST["tb_time"]),
+                Paragraph(desc, ST["tb_desc"]),
+            ])
+        phase_t = Table(phase_rows, colWidths=[uw * 0.10, uw * 0.90])
+        phase_t.setStyle(TableStyle([
+            ("BACKGROUND",    (0, 0), (-1, -1), colors.white),
+            ("VALIGN",        (0, 0), (-1, -1), "TOP"),
+            ("TOPPADDING",    (0, 0), (-1, -1), 4),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+            ("LEFTPADDING",   (0, 0), ( 0,  0), 8),
+            ("LEFTPADDING",   (1, 0), ( 1, -1), 6),
+            ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+            ("LINEBELOW",     (0, 0), (-1, -2), 0.3, ROW_LINE),
+            ("LINEBELOW",     (0,-1), (-1, -1), 0.5, HAIRLINE),
+        ]))
+        story.append(phase_t)
+
+    story.append(Spacer(1, 2 * mm))
+    return story
+
+
+def _science_stage_block(stage, uw):
+    """
+    Returns a list of flowables for one Science progression stage:
+      - a full-width, centre-aligned stage header row
+      - one period block per period in the stage
+    """
+    story = []
+
+    stage_num   = _clean_text(str(stage.get("stage_number") or "—"))
+    stage_label = _clean_text(str(stage.get("stage_label")  or "—"))
+
+    # Stage header: full-width, centre-aligned, BG_META shading + INK rule above
+    # (visually mirrors the SS competency table header)
+    stage_hdr_t = Table(
+        [[Paragraph(f"<b>Stage {stage_num}: {stage_label}</b>", ST["sci_stage_hdr"])]],
+        colWidths=[uw],
+    )
+    stage_hdr_t.setStyle(TableStyle([
+        ("BACKGROUND",    (0, 0), (-1, -1), BG_META),
+        ("LINEABOVE",     (0, 0), (-1, -1), 1.5, INK),
+        ("LINEBELOW",     (0, 0), (-1, -1), 0.5, HAIRLINE),
+        ("ALIGN",         (0, 0), (-1, -1), "CENTER"),
+        ("VALIGN",        (0, 0), (-1, -1), "MIDDLE"),
+        ("TOPPADDING",    (0, 0), (-1, -1), 7),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 7),
+        ("LEFTPADDING",   (0, 0), (-1, -1), 6),
+        ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+    ]))
+    story.append(stage_hdr_t)
+
+    for period in stage.get("periods") or []:
+        story.extend(_science_period_block(period, uw))
+
+    story.append(Spacer(1, 2 * mm))
+    return story
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Science main renderer  (called only when subject == "Science")
+# ──────────────────────────────────────────────────────────────────────────────
+
+def _build_science_lp(output_path, data):
+    """
+    Renders the Science LP PDF.
+    Reuses all page setup, header, colour constants, styles, and footer
+    logic from the SS path.  Only the story (content flowables) differs.
+    """
+    doc_meta = {
+        "doc_type":     "Lesson Plan",
+        "doc_sub":      f"Grade {data['grade']} · {data['subject']} · {data['date']}",
+        "footer_left":  (
+            f"Aruvi · Lesson Plan · Grade {data['grade']} · "
+            f"{data['subject']} · Ch {data['chapter_num']:02d}"
+        ),
+        "footer_right": "",   # blank on first pass; page numbers stamped in 2nd pass
+    }
+    doc = SimpleDocTemplate(
+        output_path, pagesize=A4,
+        leftMargin=L_MAR, rightMargin=R_MAR,
+        topMargin=T_MAR + 14 * mm,
+        bottomMargin=B_MAR + 8 * mm,
+    )
+    uw = PAGE_W - L_MAR - R_MAR
+
+    # Derived totals for meta strip
+    all_periods   = [p for s in data["progression_stages"] for p in s.get("periods") or []]
+    total_periods = len(all_periods)
+    total_time    = sum(
+        (p.get("period_duration_minutes") or 0) for p in all_periods
+    )
+
+    story = []
+
+    # Meta strip (shared helper — identical to SS)
+    story.append(meta_strip_full(
+        data["chapter_num"], data["chapter_title"], data["weight"],
+        total_periods, total_time, data["date"],
+    ))
+    story.append(Spacer(1, 3 * mm))
+
+    # Section 1 — Progression Stage Summary Table
+    story.append(_science_stage_summary(data["progression_stages"], uw))
+    story.append(Spacer(1, 4 * mm))
+
+    # Section 2 — Period blocks grouped by progression stage
+    for stage in data["progression_stages"]:
+        story.extend(_science_stage_block(stage, uw))
+
+    # Footnote
+    story.append(Paragraph(
+        "(1) Period plan designed per Aruvi Lesson Plan Constitution V1.2 "
+        "· NCF 2023 Middle Stage pedagogy principles applied throughout.",
+        ST["footer"],
+    ))
+
+    # ── Pass 1: build PDF without page numbers ────────────────────────────────
+    doc.build(
+        story,
+        onFirstPage=lambda c, d: on_page(c, d, doc_meta),
+        onLaterPages=lambda c, d: on_page(c, d, doc_meta),
+    )
+
+    # ── Pass 2: stamp "Page N of M" (identical logic to SS pass) ─────────────
+    reader = PdfReader(output_path)
+    total  = len(reader.pages)
+    writer = PdfWriter()
+    fy     = B_MAR - 4 * mm
+
+    for i, page in enumerate(reader.pages):
+        packet  = io.BytesIO()
+        stamp_c = rl_canvas.Canvas(packet, pagesize=A4)
+        stamp_c.setFont("Helvetica", 5.5)
+        stamp_c.setFillColor(colors.HexColor("#bbbbbb"))
+        stamp_c.drawRightString(
+            PAGE_W - R_MAR, fy + 1.2 * mm,
+            f"Page {i + 1} of {total}",
+        )
+        stamp_c.save()
+        packet.seek(0)
+        overlay = PdfReader(packet)
+        page.merge_page(overlay.pages[0])
+        writer.add_page(page)
+
+    with open(output_path, "wb") as out_f:
+        writer.write(out_f)
+
+    print(f"✓  {output_path}  ({total} page{'s' if total != 1 else ''})")
+
+
+# ──────────────────────────────────────────────────────────────────────────────
 # Main build
 # ──────────────────────────────────────────────────────────────────────────────
 def build_lp_pdf(output_path, data):
+    # ── Subject routing ───────────────────────────────────────────────────────
+    if data.get("subject") == "Science":
+        _build_science_lp(output_path, data)
+        return
+    # ── Social Science (and all other subjects) — unchanged below ─────────────
     doc_meta = {
         "doc_type":    "Lesson Plan",
         "doc_sub":     f"Grade {data['grade']} · {data['subject']} · {data['date']}",
@@ -545,9 +821,9 @@ def json_to_lp_data(j: dict) -> dict:
     date_str = dt.strftime("%-d %B %Y")
 
     # Weight: look up from the chapter_mappings JSON in knowledge_commons.
-    # Path pattern:  <project_root>/knowledge_commons/chapter_mappings_{subject_group}_{grade}.json
+    # Path pattern:  <project_root>/mirror/chapters/{subject_group}/{grade}/mappings/chapter_mappings_{subject_group}_{grade}.json
     # subject_group: "Social Science" → "social_sciences" etc. (mirrors app.py subject_to_folder)
-    # grade:         "Grade VII" → "grade_vii"
+    # grade:         "Grade VII" → "vii"  (roman-numeral folder name, matching mirror/ layout)
     _subject_map = {
         "Social Science":  "social_sciences",
         "Mathematics":     "mathematics",
@@ -556,11 +832,18 @@ def json_to_lp_data(j: dict) -> dict:
         "Second Language": "languages",
         "EVS":             "science",
     }
+    _grade_map = {
+        "Grade I":    "i",    "Grade II":   "ii",   "Grade III": "iii",
+        "Grade IV":   "iv",   "Grade V":    "v",    "Grade VI":  "vi",
+        "Grade VII":  "vii",  "Grade VIII": "viii",
+        "Grade IX":   "ix",   "Grade X":    "x",
+    }
     _subject_grp  = _subject_map.get(j.get("subject", ""), j.get("subject", "").lower().replace(" ", "_"))
-    _grade_folder = j.get("grade", "").lower().replace(" ", "_")   # "Grade VII" → "grade_vii"
+    _raw_grade    = j.get("grade", "")
+    _grade_folder = _grade_map.get(_raw_grade, _raw_grade.lower().replace("grade ", ""))  # "Grade VII" → "vii"
     _project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     _map_path     = os.path.join(
-        _project_root, "knowledge_commons",
+        _project_root, "mirror", "chapters", _subject_grp, _grade_folder, "mappings",
         f"chapter_mappings_{_subject_grp}_{_grade_folder}.json"
     )
     weight = "—"
@@ -573,6 +856,10 @@ def json_to_lp_data(j: dict) -> dict:
             weight = _entry.get("chapter_weight", "—")
     except Exception:
         pass   # file not found or malformed — fall back to "—"
+
+    # ── Subject routing: Science uses a different JSON structure ──────────────
+    if j.get("subject") == "Science":
+        return _json_to_science_lp_data(j, date_str, weight)
 
     # Collect unique competencies in order of first appearance
     seen = OrderedDict()
@@ -607,6 +894,86 @@ def json_to_lp_data(j: dict) -> dict:
         "weight":        weight,
         "competencies":  competencies,
         "periods":       periods,
+    }
+
+
+def _json_to_science_lp_data(j: dict, date_str: str, weight) -> dict:
+    """
+    Parse a Science LP JSON dict into the data dict consumed by
+    _build_science_lp().  Missing / null fields are replaced with "—".
+
+    Actual JSON layout
+    ------------------
+    result.lesson_plan.cognitive_progression  — list of stage summary dicts
+        {stage_number, stage_label, description}
+    result.lesson_plan.periods                — flat list of all periods
+        {period_number, period_duration_minutes, progression_stage (int),
+         activity_title, activity_description, materials (list), phases (list)}
+
+    We group the flat periods list by progression_stage to produce the nested
+    progression_stages structure expected by _build_science_lp().
+    """
+    lp = (j.get("result") or {}).get("lesson_plan") or {}
+
+    # ── Build stage summary rows from cognitive_progression ───────────────────
+    cog_stages = lp.get("cognitive_progression") or []
+    # Index by stage_number so we can attach periods later
+    stage_map = {}
+    for s in cog_stages:
+        sn = s.get("stage_number") or "—"
+        stage_map[sn] = {
+            "stage_number": sn,
+            "stage_label":  s.get("stage_label")  or "—",
+            "description":  s.get("description")  or "—",
+            "periods":      [],
+        }
+
+    # ── Parse flat periods list and bucket into their stage ───────────────────
+    for p in lp.get("periods") or []:
+        raw_mat = p.get("materials") or []
+        if isinstance(raw_mat, list):
+            mat_str = ", ".join(str(m) for m in raw_mat if m)
+        else:
+            mat_str = str(raw_mat) if raw_mat else ""
+
+        period_entry = {
+            "period_number":           p.get("period_number") or "—",
+            "period_duration_minutes": p.get("period_duration_minutes") or "—",
+            "activity_title":          p.get("activity_title") or "—",
+            "materials":               mat_str,
+            "activity_description":    p.get("activity_description") or "—",
+            "phases":                  p.get("phases") or [],
+        }
+
+        sn = p.get("progression_stage") or "—"
+        if sn in stage_map:
+            stage_map[sn]["periods"].append(period_entry)
+        else:
+            # Orphan period — create a stage entry on the fly
+            if sn not in stage_map:
+                stage_map[sn] = {
+                    "stage_number": sn,
+                    "stage_label":  p.get("stage_label") or "—",
+                    "description":  "—",
+                    "periods":      [],
+                }
+            stage_map[sn]["periods"].append(period_entry)
+
+    # ── Preserve stage order (cognitive_progression order, then any orphans) ──
+    ordered_keys = [s.get("stage_number") or "—" for s in cog_stages]
+    for k in stage_map:
+        if k not in ordered_keys:
+            ordered_keys.append(k)
+    progression_stages = [stage_map[k] for k in ordered_keys if k in stage_map]
+
+    return {
+        "chapter_num":        j["chapter_number"],
+        "chapter_title":      j["chapter_title"],
+        "grade":              str(j["grade"]).replace("Grade ", ""),
+        "subject":            j["subject"],
+        "date":               date_str,
+        "weight":             weight,
+        "progression_stages": progression_stages,
     }
 
 
