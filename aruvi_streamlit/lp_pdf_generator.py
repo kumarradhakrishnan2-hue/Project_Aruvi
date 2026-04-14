@@ -861,24 +861,57 @@ def json_to_lp_data(j: dict) -> dict:
     if j.get("subject") == "Science":
         return _json_to_science_lp_data(j, date_str, weight)
 
+    # ── Load canonical competency descriptions from framework JSON ────────────
+    # The AI-generated competency_text in each period is unreliable (it tends
+    # to paraphrase the mapping justification rather than use the canonical
+    # framework description).  Always prefer the lookup from comp_descs.
+    _stage_map = {
+        "i": "primary", "ii": "primary", "iii": "primary",
+        "iv": "primary", "v": "primary",
+        "vi": "middle",  "vii": "middle", "viii": "middle",
+        "ix": "secondary", "x": "secondary",
+    }
+    _stage_for_comp = _stage_map.get(_grade_folder, "middle")
+    _comp_desc_path = os.path.join(
+        _project_root, "mirror", "framework", _subject_grp, _stage_for_comp,
+        f"competency_descriptions_{_stage_for_comp}.json",
+    )
+    _comp_descs: dict = {}
+    try:
+        with open(_comp_desc_path, encoding="utf-8") as _f:
+            _raw = _json.load(_f)
+        # Two formats: flat {c_code: text} (SS/Lang) or nested {curricular_goals:[…]} (Science)
+        if "curricular_goals" in _raw:
+            for _cg in _raw["curricular_goals"]:
+                for _comp in _cg.get("competencies", []):
+                    _comp_descs[_comp.get("code", "")] = _comp.get("description", "")
+        else:
+            _comp_descs = _raw
+    except Exception:
+        pass  # fall back to AI-generated text if file missing
+
     # Collect unique competencies in order of first appearance
+    # Prefer canonical description from comp_descs; fall back to AI-generated text.
     seen = OrderedDict()
     for p in j["result"]["lesson_plan"]["periods"]:
         c = p["competency"]
-        if c["c_code"] not in seen:
-            seen[c["c_code"]] = c["competency_text"]
+        c_code = c["c_code"]
+        if c_code not in seen:
+            seen[c_code] = _comp_descs.get(c_code, "") or c.get("competency_text", "")
     competencies = list(seen.items())   # list of (c_code, text)
 
     # Build period list
     periods = []
     for p in j["result"]["lesson_plan"]["periods"]:
-        mat = p.get("material") or ""
+        # Support both old ("material") and new ("materials") field names
+        mat = p.get("material") or p.get("materials") or ""
         if isinstance(mat, list):
             mat = ", ".join(str(m) for m in mat)
         periods.append({
             "num":              p["period_number"],
             "duration":         p["period_duration_minutes"],
-            "activity_name":    p["activity_name"],
+            # Support both old ("activity_name") and new ("activity_title") field names
+            "activity_name":    p.get("activity_name") or p.get("activity_title", ""),
             "anchored_section": p["section_anchor"],
             "time_breakdown":   [(tb["minutes"], tb["activity"]) for tb in p["time_bands"]],
             "materials":        mat,

@@ -1,4 +1,4 @@
-ARUVI · CHAPTER ASSESSMENT CONSTITUTION · SOCIAL SCIENCES · VERSION 1.3
+ARUVI · CHAPTER ASSESSMENT CONSTITUTION · SOCIAL SCIENCES · VERSION 1.4
 
 INPUTS (given — do not retrieve or supplement):
 1. LO Handoff — for each period: period_number, period_duration_minutes, chapter_section, activity_summary, implied_lo, c_code, cg, weight
@@ -184,6 +184,11 @@ The system MUST populate every field on every item. Fields not applicable to a q
   "chapter_section":   string  — named chapter section this question draws from.
   "weight_label":      string  — MUST be one of: Central | Substantive | Present
                                   MUST NOT use weight integers (3, 2, 1).
+  "implied_lo":        string  — the implied LO text from the LO Handoff that this question
+                                  primarily tests. Where a question synthesises across multiple
+                                  implied LOs, use the dominant one; all period references are
+                                  captured in period_ref. MUST be copied verbatim from the
+                                  LO Handoff — the system MUST NOT paraphrase or rewrite it.
   "competency": {
     "c_code":          string  — competency code from the LO Handoff.
     "competency_text": string  — full competency statement from the LO Handoff.
@@ -205,14 +210,16 @@ The system MUST populate every field on every item. Fields not applicable to a q
 
 FIELD POPULATION RULES BY QUESTION TYPE:
 
-question_type | options      | expected_elements | look_for | task/scaffold/format_of_output | visual_stimulus | guide keys required
-MCQ           | Required (4) | []                | []       | ""/""/ []                      | ""              | what_each_option_reveals
-SCR           | []           | Required          | []       | ""/""/ []                      | ""              | expected_elements
-ECR           | []           | []                | Required | ""/""/ []                      | ""              | look_for
-OPEN_TASK     | []           | []                | []       | All three required             | if applicable   | all six open task fields
+question_type | options      | expected_elements | look_for | task/scaffold/format_of_output | visual_stimulus | implied_lo   | guide keys required
+MCQ           | Required (4) | []                | []       | ""/""/ []                      | ""              | Required     | what_each_option_reveals
+SCR           | []           | Required          | []       | ""/""/ []                      | ""              | Required     | expected_elements
+ECR           | []           | []                | Required | ""/""/ []                      | ""              | Required     | look_for
+OPEN_TASK     | []           | []                | []       | All three required             | if applicable   | Required     | all six open task fields
 
 PROHIBITION
 The system MUST NOT use question_type values outside {MCQ, SCR, ECR, OPEN_TASK}.
 The system MUST NOT omit any field from any item — use [] or "" for non-applicable fields.
+The system MUST NOT omit implied_lo from any item — it is required on all question types.
+The system MUST NOT paraphrase or rewrite the implied_lo — copy it verbatim from the LO Handoff.
 The system MUST NOT omit the guide block from any item.
 The system MUST NOT add fields not listed in this schema.

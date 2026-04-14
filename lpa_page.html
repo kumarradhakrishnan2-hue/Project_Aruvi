@@ -132,6 +132,27 @@
 .ss-comp-grp-body { display: none; border: 0.5px solid #4a4a4a; border-top: none; border-radius: 0 0 8px 8px; padding: 8px 8px 4px; }
 .ss-comp-grp-body.open { display: block; }
 
+/* ── Social Sciences LP: period header dark-gray palette (erstwhile comp-group hdr) ─ */
+.ss-period-card .period-header  { background: #787674; }
+.ss-period-card.open .period-header { background: #4a4a4a; }
+.ss-period-card .pnum  { background: rgba(255,255,255,0.18); color: #fff; }
+.ss-period-card.open .pnum { background: rgba(255,255,255,0.25); }
+.ss-period-card .pname { color: rgba(255,255,255,0.92); }
+.ss-period-card .pdur  { color: rgba(255,255,255,0.75); }
+.ss-period-card .ptag  { color: rgba(255,255,255,0.88); }
+.ss-period-card .pchev { color: rgba(255,255,255,0.6); }
+
+/* ── Social Sciences LP: competency info bar inside period body ─────────── */
+/* Uses the erstwhile period-header tan/beige palette.                       */
+.ss-comp-bar {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px;
+  padding: 8px 10px; background: #f5f3ef; border-radius: 6px;
+  margin-bottom: 10px;
+}
+.sscb-code   { font-size: 11px; font-weight: 600; color: #1a1917; white-space: nowrap; }
+.sscb-weight { font-size: 10px; color: #5a5754; white-space: nowrap; }
+.sscb-text   { font-size: 11px; color: #5a5754; line-height: 1.4; }
+
 /* ── Science LP: centre-align Pedagogical Approach column value ─────────── */
 .ptag-sc { font-size: 11px; font-weight: 400; color: #1a1917; width: 220px; flex-shrink: 0; white-space: normal; line-height: 1.4; text-align: center; }
 
@@ -423,10 +444,25 @@ function toggleP(id) {
 }
 
 function toggleQ(hdr) {
-  var body = hdr.closest('.qcard').querySelector('.qbody');
-  body.classList.toggle('open');
+  var card   = hdr.closest('.qcard');
+  var body   = card.querySelector('.qbody');
+  var isOpen = body.classList.contains('open');
+
+  /* Collapse all other question rows in the same section container */
+  var container = card.parentElement;
+  container.querySelectorAll('.qcard').forEach(function(c) {
+    if (c === card) return;
+    var b = c.querySelector('.qbody');
+    var v = c.querySelector('.qchev');
+    if (b) b.classList.remove('open');
+    if (v) v.style.transform = '';
+  });
+
+  /* Toggle the clicked row */
+  body.classList.toggle('open', !isOpen);
   var chev = hdr.querySelector('.qchev');
-  if (chev) chev.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : '';
+  if (chev) chev.style.transform = !isOpen ? 'rotate(180deg)' : '';
+
   reportHeight();
 }
 
@@ -749,10 +785,9 @@ function renderAssessment(sections) {
       if (sec.weight_label) codeAndWeight += ' · ' + escHtml(sec.weight_label);
 
       var metaLine = '';
-      if (sec.drawing_on)     metaLine += 'Drawing on ' + escHtml(sec.drawing_on);
       if (sec.question_types) {
         var expandedTypes = sec.question_types.split(' · ').map(expandType).join(' · ');
-        metaLine += (metaLine ? ' · ' : '') + escHtml(expandedTypes);
+        metaLine += escHtml(expandedTypes);
       }
 
       html += '<div class="asec-hdr' + ssOpenCls + '" id="' + ssId + '-hdr" ' +
@@ -796,18 +831,15 @@ function renderAssessment(sections) {
         html += '<div class="qhdr" onclick="toggleQ(this)">';
         html +=   '<div class="qhdr-num">' + qCounter + '</div>';
         html +=   '<div class="qhdr-type"><span class="qtype-lbl">' + typeLbl + '</span></div>';
-        /* ── Competency / Learning Outcome line in Question column ────────────
-           Science: uses q.implied_lo with label "Learning Outcome:"
-           Social Sciences: uses sec.competency_short with label "Competency:"
+        /* ── Implied Learning Outcome line in Question column ──────────────────
+           Both Science and Social Sciences now use q.implied_lo — the verbatim
+           implied LO text carried on each question item from the LO Handoff.
            Deduplication is global across all sections in render order:
              • first occurrence (or changed text): show full text
              • repeated text: show "same as above" in italics
            An empty value leaves the cell blank and does not update lastLO. */
-        /* SS: prefer competency_short; fall back to c_code so the cell is never blank */
-        var _qlo = isScience
-          ? (q.implied_lo || '').trim()
-          : (sec.competency_short || sec.c_code || '').trim();
-        var _qLabel = isScience ? 'Learning Outcome: ' : 'Implied learning outcome: ';
+        var _qlo = (q.implied_lo || '').trim();
+        var _qLabel = 'Implied learning outcome: ';
         var _loLine;
         if (!_qlo) {
           _loLine = '<div class="qhdr-lo"></div>';
@@ -1122,102 +1154,73 @@ function renderLPA() {
     });
 
   } else {
-    /* ── Social Sciences rendering path — competency-grouped collapsible rows ──
-       Periods sharing the same c_code are nested under a collapsible competency
-       group header (same gray palette as Science stage groups).
-       Accordion: one group open at a time via toggleSSComp().              */
+    /* ── Social Sciences rendering path — flat list with per-period competency bar ──
+       Competency group accordion removed; periods render as a flat list.
+       Each period body now opens with a competency info bar (tan/beige palette,
+       i.e. the old period-header colours), while the period header itself uses
+       the erstwhile competency-group-header dark-gray palette.              */
 
-    /* Group periods by c_code, preserving order of first appearance */
-    var compMap   = {};
-    var compOrder = [];
-    periods.forEach(function(p) {
-      var cKey = p.c_code || 'none';
-      if (!compMap[cKey]) { compMap[cKey] = []; compOrder.push(cKey); }
-      compMap[cKey].push(p);
-    });
+    /* Single column header row above all periods */
+    var hdrEl = document.createElement('div');
+    hdrEl.className = 'lp-col-hdr';
+    hdrEl.innerHTML =
+      '<div class="lpch-num">#</div>' +
+      '<div class="lpch-time">Time</div>' +
+      '<div class="lpch-name">Name of Activity</div>' +
+      '<div class="lpch-sec">Anchored Section</div>' +
+      '<div class="lpch-spc"></div>';
+    panel.appendChild(hdrEl);
 
-    compOrder.forEach(function(cKey, cIdx) {
-      var cPeriodsArr = compMap[cKey];
-      var firstP      = cPeriodsArr[0];
-      var wlbl        = WEIGHT_LABEL[firstP.weight] || '';
-      var compText    = firstP.competency_text || '';
-      var compId      = 'ss-comp-' + cIdx;
-      var ssGrpOpenCls = cIdx === 0 ? ' open' : '';  /* first group open by default */
+    periods.forEach(function(p, pIdx) {
+      var id    = 'p' + p.period_number;
+      var wlblP = WEIGHT_LABEL[p.weight] || '';
 
-      var grpEl       = document.createElement('div');
-      grpEl.className = 'ss-comp-group';
+      var _rawSection = (p.chapter_section || '')
+        .replace(/^Anchored to:\s*/i, '').replace(/^Activity:\s*/i, '').trim();
+      var sectionTag = _rawSection
+        ? '<div class="ptag">' + escHtml(_rawSection) + '</div>'
+        : '';
 
-      /* Competency group header bar — first group open by default */
-      var grpHtml =
-        '<div class="ss-comp-grp-hdr' + ssGrpOpenCls + '" id="' + compId + '-hdr" ' +
-              'onclick="toggleSSComp(\'' + compId + '\')">' +
-          '<div class="ssg-code">' + escHtml(cKey) + '</div>' +
-          '<div class="ssg-text">' + escHtml(compText) + '</div>' +
-          (wlbl ? '<div class="ssg-weight">' + escHtml(wlbl) + '</div>' : '') +
-          '<div class="ssg-chev">▼</div>' +
+      var _rawActivity = (p.activity_name || (p.activity_summary||'').split(',')[0].substring(0,60))
+        .replace(/^Anchored to:\s*/i, '').replace(/^Activity:\s*/i, '').trim();
+      var activityLabel = '<div class="pname">' + escHtml(_rawActivity) + '</div>';
+
+      var materialRow = p.material
+        ? '<div class="matrow"><div class="matlabel">Material</div><div class="mattext">' + escHtml(p.material) + '</div></div>'
+        : '';
+
+      var timeSlotsHtml = renderTimeSlots(p.time_slots || []);
+
+      var loBar =
+        '<div class="lobar"><div class="lolabel">Learning Outcome</div>' +
+        '<div class="lotext">' + escHtml(p.implied_lo) + '</div></div>';
+
+      /* Competency bar — top of pbody, styled with old period-header tan/beige palette */
+      var compBar =
+        '<div class="ss-comp-bar">' +
+          '<span class="sscb-code">' + escHtml(p.c_code || '') + '</span>' +
+          (wlblP ? '<span class="sscb-weight">(' + escHtml(wlblP) + ')</span>' : '') +
+          (p.competency_text ? '<span class="sscb-text">— ' + escHtml(p.competency_text) + '</span>' : '') +
+        '</div>';
+
+      var cardEl = document.createElement('div');
+      cardEl.className = 'period-card ss-period-card' + (pIdx === 0 ? ' open' : '');
+      cardEl.id = id;
+      cardEl.innerHTML =
+        '<div class="period-header" onclick="toggleP(\'' + id + '\')">' +
+          '<div class="pnum">Period ' + p.period_number + '</div>' +
+          '<div class="pdur">' + p.period_duration_minutes + ' min</div>' +
+          activityLabel +
+          sectionTag +
+          '<div class="pchev">▼</div>' +
         '</div>' +
-        /* Collapsible body — column header + period cards */
-        '<div class="ss-comp-grp-body' + ssGrpOpenCls + '" id="' + compId + '-body">' +
-          '<div class="lp-col-hdr">' +
-            '<div class="lpch-num">#</div>' +
-            '<div class="lpch-time">Time</div>' +
-            '<div class="lpch-name">Name of Activity</div>' +
-            '<div class="lpch-sec">Anchored Section</div>' +
-            '<div class="lpch-spc"></div>' +
-          '</div>';
-
-      /* Period cards inside this competency group */
-      cPeriodsArr.forEach(function(p) {
-        var id    = 'p' + p.period_number;
-        var wlblP = WEIGHT_LABEL[p.weight] || '';
-
-        var _rawSection = (p.chapter_section || '')
-          .replace(/^Anchored to:\s*/i, '').replace(/^Activity:\s*/i, '').trim();
-        var sectionTag = _rawSection
-          ? '<div class="ptag">' + escHtml(_rawSection) + '</div>'
-          : '';
-
-        var _rawActivity = (p.activity_name || (p.activity_summary||'').split(',')[0].substring(0,60))
-          .replace(/^Anchored to:\s*/i, '').replace(/^Activity:\s*/i, '').trim();
-        var activityLabel = '<div class="pname">' + escHtml(_rawActivity) + '</div>';
-
-        var materialRow = p.material
-          ? '<div class="matrow"><div class="matlabel">Material</div><div class="mattext">' + escHtml(p.material) + '</div></div>'
-          : '';
-
-        var timeSlotsHtml = renderTimeSlots(p.time_slots || []);
-
-        var loBar =
-          '<div class="lobar"><div class="lolabel">Learning Outcome</div>' +
-          '<div class="lotext">' + escHtml(p.implied_lo) + '</div></div>';
-
-        var competencyRow =
-          '<div class="clinkrow">' +
-          '<span class="clinkcode">Targeted competency: ' + escHtml(p.c_code) + ' (' + escHtml(wlblP) + ')</span>' +
-          (p.competency_text ? '<span class="clinktext"> — ' + escHtml(p.competency_text) + '</span>' : '') +
-          '</div>';
-
-        grpHtml +=
-          '<div class="period-card" id="' + id + '">' +
-            '<div class="period-header" onclick="toggleP(\'' + id + '\')">' +
-              '<div class="pnum">Period ' + p.period_number + '</div>' +
-              '<div class="pdur">' + p.period_duration_minutes + ' min</div>' +
-              activityLabel +
-              sectionTag +
-              '<div class="pchev">▼</div>' +
-            '</div>' +
-            '<div class="pbody">' +
-              materialRow +
-              timeSlotsHtml +
-              loBar +
-              competencyRow +
-            '</div>' +
-          '</div>';
-      });
-
-      grpHtml += '</div>';  /* close .ss-comp-grp-body */
-      grpEl.innerHTML = grpHtml;
-      panel.appendChild(grpEl);
+        '<div class="pbody">' +
+          compBar +
+          materialRow +
+          timeSlotsHtml +
+          loBar +
+        '</div>';
+      panel.appendChild(cardEl);
     });
   }
 

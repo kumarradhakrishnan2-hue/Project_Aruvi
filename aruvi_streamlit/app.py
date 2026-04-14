@@ -711,7 +711,7 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
 
         with client.messages.stream(
             model="claude-sonnet-4-6",
-            max_tokens=16000,
+            max_tokens=32000,
             system=system_prompt,
             messages=[{"role": "user", "content": user_prompt}],
         ) as stream:
@@ -866,7 +866,12 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
         out = []
         for p in lp["periods"]:
             # ── Science format detection ────────────────────────────────────
-            if p.get("activity_title") is not None or p.get("stage_label") is not None:
+            # Only use truly Science-specific fields (stage_label / progression_stage).
+            # activity_title is NOT a reliable Science signal — Social Sciences plans
+            # may also use that field name (e.g. ch_04 generated with activity_title
+            # instead of activity_name), which would wrongly set c_code="" and break
+            # competency-based collapsible grouping for Social Sciences.
+            if p.get("stage_label") is not None or p.get("progression_stage") is not None:
                 mat = p.get("materials", "")
                 if isinstance(mat, list):
                     mat = ", ".join(mat)
@@ -908,8 +913,9 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
                     {"time": tb.get("minutes", ""), "desc": tb.get("activity", "")}
                     for tb in (p.get("time_bands") or [])
                 ]
-                # material: list → comma-joined string
-                mat = p.get("material", "")
+                # material / materials (plural alias used by some generated plans)
+                # → comma-joined string
+                mat = p.get("material") if p.get("material") is not None else p.get("materials", "")
                 if isinstance(mat, list):
                     mat = ", ".join(mat)
                 c_code = comp.get("c_code", "")
@@ -917,8 +923,10 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
                     "period_number":           p.get("period_number"),
                     "period_duration_minutes": p.get("period_duration_minutes"),
                     "chapter_section":         p.get("section_anchor", ""),
-                    "activity_name":           p.get("activity_name", ""),
-                    "activity_summary":        p.get("activity_name", ""),
+                    # activity_name is the canonical SS field; activity_title is an
+                    # accepted alias used by some generated plans (e.g. ch_04).
+                    "activity_name":           p.get("activity_name") or p.get("activity_title", ""),
+                    "activity_summary":        p.get("activity_name") or p.get("activity_title", ""),
                     "time_slots":              time_slots,
                     "material":                mat,
                     "implied_lo":              p.get("implied_lo", ""),
@@ -938,7 +946,7 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
     return lo_list
 
 
-def _normalise_assessment_sections(result: dict) -> list:
+def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> list:
     """
     Return assessment_sections[] in the shape lpa_page.html renderAssessment() expects.
 
@@ -1043,10 +1051,15 @@ def _normalise_assessment_sections(result: dict) -> list:
                     except (TypeError, ValueError):
                         _wlabel = ""
 
-                # competency_text: prefer top-level; fall back to nested object fields
-                _ctext = (item.get("competency_text") or
-                          _comp.get("competency_text", "") or
-                          _comp.get("text", ""))
+                # competency_text: prefer canonical lookup from comp_descs (authoritative
+                # framework descriptions); fall back to AI-generated text only if the
+                # lookup misses (e.g. comp_descs not loaded).
+                _ctext = (
+                    (comp_descs.get(c_code, "") if comp_descs and c_code else "") or
+                    item.get("competency_text") or
+                    _comp.get("competency_text", "") or
+                    _comp.get("text", "")
+                )
                 _drawing_on = item.get("chapter_section", "")
 
             sections[_group_key] = {
@@ -1094,14 +1107,16 @@ def _normalise_assessment_sections(result: dict) -> list:
             "correct_answer":           item.get("correct_answer", ""),
             # Learning Outcome for Assessment Question column display.
             # Science: sourced from implied_lo_assessed on the item itself.
-            # Social Science: sourced from competency_text (top-level or nested),
-            #   same value used for the section header competency_short.
+            # Social Science: prefer canonical comp_descs lookup, same as competency_short.
             "implied_lo": (
                 item.get("implied_lo_assessed", "")
                 if _is_science else
-                (item.get("competency_text") or
-                 _comp.get("competency_text", "") or
-                 _comp.get("text", ""))
+                (
+                    (comp_descs.get(c_code, "") if comp_descs and c_code else "") or
+                    item.get("competency_text") or
+                    _comp.get("competency_text", "") or
+                    _comp.get("text", "")
+                )
             ),
         })
 
@@ -2845,6 +2860,7 @@ if "mp_viewing_plan"          not in st.session_state: st.session_state.mp_viewi
 if "period_rows"              not in st.session_state: st.session_state["period_rows"]            = []
 if "myplans_should_collapse"  not in st.session_state: st.session_state.myplans_should_collapse  = False
 if "show_save_prompt"         not in st.session_state: st.session_state.show_save_prompt         = False
+if "plan_already_saved"       not in st.session_state: st.session_state.plan_already_saved       = False
 
 has_chapter_data = len(chapters) > 0
 
@@ -3123,8 +3139,9 @@ section[data-testid="stSidebar"] div[class*="st-key-add_period_row"] button:hove
                 use_container_width=True,
                 key="teacher_gen",
             ):
-                st.session_state.lpa_generating = True
-                st.session_state.lpa_result     = None
+                st.session_state.lpa_generating    = True
+                st.session_state.lpa_result        = None
+                st.session_state.plan_already_saved = False
                 st.rerun()
 
         # ── Principal inputs ──────────────────────────────────────────────────────
@@ -3387,8 +3404,9 @@ div[class*="st-key-save_prompt_no"] button {
                             session     = st.session_state,
                             result      = result,
                         )
-                        st.session_state.show_save_prompt = False
-                        st.session_state.plan_just_saved  = True
+                        st.session_state.show_save_prompt  = False
+                        st.session_state.plan_just_saved   = True
+                        st.session_state.plan_already_saved = True
                         st.rerun()
                 with _sp_c2:
                     if st.button("No", key="save_prompt_no",
@@ -3396,8 +3414,9 @@ div[class*="st-key-save_prompt_no"] button {
                         st.session_state.show_save_prompt = False
                         st.rerun()
 
-        # ── Primary-style LP / Assessment / Save buttons ─────────────────────
-        # CSS: match Generate button colour scheme; orange for Save button
+        # ── Primary-style LP / Assessment / Save / Clear buttons ─────────────
+        # CSS: match Generate button colour scheme; orange for Save button;
+        #      primary-style (dark) for Clear button.
         st.markdown("""<style>
 div[data-testid="stDownloadButton"] button[kind="primary"] {
     font-size: 0.82rem !important;
@@ -3409,8 +3428,15 @@ div[class*="st-key-gen_save_bot"] button {
     border: none !important;
     font-size: 0.82rem !important;
 }
+div[class*="st-key-gen_clear_top"] button,
+div[class*="st-key-gen_clear_bot"] button {
+    background-color: #2c3e50 !important;
+    color: #ffffff !important;
+    border: none !important;
+    font-size: 0.82rem !important;
+}
 </style>""", unsafe_allow_html=True)
-        _pdl_c1, _pdl_c2, _pdl_c3, _pdl_spc = st.columns([1, 1, 1, 2])
+        _pdl_c1, _pdl_c2, _pdl_c3, _pdl_c4, _pdl_spc = st.columns([1, 1, 1, 1, 1])
         with _pdl_c1:
             try:
                 from lp_pdf_generator import build_lp_pdf_bytes as _blpb_gen
@@ -3461,10 +3487,12 @@ div[class*="st-key-gen_save_bot"] button {
                 use_container_width=True,
             )
         with _pdl_c3:
+            _already_saved = st.session_state.get("plan_already_saved", False)
             if st.button(
-                "Save to my plans",
+                "Saved ✓" if _already_saved else "Save to my plans",
                 key="gen_save_top",
                 use_container_width=True,
+                disabled=_already_saved,
             ):
                 save_plan(
                     grade       = _res_grade,
@@ -3474,7 +3502,20 @@ div[class*="st-key-gen_save_bot"] button {
                     session     = st.session_state,
                     result      = result,
                 )
-                st.session_state.plan_just_saved = True
+                st.session_state.plan_just_saved    = True
+                st.session_state.plan_already_saved = True
+                st.rerun()
+        with _pdl_c4:
+            if st.button(
+                "Clear",
+                key="gen_clear_top",
+                type="primary",
+                use_container_width=True,
+            ):
+                st.session_state.lpa_result         = None
+                st.session_state.show_save_prompt   = False
+                st.session_state.plan_already_saved = False
+                st.session_state.plan_just_saved    = False
                 st.rerun()
         st.markdown('<div style="height:0.5rem;"></div>', unsafe_allow_html=True)
 
@@ -3509,7 +3550,7 @@ div[class*="st-key-gen_save_bot"] button {
             _comp_descs = {}
 
         _lo_handoff          = _normalise_lo_handoff(result, _comp_descs)
-        _assessment_sections = _normalise_assessment_sections(result)
+        _assessment_sections = _normalise_assessment_sections(result, _comp_descs)
 
         _lpa_data = {
             "chapter_title":       _ch_data.get("chapter_title", ""),
@@ -3599,7 +3640,7 @@ div[class*="st-key-gen_save_bot"] button {
         components.html(_lpa_html, height=2200, scrolling=False)
 
         st.markdown('<div style="height:0.5rem;"></div>', unsafe_allow_html=True)
-        _bot_c1, _bot_c2, _bot_c3, _bot_spc = st.columns([1, 1, 1, 2])
+        _bot_c1, _bot_c2, _bot_c3, _bot_c4, _bot_spc = st.columns([1, 1, 1, 1, 1])
         with _bot_c1:
             try:
                 from lp_pdf_generator import build_lp_pdf_bytes as _blpb_bot
@@ -3650,10 +3691,12 @@ div[class*="st-key-gen_save_bot"] button {
                 use_container_width=True,
             )
         with _bot_c3:
+            _already_saved_bot = st.session_state.get("plan_already_saved", False)
             if st.button(
-                "Save to my plans",
+                "Saved ✓" if _already_saved_bot else "Save to my plans",
                 key="gen_save_bot",
                 use_container_width=True,
+                disabled=_already_saved_bot,
             ):
                 save_plan(
                     grade       = _res_grade,
@@ -3663,7 +3706,20 @@ div[class*="st-key-gen_save_bot"] button {
                     session     = st.session_state,
                     result      = result,
                 )
-                st.session_state.plan_just_saved = True
+                st.session_state.plan_just_saved    = True
+                st.session_state.plan_already_saved = True
+                st.rerun()
+        with _bot_c4:
+            if st.button(
+                "Clear",
+                key="gen_clear_bot",
+                type="primary",
+                use_container_width=True,
+            ):
+                st.session_state.lpa_result         = None
+                st.session_state.show_save_prompt   = False
+                st.session_state.plan_already_saved = False
+                st.session_state.plan_just_saved    = False
                 st.rerun()
         if st.session_state.get("plan_just_saved"):
             st.success("Saved — view it in My Plans.")
@@ -3825,7 +3881,7 @@ else:
 
         # ── Normalise to lpa_page.html-compatible shape (handles old + new JSON) ─
         _v_lo_handoff          = _normalise_lo_handoff(_vresult, _v_comp_descs)
-        _v_assessment_sections = _normalise_assessment_sections(_vresult)
+        _v_assessment_sections = _normalise_assessment_sections(_vresult, _v_comp_descs)
 
         # ── Render LPA HTML page ──────────────────────────────────────────────
         try:

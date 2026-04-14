@@ -1,7 +1,5 @@
 # Cowork Session — Competency Mapping
-# Applies to: Social Sciences · Languages · Mathematics
-# Does NOT apply to Science — Science competency fields are pre-authorised
-# separately and loaded via prompt_effort_index_science.md
+
 
 ## What this session does
 
@@ -63,28 +61,7 @@ Apply the subject-specific Competency Mapping Constitution exactly.
 The constitution is the governing document — all mapping decisions
 must follow its rules without exception.
 
-**For Social Sciences — key rules:**
-- Primary inquiry: what cognitive transformation does this chapter's
-  content inherently require?
-- Match to C-code via structural alignment — not keyword or semantic
-  matching
-- Weight 3: removal of competency dissolves the chapter's organising
-  purpose
-- Weight 2: dedicated architecturally distinct section or activity block
-- Weight 1: at least one structural element (exercise, guided question,
-  or task) organised around this competency
-- Incidental: competency surfaces in content but zero structural elements
-  are organised around it
-- Apply sub-discipline restriction (Rule 8) and tie-break (Rule 9)
 
-**For Languages — key rules:**
-- Primary inquiry: what specific language act is the student required
-  to perform?
-- Mapping proceeds from task structure, not thematic content
-- Explicit task instruction is the minimum evidence bar
-
-**For Mathematics and future subjects:**
-- Read and apply the constitution loaded in Step 1 exactly
 
 **Prohibited documents for all subjects:**
 Learning Outcomes, Pedagogy documents, Syllabus documents, Assessment
@@ -118,17 +95,8 @@ Write one JSON record per chapter to:
 }
 ```
 
----
 
-## Step 4 — Write the consolidated mappings file
-
-After all specified chapters are processed, merge all per-chapter
-mapping files into a single JSON array and write to:
-`mnt/data/mirror/chapters/{subject}/{grade}/mappings/chapter_mappings_{subject}_{grade}.json`
-
----
-
-## Step 5 — Print verification summary
+## Step 4 — Print verification summary
 
 After each chapter, print one confirmation line:
 

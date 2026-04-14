@@ -111,7 +111,7 @@ def resolve_paths(config_path: str, subject_group: str, grade: str,
     pedagogy_text_path = mirror_fw_base / ped_filename
 
     # ── Mirror chapter output directories ────────────────────────────────────
-    grade_dir = f"grade_{grade.lower()}"
+    grade_dir = grade.lower()
     mirror_summaries = (
         root / config["paths"]["mirror_summaries_dir"]
         / subject_group / grade_dir / "summaries"
