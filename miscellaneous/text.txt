@@ -24,6 +24,8 @@ bash run_mapping.sh --subject social_sciences --grade vii --chapters 1
 RUN LESSON PLAN AND ASSESSMENT
 run from the Streamlit UI by invoking generate_lpa()
 
+MARKDOWN filen(terminal)
+pandoc input.docx -o output.md
 
 
 BEGINNING OF CONVERSATION

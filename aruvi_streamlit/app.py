@@ -1107,16 +1107,11 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
             "correct_answer":           item.get("correct_answer", ""),
             # Learning Outcome for Assessment Question column display.
             # Science: sourced from implied_lo_assessed on the item itself.
-            # Social Science: prefer canonical comp_descs lookup, same as competency_short.
+            # Social Science: sourced from implied_lo on the item itself (not competency_text).
             "implied_lo": (
                 item.get("implied_lo_assessed", "")
                 if _is_science else
-                (
-                    (comp_descs.get(c_code, "") if comp_descs and c_code else "") or
-                    item.get("competency_text") or
-                    _comp.get("competency_text", "") or
-                    _comp.get("text", "")
-                )
+                item.get("implied_lo", "")
             ),
         })
 
@@ -3416,7 +3411,7 @@ div[class*="st-key-save_prompt_no"] button {
 
         # ── Primary-style LP / Assessment / Save / Clear buttons ─────────────
         # CSS: match Generate button colour scheme; orange for Save button;
-        #      primary-style (dark) for Clear button.
+        #      Clear uses Streamlit primary style (same as LP / Assessment).
         st.markdown("""<style>
 div[data-testid="stDownloadButton"] button[kind="primary"] {
     font-size: 0.82rem !important;
@@ -3424,13 +3419,6 @@ div[data-testid="stDownloadButton"] button[kind="primary"] {
 div[class*="st-key-gen_save_top"] button,
 div[class*="st-key-gen_save_bot"] button {
     background-color: #E87722 !important;
-    color: #ffffff !important;
-    border: none !important;
-    font-size: 0.82rem !important;
-}
-div[class*="st-key-gen_clear_top"] button,
-div[class*="st-key-gen_clear_bot"] button {
-    background-color: #2c3e50 !important;
     color: #ffffff !important;
     border: none !important;
     font-size: 0.82rem !important;
