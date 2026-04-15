@@ -1,0 +1,63 @@
+ARUVI
+Science Competency Mapping Constitution
+Knowledge Commons · Chapter-to-Competency Mapping · Version 2.0 · Middle Stage
+
+Subject group   : science
+Stages          : Middle Stage · Secondary Stage
+Task            : chapter_to_competency_mapping
+Fetch key       : competency_constitution_science
+Version         : 3.0 — supersedes Version 2.0
+Downstream      : lesson_plan_constitution_science · assessment_constitution_science
+
+
+================================================================================
+Competency mapping
+================================================================================
+
+Rule 1 | competency list — development method
+--------------------------------------------------------------------------------
+The competency assignment for each Grade VII Science chapter was determined by a two-step process applied to every chapter. 
+
+Step 1 -Chapter summary reading & CG identification
+
+Pass 1: Before consulting the CG document or any framework document, the system MUST read the chapter summary section by section. 
+
+Pass 2:  Open with the CG document. The single CG whose domain description matches the chapter's subject matter is selected. Selection is made from CG-level headings only; C-code definitions are not opened at this step. CG-6 through CG-9 are eligible only if no CG-1 through CG-5 domain matches — which applies only to orientation or epistemology chapters. The selected CG is locked. 
+
+Step 2 -C-code selection: only the C-codes under the locked CG are read. A maximum of two C-codes are selected — those whose definitions the chapter summary substantively addresses. A second C-code requires independent justification from a distinct strand of the chapter, not as a vehicle for the first. The dissolution test sentence is then written: "This chapter builds the student's ability to [verb] [object] by [cognitive mechanism]." co_central is set to true when two C-codes are selected. 
+
+
+
+================================================================================
+COMPETENCY MAPPING JSON SCHEMA — SCIENCE
+================================================================================
+
+{
+    "stage": "middle",
+    "subject": "science",
+    "grade": "vii",
+    "chapter_number": 5,
+    "chapter_title": "Changes Around Us — Physical and Chemical",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": true,
+    "primary": [
+      {
+        "cg": "CG-1",
+        "c_code": "C-1.2",
+        "justification": "The chapter's central domain is changes in matter ..."
+      },
+      {
+        "cg": "CG-1",
+        "c_code": "C-1.1",
+        "justification": "The chapter also develops classification of matter by observable characteristics as a supporting..."
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's...."
+}
+
+
+================================================================================
+Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
+Science Competency Mapping Constitution · Version 2.0 · Internal Document
+================================================================================

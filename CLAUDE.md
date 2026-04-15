@@ -66,8 +66,30 @@ The constitution-based generation approach is the IP — the subject constitutio
 - Framework text (CG \+ pedagogy): Science middle, Social Sciences middle
 
 ---
+## 5\. Steps involved
 
-## 5\. Main challenges
+For subjects: Social sciences
+
+Step 1 -  generate Chapter summary by running the chapter_summary.md cowork prompt
+
+Step 2 - map competencies by running the competency_mapping.md cowork prompt which populates the chapter mapping JSON with competencies and their weights. The allocate tab uses the weights to allocate time across the various chapters. 
+
+
+For subjects: science
+
+Step 1 - generate Chapter summary by running the chapter_summary.md cowork prompt
+
+Step 2 - Map central & co-central competency and efforts index by running the effort_index_science.md. The allocate tab uses the efforts index to allocate time across various chapters. 
+
+For Subjects: All
+
+Step 3 (run)
+3.1 Allocate tab - static data
+3.1 Generate tab - run specific chapters based on custom time period- output lesson plan, assessment both in html and pdf format
+3.2- My plans tab- static data that reproduces generate tab's lesson plan on saved basis.
+
+
+## 6\. Main challenges
 
 ### Token cost and economics
 
@@ -79,7 +101,7 @@ The mirror currently only covers Science VII and Social Sciences VII. Scaling to
 
 ---
 
-## 6\. Key architectural decisions (carry forward to every session)
+## 7\. Key architectural decisions (carry forward to every session)
 
 - **DYNAMIC project root**: `aruvi_config.json` uses `"project_root": "DYNAMIC"` — `config_resolver.py` derives the root from the config file's own location. Never hardcode paths in scripts.  
 - **Known issue**: `aruvi_streamlit/app.py` still has hardcoded `PROJECT_ROOT = Path("/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi")`. This must be fixed before any cloud deployment or multi-machine use.  
@@ -89,7 +111,7 @@ The mirror currently only covers Science VII and Social Sciences VII. Scaling to
 
 ---
 
-## 7\. Folder map (quick reference)
+## 8\. Folder map (quick reference)
 
 Project Aruvi/
 
