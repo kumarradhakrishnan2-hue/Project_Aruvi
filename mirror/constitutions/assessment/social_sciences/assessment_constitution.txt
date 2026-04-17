@@ -174,8 +174,8 @@ The system MUST populate every field on every item. Fields not applicable to a q
                                   Non-OPEN_TASK items MUST have scaffold: ""
   "format_of_output":  array   — OPEN_TASK only: list of strings describing expected output.
                                   Non-OPEN_TASK items MUST have format_of_output: []
-  "visual_stimulus":   string  — OPEN_TASK and data-based tasks: description of any provided
-                                  visual (map, table, source excerpt). All other items: ""
+  "visual_stimulus":   string  — actual pipe-delimited table data provided to the student;
+                                  null or "" if no visual required. MUST be real rows, not a description.
   "annotation":        string  — marking guidance for the teacher. Required on all items.
   "cognitive_demand":  string  — MUST be one of: Recall | Understanding | Application
                                   | Analysis | Evaluation
@@ -210,11 +210,21 @@ The system MUST populate every field on every item. Fields not applicable to a q
 
 FIELD POPULATION RULES BY QUESTION TYPE:
 
-question_type | options      | expected_elements | look_for | task/scaffold/format_of_output | visual_stimulus | implied_lo   | guide keys required
-MCQ           | Required (4) | []                | []       | ""/""/ []                      | ""              | Required     | what_each_option_reveals
-SCR           | []           | Required          | []       | ""/""/ []                      | ""              | Required     | expected_elements
-ECR           | []           | []                | Required | ""/""/ []                      | ""              | Required     | look_for
-OPEN_TASK     | []           | []                | []       | All three required             | if applicable   | Required     | all six open task fields
+CRITICAL — visual_stimulus rules (apply to ALL question types — MCQ, SCR, ECR, OPEN_TASK):
+
+VS-1 · When required: If a question requires the student to read a data table (e.g. source excerpt rendered as a table, results grid, comparison table), visual_stimulus MUST contain the actual table as pipe-delimited rows — one row per line, columns separated by |. The first row is the header.
+
+VS-2 · What goes in visual_stimulus: The actual table data — rows and columns. A prose description ("A table is provided with columns X, Y, Z") is prohibited.
+
+VS-3 · What goes in question_text / task / scaffold: A short reference phrase such as "Refer to the table provided." Do NOT embed or describe the table there.
+
+VS-4 · When null/empty is correct: visual_stimulus is "" only when the question genuinely requires no table or diagram. A question that says "the table below shows..." but sets visual_stimulus to "" is non-compliant.
+
+question_type | options      | expected_elements | look_for | task/scaffold/format_of_output | visual_stimulus              | implied_lo   | guide keys required
+MCQ           | Required (4) | []                | []       | ""/""/ []                      | pipe-table or ""             | Required     | what_each_option_reveals
+SCR           | []           | Required          | []       | ""/""/ []                      | pipe-table or ""             | Required     | expected_elements
+ECR           | []           | []                | Required | ""/""/ []                      | pipe-table or ""             | Required     | look_for
+OPEN_TASK     | []           | []                | []       | All three required             | pipe-table or "" if none     | Required     | all six open task fields
 
 PROHIBITION
 The system MUST NOT use question_type values outside {MCQ, SCR, ECR, OPEN_TASK}.
@@ -223,3 +233,4 @@ The system MUST NOT omit implied_lo from any item — it is required on all ques
 The system MUST NOT paraphrase or rewrite the implied_lo — copy it verbatim from the LO Handoff.
 The system MUST NOT omit the guide block from any item.
 The system MUST NOT add fields not listed in this schema.
+The system MUST NOT put a prose description of a table in visual_stimulus — it must be the actual pipe-delimited data.

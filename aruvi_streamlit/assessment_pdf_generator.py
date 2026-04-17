@@ -145,6 +145,112 @@ def _group_science(items):
 
 
 # ──────────────────────────────────────────────────────────────────────────────
+# Visual stimulus renderer
+# ──────────────────────────────────────────────────────────────────────────────
+def _render_visual_stimulus(vs_text: str, uw: float, story: list):
+    """
+    Renders a visual_stimulus string into story flowables.
+
+    Detection logic:
+    - If the text contains pipe characters (|) on more than one line, it is
+      treated as a pipe-delimited table and rendered as a ReportLab Table.
+    - Otherwise it is rendered as italic body text (plain description / caption).
+
+    The stimulus is always preceded by a light label "Visual stimulus:" and
+    enclosed in a light-grey box so it is visually distinct from question text.
+    """
+    vs = vs_text.strip()
+    lines = [ln.strip() for ln in vs.splitlines() if ln.strip()]
+
+    # Detect pipe-table: at least 2 lines, every line contains "|"
+    is_table = len(lines) >= 2 and all("|" in ln for ln in lines)
+
+    story.append(Spacer(1, 3))
+
+    if is_table:
+        # Parse rows: split on "|", strip each cell
+        rows = []
+        for ln in lines:
+            cells = [c.strip() for c in ln.split("|")]
+            # Remove leading/trailing empty cells caused by leading/trailing |
+            if cells and cells[0] == "":
+                cells = cells[1:]
+            if cells and cells[-1] == "":
+                cells = cells[:-1]
+            rows.append(cells)
+
+        # Normalise column count
+        max_cols = max(len(r) for r in rows)
+        for r in rows:
+            while len(r) < max_cols:
+                r.append("")
+
+        # Build cell paragraphs: first row bold (header), rest normal
+        para_rows = []
+        for ri, row in enumerate(rows):
+            style = ParagraphStyle(
+                "vs_hdr" if ri == 0 else "vs_cell",
+                fontName="Helvetica-Bold" if ri == 0 else "Helvetica",
+                fontSize=7.5, leading=11, textColor=INK,
+            )
+            para_rows.append([Paragraph(_clean_text(c), style) for c in row])
+
+        col_w = uw / max_cols
+        tbl = Table(para_rows, colWidths=[col_w] * max_cols)
+        tbl_style = [
+            ("BACKGROUND",    (0, 0), (-1,  0), BG_META),   # header row
+            ("BACKGROUND",    (0, 1), (-1, -1), colors.HexColor("#f9f9f9")),
+            ("BOX",           (0, 0), (-1, -1), 0.5, HAIRLINE),
+            ("INNERGRID",     (0, 0), (-1, -1), 0.3, HAIRLINE),
+            ("TOPPADDING",    (0, 0), (-1, -1), 3),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
+            ("LEFTPADDING",   (0, 0), (-1, -1), 5),
+            ("RIGHTPADDING",  (0, 0), (-1, -1), 5),
+            ("VALIGN",        (0, 0), (-1, -1), "MIDDLE"),
+        ]
+        tbl.setStyle(TableStyle(tbl_style))
+
+        # Wrap in a single-cell outer table for the grey background box + label
+        lbl_para = Paragraph("<b>Visual stimulus</b>", AST["q_meta"])
+        wrapper = Table(
+            [[lbl_para], [tbl]],
+            colWidths=[uw],
+        )
+        wrapper.setStyle(TableStyle([
+            ("BACKGROUND",    (0, 0), (-1, -1), colors.HexColor("#f5f5f5")),
+            ("BOX",           (0, 0), (-1, -1), 0.5, HAIRLINE),
+            ("TOPPADDING",    (0, 0), (-1, -1), 4),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+            ("LEFTPADDING",   (0, 0), (-1, -1), 6),
+            ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+            ("VALIGN",        (0, 0), (-1, -1), "TOP"),
+        ]))
+        story.append(wrapper)
+
+    else:
+        # Plain text / description — render in a light-grey box
+        lbl_para  = Paragraph("<b>Visual stimulus</b>", AST["q_meta"])
+        body_para = Paragraph(
+            _clean_text(vs),
+            ParagraphStyle("vs_plain", fontName="Helvetica-Oblique",
+                           fontSize=7.5, leading=11, textColor=MID),
+        )
+        box = Table([[lbl_para], [body_para]], colWidths=[uw])
+        box.setStyle(TableStyle([
+            ("BACKGROUND",    (0, 0), (-1, -1), colors.HexColor("#f5f5f5")),
+            ("BOX",           (0, 0), (-1, -1), 0.5, HAIRLINE),
+            ("TOPPADDING",    (0, 0), (-1, -1), 4),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+            ("LEFTPADDING",   (0, 0), (-1, -1), 6),
+            ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+            ("VALIGN",        (0, 0), (-1, -1), "TOP"),
+        ]))
+        story.append(box)
+
+    story.append(Spacer(1, 3))
+
+
+# ──────────────────────────────────────────────────────────────────────────────
 # Question block — returns a list of flowables for one assessment item
 # ──────────────────────────────────────────────────────────────────────────────
 def question_block(q_num, item, lo_text, uw, header_items=None):
@@ -204,15 +310,10 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
     # Single narrow KeepTogether: only meta_block + q_para prevents LO orphaning
     story.append(KeepTogether([meta_block, Spacer(1, 2), q_para]))
 
-    # ── Visual stimulus note ──────────────────────────────────────────────────
-    # Science items carry visual_stimulus; SS items do not — this is always a
-    # no-op for SS since .get() returns None and the branch is never entered.
-    visual = item.get("visual_stimulus") or ""
-    if visual:
-        story.append(Paragraph(
-            "<i>A visual stimulus is provided for this question.</i>",
-            AST["combo_note"],
-        ))
+    # ── Visual stimulus — render after question stem ──────────────────────────
+    vs = item.get("visual_stimulus")
+    if vs and isinstance(vs, str) and vs.strip():
+        _render_visual_stimulus(vs, uw, story)
 
     # ── MCQ options ───────────────────────────────────────────────────────────
     if qtype == "MCQ":
@@ -352,7 +453,9 @@ def build_assessment_pdf(output_path, data):
         # ── SS: sections grouped by question_type in fixed order ───────────────
         # This block is identical to the original code — do not modify.
         for qtype in TYPE_ORDER:
-            group = [it for it in items if it.get("question_type") == qtype]
+            # Normalise OPEN_TASK (uppercase) to open_task before matching
+            group = [it for it in items
+                     if (it.get("question_type") or "").replace("OPEN_TASK", "open_task") == qtype]
             if not group:
                 continue
 
@@ -363,13 +466,8 @@ def build_assessment_pdf(output_path, data):
             for idx, item in enumerate(group):
                 q_counter += 1
 
-                # Resolve implied LO from LP period(s)
-                lo_ref = item.get("guide", {}).get("learning_outcome", {})
-                if "periods" in lo_ref:
-                    lo_text = "Multiple periods"
-                else:
-                    pn = lo_ref.get("period")
-                    lo_text = lo_map.get(pn, "") if pn is not None else ""
+                # Resolve implied LO directly from the assessment item
+                lo_text = item.get("implied_lo", "")
 
                 # Fix 4: pass section header into first question of each group only
                 if idx == 0:
@@ -383,14 +481,6 @@ def build_assessment_pdf(output_path, data):
                 ))
 
             story.append(Spacer(1, 4 * mm))
-
-    # ── Footnote ──────────────────────────────────────────────────────────────
-    story.append(Paragraph(
-        "(1) Assessment designed per Aruvi Assessment Constitution V1.4 "
-        "\u00b7 Competency weight governs question distribution "
-        "\u00b7 One open task per assessment.",
-        ST["footer"],
-    ))
 
     # ── Pass 1: build PDF without page numbers ─────────────────────────────────
     doc.build(

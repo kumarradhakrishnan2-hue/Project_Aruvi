@@ -3,75 +3,26 @@
   "subject": "social_sciences",
   "grade": "vii",
   "chapter_number": 4,
-  "chapter_title": "New Beginnings: Cities and States",
+  "chapter_title": "The Age of Empires",
   "summary_path": "mirror/chapters/social_sciences/vii/summaries/ch_04_summary.txt",
   "primary": [
     {
       "cg": "CG-2",
       "c_code": "C-2.1",
       "weight": 3,
-      "justification": "C-2.1 is the organising spine of the entire chapter. Every named section — From First to Second Urbanisation, Janapadas and Mahājanapadas, Early Democratic Traditions, More Innovations, The Varṇa–Jāti System, and Developments Elsewhere in India — requires the student to explain and analyse a major historical change and its impact on society. Complete removal of C-2.1 structurally dissolves the chapter's fundamental organising purpose. As this is a History chapter, Weight 3 is correctly placed within the primary sub-discipline cluster."
+      "justification": "The chapter's primary structural activity is explaining and analysing the major historical change from the mahājanapadas era to the Mauryan Empire — and its profound impact on Indian society politically (imperial governance, Aśhoka's transformation to dhamma), economically (trade, guilds, coins), culturally (spread of Buddhism, Brahmi script), and socially. Every named section — Rise of Magadha, Nanda Dynasty, Arrival of Greeks, Mighty Mauryas, Aśhoka, Life in the Mauryan Period, Fragile Nature of Empires — addresses a dimension of this change or its societal impact. Remove this competency and the chapter's fundamental organising purpose dissolves. The chapter is firmly in the History sub-discipline."
     },
     {
       "cg": "CG-3",
       "c_code": "C-3.1",
       "weight": 2,
-      "justification": "Three architecturally distinct named sections develop this competency substantively: (a) 'More Innovations — iron metallurgy' is a dedicated subsection connecting iron technology to agricultural expansion and improved weaponry; (b) 'Coins and Trade' is a dedicated subsection connecting the emergence of coin-based commerce to the expansion of trade networks; (c) 'The Varṇa–Jāti System' is a dedicated section connecting urbanisation-driven social complexity to restructured occupational and family organisation. Together they satisfy Rule 5(b): the competency is developed substantively across multiple named sections with continuity evident across the chapter's organising logic."
-    },
-    {
-      "cg": "CG-4",
-      "c_code": "C-4.1",
-      "weight": 2,
-      "justification": "Two architecturally distinct named sections are dedicated to explaining political and social institutions: 'Early Democratic Traditions' is organised entirely around describing and interpreting the institutional structures of sabhā, samiti, rājā, and the gaṇa/sangha model; 'The Varṇa–Jāti System' is organised entirely around explaining the varṇa–jāti social institution, its composition, and its significance for Indian society. Each section could stand alone as a learning unit on social/political institutions, satisfying Rule 5(a)."
-    },
-    {
-      "cg": "CG-5",
-      "c_code": "C-5.1",
-      "weight": 2,
-      "justification": "'The Varṇa–Jāti System' is an architecturally distinct named section whose primary subject is the social system that produced inequality and discrimination. It explicitly analyses the evolution of this system from flexible early practice to rigid discrimination — compelling the student to identify and explain inequality. It constitutes a dedicated learning unit on social inequality, satisfying Rule 5(a)."
-    },
-    {
-      "cg": "CG-2",
-      "c_code": "C-2.2",
-      "weight": 1,
-      "justification": "'The Varṇa–Jāti System' section contains a named structural passage whose primary content requires recognising the continuity and persistence of the varṇa–jāti framework across centuries despite major social changes, including its survival and rigidification under British rule. The chapter's note that ancient capital cities 'continue to exist as living cities today' also surfaces continuity. These are named elements requiring a continuity-recognition operation but do not constitute a dedicated section organised around C-2.2 alone, satisfying Weight 1 under Rule 6."
-    },
-    {
-      "cg": "CG-4",
-      "c_code": "C-4.2",
-      "weight": 1,
-      "justification": "'Early Democratic Traditions' addresses how institutional structures (sabhā, sangha) constrained the rājā's authority and shaped governance actors' behaviour; 'The Varṇa–Jāti System' analyses how the institution shaped the occupational and social lives of communities. These elements require the student to assess institutional influence on individuals and groups. However, C-4.2 is co-developed within the same containers as C-4.1 rather than having architecturally independent structural elements, satisfying Weight 1 under Rule 6."
-    },
-    {
-      "cg": "CG-9",
-      "c_code": "C-9.1",
-      "weight": 1,
-      "justification": "'Coins and Trade' is a named subsection (under 'More Innovations') whose primary subject is the emergence of India's coin-based trade economy — explaining the commodity (coins), their role in facilitating commerce, and their circulation across inter-regional and cross-border trade networks. The section requires the student to explain key elements of trade and commerce and their societal impact. It constitutes a named structural element whose primary subject is trade/commerce, satisfying Weight 1 under Rule 6."
-    },
-    {
-      "cg": "CG-10",
-      "c_code": "C-10.1",
-      "weight": 1,
-      "justification": "'Early Democratic Traditions' contains a named structural passage that explicitly frames the gaṇa/sangha political systems of Vajji and Malla as 'among the earliest such systems in the world' — directly asserting India's contribution to global democratic traditions, which is the specific demand of C-10.1 in the Social Sciences curriculum. This named element requires the student to recognise India's historically significant contribution, satisfying Weight 1 under Rule 6."
+      "justification": "Two architecturally distinct named sections develop this competency substantively: (1) 'Trade, Trade Routes and Guilds' is a dedicated section analysing how guilds (śhrenīs) organised the nature of work — craftsmen, traders, and agriculturists forming self-governing bodies with shared resources, skills, and markets; (2) 'Life in the Mauryan Period' is a dedicated section describing changes in habitation (Pāṭaliputra as planned urban centre), the nature of work (agriculture, artisans, blacksmiths, potters, jewellers), and sociocultural achievements (art, architecture, edicts). Together these constitute substantive development of C-3.1 across multiple distinct named sections, satisfying Rule 5(b)."
     }
   ],
   "incidental": [
-    {
-      "cg": "CG-3",
-      "c_code": "C-3.2"
-    },
-    {
-      "cg": "CG-5",
-      "c_code": "C-5.2"
-    },
-    {
-      "cg": "CG-7",
-      "c_code": "C-7.1"
-    },
-    {
-      "cg": "CG-7",
-      "c_code": "C-7.3"
-    }
+    { "cg": "CG-3", "c_code": "C-3.2" },
+    { "cg": "CG-4", "c_code": "C-4.1" },
+    { "cg": "CG-10", "c_code": "C-10.1" }
   ],
-  "chapter_weight": 13
+  "chapter_weight": 8
 }

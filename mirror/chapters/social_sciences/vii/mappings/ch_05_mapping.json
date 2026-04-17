@@ -3,51 +3,26 @@
   "subject": "social_sciences",
   "grade": "vii",
   "chapter_number": 5,
-  "chapter_title": "The Rise of Empires",
+  "chapter_title": "New Beginnings: Cities and States",
+  "summary_path": "mirror/chapters/social_sciences/vii/summaries/ch_05_summary.txt",
   "primary": [
     {
       "cg": "CG-2",
       "c_code": "C-2.1",
       "weight": 3,
-      "justification": "The chapter's entire architecture — from 'The Rise of Magadha' through 'The Nanda Dynasty,' 'The Mighty Mauryas,' 'The King Who Chose Peace,' and 'The Fragile Nature of Empires' — is organised around explaining and analysing major political changes in ancient India and their historical, social, and cultural impacts; removing this competency dissolves the chapter's fundamental organising purpose."
+      "justification": "The chapter's entire architecture is organised around explaining and analysing the major historical change of India's Second Urbanisation — from post-Harappan rural life to the emergence of janapadas and mahājanapadas. Every named section (First to Second Urbanisation, Janapadas and Mahājanapadas, Capitals, Early Democratic Traditions, More Innovations, Varṇa–Jāti System, Developments Elsewhere in India) explains a dimension of this major change and its societal impact — on governance, technology, social organisation, trade, and culture. Remove this competency and the chapter dissolves. The chapter is firmly in the History sub-discipline."
     },
     {
       "cg": "CG-3",
       "c_code": "C-3.1",
       "weight": 2,
-      "justification": "Across 'The Rise of Magadha,' 'Features of an Empire,' and 'The Fragile Nature of Empires,' the chapter substantively analyses how geographic, agricultural, military, and administrative changes shaped early Indian society, developing this competency continuously across multiple named sections."
-    },
-    {
-      "cg": "CG-9",
-      "c_code": "C-9.1",
-      "weight": 2,
-      "justification": "The dedicated, architecturally distinct named section 'Trade, Trade Routes and Guilds' (including its subsection 'Guilds (Śhrenīs)') explains the key elements of ancient Indian trade — commodities, trade routes, and the institutional structure of guilds — in a unit that could stand alone as a learning block."
-    },
-    {
-      "cg": "CG-4",
-      "c_code": "C-4.1",
-      "weight": 1,
-      "justification": "The architecturally distinct subsection 'Kauṭilya's Concept of a Kingdom' organises student engagement around interpreting the saptānga political-institutional framework from the Arthaśhāstra, constituting a single designated structural element without sustained cross-section development."
+      "justification": "Two architecturally distinct named sections develop this competency substantively: (1) 'The Varṇa–Jāti System' is a dedicated section entirely organised around explaining how work organisation and social structure changed with increasing urbanisation — jāti as occupational community with skill transmission across generations, the varṇa framework, and evolution from flexibility to rigidity; (2) 'More Innovations' (iron metallurgy subsection) analyses how iron technology transformed the nature of agricultural work (iron ploughs) and warfare. These sections satisfy Rule 5(a) and 5(b) respectively: the Varṇa–Jāti section could stand alone as a learning unit on changes in the nature of work and sociocultural beliefs."
     }
   ],
   "incidental": [
-    {
-      "cg": "CG-1",
-      "c_code": "C-1.1"
-    },
-    {
-      "cg": "CG-10",
-      "c_code": "C-10.1"
-    },
-    {
-      "cg": "CG-7",
-      "c_code": "C-7.3"
-    },
-    {
-      "cg": "CG-3",
-      "c_code": "C-3.2"
-    }
+    { "cg": "CG-3", "c_code": "C-3.2" },
+    { "cg": "CG-4", "c_code": "C-4.1" },
+    { "cg": "CG-5", "c_code": "C-5.1" }
   ],
-  "chapter_weight": 8,
-  "summary_path": "mirror/chapters/middle/social_sciences/grade_vii/summaries/ch_05_summary.txt"
+  "chapter_weight": 8
 }

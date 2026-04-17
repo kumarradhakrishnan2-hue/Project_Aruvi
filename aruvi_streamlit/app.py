@@ -1104,6 +1104,7 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
                 or (item.get("guide") or {}).get(qtype.upper() if qtype else "MCQ", {}).get("inclusivity", "")
                 or ""
             ),
+            "visual_stimulus":          item.get("visual_stimulus", None),
             "correct_answer":           item.get("correct_answer", ""),
             # Learning Outcome for Assessment Question column display.
             # Science: sourced from implied_lo_assessed on the item itself.

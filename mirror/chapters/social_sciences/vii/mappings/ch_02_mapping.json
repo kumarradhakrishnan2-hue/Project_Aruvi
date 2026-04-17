@@ -3,39 +3,18 @@
   "subject": "social_sciences",
   "grade": "vii",
   "chapter_number": 2,
-  "chapter_title": "Understanding the Weather",
+  "chapter_title": "Weather and Weather Instruments",
+  "summary_path": "mirror/chapters/social_sciences/vii/summaries/ch_02_summary.txt",
   "primary": [
     {
       "cg": "CG-6",
       "c_code": "C-6.1",
       "weight": 3,
-      "justification": "The chapter's entire organizing purpose is to explain key natural phenomena — weather, its elements (temperature, precipitation, atmospheric pressure, wind, humidity), and how they are measured and predicted — which is precisely the structural demand of C-6.1; removing this competency dissolves the chapter entirely."
-    },
-    {
-      "cg": "CG-1",
-      "c_code": "C-1.2",
-      "weight": 2,
-      "justification": "The chapter constructs a dedicated, architecturally distinct section on Weather Instruments where students must engage with data representation and analysis (e.g., calculating mean daily temperature, reading rain gauge scales, interpreting barometer readings), constituting a substantive, standalone learning unit built around data analysis."
-    },
-    {
-      "cg": "CG-1",
-      "c_code": "C-1.1",
-      "weight": 2,
-      "justification": "The chapter deliberately develops the skill of collecting and interpreting multiple information sources across both traditional observational knowledge (animal behaviour, natural signs) and modern meteorological instruments and IMD warning systems, with this continuity of interpretive activity evident across multiple named sections."
-    },
-    {
-      "cg": "CG-6",
-      "c_code": "C-6.4",
-      "weight": 1,
-      "justification": "The Weather Instruments and Predicting the Weather sections contain a designated passage correlating weather elements (wind, rainfall, temperature) with livelihoods of pilots, sailors, farmers, and fishermen, requiring the student to perform a cognitive operation on the livelihood-weather relationship, though this does not constitute a dedicated section."
+      "justification": "The chapter's entire architecture is the systematic explanation of weather — its five elements (temperature, precipitation, atmospheric pressure, wind, humidity), the instruments that measure each, and how meteorologists predict it. Weather is explicitly named as a 'key natural phenomenon' in C-6.1. Remove this competency and the chapter dissolves entirely. The chapter title directly names weather and weather instruments as its sole subject."
     }
   ],
   "incidental": [
-    {
-      "cg": "CG-6",
-      "c_code": "C-6.3"
-    }
+    { "cg": "CG-1", "c_code": "C-1.2" }
   ],
-  "chapter_weight": 8,
-  "summary_path": "mirror/chapters/social_sciences/grade_vii/summaries/ch_02_summary.txt"
+  "chapter_weight": 4
 }

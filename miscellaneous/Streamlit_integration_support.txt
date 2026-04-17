@@ -1,0 +1,92 @@
+import streamlit as st
+import anthropic
+
+client = anthropic.Anthropic()  # uses ANTHROPIC_API_KEY env var
+
+AGENT_ID = "agent_011Ca6z4gAUB897Nr3xfHNiT"
+ENVIRONMENT_ID = "env_01L8dPr1NDwDzkiDXWPpn8YE"
+KB_FILE_ID = "your_file_id_here"  # your uploaded FAQ/KB file
+
+BETAS = ["managed-agents-2026-04-01"]
+
+def create_session():
+    """Create a new session with the KB file mounted."""
+    return client.beta.sessions.create(
+        agent=AGENT_ID,
+        environment_id=ENVIRONMENT_ID,
+        resources=[{
+            "type": "file",
+            "file_id": KB_FILE_ID,
+            "mount_path": "/workspace/knowledge_base.txt"  # adjust extension as needed
+        }],
+        betas=BETAS,
+    )
+
+def send_and_stream(session_id, user_text):
+    """Send a message and collect the agent's response."""
+    # Send the user message
+    client.beta.sessions.events.send(
+        session_id=session_id,
+        events=[{
+            "type": "user.message",
+            "content": [{"type": "text", "text": user_text}]
+        }],
+        betas=BETAS,
+    )
+
+    # Stream events and collect agent messages
+    response_parts = []
+    with client.beta.sessions.events.stream(
+        session_id=session_id, betas=BETAS
+    ) as stream:
+        for event in stream:
+            if event.type == "agent.message":
+                for block in event.content:
+                    if block.type == "text":
+                        response_parts.append(block.text)
+            elif event.type == "session.status_idle":
+                break  # agent is done
+
+    return "".join(response_parts)
+
+
+# --- Streamlit UI ---
+
+st.title("📚 EdTech Support")
+st.caption("Ask about our lesson plan & assessment generator, or leave feedback!")
+
+# Initialize session state
+if "session_id" not in st.session_state:
+    with st.spinner("Starting support session..."):
+        session = create_session()
+        st.session_state.session_id = session.id
+        st.session_state.messages = []
+
+# Display chat history
+for msg in st.session_state.messages:
+    with st.chat_message(msg["role"]):
+        st.markdown(msg["content"])
+
+# Chat input
+if user_input := st.chat_input("Ask a question or leave feedback..."):
+    # Show user message
+    st.session_state.messages.append({"role": "user", "content": user_input})
+    with st.chat_message("user"):
+        st.markdown(user_input)
+
+    # Get agent response
+    with st.chat_message("assistant"):
+        with st.spinner("Looking into that..."):
+            response = send_and_stream(
+                st.session_state.session_id, user_input
+            )
+            st.markdown(response)
+    st.session_state.messages.append({"role": "assistant", "content": response})
+
+# Sidebar: reset conversation
+if st.sidebar.button("🔄 New Conversation"):
+    with st.spinner("Starting fresh..."):
+        session = create_session()
+        st.session_state.session_id = session.id
+        st.session_state.messages = []
+    st.rerun()

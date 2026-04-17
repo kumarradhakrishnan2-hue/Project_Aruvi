@@ -91,13 +91,11 @@ Step 3 (run)
 
 ## 6\. Main challenges
 
-### Token cost and economics
+### Token cost and economics, time taken
 
 API costs are non-trivial at scale. Run costs per chapter is as high as Rs. 23 against original expectation of Rs. 8\.  The mitigation strategy is aggressive caching (map once, reuse forever) — the mirror architecture exists for this reason. At SaaS scale, the vector store \+ centralised cache is the path to acceptable unit economics.
 
-### Content coverage gaps
-
-The mirror currently only covers Science VII and Social Sciences VII. Scaling to all subjects (Mathematics, Languages, Science, Social Sciences) across all grades (III–X) is a large content and compute effort. Mathematics and Languages constitutions exist but mappings have not been run yet. Those subjects’ organizing principle may determine whether we can apply either social science or science approach or something completely different.
+The lesson plan and assessment generation is taking about 5 minutes. We need to continously explore ways to reduce the time.
 
 ---
 
@@ -156,3 +154,6 @@ Project Aruvi/
 ├── Aruvi skills/                      ← Cowork skills for this project
 
 └── cowork prompts/                    ← standing prompts for common tasks  
+
+## 9\. Must read files
+Once you finish reading Claude.MD, also read MEMORY.md and TASK.md to update status, track progress, check deviations from the path and update learnings.

@@ -3,41 +3,26 @@
   "subject": "social_sciences",
   "grade": "vii",
   "chapter_number": 12,
-  "chapter_title": "Understanding Markets",
+  "chapter_title": "Markets",
+  "summary_path": "mirror/chapters/social_sciences/vii/summaries/ch_12_summary.txt",
   "primary": [
     {
       "cg": "CG-9",
       "c_code": "C-9.1",
       "weight": 3,
-      "justification": "The chapter's entire organising purpose is to explain the key elements of trade and commerce — markets, prices, buyers, sellers, wholesale and retail channels, domestic and international trade — making C-9.1 the structural core whose removal dissolves the chapter."
+      "justification": "The chapter's entire architecture is organised around how markets function as the mechanism through which commodity production, trade, and commerce reach consumers — explaining price determination, market types (physical/online, domestic/international), the supply chain (wholesale → retail), the government's regulatory role, and consumer quality assessment. Every named section develops the student's understanding of trade and commerce elements (commodity, production, consumption, capital) and their impact on individual and societal life. Remove this competency and the chapter has no organising purpose. Economics sub-discipline."
     },
     {
       "cg": "CG-4",
       "c_code": "C-4.1",
       "weight": 2,
-      "justification": "The chapter constructs a dedicated architecturally distinct section ('Government's Role in the Market') that systematically collects and interprets information about how government institutions function as regulators, price controllers, quality enforcers, and public-goods providers, constituting a stand-alone learning unit."
-    },
-    {
-      "cg": "CG-4",
-      "c_code": "C-4.2",
-      "weight": 2,
-      "justification": "The chapter devotes a named section to assessing the influence of political and social institutions (government price controls, MSP, minimum wages, quality standards, Ima Keithal as social institution) on market life, developed substantively across multiple subsections."
+      "justification": "The section 'Government's Role in the Market' is a dedicated, architecturally distinct section organised entirely around how the government as a political institution regulates markets through four distinct mechanisms: (1) price controls (maximum/minimum prices, minimum wages), (2) quality and safety standards (FSSAI, ISI, BIS approvals), (3) mitigating external effects (pollution regulation), and (4) provision of public goods (parks, roads, policing). The section also grounds this regulatory role in India's ancient tradition via Kauṭilya's Arthaśhāstra. This section could stand alone as a learning unit on how political institutions function in the economic sphere. Rule 5(a) satisfied."
     }
   ],
   "incidental": [
-    {
-      "cg": "CG-2",
-      "c_code": "C-2.2"
-    },
-    {
-      "cg": "CG-7",
-      "c_code": "C-7.1"
-    },
-    {
-      "cg": "CG-6",
-      "c_code": "C-6.4"
-    }
+    { "cg": "CG-4", "c_code": "C-4.2" },
+    { "cg": "CG-6", "c_code": "C-6.2" },
+    { "cg": "CG-10", "c_code": "C-10.1" }
   ],
-  "chapter_weight": 7,
-  "summary_path": "mirror/chapters/middle/social_sciences/grade_vii/summaries/ch_12_summary.txt"
+  "chapter_weight": 8
 }

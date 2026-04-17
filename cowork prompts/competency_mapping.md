@@ -36,7 +36,7 @@ All chapters    : map all chapters for this subject and grade
 | Curricular Goals | mnt/data/mirror/framework/{subject}/{stage}/cg_{stage}_{subject}.txt |
 | Constitution | mnt/data/mirror/constitutions/competency_mapping/{subject}/mapping_constitution_{subject}.txt |
 | Mapping output (per chapter) | mnt/data/mirror/chapters/{subject}/{grade}/mappings/ch_NN_mapping.json |
-| Consolidated output | mnt/data/mirror/chapters/{subject}/{grade}/mappings/chapter_mappings_{subject}_{grade}.json |
+
 
 ---
 

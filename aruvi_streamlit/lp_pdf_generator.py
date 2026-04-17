@@ -674,6 +674,11 @@ def _build_science_lp(output_path, data):
     ))
     story.append(Spacer(1, 3 * mm))
 
+    # Competency table — c_code + canonical description, sourced from chapter mapping
+    if data.get("competencies"):
+        story.append(competency_table(data["competencies"]))
+        story.append(Spacer(1, 4 * mm))
+
     # Section 1 — Progression Stage Summary Table
     story.append(_science_stage_summary(data["progression_stages"], uw))
     story.append(Spacer(1, 4 * mm))
@@ -946,7 +951,66 @@ def _json_to_science_lp_data(j: dict, date_str: str, weight) -> dict:
     We group the flat periods list by progression_stage to produce the nested
     progression_stages structure expected by _build_science_lp().
     """
+    import json as _json
+
     lp = (j.get("result") or {}).get("lesson_plan") or {}
+
+    # ── Load competencies from chapter mapping + framework description files ──
+    _subject_map = {
+        "Science": "science", "EVS": "science",
+    }
+    _grade_map = {
+        "Grade I":    "i",    "Grade II":   "ii",   "Grade III": "iii",
+        "Grade IV":   "iv",   "Grade V":    "v",    "Grade VI":  "vi",
+        "Grade VII":  "vii",  "Grade VIII": "viii",
+        "Grade IX":   "ix",   "Grade X":    "x",
+    }
+    _stage_map = {
+        "i": "primary", "ii": "primary", "iii": "primary",
+        "iv": "primary", "v": "primary",
+        "vi": "middle",  "vii": "middle", "viii": "middle",
+        "ix": "secondary", "x": "secondary",
+    }
+    _project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    _subject_grp  = _subject_map.get(j.get("subject", ""), "science")
+    _raw_grade    = j.get("grade", "")
+    _grade_folder = _grade_map.get(_raw_grade, _raw_grade.lower().replace("grade ", ""))
+    _stage        = _stage_map.get(_grade_folder, "middle")
+    _ch_num       = j.get("chapter_number", 0)
+
+    # Step 1 — read the per-chapter mapping JSON for c_codes
+    _ch_map_path = os.path.join(
+        _project_root, "mirror", "chapters", _subject_grp, _grade_folder, "mappings",
+        f"ch_{_ch_num:02d}_mapping.json",
+    )
+    _c_codes = []
+    try:
+        _ch_map = _json.load(open(_ch_map_path, encoding="utf-8"))
+        for entry in _ch_map.get("primary") or []:
+            code = entry.get("c_code", "")
+            if code and code not in _c_codes:
+                _c_codes.append(code)
+    except Exception:
+        pass
+
+    # Step 2 — read competency descriptions and build lookup dict
+    _comp_desc_path = os.path.join(
+        _project_root, "mirror", "framework", _subject_grp, _stage,
+        f"competency_descriptions_{_stage}.json",
+    )
+    _comp_descs: dict = {}
+    try:
+        _raw = _json.load(open(_comp_desc_path, encoding="utf-8"))
+        if "curricular_goals" in _raw:
+            for _cg in _raw["curricular_goals"]:
+                for _comp in _cg.get("competencies", []):
+                    _comp_descs[_comp.get("code", "")] = _comp.get("description", "")
+        else:
+            _comp_descs = _raw
+    except Exception:
+        pass
+
+    competencies = [(code, _comp_descs.get(code, "")) for code in _c_codes]
 
     # ── Build stage summary rows from cognitive_progression ───────────────────
     cog_stages = lp.get("cognitive_progression") or []
@@ -1006,6 +1070,7 @@ def _json_to_science_lp_data(j: dict, date_str: str, weight) -> dict:
         "subject":            j["subject"],
         "date":               date_str,
         "weight":             weight,
+        "competencies":       competencies,
         "progression_stages": progression_stages,
     }
 

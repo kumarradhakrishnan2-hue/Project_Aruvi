@@ -16,4 +16,99 @@ The overall design process involved the Aruvi team (to be called “Team”) and
 
 5. Cost and time : Token cost per chapter has ballooned from AI's projection of Rs. 8 per run to Rs. 23 now! The time taken to complete a plan now is 5 minutes against original time of less than 2 minutes due largely to significant number of periods for each chapter being suggested by allocate tab. The learning is that one must keep in mind the cost and time implications as we develop the project further.
 
+---
+
+## Structured Learnings — Post April 2026 Run
+*Format: Context → Observation → Root cause → Action taken → Carry-forward rule*
+
+---
+
+[Learning #6] — 2026-04-17 — Science PDF / Output Truncation
+
+Context: Generating a lesson plan and assessment for Science Ch 02 (Acids, Bases & Neutralisation) with only 1 period scheduled.
+Observation: The saved JSON had empty `lesson_plan: {}` and `assessment_items: []` despite the API call succeeding and charging ₹23.17.
+Root cause: `max_tokens` was hardcoded at 16,000. The Science assessment constitution generates rich guide blocks (what_each_option_reveals, inclusivity, look_for per item) which can exceed 16,000 tokens even for a single-period chapter. The response was truncated mid-JSON, causing a JSONDecodeError that silently set the result to empty.
+Action taken: Raised `max_tokens` from 16,000 → 32,000 in `app.py`. No beta header needed for claude-sonnet-4-6 as extended output is natively supported.
+Carry-forward rule: If a Generate run returns empty lesson_plan or empty assessment_items, always check token_log.csv first — if output_tokens equals max_tokens, it is a truncation, not a generation failure. The fix is raising the ceiling, not re-running with different inputs.
+
+---
+
+[Learning #7] — 2026-04-17 — Directory Rename Cascade Risk
+
+Context: The `mirror/chapters/science/` directory was renamed from `grade_vii` → `vii` to align with the Social Sciences convention.
+Observation: The app.py `grade_to_folder()` function was updated correctly, but `config_resolver.py` line 114 still used `f"grade_{grade.lower()}"`. This means the mapping pipeline scripts (run_mapping.sh) pointed to a non-existent folder path.
+Root cause: The rename was applied in one file but not propagated to all consumers of that path. config_resolver.py serves the mapping scripts; app.py serves the runtime app — they are separate consumers.
+Action taken: Updated `config_resolver.py` to use `grade.lower()` (not `f"grade_{grade.lower()}"`).
+Carry-forward rule: Any folder/path rename must be grepped across the entire codebase before declaring done. At minimum check: app.py, config_resolver.py, and any shell scripts. Use `grep -r "old_path_fragment"` before closing a rename task.
+
+---
+
+[Learning #8] — 2026-04-17 — SS Assessment Open Task Silently Dropped
+
+Context: Social Sciences assessment PDF was missing the open task entirely. Science PDF showed it correctly.
+Observation: The `TYPE_ORDER` list in the PDF generator used lowercase `"open_task"` but SS JSON items stored `question_type` as `"OPEN_TASK"` (uppercase). The grouping filter ran before any normalisation, so SS open tasks never matched and were silently skipped — no error, no warning.
+Root cause: Case mismatch between the constant list and the data value. Science worked because its grouping function (`_group_science`) normalised case internally; SS grouping did not.
+Action taken: Added `.lower()` normalisation in the SS grouping filter before comparing against TYPE_ORDER.
+Carry-forward rule: When a question type or enum value is missing from PDF/HTML output with no error, always check for case mismatch first. Always normalise to lowercase before comparing against TYPE_ORDER or equivalent enum lists.
+
+---
+
+[Learning #9] — 2026-04-17 — SS Assessment LO Text Showing Wrong Field
+
+Context: Social Sciences assessment HTML was displaying the competency description text (e.g. "Analyses the effect of various changes...") in the Learning Outcome row of each question, instead of the specific implied learning outcome for that question.
+Observation: In `app.py`, `_normalise_assessment_sections` built the `implied_lo` field for SS question objects from `competency_text` (the canonical competency description), not from `item["implied_lo"]` (the per-question LO). Science correctly used `implied_lo_assessed` directly.
+Root cause: When the SS path was originally written, `competency_text` was used as a proxy for LO. Once the assessment constitution began generating a distinct `implied_lo` per question, the proxy became wrong but was never updated.
+Action taken: Changed the SS path in `_normalise_assessment_sections` to read `item.get("implied_lo", "")` directly, mirroring the Science approach.
+Carry-forward rule: The `implied_lo` field on assessment items is the per-question learning outcome. The `competency_text` in the competency block is the NCF competency description — these are two different things. Never substitute one for the other in display code.
+
+---
+
+[Learning #10] — 2026-04-17 — Cowork Session Context Does Not Persist Automatically
+
+Context: First session to set up CLAUDE.md, MEMORY.md, and TASK.md for the project.
+Observation: A new Cowork session starts completely cold — no memory of prior sessions unless CLAUDE.md (and files it references) exists in the project folder and is read at session start. The `.claude/projects/.../memory/` folder existed but was empty.
+Root cause: Cowork does not auto-populate memory. The CLAUDE.md instruction to also read MEMORY.md and TASK.md only works if those files exist in the project root.
+Action taken: Created CLAUDE.md, MEMORY.md, and TASK.md in the project root. CLAUDE.md instructs the session to read all three at start.
+Carry-forward rule: At the end of any session where significant work was done, update CLAUDE.md progress section and append new learnings to MEMORY.md. This is the only way context carries forward. Do not assume prior session knowledge.
+
+---
+
+[Learning #11] — 2026-04-17 — Competency Mapping: Constitutions Must Be Read Before Coding
+
+Context: Session running competency mapping for Social Sciences Class VII chapters 1–5.
+Observation: The mapping was done correctly because the AI read the full constitution (competency_mapping constitution) before starting — applying Pass 1 (transformation inventory) and Pass 2 (architectural container matching) rigorously. The output was high quality with well-reasoned weight assignments and incidental vs. structural distinctions.
+Root cause: N/A — this was a positive observation.
+Action taken: N/A.
+Carry-forward rule: For competency mapping, always run Pass 1 (C-code-blind transformation inventory) fully before attempting Pass 2 (matching to CG codes). Skipping Pass 1 leads to superficial pattern-matching against CG text rather than genuine architectural analysis of the chapter. The constitution's two-pass methodology is not optional.
+
+---
+
+[Learning #12] — 2026-04-17 — Science PDF: Generic Visual Stimulus Note Was Meaningless
+
+Context: Science assessment PDF was showing the sentence "A visual stimulus is provided for this question." wherever `visual_stimulus != null`, instead of showing the actual stimulus content.
+Observation: The sentence added no information to the teacher — the actual stimulus text was never rendered, just a placeholder note. Removing it was cleaner than trying to render the full stimulus inline.
+Root cause: The PDF generator had a placeholder block that printed a generic note rather than rendering the `visual_stimulus` field content. This was likely an interim implementation that was never completed.
+Action taken: Removed the entire visual stimulus note block from the Science assessment PDF generator. The field remains in the JSON for future use.
+Carry-forward rule: If a PDF/HTML shows a generic meta-note about content ("A visual is provided") rather than the content itself, it is an incomplete implementation. Either render the actual content or remove the note entirely — a placeholder note in teacher output is worse than silence.
+
+---
+
+[Learning #13] — 2026-04-17 — Allocated but Unused Combined Mapping File Creates Confusion
+
+Context: Task to "make Allocate tab use individual chapter files not the combined chapter_mappings_science_vii.json."
+Observation: Investigation showed the combined file was never referenced anywhere in the codebase — the app already read individual ch_XX_mapping.json files. The task was a false alarm; no code change was needed.
+Root cause: The combined file had been generated as a convenience artifact but was never wired into the app. Its presence in the mappings folder made it look like it might be in use.
+Action taken: Verified via grep that no code references the combined file. Marked task as verified-closed in TASK.md.
+Carry-forward rule: Before writing code to "switch" a data source, always grep for actual references to both the old and new source. The presence of a file in the right folder does not mean it is being used. Verify first, change only if needed.
+
+---
+
+[Learning #14] — 2026-04-17 — visual_stimulus: Prose Description vs Actual Table Data
+
+Context: Science assessment Ch 02 open task had visual_stimulus populated, but the PDF rendered it as a block of italic text rather than a table.
+Observation: The LLM had written a prose description of the table ("A data table is provided with columns: Scenario, Litmus result...") in visual_stimulus instead of the actual pipe-delimited table rows. The PDF renderer could not detect a table because there were no consistent pipe-separated rows.
+Root cause: The original constitution rule said visual_stimulus "must describe any visual provided to the student" — the word "describe" invited prose. The rule did not distinguish between the actual data and a description of it.
+Action taken: (1) Rewrote the constitution rule as four explicit sub-rules (VS-1 to VS-4) specifying that visual_stimulus must contain the actual pipe-delimited table data, not a description. Added correct and prohibited examples for both MCQ and OPEN_TASK. (2) Made the rule explicitly type-agnostic — applies to all question types. (3) Added _render_visual_stimulus() to assessment_pdf_generator.py: detects pipe-table vs plain text and renders accordingly. (4) Added renderVisualStimulus() to lpa_page.html with matching CSS; wired into both the OPEN_TASK branch and the standard question branch. (5) Added visual_stimulus passthrough in _normalise_assessment_sections() in app.py.
+Carry-forward rule: visual_stimulus must always contain the actual table rows in pipe-delimited format (header row + data rows, one per line). A prose description of a table is not a visual stimulus — it is metadata. If a question says "the table below" or "use the table provided", the actual table must be in visual_stimulus. Constitution rules that say "describe" invite prose; rules that say "provide the actual data in pipe-delimited format" do not.
+
    

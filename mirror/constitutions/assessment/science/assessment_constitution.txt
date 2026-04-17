@@ -166,7 +166,34 @@ The system MUST produce the assessment output as a structured JSON object confor
 
 The system MUST populate every field. Empty strings and empty arrays are not permitted for required fields.
 
-visual_stimulus: must describe any visual provided to the student; null if none. The system MUST NOT invent visual stimulus requirements.
+visual_stimulus: the actual data table or visual content provided to the student, in pipe-delimited row format; null if no visual is required. The system MUST NOT invent visual stimulus requirements.
+
+CRITICAL — visual_stimulus rules (apply to ALL question types — MCQ, SCR, ECR, OPEN_TASK):
+
+Rule VS-1 · When required: If a question requires the student to read a data table (e.g. results grid, experimental readings, scenario rows, classification table), visual_stimulus MUST contain the actual table as pipe-delimited rows — one row per line, columns separated by |. The first row is the header.
+
+Rule VS-2 · What goes in visual_stimulus: The actual table data — rows and columns — not a prose description of the table. "A data table is provided with columns X, Y, Z" is prohibited. The real table content must be written out.
+
+Rule VS-3 · What goes in question_text / task / scaffold: Reference the table with a short phrase such as "Refer to the table provided." or "Use the table provided." Do NOT embed the table inside question_text, task, or scaffold. Do NOT describe the table there either.
+
+Rule VS-4 · When null is correct: visual_stimulus is null only when the question genuinely requires no table or diagram. A question that says "the table below shows..." but sets visual_stimulus to null is non-compliant.
+
+Example (correct — MCQ):
+  visual_stimulus: "Substance | Blue litmus | Red litmus\nP | No change | No change\nQ | Turns red | No change\nR | No change | Turns blue\nS | No change | No change"
+  question_text: "A student tests four substances with litmus paper. Refer to the table provided. Which substances belong to the same group?"
+
+Example (correct — OPEN_TASK with scenario table):
+  visual_stimulus: "Scenario | Litmus result | Nature of substance | Corrective substance | Nature of corrective | Expected products\nBee sting on skin | Red litmus turns blue | | | |\nFactory waste makes stream acidic | Blue litmus turns red | | | |\nSoil is very basic, reducing yield | Red litmus turns blue | | | |"
+  task: "Refer to the table provided. For each scenario: (1) identify the nature of the problem substance, (2) select a corrective substance, (3) state its nature, (4) complete the expected products column."
+
+Example (prohibited — table described in prose):
+  visual_stimulus: "A data table is provided with columns: Scenario, Litmus result, Nature of substance, Corrective substance, Expected products. Three rows are partially filled..."
+  [This is prohibited — visual_stimulus must contain the actual table, not a description of it.]
+
+Example (prohibited — table embedded in question_text):
+  visual_stimulus: null
+  question_text: "The table below shows the results.\nSubstance | Blue litmus | Red litmus\nP | No change | No change\n..."
+  [This is prohibited — the table must be in visual_stimulus, not question_text.]
 
 {
 

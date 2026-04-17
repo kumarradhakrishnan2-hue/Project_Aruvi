@@ -3,57 +3,31 @@
   "subject": "social_sciences",
   "grade": "vii",
   "chapter_number": 3,
-  "chapter_title": "Climates of India",
+  "chapter_title": "Climate of India",
+  "summary_path": "mirror/chapters/social_sciences/vii/summaries/ch_03_summary.txt",
   "primary": [
     {
       "cg": "CG-6",
       "c_code": "C-6.1",
       "weight": 3,
-      "justification": "All major named sections — Weather/Seasons/Climate, Types of Climates, all five Factors subsections, The Monsoons, and Climates and Disasters — are architecturally unified around explaining climate and weather as key natural phenomena, making this the chapter's sole organising purpose."
-    },
-    {
-      "cg": "CG-6",
-      "c_code": "C-6.4",
-      "weight": 2,
-      "justification": "The 'Types of Climates in India' section links regional climate zones to agricultural livelihoods (wheat, rice, spices), and the dedicated 'Climate and our Lives' section substantively develops the correlation between monsoon patterns and agricultural labour, food prices, and industrial activity across two architecturally distinct named sections."
+      "justification": "The chapter's entire structure is built around explaining climate as a key natural phenomenon — its types across India, its determinants (latitude, altitude, proximity to sea, winds, topography), the monsoon mechanism, climate-linked disasters, and climate change. Every named section develops some aspect of explaining climate as a natural phenomenon. Remove this competency and the chapter has no organising purpose."
     },
     {
       "cg": "CG-6",
       "c_code": "C-6.3",
       "weight": 2,
-      "justification": "The dedicated 'Climate Change' section constitutes an architecturally distinct named section that substantively analyses Indian government efforts toward mitigation — renewable energy, tree planting, emission reduction, and sustainable lifestyles — framed as conservation and climate response."
-    },
-    {
-      "cg": "CG-7",
-      "c_code": "C-7.2",
-      "weight": 2,
-      "justification": "The dedicated 'Factors Determining the Climate — Topography' subsection and the 'Types of Climates in India' section together constitute substantive, architecturally distinct coverage of India's topographical diversity (Himalayas, Western Ghats, Thar Desert, coastal strips, Deccan Plateau) as the driver of climatic variation."
+      "justification": "The chapter contains a dedicated, architecturally distinct section 'Climate Change' that analyses human-caused global warming, India's rising temperatures, and evaluates specific mitigation measures (renewable energy, tree planting, energy efficiency, sustainable lifestyles) including their tension with economic growth goals — directly meeting C-6.3's demand to analyse Indian perspectives and efforts towards conservation in the context of global climate change. This section could stand alone as a learning unit."
     },
     {
       "cg": "CG-6",
-      "c_code": "C-6.2",
-      "weight": 1,
-      "justification": "The 'Types of Climates in India' section identifies agricultural resource distribution by climate zone (wheat, rice, spices) and the 'Climate and our Lives' section surfaces water scarcity, but no architecturally distinct activity block is organised around resource distribution as a primary task."
+      "c_code": "C-6.4",
+      "weight": 2,
+      "justification": "The chapter contains a dedicated section 'Climate and our Lives' that directly correlates climate with patterns of livelihoods — wheat cultivation in northern plains, rice and spices on the western coast, and the socioeconomic consequences of monsoon failure (agricultural disruption, food price rises, migration of agricultural labourers, industrial dependence on water). This section is architecturally distinct and devoted to the livelihood–climate correlation that C-6.4 demands."
     }
   ],
   "incidental": [
-    {
-      "cg": "CG-2",
-      "c_code": "C-2.1"
-    },
-    {
-      "cg": "CG-10",
-      "c_code": "C-10.1"
-    },
-    {
-      "cg": "CG-5",
-      "c_code": "C-5.2"
-    },
-    {
-      "cg": "CG-1",
-      "c_code": "C-1.2"
-    }
+    { "cg": "CG-6", "c_code": "C-6.2" },
+    { "cg": "CG-4", "c_code": "C-4.1" }
   ],
-  "chapter_weight": 10,
-  "summary_path": "mirror/chapters/middle/social_sciences/grade_vii/summaries/ch_03_summary.txt"
+  "chapter_weight": 9
 }

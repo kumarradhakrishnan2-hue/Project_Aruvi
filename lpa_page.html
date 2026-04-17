@@ -89,6 +89,13 @@
 .qtext-bullet { padding-left: 1.2rem; }
 .qopt { font-size: 11px; color: #5a5754; margin: 3px 0; }
 .qopt.correct { color: #0f6e56; font-weight: 500; }
+/* Visual stimulus */
+.vs-box { background: #f5f5f4; border: 0.5px solid #dedad5; border-radius: 4px; padding: 8px 10px; margin-bottom: 10px; }
+.vs-label { font-size: 9.5px; font-weight: 600; color: #6b6864; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+.vs-table { width: 100%; border-collapse: collapse; font-size: 10.5px; }
+.vs-table th { background: #e8e5e0; color: #1a1917; font-weight: 600; padding: 4px 8px; border: 0.5px solid #ccc; text-align: left; }
+.vs-table td { background: #fff; color: #1a1917; padding: 4px 8px; border: 0.5px solid #dedad5; }
+.vs-text { font-size: 11px; color: #5a5754; line-height: 1.5; }
 .atoggle { font-size: 10px; color: #2c3e50; cursor: pointer; border: none; background: none; padding: 6px 0 2px; display: flex; align-items: center; gap: 4px; margin-top: 4px; }
 /* abox: white-space pre-wrap preserves blank lines and line breaks;
    HTML tags (strong) still render inside a pre-wrap container */
@@ -736,6 +743,45 @@ function buildGuideHtml(q, isSci) {
   return parts.join('\n');
 }
 
+/* ── Visual stimulus renderer ────────────────────────────────────────────── */
+
+function renderVisualStimulus(vs) {
+  /* Returns an HTML string for the visual_stimulus field.
+     If the value is pipe-delimited (2+ lines, every line contains |),
+     renders a proper HTML table. Otherwise renders italic plain text.
+     Returns '' if vs is null / empty. */
+  if (!vs || typeof vs !== 'string' || !vs.trim()) return '';
+
+  var lines = vs.trim().split('\n').map(function(l) { return l.trim(); }).filter(Boolean);
+  var isTable = lines.length >= 2 && lines.every(function(l) { return l.indexOf('|') !== -1; });
+
+  var html = '<div class="vs-box">';
+  html += '<div class="vs-label">Visual stimulus</div>';
+
+  if (isTable) {
+    html += '<table class="vs-table">';
+    lines.forEach(function(line, ri) {
+      var cells = line.split('|').map(function(c) { return c.trim(); });
+      /* Remove leading/trailing empty cells from surrounding pipes */
+      if (cells[0] === '') cells.shift();
+      if (cells[cells.length - 1] === '') cells.pop();
+      html += ri === 0 ? '<thead><tr>' : '<tr>';
+      cells.forEach(function(cell) {
+        html += ri === 0
+          ? '<th>' + escHtml(cell) + '</th>'
+          : '<td>' + escHtml(cell) + '</td>';
+      });
+      html += ri === 0 ? '</tr></thead>' : '</tr>';
+    });
+    html += '</table>';
+  } else {
+    html += '<div class="vs-text"><em>' + escHtml(vs.trim()) + '</em></div>';
+  }
+
+  html += '</div>';
+  return html;
+}
+
 /* ── Assessment renderer ─────────────────────────────────────────────────── */
 
 function renderAssessment(sections) {
@@ -839,7 +885,7 @@ function renderAssessment(sections) {
              • repeated text: show "same as above" in italics
            An empty value leaves the cell blank and does not update lastLO. */
         var _qlo = (q.implied_lo || '').trim();
-        var _qLabel = 'Implied learning outcome: ';
+        var _qLabel = 'Learning Outcome: ';
         var _loLine;
         if (!_qlo) {
           _loLine = '<div class="qhdr-lo"></div>';
@@ -863,6 +909,8 @@ function renderAssessment(sections) {
             html += '<div class="qtext"><strong>Task</strong></div>';
             html += '<div class="qtext">' + escHtml(taskText) + '</div>';
           }
+          /* Visual stimulus — rendered after task text, before scaffold */
+          html += renderVisualStimulus(q.visual_stimulus);
           if (q.scaffold) {
             html += '<div class="qtext"><strong>Scaffold</strong></div>';
             html += '<div class="qtext">' + escHtml(q.scaffold) + '</div>';
@@ -883,6 +931,8 @@ function renderAssessment(sections) {
           if (bodyText) {
             html += '<div class="qtext">' + escHtml(bodyText) + '</div>';
           }
+          /* Visual stimulus — rendered after question stem, before options */
+          html += renderVisualStimulus(q.visual_stimulus);
         }
 
         /* Options (MCQ):
@@ -1098,16 +1148,6 @@ function renderLPA() {
             '<div class="lv-roles-grid">' + bubblesHtml + '</div>';
         }
 
-        // Pedagogical approach footer
-        var lvPedHtml = '';
-        if (p.pedagogical_approach) {
-          lvPedHtml =
-            '<div class="lv-ped-row">' +
-              '<span class="lv-ped-lbl">Pedagogical approach</span>' +
-              '<span class="lv-ped-val">' + escHtml(p.pedagogical_approach) + '</span>' +
-            '</div>';
-        }
-
         // ── assemble the new .pbody ──────────────────────────────────────────────
         var pbodyHtml =
           '<div class="pbody">' +
@@ -1123,14 +1163,12 @@ function renderLPA() {
               lvMaterialHtml +
               lvActivityHtml +
               lvRolesHtml +
-              lvPedHtml +
             '</div>' +
 
             // ── Time plan panel ─────────────────────────────────────────────────
             '<div class="lv-panel" id="lv-' + pid + '-tp">' +
               materialRow +
               timeSlotsHtml +
-              lvPedHtml +
             '</div>' +
 
           '</div>'; // .pbody

@@ -1,0 +1,28 @@
+{
+  "stage": "middle",
+  "subject": "science",
+  "grade": "vi",
+  "chapter_number": 2,
+  "chapter_title": "Diversity in the Living World",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": true,
+  "primary": [
+    {
+      "cg": "CG-3",
+      "c_code": "C-3.1",
+      "justification": "The chapter's central domain is the diversity of living things. It systematically develops the student's ability to describe and classify plants (herbs, shrubs, trees; reticulate vs parallel venation; taproot vs fibrous roots; monocots vs dicots) and animals (by movement, body parts, habitat) based on observable features observed in natural surroundings."
+    },
+    {
+      "cg": "CG-3",
+      "c_code": "C-3.3",
+      "justification": "Section 2.3 forms a distinct and substantial strand analysing relationships between organisms and their environments. It develops the concept of adaptation (cactus fleshy stems, deodar conical shape, camel humps and hooves, rhododendron height variation) and habitat (terrestrial, aquatic, amphibian), and connects habitat loss to biodiversity decline — explicitly building the student's ability to analyse organism-environment patterns of dependence and response."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to describe and classify the diversity of living things by observing their features, and to explain how organisms relate to and are shaped by their environments.",
+  "conceptual_demand": 3,
+  "activity_count": 10,
+  "demo_count": 0,
+  "exec_load": 0,
+  "effort_index": 16.0
+}

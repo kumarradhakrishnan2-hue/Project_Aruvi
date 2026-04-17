@@ -4,52 +4,27 @@
   "grade": "vii",
   "chapter_number": 1,
   "chapter_title": "Geographical Diversity of India",
+  "summary_path": "mirror/chapters/social_sciences/vii/summaries/ch_01_summary.txt",
   "primary": [
     {
       "cg": "CG-7",
       "c_code": "C-7.2",
       "weight": 3,
-      "justification": "The entire chapter is architecturally organised as a systematic survey of India's topographical regions (Himalayas, Gangetic Plains, Thar Desert, Aravallis, Peninsular Plateau, Coastlines, Islands, Northeast Hills), making the discovery of topographical diversity the chapter's sole organising purpose whose removal would dissolve the chapter's structure."
-    },
-    {
-      "cg": "CG-5",
-      "c_code": "C-6.1",
-      "weight": 2,
-      "justification": "Multiple architecturally distinct content sections — Formation of the Himalayas, The Himalayas as Water Tower, Thar Desert sand dune formation, Ladakh landscape formation, Peninsular Plateau river-flow direction, and the Sundarbans delta — each constitute dedicated explanatory blocks on key natural phenomena such as tectonic processes, glacial river systems, and landform formation."
+      "justification": "The chapter's entire architecture is organised around discovering India's topographical diversity — every named section (Himalayas, Ladakh, Gangetic Plains, Thar Desert, Aravallis, Peninsular Plateau, Coastlines, Islands, Sundarbans, NE Hills) is a distinct geographical feature of India's landmass. Remove this competency and the chapter has no organising purpose. The chapter title itself directly names topographical diversity as its subject."
     },
     {
       "cg": "CG-6",
       "c_code": "C-6.4",
-      "weight": 1,
-      "justification": "Sections on Ladakh (yak herding), the Thar Desert (taanka water harvesting, adapted clothing and food), the Peninsular Plateau (tribal communities), and the Northeast Hills (Khasi livelihoods) each surface livelihood-geography correlations as embedded content within the topographical survey, constituting genuine but non-dedicated structural presence."
+      "weight": 2,
+      "justification": "The chapter substantively develops livelihood–landform correlations across multiple named sections: the Thar Desert section explicitly describes how people have adapted food, clothing, and lifestyle to desert conditions; the Gangetic Plains section explains how fertile soil enables dense agriculture and large population; the Peninsular Plateau section names tribal communities with lifestyles connected to forest and nature. The chapter's own organising logic — describe each landform then describe what life and ecology it enables — makes the continuity of this competency evident across sections."
     }
   ],
   "incidental": [
-    {
-      "cg": "CG-6",
-      "c_code": "C-6.2"
-    },
-    {
-      "cg": "CG-6",
-      "c_code": "C-6.3"
-    },
-    {
-      "cg": "CG-7",
-      "c_code": "C-7.1"
-    },
-    {
-      "cg": "CG-7",
-      "c_code": "C-7.3"
-    },
-    {
-      "cg": "CG-2",
-      "c_code": "C-2.1"
-    },
-    {
-      "cg": "CG-10",
-      "c_code": "C-10.1"
-    }
+    { "cg": "CG-6", "c_code": "C-6.1" },
+    { "cg": "CG-6", "c_code": "C-6.2" },
+    { "cg": "CG-6", "c_code": "C-6.3" },
+    { "cg": "CG-7", "c_code": "C-7.3" },
+    { "cg": "CG-7", "c_code": "C-7.1" }
   ],
-  "chapter_weight": 6,
-  "summary_path": "mirror/chapters/middle/social_sciences/grade_vii/summaries/ch_01_summary.txt"
+  "chapter_weight": 8
 }

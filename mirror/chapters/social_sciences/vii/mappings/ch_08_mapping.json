@@ -3,51 +3,25 @@
   "subject": "social_sciences",
   "grade": "vii",
   "chapter_number": 8,
-  "chapter_title": "How the Land Becomes Sacred",
+  "chapter_title": "Sacred Geography of India",
+  "summary_path": "mirror/chapters/social_sciences/vii/summaries/ch_08_summary.txt",
   "primary": [
-    {
-      "cg": "CG-6",
-      "c_code": "C-6.3",
-      "weight": 3,
-      "justification": "The chapter’s Sacred Ecology section (with subsections on Rivers and Sangams, Mountains and Forests, Trees/Forests/Sacred Groves) and the closing section ‘Restoring and Conserving the Sacred’ together form the structural spine of the chapter — the argument that India’s sacred perception of the land produced ecological stewardship is what the chapter is fundamentally organised around; removing C-6.3 dissolves the chapter’s organising purpose."
-    },
     {
       "cg": "CG-7",
       "c_code": "C-7.1",
-      "weight": 2,
-      "justification": "The dedicated top-level named section ‘Becoming Aware of Sacred Geography’ is architecturally distinct and organised entirely around the argument that networks of sacred sites spanning India’s length and breadth produced cultural integration; Nehru’s observation in ‘Pilgrimages’ that these traditions fostered ‘a feeling of one country and one culture’ provides supporting evidence across sections."
+      "weight": 3,
+      "justification": "The chapter's entire architecture is organised around discovering India's unity in diversity through sacred geography — the chār dhām, 12 jyotirlingas, and 51 Shakti pīthas networks criss-cross the entire Subcontinent; pilgrimage routes expose people to diverse languages, customs, and foods while revealing deep commonalities; sacred sites encompass all major Indian religions (Hinduism, Buddhism, Sikhism, Jainism, Islam, Christianity, tribal faiths). The chapter explicitly states that pilgrimage traditions fostered 'a feeling of one country and one culture'. Remove this competency and the chapter's fundamental organising purpose dissolves. The chapter spans Geography and Cultural Social Sciences, with C-7.1's cultural unity-in-diversity as the governing structural theme."
     },
     {
-      "cg": "CG-7",
-      "c_code": "C-7.3",
+      "cg": "CG-6",
+      "c_code": "C-6.3",
       "weight": 2,
-      "justification": "The dedicated named section 'Sacred Places Across Religions' is architecturally distinct in developing India's tradition of inclusion across communities and faiths, evidenced by cross-faith visitation at Ajmer Dargah and Velankanni Church, and this theme is sustained across multiple sections including 'Pilgrimages' and 'Becoming Aware of Sacred Geography'."
-    },
-    {
-      "cg": "CG-9",
-      "c_code": "C-9.1",
-      "weight": 1,
-      "justification": "The named section 'From Pilgrimage to Trade' is a designated structural element whose primary subject is the overlap of pilgrimage and trade routes (Uttarapatha, Dakṣhinapātha) and the goods exchanged along them, requiring the student to engage with key elements of trade and commerce."
+      "justification": "Two architecturally distinct named sections develop conservation substantively: (1) 'Sacred Ecology' — a dedicated section showing how the perception of rivers, mountains, forests, and sacred groves as sacred has historically protected biodiversity and water sources, with specific sub-sections on rivers, mountains, trees, and groves; (2) 'Restoring and Conserving the Sacred' — a dedicated section explicitly analysing how this sacred-ecology relationship is under strain today (polluted rivers, encroached groves) and arguing for its restoration as a contribution to global sustainability. Both sections could stand as independent learning units on Indian conservation perspectives. Rule 5(a) satisfied."
     }
   ],
   "incidental": [
-    {
-      "cg": "CG-2",
-      "c_code": "C-2.2"
-    },
-    {
-      "cg": "CG-2",
-      "c_code": "C-2.1"
-    },
-    {
-      "cg": "CG-3",
-      "c_code": "C-3.2"
-    },
-    {
-      "cg": "CG-10",
-      "c_code": "C-10.1"
-    }
+    { "cg": "CG-7", "c_code": "C-7.2" },
+    { "cg": "CG-7", "c_code": "C-7.3" }
   ],
-  "chapter_weight": 8,
-  "summary_path": "mirror/chapters/middle/social_sciences/grade_vii/summaries/ch_08_summary.txt"
+  "chapter_weight": 7
 }

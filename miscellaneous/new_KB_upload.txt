@@ -1,0 +1,30 @@
+# 1. Upload the updated file
+new_file = client.beta.files.upload(
+    file=open("updated_knowledge_base.txt", "rb"),
+    purpose="agent",
+    betas=["files-api-2025-04-14"],
+)
+
+# 2. Use the new file_id in future sessions
+KB_FILE_ID = new_file.id  # replace the old one in your app config
+
+# 3. (Optional) Delete the old file
+client.beta.files.delete("old_file_id", betas=["files-api-2025-04-14"])
+
+Steps
+
+
+Store KB_FILE_ID in a config file or environment variable so it's easy to swap:
+python
+
+
+import os
+KB_FILE_ID = os.environ.get("KB_FILE_ID", "file_xxx_default")
+Then when you update your KB:
+bash
+
+Copy
+# Quick update script
+python upload_kb.py          # uploads new file, prints new ID
+export KB_FILE_ID="file_new_id"
+streamlit run app.py         # new sessions use updated KB

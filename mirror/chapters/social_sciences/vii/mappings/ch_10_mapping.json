@@ -3,59 +3,26 @@
   "subject": "social_sciences",
   "grade": "vii",
   "chapter_number": 10,
-  "chapter_title": "The Constitution of India — An Introduction",
+  "chapter_title": "The Constitution of India",
+  "summary_path": "mirror/chapters/social_sciences/vii/summaries/ch_10_summary.txt",
   "primary": [
     {
       "cg": "CG-8",
       "c_code": "C-8.2",
       "weight": 3,
-      "justification": "The chapter dedicates architecturally distinct named sections — 'Writing the Constitution of India', 'How Was Our Constitution Developed?', 'What Shaped and Influenced the Indian Constitution?', and 'Key Features' — to explaining the formation process and features of the Indian Constitution. Removing this competency structurally dissolves the chapter's fundamental organising purpose."
+      "justification": "The chapter's entire architecture is organised around explaining the formation of the Indian Constitution — the process (Constituent Assembly, Drafting Committee, 1946–1950), the ideals of the freedom movement enshrined in it, civilisational heritage embedded in it, influences from other countries' constitutions, key features, and the Preamble's guiding values. Remove this competency and every named section collapses. The chapter is the canonical treatment of C-8.2's demands: process of formation, ideals of the national movement, and India's civilisational heritage as sources. Political Science sub-discipline."
     },
     {
       "cg": "CG-8",
       "c_code": "C-8.1",
       "weight": 2,
-      "justification": "The architecturally distinct 'Why Do We Need a Constitution?' section — with its rulebook analogy, explanation of what a constitution spells out, and description of the values and ideals it enshrines — constitutes a dedicated learning unit developing understanding of the need for a constitution."
-    },
-    {
-      "cg": "CG-7",
-      "c_code": "C-7.1",
-      "weight": 2,
-      "justification": "The chapter constructs a dedicated architecturally distinct section ('India's Civilisational Heritage and History') and reinforces recognition of unity in diversity through the Preamble's fraternity and secular values, substantively developing the competency of explaining India's unity in diversity."
-    },
-    {
-      "cg": "CG-7",
-      "c_code": "C-7.3",
-      "weight": 2,
-      "justification": "The chapter's sections on civilisational heritage, the Preamble's values of fraternity and pluralism, and the Fundamental Rights discussion collectively constitute substantive, deliberate development of appreciation for India's tradition of inclusion across communities — Weight 2 through continuity across multiple named sections."
-    },
-    {
-      "cg": "CG-4",
-      "c_code": "C-4.1",
-      "weight": 2,
-      "justification": "The chapter's architecturally distinct 'Key Features' section and its subsections on Fundamental Rights, DPSP, and Fundamental Duties require students to collect and interpret information about various constitutional institutions and their functioning."
-    },
-    {
-      "cg": "CG-2",
-      "c_code": "C-2.1",
-      "weight": 1,
-      "justification": "The subsection 'Influence of the Indian Freedom Movement' constitutes a named structural element whose primary subject is how major historical changes (the freedom struggle) impacted the formation of the Constitution."
+      "justification": "Two architecturally distinct sections develop C-8.1's demands: (1) 'Why Do We Need a Constitution?' is a dedicated section explaining the deeper objectives and necessity of a constitution for governing a large, diverse, complex country — directly meeting C-8.1's demand to understand the need for a constitution; (2) 'Understanding the Preamble' is a dedicated section systematically analysing each constitutional value (Sovereign, Socialist, Secular, Democratic, Republic, Justice, Liberty, Equality, Fraternity) as deeper objectives of the Indian Constitution. Both sections could stand as independent learning units. Rule 5(a) satisfied."
     }
   ],
   "incidental": [
-    {
-      "cg": "CG-10",
-      "c_code": "C-10.1"
-    },
-    {
-      "cg": "CG-5",
-      "c_code": "C-5.2"
-    },
-    {
-      "cg": "CG-5",
-      "c_code": "C-5.1"
-    }
+    { "cg": "CG-4", "c_code": "C-4.1" },
+    { "cg": "CG-5", "c_code": "C-5.2" },
+    { "cg": "CG-7", "c_code": "C-7.1" }
   ],
-  "chapter_weight": 12,
-  "summary_path": "mirror/chapters/middle/social_sciences/grade_vii/summaries/ch_10_summary.txt"
+  "chapter_weight": 8
 }
