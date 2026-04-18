@@ -44,7 +44,22 @@ Match chapter number to the correct file in the textbook folder.
 
 ---
 
-## Step 2 — Identify scope boundary
+## Step 2 — Extract chapter title
+
+Read the chapter title exactly as it appears in the PDF (typically on the
+opening page of the chapter). Record it verbatim — do not paraphrase or
+normalise casing. This title is written as the first line of the output
+file in the format:
+
+```
+Chapter NN: <Title>
+```
+
+followed by a blank line, before the summary text begins.
+
+---
+
+## Step 3 — Identify scope boundary
 
 Read the full chapter PDF. List every section and subsection heading
 present in the chapter, in the order they appear. This heading list is
@@ -57,7 +72,7 @@ appearing in the summary even if the topic is familiar.
 
 ---
 
-## Step 3 — Write the summary
+## Step 4 — Write the summary
 
 Write a summary of 800–1200 words addressing every heading identified
 in Step 2, in the order they appear.
@@ -82,19 +97,19 @@ For each heading write 2–4 sentences covering:
 
 ---
 
-## Step 4 — Save the output
+## Step 5 — Save the output
 
 Save to: `mnt/data/mirror/chapters/{subject}/{grade}/summaries/ch_NN_summary.txt`
 (NN = zero-padded chapter number, e.g. `ch_09_summary.txt`)
 
 ---
 
-## Step 5 — Verification
+## Step 6 — Verification
 
 After writing each summary, print one line to confirm:
 
 ```
-ch_09_summary.txt — written — 943 words — sections: 9.1, 9.1.1, 9.1.2, 9.2, 9.2.1, 9.2.2
+ch_09_summary.txt — written — "Motion and Measurement of Distances" — 943 words — sections: 9.1, 9.1.1, 9.1.2, 9.2, 9.2.1, 9.2.2
 ```
 
 If any chapter PDF is not found, log a warning and skip — do not halt.

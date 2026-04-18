@@ -1,0 +1,888 @@
+{
+  "filename": "ch_04_20260418_110552.json",
+  "saved_at": "2026-04-18T11:05:52",
+  "grade": "Grade VII",
+  "subject": "Social Science",
+  "chapter_number": 4,
+  "chapter_title": "New Beginnings - Cities and States",
+  "period_schedule_display": "Period schedule:\n  Row 1: 40 minutes × 6 periods = 240 minutes\nTotal: 6 periods · 4h 0min",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 40,
+      "count": 6
+    }
+  ],
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 40,
+          "activity_title": "From First to Second Urbanisation: What Was Lost and What Was Reborn?",
+          "section_anchor": "From First to Second Urbanisation",
+          "materials": [
+            "Blackboard and chalk",
+            "Timeline strip (drawn on board)",
+            "Chapter summary handout"
+          ],
+          "visual_aids": "Board timeline comparing Harappan features vs. Second Urbanisation features",
+          "time_bands": [
+            {
+              "minutes": "0-5",
+              "activity": "Teacher poses a provocation: 'Imagine a thriving city suddenly emptied — no markets, no writing, no government. What would it take to build cities again 1,000 years later?' Students share one word or phrase in response."
+            },
+            {
+              "minutes": "5-15",
+              "activity": "Teacher draws a two-column timeline on the board — 'First Urbanisation: Features' and 'Gap Period' — leaving the 'Second Urbanisation' column blank. Students read the section silently and identify at least four features that disappeared after Harappan decline (elaborate structures, markets, specialised occupations, writing, sanitation, state administration)."
+            },
+            {
+              "minutes": "15-28",
+              "activity": "Pairs complete the third column — 'Second Urbanisation: How did it revive?' — by locating textual evidence from the section. Teacher circulates and prompts: 'What two types of sources tell us about this revival? Where did it begin geographically?'"
+            },
+            {
+              "minutes": "28-37",
+              "activity": "Class discussion: pairs share their completed timelines. Teacher facilitates connections: 'Why do you think the Ganga plains became the site of this revival rather than the original Indus region? What conditions might explain this?' Students propose reasons using the section's clues."
+            },
+            {
+              "minutes": "37-40",
+              "activity": "Students write one sentence: 'The Second Urbanisation revived because...' as an exit note."
+            }
+          ],
+          "implied_lo": "Students can construct a comparative timeline of the First and Second Urbanisations and propose at least one evidence-based reason for the geographical shift in the revival.",
+          "competency": {
+            "c_code": "C-2.1",
+            "cg": "CG-2",
+            "weight": 3,
+            "competency_text": "The entire chapter analyses a major historical transition — from post-Harappan rural life to India's Second Urbanisation — and its societal impact across state formation, democratic traditions, technological change, social stratification, and trade expansion."
+          }
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 40,
+          "activity_title": "Mapping Janapadas and Mahājanapadas: Territory, Power, and Geography",
+          "section_anchor": "Janapadas and Mahājanapadas",
+          "materials": [
+            "Outline map of the Indian Subcontinent (one per student)",
+            "Coloured pencils",
+            "List of 16 mahājanapadas with approximate locations"
+          ],
+          "visual_aids": "Textbook map of the 16 mahājanapadas",
+          "time_bands": [
+            {
+              "minutes": "0-7",
+              "activity": "Teacher reads aloud the etymology of 'janapada' — 'where the people have set foot' — and asks: 'What does this name tell us about how these early states were formed? Were they invented by rulers or grown by communities?' Brief pair-share."
+            },
+            {
+              "minutes": "7-20",
+              "activity": "Students receive outline maps. Using the textbook map and section content, they locate and label: (a) at least 8 mahājanapadas, (b) the Ganga plains region, (c) Gandhāra and Kamboja in the northwest, (d) Aśhmaka near the Godavari. They shade the Ganga plains region differently and annotate: 'Why were so many mahājanapadas concentrated here?' with two reasons from the text (fertile agriculture, iron ore, trade)."
+            },
+            {
+              "minutes": "20-32",
+              "activity": "Inquiry task: Students examine the distribution on their maps and answer: 'What pattern do you notice about where mahājanapadas clustered? What geographical explanation connects this pattern to how states grow?' Students write two sentences on their map margin."
+            },
+            {
+              "minutes": "32-38",
+              "activity": "Two or three students share their geographical reasoning. Teacher draws out the connection between resource availability (iron ore, agricultural land, rivers) and state formation power, linking geography to political consolidation."
+            },
+            {
+              "minutes": "38-40",
+              "activity": "Quick check: Teacher asks students to name one mahājanapada and the geographical advantage it held."
+            }
+          ],
+          "implied_lo": "Students can annotate an outline map locating mahājanapadas and construct a written explanation connecting the geographical distribution of mahājanapadas to the conditions enabling state formation.",
+          "competency": {
+            "c_code": "C-2.1",
+            "cg": "CG-2",
+            "weight": 3,
+            "competency_text": "The entire chapter analyses a major historical transition — from post-Harappan rural life to India's Second Urbanisation — and its societal impact across state formation, democratic traditions, technological change, social stratification, and trade expansion."
+          }
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 40,
+          "activity_title": "Republics and Monarchies: Debating Power in Early India",
+          "section_anchor": "Early Democratic Traditions",
+          "materials": [
+            "Role cards (prepared by teacher: Rājā, Assembly Elder, Minister, Common Clan Member)",
+            "Section text for reference"
+          ],
+          "visual_aids": null,
+          "time_bands": [
+            {
+              "minutes": "0-6",
+              "activity": "Teacher sets the scene: 'It is 600 BCE. A rājā has made a decision the assembly disagrees with. What happens next?' Students are assigned one of four roles and read their role card briefly."
+            },
+            {
+              "minutes": "6-18",
+              "activity": "Role play simulation: The class enacts a brief council scene in two contrasting formats — first as a monarchy (rājā holds authority, assembly is advisory) and then as a gaṇa/sangha republic (assembly selects and can remove the rājā by vote). Teacher pauses between rounds and asks: 'How did the power dynamic change? Who had a voice in each system?'"
+            },
+            {
+              "minutes": "18-28",
+              "activity": "Students individually complete a comparison table (drawn in their notebooks): Columns — 'Monarchy (most mahājanapadas)' vs. 'Gaṇa/Sangha (Vajji, Malla)'; Rows — 'Who holds ultimate authority?', 'Role of the sabhā/samiti', 'How is the rājā chosen?', 'What happens to an incompetent ruler?'"
+            },
+            {
+              "minutes": "28-36",
+              "activity": "Discussion: Teacher asks: 'Why do historians call Vajji and Malla early republics? Is it accurate to call them democratic? What is similar to and different from how democracies work today?' Students argue from the text."
+            },
+            {
+              "minutes": "36-40",
+              "activity": "Exit question written in notebook: 'What makes the gaṇa/sangha system different from a simple monarchy, and why does that difference matter historically?'"
+            }
+          ],
+          "implied_lo": "Students can construct a comparison table distinguishing the governance structures of monarchies and gaṇa/sangha republics, and justify why historians classify Vajji and Malla as early republics.",
+          "competency": {
+            "c_code": "C-4.1",
+            "cg": "CG-4",
+            "weight": 1,
+            "competency_text": "The 'Early Democratic Traditions' section is dedicated to how institutions (sabhā, samiti, gaṇa/sangha) functioned politically. The 'Coins and Trade' section discusses coins as an economic institution."
+          }
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 40,
+          "activity_title": "Iron, Coins, and Ideas: How Technology and Trade Transformed Mahājanapada Society",
+          "section_anchor": "More Innovations",
+          "materials": [
+            "Worksheet with structured questions",
+            "Section text (More Innovations and Coins and Trade)"
+          ],
+          "visual_aids": "Board diagram: Iron → Agriculture/Warfare → Surplus → Trade → Coins → Wider networks",
+          "time_bands": [
+            {
+              "minutes": "0-6",
+              "activity": "Teacher draws a blank chain diagram on the board with five empty boxes. Asks: 'How could improving metal tools eventually lead to the creation of coins? Let's try to build the chain.' Students suggest connections; teacher fills in the chain as the discussion progresses."
+            },
+            {
+              "minutes": "6-18",
+              "activity": "Students read both sub-sections (More Innovations and Coins and Trade) and complete a cause-effect map in their notebooks: (1) Iron metallurgy → effects on agriculture; (2) Iron metallurgy → effects on warfare; (3) Growth of trade → why coins became necessary; (4) Punch-marked coins → how they enabled wider exchange. Each arrow must include one specific textual detail."
+            },
+            {
+              "minutes": "18-28",
+              "activity": "Pairs compare cause-effect maps and resolve any differences. Teacher asks two probing questions: 'Why were the earliest coins punch-marked specifically in silver? What does that tell us about the sophistication of this economy?' and 'How does the circulation of coins from neighbouring regions reveal something about political boundaries being crossed by trade?'"
+            },
+            {
+              "minutes": "28-36",
+              "activity": "Class analysis: Teacher invites students to connect iron technology and coin-based trade together — 'Could the mahājanapadas have expanded without both? What happens if you have one but not the other?' Students reason from evidence in the text."
+            },
+            {
+              "minutes": "36-40",
+              "activity": "Students write one sentence connecting iron metallurgy to coin-based trade as part of the broader transformation of mahājanapada society."
+            }
+          ],
+          "implied_lo": "Students can construct a cause-effect map linking iron metallurgy, agricultural expansion, trade growth, and the introduction of punch-marked coins as an interconnected sequence of transformations.",
+          "competency": {
+            "c_code": "C-2.1",
+            "cg": "CG-2",
+            "weight": 3,
+            "competency_text": "The entire chapter analyses a major historical transition — from post-Harappan rural life to India's Second Urbanisation — and its societal impact across state formation, democratic traditions, technological change, social stratification, and trade expansion."
+          }
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 40,
+          "activity_title": "The Varṇa–Jāti System: Work, Identity, and Inequality",
+          "section_anchor": "The Varṇa–Jāti System",
+          "materials": [
+            "Printed or board-displayed source excerpt from the section",
+            "Structured inquiry worksheet"
+          ],
+          "visual_aids": "Board diagram: Varṇa (four groups) vs. Jāti (occupational communities) showing their relationship",
+          "time_bands": [
+            {
+              "minutes": "0-7",
+              "activity": "Teacher opens with a question for discussion: 'If your great-grandmother was a potter, does that mean you must be a potter too? What would it feel like if society expected that of you — and enforced it?' Students share briefly. Teacher connects to the section: 'This chapter describes a system where occupation, identity, and inheritance were tightly linked.'"
+            },
+            {
+              "minutes": "7-18",
+              "activity": "Students read the Varṇa–Jāti section independently. They complete a structured worksheet: (a) Define jāti and varṇa in your own words — what is different about each? (b) List the four varṇa groups and the occupation associated with each. (c) Identify one piece of evidence from the text that the early system was 'more flexible'."
+            },
+            {
+              "minutes": "18-28",
+              "activity": "Inquiry task: Students analyse the change described in the text — from flexibility to rigidity. They answer in writing: 'What does the text say changed the system over time? What specific groups were most affected? What does the text mean when it says it led to inequalities and discrimination — can you give a concrete example of what that might look like in practice?'"
+            },
+            {
+              "minutes": "28-36",
+              "activity": "Issues-based discussion: Teacher facilitates: 'The text says the word 'caste' comes from Portuguese — what does it mean for this system to have been named by outsiders? Does naming something change how we understand it?' Students engage in a structured discussion using evidence and their own reasoning."
+            },
+            {
+              "minutes": "36-40",
+              "activity": "Students write a reflective exit note: 'The varṇa–jāti system changed from flexible to rigid. This matters today because...'"
+            }
+          ],
+          "implied_lo": "Students can distinguish between jāti and varṇa, trace the shift from occupational flexibility to inherited rigidity, and articulate how this rigidification led to specific forms of inequality and discrimination.",
+          "competency": {
+            "c_code": "C-3.1",
+            "cg": "CG-3",
+            "weight": 2,
+            "competency_text": "Two architecturally distinct sections develop this competency substantively: the Varṇa–Jāti System section is a dedicated section on how work and social organisation changed — jāti as occupational community with skill transmission across generations, varṇa as ideological framework, and the evolution toward rigidity and inequality."
+          }
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 40,
+          "activity_title": "Inequality and Conflict Embedded in the Varṇa–Jāti System",
+          "section_anchor": "The Varṇa–Jāti System",
+          "materials": [
+            "Printed short excerpt: the paragraph on rigidification and discrimination",
+            "Reflective essay prompt card"
+          ],
+          "visual_aids": null,
+          "time_bands": [
+            {
+              "minutes": "0-6",
+              "activity": "Teacher revisits the previous period's exit notes briefly — reads two or three aloud (anonymised) and notes recurring ideas. Frames today's task: 'Today we move from describing the system to evaluating what happens when a social system becomes rigid. What conflicts does it generate?'"
+            },
+            {
+              "minutes": "6-16",
+              "activity": "Students re-read the excerpt focusing specifically on the passages about rigidity, discrimination, and the British period's role in further hardening the system. They annotate: underline evidence of conflict or inequality, circle any language showing the system changed over time, and mark any phrase that shows power being concentrated or denied."
+            },
+            {
+              "minutes": "16-28",
+              "activity": "Structured written response: Students answer — 'The varṇa–jāti system is described as becoming more rigid over time, especially during British rule. Using evidence from the text, explain: (a) What specific change occurred, (b) Which groups were disadvantaged, and (c) Why this constitutes a form of social conflict rather than just social difference.'"
+            },
+            {
+              "minutes": "28-36",
+              "activity": "Small-group sharing (groups of 3): Each student reads their response aloud. Group identifies the strongest piece of evidence used across the three responses and nominates it for class sharing."
+            },
+            {
+              "minutes": "36-40",
+              "activity": "Two groups share. Teacher closes: 'What does this tell us about the relationship between how work is organised and how power is distributed in a society?' — students hold the question for the next period."
+            }
+          ],
+          "implied_lo": "Students can identify textual evidence of how the rigidification of the varṇa–jāti system created structural inequality and articulate the distinction between social difference and social conflict.",
+          "competency": {
+            "c_code": "C-3.2",
+            "cg": "CG-3",
+            "weight": 1,
+            "competency_text": "The Varṇa–Jāti System section explicitly discusses how the system eventually led to inequalities and discrimination — conflict between social groups."
+          }
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 60,
+          "activity_title": "An Interconnected Subcontinent: Trade Routes, Cities, and the Spread of Urban Culture",
+          "section_anchor": "Developments Elsewhere in India",
+          "materials": [
+            "Outline map of India (one per student)",
+            "Source analysis cards (two short excerpts: one on Śhiśhupalgarh's layout, one on southern trade)",
+            "Structured analysis worksheet"
+          ],
+          "visual_aids": "Textbook map showing Uttarapatha and Dakṣhiṇapatha routes and key cities",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher introduces the culminating question: 'By 300–200 BCE the chapter says almost the entire Subcontinent was interconnected. How did that happen — and what does 'interconnected' actually mean for people living in those times?' Students brainstorm three things that interconnection would require (roads, goods, shared culture, etc.)."
+            },
+            {
+              "minutes": "8-22",
+              "activity": "Source analysis task: Students receive two short source cards. Card A describes Śhiśhupalgarh — its square plan, moat, broad streets. Card B describes the southern trade in precious stones, gold, and spices to overseas kingdoms. Students answer structured questions: (1) What does Śhiśhupalgarh's layout tell us about how urban planning had spread beyond the Ganga plains? (2) What does the southern trade evidence suggest about how interconnected India was with the wider world? (3) What is missing from these sources — what can't we know from them?"
+            },
+            {
+              "minutes": "22-35",
+              "activity": "Map activity: Students annotate their outline maps with (a) the Uttarapatha and Dakṣhiṇapatha routes, (b) Śhiśhupalgarh location, (c) the three southern kingdoms (Cholas, Cheras, Pāṇḍyas), and (d) arrows showing trade directions (within India and overseas). They write one annotation per route explaining what was being connected."
+            },
+            {
+              "minutes": "35-48",
+              "activity": "Synthesis discussion: Teacher uses the chapter's closing observation — 'by 300–200 BCE, almost the entire Subcontinent was an interconnected land' — as a discussion anchor. 'What evidence from this chapter supports that claim? What kinds of things travelled — goods, ideas, people, culture? Why did the mahājanapadas eventually give way to the next phase?' Students draw on all sections covered in the unit."
+            },
+            {
+              "minutes": "48-56",
+              "activity": "Students individually write a reflective essay paragraph (8 minutes): 'Choose one element — trade routes, urban design, or cultural transmission — and explain how it demonstrates that the Second Urbanisation was more than an economic event. Use at least two pieces of specific evidence from the chapter.'"
+            },
+            {
+              "minutes": "56-60",
+              "activity": "Two students share their paragraphs. Teacher closes the chapter: 'The Second Urbanisation set the foundations for everything that followed in Indian history. Next chapter we will see what grew from these roots.'"
+            }
+          ],
+          "implied_lo": "Students can use source analysis and map annotation to construct a multi-evidence argument explaining how trade routes, urban design, and cultural networks combined to produce Subcontinent-wide interconnection by 300–200 BCE.",
+          "competency": {
+            "c_code": "C-5.1",
+            "cg": "CG-5",
+            "weight": 1,
+            "competency_text": "The Varṇa–Jāti System section explicitly states the system 'eventually led to inequalities and discrimination' and traces the rigidification process. The Developments Elsewhere section demonstrates how trade, urban culture, and interconnection spread across the Subcontinent."
+          }
+        }
+      ]
+    },
+    "assessment_items": [
+      {
+        "question_type": "MCQ",
+        "question_text": "Which of the following best explains why the Ganga plains became the primary site of India's Second Urbanisation rather than the original Indus Valley region?",
+        "options": [
+          {
+            "label": "A",
+            "text": "The Ganga plains had been the centre of the Harappan civilisation and already had urban infrastructure.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "The combination of fertile agricultural land, availability of iron ore, and expanding trade networks made the Ganga plains especially conducive to state formation.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "The Indus region had been deliberately abandoned by rulers who chose to relocate eastward for religious reasons.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "The Ganga plains received support from Central Asian migrants who brought urban planning knowledge directly from Mesopotamia.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "Correct answer is B. The question requires students to apply the section's geographical and economic reasoning rather than simply recall a location. Distractors test common confusions about Harappan continuity (A), unsupported migration narratives (D), and an invented religious explanation (C).",
+        "cognitive_demand": "Application",
+        "period_ref": [
+          1
+        ],
+        "chapter_section": "From First to Second Urbanisation",
+        "weight_label": "Central",
+        "implied_lo": "Students can construct a comparative timeline of the First and Second Urbanisations and propose at least one evidence-based reason for the geographical shift in the revival.",
+        "competency": {
+          "c_code": "C-2.1",
+          "competency_text": "The entire chapter analyses a major historical transition — from post-Harappan rural life to India's Second Urbanisation — and its societal impact across state formation, democratic traditions, technological change, social stratification, and trade expansion.",
+          "weight": 3
+        },
+        "guide": {
+          "what_each_option_reveals": {
+            "A": "The student has confused the geographical location of the First and Second Urbanisations, believing Harappan infrastructure persisted into the Second Urbanisation period — a direct misconception from the section which explicitly states the cities were abandoned.",
+            "C": "The student has introduced a cause (religious relocation) that does not appear in the chapter — indicating the student has not engaged with the section's evidence-based explanations and is filling gaps with inference unsupported by the text.",
+            "D": "The student has confused the chapter's mention of Central Asian trade connections with a migration-based urban transfer theory — a confusion between the chapter's discussion of trade networks and the unsupported idea of external urban knowledge transfer."
+          }
+        }
+      },
+      {
+        "question_type": "MCQ",
+        "question_text": "The chapter states that the 16 mahājanapadas ranged from Gandhāra in the northwest to Anga in the east and Aśhmaka in central India. What does this geographical spread most directly demonstrate?",
+        "options": [
+          {
+            "label": "A",
+            "text": "The mahājanapadas were all ruled by a single powerful king who commanded a unified empire.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "State formation and urbanisation during the Second Urbanisation extended across a wide area of the Subcontinent, not just the Ganga heartland.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "The northwest and central Indian regions had more developed agriculture than the Ganga plains and therefore became political centres first.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "The 16 mahājanapadas were all equal in power and size, reflecting a balanced political order across the Subcontinent.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "Correct answer is B. Tests whether students can infer the significance of geographical spread for understanding the scope of the Second Urbanisation. Distractors check for confusion between fragmented states and a unified empire (A), agricultural primacy of non-Ganga regions (C), and the false assumption of political equality among mahājanapadas (D).",
+        "cognitive_demand": "Analysis",
+        "period_ref": [
+          2
+        ],
+        "chapter_section": "Janapadas and Mahājanapadas",
+        "weight_label": "Central",
+        "implied_lo": "Students can annotate an outline map locating mahājanapadas and construct a written explanation connecting the geographical distribution of mahājanapadas to the conditions enabling state formation.",
+        "competency": {
+          "c_code": "C-2.1",
+          "competency_text": "The entire chapter analyses a major historical transition — from post-Harappan rural life to India's Second Urbanisation — and its societal impact across state formation, democratic traditions, technological change, social stratification, and trade expansion.",
+          "weight": 3
+        },
+        "guide": {
+          "what_each_option_reveals": {
+            "A": "The student has confused the political fragmentation of the mahājanapada period with a unified imperial structure — possibly projecting the later Mauryan empire backwards, or failing to distinguish between co-existing independent states and a single empire.",
+            "C": "The student has inverted the chapter's evidence — the text explicitly identifies the Ganga plains as the agricultural and iron-rich heartland. Choosing C suggests the student misread the section's explanation of why certain regions were more powerful.",
+            "D": "The student has assumed that the existence of 16 named mahājanapadas implies equal power — ignoring the chapter's explicit identification of the most powerful ones (Magadha, Kosala, Vatsa, Avanti) as a distinct subset."
+          }
+        }
+      },
+      {
+        "question_type": "SCR",
+        "question_text": "The chapter describes the Second Urbanisation as beginning in the Ganga plains and eventually spreading across the Subcontinent. Using evidence from the chapter, explain two specific factors that made this spread possible by 300–200 BCE.",
+        "options": [],
+        "expected_elements": [
+          "Identification of at least one trade route (Uttarapatha or Dakṣhiṇapatha) and a specific explanation of what it connected",
+          "Reference to iron technology, punch-marked coins, or the growth of capital cities as enabling factors in the spread",
+          "A connection between the named factor and how it moved urban culture, people, goods, or governance practices beyond the Ganga plains",
+          "Use of at least one specific geographical name or place from the chapter (not just generic references)"
+        ],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "Look for students who identify specific enabling mechanisms rather than general statements. A strong response names a route or innovation and explains what it enabled, not just what it was. Responses that only describe what the Ganga plains had without explaining spread do not meet the question's demand.",
+        "cognitive_demand": "Application",
+        "period_ref": [
+          2,
+          4,
+          7
+        ],
+        "chapter_section": "Developments Elsewhere in India",
+        "weight_label": "Central",
+        "implied_lo": "Students can use source analysis and map annotation to construct a multi-evidence argument explaining how trade routes, urban design, and cultural networks combined to produce Subcontinent-wide interconnection by 300–200 BCE.",
+        "competency": {
+          "c_code": "C-2.1",
+          "competency_text": "The entire chapter analyses a major historical transition — from post-Harappan rural life to India's Second Urbanisation — and its societal impact across state formation, democratic traditions, technological change, social stratification, and trade expansion.",
+          "weight": 3
+        },
+        "guide": {
+          "expected_elements": [
+            "Identification of at least one trade route (Uttarapatha or Dakṣhiṇapatha) and a specific explanation of what it connected",
+            "Reference to iron technology, punch-marked coins, or the growth of capital cities as enabling factors in the spread",
+            "A connection between the named factor and how it moved urban culture, people, goods, or governance practices beyond the Ganga plains",
+            "Use of at least one specific geographical name or place from the chapter (not just generic references)"
+          ]
+        }
+      },
+      {
+        "question_type": "ECR",
+        "question_text": "The chapter describes how iron metallurgy, the growth of trade, and the introduction of punch-marked coins were interconnected developments during the mahājanapada period. Write an extended response explaining how these three developments formed a chain of cause and effect that transformed Indian society during the Second Urbanisation. Use specific evidence from the chapter.",
+        "options": [],
+        "expected_elements": [],
+        "look_for": [
+          "The response traces a logical sequence from iron tools to agricultural surplus or military advantage, then to expanded trade, then to the need for coins — rather than describing each innovation in isolation",
+          "At least two specific textual details are used (e.g., silver punch-marked coins, iron ploughs improving agriculture, better weapons than bronze, coins circulating beyond individual mahājanapadas)",
+          "The response demonstrates understanding that these changes were interconnected — that coins were made necessary by trade, and trade was enabled by surplus production enabled by iron",
+          "The response connects these technological and economic changes to the broader claim of societal transformation — not just listing what changed but explaining what the cumulative effect was for people and states",
+          "The response avoids treating each innovation as separate and unconnected — the quality of the response depends on the strength of the causal chain built"
+        ],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "This ECR tests the student's ability to build an integrated causal argument across multiple sub-sections. Award higher marks for responses that construct a chain, not for those that discuss each innovation correctly but separately. The central intellectual task is integration, not recall.",
+        "cognitive_demand": "Analysis",
+        "period_ref": [
+          4
+        ],
+        "chapter_section": "More Innovations",
+        "weight_label": "Central",
+        "implied_lo": "Students can construct a cause-effect map linking iron metallurgy, agricultural expansion, trade growth, and the introduction of punch-marked coins as an interconnected sequence of transformations.",
+        "competency": {
+          "c_code": "C-2.1",
+          "competency_text": "The entire chapter analyses a major historical transition — from post-Harappan rural life to India's Second Urbanisation — and its societal impact across state formation, democratic traditions, technological change, social stratification, and trade expansion.",
+          "weight": 3
+        },
+        "guide": {
+          "look_for": [
+            "The response traces a logical sequence from iron tools to agricultural surplus or military advantage, then to expanded trade, then to the need for coins — rather than describing each innovation in isolation",
+            "At least two specific textual details are used (e.g., silver punch-marked coins, iron ploughs improving agriculture, better weapons than bronze, coins circulating beyond individual mahājanapadas)",
+            "The response demonstrates understanding that these changes were interconnected — that coins were made necessary by trade, and trade was enabled by surplus production enabled by iron",
+            "The response connects these technological and economic changes to the broader claim of societal transformation — not just listing what changed but explaining what the cumulative effect was for people and states",
+            "The response avoids treating each innovation as separate and unconnected — the quality of the response depends on the strength of the causal chain built"
+          ]
+        }
+      },
+      {
+        "question_type": "OPEN_TASK",
+        "question_text": "",
+        "options": [],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "The chapter describes India's Second Urbanisation as a period of major change — in state organisation, technology, trade, and social structure. Create a cause-effect map that traces how at least THREE of the following developments were connected to each other and to the broader transformation of society during this period: (1) Iron metallurgy, (2) Growth of mahājanapadas and their capital cities, (3) Expansion of trade networks, (4) Introduction of punch-marked coins, (5) Spread of urbanisation to the Deccan and southern India. Your map must show arrows between developments with a written label on each arrow explaining the causal link.",
+        "scaffold": "Step 1 — Choose three or more developments from the list above and write each in a separate box on your page.\nStep 2 — Draw arrows between developments that are causally connected. Each arrow must go in a direction that shows what caused what (not just that two things happened at the same time).\nStep 3 — Write a label on each arrow (5–10 words) explaining the causal link. For example: 'Iron tools → more agricultural surplus → arrow label: surplus enabled specialised trade goods'.\nStep 4 — At the bottom of your map, write 2–3 sentences: 'These developments together transformed Indian society because...' — your overall interpretation of what the combined effect was.",
+        "format_of_output": [
+          "A hand-drawn or notebook cause-effect map with boxes, arrows, and arrow labels",
+          "A 2–3 sentence written interpretation at the bottom of the map"
+        ],
+        "visual_stimulus": "",
+        "annotation": "Assess the quality of the causal links on arrows — not the neatness of the diagram. A strong map shows genuine causal reasoning on each arrow. A weak map draws arrows without labels or with labels that only restate what the boxes already say. The written interpretation at the bottom should reflect an integrated understanding of transformation, not a summary of individual items.",
+        "cognitive_demand": "Analysis",
+        "period_ref": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "chapter_section": "More Innovations",
+        "weight_label": "Central",
+        "implied_lo": "Students can construct a cause-effect map linking iron metallurgy, agricultural expansion, trade growth, and the introduction of punch-marked coins as an interconnected sequence of transformations.",
+        "competency": {
+          "c_code": "C-2.1",
+          "competency_text": "The entire chapter analyses a major historical transition — from post-Harappan rural life to India's Second Urbanisation — and its societal impact across state formation, democratic traditions, technological change, social stratification, and trade expansion.",
+          "weight": 3
+        },
+        "guide": {
+          "what_this_demonstrates": "A complete response evidences the student's ability to identify causal relationships across multiple historical developments — not just sequence events — and to synthesise them into a coherent interpretation of societal transformation. This is a reasoning operation, not a recall operation.",
+          "reading_the_scaffold": "The scaffold's four steps are designed to separate the intellectual tasks: selection (Step 1), causal direction (Step 2), causal articulation (Step 3), and synthesis (Step 4). A teacher reading the work should focus most attention on the arrow labels (Step 3) and the closing interpretation (Step 4) — these are where causal thinking is most visible. A student who completes Steps 1–2 but leaves labels vague or missing has not yet demonstrated the target competency.",
+          "strong_vs_weak_markers": "Strong: arrows carry labels that explain a mechanism (e.g., 'iron tools allowed deeper ploughing, producing more grain for trade'); the closing interpretation names a cumulative or systemic effect. Weak: arrows connect items without labels or with labels that just restate the box content (e.g., arrow between 'iron' and 'trade' labelled 'helped trade'); the closing interpretation lists changes without explaining their combined significance.",
+          "inclusivity": "Students who find diagrammatic representation challenging may produce a written chain narrative — a paragraph that describes each causal link in sequence — which tests the same reasoning. Students who have strong artistic ability should not be rewarded for diagram quality if the causal labels are absent or weak.",
+          "format_type": "Cause-effect map",
+          "format_rationale": "A cause-effect map is the most natural demonstration vehicle for this implied LO because the LO itself is defined as constructing causal chains across interconnected developments — the map format makes the causal direction and the mechanism on each link directly visible and assessable."
+        }
+      },
+      {
+        "question_type": "MCQ",
+        "question_text": "According to the chapter, the varṇa–jāti system was 'more flexible in earlier periods, with individuals and communities changing occupations when circumstances required.' What does the chapter identify as the period when the system became most rigid?",
+        "options": [
+          {
+            "label": "A",
+            "text": "During the mahājanapada period itself, when the system was first formalised in Vedic texts.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "During the Mauryan Empire, when state control enforced strict occupational categories.",
+            "is_correct": false
+          },
+          {
+            "label": "C",
+            "text": "During British rule, when the system was further hardened and became associated with discrimination.",
+            "is_correct": true
+          },
+          {
+            "label": "D",
+            "text": "During the spread of Buddhism and Jainism, whose teachings reinforced occupational categories.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "Correct answer is C. This question tests whether students read the specific historical claim about rigidification carefully. All distractors represent plausible-sounding time periods mentioned or implied in the chapter, making this a genuine reading comprehension and analytical task rather than a random guess.",
+        "cognitive_demand": "Understanding",
+        "period_ref": [
+          5,
+          6
+        ],
+        "chapter_section": "The Varṇa–Jāti System",
+        "weight_label": "Substantive",
+        "implied_lo": "Students can distinguish between jāti and varṇa, trace the shift from occupational flexibility to inherited rigidity, and articulate how this rigidification led to specific forms of inequality and discrimination.",
+        "competency": {
+          "c_code": "C-3.1",
+          "competency_text": "Two architecturally distinct sections develop this competency substantively: the Varṇa–Jāti System section is a dedicated section on how work and social organisation changed — jāti as occupational community with skill transmission across generations, varṇa as ideological framework, and the evolution toward rigidity and inequality.",
+          "weight": 2
+        },
+        "guide": {
+          "what_each_option_reveals": {
+            "A": "The student has confused the period of the system's origin with the period of its maximum rigidity — the text describes the mahājanapada period as one of relative flexibility, not rigidification. This indicates a failure to track the longitudinal change described in the section.",
+            "B": "The student has inserted the Mauryan Empire — the next chapter's likely content — as the period of rigidification, showing either inference beyond the text or confusion between chronological periods not supported by the section.",
+            "D": "The student has misread the chapter's mention of Buddhist and Jain schools of thought as reinforcing rather than potentially questioning occupational categories — and has confused the temporal association of these movements with the cause of rigidity."
+          }
+        }
+      },
+      {
+        "question_type": "MCQ",
+        "question_text": "The chapter describes jāti as 'a community of people defined by a specific professional occupation closely tied to their livelihood, with skills transmitted from generation to generation.' What distinguishes jāti from varṇa in the chapter's account?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Jāti was a concept from Vedic texts, while varṇa referred to actual occupational communities with sub-divisions.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "Jāti referred to actual occupational communities with inherited skills and customs, while varṇa was a broader ideological framework of four categories from Vedic texts.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "Jāti and varṇa were interchangeable terms used by different communities to describe the same system of social hierarchy.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Varṇa referred to specific craft communities, while jāti referred to the warrior and priestly classes described in the Vedas.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "Correct answer is B. This question tests the conceptual distinction between jāti and varṇa as defined in the text. Distractors deliberately reverse the definitions (A and D) or conflate them (C), testing whether students have engaged with the precise conceptual content of the section rather than a general impression.",
+        "cognitive_demand": "Understanding",
+        "period_ref": [
+          5
+        ],
+        "chapter_section": "The Varṇa–Jāti System",
+        "weight_label": "Substantive",
+        "implied_lo": "Students can distinguish between jāti and varṇa, trace the shift from occupational flexibility to inherited rigidity, and articulate how this rigidification led to specific forms of inequality and discrimination.",
+        "competency": {
+          "c_code": "C-3.1",
+          "competency_text": "Two architecturally distinct sections develop this competency substantively: the Varṇa–Jāti System section is a dedicated section on how work and social organisation changed — jāti as occupational community with skill transmission across generations, varṇa as ideological framework, and the evolution toward rigidity and inequality.",
+          "weight": 2
+        },
+        "guide": {
+          "what_each_option_reveals": {
+            "A": "The student has reversed the definitions — attributing the Vedic textual origin to jāti rather than varṇa. This shows the student read the section but confused which concept was associated with which source, a classic within-section confusion.",
+            "C": "The student treats jāti and varṇa as synonymous, indicating they did not engage with the section's careful distinction between the two concepts — or read superficially and noted only that both relate to social organisation.",
+            "D": "The student has swapped the descriptions — attributing craft communities to varṇa and warrior/priestly groups to jāti — the precise reverse of the text's definitions, suggesting the student recalled elements but not their correct assignment."
+          }
+        }
+      },
+      {
+        "question_type": "SCR",
+        "question_text": "Using evidence from the chapter, explain how the varṇa–jāti system changed over time in terms of both occupational flexibility and social consequences. Your response should cover at least two distinct phases of change.",
+        "options": [],
+        "expected_elements": [
+          "Description of the earlier, more flexible phase — individuals and communities could change occupations when circumstances required",
+          "Description of the later, rigid phase — occupations became inherited with little possibility of change",
+          "Specific identification of British rule as a named turning point in the hardening of the system",
+          "At least one named social consequence — the text's explicit statement that the system 'eventually led to inequalities and discrimination'",
+          "The response should describe change over time, not just a snapshot of what the system was"
+        ],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "A complete response identifies two phases (flexible, then rigid) and names at least one specific consequence. Responses that only describe the four varṇa groups without addressing change over time are incomplete. The question specifically asks about change and consequences — both must be present.",
+        "cognitive_demand": "Analysis",
+        "period_ref": [
+          5,
+          6
+        ],
+        "chapter_section": "The Varṇa–Jāti System",
+        "weight_label": "Substantive",
+        "implied_lo": "Students can distinguish between jāti and varṇa, trace the shift from occupational flexibility to inherited rigidity, and articulate how this rigidification led to specific forms of inequality and discrimination.",
+        "competency": {
+          "c_code": "C-3.1",
+          "competency_text": "Two architecturally distinct sections develop this competency substantively: the Varṇa–Jāti System section is a dedicated section on how work and social organisation changed — jāti as occupational community with skill transmission across generations, varṇa as ideological framework, and the evolution toward rigidity and inequality.",
+          "weight": 2
+        },
+        "guide": {
+          "expected_elements": [
+            "Description of the earlier, more flexible phase — individuals and communities could change occupations when circumstances required",
+            "Description of the later, rigid phase — occupations became inherited with little possibility of change",
+            "Specific identification of British rule as a named turning point in the hardening of the system",
+            "At least one named social consequence — the text's explicit statement that the system 'eventually led to inequalities and discrimination'",
+            "The response should describe change over time, not just a snapshot of what the system was"
+          ]
+        }
+      },
+      {
+        "question_type": "MCQ",
+        "question_text": "The chapter states that at least two mahājanapadas — Vajji and Malla — were known as gaṇas or sanghas and gave the sabhā or samiti more power, including the selection of the rājā through discussion and vote. What does this most directly demonstrate about governance in mahājanapada India?",
+        "options": [
+          {
+            "label": "A",
+            "text": "All mahājanapadas were governed democratically, with the rājā always selected through popular vote.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "The gaṇa/sangha system in Vajji and Malla represents some of the earliest known examples of governance through collective decision-making and elected leadership.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "The sabhā and samiti were religious councils that had no political power in any of the mahājanapadas.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Monarchies were considered illegitimate in mahājanapada India and were gradually replaced by assemblies across all 16 states.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "Correct answer is B. This question tests whether students understand the significance of the gaṇa/sangha exception without overgeneralising it to all mahājanapadas. Distractors test common overgeneralisations (A, D) and a direct misreading of the sabhā/samiti as non-political (C).",
+        "cognitive_demand": "Analysis",
+        "period_ref": [
+          3
+        ],
+        "chapter_section": "Early Democratic Traditions",
+        "weight_label": "Present",
+        "implied_lo": "Students can construct a comparison table distinguishing the governance structures of monarchies and gaṇa/sangha republics, and justify why historians classify Vajji and Malla as early republics.",
+        "competency": {
+          "c_code": "C-4.1",
+          "competency_text": "The 'Early Democratic Traditions' section is dedicated to how institutions (sabhā, samiti, gaṇa/sangha) functioned politically. The 'Coins and Trade' section discusses coins as an economic institution.",
+          "weight": 1
+        },
+        "guide": {
+          "what_each_option_reveals": {
+            "A": "The student has overgeneralised the gaṇa/sangha system to all mahājanapadas — the chapter is explicit that most were monarchies and only Vajji and Malla were different. This indicates the student noted the republic model but failed to register the qualifier 'at least two'.",
+            "C": "The student has misread or ignored the section's explicit statement that the sabhā/samiti could select and remove the rājā in the gaṇa/sangha system — reducing these assemblies to a religious or ceremonial role without textual support.",
+            "D": "The student has misinterpreted the chapter's normative framing (a 'good ruler' took advice from assemblies) as a claim that monarchies were considered illegitimate — projecting a modern political judgement onto the chapter's historical description."
+          }
+        }
+      },
+      {
+        "question_type": "MCQ",
+        "question_text": "The chapter explains that the earliest Indian coins were punch-marked coins made of silver. What does the chapter identify as the primary reason that coins were introduced during the mahājanapada period?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Rulers needed a way to collect taxes more efficiently and distribute salaries to soldiers.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "The growing volume of trade made standardised exchange instruments necessary.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "Coins were introduced as symbols of royal authority to display the power of individual mahājanapadas.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Buddhist and Jain monks required coins to fund the construction of monasteries and stupas.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "Correct answer is B. The chapter's phrasing is explicit: coins were 'made necessary by growing trade.' Distractor A is a plausible economic use of coins but is not the stated reason in the chapter. Distractors C and D introduce royal symbolism and religious funding — neither supported by the section.",
+        "cognitive_demand": "Understanding",
+        "period_ref": [
+          4
+        ],
+        "chapter_section": "More Innovations",
+        "weight_label": "Present",
+        "implied_lo": "Students can construct a cause-effect map linking iron metallurgy, agricultural expansion, trade growth, and the introduction of punch-marked coins as an interconnected sequence of transformations.",
+        "competency": {
+          "c_code": "C-4.1",
+          "competency_text": "The 'Early Democratic Traditions' section is dedicated to how institutions (sabhā, samiti, gaṇa/sangha) functioned politically. The 'Coins and Trade' section discusses coins as an economic institution.",
+          "weight": 1
+        },
+        "guide": {
+          "what_each_option_reveals": {
+            "A": "The student has applied general knowledge about how coins function in state economies (taxation, salary payment) rather than reading the chapter's specific causal claim — indicating engagement with prior knowledge over textual evidence.",
+            "C": "The student has associated coins with political authority — a reasonable inference from the mention that each mahājanapada issued its own coins — but has missed that this detail appears after the primary explanation of trade necessity.",
+            "D": "The student has connected the chapter's mention of Buddhist and Jain schools of thought (in More Innovations) to coins without textual support — a within-chapter confusion between two separate developments described in the same section."
+          }
+        }
+      },
+      {
+        "question_type": "MCQ",
+        "question_text": "The chapter states that the varṇa–jāti system 'eventually led to inequalities and discrimination.' Which of the following best describes how this outcome is linked to a structural feature of the system as described in the chapter?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Because the system required all four varṇa groups to compete economically, those with fewer resources were inevitably disadvantaged.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "Because the system assigned social position and livelihood based on birth rather than ability, people born into lower-status jātis had limited opportunities for occupational or social mobility.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "Because foreign rulers deliberately used the system to divide Indian society and prevent political unity.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Because Brahmin priests monopolised all knowledge and prevented other varṇa groups from accessing education.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "Correct answer is B. The question requires students to connect the structural description (inherited occupation, limited mobility) to the social outcome (inequality, discrimination). This is an application-level question testing whether students can move from description to causal explanation using the section's content.",
+        "cognitive_demand": "Application",
+        "period_ref": [
+          5,
+          6
+        ],
+        "chapter_section": "The Varṇa–Jāti System",
+        "weight_label": "Present",
+        "implied_lo": "Students can identify textual evidence of how the rigidification of the varṇa–jāti system created structural inequality and articulate the distinction between social difference and social conflict.",
+        "competency": {
+          "c_code": "C-5.1",
+          "competency_text": "The Varṇa–Jāti System section explicitly states the system 'eventually led to inequalities and discrimination' and traces the rigidification process.",
+          "weight": 1
+        },
+        "guide": {
+          "what_each_option_reveals": {
+            "A": "The student has introduced an economic competition framework not present in the chapter — applying a market logic to a system the chapter describes as one of inherited position, not competition. This suggests the student is reasoning from outside the text rather than from the section's structural argument.",
+            "C": "The student has identified British rule's role in hardening the system (correctly recalled from the text) but has overstated it as a deliberate divide-and-rule strategy — an inference the chapter does not make. This shows partial textual engagement but an unsupported causal extension.",
+            "D": "The student has focused narrowly on the Brahmin varṇa's association with knowledge while ignoring the broader structural claim about inherited occupation affecting all groups — indicating they absorbed one detail of the varṇa description but did not engage with the systemic argument about rigidity and discrimination."
+          }
+        }
+      },
+      {
+        "question_type": "MCQ",
+        "question_text": "The chapter describes Śhiśhupalgarh as 'built on a strict square plan with imposing fortifications, a water-filled moat, and broad streets.' What does this description most directly demonstrate about the spread of urbanisation in the 1st millennium BCE?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Śhiśhupalgarh was built as a military outpost of the Magadha empire to control eastern trade routes.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "Urban planning features similar to those found in the Ganga heartland had spread to eastern India, showing urbanisation was not confined to one region.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "The city was unique in India because no other city of this period used moats or fortifications.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "The square grid plan of Śhiśhupalgarh was directly copied from the Harappan city of Mohenjo-daro, showing continuity between the First and Second Urbanisations.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "visual_stimulus": "",
+        "annotation": "Correct answer is B. The question tests whether students can use a specific architectural description as evidence for a broader pattern — the spread of urbanisation beyond the Ganga plains. Distractors introduce unsupported claims about Magadha control (A), false uniqueness (C), and a direct Harappan continuity claim the chapter does not make (D).",
+        "cognitive_demand": "Analysis",
+        "period_ref": [
+          7
+        ],
+        "chapter_section": "Developments Elsewhere in India",
+        "weight_label": "Present",
+        "implied_lo": "Students can use source analysis and map annotation to construct a multi-evidence argument explaining how trade routes, urban design, and cultural networks combined to produce Subcontinent-wide interconnection by 300–200 BCE.",
+        "competency": {
+          "c_code": "C-5.1",
+          "competency_text": "The Varṇa–Jāti System section explicitly states the system 'eventually led to inequalities and discrimination' and traces the rigidification process. The Developments Elsewhere section demonstrates how trade, urban culture, and interconnection spread across the Subcontinent.",
+          "weight": 1
+        },
+        "guide": {
+          "what_each_option_reveals": {
+            "A": "The student has associated the eastern city with Magadha — the most powerful mahājanapada — without textual support. The chapter identifies Śhiśhupalgarh as the capital of the Kalinga region, not a Magadhan outpost. This suggests the student applied the most prominent mahājanapada as an explanatory default.",
+            "C": "The student has taken the specific architectural description of Śhiśhupalgarh as evidence of its uniqueness, when the chapter's broader point is precisely that such features were not unique — they were spreading across the Subcontinent. This is a misreading of function of the description.",
+            "D": "The student has drawn a direct architectural continuity between Harappan and Second Urbanisation city planning — an inference the chapter explicitly avoids. The chapter treats these as two distinct urban traditions separated by a millennium-long gap, not continuities."
+          }
+        }
+      }
+    ],
+    "input_tokens": 16093,
+    "output_tokens": 14370,
+    "cost_inr": 22.1616
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "vi",
+  "chapter_number": 2,
+  "chapter_title": "Chapter 02: Oceans and Continents",
+  "summary_path": "mirror/chapters/social_sciences/vi/summaries/ch_02_summary.txt",
+  "competencies": [
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.1",
+      "weight": 3,
+      "justification": "Three architecturally central sections (Distribution of Water and Land, Oceans, Continents) compel students to explain global ocean and landmass phenomena and their spatial distribution — removing this competency dissolves the chapter's fundamental organising purpose."
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.3",
+      "weight": 2,
+      "justification": "The 'Oceans and Life' section contains an architecturally distinct passage dedicated to ocean conservation — pollution, overfishing, and the collective responsibility to protect oceans — satisfying the dedicated-section test for Weight 2."
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.4",
+      "weight": 2,
+      "justification": "The correlation between ocean availability and livelihoods (fishing, trade, migration, monsoon-dependent agriculture) is developed substantively across three named sections ('Oceans', 'Oceans and disasters', 'Oceans and Life'), satisfying the multi-section continuity test for Weight 2."
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.2",
+      "weight": 1,
+      "justification": "The 'Islands' section contains a named sidebar whose primary subject includes India's two major island groups (Andaman & Nicobar, Lakshadweep) and the Indian Antarctica Programme, engaging students with India's topographic diversity."
+    }
+  ],
+  "chapter_weight": 8
+}

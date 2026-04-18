@@ -3418,11 +3418,36 @@ div[data-testid="stDownloadButton"] button[kind="primary"] {
     font-size: 0.82rem !important;
 }
 div[class*="st-key-gen_save_top"] button,
-div[class*="st-key-gen_save_bot"] button {
+div[class*="st-key-gen-save-top"] button,
+div[class*="st-key-gen_save_bot"] button,
+div[class*="st-key-gen-save-bot"] button {
     background-color: #E87722 !important;
     color: #ffffff !important;
     border: none !important;
     font-size: 0.82rem !important;
+}
+div[class*="st-key-gen_clear_top"] button,
+div[class*="st-key-gen-clear-top"] button,
+div[class*="st-key-gen_clear_bot"] button,
+div[class*="st-key-gen-clear-bot"] button {
+    background-color: #1e2a38 !important;
+    color: #ffffff !important;
+    border: none !important;
+    font-size: 0.82rem !important;
+}
+div[class*="st-key-gen_clear_top"] button:hover,
+div[class*="st-key-gen-clear-top"] button:hover,
+div[class*="st-key-gen_clear_bot"] button:hover,
+div[class*="st-key-gen-clear-bot"] button:hover {
+    background-color: #2c3e52 !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+div[class*="st-key-gen_clear_top"] button p,
+div[class*="st-key-gen-clear-top"] button p,
+div[class*="st-key-gen_clear_bot"] button p,
+div[class*="st-key-gen-clear-bot"] button p {
+    color: #ffffff !important;
 }
 </style>""", unsafe_allow_html=True)
         _pdl_c1, _pdl_c2, _pdl_c3, _pdl_c4, _pdl_spc = st.columns([1, 1, 1, 1, 1])
@@ -3498,7 +3523,6 @@ div[class*="st-key-gen_save_bot"] button {
             if st.button(
                 "Clear",
                 key="gen_clear_top",
-                type="primary",
                 use_container_width=True,
             ):
                 st.session_state.lpa_result         = None
@@ -3702,7 +3726,6 @@ div[class*="st-key-gen_save_bot"] button {
             if st.button(
                 "Clear",
                 key="gen_clear_bot",
-                type="primary",
                 use_container_width=True,
             ):
                 st.session_state.lpa_result         = None

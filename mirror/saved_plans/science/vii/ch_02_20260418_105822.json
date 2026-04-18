@@ -1,0 +1,834 @@
+{
+  "filename": "ch_02_20260418_105822.json",
+  "saved_at": "2026-04-18T10:58:22",
+  "grade": "Grade VII",
+  "subject": "Science",
+  "chapter_number": 2,
+  "chapter_title": "Exploring Substances: Acidic, Basic, and Neutral",
+  "period_schedule_display": "Period schedule:\n  Row 1: 40 minutes × 6 periods = 240 minutes\nTotal: 6 periods · 4h 0min",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 40,
+      "count": 6
+    }
+  ],
+  "result": {
+    "lesson_plan": {
+      "cognitive_progression": [
+        {
+          "stage_number": 1,
+          "stage_label": "Observe and sort by indicator response",
+          "description": "Students encounter the phenomenon of colour change in natural indicators and sort familiar substances into acidic, basic, and neutral groups using litmus and rose extract."
+        },
+        {
+          "stage_number": 2,
+          "stage_label": "Compare indicators and classify by chemical property",
+          "description": "Students test substances with turmeric paper and olfactory indicators, compare results across all three indicator types, and articulate the chemical properties (taste, feel, colour change pattern) that define each group."
+        },
+        {
+          "stage_number": 3,
+          "stage_label": "Explain neutralisation as a chemical change and apply to real contexts",
+          "description": "Students reason about what happens when an acid meets a base, identify the products of a neutralisation reaction, and apply this causal mechanism to explain and evaluate real-world scenarios involving soil correction, ant bites, and industrial waste — integrating both classification and chemical change reasoning simultaneously."
+        }
+      ],
+      "implied_los": [
+        {
+          "stage_number": 1,
+          "stage_label": "Observe and sort by indicator response",
+          "implied_lo": "Students can sort a set of household substances into acidic, basic, and neutral groups by observing colour changes in blue litmus, red litmus, and red rose extract, and can state which colour change corresponds to which group."
+        },
+        {
+          "stage_number": 2,
+          "stage_label": "Compare indicators and classify by chemical property",
+          "implied_lo": "Students can explain the limitation of turmeric paper as an indicator, compare the response patterns of all three indicators for the same set of substances, and identify physical properties (sour taste, soapy feel) that correlate with acidic and basic classification."
+        },
+        {
+          "stage_number": 3,
+          "stage_label": "Explain neutralisation as a chemical change and apply to real contexts",
+          "implied_lo": "Students can explain why mixing an acid and a base in sufficient quantities produces a neutral solution, identify the products of neutralisation (salt, water, heat), and justify the selection of a corrective substance for a given real-world acidic or basic problem using both classification and neutralisation reasoning."
+        }
+      ],
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 40,
+          "progression_stage": 1,
+          "stage_label": "Observe and sort by indicator response",
+          "pedagogical_approach": "Hands-on Science",
+          "activity_title": "What Does Litmus Tell Us?",
+          "activity_description": "Students test lemon juice, soap solution, amla juice, tamarind water, vinegar, baking soda solution, lime water, tap water, washing powder solution, sugar solution, and salt solution with both blue and red litmus papers, recording colour changes and sorting each substance into Group A (acidic), Group B (basic), or Group C (neutral).",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Distributes materials, demonstrates the correct technique for dipping litmus paper into a sample without cross-contamination, and circulates to prompt observation recording."
+            },
+            {
+              "actor": "Students (Groups)",
+              "role_description": "Test each household sample systematically with both litmus papers, record observed colour changes in a table, and sort substances into three groups."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "The science fair story of Ashwin and Keerthi is read aloud; the question of how to tell substances apart using natural materials is posed to anchor the activity."
+            },
+            {
+              "minutes": "5–10",
+              "description": "The correct technique for litmus paper testing is demonstrated, and the observation table structure is explained so groups know exactly what to record."
+            },
+            {
+              "minutes": "10–30",
+              "description": "Groups systematically test all eleven household samples with blue then red litmus paper, recording colour changes and tentative groupings in their tables."
+            },
+            {
+              "minutes": "30–40",
+              "description": "Groups share their Group A, B, and C lists with the class; patterns across groups are noted and any disagreements are discussed to build a shared reference table."
+            }
+          ],
+          "materials": [
+            "Blue litmus paper strips",
+            "Red litmus paper strips",
+            "Lemon juice",
+            "Soap solution",
+            "Amla juice",
+            "Tamarind water",
+            "Vinegar",
+            "Baking soda solution",
+            "Lime water",
+            "Tap water",
+            "Washing powder solution",
+            "Sugar solution",
+            "Salt solution",
+            "Dropper",
+            "Small labelled cups or droppers for each sample",
+            "Observation recording sheet"
+          ]
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 40,
+          "progression_stage": 1,
+          "stage_label": "Observe and sort by indicator response",
+          "pedagogical_approach": "Inquiry approach",
+          "activity_title": "Rose Petals as a Colour Signal",
+          "activity_description": "Students prepare a red rose petal extract by crushing petals and filtering, then test the same eleven household samples from Period 1, observing whether the extract turns red (acidic) or green (basic) or remains unchanged (neutral), and compare these results with their litmus groupings.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Guides students through extract preparation, asks probing questions about whether they predict the same groupings as from litmus, and focuses attention on the red/green colour shift."
+            },
+            {
+              "actor": "Students (Groups)",
+              "role_description": "Crush and filter rose petals to produce extract, test each sample, record colour observations, and compare results with the litmus table from Period 1."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Students predict which colour they expect the rose extract to show for each group before testing, recording predictions alongside the Period 1 reference table."
+            },
+            {
+              "minutes": "8–18",
+              "description": "Groups prepare red rose petal extract by crushing petals in a small amount of water and filtering through cloth or filter paper into a collection vessel."
+            },
+            {
+              "minutes": "18–33",
+              "description": "Groups add a few drops of rose extract to each of the eleven samples and record the observed colour in a new column of their observation table."
+            },
+            {
+              "minutes": "33–40",
+              "description": "Groups compare their rose extract groupings with their litmus groupings and report whether the two methods agree, identifying any discrepancies for class discussion."
+            }
+          ],
+          "materials": [
+            "Fresh red rose petals",
+            "Mortar and pestle or clean stone",
+            "Water",
+            "Filter paper or clean cloth",
+            "Small collection vessel",
+            "Dropper",
+            "Same eleven household samples as Period 1 in labelled cups",
+            "Observation recording sheet from Period 1"
+          ]
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 40,
+          "progression_stage": 2,
+          "stage_label": "Compare indicators and classify by chemical property",
+          "pedagogical_approach": "Hands-on Science",
+          "activity_title": "Turmeric Paper and Its Limits",
+          "activity_description": "Students prepare turmeric paper strips by soaking filter paper in turmeric paste and drying, then test the same sample set, observing that only basic substances turn the yellow paper red while acidic and neutral substances both leave it unchanged, identifying this limitation and comparing all three indicator response patterns.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Introduces the preparation method for turmeric paper, asks students to predict what will happen for acidic versus neutral samples before testing, and facilitates the class comparison table at the close."
+            },
+            {
+              "actor": "Students (Groups)",
+              "role_description": "Prepare turmeric paper strips, test samples, record results, and construct a three-column comparison table showing litmus, rose extract, and turmeric paper responses side by side."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Groups prepare turmeric paper by applying turmeric paste to filter paper strips and allowing them to dry briefly, while discussing what colour change would indicate a basic substance."
+            },
+            {
+              "minutes": "10–25",
+              "description": "Groups test each of the eleven samples with dry turmeric paper strips and record whether the paper changes colour or remains yellow."
+            },
+            {
+              "minutes": "25–35",
+              "description": "Groups add a turmeric paper column to their master observation table and compare responses across all three indicators, identifying which indicator can distinguish acidic from neutral and which cannot."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Groups state in one sentence what turmeric paper can and cannot tell us, and share these statements to build a class consensus on indicator limitations."
+            }
+          ],
+          "materials": [
+            "Turmeric powder or solid turmeric",
+            "Water",
+            "Filter paper strips",
+            "Small brush or dropper for applying paste",
+            "Same eleven household samples in labelled cups",
+            "Master observation table from Periods 1 and 2"
+          ]
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 40,
+          "progression_stage": 2,
+          "stage_label": "Compare indicators and classify by chemical property",
+          "pedagogical_approach": "Discovery approach",
+          "activity_title": "Smell, Taste, and Touch — Chemical Properties of Each Group",
+          "activity_description": "Students investigate olfactory indicators using onion-soaked strips alongside Activity 2.2's guided taste and touch observations, linking the physical properties of sourness, bitterness, and slipperiness to their acidic and basic classifications, and discover why indicators are needed when taste and touch are unsafe for unknown substances.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Guides students to notice patterns between classification group and physical property, introduces the concept of olfactory indicators using onion strips, and raises the safety question about tasting unknown substances."
+            },
+            {
+              "actor": "Students (Individual)",
+              "role_description": "Complete Activity 2.2's taste and touch observations for safe known samples, test onion strips against samples, and record how odour changes serve as an indicator signal."
+            },
+            {
+              "actor": "Students (Groups)",
+              "role_description": "Discuss the patterns they notice between group membership and physical properties and agree on a summary of distinguishing characteristics for each group."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Students revisit their classification table and, for safe identified substances only, record taste (sour/bitter/neutral) and touch (soapy/slippery/none) observations alongside their indicator groupings."
+            },
+            {
+              "minutes": "8–20",
+              "description": "Students test onion-soaked paper strips against safe acidic and basic samples, observing whether the characteristic onion odour diminishes or persists, and record results."
+            },
+            {
+              "minutes": "20–32",
+              "description": "Groups examine their completed table and identify the pattern: acidic substances are sour-tasting; basic substances are soapy, slippery, and bitter; and why neither taste nor touch is safe for unknown substances."
+            },
+            {
+              "minutes": "32–40",
+              "description": "Each group shares one property-to-group link they discovered; the class constructs a shared property summary for acidic, basic, and neutral groups to be used as reference in subsequent periods."
+            }
+          ],
+          "materials": [
+            "Safe household samples already identified from Periods 1–3",
+            "Onion-soaked filter paper strips",
+            "Master observation table",
+            "Blank summary sheet for property recording"
+          ]
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 40,
+          "progression_stage": 3,
+          "stage_label": "Explain neutralisation as a chemical change and apply to real contexts",
+          "pedagogical_approach": "Inquiry approach",
+          "activity_title": "Acid Meets Base — What Changes?",
+          "activity_description": "Students investigate what happens when lemon juice is progressively added to lime water containing blue litmus solution, observing the transition from blue to red as an indicator of chemical change, inferring that the acidic and basic properties have been cancelled out, and constructing the neutralisation equation with teacher guidance.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Sets up the experiment, guides students through the step-by-step addition of lemon juice, asks predictive questions at each addition, and introduces the term neutralisation reaction and its products (salt, water, heat) after students have observed the colour change."
+            },
+            {
+              "actor": "Students (Groups)",
+              "role_description": "Predict the colour of the solution before each drop of lemon juice is added, observe and record the colour at each step, and construct a cause-and-effect explanation for the observed change."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Students predict what they think will happen when lemon juice (acidic) is added to lime water (basic) containing blue litmus solution, writing their predictions before any demonstration."
+            },
+            {
+              "minutes": "5–20",
+              "description": "Groups add lemon juice drop by drop to lime water with blue litmus solution, recording the colour of the solution after each addition until the solution turns red, noting the point of apparent neutrality."
+            },
+            {
+              "minutes": "20–30",
+              "description": "Groups compare their observations with their predictions and discuss what must have happened to the acidic and basic properties, constructing an explanation using their own words before formal vocabulary is introduced."
+            },
+            {
+              "minutes": "30–40",
+              "description": "The neutralisation reaction is formalised: Acid + Base → Salt + Water + Heat; students write this equation in their notes alongside their observation record and identify what each product means."
+            }
+          ],
+          "materials": [
+            "Lemon juice",
+            "Lime water",
+            "Blue litmus solution",
+            "Dropper",
+            "Small transparent glass or beaker per group",
+            "Observation recording sheet"
+          ]
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 40,
+          "progression_stage": 3,
+          "stage_label": "Explain neutralisation as a chemical change and apply to real contexts",
+          "pedagogical_approach": "Didactic approach",
+          "activity_title": "Neutralisation at Work — Three Situations",
+          "activity_description": "Students analyse the three real-world situations from Section 2.3 — ant bite treated with baking soda, acidic or basic soil corrected with lime or compost, and acidic factory waste neutralised before lake release — identifying in each case the problem substance, the corrective substance, and the neutralisation reaction that relieves the problem.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Presents each situation with context, connects it explicitly to the neutralisation equation and classification knowledge, and models how to identify the acid-base pair involved in the first situation."
+            },
+            {
+              "actor": "Students (Individual)",
+              "role_description": "For each situation, identify the nature of the problem substance, the corrective substance, and write a one-sentence justification using the neutralisation equation and classification knowledge."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Situation 1 (ant bite and formic acid) is presented; students identify that the skin substance is acidic, baking soda is basic, and explain how applying a base neutralises the acid to relieve pain."
+            },
+            {
+              "minutes": "10–22",
+              "description": "Situation 2 (soil correction) is presented in both acidic and basic variants; students identify what lime does to acidic soil and what compost does to basic soil, explaining both directions of neutralisation."
+            },
+            {
+              "minutes": "22–32",
+              "description": "Situation 3 (factory waste and lake) is presented; students explain why the factory must treat acidic waste with a basic substance before release and what harm is avoided."
+            },
+            {
+              "minutes": "32–40",
+              "description": "Students compare all three situations and identify the common pattern: in every case, a substance of opposite nature is selected to neutralise the problem, producing a less harmful result."
+            }
+          ],
+          "materials": [
+            "Chapter Section 2.3 text or summary card for each situation",
+            "Completed neutralisation equation from Period 5",
+            "Student notebooks"
+          ]
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 60,
+          "progression_stage": 3,
+          "stage_label": "Explain neutralisation as a chemical change and apply to real contexts",
+          "pedagogical_approach": "Inquiry approach",
+          "activity_title": "Solve the Science Fair Mystery — Classify and Neutralise",
+          "activity_description": "Students receive a set of unfamiliar scenarios requiring them to first identify the nature of each substance using indicator evidence, then select and justify a corrective substance using neutralisation reasoning — culminating in explaining how the chapter's opening science fair mystery (turmeric-coated paper and soap writing) worked.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Presents the unfamiliar scenario set and the science fair mystery as the final challenge, facilitates group reasoning, and consolidates the integrated classification-plus-neutralisation reasoning framework at the close."
+            },
+            {
+              "actor": "Students (Groups)",
+              "role_description": "Work through each scenario by first classifying substances using indicator logic, then applying the neutralisation equation to select and justify a corrective substance, and finally explain the turmeric-and-soap science fair mystery in writing."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Groups recall their indicator response tables and neutralisation equation from previous periods to prepare for the challenge scenarios, identifying what information they will need for each step."
+            },
+            {
+              "minutes": "10–30",
+              "description": "Groups work through three unfamiliar scenarios: for each, they identify the nature of the problem substance using indicator reasoning, select a corrective substance, and write a justification referencing both classification evidence and the neutralisation reaction."
+            },
+            {
+              "minutes": "30–45",
+              "description": "Groups apply their integrated reasoning to the science fair mystery: they explain which indicator was used (turmeric), what the writing substance was (soap solution), and why the turmeric paper turned red — linking this back to basic substance detection and their classification work."
+            },
+            {
+              "minutes": "45–60",
+              "description": "Groups share their science fair mystery explanations with the class; key reasoning steps are consolidated, and any remaining gaps between classification and neutralisation reasoning are addressed as a whole group."
+            }
+          ],
+          "materials": [
+            "Scenario cards with unfamiliar situations",
+            "Master indicator response table from Periods 1–3",
+            "Neutralisation equation record from Period 5",
+            "Student notebooks",
+            "Turmeric paper sample (from Period 3)",
+            "Soap solution (for demonstration reference)"
+          ]
+        }
+      ]
+    },
+    "assessment_items": [
+      {
+        "progression_stage": 1,
+        "stage_label": "Observe and sort by indicator response",
+        "implied_lo_assessed": "Students can sort a set of household substances into acidic, basic, and neutral groups by observing colour changes in blue litmus, red litmus, and red rose extract, and can state which colour change corresponds to which group.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Classification of substances by chemical characteristics including acid and base."
+        },
+        "cognitive_demand": "Understanding",
+        "visual_stimulus": "Substance | Blue litmus | Red litmus\nLemon juice | Turns red | No change\nBaking soda solution | No change | Turns blue\nSugar solution | No change | No change\nVinegar | Turns red | No change",
+        "question_text": "A student tests four substances with litmus paper. Refer to the table provided. Which two substances belong to the same group?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Lemon juice and baking soda solution",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "Lemon juice and vinegar",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "Baking soda solution and sugar solution",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Vinegar and sugar solution",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 1
+            },
+            "what_each_option_reveals": {
+              "A": "Choosing lemon juice and baking soda together indicates the student has not connected the direction of colour change (blue→red vs red→blue) to group membership and is grouping by one indicator result only.",
+              "C": "Choosing baking soda and sugar solution indicates the student has confused 'no change in blue litmus' as a shared basic property, missing that sugar solution also shows no change in red litmus, placing it in the neutral group rather than the basic group.",
+              "D": "Choosing vinegar and sugar solution indicates the student is attending only to the red litmus column (both show no change) without integrating the blue litmus result that distinguishes them."
+            },
+            "inclusivity": "Students who need additional support can be offered the full four-indicator table used during activities to cross-check. Students who finish early can be asked to name the group each substance belongs to and state the indicator rule for that group."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 1,
+        "stage_label": "Observe and sort by indicator response",
+        "implied_lo_assessed": "Students can sort a set of household substances into acidic, basic, and neutral groups by observing colour changes in blue litmus, red litmus, and red rose extract, and can state which colour change corresponds to which group.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Classification of substances by chemical characteristics including acid and base."
+        },
+        "cognitive_demand": "Understanding",
+        "visual_stimulus": null,
+        "question_text": "A student adds red rose petal extract to three samples. Sample P turns the extract green. Sample Q turns it red. Sample R causes no colour change. Which statement correctly describes the groups these samples belong to?",
+        "options": [
+          {
+            "label": "A",
+            "text": "P is acidic, Q is basic, R is neutral.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "P is basic, Q is acidic, R is neutral.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "P is neutral, Q is acidic, R is basic.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "P is basic, Q is neutral, R is acidic.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 1
+            },
+            "what_each_option_reveals": {
+              "A": "Choosing P as acidic and Q as basic indicates the student has swapped the red and green colour signals for the rose extract indicator, reversing the acid-base colour rule.",
+              "C": "Choosing P as neutral indicates the student has not learned the rose extract colour code and may be confusing the indicator with litmus, where neutral substances cause no change.",
+              "D": "Choosing Q as neutral indicates the student recognises that P is basic from the green colour but fails to connect the red colour signal to the acidic group, leaving Q misclassified."
+            },
+            "inclusivity": "Students who have not memorised the rose extract colour signals can be reminded to refer to their Activity 2.4 observation table. Oral response is equally valid for students with writing difficulties."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 2,
+        "stage_label": "Compare indicators and classify by chemical property",
+        "implied_lo_assessed": "Students can explain the limitation of turmeric paper as an indicator, compare the response patterns of all three indicators for the same set of substances, and identify physical properties that correlate with acidic and basic classification.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Classification of substances by chemical characteristics including acid and base."
+        },
+        "cognitive_demand": "Application",
+        "visual_stimulus": null,
+        "question_text": "A student has three unknown samples and only turmeric paper available. Sample X turns turmeric paper red. Samples Y and Z both leave turmeric paper yellow. What can the student correctly conclude?",
+        "options": [
+          {
+            "label": "A",
+            "text": "X is basic; Y is acidic; Z is neutral.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "X is basic; Y and Z are either acidic or neutral — turmeric paper cannot tell them apart.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "X is acidic; Y and Z are basic.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "X is basic; Y is neutral; Z is acidic.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 2
+            },
+            "what_each_option_reveals": {
+              "A": "Choosing this option shows the student incorrectly assigns distinct classifications to Y and Z from turmeric paper alone, failing to recognise the indicator's limitation in distinguishing acidic from neutral.",
+              "C": "Choosing X as acidic shows the student has reversed the turmeric paper rule, confusing which colour change signals basic rather than acidic substances.",
+              "D": "Choosing distinct labels for Y and Z shows the student recognises X as basic but still does not apply the limitation of turmeric paper — they believe turmeric paper can differentiate neutral from acidic."
+            },
+            "inclusivity": "Students can be allowed to refer to their comparative indicator table from Period 3. For oral responses, the student may explain the limitation verbally rather than selecting an option."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 2,
+        "stage_label": "Compare indicators and classify by chemical property",
+        "implied_lo_assessed": "Students can explain the limitation of turmeric paper as an indicator, compare the response patterns of all three indicators for the same set of substances, and identify physical properties that correlate with acidic and basic classification.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Classification of substances by chemical characteristics including acid and base."
+        },
+        "cognitive_demand": "Application",
+        "visual_stimulus": null,
+        "question_text": "Riya notices that a fruit juice tastes sour. Without using any indicator, which physical property would she observe if she tested a soap solution alongside it, and what do these properties tell her about the two substances?",
+        "options": [
+          {
+            "label": "A",
+            "text": "The soap solution would also taste sour; both are acidic.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "The soap solution would feel soapy or slippery and taste bitter; the juice is acidic and the soap solution is basic.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "The soap solution would taste sour; it is also acidic because acids cause a taste change.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Both would feel slippery; they are both basic substances.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 2
+            },
+            "what_each_option_reveals": {
+              "A": "Choosing this shows the student has not linked the sour taste property exclusively to acidic substances, and does not recognise that the soapy feel and bitter taste distinguish the basic group.",
+              "C": "Choosing this reveals a misconception that acids cause all taste changes generally, rather than specifically the sour taste being the diagnostic property of acidic substances.",
+              "D": "Choosing this shows the student has confused the slippery feel property, applying it to the sour juice rather than recognising slipperiness as a property of basic substances."
+            },
+            "inclusivity": "Students who have completed Activity 2.2 can refer to their taste-and-touch observation notes. Students may give oral explanations linking property to group if writing is a barrier."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 2,
+        "stage_label": "Compare indicators and classify by chemical property",
+        "implied_lo_assessed": "Students can explain the limitation of turmeric paper as an indicator, compare the response patterns of all three indicators for the same set of substances, and identify physical properties that correlate with acidic and basic classification.",
+        "question_type": "SCR",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Classification of substances by chemical characteristics including acid and base."
+        },
+        "cognitive_demand": "Analysis",
+        "visual_stimulus": "Substance | Blue litmus | Red litmus | Rose extract | Turmeric paper\nAmla juice | Turns red | No change | Turns red | No change\nWashing powder solution | No change | Turns blue | Turns green | Turns red\nTap water | No change | No change | No change | No change\nLime water | No change | Turns blue | Turns green | Turns red",
+        "question_text": "A student recorded the indicator results for four substances. Refer to the table provided. Answer both parts: (a) Identify the group (acidic, basic, or neutral) for each substance using the combined evidence from all four indicators. (b) Explain why the turmeric paper alone would not have been enough to distinguish amla juice from tap water.",
+        "options": [],
+        "expected_elements": [
+          "Amla juice is correctly identified as acidic based on blue litmus turning red and rose extract turning red.",
+          "Washing powder solution and lime water are correctly identified as basic based on red litmus turning blue, rose extract turning green, and turmeric paper turning red.",
+          "Tap water is correctly identified as neutral because no indicator shows any colour change.",
+          "The explanation states that both amla juice and tap water leave turmeric paper unchanged (yellow), so turmeric paper cannot distinguish between the two.",
+          "The explanation identifies that turmeric paper can only detect basic substances and cannot differentiate acidic from neutral."
+        ],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": null,
+          "SCR": {
+            "learning_outcome": {
+              "stage": 2
+            },
+            "inclusivity": "Students who struggle with the written explanation can draw arrows or annotate the table directly to show which column reveals the limitation. Pair discussion before written response is permitted."
+          },
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 3,
+        "stage_label": "Explain neutralisation as a chemical change and apply to real contexts",
+        "implied_lo_assessed": "Students can explain why mixing an acid and a base in sufficient quantities produces a neutral solution, identify the products of neutralisation (salt, water, heat), and justify the selection of a corrective substance for a given real-world acidic or basic problem using both classification and neutralisation reasoning.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-1.2",
+          "competency_text": "Changes in matter including chemical changes such as the neutralisation reaction."
+        },
+        "cognitive_demand": "Analysis",
+        "visual_stimulus": null,
+        "question_text": "In a neutralisation experiment, lemon juice is added drop by drop to lime water containing blue litmus solution. Initially the solution is blue. After enough lemon juice is added, the solution turns red. Which statement best explains what this colour change indicates?",
+        "options": [
+          {
+            "label": "A",
+            "text": "The lemon juice has diluted the lime water so much that the indicator has faded.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "The basic property of lime water has been overcome by the acid in lemon juice, producing a solution that is now acidic.",
+            "is_correct": false
+          },
+          {
+            "label": "C",
+            "text": "The acid and base have reacted completely; the resulting solution is neutral and contains salt and water.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "The acid in lemon juice has reacted with the base in lime water; the excess acid after neutralisation makes the solution acidic, turning the litmus red.",
+            "is_correct": true
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 3
+            },
+            "what_each_option_reveals": {
+              "A": "Choosing the dilution explanation reveals that the student has not understood that a chemical reaction (not just physical dilution) is responsible for the change, confusing a physical mixing process with a chemical change.",
+              "B": "Choosing this option shows partial understanding: the student recognises that the acid overcomes the base but conflates this with the neutralisation products, missing that the red colour means excess acid is present after the reaction, not that neutralisation caused the solution to turn acidic.",
+              "C": "Choosing this option shows the student understands neutralisation but misapplies it — the blue litmus turning red means the solution has excess acid remaining, not that it is neutral; the student has not connected the observation (red colour) to excess acid."
+            },
+            "inclusivity": "Students can be referred to their observation record from Period 5, noting the step at which the colour changed. Students who answer incorrectly can discuss in pairs what the indicator is actually measuring."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 3,
+        "stage_label": "Explain neutralisation as a chemical change and apply to real contexts",
+        "implied_lo_assessed": "Students can explain why mixing an acid and a base in sufficient quantities produces a neutral solution, identify the products of neutralisation (salt, water, heat), and justify the selection of a corrective substance for a given real-world acidic or basic problem using both classification and neutralisation reasoning.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-1.2",
+          "competency_text": "Changes in matter including chemical changes such as the neutralisation reaction."
+        },
+        "cognitive_demand": "Application",
+        "visual_stimulus": null,
+        "question_text": "A factory releases waste water that turns blue litmus paper red. Before the waste reaches the river, workers must treat it. Which substance should they add, and why?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Add an acidic substance, because the waste is basic and needs to be made more neutral.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "Add a basic substance such as lime, because the waste is acidic and the base will neutralise the acid to reduce harm.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "Add water to dilute the acid, because dilution removes the acidic property.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Add a neutral substance, because neutral substances will cancel out the acid.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 3
+            },
+            "what_each_option_reveals": {
+              "A": "Choosing an acidic substance shows the student has misread the litmus result (blue turning red means acidic waste) or confused the direction of correction, applying the wrong substance type.",
+              "C": "Choosing water as a corrective reveals the student has not distinguished physical dilution from chemical neutralisation, a key conceptual gap that treats water as capable of removing chemical properties.",
+              "D": "Choosing a neutral substance shows the student understands that the corrective should not be the same type as the problem substance but misunderstands neutralisation, believing a neutral substance can cancel an acid rather than a base being required."
+            },
+            "inclusivity": "Students may refer to the three daily-life situations from Section 2.3 as anchor examples. Students who struggle with the written justification step can explain their reasoning orally."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 3,
+        "stage_label": "Explain neutralisation as a chemical change and apply to real contexts",
+        "implied_lo_assessed": "Students can explain why mixing an acid and a base in sufficient quantities produces a neutral solution, identify the products of neutralisation (salt, water, heat), and justify the selection of a corrective substance for a given real-world acidic or basic problem using both classification and neutralisation reasoning.",
+        "question_type": "ECR",
+        "competency": {
+          "c_code": "C-1.2",
+          "competency_text": "Changes in matter including chemical changes such as the neutralisation reaction."
+        },
+        "cognitive_demand": "Analysis",
+        "visual_stimulus": null,
+        "question_text": "A farmer tests two fields. Field 1 soil turns red litmus paper blue. Field 2 soil turns blue litmus paper red. The farmer wants both fields to be suitable for farming, which requires nearly neutral soil. Explain, for each field separately: (a) the chemical nature of the soil problem; (b) the corrective substance the farmer should add; (c) how the neutralisation reaction solves the problem, naming the products formed.",
+        "options": [],
+        "expected_elements": [],
+        "look_for": [
+          "Field 1 is correctly identified as basic (red litmus turns blue) and Field 2 as acidic (blue litmus turns red).",
+          "Correct corrective substance for Field 1 (basic soil): organic matter or compost, which releases acids to neutralise the base.",
+          "Correct corrective substance for Field 2 (acidic soil): lime (a base), to neutralise the excess acid.",
+          "The neutralisation reaction is written or described as: Acid + Base → Salt + Water + Heat for each field's correction.",
+          "The explanation connects the chemical change to the practical outcome: the soil becomes neither acidic nor basic, making it suitable for farming.",
+          "Both fields are addressed separately with distinct reasoning, not a single generic statement."
+        ],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": null,
+          "SCR": null,
+          "ECR": {
+            "learning_outcome": {
+              "stage": 3
+            },
+            "inclusivity": "Students may draw the neutralisation equation as a diagram or write the word equation in place of a prose explanation. Pair discussion before writing is permitted. Students who need scaffolding can be given the equation template Acid + Base → ___ + ___ + ___ to complete before writing their explanation."
+          },
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 3,
+        "stage_label": "Explain neutralisation as a chemical change and apply to real contexts",
+        "implied_lo_assessed": "Students can explain why mixing an acid and a base in sufficient quantities produces a neutral solution, identify the products of neutralisation (salt, water, heat), and justify the selection of a corrective substance for a given real-world acidic or basic problem using both classification and neutralisation reasoning.",
+        "question_type": "OPEN_TASK",
+        "competency": {
+          "c_code": "C-1.2",
+          "competency_text": "Changes in matter including chemical changes such as the neutralisation reaction."
+        },
+        "cognitive_demand": "Evaluation",
+        "visual_stimulus": "Scenario | Indicator used | Indicator result | Nature of problem substance | Corrective substance | Nature of corrective | Products of reaction | Problem solved?\nBee sting on skin | Red litmus | Turns blue | | | | |\nStream water near factory | Blue litmus | Turns red | | | | |\nSoil in garden | Red litmus | Turns blue | | | | |",
+        "question_text": "",
+        "options": [],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "Three situations each involve a substance that needs correction. Refer to the table provided. For each scenario: (1) identify the nature of the problem substance using the indicator result; (2) select and name the corrective substance; (3) state the nature of the corrective substance; (4) name the products of the neutralisation reaction that occurs; (5) write one sentence explaining why the problem is solved. After completing the table, write two sentences comparing any two of the three scenarios — explain what is the same about how the problem is solved in both cases, and what is different.",
+        "scaffold": "Use the indicator colour rules you recorded in your observation table to complete column 4. For column 5, choose a corrective substance that is the opposite type to the problem substance. Remember: Acid + Base → Salt + Water + Heat. For the comparison at the end, look at the type of substance causing the problem in each scenario you chose.",
+        "format_of_output": [
+          "Completed table with all five columns filled for each of the three scenarios",
+          "Two sentences of comparison between any two chosen scenarios"
+        ],
+        "guide": {
+          "MCQ": null,
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": {
+            "learning_outcome": {
+              "stage": 3
+            },
+            "format_type": "Classification or sorting task with justification",
+            "format_rationale": "The final stage's convergent LO requires simultaneous use of classification reasoning (identify the nature of a substance from indicator evidence) and neutralisation reasoning (select the correct corrective and explain the chemical change), making a structured classification-and-justification table the most natural demonstration vehicle for both operations at once.",
+            "what_this_demonstrates": "A complete response demonstrates that the student can integrate indicator-based classification of an unknown substance with causal reasoning about neutralisation — selecting the appropriate corrective, naming reaction products, and explaining why the problem is resolved — which is the convergent cognitive operation targeted by this chapter's co-central progression.",
+            "reading_the_scaffold": "The scaffold is designed to guide students through the two-step reasoning sequence without collapsing it: the indicator rule prompt directs students to classification first, and the equation template directs them to neutralisation second. The comparison task at the end requires the student to abstract across scenarios — identifying the common mechanism (opposite-nature correction via neutralisation) while recognising situational differences (acidic versus basic problems, different corrective substances).",
+            "strong_vs_weak_markers": "Strong responses: correctly read the indicator result in each row to determine the nature of the problem substance; select a corrective substance that is the chemically opposite type; name all three products of neutralisation; write explanations that explicitly link the chemical change to the practical outcome; comparison sentences identify the shared neutralisation mechanism AND at least one genuine difference between scenarios. Weak responses: fill the table but treat all three scenarios as identical without distinguishing acidic from basic problems; name a corrective substance without explaining why it works; omit or confuse neutralisation products; comparison sentences restate the table rather than abstracting a shared mechanism.",
+            "inclusivity": "Students who cannot complete the full table in writing may complete two rows and explain the third orally. Students who need additional support may use their master indicator table and neutralisation equation card from the lesson as reference during the task. Students who finish early may be asked to design a fourth scenario of their own and predict what a classmate would need to fill in."
+          }
+        }
+      }
+    ],
+    "input_tokens": 12612,
+    "output_tokens": 12145,
+    "cost_inr": 18.4809
+  }
+}

@@ -65,16 +65,9 @@ Do not attempt to generate the summary here — run
 
 Apply the subject-specific Competency Mapping Constitution exactly.
 The constitution is the governing document — all mapping decisions
-must follow its rules without exception.
-
-**Cross-verification (mandatory before writing JSON):**
-Before writing any mapping JSON, confirm for each competency assigned:
-1. Quote the exact named section header(s) from the summary that justify it.
-2. Confirm those headers are present in the summary file for THIS chapter number.
-3. Confirm `chapter_number` matches the `NN` in the summary filename and `chapter_title` matches the title on the first line of that summary file.
-
-If any competency cannot be anchored in a named section verifiably present
-in the target ch_NN_summary.txt, remove it from the mapping.
+must follow its rules without exception. This step produces a
+verified in-memory competency list (cg, c_code, weight, justification)
+ready for Step 3 to transcribe into JSON. No file is written here.
 
 **Prohibited documents for all subjects:**
 Learning Outcomes, Pedagogy documents, Syllabus documents, Assessment
@@ -97,12 +90,21 @@ Write one JSON record per chapter to:
 | `chapter_number` | Summary filename | Parse `NN` from `ch_NN_summary.txt`; strip leading zero; write as integer |
 | `chapter_title` | First line of `ch_NN_summary.txt` | Read the title heading from the top of the summary file; used verbatim |
 | `summary_path` | Constructed | `mirror/chapters/{subject}/{grade}/summaries/ch_NN_summary.txt` using derived values |
-| `cg` | CG document | CG label exactly as it appears in the CG document header (e.g. `CG-6`) |
-| `c_code` | CG document | C-code label exactly as it appears in the CG document (e.g. `C-6.1`) |
-| `weight` | Constitution Rules 4–6 | Apply weight rules from the constitution; do not assign weight by any other means |
-| `justification` | Summary file (Step 2 cross-verification) | Must be anchored to named section headers present in `ch_NN_summary.txt` |
-| `chapter_weight` | Calculated | Sum of all `weight` values across all `primary` entries |
+| `cg` | Step 2 output | Transcribe verbatim from the competency list produced in Step 2 |
+| `c_code` | Step 2 output | Transcribe verbatim from the competency list produced in Step 2 |
+| `weight` | Step 2 output | Transcribe verbatim from the competency list produced in Step 2 |
+| `justification` | Step 2 output | Transcribe verbatim from the competency list produced in Step 2 |
+| `chapter_weight` | Calculated | Sum of all `weight` values across all entries |
 
+**Post-write verification (mandatory):**
+After writing the JSON file, read it back and confirm:
+1. Every `cg`, `c_code`, `weight`, and `justification` in the file exactly matches the competency list produced in Step 2.
+2. `chapter_title` matches the first line of `ch_NN_summary.txt`.
+3. `chapter_weight` equals the sum of all weight values.
+
+If any discrepancy is found, overwrite the file with the correct values before proceeding to the next chapter.
+
+---
 
 ## Step 4 — Print verification summary
 
