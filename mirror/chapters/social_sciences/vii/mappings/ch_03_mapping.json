@@ -3,7 +3,7 @@
   "subject": "social_sciences",
   "grade": "vii",
   "chapter_number": 3,
-  "chapter_title": "Climate of India",
+  "chapter_title": "Climates of India",
   "summary_path": "mirror/chapters/social_sciences/vii/summaries/ch_03_summary.txt",
   "primary": [
     {
@@ -23,11 +23,19 @@
       "c_code": "C-6.4",
       "weight": 2,
       "justification": "The chapter contains a dedicated section 'Climate and our Lives' that directly correlates climate with patterns of livelihoods — wheat cultivation in northern plains, rice and spices on the western coast, and the socioeconomic consequences of monsoon failure (agricultural disruption, food price rises, migration of agricultural labourers, industrial dependence on water). This section is architecturally distinct and devoted to the livelihood–climate correlation that C-6.4 demands."
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.2",
+      "weight": 1,
+      "justification": "The chapter identifies regional patterns of agricultural suitability across geographies — the wet western coast for rice and spices, the northern plains for wheat, the Deccan as semi-arid. These appear as illustrations within climate-type descriptions rather than a dedicated resource-distribution section, qualifying as present but not substantive."
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1",
+      "weight": 1,
+      "justification": "IMD's colour-coded warning system is described in detail in the weather prediction subsection, and the NDRF's role is mentioned under Cyclones. These are named structural passages about institutions in the context of disaster response, qualifying as present but not substantive."
     }
-  ],
-  "incidental": [
-    { "cg": "CG-6", "c_code": "C-6.2" },
-    { "cg": "CG-4", "c_code": "C-4.1" }
   ],
   "chapter_weight": 9
 }

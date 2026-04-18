@@ -3,25 +3,33 @@
   "subject": "social_sciences",
   "grade": "vii",
   "chapter_number": 8,
-  "chapter_title": "Sacred Geography of India",
+  "chapter_title": "How the Land Becomes Sacred",
   "summary_path": "mirror/chapters/social_sciences/vii/summaries/ch_08_summary.txt",
   "primary": [
     {
       "cg": "CG-7",
       "c_code": "C-7.1",
       "weight": 3,
-      "justification": "The chapter's entire architecture is organised around discovering India's unity in diversity through sacred geography — the chār dhām, 12 jyotirlingas, and 51 Shakti pīthas networks criss-cross the entire Subcontinent; pilgrimage routes expose people to diverse languages, customs, and foods while revealing deep commonalities; sacred sites encompass all major Indian religions (Hinduism, Buddhism, Sikhism, Jainism, Islam, Christianity, tribal faiths). The chapter explicitly states that pilgrimage traditions fostered 'a feeling of one country and one culture'. Remove this competency and the chapter's fundamental organising purpose dissolves. The chapter spans Geography and Cultural Social Sciences, with C-7.1's cultural unity-in-diversity as the governing structural theme."
+      "justification": "The chapter's entire architecture is organised around discovering India's unity in diversity through sacred geography — the chār dhām, 12 jyotirlingas, and 51 Shakti pīthas networks criss-cross the entire Subcontinent; pilgrimage routes expose people to diverse languages, customs, and foods while revealing deep commonalities; sacred sites encompass all major Indian religions (Hinduism, Buddhism, Sikhism, Jainism, Islam, Christianity, tribal faiths). The chapter explicitly states that pilgrimage traditions fostered 'a feeling of one country and one culture.' Remove this competency and the chapter's fundamental organising purpose dissolves."
     },
     {
       "cg": "CG-6",
       "c_code": "C-6.3",
       "weight": 2,
       "justification": "Two architecturally distinct named sections develop conservation substantively: (1) 'Sacred Ecology' — a dedicated section showing how the perception of rivers, mountains, forests, and sacred groves as sacred has historically protected biodiversity and water sources, with specific sub-sections on rivers, mountains, trees, and groves; (2) 'Restoring and Conserving the Sacred' — a dedicated section explicitly analysing how this sacred-ecology relationship is under strain today (polluted rivers, encroached groves) and arguing for its restoration as a contribution to global sustainability. Both sections could stand as independent learning units on Indian conservation perspectives. Rule 5(a) satisfied."
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.2",
+      "weight": 1,
+      "justification": "The Sacred Geography Networks section maps specific geographical features of India (Himalayas, coastlines, river systems) as locations of sacred sites, engaging students with India's topographical diversity through the sacred lens. Named structural element qualifying as present."
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.3",
+      "weight": 1,
+      "justification": "The Sacred Places Across Religions section is a named section whose primary subject is India's inclusion of multiple faiths — Islam, Christianity, Buddhism, Sikhism, Jainism alongside Hindu traditions — within its sacred geography. Named structural element qualifying as present."
     }
-  ],
-  "incidental": [
-    { "cg": "CG-7", "c_code": "C-7.2" },
-    { "cg": "CG-7", "c_code": "C-7.3" }
   ],
   "chapter_weight": 7
 }

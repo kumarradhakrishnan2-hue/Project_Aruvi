@@ -10,21 +10,42 @@
       "cg": "CG-7",
       "c_code": "C-7.2",
       "weight": 3,
-      "justification": "The chapter's entire architecture is organised around discovering India's topographical diversity — every named section (Himalayas, Ladakh, Gangetic Plains, Thar Desert, Aravallis, Peninsular Plateau, Coastlines, Islands, Sundarbans, NE Hills) is a distinct geographical feature of India's landmass. Remove this competency and the chapter has no organising purpose. The chapter title itself directly names topographical diversity as its subject."
+      "justification": "The chapter's entire architecture is built around discovering India's topographical diversity — every named section (Himalayas, Ladakh, Gangetic Plains, Thar Desert, Aravallis, Peninsular Plateau, Coastlines, Islands, Sundarbans, NE Hills) is a distinct geographical feature of India's landmass. Remove this competency and the chapter has no organising purpose."
     },
     {
       "cg": "CG-6",
       "c_code": "C-6.4",
       "weight": 2,
-      "justification": "The chapter substantively develops livelihood–landform correlations across multiple named sections: the Thar Desert section explicitly describes how people have adapted food, clothing, and lifestyle to desert conditions; the Gangetic Plains section explains how fertile soil enables dense agriculture and large population; the Peninsular Plateau section names tribal communities with lifestyles connected to forest and nature. The chapter's own organising logic — describe each landform then describe what life and ecology it enables — makes the continuity of this competency evident across sections."
+      "justification": "Livelihood–landform correlations recur substantively across multiple named sections: the Thar Desert section explicitly describes how people have adapted food, clothing, and lifestyle to desert conditions; the Gangetic Plains section explains how fertile soil enables dense agriculture and large population; the Peninsular Plateau section names tribal communities with lifestyles connected to forest and nature. The chapter's organising logic — describe each landform then describe what life and ecology it enables — makes the continuity of this competency evident across sections."
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.1",
+      "weight": 1,
+      "justification": "The chapter contains named passages explaining river flow from Himalayan snowmelt (Himalayas as Water Tower) and the tilt of the Peninsular Plateau determining river flow direction — both are natural phenomena requiring explanation. These are subordinate to the landform characterisation purpose but constitute at least one named element requiring explanation of a natural phenomenon."
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.2",
+      "weight": 1,
+      "justification": "The Aravallis section explicitly names mineral resources (marble, granite, zinc, copper); the Peninsular Plateau section notes coal, forests, and minerals; the Gangetic Plains describes agricultural fertility. These are scattered within landform sections rather than a dedicated resource-distribution study, qualifying as present but not substantive."
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.3",
+      "weight": 1,
+      "justification": "The Himalayas section discusses the Great Himalayan National Park (UNESCO), community-government joint conservation, and kath-kuni sustainable architecture. The Thar Desert section discusses taanka/kund rainwater harvesting as traditional conservation. The Sundarbans is noted as a UNESCO Heritage Site. These are named structural elements present within sections, qualifying as weight 1."
     }
   ],
   "incidental": [
-    { "cg": "CG-6", "c_code": "C-6.1" },
-    { "cg": "CG-6", "c_code": "C-6.2" },
-    { "cg": "CG-6", "c_code": "C-6.3" },
-    { "cg": "CG-7", "c_code": "C-7.3" },
-    { "cg": "CG-7", "c_code": "C-7.1" }
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.3"
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.1"
+    }
   ],
   "chapter_weight": 8
 }

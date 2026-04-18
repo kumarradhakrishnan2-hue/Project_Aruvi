@@ -3,7 +3,7 @@
   "subject": "social_sciences",
   "grade": "vii",
   "chapter_number": 9,
-  "chapter_title": "Government and Democracy",
+  "chapter_title": "From the Rulers to the Ruled - Types of Governments",
   "summary_path": "mirror/chapters/social_sciences/vii/summaries/ch_09_summary.txt",
   "primary": [
     {
@@ -16,18 +16,26 @@
       "cg": "CG-8",
       "c_code": "C-8.1",
       "weight": 2,
-      "justification": "Two architecturally distinct named sections develop the need for and functioning of constitutional/representative governance: (1) 'A Peek into History: Early Republics' is a dedicated section exploring India's own historical tradition of republican governance — the Vajji gaṇa's collective decision-making and the Uttaramerur inscriptions' detailed electoral system — directly addressing C-8.1's demand to understand the need for constitutional governance and its deeper objectives; (2) 'Why Democracy Matters' is a dedicated section analysing why democratic institutions are essential for citizens' welfare, freedom, and accountability, compared against alternatives. Both sections could stand as independent learning units. Rule 5(a) satisfied."
+      "justification": "Two architecturally distinct named sections develop the need for and functioning of constitutional/representative governance: (1) 'A Peek into History: Early Republics' is a dedicated section exploring India's own historical tradition of republican governance — the Vajji gaṇa's collective decision-making and the Uttaramerur inscriptions' detailed electoral system — directly addressing C-8.1's demand to understand the need for constitutional governance; (2) 'Why Democracy Matters' is a dedicated section analysing why democratic institutions are essential for citizens' welfare, freedom, and accountability, compared against alternatives. Both sections could stand as independent learning units. Rule 5(a) satisfied."
     },
     {
       "cg": "CG-4",
       "c_code": "C-4.2",
       "weight": 2,
-      "justification": "Two architecturally distinct named sections develop how institutional type shapes individual and community outcomes: (1) 'What Makes Governments Different' — a dedicated section analysing how four dimensions of governmental structure determine what citizens can and cannot do, with comparative examples; (2) 'Why Democracy Matters' — a dedicated section that analyses through specific contrasts (North Korea, Idi Amin's Uganda, democratic India) how institutional form determines citizens' freedom, rights, and wellbeing. Both sections address C-4.2's demand to assess institutional influence on individuals and groups. Rule 5(b) satisfied."
+      "justification": "Two architecturally distinct named sections develop how institutional type shapes individual and community outcomes: (1) 'What Makes Governments Different' — a dedicated section analysing how four dimensions of governmental structure determine what citizens can and cannot do, with comparative examples; (2) 'Why Democracy Matters' — a dedicated section that analyses through specific contrasts (North Korea, Idi Amin's Uganda, democratic India) how institutional form determines citizens' freedom, rights, and wellbeing. Rule 5(b) satisfied."
+    },
+    {
+      "cg": "CG-5",
+      "c_code": "C-5.1",
+      "weight": 1,
+      "justification": "The Dictatorship section names the Holocaust, Idi Amin's persecution of Indians, and North Korea's suppression as named structural passages describing extreme discrimination and prejudice. The Fundamental Principles section notes historical exclusion of women and minorities from voting rights. Named elements qualifying as present."
+    },
+    {
+      "cg": "CG-10",
+      "c_code": "C-10.1",
+      "weight": 1,
+      "justification": "The Early Republics section explicitly positions Vajji/Licchavis and Uttaramerur as India's contributions to world democratic traditions — 'among the earliest such systems in the world.' Named structural element qualifying as present."
     }
-  ],
-  "incidental": [
-    { "cg": "CG-5", "c_code": "C-5.1" },
-    { "cg": "CG-10", "c_code": "C-10.1" }
   ],
   "chapter_weight": 9
 }

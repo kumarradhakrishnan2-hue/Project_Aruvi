@@ -3,7 +3,7 @@
   "subject": "social_sciences",
   "grade": "vii",
   "chapter_number": 2,
-  "chapter_title": "Weather and Weather Instruments",
+  "chapter_title": "Understanding the Weather",
   "summary_path": "mirror/chapters/social_sciences/vii/summaries/ch_02_summary.txt",
   "primary": [
     {
@@ -11,10 +11,14 @@
       "c_code": "C-6.1",
       "weight": 3,
       "justification": "The chapter's entire architecture is the systematic explanation of weather — its five elements (temperature, precipitation, atmospheric pressure, wind, humidity), the instruments that measure each, and how meteorologists predict it. Weather is explicitly named as a 'key natural phenomenon' in C-6.1. Remove this competency and the chapter dissolves entirely. The chapter title directly names weather and weather instruments as its sole subject."
+    },
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.2",
+      "weight": 1,
+      "justification": "The Weather Instruments section on Temperature explicitly addresses calculation of temperature range (max − min) and mean daily temperature — this requires students to represent and analyse numerical data. This is one named subsection within the larger chapter about weather elements and measurement, qualifying as present but not substantive."
     }
   ],
-  "incidental": [
-    { "cg": "CG-1", "c_code": "C-1.2" }
-  ],
+  "incidental": [],
   "chapter_weight": 4
 }

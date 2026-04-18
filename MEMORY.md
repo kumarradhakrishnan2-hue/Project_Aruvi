@@ -111,4 +111,23 @@ Root cause: The original constitution rule said visual_stimulus "must describe a
 Action taken: (1) Rewrote the constitution rule as four explicit sub-rules (VS-1 to VS-4) specifying that visual_stimulus must contain the actual pipe-delimited table data, not a description. Added correct and prohibited examples for both MCQ and OPEN_TASK. (2) Made the rule explicitly type-agnostic — applies to all question types. (3) Added _render_visual_stimulus() to assessment_pdf_generator.py: detects pipe-table vs plain text and renders accordingly. (4) Added renderVisualStimulus() to lpa_page.html with matching CSS; wired into both the OPEN_TASK branch and the standard question branch. (5) Added visual_stimulus passthrough in _normalise_assessment_sections() in app.py.
 Carry-forward rule: visual_stimulus must always contain the actual table rows in pipe-delimited format (header row + data rows, one per line). A prose description of a table is not a visual stimulus — it is metadata. If a question says "the table below" or "use the table provided", the actual table must be in visual_stimulus. Constitution rules that say "describe" invite prose; rules that say "provide the actual data in pipe-delimited format" do not.
 
-   
+---
+
+[Learning #15] — 2026-04-18 — Summary File Numbering Mismatch Causes Wrong Competency Mappings
+
+Context: User reported that ch_05_mapping.json for Social Sciences VII ("New Beginnings: Cities and States") had different competencies than those found in a fresh re-run of the mapping task.
+Observation: Full audit revealed ch_04_summary.txt contained "New Beginnings: Cities and States" content and ch_05_summary.txt contained "The Rise of Empires" content — but the previous mapping session had produced ch_04_mapping.json titled "The Age of Empires" (derived from ch_05_summary) and ch_05_mapping.json titled "New Beginnings: Cities and States" (derived from ch_04_summary). Competencies in both JSONs were derived from the wrong chapter's content. The other 10 chapters (ch01–03, ch06–12) were audited and found correct.
+Root cause: The mapping cowork prompt had no instruction to verify that the chapter_title and chapter_number in the output JSON matched the actual content of the source summary file. The AI mapped content correctly from whichever summary it read — but there was no guard against processing the wrong summary for a given chapter number.
+Action taken: (1) Re-mapped ch_04 correctly from ch_04_summary.txt: New Beginnings: Cities and States → C-2.1 W3, C-3.1 W2. (2) Re-mapped ch_05 correctly from ch_05_summary.txt: The Rise of Empires → C-2.1 W3, C-3.1 W2. (3) Added mandatory cross-verification Rule 9 to the mapping constitution: before writing JSON, quote actual named section headers from the target summary, confirm they are present, confirm chapter_number/title match. (4) Added the same verification step to the competency_mapping.md cowork prompt.
+Carry-forward rule: Before writing a mapping JSON, always verify that the chapter_title matches the summary file's own opening heading, and that every competency justification references section headers verifiably present in THAT chapter's summary. A mismatch between summary content and JSON title is a silent error that the constitution must explicitly prohibit.
+
+---
+
+[Learning #16] — 2026-04-18 — Incidental Competencies Removed from Mapping Schema
+
+Context: User decision to discontinue recording incidental (Weight 1) competencies in mapping JSONs.
+Observation: The "incidental" array recorded competencies lightly touched by a chapter but not architecturally developed. These added noise without contributing to lesson plan generation, assessment design, or the allocation tab's chapter_weight calculations.
+Root cause: Original constitution included Weight 1 as a valid category and the JSON schema included an "incidental" array. Both needed updating.
+Action taken: (1) Rule 6 of the mapping constitution rewritten to explicitly abolish Weight 1 and the incidental array. (2) Rule 7 updated to remove "Weight 1" as a valid sub-primary assignment. (3) "incidental" array removed from all 12 Social Sciences VII mapping JSONs. (4) competency_mapping.md cowork prompt schema updated to remove the incidental array with an explanatory note.
+Carry-forward rule: The mapping schema has only "primary" (Weight 3 and Weight 2). No "incidental" array. Any competency below Weight 2 is absent from the JSON. This applies to all future subjects and grades.
+

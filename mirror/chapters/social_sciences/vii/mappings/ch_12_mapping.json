@@ -3,7 +3,7 @@
   "subject": "social_sciences",
   "grade": "vii",
   "chapter_number": 12,
-  "chapter_title": "Markets",
+  "chapter_title": "Understanding Markets",
   "summary_path": "mirror/chapters/social_sciences/vii/summaries/ch_12_summary.txt",
   "primary": [
     {
@@ -17,12 +17,25 @@
       "c_code": "C-4.1",
       "weight": 2,
       "justification": "The section 'Government's Role in the Market' is a dedicated, architecturally distinct section organised entirely around how the government as a political institution regulates markets through four distinct mechanisms: (1) price controls (maximum/minimum prices, minimum wages), (2) quality and safety standards (FSSAI, ISI, BIS approvals), (3) mitigating external effects (pollution regulation), and (4) provision of public goods (parks, roads, policing). The section also grounds this regulatory role in India's ancient tradition via Kauṭilya's Arthaśhāstra. This section could stand alone as a learning unit on how political institutions function in the economic sphere. Rule 5(a) satisfied."
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.2",
+      "weight": 1,
+      "justification": "The Government's Role section analyses how government regulation directly shapes the economic conditions of both buyers (lifesaving drug price caps) and sellers (minimum support price for farmers), and how market failures affect entire communities (pollution regulation). Named structural element demonstrating how institutional decisions affect social groups, qualifying as present."
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.2",
+      "weight": 1,
+      "justification": "The 'Domestic and International Markets' subsection is a named structural element describing how resources (petroleum, diamonds, vegetable oils, software, pharmaceuticals) are distributed across geographies through international trade. The Surat textile market illustrates raw material distribution. Named structural element qualifying as present."
+    },
+    {
+      "cg": "CG-10",
+      "c_code": "C-10.1",
+      "weight": 1,
+      "justification": "The Hampi Bazaar section is a named structural element established as evidence of India's historically prosperous markets — described as 'the best-provided city in the world' by a Portuguese traveller. The Kauṭilya reference grounds market regulation in India's civilisational wisdom. Named structural elements qualifying as present."
     }
-  ],
-  "incidental": [
-    { "cg": "CG-4", "c_code": "C-4.2" },
-    { "cg": "CG-6", "c_code": "C-6.2" },
-    { "cg": "CG-10", "c_code": "C-10.1" }
   ],
   "chapter_weight": 8
 }

@@ -10,19 +10,32 @@
       "cg": "CG-2",
       "c_code": "C-2.1",
       "weight": 3,
-      "justification": "The chapter's entire architecture analyses the major historical change following the dissolution of the Maurya Empire — the emergence and character of new competing kingdoms (Śhungas, Sātavāhanas, Chedis, Southern kingdoms, Indo-Greeks, Kuṣhāṇas) and their impact on Indian society through political rivalry, trade, art, and cultural exchange. Every named section addresses a dimension of this reorganisation or its societal impact. Remove this competency and the chapter's fundamental organising purpose dissolves. The chapter is firmly in the History sub-discipline."
+      "justification": "The chapter's entire architecture analyses the major historical change following the dissolution of the Maurya Empire — the emergence and character of new competing kingdoms (Śhungas, Sātavāhanas, Chedis, Southern kingdoms, Indo-Greeks, Kuṣhāṇas) and their impact on Indian society through political rivalry, trade, art, and cultural exchange. Every named section addresses a dimension of this reorganisation or its societal impact. Remove this competency and the chapter's fundamental organising purpose dissolves. History sub-discipline."
     },
     {
       "cg": "CG-2",
       "c_code": "C-2.2",
       "weight": 2,
-      "justification": "Two architecturally distinct named sections develop cultural continuity as a substantive theme: (1) the Śhunga section is devoted to showing the revival of Vedic traditions and the continuation of Buddhist art (Bharhut stūpa railings) — a dedicated section on how earlier traditions persisted through the political transition; (2) the Indo-Greeks section is organised entirely around demonstrating how foreign invaders were absorbed by Indian culture — the Heliodorus pillar worshipping Vāsudeva, blended coinage — with Indian cultural continuity as the dominant outcome. Both sections could stand as learning units on the persistence of Indian cultural forms across major historical changes. Rule 5(a) satisfied."
+      "justification": "Two architecturally distinct named sections develop cultural continuity as a substantive theme: (1) the Śhunga section is devoted to showing the revival of Vedic traditions and the continuation of Buddhist art (Bharhut stūpa railings) — Indian cultural forms persisting through political transition; (2) the Indo-Greeks section is organised entirely around demonstrating how foreign invaders were absorbed by Indian culture — the Heliodorus pillar worshipping Vāsudeva, blended coinage — with Indian cultural continuity as the dominant outcome. Both sections could stand as learning units on the persistence of Indian cultural forms. Rule 5(a) satisfied."
+    },
+    {
+      "cg": "CG-3",
+      "c_code": "C-3.1",
+      "weight": 1,
+      "justification": "The Sātavāhanas section mentions women's roles (Gautamī Balaśhrī as named queen patron, inscribed widow queen performing rituals), and the Kuṣhāṇa section mentions major Sanskrit texts being composed. These are named passages within larger dynastic history sections, not dedicated standalone sections on changes in social life, qualifying as present but not substantive."
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.3",
+      "weight": 1,
+      "justification": "The Indo-Greeks section — a named structural section — is devoted to showing how foreign peoples were absorbed into Indian culture (Heliodorus pillar, blended coinage, adoption of Indian religious practices), demonstrating India's tradition of inclusion across communities. Weight 1."
+    },
+    {
+      "cg": "CG-10",
+      "c_code": "C-10.1",
+      "weight": 1,
+      "justification": "The Sātavāhanas section contains a named passage establishing that modern numerals originated in India — Brahmi numerals at Naneghat caves are the earliest evidence of the place-value system that became the world's numeric notation. Named structural element qualifying as present."
     }
-  ],
-  "incidental": [
-    { "cg": "CG-3", "c_code": "C-3.1" },
-    { "cg": "CG-7", "c_code": "C-7.3" },
-    { "cg": "CG-10", "c_code": "C-10.1" }
   ],
   "chapter_weight": 8
 }

@@ -3,26 +3,39 @@
   "subject": "social_sciences",
   "grade": "vii",
   "chapter_number": 7,
-  "chapter_title": "The Gupta Period",
+  "chapter_title": "The Gupta Era - An Age of Tireless Creativity",
   "summary_path": "mirror/chapters/social_sciences/vii/summaries/ch_07_summary.txt",
   "primary": [
     {
       "cg": "CG-2",
       "c_code": "C-2.1",
       "weight": 3,
-      "justification": "The chapter's entire architecture is organised around explaining and analysing the Gupta period as a major historical phase — its political rise, cultural and scientific achievements, and eventual decline — and its profound impact on Indian society. Every named section (Chandragupta I, Samudragupta, Chandragupta II, Faxian's Account, Governance, Thriving Trade, Classical Age, Quest for Beauty, Decline, South and Northeast) addresses either the nature of this historical phase or its societal consequences. Remove this competency and the chapter loses its fundamental organising purpose. History sub-discipline."
+      "justification": "The chapter's entire architecture is organised around explaining and analysing the Gupta period as a major historical phase — its political rise, cultural and scientific achievements, and eventual decline — and its profound impact on Indian society. Every named section (Chandragupta I, Samudragupta, Chandragupta II, Faxian's Account, Governance, Thriving Trade, Classical Age, Quest for Beauty, Decline, South and Northeast) addresses either the nature of this historical phase or its societal consequences. Remove this competency and the chapter loses its organising purpose. History sub-discipline."
     },
     {
       "cg": "CG-10",
       "c_code": "C-10.1",
       "weight": 2,
-      "justification": "The section 'New Ideas and Wonders: The Classical Age' is a dedicated, architecturally distinct section organised entirely around India's contributions to human knowledge — mathematics and astronomy (Āryabhaṭa's axial rotation theory, year-length calculation, eclipse explanation), encyclopedic science (Varāhamihira's Bṛihat Samhitā), Sanskrit literature (Kālidāsa), medicine (Charaka Saṃhitā, Suśhruta Saṃhitā), and metallurgy (the rust-free Iron Pillar). The section directly meets C-10.1's demand and could stand alone as a learning unit on India's contributions to humanity. Rule 5(a) satisfied."
+      "justification": "The section 'New Ideas and Wonders: The Classical Age' is a dedicated, architecturally distinct section organised entirely around India's contributions to human knowledge — mathematics and astronomy (Āryabhaṭa's axial rotation theory, eclipse explanation), encyclopedic science (Varāhamihira's Bṛihat Samhitā), Sanskrit literature (Kālidāsa), medicine (Charaka Saṃhitā, Suśhruta Saṃhitā), and metallurgy (rust-free Iron Pillar). This section directly meets C-10.1's demand and could stand alone as a learning unit on India's contributions to humanity. Rule 5(a) satisfied."
+    },
+    {
+      "cg": "CG-3",
+      "c_code": "C-3.1",
+      "weight": 1,
+      "justification": "The Governance and Administration section mentions artisanal production and land grants shaping the nature of work; the Faxian section notes social stratification (chanḍālas outside cities). These are named passages within sections primarily about political and economic history, qualifying as present but not constituting a dedicated section on changes in social life."
+    },
+    {
+      "cg": "CG-9",
+      "c_code": "C-9.1",
+      "weight": 1,
+      "justification": "'Thriving Trade' is a named subsection whose primary subject is the Gupta trade economy — land tax revenue, Indian Ocean trade networks connecting India to the Mediterranean, Southeast Asia, and China, and exported commodities. Named structural element qualifying as present."
+    },
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.1",
+      "weight": 1,
+      "justification": "The Faxian section explicitly frames his travelogue as an external source to be interpreted critically — noting it captures only one perspective and 'must be corroborated with multiple sources.' This is a named structural element that requires students to perform source interpretation, qualifying as present."
     }
-  ],
-  "incidental": [
-    { "cg": "CG-3", "c_code": "C-3.1" },
-    { "cg": "CG-9", "c_code": "C-9.1" },
-    { "cg": "CG-1", "c_code": "C-1.1" }
   ],
   "chapter_weight": 8
 }

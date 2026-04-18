@@ -3,26 +3,39 @@
   "subject": "social_sciences",
   "grade": "vii",
   "chapter_number": 5,
-  "chapter_title": "New Beginnings: Cities and States",
+  "chapter_title": "The Rise of Empires",
   "summary_path": "mirror/chapters/social_sciences/vii/summaries/ch_05_summary.txt",
   "primary": [
     {
       "cg": "CG-2",
       "c_code": "C-2.1",
       "weight": 3,
-      "justification": "The chapter's entire architecture is organised around explaining and analysing the major historical change of India's Second Urbanisation — from post-Harappan rural life to the emergence of janapadas and mahājanapadas. Every named section (First to Second Urbanisation, Janapadas and Mahājanapadas, Capitals, Early Democratic Traditions, More Innovations, Varṇa–Jāti System, Developments Elsewhere in India) explains a dimension of this major change and its societal impact — on governance, technology, social organisation, trade, and culture. Remove this competency and the chapter dissolves. The chapter is firmly in the History sub-discipline."
+      "justification": "The chapter's entire architecture is organised around explaining and analysing the major historical change from mahājanapadas to the Mauryan Empire and its profound societal impact — politically (imperial governance, Aśhoka's transformation to dhamma), economically (trade, guilds, coins), culturally (spread of Buddhism, Brahmi script), and socially. Every named section — What is an Empire, Trade and Guilds, Rise of Magadha, Nanda Dynasty, Arrival of Greeks, The Mighty Mauryas, Aśhoka, Life in the Mauryan Period, Fragile Nature of Empires — addresses a dimension of this change or its societal impact. Remove this competency and the chapter's fundamental organising purpose dissolves."
     },
     {
       "cg": "CG-3",
       "c_code": "C-3.1",
       "weight": 2,
-      "justification": "Two architecturally distinct named sections develop this competency substantively: (1) 'The Varṇa–Jāti System' is a dedicated section entirely organised around explaining how work organisation and social structure changed with increasing urbanisation — jāti as occupational community with skill transmission across generations, the varṇa framework, and evolution from flexibility to rigidity; (2) 'More Innovations' (iron metallurgy subsection) analyses how iron technology transformed the nature of agricultural work (iron ploughs) and warfare. These sections satisfy Rule 5(a) and 5(b) respectively: the Varṇa–Jāti section could stand alone as a learning unit on changes in the nature of work and sociocultural beliefs."
+      "justification": "Two architecturally distinct named sections develop this competency substantively: (1) 'Trade, Trade Routes and Guilds' is a dedicated section analysing how guilds (śhrenīs) organised the nature of work — craftsmen, traders, and agriculturists forming self-governing bodies with shared resources and skills; (2) 'Life in the Mauryan Period' is a dedicated section describing changes in habitation (Pāṭaliputra as planned urban centre), the nature of work (agriculture, artisans, blacksmiths, potters, carpenters, jewellers), and sociocultural achievements (art, architecture, edicts). Together these constitute substantive development of C-3.1 across two distinct named sections."
+    },
+    {
+      "cg": "CG-3",
+      "c_code": "C-3.2",
+      "weight": 1,
+      "justification": "The Nanda dynasty's oppression and exploitation of people is described as a reason for its downfall, and the Aśhoka section traces the Kalinga war conflict and its transformation into a policy of non-violence and respect for all religious sects. These are named passages with conflict as a meaningful element within sections primarily about dynastic history and governance."
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1",
+      "weight": 1,
+      "justification": "The Trade, Trade Routes and Guilds section explicitly analyses guilds as economic/social institutions. The Arthaśhāstra section lays out the saptānga — seven constituents of a kingdom as an institutional framework. These are named architectural elements focused on institutions, qualifying as present but not substantive."
+    },
+    {
+      "cg": "CG-10",
+      "c_code": "C-10.1",
+      "weight": 1,
+      "justification": "The chapter highlights punch-marked coins as an Indian innovation, Kauṭilya's Arthaśhāstra as a foundational governance text, Aśhoka's international spread of Buddhist teachings, and Brahmi script as the mother of all regional Indian scripts — all framed as India's contributions. These appear as factual statements within historical narrative sections rather than a dedicated standalone section."
     }
-  ],
-  "incidental": [
-    { "cg": "CG-3", "c_code": "C-3.2" },
-    { "cg": "CG-4", "c_code": "C-4.1" },
-    { "cg": "CG-5", "c_code": "C-5.1" }
   ],
   "chapter_weight": 8
 }

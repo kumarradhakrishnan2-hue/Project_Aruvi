@@ -3,26 +3,39 @@
   "subject": "social_sciences",
   "grade": "vii",
   "chapter_number": 10,
-  "chapter_title": "The Constitution of India",
+  "chapter_title": "The Constitution of India - An Introduction",
   "summary_path": "mirror/chapters/social_sciences/vii/summaries/ch_10_summary.txt",
   "primary": [
     {
       "cg": "CG-8",
       "c_code": "C-8.2",
       "weight": 3,
-      "justification": "The chapter's entire architecture is organised around explaining the formation of the Indian Constitution — the process (Constituent Assembly, Drafting Committee, 1946–1950), the ideals of the freedom movement enshrined in it, civilisational heritage embedded in it, influences from other countries' constitutions, key features, and the Preamble's guiding values. Remove this competency and every named section collapses. The chapter is the canonical treatment of C-8.2's demands: process of formation, ideals of the national movement, and India's civilisational heritage as sources. Political Science sub-discipline."
+      "justification": "The chapter's entire architecture is organised around explaining the formation of the Indian Constitution — the process (Constituent Assembly, Drafting Committee, 1946–1950), the ideals of the freedom movement enshrined in it, civilisational heritage embedded in it, influences from other countries' constitutions, key features (Fundamental Rights, DPSP, Fundamental Duties), and the Preamble's guiding values. Remove this competency and every named section collapses. Political Science sub-discipline."
     },
     {
       "cg": "CG-8",
       "c_code": "C-8.1",
       "weight": 2,
       "justification": "Two architecturally distinct sections develop C-8.1's demands: (1) 'Why Do We Need a Constitution?' is a dedicated section explaining the deeper objectives and necessity of a constitution for governing a large, diverse, complex country — directly meeting C-8.1's demand to understand the need for a constitution; (2) 'Understanding the Preamble' is a dedicated section systematically analysing each constitutional value (Sovereign, Socialist, Secular, Democratic, Republic, Justice, Liberty, Equality, Fraternity) as deeper objectives of the Indian Constitution. Both sections could stand as independent learning units. Rule 5(a) satisfied."
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1",
+      "weight": 1,
+      "justification": "The 'Key Features' section names and explains three specific constitutional institutions — Fundamental Rights, DPSP, and Fundamental Duties — their roles, functions, and significance. Named structural element qualifying as present."
+    },
+    {
+      "cg": "CG-5",
+      "c_code": "C-5.2",
+      "weight": 1,
+      "justification": "The 'Key Features' section names Fundamental Rights including Right to Equality and Right against Exploitation, and DPSP covering social justice (Article 38) and environment protection (Article 48-A) — named passages describing institutional mechanisms to address inequality and ensure inclusion. Named structural element qualifying as present."
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.1",
+      "weight": 1,
+      "justification": "The 'What Shaped It — Civilisational Heritage' section contains a named passage establishing how India's tradition of diversity and inclusive values (vasudhaiva kutumbakam, sarve bhavantu sukhinah) found direct expression in the Constitution — India's cultural unity in diversity as a constitutional value. Named structural element qualifying as present."
     }
-  ],
-  "incidental": [
-    { "cg": "CG-4", "c_code": "C-4.1" },
-    { "cg": "CG-5", "c_code": "C-5.2" },
-    { "cg": "CG-7", "c_code": "C-7.1" }
   ],
   "chapter_weight": 8
 }

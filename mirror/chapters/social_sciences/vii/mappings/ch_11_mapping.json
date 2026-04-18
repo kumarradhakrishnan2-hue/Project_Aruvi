@@ -3,24 +3,27 @@
   "subject": "social_sciences",
   "grade": "vii",
   "chapter_number": 11,
-  "chapter_title": "From Barter to Digital Money",
+  "chapter_title": "From Barter to Money",
   "summary_path": "mirror/chapters/social_sciences/vii/summaries/ch_11_summary.txt",
   "primary": [
     {
       "cg": "CG-9",
       "c_code": "C-9.1",
       "weight": 3,
-      "justification": "The chapter's entire architecture is organised around explaining the key elements of trade and commerce — systematically tracing how commodity exchange (barter), the emergence of money as capital and medium of exchange, coinage, paper currency, and digital payments evolved to facilitate production, consumption, and trade. Every named section — barter problems, functions of money, coinage, paper money, digital forms — directly develops C-9.1's demands about commodity, production, consumption, capital, and their impact on individual life and society. Remove this competency and the chapter has no organising purpose. Economics sub-discipline."
+      "justification": "The chapter's entire architecture is organised around explaining the key elements of trade and commerce — systematically tracing how commodity exchange (barter), the emergence of money as capital and medium of exchange, coinage, paper currency, and digital payments evolved to facilitate production, consumption, and trade. Every named section — barter problems, functions of money, coinage, paper money, digital forms — directly develops C-9.1's demands. Remove this competency and the chapter has no organising purpose. Economics sub-discipline."
     },
     {
       "cg": "CG-2",
       "c_code": "C-2.1",
       "weight": 2,
       "justification": "The 'Journey of Money' section is a dedicated, architecturally distinct section tracing the major historical evolution of India's monetary system — from punch-marked silver kārṣhāpaṇas through Chalukya and Chola coins, Roman gold coins found in Tamil Nadu indicating maritime trade, the colonial-era Bank of Bengal and Bank of Bombay issuing paper notes, RBI's establishment as sole currency authority, to the 2010 ₹ symbol design — directly meeting C-2.1's demand to explain and analyse major changes in the past and their impact on society. This section could stand alone as a learning unit. Rule 5(a) satisfied."
+    },
+    {
+      "cg": "CG-10",
+      "c_code": "C-10.1",
+      "weight": 1,
+      "justification": "The Coinage section contains named passages establishing that the modern rupee and its linguistic cognates (paṇaṁ, haṇa) originate from ancient Indian monetary tradition, and that the ₹ symbol combines Indian and Roman scripts. The Junbeel Mela passage shows an Indian contribution to living heritage of exchange. Named structural elements qualifying as present."
     }
-  ],
-  "incidental": [
-    { "cg": "CG-10", "c_code": "C-10.1" }
   ],
   "chapter_weight": 6
 }
