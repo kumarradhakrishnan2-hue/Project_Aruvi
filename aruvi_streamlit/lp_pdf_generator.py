@@ -687,13 +687,6 @@ def _build_science_lp(output_path, data):
     for stage in data["progression_stages"]:
         story.extend(_science_stage_block(stage, uw))
 
-    # Footnote
-    story.append(Paragraph(
-        "(1) Period plan designed per Aruvi Lesson Plan Constitution V1.2 "
-        "· NCF 2023 Middle Stage pedagogy principles applied throughout.",
-        ST["footer"],
-    ))
-
     # ── Pass 1: build PDF without page numbers ────────────────────────────────
     doc.build(
         story,
@@ -769,13 +762,6 @@ def build_lp_pdf(output_path, data):
             p["activity_name"], p["anchored_section"],
             p["time_breakdown"], p["materials"], p["learning_outcome"],
         ))
-    # Footnote
-    story.append(Paragraph(
-        "(1) Period plan designed per Aruvi Lesson Plan Constitution V1.2 "
-        "· NCF 2023 Middle Stage pedagogy principles applied throughout.",
-        ST["footer"]
-    ))
-
     # ── Pass 1: build PDF without page numbers ────────────────────────────────
     doc.build(
         story,

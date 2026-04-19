@@ -30,8 +30,7 @@ Each subject for a grade involves the following steps:
 8. Once step 7 is through, expand the chapter basket to cover all chapters for that subject under the grade in question to complete the task. Note that in step 6, point (a) will require all chapters to be processed as chapter summary and mapping JSON.
 
 **Short term tasks**
-1. ~~Check the competency mapping for social science for class VII~~ — COMPLETED 2026-04-18. Audit found ch_04 and ch_05 mappings were derived from swapped summaries. Both re-mapped correctly. All 12 JSONs cleaned of incidental competencies. Constitution updated with verification rule (Rule 9) and incidental abolition (Rule 6). See MEMORY.md #15 and #16.
 
-2\. Try to incorporate managed Agent with following credentials to replace 'Ask Aruvi' Haiku ask feature and feedback feature.
+1\. Try to incorporate managed Agent with following credentials to replace 'Ask Aruvi' Haiku ask feature and feedback feature.
 agent= "agent_toolset_20260401", "agent_011Ca6z4gAUB897Nr3xfHNiT", environment_id="env_01L8dPr1NDwDzkiDXWPpn8YE", "file_id": "file_011Ca71pJpRQAZz3d2sKTfqA", 
 

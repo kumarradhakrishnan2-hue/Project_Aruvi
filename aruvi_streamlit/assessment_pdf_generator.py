@@ -210,22 +210,34 @@ def _render_visual_stimulus(vs_text: str, uw: float, story: list):
         ]
         tbl.setStyle(TableStyle(tbl_style))
 
-        # Wrap in a single-cell outer table for the grey background box + label
+        # Render label and table as separate flowables — no outer wrapper table
+        # that would overlay a background fill on top of the inner table cells.
         lbl_para = Paragraph("<b>Visual stimulus</b>", AST["q_meta"])
-        wrapper = Table(
-            [[lbl_para], [tbl]],
-            colWidths=[uw],
-        )
-        wrapper.setStyle(TableStyle([
+        lbl_box = Table([[lbl_para]], colWidths=[uw])
+        lbl_box.setStyle(TableStyle([
             ("BACKGROUND",    (0, 0), (-1, -1), colors.HexColor("#f5f5f5")),
-            ("BOX",           (0, 0), (-1, -1), 0.5, HAIRLINE),
             ("TOPPADDING",    (0, 0), (-1, -1), 4),
-            ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 2),
             ("LEFTPADDING",   (0, 0), (-1, -1), 6),
             ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
-            ("VALIGN",        (0, 0), (-1, -1), "TOP"),
+            ("LINEABOVE",     (0, 0), (-1,  0), 0.5, HAIRLINE),
+            ("LINEBEFORE",    (0, 0), ( 0, -1), 0.5, HAIRLINE),
+            ("LINEAFTER",     (0, 0), (-1, -1), 0.5, HAIRLINE),
         ]))
-        story.append(wrapper)
+        # Outer border bottom line drawn via a thin spacer-table so the box
+        # appears closed underneath the data table.
+        tbl_wrapper = Table([[tbl]], colWidths=[uw])
+        tbl_wrapper.setStyle(TableStyle([
+            ("LEFTPADDING",   (0, 0), (-1, -1), 0),
+            ("RIGHTPADDING",  (0, 0), (-1, -1), 0),
+            ("TOPPADDING",    (0, 0), (-1, -1), 0),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+            ("LINEBEFORE",    (0, 0), ( 0, -1), 0.5, HAIRLINE),
+            ("LINEAFTER",     (0, 0), (-1, -1), 0.5, HAIRLINE),
+            ("LINEBELOW",     (0, -1), (-1, -1), 0.5, HAIRLINE),
+        ]))
+        story.append(lbl_box)
+        story.append(tbl_wrapper)
 
     else:
         # Plain text / description — render in a light-grey box

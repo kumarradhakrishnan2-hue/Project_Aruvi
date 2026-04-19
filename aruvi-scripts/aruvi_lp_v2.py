@@ -435,13 +435,6 @@ def build_lp_pdf(output_path, data):
             p["time_breakdown"], p["materials"], p["learning_outcome"],
         ))
 
-    # Footnote
-    story.append(Paragraph(
-        "(1) Period plan designed per Aruvi Lesson Plan Constitution V1.2 "
-        "· NCF 2023 Middle Stage pedagogy principles applied throughout.",
-        ST["footer"]
-    ))
-
     doc.build(
         story,
         onFirstPage=lambda c, d: on_page(c, d, doc_meta),

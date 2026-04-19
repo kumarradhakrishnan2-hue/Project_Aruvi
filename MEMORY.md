@@ -123,11 +123,21 @@ Carry-forward rule: Before writing a mapping JSON, always verify that the chapte
 
 ---
 
-[Learning #16] — 2026-04-18 — Incidental Competencies Removed from Mapping Schema
+[Learning #17] — 2026-04-18 — Competency Mapping: Incidental Mention ≠ Architectural Engagement
 
-Context: User decision to discontinue recording incidental (Weight 1) competencies in mapping JSONs.
-Observation: The "incidental" array recorded competencies lightly touched by a chapter but not architecturally developed. These added noise without contributing to lesson plan generation, assessment design, or the allocation tab's chapter_weight calculations.
-Root cause: Original constitution included Weight 1 as a valid category and the JSON schema included an "incidental" array. Both needed updating.
-Action taken: (1) Rule 6 of the mapping constitution rewritten to explicitly abolish Weight 1 and the incidental array. (2) Rule 7 updated to remove "Weight 1" as a valid sub-primary assignment. (3) "incidental" array removed from all 12 Social Sciences VII mapping JSONs. (4) competency_mapping.md cowork prompt schema updated to remove the incidental array with an explanatory note.
-Carry-forward rule: The mapping schema has only "primary" (Weight 3 and Weight 2). No "incidental" array. Any competency below Weight 2 is absent from the JSON. This applies to all future subjects and grades.
+Context: Competency mapping for Social Sciences VI Chapter 2 (Oceans and Continents).
+Observation: A competency was incorrectly assigned because a concept central to that competency appeared by name within a structural element whose primary subject was something else entirely.
+Root cause: The system applied Rule 6's named-structural-element test without first asking whether the competency's required cognitive operation was being performed on that concept as the primary object, or merely referenced in passing. The presence of a keyword in a named element is not sufficient — Rule 3 prohibits vocabulary matches regardless of whether a structural element exists.
+Action taken: Competency removed. Rule 3 rejection applied retrospectively.
+Carry-forward rule: A named structural element qualifies for a competency only if the cognitive operation that competency demands is performed on the primary subject of that element. If the competency's key concept appears only as incidental context within an element whose primary subject is something else, that is a vocabulary match and must be rejected under Rule 3 — regardless of whether a named structural element exists.
+
+---
+
+[Learning #16] — 2026-04-18 — Incidental Array Removed from Mapping Schema (Weight 1 Retained)
+
+Context: User decision to discontinue the separate "incidental" array in mapping JSONs.
+Observation: The schema previously had two arrays — "primary" (Weight 3 and Weight 2) and "incidental" (a separate bucket for lightly-touched competencies). The incidental array added noise without contributing to lesson plan generation, assessment design, or chapter_weight calculations.
+Root cause: Original schema separated competencies into two named arrays. The separation was unnecessary and confusing.
+Action taken: (1) The "incidental" array removed as a schema concept from all mapping JSONs. (2) competency_mapping.md cowork prompt schema updated accordingly. (3) All competencies — Weight 3, Weight 2, and Weight 1 — now appear in a single flat "competencies" array, distinguished only by their weight value.
+Carry-forward rule: The mapping schema has a single flat "competencies" array. Weight 1 (Present) is a valid weight and entries with Weight 1 remain in the JSON. There is no separate "incidental" array. Only competencies that fail the constitution's weight tests entirely are absent from the JSON.
 
