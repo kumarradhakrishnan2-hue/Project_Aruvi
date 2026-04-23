@@ -1,0 +1,90 @@
+{
+  "subject": "Mathematics",
+  "stage": "Middle",
+  "source": "National Curriculum Framework for School Education (NCF-SE), Section 3.4.1.2",
+  "curricular_goals": {
+    "CG-1": {
+      "label": "Number Sense and Patterns",
+      "description": "Understands numbers and sets of numbers (whole numbers, fractions, integers, rational numbers, and real numbers), looks for patterns, and appreciates relationships between numbers",
+      "competency_codes": {
+        "C-1.1": "Develops a sense for and an ability to manipulate (e.g., read, write, form, compare, estimate, and apply operations) and name (in words) large whole numbers of up to 20 digits, and expresses them in scientific notation using exponents and powers",
+        "C-1.2": "Discovers, identifies, and explores patterns in numbers and describes rules for their formation (e.g., multiples of 7, powers of 3, prime numbers), and explains relations between different sets of numbers (whole numbers, fractions, integers, rational numbers, and real numbers)",
+        "C-1.3": "Learns about the inclusion of zero and negative quantities as numbers, and the arithmetic operations on them, as given by Brahmagupta",
+        "C-1.4": "Explores and understands sets of numbers, such as whole numbers, fractions, integers, rational numbers, and real numbers, and their properties, and visualises them on the number line",
+        "C-1.5": "Explores the idea of percentage and applies it to solve problems",
+        "C-1.6": "Explores and applies fractions (both as ratios and in decimal form) in daily-life situations"
+      }
+    },
+    "CG-2": {
+      "label": "Algebra and Equations",
+      "description": "Understands the concepts of variable, constant, coefficient, expression, and (one-variable) equation, and uses these concepts to solve meaningful daily-life problems with procedural fluency",
+      "competency_codes": {
+        "C-2.1": "Understands equality between numerical expressions and learns to check arithmetical equations",
+        "C-2.2": "Extends the representation of a number in the form of a variable or an algebraic expression using a variable",
+        "C-2.3": "Forms algebraic expressions using variables, coefficients, and constants and manipulates them through basic operations",
+        "C-2.4": "Poses and solves linear equations to find the value of an unknown, including to solve puzzles and word problems",
+        "C-2.5": "Develops own methods to solve puzzles and problems using algebraic thinking"
+      }
+    },
+    "CG-3": {
+      "label": "Geometry: Shapes and Properties",
+      "description": "Understands, formulates, and applies properties and theorems regarding simple geometric shapes (2D and 3D)",
+      "competency_codes": {
+        "C-3.1": "Describes, classifies, and understands relationships among different types of two- and three-dimensional shapes using their defining properties/attributes",
+        "C-3.2": "Outlines the properties of lines, angles, triangles, quadrilaterals, and polygons and applies them to solve related problems",
+        "C-3.3": "Identifies attributes of three-dimensional shapes (cubes, parallelepipeds, cylinders, cones), works hands-on with material to construct these shapes, and also uses two-dimensional representations of three-dimensional objects to visualise and solve problems",
+        "C-3.4": "Draws and constructs geometric shapes, such as lines, parallel lines, perpendicular lines, angles, and simple triangles, with specified properties using a compass and straightedge",
+        "C-3.5": "Understands congruence and similarity as it applies to geometric shapes and identifies similar and congruent triangles"
+      }
+    },
+    "CG-4": {
+      "label": "Measurement: Perimeter, Area and Theorems",
+      "description": "Develops understanding of perimeter and area for 2D shapes and uses them to solve day-to-day life problems",
+      "competency_codes": {
+        "C-4.1": "Discovers, understands, and uses formulae to determine the area of a square, triangle, parallelogram, and trapezium and develops strategies to find the areas of composite 2D shapes",
+        "C-4.2": "Learns the Baudhayana-Pythagoras theorem on the lengths of the sides of a right-angled triangle, and discovers a geometric proof using areas of squares erected on the sides of the triangle, and other related geometric constructions from the Sulba-Sutras",
+        "C-4.3": "Constructs various designs (using tiling) on a plane surface using different 2D shapes and appreciates their appearances in art in India and around the world",
+        "C-4.4": "Develops familiarity with the notion of fractal and identifies and appreciates the appearances of fractals in nature and art in India and around the world"
+      }
+    },
+    "CG-5": {
+      "label": "Data Handling and Statistics",
+      "description": "Collects, organises, represents (graphically and in tables), and interprets data/information from daily-life experiences",
+      "competency_codes": {
+        "C-5.1": "Collects, organises, and interprets the data using measures of central tendencies such as average/mean, mode, and median",
+        "C-5.2": "Selects, creates, and uses appropriate graphical representations (e.g., pictographs, bar graphs, histograms, line graphs, and pie charts) of data to make interpretations"
+      }
+    },
+    "CG-6": {
+      "label": "Mathematical Reasoning and Communication",
+      "description": "Develops mathematical thinking and the ability to communicate mathematical ideas logically and precisely",
+      "competency_codes": {
+        "C-6.1": "Applies both inductive and deductive logic to formulate definitions and conjectures, evaluate and produce convincing arguments/proofs to turn these definitions and conjectures into theorems or correct statements, particularly in the areas of algebra, elementary number theory, and geometry"
+      }
+    },
+    "CG-7": {
+      "label": "Mathematical Creativity and Problem Posing",
+      "description": "Engages with puzzles and mathematical problems and develops own creative methods and strategies to solve them",
+      "competency_codes": {
+        "C-7.1": "Demonstrates creativity in discovering one's own solutions to puzzles and other problems, and appreciates the work of others in finding their own, possibly different, solutions",
+        "C-7.2": "Engages in and appreciates the artistry and aesthetics of puzzle-making and puzzle-solving"
+      }
+    },
+    "CG-8": {
+      "label": "Computational Thinking",
+      "description": "Develops basic skills and capacities of computational thinking, namely, decomposition, pattern recognition, data representation, generalisation, abstraction, and algorithms in order to solve problems where such techniques of computational thinking are effective",
+      "competency_codes": {
+        "C-8.1": "Approaches problems using programmatic thinking techniques such as iteration, symbolic representation, and logical operations and reformulates problems into series of ordered steps (i.e., algorithmic thinking)",
+        "C-8.2": "Learns systematic counting and listing, systematic reasoning about counts and iterative patterns, and multiple data representations; learns to devise and follow algorithms, with an eye towards understanding correctness, effectiveness, and efficiency of algorithms"
+      }
+    },
+    "CG-9": {
+      "label": "History and Culture of Mathematics",
+      "description": "Knows and appreciates the development of mathematical ideas over a period of time and the contributions of past and modern mathematicians from India and across the world",
+      "competency_codes": {
+        "C-9.1": "Recognises how concepts (like counting numbers, whole numbers, negative numbers, rational numbers, zero, concepts of algebra, geometry) evolved over a period of time in different civilisations",
+        "C-9.2": "Knows and appreciates the contributions of specific Indian mathematicians (such as Baudhayana, Pingala, Aryabhata, Brahmagupta, Virahanka, Bhaskara, and Ramanujan)"
+      }
+    }
+  }
+}
