@@ -1,0 +1,39 @@
+{
+    "stage":          "middle",
+    "subject":        "mathematics",
+    "grade":          "vii",
+    "chapter_number": 5,
+    "chapter_title":  "Parallel and Intersecting Lines",
+
+    "core_cg": "CG-3",
+
+    "core_competencies": [
+        {
+            "c_code": "C-3.2",
+            "justification": "The chapter is centrally about properties of lines and angles: §5.1 proves vertically opposite angles are equal and adjacent angles form linear pairs (180°); §5.6 establishes the biconditional corresponding-angle property of parallel lines inductively across A-3, A-4, A-5; §5.8 gives a deductive proof that alternate angles are equal and introduces co-interior angles. Exercises E-9 through E-14 then apply all these properties to find unknown angles in multi-line configurations of increasing complexity."
+        },
+        {
+            "c_code": "C-3.4",
+            "justification": "§5.7 explicitly teaches two construction procedures for parallel lines — a ruler-and-set-square method and a paper-folding method — both grounded in the equal-corresponding-angles criterion. Activities A-3 and A-4 also require students to draw lines through specified points making given angles with a transversal, and E-8 asks students to construct a parallel line through a given point using geometry-box tools. This is a distinct construction strand independent of the property-reasoning of C-3.2."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-6.1",
+            "justification": "§5.1 presents an explicit, general deductive proof of the vertically opposite angles theorem using only the straight-angle axiom — the text names it a 'proof'. §5.6 builds the corresponding-angle biconditional through three structured inductive activities (A-3, A-4, A-5) before §5.8 provides a full deductive proof of the alternate angles theorem, chaining corresponding and vertically opposite angle results. The chapter thus models both inductive conjecture and deductive proof as mathematical practices."
+        },
+        {
+            "c_code": "C-7.1",
+            "justification": "Activity A-5 in §5.6 challenges students to discover the impossibility of constructing equal corresponding angles on non-parallel lines — the result is not given but must be found. §5.8 explicitly invites students to discover and justify the co-interior angle sum (180°) for themselves from WE-3, and E-14 (finding ∠NOP via hint-guided auxiliary parallel-line construction) demands a creative geometric strategy beyond routine angle-chasing."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to identify, prove, and apply angle relationships formed at intersections and by transversals of parallel lines by inductively discovering properties through structured activities and then formalising them through deductive argument, while also constructing parallel lines with specified angular properties using geometric tools.",
+
+    "conceptual_demand": 2,
+    "activity_count":    6,
+    "demo_count":        0,
+    "exec_load":         1,
+    "effort_index":      15.0
+}

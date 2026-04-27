@@ -1,486 +1,216 @@
-ARUVI · PEDAGOGICAL PLATFORM
-
-Chapter Assessment Constitution — Mathematics
-Version 1.0 · Ten rules governing AI assessment generation for Mathematics
-Inputs: Chapter Summary + Competency Mapping JSON (no LO Handoff)
+ARUVI — MATHEMATICS ASSESSMENT CONSTITUTION · VERSION 3.0
+Stages: Foundational, Middle, Secondary
 
 ================================================================================
 DESIGN PRINCIPLE
 ================================================================================
 
-The Mathematics assessment mirrors the textbook's own three-icon question
-architecture:
-- Figure it Out  → Practice    (Section A)
-- Math Talk      → Reasoning   (Section B)
-- Try This       → Extension   (Section C)
-
-The three icons are author-provided in *Ganita Prakash*. The assessment
-inherits them, does not invent progression stages, and does not impose
-an external framework. Every question is traceable to (a) the icon it
-mirrors and (b) a textbook section in the chapter summary.
-
-Competencies from the mapping appear only as LABELS on questions for
-downstream reporting; they do NOT drive question generation.
+One assessment item per goal in `coverage_handoff`. Each item is freshly
+generated to mirror the structure of its `anchor_book_ref` exercise.
+The textbook's answer key remains the canonical solution; Aruvi's only
+answer artefact is a one-line `teacher_guide`.  Items
+render to the teacher using `book_ref`; internal IDs (`anchor_id`)
+stay in JSON only.
 
 
 ================================================================================
-Rule 1 · Governing Purpose
+INPUTS
 ================================================================================
 
-MANDATE
-The system MUST generate assessment tasks that test whether the student
-engaged with the chapter's three question types in their native form.
-Every question MUST be traceable to the icon_mirrored it represents and
-to the textbook section whose content grounds it.
-
-The demonstration required MUST be observable — a response, a construction,
-a worked solution, a justification, a posed problem.
-
-PROHIBITION
-The system MUST NOT generate questions asking whether a student understood,
-appreciated, or felt something. Questions MUST require demonstration, not
-introspective self-report.
-
-The system MUST NOT test content absorption independently of the three
-icon architectures.
+1. LP JSON → `coverage_handoff` (three clusters, each with a `goals`
+   array carrying `section_ref`, `goal`, `anchor_id`,
+   `anchor_book_ref`).
+2. Summary JSON → `enumerated_exercises` (looked up by `anchor_id` for
+   the anchor's `description`); `prose_summary` to ground generated
+   stems in the chapter's own methods and contexts.
 
 
 ================================================================================
-Rule 2 · Inputs and Outputs
+RULE 1 | THREE-SECTION STRUCTURE
 ================================================================================
 
-MANDATE
-Inputs (exactly two — both required):
+  A — Recall and Apply     ← handoff.section_a
+  B — Reason and Explain   ← handoff.section_b
+  C — Apply in Context     ← handoff.section_c
 
-1. Chapter Summary JSON. Source of enumerated_activities,
-   enumerated_worked_examples, enumerated_exercises (with FIO / MT / TT
-   icons preserved), prose_summary. Grounds every question stem,
-   stimulus, and distractor in actual chapter content.
-
-2. Competency Mapping JSON. Source of core_cg, core_competencies,
-   adjunct_competencies (used for question-level labeling and reporting
-   only — not for generation constraints).
-
-Outputs (all three mandatory):
-
-1. Three-section icon-structured chapter assessment (A · B · C).
-2. Diagnostically intentional MCQ distractors.
-3. Guide block for every question (structured JSON; visible on demand).
-
-PROHIBITION
-The system MUST NOT retrieve or reference the Curricular Goals document,
-Pedagogy document, any Learning Outcomes document, the LP JSON, or any
-other document outside the two listed inputs.
-
-The system MUST NOT re-open or re-adjudicate the chapter mapping.
-
-Mathematics assessment DOES NOT consume an LO Handoff (unlike Science).
-If provided, it MUST be ignored.
+Items inside a section appear in handoff order. Empty handoff cluster
+→ empty section (rendered as a note "no goals routed to this section
+in the chapter").
 
 
 ================================================================================
-Rule 3 · Three-Section Architecture — SOLE ARCHITECTURAL GOVERNOR
+RULE 2 | ONE ITEM PER GOAL
 ================================================================================
 
-MANDATE
-The system MUST structure the assessment in exactly three sections,
-corresponding to the textbook's three question-type icons:
+For each entry in `cluster.goals`, emit exactly one item. Total items
+across A + B + C = total goals across all clusters.
 
-- Section A — Practice     (mirrors Figure it Out; computational / applicational)
-- Section B — Reasoning    (mirrors Math Talk; explain, justify, compare)
-- Section C — Extension    (mirrors Try This; non-routine, open, puzzle)
-
-Default section weightage (by question count or marks; configurable at
-generation time through the section_weightage input):
-- Section A: 50 %
-- Section B: 30 %
-- Section C: 20 %
-
-The assessment MUST present the sections in order A → B → C.
-
-PROHIBITION
-The system MUST NOT omit any of the three sections. If the chapter summary
-contains zero enumerated_exercises with a given icon, the system MUST
-compose items in that icon's style from the chapter's content — the
-section MUST NOT be dropped.
-
-The system MUST NOT create a fourth section.
+No additional items. No bonus / mixed-review / chapter-wrap questions.
 
 
 ================================================================================
-Rule 4 · Section A — Practice (FIO-style)
+RULE 3 | ANCHORED GENERATION
 ================================================================================
 
-MANDATE
-Section A questions MUST demand computational or directly applicational
-work:
+Each item's `prompt` is freshly generated. It MUST mirror the
+STRUCTURE of the exercise identified by `anchor_id` (looked up in
+`enumerated_exercises` for its `description`): same operation, same
+difficulty band, same kind of context (numerical / geometric /
+word-problem). It MUST NOT copy the anchor's specific numbers, named
+entities, or wording. If the anchor carries sub-parts ((a)/(b)/(c)),
+mirror only the operation pattern — emit a single-prompt item, not
+a multi-part one.
 
-- Solve a numerical problem.
-- Apply a procedure taught in the chapter (construction, simplification,
-  substitution, computation).
-- Compute a measurement or quantity from a given setup.
-
-Permitted question_type values in Section A: MCQ, SCR.
-
-Sourcing. At least ONE HALF of Section A items MUST be drawn directly
-from enumerated_exercises where icon == "FIO". Remaining items MAY be
-composed in the same style, anchored to chapter content.
-
-icon_mirrored for all Section A questions MUST be "FIO".
-
-PROHIBITION
-The system MUST NOT place reasoning-justification questions in Section A.
-The system MUST NOT place open-ended extension prompts in Section A.
+The prompt MUST be solvable using only methods present in the
+chapter's `prose_summary` or its worked examples. Out-of-chapter
+procedures, properties, and notations are PROHIBITED.
 
 
 ================================================================================
-Rule 5 · Section B — Reasoning (MT-style)
+RULE 4 | ANSWER VERIFICATION (NON-NEGOTIABLE)
 ================================================================================
 
-MANDATE
-Section B questions MUST demand articulated reasoning in written form:
+Before emitting each item, the system MUST:
 
-- Explain why a procedure works.
-- Justify a step in a computation, construction, or derivation.
-- Compare two approaches and argue for one.
-- Identify the flaw in an incorrect argument.
+1. Solve the prompt using the chapter's method.
+2. Solve it again by an alternate route (substitution back; reverse
+   compute; independent procedure; dimensional / magnitude check).
+3. Confirm the two solutions agree.
+4. Then emit the item with `verified: true`.
 
-Permitted question_type values in Section B: SCR, ECR.
+The model's reasoning during verification MUST NOT appear in any
+emitted field. Only the one-line `teacher_guide` reflects the
+verified answer.
 
-Sourcing. At least ONE HALF of Section B items MUST be drawn from
-enumerated_exercises where icon == "MT". Remaining items MAY be composed
-in the same style, anchored to chapter content.
-
-icon_mirrored for all Section B questions MUST be "MT".
-
-PROHIBITION
-Section B items MUST NOT require only a numerical answer. A correct
-response MUST include written reasoning or justification.
+If the two routes disagree, OR an alternate route cannot be
+constructed, the item falls back per Rule 5.
 
 
 ================================================================================
-Rule 6 · Section C — Extension (TT-style)
+RULE 5 | FALLBACK
 ================================================================================
 
-MANDATE
-Section C contains non-routine, open, or puzzle-type items:
+When verification fails, OR `anchor_id == ""`:
 
-- Problem-posing (student constructs their own problem on the chapter's
-  concept).
-- Open investigation (extend a pattern, find all cases, generalise a rule).
-- Applied puzzle or non-routine problem.
+- `prompt`           = ""
+- `visual_stimulus`  = ""
+- `verified`         = false
+- `teacher_guide`    = `"[Fallback] " + <goal-sentence> + " | Refer to the book exercise(s) anchored to " + section_ref + ". | " + <inclusivity>`
 
-Permitted question_type values in Section C: ECR, OPEN_TASK.
-
-EXACTLY ONE OPEN_TASK per assessment. It MUST be placed as the FINAL item
-of Section C.
-
-Sourcing. The OPEN_TASK and at least ONE HALF of the remaining Section C
-items MUST be drawn from enumerated_exercises where icon == "TT", or
-composed in TT-style grounded in chapter content.
-
-icon_mirrored for all Section C questions MUST be "TT".
-
-PROHIBITION
-The system MUST NOT generate more than one OPEN_TASK per assessment.
-The system MUST NOT place the OPEN_TASK outside Section C.
+Coverage is preserved (the goal still appears in the assessment) but
+no unverified prompt is emitted.
 
 
 ================================================================================
-Rule 7 · MCQ Distractor Design
+RULE 6 | TEACHER GUIDE
 ================================================================================
 
-MANDATE
-Every MCQ MUST have exactly three diagnostically intentional distractors
-(four options total). Each distractor MUST represent one specific, nameable
-engagement failure drawn from Mathematics-typical error patterns:
+Every non-fallback item carries `teacher_guide` as a single string,
+three parts joined by `" | "`:
 
-- A common misconception about the chapter's procedure or concept.
-- A confusion between two related concepts in the same chapter.
-- An arithmetic, algebraic, or geometric slip the procedure frequently
-  exposes (off-by-one, sign error, unit error, misread of a diagram).
-- A procedural error (skipped step, wrong order of operations, wrong
-  property applied).
+  Part 1 — goal-sentence: a one-line restatement of what this item
+           checks, derived from `goal` and the section's
+           `prose_summary` opening clause. 
 
-PROHIBITION
-The system MUST NOT use true/false format.
-The system MUST NOT generate distractors that are implausible, arbitrary,
-or sourced from outside the chapter.
+  Part 2 — `"Expected answer: " + <answer in words and numbers>
+           + ". " + <one-line method>`. Words and numbers only — no
+           figure or diagram, even when the prompt has a
+           `visual_stimulus`.
 
+  Part 3 — `inclusivity`: composed at generation time, one sentence
+           (≤ 25 words), covering BOTH a scaffold for the struggling
+           student AND a stretch / extension. Vary the surface form
+           across items so the assessment does not read canned. Stay
+           within the per-goal intent below:
+             recall → scaffold = let the student look back at taught
+                       content; extension = ask for one more example
+                       in their own words.
+             reason → scaffold = a verbal-thinking aid (pair-share,
+                       talk-before-write); extension = a what-if
+                       (alter one premise, re-explain).
+             apply  → scaffold = an alternate representation (visual /
+                       manipulative / number-line); extension = a
+                       parameter-tweak (change one number / unit /
+                       constraint and re-solve).
 
-================================================================================
-Rule 8 · Open Task Menu — Mathematics
-================================================================================
-
-MANDATE
-The system MUST select the OPEN_TASK format exclusively from the
-Mathematics menu below. Selection MUST be justified in the guide block.
-The guide block MUST state that the teacher MAY substitute any other
-format from this same menu.
-
-Valid formats (completable within classroom time; no external
-coordination):
-
-- Pattern-finding and generalisation task: extend a pattern from the
-  chapter, state the underlying rule, and verify it on a new case.
-
-- Construction-with-justification task: for geometry chapters; perform
-  a compass-and-straightedge construction AND explain why each step
-  yields the required property.
-
-- Problem-posing task: compose a novel problem on the chapter's concept
-  at a specified difficulty, AND supply a full solution.
-
-- Strategy-comparison task: given two strategies for the same problem,
-  evaluate both, recommend one, and justify the recommendation.
-
-- Applied-modelling task: apply the chapter's concept to an unfamiliar
-  real-life scenario, state assumptions, and work out the answer.
-
-PROHIBITION
-The system MUST NOT select a format outside the Mathematics menu.
-The system MUST NOT select a format for variety alone — selection MUST
-be the most natural demonstration vehicle for the chapter's core_cg and
-core_competencies at the depth established in the chapter summary.
+Do NOT include C-codes or competency labels anywhere in
+`teacher_guide`. Do NOT include the model's full reasoning — only
+the one-line method summary in Part 2.
 
 
 ================================================================================
-Rule 9 · Executability Boundary
+RULE 7 | VISUAL STIMULUS
 ================================================================================
 
-MANDATE
-Every assessment task MUST be completable within classroom time using
-pencil-paper and basic mathematics instruments (ruler, compass,
-set-squares, protractor, graph paper, calculator where the chapter
-permits).
+`visual_stimulus` is non-empty only when the prompt genuinely needs a
+table, line, or geometric figure.
 
-PROHIBITION
-The system MUST NOT generate tasks requiring:
-- Multi-session projects across several classes
-- Field visits or data collection outside the classroom
-- Artefact construction requiring craft materials
-- Coordination with parties outside the classroom
-- Computer / software use unless the chapter explicitly requires it
+Three permitted formats — choose by content type:
 
+- Pipe-delimited table: 2+ lines, every line contains "|", first row
+  is the header. Use for tabular data, comparison grids, value tables.
 
-================================================================================
-Rule 10 · Guide Layer
-================================================================================
+- Inline SVG: a complete `<svg ...>...</svg>` markup string.
+  PREFERRED for lines, angles, polygons, number lines, fraction bars,
+  coordinate diagrams. Use a `viewBox` so the figure scales; keep it
+  under ~30 elements; label points and measurements in-figure with
+  `<text>`. The figure MUST be parallel to the anchor's figure (same
+  geometric kind, different specifics) — not a copy.
 
-MANDATE
-The system MUST produce a guide block for every generated question. The
-guide is a structured JSON object — NOT prose — visible on demand.
+- Italic text spec: prose description naming each labelled element,
+  angle / length marker, and given measurement. Use only when the
+  figure is genuinely uncommon and SVG would be brittle.
 
-+---------------+-----------------------------------------------------------+
-| Question Type | Guide Block Contents                                      |
-+---------------+-----------------------------------------------------------+
-| MCQ           | guide.MCQ:                                                |
-|               |  - section_mirror  ("A" | "B" | "C")                      |
-|               |  - what_each_option_reveals                               |
-|               |      one entry per non-correct option label, stating the |
-|               |      specific engagement failure indicated by that option |
-|               |  - inclusivity                                            |
-|               |      one–two sentences on alternative demonstration       |
-|               |      pathways                                             |
-+---------------+-----------------------------------------------------------+
-| SCR           | Top-level field: expected_elements — array of strings;    |
-|               |  each is a distinct component a complete response should  |
-|               |  contain (e.g., "states the angle property", "shows the   |
-|               |  calculation", "reaches the numerical answer").           |
-|               | guide.SCR:                                                |
-|               |  - section_mirror  ("A" | "B" | "C")                      |
-|               |  - inclusivity                                            |
-+---------------+-----------------------------------------------------------+
-| ECR           | Top-level field: look_for — array of strings; each        |
-|               |  describes a qualitative marker that distinguishes a      |
-|               |  strong response (e.g., "explicitly names the property",  |
-|               |  "rejects the counter-example with reasoning").           |
-|               | guide.ECR:                                                |
-|               |  - section_mirror  ("A" | "B" | "C")                      |
-|               |  - inclusivity                                            |
-+---------------+-----------------------------------------------------------+
-| OPEN_TASK     | guide.OPEN_TASK:                                          |
-|               |  - section_mirror ("C")                                   |
-|               |  - format_type        — name from the Rule 8 menu         |
-|               |  - format_rationale   — one sentence                      |
-|               |  - what_this_demonstrates                                 |
-|               |  - reading_the_scaffold                                   |
-|               |  - strong_vs_weak_markers                                 |
-|               |  - teacher_may_substitute                                 |
-|               |      string listing the other four formats from the menu |
-|               |  - inclusivity                                            |
-+---------------+-----------------------------------------------------------+
-
-Every question MUST ALSO record, at top-level of the question object (not
-inside guide):
-- icon_mirrored    : "FIO" | "MT" | "TT"
-- section          : "A"   | "B"  | "C"
-- source_section   : string — textbook section reference
-- source_item_id   : string — id of the enumerated_exercise mirrored;
-                              empty string if item is composed rather
-                              than sourced
-- cg_label         : string — core_cg copied from mapping (informational)
-- c_code           : string — a core or adjunct c_code for reporting
-                              (informational; MAY be empty string if the
-                              question is generic across competencies)
-
-PROHIBITION
-The system MUST NOT omit the guide block for any question.
-The system MUST NOT produce the guide block as prose.
+The prompt references the stimulus with a short phrase ("Refer to
+the table provided.", "Use the figure shown."). The stimulus MUST
+NOT be embedded in or duplicated inside `prompt`. The expected
+answer in `teacher_guide` is words and numbers only — never a second
+visual.
 
 
 ================================================================================
-Rule 11 · Scope Boundary
+RULE 8 | RENDERING USES book_ref
 ================================================================================
 
-MANDATE
-The system MUST generate chapter-scoped formative assessment only — one
-component of a teacher's toolkit for a single chapter.
-
-PROHIBITION
-The system MUST NOT generate:
-- Summative assessments or Board examination preparation
-- Holistic Progress Card inputs
-- Multi-session projects or portfolios
-- Individual student tracking across chapters
+`anchor_id` is an internal join key — it MUST NEVER appear in any
+prose the teacher reads. Items render `anchor_book_ref` as the
+"see also" provenance line where applicable, and reference no
+internal IDs in `prompt` or `teacher_guide`.
 
 
 ================================================================================
-Amendment A1 — Full Assessment JSON Schema
+ASSESSMENT JSON SCHEMA
 ================================================================================
-
-The system MUST produce the assessment output as a structured JSON object
-conforming exactly to this schema. This JSON is the single source of truth
-for online display and PDF generation.
-
-The system MUST populate every field. Empty strings and empty arrays are
-NOT permitted for required fields (except where explicitly noted as MAY
-be empty).
 
 {
-  "stage":          "middle",
-  "subject":        "mathematics",
-  "grade":          "vii",
   "chapter_number": integer,
   "chapter_title":  string,
+  "stage":          string,
 
-  "section_weightage": { "A": integer, "B": integer, "C": integer }
-      — percentages, MUST sum to 100,
-
-  "sections": {
-    "A": { "title": "Practice",   "items": [ <question_object>, ... ] },
-    "B": { "title": "Reasoning",  "items": [ <question_object> ] },
-    "C": { "title": "Extension",  "items": [ <question_object> ] }
-  }
-}
-
-Each question_object conforms to:
-
-{
-  "question_type":    "MCQ" | "SCR" | "ECR" | "OPEN_TASK",
-  "icon_mirrored":    "FIO" | "MT" | "TT",
-  "section":          "A" | "B" | "C",
-  "source_section":   string,
-  "source_item_id":   string,
-  "cg_label":         string,
-  "c_code":           string,
-  "cognitive_demand": "Recall" | "Understanding" | "Application"
-                      | "Analysis" | "Evaluation",
-
-  "visual_stimulus":  string | null,
-
-  "question_text":    string
-      — required for MCQ / SCR / ECR; empty string "" for OPEN_TASK,
-
-  "options": [
-    { "label": "A" | "B" | "C" | "D", "text": string, "is_correct": boolean }
+  "sections": [
+    {
+      "section_code":  "A" | "B" | "C",
+      "section_title": "Recall and Apply" | "Reason and Explain" | "Apply in Context",
+      "note":          string,                 // empty-section note if any, else ""
+      "items": [
+        {
+          "id":              string,           // e.g. "Q-A-1"
+          "section_ref":     string,           // e.g. "§5.3"
+          "goal":            "recall" | "reason" | "apply",
+          "anchor_id":       string,           // e.g. "E-3"; "" on fallback
+          "anchor_book_ref": string,           // e.g. "Figure it Out Q3, §5.1 p.107"; "" on fallback
+          "prompt":          string,           // generated; "" on fallback
+          "visual_stimulus": string,           // "" when not needed
+          "teacher_guide":   string,           // composed per Rule 6 (or Rule 5 on fallback)
+          "verified":        boolean
+        }
+      ]
+    }
   ]
-      — MCQ: exactly four entries required. All other types: [].
-
-  "expected_elements": [string]
-      — SCR only; [] otherwise,
-
-  "look_for": [string]
-      — ECR only; [] otherwise,
-
-  "task":             string
-      — OPEN_TASK only; empty string "" otherwise,
-
-  "scaffold":         string
-      — OPEN_TASK only; empty string "" otherwise,
-
-  "format_of_output": [string]
-      — OPEN_TASK only; [] otherwise,
-
-  "guide": { ... per Rule 10, keyed by question_type ... }
 }
-
-
-================================================================================
-visual_stimulus rules (apply to ALL question types: MCQ, SCR, ECR,
-OPEN_TASK)
-================================================================================
-
-Rule VS-1 · When required.
-If a question requires the student to read a data table (e.g., results
-grid, measurement readings, classification table) OR a labelled figure
-(e.g., construction setup, geometric diagram, parallel-lines
-configuration), visual_stimulus MUST contain the actual stimulus:
-
-- For tables: pipe-delimited rows, one row per line, columns separated
-  by "|". First row is the header.
-- For figures: a text specification naming each labelled element, each
-  angle / length / relationship marker, and any given measurements. The
-  specification MUST be unambiguous enough for a downstream renderer to
-  reconstruct the figure.
-
-Rule VS-2 · What goes in visual_stimulus.
-The actual table data or figure specification — NOT a prose description
-of it. "A data table is provided with columns X, Y, Z" is prohibited.
-
-Rule VS-3 · What goes in question_text / task / scaffold.
-Reference the stimulus with a short phrase such as "Refer to the table
-provided." or "Use the figure shown." Do NOT embed the stimulus inside
-these fields. Do NOT describe the stimulus there either.
-
-Rule VS-4 · When null is correct.
-visual_stimulus is null only when the question genuinely requires no
-table, figure, or diagram. A question that says "the figure below shows"
-but sets visual_stimulus to null is NON-COMPLIANT.
-
-Example (correct — MCQ with figure):
-  visual_stimulus:
-    "Lines l and m are parallel, cut by transversal t.
-     Angle at intersection of l and t, upper-right, is marked x.
-     Angle at intersection of m and t, lower-left, is marked y.
-     No measurements given."
-  question_text:
-    "Refer to the figure shown. Which statement about x and y is correct?"
-
-Example (correct — OPEN_TASK with scenario table):
-  visual_stimulus:
-    "Pattern | Term 1 | Term 2 | Term 3 | Term 4\nA | 2 | 5 | 10 | 17\nB | 3 | 6 | 11 | 18"
-  task:
-    "Refer to the table provided. For each pattern: (1) state the rule
-     that generates the terms, (2) compute term 10, (3) explain whether
-     the rule is linear, quadratic, or neither."
-
-Example (prohibited — stimulus described in prose):
-  visual_stimulus:
-    "A table is provided with columns: Pattern, Term 1, Term 2, Term 3,
-     Term 4. Two rows of data are given..."
-  [PROHIBITED — visual_stimulus must contain the actual data, not a
-   description of it.]
-
-Example (prohibited — stimulus embedded in question_text):
-  visual_stimulus: null
-  question_text:
-    "The table below shows the results.
-     Pattern | Term 1 | Term 2 | Term 3 ..."
-  [PROHIBITED — the table must be in visual_stimulus, not question_text.]
 
 
 ================================================================================
 Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
-Mathematics Assessment Constitution · Version 1.0 · Internal Document
+Mathematics Assessment Constitution · Version 3.0 · Internal Document
 ================================================================================

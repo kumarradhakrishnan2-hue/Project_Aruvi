@@ -1,375 +1,313 @@
-ARUVI — LESSON PLAN GENERATION CONSTITUTION · MATHEMATICS · VERSION 1.0
+ARUVI — MATHEMATICS LESSON PLAN CONSTITUTION · VERSION 3.0
+Stages: Foundational, Middle, Secondary
 
 ================================================================================
 DESIGN PRINCIPLE
 ================================================================================
 
-The textbook is the source of truth. The chapter summary is its faithful
-mirror. The LP generator organises what the summary contains — it does NOT
-augment the summary from an external framework.
+The textbook's section order is the LP's structural axis. Each section's
+`section_goal` (from the summary) shapes the period's pedagogy.
+Competencies are informational only.
 
-For Mathematics, the textbook itself provides the structural axis for
-lesson planning: NCERT's *Ganita Prakash* is organised section by section,
-with three author-provided question-type icons (Figure it Out, Math Talk,
-Try This) distributed throughout. The LP inherits this structure; it does
-NOT impose external progression frameworks (e.g. CLPS, activity-mode
-taxonomies). Competencies from the mapping are informational only — they
-appear in a header table at the top of the LP and do NOT drive period
-assignment or activity selection.
+The LP references textbook items by their `book_ref` (the teacher-facing
+locator: banner + question number + page). It does NOT reprint item
+content. Internal IDs (`A-N`, `WE-N`, `E-N`) live only in JSON
+structured fields as join keys for downstream assessment routing —
+they MUST NEVER appear in any prose the teacher reads.
 
 
 ================================================================================
-INPUTS (given — do not regenerate)
+INPUTS
 ================================================================================
 
-1. Competency mapping JSON — core_cg, core_competencies,
-   adjunct_competencies, dissolution_test, the four effort signals,
-   effort_index composite.
-
-2. Chapter summary JSON — prose_summary (section by section),
-   enumerated_activities, enumerated_worked_examples, enumerated_exercises
-   (with FIO / MT / TT icons preserved), representation_index.
-
-3. NCF Pedagogy document for Mathematics middle stage
-   (pedagogy_middle_mathematics.txt) — source of the five permitted
-   pedagogical methods and their stage frequencies.
-
-4. Period schedule — one or more rows of {duration in minutes, period
-   count}. Total periods = B, the period budget for the chapter.
+1. Mapping JSON (core_cg, competencies, dissolution_test, effort signals).
+2. Summary JSON (sections with `section_goal` array, prose, enumerated
+   items each carrying `id`, `source_section`, `book_ref`, `description`).
+3. Stage-appropriate NCF Pedagogy document (source of the five permitted
+   methods).
+4. Period schedule: {duration, count} rows; total = B.
 
 
 ================================================================================
-OUTPUTS REQUIRED
+OUTPUT
 ================================================================================
 
-1. Chapter-level header table (informational only) — CG, competencies,
-   period budget.
-
-2. Period-by-period lesson plan conforming to Amendment A3.
+LP JSON per chapter: header, periods array, coverage_handoff block.
 
 
 ================================================================================
-RULE 1 — TEXTBOOK-SEGMENT ANCHORING (REPLACES PROGRESSION-STAGE DERIVATION)
+RULE 1 | SECTION ANCHORING
 ================================================================================
 
-The LP is structured by walking the textbook's section order, NOT by
-deriving an external cognitive progression.
-
-The system MUST identify the chapter's segments from the summary:
-- Sections      (§N)
-- Sub-sections  (§N.M)
-- Named activity blocks or exploration boxes if structurally distinct
-
-The textbook's authored sequence IS the LP's structural axis. The system
-MUST NOT reorder, interleave, or re-sequence segments.
+LP walks textbook section order. Do NOT reorder, interleave, or
+re-sequence. Each period anchors to one or at most two adjacent sections.
 
 
 ================================================================================
-RULE 2 — PERIOD BIN-PACKING
+RULE 2 | PERIOD BIN-PACKING
 ================================================================================
 
-Given the period budget B (from the input schedule), the system MUST
-allocate exactly B periods across the chapter's segments.
+Allocate exactly B periods across sections.
 
-Assignment rules:
-- Each period anchors to ONE or at most TWO adjacent segments.
-- Heavy segments (many enumerated items or complex concepts) MAY be split
-  across two adjacent periods.
-- Light segments MAY be merged with an adjacent segment into a single
-  period.
-- Segment order MUST be preserved — no forward-pulling, no deferral.
+- Heavy sections (many enumerated items, or two-goal declaration in
+  the summary) MAY split across two adjacent periods.
+- Light sections MAY merge with an adjacent section.
+- Every section listed in the summary MUST appear in at least one
+  period's `textbook_segments`. Dropping a section is FORBIDDEN —
+  including consolidation-only sections (e.g., "Parallel Illusions"
+  closing §s).
 
-Total period count MUST exactly equal B.
+When a section's summary `section_goal` is a two-element array, the
+LP MAY split it across two adjacent periods — period N gets the
+first-listed goal, period N+1 gets the second-listed goal, in
+textbook order.
 
-MUST NOT leave any segment completely unassigned. MUST NOT create periods
-that anchor to non-adjacent segments.
-
-
-================================================================================
-RULE 3 — ITEM SOURCING — CHAPTER ONLY
-================================================================================
-
-Every enumerated item in the LP MUST be a pointer to an item already
-present in the chapter summary's enumerations:
-
-- enumerated_activities
-- enumerated_worked_examples
-- enumerated_exercises (each with icon ∈ {FIO, MT, TT})
-
-The system MUST NOT fabricate activities, worked examples, or practice
-items. It MUST NOT adapt items from other chapters, other textbooks, or
-generic content.
-
-Concept introductions and exposition text for each period are drawn
-exclusively from the summary's prose_summary portion corresponding to the
-period's anchored segment(s).
+The LP MUST NOT split a single-goal section across two different
+goals. If a heavy single-goal section is split for time-budget
+reasons, both periods carry the same `section_goal`.
 
 
 ================================================================================
-RULE 4 — ITEM DISTRIBUTION — ICON-BASED DEFAULTS
+RULE 3 | ITEM SOURCING — CHAPTER ONLY · STRICT ID MATCH
 ================================================================================
 
-Within each period, enumerated items belonging to that period's anchored
-segment(s) are distributed as follows:
+Every enumerated item in the LP is a pointer to a summary enumeration.
+No fabrication. Period concepts are drawn from the summary's prose for
+the anchored section(s).
 
-- Math Talk (MT) items      → in_class_practice. ALWAYS in-class.
-                              Discussion-based; homework defeats the
-                              purpose.
+Internal IDs (`id` field) MUST equal exactly an `id` present in the
+summary's `enumerated_activities`, `enumerated_worked_examples`, or
+`enumerated_exercises` arrays.
 
-- Try This (TT) items       → extension (optional, for interested students)
-                              OR homework. NEVER in-class main practice.
+FORBIDDEN:
+- Inventing IDs (e.g., `WE-1a`, `GA-1a`, `ICP-1a`, `HW-1`).
+- Adding `-a` / `-b` suffixes to split a summary item across periods.
+- Substituting a "guided activity" or "in-class practice" ID prefix
+  for a summary item that is enumerated as an activity, worked example,
+  or exercise.
 
-- Figure it Out (FIO) items → split pragmatically by time-box:
-                              · 3 – 5 items go to in_class_practice
-                              · remainder go to homework
-
-- Enumerated activities     → guided_activities. In-class (hands-on;
-                              needs teacher presence).
-
-- Enumerated worked examples → 1 – 2 items go to worked_examples_in_class
-                               (walked through by teacher). Remainder
-                               referenced for self-study; recorded in
-                               teacher_notes.
-
-Icons MUST be preserved on every item pointer in the LP JSON — see
-Amendment A3.
+If a single summary item is referenced by multiple periods (legitimate
+for items that span sub-arcs), each period lists the same single ID.
 
 
 ================================================================================
-RULE 5 — STRICT TEXTBOOK ORDER PRESERVED
+RULE 4 | GOAL CONFORMANCE
 ================================================================================
 
-No enumerated item may be pulled forward into an earlier period or pushed
-back into a later period relative to its source segment. An FIO item
-belonging to §5.3 MUST be assigned to the period anchoring §5.3 — NEVER
-to the period anchoring §5.2 or §5.4.
+Each period's `section_goal` MUST equal one of the goals declared by
+the summary for that period's anchored section(s).
 
-Overflow items within a segment (items beyond the 3 – 5 in-class FIO cap
-in Rule 4) become homework for the same period that owns their segment —
-not reassigned to a different period.
+The LP MUST NOT introduce a goal not present in the summary's section
+entry. If the summary's tagging is wrong for a section, fix the
+summary — do NOT override at LP generation time.
 
-Late-section Try-This items stay late. They MUST NOT be pulled into
-earlier periods for "balance".
-
-
-================================================================================
-RULE 6 — PEDAGOGICAL METHOD
-================================================================================
-
-Each period MUST name exactly one pedagogical_method drawn from the NCF
-Mathematics middle-stage menu of five:
-
-- Discovery / Inquiry method
-- Problem-solving method
-- Play-way / Activity-based method
-- Inductive method
-- Deductive method
-
-NCF middle-stage frequency hints (from the pedagogy document):
-- Discovery and Problem-solving: MORE_OFTEN
-- Play-way, Inductive, Deductive: OFTEN
-
-Diversity rule. The same method MUST NOT appear in more than two
-consecutive periods. Each of the five methods SHOULD appear at least once
-per chapter where the chapter's content permits.
-
-Method selection is governed by segment content:
-- Constructive-geometric segments suit Discovery and Inductive.
-- Proof or derivation segments suit Deductive.
-- Problem-set segments suit Problem-solving.
-- Pattern-play or puzzle segments suit Play-way.
-
-Pedagogical method is a MODULATOR, not a structural axis. It shapes HOW
-a period is taught; it does NOT shape WHAT role the period plays in the
-chapter's arc (that role comes from the textbook segment it anchors).
+When a period anchors to two adjacent sections, the period's
+`section_goal` MUST be a goal declared by at least one of those
+sections.
 
 
 ================================================================================
-RULE 7 — TIME CONSTRAINT
+RULE 5 | PEDAGOGICAL METHOD
 ================================================================================
 
-The period schedule is a hard constraint. Total available minutes =
-sum of all (duration × count) products across all period rows. This is
-teaching time only; assessment time is NOT inside this budget.
+One method per period, from: Discovery · Problem-solving · Play-way ·
+Inductive · Deductive.
 
-Every period's phases array MUST sum exactly to period_duration_minutes.
+Default mapping from `section_goal`:
 
-If a period's content cannot fit the time-box, the system MUST either:
-- Push overflow practice items to homework (same period), OR
-- Re-split the anchored segment across two periods (if budget permits),
+  recall  → Discovery, Inductive
+  reason  → Deductive, Inductive
+  apply   → Problem-solving, Play-way
 
-The system MUST NEVER permit overrun. It MUST NEVER compress a segment's
-in-class time by dropping guided activities or worked-example walkthroughs.
+Diversity: same method MUST NOT appear in more than two consecutive
+periods. Each method SHOULD appear at least once per chapter where
+content permits.
 
 
 ================================================================================
-RULE 8 — CHAPTER-LEVEL HEADER TABLE
+RULE 6 | TIME CONSTRAINT
 ================================================================================
 
-The LP output MUST begin with a chapter-level header table rendered at the
-top of the LP document. Fields (copied from the mapping JSON):
+Each period's phases sum exactly to `period_duration_minutes`. Minimum
+3 phases per period.
 
+`phases[].minutes` is a STRING time-range (e.g., `"0–10"`, `"10–25"`).
+Ranges tile the period from `0` to `period_duration_minutes` with no
+gaps and no overlaps.
+
+Overrun is not permitted.
+
+
+================================================================================
+RULE 7 | CHAPTER HEADER TABLE (INFORMATIONAL)
+================================================================================
+
+Appears once at the top of the LP document:
 - chapter_number, chapter_title
-- core_cg                 (e.g., "CG-3")
-- core_competencies       (c_code + short competency description)
-- adjunct_competencies    (c_code + short competency description)
-- periods_allocated       (integer; equal to B)
-
-This header table is INFORMATIONAL ONLY. It appears once per chapter at
-the top of the LP document.
+- core_cg
+- core_competencies (c_code + text)
+- adjunct_competencies (c_code + text)
+- periods_allocated (= B)
 
 
 ================================================================================
-RULE 9 — COMPETENCIES DO NOT DRIVE LP
+RULE 8 | COMPETENCIES DO NOT DRIVE LP
 ================================================================================
 
-The system MUST NOT consume core_competencies or adjunct_competencies as
-generation constraints:
-
-- Periods are NOT required to individually cover specific competencies.
-- Activities are NOT selected to satisfy competency coverage.
-- The LP body text (periods, phases, materials, teacher_notes) MUST NOT
-  reference specific C-codes.
-
-Competencies appear only in:
-- The chapter-level header table per Rule 8 (informational).
-- Downstream reports (Allocate tab, saved plans catalog).
+Periods are not required to cover specific competencies. LP body text
+MUST NOT reference C-codes. Competencies appear only in the header
+table and in mapping/audit JSON, never in periods, phases, or
+teacher_notes.
 
 
 ================================================================================
-RULE 10 — NO LO HANDOFF (DIVERGENCE FROM SCIENCE)
+RULE 9 | HOMEWORK IS OPTIONAL AND UN-OWNED
 ================================================================================
 
-Unlike Science (which produces an Amendment A4 LO Handoff array), the
-Mathematics LP DOES NOT produce LO-per-stage output.
-
-Rationale. The Mathematics assessment is structured by the three-icon
-architecture (Practice / Reasoning / Extension) inherited from the textbook
-summary, not by progression-stage LOs. The assessment constitution for
-Mathematics therefore consumes the chapter summary and the competency
-mapping directly — it does NOT require an LO handoff from the LP.
-
-The system MUST NOT produce an LO handoff. It MUST NOT invent progression
-stages for the purpose of such a handoff.
+`homework` per period is `[]` by default. Populate with 1–2 items only
+when in-class time-box overflows or the generator judges reinforcement
+useful. Homework is not consumed by the assessment generator
+downstream.
 
 
 ================================================================================
-AMENDMENT A3 — FULL LP JSON SCHEMA (MATHEMATICS)
+RULE 10 | PHASE NARRATION USES book_ref, NOT INTERNAL ID
 ================================================================================
 
-The system MUST populate every field. Empty strings and empty arrays are
-NOT permitted for required fields (except where explicitly noted).
+When a phase invokes a textbook item, the phase's `description` text
+names the item by its `book_ref` (e.g., `"Activity 1 (p.105)"`,
+`"Figure it Out Q1 (p.107)"`, `"Example 3 (§5.8 p.122)"`).
 
-Chapter-level wrapper:
+The phase description MUST NOT use the internal `id` (e.g., `A-1`,
+`WE-3`, `E-9`). Internal IDs live only inside the structured
+`textbook_items_in_class[]` and `homework[]` arrays as join keys.
+
+
+================================================================================
+RULE 11 | COVERAGE HANDOFF EMISSION
+================================================================================
+
+After period assignment, emit `coverage_handoff` — three clusters
+keyed to `section_goal`:
+
+  section_a (Recall and Apply)     ← recall
+  section_b (Reason and Explain)   ← reason
+  section_c (Apply in Context)     ← apply
+
+Per cluster, list one entry per goal that routes into this cluster.
+Total assessment item count = total entries (one item per goal).
+
+Each entry:
+
+- `section_ref`       — the section the goal sits in.
+- `goal`              — the section_goal value (`recall` | `reason`
+                        | `apply`).
+- `anchor_id`         — id of one `enumerated_exercises` (E-N) drawn
+                        from `section_ref`'s exercise pool. Across
+                        the whole `coverage_handoff`, each E-N is
+                        used as `anchor_id` at most once.
+- `anchor_book_ref`   — `book_ref` of `anchor_id`, copied from the
+                        summary entry. Empty string if no exercise
+                        is available.
+
+Anchor selection. For each (section, goal) routed to this cluster,
+pick the first un-used E-N from the section's `enumerated_exercises`
+in textbook order. If the section's pool is exhausted, set
+`anchor_id = ""` and `anchor_book_ref = ""` — the assessment
+generator handles this via its Fallback rule.
+
+A two-goal section legitimately contributes goals to two clusters;
+each contributing goal gets its own anchor (different E-Ns).
+
+If a cluster receives no goals (no section routes to it), emit the
+cluster with an empty `goals` array. The assessment generator emits
+no items for an empty cluster.
+
+
+================================================================================
+LP JSON SCHEMA
+================================================================================
 
 {
-  "chapter_number":       integer,
-  "chapter_title":        string,
-  "core_cg":              string,
-  "core_competencies":    [ { "c_code": string, "competency_text": string } ],
-  "adjunct_competencies": [ { "c_code": string, "competency_text": string } ],
+  "chapter_number": integer,
+  "chapter_title":  string,
+  "core_cg":        string,
+  "core_competencies":    [ { "c_code", "competency_text" } ],
+  "adjunct_competencies": [ { "c_code", "competency_text" } ],
   "periods_allocated":    integer,
   "dissolution_test":     string,
 
-  "lesson_plan": {
-    "periods": [ <period_object>, ... ]
+  "lesson_plan": { "periods": [ <period>, ... ] },
+
+  "coverage_handoff": {
+    "section_a": { "goal_cluster": ["recall"],
+                   "goals": [
+                     { "section_ref": string,    // e.g. "§5.1"
+                       "goal":        "recall",
+                       "anchor_id":   string,    // e.g. "E-3" (or "")
+                       "anchor_book_ref": string // e.g. "Figure it Out Q3, §5.1 p.107" (or "")
+                     }
+                   ] },
+    "section_b": { "goal_cluster": ["reason"], "goals": [ ... ] },
+    "section_c": { "goal_cluster": ["apply"],  "goals": [ ... ] }
   }
 }
 
-Each period_object conforms to:
-
+<period>:
 {
   "period_number":           integer,
   "period_duration_minutes": integer,
+  "textbook_segments":       [string],            // section refs (1–2)
+  "section_goal":            string,              // "recall" | "reason"
+                                                  // | "apply"; MUST
+                                                  // equal a goal
+                                                  // declared by summary
+                                                  // for the anchored
+                                                  // section(s)
+  "activity_title":          string,              // ≤ 12 words,
+                                                  // evocative headline
+  "pedagogical_method":      string,              // one of the 5
 
-  "textbook_segments":       [string]
-      — e.g. ["§5.3"] for a single-segment period, or ["§5.3", "§5.4"]
-        when two adjacent segments are merged into one period.
-        MUST preserve textbook order across the periods array.
-
-  "concepts_introduced":     string
-      — 1–3 sentences drawn from the summary's prose_summary for the
-        anchored segment(s). What the teacher introduces in this period.
-
-  "pedagogical_method":      string
-      — exactly one of: "Discovery" | "Problem-solving" | "Play-way"
-                        | "Inductive" | "Deductive".
-
-  "worked_examples_in_class": [
+  "textbook_items_in_class": [
     {
-      "id":                    string,
-      "source_section":        string,
-      "description_short":     string
+      "id":             string,                   // e.g. "A-1", "WE-1",
+                                                  //      "E-1" — MUST
+                                                  //      equal a
+                                                  //      summary id
+      "type":           "activity"
+                      | "worked_example"
+                      | "exercise",
+      "source_section": string,                   // e.g. "§5.1"
+      "book_ref":       string                    // e.g. "Activity 1, p.105"
+                                                  // — copied from
+                                                  // summary's
+                                                  // enumeration entry
     }
-  ]
-      — pointers to enumerated_worked_examples in the summary.
-        1–2 items per period. MAY be [] if the segment has no worked
-        examples.
+  ],
 
-  "guided_activities": [
-    {
-      "id":                    string,
-      "source_section":        string,
-      "description_short":     string
-    }
-  ]
-      — pointers to enumerated_activities in the summary. MAY be [] if
-        the segment has no hands-on activities.
-
-  "in_class_practice": [
-    {
-      "id":                    string,
-      "source_section":        string,
-      "icon":                  "FIO" | "MT" | "TT",
-      "description_short":     string
-    }
-  ]
-      — pointers to enumerated_exercises. Governed by Rule 4's icon split:
-        all MT items from the segment, plus 3–5 FIO items.
-        TT items MUST NOT appear here.
-
-  "homework": [
-    {
-      "id":                    string,
-      "source_section":        string,
-      "icon":                  "FIO" | "MT" | "TT",
-      "description_short":     string
-    }
-  ]
-      — remaining FIO items plus any TT items assigned as homework.
-        MAY be [] if the period's segment has no homework assignments.
-
-  "extension": [
-    {
-      "id":                    string,
-      "source_section":        string,
-      "icon":                  "TT",
-      "description_short":     string
-    }
-  ]
-      — Try-This items assigned as optional extension. MAY be [] if none.
+  "homework": [ <same shape as textbook_items_in_class entry> ],
 
   "phases": [
     {
-      "minutes":       string,
-      "description":   string
+      "minutes":     string,                      // time range, e.g.
+                                                  // "0–10". Tiles
+                                                  // 0..period_duration
+                                                  // with no gaps.
+      "description": string                       // narrative; refers
+                                                  // to items by
+                                                  // book_ref only
     }
-  ]
-      — phases must cover the full period from 0 to
-        period_duration_minutes with no gaps. Durations MUST sum exactly
-        to period_duration_minutes. Minimum 3 phases per period.
+  ],
 
-  "materials": [string]
-      — e.g. ["compass", "ruler", "graph paper"]. MAY be [] if no special
-        materials.
-
-  "teacher_notes": string
-      — optional reflection or transition note. MAY be empty string.
-        MUST NOT contain C-code references.
+  "materials":               [string],
+  "teacher_notes":           string               // no C-code refs;
+                                                  // no internal IDs in
+                                                  // teacher-facing
+                                                  // prose
 }
 
 
 ================================================================================
 Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
-Mathematics Lesson Plan Constitution · Version 1.0 · Internal Document
+Mathematics Lesson Plan Constitution · Version 3.0 · Internal Document
 ================================================================================

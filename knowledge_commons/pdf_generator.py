@@ -98,8 +98,10 @@ def build_allocation_pdf(
         logo_html = '<div style="width:32px;height:32px;border:2px solid #1a1917;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:11px;font-weight:700;">A</div>'
 
     def _build_chapter_block_science(ch: dict, alloc: dict) -> str:
-        """Chapter block for Science / Mathematics: C-code + justification lines,
-        followed by a compact effort-index summary line. No weight column or label."""
+        """Chapter block for Science / Mathematics: full competency table with
+        #, Code, Competency (description), Justification columns — matching the
+        on-screen allocate view — followed by a compact effort-index summary line.
+        No weight column or dots."""
         period_cells = " · ".join(
             f'{alloc.get(pt["mins"], 0)}&times;{pt["mins"]}min'
             for pt in sorted_types
@@ -112,17 +114,32 @@ def build_allocation_pdf(
         dc  = ch.get("demo_count", 0) or 0
         el  = ch.get("exec_load", 0) or 0
 
-        # Build one line per C-code entry: bold code + normal justification text
-        comp_lines_html = ""
-        for comp in ch.get("primary", []):
-            c_code = comp.get("c_code", "")
-            justification = comp.get("justification", "") or comp.get("description", "")
-            comp_lines_html += (
-                f'<div style="margin-bottom:5px;font-size:7.5pt;line-height:1.55;">'
-                f'<span style="font-weight:700;">{c_code}</span>'
-                f'&nbsp;&nbsp;{justification}'
-                f'</div>'
-            )
+        # Build competency table rows: #, Code, Competency description, Justification
+        comp_rows = ""
+        for idx, comp in enumerate(ch.get("primary", []), 1):
+            c_code      = comp.get("c_code", "")
+            description = comp.get("description", "") or comp.get("cg", "")
+            justification = comp.get("justification", "")
+            comp_rows += f"""
+            <tr>
+                <td class="sci-seq">{idx}</td>
+                <td class="sci-code">{c_code}</td>
+                <td class="sci-competency">{description}</td>
+                <td class="sci-justification">{justification}</td>
+            </tr>"""
+
+        comp_table_html = f"""
+        <table class="sci-comp-table">
+            <thead>
+                <tr>
+                    <th class="th-sci-seq">#</th>
+                    <th class="th-sci-code">Code</th>
+                    <th class="th-sci-comp">Competency</th>
+                    <th class="th-sci-just">Justification</th>
+                </tr>
+            </thead>
+            <tbody>{comp_rows}</tbody>
+        </table>""" if comp_rows else '<p style="font-size:7pt;color:#aaa;padding:4px 0;">No competency entries found.</p>'
 
         # Compact effort index breakdown line (small grey)
         if ei:
@@ -143,9 +160,9 @@ def build_allocation_pdf(
             f'<span class="ch-title">{ch["chapter_title"]}</span>'
             f'<span class="ch-alloc">{period_cells} &middot; {total_ch_periods} periods &middot; {total_ch_mins}min</span>'
             f'</div>'
-            f'<div style="padding:6px 0 3px 0;">'
-            f'{comp_lines_html}'
-            f'<div style="font-size:7pt;color:rgb(120,120,120);margin-top:3px;">{ei_summary}</div>'
+            f'<div style="padding:4px 0 3px 0;">'
+            f'{comp_table_html}'
+            f'<div style="font-size:7pt;color:rgb(120,120,120);margin-top:5px;">{ei_summary}</div>'
             f'</div>'
             f'<hr style="border:none;border-top:0.5px solid rgb(220,220,220);margin:6px 0 0 0;">'
             f'</div>'
@@ -334,6 +351,30 @@ def build_allocation_pdf(
   .dot {{ width: 5px; height: 5px; border-radius: 50%; display: inline-block; flex-shrink: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; color-adjust: exact; }}
   .dot.filled {{ background: #1a1917 !important; }}
   .dot.empty {{ border: 1px solid #ccc; background: transparent; }}
+
+  /* ── Science / Mathematics competency table (no weight/dots column) ── */
+  .sci-comp-table {{ width: 100%; border-collapse: collapse; margin-top: 2px; }}
+  .sci-comp-table th {{
+    font-size: 6pt; font-weight: 600; letter-spacing: 0.05em;
+    text-transform: uppercase; color: #bbb;
+    padding: 4px 6px; text-align: left;
+    border-bottom: 0.5px solid #e0ddd8;
+  }}
+  .th-sci-seq {{ width: 16px; text-align: right; }}
+  .th-sci-code {{ width: 42px; }}
+  .th-sci-comp {{ width: 30%; }}
+  .th-sci-just {{ text-align: left; }}
+  .sci-comp-table tr {{ break-inside: avoid; page-break-inside: avoid; }}
+  .sci-comp-table td {{
+    padding: 4px 6px; vertical-align: top;
+    border-bottom: 0.5px solid #f0ede9;
+    font-size: 7pt; line-height: 1.45; color: #2a2a2a;
+  }}
+  .sci-comp-table tr:last-child td {{ border-bottom: none; }}
+  .sci-seq {{ color: #bbb; font-size: 6.5pt; text-align: right; padding-right: 4px; }}
+  .sci-code {{ font-weight: 700; font-size: 7.5pt; white-space: nowrap; }}
+  .sci-competency {{ color: #2a2a2a; }}
+  .sci-justification {{ color: #2a2a2a; }}
 
   .footnotes {{ margin-top: 20px; padding-top: 8px; border-top: 0.5px solid #ddd; }}
   .fn {{ font-size: 6pt; color: #bbb; line-height: 1.6; margin-bottom: 3px; }}

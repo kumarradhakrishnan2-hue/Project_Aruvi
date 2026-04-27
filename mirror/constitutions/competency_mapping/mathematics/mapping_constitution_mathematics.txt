@@ -1,192 +1,97 @@
-ARUVI
-Mathematics Competency Mapping Constitution
-Knowledge Commons · Chapter-to-Competency Mapping · Version 1.0 · Middle Stage
+ARUVI — MATHEMATICS COMPETENCY MAPPING CONSTITUTION · VERSION 2.0
+Stages: Foundational, Middle, Secondary
 
-Subject group   : mathematics
-Stages          : Middle Stage · Secondary Stage
-Task            : chapter_to_competency_mapping
-Fetch key       : competency_constitution_mathematics
-Version         : 1.0 — supersedes the prior exercise-progression constitution
-Downstream      : lesson_plan_constitution_mathematics · assessment_constitution_mathematics
+================================================================================
+DESIGN PRINCIPLE
+================================================================================
+
+The textbook is the source of truth. The summary mirrors it. Mapping reads
+the summary and ONE external document — the stage-appropriate CG document.
+Three passes.
 
 
 ================================================================================
-Design principle
+INPUTS
 ================================================================================
 
-The textbook is the source of truth. The chapter summary is its faithful
-mirror. The mapping procedure reads the summary and a single external
-document — the Curricular Goals document — to identify which Curricular
-Goal(s) and Competency(ies) the chapter is laid out to develop.
-
-Mathematics chapters are typically laid out to develop one central CG, with
-several process-oriented competencies (reasoning, creativity, computational
-thinking, historical framing) running through them as adjuncts. The mapping
-accordingly proceeds in THREE passes: (1) summary reading, (2) core CG
-identification and core competency selection within that CG, (3) adjunct
-competency scan across the remaining CGs.
+- Chapter summary JSON (produced by the summary prompt).
+- CG document: cg_{stage}_mathematics.txt.
 
 
 ================================================================================
-Competency mapping — three-pass procedure
+RULE 1 | PASS 1 — SUMMARY READING (CG-BLIND)
 ================================================================================
 
-Rule 1 | Pass 1 — Chapter summary reading (CG-blind)
---------------------------------------------------------------------------------
-The system MUST read the chapter summary JSON in full before consulting the
-CG document or any framework document. The system reads:
-
-- prose_summary (section by section)
-- enumerated_activities
-- enumerated_worked_examples
-- enumerated_exercises (with icons preserved)
-
-No C-codes or CG labels MUST be consulted, inferred, or pattern-matched
-during Pass 1. The CG document is prohibited until Pass 1 is complete.
-
-
-Rule 2 | Pass 2 — Core CG identification and core competency selection
---------------------------------------------------------------------------------
-The system opens the Curricular Goals document.
-
-2a — Core CG identification.
-The single CG whose domain description best matches the chapter's organizing
-purpose is selected. Selection is made from CG-level headings and
-descriptions only; C-code definitions are NOT opened at this step.
-
-All NINE CGs are eligible as core_cg — both content CGs (CG-1 Number Sense,
-CG-2 Algebra, CG-3 Geometry, CG-4 Measurement, CG-5 Data Handling) and
-process CGs (CG-6 Reasoning, CG-7 Creativity / Problem Posing, CG-8
-Computational Thinking, CG-9 History / Culture). A chapter whose central
-organizing purpose is puzzle-solving may legitimately land CG-7 or CG-8 as
-core_cg rather than CG-1.
-
-The selected CG is locked as core_cg. No further CG-level comparison is
-performed.
-
-2b — Core competency selection (within core_cg only).
-Only the C-codes under the locked core_cg are read. The system selects up
-to TWO core_competencies whose definitions the chapter summary substantively
-addresses.
-
-A second core_competency requires independent justification from a distinct
-strand of the chapter — not as a vehicle for or sub-step of the first. If
-no second C-code independently qualifies, the system MUST stop at one core
-competency.
-
-For each core_competency, the system MUST produce:
-- c_code
-- justification: one-to-two sentences citing the section(s) or enumerated
-  item(s) of the summary that substantively address this competency.
-
-
-Rule 3 | Pass 3 — Adjunct competency scan (cross-CG)
---------------------------------------------------------------------------------
-The system scans C-codes across all CGs OTHER THAN core_cg. The system
-selects up to THREE adjunct_competencies whose definitions the chapter
-substantively engages but which are not the chapter's central organizing
-purpose.
-
-Adjunct selection criterion. The chapter MUST contain at least one named
-section, enumerated activity, enumerated worked example, or enumerated
-exercise that requires the student to perform the specific cognitive
-operation the adjunct competency defines. Shared vocabulary, passing
-mention, or incidental appearance is insufficient.
-
-Adjunct competencies are expected to draw most frequently from CG-6, CG-7,
-CG-8, or CG-9 in chapters where core_cg is a content CG (1–5). Conversely,
-in chapters where core_cg is a process CG (6–9), adjuncts are expected to
-draw from content CGs. The scan, however, is not restricted by this
-expectation — any non-core CG is eligible.
-
-For each adjunct_competency, the system MUST produce:
-- c_code
-- justification: one-to-two sentences citing the section(s) or enumerated
-  item(s) of the summary that substantively engage this competency.
-
-If fewer than three adjunct competencies qualify under the criterion, the
-system MUST stop at the number that qualify. The system MUST NOT pad the
-list.
+Read the summary in full: prose, sections (with section_goal), activities,
+worked examples, exercises. No C-codes or CG labels consulted.
 
 
 ================================================================================
-Dissolution test
+RULE 2 | PASS 2 — CORE CG AND CORE COMPETENCIES
 ================================================================================
 
-Rule 4 | Dissolution test
---------------------------------------------------------------------------------
-After core and adjunct competencies are selected, the system MUST write the
-dissolution test sentence in the form:
+2a. Open the CG document. Select the single CG whose domain best matches
+    the chapter's organising purpose (CG-level headings and descriptions
+    only). Lock as core_cg.
 
-"This chapter builds the student's ability to [verb] [object] by
-[cognitive mechanism]."
+2b. Read C-codes under core_cg. Select up to TWO core_competencies the
+    chapter substantively addresses. A second requires independent
+    justification from a distinct strand (not a sub-step of the first).
+    If no second qualifies, stop at one.
 
-The sentence MUST name the operation associated with core_cg and its
-core_competencies. Adjunct competencies MUST NOT drive the dissolution
-test.
-
-The dissolution test is the single sentence a teacher could remove from
-the chapter's purpose to collapse the chapter's organizing intent. It is
-the chapter's structural core, stated as an action verb.
+    Per competency: c_code + 1–2 sentence justification citing sections
+    or enumerated items.
 
 
 ================================================================================
-Effort index composite
+RULE 3 | PASS 3 — ADJUNCT COMPETENCIES (CROSS-CG)
 ================================================================================
 
-Rule 5 | Effort index composite
---------------------------------------------------------------------------------
-The system reads the four effort signals from the chapter summary JSON:
+Scan C-codes across all CGs other than core_cg. Select up to THREE
+adjunct_competencies engaged by at least one section, activity, worked
+example, or exercise. Shared vocabulary or incidental appearance is
+insufficient.
 
-- conceptual_demand (integer 1 – 3)
+Per competency: c_code + 1–2 sentence justification. Do not pad.
+
+
+================================================================================
+RULE 4 | DISSOLUTION TEST
+================================================================================
+
+Write: "This chapter builds the student's ability to [verb] [object] by
+[cognitive mechanism]." The sentence names the operation of core_cg and
+its core_competencies. Adjuncts do not drive the test.
+
+
+================================================================================
+RULE 5 | EFFORT INDEX (MATHS WEIGHTS)
+================================================================================
+
+Signals copied verbatim from the summary (never re-adjudicated):
+- conceptual_demand (1–3)
 - activity_count    (integer)
 - demo_count        (integer)
-- exec_load         (integer 0 – 2)
-
-These signals are determined at chapter-summary time (not here) and are
-copied through unmodified into the mapping output.
-
-The system computes the composite using the Mathematics weights:
+- exec_load         (0–2)
 
     effort_index = (conceptual_demand × 2)
                  + (activity_count    × 1.5)
                  + (demo_count        × 1)
                  + (exec_load         × 2)
 
-Sum of weights = 6.5. This matches the Science sum so that composites are
-cross-subject-comparable in the Allocate tab. The Mathematics redistribution
-(activity_count weight raised from 1 to 1.5, demo_count weight lowered from
-1.5 to 1) reflects the subject's higher reliance on student-executed
-practice and its lower reliance on teacher demonstration relative to
-Science.
-
-The system MUST NOT re-adjudicate the four signals.
+Round to one decimal.
 
 
 ================================================================================
-Prohibited documents
+RULE 6 | PROHIBITED DOCUMENTS
 ================================================================================
 
-Rule 6 | Prohibited documents
---------------------------------------------------------------------------------
-The following documents MUST NOT be consulted at any point during mapping:
-
-- Learning Outcomes         — grade-bound milestones; bypass structural analysis
-- Pedagogy documents        — govern instructional execution, not mapping
-- Syllabus documents        — introduce curriculum sequence; violate
-                              chapter isolation
-- Assessment Framework docs — summative evaluation design; structurally
-                              distinct
-- Position Papers           — philosophical scaffolding; not a mapping
-                              instrument
-
-The only external document the mapping procedure consults is the Curricular
-Goals document (cg_middle_mathematics.txt or its grade-appropriate
-equivalent).
+Do NOT consult: Learning Outcomes, Pedagogy, Syllabus, Assessment
+Framework, Position Papers. The CG document is the sole external input.
 
 
 ================================================================================
-COMPETENCY MAPPING JSON SCHEMA — MATHEMATICS
+MAPPING JSON SCHEMA
 ================================================================================
 
 {
@@ -199,28 +104,16 @@ COMPETENCY MAPPING JSON SCHEMA — MATHEMATICS
     "core_cg": "CG-3",
 
     "core_competencies": [
-        {
-            "c_code":        "C-3.2",
-            "justification": "The chapter's central activity develops properties of angles formed by intersecting and parallel lines, exercised through construction and reasoning tasks across §5.2–§5.4."
-        },
-        {
-            "c_code":        "C-3.4",
-            "justification": "A dedicated strand of the chapter builds compass-and-straightedge construction of parallel lines and perpendiculars, with graded construction exercises distinct from the angle-property progression."
-        }
+        { "c_code": "C-3.2", "justification": "..." },
+        { "c_code": "C-3.4", "justification": "..." }
     ],
 
     "adjunct_competencies": [
-        {
-            "c_code":        "C-6.1",
-            "justification": "Math Talk items in §5.3 and §5.4 require the student to justify angle equalities through deductive argument, engaging the reasoning competency."
-        },
-        {
-            "c_code":        "C-9.2",
-            "justification": "The chapter references Baudhayana's geometric constructions from the Sulba-Sutras, engaging the historical-contributions competency."
-        }
+        { "c_code": "C-6.1", "justification": "..." },
+        { "c_code": "C-9.2", "justification": "..." }
     ],
 
-    "dissolution_test": "This chapter builds the student's ability to identify, justify, and construct relationships between parallel and intersecting lines by applying angle properties at their intersections.",
+    "dissolution_test": "...",
 
     "conceptual_demand": 2,
     "activity_count":    5,
@@ -229,11 +122,8 @@ COMPETENCY MAPPING JSON SCHEMA — MATHEMATICS
     "effort_index":     13.5
 }
 
-The example values above illustrate the schema. Actual values per chapter
-are determined by Rules 1 – 5 above.
-
 
 ================================================================================
 Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
-Mathematics Competency Mapping Constitution · Version 1.0 · Internal Document
+Mathematics Competency Mapping Constitution · Version 2.0 · Internal Document
 ================================================================================

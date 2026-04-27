@@ -852,6 +852,10 @@ def json_to_lp_data(j: dict) -> dict:
     if j.get("subject") == "Science":
         return _json_to_science_lp_data(j, date_str, weight)
 
+    # ── Subject routing: Mathematics uses v2.1 LP shape ───────────────────────
+    if j.get("subject") == "Mathematics":
+        return _json_to_maths_lp_data(j, date_str, weight)
+
     # ── Load canonical competency descriptions from framework JSON ────────────
     # The AI-generated competency_text in each period is unreliable (it tends
     # to paraphrase the mapping justification rather than use the canonical
@@ -1058,6 +1062,120 @@ def _json_to_science_lp_data(j: dict, date_str: str, weight) -> dict:
         "weight":             weight,
         "competencies":       competencies,
         "progression_stages": progression_stages,
+    }
+
+
+def _json_to_maths_lp_data(j: dict, date_str: str, weight) -> dict:
+    """
+    Adapter for Mathematics LP v2.1 → SS-shaped data dict consumed by
+    build_lp_pdf()'s default (SS) branch.
+
+    Maths-specific shape (per LP Constitution v2.1):
+      result.lesson_plan = {
+        chapter_number, chapter_title, core_cg, core_competencies[],
+        adjunct_competencies[], periods_allocated, dissolution_test,
+        periods: [ <maths_period>, ... ]
+      }
+      <maths_period> = {
+        period_number, period_duration_minutes, textbook_segments[],
+        section_goal, activity_title, pedagogical_method,
+        textbook_items_in_class[{id,type,source_section,book_ref}],
+        homework[], phases[{minutes (range str), description}],
+        materials[], teacher_notes
+      }
+
+    Mapping into SS shape used by build_lp_pdf():
+      activity_name    ← activity_title
+      anchored_section ← textbook_segments joined ("§5.1" or "§5.4, §5.5")
+      time_breakdown   ← phases mapped (minutes, description)
+      materials        ← materials list joined; appended with book_refs
+                          for items used in class (per LP Rule 10:
+                          render by book_ref, never by internal id).
+      learning_outcome ← method + section_goal + items summary line
+                          (Maths has no per-period implied LO; this slot
+                          carries the period's identity instead).
+    """
+    lp = (j.get("result") or {}).get("lesson_plan") or {}
+
+    # ── Chapter-level competencies (header table) ─────────────────────────────
+    competencies = []
+    seen = set()
+    for c in (lp.get("core_competencies") or []) + (lp.get("adjunct_competencies") or []):
+        if not isinstance(c, dict):
+            continue
+        code = c.get("c_code", "")
+        if code and code not in seen:
+            competencies.append((code, c.get("competency_text", "")))
+            seen.add(code)
+
+    # ── Periods ───────────────────────────────────────────────────────────────
+    periods = []
+    for p in lp.get("periods") or []:
+        # Anchor display: §-locators joined
+        _segs = p.get("textbook_segments") or []
+        anchor = ", ".join(_segs) if isinstance(_segs, list) else str(_segs)
+
+        # Phases → time_breakdown (minutes is already a range string in v2.1)
+        time_breakdown = []
+        for ph in (p.get("phases") or []):
+            time_breakdown.append((
+                str(ph.get("minutes", "")),
+                ph.get("description", ""),
+            ))
+
+        # Materials list → joined string; append teacher-facing book_refs of
+        # items used in this period (per LP Rule 10: book_ref, NOT internal id).
+        raw_mat = p.get("materials") or []
+        if isinstance(raw_mat, list):
+            mat_str = ", ".join(str(m) for m in raw_mat if m)
+        else:
+            mat_str = str(raw_mat) if raw_mat else ""
+
+        _items = p.get("textbook_items_in_class") or []
+        _hw    = p.get("homework") or []
+        _icbr  = "; ".join((it.get("book_ref") or "").strip()
+                           for it in _items if it.get("book_ref"))
+        _hwbr  = "; ".join((it.get("book_ref") or "").strip()
+                           for it in _hw if it.get("book_ref"))
+        if _icbr:
+            mat_str = (mat_str + (" · " if mat_str else "") +
+                       "Items used: " + _icbr)
+        if _hwbr:
+            mat_str = (mat_str + (" · " if mat_str else "") +
+                       "Homework: " + _hwbr)
+
+        # learning_outcome slot carries method + section_goal (Maths has no LO)
+        _method = p.get("pedagogical_method", "")
+        _sgoal  = p.get("section_goal", "")
+        _notes  = p.get("teacher_notes", "")
+        lo_str_parts = []
+        if _method:
+            lo_str_parts.append(f"Method: {_method}")
+        if _sgoal:
+            lo_str_parts.append(f"Goal: {_sgoal}")
+        if _notes:
+            lo_str_parts.append(_notes)
+        lo_str = " · ".join(lo_str_parts) if lo_str_parts else ""
+
+        periods.append({
+            "num":              p.get("period_number"),
+            "duration":         p.get("period_duration_minutes"),
+            "activity_name":    p.get("activity_title", ""),
+            "anchored_section": anchor,
+            "time_breakdown":   time_breakdown,
+            "materials":        mat_str,
+            "learning_outcome": lo_str,
+        })
+
+    return {
+        "chapter_num":   j["chapter_number"],
+        "chapter_title": j["chapter_title"],
+        "grade":         str(j["grade"]).replace("Grade ", ""),
+        "subject":       j["subject"],
+        "date":          date_str,
+        "weight":        weight,
+        "competencies":  competencies,
+        "periods":       periods,
     }
 
 

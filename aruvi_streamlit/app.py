@@ -457,6 +457,7 @@ def save_plan(
         ],
         "result": {
             "lesson_plan":      result.get("lesson_plan", {}),
+            "coverage_handoff": result.get("coverage_handoff", {}),
             "assessment_items": result.get("assessment_items", []),
             "input_tokens":     result.get("input_tokens", 0),
             "output_tokens":    result.get("output_tokens", 0),
@@ -535,9 +536,19 @@ Produce your entire output as a single valid JSON object with this top-level str
   "chapter_number": {chapter["chapter_number"]},
   "chapter_title": "{chapter.get('chapter_title', '')}",
   "period_schedule": <derived from teacher period schedule above>,
-  "lesson_plan": {{ "periods": [ <one object per period per Amendment A3> ] }},
-  "assessment_items": [ <one object per question per Amendment A4> ]
+  "lesson_plan": {{ "periods": [ <one object per period per LP constitution> ] }},
+  "coverage_handoff": {{
+    "section_a": {{ "goal_cluster": [...], "section_refs": [...], "period_count": N, "textbook_items": [...], "item_count_target": N }},
+    "section_b": {{ "goal_cluster": [...], "section_refs": [...], "period_count": N, "textbook_items": [...], "item_count_target": N }},
+    "section_c": {{ "goal_cluster": [...], "section_refs": [...], "period_count": N, "textbook_items": [...], "item_count_target": N }}
+  }},
+  "assessment_items": [ <one object per question per Assessment Constitution> ]
 }}
+
+For Mathematics, `coverage_handoff` is REQUIRED per LP Constitution
+Rule 11 — emit it every time, even if a cluster has period_count = 0.
+For Science and Social Sciences, `coverage_handoff` MAY be omitted
+(not consumed downstream for those subjects).
 
 Output only the raw JSON object. No markdown. No prose. No section headers. No ```json fences.
 """
@@ -558,6 +569,34 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             "@keyframes aruviPulse{0%,100%{opacity:1}50%{opacity:.3}}"
             "@keyframes spin{to{transform:rotate(360deg)}}"
             "</style>"
+        )
+
+        # ── Timer JS (starts once, persists across re-renders via window var) ──
+        _timer_js = (
+            "<script>"
+            "(function(){"
+            "  if(!window._aruviTimerStart){window._aruviTimerStart=Date.now();}"
+            "  function _aruviTick(){"
+            "    var el=document.getElementById('aruvi-timer');"
+            "    if(!el){return;}"
+            "    var s=Math.floor((Date.now()-window._aruviTimerStart)/1000);"
+            "    var m=Math.floor(s/60);var sc=s%60;"
+            "    el.textContent=(m<10?'0'+m:m)+':'+(sc<10?'0'+sc:sc);"
+            "  }"
+            "  _aruviTick();"
+            "  if(!window._aruviTimerInterval){"
+            "    window._aruviTimerInterval=setInterval(_aruviTick,1000);"
+            "  }"
+            "})();"
+            "</script>"
+        )
+        # Timer badge placed at bottom-right of the popup footer
+        _timer_badge = (
+            '<div style="display:flex;justify-content:flex-end;padding:4px 12px 8px 0;">'
+            '<span style="font-family:monospace;font-size:10px;color:#b0ada8;'
+            'background:#f2f0ec;border:1px solid #e5e2dd;border-radius:4px;'
+            'padding:2px 6px;" id="aruvi-timer">00:00</span>'
+            '</div>'
         )
         # ── Icon snippets ─────────────────────────────────────────────────────
         _tick_icon = (
@@ -641,7 +680,10 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             + _row_active(_steps[4])
             + _row_pending(_steps[5])
             + _note_html
-            + '</div></div>'
+            + '</div>'
+            + _timer_badge
+            + '</div>'
+            + _timer_js
         )
         # Phase 2: 5 ticked · step 6 (assessment questions) active
         PROGRESS_HTML_ASSESSMENT_ACTIVE = (
@@ -653,7 +695,10 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             + _row_done(_steps[4])
             + _row_active(_steps[5])
             + _note_html
-            + '</div></div>'
+            + '</div>'
+            + _timer_badge
+            + '</div>'
+            + _timer_js
         )
 
         # Stage 0 (immediately): step 1 active, steps 2–6 pending
@@ -665,7 +710,7 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             + _row_pending(_steps[3])
             + _row_pending(_steps[4])
             + _row_pending(_steps[5])
-            + _note_html + '</div></div>',
+            + _note_html + '</div>' + _timer_badge + '</div>' + _timer_js,
             unsafe_allow_html=True,
         )
         _time.sleep(5)
@@ -679,7 +724,7 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             + _row_pending(_steps[3])
             + _row_pending(_steps[4])
             + _row_pending(_steps[5])
-            + _note_html + '</div></div>',
+            + _note_html + '</div>' + _timer_badge + '</div>' + _timer_js,
             unsafe_allow_html=True,
         )
         _time.sleep(5)
@@ -693,7 +738,7 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             + _row_pending(_steps[3])
             + _row_pending(_steps[4])
             + _row_pending(_steps[5])
-            + _note_html + '</div></div>',
+            + _note_html + '</div>' + _timer_badge + '</div>' + _timer_js,
             unsafe_allow_html=True,
         )
         _time.sleep(5)
@@ -707,7 +752,7 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             + _row_active(_steps[3])
             + _row_pending(_steps[4])
             + _row_pending(_steps[5])
-            + _note_html + '</div></div>',
+            + _note_html + '</div>' + _timer_badge + '</div>' + _timer_js,
             unsafe_allow_html=True,
         )
         _time.sleep(5)
@@ -818,7 +863,21 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                 + _row_sm(_steps[3])
                 + _row_sm(_steps[4])
                 + _row_sm(_steps[5])
+                + '<div style="display:flex;justify-content:flex-end;padding:4px 12px 8px 0;">'
+                '<span style="font-family:monospace;font-size:10px;color:#2d8a5e;'
+                'background:#f0faf5;border:1px solid #b8e8d0;border-radius:4px;'
+                'padding:2px 6px;" id="aruvi-timer-final">--:--</span>'
+                '</div>'
                 + '</div></div>'
+                + '<script>(function(){'
+                'if(window._aruviTimerInterval){clearInterval(window._aruviTimerInterval);'
+                'window._aruviTimerInterval=null;}'
+                'var s=Math.floor((Date.now()-(window._aruviTimerStart||Date.now()))/1000);'
+                'var m=Math.floor(s/60);var sc=s%60;'
+                'var el=document.getElementById("aruvi-timer-final");'
+                'if(el){el.textContent=(m<10?"0"+m:m)+":"+(sc<10?"0"+sc:sc);}'
+                'window._aruviTimerStart=null;'
+                '})();</script>'
             )
             progress_placeholder.markdown(PROGRESS_HTML_DONE, unsafe_allow_html=True)
         except Exception as _je:
@@ -841,6 +900,7 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             "chapter_number":   chapter["chapter_number"],
             "chapter_title":    chapter.get("chapter_title", ""),
             "lesson_plan":      parsed.get("lesson_plan", {}),
+            "coverage_handoff": parsed.get("coverage_handoff", {}),
             "assessment_items": parsed.get("assessment_items", []),
             "input_tokens":     input_tokens,
             "output_tokens":    output_tokens,
@@ -854,6 +914,7 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             "chapter_number":   chapter["chapter_number"],
             "chapter_title":    chapter.get("chapter_title", ""),
             "lesson_plan":      {},
+            "coverage_handoff": {},
             "assessment_items": [],
             "error":            str(e),
         }
@@ -875,6 +936,79 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
     if isinstance(lp, dict) and lp.get("periods"):
         out = []
         for p in lp["periods"]:
+            # ── Mathematics format detection (v2.1 shape) ─────────────────────
+            # Only Maths LP carries `textbook_segments` (array of §-locators) +
+            # `textbook_items_in_class` (typed item pointers). These two together
+            # are unique to Maths and absent from Science / Social Sciences.
+            _is_maths = (
+                isinstance(p.get("textbook_segments"), list)
+                and (
+                    "textbook_items_in_class" in p
+                    or "section_goal" in p
+                )
+            )
+            if _is_maths:
+                mat = p.get("materials", "")
+                if isinstance(mat, list):
+                    mat = ", ".join(mat)
+                # phases [{minutes (range string), description}] → time_slots
+                time_slots = [
+                    {"time": ph.get("minutes", ""), "desc": ph.get("description", "")}
+                    for ph in (p.get("phases") or [])
+                ]
+                # Anchor display: §-locators joined ("§5.1" or "§5.4, §5.5")
+                _segs = p.get("textbook_segments") or []
+                _anchor = ", ".join(_segs) if isinstance(_segs, list) else str(_segs)
+                # Build a teacher-facing list of textbook items used in class,
+                # rendered by book_ref (NEVER by internal id) per LP Rule 10.
+                _items_inclass = p.get("textbook_items_in_class") or []
+                _items_homework = p.get("homework") or []
+                _ic_lines = "; ".join(
+                    (it.get("book_ref") or "").strip()
+                    for it in _items_inclass
+                    if it.get("book_ref")
+                )
+                _hw_lines = "; ".join(
+                    (it.get("book_ref") or "").strip()
+                    for it in _items_homework
+                    if it.get("book_ref")
+                )
+                out.append({
+                    "period_number":           p.get("period_number"),
+                    "period_duration_minutes": p.get("period_duration_minutes"),
+                    "chapter_section":         _anchor,
+                    "activity_name":           p.get("activity_title", ""),
+                    "activity_summary":        p.get("activity_title", ""),
+                    "time_slots":              time_slots,
+                    "material":                mat,
+                    # Maths has no per-period implied LO; show pedagogical method
+                    # in this slot so teachers see SOMETHING informative.
+                    "implied_lo":              p.get("pedagogical_method", ""),
+                    "c_code":                  "",
+                    "cg":                      "",
+                    "weight":                  0,
+                    "competency_text":         "",
+                    "visual_representation":   None,
+                    # ── Maths-specific fields surfaced to lpa_page.html ─────────
+                    # The HTML may safely ignore unknown keys; new renderers can
+                    # use these for richer display.
+                    "is_mathematics":          True,
+                    "section_goal":            p.get("section_goal", ""),
+                    "pedagogical_method":      p.get("pedagogical_method", ""),
+                    "textbook_segments":       _segs,
+                    "textbook_items_in_class": _items_inclass,
+                    "homework":                _items_homework,
+                    "items_in_class_book_refs": _ic_lines,
+                    "homework_book_refs":      _hw_lines,
+                    "teacher_notes":           p.get("teacher_notes", ""),
+                    # NOTE: deliberately do NOT set `activity_title` or
+                    # `stage_label` at the top level — lpa_page.html uses
+                    # `activity_title !== undefined || stage_label !== undefined`
+                    # to detect Science. Maths uses `activity_name` (SS field)
+                    # so the HTML routes Maths through the SS render path,
+                    # which displays activity_name + time_slots correctly.
+                })
+                continue
             # ── Science format detection ────────────────────────────────────
             # Only use truly Science-specific fields (stage_label / progression_stage).
             # activity_title is NOT a reliable Science signal — Social Sciences plans
@@ -973,6 +1107,118 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
     items = result.get("assessment_items", [])
     if not items:
         return []
+
+    # ── Mathematics format detection (v2.1 shape) ──────────────────────────
+    # Maths assessment ships as a list of section-objects, each with its own
+    # nested `items[]` array — distinct from the flat per-item list used by
+    # Science and Social Sciences. Detect on the presence of `section_code`
+    # ("A" / "B" / "C") at the top level of the first element with a nested
+    # `items` array.
+    _is_maths_assessment = (
+        isinstance(items, list)
+        and len(items) > 0
+        and isinstance(items[0], dict)
+        and "section_code" in items[0]
+        and isinstance(items[0].get("items"), list)
+    )
+    if _is_maths_assessment:
+        _MATHS_SECTION_DESC = {
+            "A": "Recall and Apply — short answers, definitions, and procedural fluency.",
+            "B": "Reason and Explain — proofs, justifications, and constructions.",
+            "C": "Apply in Context — case-based and multi-concept problems.",
+        }
+        _maths_sections = []
+        for sec in items:
+            if not isinstance(sec, dict):
+                continue
+            _code  = sec.get("section_code", "")
+            _title = sec.get("section_title", "")
+            _note  = sec.get("note", "")
+            _qs    = []
+            for it in (sec.get("items") or []):
+                if not isinstance(it, dict):
+                    continue
+                _qtype = it.get("question_type", "")
+                _prompt = it.get("prompt", "")
+                # Teacher-facing provenance line: book_ref if textbook-lifted,
+                # blank if composed. NEVER expose internal source_ref.
+                _bref = it.get("book_ref", "") if it.get("source") == "textbook" else ""
+                _qs.append({
+                    "type":               _qtype,
+                    "question":           _prompt,
+                    "task":               "",
+                    "scaffold":           it.get("scaffold", ""),
+                    "format_of_output":   [],
+                    "task_instructions":  "",
+                    "options":            it.get("options", []),
+                    "annotation":         _bref,
+                    "period_ref":         _bref,
+                    "title":              (
+                        (_qtype + ": " + (_prompt[:56] + "…" if len(_prompt) > 56 else _prompt))
+                        if _prompt else _qtype
+                    ),
+                    "expected": (
+                        next(
+                            (o.get("text", "") for o in (it.get("options") or [])
+                             if isinstance(o, dict) and o.get("is_correct")),
+                            ""
+                        )
+                        if _qtype == "MCQ" else
+                        (it.get("expected_answer", "") or "\n".join(
+                            str(e) for e in (it.get("expected_elements") or [])
+                        ))
+                    ),
+                    "cognitive_demand":         "",
+                    "guide":                    it.get("guide", {}),
+                    "expected_elements":        it.get("expected_elements", []),
+                    "look_for":                 [],
+                    "what_each_option_reveals": (
+                        (it.get("guide") or {}).get("what_each_option_reveals", {})
+                        or {}
+                    ),
+                    "inclusivity": (
+                        (it.get("guide") or {}).get("inclusivity", "")
+                        or ""
+                    ),
+                    "visual_stimulus":          it.get("visual_stimulus", None),
+                    "correct_answer":           "",
+                    "implied_lo":               "",
+                    # ── Maths-specific question fields surfaced to renderer ──
+                    "is_mathematics":           True,
+                    "source":                   it.get("source", ""),
+                    "source_ref":               it.get("source_ref", ""),
+                    "book_ref":                 it.get("book_ref", ""),
+                    "section_refs":             it.get("section_refs", []),
+                    "scenario":                 it.get("scenario", ""),
+                    "sub_parts":                it.get("sub_parts", []),
+                    "construction_steps_expected": it.get("construction_steps_expected", []),
+                    "verification_check":       it.get("verification_check", ""),
+                    "expected_answer":          it.get("expected_answer", ""),
+                    "acceptable_variants":      it.get("acceptable_variants", []),
+                })
+            _types_in_order = []
+            for q in _qs:
+                t = q["type"]
+                if t and t not in _types_in_order:
+                    _types_in_order.append(t)
+            _maths_sections.append({
+                # Maps onto SS-shape fields the HTML already knows how to
+                # render. The HTML's SS branch renders these as:
+                #   c_code (badge) | weight_label (right-side label)
+                #   competency_short (description below)
+                "c_code":           ("Section " + _code) if _code else "",
+                "weight_label":     _title,
+                "competency_short": _note or _MATHS_SECTION_DESC.get(_code, ""),
+                "drawing_on":       _title,
+                "question_types":   " · ".join(_types_in_order),
+                "questions":        _qs,
+                "is_science":       False,
+                "is_mathematics":   True,
+                "section_code":     _code,
+                "section_title":    _title,
+                "stage_label":      None,
+            })
+        return _maths_sections
 
     # ── Fix 1 helper: short title ≤ 60 chars from type + first words of text ──
     def _build_title(qtype: str, qtext: str) -> str:
@@ -3787,14 +4033,24 @@ elif st.session_state.role == "Allocate":
         )
         try:
             _raw_descs = json.loads(_comp_desc_path.read_text(encoding="utf-8"))
-            # Two formats exist:
-            #   nested (Science): {curricular_goals: [{competencies: [{code, description}]}]}
-            #   flat   (SS/Lang): {c_code: description_string, ...}
+            # Three formats exist:
+            #   Science:     {curricular_goals: [{cg_code, competencies: [{code, description}]}]}  ← list of objects
+            #   Mathematics: {curricular_goals: {"CG-1": {competency_codes: {"C-1.1": "text"}}}}   ← dict of dicts
+            #   SS/Lang:     {c_code: description_string, ...}                                      ← flat dict
             if "curricular_goals" in _raw_descs:
+                _cg_val = _raw_descs["curricular_goals"]
                 _comp_descs = {}
-                for _cg in _raw_descs["curricular_goals"]:
-                    for _comp in _cg.get("competencies", []):
-                        _comp_descs[_comp.get("code", "")] = _comp.get("description", "")
+                if isinstance(_cg_val, list):
+                    # Science format: list of CG objects
+                    for _cg in _cg_val:
+                        for _comp in _cg.get("competencies", []):
+                            _comp_descs[_comp.get("code", "")] = _comp.get("description", "")
+                elif isinstance(_cg_val, dict):
+                    # Mathematics format: dict keyed by CG code
+                    for _cg_code, _cg_body in _cg_val.items():
+                        _ccodes = _cg_body.get("competency_codes", {})
+                        for _c_code, _desc in _ccodes.items():
+                            _comp_descs[_c_code] = _desc
             else:
                 _comp_descs = _raw_descs
         except Exception:
@@ -3810,9 +4066,17 @@ elif st.session_state.role == "Allocate":
             except Exception:
                 _mapping = {}
 
-            # Enrich primary competencies with full description text
-            # Support both "primary" (VII schema) and "competencies" (VI schema)
-            _primary_entries = _mapping.get("primary", _mapping.get("competencies", []))
+            # Enrich primary competencies with full description text.
+            # Key order: "primary" (Science VII), "competencies" (VI schema),
+            # then Mathematics which uses "core_competencies" + "adjunct_competencies".
+            if "primary" in _mapping or "competencies" in _mapping:
+                _primary_entries = _mapping.get("primary", _mapping.get("competencies", []))
+            else:
+                # Mathematics schema: merge core + adjunct
+                _primary_entries = (
+                    _mapping.get("core_competencies", []) +
+                    _mapping.get("adjunct_competencies", [])
+                )
             _enriched_primary = []
             for _entry in _primary_entries:
                 _e = dict(_entry)

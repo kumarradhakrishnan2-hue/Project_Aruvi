@@ -437,9 +437,54 @@ def build_assessment_pdf(output_path, data):
     items      = data["assessment_items"]
     lo_map     = data["lo_map"]
     is_science = data.get("is_science", False)
+    is_maths   = data.get("is_maths",   False)
     q_counter  = 0
 
-    if is_science:
+    if is_maths:
+        # ── Mathematics: sections grouped by section_code (A/B/C) ──────────────
+        # Items have already been flattened with _maths_section_code carried
+        # per item by json_to_assessment_data().  Section header text is
+        # "SECTION X — TITLE" (e.g., "SECTION A — RECALL AND APPLY").
+        # The "LO" slot on each question carries the item's book_ref (or
+        # blank for composed items) — Maths does not have per-LO routing.
+        from collections import OrderedDict
+        groups = OrderedDict()
+        for it in items:
+            code = it.get("_maths_section_code", "")
+            if code not in groups:
+                groups[code] = {
+                    "title": it.get("_maths_section_title", ""),
+                    "items": [],
+                }
+            groups[code]["items"].append(it)
+
+        for code in ("A", "B", "C"):
+            if code not in groups:
+                continue
+            grp_title = groups[code]["title"] or ""
+            sec_text  = (f"Section {code} — {grp_title}".upper()
+                         if grp_title else f"Section {code}".upper())
+            sec_para  = Paragraph(sec_text, AST["sec_hdr"])
+            sec_hline = HLine(uw, thickness=0.4, color=HAIRLINE, sb=1, sa=3)
+
+            for idx, item in enumerate(groups[code]["items"]):
+                q_counter += 1
+                # book_ref serves as the per-item provenance line. Composed
+                # items carry blank book_ref — display dash in that case.
+                _bref = item.get("book_ref", "")
+                lo_text = (f"From textbook — {_bref}"
+                           if (item.get("source") == "textbook" and _bref)
+                           else "Composed item")
+
+                header_items = [sec_para, sec_hline] if idx == 0 else None
+                story.extend(question_block(
+                    q_counter, item, lo_text, uw,
+                    header_items=header_items,
+                ))
+
+            story.append(Spacer(1, 4 * mm))
+
+    elif is_science:
         # ── Science: sections grouped by stage_label ───────────────────────────
         # Section header: "STAGE N · LABEL"
         # LO label:       item["implied_lo_assessed"]  (carried on each item)
@@ -547,6 +592,53 @@ def json_to_assessment_data(j: dict) -> dict:
 
     subject    = j.get("subject", "")
     is_science = (subject == "Science")
+    is_maths   = (subject == "Mathematics")
+
+    raw_items = (j.get("result") or {}).get("assessment_items", []) or []
+
+    if is_maths:
+        # Maths assessment ships as a list of section-objects (A/B/C), each
+        # with its own nested items[]. Flatten while carrying the section
+        # context per item; map maths field names to those question_block()
+        # already understands (question_text, options[], etc.). Per
+        # Assessment Constitution Rule 10, NEVER expose the internal
+        # source_ref to the teacher — only book_ref is rendered.
+        flat = []
+        for sec in raw_items:
+            if not isinstance(sec, dict):
+                continue
+            _code   = sec.get("section_code", "")
+            _title  = sec.get("section_title", "")
+            for it in (sec.get("items") or []):
+                if not isinstance(it, dict):
+                    continue
+                _qtype  = it.get("question_type", "")
+                _prompt = it.get("prompt", "")
+                _flat = dict(it)  # carry through all body fields
+                _flat["question_text"]            = _prompt
+                _flat["question_type"]            = _qtype
+                _flat["cognitive_demand"]         = ""   # Maths has none
+                _flat["marking_guidance"]         = ""
+                _flat["task"]                     = it.get("task", "")
+                _flat["task_instructions"]        = ""
+                _flat["_maths_section_code"]      = _code
+                _flat["_maths_section_title"]     = _title
+                # Visual stimulus (CB items) — carry as-is for renderer
+                _flat["visual_stimulus"]          = it.get("visual_stimulus", None)
+                flat.append(_flat)
+
+        return {
+            "chapter_num":      j["chapter_number"],
+            "chapter_title":    j["chapter_title"],
+            "grade":            str(j["grade"]).replace("Grade ", ""),
+            "subject":          subject,
+            "date":             date_str,
+            "total_questions":  len(flat),
+            "assessment_items": flat,
+            "lo_map":           {},          # Maths has no per-LO routing
+            "is_science":       False,
+            "is_maths":         True,
+        }
 
     if is_science:
         # Science items carry implied_lo_assessed directly — no period map needed.
@@ -564,10 +656,11 @@ def json_to_assessment_data(j: dict) -> dict:
         "grade":            str(j["grade"]).replace("Grade ", ""),  # "Grade VII" → "VII"
         "subject":          subject,
         "date":             date_str,
-        "total_questions":  len(j["result"]["assessment_items"]),
-        "assessment_items": j["result"]["assessment_items"],
+        "total_questions":  len(raw_items),
+        "assessment_items": raw_items,
         "lo_map":           lo_map,
         "is_science":       is_science,
+        "is_maths":         False,
     }
 
 
