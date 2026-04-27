@@ -200,6 +200,10 @@ Total assessment item count = total entries (one item per goal).
 Each entry:
 
 - `section_ref`       — the section the goal sits in.
+- `section_title`     — title of `section_ref`, copied verbatim from
+                        the summary's `sections[i].title`. Threaded
+                        through so the assessment renderer can show
+                        section name without re-reading the summary.
 - `goal`              — the section_goal value (`recall` | `reason`
                         | `apply`).
 - `anchor_id`         — id of one `enumerated_exercises` (E-N) drawn
@@ -242,10 +246,11 @@ LP JSON SCHEMA
   "coverage_handoff": {
     "section_a": { "goal_cluster": ["recall"],
                    "goals": [
-                     { "section_ref": string,    // e.g. "§5.1"
-                       "goal":        "recall",
-                       "anchor_id":   string,    // e.g. "E-3" (or "")
-                       "anchor_book_ref": string // e.g. "Figure it Out Q3, §5.1 p.107" (or "")
+                     { "section_ref":     string, // e.g. "§5.1"
+                       "section_title":   string, // e.g. "Alternate Interior Angles"
+                       "goal":            "recall",
+                       "anchor_id":       string, // e.g. "E-3" (or "")
+                       "anchor_book_ref": string  // e.g. "Figure it Out Q3, §5.1 p.107" (or "")
                      }
                    ] },
     "section_b": { "goal_cluster": ["reason"], "goals": [ ... ] },
@@ -257,7 +262,13 @@ LP JSON SCHEMA
 {
   "period_number":           integer,
   "period_duration_minutes": integer,
-  "textbook_segments":       [string],            // section refs (1–2)
+  "textbook_segments":       [                    // 1–2 entries
+    { "ref":   string,                            // e.g. "§5.3"
+      "title": string }                           // e.g. "Alternate Interior Angles"
+                                                  // — copied from
+                                                  // summary's
+                                                  // sections[i].title
+  ],
   "section_goal":            string,              // "recall" | "reason"
                                                   // | "apply"; MUST
                                                   // equal a goal
@@ -300,10 +311,29 @@ LP JSON SCHEMA
   ],
 
   "materials":               [string],
-  "teacher_notes":           string               // no C-code refs;
-                                                  // no internal IDs in
-                                                  // teacher-facing
-                                                  // prose
+  "teacher_notes":           string               // 2–3 sentences, max.
+                                                  // Scope, in order of
+                                                  // priority:
+                                                  //  1. Transition: what
+                                                  //     to recap from the
+                                                  //     prior period and
+                                                  //     preview into the
+                                                  //     next.
+                                                  //  2. Common error to
+                                                  //     watch for in this
+                                                  //     period (drawn
+                                                  //     from chapter
+                                                  //     prose; no
+                                                  //     fabrication).
+                                                  //  3. Self-study
+                                                  //     pointer: book_ref
+                                                  //     of a worked
+                                                  //     example NOT
+                                                  //     walked through
+                                                  //     in class.
+                                                  // No C-code refs. No
+                                                  // internal IDs in
+                                                  // teacher-facing prose.
 }
 
 

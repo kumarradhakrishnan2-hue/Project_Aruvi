@@ -1,0 +1,793 @@
+{
+  "filename": "ch_05_20260427_174547.json",
+  "saved_at": "2026-04-27T17:45:47",
+  "grade": "Grade VII",
+  "subject": "Mathematics",
+  "chapter_number": 5,
+  "chapter_title": "Parallel and Intersecting Lines",
+  "period_schedule_display": "Period schedule:\n  Row 1: 40 minutes × 6 periods = 240 minutes\nTotal: 6 periods · 4h 0min",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 40,
+      "count": 6
+    }
+  ],
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            "§5.1"
+          ],
+          "section_goal": "recall",
+          "activity_title": "Lines Meet: Naming Angles at an Intersection",
+          "pedagogical_method": "Inductive",
+          "textbook_items_in_class": [
+            {
+              "id": "A-1",
+              "type": "activity",
+              "source_section": "§5.1",
+              "book_ref": "Activity 1, §5.1"
+            },
+            {
+              "id": "E-1",
+              "type": "exercise",
+              "source_section": "§5.1",
+              "book_ref": "Figure it Out Q1, §5.1"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Warm-up: Teacher draws two intersecting lines on the board and asks students to name all four angles formed. Students recall adjacent and opposite positions from prior learning. Pair-share: 'Which angles share a side? Which do not?'"
+            },
+            {
+              "minutes": "8–22",
+              "description": "Students carry out Activity 1 (§5.1) — drawing intersecting lines on paper, measuring all four angles, and recording. Teacher circulates, asking: 'What do you notice about the angles that are across from each other?' Students conjecture that vertically opposite angles are equal."
+            },
+            {
+              "minutes": "22–32",
+              "description": "Teacher leads the class through the deductive proof using the straight-angle axiom: if ∠1 + ∠2 = 180° and ∠2 + ∠3 = 180°, then ∠1 = ∠3. Students follow step-by-step, writing the proof in their notebooks."
+            },
+            {
+              "minutes": "32–40",
+              "description": "Students attempt Figure it Out Q1 (§5.1) individually, identifying vertically opposite and supplementary angle pairs in a given figure. Quick whole-class check of answers."
+            }
+          ],
+          "materials": [
+            "Rulers",
+            "Protractors",
+            "Plain paper",
+            "Board and chalk/markers"
+          ],
+          "teacher_notes": "Emphasise that the conjecture (vertically opposite angles are equal) emerged from measurement before the formal proof. This models the inductive-to-deductive journey the chapter follows throughout. Students who finish early can try to write the proof for the other pair of vertically opposite angles."
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            "§5.2",
+            "§5.3"
+          ],
+          "section_goal": "recall",
+          "activity_title": "Linear Pairs and Adjacent Angles — Building the Language",
+          "pedagogical_method": "Discovery",
+          "textbook_items_in_class": [
+            {
+              "id": "A-2",
+              "type": "activity",
+              "source_section": "§5.2",
+              "book_ref": "Activity 2, §5.2"
+            },
+            {
+              "id": "E-2",
+              "type": "exercise",
+              "source_section": "§5.2",
+              "book_ref": "Figure it Out Q2, §5.2"
+            },
+            {
+              "id": "E-3",
+              "type": "exercise",
+              "source_section": "§5.3",
+              "book_ref": "Figure it Out Q3, §5.3"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Teacher revisits the four angles at an intersection. Students measure angles formed when a ray stands on a line and discover that adjacent angles on a straight line always add to 180°. Discussion: 'What is special about this pair — can you name it?' Introduce the term linear pair."
+            },
+            {
+              "minutes": "10–22",
+              "description": "Students carry out Activity 2 (§5.2): fold a strip of paper to create a straight line and a ray, measure the two angles formed, and record. Teacher facilitates discovery that the two angles always sum to 180° regardless of where the ray is placed. Students share findings."
+            },
+            {
+              "minutes": "22–32",
+              "description": "Move to §5.3: introduce the term transversal. Students examine a diagram of a transversal crossing two lines and identify all eight angles formed, labelling them by position (interior, exterior, alternate, co-interior, corresponding). Students attempt Figure it Out Q2 (§5.2)."
+            },
+            {
+              "minutes": "32–40",
+              "description": "Students attempt Figure it Out Q3 (§5.3) to practise naming angle pairs at a transversal. Quick class review — teacher calls on students to name pairs and explain their reasoning."
+            }
+          ],
+          "materials": [
+            "Strips of paper for folding",
+            "Protractors",
+            "Rulers",
+            "Board diagrams"
+          ],
+          "teacher_notes": "The vocabulary introduced here — linear pair, transversal, alternate angles, co-interior angles, corresponding angles — is the foundation for §5.6 and §5.8. Spend time ensuring every student can correctly identify each pair type before moving on."
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            "§5.4",
+            "§5.5"
+          ],
+          "section_goal": "recall",
+          "activity_title": "Recognising Parallel Lines and Their Transversal Angles",
+          "pedagogical_method": "Discovery",
+          "textbook_items_in_class": [
+            {
+              "id": "E-4",
+              "type": "exercise",
+              "source_section": "§5.4",
+              "book_ref": "Figure it Out Q4, §5.4"
+            },
+            {
+              "id": "E-5",
+              "type": "exercise",
+              "source_section": "§5.5",
+              "book_ref": "Figure it Out Q5, §5.5"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Teacher shows images of parallel lines in the environment (railway tracks, ruled paper, window blinds) and asks students to describe what makes lines parallel. Introduce the formal definition: lines in the same plane that never meet, however far extended. Students copy the definition."
+            },
+            {
+              "minutes": "10–22",
+              "description": "Students examine §5.4 diagrams — a transversal crossing parallel lines — and discover how angle positions relate. Teacher poses: 'Look at the corresponding positions at each intersection. What do you notice about the sizes?' Students measure and record, building the conjecture informally."
+            },
+            {
+              "minutes": "22–32",
+              "description": "Move to §5.5: students examine the reverse question — given that corresponding angles are equal, are the lines parallel? Discussion leads to the biconditional idea. Students attempt Figure it Out Q4 (§5.4), identifying whether lines are parallel from given angle measurements."
+            },
+            {
+              "minutes": "32–40",
+              "description": "Students attempt Figure it Out Q5 (§5.5). Class review: teacher asks students to explain their reasoning for each answer, establishing the habit of citing the angle-pair property used."
+            }
+          ],
+          "materials": [
+            "Printed images of parallel lines in environment",
+            "Rulers",
+            "Protractors",
+            "Graph paper"
+          ],
+          "teacher_notes": "This period is intentionally discovery-oriented: students should arrive at the corresponding-angles property by observation before the formal activities in §5.6 solidify it. Do not state the theorem yet — let the conjecture remain open."
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 60,
+          "textbook_segments": [
+            "§5.6"
+          ],
+          "section_goal": "reason",
+          "activity_title": "Discovering the Corresponding-Angle Criterion Inductively",
+          "pedagogical_method": "Inductive",
+          "textbook_items_in_class": [
+            {
+              "id": "A-3",
+              "type": "activity",
+              "source_section": "§5.6",
+              "book_ref": "Activity 3, §5.6"
+            },
+            {
+              "id": "A-4",
+              "type": "activity",
+              "source_section": "§5.6",
+              "book_ref": "Activity 4, §5.6"
+            },
+            {
+              "id": "A-5",
+              "type": "activity",
+              "source_section": "§5.6",
+              "book_ref": "Activity 5, §5.6"
+            },
+            {
+              "id": "E-6",
+              "type": "exercise",
+              "source_section": "§5.6",
+              "book_ref": "Figure it Out Q6, §5.6"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Recap from previous period: students share their conjectures about corresponding angles. Teacher sets the scene: 'Today we will test this conjecture carefully with three structured activities.'"
+            },
+            {
+              "minutes": "10–25",
+              "description": "Students carry out Activity 3 (§5.6) in pairs: draw a transversal crossing two lines, measure corresponding angles, and record whether the lines appear parallel. Repeat with three different angle values. Groups share findings on the board — a table of (angle value, parallel?) emerges."
+            },
+            {
+              "minutes": "25–38",
+              "description": "Activity 4 (§5.6): students are given a transversal and a point; they draw a line through that point making a specified corresponding angle with the transversal, then check parallelism by extending both lines. Students articulate: 'When corresponding angles are equal, the lines are parallel.'"
+            },
+            {
+              "minutes": "38–50",
+              "description": "Activity 5 (§5.6): students attempt to draw two lines through specified points making unequal corresponding angles and observe that the lines meet — discovering the impossibility of parallelism without equal corresponding angles. The biconditional is now fully conjectured."
+            },
+            {
+              "minutes": "50–60",
+              "description": "Students attempt Figure it Out Q6 (§5.6), applying the corresponding-angle criterion to determine parallelism or find unknown angles. Teacher circulates; common errors addressed in a brief whole-class close."
+            }
+          ],
+          "materials": [
+            "Rulers",
+            "Protractors",
+            "Plain paper",
+            "Graph paper",
+            "Geometry boxes"
+          ],
+          "teacher_notes": "The three activities are deliberately sequenced: A-3 builds the conjecture, A-4 constructs evidence for the forward direction, and A-5 provides the contra-positive evidence. Do not rush to a formal statement until students have articulated it in their own words."
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 60,
+          "textbook_segments": [
+            "§5.7"
+          ],
+          "section_goal": "apply",
+          "activity_title": "Constructing Parallel Lines with Tools and Paper",
+          "pedagogical_method": "Problem-solving",
+          "textbook_items_in_class": [
+            {
+              "id": "A-6",
+              "type": "activity",
+              "source_section": "§5.7",
+              "book_ref": "Activity 6, §5.7"
+            },
+            {
+              "id": "E-7",
+              "type": "exercise",
+              "source_section": "§5.7",
+              "book_ref": "Figure it Out Q7, §5.7"
+            },
+            {
+              "id": "E-8",
+              "type": "exercise",
+              "source_section": "§5.7",
+              "book_ref": "Figure it Out Q8, §5.7"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Teacher poses the problem: 'Given a line and a point not on it, how can you draw a line through that point parallel to the given line using only a ruler and set-square?' Students propose ideas in pairs before the teacher demonstrates the basic setup."
+            },
+            {
+              "minutes": "10–28",
+              "description": "Students carry out Activity 6 (§5.7): ruler-and-set-square construction. Step-by-step: place set-square against the given line, slide a ruler alongside the set-square as a guide, then shift the set-square to the required point and draw. Students verify parallelism by measuring corresponding angles. Discussion: 'Why does sliding the set-square preserve parallelism?'"
+            },
+            {
+              "minutes": "28–42",
+              "description": "Paper-folding method: teacher demonstrates folding along the given line to create a crease, then folding again through the external point along the same direction. Students replicate and measure to verify the crease lines are parallel. Students articulate the connection to corresponding angles."
+            },
+            {
+              "minutes": "42–54",
+              "description": "Students attempt Figure it Out Q7 (§5.7) — constructing a parallel line at a given distance using the ruler-and-set-square method — and Figure it Out Q8 (§5.7) — constructing a parallel through a given point using geometry-box tools. Teacher circulates offering guidance on precision."
+            },
+            {
+              "minutes": "54–60",
+              "description": "Reflection: students write one sentence explaining why both construction methods work, citing the corresponding-angle property. Collect notebooks for a quick check."
+            }
+          ],
+          "materials": [
+            "Geometry boxes (ruler, set-square, compass, protractor)",
+            "Plain paper",
+            "Folding strips"
+          ],
+          "teacher_notes": "Precision matters here — students with shaky construction skills should be encouraged to repeat the construction rather than accept an inaccurate first attempt. The paper-folding method provides an accessible alternative for students who struggle with set-square sliding."
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            "§5.8"
+          ],
+          "section_goal": "reason",
+          "activity_title": "Proving Alternate Angles Are Equal — The Deductive Step",
+          "pedagogical_method": "Deductive",
+          "textbook_items_in_class": [
+            {
+              "id": "WE-1",
+              "type": "worked_example",
+              "source_section": "§5.8",
+              "book_ref": "Worked Example 1, §5.8"
+            },
+            {
+              "id": "WE-2",
+              "type": "worked_example",
+              "source_section": "§5.8",
+              "book_ref": "Worked Example 2, §5.8"
+            },
+            {
+              "id": "WE-3",
+              "type": "worked_example",
+              "source_section": "§5.8",
+              "book_ref": "Worked Example 3, §5.8"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Teacher opens with the general-to-particular frame: 'We now know corresponding angles are equal when lines are parallel. Can we prove that alternate angles must also be equal, using only what we already know?' Students predict yes/no and briefly share reasoning."
+            },
+            {
+              "minutes": "8–22",
+              "description": "Teacher works through Worked Example 1 (§5.8): the deductive proof that alternate angles are equal for parallel lines, chaining the corresponding-angle result with the vertically-opposite-angles result. Students copy the proof and annotate each step with its justification."
+            },
+            {
+              "minutes": "22–32",
+              "description": "Teacher guides students through Worked Example 2 (§5.8) — finding unknown angles in a two-parallel-line figure using the alternate and corresponding angle properties. Students attempt a parallel numerical problem individually, then compare with a partner."
+            },
+            {
+              "minutes": "32–40",
+              "description": "Students examine Worked Example 3 (§5.8) which sets up the co-interior angles scenario. Teacher poses: 'What must the co-interior angles sum to? Can you discover why before reading further?' Students discuss briefly, forming the conjecture that co-interior angles sum to 180°."
+            }
+          ],
+          "materials": [
+            "Board and chalk/markers",
+            "Printed proof template (optional)",
+            "Rulers"
+          ],
+          "teacher_notes": "The deductive proof chain (corresponding → vertically opposite → alternate) should be written on the board and left visible throughout this period. This is the first time students encounter a formal multi-step proof in this chapter — slow down and let every student write each step before moving to the next."
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            "§5.8"
+          ],
+          "section_goal": "reason",
+          "activity_title": "Co-interior Angles and Multi-Step Angle Reasoning",
+          "pedagogical_method": "Problem-solving",
+          "textbook_items_in_class": [
+            {
+              "id": "E-9",
+              "type": "exercise",
+              "source_section": "§5.8",
+              "book_ref": "Figure it Out Q9, §5.8"
+            },
+            {
+              "id": "E-10",
+              "type": "exercise",
+              "source_section": "§5.8",
+              "book_ref": "Figure it Out Q10, §5.8"
+            },
+            {
+              "id": "E-11",
+              "type": "exercise",
+              "source_section": "§5.8",
+              "book_ref": "Figure it Out Q11, §5.8"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Recap: teacher revisits the co-interior angles conjecture from the end of the previous period. Students verify it using the supplementary-angle argument (co-interior = 180° − corresponding angle, which is itself 180° − alternate angle). The result is formally stated."
+            },
+            {
+              "minutes": "10–22",
+              "description": "Students attempt Figure it Out Q9 (§5.8) and Figure it Out Q10 (§5.8) individually — multi-step angle calculations in parallel-line figures using all three properties (corresponding, alternate, co-interior). Teacher circulates, prompting students to state which property they are using at each step."
+            },
+            {
+              "minutes": "22–35",
+              "description": "Students attempt Figure it Out Q11 (§5.8) in pairs — a more complex figure requiring chained reasoning. Pairs compare their solution paths; teacher facilitates a discussion of any cases where different valid reasoning paths lead to the same answer."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Whole-class debrief: teacher collects two or three different solution approaches for one of the problems and displays them, asking the class to evaluate the correctness and elegance of each approach."
+            }
+          ],
+          "materials": [
+            "Board and chalk/markers",
+            "Notebooks",
+            "Rulers"
+          ],
+          "teacher_notes": "Encourage students to annotate each angle on their diagram as they find it, rather than working purely symbolically. This makes multi-step solutions visible and helps catch errors early. Pair-work on Q11 is important as it is the first problem at genuinely complex difficulty."
+        },
+        {
+          "period_number": 8,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            "§5.8"
+          ],
+          "section_goal": "apply",
+          "activity_title": "Applying All Properties to Complex Angle Configurations",
+          "pedagogical_method": "Problem-solving",
+          "textbook_items_in_class": [
+            {
+              "id": "E-12",
+              "type": "exercise",
+              "source_section": "§5.8",
+              "book_ref": "Figure it Out Q12, §5.8"
+            },
+            {
+              "id": "E-13",
+              "type": "exercise",
+              "source_section": "§5.8",
+              "book_ref": "Figure it Out Q13, §5.8"
+            }
+          ],
+          "homework": [
+            {
+              "id": "E-14",
+              "type": "exercise",
+              "source_section": "§5.8",
+              "book_ref": "Figure it Out Q14, §5.8"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Quick oral warm-up: teacher calls out angle-pair names (alternate, co-interior, corresponding, vertically opposite, linear pair) and students respond with the relationship (equal, supplementary) and the condition (parallel lines required or not). This consolidates all vocabulary before complex application."
+            },
+            {
+              "minutes": "10–25",
+              "description": "Students attempt Figure it Out Q12 (§5.8) individually — a multi-parallel-line figure requiring students to find several unknown angles by choosing appropriate properties at each step. Teacher circulates; after 10 minutes, a student volunteer explains their solution on the board."
+            },
+            {
+              "minutes": "25–38",
+              "description": "Students attempt Figure it Out Q13 (§5.8) — a configuration where the angle relationships must first be identified and then a combination of properties applied. Pair-check: students swap notebooks and verify each step."
+            },
+            {
+              "minutes": "38–40",
+              "description": "Teacher previews Figure it Out Q14 (§5.8) as homework: a hint-guided auxiliary-line problem. Teacher explains the strategy of drawing an auxiliary parallel line without giving the full solution. Students note the approach for their independent attempt."
+            }
+          ],
+          "materials": [
+            "Board and chalk/markers",
+            "Notebooks",
+            "Rulers",
+            "Geometry boxes"
+          ],
+          "teacher_notes": "Figure it Out Q14 (§5.8) is the most demanding problem in the chapter and is assigned as homework to give students time to think without classroom pressure. Remind students that drawing a neat, labelled diagram is the first step for all complex geometry problems."
+        },
+        {
+          "period_number": 9,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            "§5.8"
+          ],
+          "section_goal": "apply",
+          "activity_title": "Consolidation — Parallel Lines Angle Properties in Review",
+          "pedagogical_method": "Play-way",
+          "textbook_items_in_class": [
+            {
+              "id": "E-9",
+              "type": "exercise",
+              "source_section": "§5.8",
+              "book_ref": "Figure it Out Q9, §5.8"
+            },
+            {
+              "id": "E-10",
+              "type": "exercise",
+              "source_section": "§5.8",
+              "book_ref": "Figure it Out Q10, §5.8"
+            },
+            {
+              "id": "E-11",
+              "type": "exercise",
+              "source_section": "§5.8",
+              "book_ref": "Figure it Out Q11, §5.8"
+            },
+            {
+              "id": "E-12",
+              "type": "exercise",
+              "source_section": "§5.8",
+              "book_ref": "Figure it Out Q12, §5.8"
+            },
+            {
+              "id": "E-13",
+              "type": "exercise",
+              "source_section": "§5.8",
+              "book_ref": "Figure it Out Q13, §5.8"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–12",
+              "description": "Review of Figure it Out Q14 (§5.8) homework: two or three students share their auxiliary-line strategies on the board. Class evaluates each approach. Teacher confirms the correct solution and emphasises the creative step of introducing an auxiliary parallel line."
+            },
+            {
+              "minutes": "12–28",
+              "description": "Angle-property quiz game: teacher prepares 8 rapid-fire questions on card (angle values to find in various parallel-line figures, drawn from selected problems in Figure it Out Q9–Q13). Small groups compete to answer first, citing the property used. Incorrect citations lose a point even if the numerical answer is right."
+            },
+            {
+              "minutes": "28–38",
+              "description": "Groups create their own parallel-line figure and write one angle-finding question for another group to solve. Groups exchange and solve each other's problems, then check with the creators."
+            },
+            {
+              "minutes": "38–40",
+              "description": "Wrap-up: teacher summarises the three parallel-line angle relationships on the board, connecting them back to the proof chain established in Period 6. Students write a one-sentence summary of the chapter in their notebooks."
+            }
+          ],
+          "materials": [
+            "Question cards",
+            "Small whiteboards or scrap paper",
+            "Rulers",
+            "Protractors"
+          ],
+          "teacher_notes": "The play-way game format in this period provides variety and helps lower-stakes retrieval practice. The group problem-posing activity is especially valuable as it requires students to think about what makes a problem well-posed."
+        },
+        {
+          "period_number": 10,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            "§5.8"
+          ],
+          "section_goal": "apply",
+          "activity_title": "Chapter Closure — Parallel Illusions and Real-World Angles",
+          "pedagogical_method": "Discovery",
+          "textbook_items_in_class": [
+            {
+              "id": "E-13",
+              "type": "exercise",
+              "source_section": "§5.8",
+              "book_ref": "Figure it Out Q13, §5.8"
+            },
+            {
+              "id": "E-14",
+              "type": "exercise",
+              "source_section": "§5.8",
+              "book_ref": "Figure it Out Q14, §5.8"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Teacher presents a visual optical illusion where lines appear non-parallel despite actually being parallel (e.g., the Café Wall illusion). Students measure angles to verify the lines are truly parallel. Discussion: 'How do our learned properties help us see through the illusion?'"
+            },
+            {
+              "minutes": "10–24",
+              "description": "Students revisit any remaining difficulty questions from Figure it Out Q13 (§5.8) and Q14 (§5.8), this time with the benefit of the whole chapter's knowledge. Teacher facilitates targeted small-group support for students who found these problems challenging."
+            },
+            {
+              "minutes": "24–34",
+              "description": "Students sketch a real-world scene (a road crossing, a staircase, a brick wall) and identify at least three parallel-line angle relationships visible in their sketch, labelling each angle and its property."
+            },
+            {
+              "minutes": "34–40",
+              "description": "Chapter reflection: students share their sketches briefly. Teacher poses the closing question: 'This chapter showed you properties that were first discovered by measuring, then proved by logic — where else in mathematics do you think this pattern of discovery-then-proof might appear?' Open discussion to close the chapter."
+            }
+          ],
+          "materials": [
+            "Printed optical illusion images",
+            "Rulers",
+            "Protractors",
+            "Blank paper for sketching"
+          ],
+          "teacher_notes": "This closure period connects the chapter's mathematical content to the broader NCF goal of showing mathematics as a human activity of discovery and proof. The real-world sketching task provides an informal assessment of whether students can identify angle relationships outside a textbook diagram."
+        }
+      ]
+    },
+    "coverage_handoff": {
+      "section_a": {
+        "goal_cluster": [
+          "recall"
+        ],
+        "goals": [
+          {
+            "section_ref": "§5.1",
+            "goal": "recall",
+            "anchor_id": "E-1",
+            "anchor_book_ref": "Figure it Out Q1, §5.1"
+          },
+          {
+            "section_ref": "§5.2",
+            "goal": "recall",
+            "anchor_id": "E-2",
+            "anchor_book_ref": "Figure it Out Q2, §5.2"
+          },
+          {
+            "section_ref": "§5.3",
+            "goal": "recall",
+            "anchor_id": "E-3",
+            "anchor_book_ref": "Figure it Out Q3, §5.3"
+          },
+          {
+            "section_ref": "§5.4",
+            "goal": "recall",
+            "anchor_id": "E-4",
+            "anchor_book_ref": "Figure it Out Q4, §5.4"
+          },
+          {
+            "section_ref": "§5.5",
+            "goal": "recall",
+            "anchor_id": "E-5",
+            "anchor_book_ref": "Figure it Out Q5, §5.5"
+          }
+        ]
+      },
+      "section_b": {
+        "goal_cluster": [
+          "reason"
+        ],
+        "goals": [
+          {
+            "section_ref": "§5.6",
+            "goal": "reason",
+            "anchor_id": "E-6",
+            "anchor_book_ref": "Figure it Out Q6, §5.6"
+          },
+          {
+            "section_ref": "§5.8",
+            "goal": "reason",
+            "anchor_id": "E-9",
+            "anchor_book_ref": "Figure it Out Q9, §5.8"
+          }
+        ]
+      },
+      "section_c": {
+        "goal_cluster": [
+          "apply"
+        ],
+        "goals": [
+          {
+            "section_ref": "§5.7",
+            "goal": "apply",
+            "anchor_id": "E-7",
+            "anchor_book_ref": "Figure it Out Q7, §5.7"
+          },
+          {
+            "section_ref": "§5.8",
+            "goal": "apply",
+            "anchor_id": "E-10",
+            "anchor_book_ref": "Figure it Out Q10, §5.8"
+          }
+        ]
+      }
+    },
+    "assessment_items": [
+      {
+        "section_code": "A",
+        "section_title": "Recall and Apply",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-A-1",
+            "section_ref": "§5.1",
+            "goal": "recall",
+            "anchor_id": "E-1",
+            "anchor_book_ref": "Figure it Out Q1, §5.1",
+            "prompt": "Two straight lines PQ and RS intersect at point T. If ∠PTR = 112°, find the measures of ∠QTS, ∠PTS, and ∠QTR. Name the angle-pair relationship you used for each answer.",
+            "visual_stimulus": "<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg' width='200' height='200'><line x1='20' y1='100' x2='180' y2='100' stroke='black' stroke-width='2'/><line x1='60' y1='20' x2='140' y2='180' stroke='black' stroke-width='2'/><text x='8' y='104' font-size='13'>P</text><text x='182' y='104' font-size='13'>Q</text><text x='62' y='14' font-size='13'>R</text><text x='138' y='190' font-size='13'>S</text><text x='102' y='93' font-size='12'>T</text><text x='68' y='88' font-size='11'>112°</text></svg>",
+            "teacher_guide": "Checks recall of vertically opposite angles theorem and the linear pair property at an intersection. | Expected answer: ∠QTS = 112° (vertically opposite to ∠PTR); ∠PTS = 68° (linear pair with ∠PTR, since 180° − 112° = 68°); ∠QTR = 68° (vertically opposite to ∠PTS). Method: apply ∠1 + ∠2 = 180° for a linear pair and ∠1 = ∠3 for vertically opposite angles. | For students who need support, allow them to refer to their notebook proof before writing; for a stretch, ask them to write a general expression for all four angles when one angle is given as x°.",
+            "verified": true
+          },
+          {
+            "id": "Q-A-2",
+            "section_ref": "§5.2",
+            "goal": "recall",
+            "anchor_id": "E-2",
+            "anchor_book_ref": "Figure it Out Q2, §5.2",
+            "prompt": "A ray OC stands on a straight line AB. If ∠AOC = (3k + 15)° and ∠COB = (k + 45)°, find the value of k and then state the measure of each angle.",
+            "visual_stimulus": "",
+            "teacher_guide": "Checks recall of the linear pair property — two adjacent angles on a straight line sum to 180°. | Expected answer: (3k + 15) + (k + 45) = 180 → 4k + 60 = 180 → 4k = 120 → k = 30; ∠AOC = 105°, ∠COB = 75°. Method: set up and solve a linear equation using the straight-angle axiom. | Pair-share first if the algebra feels unfamiliar; for a stretch, ask what happens to both angles if k is increased by 5 — which gets larger and by how much?",
+            "verified": true
+          },
+          {
+            "id": "Q-A-3",
+            "section_ref": "§5.3",
+            "goal": "recall",
+            "anchor_id": "E-3",
+            "anchor_book_ref": "Figure it Out Q3, §5.3",
+            "prompt": "A transversal XY crosses two lines l and m at points A and B respectively. Eight angles are formed. Use the figure provided to list: (i) one pair of corresponding angles, (ii) one pair of alternate interior angles, (iii) one pair of co-interior (same-side interior) angles, and (iv) one pair of vertically opposite angles at point A.",
+            "visual_stimulus": "<svg viewBox='0 0 220 200' xmlns='http://www.w3.org/2000/svg' width='220' height='200'><line x1='10' y1='60' x2='210' y2='60' stroke='black' stroke-width='2'/><line x1='10' y1='140' x2='210' y2='140' stroke='black' stroke-width='2'/><line x1='70' y1='10' x2='150' y2='190' stroke='black' stroke-width='2'/><text x='2' y='57' font-size='13'>l</text><text x='2' y='137' font-size='13'>m</text><text x='152' y='190' font-size='13'>Y</text><text x='68' y='8' font-size='13'>X</text><text x='95' y='55' font-size='12'>A</text><text x='117' y='150' font-size='12'>B</text><text x='77' y='50' font-size='11'>1</text><text x='100' y='50' font-size='11'>2</text><text x='77' y='72' font-size='11'>3</text><text x='100' y='72' font-size='11'>4</text><text x='100' y='132' font-size='11'>5</text><text x='123' y='132' font-size='11'>6</text><text x='100' y='154' font-size='11'>7</text><text x='123' y='154' font-size='11'>8</text></svg>",
+            "teacher_guide": "Checks recall of angle-pair terminology at a transversal crossing two lines. | Expected answer: (i) corresponding — e.g. ∠1 and ∠5 (same position at each intersection); (ii) alternate interior — e.g. ∠3 and ∠6 (interior side, opposite sides of transversal); (iii) co-interior — e.g. ∠3 and ∠5 (interior side, same side of transversal); (iv) vertically opposite at A — e.g. ∠1 and ∠4. Method: classify each pair by position relative to the transversal and the two lines. | Let struggling students refer to their labelled notebook diagram; for a stretch, ask them to give a second valid example for each pair type.",
+            "verified": true
+          },
+          {
+            "id": "Q-A-4",
+            "section_ref": "§5.4",
+            "goal": "recall",
+            "anchor_id": "E-4",
+            "anchor_book_ref": "Figure it Out Q4, §5.4",
+            "prompt": "Two lines p and q are cut by a transversal t. The corresponding angles at the two intersections measure 74° and 106° respectively. A student claims the lines p and q are parallel. Is the student correct? Justify your answer.",
+            "visual_stimulus": "",
+            "teacher_guide": "Checks recall of the condition for parallelism using corresponding angles. | Expected answer: The student is incorrect. For lines to be parallel, corresponding angles must be equal. Since 74° ≠ 106°, the lines are not parallel. Method: apply the corresponding-angle criterion — parallel lines if and only if corresponding angles are equal. | Allow the student to draw a quick sketch if needed; for a stretch, ask them to find how much each angle would need to change so that the lines become parallel, and explain which change is valid.",
+            "verified": true
+          },
+          {
+            "id": "Q-A-5",
+            "section_ref": "§5.5",
+            "goal": "recall",
+            "anchor_id": "E-5",
+            "anchor_book_ref": "Figure it Out Q5, §5.5",
+            "prompt": "In the figure provided, line AB is parallel to line CD and a transversal EF cuts them. One of the corresponding angles is marked as 65°. Find all other angles formed at the two intersection points, labelling each with its measure and naming the property used.",
+            "visual_stimulus": "<svg viewBox='0 0 240 200' xmlns='http://www.w3.org/2000/svg' width='240' height='200'><line x1='10' y1='70' x2='230' y2='70' stroke='black' stroke-width='2'/><line x1='10' y1='145' x2='230' y2='145' stroke='black' stroke-width='2'/><line x1='80' y1='10' x2='160' y2='200' stroke='black' stroke-width='2'/><text x='2' y='67' font-size='13'>A</text><text x='220' y='67' font-size='13'>B</text><text x='2' y='142' font-size='13'>C</text><text x='220' y='142' font-size='13'>D</text><text x='82' y='8' font-size='13'>E</text><text x='158' y='198' font-size='13'>F</text><text x='107' y='62' font-size='11'>65°</text></svg>",
+            "teacher_guide": "Checks recall of all angle relationships when a transversal crosses parallel lines. | Expected answer: The marked angle (corresponding) = 65°; its vertically opposite angle = 65°; its linear-pair angle = 115°; that linear-pair's vertically opposite = 115°. At the second intersection: corresponding angle = 65°; alternate interior = 65°; co-interior = 115°; vertically opposite pairs repeat. Method: use corresponding angles equal, linear pairs sum to 180°, and vertically opposite angles equal. | For support, guide the student to fill in angles one intersection at a time; for a stretch, ask them to verify that co-interior angles sum to 180° using two of the angles they found.",
+            "verified": true
+          }
+        ]
+      },
+      {
+        "section_code": "B",
+        "section_title": "Reason and Explain",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-B-1",
+            "section_ref": "§5.6",
+            "goal": "reason",
+            "anchor_id": "E-6",
+            "anchor_book_ref": "Figure it Out Q6, §5.6",
+            "prompt": "Lines l and m are cut by a transversal. You measure one pair of corresponding angles and find they are 58° and 58°. Your friend measures another pair of corresponding angles in the same figure and finds 122° and 122°. (i) Are lines l and m parallel? Give a reason. (ii) Your friend says: 'I checked a different pair of corresponding angles and still got equal values — does this prove the lines are parallel?' Explain whether checking one pair is sufficient or whether all pairs must be checked.",
+            "visual_stimulus": "",
+            "teacher_guide": "Checks reasoning about the corresponding-angle criterion — forward and converse directions, and the logical sufficiency of one pair. | Expected answer: (i) Yes, l ∥ m — the corresponding angles are equal (58° = 58°), which is the criterion for parallel lines. (ii) Checking one pair of corresponding angles is sufficient to establish parallelism; if one pair is equal, all corresponding pairs will be equal (since all other angles follow from linear pairs and vertically opposite angles). Method: apply the biconditional criterion and reason about what determines all angles at an intersection once one is known. | Encourage pair-share before writing; for a stretch, ask what would change in the argument if the two lines were not in the same plane.",
+            "verified": true
+          },
+          {
+            "id": "Q-B-2",
+            "section_ref": "§5.8",
+            "goal": "reason",
+            "anchor_id": "E-9",
+            "anchor_book_ref": "Figure it Out Q9, §5.8",
+            "prompt": "Line PQ is parallel to line RS. A transversal cuts PQ at M and RS at N. ∠PMN = 47°. (i) Find ∠MNS using the alternate interior angles theorem. Show your reasoning step by step. (ii) A classmate claims ∠MNR = 133° using the co-interior angle property. Verify whether the classmate is correct, explaining each step of the verification.",
+            "visual_stimulus": "<svg viewBox='0 0 240 200' xmlns='http://www.w3.org/2000/svg' width='240' height='200'><line x1='10' y1='65' x2='230' y2='65' stroke='black' stroke-width='2'/><line x1='10' y1='145' x2='230' y2='145' stroke='black' stroke-width='2'/><line x1='75' y1='10' x2='165' y2='200' stroke='black' stroke-width='2'/><text x='2' y='62' font-size='13'>P</text><text x='222' y='62' font-size='13'>Q</text><text x='2' y='142' font-size='13'>R</text><text x='222' y='142' font-size='13'>S</text><text x='106' y='60' font-size='12'>M</text><text x='128' y='155' font-size='12'>N</text><text x='88' y='58' font-size='11'>47°</text></svg>",
+            "teacher_guide": "Checks multi-step reasoning using alternate interior angles and co-interior angles, and ability to verify a claim. | Expected answer: (i) ∠MNS = 47° — alternate interior angles are equal when lines are parallel (PQ ∥ RS). (ii) ∠MNR = 180° − ∠MNS = 180° − 47° = 133° (linear pair at N). Co-interior angles ∠PMN + ∠MNR = 47° + 133° = 180°, confirming the co-interior property. The classmate is correct. Method: alternate angles equal (parallel lines); linear pair sums to 180°; co-interior angles sum to 180° as verification. | Encourage thinking aloud before writing; for a stretch, alter ∠PMN to (2x + 5)° and ask for the value of x if ∠MNR = 115°.",
+            "verified": true
+          }
+        ]
+      },
+      {
+        "section_code": "C",
+        "section_title": "Apply in Context",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-C-1",
+            "section_ref": "§5.7",
+            "goal": "apply",
+            "anchor_id": "E-7",
+            "anchor_book_ref": "Figure it Out Q7, §5.7",
+            "prompt": "Draw a line segment MN of length 7 cm. Mark a point K that is 4 cm above MN (not on MN). Using a ruler and set-square, construct a line through K that is parallel to MN. Verify your construction by measuring the corresponding angles formed by any transversal you draw across both lines.",
+            "visual_stimulus": "",
+            "teacher_guide": "Checks ability to apply the ruler-and-set-square parallel-line construction and verify it using the corresponding-angle property. | Expected answer: A correctly drawn line through K parallel to MN; the corresponding angles at the transversal should each measure the same value (they may vary depending on the transversal's angle, but the two must be equal). Method: place set-square flush against MN, slide ruler alongside the set-square, reposition set-square at point K and draw. Verify: draw a transversal and measure both corresponding angles — they should be equal. | For students who struggle with the set-square, allow them to use graph paper and draw a horizontal line through K instead; for a stretch, repeat the construction ensuring the parallel line passes exactly 4 cm from MN and verify the distance at three points.",
+            "verified": true
+          },
+          {
+            "id": "Q-C-2",
+            "section_ref": "§5.8",
+            "goal": "apply",
+            "anchor_id": "E-10",
+            "anchor_book_ref": "Figure it Out Q10, §5.8",
+            "prompt": "In the figure provided, lines AB and CD are parallel. A transversal meets AB at E and CD at F. Another line from E meets CD at G such that ∠AEG = 35° and ∠EGD = 95°. Find ∠EFD and ∠FEG, clearly stating which angle property you use at each step.",
+            "visual_stimulus": "<svg viewBox='0 0 260 210' xmlns='http://www.w3.org/2000/svg' width='260' height='210'><line x1='10' y1='60' x2='250' y2='60' stroke='black' stroke-width='2'/><line x1='10' y1='155' x2='250' y2='155' stroke='black' stroke-width='2'/><line x1='90' y1='10' x2='130' y2='200' stroke='black' stroke-width='2'/><line x1='108' y1='60' x2='145' y2='200' stroke='black' stroke-width='2'/><text x='2' y='57' font-size='13'>A</text><text x='242' y='57' font-size='13'>B</text><text x='2' y='152' font-size='13'>C</text><text x='242' y='152' font-size='13'>D</text><text x='108' y='55' font-size='12'>E</text><text x='121' y='165' font-size='12'>F</text><text x='145' y='165' font-size='12'>G</text><text x='90' y='55' font-size='10'>35°</text><text x='130' y='148' font-size='10'>95°</text></svg>",
+            "teacher_guide": "Checks application of parallel-line angle properties in a multi-line configuration requiring strategic choice of which property to apply at each step. | Expected answer: Since AB ∥ CD, ∠AEF = ∠EFD (alternate interior angles, with EF as transversal) — but EF is a separate transversal from EG. More directly: ∠EFD = 180° − ∠EFC; since AB ∥ CD and EF is the transversal, ∠FEA + ∠EFD = 180° (co-interior angles). First find ∠FEA: since ∠AEG = 35° and EG, EF are two separate lines from E meeting CD, we use triangle EFG — ∠FEG = 180° − ∠EGF − ∠EFG; ∠EGD = 95° so ∠EGF = 85° (linear pair); ∠EFD = alternate angle to ∠FEA (AB ∥ CD). In triangle EFG: angles sum to 180°; ∠FEG + 85° + ∠GFE = 180°; ∠GFE = ∠EFD (vertically opposite ∠CFE on the other side — noting ∠EFD is below CD). Working: ∠EFD is co-interior with ∠AEF (AB ∥ CD), so ∠AEF + ∠EFD = 180°. ∠AEF = ∠AEG + ∠GEF. Using triangle EGF: ∠GEF + ∠EGF + ∠GFE = 180°; ∠EGF = 180° − 95° = 85°; so ∠GEF + ∠GFE = 95°. Also ∠GFE and ∠EFD are supplementary (linear pair at F on line CD): ∠GFE = 180° − ∠EFD. Co-interior: (35° + ∠GEF) + ∠EFD = 180°. And ∠GEF = 95° − ∠GFE = 95° − (180° − ∠EFD) = ∠EFD − 85°. Substituting: 35° + (∠EFD − 85°) + ∠EFD = 180° → 2∠EFD − 50° = 180° → 2∠EFD = 230° → ∠EFD = 115°. Then ∠GEF = 115° − 85° = 30°. Method: combine co-interior angles (sum 180°, AB ∥ CD) with triangle angle sum and linear pairs. | For support, suggest drawing the figure large and filling in known angles step by step with a coloured pen; for a stretch, change ∠AEG to an unknown angle α and express ∠EFD in terms of α and ∠EGD.",
+            "verified": true
+          }
+        ]
+      }
+    ],
+    "input_tokens": 9990,
+    "output_tokens": 12828,
+    "cost_inr": 18.6808
+  }
+}

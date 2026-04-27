@@ -28,23 +28,31 @@
 .ptag { font-size: 11px; font-weight: 400; color: #1a1917; width: 220px; flex-shrink: 0; white-space: normal; line-height: 1.4; text-align: left; }
 .pchev { font-size: 10px; color: #5a5754; transition: transform 0.15s; flex-shrink: 0; width: 18px; text-align: right; padding-top: 2px; }
 .period-card.open .pchev { transform: rotate(180deg); }
-.pbody { display: none; padding: 12px; border-top: 0.5px solid #e8e5e0; }
+.pbody { display: none; padding: 12px; }
 .period-card.open .pbody { display: block; }
 
 /* Material row */
-.matrow { display: flex; gap: 6px; margin-bottom: 10px; padding: 6px 10px; background: #fef9e7; border-radius: 8px; border: 0.5px solid #f0c040; }
+.matrow { display: flex; gap: 6px; margin-bottom: 10px; padding: 6px 10px; background: #fef9e7; border-radius: 8px; border: 0.5px solid #f0c040; align-items: center; }
 .matlabel { font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: #854f0b; white-space: nowrap; }
-.mattext { font-size: 11px; color: #633806; line-height: 1.4; }
+.mattext { font-size: 11px; color: #633806; line-height: 1.4; flex: 1; }
+.mat-ped-wrap { margin-left: auto; display: flex; gap: 4px; align-items: center; white-space: nowrap; flex-shrink: 0; padding-left: 12px; }
+.mat-ped-label { font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: #854f0b; white-space: nowrap; }
+.mat-ped-text { font-size: 11px; color: #633806; line-height: 1.4; font-style: italic; }
 
 /* Time slots */
 .ts { display: flex; gap: 8px; margin-bottom: 6px; }
 .ttime { font-size: 9px; font-weight: 500; color: #5a5754; white-space: nowrap; min-width: 50px; padding-top: 2px; text-transform: uppercase; letter-spacing: 0.04em; }
 .tdesc { font-size: 11px; color: #1a1917; line-height: 1.5; }
 
-/* Learning Outcome bar */
+/* Pedagogical Approach bar */
 .lobar { margin-top: 12px; padding: 8px 10px; background: #f5f3ef; border-radius: 8px; border-left: 3px solid #2c3e50; }
 .lolabel { font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: #2c3e50; margin-bottom: 3px; }
 .lotext { font-size: 11px; color: #1a1917; line-height: 1.5; font-style: italic; }
+
+/* Teacher Notes bar */
+.tnbar { margin-top: 12px; padding: 8px 10px; background: #eef4fb; border-radius: 8px; border-left: 3px solid #4a7fb5; }
+.tnlabel { font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: #4a7fb5; margin-bottom: 3px; }
+.tntext { font-size: 11px; color: #1a1917; line-height: 1.5; }
 
 /* Competency link */
 .clinkrow { display: flex; align-items: baseline; gap: 6px; margin-top: 10px; padding-top: 8px; border-top: 0.5px solid #f0ede9; flex-wrap: wrap; }
@@ -140,8 +148,8 @@
 .ss-comp-grp-body.open { display: block; }
 
 /* ── Social Sciences LP: period header dark-gray palette (erstwhile comp-group hdr) ─ */
-.ss-period-card .period-header  { background: #787674; }
-.ss-period-card.open .period-header { background: #4a4a4a; }
+.ss-period-card .period-header  { background: #787674; border-bottom: 1px solid #787674; }
+.ss-period-card.open .period-header { background: #4a4a4a; border-bottom: 1px solid #4a4a4a; }
 .ss-period-card .pnum  { background: rgba(255,255,255,0.18); color: #fff; }
 .ss-period-card.open .pnum { background: rgba(255,255,255,0.25); }
 .ss-period-card .pname { color: rgba(255,255,255,0.92); }
@@ -1223,23 +1231,47 @@ function renderLPA() {
         .replace(/^Anchored to:\s*/i, '').replace(/^Activity:\s*/i, '').trim();
       var activityLabel = '<div class="pname">' + escHtml(_rawActivity) + '</div>';
 
-      var materialRow = p.material
-        ? '<div class="matrow"><div class="matlabel">Material</div><div class="mattext">' + escHtml(p.material) + '</div></div>'
-        : '';
+      var isMath = !!p.is_mathematics;
+
+      /* Material row — for Mathematics, include Pedagogical Approach at the right end */
+      var materialRow = '';
+      if (p.material) {
+        var pedHtml = (isMath && (p.pedagogical_method || '').trim())
+          ? '<div class="mat-ped-wrap">' +
+              '<span class="mat-ped-label">Pedagogical Approach:</span>' +
+              '<span class="mat-ped-text">' + escHtml(p.pedagogical_method) + '</span>' +
+            '</div>'
+          : '';
+        materialRow =
+          '<div class="matrow">' +
+            '<div class="matlabel">Material</div>' +
+            '<div class="mattext">' + escHtml(p.material) + '</div>' +
+            pedHtml +
+          '</div>';
+      }
 
       var timeSlotsHtml = renderTimeSlots(p.time_slots || []);
 
-      var loBar =
-        '<div class="lobar"><div class="lolabel">Learning Outcome</div>' +
+      /* loBar — shown for SS/Science only; Maths uses materialRow for this */
+      var loBar = isMath ? '' :
+        '<div class="lobar"><div class="lolabel">Pedagogical Approach</div>' +
         '<div class="lotext">' + escHtml(p.implied_lo) + '</div></div>';
 
-      /* Competency bar — top of pbody, styled with old period-header tan/beige palette */
-      var compBar =
-        '<div class="ss-comp-bar">' +
-          '<span class="sscb-code">' + escHtml(p.c_code || '') + '</span>' +
-          (wlblP ? '<span class="sscb-weight">(' + escHtml(wlblP) + ')</span>' : '') +
-          (p.competency_text ? '<span class="sscb-text">— ' + escHtml(p.competency_text) + '</span>' : '') +
-        '</div>';
+      var teacherNotesBar = (p.teacher_notes || '').trim()
+        ? '<div class="tnbar"><div class="tnlabel">Teacher Notes</div>' +
+          '<div class="tntext">' + escHtml(p.teacher_notes) + '</div></div>'
+        : '';
+
+      /* Competency bar — top of pbody, styled with old period-header tan/beige palette.
+         Skipped entirely for chapters where no competency drives the period
+         (Mathematics LP per Rule 8: competencies do not drive periods). */
+      var compBar = (p.c_code || wlblP || p.competency_text)
+        ? '<div class="ss-comp-bar">' +
+            '<span class="sscb-code">' + escHtml(p.c_code || '') + '</span>' +
+            (wlblP ? '<span class="sscb-weight">(' + escHtml(wlblP) + ')</span>' : '') +
+            (p.competency_text ? '<span class="sscb-text">— ' + escHtml(p.competency_text) + '</span>' : '') +
+          '</div>'
+        : '';
 
       var cardEl = document.createElement('div');
       cardEl.className = 'period-card ss-period-card' + (pIdx === 0 ? ' open' : '');
@@ -1256,6 +1288,7 @@ function renderLPA() {
           compBar +
           materialRow +
           timeSlotsHtml +
+          teacherNotesBar +
           loBar +
         '</div>';
       panel.appendChild(cardEl);

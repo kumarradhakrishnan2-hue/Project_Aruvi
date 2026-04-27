@@ -454,6 +454,126 @@ def period_card(period_num, duration_min, activity_name, anchored_section,
     return story   # list of flowables — NOT wrapped in KeepTogether
 
 
+def period_card_maths(period_num, duration_min, activity_name, anchored_section,
+                      time_breakdown, materials, pedagogical_approach, teacher_notes):
+    """
+    Mathematics-specific period card.
+
+    Differences from period_card() (SS/Social Sciences):
+      1. Materials row has a right-aligned "Pedagogical approach:" column.
+      2. LOBox is replaced by a Teacher Notes row (when notes are present).
+      3. "Items used:" prefix is NOT shown here — already stripped in adapter.
+
+    Science and Social Sciences are NOT affected — they continue to use
+    period_card() or _science_period_block().
+    """
+    uw = PAGE_W - L_MAR - R_MAR
+    story = []
+
+    # Anchor: first segment only (split at ',') for §-locators
+    sec_short = _clean_text(str(anchored_section).split(",")[0].strip())
+
+    # ── Period header row (identical style to SS) ─────────────────────────────
+    hdr_data = [[
+        Paragraph(f"<b>Period {period_num}</b>",              ST["period_lbl"]),
+        Paragraph(f"{duration_min} min",                       ST["period_time"]),
+        Paragraph(f"<b>{_clean_text(activity_name)}</b>",      ST["period_act"]),
+    ]]
+    hdr_t = Table(hdr_data, colWidths=[uw * f for f in [0.13, 0.09, 0.78]])
+    hdr_t.setStyle(TableStyle([
+        ("BACKGROUND",    (0, 0), (-1, -1), BG_META),
+        ("LINEABOVE",     (0, 0), (-1, -1), 1.0, INK),
+        ("LINEBELOW",     (0, 0), (-1, -1), 0.5, HAIRLINE),
+        ("VALIGN",        (0, 0), (-1, -1), "MIDDLE"),
+        ("TOPPADDING",    (0, 0), (-1, -1), 6),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+        ("LEFTPADDING",   (0, 0), (-1, -1), 6),
+        ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+    ]))
+
+    # ── Materials row — 3 columns: label | material text | pedagogical approach ─
+    mat_display = _clean_text(str(materials))
+    ped_display = _clean_text(str(pedagogical_approach)) if pedagogical_approach else ""
+
+    if ped_display:
+        mat_row = [[
+            Paragraph("<b>Material</b>",                         ST["mat_label"]),
+            Paragraph(mat_display,                               ST["mat_text"]),
+            Paragraph(
+                f"<b>Pedagogical approach:</b> {ped_display}",
+                ST["mat_text"],
+            ),
+        ]]
+        mat_col_ws = [uw * 0.10, uw * 0.55, uw * 0.35]
+    else:
+        mat_row = [[
+            Paragraph("<b>Material</b>", ST["mat_label"]),
+            Paragraph(mat_display,       ST["mat_text"]),
+        ]]
+        mat_col_ws = [uw * 0.10, uw * 0.90]
+
+    mat_t = Table(mat_row, colWidths=mat_col_ws)
+    mat_t.setStyle(TableStyle([
+        ("BACKGROUND",    (0, 0), (-1, -1), colors.white),
+        ("LINEABOVE",     (0, 0), (-1,  0), 0.5, HAIRLINE),
+        ("LINEBELOW",     (0, 0), (-1, -1), 0.5, HAIRLINE),
+        ("VALIGN",        (0, 0), (-1, -1), "MIDDLE"),
+        ("TOPPADDING",    (0, 0), (-1, -1), 4),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+        ("LEFTPADDING",   (0, 0), ( 0,  0), 8),
+        ("LEFTPADDING",   (1, 0), (-1, -1), 6),
+        ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+    ]))
+
+    story.append(KeepTogether([hdr_t, Spacer(1, 3), mat_t]))
+
+    # ── Time breakdown rows ───────────────────────────────────────────────────
+    tb_rows = []
+    for span, desc in time_breakdown:
+        tb_rows.append([
+            Paragraph(_clean_text(str(span)), ST["tb_time"]),
+            Paragraph(_clean_text(str(desc)), ST["tb_desc"]),
+        ])
+    if tb_rows:
+        tb_t = Table(tb_rows, colWidths=[uw * 0.10, uw * 0.90])
+        tb_t.setStyle(TableStyle([
+            ("BACKGROUND",    (0, 0), (-1, -1), colors.white),
+            ("VALIGN",        (0, 0), (-1, -1), "TOP"),
+            ("TOPPADDING",    (0, 0), (-1, -1), 4),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+            ("LEFTPADDING",   (0, 0), ( 0,  0), 8),
+            ("LEFTPADDING",   (1, 0), ( 1, -1), 6),
+            ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+            ("LINEBELOW",     (0, 0), (-1, -2), 0.3, ROW_LINE),
+            ("LINEBELOW",     (0,-1), (-1, -1), 0.5, HAIRLINE),
+        ]))
+        story.append(tb_t)
+
+    # ── Teacher Notes row (replaces LOBox for Maths) ─────────────────────────
+    tn = _clean_text(str(teacher_notes)) if teacher_notes else ""
+    if tn:
+        tn_row = [[
+            Paragraph("<b>Teacher Notes</b>", ST["mat_label"]),
+            Paragraph(tn,                     ST["mat_text"]),
+        ]]
+        tn_t = Table(tn_row, colWidths=[uw * 0.15, uw * 0.85])
+        tn_t.setStyle(TableStyle([
+            ("BACKGROUND",    (0, 0), (-1, -1), BLUE_BG),
+            ("LINEABOVE",     (0, 0), (-1,  0), 0.5, HAIRLINE),
+            ("LINEBELOW",     (0, 0), (-1, -1), 0.5, HAIRLINE),
+            ("VALIGN",        (0, 0), (-1, -1), "TOP"),
+            ("TOPPADDING",    (0, 0), (-1, -1), 4),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+            ("LEFTPADDING",   (0, 0), ( 0,  0), 8),
+            ("LEFTPADDING",   (1, 0), ( 1, -1), 6),
+            ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+        ]))
+        story.append(tn_t)
+
+    story.append(Spacer(1, 4 * mm))
+    return story
+
+
 # ──────────────────────────────────────────────────────────────────────────────
 # Science-specific building blocks
 # ──────────────────────────────────────────────────────────────────────────────
@@ -754,14 +874,26 @@ def build_lp_pdf(output_path, data):
     story.append(Spacer(1, 3 * mm))
     story.append(competency_table(data["competencies"]))
     story.append(Spacer(1, 4 * mm))
-    # Period cards — period_card() returns a list; extend so each flowable
-    # is added individually and can split naturally across page boundaries.
+    # Period cards — route Mathematics through period_card_maths();
+    # all other subjects (Social Sciences etc.) use period_card().
+    # period_card() / period_card_maths() return lists; extend so each
+    # flowable is added individually and can split across page boundaries.
+    is_maths = data.get("subject") == "Mathematics"
     for p in data["periods"]:
-        story.extend(period_card(
-            p["num"], p["duration"],
-            p["activity_name"], p["anchored_section"],
-            p["time_breakdown"], p["materials"], p["learning_outcome"],
-        ))
+        if is_maths:
+            story.extend(period_card_maths(
+                p["num"], p["duration"],
+                p["activity_name"], p["anchored_section"],
+                p["time_breakdown"], p["materials"],
+                p.get("pedagogical_approach", ""),
+                p.get("teacher_notes", ""),
+            ))
+        else:
+            story.extend(period_card(
+                p["num"], p["duration"],
+                p["activity_name"], p["anchored_section"],
+                p["time_breakdown"], p["materials"], p["learning_outcome"],
+            ))
     # ── Pass 1: build PDF without page numbers ────────────────────────────────
     doc.build(
         story,
@@ -1067,8 +1199,7 @@ def _json_to_science_lp_data(j: dict, date_str: str, weight) -> dict:
 
 def _json_to_maths_lp_data(j: dict, date_str: str, weight) -> dict:
     """
-    Adapter for Mathematics LP v2.1 → SS-shaped data dict consumed by
-    build_lp_pdf()'s default (SS) branch.
+    Adapter for Mathematics LP v2.1 → data dict consumed by build_lp_pdf().
 
     Maths-specific shape (per LP Constitution v2.1):
       result.lesson_plan = {
@@ -1084,29 +1215,90 @@ def _json_to_maths_lp_data(j: dict, date_str: str, weight) -> dict:
         materials[], teacher_notes
       }
 
-    Mapping into SS shape used by build_lp_pdf():
-      activity_name    ← activity_title
-      anchored_section ← textbook_segments joined ("§5.1" or "§5.4, §5.5")
-      time_breakdown   ← phases mapped (minutes, description)
-      materials        ← materials list joined; appended with book_refs
-                          for items used in class (per LP Rule 10:
-                          render by book_ref, never by internal id).
-      learning_outcome ← method + section_goal + items summary line
-                          (Maths has no per-period implied LO; this slot
-                          carries the period's identity instead).
+    Competencies are loaded from the chapter mapping JSON + framework
+    descriptions file (same pattern as Science), NOT from LP output, so
+    they always match the authoritative mapping.
+
+    Period dict includes pedagogical_approach and teacher_notes so
+    period_card_maths() can render them directly.
     """
+    import json as _json
+
     lp = (j.get("result") or {}).get("lesson_plan") or {}
 
-    # ── Chapter-level competencies (header table) ─────────────────────────────
-    competencies = []
-    seen = set()
-    for c in (lp.get("core_competencies") or []) + (lp.get("adjunct_competencies") or []):
-        if not isinstance(c, dict):
-            continue
-        code = c.get("c_code", "")
-        if code and code not in seen:
-            competencies.append((code, c.get("competency_text", "")))
-            seen.add(code)
+    # ── Resolve paths ─────────────────────────────────────────────────────────
+    _grade_map = {
+        "Grade I":    "i",    "Grade II":   "ii",   "Grade III": "iii",
+        "Grade IV":   "iv",   "Grade V":    "v",    "Grade VI":  "vi",
+        "Grade VII":  "vii",  "Grade VIII": "viii",
+        "Grade IX":   "ix",   "Grade X":    "x",
+    }
+    _stage_map = {
+        "i": "primary", "ii": "primary", "iii": "primary",
+        "iv": "primary", "v": "primary",
+        "vi": "middle",  "vii": "middle", "viii": "middle",
+        "ix": "secondary", "x": "secondary",
+    }
+    _project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    _raw_grade    = j.get("grade", "")
+    _grade_folder = _grade_map.get(_raw_grade, _raw_grade.lower().replace("grade ", ""))
+    _stage        = _stage_map.get(_grade_folder, "middle")
+    _ch_num       = j.get("chapter_number", 0)
+
+    # ── Chapter-level competencies: load from mapping + descriptions (like Science) ──
+    # Step 1: c_codes from per-chapter mapping JSON
+    _ch_map_path = os.path.join(
+        _project_root, "mirror", "chapters", "mathematics", _grade_folder,
+        "mappings", f"ch_{_ch_num:02d}_mapping.json",
+    )
+    _c_codes = []
+    try:
+        _ch_map = _json.load(open(_ch_map_path, encoding="utf-8"))
+        for entry in (_ch_map.get("core_competencies") or []) + (_ch_map.get("adjunct_competencies") or []):
+            code = entry.get("c_code", "")
+            if code and code not in _c_codes:
+                _c_codes.append(code)
+    except Exception:
+        pass   # mapping file not yet generated — fall back below
+
+    # Step 2: competency descriptions from framework JSON
+    _comp_desc_path = os.path.join(
+        _project_root, "mirror", "framework", "mathematics", _stage,
+        f"competency_descriptions_{_stage}.json",
+    )
+    _comp_descs: dict = {}
+    try:
+        _raw = _json.load(open(_comp_desc_path, encoding="utf-8"))
+        # Maths framework uses {curricular_goals: {CG-n: {competency_codes: {C-n.m: text}}}}
+        if "curricular_goals" in _raw:
+            cg_val = _raw["curricular_goals"]
+            if isinstance(cg_val, dict):
+                for _cg in cg_val.values():
+                    for code, desc in (_cg.get("competency_codes") or {}).items():
+                        _comp_descs[code] = desc
+            elif isinstance(cg_val, list):
+                for _cg in cg_val:
+                    for _comp in (_cg.get("competencies") or []):
+                        _comp_descs[_comp.get("code", "")] = _comp.get("description", "")
+        else:
+            _comp_descs = _raw
+    except Exception:
+        pass
+
+    # Build competency tuples; fall back to LP output if mapping file missing
+    if _c_codes:
+        competencies = [(code, _comp_descs.get(code, "")) for code in _c_codes]
+    else:
+        # Fallback: read from LP output (original behaviour)
+        competencies = []
+        seen = set()
+        for c in (lp.get("core_competencies") or []) + (lp.get("adjunct_competencies") or []):
+            if not isinstance(c, dict):
+                continue
+            code = c.get("c_code", "")
+            if code and code not in seen:
+                competencies.append((code, _comp_descs.get(code, "") or c.get("competency_text", "")))
+                seen.add(code)
 
     # ── Periods ───────────────────────────────────────────────────────────────
     periods = []
@@ -1123,48 +1315,24 @@ def _json_to_maths_lp_data(j: dict, date_str: str, weight) -> dict:
                 ph.get("description", ""),
             ))
 
-        # Materials list → joined string; append teacher-facing book_refs of
-        # items used in this period (per LP Rule 10: book_ref, NOT internal id).
+        # Materials list → joined string only (no "Items used:" appended here;
+        # that prefix was moved to Teacher Notes / removed per design update).
         raw_mat = p.get("materials") or []
         if isinstance(raw_mat, list):
             mat_str = ", ".join(str(m) for m in raw_mat if m)
         else:
             mat_str = str(raw_mat) if raw_mat else ""
 
-        _items = p.get("textbook_items_in_class") or []
-        _hw    = p.get("homework") or []
-        _icbr  = "; ".join((it.get("book_ref") or "").strip()
-                           for it in _items if it.get("book_ref"))
-        _hwbr  = "; ".join((it.get("book_ref") or "").strip()
-                           for it in _hw if it.get("book_ref"))
-        if _icbr:
-            mat_str = (mat_str + (" · " if mat_str else "") +
-                       "Items used: " + _icbr)
-        if _hwbr:
-            mat_str = (mat_str + (" · " if mat_str else "") +
-                       "Homework: " + _hwbr)
-
-        # learning_outcome slot carries method + section_goal (Maths has no LO)
-        _method = p.get("pedagogical_method", "")
-        _sgoal  = p.get("section_goal", "")
-        _notes  = p.get("teacher_notes", "")
-        lo_str_parts = []
-        if _method:
-            lo_str_parts.append(f"Method: {_method}")
-        if _sgoal:
-            lo_str_parts.append(f"Goal: {_sgoal}")
-        if _notes:
-            lo_str_parts.append(_notes)
-        lo_str = " · ".join(lo_str_parts) if lo_str_parts else ""
-
         periods.append({
-            "num":              p.get("period_number"),
-            "duration":         p.get("period_duration_minutes"),
-            "activity_name":    p.get("activity_title", ""),
-            "anchored_section": anchor,
-            "time_breakdown":   time_breakdown,
-            "materials":        mat_str,
-            "learning_outcome": lo_str,
+            "num":                 p.get("period_number"),
+            "duration":            p.get("period_duration_minutes"),
+            "activity_name":       p.get("activity_title", ""),
+            "anchored_section":    anchor,
+            "time_breakdown":      time_breakdown,
+            "materials":           mat_str,
+            "learning_outcome":    "",   # not used for Maths (period_card_maths ignores it)
+            "pedagogical_approach": p.get("pedagogical_method", ""),
+            "teacher_notes":       p.get("teacher_notes", ""),
         })
 
     return {

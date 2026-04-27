@@ -563,6 +563,9 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
         import time as _time
         progress_placeholder = st.empty()
 
+        # ── Record start time (ms epoch) for the timer ────────────────────────
+        _gen_start_ms = int(_time.time() * 1000)
+
         # ── Shared CSS (animations) ───────────────────────────────────────────
         _pcss = (
             "<style>"
@@ -571,22 +574,24 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             "</style>"
         )
 
-        # ── Timer JS (starts once, persists across re-renders via window var) ──
+        # ── Timer JS — uses a fixed Python-side start epoch embedded in JS ────
+        # Each markdown re-render re-executes this script block; because the
+        # start timestamp is a literal baked in from Python, the elapsed time
+        # is always correct regardless of whether window vars survive.
         _timer_js = (
             "<script>"
             "(function(){"
-            "  if(!window._aruviTimerStart){window._aruviTimerStart=Date.now();}"
+            f"  var _start={_gen_start_ms};"
             "  function _aruviTick(){"
             "    var el=document.getElementById('aruvi-timer');"
             "    if(!el){return;}"
-            "    var s=Math.floor((Date.now()-window._aruviTimerStart)/1000);"
+            "    var s=Math.floor((Date.now()-_start)/1000);"
             "    var m=Math.floor(s/60);var sc=s%60;"
             "    el.textContent=(m<10?'0'+m:m)+':'+(sc<10?'0'+sc:sc);"
             "  }"
             "  _aruviTick();"
-            "  if(!window._aruviTimerInterval){"
-            "    window._aruviTimerInterval=setInterval(_aruviTick,1000);"
-            "  }"
+            "  clearInterval(window._aruviTimerInterval);"
+            "  window._aruviTimerInterval=setInterval(_aruviTick,1000);"
             "})();"
             "</script>"
         )
@@ -801,6 +806,11 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
         if _raw.startswith("```"):
             _fence_end = _raw.find("```", 3)
             _raw = (_raw[_raw.index("\n") + 1 : _fence_end] if _fence_end > 3 else _raw).strip()
+        # Strip any prose preamble before the opening brace (model sometimes
+        # reasons aloud before emitting JSON despite instructions)
+        _brace_pos = _raw.find("{")
+        if _brace_pos > 0:
+            _raw = _raw[_brace_pos:]
         try:
             parsed = json.loads(_raw)
             # ── Phase 3: completion box (built after parse so numbers are real) ─
@@ -869,24 +879,33 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                 'padding:2px 6px;" id="aruvi-timer-final">--:--</span>'
                 '</div>'
                 + '</div></div>'
-                + '<script>(function(){'
-                'if(window._aruviTimerInterval){clearInterval(window._aruviTimerInterval);'
-                'window._aruviTimerInterval=null;}'
-                'var s=Math.floor((Date.now()-(window._aruviTimerStart||Date.now()))/1000);'
-                'var m=Math.floor(s/60);var sc=s%60;'
-                'var el=document.getElementById("aruvi-timer-final");'
-                'if(el){el.textContent=(m<10?"0"+m:m)+":"+(sc<10?"0"+sc:sc);}'
-                'window._aruviTimerStart=null;'
-                '})();</script>'
+                + f'<script>(function(){{'
+                f'if(window._aruviTimerInterval){{clearInterval(window._aruviTimerInterval);'
+                f'window._aruviTimerInterval=null;}}'
+                f'var s=Math.floor((Date.now()-{_gen_start_ms})/1000);'
+                f'var m=Math.floor(s/60);var sc=s%60;'
+                f'var el=document.getElementById("aruvi-timer-final");'
+                f'if(el){{el.textContent=(m<10?"0"+m:m)+":"+(sc<10?"0"+sc:sc);}}'
+                f'}})();</script>'
             )
             progress_placeholder.markdown(PROGRESS_HTML_DONE, unsafe_allow_html=True)
         except Exception as _je:
             progress_placeholder.empty()
-            # Log first 500 chars + last 200 chars so truncation is visible in Streamlit logs
+            # ── DEBUG: dump full raw output to file so we can inspect it ──────
+            try:
+                import datetime as _dt
+                _debug_dir = Path(__file__).parent.parent / "mirror" / "debug"
+                _debug_dir.mkdir(parents=True, exist_ok=True)
+                _debug_file = _debug_dir / f"raw_output_{_dt.datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+                _debug_file.write_text(_raw, encoding="utf-8")
+                _debug_path_str = str(_debug_file)
+            except Exception as _dfe:
+                _debug_path_str = f"(could not write debug file: {_dfe})"
             _preview = _raw[:500] + (" … [truncated] … " + _raw[-200:] if len(_raw) > 700 else "")
             st.warning(
                 f"⚠️ JSON parse failed ({_je}). "
                 f"output_tokens={output_tokens}. "
+                f"Full raw output saved to: {_debug_path_str}\n\n"
                 f"Raw output preview:\n\n```\n{_preview}\n```"
             )
             parsed = {}
@@ -3116,7 +3135,27 @@ st.session_state.setdefault("ask_aruvi_agent_fb_sent",      False)
 st.session_state.setdefault("ask_aruvi_agent_fb_reset",     0)
 if "lpa_result"               not in st.session_state: st.session_state.lpa_result               = None
 if "lpa_generating"           not in st.session_state: st.session_state.lpa_generating           = False
+if "lpa_start_ts"             not in st.session_state: st.session_state.lpa_start_ts             = None
+if "no_chapter_warning"       not in st.session_state: st.session_state.no_chapter_warning       = False
 if "plan_just_saved"          not in st.session_state: st.session_state.plan_just_saved          = False
+
+@st.dialog(" ")
+def _no_chapter_dialog():
+    st.markdown(
+        '<div style="text-align:center;padding:4px 0 8px;">'
+        '<div style="font-size:2.2rem;margin-bottom:10px;">📖</div>'
+        '<div style="font-size:1rem;font-weight:600;color:#3d3b38;margin-bottom:8px;">'
+        'No chapter selected</div>'
+        '<div style="font-size:0.85rem;color:#6b6965;margin-bottom:4px;">'
+        'Please pick a chapter from the sidebar<br>before generating.'
+        '</div></div>',
+        unsafe_allow_html=True,
+    )
+    col = st.columns([1, 2, 1])[1]
+    with col:
+        if st.button("OK", key="no_chapter_ok_dlg", type="primary", use_container_width=True):
+            st.session_state.no_chapter_warning = False
+            st.rerun()
 if "mp_viewing_plan"          not in st.session_state: st.session_state.mp_viewing_plan          = None
 if "period_rows"              not in st.session_state: st.session_state["period_rows"]            = []
 if "myplans_should_collapse"  not in st.session_state: st.session_state.myplans_should_collapse  = False
@@ -3400,10 +3439,18 @@ section[data-testid="stSidebar"] div[class*="st-key-add_period_row"] button:hove
                 use_container_width=True,
                 key="teacher_gen",
             ):
-                st.session_state.lpa_generating    = True
-                st.session_state.lpa_result        = None
-                st.session_state.plan_already_saved = False
-                st.rerun()
+                if st.session_state.teacher_ch_idx is None:
+                    st.session_state.no_chapter_warning = True
+                else:
+                    st.session_state.no_chapter_warning  = False
+                    st.session_state.lpa_generating      = True
+                    st.session_state.lpa_result          = None
+                    st.session_state.plan_already_saved  = False
+                    st.rerun()
+
+            # ── No-chapter warning popup ──────────────────────────────────────────
+            if st.session_state.get("no_chapter_warning"):
+                _no_chapter_dialog()
 
         # ── Principal inputs ──────────────────────────────────────────────────────
         else:

@@ -1,4 +1,4 @@
-ARUVI — MATHEMATICS ASSESSMENT CONSTITUTION · VERSION 3.0
+ARUVI — MATHEMATICS ASSESSMENT CONSTITUTION · VERSION 3.1
 Stages: Foundational, Middle, Secondary
 
 ================================================================================
@@ -18,8 +18,10 @@ INPUTS
 ================================================================================
 
 1. LP JSON → `coverage_handoff` (three clusters, each with a `goals`
-   array carrying `section_ref`, `goal`, `anchor_id`,
-   `anchor_book_ref`).
+   array carrying `section_ref`, `section_title`, `goal`, `anchor_id`,
+   `anchor_book_ref`). Pass-through fields (`section_ref`,
+   `section_title`, `goal`, `anchor_id`, `anchor_book_ref`) are
+   copied verbatim into each item.
 2. Summary JSON → `enumerated_exercises` (looked up by `anchor_id` for
    the anchor's `description`); `prose_summary` to ground generated
    stems in the chapter's own methods and contexts.
@@ -187,7 +189,7 @@ ASSESSMENT JSON SCHEMA
   "chapter_title":  string,
   "stage":          string,
 
-  "sections": [
+  "assessment_items": [
     {
       "section_code":  "A" | "B" | "C",
       "section_title": "Recall and Apply" | "Reason and Explain" | "Apply in Context",
@@ -196,6 +198,12 @@ ASSESSMENT JSON SCHEMA
         {
           "id":              string,           // e.g. "Q-A-1"
           "section_ref":     string,           // e.g. "§5.3"
+          "section_title":   string,           // textbook section name,
+                                               // e.g. "Alternate Interior Angles";
+                                               // copied verbatim from handoff
+                                               // (distinct from the outer
+                                               // section_title which is the
+                                               // rubric name)
           "goal":            "recall" | "reason" | "apply",
           "anchor_id":       string,           // e.g. "E-3"; "" on fallback
           "anchor_book_ref": string,           // e.g. "Figure it Out Q3, §5.1 p.107"; "" on fallback
@@ -212,5 +220,5 @@ ASSESSMENT JSON SCHEMA
 
 ================================================================================
 Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
-Mathematics Assessment Constitution · Version 3.0 · Internal Document
+Mathematics Assessment Constitution · Version 3.1 · Internal Document
 ================================================================================
