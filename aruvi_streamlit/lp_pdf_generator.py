@@ -1301,11 +1301,26 @@ def _json_to_maths_lp_data(j: dict, date_str: str, weight) -> dict:
                 seen.add(code)
 
     # ── Periods ───────────────────────────────────────────────────────────────
+    def _seg_to_str(seg):
+        # textbook_segments may be plain strings (Science / SS) or dicts with
+        # {"ref": "§5.1", "title": "Intersecting Lines..."} (Mathematics).
+        # Render either shape safely as "ref — title" / "ref" / "title" / str.
+        if isinstance(seg, dict):
+            ref   = (seg.get("ref")   or "").strip()
+            title = (seg.get("title") or "").strip()
+            if ref and title:
+                return f"{ref} — {title}"
+            return ref or title or ""
+        return str(seg) if seg is not None else ""
+
     periods = []
     for p in lp.get("periods") or []:
         # Anchor display: §-locators joined
         _segs = p.get("textbook_segments") or []
-        anchor = ", ".join(_segs) if isinstance(_segs, list) else str(_segs)
+        if isinstance(_segs, list):
+            anchor = ", ".join(s for s in (_seg_to_str(x) for x in _segs) if s)
+        else:
+            anchor = _seg_to_str(_segs)
 
         # Phases → time_breakdown (minutes is already a range string in v2.1)
         time_breakdown = []

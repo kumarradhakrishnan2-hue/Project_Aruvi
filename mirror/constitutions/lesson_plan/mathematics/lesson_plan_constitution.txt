@@ -310,8 +310,7 @@ LP JSON SCHEMA
     }
   ],
 
-  "materials":               [string],
-  "teacher_notes":           string               // 2–3 sentences, max.
+  "teacher_notes":           string,              // 2–3 sentences, max.
                                                   // Scope, in order of
                                                   // priority:
                                                   //  1. Transition: what
@@ -334,6 +333,7 @@ LP JSON SCHEMA
                                                   // No C-code refs. No
                                                   // internal IDs in
                                                   // teacher-facing prose.
+  "materials":               [string]
 }
 
 

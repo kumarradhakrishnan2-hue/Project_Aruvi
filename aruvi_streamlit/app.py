@@ -80,7 +80,12 @@ def resolve_paths(grade: str, subject: str, chapter_number: int) -> dict:
         "lp_constitution":  mirror / f"constitutions/lesson_plan/{subj_f}/lesson_plan_constitution.txt",
         "assessment_const": mirror / f"constitutions/assessment/{subj_f}/assessment_constitution.txt",
         "pedagogy":         mirror / f"framework/{subj_f}/{stage}/pedagogy_{stage}_{subj_f}.txt",
-        "chapter_summary":  mirror / f"chapters/{subj_f}/{grade_f}/summaries/ch_{nn}_summary.txt",
+        # Mathematics summaries are stored as .json; all others as .txt
+        "chapter_summary":  (
+            mirror / f"chapters/{subj_f}/{grade_f}/summaries/ch_{nn}_summary.json"
+            if subj_f == "mathematics"
+            else mirror / f"chapters/{subj_f}/{grade_f}/summaries/ch_{nn}_summary.txt"
+        ),
         "chapter_mapping":  mirror / f"chapters/{subj_f}/{grade_f}/mappings/ch_{nn}_mapping.json",
     }
 
@@ -538,17 +543,21 @@ Produce your entire output as a single valid JSON object with this top-level str
   "period_schedule": <derived from teacher period schedule above>,
   "lesson_plan": {{ "periods": [ <one object per period per LP constitution> ] }},
   "coverage_handoff": {{
-    "section_a": {{ "goal_cluster": [...], "section_refs": [...], "period_count": N, "textbook_items": [...], "item_count_target": N }},
-    "section_b": {{ "goal_cluster": [...], "section_refs": [...], "period_count": N, "textbook_items": [...], "item_count_target": N }},
-    "section_c": {{ "goal_cluster": [...], "section_refs": [...], "period_count": N, "textbook_items": [...], "item_count_target": N }}
+    "section_a": {{ "goal_cluster": ["recall"], "goals": [ {{"section_ref": "§X.Y", "goal": "recall", "anchor_id": "E-N", "anchor_book_ref": "..."}} ] }},
+    "section_b": {{ "goal_cluster": ["reason"], "goals": [ ... ] }},
+    "section_c": {{ "goal_cluster": ["apply"],  "goals": [ ... ] }}
   }},
-  "assessment_items": [ <one object per question per Assessment Constitution> ]
+  "assessment_items": [ <one object per section per Assessment Constitution> ]
 }}
 
 For Mathematics, `coverage_handoff` is REQUIRED per LP Constitution
-Rule 11 — emit it every time, even if a cluster has period_count = 0.
-For Science and Social Sciences, `coverage_handoff` MAY be omitted
-(not consumed downstream for those subjects).
+Rule 11 — emit it every time, even if a cluster has no goals.
+For Science and Social Sciences, `coverage_handoff` MAY be omitted.
+
+LENGTH CONSTRAINTS (strictly enforced to keep output compact):
+- Each phase `description`: 2–3 sentences maximum.
+- Each `teacher_notes` field: 2–3 sentences maximum.
+- Each assessment `teacher_guide`: 3 parts joined by " | ", each part one sentence only.
 
 Output only the raw JSON object. No markdown. No prose. No section headers. No ```json fences.
 """
@@ -562,6 +571,10 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
 
         import time as _time
         progress_placeholder = st.empty()
+        # Separate placeholder for the live timer badge — rendered via
+        # components.html so that JS actually executes (st.markdown strips
+        # <script> tags, which is why the badge previously stayed at 00:00).
+        timer_placeholder = st.empty()
 
         # ── Record start time (ms epoch) for the timer ────────────────────────
         _gen_start_ms = int(_time.time() * 1000)
@@ -574,34 +587,66 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             "</style>"
         )
 
-        # ── Timer JS — uses a fixed Python-side start epoch embedded in JS ────
-        # Each markdown re-render re-executes this script block; because the
-        # start timestamp is a literal baked in from Python, the elapsed time
-        # is always correct regardless of whether window vars survive.
-        _timer_js = (
-            "<script>"
-            "(function(){"
-            f"  var _start={_gen_start_ms};"
-            "  function _aruviTick(){"
-            "    var el=document.getElementById('aruvi-timer');"
-            "    if(!el){return;}"
-            "    var s=Math.floor((Date.now()-_start)/1000);"
-            "    var m=Math.floor(s/60);var sc=s%60;"
-            "    el.textContent=(m<10?'0'+m:m)+':'+(sc<10?'0'+sc:sc);"
-            "  }"
-            "  _aruviTick();"
-            "  clearInterval(window._aruviTimerInterval);"
-            "  window._aruviTimerInterval=setInterval(_aruviTick,1000);"
-            "})();"
-            "</script>"
+        # ── Live timer badge (separate components.html block) ────────────────
+        # Streamlit's components.html mounts in a sandboxed iframe and DOES run
+        # scripts, but st.markdown(unsafe_allow_html=True) silently strips
+        # <script> — that's why the badge previously stayed at 00:00. We give
+        # the iframe a real height so its content is visible, and use Streamlit
+        # CSS to float the iframe wrapper at the bottom-right of the viewport.
+        _timer_widget_html = (
+            '<!doctype html><html><head><style>'
+            'html,body{margin:0;padding:0;background:transparent;text-align:right;}'
+            '#aruvi-timer{'
+            '  font-family:monospace;font-size:10px;color:#b0ada8;'
+            '  background:#f2f0ec;border:1px solid #e5e2dd;border-radius:4px;'
+            '  padding:3px 8px;display:inline-block;margin:4px 6px 0 0;'
+            '}'
+            '</style></head><body>'
+            '<div id="aruvi-timer">00:00</div>'
+            '<script>'
+            '(function(){'
+            f'  var _start={_gen_start_ms};'
+            '  function _tick(){'
+            '    var el=document.getElementById("aruvi-timer");'
+            '    if(!el){return;}'
+            '    var s=Math.floor((Date.now()-_start)/1000);'
+            '    var m=Math.floor(s/60);var sc=s%60;'
+            '    el.textContent=(m<10?"0"+m:m)+":"+(sc<10?"0"+sc:sc);'
+            '  }'
+            '  _tick();'
+            '  setInterval(_tick,1000);'
+            '})();'
+            '</script>'
+            '</body></html>'
         )
-        # Timer badge placed at bottom-right of the popup footer
+        # Float the iframe over the popup at bottom-right of the viewport.
+        # We rely on the fact that Streamlit wraps each components.html call
+        # in <iframe srcdoc="…">, so we can match by the unique 'aruvi-timer'
+        # string in the srcdoc attribute.
+        st.markdown(
+            "<style>"
+            "iframe[srcdoc*='aruvi-timer']{"
+            "  position:fixed !important;"
+            "  top:300px !important;"
+            "  right:24px !important;"
+            "  width:96px !important;"
+            "  height:30px !important;"
+            "  border:0 !important;"
+            "  z-index:10000 !important;"
+            "  background:transparent !important;"
+            "}"
+            "</style>",
+            unsafe_allow_html=True,
+        )
+        with timer_placeholder.container():
+            components.html(_timer_widget_html, height=30, scrolling=False)
+        # _timer_js / _timer_badge kept as no-ops so the existing markdown
+        # blocks (which append them) continue to work without the JS injection.
+        _timer_js = ""
         _timer_badge = (
             '<div style="display:flex;justify-content:flex-end;padding:4px 12px 8px 0;">'
-            '<span style="font-family:monospace;font-size:10px;color:#b0ada8;'
-            'background:#f2f0ec;border:1px solid #e5e2dd;border-radius:4px;'
-            'padding:2px 6px;" id="aruvi-timer">00:00</span>'
-            '</div>'
+            '<span style="font-family:monospace;font-size:10px;color:transparent;'
+            'padding:2px 6px;">&nbsp;</span></div>'
         )
         # ── Icon snippets ─────────────────────────────────────────────────────
         _tick_icon = (
@@ -813,6 +858,9 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             _raw = _raw[_brace_pos:]
         try:
             parsed = json.loads(_raw)
+            # ── Final elapsed time (computed server-side, baked into HTML) ──
+            _elapsed_s = max(0, int(_time.time() * 1000 - _gen_start_ms) // 1000)
+            _final_mmss = f"{_elapsed_s // 60:02d}:{_elapsed_s % 60:02d}"
             # ── Phase 3: completion box (built after parse so numbers are real) ─
             _n_periods = len(parsed.get("lesson_plan", {}).get("periods", []))
             _n_acts    = sum(
@@ -876,21 +924,35 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                 + '<div style="display:flex;justify-content:flex-end;padding:4px 12px 8px 0;">'
                 '<span style="font-family:monospace;font-size:10px;color:#2d8a5e;'
                 'background:#f0faf5;border:1px solid #b8e8d0;border-radius:4px;'
-                'padding:2px 6px;" id="aruvi-timer-final">--:--</span>'
+                f'padding:2px 6px;" id="aruvi-timer-final">{_final_mmss}</span>'
                 '</div>'
                 + '</div></div>'
-                + f'<script>(function(){{'
-                f'if(window._aruviTimerInterval){{clearInterval(window._aruviTimerInterval);'
-                f'window._aruviTimerInterval=null;}}'
-                f'var s=Math.floor((Date.now()-{_gen_start_ms})/1000);'
-                f'var m=Math.floor(s/60);var sc=s%60;'
-                f'var el=document.getElementById("aruvi-timer-final");'
-                f'if(el){{el.textContent=(m<10?"0"+m:m)+":"+(sc<10?"0"+sc:sc);}}'
-                f'}})();</script>'
             )
             progress_placeholder.markdown(PROGRESS_HTML_DONE, unsafe_allow_html=True)
+            # Stop the live ticker iframe and remove the floating badge it
+            # injected into the parent document, so the only visible time is
+            # the static green final-time inside the completion box.
+            # Clear the live ticker iframe — the static green final-time inside
+            # the completion box now shows the elapsed time.
+            timer_placeholder.empty()
         except Exception as _je:
             progress_placeholder.empty()
+            # Tear down the live timer + floating badge on the error path too,
+            # so the ticker doesn't keep running after generation has aborted.
+            try:
+                timer_placeholder.empty()
+                components.html(
+                    '<script>try{'
+                    'if(window.parent && window.parent.document){'
+                    '  var f=window.parent.document.getElementById("aruvi-timer-fixed");'
+                    '  if(f){f.remove();}'
+                    '}'
+                    '}catch(e){}</script>',
+                    height=0,
+                    scrolling=False,
+                )
+            except Exception:
+                pass
             # ── DEBUG: dump full raw output to file so we can inspect it ──────
             try:
                 import datetime as _dt
@@ -975,9 +1037,27 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
                     {"time": ph.get("minutes", ""), "desc": ph.get("description", "")}
                     for ph in (p.get("phases") or [])
                 ]
-                # Anchor display: §-locators joined ("§5.1" or "§5.4, §5.5")
+                # Anchor display: §-locators joined ("§5.1" or "§5.4, §5.5").
+                # Constitution shape is [{"ref": "§5.1", "title": "..."}], but
+                # older saved plans may still hold plain strings — handle both.
                 _segs = p.get("textbook_segments") or []
-                _anchor = ", ".join(_segs) if isinstance(_segs, list) else str(_segs)
+                if isinstance(_segs, list):
+                    _seg_refs = [
+                        (s.get("ref") or "").strip() if isinstance(s, dict)
+                        else str(s).strip()
+                        for s in _segs
+                    ]
+                    _anchor = ", ".join(r for r in _seg_refs if r)
+                    # Collect section titles for display (prefer title over ref)
+                    _seg_titles = [
+                        (s.get("title") or "").strip() if isinstance(s, dict)
+                        else ""
+                        for s in _segs
+                    ]
+                    _section_title = ", ".join(t for t in _seg_titles if t)
+                else:
+                    _anchor = str(_segs)
+                    _section_title = ""
                 # Build a teacher-facing list of textbook items used in class,
                 # rendered by book_ref (NEVER by internal id) per LP Rule 10.
                 _items_inclass = p.get("textbook_items_in_class") or []
@@ -1012,6 +1092,7 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
                     # The HTML may safely ignore unknown keys; new renderers can
                     # use these for richer display.
                     "is_mathematics":          True,
+                    "section_title":           _section_title,
                     "section_goal":            p.get("section_goal", ""),
                     "pedagogical_method":      p.get("pedagogical_method", ""),
                     "textbook_segments":       _segs,
@@ -1162,6 +1243,22 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
                 # Teacher-facing provenance line: book_ref if textbook-lifted,
                 # blank if composed. NEVER expose internal source_ref.
                 _bref = it.get("book_ref", "") if it.get("source") == "textbook" else ""
+                # ── Parse teacher_guide into structured guide object ──────────
+                # teacher_guide is a pipe-delimited string: goal | expected answer | inclusivity
+                _tg = it.get("teacher_guide", "") or ""
+                _tg_parts = [p.strip() for p in _tg.split(" | ")]
+                _tg_goal        = _tg_parts[0] if len(_tg_parts) > 0 else ""
+                _tg_expected    = _tg_parts[1] if len(_tg_parts) > 1 else ""
+                _tg_inclusivity = _tg_parts[2] if len(_tg_parts) > 2 else ""
+                # Strip the "Expected answer: " prefix if present (added by constitution)
+                # so the HTML renderer can re-add the label consistently
+                if _tg_expected.lower().startswith("expected answer:"):
+                    _tg_expected = _tg_expected[len("expected answer:"):].strip()
+                _maths_guide = {
+                    "goal":         _tg_goal,
+                    "expected_answer": _tg_expected,
+                    "inclusivity":  _tg_inclusivity,
+                }
                 _qs.append({
                     "type":               _qtype,
                     "question":           _prompt,
@@ -1188,17 +1285,14 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
                         ))
                     ),
                     "cognitive_demand":         "",
-                    "guide":                    it.get("guide", {}),
+                    "guide":                    _maths_guide,
                     "expected_elements":        it.get("expected_elements", []),
                     "look_for":                 [],
                     "what_each_option_reveals": (
                         (it.get("guide") or {}).get("what_each_option_reveals", {})
                         or {}
                     ),
-                    "inclusivity": (
-                        (it.get("guide") or {}).get("inclusivity", "")
-                        or ""
-                    ),
+                    "inclusivity":              _tg_inclusivity,
                     "visual_stimulus":          it.get("visual_stimulus", None),
                     "correct_answer":           "",
                     "implied_lo":               "",
@@ -1207,6 +1301,8 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
                     "source":                   it.get("source", ""),
                     "source_ref":               it.get("source_ref", ""),
                     "book_ref":                 it.get("book_ref", ""),
+                    "section_ref":              it.get("section_ref", ""),
+                    "section_title":            it.get("section_title", ""),
                     "section_refs":             it.get("section_refs", []),
                     "scenario":                 it.get("scenario", ""),
                     "sub_parts":                it.get("sub_parts", []),
