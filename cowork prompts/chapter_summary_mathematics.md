@@ -14,7 +14,7 @@ IX–X → `secondary`.
 | Item | Path |
 |------|------|
 | Chapter PDFs | `mnt/data/knowledge_commons/textbooks/mathematics/{grade}/` |
-| Output | `mnt/data/mirror/chapters/mathematics/{grade}/summaries/ch_NN_summary.json` |
+| Output | `mnt/data/mirror/chapters/mathematics/{grade}/summaries/ch_NN_summary.txt` |
 
 ## Step 1 — Title and sections
 
