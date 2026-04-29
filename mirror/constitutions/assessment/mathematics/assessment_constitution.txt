@@ -1,16 +1,30 @@
-ARUVI — MATHEMATICS ASSESSMENT CONSTITUTION · VERSION 3.1
+ARUVI — MATHEMATICS ASSESSMENT CONSTITUTION · VERSION 3.2
 Stages: Foundational, Middle, Secondary
 
 ================================================================================
 DESIGN PRINCIPLE
 ================================================================================
 
-One assessment item per goal in `coverage_handoff`. Each item is freshly
-generated to mirror the structure of its `anchor_book_ref` exercise.
+One assessment item per goal in `coverage_handoff`. Each item carries TWO
+distinct artefacts:
+
+  1. A freshly generated, type-permitted question grounded in the
+     section's `prose_summary` (and the chapter's worked-example
+     methods). This is the student-facing question.
+
+  2. An `exercise` companion block — a teacher-facing pointer to an
+     actual textbook item (exercise, worked example, or activity)
+     drawn from the LP handoff. The teacher can route the student to
+     this item as parallel practice.
+
+The two artefacts are different in nature: the question is generated at
+run time from prose; the exercise is the book's own item shown via
+`book_ref` + `description`. The handoff anchor seeds the exercise
+companion only — it does NOT constrain question generation.
+
 The textbook's answer key remains the canonical solution; Aruvi's only
-answer artefact is a one-line `teacher_guide`.  Items
-render to the teacher using `book_ref`; internal IDs (`anchor_id`)
-stay in JSON only.
+answer artefact is a structured `teacher_guide`. Items render to the
+teacher using `book_ref`; internal IDs (`anchor_id`) stay in JSON only.
 
 
 ================================================================================
@@ -19,12 +33,13 @@ INPUTS
 
 1. LP JSON → `coverage_handoff` (three clusters, each with a `goals`
    array carrying `section_ref`, `section_title`, `goal`, `anchor_id`,
-   `anchor_book_ref`). Pass-through fields (`section_ref`,
-   `section_title`, `goal`, `anchor_id`, `anchor_book_ref`) are
-   copied verbatim into each item.
-2. Summary JSON → `enumerated_exercises` (looked up by `anchor_id` for
-   the anchor's `description`); `prose_summary` to ground generated
-   stems in the chapter's own methods and contexts.
+   `anchor_book_ref`, `anchor_description`). Pass-through fields
+   (`section_ref`, `section_title`, `goal`) are copied verbatim into
+   each item. The trio (`anchor_id`, `anchor_book_ref`,
+   `anchor_description`) feeds the `exercise` companion only.
+2. Summary JSON → `prose_summary` (the source of truth for question
+   content). The `enumerated_*` arrays are NOT consulted by the
+   assessment generator — anchor resolution happens in the LP.
 
 
 ================================================================================
@@ -51,21 +66,27 @@ No additional items. No bonus / mixed-review / chapter-wrap questions.
 
 
 ================================================================================
-RULE 3 | ANCHORED GENERATION
+RULE 3 | PROSE-GROUNDED GENERATION
 ================================================================================
 
-Each item's `prompt` is freshly generated. It MUST mirror the
-STRUCTURE of the exercise identified by `anchor_id` (looked up in
-`enumerated_exercises` for its `description`): same operation, same
-difficulty band, same kind of context (numerical / geometric /
-word-problem). It MUST NOT copy the anchor's specific numbers, named
-entities, or wording. If the anchor carries sub-parts ((a)/(b)/(c)),
-mirror only the operation pattern — emit a single-prompt item, not
-a multi-part one.
+Each item's `prompt` is freshly generated. It MUST be solvable using
+only methods, definitions, vocabulary, and worked-example procedures
+present in the section's `prose_summary` (plus prior sections'
+prose_summary, since later sections build on earlier ones in the same
+chapter). Out-of-chapter procedures, properties, and notations are
+PROHIBITED.
 
-The prompt MUST be solvable using only methods present in the
-chapter's `prose_summary` or its worked examples. Out-of-chapter
-procedures, properties, and notations are PROHIBITED.
+The `anchor_id` from the handoff does NOT constrain the prompt.
+Anchor data feeds only the `exercise` companion (Rule 9). The prompt
+must NOT copy the anchor's specific numbers, named entities, or
+wording — and it need not mirror the anchor's structure.
+
+The prompt's cognitive level MUST match `goal`:
+  recall  → retrieve a fact, definition, or directly-stated property.
+  reason  → construct an argument, justify a claim, or derive a
+            relationship using chapter methods.
+  apply   → use a chapter procedure or property in a fresh
+            numerical, geometric, or word context.
 
 
 ================================================================================
@@ -81,93 +102,109 @@ Before emitting each item, the system MUST:
 4. Then emit the item with `verified: true`.
 
 The model's reasoning during verification MUST NOT appear in any
-emitted field. Only the one-line `teacher_guide` reflects the
-verified answer.
+emitted field. Only `teacher_guide.expected_answer` and
+`teacher_guide.method_one_line` reflect the verified answer.
 
 If the two routes disagree, OR an alternate route cannot be
 constructed, the item falls back per Rule 5.
 
 
 ================================================================================
-RULE 5 | FALLBACK
+RULE 5 | FALLBACK (VERIFICATION-FAILURE ONLY)
 ================================================================================
 
-When verification fails, OR `anchor_id == ""`:
+When verification fails:
 
-- `prompt`           = ""
-- `visual_stimulus`  = ""
-- `verified`         = false
-- `teacher_guide`    = `"[Fallback] " + <goal-sentence> + " | Refer to the book exercise(s) anchored to " + section_ref + ". | " + <inclusivity>`
+- `prompt`             = ""
+- `visual_stimulus`    = ""
+- `options`            = []
+- `verified`           = false
+- `teacher_guide.expected_answer`   = ""
+- `teacher_guide.method_one_line`   = ""
+- `teacher_guide.what_each_option_reveals` = {}
+- `teacher_guide.inclusivity`       = `"[Verification failed] Refer to the book exercise(s) anchored to " + section_ref + "."`
 
-Coverage is preserved (the goal still appears in the assessment) but
-no unverified prompt is emitted.
+The `exercise` companion block is still emitted from the handoff
+anchor (if any), so the teacher always has a textbook fallback.
+
+Note: an empty `anchor_id` in the handoff does NOT trigger fallback.
+Every goal still gets a generated typed question grounded in
+`prose_summary`. The exercise companion is simply omitted (Rule 9).
 
 
 ================================================================================
 RULE 6 | TEACHER GUIDE
 ================================================================================
 
-Every non-fallback item carries `teacher_guide` as a single string,
-three parts joined by `" | "`:
+Every non-fallback item carries `teacher_guide` as a JSON object:
 
-  Part 1 — goal-sentence: a one-line restatement of what this item
-           checks, derived from `goal` and the section's
-           `prose_summary` opening clause. 
+  teacher_guide.expected_answer:
+    Words and numbers only. No figure or diagram, even when the
+    prompt has a `visual_stimulus`. The verified answer in plain
+    prose.
 
-  Part 2 — `"Expected answer: " + <answer in words and numbers>
-           + ". " + <one-line method>`. Words and numbers only — no
-           figure or diagram, even when the prompt has a
-           `visual_stimulus`.
+  teacher_guide.method_one_line:
+    A single sentence naming the chapter method that yields the
+    answer (e.g., "Apply the linear-pair sum and vertically-opposite
+    equality.").
 
-  Part 3 — `inclusivity`: composed at generation time, one sentence
-           (≤ 25 words), covering BOTH a scaffold for the struggling
-           student AND a stretch / extension. Vary the surface form
-           across items so the assessment does not read canned. Stay
-           within the per-goal intent below:
-             recall → scaffold = let the student look back at taught
-                       content; extension = ask for one more example
-                       in their own words.
-             reason → scaffold = a verbal-thinking aid (pair-share,
-                       talk-before-write); extension = a what-if
-                       (alter one premise, re-explain).
-             apply  → scaffold = an alternate representation (visual /
-                       manipulative / number-line); extension = a
-                       parameter-tweak (change one number / unit /
-                       constraint and re-solve).
+  teacher_guide.what_each_option_reveals:
+    For MCQ items only — a JSON object keyed by option label
+    ("A", "B", "C", "D"), each value a one-sentence diagnostic of
+    what the student understanding (or misconception) that option
+    reveals. For non-MCQ items, this is an empty object {}.
+
+  teacher_guide.inclusivity:
+    One sentence (≤ 25 words) covering BOTH a scaffold for the
+    struggling student AND a stretch / extension. Vary the surface
+    form across items so the assessment does not read canned. Stay
+    within the per-goal intent below:
+      recall → scaffold = let the student look back at taught
+                content; extension = ask for one more example in
+                their own words.
+      reason → scaffold = a verbal-thinking aid (pair-share,
+                talk-before-write); extension = a what-if (alter one
+                premise, re-explain).
+      apply  → scaffold = an alternate representation (visual /
+                manipulative / number-line); extension = a
+                parameter-tweak (change one number / unit /
+                constraint and re-solve).
 
 Do NOT include C-codes or competency labels anywhere in
 `teacher_guide`. Do NOT include the model's full reasoning — only
-the one-line method summary in Part 2.
+the one-line method summary.
 
 
 ================================================================================
 RULE 7 | VISUAL STIMULUS
 ================================================================================
 
-`visual_stimulus` is non-empty only when the prompt genuinely needs a
-table, line, or geometric figure.
+`visual_stimulus` is non-empty only when the prompt genuinely needs
+tabular data (a value table, comparison grid, or computation table).
 
-Three permitted formats — choose by content type:
+Permitted formats:
 
 - Pipe-delimited table: 2+ lines, every line contains "|", first row
-  is the header. Use for tabular data, comparison grids, value tables.
+  is the header. Use only for tabular data the student must read or
+  fill in.
 
-- Inline SVG: a complete `<svg ...>...</svg>` markup string.
-  PREFERRED for lines, angles, polygons, number lines, fraction bars,
-  coordinate diagrams. Use a `viewBox` so the figure scales; keep it
-  under ~30 elements; label points and measurements in-figure with
-  `<text>`. The figure MUST be parallel to the anchor's figure (same
-  geometric kind, different specifics) — not a copy.
+- Empty string "": no visual stimulus. This is the default for almost
+  all geometry items — the figure, if needed, is reached via the
+  `exercise` companion block (Rule 9), which points the teacher to a
+  textbook figure they can show or reference.
 
-- Italic text spec: prose description naming each labelled element,
-  angle / length marker, and given measurement. Use only when the
-  figure is genuinely uncommon and SVG would be brittle.
+PROHIBITED formats:
 
-The prompt references the stimulus with a short phrase ("Refer to
-the table provided.", "Use the figure shown."). The stimulus MUST
-NOT be embedded in or duplicated inside `prompt`. The expected
-answer in `teacher_guide` is words and numbers only — never a second
-visual.
+- Inline SVG (any `<svg ...>...</svg>` markup).
+- Italic-text prose specs of figures.
+- ASCII art.
+- Any image markup, base64-encoded image, or external image
+  reference.
+
+If the question genuinely requires the student to look at a figure,
+the prompt should reference the textbook directly (e.g., "Refer to
+Fig. 5.6 in §5.3 of your textbook") OR rely on the `exercise`
+companion to provide that pointer to the teacher.
 
 
 ================================================================================
@@ -175,9 +212,70 @@ RULE 8 | RENDERING USES book_ref
 ================================================================================
 
 `anchor_id` is an internal join key — it MUST NEVER appear in any
-prose the teacher reads. Items render `anchor_book_ref` as the
-"see also" provenance line where applicable, and reference no
-internal IDs in `prompt` or `teacher_guide`.
+prose the teacher reads. The `exercise` companion renders
+`exercise.book_ref` as the locator and `exercise.description` as the
+content summary; no internal ID is shown.
+
+The `prompt` and `teacher_guide` reference no internal IDs.
+
+
+================================================================================
+RULE 9 | EXERCISE COMPANION
+================================================================================
+
+Each item carries:
+
+  "exercise": {
+    "book_ref":    string,   // e.g. "Activity 2, p.111" — empty when no anchor
+    "description": string    // textbook item description — empty when no anchor
+  }
+
+Both fields are sourced verbatim from the LP handoff:
+
+  exercise.book_ref    = handoff.goal.anchor_book_ref
+  exercise.description = handoff.goal.anchor_description
+
+When both are empty (the LP exhausted the section's exercise → worked
+example → activity gamut), the renderer omits the exercise card
+silently — no "[Fallback]" text, no explanation. The generated
+question in the same item still stands on its own.
+
+The exercise companion is a teacher-facing pointer only. It does NOT
+constrain the prompt (Rule 3). Rendering must show `book_ref` (bold)
+followed by `description`; the label "Exercise" precedes the card.
+
+
+================================================================================
+RULE 10 | QUESTION TYPE
+================================================================================
+
+Each item carries `question_type` from this fixed set:
+
+  MCQ        — Multiple Choice Question (4 options, exactly one correct)
+  SCR        — Short Constructed Response (1–3 sentences or short working)
+  ECR        — Extended Constructed Response (paragraph or multi-step argument)
+  NUM        — Numerical answer with shown working (math-specific)
+
+Default mapping by `goal`:
+
+  recall → MCQ (preferred) or SCR
+  reason → SCR or ECR
+  apply  → NUM (preferred for numerical/computational) or SCR
+
+Type-specific required fields:
+
+  MCQ:
+    options: [ {label, text, is_correct}, … ]   // exactly 4 options;
+                                                // exactly one
+                                                // is_correct: true
+    teacher_guide.what_each_option_reveals:
+        {A:..., B:..., C:..., D:...}
+
+  SCR / ECR / NUM:
+    No additional fields. The student answers in the response area;
+    the teacher reads the verified answer from
+    `teacher_guide.expected_answer` and the chapter method from
+    `teacher_guide.method_one_line`.
 
 
 ================================================================================
@@ -193,23 +291,35 @@ ASSESSMENT JSON SCHEMA
     {
       "section_code":  "A" | "B" | "C",
       "section_title": "Recall and Apply" | "Reason and Explain" | "Apply in Context",
-      "note":          string,                 // empty-section note if any, else ""
+      "note":          string,                  // empty-section note if any, else ""
       "items": [
         {
-          "id":              string,           // e.g. "Q-A-1"
-          "section_ref":     string,           // e.g. "§5.3"
-          "section_title":   string,           // textbook section name,
-                                               // e.g. "Alternate Interior Angles";
-                                               // copied verbatim from handoff
-                                               // (distinct from the outer
-                                               // section_title which is the
-                                               // rubric name)
+          "id":              string,            // e.g. "Q-A-1"
+          "section_ref":     string,            // e.g. "§5.3"
+          "section_title":   string,            // textbook section name; copied
+                                                // verbatim from handoff
           "goal":            "recall" | "reason" | "apply",
-          "anchor_id":       string,           // e.g. "E-3"; "" on fallback
-          "anchor_book_ref": string,           // e.g. "Figure it Out Q3, §5.1 p.107"; "" on fallback
-          "prompt":          string,           // generated; "" on fallback
-          "visual_stimulus": string,           // "" when not needed
-          "teacher_guide":   string,           // composed per Rule 6 (or Rule 5 on fallback)
+          "question_type":   "MCQ" | "SCR" | "ECR" | "NUM",
+          "prompt":          string,            // generated; "" only on Rule 5 fallback
+          "visual_stimulus": string,            // "" or pipe-table only
+
+          "options":         [ {"label": string,
+                                "text":  string,
+                                "is_correct": boolean} ],   // [] unless MCQ
+
+          "teacher_guide": {
+            "expected_answer":          string,
+            "method_one_line":          string,
+            "what_each_option_reveals": { "A": string, "B": string,
+                                          "C": string, "D": string } | {},
+            "inclusivity":              string
+          },
+
+          "exercise": {
+            "book_ref":    string,                          // "" when no anchor
+            "description": string                           // "" when no anchor
+          },
+
           "verified":        boolean
         }
       ]
@@ -220,5 +330,5 @@ ASSESSMENT JSON SCHEMA
 
 ================================================================================
 Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
-Mathematics Assessment Constitution · Version 3.1 · Internal Document
+Mathematics Assessment Constitution · Version 3.2 · Internal Document
 ================================================================================

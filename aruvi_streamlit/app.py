@@ -80,7 +80,7 @@ def resolve_paths(grade: str, subject: str, chapter_number: int) -> dict:
         "lp_constitution":  mirror / f"constitutions/lesson_plan/{subj_f}/lesson_plan_constitution.txt",
         "assessment_const": mirror / f"constitutions/assessment/{subj_f}/assessment_constitution.txt",
         "pedagogy":         mirror / f"framework/{subj_f}/{stage}/pedagogy_{stage}_{subj_f}.txt",
-        # Mathematics summaries are stored as .json; all others as .txt
+        # Mathematics summaries are .json (structured for LP constitution); all others are .txt
         "chapter_summary":  (
             mirror / f"chapters/{subj_f}/{grade_f}/summaries/ch_{nn}_summary.json"
             if subj_f == "mathematics"
@@ -543,7 +543,7 @@ Produce your entire output as a single valid JSON object with this top-level str
   "period_schedule": <derived from teacher period schedule above>,
   "lesson_plan": {{ "periods": [ <one object per period per LP constitution> ] }},
   "coverage_handoff": {{
-    "section_a": {{ "goal_cluster": ["recall"], "goals": [ {{"section_ref": "§X.Y", "goal": "recall", "anchor_id": "E-N", "anchor_book_ref": "..."}} ] }},
+    "section_a": {{ "goal_cluster": ["recall"], "goals": [ {{"section_ref": "§X.Y", "section_title": "...", "goal": "recall", "anchor_id": "E-N | WE-N | A-N", "anchor_book_ref": "...", "anchor_description": "..."}} ] }},
     "section_b": {{ "goal_cluster": ["reason"], "goals": [ ... ] }},
     "section_c": {{ "goal_cluster": ["apply"],  "goals": [ ... ] }}
   }},
@@ -551,13 +551,19 @@ Produce your entire output as a single valid JSON object with this top-level str
 }}
 
 For Mathematics, `coverage_handoff` is REQUIRED per LP Constitution
-Rule 11 — emit it every time, even if a cluster has no goals.
+Rule 11 — emit it every time, even if a cluster has no goals. Anchor
+selection walks `enumerated_exercises` → `enumerated_worked_examples`
+→ `enumerated_activities` in priority order; emit empty strings only
+when all three pools are exhausted for the section.
 For Science and Social Sciences, `coverage_handoff` MAY be omitted.
 
 LENGTH CONSTRAINTS (strictly enforced to keep output compact):
 - Each phase `description`: 2–3 sentences maximum.
 - Each `teacher_notes` field: 2–3 sentences maximum.
-- Each assessment `teacher_guide`: 3 parts joined by " | ", each part one sentence only.
+- Each Mathematics assessment `teacher_guide`: structured object per
+  Assessment Constitution v3.2 Rule 6 — {{ expected_answer,
+  method_one_line, what_each_option_reveals (MCQ only), inclusivity }}.
+  Each string field one sentence only.
 
 Output only the raw JSON object. No markdown. No prose. No section headers. No ```json fences.
 """
@@ -597,8 +603,8 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             '<!doctype html><html><head><style>'
             'html,body{margin:0;padding:0;background:transparent;text-align:right;}'
             '#aruvi-timer{'
-            '  font-family:monospace;font-size:10px;color:#b0ada8;'
-            '  background:#f2f0ec;border:1px solid #e5e2dd;border-radius:4px;'
+            '  font-family:monospace;font-size:10px;color:#000000;'
+            '  background:transparent;border:none;border-radius:0;'
             '  padding:3px 8px;display:inline-block;margin:4px 6px 0 0;'
             '}'
             '</style></head><body>'
@@ -627,7 +633,7 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             "<style>"
             "iframe[srcdoc*='aruvi-timer']{"
             "  position:fixed !important;"
-            "  top:300px !important;"
+            "  top:340px !important;"
             "  right:24px !important;"
             "  width:96px !important;"
             "  height:30px !important;"
@@ -1240,35 +1246,51 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
                     continue
                 _qtype = it.get("question_type", "")
                 _prompt = it.get("prompt", "")
-                # Teacher-facing provenance line: book_ref if textbook-lifted,
-                # blank if composed. NEVER expose internal source_ref.
-                _bref = it.get("book_ref", "") if it.get("source") == "textbook" else ""
-                # ── Parse teacher_guide into structured guide object ──────────
-                # teacher_guide is a pipe-delimited string: goal | expected answer | inclusivity
-                _tg = it.get("teacher_guide", "") or ""
-                _tg_parts = [p.strip() for p in _tg.split(" | ")]
-                _tg_goal        = _tg_parts[0] if len(_tg_parts) > 0 else ""
-                _tg_expected    = _tg_parts[1] if len(_tg_parts) > 1 else ""
-                _tg_inclusivity = _tg_parts[2] if len(_tg_parts) > 2 else ""
-                # Strip the "Expected answer: " prefix if present (added by constitution)
-                # so the HTML renderer can re-add the label consistently
-                if _tg_expected.lower().startswith("expected answer:"):
-                    _tg_expected = _tg_expected[len("expected answer:"):].strip()
+                # Exercise companion (Constitution v3.2 Rule 9) — pointer to
+                # textbook item that anchors this goal. Both fields empty when
+                # the LP gamut walk found no anchor.
+                _ex            = it.get("exercise") or {}
+                _ex_book_ref   = _ex.get("book_ref", "") or ""
+                _ex_description = _ex.get("description", "") or ""
+                # ── Parse structured teacher_guide (v3.2) ────────────────────
+                # teacher_guide is a JSON object:
+                #   { expected_answer, method_one_line,
+                #     what_each_option_reveals, inclusivity }
+                # Tolerate legacy piped string for any saved plans pre-v3.2.
+                _tg = it.get("teacher_guide", {}) or {}
+                if isinstance(_tg, str):
+                    _parts = [p.strip() for p in _tg.split(" | ")]
+                    _tg_legacy_expected = _parts[1] if len(_parts) > 1 else ""
+                    if _tg_legacy_expected.lower().startswith("expected answer:"):
+                        _tg_legacy_expected = _tg_legacy_expected[len("expected answer:"):].strip()
+                    _tg = {
+                        "expected_answer":          _tg_legacy_expected,
+                        "method_one_line":          "",
+                        "what_each_option_reveals": {},
+                        "inclusivity":              _parts[2] if len(_parts) > 2 else "",
+                    }
+                _tg_expected      = _tg.get("expected_answer", "") or ""
+                _tg_method        = _tg.get("method_one_line", "") or ""
+                _tg_what_reveals  = _tg.get("what_each_option_reveals", {}) or {}
+                _tg_inclusivity   = _tg.get("inclusivity", "") or ""
                 _maths_guide = {
-                    "goal":         _tg_goal,
-                    "expected_answer": _tg_expected,
-                    "inclusivity":  _tg_inclusivity,
+                    "expected_answer":          _tg_expected,
+                    "method_one_line":          _tg_method,
+                    "what_each_option_reveals": _tg_what_reveals,
+                    "inclusivity":              _tg_inclusivity,
                 }
                 _qs.append({
                     "type":               _qtype,
                     "question":           _prompt,
+                    # OPEN_TASK is not a Mathematics question type per Constitution
+                    # v3.2 Rule 10; these fields stay empty for math items.
                     "task":               "",
-                    "scaffold":           it.get("scaffold", ""),
+                    "scaffold":           "",
                     "format_of_output":   [],
                     "task_instructions":  "",
-                    "options":            it.get("options", []),
-                    "annotation":         _bref,
-                    "period_ref":         _bref,
+                    "options":            it.get("options", []) or [],
+                    "annotation":         _ex_book_ref,
+                    "period_ref":         _ex_book_ref,
                     "title":              (
                         (_qtype + ": " + (_prompt[:56] + "…" if len(_prompt) > 56 else _prompt))
                         if _prompt else _qtype
@@ -1279,37 +1301,26 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
                              if isinstance(o, dict) and o.get("is_correct")),
                             ""
                         )
-                        if _qtype == "MCQ" else
-                        (it.get("expected_answer", "") or "\n".join(
-                            str(e) for e in (it.get("expected_elements") or [])
-                        ))
+                        if _qtype == "MCQ" else _tg_expected
                     ),
                     "cognitive_demand":         "",
                     "guide":                    _maths_guide,
-                    "expected_elements":        it.get("expected_elements", []),
-                    "look_for":                 [],
-                    "what_each_option_reveals": (
-                        (it.get("guide") or {}).get("what_each_option_reveals", {})
-                        or {}
-                    ),
+                    "what_each_option_reveals": _tg_what_reveals,
                     "inclusivity":              _tg_inclusivity,
                     "visual_stimulus":          it.get("visual_stimulus", None),
                     "correct_answer":           "",
                     "implied_lo":               "",
                     # ── Maths-specific question fields surfaced to renderer ──
                     "is_mathematics":           True,
-                    "source":                   it.get("source", ""),
-                    "source_ref":               it.get("source_ref", ""),
-                    "book_ref":                 it.get("book_ref", ""),
                     "section_ref":              it.get("section_ref", ""),
                     "section_title":            it.get("section_title", ""),
-                    "section_refs":             it.get("section_refs", []),
-                    "scenario":                 it.get("scenario", ""),
-                    "sub_parts":                it.get("sub_parts", []),
-                    "construction_steps_expected": it.get("construction_steps_expected", []),
-                    "verification_check":       it.get("verification_check", ""),
-                    "expected_answer":          it.get("expected_answer", ""),
-                    "acceptable_variants":      it.get("acceptable_variants", []),
+                    "goal":                     it.get("goal", ""),
+                    "expected_answer":          _tg_expected,
+                    # Exercise companion (Constitution v3.2 Rule 9)
+                    "exercise":                 {
+                        "book_ref":    _ex_book_ref,
+                        "description": _ex_description,
+                    },
                 })
             _types_in_order = []
             for q in _qs:

@@ -14,12 +14,12 @@ IX–X → `secondary`.
 | Item | Path |
 |------|------|
 | Chapter PDFs | `mnt/data/knowledge_commons/textbooks/mathematics/{grade}/` |
-| Output | `mnt/data/mirror/chapters/mathematics/{grade}/summaries/ch_NN_summary.txt` |
+| Output | `mnt/data/mirror/chapters/mathematics/{grade}/summaries/ch_NN_summary.json` |
 
 ## Step 1 — Title and sections
 
 Extract the chapter title verbatim from the opening page. List every
-section (§N) and subsection (§N.M) heading in textbook order. This is
+section (section N) and subsection (section N.M) heading in textbook order. This is
 the summary's scope boundary — nothing below may reference a heading
 not in this list.
 
@@ -53,11 +53,13 @@ Record:
 
 `book_ref` is the textbook's own locator for the item — the label a
 teacher with the book in hand would use to find it. Format: banner +
-question number (where applicable) + page number. Examples:
+question number (where applicable) + page number.    Examples:
 
 - Activity → `"Activity 1, p.105"`
-- Worked example → `"Example 1, §5.8 p.121"`
-- Exercise → `"<banner-name from the stage's row above> Q<n>, §<sec> p.<page>"`
+- Worked example → `"Example 1, section 5.8 p.121"`
+- Exercise → `"<banner-name from the stage's row above> Q<n>, section <sec> p.<page>"`
+
+For exercises, if a question is unnumbered, omit the number.
 
 `book_ref` is what downstream LP and assessment outputs render to the
 teacher; the internal `id` is a join key only and never appears in
@@ -134,13 +136,13 @@ Two goals MUST NOT be used to:
   "chapter_number": 5,
   "chapter_title": "Parallel and Intersecting Lines",
   "sections": [
-    { "ref": "§5.1", "title": "...", "section_goal": ["recall", "reason"] },
-    { "ref": "§5.2", "title": "...", "section_goal": ["recall"] }
+    { "ref": "section 5.1", "title": "...", "section_goal": ["recall", "reason"] },
+    { "ref": "section 5.2", "title": "...", "section_goal": ["recall"] }
   ],
   "prose_summary": "<800–1200 words>",
-  "enumerated_activities":      [ { "id": "A-1",  "source_section": "§5.1", "book_ref": "Activity 1, p.105",                  "description": "..." } ],
-  "enumerated_worked_examples": [ { "id": "WE-1", "source_section": "§5.8", "book_ref": "Example 1, §5.8 p.121",              "description": "..." } ],
-  "enumerated_exercises":       [ { "id": "E-1",  "source_section": "§5.1", "book_ref": "Figure it Out Q1, §5.1 p.107",      "description": "..." } ],
+  "enumerated_activities":      [ { "id": "A-1",  "source_section": "section 5.1", "book_ref": "Activity 1, p.105",                  "description": "..." } ],
+  "enumerated_worked_examples": [ { "id": "WE-1", "source_section": "section 5.8", "book_ref": "Example 1, section 5.8 p.121",              "description": "..." } ],
+  "enumerated_exercises":       [ { "id": "E-1",  "source_section": "section 5.1", "book_ref": "Figure it Out Q1, section 5.1 p.107",      "description": "..." } ],
   "conceptual_demand": 2,
   "activity_count": 5,
   "demo_count": 1,

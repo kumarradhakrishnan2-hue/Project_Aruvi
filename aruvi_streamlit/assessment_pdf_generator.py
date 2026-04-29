@@ -27,21 +27,6 @@ from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_RIGHT
 from pypdf import PdfReader, PdfWriter
 
-# ── Optional SVG support (Mathematics visual_stimulus) ───────────────────────
-# svglib converts an SVG markup string into a ReportLab Drawing flowable so
-# the figure renders as an actual vector graphic in the PDF (not as text).
-# If svglib is not installed at runtime we fall back to an italic-text render
-# of the SVG markup — ensuring no crash and no behaviour change for Science
-# or Social Sciences (whose visual_stimulus is never SVG).
-try:
-    from svglib.svglib import svg2rlg
-    from reportlab.graphics.shapes import Drawing
-    _SVGLIB_OK = True
-except Exception:                      # pragma: no cover — pure safety net
-    svg2rlg     = None
-    Drawing     = None
-    _SVGLIB_OK  = False
-
 # ── Import everything reusable from lp_pdf_generator ─────────────────────────
 from lp_pdf_generator import (
     PAGE_W, PAGE_H, L_MAR, R_MAR, T_MAR, B_MAR,
@@ -163,139 +148,27 @@ def _group_science(items):
 # ──────────────────────────────────────────────────────────────────────────────
 # Visual stimulus renderer
 # ──────────────────────────────────────────────────────────────────────────────
-def _render_svg_stimulus(svg_text: str, uw: float, story: list):
-    """
-    Renders an inline SVG string as an actual vector graphic in the PDF.
-
-    Used by Mathematics visual_stimulus (geometry / number-line / figure
-    items). Wrapped in the same light-grey "Visual stimulus" box that the
-    pipe-table and prose paths use, so the visual treatment is consistent
-    across subjects and stimulus types.
-
-    If svglib is unavailable OR the SVG fails to parse, we degrade to the
-    italic-text rendering of the raw markup so the teacher still sees
-    something meaningful (rather than an empty box or a crash).
-    """
-    drawing = None
-    if _SVGLIB_OK:
-        try:
-            drawing = svg2rlg(io.StringIO(svg_text))
-        except Exception:
-            drawing = None
-
-    lbl_para = Paragraph("<b>Visual stimulus</b>", AST["q_meta"])
-
-    if drawing is None or getattr(drawing, "width", 0) <= 0 \
-            or getattr(drawing, "height", 0) <= 0:
-        # Fallback: render the SVG markup as italic prose so nothing is lost.
-        body_para = Paragraph(
-            _clean_text(svg_text),
-            ParagraphStyle("vs_svg_fallback", fontName="Helvetica-Oblique",
-                           fontSize=7.5, leading=11, textColor=MID),
-        )
-        box = Table([[lbl_para], [body_para]], colWidths=[uw])
-        box.setStyle(TableStyle([
-            ("BACKGROUND",    (0, 0), (-1, -1), colors.HexColor("#f5f5f5")),
-            ("BOX",           (0, 0), (-1, -1), 0.5, HAIRLINE),
-            ("TOPPADDING",    (0, 0), (-1, -1), 4),
-            ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
-            ("LEFTPADDING",   (0, 0), (-1, -1), 6),
-            ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
-            ("VALIGN",        (0, 0), (-1, -1), "TOP"),
-        ]))
-        story.append(box)
-        return
-
-    # Scale the drawing to fit within the available width while preserving
-    # aspect ratio. Cap the rendered width at ~70% of the usable width so a
-    # geometry diagram does not dominate the page; also cap height at 90 mm
-    # to prevent oversized figures from breaking layout.
-    #
-    # IMPORTANT: ReportLab's Drawing clips content to its width/height
-    # bounding box. If we scale the content (via .scale() transform) but
-    # forget to grow the canvas to match, content is silently clipped at
-    # the bottom/right edges. SVGs whose own viewBox extends to the very
-    # edge of the canvas (e.g. line endpoints at y == viewBox-height) are
-    # especially susceptible — anti-aliased pixels of those edge strokes
-    # fall outside the bounding box and disappear.
-    #
-    # We therefore: (1) compute the scale, (2) grow the canvas FIRST by a
-    # small overscan margin, then (3) apply the transform, then (4) set
-    # the final width/height to scale*orig + the overscan. This guarantees
-    # all edge pixels stay inside the bounding box no matter how the SVG
-    # author placed coordinates.
-    target_w = uw * 0.70
-    max_h    = 90 * mm
-
-    orig_w = float(drawing.width)
-    orig_h = float(drawing.height)
-    scale  = target_w / orig_w if orig_w > 0 else 1.0
-    if orig_h * scale > max_h:
-        scale = max_h / orig_h if orig_h > 0 else scale
-
-    # Padding (in source-SVG units) added on every side before scaling.
-    # 4 source units ≈ 4 px in a viewBox-based SVG; enough to capture
-    # stroke widths and any text glyph that overruns its declared y.
-    pad = 6.0
-
-    drawing.translate(pad, pad)
-    drawing.scale(scale, scale)
-    drawing.width  = (orig_w + 2 * pad) * scale
-    drawing.height = (orig_h + 2 * pad) * scale
-    drawing.hAlign = "CENTER"
-
-    # Wrap in a light-grey box. The Drawing flowable centres horizontally
-    # via hAlign; the surrounding 1-col Table draws the box.
-    box = Table([[lbl_para], [drawing]], colWidths=[uw])
-    box.setStyle(TableStyle([
-        ("BACKGROUND",    (0, 0), (-1, -1), colors.HexColor("#f5f5f5")),
-        ("BOX",           (0, 0), (-1, -1), 0.5, HAIRLINE),
-        ("TOPPADDING",    (0, 0), (-1, -1), 4),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
-        ("LEFTPADDING",   (0, 0), (-1, -1), 6),
-        ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
-        ("VALIGN",        (0, 0), (-1, -1), "TOP"),
-        ("ALIGN",         (0, 1), (-1, 1),  "CENTER"),
-    ]))
-    story.append(KeepTogether(box))
-
-
 def _render_visual_stimulus(vs_text: str, uw: float, story: list):
     """
     Renders a visual_stimulus string into story flowables.
 
-    Detection logic (in priority order):
-    - If the text starts with "<svg" (case-insensitive, after stripping), it is
-      treated as inline SVG markup and rendered as an actual vector Drawing
-      (Mathematics path — geometry/figures/number lines).
-    - Else if the text contains pipe characters (|) on more than one line, it
-      is treated as a pipe-delimited table and rendered as a ReportLab Table
-      (Science / Social Sciences / Maths-tables path).
-    - Otherwise it is rendered as italic body text (plain description / caption).
+    Permitted formats per assessment constitutions:
+    - Pipe-delimited table (>=2 lines, every line contains "|") — rendered as
+      a ReportLab Table. Used by Science, Social Sciences, and Mathematics
+      whenever the question genuinely needs tabular data.
+    - Plain prose — rendered as italic body text. Used by Social Sciences
+      where a brief textual stimulus precedes a question.
 
-    The stimulus is always preceded by a light label "Visual stimulus:" and
-    enclosed in a light-grey box so it is visually distinct from question text.
-
-    Backward compatibility: Science / SS visual_stimulus is never SVG (their
-    constitutions only emit pipe tables or prose), so the SVG branch is a
-    no-op for those subjects — behaviour for Science / SS is unchanged.
+    Mathematics no longer permits inline SVG (Constitution v3.2 Rule 7);
+    figures are referenced via the Exercise companion block instead.
     """
     vs = vs_text.strip()
     lines = [ln.strip() for ln in vs.splitlines() if ln.strip()]
 
-    # Detect inline SVG markup (Mathematics) — must come before table check
-    # because an SVG string could theoretically contain a "|" character.
-    is_svg = vs.lower().startswith("<svg") and "</svg>" in vs.lower()
-
     # Detect pipe-table: at least 2 lines, every line contains "|"
-    is_table = (not is_svg) and len(lines) >= 2 and all("|" in ln for ln in lines)
+    is_table = len(lines) >= 2 and all("|" in ln for ln in lines)
 
     story.append(Spacer(1, 3))
-
-    if is_svg:
-        _render_svg_stimulus(vs, uw, story)
-        story.append(Spacer(1, 3))
-        return
 
     if is_table:
         # Parse rows: split on "|", strip each cell
@@ -393,6 +266,73 @@ def _render_visual_stimulus(vs_text: str, uw: float, story: list):
 
 
 # ──────────────────────────────────────────────────────────────────────────────
+# Math response-box helpers (SCR / NUM / ECR student-writing area)
+# ──────────────────────────────────────────────────────────────────────────────
+def _render_math_response_box(uw: float, story: list, lines: int):
+    """
+    Bordered ruled response area that a student writes their answer into.
+    `lines` controls the height (each ruled line ~ 5.5 mm tall).
+    """
+    line_h = 5.5 * mm
+    rows   = [[Paragraph("&nbsp;", AST["q_text"])] for _ in range(lines)]
+    box    = Table(rows, colWidths=[uw], rowHeights=[line_h] * lines)
+    box.setStyle(TableStyle([
+        ("BOX",           (0, 0), (-1, -1), 0.4, HAIRLINE),
+        ("LINEBELOW",     (0, 0), (-1, -2), 0.25, ROW_LINE),  # ruled lines
+        ("LEFTPADDING",   (0, 0), (-1, -1), 6),
+        ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+        ("TOPPADDING",    (0, 0), (-1, -1), 0),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+    ]))
+    story.append(Spacer(1, 3))
+    story.append(box)
+
+
+def _render_math_num_box(uw: float, story: list, working_lines: int):
+    """
+    Two-part response area for NUM items:
+      "Answer: __________"   (single bordered line)
+      [Working box]          (taller bordered area with ruled lines)
+    """
+    # Answer line
+    ans_h    = 6.5 * mm
+    ans_para = Paragraph("<b>Answer:</b>", AST["q_text"])
+    ans_tbl  = Table(
+        [[ans_para, Paragraph("&nbsp;", AST["q_text"])]],
+        colWidths=[uw * 0.12, uw * 0.88],
+        rowHeights=[ans_h],
+    )
+    ans_tbl.setStyle(TableStyle([
+        ("LINEBELOW",     (1, 0), (1, 0), 0.4, HAIRLINE),  # underline answer slot
+        ("LEFTPADDING",   (0, 0), (-1, -1), 0),
+        ("RIGHTPADDING",  (0, 0), (-1, -1), 4),
+        ("TOPPADDING",    (0, 0), (-1, -1), 2),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+        ("VALIGN",        (0, 0), (-1, -1), "BOTTOM"),
+    ]))
+
+    # Working box: label row + ruled body
+    line_h    = 5.5 * mm
+    body_rows = [[Paragraph("&nbsp;", AST["q_text"])] for _ in range(working_lines)]
+    body_tbl  = Table(body_rows, colWidths=[uw], rowHeights=[line_h] * working_lines)
+    body_tbl.setStyle(TableStyle([
+        ("BOX",           (0, 0), (-1, -1), 0.4, HAIRLINE),
+        ("LINEBELOW",     (0, 0), (-1, -2), 0.25, ROW_LINE),
+        ("LEFTPADDING",   (0, 0), (-1, -1), 6),
+        ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+        ("TOPPADDING",    (0, 0), (-1, -1), 0),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+    ]))
+    working_lbl = Paragraph("<b>Working</b>", AST["q_meta"])
+
+    story.append(Spacer(1, 3))
+    story.append(ans_tbl)
+    story.append(Spacer(1, 4))
+    story.append(working_lbl)
+    story.append(body_tbl)
+
+
+# ──────────────────────────────────────────────────────────────────────────────
 # Question block — returns a list of flowables for one assessment item
 # ──────────────────────────────────────────────────────────────────────────────
 def question_block(q_num, item, lo_text, uw, header_items=None):
@@ -423,11 +363,24 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
 
     # ── Meta block: differs for Maths vs Science/SS ──────────────────────────────────────
     if is_maths:
-        # Mathematics: show "Relevant Section:" instead of LO / Cognitive demand
-        sec_ref  = _clean_text(item.get("section_ref", "") or "")
-        sec_disp = f"<b>Relevant Section:</b> {sec_ref}" if sec_ref else "<b>Relevant Section:</b> \u2014"
+        # Mathematics: Section \u00b7 Question Type \u00b7 Goal (no LO / Cognitive demand \u2014
+        # math uses goal recall/reason/apply instead of Bloom's cognitive_demand).
+        sec_ref   = _clean_text(item.get("section_ref", "") or "")
+        qt_disp   = _clean_text((qtype or "").upper())
+        goal_raw  = _clean_text(item.get("goal", "") or "")
+        goal_disp = goal_raw.capitalize() if goal_raw else ""
+
+        meta_parts = []
+        if sec_ref:
+            meta_parts.append(f"<b>Section:</b> {sec_ref}")
+        if qt_disp:
+            meta_parts.append(f"<b>Type:</b> {qt_disp}")
+        if goal_disp:
+            meta_parts.append(f"<b>Goal:</b> {goal_disp}")
+        meta_line = " &nbsp;\u00b7&nbsp; ".join(meta_parts) if meta_parts else "<b>Section:</b> \u2014"
+
         meta_rows = [
-            [Paragraph(sec_disp, AST["q_meta"])],
+            [Paragraph(meta_line, AST["q_meta"])],
         ]
     else:
         # Science / Social Sciences: LO assessed + Cognitive demand
@@ -493,8 +446,18 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
             ]))
             story.append(opt_t)
 
-    # Fix 1: SCR — "Look for" / expected_elements block removed entirely
-    # Fix 1: ECR — "Look for" / look_for block removed entirely
+    # ── Math-only response boxes for SCR / NUM / ECR ──────────────────────────
+    # Bordered ruled boxes that the student writes in. Only rendered for
+    # mathematics; Science / SS continue to render no response area
+    # (existing behaviour: "Fix 1: SCR / ECR look_for block removed").
+    elif is_maths and qtype == "SCR":
+        _render_math_response_box(uw, story, lines=3)
+
+    elif is_maths and qtype == "NUM":
+        _render_math_num_box(uw, story, working_lines=6)
+
+    elif is_maths and qtype == "ECR":
+        _render_math_response_box(uw, story, lines=6)
 
     # ── Open task — task / scaffold / format_of_output ────────────────────────
     elif qtype == "open_task":
@@ -529,37 +492,51 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
                     story.append(Paragraph(f"1. {fmt_type}", AST["ot_txt"]))
 
     # ── Mathematics Guide block ───────────────────────────────────────────────
-    # Mirrors the HTML "▼ Guide" box: Goal / Expected Answer / Inclusivity.
-    # Only rendered for maths items; no-op for Science / SS.
+    # Renders the structured teacher_guide object (Constitution v3.2 Rule 6):
+    #   { expected_answer, method_one_line, what_each_option_reveals, inclusivity }
+    # plus per-type diagnostic fields (expected_elements / look_for) where
+    # applicable. Only rendered for maths items; no-op for Science / SS.
     if is_maths:
-        tg_raw = item.get("teacher_guide", "") or ""
-        tg_parts = [p.strip() for p in tg_raw.split(" | ")]
-        tg_goal        = tg_parts[0] if len(tg_parts) > 0 else ""
-        tg_expected    = tg_parts[1] if len(tg_parts) > 1 else ""
-        tg_inclusivity = tg_parts[2] if len(tg_parts) > 2 else ""
-        # Strip "Expected answer: " prefix if present (added by constitution)
-        if tg_expected.lower().startswith("expected answer:"):
-            tg_expected = tg_expected[len("expected answer:"):].strip()
+        tg = item.get("teacher_guide", {}) or {}
+        # Tolerate legacy piped-string teacher_guide for any saved plans pre v3.2.
+        if isinstance(tg, str):
+            parts = [p.strip() for p in tg.split(" | ")]
+            tg = {
+                "expected_answer":          parts[1] if len(parts) > 1 else "",
+                "method_one_line":          "",
+                "what_each_option_reveals": {},
+                "inclusivity":              parts[2] if len(parts) > 2 else "",
+            }
+            # Strip leading "Expected answer:" prefix from the legacy string.
+            if tg["expected_answer"].lower().startswith("expected answer:"):
+                tg["expected_answer"] = tg["expected_answer"][len("expected answer:"):].strip()
 
-        guide_rows = []
-        # Label row
-        guide_rows.append([Paragraph("<b>Guide</b>", AST["q_meta"])])
-        if tg_goal:
-            guide_rows.append([Paragraph("<b>Goal</b>", AST["q_meta"])])
-            guide_rows.append([Paragraph(_clean_text(tg_goal), AST["ot_txt"])])
+        tg_expected     = _clean_text(tg.get("expected_answer", "") or "")
+        tg_method       = _clean_text(tg.get("method_one_line", "") or "")
+        tg_what_reveals = tg.get("what_each_option_reveals", {}) or {}
+        tg_inclusivity  = _clean_text(tg.get("inclusivity", "") or "")
+
+        guide_rows = [[Paragraph("<b>Guide</b>", AST["q_meta"])]]
         if tg_expected:
-            guide_rows.append([Paragraph("<b>Expected Answer</b>", AST["q_meta"])])
-            guide_rows.append([Paragraph(_clean_text(tg_expected), AST["ot_txt"])])
+            guide_rows.append([Paragraph("<b>Expected answer</b>", AST["q_meta"])])
+            guide_rows.append([Paragraph(tg_expected, AST["ot_txt"])])
+        if tg_method:
+            guide_rows.append([Paragraph("<b>Method</b>", AST["q_meta"])])
+            guide_rows.append([Paragraph(tg_method, AST["ot_txt"])])
+        if qtype == "MCQ" and isinstance(tg_what_reveals, dict) and tg_what_reveals:
+            guide_rows.append([Paragraph("<b>What each option reveals</b>", AST["q_meta"])])
+            for lbl in ("A", "B", "C", "D"):
+                txt = tg_what_reveals.get(lbl) or tg_what_reveals.get(lbl.lower())
+                if txt:
+                    guide_rows.append([Paragraph(
+                        f"<b>{lbl}.</b> &nbsp;{_clean_text(str(txt))}",
+                        AST["ot_txt"],
+                    )])
         if tg_inclusivity:
             guide_rows.append([Paragraph("<b>Inclusivity</b>", AST["q_meta"])])
-            guide_rows.append([Paragraph(_clean_text(tg_inclusivity), AST["ot_txt"])])
+            guide_rows.append([Paragraph(tg_inclusivity, AST["ot_txt"])])
 
         if len(guide_rows) > 1:  # at least one field beyond the label
-            guide_style = ParagraphStyle(
-                "guide_bg",
-                fontName="Helvetica", fontSize=7.5, leading=11,
-                textColor=colors.HexColor("#085041"),
-            )
             guide_tbl = Table(guide_rows, colWidths=[uw])
             guide_tbl.setStyle(TableStyle([
                 ("BACKGROUND",    (0, 0), (-1, -1), colors.HexColor("#e8f4f5")),
@@ -572,6 +549,34 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
             ]))
             story.append(Spacer(1, 4))
             story.append(guide_tbl)
+
+        # ── Exercise companion card (Constitution v3.2 Rule 9) ─────────────
+        # Pointer to the textbook item that anchors this goal (exercise,
+        # worked example, or activity per the LP's gamut walk). Skipped
+        # silently when both fields are empty — no "[Fallback]" text.
+        ex = item.get("exercise") or {}
+        ex_book_ref    = _clean_text(ex.get("book_ref", "") or "")
+        ex_description = _clean_text(ex.get("description", "") or "")
+        if ex_book_ref:
+            ex_label_para = Paragraph(
+                f"<b>Exercise — {ex_book_ref}</b>",
+                AST["q_meta"],
+            )
+            ex_rows = [[ex_label_para]]
+            if ex_description:
+                ex_rows.append([Paragraph(ex_description, AST["ot_txt"])])
+            ex_tbl = Table(ex_rows, colWidths=[uw])
+            ex_tbl.setStyle(TableStyle([
+                ("BACKGROUND",    (0, 0), (-1, -1), colors.HexColor("#fff8ec")),
+                ("BOX",           (0, 0), (-1, -1), 0.5, HAIRLINE),
+                ("TOPPADDING",    (0, 0), (-1, -1), 3),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
+                ("LEFTPADDING",   (0, 0), (-1, -1), 6),
+                ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+                ("VALIGN",        (0, 0), (-1, -1), "TOP"),
+            ]))
+            story.append(Spacer(1, 3))
+            story.append(ex_tbl)
 
     # ── Separator ─────────────────────────────────────────────────────────────
     story.append(Spacer(1, 4))

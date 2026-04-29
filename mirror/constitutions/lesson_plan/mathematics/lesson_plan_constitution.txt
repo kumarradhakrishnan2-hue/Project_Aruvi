@@ -1,4 +1,4 @@
-ARUVI — MATHEMATICS LESSON PLAN CONSTITUTION · VERSION 3.0
+ARUVI — MATHEMATICS LESSON PLAN CONSTITUTION · VERSION 3.1
 Stages: Foundational, Middle, Secondary
 
 ================================================================================
@@ -176,7 +176,9 @@ RULE 10 | PHASE NARRATION USES book_ref, NOT INTERNAL ID
 
 When a phase invokes a textbook item, the phase's `description` text
 names the item by its `book_ref` (e.g., `"Activity 1 (p.105)"`,
-`"Figure it Out Q1 (p.107)"`, `"Example 3 (§5.8 p.122)"`).
+`"Figure it Out Q1 (p.107)"`, `"Example 3 (§5.8 p.122)"`) followed by `description` 
+limited to 10 words at most and if there is overflow append `....` 
+after the last word. Do not use prose to describe the textbook item. 
 
 The phase description MUST NOT use the internal `id` (e.g., `A-1`,
 `WE-3`, `E-9`). Internal IDs live only inside the structured
@@ -206,22 +208,34 @@ Each entry:
                         section name without re-reading the summary.
 - `goal`              — the section_goal value (`recall` | `reason`
                         | `apply`).
-- `anchor_id`         — id of one `enumerated_exercises` (E-N) drawn
-                        from `section_ref`'s exercise pool. Across
-                        the whole `coverage_handoff`, each E-N is
-                        used as `anchor_id` at most once.
+- `anchor_id`         — id of one summary item drawn from
+                        `section_ref`'s pools, walked in this
+                        priority: `enumerated_exercises` (E-N) →
+                        `enumerated_worked_examples` (WE-N) →
+                        `enumerated_activities` (A-N). Across the
+                        whole `coverage_handoff`, each item id is
+                        used as `anchor_id` at most once (the
+                        uniqueness constraint spans all three pools
+                        combined).
 - `anchor_book_ref`   — `book_ref` of `anchor_id`, copied from the
-                        summary entry. Empty string if no exercise
-                        is available.
+                        summary entry. Empty string if all three
+                        pools are exhausted for the section.
+- `anchor_description` — `description` of `anchor_id`, copied from the
+                        summary entry. Empty string if all three
+                        pools are exhausted for the section.
 
 Anchor selection. For each (section, goal) routed to this cluster,
-pick the first un-used E-N from the section's `enumerated_exercises`
-in textbook order. If the section's pool is exhausted, set
-`anchor_id = ""` and `anchor_book_ref = ""` — the assessment
-generator handles this via its Fallback rule.
+walk the section's pools in priority order — exercises first, then
+worked examples, then activities — and pick the first un-used item
+in textbook order within the first non-empty pool. If all three
+pools are exhausted for the section, set `anchor_id = ""`,
+`anchor_book_ref = ""`, `anchor_description = ""`. The assessment
+generator omits the exercise companion in this case but still
+generates a typed question grounded in the section's prose.
 
 A two-goal section legitimately contributes goals to two clusters;
-each contributing goal gets its own anchor (different E-Ns).
+each contributing goal gets its own anchor (different items, drawn
+in priority order across the three pools).
 
 If a cluster receives no goals (no section routes to it), emit the
 cluster with an empty `goals` array. The assessment generator emits
@@ -246,11 +260,12 @@ LP JSON SCHEMA
   "coverage_handoff": {
     "section_a": { "goal_cluster": ["recall"],
                    "goals": [
-                     { "section_ref":     string, // e.g. "§5.1"
-                       "section_title":   string, // e.g. "Alternate Interior Angles"
-                       "goal":            "recall",
-                       "anchor_id":       string, // e.g. "E-3" (or "")
-                       "anchor_book_ref": string  // e.g. "Figure it Out Q3, §5.1 p.107" (or "")
+                     { "section_ref":         string, // e.g. "§5.1"
+                       "section_title":       string, // e.g. "Alternate Interior Angles"
+                       "goal":                "recall",
+                       "anchor_id":           string, // e.g. "E-3", "WE-1", "A-2" (or "")
+                       "anchor_book_ref":     string, // e.g. "Figure it Out Q3, §5.1 p.107" (or "")
+                       "anchor_description":  string  // verbatim from summary entry (or "")
                      }
                    ] },
     "section_b": { "goal_cluster": ["reason"], "goals": [ ... ] },
@@ -339,5 +354,5 @@ LP JSON SCHEMA
 
 ================================================================================
 Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
-Mathematics Lesson Plan Constitution · Version 3.0 · Internal Document
+Mathematics Lesson Plan Constitution · Version 3.1 · Internal Document
 ================================================================================
