@@ -155,18 +155,18 @@ Every non-fallback item carries `teacher_guide` as a JSON object:
     reveals. For non-MCQ items, this is an empty object {}.
 
   teacher_guide.inclusivity:
-    One sentence (≤ 25 words) covering BOTH a scaffold for the
-    struggling student AND a stretch / extension. Vary the surface
+    One sentence (≤ 25 words) covering BOTH a support for the
+    struggling student AND a challenge. Vary the surface
     form across items so the assessment does not read canned. Stay
     within the per-goal intent below:
-      recall → scaffold = let the student look back at taught
-                content; extension = ask for one more example in
+      recall → support = let the student look back at taught
+                content; challenge = ask for one more example in
                 their own words.
-      reason → scaffold = a verbal-thinking aid (pair-share,
-                talk-before-write); extension = a what-if (alter one
+      reason → support = a verbal-thinking aid (pair-share,
+                talk-before-write); challenge = a what-if (alter one
                 premise, re-explain).
-      apply  → scaffold = an alternate representation (visual /
-                manipulative / number-line); extension = a
+      apply  → support = an alternate representation (visual /
+                manipulative / number-line); challenge = a
                 parameter-tweak (change one number / unit /
                 constraint and re-solve).
 

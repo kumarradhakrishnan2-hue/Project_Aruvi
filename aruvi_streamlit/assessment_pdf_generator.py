@@ -446,18 +446,10 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
             ]))
             story.append(opt_t)
 
-    # ── Math-only response boxes for SCR / NUM / ECR ──────────────────────────
-    # Bordered ruled boxes that the student writes in. Only rendered for
-    # mathematics; Science / SS continue to render no response area
-    # (existing behaviour: "Fix 1: SCR / ECR look_for block removed").
-    elif is_maths and qtype == "SCR":
-        _render_math_response_box(uw, story, lines=3)
-
-    elif is_maths and qtype == "NUM":
-        _render_math_num_box(uw, story, working_lines=6)
-
-    elif is_maths and qtype == "ECR":
-        _render_math_response_box(uw, story, lines=6)
+    # ── Math SCR / NUM / ECR: response boxes suppressed ──────────────────────
+    # Previously rendered ruled writing areas for students. Suppressed now
+    # because the PDF is teacher-facing only; guide is in the online HTML.
+    # Science / SS are unaffected — they never entered these elif branches.
 
     # ── Open task — task / scaffold / format_of_output ────────────────────────
     elif qtype == "open_task":
@@ -491,65 +483,11 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
                 if fmt_type:
                     story.append(Paragraph(f"1. {fmt_type}", AST["ot_txt"]))
 
-    # ── Mathematics Guide block ───────────────────────────────────────────────
-    # Renders the structured teacher_guide object (Constitution v3.2 Rule 6):
-    #   { expected_answer, method_one_line, what_each_option_reveals, inclusivity }
-    # plus per-type diagnostic fields (expected_elements / look_for) where
-    # applicable. Only rendered for maths items; no-op for Science / SS.
+    # ── Mathematics: Guide block suppressed in PDF ───────────────────────────
+    # Guide (expected_answer, method, what_each_option_reveals, inclusivity)
+    # is available in the online HTML only. The PDF shows only question prompt
+    # and the Exercise companion card below.
     if is_maths:
-        tg = item.get("teacher_guide", {}) or {}
-        # Tolerate legacy piped-string teacher_guide for any saved plans pre v3.2.
-        if isinstance(tg, str):
-            parts = [p.strip() for p in tg.split(" | ")]
-            tg = {
-                "expected_answer":          parts[1] if len(parts) > 1 else "",
-                "method_one_line":          "",
-                "what_each_option_reveals": {},
-                "inclusivity":              parts[2] if len(parts) > 2 else "",
-            }
-            # Strip leading "Expected answer:" prefix from the legacy string.
-            if tg["expected_answer"].lower().startswith("expected answer:"):
-                tg["expected_answer"] = tg["expected_answer"][len("expected answer:"):].strip()
-
-        tg_expected     = _clean_text(tg.get("expected_answer", "") or "")
-        tg_method       = _clean_text(tg.get("method_one_line", "") or "")
-        tg_what_reveals = tg.get("what_each_option_reveals", {}) or {}
-        tg_inclusivity  = _clean_text(tg.get("inclusivity", "") or "")
-
-        guide_rows = [[Paragraph("<b>Guide</b>", AST["q_meta"])]]
-        if tg_expected:
-            guide_rows.append([Paragraph("<b>Expected answer</b>", AST["q_meta"])])
-            guide_rows.append([Paragraph(tg_expected, AST["ot_txt"])])
-        if tg_method:
-            guide_rows.append([Paragraph("<b>Method</b>", AST["q_meta"])])
-            guide_rows.append([Paragraph(tg_method, AST["ot_txt"])])
-        if qtype == "MCQ" and isinstance(tg_what_reveals, dict) and tg_what_reveals:
-            guide_rows.append([Paragraph("<b>What each option reveals</b>", AST["q_meta"])])
-            for lbl in ("A", "B", "C", "D"):
-                txt = tg_what_reveals.get(lbl) or tg_what_reveals.get(lbl.lower())
-                if txt:
-                    guide_rows.append([Paragraph(
-                        f"<b>{lbl}.</b> &nbsp;{_clean_text(str(txt))}",
-                        AST["ot_txt"],
-                    )])
-        if tg_inclusivity:
-            guide_rows.append([Paragraph("<b>Inclusivity</b>", AST["q_meta"])])
-            guide_rows.append([Paragraph(tg_inclusivity, AST["ot_txt"])])
-
-        if len(guide_rows) > 1:  # at least one field beyond the label
-            guide_tbl = Table(guide_rows, colWidths=[uw])
-            guide_tbl.setStyle(TableStyle([
-                ("BACKGROUND",    (0, 0), (-1, -1), colors.HexColor("#e8f4f5")),
-                ("BOX",           (0, 0), (-1, -1), 0.5, HAIRLINE),
-                ("TOPPADDING",    (0, 0), (-1, -1), 3),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
-                ("LEFTPADDING",   (0, 0), (-1, -1), 6),
-                ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
-                ("VALIGN",        (0, 0), (-1, -1), "TOP"),
-            ]))
-            story.append(Spacer(1, 4))
-            story.append(guide_tbl)
-
         # ── Exercise companion card (Constitution v3.2 Rule 9) ─────────────
         # Pointer to the textbook item that anchors this goal (exercise,
         # worked example, or activity per the LP's gamut walk). Skipped
@@ -613,15 +551,23 @@ def build_assessment_pdf(output_path, data):
     ))
     story.append(Spacer(1, 3 * mm))
 
-    # ── Fix 6: single combined italic note ────────────────────────────────────
-    story.append(Paragraph(
-        "Marks are not prescribed \u2014 assign per question based on formative assessment "
-        "weightage and cognitive demand.<br/>"
-        "Teacher guidance for each question, including what incorrect responses reveal and "
-        "inclusivity scaffolds, is available in the Aruvi platform under "
-        "My Plans &gt; Chapter Assessment.",
-        AST["combo_note"],
-    ))
+    _is_maths_note = data.get("is_maths", False)
+    if _is_maths_note:
+        _note_text = (
+            "Marks are not prescribed — assign per question based on formative assessment "
+            "weightage and cognitive demand.<br/>"
+            "Teacher guidance (expected answer, method, distractors, inclusivity) is available "
+            "in the online view under My Plans &gt; Chapter Assessment."
+        )
+    else:
+        _note_text = (
+            "Marks are not prescribed — assign per question based on formative assessment "
+            "weightage and cognitive demand.<br/>"
+            "Teacher guidance for each question, including what incorrect responses reveal and "
+            "inclusivity scaffolds, is available in the Aruvi platform under "
+            "My Plans &gt; Chapter Assessment."
+        )
+    story.append(Paragraph(_note_text, AST["combo_note"]))
     story.append(Spacer(1, 5 * mm))
 
     items      = data["assessment_items"]

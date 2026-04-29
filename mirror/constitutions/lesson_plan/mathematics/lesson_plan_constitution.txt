@@ -176,9 +176,14 @@ RULE 10 | PHASE NARRATION USES book_ref, NOT INTERNAL ID
 
 When a phase invokes a textbook item, the phase's `description` text
 names the item by its `book_ref` (e.g., `"Activity 1 (p.105)"`,
-`"Figure it Out Q1 (p.107)"`, `"Example 3 (§5.8 p.122)"`) followed by `description` 
-limited to 10 words at most and if there is overflow append `....` 
-after the last word. Do not use prose to describe the textbook item. 
+`"Figure it Out Q1 (p.107)"`, `"Example 3 (§5.8 p.122)"`), followed
+immediately by the item's `description` in brackets and inverted commas,
+limited to 10 words at most with `....` appended if truncated.
+
+Format: book_ref ("description up to 10 words....")
+Example: Activity 1 (p.107) ("draw two lines on a plain sheet that intersect....")
+
+Do not use prose to describe the textbook item.
 
 The phase description MUST NOT use the internal `id` (e.g., `A-1`,
 `WE-3`, `E-9`). Internal IDs live only inside the structured
@@ -304,10 +309,14 @@ LP JSON SCHEMA
                       | "worked_example"
                       | "exercise",
       "source_section": string,                   // e.g. "§5.1"
-      "book_ref":       string                    // e.g. "Activity 1, p.105"
+      "book_ref":       string,                   // e.g. "Activity 1, p.105"
                                                   // — copied from
                                                   // summary's
                                                   // enumeration entry
+      "description":    string                    // verbatim from summary's
+                                                  // enumeration entry —
+                                                  // used by phases to
+                                                  // describe the item
     }
   ],
 

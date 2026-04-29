@@ -1,0 +1,233 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "vii",
+  "chapter_number": 5,
+  "chapter_title": "Parallel and Intersecting Lines",
+  "sections": [
+    { "ref": "section 5.1", "title": "Across the Line", "section_goal": ["recall", "reason"] },
+    { "ref": "section 5.2", "title": "Perpendicular Lines", "section_goal": ["recall"] },
+    { "ref": "section 5.3", "title": "Between Lines", "section_goal": ["recall"] },
+    { "ref": "section 5.4", "title": "Parallel and Perpendicular Lines in Paper Folding", "section_goal": ["apply"] },
+    { "ref": "section 5.5", "title": "Transversals", "section_goal": ["recall", "reason"] },
+    { "ref": "section 5.6", "title": "Corresponding Angles", "section_goal": ["reason"] },
+    { "ref": "section 5.7", "title": "Drawing Parallel Lines", "section_goal": ["apply"] },
+    { "ref": "section 5.8", "title": "Alternate Angles", "section_goal": ["reason", "apply"] },
+    { "ref": "section 5.9", "title": "Parallel Illusions", "section_goal": ["recall"] }
+  ],
+  "prose_summary": "Section 5.1 identifies intersecting lines and then reasons about the angle relationships they produce. The section opens by introducing the concept of intersection — two lines meeting at a point on a plane surface form exactly four angles — and immediately progresses to a proof-like reasoning arc: since ∠a + ∠b = 180° and ∠a + ∠d = 180°, it follows that ∠b = ∠d; similarly ∠a = ∠c. This justification is explicitly named a proof in mathematics. Activity 1 is embedded here: students draw four pairs of intersecting lines and measure the resulting angles with a protractor, then reason whether the pattern holds for any measure of ∠a. Adjacent angles at an intersection are defined as linear pairs (always summing to 180°), and opposite angles as vertically opposite angles (always equal). A 'Measurements and Geometry' interlude explains why measured values may deviate from theoretical ones — thickness of drawn lines, protractor error — distinguishing empirical measurement from geometric reasoning.\n\nSection 5.2 defines perpendicular lines as the special case of intersection where all four angles are equal, each measuring 90°. This is a short definitional section that names the concept, states the angle condition, and establishes the standard notation (small square at the intersection).\n\nSection 5.3 identifies parallel lines through observation of real-world examples and a geometric figure. An exploratory task (Fig. 5.5) asks students to describe how various labelled line segments meet, using precise vocabulary (a point, an endpoint, the midpoint, intersect). The formal definition follows: parallel lines lie on the same plane and never meet however far they are extended. A teacher note clarifies that coplanarity is essential — lines on different surfaces may never meet but are not parallel. Students then identify parallel pairs in a dot-grid figure (Fig. 5.6).\n\nSection 5.4 applies the definitions of parallel and perpendicular lines through two hands-on paper-folding activities. Activity 2 guides students to fold a square sheet horizontally in half repeatedly: one fold yields 3 parallel lines, two folds yield 5, three folds yield 9 — revealing a pattern of 2ⁿ + 1 after n folds. A vertical fold creates a new line perpendicular to all previous horizontal folds. A diagonal fold introduces the question of whether the resulting crease has a parallel counterpart. Activity 3 (Fig. 5.8) has students fold corner triangles and reason whether the resulting crease lines a, b, c are parallel to p, q, r respectively. Standard notations are introduced: single/double arrow marks for parallel lines, a square symbol for perpendicular.\n\nSection 5.5 identifies transversals and then reasons about the maximum number of distinct angle measures they create. A transversal is defined as a line that intersects two other lines, forming 8 angles in total. Since vertically opposite angle pairs (∠1 = ∠3, ∠2 = ∠4, ∠5 = ∠7, ∠6 = ∠8) must be equal, the maximum number of distinct angle values is 4. In-text questions prompt students to verify that neither 8 nor 5 distinct measures are possible.\n\nSection 5.6 reasons about corresponding angles and proves that their equality is both necessary and sufficient for the two lines to be parallel. Corresponding angles are defined by their positional correspondence in each set of four angles formed at the two intersection points. Activity 3 constructs a transversal on a given line l so that corresponding angles equal 60°, then draws line m through a second point on the transversal at the same angle — showing that l and m appear parallel. Activity 4 uses tracing paper to verify that corresponding angles on a given pair of parallel lines are equal. Activity 5 shows that drawing a transversal producing equal corresponding angles on non-parallel lines is impossible. The biconditional is thus established: corresponding angles equal if and only if the lines are parallel.\n\nSection 5.7 applies the corresponding-angles criterion to construct parallel lines using two methods. The set square method draws two lines each perpendicular to a baseline l by sliding the set square; since l acts as their transversal with corresponding angles of 90°, the two new lines are parallel. The paper-folding method creates line t perpendicular to l through point A, then creates line m perpendicular to t through A again; since l and m are both perpendicular to t, their corresponding angles with t are both 90° and they are parallel. A Figure it Out question asks students to describe the set square construction in their own words.\n\nSection 5.8 proves that alternate angles are equal when a transversal crosses parallel lines, then applies this result alongside corresponding angles and interior angle sum to solve multi-step problems. The proof chains: alternate angle ∠d of ∠f equals the corresponding angle ∠b of ∠f, and ∠b equals the vertically opposite ∠d, so ∠f = ∠d regardless of measurement. Interior angles — same-side angles between the parallel lines — are introduced and shown to sum to 180°. Four worked examples increase in complexity: Example 1 finds all 8 angles from one given angle; Example 2 tests whether two lines are parallel by checking corresponding angles; Example 3 uses interior angle sum to find a missing angle; Example 4 applies both interior and corresponding angle rules in a parallelogram-like figure. Six Figure it Out exercises then require students to compute marked angles across a range of configurations involving transversals on parallel and non-parallel lines.\n\nSection 5.9 presents visual illusions — images where parallel lines appear non-parallel due to surrounding patterns — and invites students to reflect on what causes them. This section contains no formal mathematical content and no exercises.",
+  "enumerated_activities": [
+    {
+      "id": "A-1",
+      "source_section": "section 5.1",
+      "book_ref": "Activity 1, p.107",
+      "description": "Draw two lines on a plain sheet that intersect. Measure the four angles with a protractor. Repeat for four such pairs. Observe patterns among the angles and reason whether vertically opposite angles are always equal."
+    },
+    {
+      "id": "A-2",
+      "source_section": "section 5.4",
+      "book_ref": "Activity 2, p.111",
+      "description": "Fold a square sheet of paper horizontally in half multiple times; count parallel lines formed (pattern: 2ⁿ + 1 after n folds). Make a vertical fold and observe it is perpendicular to previous folds. Fold along a diagonal and find a parallel crease."
+    },
+    {
+      "id": "A-3",
+      "source_section": "section 5.4",
+      "book_ref": "Activity 2 (corner folds), p.112",
+      "description": "Fold a square sheet to make a centre crease, fold edges to centre, then fold top-right and bottom-left corners onto the crease to form triangles. Reason whether crease lines a, b, c are parallel to p, q, r respectively."
+    },
+    {
+      "id": "A-4",
+      "source_section": "section 5.6",
+      "book_ref": "Activity 3, p.115-116",
+      "description": "Draw line l and transversal t intersecting at X with ∠a = 60°. Mark point Y on t and draw line m through Y at 60° to t (matching ∠a). Observe that l and m appear parallel; verify that corresponding angles are equal."
+    },
+    {
+      "id": "A-5",
+      "source_section": "section 5.6",
+      "book_ref": "Activity 4, p.117",
+      "description": "Given parallel lines l and m with transversal t (Fig. 5.19), trace ∠a on tracing paper and place it over ∠b to check that corresponding angles are equal. Verify all four corresponding angle pairs with a protractor."
+    },
+    {
+      "id": "A-6",
+      "source_section": "section 5.6",
+      "book_ref": "Activity 5, p.117",
+      "description": "Given non-parallel lines l and m (Fig. 5.20), attempt to draw a transversal t such that one pair of corresponding angles is equal. Observe that this is impossible, confirming the necessary condition for parallelism."
+    },
+    {
+      "id": "A-7",
+      "source_section": "section 5.8",
+      "book_ref": "Activity 6, p.120",
+      "description": "In Fig. 5.25, if ∠f is 120°, find the measure of alternate angle ∠d by first finding corresponding angle ∠b of ∠f, then using the fact that ∠d is the vertically opposite angle of ∠b."
+    }
+  ],
+  "enumerated_worked_examples": [
+    {
+      "id": "WE-1",
+      "source_section": "section 5.8",
+      "book_ref": "Example 1, section 5.8 p.120-121",
+      "description": "Parallel lines l and m intersected by transversal t. Given ∠6 = 135°, find all other 7 angles using corresponding angles (∠2, ∠4, ∠8 = 135°) and linear pairs (∠1, ∠3, ∠5, ∠7 = 45°)."
+    },
+    {
+      "id": "WE-2",
+      "source_section": "section 5.8",
+      "book_ref": "Example 2, section 5.8 p.121",
+      "description": "Lines l and m intersected by transversal t. Given ∠a = 120° and ∠f = 70°. Determine whether l ∥ m by comparing corresponding angle ∠b (= 60°, since ∠a + ∠b = 180°) with ∠f (= 70°). Not equal, so not parallel."
+    },
+    {
+      "id": "WE-3",
+      "source_section": "section 5.8",
+      "book_ref": "Example 3, section 5.8 p.121-122",
+      "description": "Parallel lines l and m intersected by transversal t. Given ∠3 = 50°, find ∠6 using the interior angle sum: ∠2 = 130° (linear pair with ∠3), and ∠6 = ∠2 = 130° (corresponding angles)."
+    },
+    {
+      "id": "WE-4",
+      "source_section": "section 5.8",
+      "book_ref": "Example 4, section 5.8 p.122",
+      "description": "AB ∥ CD, AD ∥ BC, ∠DAC = 65°, ∠ADC = 60°. Find ∠CAB, ∠ABC, ∠BCD using interior angle sum (∠ADC + ∠DAB = 180° → ∠DAB = 120°, ∠CAB = 55°) and further interior/corresponding angle applications."
+    }
+  ],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out, section 5.1 p.107",
+      "description": "Can two straight lines intersect at more than one point?"
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out, section 5.1 p.107",
+      "description": "What patterns do you observe among the four angles formed when two lines intersect (after Activity 1)?"
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out, section 5.1 p.107",
+      "description": "In Fig. 5.2, if ∠a is 120°, figure out the measurements of ∠b, ∠c, and ∠d without drawing and measuring them."
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out, section 5.1 p.107",
+      "description": "Is it always true that vertically opposite angles are equal for any pair of intersecting lines? Check for different measures of ∠a and reason whether the property holds generally."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q1, section 5.1 p.108",
+      "description": "List all linear pairs and pairs of vertically opposite angles in Fig. 5.3 (two intersecting lines forming angles a, b, c, d)."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out, section 5.3 p.109",
+      "description": "Observe Fig. 5.5 and describe how the various line segments meet using mathematical vocabulary (point, endpoint, midpoint, meet, intersect) and degree measures. Are line segments ST and UV likely to meet if extended?"
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out, section 5.3 p.109",
+      "description": "Are line segments OP and QR in Fig. 5.5 likely to meet if extended?"
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out, section 5.3 p.110",
+      "description": "Which pairs of lines appear to be parallel in Fig. 5.6 (dot grid with lines a through i)?"
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 5.4",
+      "book_ref": "Figure it Out Q1, section 5.4 p.113",
+      "description": "Draw some lines perpendicular to the given lines on the dot paper in Fig. 5.10."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 5.4",
+      "book_ref": "Figure it Out Q2, section 5.4 p.113",
+      "description": "In Fig. 5.11, mark parallel lines with arrow notation and perpendicular lines with a square symbol. (a) How did you spot the perpendicular lines? (b) How did you spot the parallel lines?"
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 5.4",
+      "book_ref": "Figure it Out Q3, section 5.4 p.113",
+      "description": "On the dot paper, draw different sets of parallel lines with dots as endpoints; line segments may be of different lengths."
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 5.4",
+      "book_ref": "Figure it Out Q4, section 5.4 p.114",
+      "description": "Using intuition, draw lines parallel to each of the labelled line segments (a through h) on the dot paper in Fig. 5.12. (a) Which were challenging? (b) Which ones? (c) How did you do it?"
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 5.4",
+      "book_ref": "Figure it Out Q5, section 5.4 p.114",
+      "description": "In Fig. 5.13, which line is parallel to line a — line b or line c? How do you decide?"
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 5.5",
+      "book_ref": "Figure it Out, section 5.5 p.115",
+      "description": "Is it possible for all eight angles formed by a transversal crossing two lines to have different measurements? Why or why not?"
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 5.5",
+      "book_ref": "Figure it Out, section 5.5 p.115",
+      "description": "What about five different angle measures — is that possible for the eight angles formed?"
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 5.7",
+      "book_ref": "Figure it Out, section 5.7 p.119",
+      "description": "Can you draw a line parallel to l that goes through point A (Fig. 5.23)? Describe your method using tools from your geometry box."
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 5.7",
+      "book_ref": "Figure it Out, section 5.7 p.119-120",
+      "description": "Why are lines l and m parallel to each other in the paper-folding construction of Fig. 5.24?"
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 5.8",
+      "book_ref": "Figure it Out Q1, section 5.8 p.123",
+      "description": "Find the ten angles marked (a through j) in Fig. 5.30, which shows various transversal configurations with some angles given."
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 5.8",
+      "book_ref": "Figure it Out Q2, section 5.8 p.124",
+      "description": "Find the angle represented by a in each of four sub-figures in Fig. 5.31 involving parallel lines and transversals."
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 5.8",
+      "book_ref": "Figure it Out Q3, section 5.8 p.124",
+      "description": "In the two figures in Fig. 5.32, find angles x and y using transversal and parallel line properties."
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 5.8",
+      "book_ref": "Figure it Out Q4, section 5.8 p.124",
+      "description": "In Fig. 5.33, ∠ABC = 45° and ∠IKJ = 78°. Find ∠GEH, ∠HEF, and ∠FED using parallel lines and transversal angle properties."
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 5.8",
+      "book_ref": "Figure it Out Q5, section 5.8 p.125",
+      "description": "In Fig. 5.34, AB ∥ CD ∥ EF and EA ⊥ AB. If ∠BEF = 55°, find x and y."
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 5.8",
+      "book_ref": "Figure it Out Q6, section 5.8 p.125",
+      "description": "Find ∠NOP in Fig. 5.35, where ∠LMN = 40°, ∠MNO = 96°, ∠OPQ = 52°. [Hint: draw lines parallel to LM and PQ through N and O.]"
+    }
+  ],
+  "conceptual_demand": 2,
+  "activity_count": 6,
+  "demo_count": 0,
+  "exec_load": 1
+}

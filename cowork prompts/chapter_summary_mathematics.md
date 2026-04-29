@@ -57,9 +57,10 @@ question number (where applicable) + page number.    Examples:
 
 - Activity → `"Activity 1, p.105"`
 - Worked example → `"Example 1, section 5.8 p.121"`
-- Exercise → `"<banner-name from the stage's row above> Q<n>, section <sec> p.<page>"`
+- Exercise (numbered) → `"Figure it Out Q1, section 5.1 p.107"`
+- Exercise (unnumbered) → `"Figure it Out, section 5.1 p.107"`
 
-For exercises, if a question is unnumbered, omit the number.
+The question number rule applies to all banners and stages: if the question carries a number, include `Q<n>`; if it does not, omit `Q<n>` entirely. Do NOT invent placeholder labels such as `Q (inline)`, `Q (standalone)`, `Q (unnumbered)`, or similar — the banner name alone suffices.
 
 `book_ref` is what downstream LP and assessment outputs render to the
 teacher; the internal `id` is a join key only and never appears in

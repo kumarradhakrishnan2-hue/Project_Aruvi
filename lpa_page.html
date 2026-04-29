@@ -1,0 +1,1426 @@
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.lpa { font-family: system-ui, -apple-system, sans-serif; background: #fff; border-radius: 12px; border: 0.5px solid #e8e5e0; overflow: hidden; }
+.banner { background: #2c3e50; padding: 12px 16px; position: sticky; top: 0; z-index: 10; }
+.banner-title { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 4px; }
+.banner-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+.bchip { font-size: 10px; color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 10px; }
+.bchip.hi { color: #fff; background: rgba(255,255,255,0.2); }
+.lp-panel { padding: 12px; }
+
+/* LP column header row */
+.lp-col-hdr { display: flex; align-items: center; background: #8a8886; border-radius: 6px; padding: 5px 12px; gap: 8px; margin-bottom: 6px; }
+.lpch-num  { width: 74px;  flex-shrink: 0; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; text-align: center; }
+.lpch-time { width: 52px;  flex-shrink: 0; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; text-align: center; }
+.lpch-name { flex: 1; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; text-align: center; }
+.lpch-sec  { width: 220px; flex-shrink: 0; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; text-align: center; }
+.lpch-spc  { width: 18px;  flex-shrink: 0; }
+
+/* Period cards */
+.period-card { border: 0.5px solid #e8e5e0; border-radius: 8px; margin-bottom: 8px; overflow: hidden; }
+.period-card.open { border-color: #2c3e50; }
+.period-header { display: flex; align-items: flex-start; gap: 8px; padding: 9px 12px; cursor: pointer; user-select: none; background: #f5f3ef; }
+.period-card.open .period-header { background: #f0f3f5; }
+.pnum { font-size: 11px; font-weight: 600; color: #fff; background: #9c9693; border-radius: 5px; padding: 2px 8px; white-space: nowrap; flex-shrink: 0; width: 74px; text-align: center; }
+.period-card.open .pnum { background: #2c3e50; }
+.pname { font-size: 11px; font-weight: 400; color: #1a1917; flex: 1; line-height: 1.4; text-align: left; }
+.pdur { font-size: 11px; color: #5a5754; white-space: nowrap; width: 52px; flex-shrink: 0; padding-top: 2px; }
+.ptag { font-size: 11px; font-weight: 400; color: #1a1917; width: 220px; flex-shrink: 0; white-space: normal; line-height: 1.4; text-align: left; }
+.pchev { font-size: 10px; color: #5a5754; transition: transform 0.15s; flex-shrink: 0; width: 18px; text-align: right; padding-top: 2px; }
+.period-card.open .pchev { transform: rotate(180deg); }
+.pbody { display: none; padding: 12px; }
+.period-card.open .pbody { display: block; }
+
+/* Material row */
+.matrow { display: flex; gap: 6px; margin-bottom: 10px; padding: 6px 10px; background: #fef9e7; border-radius: 8px; border: 0.5px solid #f0c040; align-items: center; }
+.matlabel { font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: #854f0b; white-space: nowrap; }
+.mattext { font-size: 11px; color: #633806; line-height: 1.4; flex: 1; }
+.mat-ped-wrap { margin-left: auto; display: flex; gap: 4px; align-items: center; white-space: nowrap; flex-shrink: 0; padding-left: 12px; }
+.mat-ped-label { font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: #854f0b; white-space: nowrap; }
+.mat-ped-text { font-size: 11px; color: #633806; line-height: 1.4; font-style: italic; }
+
+/* Time slots */
+.ts { display: flex; gap: 8px; margin-bottom: 6px; }
+.ttime { font-size: 9px; font-weight: 500; color: #5a5754; white-space: nowrap; min-width: 50px; padding-top: 2px; text-transform: uppercase; letter-spacing: 0.04em; }
+.tdesc { font-size: 11px; color: #1a1917; line-height: 1.5; }
+
+/* Pedagogical Approach bar */
+.lobar { margin-top: 12px; padding: 8px 10px; background: #f5f3ef; border-radius: 8px; border-left: 3px solid #2c3e50; }
+.lolabel { font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: #2c3e50; margin-bottom: 3px; }
+.lotext { font-size: 11px; color: #1a1917; line-height: 1.5; font-style: italic; }
+
+/* Teacher Notes bar */
+.tnbar { margin-top: 12px; padding: 8px 10px; background: #eef4fb; border-radius: 8px; border-left: 3px solid #4a7fb5; }
+.tnlabel { font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: #4a7fb5; margin-bottom: 3px; }
+.tntext { font-size: 11px; color: #1a1917; line-height: 1.5; }
+
+/* Competency link */
+.clinkrow { display: flex; align-items: baseline; gap: 6px; margin-top: 10px; padding-top: 8px; border-top: 0.5px solid #f0ede9; flex-wrap: wrap; }
+.clinkcode { font-size: 11px; font-weight: 500; color: #2c3e50; white-space: nowrap; }
+.clinktext { font-size: 11px; color: #5a5754; line-height: 1.4; }
+
+/* Assessment */
+.assess-divider { margin-top: 16px; padding-top: 12px; border-top: 2px solid #2c3e50; }
+.adivlabel { font-size: 9px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #2c3e50; margin-bottom: 12px; text-align: center; }
+.lp-section-label { font-size: 9px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #2c3e50; margin-bottom: 12px; text-align: center; }
+.asec { margin-bottom: 18px; }
+.asec-hdr { background: #2c3e50; border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; border: none; }
+.asec-title { font-size: 12px; font-weight: 500; color: #fff; margin-bottom: 2px; }
+.asec-wording { font-size: 11px; color: rgba(255,255,255,0.88); line-height: 1.4; margin-top: 3px; }
+.asec-meta { font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+
+/* Column header row — 4 columns: # | Type | Question | Cognitive Demand */
+.q-col-hdr { display: flex; background: #8a8886; border: 0.5px solid #8a8886; border-radius: 6px 6px 0 0; border-bottom: none; }
+.qch-num  { width: 34px;  flex-shrink: 0; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; padding: 6px 6px; border-right: 0.5px solid rgba(255,255,255,0.2); text-align: center; }
+.qch-type { width: 140px; flex-shrink: 0; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; padding: 6px 10px; border-right: 0.5px solid rgba(255,255,255,0.2); }
+.qch-q    { flex: 1; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; padding: 6px 10px; border-right: 0.5px solid rgba(255,255,255,0.2); text-align: center; }
+.qch-ref  { width: 120px; flex-shrink: 0; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; padding: 6px 10px; }
+
+/* Question cards */
+.qcard { border: 0.5px solid #e8e5e0; border-top: none; margin-bottom: 0; overflow: hidden; }
+.qcard:last-child { border-radius: 0 0 6px 6px; }
+.qhdr { display: flex; align-items: center; cursor: pointer; background: #f5f3ef; border-top: 0.5px solid #e8e5e0; }
+.qhdr:hover { background: #eeecea; }
+.qhdr-num   { width: 34px;  flex-shrink: 0; padding: 8px 6px; font-size: 11px; font-weight: 600; color: #2c3e50; text-align: center; border-right: 0.5px solid #e8e5e0; }
+.qhdr-type  { width: 140px; flex-shrink: 0; padding: 8px 10px; border-right: 0.5px solid #e8e5e0; }
+.qhdr-title { flex: 1; padding: 8px 10px; border-right: 0.5px solid #e8e5e0; }
+.qhdr-lo    { font-size: 11px; color: #1a1917; line-height: 1.4; }
+.lo-lbl     { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: #2c3e50; margin-right: 3px; }
+.qhdr-ref   { width: 120px; flex-shrink: 0; padding: 8px 10px; font-size: 10px; color: #5a5754; display: flex; align-items: center; justify-content: space-between; }
+.qchev      { font-size: 9px; color: #9c9693; transition: transform 0.15s; }
+.qtype-lbl  { font-size: 11px; color: #1a1917; }
+
+/* Question body */
+.qbody { display: none; padding: 10px 12px; border-top: 0.5px solid #e8e5e0; background: #fff; }
+.qbody.open { display: block; }
+.qtext { font-size: 11px; color: #1a1917; line-height: 1.6; margin-bottom: 8px; }
+.qtext-bullet { padding-left: 1.2rem; }
+.qopt { font-size: 11px; color: #5a5754; margin: 3px 0; }
+.qopt.correct { color: #0f6e56; font-weight: 500; }
+/* Visual stimulus */
+.vs-box { background: #f5f5f4; border: 0.5px solid #dedad5; border-radius: 4px; padding: 8px 10px; margin-bottom: 10px; }
+.vs-label { font-size: 9.5px; font-weight: 600; color: #6b6864; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+.vs-table { width: 100%; border-collapse: collapse; font-size: 10.5px; }
+.vs-table th { background: #e8e5e0; color: #1a1917; font-weight: 600; padding: 4px 8px; border: 0.5px solid #ccc; text-align: left; }
+.vs-table td { background: #fff; color: #1a1917; padding: 4px 8px; border: 0.5px solid #dedad5; }
+.vs-text { font-size: 11px; color: #5a5754; line-height: 1.5; }
+.atoggle { font-size: 10px; color: #2c3e50; cursor: pointer; border: none; background: none; padding: 6px 0 2px; display: flex; align-items: center; gap: 4px; margin-top: 4px; }
+/* Exercise companion card — Mathematics only (Constitution v3.2 Rule 9) */
+.ex-box { margin-top: 8px; padding: 8px 10px; background: #fff8ec; border: 0.5px solid #e9dcb8; border-radius: 6px; font-size: 10.5px; color: #5a4716; line-height: 1.5; }
+.ex-label { font-weight: 600; margin-bottom: 4px; color: #6b5418; font-size: 10.5px; letter-spacing: 0.01em; }
+.ex-desc { color: #5a4716; }
+/* abox: white-space pre-wrap preserves blank lines and line breaks;
+   HTML tags (strong) still render inside a pre-wrap container */
+.abox { display: none; margin-top: 6px; padding: 8px; background: #e8f4f5; border-radius: 8px; font-size: 10px; color: #085041; line-height: 1.7; white-space: pre-wrap; }
+.abox.open { display: block; }
+.no-data { padding: 24px; text-align: center; font-size: 12px; color: #9c9693; }
+
+/* ── Science only: Progression Stage collapsible group rows ─────────────────
+   These styles are only activated when isScience is true in the JS renderer.
+   Social Sciences periods never generate .stage-group / .stage-grp-hdr elements. */
+.stage-group { margin-bottom: 10px; }
+.stage-grp-hdr {
+  display: flex; align-items: center; background: #787674;
+  border-radius: 8px; padding: 9px 12px;
+  cursor: pointer; user-select: none; gap: 10px;
+}
+.stage-grp-hdr.open { border-radius: 8px 8px 0 0; background: #4a4a4a; }
+.sg-num   { font-size: 11px; font-weight: 600; color: #fff; white-space: nowrap; flex-shrink: 0; min-width: 56px; }
+.sg-label { flex: 1; font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.92); text-align: center; }
+.sg-chev  { font-size: 10px; color: rgba(255,255,255,0.6); transition: transform 0.15s; flex-shrink: 0; }
+.stage-grp-hdr.open .sg-chev { transform: rotate(180deg); }
+.stage-grp-body { display: none; border: 0.5px solid #4a4a4a; border-top: none; border-radius: 0 0 8px 8px; padding: 8px 8px 4px; }
+.stage-grp-body.open { display: block; }
+
+/* ── Social Sciences LP: collapsible competency group rows ──────────────────
+   Mirror Science's stage-group palette exactly: #787674 collapsed, #4a4a4a open.
+   These classes are NOT shared with Science stage groups — each has its own
+   querySelectorAll scope so accordions never interfere with each other.       */
+.ss-comp-group { margin-bottom: 10px; }
+.ss-comp-grp-hdr {
+  display: flex; align-items: center; background: #787674;
+  border-radius: 8px; padding: 9px 12px;
+  cursor: pointer; user-select: none; gap: 10px;
+}
+.ss-comp-grp-hdr.open { border-radius: 8px 8px 0 0; background: #4a4a4a; }
+.ssg-code   { font-size: 11px; font-weight: 600; color: #fff; white-space: nowrap; flex-shrink: 0; min-width: 90px; }
+.ssg-text   { flex: 1; font-size: 11px; color: rgba(255,255,255,0.88); line-height: 1.4; text-align: left; }
+.ssg-weight { font-size: 10px; color: rgba(255,255,255,0.75); flex-shrink: 0; white-space: nowrap; }
+.ssg-chev   { font-size: 10px; color: rgba(255,255,255,0.6); transition: transform 0.15s; flex-shrink: 0; }
+.ss-comp-grp-hdr.open .ssg-chev { transform: rotate(180deg); }
+.ss-comp-grp-body { display: none; border: 0.5px solid #4a4a4a; border-top: none; border-radius: 0 0 8px 8px; padding: 8px 8px 4px; }
+.ss-comp-grp-body.open { display: block; }
+
+/* ── Social Sciences LP: period header dark-gray palette (erstwhile comp-group hdr) ─ */
+.ss-period-card .period-header  { background: #787674; border-bottom: 1px solid #787674; }
+.ss-period-card.open .period-header { background: #4a4a4a; border-bottom: 1px solid #4a4a4a; }
+.ss-period-card .pnum  { background: rgba(255,255,255,0.18); color: #fff; }
+.ss-period-card.open .pnum { background: rgba(255,255,255,0.25); }
+.ss-period-card .pname { color: rgba(255,255,255,0.92); }
+.ss-period-card .pdur  { color: rgba(255,255,255,0.75); }
+.ss-period-card .ptag  { color: rgba(255,255,255,0.88); }
+.ss-period-card .pchev { color: rgba(255,255,255,0.6); }
+
+/* ── Social Sciences LP: competency info bar inside period body ─────────── */
+/* Uses the erstwhile period-header tan/beige palette.                       */
+.ss-comp-bar {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px;
+  padding: 8px 10px; background: #f5f3ef; border-radius: 6px;
+  margin-bottom: 10px;
+}
+.sscb-code   { font-size: 11px; font-weight: 600; color: #1a1917; white-space: nowrap; }
+.sscb-weight { font-size: 10px; color: #5a5754; white-space: nowrap; }
+.sscb-text   { font-size: 11px; color: #5a5754; line-height: 1.4; }
+
+/* ── Science LP: centre-align Pedagogical Approach column value ─────────── */
+.ptag-sc { font-size: 11px; font-weight: 400; color: #1a1917; width: 220px; flex-shrink: 0; white-space: normal; line-height: 1.4; text-align: center; }
+
+/* ── Science Assessment: collapsible Progression Stage rows ─────────────── */
+.asec-stage-hdr { display: flex; align-items: center; justify-content: center; background: #787674; border-radius: 8px; padding: 10px 12px; cursor: pointer; user-select: none; gap: 8px; margin-bottom: 0; }
+.asec-stage-hdr.open { border-radius: 8px 8px 0 0; background: #4a4a4a; }
+.asec-stage-title { font-size: 12px; font-weight: 500; color: #fff; text-align: center; flex: 1; }
+.asec-stage-chev { font-size: 10px; color: rgba(255,255,255,0.6); transition: transform 0.15s; flex-shrink: 0; }
+.asec-stage-hdr.open .asec-stage-chev { transform: rotate(180deg); }
+.asec-stage-body { display: none; border: 0.5px solid #4a4a4a; border-top: none; border-radius: 0 0 8px 8px; padding: 8px 8px 4px; margin-bottom: 12px; }
+.asec-stage-body.open { display: block; }
+/* Legacy: plain spacer (now replaced by collapsible for Science) */
+.asec-stage-gap { height: 8px; }
+
+/* ── Science only: Lesson view / Time plan toggle ───────── */
+.lv-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 10px 12px 2px;
+}
+.lv-tab {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 14px;
+  border-radius: 20px;
+  border: 0.5px solid #b0a8a0;
+  cursor: pointer;
+  color: #5a5754;
+  background: #fff;
+  user-select: none;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.lv-tab.active {
+  background: #2c3e50;
+  color: #fff;
+  border-color: #2c3e50;
+}
+.lv-panel {
+  display: none;
+  padding: 10px 12px;
+}
+.lv-panel.active {
+  display: block;
+}
+
+/* Materials strip with icon — Science Lesson view */
+.lv-mat-strip {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: #fef9e7;
+  border: 0.5px solid #f0c040;
+  border-radius: 8px;
+  padding: 7px 10px;
+  margin-bottom: 10px;
+}
+.lv-mat-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+.lv-mat-lbl {
+  font-size: 9px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #854f0b;
+  white-space: nowrap;
+  padding-top: 2px;
+}
+.lv-mat-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.lv-mat-tag {
+  font-size: 11px;
+  color: #633806;
+  background: #fde7a4;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+/* Activity block — Science Lesson view */
+.lv-act-block {
+  background: #fff0e6;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+.lv-act-lbl {
+  font-size: 9px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #5a5754;
+  margin-bottom: 5px;
+}
+.lv-act-text {
+  font-size: 11px;
+  color: #1a1917;
+  line-height: 1.6;
+}
+
+/* Roles grid — Science Lesson view */
+.lv-roles-lbl {
+  font-size: 9px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #5a5754;
+  margin-bottom: 7px;
+}
+.lv-roles-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.lv-role-bubble {
+  border-radius: 8px;
+  padding: 9px 12px;
+}
+/* Each actor gets a distinct but muted background — extend as needed */
+.lv-role-bubble:nth-child(1) {
+  background: #eaf3ff;
+  border: 0.5px solid #b3d4f0;
+}
+.lv-role-bubble:nth-child(2) {
+  background: #eaf7ee;
+  border: 0.5px solid #9cdfb4;
+}
+.lv-role-bubble:nth-child(3) {
+  background: #fdf4e7;
+  border: 0.5px solid #f0c87a;
+}
+.lv-role-bubble:nth-child(4) {
+  background: #f3eeff;
+  border: 0.5px solid #c9b0f0;
+}
+.lv-role-name {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #2c3e50;
+  margin-bottom: 4px;
+}
+.lv-role-desc {
+  font-size: 11px;
+  color: #1a1917;
+  line-height: 1.55;
+}
+
+/* Pedagogical approach footer — Science Lesson view and Time plan */
+.lv-ped-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 7px 10px;
+  background: #f0f3f5;
+  border-radius: 8px;
+  border-left: 3px solid #2c3e50;
+  margin-top: 4px;
+}
+.lv-ped-lbl {
+  font-size: 9px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #2c3e50;
+  white-space: nowrap;
+}
+.lv-ped-val {
+  font-size: 11px;
+  color: #1a1917;
+}
+
+/* ── SS Assessment: collapsible competency rows ─────────────────────────── */
+
+/* Make the existing asec-hdr clickable and add open/collapsed states */
+.asec-hdr {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  /* border-radius already set to 8px in existing rule — open state removes bottom radius */
+}
+.asec-hdr.open {
+  border-radius: 8px 8px 0 0;
+  background: #4a4a4a;   /* open colour — matches Science stage groups */
+}
+.asec-hdr.closed {
+  border-radius: 8px;
+  background: #787674;   /* collapsed colour — matches Science stage groups */
+}
+.asec-hdr-chev {
+  font-size: 10px;
+  color: rgba(255,255,255,0.6);
+  flex-shrink: 0;
+  transition: transform 0.15s;
+  padding-top: 2px;
+  align-self: flex-start;
+}
+.asec-hdr.open .asec-hdr-chev {
+  transform: rotate(180deg);
+}
+.asec-hdr-text {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Collapsible body wrapping the q-col-hdr + qcards */
+.asec-body {
+  display: none;
+  border: 0.5px solid #4a4a4a;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  margin-bottom: 0;  /* .asec already carries margin-bottom: 18px */
+}
+.asec-body.open {
+  display: block;
+}
+</style>
+
+<div class="lpa">
+  <div class="banner">
+    <div class="banner-title" id="banner-title">—</div>
+    <div class="banner-meta" id="banner-meta"></div>
+  </div>
+  <div class="lp-panel" id="lp-panel">
+    <div class="no-data">Generate a lesson plan to see it here.</div>
+  </div>
+</div>
+
+<script>
+/* __LPA_DATA__ */
+
+var WEIGHT_LABEL = {3:'Central', 2:'Substantive', 1:'Present'};
+
+/* period_number → implied_lo lookup; built in renderLPA, used in buildTitleCell */
+var g_lo_map = {};
+
+function escHtml(s) {
+  if (!s) return '';
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+/* Expand question-type abbreviations */
+function expandType(t) {
+  if (!t) return t;
+  return t
+    .replace(/\bopen_task\b/gi, 'Open Task')
+    .replace(/\bOPEN_TASK\b/g, 'Open Task')
+    .replace(/\bMCQ\b/g, 'Multiple Choice Question')
+    .replace(/\bECR\b/g, 'Extended Constructed Response')
+    .replace(/\bExtended CR\b/g, 'Extended Constructed Response')
+    .replace(/\bSCR\b/g, 'Short Constructed Response')
+    .replace(/\bShort CR\b/g, 'Short Constructed Response')
+    .replace(/\bNUM\b/g, 'Numerical')
+    .replace(/\bCR\b/g, 'Constructed Response');
+}
+
+/* ── Report true document height to parent Streamlit frame ──────────────── */
+function reportHeight() {
+  var h = Math.max(
+    document.documentElement.scrollHeight,
+    document.body.scrollHeight,
+    document.documentElement.offsetHeight
+  );
+  try {
+    /* Streamlit requires isStreamlitMessage:true + height at root level */
+    window.parent.postMessage(
+      { isStreamlitMessage: true, type: 'streamlit:setFrameHeight', height: h },
+      '*'
+    );
+  } catch(e) {}
+}
+
+function toggleP(id) {
+  var card = document.getElementById(id);
+  var wasOpen = card.classList.contains('open');
+  document.querySelectorAll('.period-card').forEach(function(c){ c.classList.remove('open'); });
+  if (!wasOpen) card.classList.add('open');
+  reportHeight();
+}
+
+function toggleQ(hdr) {
+  var card   = hdr.closest('.qcard');
+  var body   = card.querySelector('.qbody');
+  var isOpen = body.classList.contains('open');
+
+  /* Collapse all other question rows in the same section container */
+  var container = card.parentElement;
+  container.querySelectorAll('.qcard').forEach(function(c) {
+    if (c === card) return;
+    var b = c.querySelector('.qbody');
+    var v = c.querySelector('.qchev');
+    if (b) b.classList.remove('open');
+    if (v) v.style.transform = '';
+  });
+
+  /* Toggle the clicked row */
+  body.classList.toggle('open', !isOpen);
+  var chev = hdr.querySelector('.qchev');
+  if (chev) chev.style.transform = !isOpen ? 'rotate(180deg)' : '';
+
+  reportHeight();
+}
+
+/* Toggle label: "Guide" / "Hide guide" */
+function toggleA(btn) {
+  var box = btn.nextElementSibling;
+  box.classList.toggle('open');
+  btn.textContent = box.classList.contains('open') ? '▲ Hide guide' : '▼ Guide';
+}
+
+/* Switch Lesson view / Time plan tab for a Science period */
+function switchLvTab(periodId, view, btn) {
+  var card = document.getElementById(periodId);
+  card.querySelectorAll('.lv-panel').forEach(function(p) {
+    p.classList.remove('active');
+  });
+  card.querySelectorAll('.lv-tab').forEach(function(t) {
+    t.classList.remove('active');
+  });
+  document.getElementById('lv-' + periodId + '-' + view).classList.add('active');
+  btn.classList.add('active');
+  reportHeight();
+}
+
+/* ── Science only: toggle a Progression Stage collapsible group (LP) ────────
+   Accordion: opening one stage closes all others.
+   Open bar = #4a4a4a (via .open CSS); closed bar = #787674 (default CSS). */
+function toggleStage(id) {
+  var hdr  = document.getElementById(id + '-hdr');
+  var body = document.getElementById(id + '-body');
+  if (!hdr || !body) return;
+  var isOpen = hdr.classList.contains('open');
+  /* Close all LP stage groups first */
+  document.querySelectorAll('.stage-grp-hdr').forEach(function(h) { h.classList.remove('open'); });
+  document.querySelectorAll('.stage-grp-body').forEach(function(b) { b.classList.remove('open'); });
+  /* If it was closed, open it; if it was already open, leave it closed */
+  if (!isOpen) {
+    hdr.classList.add('open');
+    body.classList.add('open');
+  }
+  reportHeight();
+}
+
+/* ── Science only: toggle a Progression Stage row in Assessment ─────────── */
+/* Accordion: opening one stage closes all others in assessment. */
+function toggleAssessStage(id) {
+  var hdr  = document.getElementById(id + '-hdr');
+  var body = document.getElementById(id + '-body');
+  if (!hdr || !body) return;
+  var isOpen = hdr.classList.contains('open');
+  /* Close all assessment stage groups first */
+  document.querySelectorAll('.asec-stage-hdr').forEach(function(h) { h.classList.remove('open'); });
+  document.querySelectorAll('.asec-stage-body').forEach(function(b) { b.classList.remove('open'); });
+  /* If it was closed, open it; if already open, leave it closed */
+  if (!isOpen) {
+    hdr.classList.add('open');
+    body.classList.add('open');
+  }
+  reportHeight();
+}
+
+/* Toggle a SS Assessment competency row (accordion — one open at a time) */
+function toggleAssessSS(id) {
+  var hdr  = document.getElementById(id + '-hdr');
+  var body = document.getElementById(id + '-body');
+  var isOpen = hdr.classList.contains('open');
+
+  /* Close all SS competency rows */
+  document.querySelectorAll('.asec-hdr').forEach(function(h) {
+    h.classList.remove('open');
+    h.classList.add('closed');
+  });
+  document.querySelectorAll('.asec-body').forEach(function(b) {
+    b.classList.remove('open');
+  });
+
+  /* If this row was closed, open it now */
+  if (!isOpen) {
+    hdr.classList.remove('closed');
+    hdr.classList.add('open');
+    body.classList.add('open');
+  }
+
+  reportHeight();
+}
+
+/* Toggle a SS Lesson Plan competency group (accordion — one open at a time).
+   Scoped to .ss-comp-grp-hdr / .ss-comp-grp-body — never touches Science
+   stage groups (.stage-grp-hdr) or SS assessment rows (.asec-hdr).          */
+function toggleSSComp(id) {
+  var hdr  = document.getElementById(id + '-hdr');
+  var body = document.getElementById(id + '-body');
+  if (!hdr || !body) return;
+  var isOpen = hdr.classList.contains('open');
+
+  /* Close all SS LP competency groups */
+  document.querySelectorAll('.ss-comp-grp-hdr').forEach(function(h) { h.classList.remove('open'); });
+  document.querySelectorAll('.ss-comp-grp-body').forEach(function(b) { b.classList.remove('open'); });
+
+  /* If this group was closed, open it now */
+  if (!isOpen) {
+    hdr.classList.add('open');
+    body.classList.add('open');
+  }
+
+  reportHeight();
+}
+
+function renderTimeSlots(slots) {
+  if (!slots || !slots.length) return '';
+  return slots.map(function(s){
+    var desc = (s.desc || '').trim().replace(/^\||\|$/g, '').trim();
+    return '<div class="ts"><div class="ttime">' + escHtml(s.time) + '</div><div class="tdesc">' + escHtml(desc) + '</div></div>';
+  }).join('');
+}
+
+/* ── LO lookup ───────────────────────────────────────────────────────────── */
+
+/* Returns the implied_lo text from g_lo_map for the period referenced in
+   guide.learning_outcome.period. For open_task returns "Refer guide". */
+function extractLO(q) {
+  var type = ((q && q.type) || '').toUpperCase();
+  if (type === 'OPEN_TASK') return 'Refer guide';
+  var guide = (q && q.guide) || {};
+  var lo    = guide.learning_outcome || {};
+  var p     = lo.period;
+  if (p === undefined || p === null || p === '') return '';
+  return g_lo_map[p] ? g_lo_map[p] : ('Period ' + p);
+}
+
+/* Question-column header cell — "LO: <implied_lo text>" (Social Sciences only) */
+function buildTitleCell(q) {
+  var lo   = extractLO(q);
+  var text = lo || ((q && q.title) || '');
+  return '<div class="qhdr-lo"><span class="lo-lbl">LO: </span>' + escHtml(text) + '</div>';
+}
+
+/* Science question-column header cell — empty (no LO, no title text) */
+function buildSciTitleCell(q) {
+  return '<div class="qhdr-lo"></div>';
+}
+
+/* ── Guide HTML builder ───────────────────────────────────────────────────── */
+/*
+  Returns HTML-safe content for the guide box.
+  isSci: true for Science questions (top-level fields: what_each_option_reveals,
+         inclusivity, correct_answer); false for Social Sciences (guide-embedded).
+  Bold section labels are wrapped in <strong>.
+  Blank-line gaps between sections are literal empty strings in the parts array,
+  which become empty lines via the pre-wrap container.
+  All user-facing text values are individually escaped with escHtml().
+*/
+function buildGuideHtml(q, isSci) {
+  if (!q) return '';
+  var guide = q.guide || {};
+
+  /* ── Mathematics: structured guide object (Constitution v3.2 Rule 6) ──
+     { expected_answer, method_one_line, what_each_option_reveals, inclusivity }
+     Per-type diagnostic field:
+       MCQ → what_each_option_reveals (in guide)
+     SCR / NUM / ECR carry no extra diagnostic — expected_answer +
+     method_one_line cover what the teacher needs. */
+  if (q.is_mathematics) {
+    var parts = [];
+    var mathType = (q.type || '').toUpperCase();
+
+    /* MCQ: expected_answer omitted — correct answer is already ticked in options */
+    if (mathType !== 'MCQ' && guide.expected_answer) {
+      parts.push('<strong>Expected answer</strong>');
+      parts.push(escHtml(guide.expected_answer));
+    }
+    if (guide.method_one_line) {
+      if (parts.length) parts.push('');
+      parts.push('<strong>Method</strong>');
+      parts.push(escHtml(guide.method_one_line));
+    }
+    if (mathType === 'MCQ') {
+      var mathReveals = guide.what_each_option_reveals || {};
+      /* Identify the correct option label to exclude it from distractors */
+      var mathCorrectLbl = '';
+      if (Array.isArray(q.options)) {
+        q.options.forEach(function(opt) {
+          if (opt.is_correct) mathCorrectLbl = (opt.label || '').toUpperCase();
+        });
+      }
+      var mathRevealKeys = Object.keys(mathReveals);
+      if (mathRevealKeys.length) {
+        if (parts.length) parts.push('');
+        parts.push('<strong>What each option reveals</strong>');
+        ['A', 'B', 'C', 'D'].forEach(function(lbl) {
+          if (lbl === mathCorrectLbl) return; /* skip correct answer */
+          var v = mathReveals[lbl] || mathReveals[lbl.toLowerCase()];
+          if (v) parts.push(escHtml(lbl) + '. ' + escHtml(String(v)));
+        });
+      }
+    }
+    if (guide.inclusivity) {
+      if (parts.length) parts.push('');
+      parts.push('<strong>Inclusivity</strong>');
+      /* Bold the words "Support" and "Challenge" wherever they appear */
+      var inclText = escHtml(guide.inclusivity)
+        .replace(/\bSupport\b/g, '<strong>Support</strong>')
+        .replace(/\bsupport\b/g, '<strong>Support</strong>')
+        .replace(/\bChallenge\b/g, '<strong>Challenge</strong>')
+        .replace(/\bchallenge\b/g, '<strong>Challenge</strong>');
+      parts.push(inclText);
+    }
+    while (parts.length && parts[parts.length - 1] === '') parts.pop();
+    return parts.join('\n');
+  }
+
+  /* Social Sciences: bail early if there is no guide object at all */
+  if (!isSci && !q.guide) return '';
+  var type  = (q.type || '').toUpperCase();
+  var parts = [];
+
+  if (type === 'MCQ') {
+    /* What other options indicate?
+       Try guide.what_each_option_reveals first (SS path, also works when Science
+       guide is structured the same way).  If empty, fall back unconditionally to
+       the top-level q.what_each_option_reveals (Science top-level field). */
+    var reveals = guide.what_each_option_reveals || {};
+    if (!Object.keys(reveals).length) {
+      var topReveals = q.what_each_option_reveals;
+      if (topReveals && typeof topReveals === 'object' && Object.keys(topReveals).length) {
+        reveals = topReveals;
+      }
+    }
+    if (Object.keys(reveals).length) {
+      parts.push('<strong>What other options indicate?</strong>');
+      /* Correct option key:
+         Try q.correct_answer string first (Science MCQ).
+         Fall back to is_correct flag on array options (SS MCQ). */
+      var correctLabel = '';
+      if (q.correct_answer) {
+        correctLabel = q.correct_answer.toUpperCase();
+      } else if (Array.isArray(q.options)) {
+        q.options.forEach(function(opt) {
+          if (opt.is_correct) correctLabel = (opt.label || opt.key || '').toUpperCase();
+        });
+      }
+      Object.keys(reveals).forEach(function(key) {
+        if (key.toUpperCase() !== correctLabel) {
+          parts.push(escHtml(key) + ': ' + escHtml(reveals[key]));
+        }
+      });
+    }
+    /* Inclusivity: guide.inclusivity (SS / Science when in guide),
+       then q.inclusivity top-level (Science when not in guide). */
+    var mcqIncl = guide.inclusivity || q.inclusivity || '';
+    if (mcqIncl) {
+      if (parts.length) parts.push('');
+      parts.push('<strong>Inclusivity</strong>');
+      parts.push(escHtml(mcqIncl));
+    }
+
+  } else if (type === 'SCR') {
+    var scrElems = (q.expected_elements && q.expected_elements.length)
+      ? q.expected_elements
+      : (guide.expected_elements || []);
+    if (scrElems.length) {
+      parts.push('<strong>Expected Elements</strong>');
+      scrElems.forEach(function(e, i) {
+        parts.push((i + 1) + '. ' + escHtml(String(e)));
+      });
+    }
+    var scrIncl = guide.inclusivity || (isSci ? (q.inclusivity || '') : '');
+    if (scrIncl) {
+      if (parts.length) parts.push('');
+      parts.push('<strong>Inclusivity</strong>');
+      parts.push(escHtml(scrIncl));
+    }
+
+  } else if (type === 'ECR') {
+    var ecrLookFor = (q.look_for && q.look_for.length)
+      ? q.look_for
+      : (guide.look_for || []);
+    if (ecrLookFor.length) {
+      parts.push('<strong>Look for</strong>');
+      ecrLookFor.forEach(function(e, i) {
+        parts.push((i + 1) + '. ' + escHtml(String(e)));
+      });
+    }
+    var ecrIncl = guide.inclusivity || (isSci ? (q.inclusivity || '') : '');
+    if (ecrIncl) {
+      if (parts.length) parts.push('');
+      parts.push('<strong>Inclusivity</strong>');
+      parts.push(escHtml(ecrIncl));
+    }
+
+  } else if (type === 'OPEN_TASK') {
+    /* Learning Outcomes — list period numbers from guide */
+    var loData  = guide.learning_outcome || {};
+    var periods = loData.periods ||
+      (loData.period !== undefined && loData.period !== null && loData.period !== ''
+        ? [loData.period] : []);
+    if (periods.length) {
+      parts.push('<strong>Learning Outcomes</strong>');
+      var pStrs = periods.map(function(p) { return 'Period ' + p; });
+      parts.push('LOs correspond to activities of ' + escHtml(pStrs.join(', ')));
+      parts.push('');
+    }
+    if (guide.what_this_demonstrates) {
+      parts.push('<strong>What this demonstrates</strong>');
+      parts.push(escHtml(guide.what_this_demonstrates));
+      parts.push('');
+    }
+    if (guide.reading_the_scaffold) {
+      parts.push('<strong>Reading the scaffold</strong>');
+      parts.push(escHtml(guide.reading_the_scaffold));
+      parts.push('');
+    }
+    if (guide.strong_vs_weak_markers) {
+      parts.push('<strong>Strong vs weak markers</strong>');
+      parts.push(escHtml(guide.strong_vs_weak_markers));
+      parts.push('');
+    }
+    var otIncl = guide.inclusivity || (isSci ? (q.inclusivity || '') : '');
+    if (otIncl) {
+      parts.push('<strong>Inclusivity</strong>');
+      parts.push(escHtml(otIncl));
+    }
+  }
+
+  /* Strip any trailing blank lines */
+  while (parts.length && parts[parts.length - 1] === '') parts.pop();
+  return parts.join('\n');
+}
+
+/* ── Visual stimulus renderer ────────────────────────────────────────────── */
+
+function renderVisualStimulus(vs) {
+  /* Returns an HTML string for the visual_stimulus field.
+     Permitted formats per assessment constitutions:
+       1. Pipe-delimited table (2+ lines, every line contains |) — rendered
+          as a proper HTML table.
+       2. Plain prose — rendered as italic text.
+     Returns '' if vs is null / empty.
+
+     Mathematics no longer permits inline SVG (Constitution v3.2 Rule 7);
+     figures are referenced via the Exercise companion block instead. */
+  if (!vs || typeof vs !== 'string' || !vs.trim()) return '';
+
+  var trimmed = vs.trim();
+
+  var html = '<div class="vs-box">';
+  html += '<div class="vs-label">Visual stimulus</div>';
+
+  var lines = trimmed.split('\n').map(function(l) { return l.trim(); }).filter(Boolean);
+  var isTable = lines.length >= 2 && lines.every(function(l) { return l.indexOf('|') !== -1; });
+
+  if (isTable) {
+    html += '<table class="vs-table">';
+    lines.forEach(function(line, ri) {
+      var cells = line.split('|').map(function(c) { return c.trim(); });
+      /* Remove leading/trailing empty cells from surrounding pipes */
+      if (cells[0] === '') cells.shift();
+      if (cells[cells.length - 1] === '') cells.pop();
+      html += ri === 0 ? '<thead><tr>' : '<tr>';
+      cells.forEach(function(cell) {
+        html += ri === 0
+          ? '<th>' + escHtml(cell) + '</th>'
+          : '<td>' + escHtml(cell) + '</td>';
+      });
+      html += ri === 0 ? '</tr></thead>' : '</tr>';
+    });
+    html += '</table>';
+  } else {
+    html += '<div class="vs-text"><em>' + escHtml(trimmed) + '</em></div>';
+  }
+
+  html += '</div>';
+  return html;
+}
+
+/* ── Assessment renderer ─────────────────────────────────────────────────── */
+
+function renderAssessment(sections) {
+  if (!sections || !sections.length) return '';
+
+  /* Science detection: Science assessment sections carry stage_label or progression_stage.
+     Social Sciences sections carry c_code + weight_label instead. */
+  /* Science detection: app.py sets is_science: true on every Science section and
+     is_science: false on every SS section — unambiguous regardless of stage_label value. */
+  var isScience = sections[0].is_science === true;
+
+  var html = '<div class="assess-divider"><div class="adivlabel">Chapter Assessment</div>';
+  var qCounter = 0;  /* sequential question number across all sections */
+  var lastLO   = ''; /* tracks last rendered LO text for deduplication */
+
+  /* Science assessment: each section becomes a collapsible stage row */
+  var sciStageIdx = 0;
+  var ssSectionIdx = 0;
+
+  sections.forEach(function(sec) {
+    html += '<div class="asec">';
+
+    if (isScience) {
+      /* ── Science: collapsible Progression Stage row ─────────────────────────
+         First stage open by default; rest collapsed. Accordion toggle. */
+      sciStageIdx++;
+      var stageId     = 'asec-s' + sciStageIdx;
+      var stageText   = sec.stage_label || sec.c_code || '';
+      var sciOpenCls  = sciStageIdx === 1 ? ' open' : '';  /* first stage open by default */
+
+      html += '<div class="asec-stage-hdr' + sciOpenCls + '" id="' + stageId + '-hdr" ' +
+                   'onclick="toggleAssessStage(\'' + stageId + '\')">' +
+                '<div class="asec-stage-title">' +
+                  '<strong>Progression Stage:</strong> ' + escHtml(stageText) +
+                '</div>' +
+                '<div class="asec-stage-chev">▼</div>' +
+              '</div>';
+      html += '<div class="asec-stage-body' + sciOpenCls + '" id="' + stageId + '-body">';
+
+    } else {
+      /* ── Social Sciences / Mathematics: collapsible competency / section row ─ */
+      ssSectionIdx++;
+      var ssId      = 'asec-ss' + ssSectionIdx;
+      var ssOpenCls = ssSectionIdx === 1 ? ' open' : ' closed';  /* first row open by default */
+      var isMathSec = !!sec.is_mathematics;
+
+      var codeAndWeight = escHtml(sec.c_code);
+      if (sec.weight_label) codeAndWeight += ' · ' + escHtml(sec.weight_label);
+
+      /* Mathematics collapsible bar: show section_title directly, no prefix */
+      var asecTitle = isMathSec
+        ? escHtml(sec.section_title || '')
+        : codeAndWeight;
+
+      var metaLine = '';
+      if (sec.question_types) {
+        var expandedTypes = sec.question_types.split(' · ').map(expandType).join(' · ');
+        metaLine += escHtml(expandedTypes);
+      }
+
+      html += '<div class="asec-hdr' + ssOpenCls + '" id="' + ssId + '-hdr" ' +
+                   'onclick="toggleAssessSS(\'' + ssId + '\')">' +
+                '<div class="asec-hdr-text">' +
+                  '<div class="asec-title">' + asecTitle + '</div>';
+      /* For SS only: show competency description and meta line */
+      if (!isMathSec) {
+        if (sec.competency_short) {
+          html += '<div class="asec-wording">' + escHtml(sec.competency_short) + '</div>';
+        }
+        if (metaLine) {
+          html += '<div class="asec-meta">' + metaLine + '</div>';
+        }
+      }
+      html +=   '</div>' +
+                '<div class="asec-hdr-chev">▼</div>' +
+              '</div>';
+
+      var ssBodyOpenCls = ssSectionIdx === 1 ? ' open' : '';  /* first body visible by default */
+      html += '<div class="asec-body' + ssBodyOpenCls + '" id="' + ssId + '-body">';
+    }
+
+    /* Question cards */
+    if (sec.questions && sec.questions.length) {
+      /* Column headers: # | Question Type | Question | [Cognitive Demand — SS/Sci only] */
+      var _isMathQ = !!(sec.is_mathematics);
+      html += '<div class="q-col-hdr">';
+      html +=   '<div class="qch-num">#</div>';
+      html +=   '<div class="qch-type">Question type</div>';
+      html +=   '<div class="qch-q">Question</div>';
+      if (!_isMathQ) {
+        html += '<div class="qch-ref">Cognitive Demand</div>';
+      }
+      html += '</div>';
+
+      sec.questions.forEach(function(q) {
+        qCounter++;
+        var typeLbl   = escHtml(expandType(q.type || ''));
+        var type      = (q.type || '').toUpperCase();
+        var cogDemand = q.cognitive_demand
+          ? q.cognitive_demand.charAt(0).toUpperCase() + q.cognitive_demand.slice(1)
+          : '';
+
+        html += '<div class="qcard">';
+
+        /* Collapsed header row — always visible. */
+        html += '<div class="qhdr" onclick="toggleQ(this)">';
+        html +=   '<div class="qhdr-num">' + qCounter + '</div>';
+        html +=   '<div class="qhdr-type"><span class="qtype-lbl">' + typeLbl + '</span></div>';
+
+        if (q.is_mathematics) {
+          /* ── Mathematics: show item-level section_title in the Question column ── */
+          var _secTitle = (q.section_title || '').trim();
+          var _secLine = _secTitle
+            ? '<div class="qhdr-lo"><span class="lo-lbl">Section: </span>' + escHtml(_secTitle) + '</div>'
+            : '<div class="qhdr-lo"></div>';
+          html +=   '<div class="qhdr-title">' + _secLine + '</div>';
+          html +=   '<div class="qhdr-ref" style="width:0;padding:0;border:none;overflow:hidden"><span class="qchev">▼</span></div>';
+        } else {
+          /* ── Science / Social Sciences: show Implied LO in the Question column ──
+             Deduplication is global across all sections in render order:
+               • first occurrence (or changed text): show full text
+               • repeated text: show "same as above" in italics
+             An empty value leaves the cell blank and does not update lastLO. */
+          var _qlo = (q.implied_lo || '').trim();
+          var _qLabel = 'Learning Outcome: ';
+          var _loLine;
+          if (!_qlo) {
+            _loLine = '<div class="qhdr-lo"></div>';
+          } else if (_qlo === lastLO) {
+            _loLine = '<div class="qhdr-lo"><span class="lo-lbl">' + _qLabel + '</span><em>same as above</em></div>';
+          } else {
+            lastLO  = _qlo;
+            _loLine = '<div class="qhdr-lo"><span class="lo-lbl">' + _qLabel + '</span>' + escHtml(_qlo) + '</div>';
+          }
+          html +=   '<div class="qhdr-title">' + _loLine + '</div>';
+          html +=   '<div class="qhdr-ref">' + escHtml(cogDemand) + '<span class="qchev">▼</span></div>';
+        }
+        html += '</div>';
+
+        /* Expanded body */
+        html += '<div class="qbody">';
+
+        /* Main question text */
+        if (type === 'OPEN_TASK') {
+          var taskText = q.task || q.task_instructions || q.question || '';
+          if (taskText) {
+            html += '<div class="qtext"><strong>Task</strong></div>';
+            html += '<div class="qtext">' + escHtml(taskText) + '</div>';
+          }
+          /* Visual stimulus — rendered after task text, before scaffold */
+          html += renderVisualStimulus(q.visual_stimulus);
+          if (q.scaffold) {
+            html += '<div class="qtext"><strong>Scaffold</strong></div>';
+            html += '<div class="qtext">' + escHtml(q.scaffold) + '</div>';
+          }
+          var fof = q.format_of_output;
+          if (fof && fof.length) {
+            html += '<div class="qtext"><strong>Format of output</strong></div>';
+            if (Array.isArray(fof)) {
+              fof.forEach(function(f) {
+                html += '<div class="qtext qtext-bullet">• ' + escHtml(f) + '</div>';
+              });
+            } else {
+              html += '<div class="qtext">' + escHtml(String(fof)) + '</div>';
+            }
+          }
+        } else {
+          var bodyText = q.question || '';
+          if (bodyText) {
+            html += '<div class="qtext">' + escHtml(bodyText) + '</div>';
+          }
+          /* Visual stimulus — rendered after question stem, before options */
+          html += renderVisualStimulus(q.visual_stimulus);
+        }
+
+        /* Options (MCQ):
+           SS format:  array of {label, text, is_correct}
+           Science format: dict {"A": "text", ...} + q.correct_answer key string */
+        if (q.options) {
+          if (Array.isArray(q.options) && q.options.length) {
+            q.options.forEach(function(opt, oi) {
+              var label     = opt.label || opt.key || String.fromCharCode(65 + oi);
+              var isCorrect = opt.is_correct || opt.correct;
+              var cls       = 'qopt' + (isCorrect ? ' correct' : '');
+              var suffix    = isCorrect ? ' ✓' : '';
+              var text      = opt.text || opt.value || '';
+              html += '<div class="' + cls + '">' + escHtml(label) + '. ' + escHtml(text) + suffix + '</div>';
+            });
+          } else if (!Array.isArray(q.options) && typeof q.options === 'object') {
+            /* Science MCQ: options is a plain dict */
+            var sciCorrect = (q.correct_answer || '').toUpperCase();
+            Object.keys(q.options).forEach(function(key) {
+              var isCorrect = key.toUpperCase() === sciCorrect;
+              var cls       = 'qopt' + (isCorrect ? ' correct' : '');
+              var suffix    = isCorrect ? ' ✓' : '';
+              html += '<div class="' + cls + '">' + escHtml(key) + '. ' + escHtml(q.options[key]) + suffix + '</div>';
+            });
+          }
+        }
+
+        /* Guide box — Change 6/7 (Science): pass isSci so top-level fields are used */
+        var guideHtml = buildGuideHtml(q, isScience);
+        if (guideHtml) {
+          html += '<button class="atoggle" onclick="toggleA(this)">▼ Guide</button>';
+          html += '<div class="abox">' + guideHtml + '</div>';
+        }
+
+        /* Exercise companion card — Mathematics only (Constitution v3.2 Rule 9).
+           Pointer to a textbook item (exercise / worked example / activity) that
+           anchors this goal. Skipped silently when the LP gamut walk found no
+           anchor for the section. */
+        if (q.is_mathematics && q.exercise && q.exercise.book_ref) {
+          html += '<div class="ex-box">';
+          html += '<div class="ex-label"><strong>Exercise — ' + escHtml(q.exercise.book_ref) + '</strong></div>';
+          if (q.exercise.description) {
+            html += '<div class="ex-desc">' + escHtml(q.exercise.description) + '</div>';
+          }
+          html += '</div>';
+        }
+
+        html += '</div>'; /* .qbody */
+        html += '</div>'; /* .qcard */
+      });
+    }
+
+    /* Close the Science collapsible stage body */
+    if (isScience) html += '</div>'; /* .asec-stage-body */
+    if (!isScience) html += '</div>'; /* .asec-body */
+
+    html += '</div>'; /* .asec */
+  });
+
+  html += '</div>'; /* .assess-divider */
+  return html;
+}
+
+/* ── Main render ─────────────────────────────────────────────────────────── */
+
+function renderLPA() {
+  if (!window.LPA_DATA) return;
+  var d = window.LPA_DATA;
+
+  /* Build period → implied_lo lookup for assessment LO display */
+  g_lo_map = {};
+  (d.lo_handoff || []).forEach(function(p) {
+    if (p.period_number !== undefined && p.implied_lo) {
+      g_lo_map[p.period_number] = p.implied_lo;
+    }
+  });
+
+  document.getElementById('banner-title').textContent = d.chapter_title || '—';
+
+  /* Compute total time + period count from lo_handoff */
+  var _periods = d.lo_handoff || [];
+  var _numP    = _periods.length;
+  var _totMins = 0;
+  _periods.forEach(function(p) { _totMins += (p.period_duration_minutes || 0); });
+  var _bh = Math.floor(_totMins / 60), _bm = _totMins % 60;
+  var _timeStr = _bh === 0 ? (_bm + ' min') :
+                 _bm === 0 ? (_bh + ' hr') :
+                 (_bh + ' hr ' + _bm + ' min');
+  var _schedChip = _numP > 0
+    ? 'Total · ' + _timeStr + ', ' + _numP + ' period' + (_numP !== 1 ? 's' : '')
+    : (d.period_schedule || '');
+
+  var metaEl = document.getElementById('banner-meta');
+  metaEl.innerHTML =
+    '<span class="bchip">Ch ' + String(d.chapter_number||'').padStart(2,'0') + '</span>' +
+    '<span class="bchip">' + escHtml(d.grade) + '</span>' +
+    '<span class="bchip">' + escHtml(d.subject) + '</span>' +
+    '<span class="bchip hi">' + escHtml(_schedChip) + '</span>';
+
+  var panel = document.getElementById('lp-panel');
+  panel.innerHTML = '';
+
+  /* "Lesson Plan" section label */
+  var lpLabelDiv = document.createElement('div');
+  lpLabelDiv.className = 'lp-section-label';
+  lpLabelDiv.textContent = 'Lesson Plan';
+  panel.appendChild(lpLabelDiv);
+
+  /* Period cards */
+  var periods = d.lo_handoff || [];
+
+  /* Science detection: periods carry stage_label or activity_title.
+     Social Sciences periods do not have these fields. */
+  var isScience = periods.length > 0 &&
+      (periods[0].stage_label !== undefined || periods[0].activity_title !== undefined);
+
+  /* Column header — rendered inside each stage / competency group body,
+     below its collapsible bar. Nothing is rendered at panel level here. */
+
+  if (isScience) {
+    /* ── Science rendering path ───────────────────────────────────────────────
+       Change 1: group periods by progression_stage; each group is a collapsible
+                 row (collapsed by default) showing Stage N | stage_label | desc.
+       Change 2: sectionTag reads competency_text (= pedagogical_approach).
+       Change 3: loBar omitted.
+       Change 4: competencyRow omitted.                                        */
+
+    /* Group periods by progression_stage, preserving order of first appearance */
+    var stageMap   = {};
+    var stageOrder = [];
+    periods.forEach(function(p) {
+      var sNum = p.progression_stage || 0;
+      if (!stageMap[sNum]) { stageMap[sNum] = []; stageOrder.push(sNum); }
+      stageMap[sNum].push(p);
+    });
+
+    stageOrder.forEach(function(sNum, sIdx) {
+      var sPeriodsArr = stageMap[sNum];
+      var firstP      = sPeriodsArr[0];
+      var sLabel      = firstP.stage_label || '';
+      /* description field preferred; fall back to activity_summary from LO Handoff */
+      var sDesc       = firstP.description || firstP.activity_summary || '';
+
+      var grpId    = 'stage-grp-' + sNum;
+      var openCls  = sIdx === 0 ? ' open' : '';  /* first stage open by default */
+      var grpEl    = document.createElement('div');
+      grpEl.className = 'stage-group';
+
+      /* Stage group header — first stage open, rest collapsed by default */
+      var grpHtml =
+        '<div class="stage-grp-hdr' + openCls + '" id="' + grpId + '-hdr" ' +
+              'onclick="toggleStage(\'' + grpId + '\')">' +
+          '<div class="sg-num">Stage ' + escHtml(String(sNum)) + '</div>' +
+          '<div class="sg-label">' + escHtml(sLabel) + '</div>' +
+          '<div class="sg-chev">▼</div>' +
+        '</div>' +
+        '<div class="stage-grp-body' + openCls + '" id="' + grpId + '-body">' +
+        '<div class="lp-col-hdr">' +
+          '<div class="lpch-num">#</div>' +
+          '<div class="lpch-time">Time</div>' +
+          '<div class="lpch-name">Name of Activity</div>' +
+          '<div class="lpch-sec">Pedagogical Approach</div>' +
+          '<div class="lpch-spc"></div>' +
+        '</div>';
+
+      /* Period cards inside this stage body */
+      sPeriodsArr.forEach(function(p) {
+        var pid = 'p' + p.period_number;
+
+        /* Change 2 (Science): column tag shows competency_text = pedagogical_approach,
+           Change 3: centre-aligned via ptag-sc class */
+        var _rawSection = (p.competency_text || '').trim();
+        var sectionTag  = _rawSection
+          ? '<div class="ptag-sc">' + escHtml(_rawSection) + '</div>'
+          : '';
+
+        var _rawActivity = (p.activity_name || (p.activity_summary || '').split(',')[0].substring(0, 60))
+          .replace(/^Anchored to:\s*/i, '').replace(/^Activity:\s*/i, '').trim();
+        var activityLabel = '<div class="pname">' + escHtml(_rawActivity) + '</div>';
+
+        var materialRow = p.material
+          ? '<div class="matrow"><div class="matlabel">Material</div>' +
+            '<div class="mattext">' + escHtml(p.material) + '</div></div>'
+          : '';
+
+        var timeSlotsHtml = renderTimeSlots(p.time_slots || []);
+
+        /* Changes 3 & 4 (Science): loBar and competencyRow deliberately omitted */
+
+        // ── helpers for new Lesson view fields ──────────────────────────────────
+
+        // Materials with icon (sourced from p.material, which is the materials string)
+        var lvMaterialHtml = '';
+        if (p.material) {
+          lvMaterialHtml =
+            '<div class="lv-mat-strip">' +
+              '<span class="lv-mat-icon">📎</span>' +
+              '<div class="lv-mat-lbl">Materials</div>' +
+              '<div class="lv-mat-tags"><span class="lv-mat-tag">' +
+                escHtml(p.material) +
+              '</span></div>' +
+            '</div>';
+        }
+
+        // Activity description
+        var lvActivityHtml = '';
+        if (p.activity_description) {
+          lvActivityHtml =
+            '<div class="lv-act-block">' +
+              '<div class="lv-act-lbl">Activity</div>' +
+              '<div class="lv-act-text">' + escHtml(p.activity_description) + '</div>' +
+            '</div>';
+        }
+
+        // Roles — sourced from p.actors array: [{actor: "...", role_description: "..."}]
+        var lvRolesHtml = '';
+        if (p.actors && p.actors.length) {
+          var bubblesHtml = p.actors.map(function(a) {
+            return '<div class="lv-role-bubble">' +
+              '<div class="lv-role-name">' + escHtml(a.actor) + '</div>' +
+              '<div class="lv-role-desc">' + escHtml(a.role_description) + '</div>' +
+            '</div>';
+          }).join('');
+          lvRolesHtml =
+            '<div class="lv-roles-lbl">Roles</div>' +
+            '<div class="lv-roles-grid">' + bubblesHtml + '</div>';
+        }
+
+        // ── assemble the new .pbody ──────────────────────────────────────────────
+        var pbodyHtml =
+          '<div class="pbody">' +
+
+            // Toggle bubbles
+            '<div class="lv-tabs">' +
+              '<span class="lv-tab active" onclick="switchLvTab(\'' + pid + '\',\'lv\',this)">Lesson view</span>' +
+              '<span class="lv-tab" onclick="switchLvTab(\'' + pid + '\',\'tp\',this)">Time plan</span>' +
+            '</div>' +
+
+            // ── Lesson view panel ───────────────────────────────────────────────
+            '<div class="lv-panel active" id="lv-' + pid + '-lv">' +
+              lvMaterialHtml +
+              lvActivityHtml +
+              lvRolesHtml +
+            '</div>' +
+
+            // ── Time plan panel ─────────────────────────────────────────────────
+            '<div class="lv-panel" id="lv-' + pid + '-tp">' +
+              materialRow +
+              timeSlotsHtml +
+            '</div>' +
+
+          '</div>'; // .pbody
+
+        grpHtml +=
+          '<div class="period-card" id="' + pid + '">' +
+            '<div class="period-header" onclick="toggleP(\'' + pid + '\')">' +
+              '<div class="pnum">Period ' + p.period_number + '</div>' +
+              '<div class="pdur">' + p.period_duration_minutes + ' min</div>' +
+              activityLabel +
+              sectionTag +
+              '<div class="pchev">▼</div>' +
+            '</div>' +
+            pbodyHtml +
+          '</div>';
+      });
+
+      grpHtml += '</div>';  /* close .stage-grp-body */
+      grpEl.innerHTML = grpHtml;
+      panel.appendChild(grpEl);
+    });
+
+  } else {
+    /* ── Social Sciences rendering path — flat list with per-period competency bar ──
+       Competency group accordion removed; periods render as a flat list.
+       Each period body now opens with a competency info bar (tan/beige palette,
+       i.e. the old period-header colours), while the period header itself uses
+       the erstwhile competency-group-header dark-gray palette.              */
+
+    /* Single column header row above all periods */
+    var hdrEl = document.createElement('div');
+    hdrEl.className = 'lp-col-hdr';
+    hdrEl.innerHTML =
+      '<div class="lpch-num">#</div>' +
+      '<div class="lpch-time">Time</div>' +
+      '<div class="lpch-name">Name of Activity</div>' +
+      '<div class="lpch-sec">Anchored Section</div>' +
+      '<div class="lpch-spc"></div>';
+    panel.appendChild(hdrEl);
+
+    periods.forEach(function(p, pIdx) {
+      var id    = 'p' + p.period_number;
+      var wlblP = WEIGHT_LABEL[p.weight] || '';
+      var isMath = !!p.is_mathematics;
+
+      var _rawSection = (p.chapter_section || '')
+        .replace(/^Anchored to:\s*/i, '').replace(/^Activity:\s*/i, '').trim();
+      /* Mathematics: prefer section_title (human-readable name) over the §-ref */
+      var _displaySection = (isMath && (p.section_title || '').trim())
+        ? (p.section_title || '').trim()
+        : _rawSection;
+      var sectionTag = _displaySection
+        ? '<div class="ptag">' + escHtml(_displaySection) + '</div>'
+        : '';
+
+      var _rawActivity = (p.activity_name || (p.activity_summary||'').split(',')[0].substring(0,60))
+        .replace(/^Anchored to:\s*/i, '').replace(/^Activity:\s*/i, '').trim();
+      var activityLabel = '<div class="pname">' + escHtml(_rawActivity) + '</div>';
+
+      /* Material row — for Mathematics, include Pedagogical Approach at the right end */
+      var materialRow = '';
+      if (p.material) {
+        var pedHtml = (isMath && (p.pedagogical_method || '').trim())
+          ? '<div class="mat-ped-wrap">' +
+              '<span class="mat-ped-label">Pedagogical Approach:</span>' +
+              '<span class="mat-ped-text">' + escHtml(p.pedagogical_method) + '</span>' +
+            '</div>'
+          : '';
+        materialRow =
+          '<div class="matrow">' +
+            '<div class="matlabel">Material</div>' +
+            '<div class="mattext">' + escHtml(p.material) + '</div>' +
+            pedHtml +
+          '</div>';
+      }
+
+      var timeSlotsHtml = renderTimeSlots(p.time_slots || []);
+
+      /* loBar — shown for SS/Science only; Maths uses materialRow for this */
+      var loBar = isMath ? '' :
+        '<div class="lobar"><div class="lolabel">Pedagogical Approach</div>' +
+        '<div class="lotext">' + escHtml(p.implied_lo) + '</div></div>';
+
+      var teacherNotesBar = (p.teacher_notes || '').trim()
+        ? '<div class="tnbar"><div class="tnlabel">Teacher Notes</div>' +
+          '<div class="tntext">' + escHtml(p.teacher_notes) + '</div></div>'
+        : '';
+
+      /* Competency bar — top of pbody, styled with old period-header tan/beige palette.
+         Skipped entirely for chapters where no competency drives the period
+         (Mathematics LP per Rule 8: competencies do not drive periods). */
+      var compBar = (p.c_code || wlblP || p.competency_text)
+        ? '<div class="ss-comp-bar">' +
+            '<span class="sscb-code">' + escHtml(p.c_code || '') + '</span>' +
+            (wlblP ? '<span class="sscb-weight">(' + escHtml(wlblP) + ')</span>' : '') +
+            (p.competency_text ? '<span class="sscb-text">— ' + escHtml(p.competency_text) + '</span>' : '') +
+          '</div>'
+        : '';
+
+      var cardEl = document.createElement('div');
+      cardEl.className = 'period-card ss-period-card' + (pIdx === 0 ? ' open' : '');
+      cardEl.id = id;
+      cardEl.innerHTML =
+        '<div class="period-header" onclick="toggleP(\'' + id + '\')">' +
+          '<div class="pnum">Period ' + p.period_number + '</div>' +
+          '<div class="pdur">' + p.period_duration_minutes + ' min</div>' +
+          activityLabel +
+          sectionTag +
+          '<div class="pchev">▼</div>' +
+        '</div>' +
+        '<div class="pbody">' +
+          compBar +
+          materialRow +
+          timeSlotsHtml +
+          teacherNotesBar +
+          loBar +
+        '</div>';
+      panel.appendChild(cardEl);
+    });
+  }
+
+  /* Assessment section */
+  if (d.assessment_sections && d.assessment_sections.length) {
+    var assessDiv = document.createElement('div');
+    assessDiv.innerHTML = renderAssessment(d.assessment_sections);
+    panel.appendChild(assessDiv);
+  } else if (d.assessment_html) {
+    var assessDiv2 = document.createElement('div');
+    assessDiv2.className = 'assess-divider';
+    assessDiv2.innerHTML = '<div class="adivlabel">Chapter Assessment</div>' + d.assessment_html;
+    panel.appendChild(assessDiv2);
+  }
+}
+
+renderLPA();
+/* Fire once after initial render so the parent knows the true height */
+reportHeight();
+/* Fire again at increasing delays to catch layout shifts in both
+   Science (stage group layout) and Social Sciences (period cards) */
+setTimeout(reportHeight, 100);
+setTimeout(reportHeight, 400);
+setTimeout(reportHeight, 800);
+</script>
