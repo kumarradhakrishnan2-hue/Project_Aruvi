@@ -81,7 +81,42 @@ section's `title`, `type` (`prose` | `poem` | `narrative` | `dialogue`
 | `informational`), `page_range`, and `char_count` (rough character
 count of the text body, not exercises).
 
-## Step 3 — Per main_section, identify present spine sections
+## Step 3 — Per main_section, write the text summary
+
+For each main_section, capture what the student actually reads. This is
+the source of truth for downstream LP planning and assessment grounding.
+
+By section type:
+
+- **`prose` / `narrative` / `informational`**:
+  Write a `prose_summary` of 200–400 words covering plot/argument,
+  characters/key entities, setting, themes, tone, and any pivotal
+  passages. Plain prose. No bullets. Stay strictly within the textbook —
+  no outside knowledge, no interpretation beyond what the text states
+  or clearly implies.
+
+- **`poem`**:
+  Capture the full poem text verbatim in a `poem_text` field (newline-
+  separated lines, stanza breaks preserved). Then write a
+  `poem_appreciation_summary` of 80–150 words covering theme, tone,
+  central imagery, and the dominant literary device(s) the poet uses.
+  No interpretation that the poem itself does not support.
+
+- **`dialogue`**:
+  Write a `prose_summary` of 200–400 words naming the speakers, the
+  context of the exchange, and the key turning points or revelations.
+
+The text summary fields are MANDATORY — no main_section may be emitted
+without them. If a main_section is a very short text (a riddle, a
+4-line verse), write a shorter summary proportional to the source
+(e.g., 50–100 words), but still write it.
+
+These fields are the source of truth referenced by:
+- The LP generator when teacher_notes describe what the period covers.
+- The assessment generator when verifying answers and grounding
+  generated items.
+
+## Step 4 — Per main_section, identify present spine sections
 
 For each main_section, walk the textbook in order and identify which of
 the six spines are present. Use the static lookup
@@ -100,7 +135,7 @@ A spine may legitimately be ABSENT from a main_section. A short poem
 under "Reading for Appreciation" often only carries `reading` +
 `vocabulary_grammar`. Do not invent missing spines.
 
-## Step 4 — Per (section, spine) cell, capture tasks and question bank
+## Step 5 — Per (section, spine) cell, capture tasks and question bank
 
 For each present (section, spine) cell, capture:
 
@@ -124,29 +159,7 @@ For each present (section, spine) cell, capture:
     "page_ref":   "p.NN"
   }
   ```
-- `task_type` — a single tag describing the dominant output type of
-  this cell. Used by LP and assessment generators.
-
-  - For `writing`: `paragraph` | `poster` | `letter` | `condolence` |
-    `slogan` | `dialogue` | `essay` | `report` | `email` |
-    `creative_composition` | `descriptive_paragraph`
-  - For `speaking`: `conversation` | `role_play` | `debate` |
-    `presentation` | `interview` | `storytelling` | `oral_description`
-  - For `reading`: `prose_comprehension` | `poem_appreciation` |
-    `informational_comprehension` | `critical_analysis`
-  - For `listening`: `passage_comprehension` | `dialogue_comprehension`
-    | `instruction_following` | `audio_guide`
-  - For `vocabulary_grammar`: `word_meaning` | `grammar_rule` |
-    `phonetics` | `wordplay` | `dictionary_use`
-  - For `beyond_text`: `project` | `research` | `interdisciplinary` |
-    `library` | `hands_on`
-
-If the cell has a single dominant task_type, name it. If multiple
-co-exist (e.g., a Writing cell has both a poster task and a paragraph
-task), pick the FIRST task in textbook order — that's typically the
-chapter's primary writing output for the section.
-
-## Step 5 — Listening cells: capture transcript reference
+## Step 6 — Listening cells: capture transcript reference
 
 For every (section, spine=listening) cell, capture `transcript_ref` as
 the page number of the textbook's transcript appendix (NCERT books
@@ -154,7 +167,7 @@ ship listening transcripts at the end of each chapter, typically under
 a "TRANSCRIPTS" banner). Format: `"p.NN"`. Do NOT inline the transcript
 text into the summary — the page reference is sufficient.
 
-## Step 6 — Effort signals
+## Step 7 — Effort signals
 
 Compute at the chapter level:
 
@@ -164,14 +177,14 @@ Compute at the chapter level:
   all (section, spine) cells.
 - `total_question_bank_count` — total entries across all `question_bank`
   arrays.
-- `project_load` — count of `beyond_text` cells whose `task_type` is
-  `project` | `research` | `interdisciplinary`.
+- `project_load` — count of `beyond_text` cells across all
+  main_sections (one cell = one unit of project load).
 - `main_section_count` — number of main_sections detected (typically
   1, 2, or 3).
 
 These feed the allocation tab's effort index downstream.
 
-## Step 7 — Attach static competency mapping
+## Step 8 — Attach static competency mapping
 
 Read `mirror/framework/english/{stage}/spine_to_cg.json` and copy each
 spine's `competency_codes` array verbatim into the summary's
@@ -179,7 +192,7 @@ spine's `competency_codes` array verbatim into the summary's
 competency tags.** This block is decorative and informs reporting in
 LP and assessment outputs.
 
-## Step 8 — Write summary JSON
+## Step 9 — Write summary JSON
 
 ```json
 {
@@ -196,10 +209,10 @@ LP and assessment outputs.
       "type": "prose",
       "page_range": "p.69-80",
       "char_count": 25000,
+      "prose_summary": "<200–400 word textbook-grounded summary of the prose: argument arc, key entities (states, materials, makers), themes (craft heritage, regional variation, change over time), tone, and any pivotal passages.>",
       "spines": {
         "reading": {
           "section_name": "Reading for Meaning",
-          "task_type": "informational_comprehension",
           "char_count": 4800,
           "tasks_verbatim": ["..."],
           "question_bank": [
@@ -213,15 +226,14 @@ LP and assessment outputs.
         },
         "listening": {
           "section_name": "Listen and Respond",
-          "task_type": "dialogue_comprehension",
           "transcript_ref": "p.263",
           "tasks_verbatim": ["..."],
           "question_bank": [ /* ... */ ]
         },
-        "speaking": { "section_name": "Speaking Activity", "task_type": "role_play", "tasks_verbatim": ["..."], "question_bank": [/* ... */] },
-        "writing":  { "section_name": "Writing Task",      "task_type": "descriptive_paragraph", "tasks_verbatim": ["..."], "question_bank": [/* ... */] },
-        "vocabulary_grammar": { "section_name": "Vocabulary and Structures in Context", "task_type": "word_meaning", "tasks_verbatim": ["..."], "question_bank": [/* ... */] },
-        "beyond_text": { "section_name": "Learning Beyond the Text", "task_type": "project", "tasks_verbatim": ["..."], "question_bank": [/* ... */] }
+        "speaking":           { "section_name": "Speaking Activity",                     "tasks_verbatim": ["..."], "question_bank": [/* ... */] },
+        "writing":            { "section_name": "Writing Task",                          "tasks_verbatim": ["..."], "question_bank": [/* ... */] },
+        "vocabulary_grammar": { "section_name": "Vocabulary and Structures in Context",  "tasks_verbatim": ["..."], "question_bank": [/* ... */] },
+        "beyond_text":        { "section_name": "Learning Beyond the Text",              "tasks_verbatim": ["..."], "question_bank": [/* ... */] }
       }
     },
     {
@@ -230,9 +242,11 @@ LP and assessment outputs.
       "type": "poem",
       "page_range": "p.79",
       "char_count": 600,
+      "poem_text": "Palette of earth, rich and deep,\nWhere dreams of gardeners seep.\n...\n(full poem verbatim, line breaks and stanza breaks preserved)",
+      "poem_appreciation_summary": "<80–150 word appreciation: theme (the gardener as artist), tone (celebratory, contemplative), central imagery (palette / brushstrokes / canvas — visual-art lexicon mapped onto a garden), dominant device (extended metaphor of garden-as-painting).>",
       "spines": {
-        "reading": { "section_name": "Reading for Appreciation", "task_type": "poem_appreciation", "tasks_verbatim": ["..."], "question_bank": [/* ... */] },
-        "vocabulary_grammar": { "section_name": "Vocabulary in Context", "task_type": "word_meaning", "tasks_verbatim": ["..."], "question_bank": [/* ... */] }
+        "reading":            { "section_name": "Reading for Appreciation", "tasks_verbatim": ["..."], "question_bank": [/* ... */] },
+        "vocabulary_grammar": { "section_name": "Vocabulary in Context",    "tasks_verbatim": ["..."], "question_bank": [/* ... */] }
       }
     }
   ],
@@ -260,6 +274,13 @@ LP and assessment outputs.
 
 Rules:
 - Every `main_sections[i].section_id` is "A", "B", or "C" — sequential.
+- Every main_section MUST carry the text-summary fields per its `type`:
+  - `type` ∈ {prose, narrative, dialogue, informational} → `prose_summary`
+    (200–400 words; mandatory)
+  - `type` = `poem` → BOTH `poem_text` (full verbatim text with line and
+    stanza breaks) AND `poem_appreciation_summary` (80–150 words;
+    mandatory)
+  - Mixed-type sections: pick the dominant type and use its convention.
 - Every spine in a section's `spines` object has at least one of:
   `tasks_verbatim` non-empty OR `question_bank` non-empty. A spine
   with neither must be omitted from the section.
@@ -269,7 +290,7 @@ Rules:
   written by this prompt.
 - UTF-8. Overwrite if the file exists.
 
-## Step 9 — Confirmation line
+## Step 10 — Confirmation line
 
 ```
 ch_03 — "Winds of Change" — sections: 2 (1 prose + 1 poem) — spines_total: 8 — tasks: 28 — question_bank: 14 — project_load: 2

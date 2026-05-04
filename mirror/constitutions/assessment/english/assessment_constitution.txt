@@ -40,14 +40,24 @@ INPUTS
 
 1. LP JSON → `coverage_handoff` (six spine keys, each with
    `section_contributions[]` carrying section_id, section_title,
-   section_type, tasks_anchored[], task_types[]).
+   section_type, tasks_anchored[]).
 
-2. Summary JSON → per (main_section, spine) cell:
-       - `tasks_verbatim[]`    (the in-class tasks, used as fallback
-                                source for items if question_bank is empty)
+2. Summary JSON → per main_section:
+       - `prose_summary`             (for prose / narrative / dialogue /
+                                      informational sections — the source
+                                      of truth for verifying lifted
+                                      answers and grounding generated
+                                      items)
+       - `poem_text` and
+         `poem_appreciation_summary` (for poem sections — same role)
+   And per (main_section, spine) cell:
+       - `tasks_verbatim[]`    (the in-class tasks)
        - `question_bank[]`     (the textbook's own exercise/question
-                                items for this cell — primary source)
-       - `task_type`           (drives item-type selection for open items)
+                                items for this cell — primary source for
+                                Rule 2 lift; each entry already carries
+                                its own `type` and `stem`, which together
+                                drive question_type selection and rubric
+                                shape)
 
 3. Stage-appropriate `spine_to_cg.json` from
    `mirror/framework/english/{stage}/` — drives the assessment header
@@ -107,8 +117,10 @@ Item selection per cell:
    assessment paper we choose the foundational one.
 
 2. SECONDARY (generate): if summary's `question_bank[]` for that cell
-   is empty, generate ONE typed item grounded in the section's text
-   and the spine's pedagogy. Set `source: "generated"`.
+   is empty, generate ONE typed item grounded in the section's
+   `prose_summary` (or `poem_text` + `poem_appreciation_summary` for
+   poem sections) and the spine's pedagogy. The generator MUST NOT
+   reach outside these fields for content. Set `source: "generated"`.
 
 The remaining textbook items in the cell are NOT lifted. The teacher
 retains direct access to them in the textbook; Aruvi's role is to
@@ -189,14 +201,18 @@ RULE 5 | ANSWER VERIFICATION
 ================================================================================
 
 For CLOSED items where `source: "lifted"`:
-  Verify the suggested answer against the chapter's text or transcript
-  (Reading items: against the source text; Listening items: against
-  the transcript). Set `verified: true` only if the answer is
-  unambiguously supported by the source.
+  Verify the suggested answer against:
+  - Reading / Vocabulary / Beyond items → the source main_section's
+    `prose_summary` (or `poem_text` + `poem_appreciation_summary`
+    for poem sections).
+  - Listening items → the textbook's transcript at `transcript_ref`
+    (the page is in the summary; the cowork session has the PDF).
+  Set `verified: true` only if the answer is unambiguously supported
+  by the source.
 
 For CLOSED items where `source: "generated"`:
-  Solve the prompt against the chapter's text. Confirm answer is
-  unique and unambiguous. Set `verified: true`.
+  Solve the prompt against the same source as above. Confirm answer
+  is unique and unambiguous. Set `verified: true`.
 
 For OPEN items: `verified` is always `true` (rubrics are not solved).
 

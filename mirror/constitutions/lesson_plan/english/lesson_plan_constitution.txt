@@ -32,8 +32,16 @@ INPUTS
 ================================================================================
 
 1. Summary JSON (chapter_title, stage, main_sections[] each carrying
-   id/title/type/char_count/spines{} where each spine entry has
-   section_name, task_type, tasks_verbatim[], question_bank[]).
+   id/title/type/char_count, plus the type-specific text-summary
+   fields:
+     - `prose_summary`             (for prose / narrative / dialogue /
+                                    informational sections)
+     - `poem_text` and
+       `poem_appreciation_summary` (for poem sections)
+   and `spines{}` where each spine entry has section_name,
+   tasks_verbatim[], question_bank[]).
+   The text-summary fields are the source of truth the LP reads when
+   composing teacher_notes and phase descriptions.
 
 2. Stage-appropriate `spine_to_cg.json` from
    `mirror/framework/english/{stage}/` — supplies the static competency
@@ -79,10 +87,18 @@ RULE 2 | PERIOD BIN-PACKING ACROSS (SECTION × SPINE) CELLS
 Allocate exactly B periods across the (section × spine) cells of the
 summary.
 
-- Heavy cells (long tasks, multiple sub-tasks within a spine, a
-  writing task whose `task_type` is "report" or "essay" or
-  "creative_composition") MAY split across two adjacent periods within
-  the same section.
+- Heavy cells MAY split across two adjacent periods within the same
+  section. A cell is heavy when ANY of these holds:
+    a) `tasks_verbatim` has 3+ distinct tasks, OR
+    b) the dominant Writing task text mentions essay / report /
+       critical review / analysing literature / creative composition
+       (these inherently need plan + draft + revise across periods), OR
+    c) the dominant Speaking task text describes a structured debate
+       or panel discussion requiring preparation + delivery, OR
+    d) the dominant Beyond-text task is a multi-step project /
+       interdisciplinary task / interview / research write-up.
+  Heaviness is inferred from the verbatim task text — no separate
+  schema field is consulted.
 - Light cells (single-task spines, e.g. a Vocabulary section with one
   matching exercise) MAY merge with an adjacent spine in the same
   section.
@@ -285,11 +301,6 @@ each entry records:
                            section. Used by the assessment generator
                            to lift items from the chapter's question
                            bank.
-  - `task_types`         — distinct `task_type` values seen in this
-                           (section, spine) cell, copied from the
-                           summary. Drives assessment item-type
-                           selection (e.g., writing task_type="poster"
-                           → assessment item type "create_poster").
 
 If a spine has no contributions across any section, emit the spine
 key with an empty `section_contributions: []` array. The assessment
@@ -380,8 +391,11 @@ LP JSON SCHEMA
                                       //  1. Transition from prior
                                       //     period; preview into next.
                                       //  2. Common pitfall in this
-                                      //     spine (drawn from chapter
-                                      //     prose only; no fabrication).
+                                      //     spine, drawn from the
+                                      //     anchored section's
+                                      //     `prose_summary` /
+                                      //     `poem_appreciation_summary`
+                                      //     only (no fabrication).
                                       //  3. Self-study pointer: a
                                       //     task NOT covered in class.
                                       // No C-code refs.
@@ -396,9 +410,7 @@ LP JSON SCHEMA
   "section_type":  string,
   "tasks_anchored": [
     { "spine": string, "task_index": integer }
-  ],
-  "task_types": [string]              // distinct values seen in this
-                                      // (section, spine) cell
+  ]
 }
 
 
