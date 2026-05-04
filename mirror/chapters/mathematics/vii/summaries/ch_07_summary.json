@@ -1,0 +1,210 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "vii",
+  "chapter_number": 7,
+  "chapter_title": "A Tale of Three Intersecting Lines",
+  "sections": [
+    { "ref": "section 7.1", "title": "Equilateral Triangles", "section_goal": ["apply"] },
+    { "ref": "section 7.2", "title": "Constructing a Triangle When its Sides are Given", "section_goal": ["reason", "apply"] },
+    { "ref": "section 7.3", "title": "Construction of Triangles When Some Sides and Angles are Given", "section_goal": ["reason", "apply"] },
+    { "ref": "section 7.4", "title": "Constructions Related to Altitudes of Triangles", "section_goal": ["apply"] },
+    { "ref": "section 7.5", "title": "Types of Triangles", "section_goal": ["recall"] }
+  ],
+  "prose_summary": "Section 7.1 applies compass-and-ruler construction to produce equilateral triangles. The section opens by noting that while a marked ruler alone can construct an equilateral triangle, trial-and-error makes it inefficient. It then recalls from Grade 6 the method of locating a point equidistant from two given points using arcs. The three-step procedure is made explicit: draw base AB (4 cm), swing an arc of radius 4 cm from A, swing a second arc of radius 4 cm from B, and mark C at their intersection. Joining AC and BC completes the triangle. The correctness is explained by the fact that C lies on both arcs so both AC and BC equal 4 cm.\n\nSection 7.2 reasons through when triangle construction from three given sidelengths is possible and when it is not, then applies the triangle inequality as a decision rule. The construction method (two-arc intersection) is generalised from the equilateral case: base = longest side, then arcs of the other two lengths from the two base endpoints. Five construction tasks are given. The section then explores whether all three lengths produce a triangle: attempting 3, 4, 8 cm and 2, 3, 6 cm fails because the arcs do not intersect. This motivates the triangle inequality: each side must be less than the sum of the other two. The tent-tree-pole path metaphor grounds the reasoning — a direct path is always shorter than a roundabout path via a third point. A complete visual proof via circle-intersection cases (circles touch, don't intersect, intersect internally) establishes that triangle inequality is both necessary and sufficient for existence.\n\nSection 7.3 reasons through the angle-sum property of triangles and proves it using the parallel-line construction, then applies it to find third angles and to determine conditions for triangle existence given two sides and an angle or two angles and a side. For two sides and the included angle, construction is a four-step process (base, angle arm, mark point on arm, join). A Math Talk explores whether any included angle produces a triangle (angles ≥ 180° do not). For two angles and the included side, once the base is drawn the two angle arms are constructed from the base vertices and C is their intersection. The key reasoning is: when the two base angles are supplementary (sum = 180°), the arms are parallel and never meet; when their sum exceeds 180°, C does not exist on the same side. The parallel-line proof of the angle sum property (∠A + ∠B + ∠C = 180°) is presented formally: draw XY ∥ BC through A, identify alternate angles ∠XAB = ∠B and ∠YAC = ∠C, and note that the three angles together form a straight angle at A. Exterior angles are also derived: exterior angle = sum of the two non-adjacent interior angles.\n\nSection 7.4 applies the concept of perpendicular distance to define and construct the altitude of a triangle. The altitude from vertex A to side BC is the perpendicular line segment from A to BC (or its extension). The section introduces the set-square-and-ruler method: align the ruler to the base, place the set square on the ruler, slide until its vertical edge touches the vertex, then draw the altitude. The paper-folding activity (crease from a vertex perpendicular to the base) is embedded as a hands-on verification. The section notes that in a right-angled triangle, one side is itself an altitude, and defines right-angled triangles accordingly.\n\nSection 7.5 identifies and defines the complete classification of triangles. By sides: equilateral (all equal), isosceles (two equal), scalene (all different). By angles: acute-angled (all angles acute), right-angled (one right angle), obtuse-angled (one obtuse angle). The section notes that the two-classification systems are not independent (an equilateral triangle is also acute-angled) but defers full exploration of the relationship to a later chapter. It closes with construction exercises that combine altitude construction with the triangle types, and a Try This on right-angled triangles given only the hypotenuse.",
+  "enumerated_activities": [
+    {
+      "id": "A-1",
+      "source_section": "section 7.4",
+      "book_ref": "Activity, section 7.4 p.168",
+      "description": "Altitudes Using Paper Folding: cut out a paper triangle, fix one side as the base, and fold so the crease is the altitude from the top vertex to the base. Justify why the crease is perpendicular to the base."
+    }
+  ],
+  "enumerated_worked_examples": [],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 7.1",
+      "book_ref": "Construct, section 7.1 p.150",
+      "description": "Construct triangles with these sidelengths (all in cm) using compass and ruler: (a) 4, 4, 6; (b) 3, 4, 5; (c) 1, 5, 5; (d) 4, 6, 8; (e) 3.5, 3.5, 3.5."
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 7.1",
+      "book_ref": "Figure it Out Q1, section 7.1 p.150",
+      "description": "Use points on a circle and/or its centre to form isosceles triangles (diagram given with one circle)."
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 7.1",
+      "book_ref": "Figure it Out Q2, section 7.1 p.150",
+      "description": "Use points on two (or three) equal circles and/or their centres A, B (and C) to form isosceles and equilateral triangles."
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 7.2",
+      "book_ref": "Math Talk, section 7.2 p.151",
+      "description": "Attempt to construct triangles with sidelengths 3 cm, 4 cm, 8 cm and 2 cm, 3 cm, 6 cm. Find more sets of lengths for which a triangle is impossible, and identify a pattern."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 7.2",
+      "book_ref": "Figure it Out Q1, section 7.2 p.154",
+      "description": "Without constructing: could you have determined that 3, 4, 8 cm and 2, 3, 6 cm cannot form triangles? Explain using the triangle inequality."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 7.2",
+      "book_ref": "Figure it Out Q2, section 7.2 p.154",
+      "description": "Determine whether triangles exist for: (a) 10 km, 10 km, 25 km; (b) 5 mm, 10 mm, 20 mm; (c) 12 cm, 20 cm, 40 cm."
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 7.2",
+      "book_ref": "Try This Q3, section 7.2 p.154",
+      "description": "For any set of three lengths, will at least two comparisons always satisfy 'direct length < sum of other two'? Explore. Also find which length can be identified as immediately less than the sum without calculation."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 7.2",
+      "book_ref": "Figure it Out Q1, section 7.2 p.156",
+      "description": "Which sets of lengths can be sidelengths of a triangle? Explain: (a) 2, 2, 5; (b) 3, 4, 6; (c) 2, 4, 8; (d) 5, 5, 8; (e) 10, 20, 25; (f) 10, 20, 35; (g) 24, 26, 28."
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 7.2",
+      "book_ref": "Figure it Out, section 7.2 p.158",
+      "description": "Find 3 examples each of sidelength sets where the two circles: (a) touch each other at a point; (b) do not intersect. Frame a complete procedure to check the existence of a triangle."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 7.2",
+      "book_ref": "Figure it Out Q1, section 7.2 p.159",
+      "description": "Check if a triangle exists for: (a) 1, 100, 100; (b) 3, 6, 9; (c) 1, 1, 5; (d) 5, 10, 12."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 7.2",
+      "book_ref": "Figure it Out Q2, section 7.2 p.159",
+      "description": "Does an equilateral triangle exist with sides 50, 50, 50? In general, does an equilateral triangle of any sidelength exist? Justify."
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 7.2",
+      "book_ref": "Try This Q3, section 7.2 p.159",
+      "description": "For each pair of given sides, find at least 5 valid values for the third side: (a) 1, 100; (b) 5, 5; (c) 3, 7. Describe all possible third-side values for each case."
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 7.3",
+      "book_ref": "Figure it Out Q1, section 7.3 p.161",
+      "description": "Construct triangles given two sides and the included angle: (a) 3 cm, 75°, 7 cm; (b) 6 cm, 25°, 3 cm; (c) 3 cm, 120°, 8 cm."
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 7.3",
+      "book_ref": "Math Talk, section 7.3 p.161",
+      "description": "Is there a combination of two sides and an included angle for which a triangle is not possible? Justify from your construction observations."
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 7.3",
+      "book_ref": "Figure it Out Q1, section 7.3 p.162",
+      "description": "Construct triangles given two angles and the included side: (a) 75°, 5 cm, 75°; (b) 25°, 3 cm, 60°; (c) 120°, 6 cm, 30°."
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 7.3",
+      "book_ref": "Math Talk, section 7.3 p.162",
+      "description": "Do triangles always exist for every combination of two angles and the included side? Find examples where they do not."
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 7.3",
+      "book_ref": "Figure it Out Q1, section 7.3 p.163",
+      "description": "For each given angle (a) 30°; (b) 70°; (c) 54°; (d) 144°, find at least two angles for which a triangle is possible and two for which it is not. Find the third angle in each valid case."
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 7.3",
+      "book_ref": "Figure it Out Q2, section 7.3 p.163",
+      "description": "Determine which angle pairs can be two angles of a triangle: (a) 35°, 150°; (b) 70°, 30°; (c) 90°, 85°; (d) 50°, 150°."
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 7.3",
+      "book_ref": "Math Talk, section 7.3 p.164",
+      "description": "Experiment with different triangles to find a relation between any two angles and the third. What data will you track and how will you organise it?"
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 7.3",
+      "book_ref": "Figure it Out Q1, section 7.3 p.165",
+      "description": "Find the third angle (using a parallel-line argument) when two angles are: (a) 36°, 72°; (b) 150°, 15°; (c) 90°, 30°; (d) 75°, 45°."
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 7.3",
+      "book_ref": "Figure it Out Q2, section 7.3 p.165",
+      "description": "Can a triangle have all three angles equal to 70°? If two angles are 70°, what is the third? If all angles are equal, what must each be?"
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 7.3",
+      "book_ref": "Try This Q3, section 7.3 p.165",
+      "description": "In triangle ABC, ∠B = ∠C and ∠A = 50°. Find ∠B and ∠C."
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 7.3",
+      "book_ref": "Figure it Out, section 7.3 p.166",
+      "description": "Exterior angle: find ∠ACD if ∠A = 50° and ∠B = 60°. Then find the exterior angle for different ∠A and ∠B values and derive the relationship between the exterior angle and the two non-adjacent interior angles."
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 7.4",
+      "book_ref": "Figure it Out, section 7.4 p.168",
+      "description": "Visualise and draw a rough diagram: in what type of triangle is a side also an altitude?"
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 7.4",
+      "book_ref": "Figure it Out, section 7.4 p.169",
+      "description": "Construct the altitude from A to BC using ruler and set square, for the given triangle (extended base case shown also)."
+    },
+    {
+      "id": "E-26",
+      "source_section": "section 7.5",
+      "book_ref": "Figure it Out Q1, section 7.5 p.170",
+      "description": "Construct triangle ABC with BC = 5 cm, AB = 6 cm, CA = 5 cm. Construct the altitude from A to BC."
+    },
+    {
+      "id": "E-27",
+      "source_section": "section 7.5",
+      "book_ref": "Figure it Out Q2, section 7.5 p.170",
+      "description": "Construct triangle TRY with RY = 4 cm, TR = 7 cm, ∠R = 140°. Construct the altitude from T to RY."
+    },
+    {
+      "id": "E-28",
+      "source_section": "section 7.5",
+      "book_ref": "Try This Q3, section 7.5 p.170",
+      "description": "Construct right-angled triangle ∆ABC with ∠B = 90° and AC = 5 cm. How many different triangles exist with these measurements? (Note: other measurements can take any values.)"
+    },
+    {
+      "id": "E-29",
+      "source_section": "section 7.5",
+      "book_ref": "Figure it Out Q4, section 7.5 p.170",
+      "description": "Through construction, explore whether it is possible to construct: (a) a right-angled equilateral triangle; (b) an obtuse-angled equilateral triangle; (c) a right-angled isosceles triangle; (d) an obtuse-angled isosceles triangle."
+    },
+    {
+      "id": "E-30",
+      "source_section": "section 7.5",
+      "book_ref": "Figure it Out, section 7.5 p.172",
+      "description": "Shortest Path in a Box: a spider at one corner of a box wants to walk (on the surfaces) to the opposite corner. Mark the shortest path on a cardboard box and compare with classmates. (Hint diagram shows unfolded surfaces.)"
+    }
+  ],
+  "conceptual_demand": 2,
+  "activity_count": 1,
+  "demo_count": 0,
+  "exec_load": 1
+}

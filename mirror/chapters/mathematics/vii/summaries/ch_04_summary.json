@@ -1,0 +1,264 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "vii",
+  "chapter_number": 4,
+  "chapter_title": "Expressions Using Letter-Numbers",
+  "sections": [
+    { "ref": "section 4.1", "title": "The Notion of Letter-Numbers", "section_goal": ["recall", "apply"] },
+    { "ref": "section 4.2", "title": "Revisiting Arithmetic Expressions", "section_goal": ["apply"] },
+    { "ref": "section 4.3", "title": "Omission of the Multiplication Symbol in Algebraic Expressions", "section_goal": ["recall", "apply"] },
+    { "ref": "section 4.4", "title": "Simplification of Algebraic Expressions", "section_goal": ["reason", "apply"] },
+    { "ref": "section 4.5", "title": "Pick Patterns and Reveal Relationships", "section_goal": ["reason", "apply"] }
+  ],
+  "prose_summary": "Section 4.1 defines letter-numbers and algebraic expressions through three worked examples that move from simple to multi-variable relationships. Example 1 introduces the age-relationship s = a + 3, using a table to show how Shabnam's age is computed from Aftab's for several values, and establishes the vocabulary of 'letter-number' and 'algebraic expression'. Example 2 derives the expression 2n for the number of matchsticks needed to make n L-shapes, showing how a general formula replaces repeated specific calculations. Example 3 extends to a two-variable expression c × 35 + j × 60 for Ketaki's coconut-jaggery cost, explicitly naming the expression a 'formula'. Example 4 uses the perimeter of a square to introduce 4 × q, and the section closes with the Figure it Out exercise where students write perimeter formulas for regular polygons, a combined pipe length, a denomination-count total, a flour-mill timing formula, five English-to-expression translations, and a 2 × 3 calendar-grid cell expression.\n\nSection 4.2 applies the rules for arithmetic expressions — swapping, grouping, bracket removal, and the distributive property — to evaluate seven given numerical expressions. This is explicitly framed as revision of concepts from Chapter 2. The section works through 23 – 10 × 2 (identifying the negative-product term), 83 + 28 – 13 + 32 (swap-and-group), and 68 – (18 + 13) in two ways (bracket-first and distribute-the-negative). Students are asked to evaluate the remaining four expressions using the same methods, and the section bridges to algebraic expressions by noting that they take numerical values when letter-numbers are replaced by numbers.\n\nSection 4.3 defines the shorthand 4n for 4 × n, explains that numbers are written before letters, and applies the convention through the sequence 4, 8, 12, 16, … whose nth term is 4n. The section then asks students to evaluate 7k when k = 4, and 5m + 3 when m = 2, before presenting the 'Mind the Mistake, Mend the Mistake' exercise: nine numbered algebraic substitutions are shown, some with errors (e.g. reading 10 – a as 6 when a = –4, reading 3d as 36 when d = 6 by confusing concatenation with multiplication), and students must identify, explain, and correct each.\n\nSection 4.4 reasons through the simplification of algebraic expressions using like-term collection and the distributive property, then applies the rules to worked problems. The rectangle perimeter derivation (p = l + b + l + b = 2l + 2b) is the entry point, establishing that two expressions are equal when they yield identical values for all substitutions. Example 5 shows that 5c + 3c + 10c simplifies to 18c via the distributive property, and Example 6 proves 4v + 3v = 7v (and 12n – 4n = 8n) using the area-of-split-rectangle diagram. Like terms and unlike terms are defined. Examples 7–10 escalate to multi-variable bracket removal (chair-table rental: (40x + 75y) – (6x + 10y) = 34x + 65y), quiz-score summation across three rounds, distributive expansion of 4(x + y) – y, and checking whether 5u equals 5 + u. The Figure it Out exercise includes three grid-sum addition tasks, fifteen simplification sub-parts, and eleven 'Mind the Mistake' corrections.\n\nSection 4.5 reasons about general algebraic relationships through pattern-finding, then applies expressions to verify that patterns always hold. The 'Formula Detective' sub-section presents number-machine diagrams where students must reverse-engineer the formula from input-output pairs and write expressions for general inputs. The saree-border pattern example derives 3n – 2, 3n – 1, and 3n as position formulas for designs A, B, C respectively, and uses division-by-3 remainder to identify which design occupies any given position. The calendar 2 × 2 square diagonals are shown to always sum to 2a + 8 by expressing all four entries in terms of the top-left value a and simplifying — a proof by algebraic modelling. The 5-cell cross-shape calendar sum is shown (via Math Talk) to always equal 5 times the centre. Matchstick triangle patterns derive 2y + 1 by two routes (step-count analysis and orientation-split analysis) and confirm they are equal by simplifying 3 + 2(y – 1). The final Figure it Out exercise contains fifteen problems covering expression selection, flag-count reasoning, snail-well expression, Radha's cycling total, expression-path diagrams, a train-timing expression, six simplification problems, six addition problems, six subtraction problems, situation descriptions, rope-cutting pattern, square-matchstick pattern, traffic-signal colour positions, step-sequence square count, and a 4-column number-grid analysis.",
+  "enumerated_activities": [],
+  "enumerated_worked_examples": [
+    {
+      "id": "WE-1",
+      "source_section": "section 4.1",
+      "book_ref": "Example 1, section 4.1 p.81",
+      "description": "Shabnam is 3 years older than Aftab. Derive the expression s = a + 3 for Shabnam's age from Aftab's; use it to find Shabnam's age when Aftab is 23."
+    },
+    {
+      "id": "WE-2",
+      "source_section": "section 4.1",
+      "book_ref": "Example 2, section 4.1 p.82",
+      "description": "Parthiv's L-shaped matchstick pattern: derive the expression 2n for the number of matchsticks needed to make n L-shapes."
+    },
+    {
+      "id": "WE-3",
+      "source_section": "section 4.1",
+      "book_ref": "Example 3, section 4.1 p.82",
+      "description": "Ketaki's coconut-jaggery cost: derive the two-variable expression c × 35 + j × 60 and use it to compute cost for 7 coconuts and 4 kg jaggery."
+    },
+    {
+      "id": "WE-4",
+      "source_section": "section 4.1",
+      "book_ref": "Example 4, section 4.1 p.83",
+      "description": "Perimeter of a square as the formula 4 × q; use it to find the perimeter when sidelength is 7 cm."
+    },
+    {
+      "id": "WE-5",
+      "source_section": "section 4.4",
+      "book_ref": "Example 5, section 4.4 p.88",
+      "description": "Pencil-eraser shop over three days: simplify 5c + 3c + 10c = 18c using the distributive property; set up 18c + 11d for total earnings."
+    },
+    {
+      "id": "WE-6",
+      "source_section": "section 4.4",
+      "book_ref": "Example 6, section 4.4 p.89",
+      "description": "Big rectangle split into two smaller rectangles: show 4v + 3v = 7v and 12n – 4n = 8n using two methods of computing area."
+    },
+    {
+      "id": "WE-7",
+      "source_section": "section 4.4",
+      "book_ref": "Example 7, section 4.4 p.90",
+      "description": "Chair-table rental shop: simplify (40x + 75y) – (6x + 10y) to 34x + 65y by distributing the negative sign and collecting like terms."
+    },
+    {
+      "id": "WE-8",
+      "source_section": "section 4.4",
+      "book_ref": "Example 8, section 4.4 p.91",
+      "description": "Charu's three-round quiz scores 7p – 3q, 8p – 4q, 6p – 2q: add to get total 21p – 9q; compare with Krishita's 23p – 7q by finding their difference."
+    },
+    {
+      "id": "WE-9",
+      "source_section": "section 4.4",
+      "book_ref": "Example 9, section 4.4 p.92",
+      "description": "Simplify 4(x + y) – y to 4x + 3y using the distributive property."
+    },
+    {
+      "id": "WE-10",
+      "source_section": "section 4.4",
+      "book_ref": "Example 10, section 4.4 p.92",
+      "description": "Show that 5u and 5 + u are not equal by evaluating both for u = 2, 5, 8; similarly compare 10y – 3 and 10(y – 3) for several values of y."
+    },
+    {
+      "id": "WE-11",
+      "source_section": "section 4.4",
+      "book_ref": "Example 11, section 4.4 p.93",
+      "description": "Sum of all numbers in a symmetric 4×4 grid containing 3, r, s in each quarter: show that three different addition strategies all simplify to 2r + 2s + 24."
+    },
+    {
+      "id": "WE-12",
+      "source_section": "section 4.5",
+      "book_ref": "Example 12, section 4.5 p.96",
+      "description": "Saree-border repeating pattern A, B, C, D, E, F: derive that design C appears at position 3n, design B at 3n – 1, design A at 3n – 2; use remainder on division by 3 to identify designs at positions 99, 122, 148."
+    }
+  ],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q1, section 4.1 p.84",
+      "description": "Write perimeter formulas for: (a) equilateral triangle; (b) regular pentagon; (c) regular hexagon."
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q2, section 4.1 p.84",
+      "description": "Munirathna joins a pipe of unknown length k metres to a 20 m pipe. Write the expression for the combined length."
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q3, section 4.1 p.84",
+      "description": "Complete the table for total amount Krithika has given counts of ₹100, ₹20, and ₹5 notes, including the general algebraic expression 100x + 20y + 5z."
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q4, section 4.1 p.84",
+      "description": "Venkatalakshmi's flour mill: choose the correct expression from (a)–(e) for grinding y kg of grain given 10-second start time and 8-second-per-kg rate."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q5, section 4.1 p.84",
+      "description": "Write algebraic expressions for: (a) 5 more than a number; (b) 4 less than a number; (c) 2 less than 13 times a number; (d) 13 less than 2 times a number."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q6, section 4.1 p.85",
+      "description": "Describe real-world situations corresponding to: (a) 8 × x + 3 × y; (b) 15 × j – 2 × k."
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q7, section 4.1 p.85",
+      "description": "In a 2 × 3 calendar grid with bottom-middle date 'w', write expressions for the dates in all blank cells."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 4.2",
+      "book_ref": "Figure it Out, section 4.2 p.85",
+      "description": "Find the values of the arithmetic expressions: (1) 23 – 10 × 2; (2) 83 + 28 – 13 + 32; (3) 34 – 14 + 20; (4) 42 + 15 – (8 – 7); (5) 68 – (18 + 13); (6) 7 × 4 + 9 × 6; (7) 20 + 8 × (16 – 6). (Items 1, 2 and 5 are worked; complete items 3, 4, 6, 7.)"
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 4.3",
+      "book_ref": "Figure it Out, section 4.3 p.87",
+      "description": "Mind the Mistake, Mend the Mistake: nine algebraic substitutions (e.g. if a = –4, then 10 – a = 6; if d = 6, then 3d = 36; etc.). For each: identify whether there is a mistake, explain what went wrong, and give the correct value."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 4.4",
+      "book_ref": "Figure it Out Q1, section 4.4 p.93",
+      "description": "Add the numbers in each of three grid pictures (containing letter-number terms like 5y, x, –6, 2p, 3q, –5g, 5k, etc.). Write corresponding expressions and simplify; try at least two different grouping methods and confirm the same result."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 4.4",
+      "book_ref": "Figure it Out Q2, section 4.4 p.94",
+      "description": "Simplify each expression: (a) p+p+p+p; p+p+p+q; p+q+p–q; (b) p–q+p–q; p+q–p+q; (c) p+q–(p+q); p–q–p–q; (d) 2d–d–d–d; 2d–d–d–c; (e) 2d–d–(d–c); 2d–(d–d)–c; (f) 2d–d–c–c."
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 4.4",
+      "book_ref": "Figure it Out, section 4.4 p.94",
+      "description": "Mind the Mistake, Mend the Mistake: eleven algebraic simplifications (e.g. 3a+2b = 5; 6(p+2) = 6p+8; 5–(2–6z) = 3–6z; etc.). For each: identify the mistake, explain it, and give the correct simplest form."
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 4.5",
+      "book_ref": "Figure it Out, section 4.5 p.95",
+      "description": "Formula Detective: find the formulas for two number machines shown (input-output diagrams with 4–5 pairs each) and write the algebraic expression for each set of inputs, including the general a, b expression."
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 4.5",
+      "book_ref": "Figure it Out Q1, section 4.5 p.102",
+      "description": "One plate of Jowar roti costs ₹30 and pulao costs ₹20. Which of the expressions (a)–(e) correctly describes the total amount earned for x rotis and y pulaos?"
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 4.5",
+      "book_ref": "Figure it Out Q2, section 4.5 p.102",
+      "description": "Pushpita's flower stall: p champak-only, q marigold-only, r both-types customers each receive a flag. Which of expressions (a)–(f) gives the number of flags given away?"
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 4.5",
+      "book_ref": "Figure it Out Q3, section 4.5 p.102",
+      "description": "Snail in a well: climbs u cm by day, slips d cm by night for 10 days/nights. (a) Write the expression for net distance from start. (b) What can we say if d > u?"
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 4.5",
+      "book_ref": "Try This Q4, section 4.5 p.102",
+      "description": "Radha cycles 5 km/day in week 1, increasing by z km/day each subsequent week. How many km has she cycled after 3 weeks?"
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 4.5",
+      "book_ref": "Figure it Out Q5, section 4.5 p.102",
+      "description": "Expression path diagram: given that w + 2 becomes 4w + 20 along one path (via ×4 after +3), fill in the missing expressions on the remaining paths through operations –4, ×3, –5, +3, –8, ×4."
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 4.5",
+      "book_ref": "Figure it Out Q6, section 4.5 p.103",
+      "description": "Train from Yahapur to Vahapur with 3 equal-distance stops, t minutes per segment, 2 minutes per stop. (a) If t = 4, find total travel time. (b) Write the algebraic expression for total travel time."
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 4.5",
+      "book_ref": "Figure it Out Q7, section 4.5 p.103",
+      "description": "Simplify: (a) 3a+9b–6+8a–4b–7a+16; (b) 3(3a–3b)–8a–4b–16; (c) 2(2x–3)+8x+12; (d) 8x–(2x–3)+12; (e) 8h–(5+7h)+9; (f) 23+4(6m–3n)–8n–3m–18."
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 4.5",
+      "book_ref": "Figure it Out Q8, section 4.5 p.103",
+      "description": "Add the expressions: (a) 4d–7c+9 and 8c–11+9d; (b) –6f+19–8s and –23+13f+12s; (c) 8d–14c+9 and 16c–(11+9d); (d) 6f–20+8s and 23–13f–12s; (e) 13m–12n and 12n–13m; (f) –26m+24n and 26m–24n."
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 4.5",
+      "book_ref": "Figure it Out Q9, section 4.5 p.103",
+      "description": "Subtract the expressions: (a) 9a–6b+14 from 6a+9b–18; (b) –15x+13–9y from 7y–10+3x; (c) 17g+9–7h from 11–10g+3h; (d) 9a–6b+14 from 6a–(9b+18); (e) 10x+2+10y from –3y+8–3x; (f) 8g+4h–10 from 7h–8g+20."
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 4.5",
+      "book_ref": "Figure it Out Q10, section 4.5 p.103",
+      "description": "Describe real-world situations for: (a) 8x + 3y; (b) 15x – 2x."
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 4.5",
+      "book_ref": "Figure it Out Q11, section 4.5 p.103",
+      "description": "Rope-cutting pattern: 1 cut → 2 pieces; fold once + cut → 3 pieces. Observe the pattern and find: (a) pieces if folded 10 times and cut; (b) expression for pieces when folded r times and cut."
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 4.5",
+      "book_ref": "Figure it Out Q12, section 4.5 p.104",
+      "description": "Matchstick square pattern: identify the pattern, find how many matchsticks for 10 squares, and write the expression for w squares."
+    },
+    {
+      "id": "E-26",
+      "source_section": "section 4.5",
+      "book_ref": "Figure it Out Q13, section 4.5 p.104",
+      "description": "Traffic signal colour sequence (R, G, Y, R, G, Y, …): find the colour at positions 90, 190, and 343; write expressions for positions of each colour."
+    },
+    {
+      "id": "E-27",
+      "source_section": "section 4.5",
+      "book_ref": "Figure it Out Q14, section 4.5 p.104",
+      "description": "Step-sequence growing square pattern: how many squares in Step 4, Step 10, Step 50? Write a general formula. How does the formula change if counting vertices instead of squares?"
+    },
+    {
+      "id": "E-28",
+      "source_section": "section 4.5",
+      "book_ref": "Figure it Out Q15, section 4.5 p.105",
+      "description": "4-column endless grid (numbers 1, 2, 3, 4, 5, … filling row by row): (a) write expressions for numbers in each column; (b) find row and column for 124, 147, 201; (c) what number is in row r, column c? (d) observe positions of multiples of 3."
+    }
+  ],
+  "conceptual_demand": 2,
+  "activity_count": 0,
+  "demo_count": 0,
+  "exec_load": 1
+}

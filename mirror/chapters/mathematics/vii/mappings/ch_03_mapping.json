@@ -1,0 +1,43 @@
+{
+    "stage": "middle",
+    "subject": "mathematics",
+    "grade": "vii",
+    "chapter_number": 3,
+    "chapter_title": "A Peek Beyond the Point",
+
+    "core_cg": "CG-1",
+
+    "core_competencies": [
+        {
+            "c_code": "C-1.6",
+            "justification": "The chapter's organising purpose is exploring and applying fractions in decimal form — sections 3.1–3.3 build tenth and hundredth fractions, section 3.4 introduces decimal notation, sections 3.5–3.7 apply decimals to measurement conversions and arithmetic, and section 3.8 deepens decimal understanding through real-world and historical contexts."
+        },
+        {
+            "c_code": "C-1.4",
+            "justification": "Sections 3.4 and 3.6 reason explicitly about the structure of the decimal number system (why split by 10, extension of place value chain in both directions) and visualise decimal numbers on the number line via successive magnification — a structurally distinct strand from the application focus of C-1.6."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-6.1",
+            "justification": "Section 3.4 requires students to justify why ten is the natural splitting unit (deductive argument from the base-ten system); section 3.6's Zero Dilemma has students produce a convincing proof via place value tables that trailing zeros do not change value; section 3.8 evaluates Sonu's sum-range claim by inductive verification and generalisation."
+        },
+        {
+            "c_code": "C-9.1",
+            "justification": "Section 3.8 explicitly traces the historical evolution of decimal notation through 8th-century Indian astronomers, al-Uqlīdisī's 950 CE formalisation, and 15th–16th century European notations, directly engaging appreciation of how mathematical concepts evolved across civilisations."
+        },
+        {
+            "c_code": "C-7.1",
+            "justification": "Sections 3.6 and 3.8 include open-ended digit-arrangement puzzles (make the decimal closest to 25 using given digits; make a decimal closest to 30 from digits 1,4,0,8,6) and the Try This prompt to find two digit combinations summing closest to 10.5, all requiring student-discovered creative strategies."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to represent and operate on fractional quantities in decimal form by extending the base-ten place value system beyond the unit and applying decimal notation to measurement, comparison, and arithmetic.",
+
+    "conceptual_demand": 2,
+    "activity_count": 0,
+    "demo_count": 0,
+    "exec_load": 1,
+    "effort_index": 6.0
+}

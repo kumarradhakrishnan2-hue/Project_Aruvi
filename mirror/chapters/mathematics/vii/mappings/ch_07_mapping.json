@@ -1,0 +1,43 @@
+{
+    "stage": "middle",
+    "subject": "mathematics",
+    "grade": "vii",
+    "chapter_number": 7,
+    "chapter_title": "A Tale of Three Intersecting Lines",
+
+    "core_cg": "CG-3",
+
+    "core_competencies": [
+        {
+            "c_code": "C-3.4",
+            "justification": "Sections 7.1–7.4 are entirely organised around compass-and-ruler construction: equilateral triangles (7.1), triangles from three given sides (7.2), triangles from two sides and an included angle or two angles and an included side (7.3), and altitudes (7.4). Construction with specified properties is the chapter's dominant activity throughout."
+        },
+        {
+            "c_code": "C-3.2",
+            "justification": "Section 7.2 derives and applies the triangle inequality as an existence condition for construction; section 7.3 formally proves the angle-sum property (∠A+∠B+∠C=180°) via alternate angles on a parallel line and derives the exterior-angle theorem. These are substantive engagements with triangle properties as an independent strand from the construction work."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-6.1",
+            "justification": "Section 7.2 presents a complete visual proof that the triangle inequality is both necessary and sufficient (via circle-intersection cases), and section 7.3 gives a formal two-step deductive proof of the angle-sum property using alternate angles — the chapter's two fully rigorous mathematical arguments."
+        },
+        {
+            "c_code": "C-7.1",
+            "justification": "The 'shortest path on a box' puzzle (E-30) and the Try This on constructing a right-angled triangle from only a hypotenuse (E-28) are open-ended problems requiring students to discover their own strategies — the box puzzle in particular has no single obvious route and requires creative spatial reasoning and comparison of classmates' approaches."
+        },
+        {
+            "c_code": "C-8.1",
+            "justification": "Section 7.2 asks students to 'frame a complete procedure to check the existence of a triangle' (E-9), and section 7.3 derives a step-by-step construction algorithm for each case (SAS, ASA). Articulating existence-checking as an ordered algorithmic procedure engages decomposition and algorithmic thinking."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to construct triangles with specified properties by applying the triangle inequality, angle-sum property, and compass-and-ruler techniques to determine existence conditions and produce accurate geometric figures.",
+
+    "conceptual_demand": 2,
+    "activity_count": 1,
+    "demo_count": 0,
+    "exec_load": 1,
+    "effort_index": 7.5
+}

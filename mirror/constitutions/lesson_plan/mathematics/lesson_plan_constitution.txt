@@ -1,4 +1,4 @@
-ARUVI — MATHEMATICS LESSON PLAN CONSTITUTION · VERSION 3.1
+ARUVI — MATHEMATICS LESSON PLAN CONSTITUTION · VERSION 3.3
 Stages: Foundational, Middle, Secondary
 
 ================================================================================
@@ -201,50 +201,73 @@ keyed to `section_goal`:
   section_b (Reason and Explain)   ← reason
   section_c (Apply in Context)     ← apply
 
-Per cluster, list one entry per goal that routes into this cluster.
-Total assessment item count = total entries (one item per goal).
+ONE HANDOFF ENTRY PER PERIOD. Each period in the LP contributes
+exactly one entry, routed to the cluster matching the period's
+`section_goal`:
+
+  section_goal == "recall"  →  section_a.goals
+  section_goal == "reason"  →  section_b.goals
+  section_goal == "apply"   →  section_c.goals
+
+Total assessment item count = number of periods (one item per goal,
+one goal per period). This scales the assessment with chapter depth
+even when a chapter has only a few textbook sections.
+
+Within each cluster, entries appear in period order (period 1 first,
+then period 2, and so on, skipping periods routed to other clusters).
 
 Each entry:
 
-- `section_ref`       — the section the goal sits in.
+- `section_ref`       — the period's primary anchored section. When
+                        the period anchors to two adjacent sections
+                        (Rule 1), the primary section is the one
+                        whose summary declares the period's
+                        `section_goal`. When both anchored sections
+                        declare that goal, use the first (lower-
+                        numbered) section.
 - `section_title`     — title of `section_ref`, copied verbatim from
                         the summary's `sections[i].title`. Threaded
                         through so the assessment renderer can show
                         section name without re-reading the summary.
-- `goal`              — the section_goal value (`recall` | `reason`
-                        | `apply`).
-- `anchor_id`         — id of one summary item drawn from
-                        `section_ref`'s pools, walked in this
-                        priority: `enumerated_exercises` (E-N) →
-                        `enumerated_worked_examples` (WE-N) →
-                        `enumerated_activities` (A-N). Across the
-                        whole `coverage_handoff`, each item id is
-                        used as `anchor_id` at most once (the
-                        uniqueness constraint spans all three pools
-                        combined).
+- `goal`              — the period's `section_goal` value (`recall`
+                        | `reason` | `apply`).
+- `anchor_id`         — id of one summary item drawn from the
+                        period's own `textbook_items_in_class[]`
+                        first, falling through to the period's
+                        `homework[]` if the in-class pool yields no
+                        un-used candidate. Within each pool, walk
+                        in array order and apply type priority:
+                        `exercise` (E-N) → `worked_example` (WE-N)
+                        → `activity` (A-N).
 - `anchor_book_ref`   — `book_ref` of `anchor_id`, copied from the
-                        summary entry. Empty string if all three
-                        pools are exhausted for the section.
-- `anchor_description` — `description` of `anchor_id`, copied from the
-                        summary entry. Empty string if all three
-                        pools are exhausted for the section.
+                        period entry. Empty string when the period's
+                        pools yield no anchor (see below).
+- `anchor_description` — `description` of `anchor_id`, copied from
+                        the period entry. Empty string when the
+                        period's pools yield no anchor (see below).
 
-Anchor selection. For each (section, goal) routed to this cluster,
-walk the section's pools in priority order — exercises first, then
-worked examples, then activities — and pick the first un-used item
-in textbook order within the first non-empty pool. If all three
-pools are exhausted for the section, set `anchor_id = ""`,
-`anchor_book_ref = ""`, `anchor_description = ""`. The assessment
-generator omits the exercise companion in this case but still
-generates a typed question grounded in the section's prose.
+Anchor selection (per period).
 
-A two-goal section legitimately contributes goals to two clusters;
-each contributing goal gets its own anchor (different items, drawn
-in priority order across the three pools).
+1. From the period's `textbook_items_in_class[]`, walk array order
+   and pick the first item whose id has NOT yet been used as an
+   `anchor_id` by an earlier handoff entry, applying type priority
+   exercise → worked_example → activity within that array.
+2. If step 1 yields nothing, fall through to the period's
+   `homework[]` and apply the same logic.
+3. If both pools yield nothing un-used, the entry MAY reuse an id
+   already used by an earlier entry (uniqueness across the handoff
+   is best-effort, not absolute, since the handoff now has as many
+   entries as periods and per-period pools may be small).
+4. If the period's `textbook_items_in_class[]` AND `homework[]` are
+   both empty (a guard case — Rule 6 phases normally require
+   textbook items), set `anchor_id = ""`, `anchor_book_ref = ""`,
+   `anchor_description = ""`. The assessment generator omits the
+   exercise companion in this case but still generates a typed
+   question grounded in the section's prose.
 
-If a cluster receives no goals (no section routes to it), emit the
-cluster with an empty `goals` array. The assessment generator emits
-no items for an empty cluster.
+If a cluster receives no entries (no period's `section_goal` routes
+to it), emit the cluster with an empty `goals` array. The assessment
+generator emits no items for an empty cluster.
 
 
 ================================================================================

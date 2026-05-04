@@ -1,0 +1,43 @@
+{
+    "stage": "middle",
+    "subject": "mathematics",
+    "grade": "vii",
+    "chapter_number": 2,
+    "chapter_title": "Arithmetic Expressions",
+
+    "core_cg": "CG-2",
+
+    "core_competencies": [
+        {
+            "c_code": "C-2.1",
+            "justification": "The chapter is architecturally centred on understanding equality between numerical expressions — section 2.1 introduces comparing expressions via <, >, = and structural reasoning (marble stories), while section 2.2's term-swapping proofs, bracket-removal rules, and distributive property all establish conditions under which two expressions are equal or not."
+        },
+        {
+            "c_code": "C-2.3",
+            "justification": "Section 2.2 explicitly forms and manipulates arithmetic expressions through bracket removal (sign-flip rule, positive-prefix rule) and the distributive property — these are distinct mechanical manipulation operations applied to expressions, forming an independent strand from the equality-reasoning focus of C-2.1."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-6.1",
+            "justification": "Throughout section 2.2, students produce and evaluate convincing arguments — the marble-story deductions (section 2.1), the commutativity/associativity proof via term-swapping (Example 6), and the distributive-property proof via repeated-addition (Example 16) are all structured logical arguments, not computations."
+        },
+        {
+            "c_code": "C-8.1",
+            "justification": "The term-identification procedure (rewrite subtraction as addition of inverse, then list terms) and the bracket-removal algorithm are explicit algorithmic decompositions — students follow a programmatic sequence of symbolic operations to transform expressions, directly engaging C-8.1's symbolic representation and ordered-steps thinking."
+        },
+        {
+            "c_code": "C-7.1",
+            "justification": "The Tinker the Terms exercises and E-30 ('create ten different expressions having the same value') invite open-ended creative exploration with no prescribed procedure, requiring students to discover their own expression-construction strategies."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to understand equality between arithmetic expressions by learning to identify terms, apply bracket-removal rules, and use the distributive property to manipulate and compare expressions without computation.",
+
+    "conceptual_demand": 2,
+    "activity_count": 0,
+    "demo_count": 0,
+    "exec_load": 1,
+    "effort_index": 6.0
+}

@@ -1,0 +1,43 @@
+{
+    "stage": "middle",
+    "subject": "mathematics",
+    "grade": "vii",
+    "chapter_number": 1,
+    "chapter_title": "Large Numbers Around Us",
+
+    "core_cg": "CG-1",
+
+    "core_competencies": [
+        {
+            "c_code": "C-1.1",
+            "justification": "Sections 1.1–1.4 develop sense for large whole numbers by reading, writing, naming (Indian and international systems), comparing, and estimating (rounding to nearest thousand through crore) numbers up to 9–10 digits; sections 1.5–1.6 apply arithmetic operations on large numbers throughout."
+        },
+        {
+            "c_code": "C-1.2",
+            "justification": "Section 1.5 explicitly discovers and describes rules for number patterns — the digit-count boundary theorem (product of two d-digit numbers is (2d-1)- or 2d-digit) proved through boundary-case reasoning, and multiplication pattern tables (11×11, 111×111…) extended by students — forming a structurally distinct strand from the naming/operations work of C-1.1."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-6.1",
+            "justification": "Section 1.5 requires students to justify multiplication shortcuts (why ×5 = ÷2 then ×10) using the meaning of operations — a deductive argument — and to prove the digit-count boundary theorem via boundary reasoning, moving beyond calculation into mathematical proof."
+        },
+        {
+            "c_code": "C-8.2",
+            "justification": "Section 1.6 engages systematic counting and reasoning about large quantities (population in buses, distance to Moon/Sun, digit-sequence problems E-46) requiring students to devise and follow iterative estimation algorithms, not just compute."
+        },
+        {
+            "c_code": "C-7.1",
+            "justification": "Section 1.6's open-ended puzzles (digit-rearrangement for largest multiples of 5, letters in number names, strike-out digit problems) invite students to discover their own creative solution strategies rather than follow prescribed procedures."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to name, read, and operate on large whole numbers by extending the base-ten place value system and discovering structural patterns in number magnitude and products.",
+
+    "conceptual_demand": 2,
+    "activity_count": 0,
+    "demo_count": 2,
+    "exec_load": 1,
+    "effort_index": 8.0
+}

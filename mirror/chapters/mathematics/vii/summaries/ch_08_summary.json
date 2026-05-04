@@ -1,0 +1,208 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "vii",
+  "chapter_number": 8,
+  "chapter_title": "Working with Fractions",
+  "sections": [
+    { "ref": "section 8.1", "title": "Multiplication of Fractions", "section_goal": ["recall", "apply"] },
+    { "ref": "section 8.2", "title": "Division of Fractions", "section_goal": ["reason", "apply"] },
+    { "ref": "section 8.3", "title": "Some Problems Involving Fractions", "section_goal": ["apply"] }
+  ],
+  "prose_summary": "Section 8.1 recalls and applies the multiplication of fractions. The section opens by revisiting whole-number multiplication as repeated addition, then extends it to fraction × whole-number and whole-number × fraction via the number-line distance model (Aaron's walking pace). The two-step procedure for fraction × whole-number — divide the multiplicand by the denominator, then multiply by the numerator — is developed explicitly. Two named examples are worked: Example 1 (farmer distributes 2/3 acre to 5 grandchildren: 5 × 2/3 = 10/3) and Example 2 (internet cost for 5/4 hours at ₹8/hour: 10). The section then extends to fraction × fraction using the unit-square area model: dividing 2/5 into 4 equal parts yields 2/20, then multiplying by 3 gives 6/20. The rectangle-area interpretation (area = product of fractional sides) is made explicit and linked to the general formula a/b × c/d = (a×c)/(b×d), attributed to Brahmagupta's Brāhmasphuṭasiddhānta (628 CE). Cancellation of common factors before multiplying (apavartana) is introduced with a historical note crediting Jaina scholar Umasvati (c. 150 CE). A Math Talk uses the unit-square model to multiply 5/4 × 3/2 = 15/8 (mixed-fraction multiplicand). The section closes by exploring when the product is greater than, between, or less than the two factors — depending on whether each factor is between 0 and 1 or greater than 1 — and confirms commutativity via the rectangle-area argument.\n\nSection 8.2 reasons through division of fractions using the reciprocal and then applies Brahmagupta's division formula. The section opens by restating division as a multiplication question: a ÷ b = ? means b × ? = a. This is applied step by step to 1 ÷ 2/3, 3 ÷ 2/3, 1/5 ÷ 1/2, and 2/3 ÷ 3/5 — in each case identifying the number that cancels the divisor (the reciprocal). The general rule is stated: to divide by a fraction, multiply by its reciprocal; the divisor's reciprocal is the fraction with numerator and denominator swapped. Brahmagupta's formula a/b ÷ c/d = (a×d)/(b×c) is stated and attributed to 628 CE, with Bhāskara II's 1150 CE clarification also cited. The section then investigates the relationship between dividend, divisor, and quotient: when the divisor is between 0 and 1 the quotient exceeds the dividend; when the divisor exceeds 1 the quotient is less — mirroring the multiplication analysis from section 8.1.\n\nSection 8.3 applies fraction multiplication and division to a sequence of contextual and historical problems. Example 3 (Leena's tea: 1/4 ÷ 5 = 1/20 litre per cup) and Example 4 (Baudhāyana's Śhulbasūtra brick problem: 15/2 ÷ 1/25 = 375/2 bricks) apply division directly. Example 5 (Pṛithūdakasvāmī's four fountains, c. 860 CE) requires computing how many times each fountain fills a cistern in a day (1÷1=1, 1÷1/2=2, 1÷1/4=4, 1÷1/5=5) and summing to 12, giving a combined fill time of 1/12 day. A Math Talk derives the shaded fraction of a nested figure (3/32 of the whole square) using successive multiplication: 1/4 × 1/2 × 3/4 = 3/32. The Bhāskarāchārya dramma problem (from Līlāvatī, 1150 CE) multiplies six fractions to show the miser gave exactly 1 cowrie shell. A 'Pinch of History' traces the theory of fractions from the Śhulbasūtra (800 BCE) through Brahmagupta (628 CE), Śhrīdharāchārya (c. 750 CE), Mahāvīrāchārya (c. 850 CE), Pṛithūdakasvāmī (c. 860 CE), Bhāskara I (629 CE), Bhāskara II (c. 1150 CE), and its transmission through Arab mathematicians to Europe. The section's exercises include a rich telescoping-product puzzle (the ant-splitting problem) that generalises to (1−1/2)(1−1/3)…(1−1/n) = 1/n.",
+  "enumerated_activities": [],
+  "enumerated_worked_examples": [
+    {
+      "id": "WE-1",
+      "source_section": "section 8.1",
+      "book_ref": "Example 1, section 8.1 p.176",
+      "description": "A farmer distributes 2/3 acre of land to each of her 5 grandchildren. Total land given = 5 × 2/3 = 10/3 acres."
+    },
+    {
+      "id": "WE-2",
+      "source_section": "section 8.1",
+      "book_ref": "Example 2, section 8.1 p.176",
+      "description": "1¼ hours of internet time costs ₹8 per hour. Convert 1¼ to 5/4, then 5/4 × 8 = 10. Cost = ₹10."
+    },
+    {
+      "id": "WE-3",
+      "source_section": "section 8.3",
+      "book_ref": "Example 3, section 8.3 p.190",
+      "description": "Leena makes 5 cups of tea using 1/4 litre of milk. Milk per cup = 1/4 ÷ 5 = 1/4 × 1/5 = 1/20 litre."
+    },
+    {
+      "id": "WE-4",
+      "source_section": "section 8.3",
+      "book_ref": "Example 4, section 8.3 p.190",
+      "description": "Baudhāyana's Śhulbasūtra problem: cover 7½ square units with bricks of side 1/5 unit (area 1/25 sq. units). Number of bricks = 15/2 ÷ 1/25 = 15/2 × 25 = 375/2."
+    },
+    {
+      "id": "WE-5",
+      "source_section": "section 8.3",
+      "book_ref": "Example 5, section 8.3 p.191",
+      "description": "Pṛithūdakasvāmī's four-fountains problem: fountains fill a cistern in 1, 1/2, 1/4, 1/5 of a day respectively. Together they fill it 1+2+4+5 = 12 times a day, so the combined fill time is 1/12 day."
+    }
+  ],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 8.1",
+      "book_ref": "Figure it Out Q1–Q4, section 8.1 p.176",
+      "description": "Contextual whole-number × fraction problems: (Q1) Tenzin drinks 1/2 glass of milk daily — glasses in a week and in January; (Q2) workers make 1 km of canal in 8 days — km in 1 day and in 5-day week; (Q3) Manju and 2 neighbours share 5 litres of oil among 3 families — oil per family per week and in 4 weeks; (Q4) Moon sets 5/6 hour later each day — hours after 10 pm on Thursday."
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 8.1",
+      "book_ref": "Figure it Out Q5, section 8.1 p.177",
+      "description": "Multiply and convert to mixed fractions: (a) 7 × 3/5; (b) 4 × 1/3; (c) 9 × 6/7; (d) 13 × 6/11."
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 8.1",
+      "book_ref": "Math Talk, section 8.1 p.179",
+      "description": "Use the unit-square model to multiply 5/4 × 3/2. The multiplicand 3/2 is greater than 1; divide it into 4 equal parts to find 3/8, then multiply by 5 to get 15/8."
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 8.1",
+      "book_ref": "Figure it Out Q1, section 8.1 p.180",
+      "description": "Find the following products using a unit square as the whole: (a) 1/3 × 1/5; (b) 1/4 × 1/3; (c) 1/5 × 1/2; (d) 1/6 × 1/5. Then find 1/12 × 1/18 without drawing."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 8.1",
+      "book_ref": "Figure it Out Q2, section 8.1 p.181",
+      "description": "Find the following products using a unit square: (a) 2/3 × 4/5; (b) 1/4 × 2/3; (c) 3/5 × 1/2; (d) 4/6 × 3/5."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 8.1",
+      "book_ref": "Figure it Out Q1, section 8.1 p.183",
+      "description": "A tap fills 7/10 of a tank in 1 hour. Find the fraction filled if the tap runs for: (a) 1/3 hour; (b) 2/3 hour; (c) 3/4 hour; (d) 7/10 hour; (e) how long must the tap run to fill the tank completely?"
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 8.1",
+      "book_ref": "Try This Q2, section 8.1 p.183",
+      "description": "The government takes 1/6 of Somu's land for a road. She gives half the remainder to daughter Krishna and 1/3 of the remainder to son Bora. Find the fraction of original land received by (a) Krishna; (b) Bora; (c) Somu herself."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 8.1",
+      "book_ref": "Figure it Out Q3–Q5, section 8.1 p.183–184",
+      "description": "Find the area of a rectangle with sides 3¾ ft and 9⅗ ft (Q3). Tsewang plants 4 saplings with 3/4 m spacing — find first-to-last distance (Q4). Compare 12/15 of 500 g and 3/20 of 4 kg (Q5)."
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 8.1",
+      "book_ref": "Figure it Out (product comparison), section 8.1 p.185",
+      "description": "Explore when the product of two numbers is greater than both, between the two, or less than both. Classify into situations based on whether each factor is between 0 and 1 or greater than 1, fill in the table with examples, and complete the blanks about the relationship."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 8.2",
+      "book_ref": "Figure it Out (dividend-divisor-quotient), section 8.2 p.189",
+      "description": "Explore the relationship between divisor and quotient: when is the quotient greater than the dividend and when is it less? Connect to the multiplication product-comparison analysis from section 8.1."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 8.3",
+      "book_ref": "Figure it Out (Example 5 blanks), section 8.3 p.191",
+      "description": "Complete the four-fountains problem (Example 5): compute 1÷1/2, 1÷1/4, 1÷1/5, sum all four values, and confirm total fill time = 1/12 day."
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 8.3",
+      "book_ref": "Math Talk, section 8.3 p.192",
+      "description": "Find the fraction of the whole square that the shaded region occupies in the nested figure (Fig. 8.4). The shaded part is 3/4 of a yellow triangle that is 1/2 of a red square that is 1/4 of the whole: 3/4 × 1/2 × 1/4 = 3/32."
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 8.3",
+      "book_ref": "Figure it Out (shaded-region diagrams), section 8.3 p.193",
+      "description": "In each of two given figures, find the fraction of the big square that the shaded region occupies (figures (a) and (b) from the nested-square diagrams)."
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 8.3",
+      "book_ref": "Figure it Out (Dramma problem), section 8.3 p.193",
+      "description": "Complete the Bhāskarāchārya dramma problem: evaluate 1/2 × 2/3 × 3/4 × 1/5 × 1/16 × 1/4 of a dramma and convert to cowrie shells (1 dramma = 1280 cowrie shells). Also convert coin denominations using given rates to express 1 cowrie shell in gold dinars."
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 8.3",
+      "book_ref": "Figure it Out Q1, section 8.3 p.196",
+      "description": "Evaluate the following divisions: 3÷4/3; 7/9÷14/4; 4/3÷3/4; 7/4÷1/7; 8/2÷4/15; 1/5÷1/9; 1/6÷11/12; 3÷3/2; 14/6÷7/3; 2/3÷1⅜."
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 8.3",
+      "book_ref": "Figure it Out Q2, section 8.3 p.196",
+      "description": "For each context, choose the correct expression and simplify: (a) Maria uses 1/4 m of lace per bag from 8 m — how many bags? (b) 1/2 m of ribbon makes 8 badges — ribbon per badge? (c) baker needs 1/6 kg flour per loaf with 5 kg available — how many loaves?"
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 8.3",
+      "book_ref": "Figure it Out Q3, section 8.3 p.197",
+      "description": "If 1/4 kg of flour makes 12 rotis, how much flour is needed for 6 rotis?"
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 8.3",
+      "book_ref": "Figure it Out Q4, section 8.3 p.197",
+      "description": "Pāṭīgaṇita problem (Sridharacharya, 9th century CE): find the sum 1÷1/6 + 1÷1/10 + 1÷1/13 + 1÷1/9 + 1÷1/2."
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 8.3",
+      "book_ref": "Figure it Out Q5, section 8.3 p.197",
+      "description": "Mira reads a 400-page novel: she reads 1/5 of pages yesterday and 3/10 today. How many more pages remain?"
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 8.3",
+      "book_ref": "Figure it Out Q6, section 8.3 p.197",
+      "description": "A car runs 16 km per litre of petrol. How far does it go on 2¾ litres?"
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 8.3",
+      "book_ref": "Figure it Out Q7, section 8.3 p.197",
+      "description": "Amritpal's train journey takes 5⅙ hours; plane takes ½ hour. How many hours does the plane save?"
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 8.3",
+      "book_ref": "Figure it Out Q8, section 8.3 p.197",
+      "description": "Mariam and cousins eat 4/5 of a cake. The remaining cake is shared equally by 3 friends. What fraction of the whole cake does each friend get?"
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 8.3",
+      "book_ref": "Figure it Out Q9, section 8.3 p.197",
+      "description": "Choose all correct descriptions of the product (565/465) × (707/676): (a) >565/465; (b) <565/465; (c) >707/676; (d) <707/676; (e) >1; (f) <1."
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 8.3",
+      "book_ref": "Figure it Out Q10, section 8.3 p.197",
+      "description": "What fraction of the whole square is the shaded region in the given nested diagram?"
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 8.3",
+      "book_ref": "Figure it Out Q11, section 8.3 p.197",
+      "description": "Ant-splitting problem: a colony splits equally at each fork. Find the fraction reaching each food source for successive depths: (1−1/2); (1−1/2)(1−1/3); up to (1−1/2)(1−1/3)(1−1/4)(1−1/5); and (1−1/2)…(1−1/10). Make a general statement and explain."
+    },
+    {
+      "id": "E-26",
+      "source_section": "section 8.3",
+      "book_ref": "Figure it Out Q12, section 8.3 p.197",
+      "description": "Evaluate the telescoping products: 1−1/2; (1−1/2)(1−1/3); (1−1/2)(1−1/3)(1−1/4)(1−1/5); and (1−1/2)(1−1/3)…(1−1/10). Generalise the pattern."
+    }
+  ],
+  "conceptual_demand": 2,
+  "activity_count": 0,
+  "demo_count": 0,
+  "exec_load": 1
+}

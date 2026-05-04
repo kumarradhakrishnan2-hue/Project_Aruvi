@@ -1,0 +1,362 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "vii",
+  "chapter_number": 3,
+  "chapter_title": "A Peek Beyond the Point",
+  "sections": [
+    { "ref": "section 3.1", "title": "The Need for Smaller Units", "section_goal": ["recall"] },
+    { "ref": "section 3.2", "title": "A Tenth Part", "section_goal": ["recall", "apply"] },
+    { "ref": "section 3.3", "title": "A Hundredth Part", "section_goal": ["recall", "apply"] },
+    { "ref": "section 3.4", "title": "Decimal Place Value", "section_goal": ["reason", "apply"] },
+    { "ref": "section 3.5", "title": "Units of Measurement", "section_goal": ["apply"] },
+    { "ref": "section 3.6", "title": "Locating and Comparing Decimals", "section_goal": ["apply"] },
+    { "ref": "section 3.7", "title": "Addition and Subtraction of Decimals", "section_goal": ["apply"] },
+    { "ref": "section 3.8", "title": "More on the Decimal System", "section_goal": ["reason"] }
+  ],
+  "prose_summary": "Section 3.1 identifies the need for subdividing standard units of measurement through a motivating real-world situation: Sonu's mother cannot fix a toy because two visually similar screws differ in length by a fraction of a centimetre. The section directs students to place screws on a millimetre-ruled scale and record measurements such as 2 7/10 cm, building the intuition that whole-number centimetre readings are insufficient when differences are small. The dominant act is recognising why smaller units are necessary — the section does not yet introduce formal notation or arithmetic.\n\nSection 3.2 defines the one-tenth as a unit, establishes how fractional lengths are composed, and then applies addition and subtraction of tenth-fractions in context. The pencil-length diagram introduces the mixed number notation (3 4/10 units) and shows that 34 one-tenths equal three full units plus four tenths. The section provides guided worked computation for adding the lower and upper arm lengths (2 7/10 + 3 6/10 = 6 3/10) showing both 'units and tenths' and 'convert to tenths' methods, then extends to subtraction (12 4/10 – 6 7/10 = 5 7/10) with an analogous regrouping argument. Students practice ordering eighth-item lists of tenth-fractions and continuing six numerical sequences that increase or decrease in tenth steps.\n\nSection 3.3 defines the one-hundredth by motivating through the folded-paper problem: a sheet of length 8 9/10 units folded in half gives a length expressible only with hundredths. The section establishes that each one-tenth is split into 10 parts giving 100 parts per unit, and that the length 4 5/10 45/100 may be written as 4 units and 45 one-hundredths. Multiple representations for the same length are shown (wire diagram: 1 1/10 4/100 = 1 14/100 = 114/100). Students then apply addition and subtraction of mixed tenths-and-hundredths quantities using two parallel methods — column-wise place value decomposition (analogous to whole-number column arithmetic) and complete conversion to hundredths — and are invited to notice structural similarity with whole-number addition.\n\nSection 3.4 reasons through why the decimal system splits by powers of ten, then applies that reasoning to introduce decimal point notation and read decimal numbers. The section opens by asking whether a unit could equally be split into 4 or 8 equal parts, and then justifies splitting into 10 by pointing to the role of 10 in the Indian place value system. The place value chain is extended leftward (10,000 → 1000 → 100 → 10 → 1) and then rightward (1 → 1/10 → 1/100 → 1/1000 → 1/10000), naming this the decimal system and noting the Sanskrit-Latin etymology of 'decem/daśha'. The section then applies the place value table to show how the decimal point disambiguates otherwise identical digit strings (705, 70.5, 7.05), defines how to read decimal numbers aloud, and walks through computing 234 tenths = 23.4 using place value decomposition.\n\nSection 3.5 applies decimal notation to real measurement conversions across three systems: length (mm ↔ cm ↔ m), weight (g ↔ kg, mg ↔ g), and currency (paise ↔ rupee). Each conversion is derived from the known integer ratio (1 cm = 10 mm, 1 m = 100 cm, 1 kg = 1000 g, 1 rupee = 100 paise) and expressed as a unit fraction leading directly to a decimal: 1 mm = 0.1 cm, 1 cm = 0.01 m, 1 g = 0.001 kg, 1 paisa = 0.01 rupee. Partially worked examples illustrate multi-digit conversions (e.g. 15 cm = 0.15 m; 254 g = 0.254 kg; 75 paise = 0.75 rupee) and students fill blanks in three fill-in-the-blank tables. A Try This prompt invites students to interview family members about historical prices and look for old coins.\n\nSection 3.6 applies decimal numbers to locating them on the number line, comparing their magnitude, and identifying the decimal closest to a given target. The section shows how 1.4 lies between 1 and 2 by subdividing that unit interval into 10 parts and marking the fourth. It then zooms in further to locate three-decimal-place numbers such as 4.185 by successive magnification — a powerful visual that grounds place value spatially. The 'Zero Dilemma' Math Talk establishes that trailing zeros after the decimal point do not change value (0.2 = 0.20 = 0.200) while leading zeros after the decimal point do change value (0.02 ≠ 0.2). Comparison of 6.456 and 6.465 is shown visually on the number line and then by left-to-right digit comparison, mirroring the procedure for whole numbers.\n\nSection 3.7 applies the column-arithmetic procedure for whole numbers directly to decimal addition and subtraction. Opening with a cloth-purchase context (2.7 m + 3.5 m = 6.2 m), the section shows in parallel the fraction form and the decimal column form, making explicit that they compute the same regrouping. A detailed place value expansion for 75.345 + 86.691 = 162.036 is shown column-by-column, followed by compact column form. The Figure it Out exercise includes eight additions and eight subtractions ranging from single-tenths to three-decimal-place numbers, and a Decimal Sequences task where students identify the constant addend or subtrahend in eight arithmetic progressions with decimal steps and write the next three terms.\n\nSection 3.8 reasons about the decimal system through two lenses: real-world measurement disasters caused by decimal errors, and the history of decimal notation. The measurement-disaster vignette describes an Air Canada Boeing 767 that nearly crashed because fuel was loaded in pounds instead of kilograms (a unit confusion compounded by a decimal misread), an Amsterdam housing-benefit overpayment of €188 million due to a cents-for-euros programming error, and medical dosing errors from misreading 0.05 mg as 0.5 mg. The 'Deceptive Decimal Notation' discussion then shows that decimal point notation can be misleading when the base is not ten — cricket overs (base 6) and feet-and-inches (base 12) use a decimal-like separator but are not decimals. The historical aside traces decimal fractions through 8th-century Indian astronomers, al-Uqlīdisī's 950 CE formalisation, and 15th–16th century European notations leading to the modern point.",
+  "enumerated_activities": [],
+  "enumerated_worked_examples": [],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 3.1",
+      "book_ref": "Figure it Out, section 3.1 p.47",
+      "description": "Measure the lengths of a pen, sharpener, and an object of the student's choice using a scale; record the measurements in centimetres using tenth notation as modelled in the section."
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 3.2",
+      "book_ref": "Figure it Out, section 3.2 p.49",
+      "description": "Write lengths of objects (USB cable, and others shown in diagrams) in two ways — as a mixed number and as an improper tenth fraction — and read them aloud."
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 3.2",
+      "book_ref": "Figure it Out Q1, section 3.2 p.49",
+      "description": "Arrange eight lengths in increasing order: (a) 9/10; (b) 1 7/10; (c) 130/10; (d) 13 1/10; (e) 10 5/10; (f) 7 6/10; (g) 6 7/10; (h) 4/10."
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 3.2",
+      "book_ref": "Figure it Out, section 3.2 p.50",
+      "description": "Arrange four lengths in increasing order: 4 1/10, 4/10, 41/10, 41 1/10."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 3.2",
+      "book_ref": "Figure it Out, section 3.2 p.51",
+      "description": "Find the total length of a honeybee given head = 2 3/10 units, thorax = 5 4/10 units, abdomen = 7 5/10 units."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 3.2",
+      "book_ref": "Figure it Out, section 3.2 p.51",
+      "description": "Find the length of Shylaja's middle finger given total hand length 12 4/10 units and palm length 6 7/10 units; discuss two methods shown and try computing by converting to tenths."
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 3.2",
+      "book_ref": "Figure it Out, section 3.2 p.52",
+      "description": "Find the difference in lengths between a Celestial Pearl Danio (2 4/10 cm) and a Philippine Goby (9/10 cm); compare to finger size."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 3.2",
+      "book_ref": "Figure it Out Q1, section 3.2 p.52",
+      "description": "Observe six sequences of tenth-fractions, identify the change after each term, and extend each pattern by four more terms: (a) 4, 4 3/10, 4 6/10, …; (b) 8 2/10, 8 7/10, 9 2/10, …; (c) 7 6/10, 8 7/10, …; (d) 5 7/10, 5 3/10, …; (e) 13 5/10, 13, 12 5/10, …; (f) 11 5/10, 10 4/10, 9 3/10, …"
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 3.3",
+      "book_ref": "Math Talk, section 3.3 p.53",
+      "description": "How many one-hundredths make one-tenth? Can the folded-paper length also be stated as 4 units and 45 one-hundredths? Explain."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 3.3",
+      "book_ref": "Figure it Out, section 3.3 p.54",
+      "description": "Fill the empty boxes in the ruler diagram: given markings at 0, 1/10, 1/100, 2/10, 20/100, 1, 99/100, 130/100, 3/10, 2, identify the missing decimal lengths at each marked position."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 3.3",
+      "book_ref": "Figure it Out, section 3.3 p.54",
+      "description": "For lengths shown in the diagrams, write each measurement in decimal fraction form and read the measurement aloud in words (sample answers: 5 37/100 and 15 3/100 shown in the teacher answer key)."
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 3.3",
+      "book_ref": "Figure it Out Q1, section 3.3 p.55",
+      "description": "In seven groups (a)–(g), identify the longest and shortest length from the given set of tenths and hundredths values, and mark each length on the scale: (a) 3/10, 3/100, 33/100; (b) 3 1/10, 30/10, 1 3/10; (c) 45/100, 54/100, 5/10, 4/10; (d) 3 6/10, 3 6/100, 3 6/10 6/100; (e) 8 2/100, 9/100, 1 8/100; (f) 7 3/10 5/100, 7 5/10, 7 41/100; (g) 65/10 15/100, 5 87/100, 5 7/100."
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 3.3",
+      "book_ref": "Math Talk, section 3.3 p.57",
+      "description": "Solve by converting to hundredths: find the difference 25 9/10 – 6 4/10 7/100; then find 15 3/10 4/100 – 2 6/10 8/100 and observe structural similarity with whole-number column subtraction 653 – 268."
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 3.3",
+      "book_ref": "Figure it Out Q1, section 3.3 p.58",
+      "description": "Find sums and differences of mixed tenths-and-hundredths numbers: (a) 3/10 + 4/100 + 3 4/100; (b) 9 5/10 7/100 + 2 1/10 3/100; (c) 15 3/10 4/100 + 14 6/10 3/100; (d) 7 7/100 – 4 3/100; (e) 8 6/100 – 5 3/100; (f) 12 6/10 2/100 – 9/10 9/100."
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 3.4",
+      "book_ref": "Math Talk, section 3.4 p.61",
+      "description": "Discuss: could 4 2/10 be written as 42 skipping the fraction denominator? What ambiguity arises? Show three different quantities that could all be denoted '705' without a positional separator."
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 3.4",
+      "book_ref": "Figure it Out, section 3.4 p.61",
+      "description": "How Big? Answer: (a) how many thousandths make one unit; (b) how many thousandths make one tenth; (c) how many thousandths make one hundredth; (d) how many tenths make one ten; (e) how many hundredths make one ten. Then make a few more similar questions and answer them."
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 3.4",
+      "book_ref": "Figure it Out, section 3.4 p.63",
+      "description": "Make a place value table (hundreds, tens, units, tenths, hundredths, thousandths). Write each quantity in decimal form, place value expansion, and read aloud: (a) 2 ones, 3 tenths, 5 hundredths; (b) 1 ten and 5 tenths; (c) 4 ones and 6 hundredths; (d) 1 hundred, 1 one and 1 hundredth; (e) 8/100 and 9/10; (f) 5/100; (g) 1/10; (h) 2 1/100, 4 1/10, 7 1/1000."
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 3.4",
+      "book_ref": "Figure it Out, section 3.4 p.64",
+      "description": "Write in decimal form: (a) 234 hundredths; (b) 105 tenths."
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 3.5",
+      "book_ref": "Figure it Out, section 3.5 p.64",
+      "description": "Fill in the blanks for mm ↔ cm conversions: 70 mm = ___ cm; ___ = 0.9 cm; 134 mm = ___; ___ = 203.6 cm."
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 3.5",
+      "book_ref": "Figure it Out, section 3.5 p.66",
+      "description": "Fill in the blanks for cm ↔ m conversions: 36 cm = ___; 50 cm = ___; ___ = 0.89 m; 4 cm = ___; 325 cm = ___; ___ = 2.07 m. Then answer: how many mm in 1 m? Can 1 mm = 1/1000 m?"
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 3.5",
+      "book_ref": "Figure it Out, section 3.5 p.68",
+      "description": "Fill in the blanks for g ↔ kg conversions: 465 g = ___; 68 g = ___; 1560 g = ___; 704 g = ___; ___ = 0.56 kg; ___ = 2.5 kg."
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 3.5",
+      "book_ref": "Figure it Out, section 3.5 p.69",
+      "description": "Fill in the blanks for rupee ↔ paise conversions: 10 p = ___; ___ p = ₹0.05; ___ p = ₹0.36; ___ = ₹0.50; 99 p = ___; 250 p = ___."
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 3.5",
+      "book_ref": "Try This, section 3.5 p.69",
+      "description": "Discuss with adults at home or school the prices of different products and services during their childhood. Try to find old coins and stamps."
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out, section 3.6 p.70",
+      "description": "Draw a number line and locate 1.4 by dividing the unit between 1 and 2 into 10 equal parts. Name all the divisions between 1 and 1.1."
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out, section 3.6 p.70",
+      "description": "Identify and write the decimal numbers against letters A, B, C, D on the number line segment from 5 to 5.4."
+    },
+    {
+      "id": "E-26",
+      "source_section": "section 3.6",
+      "book_ref": "Math Talk, section 3.6 p.70",
+      "description": "Zero Dilemma: Sonu says 0.2 = 0.20 = 0.200. Zara disagrees. Use the place value table to settle the dispute; then determine which of 4.5, 4.05, 0.405, 4.050, 4.50, 4.005, 04.50 are equal."
+    },
+    {
+      "id": "E-27",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out, section 3.6 p.71",
+      "description": "Identify the decimal number denoted by '?' in figure (b), where successive zooms of the number line are given (similar to how 4.185 is located in figure (a))."
+    },
+    {
+      "id": "E-28",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out, section 3.6 p.71",
+      "description": "Make number lines with successive zooms to locate: (a) 9.876; (b) 0.407."
+    },
+    {
+      "id": "E-29",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out, section 3.6 p.71",
+      "description": "In the number line from 5 to 10 (divided into 10 equal parts), determine what decimal numbers the boxes labelled 'a', 'b', and 'c' denote (b = 7.5 is given as a hint)."
+    },
+    {
+      "id": "E-30",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out, section 3.6 p.72",
+      "description": "Using the same reasoning, find the decimal numbers in labelled boxes (d, e on the segment 8–8.1; f, g, h on the segment 4.3–4.8)."
+    },
+    {
+      "id": "E-31",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out, section 3.6 p.73",
+      "description": "Which decimal number is greater? (a) 1.23 or 1.32; (b) 3.81 or 13.800; (c) 1.009 or 1.090."
+    },
+    {
+      "id": "E-32",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out, section 3.6 p.73",
+      "description": "Closest Decimals: (a) which of 0.9, 1.1, 1.01, 1.11 is closest to 1.09; (b) which of 3.56, 3.65, 3.099 is closest to 4; (c) which of 0.8, 0.69, 1.08 is closest to 1."
+    },
+    {
+      "id": "E-33",
+      "source_section": "section 3.6",
+      "book_ref": "Math Talk, section 3.6 p.73",
+      "description": "Using the digits 4, 1, 8, 2, and 5 exactly once, make a decimal number as close as possible to 25 (two separate cases asked)."
+    },
+    {
+      "id": "E-34",
+      "source_section": "section 3.7",
+      "book_ref": "Try This, section 3.7 p.75",
+      "description": "Write the detailed place value computation for 84.691 – 77.345 and its compact column form."
+    },
+    {
+      "id": "E-35",
+      "source_section": "section 3.7",
+      "book_ref": "Figure it Out Q1, section 3.7 p.75",
+      "description": "Find the sums: (a) 5.3 + 2.6; (b) 18 + 8.8; (c) 2.15 + 5.26; (d) 9.01 + 9.10; (e) 29.19 + 9.91; (f) 0.934 + 0.6; (g) 0.75 + 0.03; (h) 6.236 + 0.487."
+    },
+    {
+      "id": "E-36",
+      "source_section": "section 3.7",
+      "book_ref": "Figure it Out Q2, section 3.7 p.75",
+      "description": "Find the differences: (a) 5.6 – 2.3; (b) 18 – 8.8; (c) 10.4 – 4.5; (d) 17 – 16.198; (e) 17 – 0.05; (f) 34.505 – 18.1; (g) 9.9 – 9.09; (h) 6.236 – 0.487."
+    },
+    {
+      "id": "E-37",
+      "source_section": "section 3.7",
+      "book_ref": "Figure it Out, section 3.7 p.76",
+      "description": "Decimal Sequences — continue 4.4, 4.8, 5.2, 5.6, 6.0, … with 3 more terms; then identify the change and write the next 3 terms for sequences (a) 4.4, 4.45, 4.5, …; (b) 25.75, 26.25, 26.75, …; (c) 10.56, 10.67, 10.78, …; (d) 13.5, 16, 18.5, …; (e) 8.5, 9.4, 10.3, …; (f) 5, 4.95, 4.90, …; (g) 12.45, 11.95, 11.45, …; (h) 36.5, 33, 29.5, …"
+    },
+    {
+      "id": "E-38",
+      "source_section": "section 3.7",
+      "book_ref": "Math Talk, section 3.7 p.76",
+      "description": "Evaluate Sonu's claim that the sum of two decimal numbers always lies strictly between (sum of whole-number parts) and (sum of whole-number parts + 2). Verify for 25.936 + 8.202 and for 25.93603259 + 8.202."
+    },
+    {
+      "id": "E-39",
+      "source_section": "section 3.7",
+      "book_ref": "Try This, section 3.7 p.76",
+      "description": "Come up with a way to narrow down the range of whole numbers within which the difference of two decimal numbers will lie (analogous to Sonu's claim for sums)."
+    },
+    {
+      "id": "E-40",
+      "source_section": "section 3.8",
+      "book_ref": "Math Talk, section 3.8 p.78",
+      "description": "Where else can we see 'non-decimal' numbers written with a decimal-like notation? (The cricket overs and feet-inches examples are given; students generate further instances.)"
+    },
+    {
+      "id": "E-41",
+      "source_section": "section 3.8",
+      "book_ref": "Figure it Out Q1, section 3.8 p.78",
+      "description": "Convert fractions into decimals: (a) 5/100; (b) 16/1000; (c) 12/10; (d) 254/1000."
+    },
+    {
+      "id": "E-42",
+      "source_section": "section 3.8",
+      "book_ref": "Figure it Out Q2, section 3.8 p.79",
+      "description": "Convert decimals into a sum of tenths, hundredths and thousandths: (a) 0.34; (b) 1.02; (c) 0.8; (d) 0.362."
+    },
+    {
+      "id": "E-43",
+      "source_section": "section 3.8",
+      "book_ref": "Figure it Out Q3, section 3.8 p.79",
+      "description": "What decimal number does each letter a, b, c represent on the number line between 6.4 and 6.6?"
+    },
+    {
+      "id": "E-44",
+      "source_section": "section 3.8",
+      "book_ref": "Figure it Out Q4, section 3.8 p.79",
+      "description": "Arrange in descending order: (a) 11.01, 1.011, 1.101, 11.10, 1.01; (b) 2.567, 2.675, 2.768, 2.499, 2.698; (c) 4.678 g, 4.595 g, 4.600 g, 4.656 g, 4.666 g; (d) 33.13 m, 33.31 m, 33.133 m, 33.331 m, 33.313 m."
+    },
+    {
+      "id": "E-45",
+      "source_section": "section 3.8",
+      "book_ref": "Figure it Out Q5, section 3.8 p.79",
+      "description": "Using the digits 1, 4, 0, 8, 6 make: (a) the decimal number closest to 30; (b) the smallest possible decimal number between 100 and 1000."
+    },
+    {
+      "id": "E-46",
+      "source_section": "section 3.8",
+      "book_ref": "Figure it Out Q6, section 3.8 p.79",
+      "description": "Will a decimal number with more digits necessarily be greater than one with fewer digits? Justify with an example."
+    },
+    {
+      "id": "E-47",
+      "source_section": "section 3.8",
+      "book_ref": "Figure it Out Q7, section 3.8 p.79",
+      "description": "Mahi buys 0.25 kg beans, 0.3 kg carrots, 0.5 kg potatoes, 0.2 kg capsicums, 0.05 kg ginger. Calculate total weight."
+    },
+    {
+      "id": "E-48",
+      "source_section": "section 3.8",
+      "book_ref": "Figure it Out Q8, section 3.8 p.79",
+      "description": "Pinto supplies 3.79 L, 4.2 L, and 4.25 L of milk in the first three days. In 6 days he supplies 25 litres total. Find the total supplied in the last three days."
+    },
+    {
+      "id": "E-49",
+      "source_section": "section 3.8",
+      "book_ref": "Figure it Out Q9, section 3.8 p.79",
+      "description": "Tinku weighed 35.75 kg in January and 34.50 kg in February. Has he gained or lost weight, and by how much?"
+    },
+    {
+      "id": "E-50",
+      "source_section": "section 3.8",
+      "book_ref": "Figure it Out Q10, section 3.8 p.80",
+      "description": "Extend the pattern: 5.5, 6.4, 6.39, 7.29, 7.28, 6.18, 6.17, ____, ____"
+    },
+    {
+      "id": "E-51",
+      "source_section": "section 3.8",
+      "book_ref": "Figure it Out Q11, section 3.8 p.80",
+      "description": "How many millimetres make 1 kilometre?"
+    },
+    {
+      "id": "E-52",
+      "source_section": "section 3.8",
+      "book_ref": "Figure it Out Q12, section 3.8 p.80",
+      "description": "Indian Railways travel insurance costs 45 paise per passenger. If 1 lakh people opt in a day, what is the total insurance fee in rupees?"
+    },
+    {
+      "id": "E-53",
+      "source_section": "section 3.8",
+      "book_ref": "Figure it Out Q13, section 3.8 p.80",
+      "description": "Which is greater? (a) 10/1000 or 1/10; (b) one-hundredth or 90 thousandths; (c) one-thousandth or 90 hundredths."
+    },
+    {
+      "id": "E-54",
+      "source_section": "section 3.8",
+      "book_ref": "Figure it Out Q14, section 3.8 p.80",
+      "description": "Write in decimal form: (a) 87 ones, 5 tenths and 60 hundredths; (b) 12 tens and 12 tenths; (c) 10 tens, 10 ones, 10 tenths, and 10 hundredths; (d) 25 tens, 25 ones, 25 tenths, and 25 hundredths."
+    },
+    {
+      "id": "E-55",
+      "source_section": "section 3.8",
+      "book_ref": "Try This Q15, section 3.8 p.80",
+      "description": "Using each digit 0–9 not more than once, fill the boxes so that the sum of two decimal numbers is closest to 10.5."
+    },
+    {
+      "id": "E-56",
+      "source_section": "section 3.8",
+      "book_ref": "Figure it Out Q16, section 3.8 p.80",
+      "description": "Write in decimal form: (a) 1/2; (b) 3/2; (c) 1/4; (d) 3/4; (e) 1/5; (f) 4/5."
+    }
+  ],
+  "conceptual_demand": 2,
+  "activity_count": 0,
+  "demo_count": 0,
+  "exec_load": 1
+}

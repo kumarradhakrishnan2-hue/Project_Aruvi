@@ -1,0 +1,1089 @@
+{
+  "filename": "ch_02_20260502_151358.json",
+  "saved_at": "2026-05-02T15:13:58",
+  "grade": "Grade VII",
+  "subject": "Mathematics",
+  "chapter_number": 2,
+  "chapter_title": "Arithmetic Expressions",
+  "period_schedule_display": "Period schedule:\n  Row 1: 40 minutes × 6 periods = 240 minutes\nTotal: 6 periods · 4h 0min",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 40,
+      "count": 6
+    }
+  ],
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            {
+              "ref": "section 2.1",
+              "title": "Simple Expressions"
+            }
+          ],
+          "section_goal": "recall",
+          "activity_title": "What is an Expression? Naming Values",
+          "pedagogical_method": "Inductive",
+          "textbook_items_in_class": [
+            {
+              "id": "WE-1",
+              "type": "worked_example",
+              "source_section": "section 2.1",
+              "book_ref": "Example 1, section 2.1 p.24",
+              "description": "Mallika spends ₹25 every day for lunch Monday to Friday. The expression for total lunch cost in a week is 5 × 25."
+            },
+            {
+              "id": "E-1",
+              "type": "exercise",
+              "source_section": "section 2.1",
+              "book_ref": "Figure it Out Q1, section 2.1 p.25",
+              "description": "Fill in the blanks to make expressions equal: (a) 13+4=___+6; (b) 22+___=6×5; (c) 8×___=64÷2; (d) 34−___=25."
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Ask students: what does '5 × 25' tell us in the context of Mallika's lunch bills? Guide them to articulate 'expression' and 'value' using Example 1, section 2.1 p.24 (\"Mallika spends ₹25 every day for lunch Monday to Friday....\"). Elicit from students multiple expressions that equal 12 (e.g. 10+2, 3×4)."
+            },
+            {
+              "minutes": "8–20",
+              "description": "Introduce the equality sign as the link between an expression and its value. Use a class choral activity: teacher writes four expressions on the board and students identify pairs with the same value, building vocabulary: expression, value, equals."
+            },
+            {
+              "minutes": "20–35",
+              "description": "Students attempt Figure it Out Q1, section 2.1 p.25 (\"Fill in the blanks to make expressions equal....\") individually, then compare with a neighbour. Discuss part (c) (8×___=64÷2) as a class to address division expressions."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Quick oral recap: each student names one expression equal to 30. Teacher previews that the next period will focus on comparing — deciding which of two expressions is larger — without always computing."
+            }
+          ],
+          "teacher_notes": "This is the chapter's opening period; no prior period to recap from. Watch for students treating the equality sign as a 'do the sum' arrow rather than a balance symbol — correct this early. For additional self-study, point students to Example 1, section 2.1 p.24.",
+          "materials": [
+            "Blackboard",
+            "Chalk"
+          ]
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            {
+              "ref": "section 2.1",
+              "title": "Simple Expressions"
+            }
+          ],
+          "section_goal": "reason",
+          "activity_title": "Marble Stories: Comparing Without Computing",
+          "pedagogical_method": "Discovery",
+          "textbook_items_in_class": [
+            {
+              "id": "WE-2",
+              "type": "worked_example",
+              "source_section": "section 2.1",
+              "book_ref": "Example 2, section 2.1 p.25",
+              "description": "Which is greater: 1023+125 or 1022+128? Marble story reasoning: Raja starts with 1 more marble but Joy receives 3 more, so Joy ends up with 2 more. Therefore 1023+125 < 1022+128."
+            },
+            {
+              "id": "WE-3",
+              "type": "worked_example",
+              "source_section": "section 2.1",
+              "book_ref": "Example 3, section 2.1 p.25",
+              "description": "Which is greater: 113−25 or 112−24? Marble story: Raja starts with 1 more but also loses 1 more, so both end with equal marbles. Therefore 113−25 = 112−24."
+            },
+            {
+              "id": "E-3",
+              "type": "exercise",
+              "source_section": "section 2.1",
+              "book_ref": "Figure it Out, section 2.1 p.26",
+              "description": "Use '>', '<' or '=' to compare the following expression pairs without complicated calculations, explaining reasoning: (a) 245+289 vs 246+285; (b) 273−145 vs 272−144; (c) 364+587 vs 363+589; (d) 124+245 vs 129+245; (e) 213−77 vs 214−76."
+            }
+          ],
+          "homework": [
+            {
+              "id": "E-2",
+              "type": "exercise",
+              "source_section": "section 2.1",
+              "book_ref": "Figure it Out Q2, section 2.1 p.25",
+              "description": "Arrange five expressions in ascending order of their values: (a) 67−19; (b) 67−20; (c) 35+25; (d) 5×11; (e) 120÷3."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Recap Period 1: teacher asks a student to state what an arithmetic expression is and to give two expressions with the same value. Bridge: 'Today we decide which expression is larger — without actually computing.'"
+            },
+            {
+              "minutes": "5–18",
+              "description": "Walk through the marble-story approach using Example 2, section 2.1 p.25 (\"Which is greater: 1023+125 or 1022+128?....\") and Example 3, section 2.1 p.25 (\"Which is greater: 113−25 or 112−24?....\"). Students retell each story in their own words before the conclusion is stated."
+            },
+            {
+              "minutes": "18–35",
+              "description": "Pairs work on Figure it Out, section 2.1 p.26 (\"Use '>', '<' or '=' to compare the following expression pairs without complicated calculations....\"). Each pair writes a one-sentence justification for at least two parts; selected pairs share with the class."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Teacher consolidates: changing an addend by +k shifts the sum by +k; losing an extra unit from the subtrahend and gaining one in the minuend cancels out. Assign Figure it Out Q2, section 2.1 p.25 as homework."
+            }
+          ],
+          "teacher_notes": "Recap the equality-as-balance idea from Period 1. A common error is computing both sides and comparing numerically — redirect students to the structural 'who gained more / lost more' reasoning. Self-study pointer: Example 3, section 2.1 p.25.",
+          "materials": [
+            "Blackboard",
+            "Chalk"
+          ]
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            {
+              "ref": "section 2.2",
+              "title": "Reading and Evaluating Complex Expressions"
+            }
+          ],
+          "section_goal": "reason",
+          "activity_title": "Why Brackets? Resolving Ambiguity in Expressions",
+          "pedagogical_method": "Problem-solving",
+          "textbook_items_in_class": [
+            {
+              "id": "WE-4",
+              "type": "worked_example",
+              "source_section": "section 2.2",
+              "book_ref": "Example 4, section 2.2 p.26",
+              "description": "Mallesh brings 30 marbles; Arun brings 5 bags of 4 marbles each. Expression 30+5×4 is ambiguous: Purna evaluates left-to-right and gets 140 (wrong); Mallesh multiplies first and gets 50 (correct). Motivates need for brackets and terms."
+            },
+            {
+              "id": "WE-5",
+              "type": "worked_example",
+              "source_section": "section 2.2",
+              "book_ref": "Example 5, section 2.2 p.27",
+              "description": "Irfan buys biscuits (₹15) and toor dal (₹56), pays ₹100. Change = 100−(15+56) = 100−71 = ₹29. Shows brackets force inner expression evaluation first."
+            },
+            {
+              "id": "E-4",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out, section 2.2 p.28",
+              "description": "Complete the table: for five given expressions (13−2+6; 5+6×3; 4+15−9; 23−2×4+16; 28+19−8), rewrite as sum of terms and list the terms."
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–6",
+              "description": "Recap homework from Period 2 (arranging expressions in ascending order). Bridge: 'Section 2.1 gave us two-operation expressions; today we meet expressions with more operations — and a new problem: ambiguity.'"
+            },
+            {
+              "minutes": "6–18",
+              "description": "Present Example 4, section 2.2 p.26 (\"Expression 30+5×4 is ambiguous: Purna evaluates left-to-right and gets 140....\"). Students pair-discuss: who is right and why? Teacher introduces the language analogy (punctuation → brackets) and the definition of 'terms'."
+            },
+            {
+              "minutes": "18–32",
+              "description": "Walk through Example 5, section 2.2 p.27 (\"Irfan buys biscuits (₹15) and toor dal (₹56), pays ₹100. Change = 100−(15+56)....\"). Students then complete Figure it Out, section 2.2 p.28 (\"Complete the table: for five given expressions...rewrite as sum of terms....\") in pairs."
+            },
+            {
+              "minutes": "32–40",
+              "description": "Class discussion: what counts as a 'term'? Consolidate: terms are parts separated by '+' after rewriting subtraction as addition of an inverse. Preview: next period explores whether terms can be swapped."
+            }
+          ],
+          "teacher_notes": "Recap structural reasoning from Period 2 before moving into multi-operation expressions. Watch for students who rewrite 13−2+6 as having three terms (not two after combining); clarify the inverse-addition convention. Self-study pointer: Example 5, section 2.2 p.27.",
+          "materials": [
+            "Blackboard",
+            "Chalk"
+          ]
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            {
+              "ref": "section 2.2",
+              "title": "Reading and Evaluating Complex Expressions"
+            }
+          ],
+          "section_goal": "reason",
+          "activity_title": "Terms Can Swap: Commutativity and Associativity Explored",
+          "pedagogical_method": "Discovery",
+          "textbook_items_in_class": [
+            {
+              "id": "WE-6",
+              "type": "worked_example",
+              "source_section": "section 2.2",
+              "book_ref": "Example 6, section 2.2 p.29",
+              "description": "Madhu's drone goes 6 m up then 4 m down. Expression: 6+(−4)=2. Swapping terms: (−4)+6=2. Demonstrates swapping terms does not change the sum (commutative property)."
+            },
+            {
+              "id": "E-5",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out, section 2.2 p.29",
+              "description": "Check if replacing subtraction by addition of inverse does not change the expression value, using different examples. (Try This prompt)"
+            },
+            {
+              "id": "E-6",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out, section 2.2 p.29",
+              "description": "Swapping and Grouping: does changing the order in which terms are added give different values? Explore with expressions including negative terms."
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Recap: students state the definition of a 'term' from Period 3 and give an example. Teacher poses: 'If we add the terms in a different order, does the sum change?'"
+            },
+            {
+              "minutes": "5–18",
+              "description": "Explore Example 6, section 2.2 p.29 (\"Madhu's drone goes 6 m up then 4 m down...Swapping terms: (−4)+6=2....\"). Students try two or three of their own expressions with negative terms using Figure it Out, section 2.2 p.29 (\"Check if replacing subtraction by addition of inverse does not change the expression value....\")."
+            },
+            {
+              "minutes": "18–32",
+              "description": "Groups of three investigate Figure it Out, section 2.2 p.29 (\"does changing the order in which terms are added give different values?....\") with at least four self-chosen examples each, then report conjecture to the class."
+            },
+            {
+              "minutes": "32–40",
+              "description": "Whole-class consolidation: commutative and associative properties hold for addition of terms, including negative terms. Students write a one-sentence generalisation in their notebooks."
+            }
+          ],
+          "teacher_notes": "Recap term identification from Period 3. A common error is students believing swapping a negative term changes the sign; use the drone context to keep the physical meaning clear. Self-study pointer: Example 6, section 2.2 p.29.",
+          "materials": [
+            "Blackboard",
+            "Chalk",
+            "Notebooks"
+          ]
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            {
+              "ref": "section 2.2",
+              "title": "Reading and Evaluating Complex Expressions"
+            }
+          ],
+          "section_goal": "apply",
+          "activity_title": "Terms in Real Contexts: Bills, Games, and Packets",
+          "pedagogical_method": "Problem-solving",
+          "textbook_items_in_class": [
+            {
+              "id": "WE-7",
+              "type": "worked_example",
+              "source_section": "section 2.2",
+              "book_ref": "Example 7, section 2.2 p.32",
+              "description": "4 friends order 4 dosas at ₹23 each and tip ₹5. Total expression: 4×23+5 = 97. Terms: 4×23 and 5."
+            },
+            {
+              "id": "WE-9",
+              "type": "worked_example",
+              "source_section": "section 2.2",
+              "book_ref": "Example 9, section 2.2 p.33",
+              "description": "Raghu packs 100 kg rice into 2 kg packets and already has 4 packets. Total packets = 4 + 100/2. Terms: 4 and 100/2."
+            },
+            {
+              "id": "E-8",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out Q1, section 2.2 p.34",
+              "description": "Find the values of five expressions by writing their terms: (a) 28−7+8; (b) 39−2×6+11; (c) 40−10+10+10; (d) 48−10×2+16÷2; (e) 6×3−4×8×5."
+            },
+            {
+              "id": "E-9",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out Q2, section 2.2 p.34",
+              "description": "Write a story/situation for each expression and find their values: (a) 89+21−10; (b) 5×12−6; (c) 4×9+2×6."
+            }
+          ],
+          "homework": [
+            {
+              "id": "E-7",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out, section 2.2 p.32",
+              "description": "Fire in the mountain (Example 8 extension): write expressions and identify terms when teacher calls out '4' and '7' for 33 students. Write an expression for your own class size."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Recap commutativity of terms from Period 4. Teacher poses a quick scenario: 'Three bags of 6 apples and 2 loose apples — write the expression and name its terms.'"
+            },
+            {
+              "minutes": "5–18",
+              "description": "Teacher models Example 7, section 2.2 p.32 (\"4 friends order 4 dosas at ₹23 each and tip ₹5. Total expression: 4×23+5=97....\") and Example 9, section 2.2 p.33 (\"Raghu packs 100 kg rice into 2 kg packets and already has 4 packets. Total packets = 4 + 100/2....\"), connecting each real-world action to a term."
+            },
+            {
+              "minutes": "18–32",
+              "description": "Students independently work on Figure it Out Q1, section 2.2 p.34 (\"Find the values of five expressions by writing their terms....\"). Pairs share solutions; teacher highlights part (e) as a multi-term product chain."
+            },
+            {
+              "minutes": "32–40",
+              "description": "Students begin Figure it Out Q2, section 2.2 p.34 (\"Write a story/situation for each expression....\") in pairs; unfinished parts plus Figure it Out, section 2.2 p.32 set as homework."
+            }
+          ],
+          "teacher_notes": "Recap the commutative property from Period 4 and extend to product-terms. Students frequently confuse 4×23 as two separate terms; emphasise that a product of numbers is a single term. Self-study pointer: Example 7, section 2.2 p.32.",
+          "materials": [
+            "Blackboard",
+            "Chalk"
+          ]
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            {
+              "ref": "section 2.2",
+              "title": "Reading and Evaluating Complex Expressions"
+            }
+          ],
+          "section_goal": "apply",
+          "activity_title": "Bracket Removal: Sign Flips and Safe Removal",
+          "pedagogical_method": "Deductive",
+          "textbook_items_in_class": [
+            {
+              "id": "WE-12",
+              "type": "worked_example",
+              "source_section": "section 2.2",
+              "book_ref": "Example 12, section 2.2 p.35",
+              "description": "Irfan's change revisited: 100−(15+56) = 100−15−56. Demonstrates bracket removal with negative sign flips the signs of enclosed terms."
+            },
+            {
+              "id": "WE-13",
+              "type": "worked_example",
+              "source_section": "section 2.2",
+              "book_ref": "Example 13, section 2.2 p.36",
+              "description": "500−(250−100): removing brackets preceded by negative sign flips signs. 500−(250−100) = 500−250+100 = 350. Shows 500−250−100 ≠ 500−(250−100)."
+            },
+            {
+              "id": "WE-14",
+              "type": "worked_example",
+              "source_section": "section 2.2",
+              "book_ref": "Example 14, section 2.2 p.36",
+              "description": "Hira has 28 coins in one bag and 35 in another; gifts 10 from second bag. Expression: 28+(35−10) = 28+35−10 = 53. Brackets preceded by positive sign: terms keep their signs on removal."
+            },
+            {
+              "id": "E-12",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out Q1, section 2.2 p.37",
+              "description": "Fill in blanks with numbers and operation signs so expressions on both sides are equal (bracket removal): (a) 24+(6−4)=24+6___; (b) 38+(______)=38+9−4; (c) 24−(6+4)=24___6−4; (d) 24−6−4=24−6___; (e) 27−(8+3)=27___8___3; (f) 27−(______)=27−8+3."
+            }
+          ],
+          "homework": [
+            {
+              "id": "E-13",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out Q2, section 2.2 p.37",
+              "description": "Remove the brackets and write expressions with the same value: (a) 14+(12+10); (b) 14−(12+10); (c) 14+(12−10); (d) 14−(12−10); (e) −14+12−10; (f) 14−(−12−10)."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Recap Period 5 homework (fire-in-the-mountain expressions). Pose: 'Can we always remove brackets? What happens to the signs inside?'"
+            },
+            {
+              "minutes": "5–18",
+              "description": "Teacher derives the two bracket-removal rules deductively using Example 12, section 2.2 p.35 (\"100−(15+56) = 100−15−56....\") and Example 13, section 2.2 p.36 (\"500−(250−100) = 500−250+100....\"). Students verbalise the rule in their own words: 'negative prefix flips all signs inside.'"
+            },
+            {
+              "minutes": "18–30",
+              "description": "Demonstrate Example 14, section 2.2 p.36 (\"28+(35−10) = 28+35−10 = 53. Brackets preceded by positive sign: terms keep their signs....\"). Students then work on Figure it Out Q1, section 2.2 p.37 (\"Fill in blanks with numbers and operation signs so expressions on both sides are equal....\") individually."
+            },
+            {
+              "minutes": "30–40",
+              "description": "Peer-check Q1 answers; teacher addresses part (f) as a common error case. Assign Figure it Out Q2, section 2.2 p.37 as homework; preview: next period covers the Tinker exercises and verifying expression equivalence."
+            }
+          ],
+          "teacher_notes": "Recap term identification from Period 5 before introducing bracket-removal rules. The most common error is forgetting to flip the sign of every enclosed term, not just the first; highlight Example 13 as the key counter-example. Self-study pointer: Example 14, section 2.2 p.36.",
+          "materials": [
+            "Blackboard",
+            "Chalk"
+          ]
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 60,
+          "textbook_segments": [
+            {
+              "ref": "section 2.2",
+              "title": "Reading and Evaluating Complex Expressions"
+            }
+          ],
+          "section_goal": "reason",
+          "activity_title": "Tinker the Terms I: Reasoning About Expression Equivalence",
+          "pedagogical_method": "Discovery",
+          "textbook_items_in_class": [
+            {
+              "id": "E-11",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out, section 2.2 p.37",
+              "description": "Tinker the Terms I: fill the blanks in the structured table of expression variations by reasoning about how one-term changes shift the value, doing as little computation as possible."
+            },
+            {
+              "id": "E-14",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out Q3, section 2.2 p.37",
+              "description": "Find values of expression pairs; first guess if they are equal: (a) (6+10)−2 and 6+(10−2); (b) 16−(8−3) and (16−8)−3; (c) 27−(18+4) and 27+(−18−4)."
+            },
+            {
+              "id": "E-15",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out Q4, section 2.2 p.38",
+              "description": "In each set, identify expressions with the same value using term analysis (no evaluation): (a) 319+537, 319−537, −537+319, 537−319; (b) 87+46−109 (three times), 87−46+109, 87−(46+109), (87−46)+109."
+            },
+            {
+              "id": "E-17",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out Q6, section 2.2 p.38",
+              "description": "Using only term-reasoning (no computation), fill blanks: (a) 423+___=419+___; (b) 207−68=210−___."
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Recap homework (Figure it Out Q2, section 2.2 p.37 bracket removal). Teacher asks: 'Without computing, how does increasing one term by 4 change the expression?' Elicit the shifting-value idea."
+            },
+            {
+              "minutes": "8–25",
+              "description": "Students work in pairs on Figure it Out, section 2.2 p.37 (\"Tinker the Terms I: fill the blanks in the structured table...by reasoning about how one-term changes shift the value....\"). Teacher circulates, prompting: 'Which term changed? By how much?'"
+            },
+            {
+              "minutes": "25–42",
+              "description": "Class works through Figure it Out Q3, section 2.2 p.37 (\"Find values of expression pairs; first guess if they are equal....\") — students write a guess before computing, then verify; discuss why (b) is not equal (subtraction is not associative)."
+            },
+            {
+              "minutes": "42–54",
+              "description": "Pairs tackle Figure it Out Q4, section 2.2 p.38 (\"In each set, identify expressions with the same value using term analysis....\") using the term-listing approach from earlier periods, then share conclusions."
+            },
+            {
+              "minutes": "54–60",
+              "description": "Quick whole-class attempt at Figure it Out Q6, section 2.2 p.38 (\"Using only term-reasoning (no computation), fill blanks....\"). Teacher consolidates the session: term analysis reveals equivalence without arithmetic."
+            }
+          ],
+          "teacher_notes": "Recap bracket-removal sign rules from Period 6 before opening the Tinker exercises. A key error to address is assuming subtraction is associative (part (b) of Q3); use the term-listing method to expose why the grouping matters. Self-study pointer: Example 13, section 2.2 p.36.",
+          "materials": [
+            "Blackboard",
+            "Chalk",
+            "Notebooks"
+          ]
+        },
+        {
+          "period_number": 8,
+          "period_duration_minutes": 60,
+          "textbook_segments": [
+            {
+              "ref": "section 2.2",
+              "title": "Reading and Evaluating Complex Expressions"
+            }
+          ],
+          "section_goal": "apply",
+          "activity_title": "Distributive Property: Splitting and Merging Multiplications",
+          "pedagogical_method": "Inductive",
+          "textbook_items_in_class": [
+            {
+              "id": "WE-15",
+              "type": "worked_example",
+              "source_section": "section 2.2",
+              "book_ref": "Example 15, section 2.2 p.38",
+              "description": "Lhamo and Norbu each order a vegetable cutlet (₹43) and rasgulla (₹24). Total: 2×(43+24) = 2×43+2×24 = 134. Introduces distributive property: multiple of a sum equals sum of multiples."
+            },
+            {
+              "id": "WE-16",
+              "type": "worked_example",
+              "source_section": "section 2.2",
+              "book_ref": "Example 16, section 2.2 p.39",
+              "description": "Republic Day parade: 4 rows of 5 scouts + 3 rows of 5 guides. Total: 4×5+3×5 = (4+3)×5 = 35. Proves 4×5+3×5 = (4+3)×5 by counting rows."
+            },
+            {
+              "id": "WE-17",
+              "type": "worked_example",
+              "source_section": "section 2.2",
+              "book_ref": "Example 17, section 2.2 p.41",
+              "description": "Given 53×18=954, find 63×18. Solution: 63×18 = (53+10)×18 = 53×18+10×18 = 954+180 = 1134. Applies distributive property to extend a known product."
+            },
+            {
+              "id": "WE-18",
+              "type": "worked_example",
+              "source_section": "section 2.2",
+              "book_ref": "Example 18, section 2.2 p.41",
+              "description": "Find an effective way to evaluate 97×25. Solution: 97×25 = (100−3)×25 = 100×25−3×25 = 2500−75 = 2425. Demonstrates using distributive property for efficient computation of near-round products."
+            },
+            {
+              "id": "E-21",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out Q1, section 2.2 p.41",
+              "description": "Distributive property: fill in blanks with numbers and operation signs so both sides are equal (16 sub-items a–p), applying a×(b+c)=a×b+a×c and (a+b)×c=a×c+b×c."
+            }
+          ],
+          "homework": [
+            {
+              "id": "E-22",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out Q2, section 2.2 p.42",
+              "description": "Fill in '<', '>', or '=' using reasoning (not evaluation): (a) (8−3)×29 vs (3−8)×29; (b) 15+9×18 vs (15+9)×18; (c) 23×(17−9) vs 23×17+23×9; (d) (34−28)×42 vs 34×42−28×42."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Recap term-equivalence reasoning from Period 7. Teacher writes '2×(43+24)' and '2×43+2×24' on the board and asks: 'Are these equal? How would you convince someone?' Students conjecture before any formal statement."
+            },
+            {
+              "minutes": "8–20",
+              "description": "Walk through Example 15, section 2.2 p.38 (\"Lhamo and Norbu each order a vegetable cutlet (₹43) and rasgulla (₹24)...Total: 2×(43+24)=2×43+2×24=134....\") and Example 16, section 2.2 p.39 (\"4 rows of 5 scouts + 3 rows of 5 guides...4×5+3×5=(4+3)×5=35....\"). Students verify numerically, then state the generalisation."
+            },
+            {
+              "minutes": "20–35",
+              "description": "Demonstrate Example 17, section 2.2 p.41 (\"Given 53×18=954, find 63×18...63×18=53×18+10×18=1134....\") and Example 18, section 2.2 p.41 (\"97×25=(100−3)×25=2500−75=2425....\"). Students create their own near-round product and solve it using the same strategy."
+            },
+            {
+              "minutes": "35–54",
+              "description": "Students work individually on Figure it Out Q1, section 2.2 p.41 (\"Distributive property: fill in blanks with numbers and operation signs....\"); teacher selects four items to review as a class, especially those requiring factoring out a common multiple."
+            },
+            {
+              "minutes": "54–60",
+              "description": "Consolidation: teacher summarises the two directions of the distributive property (expand and factor). Assign Figure it Out Q2, section 2.2 p.42 as homework."
+            }
+          ],
+          "teacher_notes": "Recap the bracket-removal rule from Period 6 as a bridge to distributive property. Watch for students confusing 2×(43+24) with (2×43)+24 — the common error of not distributing over every term; Example 16's row-counting proof is the best corrective. Self-study pointer: Example 17, section 2.2 p.41.",
+          "materials": [
+            "Blackboard",
+            "Chalk",
+            "Notebooks"
+          ]
+        },
+        {
+          "period_number": 9,
+          "period_duration_minutes": 50,
+          "textbook_segments": [
+            {
+              "ref": "section 2.2",
+              "title": "Reading and Evaluating Complex Expressions"
+            }
+          ],
+          "section_goal": "apply",
+          "activity_title": "Tinker the Terms II and Expression Creation",
+          "pedagogical_method": "Problem-solving",
+          "textbook_items_in_class": [
+            {
+              "id": "E-16",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out Q5, section 2.2 p.38",
+              "description": "Add brackets at appropriate places to achieve the indicated values: (a) 34−9+12=13; (b) 56−14−8=34; (c) −22−12+10+22=−22."
+            },
+            {
+              "id": "E-18",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out Q7, section 2.2 p.38",
+              "description": "Using numbers 2, 3, 5 and operators '+', '−', and brackets, generate expressions giving as many different values as possible."
+            },
+            {
+              "id": "E-23",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out Q3, section 2.2 p.42",
+              "description": "Find four other ways to get 14 using the form ___×(___+___), beyond the given example 2×(1+6)=14."
+            },
+            {
+              "id": "E-24",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out Q4, section 2.2 p.42",
+              "description": "Find the sum of numbers in two pictorial arrays (grid of 4s and 8s; grid of 5s and 6s) in at least two different ways using expressions."
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–6",
+              "description": "Review homework (Figure it Out Q2, section 2.2 p.42). Quick oral warm-up: 'Write one expression using the distributive property that equals 72.' Students share."
+            },
+            {
+              "minutes": "6–20",
+              "description": "Students work in pairs on Figure it Out Q5, section 2.2 p.38 (\"Add brackets at appropriate places to achieve the indicated values....\"), working backwards from the desired value to determine bracket placement — a creative inverse use of bracket rules."
+            },
+            {
+              "minutes": "20–35",
+              "description": "Groups of three tackle Figure it Out Q7, section 2.2 p.38 (\"Using numbers 2, 3, 5 and operators '+', '−', and brackets, generate expressions giving as many different values as possible....\") competitively — which group finds the most distinct values? Then Figure it Out Q3, section 2.2 p.42 (\"Find four other ways to get 14 using the form ___×(___+___)....\") follows."
+            },
+            {
+              "minutes": "35–50",
+              "description": "Students work on Figure it Out Q4, section 2.2 p.42 (\"Find the sum of numbers in two pictorial arrays...in at least two different ways using expressions....\"); pairs present two different expressions for the same array to demonstrate equivalence."
+            }
+          ],
+          "teacher_notes": "Recap the two directions of distributive property from Period 8. Students may struggle with 'bracket insertion' (Q5) — suggest trying to reach the target value from the right and then identifying which grouping achieves it. Self-study pointer: Example 18, section 2.2 p.41.",
+          "materials": [
+            "Blackboard",
+            "Chalk",
+            "Notebooks"
+          ]
+        },
+        {
+          "period_number": 10,
+          "period_duration_minutes": 50,
+          "textbook_segments": [
+            {
+              "ref": "section 2.2",
+              "title": "Reading and Evaluating Complex Expressions"
+            }
+          ],
+          "section_goal": "apply",
+          "activity_title": "Comprehensive Figure it Out: Situations, Comparison, and Creative Expressions",
+          "pedagogical_method": "Problem-solving",
+          "textbook_items_in_class": [
+            {
+              "id": "E-25",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out Q1, section 2.2 p.42",
+              "description": "Read three situations and write appropriate expressions, then find their values: (a) Rahim and Shyam supply 9 kg and 11 kg mangoes daily for a week to Begur market; (b) Binu earns ₹20,000/month and spends ₹5000 rent + ₹5000 food + ₹2000 other — annual savings; (c) Snail climbs 3 cm day and slips 2 cm night on a 10 cm post — how many days to reach treat?"
+            },
+            {
+              "id": "E-26",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out Q2, section 2.2 p.43",
+              "description": "Melvin reads a two-page story daily except Tuesdays and Saturdays. Stories completed in 8 weeks? Which of 8 listed expressions (a)–(h) describes this scenario?"
+            },
+            {
+              "id": "E-28",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out Q4, section 2.2 p.43",
+              "description": "Compare eight pairs of expressions using '<', '>', '=' or reasoning: (a)–(h) including 49−7+8 vs 49−7+8; 83×42−18 vs 83×40−18; 145−17×8 vs 145−17×6; 23×48−35 vs 23×(48−35)."
+            },
+            {
+              "id": "E-29",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out Q5, section 2.2 p.44",
+              "description": "Without computation identify which expressions are equal to: (a) 83−37−12 (from four options); (b) 93+37×44+76 (from four options)."
+            },
+            {
+              "id": "E-30",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out Q6, section 2.2 p.44",
+              "description": "Choose a number and create ten different expressions having that value."
+            }
+          ],
+          "homework": [
+            {
+              "id": "E-27",
+              "type": "exercise",
+              "source_section": "section 2.2",
+              "book_ref": "Figure it Out Q3, section 2.2 p.43",
+              "description": "Find different ways of evaluating: (a) 1−2+3−4+5−6+7−8+9−10; (b) 1−1+1−1+1−1+1−1+1−1."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–6",
+              "description": "Recap Period 9: review one or two array-expression solutions. Teacher frames this as a consolidation period: 'We use every tool from the chapter — terms, bracket rules, distributive property — together.'"
+            },
+            {
+              "minutes": "6–22",
+              "description": "Students work individually on Figure it Out Q1, section 2.2 p.42 (\"Read three situations and write appropriate expressions....\") and Figure it Out Q2, section 2.2 p.43 (\"Melvin reads a two-page story daily...which expression describes this scenario?....\"); teacher circulates and assists with expression-writing for the snail scenario."
+            },
+            {
+              "minutes": "22–38",
+              "description": "Class works through Figure it Out Q4, section 2.2 p.43 (\"Compare eight pairs of expressions using '<', '>', '='....\") together, with students justifying each comparison aloud, and Figure it Out Q5, section 2.2 p.44 (\"Without computation identify which expressions are equal....\") in pairs."
+            },
+            {
+              "minutes": "38–50",
+              "description": "Students choose a favourite number and attempt Figure it Out Q6, section 2.2 p.44 (\"Choose a number and create ten different expressions having that value....\"); three or four students share creative expressions. Assign Figure it Out Q3, section 2.2 p.43 as homework."
+            }
+          ],
+          "teacher_notes": "Recap Period 9's creative expression work as the entry point. A common error in Q4 is treating 23×48−35 and 23×(48−35) as equal — use the distributive property to expose the structural difference. Self-study pointer: Example 17, section 2.2 p.41.",
+          "materials": [
+            "Blackboard",
+            "Chalk",
+            "Notebooks"
+          ]
+        }
+      ]
+    },
+    "coverage_handoff": {
+      "section_a": {
+        "goal_cluster": [
+          "recall"
+        ],
+        "goals": [
+          {
+            "section_ref": "section 2.1",
+            "section_title": "Simple Expressions",
+            "goal": "recall",
+            "anchor_id": "E-1",
+            "anchor_book_ref": "Figure it Out Q1, section 2.1 p.25",
+            "anchor_description": "Fill in the blanks to make expressions equal: (a) 13+4=___+6; (b) 22+___=6×5; (c) 8×___=64÷2; (d) 34−___=25."
+          }
+        ]
+      },
+      "section_b": {
+        "goal_cluster": [
+          "reason"
+        ],
+        "goals": [
+          {
+            "section_ref": "section 2.1",
+            "section_title": "Simple Expressions",
+            "goal": "reason",
+            "anchor_id": "E-3",
+            "anchor_book_ref": "Figure it Out, section 2.1 p.26",
+            "anchor_description": "Use '>', '<' or '=' to compare the following expression pairs without complicated calculations, explaining reasoning: (a) 245+289 vs 246+285; (b) 273−145 vs 272−144; (c) 364+587 vs 363+589; (d) 124+245 vs 129+245; (e) 213−77 vs 214−76."
+          },
+          {
+            "section_ref": "section 2.2",
+            "section_title": "Reading and Evaluating Complex Expressions",
+            "goal": "reason",
+            "anchor_id": "E-4",
+            "anchor_book_ref": "Figure it Out, section 2.2 p.28",
+            "anchor_description": "Complete the table: for five given expressions (13−2+6; 5+6×3; 4+15−9; 23−2×4+16; 28+19−8), rewrite as sum of terms and list the terms."
+          },
+          {
+            "section_ref": "section 2.2",
+            "section_title": "Reading and Evaluating Complex Expressions",
+            "goal": "reason",
+            "anchor_id": "E-5",
+            "anchor_book_ref": "Figure it Out, section 2.2 p.29",
+            "anchor_description": "Check if replacing subtraction by addition of inverse does not change the expression value, using different examples. (Try This prompt)"
+          },
+          {
+            "section_ref": "section 2.2",
+            "section_title": "Reading and Evaluating Complex Expressions",
+            "goal": "reason",
+            "anchor_id": "E-11",
+            "anchor_book_ref": "Figure it Out, section 2.2 p.37",
+            "anchor_description": "Tinker the Terms I: fill the blanks in the structured table of expression variations by reasoning about how one-term changes shift the value, doing as little computation as possible."
+          }
+        ]
+      },
+      "section_c": {
+        "goal_cluster": [
+          "apply"
+        ],
+        "goals": [
+          {
+            "section_ref": "section 2.2",
+            "section_title": "Reading and Evaluating Complex Expressions",
+            "goal": "apply",
+            "anchor_id": "E-8",
+            "anchor_book_ref": "Figure it Out Q1, section 2.2 p.34",
+            "anchor_description": "Find the values of five expressions by writing their terms: (a) 28−7+8; (b) 39−2×6+11; (c) 40−10+10+10; (d) 48−10×2+16÷2; (e) 6×3−4×8×5."
+          },
+          {
+            "section_ref": "section 2.2",
+            "section_title": "Reading and Evaluating Complex Expressions",
+            "goal": "apply",
+            "anchor_id": "E-12",
+            "anchor_book_ref": "Figure it Out Q1, section 2.2 p.37",
+            "anchor_description": "Fill in blanks with numbers and operation signs so expressions on both sides are equal (bracket removal): (a) 24+(6−4)=24+6___; (b) 38+(______)=38+9−4; (c) 24−(6+4)=24___6−4; (d) 24−6−4=24−6___; (e) 27−(8+3)=27___8___3; (f) 27−(______)=27−8+3."
+          },
+          {
+            "section_ref": "section 2.2",
+            "section_title": "Reading and Evaluating Complex Expressions",
+            "goal": "apply",
+            "anchor_id": "E-21",
+            "anchor_book_ref": "Figure it Out Q1, section 2.2 p.41",
+            "anchor_description": "Distributive property: fill in blanks with numbers and operation signs so both sides are equal (16 sub-items a–p), applying a×(b+c)=a×b+a×c and (a+b)×c=a×c+b×c."
+          },
+          {
+            "section_ref": "section 2.2",
+            "section_title": "Reading and Evaluating Complex Expressions",
+            "goal": "apply",
+            "anchor_id": "E-16",
+            "anchor_book_ref": "Figure it Out Q5, section 2.2 p.38",
+            "anchor_description": "Add brackets at appropriate places to achieve the indicated values: (a) 34−9+12=13; (b) 56−14−8=34; (c) −22−12+10+22=−22."
+          },
+          {
+            "section_ref": "section 2.2",
+            "section_title": "Reading and Evaluating Complex Expressions",
+            "goal": "apply",
+            "anchor_id": "E-25",
+            "anchor_book_ref": "Figure it Out Q1, section 2.2 p.42",
+            "anchor_description": "Read three situations and write appropriate expressions, then find their values: (a) Rahim and Shyam supply 9 kg and 11 kg mangoes daily for a week to Begur market; (b) Binu earns ₹20,000/month and spends ₹5000 rent + ₹5000 food + ₹2000 other — annual savings; (c) Snail climbs 3 cm day and slips 2 cm night on a 10 cm post — how many days to reach treat?"
+          }
+        ]
+      }
+    },
+    "assessment_items": [
+      {
+        "section_code": "A",
+        "section_title": "Recall and Apply",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-A-1",
+            "section_ref": "section 2.1",
+            "section_title": "Simple Expressions",
+            "goal": "recall",
+            "question_type": "MCQ",
+            "prompt": "Which of the following expressions has the same value as 3 × 8?",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "30 − 6",
+                "is_correct": true
+              },
+              {
+                "label": "B",
+                "text": "4 × 7",
+                "is_correct": false
+              },
+              {
+                "label": "C",
+                "text": "50 ÷ 2",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "20 + 8",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "Option A: 30 − 6 = 24, which equals 3 × 8 = 24.",
+              "method_one_line": "Evaluate each expression and match the value to 3 × 8 = 24.",
+              "what_each_option_reveals": {
+                "A": "Student correctly identifies that 30 − 6 = 24 = 3 × 8, showing understanding of expression equality.",
+                "B": "Student may have mis-recalled 3 × 8 as 28, confusing it with 4 × 7.",
+                "C": "Student may have computed 3 × 8 as 25 or confused 24 with 25.",
+                "D": "Student may have confused 3 × 8 with 28 or added incorrectly."
+              },
+              "inclusivity": "Support: let the student look up the value of 3×8 in their notes; challenge: ask them to write a second expression also equal to 24 in their own words."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out Q1, section 2.1 p.25",
+              "description": "Fill in the blanks to make expressions equal: (a) 13+4=___+6; (b) 22+___=6×5; (c) 8×___=64÷2; (d) 34−___=25."
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "section_code": "B",
+        "section_title": "Reason and Explain",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-B-1",
+            "section_ref": "section 2.1",
+            "section_title": "Simple Expressions",
+            "goal": "reason",
+            "question_type": "SCR",
+            "prompt": "Without computing the exact values, determine whether 415 + 273 is greater than, less than, or equal to 414 + 275. Explain your reasoning in one or two sentences.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "415 + 273 < 414 + 275, because the first expression decreases the first addend by 1 (415 to 414) but the second addend increases by 2 (273 to 275), so the second sum is 1 larger overall.",
+              "method_one_line": "Compare how addends shift: a decrease of 1 in one addend combined with an increase of 2 in the other means the second sum is greater by 1.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: encourage the student to think aloud with a partner before writing; challenge: ask them to change one number so the two expressions become equal and justify why."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out, section 2.1 p.26",
+              "description": "Use '>', '<' or '=' to compare the following expression pairs without complicated calculations, explaining reasoning: (a) 245+289 vs 246+285; (b) 273−145 vs 272−144; (c) 364+587 vs 363+589; (d) 124+245 vs 129+245; (e) 213−77 vs 214−76."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-2",
+            "section_ref": "section 2.2",
+            "section_title": "Reading and Evaluating Complex Expressions",
+            "goal": "reason",
+            "question_type": "SCR",
+            "prompt": "Rewrite the expression 47 − 13 + 9 as a sum of terms (replacing any subtraction with addition of the inverse), and then list each term separately.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "47 − 13 + 9 = 47 + (−13) + 9; the three terms are 47, −13, and 9.",
+              "method_one_line": "Replace each subtraction with addition of the negative (inverse) of the subtracted number to expose the terms separated by plus signs.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: remind the student that a term is any part separated by a '+' sign after rewriting; challenge: ask them to rewrite again with the terms in a different order and confirm the value stays the same."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out, section 2.2 p.28",
+              "description": "Complete the table: for five given expressions (13−2+6; 5+6×3; 4+15−9; 23−2×4+16; 28+19−8), rewrite as sum of terms and list the terms."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-3",
+            "section_ref": "section 2.2",
+            "section_title": "Reading and Evaluating Complex Expressions",
+            "goal": "reason",
+            "question_type": "SCR",
+            "prompt": "Ayaan says that 85 − 30 and 85 + (−30) are different expressions with different values. Is Ayaan correct? Justify your answer using the concept of terms.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "Ayaan is incorrect; 85 − 30 = 55 and 85 + (−30) = 55, because subtracting 30 is the same as adding the inverse −30, so both expressions have identical terms and the same value.",
+              "method_one_line": "Replacing subtraction with addition of the inverse is a rewriting rule that preserves the value, as established in the chapter's term-identification procedure.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student verify by computing both expressions numerically; challenge: ask them to think of a context (like a drone going up and down) where both forms describe the same event."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out, section 2.2 p.29",
+              "description": "Check if replacing subtraction by addition of inverse does not change the expression value, using different examples. (Try This prompt)"
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-4",
+            "section_ref": "section 2.2",
+            "section_title": "Reading and Evaluating Complex Expressions",
+            "goal": "reason",
+            "question_type": "ECR",
+            "prompt": "Consider the expression 50 + 12 − 7. A student changes only the term 12 to 15 and claims the new expression 50 + 15 − 7 is exactly 3 more than the original. Another student changes only the term −7 to −10 and claims the new expression 50 + 12 − 10 is exactly 3 less than the original. Which claim (or both, or neither) is correct? Explain your reasoning without computing the final values.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "Both claims are correct: increasing the positive term 12 by 3 increases the sum by 3 (the expression grows by the same amount as the change in that term), and increasing the magnitude of the negative term −7 to −10 decreases the sum by 3 (a term that is 3 more negative reduces the whole expression by 3).",
+              "method_one_line": "When a single term in a sum increases by k, the sum increases by k; when a negative term becomes k more negative, the sum decreases by k — a direct application of the Tinker-the-Terms reasoning.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: suggest the student compute the original value and one new value to check before reasoning generally; challenge: ask them to state what change to the term −7 would make the new expression equal to 50+15−7."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out, section 2.2 p.37",
+              "description": "Tinker the Terms I: fill the blanks in the structured table of expression variations by reasoning about how one-term changes shift the value, doing as little computation as possible."
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "section_code": "C",
+        "section_title": "Apply in Context",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-C-1",
+            "section_ref": "section 2.2",
+            "section_title": "Reading and Evaluating Complex Expressions",
+            "goal": "apply",
+            "question_type": "NUM",
+            "prompt": "Evaluate the expression 52 − 3 × 6 + 14 ÷ 2 by first identifying and listing its terms, then finding its value.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "The terms are 52, −18 (from −3×6), and 7 (from 14÷2); summing them gives 52 − 18 + 7 = 41.",
+              "method_one_line": "Identify each term (treating products and quotients as single terms), rewrite subtraction as addition of the inverse, then sum all terms.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student draw a number line or use a table to list each term's value before summing; challenge: ask them to change one term so the expression equals 50."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out Q1, section 2.2 p.34",
+              "description": "Find the values of five expressions by writing their terms: (a) 28−7+8; (b) 39−2×6+11; (c) 40−10+10+10; (d) 48−10×2+16÷2; (e) 6×3−4×8×5."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-C-2",
+            "section_ref": "section 2.2",
+            "section_title": "Reading and Evaluating Complex Expressions",
+            "goal": "apply",
+            "question_type": "NUM",
+            "prompt": "Remove the brackets from the expression 90 − (45 − 18) and write an equivalent expression without brackets. Then find its value.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "90 − (45 − 18) = 90 − 45 + 18 = 63; the bracket is preceded by a negative sign so the signs of both enclosed terms flip.",
+              "method_one_line": "Apply the bracket-removal rule: a bracket preceded by a minus sign causes every term inside to change sign, so −45 becomes −45 and +18 stays +18 after removal (i.e., −(45−18) = −45+18).",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: suggest the student use a worked example from the textbook showing a similar form to check the sign-flip step; challenge: ask them to write a real-world money story that this expression could represent."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out Q1, section 2.2 p.37",
+              "description": "Fill in blanks with numbers and operation signs so expressions on both sides are equal (bracket removal): (a) 24+(6−4)=24+6___; (b) 38+(______)=38+9−4; (c) 24−(6+4)=24___6−4; (d) 24−6−4=24−6___; (e) 27−(8+3)=27___8___3; (f) 27−(______)=27−8+3."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-C-3",
+            "section_ref": "section 2.2",
+            "section_title": "Reading and Evaluating Complex Expressions",
+            "goal": "apply",
+            "question_type": "NUM",
+            "prompt": "Use the distributive property to evaluate 6 × 98 efficiently. Show your working by rewriting 98 as a sum or difference of a round number and a small number.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "6 × 98 = 6 × (100 − 2) = 6 × 100 − 6 × 2 = 600 − 12 = 588.",
+              "method_one_line": "Rewrite 98 as 100 − 2, then distribute 6 over each part using a×(b−c) = a×b − a×c.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: offer the student an alternate representation — draw a rectangle 6 wide and 98 long, split at 100 to visualise the two parts; challenge: ask them to use the same strategy to find 6 × 102 and verify both results add correctly."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out Q1, section 2.2 p.41",
+              "description": "Distributive property: fill in blanks with numbers and operation signs so both sides are equal (16 sub-items a–p), applying a×(b+c)=a×b+a×c and (a+b)×c=a×c+b×c."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-C-4",
+            "section_ref": "section 2.2",
+            "section_title": "Reading and Evaluating Complex Expressions",
+            "goal": "apply",
+            "question_type": "NUM",
+            "prompt": "Place brackets in the expression 40 − 15 + 9 in one way so that its value becomes 16. Write the bracketed expression and verify its value.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "40 − (15 + 9) = 40 − 24 = 16; placing brackets around (15 + 9) with the preceding minus sign causes both terms to be subtracted from 40.",
+              "method_one_line": "Use the bracket-insertion strategy: work backwards from the target (16), identify 40 − 24 = 16, then recognise 24 = 15 + 9 and insert brackets to group those terms.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: suggest the student first compute 40−15+9 without brackets to see the original value, then reason about what must be subtracted to reach 16; challenge: ask them to find a second bracket placement that gives a different target value and state what that value is."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out Q5, section 2.2 p.38",
+              "description": "Add brackets at appropriate places to achieve the indicated values: (a) 34−9+12=13; (b) 56−14−8=34; (c) −22−12+10+22=−22."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-C-5",
+            "section_ref": "section 2.2",
+            "section_title": "Reading and Evaluating Complex Expressions",
+            "goal": "apply",
+            "question_type": "NUM",
+            "prompt": "A school canteen sells samosas at ₹8 each and juice at ₹12 each. On Monday, 5 students each buy one samosa and one juice. Write a single expression using brackets for the total bill, then evaluate it using the distributive property.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "Total = 5 × (8 + 12) = 5 × 8 + 5 × 12 = 40 + 60 = ₹100.",
+              "method_one_line": "Form the bracketed sum-of-prices expression and expand using a×(b+c) = a×b + a×c to compute each part separately.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: suggest the student draw a simple table (student × items) to visualise the repeated purchase before writing the expression; challenge: ask them to write a second equivalent expression using the form a×b + a×c without brackets and confirm both give the same value."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out Q1, section 2.2 p.42",
+              "description": "Read three situations and write appropriate expressions, then find their values: (a) Rahim and Shyam supply 9 kg and 11 kg mangoes daily for a week to Begur market; (b) Binu earns ₹20,000/month and spends ₹5000 rent + ₹5000 food + ₹2000 other — annual savings; (c) Snail climbs 3 cm day and slips 2 cm night on a 10 cm post — how many days to reach treat?"
+            },
+            "verified": true
+          }
+        ]
+      }
+    ],
+    "input_tokens": 18913,
+    "output_tokens": 17856,
+    "cost_inr": 27.2646
+  }
+}

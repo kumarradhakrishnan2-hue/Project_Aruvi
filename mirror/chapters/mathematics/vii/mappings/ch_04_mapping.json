@@ -1,0 +1,43 @@
+{
+    "stage": "middle",
+    "subject": "mathematics",
+    "grade": "vii",
+    "chapter_number": 4,
+    "chapter_title": "Expressions Using Letter-Numbers",
+
+    "core_cg": "CG-2",
+
+    "core_competencies": [
+        {
+            "c_code": "C-2.3",
+            "justification": "The entire chapter is organised around forming algebraic expressions (s=a+3, 2n, 4q, 3n-2) and manipulating them through like-term collection, bracket removal, and the distributive property (sections 4.1–4.5, WE-1 through WE-12, all Figure it Out exercises). This is the primary cognitive demand throughout."
+        },
+        {
+            "c_code": "C-2.2",
+            "justification": "Sections 4.1 and 4.3 explicitly introduce letter-numbers as a notational device for representing quantities and relationships (age formula, matchstick count, perimeter, cost formulas), establishing the representational dimension as an independent strand that precedes and enables the manipulation work."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-1.2",
+            "justification": "Section 4.5 uses algebraic expressions to describe and prove number patterns — the saree-border sequence (3n, 3n-1, 3n-2), the matchstick triangle formula (2y+1), the calendar-grid diagonal sum, and the 4-column grid analysis — engaging the pattern-discovery and rule-formation strand."
+        },
+        {
+            "c_code": "C-6.1",
+            "justification": "The calendar 2×2 diagonal proof (always 2a+8), the 5-cell cross-shape sum (always 5× the centre), and the two-route matchstick equivalence proof all require applying deductive algebraic reasoning to convert conjectures into verified general statements."
+        },
+        {
+            "c_code": "C-8.1",
+            "justification": "The Formula Detective exercise (E-13) and the expression-path diagram (E-18) require decomposing input-output rules into ordered symbolic steps and reverse-engineering algebraic formulas — engaging programmatic and algorithmic thinking."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to form and simplify algebraic expressions by developing fluency with variables, coefficients, and the distributive property as tools for representing and proving general mathematical relationships.",
+
+    "conceptual_demand": 2,
+    "activity_count": 0,
+    "demo_count": 0,
+    "exec_load": 1,
+    "effort_index": 6.0
+}

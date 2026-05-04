@@ -54,6 +54,11 @@
 .tnlabel { font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: #4a7fb5; margin-bottom: 3px; }
 .tntext { font-size: 11px; color: #1a1917; line-height: 1.5; }
 
+/* Homework bar (Mathematics only — Maths LP Rule 9) */
+.hwbar { margin-top: 12px; padding: 8px 10px; background: #eaf5ec; border-radius: 8px; border-left: 3px solid #4a8c5e; }
+.hwlabel { font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: #4a8c5e; margin-bottom: 3px; }
+.hwtext { font-size: 11px; color: #1a1917; line-height: 1.5; }
+
 /* Competency link */
 .clinkrow { display: flex; align-items: baseline; gap: 6px; margin-top: 10px; padding-top: 8px; border-top: 0.5px solid #f0ede9; flex-wrap: wrap; }
 .clinkcode { font-size: 11px; font-weight: 500; color: #2c3e50; white-space: nowrap; }
@@ -1369,6 +1374,35 @@ function renderLPA() {
           '<div class="tntext">' + escHtml(p.teacher_notes) + '</div></div>'
         : '';
 
+      /* Homework bar — Mathematics only (Maths LP Rule 9). Build from the
+         structured `homework` array (book_ref + truncated description, one per
+         line); fall back to `homework_book_refs` if the array is missing. */
+      var homeworkBar = '';
+      if (isMath) {
+        var hwLines = [];
+        if (Array.isArray(p.homework)) {
+          p.homework.forEach(function (it) {
+            var ref  = ((it && it.book_ref)    || '').trim();
+            var desc = ((it && it.description) || '').trim();
+            if (desc) {
+              var words = desc.split(/\s+/);
+              if (words.length > 15) desc = words.slice(0, 15).join(' ') + '…';
+            }
+            if (ref && desc)      hwLines.push(escHtml(ref) + ' — ' + escHtml(desc));
+            else if (ref)         hwLines.push(escHtml(ref));
+            else if (desc)        hwLines.push(escHtml(desc));
+          });
+        }
+        var hwHtml = hwLines.length
+          ? hwLines.join('<br/>')
+          : escHtml((p.homework_book_refs || '').trim());
+        if (hwHtml) {
+          homeworkBar =
+            '<div class="hwbar"><div class="hwlabel">Homework</div>' +
+            '<div class="hwtext">' + hwHtml + '</div></div>';
+        }
+      }
+
       /* Competency bar — top of pbody, styled with old period-header tan/beige palette.
          Skipped entirely for chapters where no competency drives the period
          (Mathematics LP per Rule 8: competencies do not drive periods). */
@@ -1395,6 +1429,7 @@ function renderLPA() {
           compBar +
           materialRow +
           timeSlotsHtml +
+          homeworkBar +
           teacherNotesBar +
           loBar +
         '</div>';

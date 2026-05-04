@@ -1,0 +1,245 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "vii",
+  "chapter_number": 6,
+  "chapter_title": "Number Play",
+  "sections": [
+    { "ref": "section 6.1", "title": "Numbers Tell us Things", "section_goal": ["reason"] },
+    { "ref": "section 6.2", "title": "Picking Parity", "section_goal": ["reason", "apply"] },
+    { "ref": "section 6.3", "title": "Some Explorations in Grids", "section_goal": ["reason", "apply"] },
+    { "ref": "section 6.4", "title": "Nature's Favourite Sequence: The Virahāṅka–Fibonacci Numbers!", "section_goal": ["reason"] },
+    { "ref": "section 6.5", "title": "Digits in Disguise", "section_goal": ["apply"] }
+  ],
+  "prose_summary": "Section 6.1 reasons about what a sequence of numbers can convey — a form of encoded information — without the actual quantities being given. The motivating context is children standing in a line, each calling out the count of taller children standing in front of them. Two arrangements of the same children produce different number sequences, and students must decode the rule and then reconstruct a valid height arrangement from a given sequence. The section raises and explores structural constraints: for instance, whether a person can legitimately say '0' only if they are the tallest, or whether the first person always says '0', distinguishing 'always true', 'only sometimes true', and 'never true' statements.\n\nSection 6.2 defines parity (odd/even) and reasons about the parity of sums using the pictorial 'pair arrangement' representation. A sum of any even numbers is always even because each even number can be arranged in pairs; two odd numbers added together are always even because the two 'leftover singles' pair up; three odd numbers always sum to an odd number. These visual proofs lead to the resolution of Kishor's puzzle: five odd numbers cannot sum to 30 (an even number), so no solution exists. Consecutive-number pairs always consist of one even and one odd, so their sum is always odd — used to refute Maria's claim that sibling ages sum to 112. The section then applies parity reasoning to algebraic expressions (e.g. 3n + 4 can be odd or even depending on n, while 100p is always even) and derives that 2n gives the nth even number and 2n – 1 gives the nth odd number.\n\nSection 6.3 reasons through grid-filling constraints and magic square construction, then applies algebraic generalisation. Students fill 3 × 3 grids with non-repeating digits 1–9 to match given row and column sums, and discover the impossibility of a grid with a sum outside [6, 24]. The observation that all row sums add to 45 (= 1 + 2 + ... + 9) and all column sums also add to 45 is established. Magic squares (equal row, column, and diagonal sums) are defined, and students are guided through three observations: the magic sum must be 15, the centre must be 5, and 1 and 9 must be in edge (not corner) positions. A generalised algebraic form of the magic square is constructed using m for the centre and expressing all other entries as m ± k, and used to build squares for any centre value. Historical context covers the Chautīsā Yantra (10th-century Khajuraho inscription), the Lo Shu Square, and the Navagraha and Kubera Yantras.\n\nSection 6.4 reasons through the discovery and structure of the Virahāṅka–Fibonacci sequence by returning to its historical origin in Sanskrit and Prakrit poetic rhythm. The key question is: in how many ways can 8 beats be filled with short (1-beat) and long (2-beat) syllables? The section builds the count systematically for n = 1, 2, 3, 4, 5 by the recursive argument that any n-beat rhythm begins with either a 1 or a 2, linking the n-beat count to the (n–1)-beat and (n–2)-beat counts. This gives the sequence 1, 2, 3, 5, 8, 13, 21, 34, 55, …. The historical priority of Virahāṅka (c. 700 CE) over Fibonacci (1202 CE) is established, and the parity pattern of the sequence (O, E, O, O, E, O, O, E, …) is explored. The section links these numbers to petal counts of daisies as a natural occurrence.\n\nSection 6.5 applies digit-substitution reasoning to cryptarithms — arithmetic problems where each letter stands for a unique digit (0–9). Two worked cases are shown: T + T + T = UT (where T = 5, U = 1) and K2 + K2 = HMM (deducing M and then H). Students then solve four further cryptarithms — YY + Z = ZOO; B5 + 3D = ED5; KP + C1 = KP + C = PRR; 1FF — using logical elimination. The final Figure it Out collects eleven problems drawing on all sections of the chapter: light-bulb toggle parity, encyclopaedia page-sum feasibility, 2 × 3 parity-constrained grid fill, zero-sum magic square with negatives, parity of odd/even counts, parity of 1–100 sum, Virahāṅka sequence neighbours, staircase path count, parity of the 20th Virahāṅka term, true/false expression statements, and a cryptarithm solution.",
+  "enumerated_activities": [],
+  "enumerated_worked_examples": [],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out, section 6.1 p.128",
+      "description": "Write down the number each child should say (count of taller children ahead) for a given arrangement of seven children of specified heights."
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out Q1, section 6.1 p.128",
+      "description": "Arrange stick-figure cutouts (or draw) to produce each of these sequences: (a) 0,1,1,2,4,1,5; (b) 0,0,0,0,0,0,0; (c) 0,1,2,3,4,5,6; (d) 0,1,0,1,0,1,0; (e) 0,1,1,1,1,1,1; (f) 0,0,0,3,3,3,3."
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out Q2, section 6.1 p.128",
+      "description": "Classify each statement as Always True, Only Sometimes True, or Never True with reasoning: (a) saying '0' means tallest; (b) tallest says '0'; (c) first person says '0'; (d) middle person cannot say '0'; (e) largest number is the shortest; (f) largest possible number in a group of 8."
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out, section 6.2 p.130",
+      "description": "Explore parity of sum of (a) 4 odd numbers; (b) 5 odd numbers; (c) 6 odd numbers using the pair-arrangement model."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out Q1, section 6.2 p.131",
+      "description": "Find the parity of: (a) sum of 2 even + 2 odd numbers; (b) sum of 2 odd + 3 even; (c) sum of 5 even numbers; (d) sum of 8 odd numbers."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out Q2, section 6.2 p.131",
+      "description": "Lakpa has odd counts of ₹1 and ₹5 coins and an even count of ₹10 coins; he claims a total of ₹205. Did he make a mistake? Explain why or why not."
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out Q3, section 6.2 p.131",
+      "description": "Determine the parity of: (d) even – even; (e) odd – odd; (f) even – odd; (g) odd – even."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out, section 6.2 p.131",
+      "description": "Small Squares in Grids: find the parity of the number of squares in (a) 27 × 13 grid; (b) 42 × 78 grid; (c) 135 × 654 grid, without computing the product."
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out, section 6.2 p.132",
+      "description": "Parity of Expressions: come up with (a) an expression that always has even parity; (b) an expression that always has odd parity; (c) an expression like 3n + 4 that can have either parity. Then determine formulas for the nth even and nth odd number."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out, section 6.3 p.133",
+      "description": "Fill two 3 × 3 grids with numbers 1–9 (no repeats) to match the given row and column sums shown in the circles. Also explain why a grid with sums 5 and 26 is impossible."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q1, section 6.3 p.136",
+      "description": "How many different magic squares can be made using numbers 1–9 (ignoring rotations and reflections)?"
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q2, section 6.3 p.136",
+      "description": "Create a magic square using numbers 2–10. What strategy would you use? Compare with the 1–9 magic square."
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q3, section 6.3 p.136",
+      "description": "Take a magic square and (a) increase each number by 1; (b) double each number. Is the result still a magic square? How do the magic sums change?"
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 6.3",
+      "book_ref": "Math Talk Q4, section 6.3 p.136",
+      "description": "What other operations (besides +1 and ×2) can be performed on a magic square to yield another magic square?"
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q5, section 6.3 p.136",
+      "description": "Discuss ways of creating a magic square using any set of 9 consecutive numbers (e.g. 2–10, 3–11, 9–17)."
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 6.3",
+      "book_ref": "Math Talk, section 6.3 p.136",
+      "description": "Generalise: if m is the centre of a magic square made from consecutive numbers, express all other entries in terms of m (analogous to the 2 × 2 calendar grid from Chapter 4)."
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q1, section 6.3 p.137",
+      "description": "Using the generalised form, construct a magic square with centre number 25."
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q2, section 6.3 p.137",
+      "description": "What algebraic expression is obtained by adding the 3 terms of any row, column, or diagonal of the generalised magic square?"
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q3, section 6.3 p.137",
+      "description": "Write the generalised magic square obtained by: (a) adding 1 to every term; (b) doubling every term."
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q4, section 6.3 p.137",
+      "description": "Create a magic square whose magic sum is 60."
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 6.3",
+      "book_ref": "Try This Q5, section 6.3 p.137",
+      "description": "Is it possible to get a magic square by filling nine non-consecutive numbers? Explore."
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out, section 6.3 p.137",
+      "description": "Chautīsā Yantra: why is it called 'Chautīsā'? Find other patterns of four numbers in the 4 × 4 square that also add up to 34."
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 6.4",
+      "book_ref": "Figure it Out, section 6.4 p.140",
+      "description": "Write 5 as a sum of 1s and 2s in all possible ways. How many ways are there? Try to find the answer without listing all possibilities. Try for n = 8."
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 6.4",
+      "book_ref": "Figure it Out, section 6.4 p.141",
+      "description": "Use the systematic method to write down all 6-beat rhythms (6 as the sum of 1s and 2s in all possible ways). Verify there are 13."
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 6.4",
+      "book_ref": "Figure it Out, section 6.4 p.142",
+      "description": "Write the next 3 numbers after 89 in the Virahāṅka sequence. Without computing, determine the parity of the term following 233. Identify the parity pattern of the sequence."
+    },
+    {
+      "id": "E-26",
+      "source_section": "section 6.5",
+      "book_ref": "Figure it Out, section 6.5 p.143",
+      "description": "Cryptarithms: find what digit each letter stands for in: (a) YY + Z = ZOO; (b) B5 + 3D = ED5; (c) KP + C1 = PRR; (d) KP + C = 1FF."
+    },
+    {
+      "id": "E-27",
+      "source_section": "section 6.5",
+      "book_ref": "Figure it Out Q1, section 6.5 p.143",
+      "description": "A light bulb is ON. Dorjee toggles the switch 77 times. Will the bulb be on or off? Explain using parity."
+    },
+    {
+      "id": "E-28",
+      "source_section": "section 6.5",
+      "book_ref": "Figure it Out Q2, section 6.5 p.144",
+      "description": "Liswini counts 50 loose double-sided sheets from an encyclopaedia. Can the sum of all page numbers be 6000? Justify using parity."
+    },
+    {
+      "id": "E-29",
+      "source_section": "section 6.5",
+      "book_ref": "Figure it Out Q3, section 6.5 p.144",
+      "description": "Fill a 2 × 3 grid with 3 odd and 3 even numbers to match the given parity labels (e and o) on the row and column sums."
+    },
+    {
+      "id": "E-30",
+      "source_section": "section 6.5",
+      "book_ref": "Figure it Out Q4, section 6.5 p.144",
+      "description": "Make a 3 × 3 magic square with magic sum 0. Not all numbers can be zero; use negative numbers as needed."
+    },
+    {
+      "id": "E-31",
+      "source_section": "section 6.5",
+      "book_ref": "Figure it Out Q5, section 6.5 p.144",
+      "description": "Fill in 'odd' or 'even': (a) sum of odd count of even numbers; (b) sum of even count of odd numbers; (c) sum of even count of even numbers; (d) sum of odd count of odd numbers."
+    },
+    {
+      "id": "E-32",
+      "source_section": "section 6.5",
+      "book_ref": "Figure it Out Q6, section 6.5 p.144",
+      "description": "What is the parity of the sum of the numbers from 1 to 100?"
+    },
+    {
+      "id": "E-33",
+      "source_section": "section 6.5",
+      "book_ref": "Figure it Out Q7, section 6.5 p.144",
+      "description": "Two consecutive Virahāṅka numbers are 987 and 1597. Find the next 2 and the previous 2 numbers in the sequence."
+    },
+    {
+      "id": "E-34",
+      "source_section": "section 6.5",
+      "book_ref": "Figure it Out Q8, section 6.5 p.144",
+      "description": "Angaan climbs an 8-step staircase taking 1 or 2 steps at a time. In how many different ways can he reach the top?"
+    },
+    {
+      "id": "E-35",
+      "source_section": "section 6.5",
+      "book_ref": "Figure it Out Q9, section 6.5 p.144",
+      "description": "What is the parity of the 20th term of the Virahāṅka sequence?"
+    },
+    {
+      "id": "E-36",
+      "source_section": "section 6.5",
+      "book_ref": "Figure it Out Q10, section 6.5 p.144",
+      "description": "Identify which statements are true: (a) 4m – 1 always gives odd numbers; (b) all even numbers can be expressed as 6j – 4; (c) both 2p + 1 and 2q – 1 describe all odd numbers; (d) 2f + 3 gives both even and odd numbers."
+    },
+    {
+      "id": "E-37",
+      "source_section": "section 6.5",
+      "book_ref": "Figure it Out Q11, section 6.5 p.144",
+      "description": "Solve the cryptarithm: UT + TA = TAT."
+    }
+  ],
+  "conceptual_demand": 2,
+  "activity_count": 0,
+  "demo_count": 0,
+  "exec_load": 1
+}

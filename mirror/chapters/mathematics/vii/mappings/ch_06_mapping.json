@@ -1,0 +1,39 @@
+{
+    "stage": "middle",
+    "subject": "mathematics",
+    "grade": "vii",
+    "chapter_number": 6,
+    "chapter_title": "Number Play",
+
+    "core_cg": "CG-6",
+
+    "core_competencies": [
+        {
+            "c_code": "C-6.1",
+            "justification": "All five sections are organised around producing deductive arguments: section 6.2 gives visual proofs that sums of odd/even numbers must have specific parity; section 6.3 derives that the magic sum must be 15 and the centre must be 5 by necessity; section 6.4 uses a recursive argument to establish the Virahāṅka sequence; section 6.5 eliminates digit assignments through logical deduction in cryptarithms. Producing convincing arguments is the chapter's unifying purpose."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-1.2",
+            "justification": "Section 6.2 derives algebraic rules for the nth even number (2n) and nth odd number (2n-1) and explores parity patterns in expressions; section 6.4 identifies the repeating O-O-E parity pattern in the Virahāṅka sequence — substantively engaging the pattern-discovery and rule-description strand."
+        },
+        {
+            "c_code": "C-2.3",
+            "justification": "Section 6.3 constructs a fully generalised 3×3 magic square using algebraic expressions (m, m+1, m-3, m+4, etc.) to prove that any entry can be expressed in terms of the centre m, and uses this form to build magic squares for arbitrary centre values and magic sums."
+        },
+        {
+            "c_code": "C-9.2",
+            "justification": "Section 6.3 explicitly presents Indian mathematical history through the Chautīsā Yantra (Khajuraho, 10th century CE), Lo Shu, Navagraha and Kubera Yantras; section 6.4 establishes Virahāṅka (c. 700 CE) as the originator of the Fibonacci-type sequence, predating Leonardo of Pisa by five centuries."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to reason deductively about number properties by applying logical argumentation — parity proofs, algebraic magic-square derivations, and cryptarithm elimination — to produce convincing mathematical arguments.",
+
+    "conceptual_demand": 2,
+    "activity_count": 0,
+    "demo_count": 0,
+    "exec_load": 1,
+    "effort_index": 6.0
+}

@@ -40,6 +40,7 @@ BG_META  = colors.HexColor("#f7f6f3")
 BG_ROW   = colors.HexColor("#ffffff")   # activity/material rows: plain white
 BLUE_TAG = colors.HexColor("#185fa5")
 BLUE_BG  = colors.HexColor("#e6f1fb")
+HW_BG    = colors.HexColor("#e8f5ea")   # homework row: soft mint green, same intensity as BLUE_BG
 ROW_LINE = colors.HexColor("#f0ede9")   # inter-row hairline
 
 # ── Logo path (absolute, resolved relative to this file) ─────────────────────
@@ -50,15 +51,33 @@ LOGO_PATH = os.path.normpath(
 
 
 # ── Unicode sanitiser ────────────────────────────────────────────────────────
+# Characters outside the latin-1 range that must be substituted before
+# passing to ReportLab's standard (Helvetica) PDF built-in fonts.
+_UNICODE_SUBS = {
+    "₹": "Rs.",   # ₹ Indian Rupee Sign → Rs.
+    "–": "-",     # en dash
+    "—": "-",     # em dash
+    "‘": "'",     # left single quotation mark
+    "’": "'",     # right single quotation mark
+    "“": '"',     # left double quotation mark
+    "”": '"',     # right double quotation mark
+    "…": "...",   # horizontal ellipsis
+    "·": ".",     # middle dot (already in latin-1 but mapped for safety)
+}
+
+
 def _clean_text(s) -> str:
     """
-    Strip combining diacritical marks so ReportLab's standard fonts
-    can render the string without a UnicodeEncodeError.
+    Sanitise text for ReportLab's standard (Helvetica / latin-1) fonts:
+      1. Substitute known out-of-range Unicode characters (e.g. ₹ → Rs.).
+      2. Strip combining diacritical marks via NFD decomposition.
     Non-string values are coerced to str first.
     """
     if s is None:
         return ""
     s = str(s)
+    for src, dst in _UNICODE_SUBS.items():
+        s = s.replace(src, dst)
     nfd = unicodedata.normalize("NFD", s)
     return "".join(ch for ch in nfd if unicodedata.category(ch) != "Mn")
 
@@ -455,7 +474,8 @@ def period_card(period_num, duration_min, activity_name, anchored_section,
 
 
 def period_card_maths(period_num, duration_min, activity_name, anchored_section,
-                      time_breakdown, materials, pedagogical_approach, teacher_notes):
+                      time_breakdown, materials, pedagogical_approach, teacher_notes,
+                      homework=""):
     """
     Mathematics-specific period card.
 
@@ -463,6 +483,8 @@ def period_card_maths(period_num, duration_min, activity_name, anchored_section,
       1. Materials row has a right-aligned "Pedagogical approach:" column.
       2. LOBox is replaced by a Teacher Notes row (when notes are present).
       3. "Items used:" prefix is NOT shown here — already stripped in adapter.
+      4. Optional Homework row sits between Time Breakdown and Teacher Notes
+         (when the period has populated `homework`); per Maths LP Rule 9.
 
     Science and Social Sciences are NOT affected — they continue to use
     period_card() or _science_period_block().
@@ -548,6 +570,27 @@ def period_card_maths(period_num, duration_min, activity_name, anchored_section,
             ("LINEBELOW",     (0,-1), (-1, -1), 0.5, HAIRLINE),
         ]))
         story.append(tb_t)
+
+    # ── Homework row (Maths LP Rule 9) — sits above Teacher Notes ────────────
+    hw = str(homework).strip() if homework else ""
+    if hw:
+        hw_row = [[
+            Paragraph("<b>Homework</b>", ST["mat_label"]),
+            Paragraph(hw,                ST["mat_text"]),
+        ]]
+        hw_t = Table(hw_row, colWidths=[uw * 0.15, uw * 0.85])
+        hw_t.setStyle(TableStyle([
+            ("BACKGROUND",    (0, 0), (-1, -1), HW_BG),
+            ("LINEABOVE",     (0, 0), (-1,  0), 0.5, HAIRLINE),
+            ("LINEBELOW",     (0, 0), (-1, -1), 0.5, HAIRLINE),
+            ("VALIGN",        (0, 0), (-1, -1), "TOP"),
+            ("TOPPADDING",    (0, 0), (-1, -1), 4),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+            ("LEFTPADDING",   (0, 0), ( 0,  0), 8),
+            ("LEFTPADDING",   (1, 0), ( 1, -1), 6),
+            ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+        ]))
+        story.append(hw_t)
 
     # ── Teacher Notes row (replaces LOBox for Maths) ─────────────────────────
     tn = _clean_text(str(teacher_notes)) if teacher_notes else ""
@@ -887,6 +930,7 @@ def build_lp_pdf(output_path, data):
                 p["time_breakdown"], p["materials"],
                 p.get("pedagogical_approach", ""),
                 p.get("teacher_notes", ""),
+                p.get("homework", ""),
             ))
         else:
             story.extend(period_card(
@@ -1338,6 +1382,25 @@ def _json_to_maths_lp_data(j: dict, date_str: str, weight) -> dict:
         else:
             mat_str = str(raw_mat) if raw_mat else ""
 
+        # Homework array → display string. Each item: "<book_ref> — <desc>"
+        # with description truncated to 15 words, joined by <br/> for the
+        # ReportLab Paragraph renderer in period_card_maths().
+        hw_lines: list[str] = []
+        for it in (p.get("homework") or []):
+            ref  = (it.get("book_ref") or "").strip()
+            desc = (it.get("description") or "").strip()
+            if desc:
+                words = desc.split()
+                if len(words) > 15:
+                    desc = " ".join(words[:15]) + "…"
+            if ref and desc:
+                hw_lines.append(f"{ref} — {desc}")
+            elif ref:
+                hw_lines.append(ref)
+            elif desc:
+                hw_lines.append(desc)
+        homework_display = "<br/>".join(hw_lines)
+
         periods.append({
             "num":                 p.get("period_number"),
             "duration":            p.get("period_duration_minutes"),
@@ -1348,6 +1411,7 @@ def _json_to_maths_lp_data(j: dict, date_str: str, weight) -> dict:
             "learning_outcome":    "",   # not used for Maths (period_card_maths ignores it)
             "pedagogical_approach": p.get("pedagogical_method", ""),
             "teacher_notes":       p.get("teacher_notes", ""),
+            "homework":            homework_display,
         })
 
     return {
