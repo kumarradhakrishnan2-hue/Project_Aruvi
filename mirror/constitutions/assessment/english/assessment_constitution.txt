@@ -1,0 +1,395 @@
+ARUVI — ENGLISH ASSESSMENT CONSTITUTION · VERSION 1.0
+Stages: Preparatory, Middle, Secondary
+
+================================================================================
+DESIGN PRINCIPLE
+================================================================================
+
+The assessment is organised by SPINE (Reading, Listening, Speaking,
+Writing, Vocabulary/Grammar, Beyond-the-Text). Each spine collects
+items contributed by every main_section of the chapter; each item
+carries a `source_section` tag so the teacher knows whether the item
+came from the prose, poem, or supplementary text.
+
+PRIMARY SOURCE: the chapter's own question bank, lifted verbatim from
+the summary's `question_bank[]` per (section, spine) cell. The English
+NCERT books carry rich exercises and are, by design, the legitimate
+question source.
+
+The teacher value-add Aruvi provides — and which the textbooks do NOT
+ship — is the answer layer:
+
+  - Closed items   → `suggested_answer` (verified, plain text)
+  - Open items     → `expected_elements` (3–5 bullet rubric of what a
+                     strong response should include)
+
+When a spine has no question in the textbook for a given main_section
+(common: Speaking is often light at preparatory; Listening sometimes
+absent in poem appendices), Aruvi generates 1 typed item matching the
+spine's pedagogy and stage.
+
+The 6-spine itself carries NCF Languages compliance — competency
+reporting is read from the static `spine_to_cg.json` for the
+chapter's stage and shown in the assessment header. Per-item
+C-code labelling is FORBIDDEN.
+
+
+================================================================================
+INPUTS
+================================================================================
+
+1. LP JSON → `coverage_handoff` (six spine keys, each with
+   `section_contributions[]` carrying section_id, section_title,
+   section_type, tasks_anchored[], task_types[]).
+
+2. Summary JSON → per (main_section, spine) cell:
+       - `tasks_verbatim[]`    (the in-class tasks, used as fallback
+                                source for items if question_bank is empty)
+       - `question_bank[]`     (the textbook's own exercise/question
+                                items for this cell — primary source)
+       - `task_type`           (drives item-type selection for open items)
+
+3. Stage-appropriate `spine_to_cg.json` from
+   `mirror/framework/english/{stage}/` — drives the assessment header
+   competency reporting.
+
+
+================================================================================
+OUTPUT
+================================================================================
+
+Assessment JSON per chapter: header + spine-keyed sections, each
+section a flat array of items in (section_id, in-textbook-order)
+sequence.
+
+
+================================================================================
+RULE 1 | SIX-SPINE STRUCTURE
+================================================================================
+
+Assessment sections are exactly the six spines, in this order:
+
+  Reading
+  Listening
+  Speaking
+  Writing
+  Vocabulary and Grammar
+  Beyond the Text
+
+A spine with zero items across all sections (rare) is rendered with a
+note: "No <spine> items in this chapter." A spine MUST NOT be omitted
+from the JSON output.
+
+
+================================================================================
+RULE 2 | ITEM SOURCING — ONE ITEM PER (SECTION × SPINE) CELL
+================================================================================
+
+For each (main_section, spine) cell in the LP handoff, emit exactly
+ONE assessment item. Total item count per chapter therefore equals:
+
+    items_total = number_of_main_sections × 6
+
+Typical counts: 2-section chapter → 12 items; 3-section chapter → 18
+items. Item count is NOT a function of period count, NOR of textbook
+question-bank density. The textbook is rich; the assessment is
+deliberately compact.
+
+Item selection per cell:
+
+1. PRIMARY (lift): if summary's `question_bank[]` for that
+   (section, spine) cell has at least one item, lift the FIRST item
+   in textbook order. Set `source: "lifted"`.
+
+   Rationale: the first item in textbook order is typically the most
+   foundational, structured for direct comprehension or core practice.
+   Subsequent items in the same cell extend or vary it, but for an
+   assessment paper we choose the foundational one.
+
+2. SECONDARY (generate): if summary's `question_bank[]` for that cell
+   is empty, generate ONE typed item grounded in the section's text
+   and the spine's pedagogy. Set `source: "generated"`.
+
+The remaining textbook items in the cell are NOT lifted. The teacher
+retains direct access to them in the textbook; Aruvi's role is to
+provide the answer/rubric layer for one representative item per cell.
+
+If a cell has neither a textbook question nor enough text content to
+ground a generated item (rare — e.g., a short poem appendix may not
+support a Listening item), emit a placeholder item with `prompt = ""`,
+`verified = false`, and `teacher_guide.note = "No <spine> material
+available in this section."` This keeps the (section × spine)
+matrix complete in the rendered output.
+
+NO additional items beyond this routine. No "bonus questions", no
+"chapter wrap-up", no synthesis items.
+
+
+================================================================================
+RULE 3 | QUESTION TYPE
+================================================================================
+
+Each item carries `question_type` from this fixed set:
+
+  MCQ          — Multiple Choice (4 options, exactly one correct)
+  SCR          — Short Constructed Response (1–3 sentences)
+  ECR          — Extended Constructed Response (paragraph)
+  MATCH        — Matching (Column 1 ↔ Column 2)
+  FILL_IN      — Fill in the blank (one or more blanks)
+  TRUE_FALSE   — True / False (with optional justification)
+  ORAL_PROMPT  — Speaking task with rubric
+  WRITING_TASK — Writing task with rubric (poster, paragraph, letter,
+                 condolence, slogan, dialogue, essay, etc.)
+  PROJECT      — Beyond-text project / interdisciplinary task
+
+Default mapping by spine:
+
+  Reading              → MCQ, SCR, ECR (sec only), TRUE_FALSE, FILL_IN
+  Listening            → SCR, FILL_IN, MCQ, TRUE_FALSE
+  Speaking             → ORAL_PROMPT
+  Writing              → WRITING_TASK
+  Vocabulary/Grammar   → MATCH, FILL_IN, SCR
+  Beyond-the-Text      → PROJECT, ECR
+
+When lifting from question_bank, infer the `question_type` from the
+item's stem (e.g., "Choose the correct option" → MCQ; "Write a
+paragraph on..." → WRITING_TASK; "Match Column 1 with Column 2" →
+MATCH).
+
+
+================================================================================
+RULE 4 | ANSWER LAYER — CLOSED VS OPEN
+================================================================================
+
+Items are classified as CLOSED or OPEN by `question_type`:
+
+  CLOSED:  MCQ, FILL_IN, MATCH, TRUE_FALSE, SCR (when factual)
+  OPEN:    ORAL_PROMPT, WRITING_TASK, PROJECT, ECR, SCR (when reflective)
+
+CLOSED items carry `teacher_guide.suggested_answer` — a verified
+single answer in plain prose. For MCQ, also identify the correct
+option; for MATCH, give the matched pairs; for FILL_IN, give the
+fill values.
+
+OPEN items carry `teacher_guide.expected_elements` — an array of 3–5
+short bullets describing what a strong response should include. Each
+bullet is a single phrase (≤ 12 words). Bullets cover:
+  - Content/idea expectations (what the response should address)
+  - Form expectations (length, structure, register where relevant)
+  - Language expectations (vocabulary, voice, accuracy where relevant)
+
+OPEN items MUST NOT carry a `suggested_answer` field — the teacher
+uses the rubric to grade; there is no single "right" response.
+
+CLOSED items MUST NOT carry an `expected_elements` field.
+
+
+================================================================================
+RULE 5 | ANSWER VERIFICATION
+================================================================================
+
+For CLOSED items where `source: "lifted"`:
+  Verify the suggested answer against the chapter's text or transcript
+  (Reading items: against the source text; Listening items: against
+  the transcript). Set `verified: true` only if the answer is
+  unambiguously supported by the source.
+
+For CLOSED items where `source: "generated"`:
+  Solve the prompt against the chapter's text. Confirm answer is
+  unique and unambiguous. Set `verified: true`.
+
+For OPEN items: `verified` is always `true` (rubrics are not solved).
+
+If a closed item's answer cannot be verified (ambiguous source,
+multiple defensible answers), the item falls back per Rule 6.
+
+
+================================================================================
+RULE 6 | FALLBACK (CLOSED ITEM VERIFICATION FAILURE)
+================================================================================
+
+When a closed item's answer cannot be verified:
+
+  - `prompt`                                   = ""  (item dropped)
+  - `verified`                                 = false
+  - `teacher_guide.suggested_answer`           = ""
+  - `teacher_guide.note`                       = "[Verification failed] Refer to the textbook's <spine> items in <section_title>."
+
+The fallback item is still emitted (not silently dropped) so the
+teacher sees the gap and can substitute.
+
+
+================================================================================
+RULE 7 | SOURCE_SECTION TAGGING
+================================================================================
+
+Every item carries:
+
+  - `source_section_id`     — main_section id (A, B, C, ...)
+  - `source_section_title`  — copied verbatim from summary
+  - `source_section_type`   — prose | poem | narrative | dialogue
+  - `source_spine_section`  — the textbook subheading the item came
+                              from (e.g., "Check Your Understanding",
+                              "Let us Listen", "Reading for
+                              Appreciation")
+
+This lets the teacher locate the item in the textbook quickly and
+distinguish prose-section items from poem-section items even within
+the same spine.
+
+
+================================================================================
+RULE 8 | VISUAL STIMULUS
+================================================================================
+
+`visual_stimulus` is non-empty only when the source item in the
+textbook has tabular data the student must read or fill in.
+
+Permitted formats:
+  - Pipe-delimited table: 2+ lines, every line contains "|", first
+    row is header. Lifted verbatim from the textbook.
+  - Empty string "": no visual stimulus. Default for almost all
+    English items.
+
+PROHIBITED:
+  - Inline SVG.
+  - ASCII art.
+  - Image markup, base64 image, external image reference.
+  - Italic prose specs ("a table is provided showing...").
+
+If an item references a textbook figure (illustration, photograph),
+the prompt MUST name the location: "Refer to the picture on p. <N>
+of the textbook." The figure itself is NOT rendered.
+
+
+================================================================================
+RULE 9 | TRANSCRIPT REFERENCE FOR LISTENING ITEMS
+================================================================================
+
+Every Listening item carries:
+  - `transcript_ref`  — page reference to the textbook's transcript
+                        (e.g., "Transcript: p. 263") so the teacher
+                        can read the audio script aloud.
+
+The transcript itself is NOT inlined into the item. The reference is
+lifted from the summary's listening cell.
+
+
+================================================================================
+RULE 10 | RUBRIC GUIDANCE FOR OPEN ITEMS — STAGE-AWARE
+================================================================================
+
+`expected_elements` rubric depth scales with stage:
+
+  Preparatory  → 3 bullets, each ≤ 8 words, plain expectations
+                 (e.g., "Use simple sentences", "Address the topic",
+                 "Use one new word from the lesson").
+
+  Middle       → 3–4 bullets, each ≤ 10 words, includes a register
+                 expectation (e.g., "Use formal letter format",
+                 "Include a clear opening and closing").
+
+  Secondary    → 4–5 bullets, each ≤ 12 words, includes a critical
+                 element (e.g., "Argue with at least two reasons",
+                 "Use one literary device covered in the chapter").
+
+
+================================================================================
+RULE 11 | HEADER (INFORMATIONAL)
+================================================================================
+
+Appears once at the top of the assessment document:
+
+- chapter_number, chapter_title, stage
+- main_sections inventory (id, title, type) — copied from LP header
+- competency_reporting:
+    by_spine: { reading: [c-codes], listening: [c-codes], ... }
+  copied verbatim from `spine_to_cg.json` for the chapter's stage.
+
+The `competency_reporting` block is informational. Item bodies MUST
+NOT reference C-codes.
+
+
+================================================================================
+RULE 12 | NO INTERNAL IDS IN TEACHER PROSE
+================================================================================
+
+Internal item IDs (e.g., "Q-Read-1") live only in JSON `id` fields
+as join keys. They MUST NEVER appear in any teacher-facing prose
+(prompts, suggested answers, expected_elements, notes).
+
+Item rendering uses `source_spine_section` (e.g., "Check Your
+Understanding") + a generated short title; not the internal ID.
+
+
+================================================================================
+ASSESSMENT JSON SCHEMA
+================================================================================
+
+{
+  "subject":        "english",
+  "stage":          string,                   // "preparatory" | "middle" | "secondary"
+  "chapter_number": integer,
+  "chapter_title":  string,
+
+  "main_sections_inventory": [
+    { "section_id": string, "title": string, "type": string }
+  ],
+
+  "competency_reporting": {
+    "by_spine": {
+      "reading":            [string],
+      "listening":          [string],
+      "speaking":           [string],
+      "writing":            [string],
+      "vocabulary_grammar": [string],
+      "beyond_text":        [string]
+    }
+  },
+
+  "assessment_items": [
+    {
+      "spine_code":  string,                  // "reading" | "listening" |
+                                              // "speaking" | "writing" |
+                                              // "vocabulary_grammar" |
+                                              // "beyond_text"
+      "spine_title": string,                  // "Reading" | "Listening" | ...
+      "note":        string,                  // empty-spine note if any, else ""
+      "items": [
+        {
+          "id":                   string,     // e.g. "Q-Reading-A-1"
+          "source_section_id":    string,     // "A" | "B" | "C"
+          "source_section_title": string,
+          "source_section_type":  string,     // prose | poem | narrative | dialogue
+          "source_spine_section": string,     // textbook subheading
+          "source":               "lifted" | "generated",
+
+          "question_type":        string,     // see Rule 3
+          "prompt":               string,
+          "visual_stimulus":      string,     // "" or pipe-table only
+          "transcript_ref":       string,     // listening only; "" otherwise
+
+          "options": [                        // MCQ only; [] otherwise
+            { "label": string,
+              "text":  string,
+              "is_correct": boolean }
+          ],
+
+          "teacher_guide": {
+            "suggested_answer":   string,     // CLOSED items only; "" if open
+            "expected_elements":  [string],   // OPEN items only; [] if closed
+            "note":               string      // empty unless fallback
+          },
+
+          "verified": boolean
+        }
+      ]
+    }
+  ]
+}
+
+
+================================================================================
+Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
+English Assessment Constitution · Version 1.0 · Internal Document
+================================================================================

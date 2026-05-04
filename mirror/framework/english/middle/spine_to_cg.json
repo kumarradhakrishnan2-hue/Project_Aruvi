@@ -1,0 +1,43 @@
+{
+  "subject": "English",
+  "stage": "Middle",
+  "source": "Aruvi static lookup. Derived from NCF Languages CG (Section 2.4.1.2) and a 6-chapter mapping audit (VII Ch 3, VII Ch 4) showing 80% C-code overlap across chapters. The 6-spine itself carries NCF compliance — per-chapter mapping is redundant.",
+  "spines": {
+    "reading": {
+      "label": "Reading",
+      "textbook_section_names": ["Let us read", "Let us discuss", "Let us think"],
+      "competency_codes": ["C-1.1", "C-2.1", "C-2.2"],
+      "notes": "Read-and-summarise, identification of literary forms, and identification of literary devices."
+    },
+    "listening": {
+      "label": "Listening",
+      "textbook_section_names": ["Let us listen"],
+      "competency_codes": ["C-1.1", "C-1.2"],
+      "notes": "Listening for main points and listening to interviews / structured-unstructured dialogues."
+    },
+    "speaking": {
+      "label": "Speaking",
+      "textbook_section_names": ["Let us speak"],
+      "competency_codes": ["C-1.2", "C-1.3", "C-2.3"],
+      "notes": "Interviews, probing questions, and oral expression of ideas/critiques."
+    },
+    "writing": {
+      "label": "Writing",
+      "textbook_section_names": ["Let us write"],
+      "competency_codes": ["C-1.4", "C-1.5", "C-2.3", "C-3.2"],
+      "notes": "Letters/essays/reports, audio-visual content scripts, prose/poetry/drama. The chapter's task_type tag (paragraph / report / poem / dialogue / script) selects the dominant code."
+    },
+    "vocabulary_grammar": {
+      "label": "Vocabulary and Grammar",
+      "textbook_section_names": ["Let us learn"],
+      "competency_codes": ["C-3.1", "C-5.1", "C-5.2", "C-5.3"],
+      "notes": "Linguistic aspects (sentence structure, tense, parts of speech), phonetics/script, wordplay, and word games."
+    },
+    "beyond_text": {
+      "label": "Beyond the Text",
+      "textbook_section_names": ["Let us do", "Let us explore"],
+      "competency_codes": ["C-2.1", "C-4.2"],
+      "notes": "Literary appreciation explorations and use of references for projects/interdisciplinary work."
+    }
+  }
+}

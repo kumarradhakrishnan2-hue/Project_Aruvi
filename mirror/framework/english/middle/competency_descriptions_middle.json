@@ -1,0 +1,52 @@
+{
+  "subject": "English",
+  "stage": "Middle",
+  "source": "National Curriculum Framework for School Education (NCF-SE), Section 2.4.1.2 — Language 1 (R1)",
+  "curricular_goals": {
+    "CG-1": {
+      "label": "Effective Communication: Listening, Speaking and Writing",
+      "description": "Develops the capacity for effective communication using Language skills for description, analysis, and response",
+      "competency_codes": {
+        "C-1.1": "Identifies main points and summarises from a careful listening or reading of the text (news articles, reports, editorials)",
+        "C-1.2": "Listens to, plans, and conducts different kinds of interviews (structured and unstructured)",
+        "C-1.3": "Raises probing questions about social experiences using appropriate language (open-ended/closed-ended, formal/informal, relevant to context, with sensitivity)",
+        "C-1.4": "Writes different kinds of letters, essays, and reports using appropriate style and registers for different audiences and purposes",
+        "C-1.5": "Creates content for audio, visual, or both, for different audiences and purposes"
+      }
+    },
+    "CG-2": {
+      "label": "Literary Appreciation and Cultural Heritage",
+      "description": "Appreciates the language and literary and cultural heritage in and related to Language by exploring the various forms of literary devices",
+      "competency_codes": {
+        "C-2.1": "Identifies and appreciates different forms of literature (prose, poetry, drama) and styles of writing (narrative, descriptive, expository, persuasive) from various cultures and time periods",
+        "C-2.2": "Identifies literary devices [simile, metaphor, personification (alankaras), hyperbole (athishayokthi), alliteration (anuprasa), idioms, proverbs, and riddles] by reading a variety of literature and uses them in writing",
+        "C-2.3": "Expresses through speech and writing their ideas and critiques on the various aspects of their social and cultural surroundings"
+      }
+    },
+    "CG-3": {
+      "label": "Grammar and Linguistic Structure",
+      "description": "Develops the ability to recognise basic linguistic aspects (word and sentence structure) and use them in oral and written expression",
+      "competency_codes": {
+        "C-3.1": "Interprets and understands basic linguistic aspects (rules), such as sentence structure, punctuation, tense, gender, and parts of speech, while reading different forms of literature, and applies them while writing",
+        "C-3.2": "Writes prose, poetry, and drama using appropriate style and language"
+      }
+    },
+    "CG-4": {
+      "label": "Critical Reading and Library Research",
+      "description": "Develops the ability to write reviews and uses the Library to find references",
+      "competency_codes": {
+        "C-4.1": "Reads, responds to, and critically reviews books of varied genres (fiction and non-fiction)",
+        "C-4.2": "Uses books and other media resources effectively to find references to use in projects and other activities"
+      }
+    },
+    "CG-5": {
+      "label": "Language Features: Phonetics, Wordplay and Games",
+      "description": "Develops an appreciation of the distinctive features of the particular language, including its alphabet and script, sounds, rhymes, puns, and other wordplays and games unique to the language",
+      "competency_codes": {
+        "C-5.1": "Understands the phonetics and script of the language, the number of vowels and consonants, and how they interact and are used",
+        "C-5.2": "Engages in the use of puns, rhymes, alliteration, and other wordplays in the language, to make speech and writing more interesting and enjoyable",
+        "C-5.3": "Becomes familiar with some of the major word games in the language (e.g., palindromes, spoonerisms, sentences without given letters or sounds, riddles, jokes, antakshari, anagrams, crosswords)"
+      }
+    }
+  }
+}

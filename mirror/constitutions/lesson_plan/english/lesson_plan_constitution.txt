@@ -1,0 +1,408 @@
+ARUVI — ENGLISH LESSON PLAN CONSTITUTION · VERSION 1.0
+Stages: Preparatory, Middle, Secondary
+
+================================================================================
+DESIGN PRINCIPLE
+================================================================================
+
+The chapter has a TWO-AXIS structure:
+
+  Outer axis  →  main_section (a poem, prose, narrative, dialogue — typically
+                 1 to 3 per chapter; preparatory often has 1, secondary often
+                 has 2–3 including a closing poem under "Reading for
+                 Appreciation").
+
+  Inner axis  →  6-spine progression (Reading → Listening → Speaking →
+                 Writing → Vocabulary/Grammar → Beyond-the-Text), in
+                 textbook order, within each main_section.
+
+The LP walks main_sections in textbook order. Within each main_section, it
+walks the spines that the section actually contains (a poem appendix may
+only carry Reading + Vocabulary, not all six). Period bin-packing is
+applied across (section × spine) cells, NOT across spines alone.
+
+The 6-spine itself carries NCF Languages compliance — competency reporting
+is read from the static `spine_to_cg.json` for the chapter's stage.
+Per-chapter competency mapping is NOT performed and MUST NOT be invoked
+by the LP generator.
+
+
+================================================================================
+INPUTS
+================================================================================
+
+1. Summary JSON (chapter_title, stage, main_sections[] each carrying
+   id/title/type/char_count/spines{} where each spine entry has
+   section_name, task_type, tasks_verbatim[], question_bank[]).
+
+2. Stage-appropriate `spine_to_cg.json` from
+   `mirror/framework/english/{stage}/` — supplies the static competency
+   reporting layer.
+
+3. Stage-appropriate NCF Languages pedagogy text from
+   `mirror/framework/english/{stage}/pedagogy_{stage}_english.txt` —
+   supplies the permitted teaching methods per spine.
+
+4. Period schedule: { period_duration_minutes, period_count } where
+   period_count = B is supplied at generation time (allocation tab
+   suggests, user may override).
+
+
+================================================================================
+OUTPUT
+================================================================================
+
+LP JSON per chapter: header, periods array, coverage_handoff block keyed
+by spine.
+
+
+================================================================================
+RULE 1 | TWO-AXIS ANCHORING
+================================================================================
+
+LP walks main_sections in textbook order, then walks spines within each
+main_section in textbook order. Do NOT reorder, interleave across
+sections, or re-sequence spines within a section.
+
+Each period anchors to:
+  - exactly ONE main_section, AND
+  - one or two adjacent spines within that section.
+
+A period MUST NOT straddle two main_sections (a period cannot mix
+the prose section with the poem section).
+
+
+================================================================================
+RULE 2 | PERIOD BIN-PACKING ACROSS (SECTION × SPINE) CELLS
+================================================================================
+
+Allocate exactly B periods across the (section × spine) cells of the
+summary.
+
+- Heavy cells (long tasks, multiple sub-tasks within a spine, a
+  writing task whose `task_type` is "report" or "essay" or
+  "creative_composition") MAY split across two adjacent periods within
+  the same section.
+- Light cells (single-task spines, e.g. a Vocabulary section with one
+  matching exercise) MAY merge with an adjacent spine in the same
+  section.
+- Every main_section listed in the summary MUST receive at least
+  ONE period. Dropping a main_section is FORBIDDEN — including a
+  short closing poem under "Reading for Appreciation".
+- Every spine that the summary lists for a main_section MUST appear
+  in at least one period anchored to that section, either as the
+  primary spine or as a merged secondary spine.
+
+Distribution heuristic (informational, not normative): periods per
+main_section ∝ char_count of that section's text + total task count
+across its spines. The generator MUST honour this proportionality
+within ±1 period per section.
+
+
+================================================================================
+RULE 3 | TASK SOURCING — CHAPTER ONLY · STRICT MATCH
+================================================================================
+
+Every task referenced in a period MUST appear verbatim in the summary's
+`tasks_verbatim[]` for the anchored (section, spine) cell. No
+fabrication. Period activities are drawn from the summary's task list
+for the anchored cell(s).
+
+Task references in `tasks_in_class[]` use the summary's enumeration
+key (e.g., spine="reading", task_index=2) — no invented IDs.
+
+FORBIDDEN:
+- Inventing task descriptions not in the summary.
+- Substituting a paraphrased task for a verbatim summary task.
+- Splitting a single summary task into two pieces ("part a" / "part b")
+  unless the summary itself enumerates them as separate sub-tasks.
+
+If a single summary task is referenced by multiple periods (legitimate
+for a long writing task split across 2 periods), each period lists the
+same key; the phase descriptions distinguish what is done in each
+period (e.g., "planning + drafting" vs "revising + sharing").
+
+
+================================================================================
+RULE 4 | PEDAGOGICAL METHOD
+================================================================================
+
+One method per period. Methods are drawn STRICTLY from the NCF
+Languages pedagogy strategies for the chapter's stage, as recorded in
+`mirror/framework/english/{stage}/pedagogy_{stage}_english.txt` and
+the corresponding CG document. The generator MUST NOT invent methods
+not present in those source documents.
+
+PREPARATORY STAGE — permitted methods, scoped by spine:
+
+  Reading            → read-aloud · shared-reading · guided-reading ·
+                       independent-reading · repeated-reading ·
+                       comprehension-discussion · summarising
+  Listening          → listen-and-respond · summarising-from-listening
+  Speaking           → free-conversation · guided-conversation ·
+                       role-play · describing-experiences · narrating ·
+                       discussing · oral-presentation (show-and-tell,
+                       welcome notes, anchoring of small events, short
+                       speeches, class debates — per CG-1/C-1.3)
+  Writing            → planning-drafting · modelled-writing ·
+                       guided-writing · independent-writing ·
+                       formative-feedback
+  Vocabulary/Grammar → word-building · dictionary-work ·
+                       contextual-prediction · word-games ·
+                       grammar-in-writing
+  Beyond-text        → library-exploration · hands-on-extension
+
+MIDDLE STAGE — permitted methods (in addition to all preparatory
+methods):
+
+  Reading            → functional-reading (applications, letters,
+                       reports, posters, emails, circulars) ·
+                       literary-reading (genre-week, theme-week,
+                       literary-device identification) · critical-reading
+                       (author-intent, core-content, interpreting
+                       meanings)
+  Listening          → critical-listening · listening-to-interviews ·
+                       reviews-of-films
+  Speaking           → panel-discussion · formal-debate · interview ·
+                       anchoring (formal events) · public-speaking
+  Writing            → functional-writing (essays, reports, emails,
+                       blogs, social-media posts) · literary-writing
+                       (experiential writing, appreciation, critique) ·
+                       audio-visual-content-creation
+  Vocabulary/Grammar → linguistic-aspects-in-context (sentence
+                       structure, punctuation, tense, parts of speech) ·
+                       phonetics-and-script · wordplay-and-puns ·
+                       word-games (palindromes, riddles, anagrams,
+                       crosswords, etc.)
+  Beyond-text        → project-work · interdisciplinary-study ·
+                       comparison-and-contrast · library-research
+
+SECONDARY STAGE — permitted methods (in addition to all preparatory
+and middle methods):
+
+  Reading            → literary-club-discussion · close-reading-for-style ·
+                       multicultural-reading-comparison · group-critical-
+                       analysis
+  Listening          → analysing-audio-material
+  Speaking           → focussed-dialogue · brainstorming ·
+                       open-house-dialogue · debate-with-rationale ·
+                       impromptu-response
+  Writing            → independent-creative-writing · scriptwriting
+                       (videos, podcasts, YouTube channels) ·
+                       critical-review-writing · poems-stories-plays-
+                       with-literary-devices · writing-for-real-life
+                       (notices, condolence, advertisements, slogans)
+  Vocabulary/Grammar → embedded-in-close-reading (no stand-alone CG at
+                       this stage — vocabulary/grammar work is folded
+                       into literary-text analysis)
+  Beyond-text        → multilingual-comparison · projects-on-Indian-
+                       languages · literature-festival · author-of-the-day
+
+Diversity: same method MUST NOT appear in more than two consecutive
+periods. Each spine present in the chapter SHOULD see at least one
+period whose method is drawn from that spine's permitted list for the
+current stage.
+
+
+================================================================================
+RULE 5 | TIME CONSTRAINT
+================================================================================
+
+Each period's phases sum exactly to `period_duration_minutes`. Minimum
+3 phases per period.
+
+`phases[].minutes` is a STRING time-range (e.g., "0–10", "10–25").
+Ranges tile the period from 0 to `period_duration_minutes` with no
+gaps and no overlaps. Overrun is not permitted.
+
+
+================================================================================
+RULE 6 | CHAPTER HEADER (INFORMATIONAL)
+================================================================================
+
+Appears once at the top of the LP document:
+- chapter_number, chapter_title, stage
+- main_sections inventory (id, title, type) — gives the teacher the
+  outer-axis at a glance
+- periods_allocated (= B)
+- competency_reporting block:
+    by_spine: { reading: [c-codes], listening: [c-codes], ... }
+  copied verbatim from `spine_to_cg.json` for the chapter's stage.
+  This is informational — LP body MUST NOT reference C-codes.
+
+
+================================================================================
+RULE 7 | COMPETENCIES DO NOT DRIVE LP
+================================================================================
+
+Periods are not required to cover specific C-codes. LP body text MUST
+NOT reference C-codes. C-codes appear only in the header
+`competency_reporting` block, never in periods, phases, or
+teacher_notes.
+
+
+================================================================================
+RULE 8 | HOMEWORK IS OPTIONAL AND UN-OWNED
+================================================================================
+
+`homework` per period is `[]` by default. Populate with 1–2 items only
+when in-class time-box overflows or when reinforcement is judged useful.
+Homework is not consumed by the assessment generator downstream.
+
+
+================================================================================
+RULE 9 | PHASE NARRATION
+================================================================================
+
+When a phase invokes a textbook task, the phase's `description` text
+names the task by its anchor location and a 10-word brief, e.g.
+"Reading for Meaning passage on pankhas (read-aloud + paired
+discussion)".
+
+Format: <spine_section_name> ("brief description up to 10 words....")
+
+Do NOT use internal task indices in phase descriptions. The internal
+key `(spine, task_index)` lives only inside the structured
+`tasks_in_class[]` array as a join key.
+
+
+================================================================================
+RULE 10 | COVERAGE HANDOFF EMISSION
+================================================================================
+
+After period assignment, emit `coverage_handoff` — a block keyed by
+spine (six keys: reading, listening, speaking, writing,
+vocabulary_grammar, beyond_text).
+
+For each spine, the handoff lists `section_contributions[]`, where
+each entry records:
+
+  - `section_id`         — main_section id (A, B, C, ...)
+  - `section_title`      — copied verbatim from summary
+  - `section_type`       — prose | poem | narrative | dialogue
+  - `tasks_anchored`     — array of `(spine, task_index)` keys taken
+                           from periods that taught this spine in this
+                           section. Used by the assessment generator
+                           to lift items from the chapter's question
+                           bank.
+  - `task_types`         — distinct `task_type` values seen in this
+                           (section, spine) cell, copied from the
+                           summary. Drives assessment item-type
+                           selection (e.g., writing task_type="poster"
+                           → assessment item type "create_poster").
+
+If a spine has no contributions across any section, emit the spine
+key with an empty `section_contributions: []` array. The assessment
+generator emits no items for that spine.
+
+Total assessment item count is NOT a function of period count. The
+assessment generator decides item count per spine using the chapter's
+question bank density (see assessment constitution).
+
+
+================================================================================
+LP JSON SCHEMA
+================================================================================
+
+{
+  "subject": "english",
+  "stage":          string,           // "preparatory" | "middle" | "secondary"
+  "chapter_number": integer,
+  "chapter_title":  string,
+
+  "main_sections_inventory": [
+    { "section_id":   string,         // "A", "B", "C"
+      "title":        string,
+      "type":         string }        // "prose" | "poem" | "narrative" | "dialogue"
+  ],
+
+  "competency_reporting": {
+    "by_spine": {
+      "reading":            [string], // c-codes from spine_to_cg.json
+      "listening":          [string],
+      "speaking":           [string],
+      "writing":            [string],
+      "vocabulary_grammar": [string],
+      "beyond_text":        [string]
+    }
+  },
+
+  "periods_allocated": integer,
+
+  "lesson_plan": { "periods": [ <period>, ... ] },
+
+  "coverage_handoff": {
+    "reading":            { "section_contributions": [ <contribution>, ... ] },
+    "listening":          { "section_contributions": [ <contribution>, ... ] },
+    "speaking":           { "section_contributions": [ <contribution>, ... ] },
+    "writing":            { "section_contributions": [ <contribution>, ... ] },
+    "vocabulary_grammar": { "section_contributions": [ <contribution>, ... ] },
+    "beyond_text":        { "section_contributions": [ <contribution>, ... ] }
+  }
+}
+
+<period>:
+{
+  "period_number":           integer,
+  "period_duration_minutes": integer,
+
+  "section_id":    string,            // "A" | "B" | "C" — exactly one
+  "section_title": string,            // copied from inventory
+
+  "spines_taught": [string],          // 1 or 2 entries, in textbook order;
+                                      // each ∈ {reading, listening, speaking,
+                                      //        writing, vocabulary_grammar,
+                                      //        beyond_text}
+
+  "activity_title":     string,       // ≤ 12 words, evocative headline
+  "pedagogical_method": string,       // from Rule 4 permitted list
+
+  "tasks_in_class": [
+    { "spine":         string,        // one of the spines_taught
+      "task_index":    integer,       // 0-based index into summary's
+                                      // tasks_verbatim[] for this
+                                      // (section, spine)
+      "task_brief":    string         // ≤ 12 words, plain English,
+                                      // teacher-facing
+    }
+  ],
+
+  "homework": [ <same shape as tasks_in_class entry> ],
+
+  "phases": [
+    { "minutes":     string,          // "0–10" — tiles 0..duration
+      "description": string }         // narrative; refers to tasks
+                                      // by spine_section_name + brief
+  ],
+
+  "teacher_notes": string,            // 2–3 sentences max. Scope (in
+                                      // priority order):
+                                      //  1. Transition from prior
+                                      //     period; preview into next.
+                                      //  2. Common pitfall in this
+                                      //     spine (drawn from chapter
+                                      //     prose only; no fabrication).
+                                      //  3. Self-study pointer: a
+                                      //     task NOT covered in class.
+                                      // No C-code refs.
+
+  "materials": [string]
+}
+
+<contribution>:
+{
+  "section_id":    string,
+  "section_title": string,
+  "section_type":  string,
+  "tasks_anchored": [
+    { "spine": string, "task_index": integer }
+  ],
+  "task_types": [string]              // distinct values seen in this
+                                      // (section, spine) cell
+}
+
+
+================================================================================
+Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
+English Lesson Plan Constitution · Version 1.0 · Internal Document
+================================================================================
