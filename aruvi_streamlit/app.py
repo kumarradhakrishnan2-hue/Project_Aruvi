@@ -62,11 +62,15 @@ def subject_to_folder(subject: str) -> str:
         "Social Science": "social_sciences",
         "Mathematics":    "mathematics",
         "Science":        "science",
-        "English":        "languages",
+        "English":        "english",
         "Second Language":"languages",
         "EVS":            "science",
     }
     return mapping.get(subject, subject.lower().replace(" ", "_"))
+
+# Subjects whose chapter summaries are JSON (structured for downstream LP/A
+# constitutions). All others are plain .txt.
+_JSON_SUMMARY_SUBJECTS = {"mathematics", "english"}
 
 # ── Path resolver ─────────────────────────────────────────────────────────────
 
@@ -80,10 +84,11 @@ def resolve_paths(grade: str, subject: str, chapter_number: int) -> dict:
         "lp_constitution":  mirror / f"constitutions/lesson_plan/{subj_f}/lesson_plan_constitution.txt",
         "assessment_const": mirror / f"constitutions/assessment/{subj_f}/assessment_constitution.txt",
         "pedagogy":         mirror / f"framework/{subj_f}/{stage}/pedagogy_{stage}_{subj_f}.txt",
-        # Mathematics summaries are .json (structured for LP constitution); all others are .txt
+        # Mathematics and English summaries are .json (structured for LP/A
+        # constitutions); all others are plain .txt.
         "chapter_summary":  (
             mirror / f"chapters/{subj_f}/{grade_f}/summaries/ch_{nn}_summary.json"
-            if subj_f == "mathematics"
+            if subj_f in _JSON_SUMMARY_SUBJECTS
             else mirror / f"chapters/{subj_f}/{grade_f}/summaries/ch_{nn}_summary.txt"
         ),
         "chapter_mapping":  mirror / f"chapters/{subj_f}/{grade_f}/mappings/ch_{nn}_mapping.json",
@@ -489,6 +494,163 @@ def delete_saved_plan(grade: str, subject: str, filename: str) -> None:
     except Exception:
         pass
 
+def _build_lpa_prompts_english(
+    grade: str,
+    subject: str,
+    chapter: dict,
+    period_sched: str,
+    paths: dict,
+) -> tuple[str, str]:
+    """Build (system_prompt, user_prompt) for English LP+A generation.
+
+    English uses a two-axis schema (main_section × spine). The chapter
+    summary is JSON (produced by the cowork prompt
+    `chapter_summary_competency_mapping_english.md`) and is the source
+    of truth for the LP and assessment. C-codes do not appear in LP/A
+    output; the Allocate page reads `spine_to_cg.json` separately.
+    """
+    stage = get_stage(grade)
+
+    lp_const     = read_file(paths["lp_constitution"])
+    assess_const = read_file(paths["assessment_const"])
+    pedagogy     = read_file(paths["pedagogy"])
+    summary      = read_file(paths["chapter_summary"])
+
+    # Stage-aware rubric depth (Assessment Constitution Rule 10).
+    rubric_bullets = (
+        "3"   if stage == "preparatory"
+        else "3-4" if stage == "middle"
+        else "4-5"
+    )
+
+    system_prompt = f"""You are Aruvi's English lesson plan and assessment generator.
+
+You operate under two constitutions that govern every decision you make.
+These constitutions are binding. No instruction in the user prompt overrides them.
+
+=== ENGLISH LESSON PLAN CONSTITUTION ===
+{lp_const}
+
+=== ENGLISH ASSESSMENT CONSTITUTION ===
+{assess_const}
+"""
+
+    user_prompt = f"""Generate a complete lesson plan and chapter assessment for the following English chapter.
+
+=== NCF LANGUAGES PEDAGOGY ({stage} stage) ===
+{pedagogy}
+
+=== CHAPTER SUMMARY (JSON, two-axis: main_sections × spines) ===
+{summary}
+
+=== TEACHER PERIOD SCHEDULE ===
+{period_sched}
+
+=== INSTRUCTIONS ===
+Follow the English LP Constitution and Assessment Constitution exactly.
+Produce a SINGLE valid JSON object with this top-level structure:
+
+{{
+  "grade": "{grade}",
+  "subject": "{subject}",
+  "stage": "{stage}",
+  "chapter_number": {chapter["chapter_number"]},
+  "chapter_title": "{chapter.get('chapter_title', '')}",
+  "period_schedule": <derived from teacher period schedule above>,
+
+  "main_sections_inventory": [
+    {{ "section_id": "A|B|C", "title": "...", "type": "prose|poem|narrative|dialogue|informational" }}
+  ],
+
+  "periods_allocated": <integer = total period count from the teacher schedule>,
+
+  "lesson_plan": {{
+    "periods": [
+      <one object per period per LP Constitution Rule 1+2 — each period
+       anchors to ONE main_section + 1-2 spines within it; periods walk
+       main_sections in textbook order then spines within each section.
+       Required fields: period_number, period_duration_minutes,
+       section_id, section_title, spines_taught, activity_title,
+       pedagogical_methods (object keyed by each spine in spines_taught;
+       each value is one method drawn from that spine's permitted list
+       in LP Rule 4 for the stage — keys MUST equal spines_taught
+       exactly), tasks_in_class (each {{spine, task_index, task_brief}}),
+       homework, phases (tile 0..duration with no gaps), teacher_notes
+       (2-3 sentences max, grounded in main_section's prose_summary or
+       poem_appreciation_summary), materials.>
+    ]
+  }},
+
+  "coverage_handoff": {{
+    "reading":            {{ "section_contributions": [<contribution>] }},
+    "listening":          {{ "section_contributions": [...] }},
+    "speaking":           {{ "section_contributions": [...] }},
+    "writing":            {{ "section_contributions": [...] }},
+    "vocabulary_grammar": {{ "section_contributions": [...] }},
+    "beyond_text":        {{ "section_contributions": [...] }}
+  }},
+
+  "assessment_items": [
+    {{
+      "spine_code":  "reading|listening|speaking|writing|vocabulary_grammar|beyond_text",
+      "spine_title": "Reading|Listening|Speaking|Writing|Vocabulary and Grammar|Beyond the Text",
+      "note":        "<empty unless an empty-spine note applies>",
+      "items": [
+        <one item per main_section that contains this spine, per Assessment
+         Rule 2: lift the FIRST entry of summary.question_bank for that
+         (section, spine) cell verbatim; only generate when question_bank
+         is empty. Required fields per item: id, source_section_id,
+         source_section_title, source_section_type, source_spine_section,
+         source ("lifted"|"generated"), question_type, prompt,
+         visual_stimulus (pipe-table or ""), transcript_ref (listening
+         only; "" otherwise), options ([] unless MCQ), teacher_guide
+         ({{ suggested_answer (CLOSED only), expected_elements (OPEN
+         only — 3 to 5 short bullets per stage rubric depth in Rule 10),
+         note (empty unless fallback) }}), verified.>
+      ]
+    }}
+  ]
+}}
+
+CRITICAL CONSTRAINTS:
+- Total LP period count = the teacher schedule's period_count. Distribute
+  across (section × spine) cells in textbook order (LP Rule 1+2), with
+  per-section period share roughly proportional to the section's
+  char_count + total task count (±1 period tolerance).
+- Total assessment item count = number_of_main_sections × 6 (one item
+  per (section × spine) cell, per Assessment Rule 2). For VII Ch 1 with
+  3 main_sections, that's 18 items. Lift the FIRST entry of each cell's
+  question_bank verbatim into `prompt`. If a cell's question_bank is
+  empty, generate ONE typed item grounded in the main_section's
+  prose_summary / poem_text + poem_appreciation_summary.
+- C-codes MUST NOT appear anywhere in the LP or assessment JSON.
+- `pedagogical_methods` per period MUST be an object whose keys equal
+  `spines_taught` exactly. Each value MUST be drawn from that spine's
+  permitted method list in LP Constitution Rule 4 for the {stage}
+  stage. Do NOT invent methods. Do NOT collapse multiple spines onto
+  a single method.
+- Listening items: `transcript_ref` format is `"p.NN"` at preparatory
+  and middle (transcript inside chapter PDF) or `"appendix p.NN"` at
+  secondary (transcript in a separate appendix file). The summary
+  carries the value verbatim.
+- Closed items (MCQ, FILL_IN, MATCH, TRUE_FALSE, factual SCR) carry
+  `teacher_guide.suggested_answer` (verified). Open items
+  (ORAL_PROMPT, WRITING_TASK, PROJECT, ECR, reflective SCR) carry
+  `teacher_guide.expected_elements` ({rubric_bullets} short bullets,
+  each ≤ 12 words). No item carries both fields.
+
+LENGTH CONSTRAINTS:
+- Each phase `description`: 2-3 sentences maximum.
+- Each `teacher_notes`: 2-3 sentences maximum.
+- Each `suggested_answer`: 1-2 sentences plain prose.
+- Each `expected_elements` bullet: ≤ 12 words.
+
+Output only the raw JSON object. No markdown. No prose. No headers. No ```json fences.
+"""
+
+    return system_prompt, user_prompt
+
+
 def generate_lpa(
     grade: str,
     subject: str,
@@ -498,14 +660,24 @@ def generate_lpa(
 ) -> dict:
     paths = resolve_paths(grade, subject, chapter["chapter_number"])
 
-    lp_const     = read_file(paths["lp_constitution"])
-    assess_const = read_file(paths["assessment_const"])
-    pedagogy     = read_file(paths["pedagogy"])
-    summary      = read_file(paths["chapter_summary"])
-    mapping_raw  = read_file(paths["chapter_mapping"])
     period_sched = format_period_schedule(period_rows, session)
 
-    system_prompt = f"""You are Aruvi's lesson plan and assessment generator.
+    # ── Subject dispatch ──────────────────────────────────────────────────
+    # English uses a two-axis (main_section × spine) schema and has no
+    # per-chapter competency mapping; the prompt is built differently.
+    if subject_to_folder(subject) == "english":
+        system_prompt, user_prompt = _build_lpa_prompts_english(
+            grade, subject, chapter, period_sched, paths
+        )
+    else:
+        # ── Math / Science / Social Sciences (existing path) ──────────────
+        lp_const     = read_file(paths["lp_constitution"])
+        assess_const = read_file(paths["assessment_const"])
+        pedagogy     = read_file(paths["pedagogy"])
+        summary      = read_file(paths["chapter_summary"])
+        mapping_raw  = read_file(paths["chapter_mapping"])
+
+        system_prompt = f"""You are Aruvi's lesson plan and assessment generator.
 
 You operate under two constitutions that govern every decision you make.
 These constitutions are binding. No instruction in the user prompt overrides them.
@@ -517,7 +689,7 @@ These constitutions are binding. No instruction in the user prompt overrides the
 {assess_const}
 """
 
-    user_prompt = f"""Generate a complete lesson plan and chapter assessment for the following chapter.
+        user_prompt = f"""Generate a complete lesson plan and chapter assessment for the following chapter.
 
 === PEDAGOGY DOCUMENT ===
 {pedagogy}
@@ -1115,6 +1287,59 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
                     # which displays activity_name + time_slots correctly.
                 })
                 continue
+            # ── English format detection (section × spine schema) ───────────
+            # Unique signals: section_id (A/B/C) + spines_taught (list).
+            # Maths uses textbook_segments; Science uses stage_label;
+            # SS uses competency. None of these collide with English.
+            _is_english = (
+                isinstance(p.get("spines_taught"), list)
+                and p.get("section_id") is not None
+            )
+            if _is_english:
+                mat = p.get("materials", "")
+                if isinstance(mat, list):
+                    mat = ", ".join(mat)
+                time_slots = [
+                    {"time": ph.get("minutes", ""), "desc": ph.get("description", "")}
+                    for ph in (p.get("phases") or [])
+                ]
+                _sec_id    = p.get("section_id", "") or ""
+                _sec_title = p.get("section_title", "") or ""
+                _sec_type  = p.get("section_type", "") or ""
+                _chapter_section = (
+                    f"Section {_sec_id} · {_sec_title}"
+                    if _sec_id and _sec_title else (_sec_title or _sec_id or "")
+                )
+                out.append({
+                    "period_number":           p.get("period_number"),
+                    "period_duration_minutes": p.get("period_duration_minutes"),
+                    "chapter_section":         _chapter_section,
+                    "activity_name":           p.get("activity_title", ""),
+                    "activity_summary":        p.get("activity_title", ""),
+                    "time_slots":              time_slots,
+                    "material":                mat,
+                    "implied_lo":              "",
+                    "c_code":                  "",
+                    "cg":                      "",
+                    "weight":                  0,
+                    "competency_text":         "",
+                    "visual_representation":   None,
+                    # ── English-specific fields surfaced to lpa_page.html ────
+                    # The HTML's English render branch reads these by name.
+                    # Do NOT set stage_label / activity_title at top level —
+                    # the HTML now dispatches on d.subject, but belt-and-braces
+                    # keeps any residual data-shape detection from misrouting.
+                    "is_english":              True,
+                    "section_id":              _sec_id,
+                    "section_title":           _sec_title,
+                    "section_type":            _sec_type,
+                    "spines_taught":           p.get("spines_taught") or [],
+                    "pedagogical_methods":     p.get("pedagogical_methods") or {},
+                    "tasks_in_class":          p.get("tasks_in_class") or [],
+                    "homework":                p.get("homework") or [],
+                    "teacher_notes":           p.get("teacher_notes", ""),
+                })
+                continue
             # ── Science format detection ────────────────────────────────────
             # Only use truly Science-specific fields (stage_label / progression_stage).
             # activity_title is NOT a reliable Science signal — Social Sciences plans
@@ -1345,6 +1570,110 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
                 "stage_label":      None,
             })
         return _maths_sections
+
+    # ── English format detection (spine-grouped schema) ─────────────────────
+    # English assessment ships as a list of spine-objects, each with its own
+    # nested `items[]` array. Spines: reading, listening, speaking, writing,
+    # vocabulary_grammar, beyond_text. Detect on `spine_code` at the top
+    # level of the first element with a nested `items[]` array.
+    _is_english_assessment = (
+        isinstance(items, list)
+        and len(items) > 0
+        and isinstance(items[0], dict)
+        and "spine_code" in items[0]
+        and isinstance(items[0].get("items"), list)
+    )
+    if _is_english_assessment:
+        _ENGLISH_SPINE_DESC = {
+            "reading":            "Encountering text — comprehension, inference, appreciation.",
+            "listening":          "Active listening — meaning, attitude, summarisation.",
+            "speaking":           "Structured talk — conversation, discussion, debate.",
+            "writing":            "Drafting and editing — formal and creative composition.",
+            "vocabulary_grammar": "Word-building and grammar embedded in context.",
+            "beyond_text":        "Library work, projects, and interdisciplinary extensions.",
+        }
+        # Closed types render `teacher_guide.suggested_answer`; open types
+        # render `teacher_guide.expected_elements` as bullets.
+        _ENG_CLOSED_TYPES = {"MCQ", "FILL_IN", "MATCH", "TRUE_FALSE"}
+        _eng_sections = []
+        for sec in items:
+            if not isinstance(sec, dict):
+                continue
+            _spine_code  = (sec.get("spine_code") or "").strip().lower()
+            _spine_title = sec.get("spine_title") or _spine_code.replace("_", " ").title()
+            _qs = []
+            for it in (sec.get("items") or []):
+                if not isinstance(it, dict):
+                    continue
+                _qtype  = (it.get("question_type") or "").strip().upper()
+                _prompt = it.get("prompt") or ""
+                _tg = it.get("teacher_guide") or {}
+                if not isinstance(_tg, dict):
+                    _tg = {}
+                _suggested = _tg.get("suggested_answer", "") or ""
+                _exp_elems = _tg.get("expected_elements") or []
+                if not isinstance(_exp_elems, list):
+                    _exp_elems = []
+                _is_closed = _qtype in _ENG_CLOSED_TYPES
+                _expected = (
+                    _suggested if _is_closed
+                    else "\n".join(str(e) for e in _exp_elems)
+                )
+                _title = (
+                    (_qtype + ": " + (_prompt[:56] + "…" if len(_prompt) > 56 else _prompt))
+                    if _prompt else _qtype
+                )
+                _qs.append({
+                    "type":               _qtype,
+                    "question":           _prompt,
+                    "task":               "",
+                    "scaffold":           "",
+                    "format_of_output":   [],
+                    "task_instructions":  "",
+                    "options":            it.get("options") or [],
+                    "annotation":         "",
+                    "period_ref":         "",
+                    "title":              _title,
+                    "expected":           _expected,
+                    "cognitive_demand":   "",
+                    "guide":              {},
+                    "expected_elements":  _exp_elems,
+                    "look_for":           [],
+                    "what_each_option_reveals": {},
+                    "inclusivity":        "",
+                    "visual_stimulus":    it.get("visual_stimulus", "") or "",
+                    "correct_answer":     "",
+                    "implied_lo":         "",
+                    # ── English-specific question fields surfaced to renderer ──
+                    "is_english":           True,
+                    "suggested_answer":     _suggested,
+                    "source_section_id":    it.get("source_section_id", "") or "",
+                    "source_section_title": it.get("source_section_title", "") or "",
+                    "source_section_type":  it.get("source_section_type", "") or "",
+                    "source_spine_section": it.get("source_spine_section", "") or "",
+                    "source":               it.get("source", "") or "",
+                    "transcript_ref":       it.get("transcript_ref", "") or "",
+                    "verified":             bool(it.get("verified", False)),
+                })
+            _types_in_order = []
+            for q in _qs:
+                t = q["type"]
+                if t and t not in _types_in_order:
+                    _types_in_order.append(t)
+            _eng_sections.append({
+                "c_code":           _spine_title,
+                "weight_label":     "",
+                "competency_short": sec.get("note") or _ENGLISH_SPINE_DESC.get(_spine_code, ""),
+                "drawing_on":       "",
+                "question_types":   " · ".join(_types_in_order),
+                "questions":        _qs,
+                "is_science":       False,
+                "is_mathematics":   False,
+                "is_english":       True,
+                "spine_code":       _spine_code,
+                "stage_label":      None,
+            })
+        return _eng_sections
 
     # ── Fix 1 helper: short title ≤ 60 chars from type + first words of text ──
     def _build_title(qtype: str, qtext: str) -> str:
@@ -1601,17 +1930,19 @@ def _generate_pdf_bytes_alloc(
     pdf.cell(0, 6, f"Grade: {grade}   Subject: {subject}", ln=True)
     pdf.ln(3)
 
-    # Detect subject group: Science and Mathematics use effort_index, others use competency weight
+    # Detect subject group for column layout and footnote wording
     is_science = subject in ("Science", "Mathematics")
+    is_english = subject == "English"
+    uses_effort_index = is_science or is_english
 
     # Column layout — switches on subject group
     pt_headers = [f"{pt['mins']}min" for pt in sorted_pts]
-    if is_science:
-        # Single Effort Index column replaces the three W3/W2/W1 columns
+    if uses_effort_index:
+        # Science / Mathematics / English: single Effort Index column
         all_headers = ["#", "Chapter", "Effort Idx"] + pt_headers + ["Total", "Minutes"]
         fixed_w     = [8, 96, 24]
     else:
-        # Social Sciences / Languages: three competency-weight columns
+        # Social Sciences / other languages: three competency-weight columns
         all_headers = ["#", "Chapter", "W3", "W2", "W1"] + pt_headers + ["Total", "Minutes"]
         fixed_w     = [8, 68, 28, 28, 28]
     pt_w       = [16] * len(sorted_pts)
@@ -1634,7 +1965,7 @@ def _generate_pdf_bytes_alloc(
     col_sums = {pt["mins"]: 0 for pt in sorted_pts}
 
     for idx, (ch, alloc) in enumerate(zip(chs, allocs)):
-        if is_science:
+        if uses_effort_index:
             ei = ch.get("effort_index", 0)
             ei_str = str(ei) if (isinstance(ei, (int, float)) and ei > 0) else "-"
         else:
@@ -1649,7 +1980,7 @@ def _generate_pdf_bytes_alloc(
         if fill:
             pdf.set_fill_color(248, 247, 245)
 
-        if is_science:
+        if uses_effort_index:
             row_vals = [f"{ch['chapter_number']:02d}", ch.get("chapter_title", "")[:54], ei_str]
         else:
             row_vals = [
@@ -1690,7 +2021,14 @@ def _generate_pdf_bytes_alloc(
     pdf.set_text_color(100, 100, 100)
     h_g, m_g = divmod(grand_m, 60)
     time_str = f"{h_g}h {m_g}min" if h_g else f"{m_g} min"
-    if is_science:
+    if is_english:
+        footnote = (
+            "Periods allocated using the Largest Remainder Method (LRM) weighted by chapter effort index. "
+            "Effort index = (spine load x2) + (task density x1.5) + (writing demand x1.5) + (project load x1). "
+            "Each signal is a bounded qualitative tier (not a raw count), ensuring fair cross-chapter comparison.   "
+            f"Total: {grand_p} periods · {time_str}"
+        )
+    elif is_science:
         footnote = (
             "Periods allocated using the Largest Remainder Method (LRM) "
             f"weighted by chapter effort index.   "
@@ -3132,8 +3470,19 @@ if WATERMARK_SRC:
 
 # ── Data loading ──────────────────────────────────────────────────────────────
 
+def _mappings_cache_key(grade: str, subject: str) -> str:
+    """Return a string that changes whenever the mappings directory contents change."""
+    subj_f  = subject_to_folder(subject)
+    grade_f = grade_to_folder(grade)
+    mappings_dir = PROJECT_ROOT / f"mirror/chapters/{subj_f}/{grade_f}/mappings"
+    if not mappings_dir.exists():
+        return "empty"
+    files = sorted(mappings_dir.glob("ch_*_mapping.json"))
+    return f"{len(files)}:{':'.join(f.name for f in files)}"
+
+
 @st.cache_data
-def load_all_chapters(grade: str, subject: str) -> list[dict]:
+def load_all_chapters(grade: str, subject: str, _cache_key: str = "") -> list[dict]:
     """Load chapter mapping JSONs for the given grade and subject."""
     subj_f  = subject_to_folder(subject)
     grade_f = grade_to_folder(grade)
@@ -3153,7 +3502,11 @@ def load_all_chapters(grade: str, subject: str) -> list[dict]:
 
 
 if st.session_state.grade and st.session_state.subject:
-    chapters = load_all_chapters(st.session_state.grade, st.session_state.subject)
+    chapters = load_all_chapters(
+        st.session_state.grade,
+        st.session_state.subject,
+        _cache_key=_mappings_cache_key(st.session_state.grade, st.session_state.subject),
+    )
 else:
     chapters = []
 
@@ -3217,8 +3570,20 @@ if "teacher_ch_idx"    not in st.session_state: st.session_state.teacher_ch_idx 
 # Principal
 if "principal_period_blocks"  not in st.session_state: st.session_state.principal_period_blocks  = [{"id": 0, "duration": None, "count": None}]
 if "principal_next_block_id"  not in st.session_state: st.session_state.principal_next_block_id  = 1
-if "ch_selected"              not in st.session_state: st.session_state.ch_selected              = {ch["chapter_number"]: False for ch in chapters}
-if "ch_periods"               not in st.session_state: st.session_state.ch_periods               = {ch["chapter_number"]: 6    for ch in chapters}
+# Always sync ch_selected / ch_periods with the live chapter list so that
+# newly-added chapters (e.g. English after mappings are generated) appear
+# immediately without requiring a full session restart.
+if "ch_selected" not in st.session_state:
+    st.session_state.ch_selected = {ch["chapter_number"]: False for ch in chapters}
+else:
+    for ch in chapters:
+        st.session_state.ch_selected.setdefault(ch["chapter_number"], False)
+
+if "ch_periods" not in st.session_state:
+    st.session_state.ch_periods = {ch["chapter_number"]: 6 for ch in chapters}
+else:
+    for ch in chapters:
+        st.session_state.ch_periods.setdefault(ch["chapter_number"], 6)
 if "principal_generated"      not in st.session_state: st.session_state.principal_generated      = False
 if "ask_aruvi_open"           not in st.session_state: st.session_state.ask_aruvi_open           = False
 st.session_state.setdefault("ask_aruvi_session_id",   str(uuid.uuid4()))
@@ -4242,10 +4607,16 @@ elif st.session_state.role == "Allocate":
                 "chapter_title":     _ch.get("chapter_title", ""),
                 "chapter_weight":    _mapping.get("chapter_weight", 0),
                 "effort_index":      _mapping.get("effort_index", 0),
+                # Science signals
                 "conceptual_demand": _mapping.get("conceptual_demand", 0),
                 "activity_count":    _mapping.get("activity_count", 0),
                 "demo_count":        _mapping.get("demo_count", 0),
                 "exec_load":         _mapping.get("exec_load", 0),
+                # English signals
+                "spine_load":        _mapping.get("spine_load", 0),
+                "task_density":      _mapping.get("task_density", 0),
+                "writing_demand":    _mapping.get("writing_demand", 0),
+                "project_load":      _mapping.get("project_load", 0),
                 "primary":           _enriched_primary,
                 "incidental":        _mapping.get("incidental", []),
             })
@@ -4266,15 +4637,75 @@ elif st.session_state.role == "Allocate":
     except Exception:
         _logo_b64 = ""
 
+    # Load English spine data for the PDF report (textbook_section_names + competency codes)
+    _english_spine_data = {}
+    if st.session_state.subject == "English":
+        _stage = get_stage(st.session_state.grade)
+        _spine_path = PROJECT_ROOT / f"mirror/framework/english/{_stage}/spine_to_cg.json"
+        try:
+            _spine_raw = json.loads(_spine_path.read_text(encoding="utf-8"))
+            _english_spine_data = _spine_raw.get("spines", {})
+        except Exception:
+            _english_spine_data = {}
+
     _inject = (
         f"const CHAPTERS_DATA  = {json.dumps(_chapters_data, ensure_ascii=False)};\n"
         f"const PERIOD_TYPES   = {json.dumps(_sorted_pts)};\n"
         f"const GRADE_LABEL    = {json.dumps(st.session_state.grade    or '')};\n"
         f"const SUBJECT_LABEL  = {json.dumps(st.session_state.subject  or '')};\n"
         f"const IS_SCIENCE     = {json.dumps(st.session_state.subject in ('Science', 'Mathematics'))};\n"
+        f"const IS_ENGLISH     = {json.dumps(st.session_state.subject == 'English')};\n"
         f"const ARUVI_LOGO_B64 = {json.dumps(_logo_b64)};\n"
+        f"const ENGLISH_SPINE_DATA = {json.dumps(_english_spine_data, ensure_ascii=False)};\n"
     )
     _html = _html_tpl.replace("/* __CHAPTERS_DATA__ */", _inject)
+
+    # Inject the correct footnote text directly into the static HTML so it is
+    # correct on first render, before any JS runs.
+    _subject = st.session_state.subject or ""
+    if _subject == "English":
+        _fn1_text = (
+            '<div class="about-ei">'
+            '<h4>About the Effort Index</h4>'
+            '<p>The effort index is a number that tells you how much classroom '
+            'time a chapter typically needs compared to other chapters in the '
+            'subject. Chapters with a higher effort index get more periods; '
+            'chapters with a lower one get fewer. It is calculated from four '
+            'signals, each scored on a simple scale.</p>'
+            '<ul>'
+            '<li><b>Spine load</b> — How many types of classroom work '
+            '(reading, listening, speaking, writing, vocabulary, beyond-text) '
+            'appear on average per section. More types = higher score.</li>'
+            '<li><b>Task density</b> — How many tasks appear on average '
+            'within each block of work. More tasks per block = higher '
+            'score.</li>'
+            '<li><b>Writing demand</b> — Total exercise items under '
+            'Writing and Beyond-the-Text across the chapter. These take '
+            'longer to complete and assess, so a heavier count raises the '
+            'score.</li>'
+            '<li><b>Project load</b> — How many Beyond-the-Text sections '
+            'the chapter has. Each one adds to the score as these activities '
+            'need extra planning time.</li>'
+            '</ul>'
+            '<p class="about-ei-close">The four scores are combined with '
+            'fixed weights to give the effort index. Only relative values '
+            'matter — it is used to share your available periods across '
+            'chapters in proportion to their load.</p>'
+            '</div>'
+        )
+    elif _subject in ("Science", "Mathematics"):
+        _fn1_text = (
+            "Periods allocated proportionally to the chapter effort index, "
+            "an indicator of chapter complexity. "
+            "Click the Effort index number above to see the breakdown for each chapter."
+        )
+    else:
+        _fn1_text = (
+            "Periods allocated using the Largest Remainder Method (LRM), "
+            "weighted by chapter competency load (W3 × 3 +"
+            " W2 × 2 + W1 × 1)."
+        )
+    _html = _html.replace('<p id="fn1"></p>', f'<p id="fn1">{_fn1_text}</p>')
 
     components.html(_html, height=950, scrolling=True)
 

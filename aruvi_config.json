@@ -48,7 +48,19 @@
         "secondary": ["ix", "x"]
       }
     },
+    "english": {
+      "constitution_key": "constitution_english",
+      "framework_subdir":  "english",
+      "textbook_subdir":   "english",
+      "summary_format":    "json",
+      "stages": {
+        "preparatory": ["iii", "iv", "v"],
+        "middle":      ["vi", "vii", "viii"],
+        "secondary":   ["ix", "x"]
+      }
+    },
     "languages": {
+      "_comment": "Placeholder for future Hindi / regional language support. Not wired into the app yet — use the 'english' entry above for the first language.",
       "constitution_key": "constitution_languages",
       "framework_subdir":  "languages",
       "textbook_subdir":   "languages",

@@ -464,7 +464,7 @@
   .ei-bar-breakdown {
     margin-top: 8px;
     padding: 6px 0 4px 0;
-    min-width: 260px;
+    min-width: 320px;
   }
 
   /* One signal row */
@@ -475,14 +475,16 @@
     margin-bottom: 4px;
   }
   .ei-bar-lbl {
-    width: 110px;
-    flex-shrink: 0;
+    min-width: 110px;
+    max-width: 200px;
+    flex: 0 1 auto;
     font-size: 11px;
     color: #6b7280;
     white-space: nowrap;
   }
   .ei-bar-track {
     flex: 1;
+    min-width: 30px;
     height: 6px;
     border-radius: 3px;
     background: #e5e7eb;
@@ -547,6 +549,44 @@
     font-size: 0.66rem;
     color: #6b7280;
     line-height: 1.75;
+  }
+
+  /* English-only "About the Effort Index" block — sits below the alloc table */
+  .about-ei {
+    margin: 14px 0 6px 0;
+    padding: 12px 14px 10px 14px;
+    background: #f8fbff;
+    border-left: 3px solid #93bce8;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: #1a1917;
+    line-height: 1.55;
+  }
+  .about-ei h4 {
+    margin: 0 0 6px 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #1a4480;
+    letter-spacing: 0.01em;
+  }
+  .about-ei p {
+    margin: 0 0 8px 0;
+  }
+  .about-ei ul {
+    margin: 0 0 8px 0;
+    padding-left: 18px;
+  }
+  .about-ei li {
+    margin-bottom: 4px;
+  }
+  .about-ei li b {
+    font-weight: 700;
+    color: #1a4480;
+  }
+  .about-ei p.about-ei-close {
+    margin: 6px 0 0 0;
+    font-style: italic;
+    color: #4b5563;
   }
 
   /* ═══════════════════════════════════════════
@@ -623,8 +663,8 @@
 <!-- ═══ SECTION: REPORT ═════════════════════════════════════════════════════ -->
 <div id="section-report" style="display:none">
   <div id="root"></div>
+  <div id="eng-ei-about"></div>
   <div class="footnotes">
-    <p id="fn1">Periods allocated using the Largest Remainder Method (LRM), weighted by chapter competency load (W3&nbsp;&times;&nbsp;3&nbsp;+&nbsp;W2&nbsp;&times;&nbsp;2&nbsp;+&nbsp;W1&nbsp;&times;&nbsp;1).</p>
     <p id="fn2"></p>
   </div>
   <div class="actions">
@@ -648,8 +688,8 @@ function _lrm(rawFloats, total) {
 }
 
 function _chapterWeight(cd) {
-  /* Science / Mathematics: use effort_index as the allocation driver */
-  if (IS_SCIENCE) return (typeof cd.effort_index === 'number' && cd.effort_index > 0) ? cd.effort_index : 0;
+  /* Science / Mathematics / English: use effort_index as the allocation driver */
+  if (IS_SCIENCE || IS_ENGLISH) return (typeof cd.effort_index === 'number' && cd.effort_index > 0) ? cd.effort_index : 0;
   return cd.chapter_weight || 0;
 }
 
@@ -763,6 +803,33 @@ function closeModal() {
 }
 
 /* ── generate report ────────────────────────────────────────────────────── */
+function setFootnote() {
+  /* English: inject "About the Effort Index" below the table into #eng-ei-about */
+  var aboutEl = document.getElementById('eng-ei-about');
+  if (IS_ENGLISH && aboutEl) {
+    aboutEl.innerHTML =
+      '<div class="about-ei">'
+      + '<h4>About the Effort Index</h4>'
+      + '<p>The effort index is a number that tells you how much classroom time a chapter typically needs compared to other chapters in the subject. Chapters with a higher effort index get more periods; chapters with a lower one get fewer. It is calculated from four signals, each scored on a simple scale.</p>'
+      + '<ul>'
+      + '<li><b>Spine load</b> \u2014 How many types of classroom work (reading, listening, speaking, writing, vocabulary, beyond-text) appear on average per section. More types = higher score.</li>'
+      + '<li><b>Task density</b> \u2014 How many tasks appear on average within each block of work. More tasks per block = higher score.</li>'
+      + '<li><b>Writing demand</b> \u2014 Total exercise items under Writing and Beyond-the-Text across the chapter. These take longer to complete and assess, so a heavier count raises the score.</li>'
+      + '<li><b>Project load</b> \u2014 How many Beyond-the-Text sections the chapter has. Each one adds to the score as these activities need extra planning time.</li>'
+      + '</ul>'
+      + '<p class="about-ei-close">The four scores are combined with fixed weights to give the effort index. Only relative values matter \u2014 it is used to share your available periods across chapters in proportion to their load.</p>'
+      + '</div>';
+    return;
+  }
+  /* Science / Mathematics: short note in fn2 area \u2014 no dedicated fn1 any more */
+  var fn2El = document.getElementById('fn2');
+  if (IS_SCIENCE && fn2El) {
+    fn2El.insertAdjacentHTML('beforebegin',
+      '<p id="fn1">Periods allocated proportionally to the chapter effort index, an indicator of chapter complexity. '
+      + 'Click the Effort index number above to see the breakdown for each chapter.</p>');
+  }
+}
+
 function generateReport() {
   if (selected.size === 0) {
     openModal('Please select at least one chapter before generating.');
@@ -812,31 +879,49 @@ function generateReport() {
     sortedPts.forEach(function (pt) { colSums[pt.mins] += (alloc[String(pt.mins)] || 0); });
 
     var rowBg = idx % 2 === 0 ? '#f9f8f6' : '#ffffff';
-    bodyHTML += '<tr' + (IS_SCIENCE ? ' class="sci-row"' : '') + ' style="background:' + rowBg + '">';
+    bodyHTML += '<tr' + ((IS_SCIENCE || IS_ENGLISH) ? ' class="sci-row"' : '') + ' style="background:' + rowBg + '">';
     bodyHTML += '<td>' + pad2(cd.chapter_number) + '</td>';
     /* ── second + third columns: Chapter name (+ optional breakdown) and EI/Weight ── */
-    if (IS_SCIENCE) {
-      /* ── Science / Mathematics: Option A — pill in EI cell, bar breakdown inside chapter name cell ── */
+    if (IS_SCIENCE || IS_ENGLISH) {
+      /* ── Science / Mathematics / English: pill in EI cell, bar breakdown inside chapter name cell ── */
       var ei = (typeof cd.effort_index === 'number' && cd.effort_index > 0) ? cd.effort_index : 0;
-      var cdVal  = cd.conceptual_demand || 0;
-      var acVal  = cd.activity_count    || 0;
-      var dcVal  = cd.demo_count        || 0;
-      var elVal  = cd.exec_load         || 0;
-      var cdCont = parseFloat((cdVal * 2).toFixed(1));
-      var acCont = parseFloat((acVal * 1).toFixed(1));
-      var dcCont = parseFloat((dcVal * 1.5).toFixed(1));
-      var elCont = parseFloat((elVal * 2).toFixed(1));
 
       /* chapter name cell — holds the title + hidden bar breakdown */
       bodyHTML += '<td class="left wrap">';
       bodyHTML += '<div>' + esc(cd.chapter_title) + '</div>';
       if (ei) {
-        var _signals = [
-          { label: 'Conceptual demand', val: cdVal, mult: '\u00d72',   cont: cdCont },
-          { label: 'Student activities', val: acVal, mult: '\u00d71',   cont: acCont },
-          { label: 'Teacher demos',      val: dcVal, mult: '\u00d71.5', cont: dcCont },
-          { label: 'Exercise load',      val: elVal, mult: '\u00d72',   cont: elCont }
-        ];
+        var _signals;
+        if (IS_ENGLISH) {
+          var slVal  = cd.spine_load     || 0;
+          var tdVal  = cd.task_density   || 0;
+          var wdVal  = cd.writing_demand || 0;
+          var plVal  = cd.project_load   || 0;
+          var slCont = parseFloat((slVal * 2).toFixed(1));
+          var tdCont = parseFloat((tdVal * 1.5).toFixed(1));
+          var wdCont = parseFloat((wdVal * 1.5).toFixed(1));
+          var plCont = parseFloat((plVal * 1).toFixed(1));
+          _signals = [
+            { label: 'Spine load',     val: slVal, mult: '\u00d72',   cont: slCont },
+            { label: 'Task density',   val: tdVal, mult: '\u00d71.5', cont: tdCont },
+            { label: 'Writing demand', val: wdVal, mult: '\u00d71.5', cont: wdCont },
+            { label: 'Project load',   val: plVal, mult: '\u00d71',   cont: plCont }
+          ];
+        } else {
+          var cdVal  = cd.conceptual_demand || 0;
+          var acVal  = cd.activity_count    || 0;
+          var dcVal  = cd.demo_count        || 0;
+          var elVal  = cd.exec_load         || 0;
+          var cdCont = parseFloat((cdVal * 2).toFixed(1));
+          var acCont = parseFloat((acVal * 1).toFixed(1));
+          var dcCont = parseFloat((dcVal * 1.5).toFixed(1));
+          var elCont = parseFloat((elVal * 2).toFixed(1));
+          _signals = [
+            { label: 'Conceptual demand', val: cdVal, mult: '\u00d72',   cont: cdCont },
+            { label: 'Student activities', val: acVal, mult: '\u00d71',   cont: acCont },
+            { label: 'Teacher demos',      val: dcVal, mult: '\u00d71.5', cont: dcCont },
+            { label: 'Exercise load',      val: elVal, mult: '\u00d72',   cont: elCont }
+          ];
+        }
         var _bdHTML = '';
         _signals.forEach(function(sig) {
           var pct = Math.min(sig.cont / 8 * 100, 100);
@@ -871,9 +956,9 @@ function generateReport() {
           + '</button>'
           + '</td>';
       }
-      /* No competency drawer for Science/Mathematics chapters */
+      /* No competency drawer for Science/Mathematics/English chapters */
     } else {
-      /* ── Social Sciences / Languages: weight button opens competency drawer ── */
+      /* ── Social Sciences / other languages: weight button opens competency drawer ── */
       bodyHTML += '<td class="left wrap">' + esc(cd.chapter_title) + '</td>';
       bodyHTML += '<td>'
         + '<button class="wt-btn" onclick="toggleDrawer(' + cd.chapter_number + ',this)">'
@@ -888,8 +973,8 @@ function generateReport() {
     bodyHTML += '<td>' + minutes + '</td>';
     bodyHTML += '</tr>';
 
-    /* ── competency drawer row (Social Sciences / Languages only) ── */
-    if (!IS_SCIENCE) {
+    /* ── competency drawer row (Social Sciences / other languages only) ── */
+    if (!IS_SCIENCE && !IS_ENGLISH) {
       var drawerWt = 0, cmpRowsHTML = '';
       primary.forEach(function (comp, ci) {
         var w = comp.weight || 0;
@@ -958,11 +1043,11 @@ function generateReport() {
   var headHTML = '<thead><tr>';
   headHTML += '<th>#</th>';
   headHTML += '<th class="left">Chapter</th>';
-  if (IS_SCIENCE) {
-    /* Science / Mathematics: single Effort Index column replaces Weight */
+  if (IS_SCIENCE || IS_ENGLISH) {
+    /* Science / Mathematics / English: single Effort Index column replaces Weight */
     headHTML += '<th class="ei-th">Effort Index<span class="ei-hint">(click value to expand)</span></th>';
   } else {
-    /* Social Sciences / Languages: competency-load weight column */
+    /* Social Sciences / other languages: competency-load weight column */
     headHTML += '<th>Weight</th>';
   }
   sortedPts.forEach(function (pt) { headHTML += '<th>' + pt.mins + '-min</th>'; });
@@ -989,13 +1074,7 @@ function generateReport() {
   }
 
   /* ── footnote #fn1: wording depends on subject group ── */
-  var fn1El = document.getElementById('fn1');
-  if (fn1El) {
-    fn1El.innerHTML = IS_SCIENCE
-      ? 'Periods allocation is proportional to the chapter effort index, an indicator of the complexity of the chapter being taught. Click the Effort index number above to access the details of Effort index for each chapter'
-      : 'Periods allocated using the Largest Remainder Method (LRM), weighted by chapter competency load'
-        + ' (W3\u00a0\u00d7\u00a03\u00a0+\u00a0W2\u00a0\u00d7\u00a02\u00a0+\u00a0W1\u00a0\u00d7\u00a01).';
-  }
+  setFootnote();
 
   /* ── switch sections ── */
   document.getElementById('section-select').style.display = 'none';
@@ -1177,8 +1256,8 @@ function _downloadPDF_legacy_unused() {
     var c = selChapters.reduce(function (s, cd) { return s + ((allocMap[cd.chapter_number] || {})[String(pt.mins)] || 0); }, 0);
     return c + '\u00d7' + pt.mins + 'min';
   }).join(' \u00b7 ');
-  var summaryMetricLbl = IS_SCIENCE ? 'Sum of effort idx' : 'Total weight';
-  var summaryMetricVal = IS_SCIENCE
+  var summaryMetricLbl = (IS_SCIENCE || IS_ENGLISH) ? 'Sum of effort idx' : 'Total weight';
+  var summaryMetricVal = (IS_SCIENCE || IS_ENGLISH)
     ? String(selChapters.reduce(function (s, cd) { return s + (cd.effort_index || 0); }, 0))
     : String(grandWeight);
   /* Change 2.6: exclude "Sum of effort idx" from summary strip for Science */
@@ -1188,7 +1267,7 @@ function _downloadPDF_legacy_unused() {
     { lbl: 'Minutes',      val: String(grandMinutes) },
     { lbl: 'Period types', val: ptBreak },
   ];
-  if (!IS_SCIENCE) {
+  if (!IS_SCIENCE && !IS_ENGLISH) {
     stripItems.push({ lbl: summaryMetricLbl, val: summaryMetricVal });
   }
   var sx = mL;
@@ -1205,15 +1284,102 @@ function _downloadPDF_legacy_unused() {
   y += 10;
   rule(y, 0.18, 180); y += 4;
 
+  /* ── English: textbook sections table (spine → section names) ── */
+  if (IS_ENGLISH && typeof ENGLISH_SPINE_DATA === 'object' && ENGLISH_SPINE_DATA) {
+    var spineKeys = Object.keys(ENGLISH_SPINE_DATA);
+    if (spineKeys.length > 0) {
+      /* Section heading */
+      if (y + 30 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(26, 25, 23);
+      doc.text('Textbook Sections', mL, y); doc.setCharSpace(0);
+      y += 4;
+      rule(y, 0.18, 180); y += 3;
+
+      /* Column widths: Label | Section names */
+      var spCW = { label: 44, sections: pageW - mL - mR - 44 };
+
+      /* Column widths for spine table: Spine label | Section names | Code | Competency */
+      var spColCW = { label: 32, sections: 38, code: 16, comp: pageW - mL - mR - 86 };
+
+      /* Header row */
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(5.5); doc.setTextColor(107, 114, 128);
+      doc.text('Spine', mL + CP, y); doc.setCharSpace(0);
+      doc.text('Section Names', mL + spColCW.label + CP, y); doc.setCharSpace(0);
+      doc.text('Code', mL + spColCW.label + spColCW.sections + CP, y); doc.setCharSpace(0);
+      doc.text('Competency', mL + spColCW.label + spColCW.sections + spColCW.code + CP, y); doc.setCharSpace(0);
+      y += 2; rule(y, 0.1, 210); y += 3;
+
+      /* Build a lookup: c_code -> description from CHAPTERS_DATA primary entries */
+      var _spineCompLookup = {};
+      CHAPTERS_DATA.forEach(function(cd) {
+        (cd.primary || []).forEach(function(comp) {
+          if (comp.c_code && comp.description && !_spineCompLookup[comp.c_code]) {
+            _spineCompLookup[comp.c_code] = comp.description;
+          }
+        });
+      });
+
+      /* Data rows: one sub-row per competency code under each spine */
+      spineKeys.forEach(function(key) {
+        var spine        = ENGLISH_SPINE_DATA[key];
+        var labelText    = spine.label || key;
+        var sectionsText = (spine.textbook_section_names || []).join(', ');
+        var codes        = spine.competency_codes || [];
+
+        /* measure label and sections across all sub-rows */
+        doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5);
+        var labelLines = doc.splitTextToSize(labelText, spColCW.label - CP * 2);
+        doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5);
+        var sectLines  = doc.splitTextToSize(sectionsText, spColCW.sections - CP * 2);
+
+        /* render one sub-row per c_code, spanning label+sections only on first row */
+        codes.forEach(function(code, ci) {
+          var descText  = cleanText(_spineCompLookup[code] || '');
+          doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5);
+          var compLines = doc.splitTextToSize(descText, spColCW.comp - CP * 2);
+          var leftH  = ci === 0 ? Math.max(labelLines.length, sectLines.length) * 3.2 + CP : 0;
+          var rowH   = Math.max(6, Math.max(compLines.length * 3.2 + CP, leftH));
+
+          if (y + rowH > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
+
+          /* Spine label + section names — only on first sub-row */
+          if (ci === 0) {
+            doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
+            doc.text(labelLines, mL + CP, y + CP); doc.setCharSpace(0);
+            doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(55, 55, 55);
+            doc.text(sectLines, mL + spColCW.label + CP, y + CP); doc.setCharSpace(0);
+          }
+
+          /* Code */
+          var codeCx = mL + spColCW.label + spColCW.sections;
+          doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
+          doc.text(code, codeCx + CP, y + CP); doc.setCharSpace(0);
+
+          /* Competency text */
+          doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
+          doc.text(compLines, codeCx + spColCW.code + CP, y + CP); doc.setCharSpace(0);
+
+          y += Math.max(6, compLines.length * 3.2 + CP);
+          rule(y, 0.1, 220);
+        });
+
+        /* heavier rule between spines */
+        rule(y, 0.3, 180);
+        y += 3;
+      });
+      y += 4;
+    }
+  }
+
   /* ── Science: explanatory paragraph about effort index ── */
   if (IS_SCIENCE) {
-    doc.setFont('helvetica', 'italic'); doc.setFontSize(8); doc.setTextColor(75, 75, 75); /* Change 2.2: 1pt larger, 1 notch darker */
+    doc.setFont('helvetica', 'italic'); doc.setFontSize(8); doc.setTextColor(75, 75, 75);
     var _expText = "About effort index: Each chapter's effort index is a composite of four signals "
-      + "read from the chapter content \u2014 conceptual demand of the exercise (\u00d72), "
-      + "number of student-executed activities (\u00d71), number of teacher demonstrations "
-      + "(\u00d71.5), and exercise execution load (\u00d72). Higher effort index = more "
-      + "classroom time needed. Periods are allocated proportionally across chapters using "
-      + "the Largest Remainder Method (LRM).";
+        + "read from the chapter content \u2014 conceptual demand of the exercise (\u00d72), "
+        + "number of student-executed activities (\u00d71), number of teacher demonstrations "
+        + "(\u00d71.5), and exercise execution load (\u00d72). Higher effort index = more "
+        + "classroom time needed. Periods are allocated proportionally across chapters using "
+        + "the Largest Remainder Method (LRM).";
     var _expLines = doc.splitTextToSize(_expText, pageW - mL - mR);
     doc.text(_expLines, mL, y);
     doc.setCharSpace(0);
@@ -1243,9 +1409,9 @@ function _downloadPDF_legacy_unused() {
 
     /* Fix 1: compute pill and weight label — track allocFS so draw matches measurement */
     /* Science: no weight label; SS: show Weight X to the right of the pill */
-    var wlText  = IS_SCIENCE ? '' : 'Weight\u00a0' + wt;
+    var wlText  = (IS_SCIENCE || IS_ENGLISH) ? '' : 'Weight\u00a0' + wt;
     doc.setFont('helvetica', 'bold'); doc.setFontSize(7);
-    var wlWidth = IS_SCIENCE ? 0 : doc.getTextWidth(wlText);
+    var wlWidth = (IS_SCIENCE || IS_ENGLISH) ? 0 : doc.getTextWidth(wlText);
 
     /* measure pill text at default 6.5pt */
     var allocFS   = 6.5;
@@ -1258,7 +1424,7 @@ function _downloadPDF_legacy_unused() {
     var chTitleW = doc.getTextWidth('Ch\u00a0' + pad2(cd.chapter_number) + '\u2002' + cleanText(cd.chapter_title));
 
     /* pill left edge: [pill][4mm gap][weightLabel] ends flush at pageW-mR */
-    var pillGap = IS_SCIENCE ? 0 : (wlWidth + 4);
+    var pillGap = (IS_SCIENCE || IS_ENGLISH) ? 0 : (wlWidth + 4);
     var pillX = pageW - mR - pillGap - pillW;
     if (pillX < mL + chTitleW + 4) {
       /* title would overlap pill — shrink alloc string to 7pt and remeasure */
@@ -1288,8 +1454,8 @@ function _downloadPDF_legacy_unused() {
     doc.text(allocStr, pillX + pillW - CP, y, { align: 'right' });
     doc.setCharSpace(0);
 
-    /* draw weight label (Social Sciences only) */
-    if (!IS_SCIENCE) {
+    /* draw weight label (Social Sciences / other languages only) */
+    if (!IS_SCIENCE && !IS_ENGLISH) {
       doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(100, 100, 100);
       doc.setCharSpace(0);
       doc.text(wlText, pillX + pillW + 4, y);
@@ -1313,7 +1479,6 @@ function _downloadPDF_legacy_unused() {
         if (i === 0) {
           doc.text(h, sciHx + sciHWidths[i] - CP, y, { align: 'right' });
         } else if (i === 2 || i === 3) {
-          /* Change 2.1: Competency (i=2) and Justification (i=3) headers centre-aligned */
           doc.text(h, sciHx + sciHWidths[i] / 2, y, { align: 'center' });
         } else {
           doc.text(h, sciHx + CP, y);
@@ -1327,8 +1492,6 @@ function _downloadPDF_legacy_unused() {
       primary.forEach(function (comp, ci) {
         var descText  = cleanText(comp.description || comp.cg || '');
         var justText  = cleanText(comp.justification || '');
-        /* Fix: set each column's exact render font before splitTextToSize so line-break
-           metrics match render metrics — prevents spacing drift on any line of any row */
         doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5);
         var descLines = doc.splitTextToSize(descText, sciCW.desc - CP * 2);
         doc.setFont('helvetica', 'italic'); doc.setFontSize(7);
@@ -1358,7 +1521,7 @@ function _downloadPDF_legacy_unused() {
         doc.setCharSpace(0);
         sciCx += sciCW.desc;
 
-        /* Justification col — identical font state to Competency col */
+        /* Justification col */
         doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
         doc.text(justLines, sciCx + CP, y + CP, { lineHeightFactor: 1.3 });
         doc.setCharSpace(0);
@@ -1367,17 +1530,14 @@ function _downloadPDF_legacy_unused() {
         rule(y, 0.1, 220);
       });
 
-      /* effort index summary line — Change 2.4: whole row 1pt larger + 1 notch darker */
-      /* Change 2.5: "Effort index: N" alone rendered bold, 2pt larger, 2 notches darker */
+      /* effort index summary line */
       var ei = cd.effort_index || 0;
       var eiPart1 = ei ? ('Effort index: ' + ei) : 'Effort index: not yet computed';
-      /* Change 2.5: bold, 9.5pt (row 7.5 + 2), colour (45,45,45) — 2 notches darker than baseline */
       doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5); doc.setTextColor(45, 45, 45);
       var _eiPart1Width = doc.getTextWidth(eiPart1);
       doc.text(eiPart1, mL, y + 3);
       doc.setCharSpace(0);
       if (ei) {
-        /* Change 2.4: rest of row — normal, 7.5pt (6.5+1), colour (95,95,95) — 1 notch darker */
         var eiSuffix = '  Conceptual demand: ' + (cd.conceptual_demand || 0)
             + '  Activities: ' + (cd.activity_count || 0)
             + '  Demos: '      + (cd.demo_count    || 0)
@@ -1388,6 +1548,11 @@ function _downloadPDF_legacy_unused() {
       }
       y += 7;
 
+      /* thin separator between chapters */
+      rule(y, 0.18, 220); y += 4;
+
+    } else if (IS_ENGLISH) {
+      /* ── English: no competency table per chapter — covered in the spine section above ── */
       /* thin separator between chapters */
       rule(y, 0.18, 220); y += 4;
 
@@ -1465,6 +1630,105 @@ function _downloadPDF_legacy_unused() {
     }
   });
 
+  /* ── English: chapter-wise effort index summary table ── */
+  if (IS_ENGLISH) {
+    if (y + 30 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
+
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(26, 25, 23);
+    doc.text('Chapter-wise Effort Index', mL, y); doc.setCharSpace(0);
+    y += 4;
+    rule(y, 0.18, 180); y += 3;
+
+    /* Column widths: #(8) | Chapter name(70) | Spine load(20) | Task density(20) | Writing demand(22) | Project load(20) | Effort index(18) */
+    var eiTblCW = { seq: 8, name: 66, spine: 22, task: 22, writing: 22, proj: 22, ei: 20 };
+
+    /* Header row */
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(5.5); doc.setTextColor(107, 114, 128);
+    var eiHdrCols = [
+      { label: '#',              w: eiTblCW.seq,     align: 'right'  },
+      { label: 'Name of Chapter',w: eiTblCW.name,    align: 'left'   },
+      { label: 'Spine Load',     w: eiTblCW.spine,   align: 'center' },
+      { label: 'Task Density',   w: eiTblCW.task,    align: 'center' },
+      { label: 'Writing Demand', w: eiTblCW.writing, align: 'center' },
+      { label: 'Project Load',   w: eiTblCW.proj,    align: 'center' },
+      { label: 'Effort Index',   w: eiTblCW.ei,      align: 'center' },
+    ];
+    var eiHx = mL;
+    eiHdrCols.forEach(function(col) {
+      doc.setCharSpace(0);
+      if (col.align === 'right') {
+        doc.text(col.label, eiHx + col.w - CP, y, { align: 'right' });
+      } else if (col.align === 'center') {
+        doc.text(col.label, eiHx + col.w / 2, y, { align: 'center' });
+      } else {
+        doc.text(col.label, eiHx + CP, y);
+      }
+      doc.setCharSpace(0);
+      eiHx += col.w;
+    });
+    y += 2; rule(y, 0.1, 210); y += 3;
+
+    /* Data rows */
+    selChapters.forEach(function(cd, idx) {
+      var rowH = 7;
+      if (y + rowH > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
+
+      var rowBg = (idx % 2 === 0);
+      if (rowBg) {
+        doc.setFillColor(248, 247, 245);
+        doc.rect(mL, y, eiTblCW.seq + eiTblCW.name + eiTblCW.spine + eiTblCW.task + eiTblCW.writing + eiTblCW.proj + eiTblCW.ei, rowH, 'F');
+      }
+
+      var midY = y + rowH / 2;
+      var cx = mL;
+
+      /* # */
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6); doc.setTextColor(107, 114, 128);
+      doc.text(String(cd.chapter_number), cx + eiTblCW.seq - CP, midY, { align: 'right', baseline: 'middle' });
+      doc.setCharSpace(0);
+      cx += eiTblCW.seq;
+
+      /* Chapter name */
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
+      var nameText = cleanText(cd.chapter_title || '');
+      var nameLines = doc.splitTextToSize(nameText, eiTblCW.name - CP * 2);
+      doc.text(nameLines[0], cx + CP, midY, { baseline: 'middle' });
+      doc.setCharSpace(0);
+      cx += eiTblCW.name;
+
+      /* Spine load */
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
+      doc.text(String(cd.spine_load || 0), cx + eiTblCW.spine / 2, midY, { align: 'center', baseline: 'middle' });
+      doc.setCharSpace(0);
+      cx += eiTblCW.spine;
+
+      /* Task density */
+      doc.text(String(cd.task_density || 0), cx + eiTblCW.task / 2, midY, { align: 'center', baseline: 'middle' });
+      doc.setCharSpace(0);
+      cx += eiTblCW.task;
+
+      /* Writing demand */
+      doc.text(String(cd.writing_demand || 0), cx + eiTblCW.writing / 2, midY, { align: 'center', baseline: 'middle' });
+      doc.setCharSpace(0);
+      cx += eiTblCW.writing;
+
+      /* Project load */
+      doc.text(String(cd.project_load || 0), cx + eiTblCW.proj / 2, midY, { align: 'center', baseline: 'middle' });
+      doc.setCharSpace(0);
+      cx += eiTblCW.proj;
+
+      /* Effort index — bold */
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
+      var eiVal = (typeof cd.effort_index === 'number' && cd.effort_index > 0) ? String(cd.effort_index) : '-';
+      doc.text(eiVal, cx + eiTblCW.ei / 2, midY, { align: 'center', baseline: 'middle' });
+      doc.setCharSpace(0);
+
+      y += rowH;
+      rule(y, 0.1, 220);
+    });
+    y += 6;
+  }
+
   /* Change 2.7: footnote text rendering removed — both footnotes deleted from last page */
 
   /* ── add footers to all pages ── */
@@ -1503,6 +1767,10 @@ function toggleDrawer(chNum, btn) {
 }
 
 /* ── initialise ─────────────────────────────────────────────────────────── */
+renderChapterGrid();
+
+/* ── init on load ── */
+setFootnote();
 renderChapterGrid();
 </script>
 

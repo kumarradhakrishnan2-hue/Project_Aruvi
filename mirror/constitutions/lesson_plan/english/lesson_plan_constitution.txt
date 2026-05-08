@@ -7,9 +7,10 @@ DESIGN PRINCIPLE
 
 The chapter has a TWO-AXIS structure:
 
-  Outer axis  →  main_section (a poem, prose, narrative, dialogue — typically
-                 1 to 3 per chapter; preparatory often has 1, secondary often
-                 has 2–3 including a closing poem under "Reading for
+  Outer axis  →  main_section (a poem, prose, narrative, dialogue, or
+                 informational piece — typically 1 to 3 per chapter;
+                 preparatory often has 1, secondary often has 2–3
+                 including a closing poem under "Reading for
                  Appreciation").
 
   Inner axis  →  6-spine progression (Reading → Listening → Speaking →
@@ -21,10 +22,9 @@ walks the spines that the section actually contains (a poem appendix may
 only carry Reading + Vocabulary, not all six). Period bin-packing is
 applied across (section × spine) cells, NOT across spines alone.
 
-The 6-spine itself carries NCF Languages compliance — competency reporting
-is read from the static `spine_to_cg.json` for the chapter's stage.
-Per-chapter competency mapping is NOT performed and MUST NOT be invoked
-by the LP generator.
+The 6-spine itself carries NCF Languages compliance. Per-chapter
+competency mapping is NOT performed and MUST NOT be invoked by the
+LP generator. C-codes do not appear anywhere in the LP JSON.
 
 
 ================================================================================
@@ -39,19 +39,18 @@ INPUTS
      - `poem_text` and
        `poem_appreciation_summary` (for poem sections)
    and `spines{}` where each spine entry has section_name,
-   tasks_verbatim[], question_bank[]).
+   tasks_verbatim[], question_bank[]. Listening cells additionally
+   carry `transcript_ref` (all stages) and `transcript_text`
+   (secondary only — inlined from the appendix.pdf since IX
+   transcripts live in a separate file)).
    The text-summary fields are the source of truth the LP reads when
    composing teacher_notes and phase descriptions.
 
-2. Stage-appropriate `spine_to_cg.json` from
-   `mirror/framework/english/{stage}/` — supplies the static competency
-   reporting layer.
-
-3. Stage-appropriate NCF Languages pedagogy text from
+2. Stage-appropriate NCF Languages pedagogy text from
    `mirror/framework/english/{stage}/pedagogy_{stage}_english.txt` —
    supplies the permitted teaching methods per spine.
 
-4. Period schedule: { period_duration_minutes, period_count } where
+3. Period schedule: { period_duration_minutes, period_count } where
    period_count = B is supplied at generation time (allocation tab
    suggests, user may override).
 
@@ -143,8 +142,12 @@ period (e.g., "planning + drafting" vs "revising + sharing").
 RULE 4 | PEDAGOGICAL METHOD
 ================================================================================
 
-One method per period. Methods are drawn STRICTLY from the NCF
-Languages pedagogy strategies for the chapter's stage, as recorded in
+One method per spine taught. When a period teaches a single spine,
+exactly one method is named. When a period merges two or more spines
+(per Rule 2 light-cell merge), each spine listed in `spines_taught`
+gets its own method drawn STRICTLY from that spine's permitted list
+for the chapter's stage. Methods are taken from the NCF Languages
+pedagogy strategies recorded in
 `mirror/framework/english/{stage}/pedagogy_{stage}_english.txt` and
 the corresponding CG document. The generator MUST NOT invent methods
 not present in those source documents.
@@ -214,10 +217,12 @@ and middle methods):
   Beyond-text        → multilingual-comparison · projects-on-Indian-
                        languages · literature-festival · author-of-the-day
 
-Diversity: same method MUST NOT appear in more than two consecutive
-periods. Each spine present in the chapter SHOULD see at least one
-period whose method is drawn from that spine's permitted list for the
-current stage.
+Diversity: no spine's method MAY repeat across more than two
+consecutive periods (evaluated per spine — a `reading` method
+appearing in three reading-bearing periods in a row is forbidden,
+even if other spines vary). Each spine present in the chapter
+SHOULD see at least one period whose method is drawn from that
+spine's permitted list for the current stage.
 
 
 ================================================================================
@@ -241,20 +246,15 @@ Appears once at the top of the LP document:
 - main_sections inventory (id, title, type) — gives the teacher the
   outer-axis at a glance
 - periods_allocated (= B)
-- competency_reporting block:
-    by_spine: { reading: [c-codes], listening: [c-codes], ... }
-  copied verbatim from `spine_to_cg.json` for the chapter's stage.
-  This is informational — LP body MUST NOT reference C-codes.
 
 
 ================================================================================
 RULE 7 | COMPETENCIES DO NOT DRIVE LP
 ================================================================================
 
-Periods are not required to cover specific C-codes. LP body text MUST
-NOT reference C-codes. C-codes appear only in the header
-`competency_reporting` block, never in periods, phases, or
-teacher_notes.
+Periods are not required to cover specific C-codes. C-codes MUST
+NOT appear anywhere in the LP JSON — not in the header, not in
+periods, phases, teacher_notes, or coverage_handoff.
 
 
 ================================================================================
@@ -295,12 +295,17 @@ each entry records:
 
   - `section_id`         — main_section id (A, B, C, ...)
   - `section_title`      — copied verbatim from summary
-  - `section_type`       — prose | poem | narrative | dialogue
-  - `tasks_anchored`     — array of `(spine, task_index)` keys taken
-                           from periods that taught this spine in this
-                           section. Used by the assessment generator
-                           to lift items from the chapter's question
-                           bank.
+  - `section_type`       — prose | poem | narrative | dialogue | informational
+  - `tasks_anchored`     — array of `(spine, task_index)` keys
+                           recording which `tasks_verbatim[]` entries
+                           were taught in periods anchored to this
+                           (section, spine) cell. Informational only:
+                           lets a coverage report show "what was
+                           covered in class". The assessment generator
+                           does NOT consume this — it iterates summary's
+                           (section × spine) cells directly and lifts
+                           from `question_bank[]`, which is a separate
+                           array.
 
 If a spine has no contributions across any section, emit the spine
 key with an empty `section_contributions: []` array. The assessment
@@ -324,19 +329,8 @@ LP JSON SCHEMA
   "main_sections_inventory": [
     { "section_id":   string,         // "A", "B", "C"
       "title":        string,
-      "type":         string }        // "prose" | "poem" | "narrative" | "dialogue"
+      "type":         string }        // "prose" | "poem" | "narrative" | "dialogue" | "informational"
   ],
-
-  "competency_reporting": {
-    "by_spine": {
-      "reading":            [string], // c-codes from spine_to_cg.json
-      "listening":          [string],
-      "speaking":           [string],
-      "writing":            [string],
-      "vocabulary_grammar": [string],
-      "beyond_text":        [string]
-    }
-  },
 
   "periods_allocated": integer,
 
@@ -366,7 +360,17 @@ LP JSON SCHEMA
                                       //        beyond_text}
 
   "activity_title":     string,       // ≤ 12 words, evocative headline
-  "pedagogical_method": string,       // from Rule 4 permitted list
+
+  "pedagogical_methods": {            // one method per spine taught;
+                                      // keys MUST equal `spines_taught`
+                                      // exactly (same set, same length).
+                                      // Each value is a method drawn
+                                      // from that spine's permitted
+                                      // list for the chapter's stage
+                                      // (Rule 4).
+    "<spine>": string,
+    ...
+  },
 
   "tasks_in_class": [
     { "spine":         string,        // one of the spines_taught

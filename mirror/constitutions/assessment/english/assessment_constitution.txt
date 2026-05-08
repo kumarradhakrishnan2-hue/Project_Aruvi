@@ -28,10 +28,9 @@ When a spine has no question in the textbook for a given main_section
 absent in poem appendices), Aruvi generates 1 typed item matching the
 spine's pedagogy and stage.
 
-The 6-spine itself carries NCF Languages compliance — competency
-reporting is read from the static `spine_to_cg.json` for the
-chapter's stage and shown in the assessment header. Per-item
-C-code labelling is FORBIDDEN.
+The 6-spine itself carries NCF Languages compliance. Per-item
+C-code labelling is FORBIDDEN, and C-codes do not appear anywhere
+in the assessment JSON.
 
 
 ================================================================================
@@ -58,11 +57,14 @@ INPUTS
                                 its own `type` and `stem`, which together
                                 drive question_type selection and rubric
                                 shape)
-
-3. Stage-appropriate `spine_to_cg.json` from
-   `mirror/framework/english/{stage}/` — drives the assessment header
-   competency reporting.
-
+       - For listening cells:
+           `transcript_ref`    (page pointer; all stages)
+           `transcript_text`   (full transcript inlined; SECONDARY ONLY
+                                — at IX, the transcript lives in a
+                                separate `appendix.pdf`, so the cowork
+                                prompt inlines it during summary build
+                                so the assessment generator can verify
+                                without reopening the appendix)
 
 ================================================================================
 OUTPUT
@@ -205,8 +207,13 @@ For CLOSED items where `source: "lifted"`:
   - Reading / Vocabulary / Beyond items → the source main_section's
     `prose_summary` (or `poem_text` + `poem_appreciation_summary`
     for poem sections).
-  - Listening items → the textbook's transcript at `transcript_ref`
-    (the page is in the summary; the cowork session has the PDF).
+  - Listening items → the listening cell's transcript:
+      · At secondary, the transcript is inlined as `transcript_text`
+        in the listening cell — read it directly.
+      · At preparatory and middle, only `transcript_ref` is recorded
+        (a page pointer into the chapter PDF). The cowork session
+        has the chapter PDF and reads the transcript at that page
+        for verification.
   Set `verified: true` only if the answer is unambiguously supported
   by the source.
 
@@ -243,7 +250,7 @@ Every item carries:
 
   - `source_section_id`     — main_section id (A, B, C, ...)
   - `source_section_title`  — copied verbatim from summary
-  - `source_section_type`   — prose | poem | narrative | dialogue
+  - `source_section_type`   — prose | poem | narrative | dialogue | informational
   - `source_spine_section`  — the textbook subheading the item came
                               from (e.g., "Check Your Understanding",
                               "Let us Listen", "Reading for
@@ -283,12 +290,21 @@ RULE 9 | TRANSCRIPT REFERENCE FOR LISTENING ITEMS
 ================================================================================
 
 Every Listening item carries:
-  - `transcript_ref`  — page reference to the textbook's transcript
-                        (e.g., "Transcript: p. 263") so the teacher
-                        can read the audio script aloud.
+  - `transcript_ref`  — page reference so the teacher can locate and
+                        read the audio script. Format depends on
+                        stage:
+                          · Preparatory / Middle: "p. NN" (page in
+                            the chapter PDF, where the chapter ships
+                            its own TRANSCRIPTS section).
+                          · Secondary: "appendix p. NN" (page in the
+                            separate `appendix.pdf`).
+                        Lifted verbatim from the summary's listening
+                        cell.
 
-The transcript itself is NOT inlined into the item. The reference is
-lifted from the summary's listening cell.
+The transcript itself is NOT inlined into the assessment item — the
+teacher uses the reference. (At secondary, the full transcript text
+is held in the summary's `transcript_text` field for the assessment
+generator's verification, but is not echoed into the rendered item.)
 
 
 ================================================================================
@@ -318,12 +334,8 @@ Appears once at the top of the assessment document:
 
 - chapter_number, chapter_title, stage
 - main_sections inventory (id, title, type) — copied from LP header
-- competency_reporting:
-    by_spine: { reading: [c-codes], listening: [c-codes], ... }
-  copied verbatim from `spine_to_cg.json` for the chapter's stage.
 
-The `competency_reporting` block is informational. Item bodies MUST
-NOT reference C-codes.
+Item bodies MUST NOT reference C-codes.
 
 
 ================================================================================
@@ -352,17 +364,6 @@ ASSESSMENT JSON SCHEMA
     { "section_id": string, "title": string, "type": string }
   ],
 
-  "competency_reporting": {
-    "by_spine": {
-      "reading":            [string],
-      "listening":          [string],
-      "speaking":           [string],
-      "writing":            [string],
-      "vocabulary_grammar": [string],
-      "beyond_text":        [string]
-    }
-  },
-
   "assessment_items": [
     {
       "spine_code":  string,                  // "reading" | "listening" |
@@ -376,7 +377,7 @@ ASSESSMENT JSON SCHEMA
           "id":                   string,     // e.g. "Q-Reading-A-1"
           "source_section_id":    string,     // "A" | "B" | "C"
           "source_section_title": string,
-          "source_section_type":  string,     // prose | poem | narrative | dialogue
+          "source_section_type":  string,     // prose | poem | narrative | dialogue | informational
           "source_spine_section": string,     // textbook subheading
           "source":               "lifted" | "generated",
 
