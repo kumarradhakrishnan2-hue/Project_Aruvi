@@ -3,8 +3,8 @@
   "stage": "preparatory",
   "source": "Aruvi static lookup. Derived from NCF Languages CG (Section 2.4.1.1) and a 6-chapter mapping audit (V Ch 2, V Ch 6) showing 70% C-code overlap across chapters. The 6-spine itself carries NCF compliance — per-chapter mapping is redundant.",
   "spines": {
-    "reading": {
-      "label": "Reading",
+    "reading_for_comprehension": {
+      "label": "Reading for Comprehension",
       "textbook_section_names": ["Let us Read", "Let us Think"],
       "competency_codes": ["C-2.1", "C-2.2"],
       "notes": "Comprehension strategies and main ideas. Reading-interest codes (C-5.x) belong to the beyond_text spine."

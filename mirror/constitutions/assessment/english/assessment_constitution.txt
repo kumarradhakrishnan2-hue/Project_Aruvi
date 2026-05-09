@@ -1,32 +1,36 @@
-ARUVI — ENGLISH ASSESSMENT CONSTITUTION · VERSION 1.0
+ARUVI — ENGLISH ASSESSMENT CONSTITUTION · VERSION 1.1
 Stages: Preparatory, Middle, Secondary
 
 ================================================================================
 DESIGN PRINCIPLE
 ================================================================================
 
-The assessment is organised by SPINE (Reading, Listening, Speaking,
-Writing, Vocabulary/Grammar, Beyond-the-Text). Each spine collects
-items contributed by every main_section of the chapter; each item
-carries a `source_section` tag so the teacher knows whether the item
-came from the prose, poem, or supplementary text.
+The assessment is organised by SPINE (Reading for Comprehension,
+Listening, Speaking, Writing, Vocabulary/Grammar, Beyond-the-Text).
+Each spine collects items contributed by every main_section of the
+chapter; each item carries a `source_section` tag so the teacher knows
+whether the item came from the prose, poem, or supplementary text.
 
-PRIMARY SOURCE: the chapter's own question bank, lifted verbatim from
-the summary's `question_bank[]` per (section, spine) cell. The English
-NCERT books carry rich exercises and are, by design, the legitimate
-question source.
+PRIMARY SOURCE: the chapter's own task bank. For each (section, spine)
+cell the assessment lifts the FIRST task object from the summary's
+`tasks_verbatim[]` — copying both the verbatim `task_text` AND the
+FULL `question_bank[]` of sub-items belonging to that task — into a
+single composite assessment item. The English NCERT books carry rich
+exercises tied to specific tasks, and the assessment renders them as
+delivered (task framing + every sub-question), not as isolated stems.
 
 The teacher value-add Aruvi provides — and which the textbooks do NOT
-ship — is the answer layer:
+ship — is the answer layer, applied per sub-item:
 
-  - Closed items   → `suggested_answer` (verified, plain text)
-  - Open items     → `expected_elements` (3–5 bullet rubric of what a
-                     strong response should include)
+  - Closed sub-items → `suggested_answer` (verified, plain text)
+  - Open sub-items   → `expected_elements` (3–5 bullet rubric of what a
+                       strong response should include)
+  - Open task with no sub-items (e.g. a single writing prompt) → the
+                       outer task itself carries the rubric.
 
-When a spine has no question in the textbook for a given main_section
-(common: Speaking is often light at preparatory; Listening sometimes
-absent in poem appendices), Aruvi generates 1 typed item matching the
-spine's pedagogy and stage.
+When a (section, spine) cell has no task at all (rare — e.g. a closing
+poem may not carry a Listening task), Aruvi generates 1 typed item
+matching the spine's pedagogy and stage.
 
 The 6-spine itself carries NCF Languages compliance. Per-item
 C-code labelling is FORBIDDEN, and C-codes do not appear anywhere
@@ -50,13 +54,18 @@ INPUTS
        - `poem_text` and
          `poem_appreciation_summary` (for poem sections — same role)
    And per (main_section, spine) cell:
-       - `tasks_verbatim[]`    (the in-class tasks)
-       - `question_bank[]`     (the textbook's own exercise/question
-                                items for this cell — primary source for
-                                Rule 2 lift; each entry already carries
-                                its own `type` and `stem`, which together
-                                drive question_type selection and rubric
-                                shape)
+       - `tasks_verbatim[]`    (an array of OBJECTS, each
+                                `{ task_text, question_bank }`. The
+                                `task_text` is the textbook's verbatim
+                                instruction/body; the nested
+                                `question_bank` carries the sub-items
+                                belonging to that single task — each
+                                with its own `stem`, `type`, `options`,
+                                `table`, `page_ref`. `question_bank` is
+                                `[]` when the task is itself an open
+                                prompt with no sub-items in the
+                                textbook. The legacy flat top-level
+                                `question_bank` array does NOT exist.)
        - For listening cells:
            `transcript_ref`    (page pointer; all stages)
            `transcript_text`   (full transcript inlined; SECONDARY ONLY
@@ -81,7 +90,7 @@ RULE 1 | SIX-SPINE STRUCTURE
 
 Assessment sections are exactly the six spines, in this order:
 
-  Reading
+  Reading for Comprehension
   Listening
   Speaking
   Writing
@@ -94,48 +103,103 @@ from the JSON output.
 
 
 ================================================================================
-RULE 2 | ITEM SOURCING — ONE ITEM PER (SECTION × SPINE) CELL
+RULE 2 | ITEM SOURCING — AT LEAST ONE COMPOSITE ITEM PER (SECTION × SPINE) CELL
 ================================================================================
 
-For each (main_section, spine) cell in the LP handoff, emit exactly
-ONE assessment item. Total item count per chapter therefore equals:
+For each (main_section, spine) cell in the LP handoff, emit AT LEAST
+ONE assessment item. The minimum floor is:
 
-    items_total = number_of_main_sections × 6
+    items_minimum = number_of_main_sections × 6
 
-Typical counts: 2-section chapter → 12 items; 3-section chapter → 18
-items. Item count is NOT a function of period count, NOR of textbook
-question-bank density. The textbook is rich; the assessment is
-deliberately compact.
+Typical minimums: 2-section chapter → 12 items; 3-section chapter →
+18 items. Item count is NOT a function of period count. Additional
+items beyond the minimum arise when Rule 2A (tasks_verbatim coverage)
+applies — see below.
 
-Item selection per cell:
+Each emitted item is a COMPOSITE: a `task_prompt` (the framing
+instruction, lifted verbatim) plus a nested `sub_items[]` array (every
+sub-question that belongs to that task in the textbook). The teacher
+sees the task as the textbook delivers it, with all its sub-parts —
+no exercise is split, none is dropped.
 
-1. PRIMARY (lift): if summary's `question_bank[]` for that
-   (section, spine) cell has at least one item, lift the FIRST item
-   in textbook order. Set `source: "lifted"`.
+Pre-step — exclude lesson-plan tasks:
+   Before selecting any item, consult the LP's `coverage_handoff` for
+   this (section, spine) cell. Any task whose index appears in
+   `tasks_anchored[]` was already used as class work during lesson
+   delivery and MUST be excluded from the assessment entirely. Only
+   tasks NOT listed in `tasks_anchored[]` are eligible for lifting
+   here or in Rule 2A.
 
-   Rationale: the first item in textbook order is typically the most
-   foundational, structured for direct comprehension or core practice.
-   Subsequent items in the same cell extend or vary it, but for an
-   assessment paper we choose the foundational one.
+Item selection per cell (operating on the eligible pool only):
 
-2. SECONDARY (generate): if summary's `question_bank[]` for that cell
-   is empty, generate ONE typed item grounded in the section's
-   `prose_summary` (or `poem_text` + `poem_appreciation_summary` for
-   poem sections) and the spine's pedagogy. The generator MUST NOT
-   reach outside these fields for content. Set `source: "generated"`.
+1. PRIMARY (lift the whole task): if the eligible pool for that
+   (section, spine) cell contains at least one task object, lift the
+   FIRST eligible task in textbook order. Copy its `task_text`
+   verbatim into `task_prompt`. Copy ALL entries of its nested
+   `question_bank[]` verbatim into `sub_items[]`, preserving each
+   sub-item's `stem`, `type`, `options`, `table`, and `page_ref`.
+   Set `source: "lifted"` and `source_task_index` to its original
+   index in `tasks_verbatim[]`. If the task has no sub-items
+   (`question_bank` is `[]`), `sub_items[]` is `[]` — the task
+   itself is the assessment item.
 
-The remaining textbook items in the cell are NOT lifted. The teacher
-retains direct access to them in the textbook; Aruvi's role is to
-provide the answer/rubric layer for one representative item per cell.
+   Rationale: the first eligible task in textbook order is the
+   foundational unanchored anchor for the (section × spine) cell.
+   Lifting it in full preserves the cognitive scaffolding the
+   textbook authors built; selecting just one sub-question would
+   strand the rest.
 
-If a cell has neither a textbook question nor enough text content to
-ground a generated item (rare — e.g., a short poem appendix may not
-support a Listening item), emit a placeholder item with `prompt = ""`,
-`verified = false`, and `teacher_guide.note = "No <spine> material
-available in this section."` This keeps the (section × spine)
-matrix complete in the rendered output.
+2. SECONDARY (generate): if the eligible pool is empty — either
+   because `tasks_verbatim[]` was empty to begin with, or because
+   all tasks were anchored in the lesson plan — generate ONE typed
+   item grounded in the section's `prose_summary` (or `poem_text` +
+   `poem_appreciation_summary` for poem sections) and the spine's
+   pedagogy. The generator MUST NOT reach outside these fields for
+   content. Populate `task_prompt` with the generated framing; set
+   `sub_items: []`, `source: "generated"`, `source_task_index: -1`.
 
-NO additional items beyond this routine. No "bonus questions", no
+If a cell has neither a task nor enough text content to ground a
+generated item (rare — e.g., a short poem appendix may not support a
+Listening task), emit a placeholder item with `task_prompt = ""`,
+`sub_items: []`, `verified = false`, and `teacher_guide.note = "No
+<spine> material available in this section."` This keeps the
+(section × spine) matrix complete in the rendered output.
+
+
+--------------------------------------------------------------------------------
+RULE 2A | TASKS_VERBATIM FULL COVERAGE
+--------------------------------------------------------------------------------
+
+Every `task_verbatim` item in the chapter summary — including ALL
+subsidiary questions in its nested `question_bank` — that was NOT
+already anchored in the lesson plan's `coverage_handoff` MUST appear
+in the assessment. These unanchored tasks are presented within the
+normal spine-based structure (same six spines, same (section × spine)
+grouping), as additional items beyond the one guaranteed by Rule 2.
+
+How to identify unanchored tasks:
+  - The LP's `coverage_handoff` lists, per (section, spine) cell,
+    which `tasks_verbatim` indices were anchored (`tasks_anchored[]`).
+  - Any task NOT listed there is unanchored and must be lifted into
+    the assessment.
+  - Lift the full task: `task_text` → `task_prompt`; every sub-item
+    in its `question_bank[]` → `sub_items[]`. Apply the same answer
+    layer (Rules 4–6) as for the primary lifted item.
+
+Where a cell exhausts all its tasks_verbatim items (either because
+all were used in the lesson plan, or because there were none to begin
+with), Rule 2's SECONDARY (generate) option applies as normal: emit
+one generated item grounded in the section's prose/poem summary.
+
+EXCEPTION — Listening cells: when Rule 2A triggers a SECONDARY
+(generated) item for a Listening cell, the generated item MUST use
+the same transcript source (`transcript_ref` / `transcript_text`)
+as any other Listening item in that section. The generator must NOT
+invent a different audio source; if no transcript is available, fall
+back to the placeholder item described in Rule 2.
+
+NO items beyond tasks_verbatim coverage + the one guaranteed
+generated item per empty cell. No "bonus questions", no
 "chapter wrap-up", no synthesis items.
 
 
@@ -143,7 +207,7 @@ NO additional items beyond this routine. No "bonus questions", no
 RULE 3 | QUESTION TYPE
 ================================================================================
 
-Each item carries `question_type` from this fixed set:
+Each `sub_item` carries `question_type` from this fixed set:
 
   MCQ          — Multiple Choice (4 options, exactly one correct)
   SCR          — Short Constructed Response (1–3 sentences)
@@ -156,90 +220,155 @@ Each item carries `question_type` from this fixed set:
                  condolence, slogan, dialogue, essay, etc.)
   PROJECT      — Beyond-text project / interdisciplinary task
 
-Default mapping by spine:
+Default mapping by spine — applies ONLY to GENERATED items (source:
+"generated") and to a LIFTED task whose `question_bank` is empty (so
+the outer task itself must be typed):
 
-  Reading              → MCQ, SCR, ECR (sec only), TRUE_FALSE, FILL_IN
-  Listening            → SCR, FILL_IN, MCQ, TRUE_FALSE
-  Speaking             → ORAL_PROMPT
-  Writing              → WRITING_TASK
-  Vocabulary/Grammar   → MATCH, FILL_IN, SCR
-  Beyond-the-Text      → PROJECT, ECR
+  Reading for Comprehension → MCQ, SCR, ECR (sec only), TRUE_FALSE, FILL_IN
+  Listening                 → SCR, FILL_IN, MCQ, TRUE_FALSE
+  Speaking                  → ORAL_PROMPT
+  Writing                   → WRITING_TASK
+  Vocabulary/Grammar        → MATCH, FILL_IN, SCR
+  Beyond-the-Text           → PROJECT, ECR
 
-When lifting from question_bank, infer the `question_type` from the
-item's stem (e.g., "Choose the correct option" → MCQ; "Write a
-paragraph on..." → WRITING_TASK; "Match Column 1 with Column 2" →
-MATCH).
+This default mapping does NOT govern LIFTED sub-items. When lifting
+sub-items from the task's nested `question_bank`, infer each
+sub-item's `question_type` from its own stem. Key disambiguation
+rules (applied in this priority order):
+
+  TRUE_FALSE — Use when the stem asks the student to judge whether
+               a statement is true or false, OR to select/identify
+               which of a numbered list of statements are true (e.g.,
+               "Select the four true statements from 1–7 below",
+               "Which of the following statements are correct?",
+               "Mark T (True) or F (False)"). The defining signal is
+               that EVERY option is a complete declarative sentence
+               that can independently be judged true or false.
+               TRUE_FALSE items carry `teacher_guide.suggested_answer`
+               identifying the correct verdict(s) plus a brief
+               justification; `options[]` lists each statement with
+               `is_correct` flagged.
+
+  MCQ        — Use when the stem offers 3–4 options where only ONE
+               is correct and the options are NOT themselves full
+               declarative sentences being judged for truth (e.g.,
+               "Choose the correct meaning of …", "Which word best
+               describes …"). MCQ items carry `options[]` with
+               `is_correct`; `teacher_guide.suggested_answer` is
+               OMITTED (see Rule 4).
+
+  Do NOT conflate "select correct/true statements" tasks with MCQ
+  merely because they present a numbered list of options. If every
+  option is a complete statement being evaluated for truthfulness,
+  the type is TRUE_FALSE.
+
+  Other types: "Choose the correct option" → MCQ; "Write a paragraph
+  on..." → WRITING_TASK; "Match Column 1 with Column 2" → MATCH.
+
+When the lifted task has no sub-items, the OUTER task carries a
+single `question_type` drawn from the spine's default set above.
 
 
 ================================================================================
 RULE 4 | ANSWER LAYER — CLOSED VS OPEN
 ================================================================================
 
-Items are classified as CLOSED or OPEN by `question_type`:
+The answer layer is applied PER SUB-ITEM (and, when `sub_items[]` is
+empty, applied to the outer task itself). Each sub-item is classified
+as CLOSED or OPEN by its `question_type`:
 
   CLOSED:  MCQ, FILL_IN, MATCH, TRUE_FALSE, SCR (when factual)
   OPEN:    ORAL_PROMPT, WRITING_TASK, PROJECT, ECR, SCR (when reflective)
 
-CLOSED items carry `teacher_guide.suggested_answer` — a verified
-single answer in plain prose. For MCQ, also identify the correct
-option; for MATCH, give the matched pairs; for FILL_IN, give the
-fill values.
+CLOSED sub-items carry `teacher_guide.suggested_answer` — a verified
+single answer in plain prose, with the following type-specific rules:
 
-OPEN items carry `teacher_guide.expected_elements` — an array of 3–5
-short bullets describing what a strong response should include. Each
-bullet is a single phrase (≤ 12 words). Bullets cover:
+  MCQ        — The correct option is already identified via the
+               `options[].is_correct` flag in the item itself.
+               Therefore `teacher_guide.suggested_answer` MUST be
+               omitted (set to "") for MCQ sub-items — it would
+               duplicate information the teacher can already read.
+               `teacher_guide.expected_elements` is also [] for MCQ.
+  MATCH      — Give the matched pairs (e.g., "1-c, 2-a, 3-b").
+  FILL_IN    — Give the fill values in order.
+  TRUE_FALSE — Give the verdict (True / False) and a one-sentence
+               justification drawn from the source text.
+  SCR (factual) — Give the verified answer in 1–2 sentences.
+
+OPEN sub-items carry `teacher_guide.expected_elements` — an array of
+3–5 short bullets describing what a strong response should include.
+Each bullet is a single phrase (≤ 12 words). Bullets cover:
   - Content/idea expectations (what the response should address)
   - Form expectations (length, structure, register where relevant)
   - Language expectations (vocabulary, voice, accuracy where relevant)
 
-OPEN items MUST NOT carry a `suggested_answer` field — the teacher
+OPEN sub-items MUST NOT carry a `suggested_answer` field — the teacher
 uses the rubric to grade; there is no single "right" response.
 
-CLOSED items MUST NOT carry an `expected_elements` field.
+CLOSED sub-items MUST NOT carry an `expected_elements` field.
+
+When an item has NO sub-items (`sub_items: []`), the outer task is
+typed by spine default and itself carries the answer layer: the outer
+`teacher_guide.suggested_answer` (closed task) or
+`teacher_guide.expected_elements` (open task) is populated; the
+sub-item array is left empty.
 
 
 ================================================================================
 RULE 5 | ANSWER VERIFICATION
 ================================================================================
 
-For CLOSED items where `source: "lifted"`:
+For CLOSED sub-items where the parent item has `source: "lifted"`:
   Verify the suggested answer against:
-  - Reading / Vocabulary / Beyond items → the source main_section's
-    `prose_summary` (or `poem_text` + `poem_appreciation_summary`
-    for poem sections).
-  - Listening items → the listening cell's transcript:
+  - Reading for Comprehension / Vocabulary / Beyond sub-items → the
+    source main_section's `prose_summary` (or `poem_text` +
+    `poem_appreciation_summary` for poem sections).
+  - Listening sub-items → the listening cell's transcript:
       · At secondary, the transcript is inlined as `transcript_text`
         in the listening cell — read it directly.
       · At preparatory and middle, only `transcript_ref` is recorded
         (a page pointer into the chapter PDF). The cowork session
         has the chapter PDF and reads the transcript at that page
         for verification.
-  Set `verified: true` only if the answer is unambiguously supported
-  by the source.
+  Set the sub-item's `verified: true` only if the answer is
+  unambiguously supported by the source.
 
-For CLOSED items where `source: "generated"`:
+For CLOSED items where `source: "generated"` (no sub-items by
+construction — the outer task carries `question_type` and answer):
   Solve the prompt against the same source as above. Confirm answer
-  is unique and unambiguous. Set `verified: true`.
+  is unique and unambiguous. Set `verified: true` on the outer item.
 
-For OPEN items: `verified` is always `true` (rubrics are not solved).
+For OPEN sub-items (and open generated items): `verified` is always
+`true` (rubrics are not solved).
 
-If a closed item's answer cannot be verified (ambiguous source,
-multiple defensible answers), the item falls back per Rule 6.
+The outer item's `verified` field summarises sub-item verification:
+`true` only when every closed sub-item is verified; otherwise `false`.
+
+If a closed sub-item's answer cannot be verified (ambiguous source,
+multiple defensible answers), THAT sub-item falls back per Rule 6;
+the rest of the composite item still renders.
 
 
 ================================================================================
-RULE 6 | FALLBACK (CLOSED ITEM VERIFICATION FAILURE)
+RULE 6 | FALLBACK (CLOSED SUB-ITEM VERIFICATION FAILURE)
 ================================================================================
 
-When a closed item's answer cannot be verified:
+When a closed sub-item's answer cannot be verified:
 
-  - `prompt`                                   = ""  (item dropped)
-  - `verified`                                 = false
-  - `teacher_guide.suggested_answer`           = ""
-  - `teacher_guide.note`                       = "[Verification failed] Refer to the textbook's <spine> items in <section_title>."
+  - sub_item.`stem`                            = ""  (sub-item dropped)
+  - sub_item.`verified`                        = false
+  - sub_item.`teacher_guide.suggested_answer`  = ""
+  - sub_item.`teacher_guide.note`              = "[Verification failed] Refer to the textbook's <spine> items in <section_title>."
 
-The fallback item is still emitted (not silently dropped) so the
-teacher sees the gap and can substitute.
+The fallback sub-item is still emitted (not silently dropped) so the
+teacher sees the gap and can substitute. The outer composite item
+continues to render its `task_prompt` and any other verified
+sub-items.
+
+If the OUTER item is generated (no sub-items) and its answer cannot
+be verified, the same fallback applies at the outer level
+(`task_prompt = ""`, outer `verified = false`, outer
+`teacher_guide.note = "[Verification failed] …"`).
 
 
 ================================================================================
@@ -262,11 +391,27 @@ the same spine.
 
 
 ================================================================================
-RULE 8 | VISUAL STIMULUS
+RULE 8 | VISUAL STIMULUS AND STRUCTURAL FIDELITY
 ================================================================================
 
-`visual_stimulus` is non-empty only when the source item in the
-textbook has tabular data the student must read or fill in.
+`visual_stimulus` is non-empty only when the source sub-item in the
+textbook has tabular data the student must read or fill in. It
+appears on the sub-item that owns the table, not on the outer task.
+
+STRUCTURAL FIDELITY — applies to both `task_prompt` and `stem`:
+
+  Multi-line questions: when a question or task framing contains
+  multiple numbered or lettered lines (e.g., a list of seven
+  numbered statements to evaluate, a set of fill-in sentences each
+  on its own line), the FULL numbered/lettered list MUST be
+  reproduced in the same form — one line per item, preserving the
+  original numbering/lettering. Do NOT collapse the list into
+  a single prose sentence.
+
+  Tabular structures embedded in a stem (e.g., a two-column table
+  the student must complete): reproduce as a pipe-delimited table
+  in `visual_stimulus` (same sub-item that owns the table). Do NOT
+  describe the table in prose.
 
 Permitted formats:
   - Pipe-delimited table: 2+ lines, every line contains "|", first
@@ -280,16 +425,19 @@ PROHIBITED:
   - Image markup, base64 image, external image reference.
   - Italic prose specs ("a table is provided showing...").
 
-If an item references a textbook figure (illustration, photograph),
-the prompt MUST name the location: "Refer to the picture on p. <N>
-of the textbook." The figure itself is NOT rendered.
+If a sub-item references a textbook figure (illustration, photograph),
+the sub-item's `stem` (or the outer `task_prompt` if the figure
+belongs to the task framing) MUST name the location: "Refer to the
+picture on p. <N> of the textbook." The figure itself is NOT rendered.
 
 
 ================================================================================
 RULE 9 | TRANSCRIPT REFERENCE FOR LISTENING ITEMS
 ================================================================================
 
-Every Listening item carries:
+Every Listening composite item carries `transcript_ref` at the OUTER
+level (it pertains to the task as a whole — every sub-item shares the
+same audio source):
   - `transcript_ref`  — page reference so the teacher can locate and
                         read the audio script. Format depends on
                         stage:
@@ -366,39 +514,70 @@ ASSESSMENT JSON SCHEMA
 
   "assessment_items": [
     {
-      "spine_code":  string,                  // "reading" | "listening" |
-                                              // "speaking" | "writing" |
+      "spine_code":  string,                  // "reading_for_comprehension" |
+                                              // "listening" | "speaking" |
+                                              // "writing" |
                                               // "vocabulary_grammar" |
                                               // "beyond_text"
-      "spine_title": string,                  // "Reading" | "Listening" | ...
+      "spine_title": string,                  // "Reading for Comprehension" |
+                                              // "Listening" | ...
       "note":        string,                  // empty-spine note if any, else ""
       "items": [
         {
-          "id":                   string,     // e.g. "Q-Reading-A-1"
+          "id":                   string,     // e.g. "Q-RFC-A-1"
           "source_section_id":    string,     // "A" | "B" | "C"
           "source_section_title": string,
           "source_section_type":  string,     // prose | poem | narrative | dialogue | informational
           "source_spine_section": string,     // textbook subheading
           "source":               "lifted" | "generated",
+          "source_task_index":    integer,    // index in summary's
+                                              // tasks_verbatim[] for this
+                                              // (section, spine) cell;
+                                              // -1 if generated
 
-          "question_type":        string,     // see Rule 3
-          "prompt":               string,
-          "visual_stimulus":      string,     // "" or pipe-table only
+          "task_prompt":          string,     // verbatim task framing
+                                              // (lifted) or generated
+                                              // single-prompt body
+
+          "question_type":        string,     // applies when sub_items==[];
+                                              // otherwise "" (each sub_item
+                                              // carries its own type)
           "transcript_ref":       string,     // listening only; "" otherwise
 
-          "options": [                        // MCQ only; [] otherwise
-            { "label": string,
-              "text":  string,
-              "is_correct": boolean }
+          "sub_items": [                      // [] when the task is itself
+                                              // an open prompt with no
+                                              // textbook sub-items, OR when
+                                              // source=="generated"
+            {
+              "stem":              string,
+              "question_type":     string,    // see Rule 3
+              "options": [                    // MCQ only; [] otherwise
+                { "label": string,
+                  "text":  string,
+                  "is_correct": boolean }
+              ],
+              "visual_stimulus":   string,    // "" or pipe-table only
+              "teacher_guide": {
+                "suggested_answer":  string,  // CLOSED only; "" if open
+                "expected_elements": [string],// OPEN only; [] if closed
+                "note":              string   // empty unless fallback
+              },
+              "verified":          boolean
+            }
           ],
 
-          "teacher_guide": {
-            "suggested_answer":   string,     // CLOSED items only; "" if open
-            "expected_elements":  [string],   // OPEN items only; [] if closed
+          "teacher_guide": {                  // populated only when
+                                              // sub_items == [] (the outer
+                                              // task itself owns the
+                                              // answer layer)
+            "suggested_answer":   string,     // "" otherwise
+            "expected_elements":  [string],   // [] otherwise
             "note":               string      // empty unless fallback
           },
 
-          "verified": boolean
+          "verified": boolean                 // outer summary: true only
+                                              // if every closed sub-item
+                                              // is verified
         }
       ]
     }
@@ -408,5 +587,5 @@ ASSESSMENT JSON SCHEMA
 
 ================================================================================
 Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
-English Assessment Constitution · Version 1.0 · Internal Document
+English Assessment Constitution · Version 1.1 · Internal Document
 ================================================================================

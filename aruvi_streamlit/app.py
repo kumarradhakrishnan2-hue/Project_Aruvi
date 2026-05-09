@@ -582,31 +582,39 @@ Produce a SINGLE valid JSON object with this top-level structure:
   }},
 
   "coverage_handoff": {{
-    "reading":            {{ "section_contributions": [<contribution>] }},
-    "listening":          {{ "section_contributions": [...] }},
-    "speaking":           {{ "section_contributions": [...] }},
-    "writing":            {{ "section_contributions": [...] }},
-    "vocabulary_grammar": {{ "section_contributions": [...] }},
-    "beyond_text":        {{ "section_contributions": [...] }}
+    "reading_for_comprehension": {{ "section_contributions": [<contribution>] }},
+    "listening":                 {{ "section_contributions": [...] }},
+    "speaking":                  {{ "section_contributions": [...] }},
+    "writing":                   {{ "section_contributions": [...] }},
+    "vocabulary_grammar":        {{ "section_contributions": [...] }},
+    "beyond_text":               {{ "section_contributions": [...] }}
   }},
 
   "assessment_items": [
     {{
-      "spine_code":  "reading|listening|speaking|writing|vocabulary_grammar|beyond_text",
-      "spine_title": "Reading|Listening|Speaking|Writing|Vocabulary and Grammar|Beyond the Text",
+      "spine_code":  "reading_for_comprehension|listening|speaking|writing|vocabulary_grammar|beyond_text",
+      "spine_title": "Reading for Comprehension|Listening|Speaking|Writing|Vocabulary and Grammar|Beyond the Text",
       "note":        "<empty unless an empty-spine note applies>",
       "items": [
-        <one item per main_section that contains this spine, per Assessment
-         Rule 2: lift the FIRST entry of summary.question_bank for that
-         (section, spine) cell verbatim; only generate when question_bank
-         is empty. Required fields per item: id, source_section_id,
-         source_section_title, source_section_type, source_spine_section,
-         source ("lifted"|"generated"), question_type, prompt,
-         visual_stimulus (pipe-table or ""), transcript_ref (listening
-         only; "" otherwise), options ([] unless MCQ), teacher_guide
-         ({{ suggested_answer (CLOSED only), expected_elements (OPEN
-         only — 3 to 5 short bullets per stage rubric depth in Rule 10),
-         note (empty unless fallback) }}), verified.>
+        <one COMPOSITE item per main_section that contains this spine,
+         per Assessment Rule 2: lift the FIRST task object from
+         summary.<spine>.tasks_verbatim — copy task_text into
+         task_prompt and copy ALL its nested question_bank entries
+         verbatim into sub_items[]. Generate ONLY when the cell has
+         no task at all. Required fields per outer item: id,
+         source_section_id, source_section_title, source_section_type,
+         source_spine_section, source ("lifted"|"generated"),
+         source_task_index (the lifted task's index in tasks_verbatim;
+         -1 if generated), task_prompt, question_type (only when
+         sub_items is empty; else ""), transcript_ref (listening only;
+         "" otherwise), sub_items (each carrying stem, question_type,
+         options ([] unless MCQ), visual_stimulus (pipe-table or ""),
+         teacher_guide {{ suggested_answer (CLOSED sub-item only),
+         expected_elements (OPEN sub-item only — 3 to 5 short bullets
+         per stage rubric depth in Rule 10), note (empty unless
+         fallback) }}, verified), teacher_guide (populated only when
+         sub_items is empty — same shape as sub-item teacher_guide),
+         verified (true only when every closed sub-item is verified).>
       ]
     }}
   ]
@@ -617,12 +625,18 @@ CRITICAL CONSTRAINTS:
   across (section × spine) cells in textbook order (LP Rule 1+2), with
   per-section period share roughly proportional to the section's
   char_count + total task count (±1 period tolerance).
-- Total assessment item count = number_of_main_sections × 6 (one item
-  per (section × spine) cell, per Assessment Rule 2). For VII Ch 1 with
-  3 main_sections, that's 18 items. Lift the FIRST entry of each cell's
-  question_bank verbatim into `prompt`. If a cell's question_bank is
-  empty, generate ONE typed item grounded in the main_section's
-  prose_summary / poem_text + poem_appreciation_summary.
+- Total assessment item count = number_of_main_sections × 6 (one
+  composite item per (section × spine) cell, per Assessment Rule 2).
+  For VII Ch 1 with 3 main_sections, that's 18 items. For each cell,
+  lift the FIRST task object from summary.<spine>.tasks_verbatim:
+  copy `task_text` into `task_prompt` AND copy ALL entries of the
+  task's nested `question_bank` verbatim into `sub_items[]`,
+  preserving each sub-item's stem, type, options, table, and
+  page_ref. Set source="lifted", source_task_index=0. If the cell
+  has no task at all, generate ONE typed item from the main_section's
+  prose_summary / poem_text + poem_appreciation_summary
+  (source="generated", source_task_index=-1, sub_items=[]). Subsequent
+  tasks in the cell are NOT lifted.
 - C-codes MUST NOT appear anywhere in the LP or assessment JSON.
 - `pedagogical_methods` per period MUST be an object whose keys equal
   `spines_taught` exactly. Each value MUST be drawn from that spine's
@@ -633,11 +647,15 @@ CRITICAL CONSTRAINTS:
   and middle (transcript inside chapter PDF) or `"appendix p.NN"` at
   secondary (transcript in a separate appendix file). The summary
   carries the value verbatim.
-- Closed items (MCQ, FILL_IN, MATCH, TRUE_FALSE, factual SCR) carry
-  `teacher_guide.suggested_answer` (verified). Open items
-  (ORAL_PROMPT, WRITING_TASK, PROJECT, ECR, reflective SCR) carry
+- The answer layer applies PER SUB-ITEM. A closed sub-item (MCQ,
+  FILL_IN, MATCH, TRUE_FALSE, factual SCR) carries
+  `teacher_guide.suggested_answer` (verified). An open sub-item
+  (ORAL_PROMPT, WRITING_TASK, PROJECT, ECR, reflective SCR) carries
   `teacher_guide.expected_elements` ({rubric_bullets} short bullets,
-  each ≤ 12 words). No item carries both fields.
+  each ≤ 12 words). No sub-item carries both fields. When the outer
+  composite has `sub_items: []` (open task with no textbook
+  sub-items, or a generated item), the OUTER `teacher_guide` carries
+  the same shape — populated according to the outer `question_type`.
 
 LENGTH CONSTRAINTS:
 - Each phase `description`: 2-3 sentences maximum.
@@ -1193,6 +1211,16 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
     """
     lp = result.get("lesson_plan")
     if isinstance(lp, dict) and lp.get("periods"):
+        # English: build section_id → section_type lookup from
+        # main_sections_inventory if present (the field lives at result-level,
+        # not on each period). Saved plans pre-inventory have no type info,
+        # so the renderer simply omits the type pill.
+        _eng_type_by_sec = {}
+        _inv = result.get("main_sections_inventory") or []
+        if isinstance(_inv, list):
+            for _s in _inv:
+                if isinstance(_s, dict) and _s.get("section_id"):
+                    _eng_type_by_sec[_s["section_id"]] = _s.get("type", "") or _s.get("section_type", "") or ""
         out = []
         for p in lp["periods"]:
             # ── Mathematics format detection (v2.1 shape) ─────────────────────
@@ -1305,11 +1333,26 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
                 ]
                 _sec_id    = p.get("section_id", "") or ""
                 _sec_title = p.get("section_title", "") or ""
-                _sec_type  = p.get("section_type", "") or ""
+                # section_type prefers the per-period field (newer schema);
+                # falls back to inventory lookup; finally empty.
+                _sec_type  = (
+                    p.get("section_type", "")
+                    or _eng_type_by_sec.get(_sec_id, "")
+                    or ""
+                )
                 _chapter_section = (
                     f"Section {_sec_id} · {_sec_title}"
                     if _sec_id and _sec_title else (_sec_title or _sec_id or "")
                 )
+                # pedagogical_methods is a dict spine→method per the
+                # constitution. Tolerate the singular `pedagogical_method`
+                # string used by saved plans pre-dict — broadcast it to
+                # every spine in spines_taught.
+                _ped = p.get("pedagogical_methods")
+                if not isinstance(_ped, dict) or not _ped:
+                    _single = p.get("pedagogical_method") or ""
+                    _spines = p.get("spines_taught") or []
+                    _ped = {s: _single for s in _spines if isinstance(s, str)} if _single else {}
                 out.append({
                     "period_number":           p.get("period_number"),
                     "period_duration_minutes": p.get("period_duration_minutes"),
@@ -1334,7 +1377,7 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
                     "section_title":           _sec_title,
                     "section_type":            _sec_type,
                     "spines_taught":           p.get("spines_taught") or [],
-                    "pedagogical_methods":     p.get("pedagogical_methods") or {},
+                    "pedagogical_methods":     _ped,
                     "tasks_in_class":          p.get("tasks_in_class") or [],
                     "homework":                p.get("homework") or [],
                     "teacher_notes":           p.get("teacher_notes", ""),
@@ -1573,9 +1616,10 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
 
     # ── English format detection (spine-grouped schema) ─────────────────────
     # English assessment ships as a list of spine-objects, each with its own
-    # nested `items[]` array. Spines: reading, listening, speaking, writing,
-    # vocabulary_grammar, beyond_text. Detect on `spine_code` at the top
-    # level of the first element with a nested `items[]` array.
+    # nested `items[]` array. Spines: reading_for_comprehension, listening,
+    # speaking, writing, vocabulary_grammar, beyond_text. Detect on
+    # `spine_code` at the top level of the first element with a nested
+    # `items[]` array.
     _is_english_assessment = (
         isinstance(items, list)
         and len(items) > 0
@@ -1585,16 +1629,28 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
     )
     if _is_english_assessment:
         _ENGLISH_SPINE_DESC = {
-            "reading":            "Encountering text — comprehension, inference, appreciation.",
-            "listening":          "Active listening — meaning, attitude, summarisation.",
-            "speaking":           "Structured talk — conversation, discussion, debate.",
-            "writing":            "Drafting and editing — formal and creative composition.",
-            "vocabulary_grammar": "Word-building and grammar embedded in context.",
-            "beyond_text":        "Library work, projects, and interdisciplinary extensions.",
+            "reading_for_comprehension": "Encountering text and demonstrating comprehension — recall, inference, reflection.",
+            "listening":                 "Active listening — meaning, attitude, summarisation.",
+            "speaking":                  "Structured talk — conversation, discussion, debate.",
+            "writing":                   "Drafting and editing — formal and creative composition.",
+            "vocabulary_grammar":        "Word-building and grammar embedded in context.",
+            "beyond_text":               "Library work, projects, and interdisciplinary extensions.",
         }
         # Closed types render `teacher_guide.suggested_answer`; open types
         # render `teacher_guide.expected_elements` as bullets.
         _ENG_CLOSED_TYPES = {"MCQ", "FILL_IN", "MATCH", "TRUE_FALSE"}
+
+        def _eng_resolve_answer(qtype: str, tg: dict) -> tuple[str, list]:
+            qtype_u = (qtype or "").strip().upper()
+            tg = tg if isinstance(tg, dict) else {}
+            sug = tg.get("suggested_answer", "") or ""
+            exp = tg.get("expected_elements") or []
+            if not isinstance(exp, list):
+                exp = []
+            is_closed = qtype_u in _ENG_CLOSED_TYPES
+            expected = sug if is_closed else "\n".join(str(e) for e in exp)
+            return expected, exp
+
         _eng_sections = []
         for sec in items:
             if not isinstance(sec, dict):
@@ -1605,27 +1661,74 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
             for it in (sec.get("items") or []):
                 if not isinstance(it, dict):
                     continue
-                _qtype  = (it.get("question_type") or "").strip().upper()
-                _prompt = it.get("prompt") or ""
-                _tg = it.get("teacher_guide") or {}
-                if not isinstance(_tg, dict):
-                    _tg = {}
-                _suggested = _tg.get("suggested_answer", "") or ""
-                _exp_elems = _tg.get("expected_elements") or []
-                if not isinstance(_exp_elems, list):
-                    _exp_elems = []
-                _is_closed = _qtype in _ENG_CLOSED_TYPES
-                _expected = (
-                    _suggested if _is_closed
-                    else "\n".join(str(e) for e in _exp_elems)
+                # New shape carries task_prompt + sub_items[]; legacy carries
+                # prompt + question_type + teacher_guide. Read task_prompt
+                # first, fall back to legacy prompt.
+                _task_prompt = it.get("task_prompt") or it.get("prompt") or ""
+                _outer_qtype = (it.get("question_type") or "").strip().upper()
+                _outer_tg    = it.get("teacher_guide") or {}
+                _sub_items_raw = it.get("sub_items")
+                if not isinstance(_sub_items_raw, list):
+                    _sub_items_raw = []
+
+                # Build a normalised sub_items list for the renderer. When the
+                # composite has no sub_items (open task with no textbook
+                # sub-items, or a generated item), we synthesise ONE pseudo
+                # sub-item from the outer task_prompt + outer teacher_guide so
+                # the downstream HTML can always iterate sub_items.
+                _sub_items_render = []
+                if _sub_items_raw:
+                    for si in _sub_items_raw:
+                        if not isinstance(si, dict):
+                            continue
+                        _si_qtype = (si.get("question_type") or "").strip().upper()
+                        _si_tg    = si.get("teacher_guide") or {}
+                        _si_expected, _si_exp_elems = _eng_resolve_answer(_si_qtype, _si_tg)
+                        _sub_items_render.append({
+                            "stem":              si.get("stem", "") or "",
+                            "type":              _si_qtype,
+                            "options":           si.get("options") or [],
+                            "visual_stimulus":   si.get("visual_stimulus", "") or "",
+                            "expected":          _si_expected,
+                            "expected_elements": _si_exp_elems,
+                            "suggested_answer":  (_si_tg or {}).get("suggested_answer", "") or "",
+                            "verified":          bool(si.get("verified", False)),
+                        })
+                else:
+                    # Outer task itself owns the answer layer.
+                    _outer_expected, _outer_exp_elems = _eng_resolve_answer(_outer_qtype, _outer_tg)
+                    _sub_items_render.append({
+                        "stem":              _task_prompt,
+                        "type":              _outer_qtype,
+                        "options":           it.get("options") or [],
+                        "visual_stimulus":   it.get("visual_stimulus", "") or "",
+                        "expected":          _outer_expected,
+                        "expected_elements": _outer_exp_elems,
+                        "suggested_answer":  (_outer_tg if isinstance(_outer_tg, dict) else {}).get("suggested_answer", "") or "",
+                        "verified":          bool(it.get("verified", False)),
+                    })
+
+                # Card-level type chip: when the composite has explicit
+                # sub-items, leave the outer type empty (the card shows the
+                # task framing only); otherwise reflect the outer task's type.
+                _card_type = "" if _sub_items_raw else _outer_qtype
+                _card_title = (
+                    (_card_type + ": " + (_task_prompt[:56] + "…" if len(_task_prompt) > 56 else _task_prompt))
+                    if (_card_type and _task_prompt) else (_card_type or "Task")
                 )
-                _title = (
-                    (_qtype + ": " + (_prompt[:56] + "…" if len(_prompt) > 56 else _prompt))
-                    if _prompt else _qtype
-                )
+                # Card-level expected: when the outer task owns the answer
+                # layer (no sub_items), surface it; otherwise leave empty —
+                # the per-sub-item rows carry their own answers.
+                _card_expected = ""
+                _card_exp_elems = []
+                _card_suggested = ""
+                if not _sub_items_raw:
+                    _card_expected, _card_exp_elems = _eng_resolve_answer(_outer_qtype, _outer_tg)
+                    _card_suggested = (_outer_tg if isinstance(_outer_tg, dict) else {}).get("suggested_answer", "") or ""
+
                 _qs.append({
-                    "type":               _qtype,
-                    "question":           _prompt,
+                    "type":               _card_type,
+                    "question":           _task_prompt,
                     "task":               "",
                     "scaffold":           "",
                     "format_of_output":   [],
@@ -1633,11 +1736,11 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
                     "options":            it.get("options") or [],
                     "annotation":         "",
                     "period_ref":         "",
-                    "title":              _title,
-                    "expected":           _expected,
+                    "title":              _card_title,
+                    "expected":           _card_expected,
                     "cognitive_demand":   "",
                     "guide":              {},
-                    "expected_elements":  _exp_elems,
+                    "expected_elements":  _card_exp_elems,
                     "look_for":           [],
                     "what_each_option_reveals": {},
                     "inclusivity":        "",
@@ -1646,20 +1749,32 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
                     "implied_lo":         "",
                     # ── English-specific question fields surfaced to renderer ──
                     "is_english":           True,
-                    "suggested_answer":     _suggested,
+                    "task_prompt":          _task_prompt,
+                    "sub_items":            _sub_items_render,
+                    "has_sub_items":        bool(_sub_items_raw),
+                    "suggested_answer":     _card_suggested,
                     "source_section_id":    it.get("source_section_id", "") or "",
                     "source_section_title": it.get("source_section_title", "") or "",
                     "source_section_type":  it.get("source_section_type", "") or "",
                     "source_spine_section": it.get("source_spine_section", "") or "",
                     "source":               it.get("source", "") or "",
+                    "source_task_index":    it.get("source_task_index", -1),
                     "transcript_ref":       it.get("transcript_ref", "") or "",
                     "verified":             bool(it.get("verified", False)),
                 })
             _types_in_order = []
             for q in _qs:
-                t = q["type"]
-                if t and t not in _types_in_order:
-                    _types_in_order.append(t)
+                # When the composite carries sub_items, the spine-level type
+                # chip strip should reflect the sub-items' types; otherwise
+                # use the outer card type.
+                _src_types = (
+                    [si.get("type") for si in (q.get("sub_items") or [])]
+                    if q.get("has_sub_items")
+                    else [q.get("type")]
+                )
+                for t in _src_types:
+                    if t and t not in _types_in_order:
+                        _types_in_order.append(t)
             _eng_sections.append({
                 "c_code":           _spine_title,
                 "weight_label":     "",
@@ -4674,8 +4789,9 @@ elif st.session_state.role == "Allocate":
             'signals, each scored on a simple scale.</p>'
             '<ul>'
             '<li><b>Spine load</b> — How many types of classroom work '
-            '(reading, listening, speaking, writing, vocabulary, beyond-text) '
-            'appear on average per section. More types = higher score.</li>'
+            '(reading for comprehension, listening, speaking, writing, '
+            'vocabulary, beyond-text) appear on average per section. '
+            'More types = higher score.</li>'
             '<li><b>Task density</b> — How many tasks appear on average '
             'within each block of work. More tasks per block = higher '
             'score.</li>'

@@ -1,4 +1,4 @@
-ARUVI — ENGLISH LESSON PLAN CONSTITUTION · VERSION 1.0
+ARUVI — ENGLISH LESSON PLAN CONSTITUTION · VERSION 1.1
 Stages: Preparatory, Middle, Secondary
 
 ================================================================================
@@ -13,9 +13,10 @@ The chapter has a TWO-AXIS structure:
                  including a closing poem under "Reading for
                  Appreciation").
 
-  Inner axis  →  6-spine progression (Reading → Listening → Speaking →
-                 Writing → Vocabulary/Grammar → Beyond-the-Text), in
-                 textbook order, within each main_section.
+  Inner axis  →  6-spine progression (Reading for Comprehension →
+                 Listening → Speaking → Writing → Vocabulary/Grammar →
+                 Beyond-the-Text), in textbook order, within each
+                 main_section.
 
 The LP walks main_sections in textbook order. Within each main_section, it
 walks the spines that the section actually contains (a poem appendix may
@@ -38,11 +39,15 @@ INPUTS
                                     informational sections)
      - `poem_text` and
        `poem_appreciation_summary` (for poem sections)
-   and `spines{}` where each spine entry has section_name,
-   tasks_verbatim[], question_bank[]. Listening cells additionally
-   carry `transcript_ref` (all stages) and `transcript_text`
-   (secondary only — inlined from the appendix.pdf since IX
-   transcripts live in a separate file)).
+   and `spines{}` where each spine entry has section_name and
+   `tasks_verbatim[]`. Each entry of `tasks_verbatim[]` is an OBJECT
+   `{ task_text, question_bank: [...] }` — the per-task question_bank
+   carries the textbook's sub-items (MCQ stems, fill-in blanks, etc.)
+   for that single task, or `[]` when the task is itself an open prompt.
+   The flat top-level `question_bank` array no longer exists. Listening
+   cells additionally carry `transcript_ref` (all stages) and
+   `transcript_text` (secondary only — inlined from the appendix.pdf
+   since IX transcripts live in a separate file)).
    The text-summary fields are the source of truth the LP reads when
    composing teacher_notes and phase descriptions.
 
@@ -88,7 +93,7 @@ summary.
 
 - Heavy cells MAY split across two adjacent periods within the same
   section. A cell is heavy when ANY of these holds:
-    a) `tasks_verbatim` has 3+ distinct tasks, OR
+    a) `tasks_verbatim` has 3+ distinct task objects, OR
     b) the dominant Writing task text mentions essay / report /
        critical review / analysing literature / creative composition
        (these inherently need plan + draft + revise across periods), OR
@@ -100,7 +105,13 @@ summary.
   schema field is consulted.
 - Light cells (single-task spines, e.g. a Vocabulary section with one
   matching exercise) MAY merge with an adjacent spine in the same
-  section.
+  section — EXCEPT that `vocabulary_grammar` MUST NOT be merged with
+  any other spine. Whenever `vocabulary_grammar` is listed as a spine
+  for a main_section it MUST occupy its own dedicated period (or be
+  the sole secondary spine in a heavy-cell split period). Merging
+  vocabulary_grammar with reading, listening, speaking, writing, or
+  beyond_text in the same period is FORBIDDEN, regardless of task
+  count.
 - Every main_section listed in the summary MUST receive at least
   ONE period. Dropping a main_section is FORBIDDEN — including a
   short closing poem under "Reading for Appreciation".
@@ -121,10 +132,15 @@ RULE 3 | TASK SOURCING — CHAPTER ONLY · STRICT MATCH
 Every task referenced in a period MUST appear verbatim in the summary's
 `tasks_verbatim[]` for the anchored (section, spine) cell. No
 fabrication. Period activities are drawn from the summary's task list
-for the anchored cell(s).
+for the anchored cell(s). Each `tasks_verbatim[]` entry is an OBJECT
+`{ task_text, question_bank }`; the LP refers to a task by its zero-based
+index in this array and may surface the full `task_text` (and, when the
+period invokes a sub-item, draw on the relevant entry of the task's
+`question_bank`) in phase narration. This restores the depth that was
+previously lost when only a bare instruction string was available.
 
 Task references in `tasks_in_class[]` use the summary's enumeration
-key (e.g., spine="reading", task_index=2) — no invented IDs.
+key (e.g., spine="reading_for_comprehension", task_index=2) — no invented IDs.
 
 FORBIDDEN:
 - Inventing task descriptions not in the summary.
@@ -154,9 +170,10 @@ not present in those source documents.
 
 PREPARATORY STAGE — permitted methods, scoped by spine:
 
-  Reading            → read-aloud · shared-reading · guided-reading ·
-                       independent-reading · repeated-reading ·
-                       comprehension-discussion · summarising
+  Reading for Comprehension → read-aloud · shared-reading ·
+                       guided-reading · independent-reading ·
+                       repeated-reading · comprehension-discussion ·
+                       summarising
   Listening          → listen-and-respond · summarising-from-listening
   Speaking           → free-conversation · guided-conversation ·
                        role-play · describing-experiences · narrating ·
@@ -174,8 +191,8 @@ PREPARATORY STAGE — permitted methods, scoped by spine:
 MIDDLE STAGE — permitted methods (in addition to all preparatory
 methods):
 
-  Reading            → functional-reading (applications, letters,
-                       reports, posters, emails, circulars) ·
+  Reading for Comprehension → functional-reading (applications,
+                       letters, reports, posters, emails, circulars) ·
                        literary-reading (genre-week, theme-week,
                        literary-device identification) · critical-reading
                        (author-intent, core-content, interpreting
@@ -199,7 +216,8 @@ methods):
 SECONDARY STAGE — permitted methods (in addition to all preparatory
 and middle methods):
 
-  Reading            → literary-club-discussion · close-reading-for-style ·
+  Reading for Comprehension → literary-club-discussion ·
+                       close-reading-for-style ·
                        multicultural-reading-comparison · group-critical-
                        analysis
   Listening          → analysing-audio-material
@@ -218,8 +236,8 @@ and middle methods):
                        languages · literature-festival · author-of-the-day
 
 Diversity: no spine's method MAY repeat across more than two
-consecutive periods (evaluated per spine — a `reading` method
-appearing in three reading-bearing periods in a row is forbidden,
+consecutive periods (evaluated per spine — a `reading_for_comprehension`
+method appearing in three reading-bearing periods in a row is forbidden,
 even if other spines vary). Each spine present in the chapter
 SHOULD see at least one period whose method is drawn from that
 spine's permitted list for the current stage.
@@ -287,8 +305,8 @@ RULE 10 | COVERAGE HANDOFF EMISSION
 ================================================================================
 
 After period assignment, emit `coverage_handoff` — a block keyed by
-spine (six keys: reading, listening, speaking, writing,
-vocabulary_grammar, beyond_text).
+spine (six keys: reading_for_comprehension, listening, speaking,
+writing, vocabulary_grammar, beyond_text).
 
 For each spine, the handoff lists `section_contributions[]`, where
 each entry records:
@@ -299,13 +317,14 @@ each entry records:
   - `tasks_anchored`     — array of `(spine, task_index)` keys
                            recording which `tasks_verbatim[]` entries
                            were taught in periods anchored to this
-                           (section, spine) cell. Informational only:
-                           lets a coverage report show "what was
-                           covered in class". The assessment generator
-                           does NOT consume this — it iterates summary's
-                           (section × spine) cells directly and lifts
-                           from `question_bank[]`, which is a separate
-                           array.
+                           (section, spine) cell. CONSUMED by the
+                           assessment generator: it uses this list to
+                           exclude already-anchored tasks from the
+                           assessment eligible pool (Assessment Rule 2
+                           pre-step). Only tasks NOT in `tasks_anchored`
+                           are lifted into the assessment; if all tasks
+                           are anchored the assessment falls back to a
+                           generated item for that cell.
 
 If a spine has no contributions across any section, emit the spine
 key with an empty `section_contributions: []` array. The assessment
@@ -337,12 +356,12 @@ LP JSON SCHEMA
   "lesson_plan": { "periods": [ <period>, ... ] },
 
   "coverage_handoff": {
-    "reading":            { "section_contributions": [ <contribution>, ... ] },
-    "listening":          { "section_contributions": [ <contribution>, ... ] },
-    "speaking":           { "section_contributions": [ <contribution>, ... ] },
-    "writing":            { "section_contributions": [ <contribution>, ... ] },
-    "vocabulary_grammar": { "section_contributions": [ <contribution>, ... ] },
-    "beyond_text":        { "section_contributions": [ <contribution>, ... ] }
+    "reading_for_comprehension": { "section_contributions": [ <contribution>, ... ] },
+    "listening":                 { "section_contributions": [ <contribution>, ... ] },
+    "speaking":                  { "section_contributions": [ <contribution>, ... ] },
+    "writing":                   { "section_contributions": [ <contribution>, ... ] },
+    "vocabulary_grammar":        { "section_contributions": [ <contribution>, ... ] },
+    "beyond_text":               { "section_contributions": [ <contribution>, ... ] }
   }
 }
 
@@ -355,8 +374,9 @@ LP JSON SCHEMA
   "section_title": string,            // copied from inventory
 
   "spines_taught": [string],          // 1 or 2 entries, in textbook order;
-                                      // each ∈ {reading, listening, speaking,
-                                      //        writing, vocabulary_grammar,
+                                      // each ∈ {reading_for_comprehension,
+                                      //        listening, speaking, writing,
+                                      //        vocabulary_grammar,
                                       //        beyond_text}
 
   "activity_title":     string,       // ≤ 12 words, evocative headline
@@ -420,5 +440,5 @@ LP JSON SCHEMA
 
 ================================================================================
 Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
-English Lesson Plan Constitution · Version 1.0 · Internal Document
+English Lesson Plan Constitution · Version 1.1 · Internal Document
 ================================================================================

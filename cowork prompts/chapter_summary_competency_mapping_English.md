@@ -8,8 +8,8 @@ The summary follows the **two-axis** structure of an English NCERT
 chapter: an **outer axis** of 1–3 `main_sections` (each a distinct
 text the student reads — prose, poem, narrative, dialogue, or
 informational), and an **inner axis** of the 6 spines within each
-section (Reading, Listening, Speaking, Writing, Vocabulary/Grammar,
-Beyond-the-Text).
+section (Reading for Comprehension, Listening, Speaking, Writing,
+Vocabulary/Grammar, Beyond-the-Text).
 
 Competency mapping is **static at the stage level** — looked up from
 `spine_to_cg.json` and attached decoratively. **No per-chapter
@@ -79,46 +79,64 @@ Do NOT invent missing spines.
 
 | Spine | Preparatory | Middle | Secondary |
 |---|---|---|---|
-| `reading` | Let us Read · Let us Recite · Let us Think | Let us read · Let us discuss · Let us think | Reading for Meaning · Check Your Understanding · Critical Reflection · Reflect and Respond · Reading for Appreciation |
+| `reading_for_comprehension` | Let us Read · Let us Recite · Let us Think | Let us read · Let us discuss · Let us think and reflect | Reading for Meaning · Check Your Understanding · Critical Reflection · Reflect and Respond · Reading for Appreciation |
 | `listening` | Let us Listen | Let us listen | Listen and Respond |
 | `speaking` | Let us Speak | Let us speak | Speaking Activity |
 | `writing` | Let us Write | Let us write | Writing Task |
 | `vocabulary_grammar` | Let us Learn | Let us learn | Vocabulary and Structures in Context · Vocabulary in Context |
 | `beyond_text` | Let us Do · Let us Explore · Just for Fun | Let us do · Let us explore | Learning Beyond the Text · POINTS TO REMEMBER |
 
-## Step 5 — Per (section, spine) cell, capture tasks and question bank
+## Step 5 — Per (section, spine) cell, capture tasks with nested sub-items
 
 For each present (section, spine) cell:
 
 - `section_name` — the textbook subheading(s) used. When the spine
   pulls from MULTIPLE subheadings (per Step 4 table), join them with
-  ` + ` in textbook order, e.g. `"Let us read + Let us discuss + Let us think"`.
-- `tasks_verbatim` — flat array of EVERY in-class task instruction
-  appearing under ANY of the spine's subheadings in this main_section,
-  lifted verbatim and in textbook order. Sub-parts (a)/(b)/(c) of one
-  parent task roll up into one entry.
-- `question_bank` — flat array of EVERY exercise/question item
-  appearing under ANY of the spine's subheadings in this main_section.
-  Each entry:
+  ` + ` in textbook order, e.g. `"Let us read + Let us discuss + Let us think and reflect"`.
+- `tasks_verbatim` — array of OBJECTS, one per in-class task
+  instruction appearing under ANY of the spine's subheadings in this
+  main_section, in textbook order. Sub-parts (a)/(b)/(c) of one parent
+  task roll up into one entry — they become sub-items of that single
+  task, NOT separate task objects. Each entry:
   ```json
   {
-    "stem":     "<verbatim question text>",
-    "type":     "MCQ" | "SCR" | "ECR" | "MATCH" | "FILL_IN" |
-                "TRUE_FALSE" | "ORAL_PROMPT" | "WRITING_TASK" |
-                "PROJECT",
-    "options":  [...],         // MCQ only
-    "table":    "header|cells\nrow|cells",  // when the question
-                                            // contains tabular data
-    "page_ref": "p.NN"
+    "task_text": "<verbatim instruction + body of the task>",
+    "question_bank": [          // sub-items belonging to THIS task;
+                                // [] if the task is a single open
+                                // prompt with no sub-items in the
+                                // textbook
+      {
+        "stem":     "<verbatim question text>",
+        "type":     "MCQ" | "SCR" | "ECR" | "MATCH" | "FILL_IN" |
+                    "TRUE_FALSE" | "ORAL_PROMPT" | "WRITING_TASK" |
+                    "PROJECT",
+        "options":  [...],          // MCQ only
+        "table":    "header|cells\nrow|cells",  // when the sub-item
+                                                // contains tabular data
+        "page_ref": "p.NN"
+      }
+    ]
   }
   ```
 
-**Critical for `reading` and other multi-subheading spines**: do NOT
-collapse to just the first subheading's tasks. The Reading spine in a
-middle-stage section MUST contain tasks from "Let us read" AND
-"Let us discuss" AND "Let us think" if all three are present in the
-PDF. Same applies to Vocabulary/Grammar at secondary (two
-subheadings) and Beyond-the-Text where multiple subheadings appear.
+**Single source of truth.** Each question_bank entry belongs to
+exactly ONE task. Do NOT duplicate questions across tasks. Do NOT
+emit a flat top-level `question_bank` array on the spine — that field
+no longer exists. The lesson plan refers to a task by its index in
+this array (and may surface its full `task_text` plus relevant
+sub-items in phase narration); the assessment lifts the FIRST task in
+full (its `task_text` PLUS all its `question_bank` sub-items) as ONE
+composite assessment item.
+
+**Critical for `reading_for_comprehension` and other multi-subheading
+spines**: do NOT collapse to just the first subheading's tasks. The
+Reading-for-Comprehension spine in a middle-stage section MUST
+contain tasks from "Let us read" AND "Let us discuss" AND "Let us
+think and reflect" if all three are present in the PDF. Each parent
+task from any of those subheadings becomes its own task object (with
+its own nested `question_bank`). Same applies to Vocabulary/Grammar
+at secondary (two subheadings) and Beyond-the-Text where multiple
+subheadings appear.
 
 ## Step 6 — Listening cells: capture transcript
 
@@ -147,15 +165,19 @@ object, average across all sections, then tier:
 - avg 3.1–5.0 → 2
 - avg ≥ 5.1 → 3
 
-**`task_density` (integer 1–3):** average tasks per spine-cell.
-Sum `len(tasks_verbatim)` across every (section, spine) cell, divide
-by total number of spine-cells, then tier:
+**`task_density` (integer 1–3):** average task objects per spine-cell.
+Sum `len(tasks_verbatim)` across every (section, spine) cell (each
+entry is one task object), divide by total number of spine-cells, then
+tier:
 - avg ≤ 3.0 → 1
 - avg 3.1–6.0 → 2
 - avg ≥ 6.1 → 3
 
-**`writing_demand` (integer 0–2):** total `question_bank` entries
-across all `writing` and `beyond_text` spine-cells only, then tier:
+**`writing_demand` (integer 0–2):** total sub-item count under the
+`writing` and `beyond_text` spines only, computed by traversing the
+nested shape:
+`sum(len(t.question_bank) for cell in (writing + beyond_text spine cells) for t in cell.tasks_verbatim)`.
+Then tier:
 - 0–5 → 0
 - 6–15 → 1
 - 16+ → 2
@@ -205,9 +227,10 @@ mapping files.
 - `summary_path` — relative path string:
   `"mirror/chapters/english/{grade}/summaries/ch_NN_summary.json"`
 - `primary` — build from `spine_to_cg.json`. For each spine in
-  `spines` (in order: `reading`, `listening`, `speaking`, `writing`,
-  `vocabulary_grammar`, `beyond_text`), emit one entry per unique
-  `c_code` in that spine's `competency_codes` array. De-duplicate
+  `spines` (in order: `reading_for_comprehension`, `listening`,
+  `speaking`, `writing`, `vocabulary_grammar`, `beyond_text`), emit
+  one entry per unique `c_code` in that spine's `competency_codes`
+  array. De-duplicate
   across spines: if the same `c_code` appears in multiple spines, emit
   it only once (first occurrence wins). Each entry:
   ```json
@@ -289,29 +312,40 @@ the file already exists.
       "char_count": 25000,
       "prose_summary": "<200–400 word textbook-grounded summary>",
       "spines": {
-        "reading": {
+        "reading_for_comprehension": {
           "section_name": "Reading for Meaning + Check Your Understanding + Critical Reflection",
-          "tasks_verbatim": ["...", "...", "..."],
-          "question_bank": [
+          "tasks_verbatim": [
             {
-              "stem": "Work in pairs to complete the table on pankha.",
-              "type": "MATCH",
-              "table": "State|Type of Fan|Material Used\nRajasthan|appliqué hand fan|...",
-              "page_ref": "p.73"
-            }
+              "task_text": "Work in pairs to complete the table on pankha and answer the questions that follow.",
+              "question_bank": [
+                {
+                  "stem": "Complete the table.",
+                  "type": "MATCH",
+                  "table": "State|Type of Fan|Material Used\nRajasthan|appliqué hand fan|...",
+                  "page_ref": "p.73"
+                },
+                {
+                  "stem": "Which state's pankha uses peacock feathers?",
+                  "type": "SCR",
+                  "page_ref": "p.74"
+                }
+              ]
+            },
+            { "task_text": "<next reading-for-comprehension task verbatim>", "question_bank": [] }
           ]
         },
         "listening": {
           "section_name": "Listen and Respond",
           "transcript_ref": "appendix p.263",
           "transcript_text": "ROHAN: Priya, what should we get Grandma...\nPRIYA: I was thinking a hand pankha...",
-          "tasks_verbatim": ["..."],
-          "question_bank": [/* ... */]
+          "tasks_verbatim": [
+            { "task_text": "<task instruction>", "question_bank": [/* sub-items */] }
+          ]
         },
-        "speaking":           { "section_name": "Speaking Activity",                    "tasks_verbatim": ["..."], "question_bank": [/* ... */] },
-        "writing":            { "section_name": "Writing Task",                         "tasks_verbatim": ["..."], "question_bank": [/* ... */] },
-        "vocabulary_grammar": { "section_name": "Vocabulary and Structures in Context", "tasks_verbatim": ["..."], "question_bank": [/* ... */] },
-        "beyond_text":        { "section_name": "Learning Beyond the Text",             "tasks_verbatim": ["..."], "question_bank": [/* ... */] }
+        "speaking":           { "section_name": "Speaking Activity",                    "tasks_verbatim": [{ "task_text": "...", "question_bank": [/* ... */] }] },
+        "writing":            { "section_name": "Writing Task",                         "tasks_verbatim": [{ "task_text": "...", "question_bank": [/* ... */] }] },
+        "vocabulary_grammar": { "section_name": "Vocabulary and Structures in Context", "tasks_verbatim": [{ "task_text": "...", "question_bank": [/* ... */] }] },
+        "beyond_text":        { "section_name": "Learning Beyond the Text",             "tasks_verbatim": [{ "task_text": "...", "question_bank": [/* ... */] }] }
       }
     },
     {
@@ -323,20 +357,20 @@ the file already exists.
       "poem_text": "Palette of earth, rich and deep,\nWhere dreams of gardeners seep.\n...",
       "poem_appreciation_summary": "<80–150 word appreciation>",
       "spines": {
-        "reading":            { "section_name": "Reading for Appreciation", "tasks_verbatim": ["..."], "question_bank": [/* ... */] },
-        "vocabulary_grammar": { "section_name": "Vocabulary in Context",    "tasks_verbatim": ["..."], "question_bank": [/* ... */] }
+        "reading_for_comprehension": { "section_name": "Reading for Appreciation", "tasks_verbatim": [{ "task_text": "...", "question_bank": [/* ... */] }] },
+        "vocabulary_grammar":        { "section_name": "Vocabulary in Context",    "tasks_verbatim": [{ "task_text": "...", "question_bank": [/* ... */] }] }
       }
     }
   ],
 
   "competency_reporting": {
     "by_spine": {
-      "reading":            ["C-2.1", "C-2.2", "C-3.1", "C-4.1"],
-      "listening":          ["C-3.1"],
-      "speaking":           ["C-1.1", "C-3.2"],
-      "writing":            ["C-1.2", "C-1.3", "C-1.4", "C-2.3"],
-      "vocabulary_grammar": ["C-2.2"],
-      "beyond_text":        ["C-4.2", "C-4.3", "C-4.4", "C-4.5"]
+      "reading_for_comprehension": ["C-2.1", "C-2.2", "C-3.1", "C-4.1"],
+      "listening":                 ["C-3.1"],
+      "speaking":                  ["C-1.1", "C-3.2"],
+      "writing":                   ["C-1.2", "C-1.3", "C-1.4", "C-2.3"],
+      "vocabulary_grammar":        ["C-2.2"],
+      "beyond_text":               ["C-4.2", "C-4.3", "C-4.4", "C-4.5"]
     }
   },
 
@@ -350,16 +384,21 @@ the file already exists.
 }
 ```
 
-A spine with both `tasks_verbatim` empty AND `question_bank` empty
-must be omitted from its section's `spines` object. UTF-8. Overwrite.
+A spine with `tasks_verbatim` empty (no task objects, no nested
+sub-items) must be omitted from its section's `spines` object. UTF-8.
+Overwrite.
 
 ## Step 10 — Confirmation line
 
 ```
-ch_NN — "<title>" — sections: <count> (<type breakdown>) — spines_total: <N> — tasks: <total_task_count> — question_bank: <total_question_bank_count> — project_load: <N> — effort_index: <value>
+ch_NN — "<title>" — sections: <count> (<type breakdown>) — spines_total: <N> — tasks: <total_task_object_count> — sub_items: <total_subitem_count> — project_load: <N> — effort_index: <value>
 ```
 
-Example: `ch_03 — "Winds of Change" — sections: 2 (1 prose + 1 poem) — spines_total: 8 — tasks: 28 — question_bank: 14 — project_load: 2 — effort_index: 1.72`
+Where:
+- `total_task_object_count` = sum of `len(spine.tasks_verbatim)` across all (section, spine) cells.
+- `total_subitem_count` = sum of `len(t.question_bank) for cell in all cells for t in cell.tasks_verbatim`.
+
+Example: `ch_03 — "Winds of Change" — sections: 2 (1 prose + 1 poem) — spines_total: 8 — tasks: 28 — sub_items: 14 — project_load: 2 — effort_index: 1.72`
 
 ## Constraints
 
@@ -375,6 +414,10 @@ Example: `ch_03 — "Winds of Change" — sections: 2 (1 prose + 1 poem) — spi
   secondary = `transcript_ref` + `transcript_text` (per Step 6).
 - Do NOT invent absent spines. Do NOT collapse a multi-subheading
   spine to the first subheading only (per Step 5).
+- Each `tasks_verbatim` entry MUST be an OBJECT
+  `{ task_text, question_bank }`. Each `question_bank` entry MUST be
+  nested inside its parent task object. The legacy flat top-level
+  `question_bank` shape on a spine is FORBIDDEN.
 - Two output files are written per chapter: summary JSON (Step 9) and
   mapping JSON (Step 8b). Both must be present before moving to the
   next chapter.

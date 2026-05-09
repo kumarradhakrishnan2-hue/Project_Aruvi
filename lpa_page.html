@@ -570,6 +570,29 @@
   font-size: 11px; color: #085041; line-height: 1.55;
 }
 .eng-tg-elems li { margin: 2px 0; }
+.eng-sub-list {
+  margin-top: 8px; padding: 0; list-style: none;
+  border-top: 1px dashed #d8d4cc;
+}
+.eng-sub {
+  padding: 10px 0 8px; border-bottom: 1px dashed #ece8df;
+}
+.eng-sub:last-child { border-bottom: none; }
+.eng-sub-hdr {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; color: #1a1917; margin-bottom: 4px;
+}
+.eng-sub-num {
+  font-weight: 600; color: #4a4a4a; min-width: 20px;
+}
+.eng-sub-type {
+  font-size: 10px; padding: 1px 6px; border-radius: 3px;
+  background: #f3efe6; color: #1a1917;
+}
+.eng-sub-stem {
+  font-size: 12px; color: #1a1917; line-height: 1.5;
+  margin: 4px 0 6px 24px;
+}
 </style>
 
 <div class="lpa">
@@ -874,13 +897,16 @@ function renderEnglishPeriodCard(p, spineTitleMap) {
 }
 
 /* ── English only: render one assessment question card.
-   Reuses .qcard / .qhdr / .qbody chrome and toggleQ(). English-specifics:
-   visual_stimulus rendered as monospace pre-block, options highlighted on
-   is_correct, teacher_guide rendered as suggested_answer (closed types) or
-   bulleted expected_elements (open types), transcript_ref shown as a chip.
-   verified=true adds a small ✓. */
+   The composite item carries:
+   - task_prompt: verbatim task framing (always shown as the card's body
+     prologue)
+   - sub_items[]: array of sub-questions belonging to that task; each has
+     its own stem, type, options, visual_stimulus, expected/suggested.
+     Rendered as a numbered list under the task framing.
+   When has_sub_items is false, the outer task itself owns the answer
+   layer; we render a single sub-item synthesised by the Python side
+   (its stem == the task_prompt). */
 function renderEnglishQuestionCard(q, n) {
-  var typeLbl = escHtml(expandType(q.type || ''));
   var srcChip = q.source
     ? ' <span class="eng-q-src eng-q-src-' + escHtml(q.source) + '">' + escHtml(q.source) + '</span>'
     : '';
@@ -888,64 +914,122 @@ function renderEnglishQuestionCard(q, n) {
     ? ' <span class="eng-q-verified" title="verified">✓</span>'
     : '';
 
+  var subItems = (q.sub_items && q.sub_items.length) ? q.sub_items : [];
+  var hasSubItems = q.has_sub_items === true && subItems.length > 0;
+
+  /* Header: when the composite has explicit sub-items, the type chip
+     summarises them (joined by · ). Otherwise the outer task type. */
+  var headerType;
+  if (hasSubItems) {
+    var seen = {};
+    var ordered = [];
+    subItems.forEach(function(si) {
+      var t = (si.type || '').toUpperCase();
+      if (t && !seen[t]) { seen[t] = 1; ordered.push(t); }
+    });
+    headerType = ordered.map(expandType).join(' · ');
+  } else {
+    headerType = expandType(q.type || (subItems[0] && subItems[0].type) || '');
+  }
+  var typeLbl = escHtml(headerType);
+
+  /* Header title: show the task framing (truncated by Python in q.title). */
+  var headerTitle = q.title || q.task_prompt || q.question || '';
+
   var html = '<div class="qcard">';
   html += '<div class="qhdr" onclick="toggleQ(this)">';
   html +=   '<div class="qhdr-num">' + n + '</div>';
   html +=   '<div class="qhdr-type"><span class="qtype-lbl">' + typeLbl + '</span>' + verifiedChip + '</div>';
-  html +=   '<div class="qhdr-title"><div class="qhdr-lo">' + escHtml(q.title || q.question || '') + srcChip + '</div></div>';
+  html +=   '<div class="qhdr-title"><div class="qhdr-lo">' + escHtml(headerTitle) + srcChip + '</div></div>';
   html += '</div>';
 
   html += '<div class="qbody">';
 
-  /* Full prompt (the qhdr-title shows the truncated title only). */
-  if (q.question) {
-    html += '<div class="qtext">' + escHtml(q.question) + '</div>';
+  /* Task framing — always rendered when present (even when sub-items
+     repeat it as a synthetic stem; the duplication is intentional so the
+     card always opens with the textbook task). */
+  var framing = q.task_prompt || q.question || '';
+  if (framing) {
+    html += '<div class="qtext">' + escHtml(framing) + '</div>';
   }
 
-  /* Visual stimulus — pipe-delimited table or freeform text; render verbatim. */
-  if (q.visual_stimulus) {
-    html += '<div class="vs-box">' +
-              '<div class="vs-label">Visual stimulus</div>' +
-              '<pre class="eng-vs-pre">' + escHtml(q.visual_stimulus) + '</pre>' +
-            '</div>';
-  }
-
-  /* Transcript reference (Listening only). */
+  /* Transcript reference (Listening only) belongs to the outer item — every
+     sub-item shares the same audio source. */
   if (q.transcript_ref) {
     html += '<div class="eng-trans-ref"><span class="eng-trans-lbl">Transcript:</span> ' +
             escHtml(q.transcript_ref) + '</div>';
   }
 
-  /* Options — MCQ / TRUE_FALSE etc. Highlight is_correct. */
-  if (q.options && q.options.length) {
-    html += '<div class="eng-opts">';
-    q.options.forEach(function(o) {
-      if (!o) return;
-      var cls   = o.is_correct ? 'qopt correct' : 'qopt';
-      var label = o.label ? escHtml(o.label) + '. ' : '';
-      var text  = escHtml(o.text || '');
-      var tick  = o.is_correct ? ' ✓' : '';
-      html += '<div class="' + cls + '">' + label + text + tick + '</div>';
-    });
-    html += '</div>';
+  /* Sub-items list. */
+  function renderSubItem(si, idx, includeStem) {
+    var siType = (si.type || '').toUpperCase();
+    var siTypeLbl = escHtml(expandType(siType));
+    var s = '<div class="eng-sub">';
+    s += '<div class="eng-sub-hdr">';
+    if (idx !== null && idx !== undefined) {
+      s += '<span class="eng-sub-num">' + (idx + 1) + '.</span> ';
+    }
+    s += '<span class="eng-sub-type qtype-lbl">' + siTypeLbl + '</span>';
+    if (si.verified) s += ' <span class="eng-q-verified" title="verified">✓</span>';
+    s += '</div>';
+
+    if (includeStem && si.stem) {
+      s += '<div class="eng-sub-stem">' + escHtml(si.stem) + '</div>';
+    }
+
+    if (si.visual_stimulus) {
+      s += '<div class="vs-box">' +
+             '<div class="vs-label">Visual stimulus</div>' +
+             '<pre class="eng-vs-pre">' + escHtml(si.visual_stimulus) + '</pre>' +
+           '</div>';
+    }
+
+    if (si.options && si.options.length) {
+      s += '<div class="eng-opts">';
+      si.options.forEach(function(o) {
+        if (!o) return;
+        var cls   = o.is_correct ? 'qopt correct' : 'qopt';
+        var label = o.label ? escHtml(o.label) + '. ' : '';
+        var text  = escHtml(o.text || '');
+        var tick  = o.is_correct ? ' ✓' : '';
+        s += '<div class="' + cls + '">' + label + text + tick + '</div>';
+      });
+      s += '</div>';
+    }
+
+    var hasSug = si.suggested_answer && si.suggested_answer.length;
+    var hasExp = si.expected_elements && si.expected_elements.length;
+    if (hasSug || hasExp) {
+      s += '<div class="abox open"><div class="eng-tg-lbl">Teacher Guide</div>';
+      if (hasSug) {
+        s += '<div class="eng-tg-suggest">' + escHtml(si.suggested_answer) + '</div>';
+      }
+      if (hasExp) {
+        s += '<ul class="eng-tg-elems">';
+        si.expected_elements.forEach(function(e) {
+          s += '<li>' + escHtml(e) + '</li>';
+        });
+        s += '</ul>';
+      }
+      s += '</div>';
+    }
+
+    s += '</div>';  /* close .eng-sub */
+    return s;
   }
 
-  /* Teacher guide — suggested_answer for closed types, expected_elements for open. */
-  var hasTG = (q.suggested_answer && q.suggested_answer.length) ||
-              (q.expected_elements && q.expected_elements.length);
-  if (hasTG) {
-    html += '<div class="abox open"><div class="eng-tg-lbl">Teacher Guide</div>';
-    if (q.suggested_answer) {
-      html += '<div class="eng-tg-suggest">' + escHtml(q.suggested_answer) + '</div>';
-    }
-    if (q.expected_elements && q.expected_elements.length) {
-      html += '<ul class="eng-tg-elems">';
-      q.expected_elements.forEach(function(e) {
-        html += '<li>' + escHtml(e) + '</li>';
-      });
-      html += '</ul>';
-    }
+  if (hasSubItems) {
+    html += '<div class="eng-sub-list">';
+    subItems.forEach(function(si, idx) {
+      html += renderSubItem(si, idx, true);
+    });
     html += '</div>';
+  } else if (subItems.length === 1) {
+    /* No textbook sub-items — the outer task is itself the assessment item.
+       The Python side produced one synthetic sub-item whose stem equals the
+       task framing; we already rendered that as .qtext above, so suppress
+       the stem inside the sub-item to avoid duplication. */
+    html += renderSubItem(subItems[0], null, false);
   }
 
   html += '</div>';  /* close .qbody */
@@ -1241,9 +1325,10 @@ function renderAssessment(sections) {
   var ssSectionIdx = 0;
   var engSpineIdx  = 0;
 
-  /* English spine titles (mirrors LP renderer) */
+  /* English spine titles (mirrors LP renderer). */
   var ENG_SPINE_TITLE_A = {
-    reading: 'Reading', listening: 'Listening', speaking: 'Speaking',
+    reading_for_comprehension: 'Reading for Comprehension',
+    listening: 'Listening', speaking: 'Speaking',
     writing: 'Writing', vocabulary_grammar: 'Vocabulary & Grammar',
     beyond_text: 'Beyond the Text'
   };
@@ -1596,9 +1681,10 @@ function renderLPA() {
        Inside each section: spine bands group periods by primary spine.
        Within each spine band: standard .period-card list. */
 
-    var ENG_SPINE_ORDER = ['reading','listening','speaking','writing','vocabulary_grammar','beyond_text'];
+    var ENG_SPINE_ORDER = ['reading_for_comprehension','listening','speaking','writing','vocabulary_grammar','beyond_text'];
     var ENG_SPINE_TITLE = {
-      reading: 'Reading', listening: 'Listening', speaking: 'Speaking',
+      reading_for_comprehension: 'Reading for Comprehension',
+      listening: 'Listening', speaking: 'Speaking',
       writing: 'Writing', vocabulary_grammar: 'Vocabulary & Grammar',
       beyond_text: 'Beyond the Text'
     };
