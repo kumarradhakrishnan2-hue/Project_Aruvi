@@ -1,4 +1,4 @@
-ARUVI — ENGLISH ASSESSMENT CONSTITUTION · VERSION 3.0
+ARUVI — ENGLISH ASSESSMENT CONSTITUTION · VERSION 2.0
 Stages: Preparatory, Middle, Secondary
 
 ================================================================================
@@ -7,33 +7,29 @@ DESIGN PRINCIPLE
 
 The English LP→Assessment arc has two distinct phases:
 
-  LP          → selects priority tasks from the textbook, enacts them
-                as class activity, and writes ONE spine-cell implied_lo
-                per (section × spine) cell that was taught — expressed
-                as a broad, NCERT-style observable outcome.
+  LP          → enacts tasks_verbatim as class activity. The teacher
+                leads the exercise framed by `task_text`; students work
+                through the `question_bank` sub-items as in-class
+                practice. The question_bank belongs to the lesson.
 
-  Assessment  → receives the spine-cell implied_lo values from the LP
-                handoff and the section's prose/poem content from the
-                summary. It generates ONE original assessment item per
-                spine-cell implied_lo, grounded entirely in the
-                section's own text.
+  Assessment  → tests the learning outcomes (LOs) implied by that
+                enactment. Items are ORIGINAL — generated from the
+                implied LO and grounded in the section's prose/poem
+                text. No item reproduces or paraphrases any
+                `question_bank` stem from the summary.
 
-THE ASSESSMENT GENERATOR DOES NOT READ tasks_verbatim[] OR
-question_bank[] FROM THE SUMMARY — UNDER ANY CIRCUMSTANCE.
-Not to understand what was taught. Not for context. Not for any reason.
-The implied_lo in the LP handoff already encodes what was taught.
-tasks_verbatim[] and question_bank[] are inputs to the LP only.
-
-This separation guarantees:
-  - Items are original — derived from the section's prose/poem, not
-    from the textbook exercise wording.
-  - Item count is manageable — one item per (section × spine) cell
-    with at least one anchored task, not one per task.
-  - Assessment reflects genuine outcomes, not exercise replays.
+This means:
+  - The assessment is a genuine test of what was taught, not a
+    re-run of the textbook exercise set.
+  - Item count is a function of how many tasks the LP anchored —
+    a lean LP produces a lean assessment; a full LP produces a
+    rich one. Both are honest.
+  - Spines with no anchored tasks are absent from the assessment.
+    Nothing was taught; nothing is tested.
 
 The six-spine structure (Reading for Comprehension, Listening,
-Speaking, Writing, Vocabulary/Grammar, Beyond-the-Text) is preserved
-for NCF Languages compliance wherever spines are present.
+Speaking, Writing, Vocabulary/Grammar, Beyond-the-Text) is
+preserved for NCF Languages compliance wherever spines are present.
 C-codes do not appear anywhere in the assessment JSON.
 
 
@@ -42,22 +38,12 @@ INPUTS
 ================================================================================
 
 1. LP JSON → `coverage_handoff`: keyed by spine, each spine carrying
-   `section_contributions[]`. Each contribution is a (section × spine)
-   cell with at least one anchored task, providing:
-     - `section_id`       string
-     - `section_title`    string
-     - `section_type`     string
-     - `implied_lo`       string — one broad NCERT-style outcome
-                          for the whole cell, e.g.:
-                          "Student identifies details, main idea, and
-                          sequence of events in [section title]."
-                          "Student uses adverbs of manner correctly in
-                          sentences drawn from [section title]."
-     - `tasks_anchored[]` array — task records used by the LP to
-                          record which tasks were selected. The
-                          assessment generator DOES NOT READ this
-                          array. It is present in the handoff for
-                          LP record-keeping only.
+   `section_contributions[]`. Each contribution lists `tasks_anchored[]`
+   — one entry per task taught in class — with:
+     - `spine`       string
+     - `task_index`  integer (0-based, into summary's tasks_verbatim[])
+     - `task_brief`  string
+     - `implied_lo`  string — "Student can [skill] using [context]."
    This is the PRIMARY driver of assessment item generation.
 
 2. Summary JSON → per main_section:
@@ -65,13 +51,9 @@ INPUTS
                                     informational sections)
      - `poem_text` and
        `poem_appreciation_summary` (poem sections)
-   These are the ONLY content sources for generated items.
-
-   THE GENERATOR DOES NOT READ from the summary:
-     - `tasks_verbatim[]`   — forbidden; belongs to the LP
-     - `question_bank[]`    — forbidden; belongs to the LP
-   Reading either field is a constitution violation regardless of
-   intent.
+   These are the ONLY content sources for generated items. The
+   assessment generator does NOT read `tasks_verbatim[]` or
+   `question_bank[]` from the summary — those belong to the LP.
 
    For Listening cells:
      - `transcript_ref`   (page pointer; all stages)
@@ -83,18 +65,18 @@ OUTPUT
 ================================================================================
 
 Assessment JSON per chapter: header + spine-keyed sections. Only
-spines with at least one section_contribution (i.e., at least one
-anchored task in the LP) appear. Each spine section is a flat array
-of items ordered by section_id (A before B before C).
+spines with at least one anchored task appear. Each spine section is
+a flat array of items ordered by (section_id, task_index order within
+the LP handoff).
 
 
 ================================================================================
 RULE 1 | SPINE STRUCTURE — PRESENT SPINES ONLY
 ================================================================================
 
-Emit only spines that have at least one section_contribution in the
-LP handoff. A spine with zero contributions is OMITTED from the
-assessment JSON entirely — no note, no placeholder.
+Emit only spines that have at least one anchored task in the LP
+handoff. A spine with zero anchored tasks across all sections is
+OMITTED from the assessment JSON entirely — no note, no placeholder.
 
 Present spines are emitted in this fixed order (skip absent ones):
   Reading for Comprehension
@@ -105,82 +87,41 @@ Present spines are emitted in this fixed order (skip absent ones):
   Beyond the Text
 
 Within each spine, items are ordered by section_id (A before B
-before C).
+before C), then by task_index order within the LP handoff.
 
 
 ================================================================================
-RULE 2 | ITEM GENERATION — ONE ITEM PER SPINE-CELL IMPLIED LO
+RULE 2 | ITEM GENERATION — ONE ITEM PER IMPLIED LO
 ================================================================================
 
-For each section_contribution in the LP handoff (one per section ×
-spine cell with at least one anchored task), generate exactly ONE
-assessment item that tests the cell's `implied_lo`.
+For each entry in `tasks_anchored[]` across all section_contributions
+of a spine, generate exactly ONE assessment item that tests the
+entry's `implied_lo`.
 
 Generation constraints:
-  a) The item MUST be grounded strictly in the section's content —
+  a) The item MUST be grounded strictly in the anchored section's
      `prose_summary` (for prose/narrative/dialogue/informational
      sections) or `poem_text` + `poem_appreciation_summary` (for
      poem sections). No content from outside these fields.
-  b) The item MUST be original. It must not reproduce, paraphrase,
-     or structurally echo any textbook exercise wording. Since the
-     generator never reads tasks_verbatim[] or question_bank[],
-     this is guaranteed by construction — but remains an explicit
-     design principle.
+  b) The item MUST be original. No stem may reproduce or paraphrase
+     any `question_bank` entry from the summary's tasks_verbatim[]
+     for this (section, spine) cell.
   c) The item MUST directly test the `implied_lo` — not a generic
-     comprehension question that could apply to any chapter, not a
-     tangentially related exercise.
+     comprehension question, not a tangentially related exercise.
   d) Question type is drawn from the spine's permitted set (Rule 3).
   e) Stage-appropriate depth applies (Rule 10).
 
-There is NO secondary fallback path. If a spine cell has no
-section_contribution in the LP handoff, it produces no item.
+There is NO secondary (generate-from-nothing) fallback path. If a
+spine cell has no anchored tasks, it produces no items. This is by
+design — the assessment reflects only what was taught.
 
-Item count per chapter = total section_contributions across all spines
-in the LP handoff. A chapter with 3 sections and 4 spines active
-produces at most 12 items (typically fewer, as not every section × spine
-cell will have been taught).
-
-
-================================================================================
-RULE 3 | RICHNESS — GROUND ITEMS IN SECTION CONTENT
-================================================================================
-
-Every generated item must be visibly anchored in the section's actual
-textual content. Generic questions that could apply to any text in any
-chapter are prohibited.
-
-REQUIRED — items must draw on at least ONE of:
-  - A named character, speaker, or person from the section.
-  - A specific event, scene, or episode from the prose_summary.
-  - A specific line, image, or phrase from poem_text.
-  - The grammar concept or vocabulary set as it appears in the
-    section (for Vocabulary/Grammar items: the concept MUST be named
-    explicitly in the stem — e.g., "adverbs of manner", "synonyms for
-    [word]", "simple past tense").
-  - A specific writing prompt or communicative context drawn from
-    the section's theme or content.
-
-PROHIBITED:
-  - Stems that could be answered without reading the section
-    (e.g., "What is the main idea?" with no section-specific anchor).
-  - Stems recycled from textbook exercise wording.
-  - Grammar items that test the concept in isolation without
-    connection to the section's language or content.
-
-EXAMPLE — POOR (generic, no textual anchor):
-  "Identify the adverbs in the following sentences."
-  [sentences invented, unrelated to the section]
-
-EXAMPLE — GOOD (grounded in section content):
-  "The narrator in [section title] uses several adverbs of manner
-  to describe how the river moved. Identify the adverbs of manner
-  in the passage below and explain what each tells the reader about
-  the river's movement."
-  [passage excerpt from prose_summary provided in the stem]
+Item count per chapter = total entries across all `tasks_anchored[]`
+arrays in the LP handoff. This varies by LP — a chapter with more
+periods anchored produces more assessment items.
 
 
 ================================================================================
-RULE 4 | QUESTION TYPE
+RULE 3 | QUESTION TYPE
 ================================================================================
 
 Each item carries `question_type` from this fixed set:
@@ -218,14 +159,14 @@ TRUE_FALSE vs MCQ disambiguation (critical):
                NOT full declarative sentences being judged for truth
                (e.g., "Choose the correct meaning of…"). MCQ items
                carry `options[]`; `teacher_guide.suggested_answer`
-               is OMITTED (see Rule 5 — the correct option is already
+               is OMITTED (see Rule 4 — the correct option is already
                flagged in `options[].is_correct`).
 
   Do NOT classify "select the true statements" tasks as MCQ.
 
 
 ================================================================================
-RULE 5 | ANSWER LAYER — CLOSED VS OPEN
+RULE 4 | ANSWER LAYER — CLOSED VS OPEN
 ================================================================================
 
 Each item is classified CLOSED or OPEN by its `question_type`:
@@ -255,7 +196,7 @@ CLOSED items MUST NOT carry `expected_elements`.
 
 
 ================================================================================
-RULE 6 | ANSWER VERIFICATION
+RULE 5 | ANSWER VERIFICATION
 ================================================================================
 
 For every CLOSED item, verify the suggested answer against:
@@ -273,11 +214,11 @@ by the source.
 
 For OPEN items: `verified` is always `true` (rubrics are not solved).
 
-If a closed item's answer cannot be verified, Rule 7 applies.
+If a closed item's answer cannot be verified, Rule 6 applies.
 
 
 ================================================================================
-RULE 7 | FALLBACK (VERIFICATION FAILURE)
+RULE 6 | FALLBACK (VERIFICATION FAILURE)
 ================================================================================
 
 When a closed item's answer cannot be verified:
@@ -293,7 +234,7 @@ teacher sees the gap and can substitute.
 
 
 ================================================================================
-RULE 8 | SOURCE TAGGING
+RULE 7 | SOURCE TAGGING
 ================================================================================
 
 Every item carries:
@@ -304,17 +245,16 @@ Every item carries:
                               informational
   - `source_spine`          — spine key (e.g.,
                               "vocabulary_grammar")
-  - `source_lo`             — the spine-cell `implied_lo` string
-                              this item was generated to test;
-                              copied verbatim from the LP handoff
-                              contribution
+  - `source_lo`             — the `implied_lo` string this item
+                              was generated to test; copied verbatim
+                              from the LP handoff entry
 
-This lets the teacher see what outcome is being tested (`source_lo`)
-and where the content comes from (via section tags).
+This lets the teacher see what was taught (via `source_lo`) and
+where the content comes from (via section tags).
 
 
 ================================================================================
-RULE 9 | VISUAL STIMULUS AND STRUCTURAL FIDELITY
+RULE 8 | VISUAL STIMULUS AND STRUCTURAL FIDELITY
 ================================================================================
 
 `visual_stimulus` is non-empty only when the item requires the
@@ -340,7 +280,7 @@ STRUCTURAL FIDELITY:
 
 
 ================================================================================
-RULE 10 | TRANSCRIPT REFERENCE FOR LISTENING ITEMS
+RULE 9 | TRANSCRIPT REFERENCE FOR LISTENING ITEMS
 ================================================================================
 
 Every Listening item carries `transcript_ref` at the item level:
@@ -354,7 +294,7 @@ generator's verification only — it is not echoed into the item.
 
 
 ================================================================================
-RULE 11 | RUBRIC GUIDANCE FOR OPEN ITEMS — STAGE-AWARE
+RULE 10 | RUBRIC GUIDANCE FOR OPEN ITEMS — STAGE-AWARE
 ================================================================================
 
 `expected_elements` depth scales with stage:
@@ -370,7 +310,7 @@ RULE 11 | RUBRIC GUIDANCE FOR OPEN ITEMS — STAGE-AWARE
 
 
 ================================================================================
-RULE 12 | HEADER (INFORMATIONAL)
+RULE 11 | HEADER (INFORMATIONAL)
 ================================================================================
 
 Appears once at the top of the assessment document:
@@ -382,7 +322,7 @@ Item bodies MUST NOT reference C-codes.
 
 
 ================================================================================
-RULE 13 | NO INTERNAL IDS IN TEACHER PROSE
+RULE 12 | NO INTERNAL IDS IN TEACHER PROSE
 ================================================================================
 
 Internal item IDs (e.g., "Q-RFC-A-1") live only in JSON `id` fields
@@ -421,17 +361,13 @@ ASSESSMENT JSON SCHEMA
           "source_section_type":  string,   // prose|poem|narrative|
                                             // dialogue|informational
           "source_spine":         string,   // spine key
-          "source_lo":            string,   // spine-cell implied_lo
-                                            // from LP handoff;
-                                            // copied verbatim
+          "source_lo":            string,   // implied_lo from LP handoff
 
           "item_stem":            string,   // the assessment question /
                                             // task framing; original,
-                                            // grounded in section text;
-                                            // must cite specific content
-                                            // per Rule 3
+                                            // grounded in section text
 
-          "question_type":        string,   // see Rule 4
+          "question_type":        string,   // see Rule 3
 
           "options": [                      // MCQ and TRUE_FALSE only;
                                             // [] otherwise
@@ -462,5 +398,5 @@ ASSESSMENT JSON SCHEMA
 
 ================================================================================
 Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
-English Assessment Constitution · Version 3.0 · Internal Document
+English Assessment Constitution · Version 2.0 · Internal Document
 ================================================================================

@@ -551,20 +551,20 @@
     line-height: 1.75;
   }
 
-  /* English-only "About the Effort Index" block — sits below the alloc table */
+  /* "About the Effort Index" block — sits below the alloc table (English + Science/Maths) */
   .about-ei {
     margin: 14px 0 6px 0;
     padding: 12px 14px 10px 14px;
     background: #f8fbff;
     border-left: 3px solid #93bce8;
     border-radius: 4px;
-    font-size: 0.8rem;
-    color: #1a1917;
+    font-size: 0.72rem;
+    color: #4b5563;
     line-height: 1.55;
   }
   .about-ei h4 {
     margin: 0 0 6px 0;
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     font-weight: 700;
     color: #1a4480;
     letter-spacing: 0.01em;
@@ -821,12 +821,21 @@ function setFootnote() {
       + '</div>';
     return;
   }
-  /* Science / Mathematics: short note in fn2 area \u2014 no dedicated fn1 any more */
-  var fn2El = document.getElementById('fn2');
-  if (IS_SCIENCE && fn2El) {
-    fn2El.insertAdjacentHTML('beforebegin',
-      '<p id="fn1">Periods allocated proportionally to the chapter effort index, an indicator of chapter complexity. '
-      + 'Click the Effort index number above to see the breakdown for each chapter.</p>');
+  /* Science / Mathematics: structured "About the Effort Index" block */
+  if (IS_SCIENCE && aboutEl) {
+    aboutEl.innerHTML =
+      '<div class="about-ei">'
+      + '<h4>About the Effort Index</h4>'
+      + '<p>The effort index is a number that tells you how much classroom time a chapter typically needs compared to other chapters in the subject. Chapters with a higher effort index get more periods; chapters with a lower one get fewer. It is calculated from four signals, each scored from the chapter content.</p>'
+      + '<ul>'
+      + '<li><b>Conceptual demand</b> \u2014 The cognitive complexity of exercises and questions in the chapter. High-order thinking or multi-step reasoning raises the score (\u00d72 weight).</li>'
+      + '<li><b>Student activities</b> \u2014 The number of hands-on activities that students perform themselves. Each activity adds classroom time for setup, execution and discussion (\u00d71 weight).</li>'
+      + '<li><b>Teacher demonstrations</b> \u2014 The number of demonstrations the teacher must conduct. These need preparation and focused class attention (\u00d71.5 weight).</li>'
+      + '<li><b>Exercise execution load</b> \u2014 The total exercise items students must complete. A heavier exercise count means more time for guided practice and assessment (\u00d72 weight).</li>'
+      + '</ul>'
+      + '<p class="about-ei-close">The four signals are combined with fixed weights to give the effort index. Only relative values matter \u2014 it is used to share your available periods across chapters in proportion to their load.</p>'
+      + '</div>';
+    return;
   }
 }
 
@@ -1371,19 +1380,34 @@ function _downloadPDF_legacy_unused() {
     }
   }
 
-  /* ── Science: explanatory paragraph about effort index ── */
+  /* ── Science / Mathematics: structured "About the Effort Index" section ── */
   if (IS_SCIENCE) {
-    doc.setFont('helvetica', 'italic'); doc.setFontSize(8); doc.setTextColor(75, 75, 75);
-    var _expText = "About effort index: Each chapter's effort index is a composite of four signals "
-        + "read from the chapter content \u2014 conceptual demand of the exercise (\u00d72), "
-        + "number of student-executed activities (\u00d71), number of teacher demonstrations "
-        + "(\u00d71.5), and exercise execution load (\u00d72). Higher effort index = more "
-        + "classroom time needed. Periods are allocated proportionally across chapters using "
-        + "the Largest Remainder Method (LRM).";
-    var _expLines = doc.splitTextToSize(_expText, pageW - mL - mR);
-    doc.text(_expLines, mL, y);
-    doc.setCharSpace(0);
-    y += _expLines.length * 3.2 + 5;
+    if (y + 40 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(26, 25, 23);
+    doc.text('About the Effort Index', mL, y); doc.setCharSpace(0);
+    y += 4;
+    rule(y, 0.18, 180); y += 4;
+
+    var _sciEiRows = [
+      { label: 'What it measures:', body: "The effort index tells you how much classroom time a chapter typically needs compared to other chapters. Chapters with a higher effort index get more periods; chapters with a lower one get fewer. It is calculated from four signals read from the chapter content." },
+      { label: 'Conceptual demand (\u00d72):', body: "The cognitive complexity of exercises and questions. High-order thinking or multi-step reasoning raises the score." },
+      { label: 'Student activities (\u00d71):', body: "The number of hands-on activities students perform themselves. Each adds classroom time for setup, execution and discussion." },
+      { label: 'Teacher demonstrations (\u00d71.5):', body: "The number of demonstrations the teacher must conduct. These need preparation and focused class attention." },
+      { label: 'Exercise execution load (\u00d72):', body: "The total exercise items students must complete. A heavier exercise count means more time for guided practice and assessment." },
+      { label: 'Note:', body: "The four signals are combined with fixed weights to give the effort index. Only relative values matter \u2014 it is used to share your available periods across chapters in proportion to their load." },
+    ];
+    var _eiLblW = 56;
+    var _eiBodyW = pageW - mL - mR - _eiLblW;
+    _sciEiRows.forEach(function(row) {
+      if (y + 8 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5); doc.setTextColor(26, 68, 128);
+      doc.text(row.label, mL, y); doc.setCharSpace(0);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(75, 75, 75);
+      var _bLines = doc.splitTextToSize(row.body, _eiBodyW);
+      doc.text(_bLines, mL + _eiLblW, y); doc.setCharSpace(0);
+      y += Math.max(5, _bLines.length * 3.5);
+    });
+    y += 4;
   }
 
   /* ── column widths — Fix 2: explicit mm, total 172mm ── */

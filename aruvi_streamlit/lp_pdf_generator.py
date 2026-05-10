@@ -885,12 +885,352 @@ def _build_science_lp(output_path, data):
 
 
 # ──────────────────────────────────────────────────────────────────────────────
+# English-specific building blocks
+# ──────────────────────────────────────────────────────────────────────────────
+
+SPINE_LABELS = {
+    "reading_for_comprehension": "Reading for Comprehension",
+    "listening":                 "Listening",
+    "speaking":                  "Speaking",
+    "writing":                   "Writing",
+    "vocabulary_grammar":        "Vocabulary & Grammar",
+    "beyond_text":               "Beyond the Text",
+}
+
+
+def _english_period_block(period, uw):
+    """
+    Returns a list of flowables for one English period.
+
+    Layout:
+      Row 1  — Period header  (Period N | Duration | Activity title)
+      Row 2  — Section        (Section label + title)
+      Row 3  — Spines         (comma-joined spine labels)
+      Row 4  — Materials      (list joined)
+      Rows 5+ — Phases        (minutes | description), same style as Science
+      Row N  — Tasks in class (brief summary, italic)
+      Row N+1— Teacher notes  (blue-tinted, same as Maths teacher_notes row)
+    """
+    story = []
+
+    period_num  = period.get("period_number", "—")
+    duration    = period.get("period_duration_minutes", "—")
+    act_title   = _clean_text(str(period.get("activity_title") or "—"))
+    section_id  = _clean_text(str(period.get("section_id") or ""))
+    section_ttl = _clean_text(str(period.get("section_title") or ""))
+    spines      = period.get("spines_taught") or []
+    spine_str   = ", ".join(SPINE_LABELS.get(s, s.replace("_", " ").title()) for s in spines)
+    phases      = period.get("phases") or []
+    tasks       = period.get("tasks_in_class") or []
+    teacher_note= _clean_text(str(period.get("teacher_notes") or ""))
+
+    raw_mat = period.get("materials") or []
+    if isinstance(raw_mat, list):
+        mat_str = "; ".join(_clean_text(str(m)) for m in raw_mat if m)
+    else:
+        mat_str = _clean_text(str(raw_mat))
+
+    # ── Row 1: Period header ──────────────────────────────────────────────────
+    hdr_data = [[
+        Paragraph(f"<b>Period {period_num}</b>", ST["period_lbl"]),
+        Paragraph(f"{duration} min",              ST["period_time"]),
+        Paragraph(f"<b>{act_title}</b>",          ST["period_act"]),
+    ]]
+    hdr_t = Table(hdr_data, colWidths=[uw * f for f in [0.13, 0.09, 0.78]])
+    hdr_t.setStyle(TableStyle([
+        ("BACKGROUND",    (0, 0), (-1, -1), BG_META),
+        ("LINEABOVE",     (0, 0), (-1, -1), 1.0, INK),
+        ("LINEBELOW",     (0, 0), (-1, -1), 0.5, HAIRLINE),
+        ("VALIGN",        (0, 0), (-1, -1), "MIDDLE"),
+        ("TOPPADDING",    (0, 0), (-1, -1), 6),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+        ("LEFTPADDING",   (0, 0), (-1, -1), 6),
+        ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+    ]))
+
+    # ── Row 2: Section label ──────────────────────────────────────────────────
+    sec_label = f"Section {section_id}: {section_ttl}" if section_id else section_ttl
+    sec_t = Table(
+        [[Paragraph(f"<b>Section:</b> {sec_label}", ST["mat_text"])]],
+        colWidths=[uw],
+    )
+    sec_t.setStyle(TableStyle([
+        ("BACKGROUND",    (0, 0), (-1, -1), colors.white),
+        ("LINEBELOW",     (0, 0), (-1, -1), 0.5, HAIRLINE),
+        ("VALIGN",        (0, 0), (-1, -1), "MIDDLE"),
+        ("TOPPADDING",    (0, 0), (-1, -1), 3),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
+        ("LEFTPADDING",   (0, 0), (-1, -1), 8),
+        ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+    ]))
+
+    # ── Row 3: Spines + Materials (two-col row) ───────────────────────────────
+    spine_mat_t = Table(
+        [[
+            Paragraph(f"<b>Spines:</b> {spine_str}", ST["mat_text"]),
+            Paragraph(f"<b>Materials:</b> {mat_str}", ST["mat_text"]),
+        ]],
+        colWidths=[uw * 0.40, uw * 0.60],
+    )
+    spine_mat_t.setStyle(TableStyle([
+        ("BACKGROUND",    (0, 0), (-1, -1), colors.white),
+        ("LINEBELOW",     (0, 0), (-1, -1), 0.5, HAIRLINE),
+        ("VALIGN",        (0, 0), (-1, -1), "TOP"),
+        ("TOPPADDING",    (0, 0), (-1, -1), 3),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
+        ("LEFTPADDING",   (0, 0), ( 0,  0), 8),
+        ("LEFTPADDING",   (1, 0), ( 1, -1), 6),
+        ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+    ]))
+
+    # Anchor: keep header + section + spines/materials together
+    story.append(KeepTogether([hdr_t, Spacer(1, 3), sec_t, spine_mat_t]))
+
+    # ── Phase rows ────────────────────────────────────────────────────────────
+    if phases:
+        phase_rows = []
+        for ph in phases:
+            mins = _clean_text(str(ph.get("minutes") or "—"))
+            desc = _clean_text(str(ph.get("description") or "—"))
+            phase_rows.append([
+                Paragraph(mins, ST["tb_time"]),
+                Paragraph(desc, ST["tb_desc"]),
+            ])
+        phase_t = Table(phase_rows, colWidths=[uw * 0.10, uw * 0.90])
+        phase_t.setStyle(TableStyle([
+            ("BACKGROUND",    (0, 0), (-1, -1), colors.white),
+            ("VALIGN",        (0, 0), (-1, -1), "TOP"),
+            ("TOPPADDING",    (0, 0), (-1, -1), 4),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+            ("LEFTPADDING",   (0, 0), ( 0,  0), 8),
+            ("LEFTPADDING",   (1, 0), ( 1, -1), 6),
+            ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+            ("LINEBELOW",     (0, 0), (-1, -2), 0.3, ROW_LINE),
+            ("LINEBELOW",     (0,-1), (-1, -1), 0.5, HAIRLINE),
+        ]))
+        story.append(phase_t)
+
+    # ── Tasks in class (LO summary, italic) ──────────────────────────────────
+    if tasks:
+        task_lines = []
+        for t in tasks:
+            brief = _clean_text(str(t.get("task_brief") or ""))
+            lo    = _clean_text(str(t.get("implied_lo") or ""))
+            if brief:
+                task_lines.append(f"<i>{brief}</i>")
+        if task_lines:
+            tasks_t = Table(
+                [[
+                    Paragraph("<b>Tasks:</b>", ST["mat_label"]),
+                    Paragraph("  |  ".join(task_lines), ST["mat_text"]),
+                ]],
+                colWidths=[uw * 0.10, uw * 0.90],
+            )
+            tasks_t.setStyle(TableStyle([
+                ("BACKGROUND",    (0, 0), (-1, -1), colors.white),
+                ("LINEBELOW",     (0, 0), (-1, -1), 0.5, HAIRLINE),
+                ("VALIGN",        (0, 0), (-1, -1), "TOP"),
+                ("TOPPADDING",    (0, 0), (-1, -1), 3),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
+                ("LEFTPADDING",   (0, 0), ( 0,  0), 8),
+                ("LEFTPADDING",   (1, 0), ( 1, -1), 6),
+                ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+            ]))
+            story.append(tasks_t)
+
+    # ── Teacher notes (blue-tinted) ───────────────────────────────────────────
+    if teacher_note:
+        tn_t = Table(
+            [[
+                Paragraph("<b>Teacher Notes</b>", ST["mat_label"]),
+                Paragraph(teacher_note, ST["mat_text"]),
+            ]],
+            colWidths=[uw * 0.15, uw * 0.85],
+        )
+        tn_t.setStyle(TableStyle([
+            ("BACKGROUND",    (0, 0), (-1, -1), BLUE_BG),
+            ("LINEABOVE",     (0, 0), (-1,  0), 0.5, HAIRLINE),
+            ("LINEBELOW",     (0, 0), (-1, -1), 0.5, HAIRLINE),
+            ("VALIGN",        (0, 0), (-1, -1), "TOP"),
+            ("TOPPADDING",    (0, 0), (-1, -1), 4),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+            ("LEFTPADDING",   (0, 0), ( 0,  0), 8),
+            ("LEFTPADDING",   (1, 0), ( 1, -1), 6),
+            ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+        ]))
+        story.append(tn_t)
+
+    story.append(Spacer(1, 4 * mm))
+    return story
+
+
+def _build_english_lp(output_path, data):
+    """
+    Renders the English LP PDF.
+    Uses the same page setup / header / footer as Science/SS.
+    Period content is rendered via _english_period_block().
+    """
+    doc_meta = {
+        "doc_type":    "Lesson Plan",
+        "doc_sub":     f"Grade {data['grade']} · {data['subject']} · {data['date']}",
+        "footer_left": (
+            f"Aruvi · Lesson Plan · Grade {data['grade']} · "
+            f"{data['subject']} · Ch {data['chapter_num']:02d}"
+        ),
+        "footer_right": "",
+    }
+    doc = SimpleDocTemplate(
+        output_path, pagesize=A4,
+        leftMargin=L_MAR, rightMargin=R_MAR,
+        topMargin=T_MAR + 14 * mm,
+        bottomMargin=B_MAR + 8 * mm,
+    )
+    uw = PAGE_W - L_MAR - R_MAR
+
+    total_periods = len(data["periods"])
+    total_time    = sum(p.get("period_duration_minutes", 0) for p in data["periods"])
+
+    story = []
+    story.append(meta_strip_full(
+        data["chapter_num"], data["chapter_title"], data["weight"],
+        total_periods, total_time, data["date"],
+    ))
+    story.append(Spacer(1, 3 * mm))
+
+    if data.get("competencies"):
+        story.append(competency_table(data["competencies"]))
+        story.append(Spacer(1, 4 * mm))
+
+    for p in data["periods"]:
+        story.extend(_english_period_block(p, uw))
+
+    # ── Pass 1 ────────────────────────────────────────────────────────────────
+    doc.build(
+        story,
+        onFirstPage=lambda c, d: on_page(c, d, doc_meta),
+        onLaterPages=lambda c, d: on_page(c, d, doc_meta),
+    )
+
+    # ── Pass 2: stamp page numbers ────────────────────────────────────────────
+    reader = PdfReader(output_path)
+    total  = len(reader.pages)
+    writer = PdfWriter()
+    fy     = B_MAR - 4 * mm
+
+    for i, page in enumerate(reader.pages):
+        packet  = io.BytesIO()
+        stamp_c = rl_canvas.Canvas(packet, pagesize=A4)
+        stamp_c.setFont("Helvetica", 5.5)
+        stamp_c.setFillColor(colors.HexColor("#bbbbbb"))
+        stamp_c.drawRightString(
+            PAGE_W - R_MAR, fy + 1.2 * mm,
+            f"Page {i + 1} of {total}",
+        )
+        stamp_c.save()
+        packet.seek(0)
+        overlay = PdfReader(packet)
+        page.merge_page(overlay.pages[0])
+        writer.add_page(page)
+
+    with open(output_path, "wb") as out_f:
+        writer.write(out_f)
+
+    print(f"✓  {output_path}  ({total} page{'s' if total != 1 else ''})")
+
+
+def _json_to_english_lp_data(j: dict, date_str: str, weight) -> dict:
+    """
+    Adapter for English LP JSON → data dict consumed by _build_english_lp().
+
+    English period shape:
+      period_number, period_duration_minutes, section_id, section_title,
+      spines_taught[], activity_title, pedagogical_methods{},
+      tasks_in_class[{spine, task_index, task_brief, implied_lo}],
+      homework[], phases[{minutes, description}],
+      teacher_notes, materials[]
+    """
+    import json as _json
+
+    lp = (j.get("result") or {}).get("lesson_plan") or {}
+
+    # ── Resolve paths ─────────────────────────────────────────────────────────
+    _grade_map = {
+        "Grade I":    "i",    "Grade II":   "ii",   "Grade III": "iii",
+        "Grade IV":   "iv",   "Grade V":    "v",    "Grade VI":  "vi",
+        "Grade VII":  "vii",  "Grade VIII": "viii",
+        "Grade IX":   "ix",   "Grade X":    "x",
+    }
+    _stage_map = {
+        "i": "primary", "ii": "preparatory", "iii": "preparatory",
+        "iv": "preparatory", "v": "preparatory",
+        "vi": "middle",  "vii": "middle", "viii": "middle",
+        "ix": "secondary", "x": "secondary",
+    }
+    _project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    _raw_grade    = j.get("grade", "")
+    _grade_folder = _grade_map.get(_raw_grade, _raw_grade.lower().replace("grade ", ""))
+    _stage        = _stage_map.get(_grade_folder, "middle")
+    _ch_num       = j.get("chapter_number", 0)
+
+    # ── Load c_codes from per-chapter mapping JSON ────────────────────────────
+    _ch_map_path = os.path.join(
+        _project_root, "mirror", "chapters", "english", _grade_folder,
+        "mappings", f"ch_{_ch_num:02d}_mapping.json",
+    )
+    _c_codes = []
+    try:
+        _ch_map = _json.load(open(_ch_map_path, encoding="utf-8"))
+        for entry in (_ch_map.get("primary") or []):
+            code = entry.get("c_code", "")
+            if code and code not in _c_codes:
+                _c_codes.append(code)
+    except Exception:
+        pass
+
+    # ── Load competency descriptions ──────────────────────────────────────────
+    _comp_desc_path = os.path.join(
+        _project_root, "mirror", "framework", "english", _stage,
+        f"competency_descriptions_{_stage}.json",
+    )
+    _comp_descs: dict = {}
+    try:
+        _raw = _json.load(open(_comp_desc_path, encoding="utf-8"))
+        if isinstance(_raw, dict) and "curricular_goals" not in _raw:
+            _comp_descs = _raw   # flat {c_code: text}
+        elif "curricular_goals" in _raw:
+            for _cg in (_raw.get("curricular_goals") or []):
+                for _comp in (_cg.get("competencies") or []):
+                    _comp_descs[_comp.get("code", "")] = _comp.get("description", "")
+    except Exception:
+        pass
+
+    competencies = [(code, _comp_descs.get(code, "")) for code in _c_codes]
+
+    # ── Build period list (pass raw dicts through; renderer reads keys directly) ──
+    periods = list(lp.get("periods") or [])
+
+    return {
+        "chapter_num":   j["chapter_number"],
+        "chapter_title": j["chapter_title"],
+        "grade":         str(j["grade"]).replace("Grade ", ""),
+        "subject":       j["subject"],
+        "date":          date_str,
+        "weight":        weight,
+        "competencies":  competencies,
+        "periods":       periods,
+    }
+
+
+# ──────────────────────────────────────────────────────────────────────────────
 # Main build
 # ──────────────────────────────────────────────────────────────────────────────
 def build_lp_pdf(output_path, data):
     # ── Subject routing ───────────────────────────────────────────────────────
     if data.get("subject") == "Science":
         _build_science_lp(output_path, data)
+        return
+    if data.get("subject") == "English":
+        _build_english_lp(output_path, data)
         return
     # ── Social Science (and all other subjects) — unchanged below ─────────────
     doc_meta = {
@@ -1031,6 +1371,10 @@ def json_to_lp_data(j: dict) -> dict:
     # ── Subject routing: Mathematics uses v2.1 LP shape ───────────────────────
     if j.get("subject") == "Mathematics":
         return _json_to_maths_lp_data(j, date_str, weight)
+
+    # ── Subject routing: English uses spine-based LP structure ───────────────
+    if j.get("subject") == "English":
+        return _json_to_english_lp_data(j, date_str, weight)
 
     # ── Load canonical competency descriptions from framework JSON ────────────
     # The AI-generated competency_text in each period is unreliable (it tends

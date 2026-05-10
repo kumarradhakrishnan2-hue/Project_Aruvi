@@ -14,10 +14,13 @@ from docx.shared import Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 import math
+import threading
+import queue
 
 import uuid
 import streamlit as st
 import streamlit.components.v1 as components
+from streamlit.runtime.scriptrunner import add_script_run_ctx
 import anthropic
 import os
 # ── Ask Aruvi backend toggle ──────────────────────────────────────────────────
@@ -64,7 +67,7 @@ def subject_to_folder(subject: str) -> str:
         "Science":        "science",
         "English":        "english",
         "Second Language":"languages",
-        "EVS":            "science",
+        "EVS":            "evs",
     }
     return mapping.get(subject, subject.lower().replace(" ", "_"))
 
@@ -675,7 +678,20 @@ def generate_lpa(
     chapter: dict,
     period_rows: list,
     session: dict,
+    result_queue: "queue.Queue | None" = None,
+    stop_event:   "threading.Event | None" = None,
 ) -> dict:
+    """Generate lesson plan + assessment.
+
+    When called from the background-thread path, *result_queue* and
+    *stop_event* are provided:
+      • result_queue – the completed (or stopped) result dict is put here.
+      • stop_event   – checked on every streamed chunk; if set, the stream
+                       is abandoned and a stopped-result dict is returned.
+
+    When called synchronously (legacy path / tests), both are None and the
+    function returns the result dict directly as before.
+    """
     paths = resolve_paths(grade, subject, chapter["chapter_number"])
 
     period_sched = format_period_schedule(period_rows, session)
@@ -909,8 +925,17 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             'display:flex;gap:8px;align-items:center;">'
             '<div style="width:10px;height:10px;border-radius:50%;background:#e8a83e;'
             'animation:aruviPulse 1.4s infinite;flex-shrink:0;"></div>'
-            '<span style="font-size:11px;color:#7a776f;font-weight:500;">'
-            'Aruvi is working&#8230;</span></div>'
+            '<span style="font-size:11px;color:#7a776f;font-weight:500;flex:1;">'
+            'Aruvi is working&#8230;</span>'
+            '<button onclick="window.parent.postMessage({type:\'aruvi_stop\'},\'*\')" '
+            'style="display:inline-flex;align-items:center;gap:4px;font-size:10px;'
+            'color:#9c9895;background:#f2f0ec;border:1px solid #dddad5;'
+            'border-radius:4px;padding:3px 7px;cursor:pointer;white-space:nowrap;'
+            'font-family:inherit;line-height:1;">'
+            '<span style="width:7px;height:7px;background:#9c9895;border-radius:1px;'
+            'display:inline-block;flex-shrink:0;"></span>'
+            'stop</button>'
+            '</div>'
         )
         _body_open = (
             '<div style="padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px;">'
@@ -1009,6 +1034,7 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
         # ── Stream loop ───────────────────────────────────────────────────────
         streamed_text = ""
         _assessment_triggered = False
+        _stopped_by_user = False
 
         with client.messages.stream(
             model="claude-sonnet-4-6",
@@ -1017,6 +1043,10 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             messages=[{"role": "user", "content": user_prompt}],
         ) as stream:
             for text in stream.text_stream:
+                # ── Stop-button check ─────────────────────────────────────────
+                if stop_event is not None and stop_event.is_set():
+                    _stopped_by_user = True
+                    break
                 streamed_text += text
                 if not _assessment_triggered and '"assessment_items"' in streamed_text:
                     _assessment_triggered = True
@@ -1025,6 +1055,44 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                     )
 
         full_output = streamed_text
+
+        # ── If user stopped, record partial tokens and return a stopped result ─
+        if _stopped_by_user:
+            try:
+                _partial_usage = stream.get_current_message_snapshot().usage
+                input_tokens  = getattr(_partial_usage, "input_tokens",  0)
+                output_tokens = getattr(_partial_usage, "output_tokens", 0)
+            except Exception:
+                input_tokens  = 0
+                output_tokens = 0
+            log_tokens(
+                call_type      = "lpa_generation_stopped",
+                grade          = grade,
+                subject        = subject,
+                chapter_number = chapter["chapter_number"],
+                chapter_title  = chapter.get("chapter_title", ""),
+                input_tokens   = input_tokens,
+                output_tokens  = output_tokens,
+                model          = "claude-sonnet-4-6",
+            )
+            progress_placeholder.empty()
+            timer_placeholder.empty()
+            _stopped_result = {
+                "grade":          grade,
+                "subject":        subject,
+                "chapter_number": chapter["chapter_number"],
+                "chapter_title":  chapter.get("chapter_title", ""),
+                "lesson_plan":    {},
+                "coverage_handoff": {},
+                "assessment_items": [],
+                "input_tokens":   input_tokens,
+                "output_tokens":  output_tokens,
+                "cost_inr":       calculate_cost_inr("claude-sonnet-4-6", input_tokens, output_tokens),
+                "stopped":        True,
+            }
+            if result_queue is not None:
+                result_queue.put(_stopped_result)
+            return _stopped_result
 
         usage = stream.get_final_message().usage
         input_tokens  = usage.input_tokens
@@ -1171,7 +1239,7 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
         assess_part = ""
         lo_block_part = ""
 
-        return {
+        _final_result = {
             "grade":            grade,
             "subject":          subject,
             "chapter_number":   chapter["chapter_number"],
@@ -1183,9 +1251,12 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             "output_tokens":    output_tokens,
             "cost_inr":         calculate_cost_inr("claude-sonnet-4-6", input_tokens, output_tokens),
         }
+        if result_queue is not None:
+            result_queue.put(_final_result)
+        return _final_result
 
     except Exception as e:
-        return {
+        _err_result = {
             "grade":            grade,
             "subject":          subject,
             "chapter_number":   chapter["chapter_number"],
@@ -1195,6 +1266,9 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             "assessment_items": [],
             "error":            str(e),
         }
+        if result_queue is not None:
+            result_queue.put(_err_result)
+        return _err_result
 
 # ── LPA normalisation helpers ─────────────────────────────────────────────────
 # These bridge the old (lo_handoff flat list) and new (A3 lesson_plan.periods)
@@ -1664,7 +1738,7 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
                 # New shape carries task_prompt + sub_items[]; legacy carries
                 # prompt + question_type + teacher_guide. Read task_prompt
                 # first, fall back to legacy prompt.
-                _task_prompt = it.get("task_prompt") or it.get("prompt") or ""
+                _task_prompt = it.get("task_prompt") or it.get("item_stem") or it.get("prompt") or ""
                 _outer_qtype = (it.get("question_type") or "").strip().upper()
                 _outer_tg    = it.get("teacher_guide") or {}
                 _sub_items_raw = it.get("sub_items")
@@ -1746,7 +1820,7 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
                     "inclusivity":        "",
                     "visual_stimulus":    it.get("visual_stimulus", "") or "",
                     "correct_answer":     "",
-                    "implied_lo":         "",
+                    "implied_lo":         it.get("source_lo", "") or it.get("implied_lo", "") or "",
                     # ── English-specific question fields surfaced to renderer ──
                     "is_english":           True,
                     "task_prompt":          _task_prompt,
@@ -2138,16 +2212,13 @@ def _generate_pdf_bytes_alloc(
     time_str = f"{h_g}h {m_g}min" if h_g else f"{m_g} min"
     if is_english:
         footnote = (
-            "Periods allocated using the Largest Remainder Method (LRM) weighted by chapter effort index. "
-            "Effort index = (spine load x2) + (task density x1.5) + (writing demand x1.5) + (project load x1). "
-            "Each signal is a bounded qualitative tier (not a raw count), ensuring fair cross-chapter comparison.   "
-            f"Total: {grand_p} periods · {time_str}"
+            f"Total: {grand_p} periods · {time_str}   |   "
+            "Periods allocated using the Largest Remainder Method (LRM) weighted by chapter effort index."
         )
     elif is_science:
         footnote = (
-            "Periods allocated using the Largest Remainder Method (LRM) "
-            f"weighted by chapter effort index.   "
-            f"Total: {grand_p} periods · {time_str}"
+            f"Total: {grand_p} periods · {time_str}   |   "
+            "Periods allocated using the Largest Remainder Method (LRM) weighted by chapter effort index."
         )
     else:
         footnote = (
@@ -2156,6 +2227,102 @@ def _generate_pdf_bytes_alloc(
             f"Total: {grand_p} periods · {time_str}"
         )
     pdf.cell(0, 5, footnote, ln=True)
+
+    # ── "About the Effort Index" block — English and Science/Mathematics ──────
+    if is_english:
+        pdf.ln(4)
+        pdf.set_font("Helvetica", "B", 7)
+        pdf.set_text_color(26, 68, 128)
+        pdf.cell(0, 5, "About the Effort Index", ln=True)
+        pdf.set_draw_color(147, 188, 232)
+        pdf.set_line_width(0.3)
+        pdf.line(pdf.get_x(), pdf.get_y(), pdf.get_x() + 180, pdf.get_y())
+        pdf.ln(1)
+
+        _ei_rows_en = [
+            ("What it measures:",
+             "The effort index tells you how much classroom time a chapter typically needs compared to other"
+             " chapters in the subject. Chapters with a higher effort index get more periods; chapters with"
+             " a lower one get fewer. It is calculated from four signals, each scored on a simple scale."),
+            ("Spine load (x2):",
+             "How many types of classroom work (reading for comprehension, listening, speaking, writing,"
+             " vocabulary, beyond-text) appear on average per section. More types = higher score."),
+            ("Task density (x1.5):",
+             "How many tasks appear on average within each block of work. More tasks per block = higher score."),
+            ("Writing demand (x1.5):",
+             "Total exercise items under Writing and Beyond-the-Text across the chapter. These take longer"
+             " to complete and assess, so a heavier count raises the score."),
+            ("Project load (x1):",
+             "How many Beyond-the-Text sections the chapter has. Each one adds to the score as these"
+             " activities need extra planning time."),
+            ("Note:",
+             "The four scores are combined with fixed weights to give the effort index. Only relative values"
+             " matter — it is used to share your available periods across chapters in proportion to their load."),
+        ]
+        _lbl_w = 44
+        _body_w = 180 - _lbl_w
+        for lbl, body in _ei_rows_en:
+            y0 = pdf.get_y()
+            pdf.set_font("Helvetica", "B", 6.5)
+            pdf.set_text_color(26, 68, 128)
+            pdf.set_x(pdf.l_margin)
+            pdf.multi_cell(_lbl_w, 4, lbl, ln=False)
+            y1 = pdf.get_y()
+            pdf.set_xy(pdf.l_margin + _lbl_w, y0)
+            pdf.set_font("Helvetica", "", 6.5)
+            pdf.set_text_color(75, 75, 75)
+            pdf.multi_cell(_body_w, 4, body)
+            y2 = pdf.get_y()
+            pdf.set_y(max(y1, y2))
+            pdf.ln(1)
+
+    elif is_science:
+        pdf.ln(4)
+        pdf.set_font("Helvetica", "B", 7)
+        pdf.set_text_color(26, 68, 128)
+        pdf.cell(0, 5, "About the Effort Index", ln=True)
+        pdf.set_draw_color(147, 188, 232)
+        pdf.set_line_width(0.3)
+        pdf.line(pdf.get_x(), pdf.get_y(), pdf.get_x() + 180, pdf.get_y())
+        pdf.ln(1)
+
+        _ei_rows_sci = [
+            ("What it measures:",
+             "The effort index tells you how much classroom time a chapter typically needs compared to other"
+             " chapters in the subject. Chapters with a higher effort index get more periods; chapters with"
+             " a lower one get fewer. It is calculated from four signals read from the chapter content."),
+            ("Conceptual demand (x2):",
+             "The cognitive complexity of exercises and questions in the chapter. High-order thinking or"
+             " multi-step reasoning raises the score."),
+            ("Student activities (x1):",
+             "The number of hands-on activities that students perform themselves. Each activity adds"
+             " classroom time for setup, execution and discussion."),
+            ("Teacher demonstrations (x1.5):",
+             "The number of demonstrations the teacher must conduct. These need preparation and focused"
+             " class attention."),
+            ("Exercise execution load (x2):",
+             "The total exercise items students must complete. A heavier exercise count means more time"
+             " for guided practice and assessment."),
+            ("Note:",
+             "The four signals are combined with fixed weights to give the effort index. Only relative values"
+             " matter — it is used to share your available periods across chapters in proportion to their load."),
+        ]
+        _lbl_w = 50
+        _body_w = 180 - _lbl_w
+        for lbl, body in _ei_rows_sci:
+            y0 = pdf.get_y()
+            pdf.set_font("Helvetica", "B", 6.5)
+            pdf.set_text_color(26, 68, 128)
+            pdf.set_x(pdf.l_margin)
+            pdf.multi_cell(_lbl_w, 4, lbl, ln=False)
+            y1 = pdf.get_y()
+            pdf.set_xy(pdf.l_margin + _lbl_w, y0)
+            pdf.set_font("Helvetica", "", 6.5)
+            pdf.set_text_color(75, 75, 75)
+            pdf.multi_cell(_body_w, 4, body)
+            y2 = pdf.get_y()
+            pdf.set_y(max(y1, y2))
+            pdf.ln(1)
 
     buf = io.BytesIO()
     pdf.output(buf)
@@ -3723,6 +3890,7 @@ st.session_state.setdefault("ask_aruvi_agent_fb_reset",     0)
 if "lpa_result"               not in st.session_state: st.session_state.lpa_result               = None
 if "lpa_generating"           not in st.session_state: st.session_state.lpa_generating           = False
 if "lpa_start_ts"             not in st.session_state: st.session_state.lpa_start_ts             = None
+if "lpa_stop_event"           not in st.session_state: st.session_state.lpa_stop_event           = None
 if "no_chapter_warning"       not in st.session_state: st.session_state.no_chapter_warning       = False
 if "plan_just_saved"          not in st.session_state: st.session_state.plan_just_saved          = False
 
@@ -4190,21 +4358,90 @@ elif st.session_state.role == "Generate":
             st.rerun()
         selected_ch = chapters[st.session_state.teacher_ch_idx]
         if st.session_state.lpa_generating:
-            result = generate_lpa(
-                grade       = st.session_state.grade,
-                subject     = st.session_state.subject,
-                chapter     = selected_ch,
-                period_rows = st.session_state.get("period_rows", [0]),
-                session     = st.session_state,
+
+            # ── Launch background thread (once) and block until done ─────────
+            # generate_lpa calls st.* inside the thread for progress rendering.
+            # add_script_run_ctx propagates the current Streamlit script context
+            # to the thread so those calls are valid and non-silent.
+            _stop_ev = threading.Event()
+            _rq      = queue.Queue()
+            st.session_state.lpa_stop_event   = _stop_ev
+            st.session_state.lpa_result_queue = _rq
+            _t = threading.Thread(
+                target=generate_lpa,
+                kwargs=dict(
+                    grade        = st.session_state.grade,
+                    subject      = st.session_state.subject,
+                    chapter      = selected_ch,
+                    period_rows  = st.session_state.get("period_rows", [0]),
+                    session      = st.session_state,
+                    result_queue = _rq,
+                    stop_event   = _stop_ev,
+                ),
+                daemon=True,
             )
-            st.session_state.lpa_result        = result
-            st.session_state.lpa_generating    = False
-            st.session_state.teacher_generated = True
-            st.session_state.show_save_prompt  = True   # trigger save dialog
-            st.session_state.grade             = None
-            st.session_state.subject           = None
-            st.session_state.period_rows       = []
-            st.rerun()
+            add_script_run_ctx(_t)   # allow st.* calls from the thread
+            _t.start()
+            st.session_state.lpa_thread = _t
+
+            # ── Hidden Streamlit stop button + JS bridge ──────────────────────
+            # The visible stop pill lives inside the progress box HTML header.
+            # It fires a postMessage; the components.html listener below catches
+            # it and clicks this hidden Streamlit button to set the stop_event.
+            st.markdown(
+                '<style>'
+                'div[class*="st-key-btn_stop_generation"]{display:none!important;}'
+                'div[data-testid="stDeployButton"]{display:none!important;}'
+                '</style>',
+                unsafe_allow_html=True,
+            )
+            if st.button("stop", key="btn_stop_generation"):
+                if st.session_state.lpa_stop_event is not None:
+                    st.session_state.lpa_stop_event.set()
+            components.html(
+                '<script>'
+                'window.addEventListener("message",function(e){'
+                '  if(e.data&&e.data.type==="aruvi_stop"){'
+                '    var btns=window.parent.document'
+                '      .querySelectorAll(\'button\');'
+                '    for(var i=0;i<btns.length;i++){'
+                '      if(btns[i].innerText.trim()==="stop"){'
+                '        btns[i].click();break;'
+                '      }'
+                '    }'
+                '  }'
+                '});'
+                '</script>',
+                height=0,
+                scrolling=False,
+            )
+
+            # ── Block until the thread puts a result on the queue ─────────────
+            # This is intentionally blocking on the main thread — no rerun loop,
+            # no flashing. generate_lpa drives all progress rendering itself via
+            # progress_placeholder / timer_placeholder (valid because we passed
+            # the script run context above). When the thread finishes (completed
+            # or stopped), it puts the result dict on _rq and we continue.
+            result = _rq.get()   # blocks until thread is done
+
+            st.session_state.lpa_thread       = None
+            st.session_state.lpa_stop_event   = None
+            st.session_state.lpa_result_queue = None
+
+            if result.get("stopped"):
+                # User stopped — silently reset to state before Generate was pressed
+                st.session_state.lpa_generating = False
+                st.session_state.lpa_result     = None
+                st.rerun()
+            else:
+                st.session_state.lpa_result        = result
+                st.session_state.lpa_generating    = False
+                st.session_state.teacher_generated = True
+                st.session_state.show_save_prompt  = True
+                st.session_state.grade             = None
+                st.session_state.subject           = None
+                st.session_state.period_rows       = []
+                st.rerun()
 
     # ── Result block ─────────────────────────────────────────────────────────
     result = st.session_state.lpa_result
@@ -4811,9 +5048,27 @@ elif st.session_state.role == "Allocate":
         )
     elif _subject in ("Science", "Mathematics"):
         _fn1_text = (
-            "Periods allocated proportionally to the chapter effort index, "
-            "an indicator of chapter complexity. "
-            "Click the Effort index number above to see the breakdown for each chapter."
+            '<div class="about-ei">'
+            '<h4>About the Effort Index</h4>'
+            '<p>The effort index is a number that tells you how much classroom '
+            'time a chapter typically needs compared to other chapters in the '
+            'subject. Chapters with a higher effort index get more periods; '
+            'chapters with a lower one get fewer. It is calculated from four '
+            'signals read from the chapter content.</p>'
+            '<ul>'
+            '<li><b>Conceptual demand (×2)</b> — The cognitive complexity of exercises and questions '
+            'in the chapter. High-order thinking or multi-step reasoning raises the score.</li>'
+            '<li><b>Student activities (×1)</b> — The number of hands-on activities that students '
+            'perform themselves. Each activity adds classroom time for setup, execution and discussion.</li>'
+            '<li><b>Teacher demonstrations (×1.5)</b> — The number of demonstrations the teacher must '
+            'conduct. These need preparation and focused class attention.</li>'
+            '<li><b>Exercise execution load (×2)</b> — The total exercise items students must complete. '
+            'A heavier exercise count means more time for guided practice and assessment.</li>'
+            '</ul>'
+            '<p class="about-ei-close">The four signals are combined with fixed weights to give the '
+            'effort index. Only relative values matter — it is used to share your available periods '
+            'across chapters in proportion to their load.</p>'
+            '</div>'
         )
     else:
         _fn1_text = (

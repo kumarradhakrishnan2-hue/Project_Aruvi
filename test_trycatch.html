@@ -612,16 +612,44 @@
 </div>
 
 <script>
-/* __LPA_DATA__ */
+window.LPA_DATA = {
+  "chapter_title": "Test",
+  "chapter_number": 1,
+  "grade": "Grade VII",
+  "subject": "English",
+  "period_schedule": "",
+  "lo_handoff": [],
+  "assessment_sections": [
+    {
+      "c_code": "Reading for Comprehension",
+      "weight_label": "", "competency_short": "Test note", "drawing_on": "",
+      "question_types": "", "is_science": false, "is_mathematics": false,
+      "is_english": true, "spine_code": "reading_for_comprehension", "stage_label": null,
+      "questions": [{
+        "type": "", "question": "Read the passage.", "task": "", "scaffold": "",
+        "format_of_output": [], "task_instructions": "", "options": [],
+        "annotation": "", "period_ref": "", "title": "Task", "expected": "",
+        "cognitive_demand": "", "guide": {}, "expected_elements": [], "look_for": [],
+        "what_each_option_reveals": {}, "inclusivity": "", "visual_stimulus": "",
+        "correct_answer": "", "implied_lo": "Student reads carefully",
+        "is_english": true, "task_prompt": "Read the passage.",
+        "sub_items": [{"stem": "What is the main idea?", "type": "SCR", "options": [],
+          "visual_stimulus": "", "expected": "The river speaks", "expected_elements": [],
+          "suggested_answer": "", "verified": false}],
+        "has_sub_items": true, "suggested_answer": "",
+        "source_section_id": "A", "source_section_title": "The River",
+        "source_section_type": "prose", "source_spine_section": "", "source": "",
+        "source_task_index": -1, "transcript_ref": "", "verified": false
+      }]
+    }
+  ]
+};
+
 
 var WEIGHT_LABEL = {3:'Central', 2:'Substantive', 1:'Present'};
 
 /* period_number → implied_lo lookup; built in renderLPA, used in buildTitleCell */
 var g_lo_map = {};
-
-/* LO deduplication tracker for English assessment — shared across renderAssessment
-   and renderEnglishQuestionCard (which is called from within renderAssessment). */
-var lastLO = '';
 
 function escHtml(s) {
   if (!s) return '';
@@ -1361,7 +1389,7 @@ function renderAssessment(sections) {
 
   var html = '<div class="assess-divider"><div class="adivlabel">Chapter Assessment</div>';
   var qCounter = 0;  /* sequential question number across all sections */
-  lastLO = '';       /* reset deduplication tracker (global var, shared with renderEnglishQuestionCard) */
+  var lastLO   = ''; /* tracks last rendered LO text for deduplication */
 
   /* Science assessment: each section becomes a collapsible stage row */
   var sciStageIdx = 0;
@@ -2057,8 +2085,12 @@ function renderLPA() {
   }
 }
 
-renderLPA();
-/* Fire once after initial render so the parent knows the true height */
+try {
+  renderLPA();
+} catch(e) {
+  document.body.innerHTML += '<div style="background:red;color:white;padding:20px;font-size:16px;position:fixed;top:0;left:0;right:0;z-index:9999">RENDERLPA ERROR: ' + e.message + '<br>Line: ' + e.lineNumber + '<br>Stack: ' + (e.stack || '').substring(0,500) + '</div>';
+  console.error('renderLPA error:', e);
+}
 reportHeight();
 /* Fire again at increasing delays to catch layout shifts in both
    Science (stage group layout) and Social Sciences (period cards) */

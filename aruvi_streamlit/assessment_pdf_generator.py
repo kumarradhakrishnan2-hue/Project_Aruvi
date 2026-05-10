@@ -382,6 +382,12 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
         meta_rows = [
             [Paragraph(meta_line, AST["q_meta"])],
         ]
+    elif item.get("is_english"):
+        # English: Learning Outcome only (no Cognitive demand)
+        lo_disp = f"<b>Learning Outcome:</b> {_clean_text(lo_text)}" if lo_text else "<b>Learning Outcome:</b> \u2014"
+        meta_rows = [
+            [Paragraph(lo_disp, AST["q_meta"])],
+        ]
     else:
         # Science / Social Sciences: LO assessed + Cognitive demand
         lo_disp  = f"<b>LO assessed:</b> {_clean_text(lo_text)}" if lo_text else "<b>LO assessed:</b> \u2014"
@@ -574,9 +580,59 @@ def build_assessment_pdf(output_path, data):
     lo_map     = data["lo_map"]
     is_science = data.get("is_science", False)
     is_maths   = data.get("is_maths",   False)
+    is_english = data.get("is_english", False)
     q_counter  = 0
 
-    if is_maths:
+    if is_english:
+        # ── English: sections grouped by spine (RFC, Listening, Speaking, …) ──
+        # Each spine becomes a section header; items are in order within spine.
+        # lo_text per item = source_lo (spine-cell LO from LP handoff).
+        _ENG_SPINE_TITLES = {
+            "reading_for_comprehension": "Reading for Comprehension",
+            "listening":                 "Listening",
+            "speaking":                  "Speaking",
+            "writing":                   "Writing",
+            "vocabulary_grammar":        "Vocabulary and Grammar",
+            "beyond_text":               "Beyond the Text",
+        }
+        for spine_sec in items:
+            if not isinstance(spine_sec, dict):
+                continue
+            _spine_code  = (spine_sec.get("spine_code") or "").strip().lower()
+            _spine_title = (
+                spine_sec.get("spine_title")
+                or _ENG_SPINE_TITLES.get(_spine_code)
+                or _spine_code.replace("_", " ").title()
+            )
+            _spine_items = spine_sec.get("items") or []
+            if not _spine_items:
+                continue
+
+            sec_para  = Paragraph(_spine_title.upper(), AST["sec_hdr"])
+            sec_hline = HLine(uw, thickness=0.4, color=HAIRLINE, sb=1, sa=3)
+
+            for idx, item in enumerate(_spine_items):
+                if not isinstance(item, dict):
+                    continue
+                q_counter += 1
+                # lo_text: prefer source_lo (v3.0 constitution), fall back to implied_lo
+                lo_text = item.get("source_lo", "") or item.get("implied_lo", "") or ""
+                # Mark item as English so question_block uses the right meta branch
+                item["is_english"] = True
+                # Map English item fields to what question_block expects
+                item.setdefault("question_text", item.get("item_stem", "") or "")
+                item.setdefault("question_type", item.get("question_type", ""))
+                item.setdefault("cognitive_demand", "")
+                # teacher_guide already present on item; question_block reads it
+                header_items = [sec_para, sec_hline] if idx == 0 else None
+                story.extend(question_block(
+                    q_counter, item, lo_text, uw,
+                    header_items=header_items,
+                ))
+
+            story.append(Spacer(1, 4 * mm))
+
+    elif is_maths:
         # ── Mathematics: sections grouped by section_code (A/B/C) ──────────────
         # Items have already been flattened with _maths_section_code carried
         # per item by json_to_assessment_data().  Section header text is
@@ -729,6 +785,7 @@ def json_to_assessment_data(j: dict) -> dict:
     subject    = j.get("subject", "")
     is_science = (subject == "Science")
     is_maths   = (subject == "Mathematics")
+    is_english = (subject == "English")
 
     raw_items = (j.get("result") or {}).get("assessment_items", []) or []
 
@@ -776,6 +833,24 @@ def json_to_assessment_data(j: dict) -> dict:
             "is_maths":         True,
         }
 
+    if is_english:
+        # English assessment_items is a list of spine-section objects, each with
+        # nested items[]. Total question count = sum of items across all spines.
+        total_q = sum(len(sec.get("items") or []) for sec in raw_items if isinstance(sec, dict))
+        return {
+            "chapter_num":      j["chapter_number"],
+            "chapter_title":    j["chapter_title"],
+            "grade":            str(j["grade"]).replace("Grade ", ""),
+            "subject":          subject,
+            "date":             date_str,
+            "total_questions":  total_q,
+            "assessment_items": raw_items,   # spine-grouped; English renderer iterates spines
+            "lo_map":           {},
+            "is_science":       False,
+            "is_maths":         False,
+            "is_english":       True,
+        }
+
     if is_science:
         # Science items carry implied_lo_assessed directly — no period map needed.
         lo_map = {}
@@ -797,6 +872,7 @@ def json_to_assessment_data(j: dict) -> dict:
         "lo_map":           lo_map,
         "is_science":       is_science,
         "is_maths":         False,
+        "is_english":       False,
     }
 
 
