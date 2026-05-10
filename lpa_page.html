@@ -404,23 +404,20 @@
   display: block;
 }
 
-/* ── English LP: outer main_section accordion ────────────────────────────── */
-.eng-sec-group { margin-bottom: 12px; }
+/* ── English LP: outer main_section accordion — mirrors Science stage-group palette ── */
+.eng-sec-group { margin-bottom: 10px; }
 .eng-sec-hdr {
-  display: flex; align-items: center; background: #5a6c7d;
-  border-radius: 8px; padding: 10px 12px;
+  display: flex; align-items: center; background: #787674;
+  border-radius: 8px; padding: 9px 12px;
   cursor: pointer; user-select: none; gap: 10px;
 }
-.eng-sec-hdr.open { border-radius: 8px 8px 0 0; background: #2c3e50; }
+.eng-sec-hdr.open { border-radius: 8px 8px 0 0; background: #4a4a4a; }
 .eng-sec-badge {
-  font-size: 10px; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 0.06em; color: #fff;
-  background: rgba(255,255,255,0.18); border-radius: 4px;
-  padding: 3px 9px; white-space: nowrap; flex-shrink: 0;
+  font-size: 11px; font-weight: 600; color: #fff; white-space: nowrap; flex-shrink: 0;
 }
 .eng-sec-title {
   flex: 1; font-size: 11px; font-weight: 500;
-  color: rgba(255,255,255,0.92); text-align: left;
+  color: rgba(255,255,255,0.92); text-align: center;
 }
 .eng-sec-type {
   font-size: 9px; font-weight: 600; text-transform: uppercase;
@@ -435,24 +432,32 @@
 .pill-informational { background: #f0f0f0; color: #4a4a4a; }
 .eng-sec-body {
   display: none;
-  border: 0.5px solid #2c3e50; border-top: none;
+  border: 0.5px solid #4a4a4a; border-top: none;
   border-radius: 0 0 8px 8px;
   padding: 8px 8px 4px;
 }
 .eng-sec-body.open { display: block; }
 
-/* English LP: spine sub-band inside section body */
-.eng-spine-band {
-  margin: 8px 0 4px; padding: 5px 10px;
-  background: #f5f3ef; border-left: 3px solid #2c3e50;
-  border-radius: 4px;
+/* English LP: column header row inside each section body (mirrors Science lp-col-hdr) */
+.eng-col-hdr {
+  display: flex; align-items: center; background: #8a8886;
+  border-radius: 6px; padding: 5px 12px; gap: 8px; margin-bottom: 6px;
 }
-.eng-spine-lbl {
-  font-size: 10px; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 0.06em; color: #2c3e50;
+.eng-col-hdr .lpch-num  { width: 74px; flex-shrink: 0; }
+.eng-col-hdr .lpch-time { width: 52px; flex-shrink: 0; }
+.eng-col-hdr .lpch-spine { width: 140px; flex-shrink: 0; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; text-align: center; }
+.eng-col-hdr .lpch-name { flex: 1; }
+.eng-col-hdr .lpch-sec  { width: 180px; flex-shrink: 0; }
+.eng-col-hdr .lpch-spc  { width: 18px; flex-shrink: 0; }
+
+/* English LP: Spine column in the period header */
+.eng-period-card .ptag { text-align: left; }
+.eng-spine-col {
+  width: 140px; flex-shrink: 0; font-size: 11px; font-weight: 400;
+  color: #1a1917; line-height: 1.4; text-align: left; white-space: normal;
 }
 
-/* English LP: spine pills inside the period header (.ptag slot) */
+/* English LP: spine pills inside the .eng-spine-col slot */
 .spine-pill {
   display: inline-block;
   font-size: 9.5px; font-weight: 500;
@@ -461,9 +466,14 @@
   margin: 1px 2px;
   border: 0.5px solid #cad6e3;
 }
-.eng-period-card .ptag { text-align: left; }
 
-/* English LP: pedagogical methods row at top of period body */
+/* English LP: Pedagogical Approach column in the period header (5th col) */
+.eng-ped-col {
+  width: 180px; flex-shrink: 0; font-size: 11px; font-weight: 400;
+  color: #1a1917; line-height: 1.4; text-align: left; white-space: normal;
+}
+
+/* English LP: pedagogical methods row at top of period body — kept for body display */
 .eng-ped-row {
   display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px;
   padding: 6px 10px; background: #eef4fb; border-radius: 6px;
@@ -477,12 +487,8 @@
   font-size: 11px; color: #1a1917;
 }
 
-/* English LP: in-class tasks block */
-.eng-tasks-block {
-  margin-bottom: 10px; padding: 8px 10px;
-  background: #fcfaf6; border-radius: 6px;
-  border: 0.5px solid #e8e2d2;
-}
+/* English LP: in-class tasks block — kept for potential legacy use but hidden */
+.eng-tasks-block { display: none; }
 .eng-tasks-lbl {
   font-size: 9px; font-weight: 600; text-transform: uppercase;
   letter-spacing: 0.07em; color: #6b5418; margin-bottom: 5px;
@@ -804,61 +810,57 @@ function toggleEngSec(id) {
 }
 
 /* ── English only: render one period card.
-   Reuses .period-card / .period-header / .pbody chrome and toggleP() so the
-   collapse behaviour matches Science / SS. English-specifics: spine pills in
-   the header; pedagogical-method tags + spine-tagged tasks in the body. */
+   Header columns: # | Time | Spine | Name of Activity | Pedagogical Approach
+   Body: material → time slots (phases) → homework → teacher notes.
+   In-class tasks are NOT rendered as a dedicated block (step 5).
+   Homework is placed AFTER phases, not before (step 7).
+   Spine sub-band removed — spine is in the column header row (step 4). */
 function renderEnglishPeriodCard(p, spineTitleMap) {
   var pid = 'p' + p.period_number;
   spineTitleMap = spineTitleMap || {};
 
-  var spinePillsHtml = (p.spines_taught || []).map(function(s) {
-    var lbl    = spineTitleMap[s] || s;
-    var method = (p.pedagogical_methods || {})[s] || '';
-    return '<span class="spine-pill spine-' + escHtml(s) + '" title="' +
-             escHtml(method) + '">' + escHtml(lbl) + '</span>';
-  }).join(' ');
+  /* Spine column — comma-joined short titles (no pills, just text) */
+  var spineNames = (p.spines_taught || []).map(function(s) {
+    return spineTitleMap[s] || s;
+  });
+  var spineColHtml = '<div class="eng-spine-col">' + escHtml(spineNames.join(', ')) + '</div>';
 
   var activityLabel = '<div class="pname">' + escHtml(p.activity_name || '') + '</div>';
 
-  /* Pedagogical methods row — one tag per spine actually taught. */
+  /* Pedagogical Approach column (5th col) — all methods stated (step 3).
+     pedagogical_methods is a dict {spine: method}; collect unique methods. */
   var pedMethods = p.pedagogical_methods || {};
   var pedKeys = Object.keys(pedMethods);
-  var pedRowHtml = '';
-  if (pedKeys.length) {
-    pedRowHtml = '<div class="eng-ped-row">' +
-      '<span class="eng-ped-lbl">Pedagogical methods</span>' +
-      pedKeys.map(function(s) {
-        var sLbl = spineTitleMap[s] || s;
-        return '<span class="eng-ped-tag"><strong>' + escHtml(sLbl) + ':</strong> ' +
-               escHtml(pedMethods[s]) + '</span>';
-      }).join('') +
-    '</div>';
+  var allMethods = [];
+  pedKeys.forEach(function(s) {
+    var m = (pedMethods[s] || '').trim();
+    if (m && allMethods.indexOf(m) === -1) allMethods.push(m);
+  });
+  /* Fallback: older saved plans may have a single pedagogical_method string */
+  if (!allMethods.length && p.pedagogical_method) {
+    allMethods = [p.pedagogical_method];
   }
+  var pedColHtml = '<div class="eng-ped-col">' + escHtml(allMethods.join('; ')) + '</div>';
 
-  /* In-class tasks block (spine-tagged). */
-  var tasks = p.tasks_in_class || [];
-  var tasksHtml = '';
-  if (tasks.length) {
-    tasksHtml = '<div class="eng-tasks-block">' +
-      '<div class="eng-tasks-lbl">In-class tasks</div>' +
-      tasks.map(function(t) {
-        var sLbl = spineTitleMap[t.spine] || t.spine || '';
-        return '<div class="eng-task-row">' +
-                 '<span class="eng-task-spine">' + escHtml(sLbl) + '</span>' +
-                 '<span class="eng-task-brief">' + escHtml(t.task_brief || '') + '</span>' +
-               '</div>';
-      }).join('') +
-    '</div>';
-  }
+  var materialRow = p.material
+    ? '<div class="matrow"><div class="matlabel">Material</div>' +
+      '<div class="mattext">' + escHtml(p.material) + '</div></div>'
+    : '';
 
-  /* Homework block (spine-tagged) — reuses .hwbar palette. */
+  /* Step 9: use English-specific time slot renderer that substitutes task references */
+  var timeSlotsHtml = renderEnglishTimeSlots(p.time_slots || [], p.tasks_in_class || [], p.homework || []);
+
+  /* Homework block — placed AFTER phases (step 7). Uses task_brief ≤12 words (step 8). */
   var hw = p.homework || [];
   var hwHtml = '';
   if (hw.length) {
     hwHtml = '<div class="hwbar"><div class="hwlabel">Homework</div><div class="hwtext">' +
       hw.map(function(t) {
-        var sLbl = spineTitleMap[t.spine] || t.spine || '';
-        return escHtml(sLbl) + ' — ' + escHtml(t.task_brief || '');
+        var brief = (t.task_brief || '').trim();
+        /* Trim to 12 words if needed */
+        var words = brief.split(/\s+/);
+        if (words.length > 12) brief = words.slice(0, 12).join(' ') + '…';
+        return '“' + escHtml(brief) + '”';
       }).join('<br/>') +
     '</div></div>';
   }
@@ -868,28 +870,20 @@ function renderEnglishPeriodCard(p, spineTitleMap) {
       '<div class="tntext">' + escHtml(p.teacher_notes) + '</div></div>'
     : '';
 
-  var materialRow = p.material
-    ? '<div class="matrow"><div class="matlabel">Material</div>' +
-      '<div class="mattext">' + escHtml(p.material) + '</div></div>'
-    : '';
-
-  var timeSlotsHtml = renderTimeSlots(p.time_slots || []);
-
   return (
     '<div class="period-card eng-period-card" id="' + pid + '">' +
       '<div class="period-header" onclick="toggleP(\'' + pid + '\')">' +
         '<div class="pnum">Period ' + p.period_number + '</div>' +
         '<div class="pdur">' + p.period_duration_minutes + ' min</div>' +
+        spineColHtml +
         activityLabel +
-        '<div class="ptag">' + spinePillsHtml + '</div>' +
+        pedColHtml +
         '<div class="pchev">▼</div>' +
       '</div>' +
       '<div class="pbody">' +
-        pedRowHtml +
-        tasksHtml +
-        hwHtml +
         materialRow +
         timeSlotsHtml +
+        hwHtml +
         teacherNotesHtml +
       '</div>' +
     '</div>'
@@ -907,13 +901,6 @@ function renderEnglishPeriodCard(p, spineTitleMap) {
    layer; we render a single sub-item synthesised by the Python side
    (its stem == the task_prompt). */
 function renderEnglishQuestionCard(q, n) {
-  var srcChip = q.source
-    ? ' <span class="eng-q-src eng-q-src-' + escHtml(q.source) + '">' + escHtml(q.source) + '</span>'
-    : '';
-  var verifiedChip = q.verified
-    ? ' <span class="eng-q-verified" title="verified">✓</span>'
-    : '';
-
   var subItems = (q.sub_items && q.sub_items.length) ? q.sub_items : [];
   var hasSubItems = q.has_sub_items === true && subItems.length > 0;
 
@@ -933,14 +920,28 @@ function renderEnglishQuestionCard(q, n) {
   }
   var typeLbl = escHtml(headerType);
 
-  /* Header title: show the task framing (truncated by Python in q.title). */
-  var headerTitle = q.title || q.task_prompt || q.question || '';
+  /* Header title: implied_lo with "Learning Outcome:" label — same logic as Science.
+     Deduplication uses the outer lastLO variable (shared across all English spine sections). */
+  var _engLo = (q.implied_lo || '').trim();
+  var _engLoLine;
+  if (!_engLo) {
+    _engLoLine = '<div class="qhdr-lo"></div>';
+  } else if (_engLo === lastLO) {
+    _engLoLine = '<div class="qhdr-lo"><span class="lo-lbl">Learning Outcome: </span><em>same as above</em></div>';
+  } else {
+    lastLO = _engLo;
+    _engLoLine = '<div class="qhdr-lo"><span class="lo-lbl">Learning Outcome: </span>' + escHtml(_engLo) + '</div>';
+  }
+
+  /* Source section column: show source_section_title */
+  var srcSectionTitle = escHtml(q.source_section_title || '');
 
   var html = '<div class="qcard">';
   html += '<div class="qhdr" onclick="toggleQ(this)">';
   html +=   '<div class="qhdr-num">' + n + '</div>';
-  html +=   '<div class="qhdr-type"><span class="qtype-lbl">' + typeLbl + '</span>' + verifiedChip + '</div>';
-  html +=   '<div class="qhdr-title"><div class="qhdr-lo">' + escHtml(headerTitle) + srcChip + '</div></div>';
+  html +=   '<div class="qhdr-type"><span class="qtype-lbl">' + typeLbl + '</span></div>';
+  html +=   '<div class="qhdr-title">' + _engLoLine + '</div>';
+  html +=   '<div class="qhdr-ref" style="font-size:10px;color:#5a5754;">' + srcSectionTitle + '<span class="qchev">▼</span></div>';
   html += '</div>';
 
   html += '<div class="qbody">';
@@ -970,7 +971,6 @@ function renderEnglishQuestionCard(q, n) {
       s += '<span class="eng-sub-num">' + (idx + 1) + '.</span> ';
     }
     s += '<span class="eng-sub-type qtype-lbl">' + siTypeLbl + '</span>';
-    if (si.verified) s += ' <span class="eng-q-verified" title="verified">✓</span>';
     s += '</div>';
 
     if (includeStem && si.stem) {
@@ -978,10 +978,7 @@ function renderEnglishQuestionCard(q, n) {
     }
 
     if (si.visual_stimulus) {
-      s += '<div class="vs-box">' +
-             '<div class="vs-label">Visual stimulus</div>' +
-             '<pre class="eng-vs-pre">' + escHtml(si.visual_stimulus) + '</pre>' +
-           '</div>';
+      s += renderVisualStimulus(si.visual_stimulus);
     }
 
     if (si.options && si.options.length) {
@@ -1041,6 +1038,48 @@ function renderTimeSlots(slots) {
   if (!slots || !slots.length) return '';
   return slots.map(function(s){
     var desc = (s.desc || '').trim().replace(/^\||\|$/g, '').trim();
+    return '<div class="ts"><div class="ttime">' + escHtml(s.time) + '</div><div class="tdesc">' + escHtml(desc) + '</div></div>';
+  }).join('');
+}
+
+/* ── English only: render time slots with task references replaced (step 9).
+   Replaces "task N" (case-insensitive) occurrences in phase descriptions with
+   a brief description in inverted commas drawn from tasks_in_class / homework.
+   Task index N (1-based in text) maps to tasks_in_class[N-1].task_brief.
+   Also removes "task N" when used after a label like "Let us read task 1 (p.X):"
+   so the task number is dropped and the brief is shown in quotes instead.      */
+function renderEnglishTimeSlots(slots, tasks_in_class, homework) {
+  if (!slots || !slots.length) return '';
+  /* Build a lookup: index (0-based) → task_brief for in-class tasks */
+  var taskBriefs = [];
+  (tasks_in_class || []).forEach(function(t, i) {
+    taskBriefs[i] = (t.task_brief || '').trim();
+  });
+  /* Also include homework task_briefs indexed after in-class */
+  var hwBriefs = [];
+  (homework || []).forEach(function(t, i) {
+    hwBriefs[i] = (t.task_brief || '').trim();
+  });
+
+  return slots.map(function(s){
+    var desc = (s.desc || '').trim().replace(/^\||\|$/g, '').trim();
+
+    /* Replace patterns like "task 1", "task 2" (1-based) with the brief in quotes.
+       Pattern: optional "task" prefix with number, possibly inside a phrase like
+       "Let us read task 1 (p.8):" or standalone "task 1:". */
+    desc = desc.replace(/\btask\s+(\d+)\b/gi, function(match, numStr) {
+      var idx = parseInt(numStr, 10) - 1;  /* convert 1-based to 0-based */
+      var brief = (idx >= 0 && idx < taskBriefs.length) ? taskBriefs[idx] : '';
+      if (!brief && idx >= 0 && idx < hwBriefs.length) brief = hwBriefs[idx];
+      if (brief) {
+        /* Trim to 12 words */
+        var words = brief.split(/\s+/);
+        if (words.length > 12) brief = words.slice(0, 12).join(' ') + '…';
+        return '"' + brief + '"';
+      }
+      return match;  /* leave unchanged if no brief found */
+    });
+
     return '<div class="ts"><div class="ttime">' + escHtml(s.time) + '</div><div class="tdesc">' + escHtml(desc) + '</div></div>';
   }).join('');
 }
@@ -1345,52 +1384,22 @@ function renderAssessment(sections) {
 
       html += '<div class="asec-stage-hdr' + openCls + '" id="' + spineId + '-hdr" ' +
                    'onclick="toggleAssessStage(\'' + spineId + '\')">' +
-                '<div class="asec-stage-title">' +
-                  '<strong>Spine:</strong> ' + escHtml(spineLbl) +
-                '</div>' +
+                '<div class="asec-stage-title">' + escHtml(spineLbl) + '</div>' +
                 '<div class="asec-stage-chev">▼</div>' +
               '</div>';
       html += '<div class="asec-stage-body' + openCls + '" id="' + spineId + '-body">';
 
-      if (sec.competency_short) {
-        html += '<div class="eng-spine-blurb">' + escHtml(sec.competency_short) + '</div>';
-      }
-
-      /* Group questions by source_section_id (A, B, C…) preserving first-seen order. */
-      var bySrc = {};
-      var srcOrder = [];
-      (sec.questions || []).forEach(function(q) {
-        var ssid = q.source_section_id || '?';
-        if (!bySrc[ssid]) { bySrc[ssid] = []; srcOrder.push(ssid); }
-        bySrc[ssid].push(q);
-      });
-
-      /* Column header — # | Type | Question (no Cognitive Demand for English). */
+      /* Column header — # | Type | Question | Source Section (no Cognitive Demand for English). */
       html += '<div class="q-col-hdr">';
       html +=   '<div class="qch-num">#</div>';
       html +=   '<div class="qch-type">Question type</div>';
       html +=   '<div class="qch-q">Question</div>';
+      html +=   '<div class="qch-ref">Source section</div>';
       html += '</div>';
 
-      srcOrder.forEach(function(ssid) {
-        var first = bySrc[ssid][0] || {};
-        var srcType  = first.source_section_type  || '';
-        var srcTitle = first.source_section_title || '';
-        var typeChip = srcType
-          ? ' <span class="eng-src-type pill-' + escHtml(srcType) + '">' + escHtml(srcType) + '</span>'
-          : '';
-        var titleChip = srcTitle
-          ? ' <span class="eng-src-title">' + escHtml(srcTitle) + '</span>'
-          : '';
-        html += '<div class="eng-src-band">' +
-                  '<span class="eng-src-id">Section ' + escHtml(ssid) + '</span>' +
-                  typeChip + titleChip +
-                '</div>';
-
-        bySrc[ssid].forEach(function(q) {
-          qCounter++;
-          html += renderEnglishQuestionCard(q, qCounter);
-        });
+      (sec.questions || []).forEach(function(q) {
+        qCounter++;
+        html += renderEnglishQuestionCard(q, qCounter);
       });
 
       html += '</div>';  /* close .asec-stage-body */
@@ -1677,11 +1686,11 @@ function renderLPA() {
 
   if (isEnglish) {
     /* ── English rendering path ────────────────────────────────────────────
-       Outer collapsible per main_section (A/B/C…); first section open.
-       Inside each section: spine bands group periods by primary spine.
-       Within each spine band: standard .period-card list. */
+       Step 1: Section row styled like Science stage row (#787674 / #4a4a4a).
+       Step 2: Column header row below section: # | Time | Spine | Name | Ped. Approach.
+       Step 4: No spine sub-bands — spine shown in column header and period header col.
+       Step 10: All periods sorted strictly by period_number (chronological). */
 
-    var ENG_SPINE_ORDER = ['reading_for_comprehension','listening','speaking','writing','vocabulary_grammar','beyond_text'];
     var ENG_SPINE_TITLE = {
       reading_for_comprehension: 'Reading for Comprehension',
       listening: 'Listening', speaking: 'Speaking',
@@ -1689,10 +1698,15 @@ function renderLPA() {
       beyond_text: 'Beyond the Text'
     };
 
-    /* Group periods by section_id, preserving first-seen order. */
+    /* Sort all periods strictly by period_number (chronological order — step 10). */
+    var sortedPeriods = periods.slice().sort(function(a, b) {
+      return (a.period_number || 0) - (b.period_number || 0);
+    });
+
+    /* Group sorted periods by section_id, preserving chronological first-seen order. */
     var secMap = {};
     var secOrder = [];
-    periods.forEach(function(p) {
+    sortedPeriods.forEach(function(p) {
       var sid = p.section_id || '?';
       if (!secMap[sid]) { secMap[sid] = []; secOrder.push(sid); }
       secMap[sid].push(p);
@@ -1709,10 +1723,12 @@ function renderLPA() {
       var grpEl    = document.createElement('div');
       grpEl.className = 'eng-sec-group';
 
+      /* Section type pill */
       var typeChip = sType
         ? '<div class="eng-sec-type pill-' + escHtml(sType) + '">' + escHtml(sType) + '</div>'
         : '';
 
+      /* Step 1: Section header mirrors Science stage-grp-hdr layout */
       var grpHtml =
         '<div class="eng-sec-hdr' + openCls + '" id="' + grpId + '-hdr" ' +
               'onclick="toggleEngSec(\'' + grpId + '\')">' +
@@ -1721,26 +1737,21 @@ function renderLPA() {
           typeChip +
           '<div class="sg-chev">▼</div>' +
         '</div>' +
-        '<div class="eng-sec-body' + openCls + '" id="' + grpId + '-body">';
+        '<div class="eng-sec-body' + openCls + '" id="' + grpId + '-body">' +
 
-      /* Sub-group periods within the section by primary spine (spines_taught[0]). */
-      var spineMap = {};
+        /* Step 2: Column header row — # | Time | Spine | Name of Activity | Ped. Approach */
+        '<div class="eng-col-hdr">' +
+          '<div class="lpch-num">#</div>' +
+          '<div class="lpch-time">Time</div>' +
+          '<div class="lpch-spine">Spine</div>' +
+          '<div class="lpch-name">Name of Activity</div>' +
+          '<div class="lpch-sec">Pedagogical Approach</div>' +
+          '<div class="lpch-spc"></div>' +
+        '</div>';
+
+      /* Periods within section already in chronological order (sorted above). */
       sPeriods.forEach(function(p) {
-        var sp = (Array.isArray(p.spines_taught) && p.spines_taught[0]) || 'unknown';
-        if (!spineMap[sp]) spineMap[sp] = [];
-        spineMap[sp].push(p);
-      });
-
-      ENG_SPINE_ORDER.forEach(function(spineCode) {
-        var spinePeriods = spineMap[spineCode];
-        if (!spinePeriods || !spinePeriods.length) return;
-        grpHtml +=
-          '<div class="eng-spine-band">' +
-            '<div class="eng-spine-lbl">' + escHtml(ENG_SPINE_TITLE[spineCode] || spineCode) + '</div>' +
-          '</div>';
-        spinePeriods.forEach(function(p) {
-          grpHtml += renderEnglishPeriodCard(p, ENG_SPINE_TITLE);
-        });
+        grpHtml += renderEnglishPeriodCard(p, ENG_SPINE_TITLE);
       });
 
       grpHtml += '</div>';  /* close .eng-sec-body */

@@ -123,10 +123,12 @@ For each present (section, spine) cell:
 exactly ONE task. Do NOT duplicate questions across tasks. Do NOT
 emit a flat top-level `question_bank` array on the spine — that field
 no longer exists. The lesson plan refers to a task by its index in
-this array (and may surface its full `task_text` plus relevant
-sub-items in phase narration); the assessment lifts the FIRST task in
-full (its `task_text` PLUS all its `question_bank` sub-items) as ONE
-composite assessment item.
+this array, enacts the full unit in class (teacher-led activity via
+`task_text` + in-class working through of `question_bank` sub-items),
+and emits an `implied_lo` per anchored task in its coverage handoff.
+The assessment generator reads those implied LOs and generates
+original items grounded in the section's `prose_summary` or
+`poem_text` — it does NOT lift from `question_bank`.
 
 **Critical for `reading_for_comprehension` and other multi-subheading
 spines**: do NOT collapse to just the first subheading's tasks. The
