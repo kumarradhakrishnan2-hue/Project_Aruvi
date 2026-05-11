@@ -154,10 +154,12 @@ def _render_visual_stimulus(vs_text: str, uw: float, story: list):
 
     Permitted formats per assessment constitutions:
     - Pipe-delimited table (>=2 lines, every line contains "|") — rendered as
-      a ReportLab Table. Used by Science, Social Sciences, and Mathematics
-      whenever the question genuinely needs tabular data.
-    - Plain prose — rendered as italic body text. Used by Social Sciences
-      where a brief textual stimulus precedes a question.
+      a ReportLab Table. Empty cells in data rows become blank answer-line
+      placeholders ("___________") so both columns are visually balanced.
+    - Plain prose — rendered as italic body text.
+
+    The "Visual stimulus" label is intentionally suppressed (fix c) — the box
+    speaks for itself and the label adds unnecessary clutter.
 
     Mathematics no longer permits inline SVG (Constitution v3.2 Rule 7);
     figures are referenced via the Exercise companion block instead.
@@ -182,21 +184,35 @@ def _render_visual_stimulus(vs_text: str, uw: float, story: list):
                 cells = cells[:-1]
             rows.append(cells)
 
-        # Normalise column count
+        # Normalise column count (fix e: pad short rows)
         max_cols = max(len(r) for r in rows)
         for r in rows:
             while len(r) < max_cols:
                 r.append("")
 
-        # Build cell paragraphs: first row bold (header), rest normal
+        # Build cell paragraphs: first row bold (header), rest normal.
+        # Empty data cells become "___________" answer-line placeholders (fix e).
         para_rows = []
         for ri, row in enumerate(rows):
+            is_header = ri == 0
             style = ParagraphStyle(
-                "vs_hdr" if ri == 0 else "vs_cell",
-                fontName="Helvetica-Bold" if ri == 0 else "Helvetica",
+                "vs_hdr" if is_header else "vs_cell",
+                fontName="Helvetica-Bold" if is_header else "Helvetica",
                 fontSize=7.5, leading=11, textColor=INK,
             )
-            para_rows.append([Paragraph(_clean_text(c), style) for c in row])
+            blank_style = ParagraphStyle(
+                "vs_blank",
+                fontName="Helvetica-Oblique",
+                fontSize=7.5, leading=11,
+                textColor=colors.HexColor("#999999"),
+            )
+            para_row = []
+            for ci, c in enumerate(row):
+                if not is_header and c == "":
+                    para_row.append(Paragraph("___________", blank_style))
+                else:
+                    para_row.append(Paragraph(_clean_text(c), style))
+            para_rows.append(para_row)
 
         col_w = uw / max_cols
         tbl = Table(para_rows, colWidths=[col_w] * max_cols)
@@ -213,22 +229,7 @@ def _render_visual_stimulus(vs_text: str, uw: float, story: list):
         ]
         tbl.setStyle(TableStyle(tbl_style))
 
-        # Render label and table as separate flowables — no outer wrapper table
-        # that would overlay a background fill on top of the inner table cells.
-        lbl_para = Paragraph("<b>Visual stimulus</b>", AST["q_meta"])
-        lbl_box = Table([[lbl_para]], colWidths=[uw])
-        lbl_box.setStyle(TableStyle([
-            ("BACKGROUND",    (0, 0), (-1, -1), colors.HexColor("#f5f5f5")),
-            ("TOPPADDING",    (0, 0), (-1, -1), 4),
-            ("BOTTOMPADDING", (0, 0), (-1, -1), 2),
-            ("LEFTPADDING",   (0, 0), (-1, -1), 6),
-            ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
-            ("LINEABOVE",     (0, 0), (-1,  0), 0.5, HAIRLINE),
-            ("LINEBEFORE",    (0, 0), ( 0, -1), 0.5, HAIRLINE),
-            ("LINEAFTER",     (0, 0), (-1, -1), 0.5, HAIRLINE),
-        ]))
-        # Outer border bottom line drawn via a thin spacer-table so the box
-        # appears closed underneath the data table.
+        # Render table directly — no "Visual stimulus" label (fix c).
         tbl_wrapper = Table([[tbl]], colWidths=[uw])
         tbl_wrapper.setStyle(TableStyle([
             ("LEFTPADDING",   (0, 0), (-1, -1), 0),
@@ -239,18 +240,17 @@ def _render_visual_stimulus(vs_text: str, uw: float, story: list):
             ("LINEAFTER",     (0, 0), (-1, -1), 0.5, HAIRLINE),
             ("LINEBELOW",     (0, -1), (-1, -1), 0.5, HAIRLINE),
         ]))
-        story.append(lbl_box)
         story.append(tbl_wrapper)
 
     else:
-        # Plain text / description — render in a light-grey box
-        lbl_para  = Paragraph("<b>Visual stimulus</b>", AST["q_meta"])
+        # Plain text / description — render in a light-grey box (no label, fix c)
         body_para = Paragraph(
             _clean_text(vs),
             ParagraphStyle("vs_plain", fontName="Helvetica-Oblique",
                            fontSize=7.5, leading=11, textColor=MID),
         )
-        box = Table([[lbl_para], [body_para]], colWidths=[uw])
+        # Single-row box — no label (fix c)
+        box = Table([[body_para]], colWidths=[uw])
         box.setStyle(TableStyle([
             ("BACKGROUND",    (0, 0), (-1, -1), colors.HexColor("#f5f5f5")),
             ("BOX",           (0, 0), (-1, -1), 0.5, HAIRLINE),
@@ -263,6 +263,43 @@ def _render_visual_stimulus(vs_text: str, uw: float, story: list):
         story.append(box)
 
     story.append(Spacer(1, 3))
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Word-box renderer (Listening MATCH tasks)
+# ──────────────────────────────────────────────────────────────────────────────
+def _render_word_box(words: list, uw: float, story: list):
+    """
+    Renders a styled word-box widget — used by Listening MATCH items that ask
+    students to circle words from a box as they listen (fix b).
+    words: list of word strings.
+    """
+    if not words:
+        return
+    lbl_style = ParagraphStyle(
+        "wb_lbl", fontName="Helvetica-Bold",
+        fontSize=7, leading=10, textColor=MID,
+    )
+    word_style = ParagraphStyle(
+        "wb_word", fontName="Helvetica",
+        fontSize=8, leading=11, textColor=INK,
+    )
+    lbl_para = Paragraph("WORD BOX", lbl_style)
+    # Render words as a single paragraph with spaces between pill-style spans
+    word_text = "    ".join(_clean_text(w) for w in words if w.strip())
+    word_para = Paragraph(word_text, word_style)
+    box = Table([[lbl_para], [word_para]], colWidths=[uw])
+    box.setStyle(TableStyle([
+        ("BACKGROUND",    (0, 0), (-1, -1), colors.HexColor("#f7f6f4")),
+        ("BOX",           (0, 0), (-1, -1), 0.8, HAIRLINE),
+        ("TOPPADDING",    (0, 0), (-1, -1), 4),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+        ("LEFTPADDING",   (0, 0), (-1, -1), 7),
+        ("RIGHTPADDING",  (0, 0), (-1, -1), 7),
+        ("VALIGN",        (0, 0), (-1, -1), "TOP"),
+    ]))
+    story.append(box)
+    story.append(Spacer(1, 4))
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -421,13 +458,23 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
     # Single narrow KeepTogether: only meta_block + q_para prevents LO orphaning
     story.append(KeepTogether([meta_block, Spacer(1, 2), q_para]))
 
+    # ── Word box — rendered after question stem, before visual stimulus (fix b) ──
+    # The English pre-processor stores extracted word-box words on the item
+    # so question_block can render them in the correct position.
+    wb_words = item.get("_word_box_words")
+    if wb_words:
+        _render_word_box(wb_words, uw, story)
+
     # ── Visual stimulus — render after question stem ──────────────────────────
     vs = item.get("visual_stimulus")
     if vs and isinstance(vs, str) and vs.strip():
         _render_visual_stimulus(vs, uw, story)
 
     # ── MCQ options ───────────────────────────────────────────────────────────
-    if qtype == "MCQ":
+    # Suppress the flat options list for predict-then-listen MCQ items — those
+    # items embed their questions+options in the question_text paragraph already
+    # (fix f). The _suppress_options flag is set by the English pre-processor.
+    if qtype == "MCQ" and not item.get("_suppress_options"):
         # Fix 9: labels "A.", "B.", "C.", "D." with full stop; INK colour
         label_map = {"A": "A.", "B": "B.", "C": "C.", "D": "D."}
         opt_rows = []
@@ -619,10 +666,56 @@ def build_assessment_pdf(output_path, data):
                 lo_text = item.get("source_lo", "") or item.get("implied_lo", "") or ""
                 # Mark item as English so question_block uses the right meta branch
                 item["is_english"] = True
-                # Map English item fields to what question_block expects
-                item.setdefault("question_text", item.get("item_stem", "") or "")
                 item.setdefault("question_type", item.get("question_type", ""))
                 item.setdefault("cognitive_demand", "")
+
+                # ── Pre-process item_stem for MATCH and MCQ types (fix b,d,f) ──
+                raw_stem   = item.get("item_stem", "") or ""
+                qtype_here = (item.get("question_type", "") or "").strip().upper()
+
+                if qtype_here == "MATCH" and raw_stem:
+                    # Extract word-box line and strip numbered match-list lines
+                    # that are already present as rows in visual_stimulus (fix b,d).
+                    vs_text = item.get("visual_stimulus", "") or ""
+                    vs_row_set: set = set()
+                    if vs_text:
+                        for vs_ln in vs_text.strip().splitlines()[1:]:  # skip header
+                            vs_cells = [c.strip() for c in vs_ln.split("|") if c.strip()]
+                            if vs_cells:
+                                vs_row_set.add(vs_cells[0].lower())
+
+                    word_box_words: list = []
+                    clean_lines = []
+                    for line in raw_stem.splitlines():
+                        wb_match = re.match(
+                            r"^Word\s+box\s*[:：]\s*(.+)", line.strip(), re.IGNORECASE
+                        )
+                        if wb_match:
+                            word_box_words = [
+                                w.strip() for w in re.split(r"\s{2,}|\t", wb_match.group(1))
+                                if w.strip()
+                            ]
+                            continue  # don't include word-box line in displayed stem
+                        # Strip numbered match-list lines already in vs table (fix d)
+                        stripped = line.strip()
+                        if re.match(r"^\d+\.", stripped) and stripped.lower() in vs_row_set:
+                            continue
+                        clean_lines.append(line)
+                    item["question_text"] = "\n".join(clean_lines).strip()
+                    # Store word-box words on item so question_block can render
+                    # them between the stem and the visual_stimulus table (fix b)
+                    if word_box_words:
+                        item["_word_box_words"] = word_box_words
+
+                elif qtype_here == "MCQ" and "My prediction" in raw_stem:
+                    # Predict-then-listen: stem embeds questions + options inline.
+                    # Suppress the flat options list to avoid duplication (fix f).
+                    item["question_text"] = raw_stem
+                    item["_suppress_options"] = True
+
+                else:
+                    item.setdefault("question_text", raw_stem)
+
                 # teacher_guide already present on item; question_block reads it
                 header_items = [sec_para, sec_hline] if idx == 0 else None
                 story.extend(question_block(

@@ -1,0 +1,1372 @@
+{
+  "filename": "ch_01_20260510_175736.json",
+  "saved_at": "2026-05-10T17:57:36",
+  "grade": "Grade VII",
+  "subject": "English",
+  "chapter_number": 1,
+  "chapter_title": "Learning Together",
+  "period_schedule_display": "Period schedule:\n  Row 1: 40 minutes × 6 periods = 240 minutes\nTotal: 6 periods · 4h 0min",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 40,
+      "count": 6
+    }
+  ],
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 40,
+          "section_id": "A",
+          "section_title": "The Day the River Spoke",
+          "spines_taught": [
+            "reading_for_comprehension"
+          ],
+          "activity_title": "Before We Read: Sounds, Dreams, and Jahnavi",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "literary-reading"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 0,
+              "task_brief": "Close-eyes listening: sounds around us"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 1,
+              "task_brief": "Jahnavi's dream: predict and share"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 2,
+              "task_brief": "After Section I: Jahnavi's dream and the River"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Teacher opens with the pre-reading activity: students close their eyes for a minute and listen to the sounds around them, then share with classmates and the teacher whether the sounds seem to carry a message (page 1). Pair-sharing is encouraged before whole-class discussion."
+            },
+            {
+              "minutes": "8–18",
+              "description": "Teacher introduces Jahnavi — a bright girl in a coastal village — and poses the open prediction task: what could her dream be, and how might she make it come true (page 1)? Students share responses before the teacher begins reading Section I of the prose aloud."
+            },
+            {
+              "minutes": "18–34",
+              "description": "Students read Section I independently, then discuss the two questions on Jahnavi's dream and whether the River can help her fulfil it (page 3). Teacher draws out the River's role as a gentle, personified counsellor."
+            },
+            {
+              "minutes": "34–40",
+              "description": "Teacher consolidates by asking students to hold one 'wondering question' Jahnavi might ask the River, bridging to Section II in the next period."
+            }
+          ],
+          "teacher_notes": "This period sets the emotional core of the story — Jahnavi's exclusion from school and her longing to learn. Keep pre-reading oral activities brisk (8 minutes each) so Section I reading and discussion receive adequate time. Note that the detailed nature descriptions at the story's opening (kingfisher, lizard, river murmur) are worth a brief mention as the writer's way of immersing the reader in Jahnavi's world.",
+          "materials": [
+            "Textbook p.1–3",
+            "Blackboard"
+          ]
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 40,
+          "section_id": "A",
+          "section_title": "The Day the River Spoke",
+          "spines_taught": [
+            "reading_for_comprehension"
+          ],
+          "activity_title": "Jahnavi and the River: Questions, Advice, and Courage",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "critical-reading"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 3,
+              "task_brief": "Table: Jahnavi's questions and River's answers"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 4,
+              "task_brief": "Extract 1 analysis: River's tone and Jahnavi's character"
+            }
+          ],
+          "homework": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 5,
+              "task_brief": "Extract 2 questions on River's advice (page 7–8)"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–6",
+              "description": "Brief recap of Period 1: teacher asks two students to recall Jahnavi's main worry and the River's first response. This transitions the class into Section II of the prose."
+            },
+            {
+              "minutes": "6–22",
+              "description": "Students read Section II and then complete the matching table — Jahnavi's curious questions in Column 1 and the River's answers in Column 2 (page 6). Teacher circulates and checks pairs before class-wide correction."
+            },
+            {
+              "minutes": "22–38",
+              "description": "Class reads the extract 'You shouldn't cry, you know…I've got to hurry to reach the sea, you know' and answers the four questions on the River's tone, Jahnavi's repeated visits, the exclamation mark's effect, and the River's qualities (page 7). Teacher facilitates brief responses."
+            },
+            {
+              "minutes": "38–40",
+              "description": "Teacher sets homework: complete the four questions on Extract 2 ('Can I do something?…They'd chase me out') at home (pages 7–8) and previews that the next period will examine Jahnavi's triumph."
+            }
+          ],
+          "teacher_notes": "The table task anchors students in the River's wit — especially the contrast between Jahnavi's wonder-questions about nature and the River's practical advice about going to school. In Extract 1, guide students to notice that the River is given a capital letter throughout the story, hinting at the personification concept that surfaces in the Vocabulary/Grammar spine. Extract 2 questions are moved to homework as time does not permit a third extract in this period.",
+          "materials": [
+            "Textbook p.3–8",
+            "Blackboard"
+          ]
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 40,
+          "section_id": "A",
+          "section_title": "The Day the River Spoke",
+          "spines_taught": [
+            "listening",
+            "speaking"
+          ],
+          "activity_title": "Voices of School Life: Listening and Giving Advice",
+          "pedagogical_methods": {
+            "listening": "critical-listening",
+            "speaking": "guided-conversation"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "listening",
+              "task_index": 0,
+              "task_brief": "Circle words used by five school-life speakers"
+            },
+            {
+              "spine": "listening",
+              "task_index": 1,
+              "task_brief": "Match statements 1–7 to speakers (i)–(v)"
+            },
+            {
+              "spine": "speaking",
+              "task_index": 1,
+              "task_brief": "Pair role-play: ask for and give advice, four situations"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Teacher previews the listening task: students read the ten word-box items aloud together so pronunciation is clear before audio begins (page 12, transcript p.39)."
+            },
+            {
+              "minutes": "5–15",
+              "description": "First listening: students circle words used by the five speakers from the word-box (two words are unused). Teacher plays/reads the transcript (p.39) at natural pace, then checks answers with the class."
+            },
+            {
+              "minutes": "15–25",
+              "description": "Second listening: students match statements 1–7 to speakers (i)–(v); two statements are unused (page 12). After listening, pairs compare answers before class-wide correction."
+            },
+            {
+              "minutes": "25–40",
+              "description": "Speaking task: pairs take turns asking for and giving advice across situations (i)–(iv) on page 13, modelled on the Jahnavi–River dialogue. Teacher monitors and gives brief oral feedback to two or three pairs."
+            }
+          ],
+          "teacher_notes": "Run both listening plays in succession without lengthy pauses to maintain focus; the gap between them should only be long enough for students to read the matching task. For the speaking activity, Situation (i) — joining an all-boys football team — echoes Jahnavi's gender-equity theme and often sparks the richest discussion; allow it a minute or two more if time permits. Remind students that listening and speaking activities should happen together as per NCF guidance.",
+          "materials": [
+            "Textbook p.12–13",
+            "Listening transcript p.39",
+            "Audio player or teacher read-aloud"
+          ]
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 60,
+          "section_id": "A",
+          "section_title": "The Day the River Spoke",
+          "spines_taught": [
+            "vocabulary_grammar"
+          ],
+          "activity_title": "Sound Words, Prepositions, and the River's Capital",
+          "pedagogical_methods": {
+            "vocabulary_grammar": "linguistic-aspects-in-context"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 0,
+              "task_brief": "Personification: why 'River' has a capital letter"
+            },
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 1,
+              "task_brief": "Sound-word matching and fill-in-the-blanks"
+            },
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 5,
+              "task_brief": "Fill blanks with prepositions in Jahnavi's school day"
+            },
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 6,
+              "task_brief": "Distinguish preposition vs adverb in eight sentences"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Teacher leads Task I: why does the author capitalise 'River' when it is a common noun? Students discuss the clue (River given human qualities) and record a one-sentence answer (page 8). Teacher confirms the personification device."
+            },
+            {
+              "minutes": "10–30",
+              "description": "Task II: students pick sound words from the text and match them to nine definitions (page 8), then fill the six blanks in the classroom scene using the matched sound words (page 9). Teacher corrects the matching on the board before students attempt the fill-in."
+            },
+            {
+              "minutes": "30–45",
+              "description": "Task VI: students fill six blanks with prepositions from the brackets as Jahnavi walks through her first school day (page 11). Teacher explains each choice in context — 'at school' (location), 'outside the gate' (position), 'through the classroom' (movement direction)."
+            },
+            {
+              "minutes": "45–58",
+              "description": "Task VII: teacher explains that words like on, off, up, down can serve as either preposition or adverb depending on whether they link to a noun. Students complete eight sentences (pages 11–12) and two volunteers share answers for class discussion."
+            },
+            {
+              "minutes": "58–60",
+              "description": "Quick consolidation: teacher asks students to give one example of a sound word and one of a preposition used in the day's tasks, then previews the writing period."
+            }
+          ],
+          "teacher_notes": "Task I links naturally to the extract analysis from Period 2 — students already noticed the River speaking — so the personification explanation should take no more than ten minutes. Tasks III (borrowed words) and IV–V (boats, crossword) are rich but time-consuming and are best left as self-study or home exploration; flag them briefly as optional extension. The preposition versus adverb distinction in Task VII is the hardest concept — use board examples before releasing students to work independently.",
+          "materials": [
+            "Textbook p.8–12",
+            "Blackboard",
+            "Chalk/markers"
+          ]
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 40,
+          "section_id": "A",
+          "section_title": "The Day the River Spoke",
+          "spines_taught": [
+            "writing",
+            "beyond_text"
+          ],
+          "activity_title": "Observing Nature in Words; Exploring India's Rivers",
+          "pedagogical_methods": {
+            "writing": "functional-writing",
+            "beyond_text": "interdisciplinary-study"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "writing",
+              "task_index": 0,
+              "task_brief": "Draft descriptive paragraph on observed nature"
+            },
+            {
+              "spine": "beyond_text",
+              "task_index": 2,
+              "task_brief": "Analyse poster: girls' dignity and national happiness"
+            }
+          ],
+          "homework": [
+            {
+              "spine": "writing",
+              "task_index": 0,
+              "task_brief": "Complete and refine nature observation paragraph at home"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Teacher introduces the writing task: over recent days students have been asked to observe colours, shapes, textures and movements in nature (page 14). Teacher models two or three sentence starters from the prompts table ('Every day, I see… / I find it very interesting that…') on the board."
+            },
+            {
+              "minutes": "8–25",
+              "description": "Students draft their descriptive paragraph in class using the prompt table as a scaffold. Teacher circulates, offering feedback on vivid sensory detail and logical flow. Students also give a working title to their paragraph."
+            },
+            {
+              "minutes": "25–38",
+              "description": "Teacher displays the poster 'The Happiness of a Nation lies in the Dignity of its Daughters' (page 15) and conducts a brief whole-class discussion on the poster's visual elements, why the girls look happy, and the relationship between dignity and happiness. Two or three students share responses."
+            },
+            {
+              "minutes": "38–40",
+              "description": "Homework: students finish and refine their nature paragraph at home, aiming for at least five sentences using three different prompt starters. Teacher notes that Beyond-text tasks I (sacred rivers) and IV (government schemes) are available for self-study."
+            }
+          ],
+          "teacher_notes": "The writing task connects directly to the story's opening nature description — kingfisher, lizard, rustling bamboo — so encourage students to draw on those images as inspiration alongside their own observations. The poster discussion is kept brief (12 minutes) because it introduces the key theme of gender equity that runs across the chapter without requiring extended writing time in this period. Beyond-text tasks I and IV (sacred rivers discussion and government schemes research) are not anchored in class and should be flagged as optional extension or homework for interested students.",
+          "materials": [
+            "Textbook p.14–15",
+            "Blackboard",
+            "Writing paper or notebooks"
+          ]
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 40,
+          "section_id": "B",
+          "section_title": "Try Again",
+          "spines_taught": [
+            "reading_for_comprehension"
+          ],
+          "activity_title": "King Bruce and the Spider: First Reading and Summary",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "literary-reading"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 0,
+              "task_brief": "Pre-reading: who inspires you to do your best?"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 2,
+              "task_brief": "Fill-in summary of the poem using box words"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 3,
+              "task_brief": "Complete sentences: narrative style and central idea"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–6",
+              "description": "Pre-reading warm-up: students share who or what inspires them to do their best (page 16). Teacher takes three or four responses and links the idea of unlikely sources of inspiration to the poem's spider."
+            },
+            {
+              "minutes": "6–20",
+              "description": "Teacher reads the poem aloud with expression, emphasising the mounting tension as the spider attempts climb after climb. Students follow in their textbooks, noting the ABAB rhyme scheme and the repeated phrases 'tried and tried', 'up, up', 'steadily, steadily'."
+            },
+            {
+              "minutes": "20–34",
+              "description": "Students complete the fill-in summary (page 19) using the eight box words (tried, mounted, despair, attempts, great, conquered, low, strive), then complete the two sentence-completion items on narrative style and central idea (page 19). Teacher corrects on the board."
+            },
+            {
+              "minutes": "34–40",
+              "description": "Teacher introduces the term 'extended metaphor' briefly — the spider's repeated climbs mirror Bruce's own repeated failures — and previews that Period 7 will examine the poem's literary devices in depth."
+            }
+          ],
+          "teacher_notes": "Read the poem at a measured pace; the cumulative tension of the spider's nine attempts is best felt when the teacher slows slightly at each fall and picks up pace on each new ascent. The fill-in summary anchors comprehension before literary analysis begins. Pre-reading tasks II (pictures of nature) and the later extract tasks are not anchored in this period; flag extract analysis as the focus for Period 7.",
+          "materials": [
+            "Textbook p.16–22",
+            "Blackboard"
+          ]
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 40,
+          "section_id": "B",
+          "section_title": "Try Again",
+          "spines_taught": [
+            "reading_for_comprehension"
+          ],
+          "activity_title": "Repetition, Metaphor, and the Spider's Defiance of Despair",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "critical-reading"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 4,
+              "task_brief": "Pick examples: spider's efforts and alliteration"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 5,
+              "task_brief": "Why does the poet repeat 'tried and tried'; 'steadily, steadily'; 'up, up'?"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 7,
+              "task_brief": "Identify metaphors and similes in nine sentences"
+            }
+          ],
+          "homework": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 6,
+              "task_brief": "Fill in three MCQ items on rhyme scheme and poetic devices (page 19)"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Students pick three examples from the poem for lines describing the spider's efforts and three examples of alliteration (page 19). Pairs compare choices before a brief class share."
+            },
+            {
+              "minutes": "10–22",
+              "description": "Teacher leads discussion on why the poet repeats 'tried and tried', 'steadily, steadily', and 'up, up' (page 19). Students write an extended answer; teacher guides them to see that repetition enacts — not merely describes — the persistence it celebrates."
+            },
+            {
+              "minutes": "22–38",
+              "description": "Teacher introduces metaphor vs simile using the poem's spider-as-Bruce comparison as the anchor, then students read nine sentences and label each M or S (page 20). Teacher corrects on the board and asks students to justify two choices."
+            },
+            {
+              "minutes": "38–40",
+              "description": "Homework assigned: complete the three fill-in MCQ items on rhyme scheme, 'Bravo' as interjection, and 'twas/'tis for rhythm (page 19). Teacher previews that Period 8 will cover listening, speaking and the letter-writing task."
+            }
+          ],
+          "teacher_notes": "The repetition question is the conceptual centrepiece of this period — guide students beyond 'the poet repeats for emphasis' to the richer idea that the rhythm of repetition mirrors the spider's physical rhythm of climb and fall. Task VI.2 (transforming similes to metaphors) is omitted from class due to time; it can be assigned as extension homework for stronger students. Extract I and II close-reading questions are also left as self-study; flag them in teacher notes.",
+          "materials": [
+            "Textbook p.19–22",
+            "Blackboard"
+          ]
+        },
+        {
+          "period_number": 8,
+          "period_duration_minutes": 40,
+          "section_id": "B",
+          "section_title": "Try Again",
+          "spines_taught": [
+            "listening",
+            "speaking"
+          ],
+          "activity_title": "The Persistent Ant: Listening and Personal Narration",
+          "pedagogical_methods": {
+            "listening": "critical-listening",
+            "speaking": "oral-presentation"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "listening",
+              "task_index": 0,
+              "task_brief": "Predict then verify: five MCQs on the ant story"
+            },
+            {
+              "spine": "speaking",
+              "task_index": 0,
+              "task_brief": "Narrate a personal perseverance experience using prompts"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Students read the five MCQ questions about the ant story silently and make predictions before listening (page 24). Teacher asks two students to share their predictions and reasoning."
+            },
+            {
+              "minutes": "8–20",
+              "description": "Teacher reads/plays the ant story (transcript p.40) at natural pace. Students listen and check their predicted answers, then verify as a class. Teacher briefly draws the parallel between the ant's determination and the spider's in the poem."
+            },
+            {
+              "minutes": "20–38",
+              "description": "Speaking task: students narrate a personal experience of perseverance using the seven-step prompt framework — Introduction, Describe the challenge, Feeling disheartened, The source of motivation, Taking action, The result, Reflection (page 25). Three or four students present; peers listen actively."
+            },
+            {
+              "minutes": "38–40",
+              "description": "Teacher gives brief oral feedback on two narrations — noting strong use of transition language and vivid detail — and previews that Period 9 will cover vocabulary, grammar, and writing for Section B."
+            }
+          ],
+          "teacher_notes": "The prediction step before listening is important: it activates prior knowledge and gives students a purpose for listening. For the speaking task, ensure every student who speaks uses at least three of the seven prompt steps; the 'Source of motivation' step is most directly linked to the poem's theme. Listening Task II (re-listen and verify) is folded into the class correction after the first play to save time.",
+          "materials": [
+            "Textbook p.24–25",
+            "Listening transcript p.40",
+            "Audio player or teacher read-aloud"
+          ]
+        },
+        {
+          "period_number": 9,
+          "period_duration_minutes": 50,
+          "section_id": "B",
+          "section_title": "Try Again",
+          "spines_taught": [
+            "vocabulary_grammar",
+            "writing"
+          ],
+          "activity_title": "Antonyms, Distance Words, and a Letter of Perseverance",
+          "pedagogical_methods": {
+            "vocabulary_grammar": "linguistic-aspects-in-context",
+            "writing": "functional-writing"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 0,
+              "task_brief": "Write opposites of five poem words"
+            },
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 2,
+              "task_brief": "Classify distance words as far or near"
+            },
+            {
+              "spine": "writing",
+              "task_index": 0,
+              "task_brief": "Write letter to cousin on overcoming difficulty, using transition words"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Students write the opposites of five words drawn from the poem — up, fast, glad, win, succeed (page 22). Teacher corrects quickly and then asks students to locate two of these words in the poem to see them in their emotional context."
+            },
+            {
+              "minutes": "8–20",
+              "description": "Teacher explains the poem's distance language ('a long way up', 'inch by inch', 'half-yard higher') before students classify the box words and phrases as far or near (page 23). Teacher corrects on the board and briefly explains 'proximity', 'vicinity', 'yonder', and 'afar'."
+            },
+            {
+              "minutes": "20–48",
+              "description": "Writing task: teacher displays the letter scaffold on the board (opening, three body paragraphs with transition words, closing) and students write a letter to their cousin on how to overcome a difficult situation, using 'To begin with', 'Next', 'After that', 'Then', 'Finally' as structural markers (page 26). Teacher circulates and gives formative feedback on format and transition word use."
+            },
+            {
+              "minutes": "48–50",
+              "description": "Teacher asks one volunteer to read their opening paragraph aloud and gives one targeted compliment and one improvement suggestion before transitioning to Section C in Period 10."
+            }
+          ],
+          "teacher_notes": "Vocabulary Tasks I and III are kept short to protect the writing time — the letter is the period's main output and requires at least 28 minutes for a draft of reasonable quality. Task II (word meanings and own sentences for endeavour, toil, strive, braced) and Task IV (tongue twisters) are good self-study candidates; mention them briefly as extension. Remind students that the letter format — date, greeting, transition words, closing — is a functional writing skill they will use across subjects.",
+          "materials": [
+            "Textbook p.22–26",
+            "Blackboard",
+            "Writing paper or notebooks"
+          ]
+        },
+        {
+          "period_number": 10,
+          "period_duration_minutes": 40,
+          "section_id": "C",
+          "section_title": "Three Days to See",
+          "spines_taught": [
+            "reading_for_comprehension"
+          ],
+          "activity_title": "Helen Keller's Three Days: Reading and Comprehension",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "functional-reading"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 2,
+              "task_brief": "Identify true statements from seven on Keller's essay"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 3,
+              "task_brief": "Table: what Keller planned for each of the three days"
+            }
+          ],
+          "homework": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 4,
+              "task_brief": "How does the narrator understand a person's feelings? (page 32)"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Teacher briefly introduces Helen Keller — blind and deaf author who accessed the world entirely through touch, smell, and sound — and reads the essay's opening paragraph aloud to establish tone. Students follow in their textbooks."
+            },
+            {
+              "minutes": "8–24",
+              "description": "Students read the full essay silently, then work in pairs to identify the true statements from the seven given (page 31), distinguishing carefully between what Keller actually says and plausible but incorrect options. Teacher facilitates class correction."
+            },
+            {
+              "minutes": "24–38",
+              "description": "Students complete the three-column table of what Keller plans to do on Day 1 (see the people she loves), Day 2 (arise with the dawn, visit museums), and Day 3 (observe a busy city corner) (page 32). Teacher models the Day 1 entry on the board before students complete Days 2 and 3."
+            },
+            {
+              "minutes": "38–40",
+              "description": "Homework: students write a short answer to 'How is the narrator able to understand the feelings of a person?' (page 32) based on Keller's description of knowing friends only through the feel of their faces. Period 11 will cover vocabulary, speaking, and the writing task."
+            }
+          ],
+          "teacher_notes": "Keller's essay moves from quiet wonder to passionate advocacy — a tone shift that students in the middle stage may need help tracking. The true/false-style identification task is a good comprehension check before the three-day table, which requires students to synthesise across the full essay. The pre-reading activities (pair recall of a visited place and senses discussion, pages 28–29) are left as self-study since the period is fully used by the comprehension and table tasks.",
+          "materials": [
+            "Textbook p.28–33",
+            "Blackboard"
+          ]
+        },
+        {
+          "period_number": 11,
+          "period_duration_minutes": 40,
+          "section_id": "C",
+          "section_title": "Three Days to See",
+          "spines_taught": [
+            "vocabulary_grammar",
+            "speaking"
+          ],
+          "activity_title": "Modal Verbs, Sensory Words, and Speaking About the Senses",
+          "pedagogical_methods": {
+            "vocabulary_grammar": "linguistic-aspects-in-context",
+            "speaking": "public-speaking"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 1,
+              "task_brief": "Identify modal verbs and their functions in five sentences"
+            },
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 2,
+              "task_brief": "Fill blanks with appropriate modal verbs in seven situations"
+            },
+            {
+              "spine": "speaking",
+              "task_index": 0,
+              "task_brief": "Speak one minute on the sense you value most"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–12",
+              "description": "Teacher introduces modal verbs using Keller's own sentences ('I should arise with the dawn', 'I must spend the second day') and explains the five functions: possibility, necessity, polite request, ability, moral obligation. Students identify modal verbs and their functions in the five given sentences (page 34)."
+            },
+            {
+              "minutes": "12–25",
+              "description": "Students fill the seven blanks with appropriate modal verbs matching the given function labels — permission, obligation, advice, possibility, polite request, moral obligation, suggestion (page 35). Teacher corrects on the board, emphasising why 'ought to' signals moral obligation while 'should' signals advice."
+            },
+            {
+              "minutes": "25–38",
+              "description": "Speaking task: students prepare for one minute, then two or three volunteers speak for one minute on the sense they value most, using the prompt framework from page 36. Class listens and identifies one strong phrase from each speaker."
+            },
+            {
+              "minutes": "38–40",
+              "description": "Teacher closes the chapter by connecting Keller's appeal — 'use your eyes as if tomorrow you might be struck blind' — to the chapter's overarching theme of valuing what we have and learning with gratitude. Sensory-word task (Task I, page 34) and beyond-text tasks (Braille, ISL, IDPD) are flagged as self-study extension for interested students."
+            }
+          ],
+          "teacher_notes": "Modal verbs are the hardest grammar point in Section C — students often confuse 'can' (ability) with 'may' (permission) and 'should' (advice) with 'must' (necessity). Use Keller's repeated 'should' to demonstrate hypothetical modal use before moving to the fill-in task. The speaking activity here (public-speaking method) connects directly to Keller's essay: students practise the same grateful-advocacy voice that Keller models. Writing Task (descriptive paragraph, page 37) is not anchored in class; flag it as a homework or follow-up assignment.",
+          "materials": [
+            "Textbook p.34–36",
+            "Blackboard"
+          ]
+        }
+      ]
+    },
+    "coverage_handoff": {
+      "reading_for_comprehension": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "The Day the River Spoke",
+            "section_type": "prose",
+            "implied_lo": "Student identifies details, main ideas, and character motivations in a prose narrative by responding to comprehension, inference, and extract-analysis tasks.",
+            "tasks_anchored": [
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 0,
+                "task_brief": "Close-eyes listening: sounds around us"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 1,
+                "task_brief": "Jahnavi's dream: predict and share"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 2,
+                "task_brief": "After Section I: Jahnavi's dream and the River"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 3,
+                "task_brief": "Table: Jahnavi's questions and River's answers"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 4,
+                "task_brief": "Extract 1 analysis: River's tone and Jahnavi's character"
+              }
+            ]
+          },
+          {
+            "section_id": "B",
+            "section_title": "Try Again",
+            "section_type": "poem",
+            "implied_lo": "Student demonstrates understanding of a narrative poem by identifying its central idea, literary devices (repetition, metaphor, simile), and the poet's purpose in crafting them.",
+            "tasks_anchored": [
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 0,
+                "task_brief": "Pre-reading: who inspires you to do your best?"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 2,
+                "task_brief": "Fill-in summary of the poem using box words"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 3,
+                "task_brief": "Complete sentences: narrative style and central idea"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 4,
+                "task_brief": "Pick examples: spider's efforts and alliteration"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 5,
+                "task_brief": "Why does the poet repeat 'tried and tried'; 'steadily, steadily'; 'up, up'?"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 7,
+                "task_brief": "Identify metaphors and similes in nine sentences"
+              }
+            ]
+          },
+          {
+            "section_id": "C",
+            "section_title": "Three Days to See",
+            "section_type": "informational",
+            "implied_lo": "Student reads an informational essay critically, distinguishing true from false statements and sequencing the author's key ideas across a structured plan.",
+            "tasks_anchored": [
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 2,
+                "task_brief": "Identify true statements from seven on Keller's essay"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 3,
+                "task_brief": "Table: what Keller planned for each of the three days"
+              }
+            ]
+          }
+        ]
+      },
+      "listening": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "The Day the River Spoke",
+            "section_type": "prose",
+            "implied_lo": "Student demonstrates listening comprehension by selecting words used in spoken passages and matching statements to the correct speakers.",
+            "tasks_anchored": [
+              {
+                "spine": "listening",
+                "task_index": 0,
+                "task_brief": "Circle words used by five school-life speakers"
+              },
+              {
+                "spine": "listening",
+                "task_index": 1,
+                "task_brief": "Match statements 1–7 to speakers (i)–(v)"
+              }
+            ]
+          },
+          {
+            "section_id": "B",
+            "section_title": "Try Again",
+            "section_type": "poem",
+            "implied_lo": "Student demonstrates comprehension of a spoken narrative by predicting answers to inference-based questions before listening and verifying them after.",
+            "tasks_anchored": [
+              {
+                "spine": "listening",
+                "task_index": 0,
+                "task_brief": "Predict then verify: five MCQs on the ant story"
+              }
+            ]
+          }
+        ]
+      },
+      "speaking": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "The Day the River Spoke",
+            "section_type": "prose",
+            "implied_lo": "Student participates in guided conversation to seek and provide advice, adapting tone and register to varied situational contexts.",
+            "tasks_anchored": [
+              {
+                "spine": "speaking",
+                "task_index": 1,
+                "task_brief": "Pair role-play: ask for and give advice, four situations"
+              }
+            ]
+          },
+          {
+            "section_id": "B",
+            "section_title": "Try Again",
+            "section_type": "poem",
+            "implied_lo": "Student delivers a structured personal oral narrative using guided prompts, organising ideas with appropriate sequencing and personal reflection.",
+            "tasks_anchored": [
+              {
+                "spine": "speaking",
+                "task_index": 0,
+                "task_brief": "Narrate a personal perseverance experience using prompts"
+              }
+            ]
+          },
+          {
+            "section_id": "C",
+            "section_title": "Three Days to See",
+            "section_type": "informational",
+            "implied_lo": "Student speaks fluently for one minute on a personal viewpoint, organising ideas using a given prompt framework and maintaining audience awareness.",
+            "tasks_anchored": [
+              {
+                "spine": "speaking",
+                "task_index": 0,
+                "task_brief": "Speak one minute on the sense you value most"
+              }
+            ]
+          }
+        ]
+      },
+      "writing": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "The Day the River Spoke",
+            "section_type": "prose",
+            "implied_lo": "Student writes a descriptive paragraph using sensory details and a structured prompt framework, giving a title and sustaining focus on observed natural phenomena.",
+            "tasks_anchored": [
+              {
+                "spine": "writing",
+                "task_index": 0,
+                "task_brief": "Draft descriptive paragraph on observed nature"
+              }
+            ]
+          },
+          {
+            "section_id": "B",
+            "section_title": "Try Again",
+            "section_type": "poem",
+            "implied_lo": "Student writes a formal personal letter using functional format conventions and transition words to organise advice in a logical sequence.",
+            "tasks_anchored": [
+              {
+                "spine": "writing",
+                "task_index": 0,
+                "task_brief": "Write letter to cousin on overcoming difficulty, using transition words"
+              }
+            ]
+          }
+        ]
+      },
+      "vocabulary_grammar": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "The Day the River Spoke",
+            "section_type": "prose",
+            "implied_lo": "Student identifies and uses prepositions of place, direction, and time correctly, distinguishing them from adverbial uses of the same words in sentence context.",
+            "tasks_anchored": [
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 0,
+                "task_brief": "Personification: why 'River' has a capital letter"
+              },
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 1,
+                "task_brief": "Sound-word matching and fill-in-the-blanks"
+              },
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 5,
+                "task_brief": "Fill blanks with prepositions in Jahnavi's school day"
+              },
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 6,
+                "task_brief": "Distinguish preposition vs adverb in eight sentences"
+              }
+            ]
+          },
+          {
+            "section_id": "B",
+            "section_title": "Try Again",
+            "section_type": "poem",
+            "implied_lo": "Student identifies antonyms and classifies words by distance (near/far), demonstrating understanding of vocabulary related to spatial and directional contrast.",
+            "tasks_anchored": [
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 0,
+                "task_brief": "Write opposites of five poem words"
+              },
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 2,
+                "task_brief": "Classify distance words as far or near"
+              }
+            ]
+          },
+          {
+            "section_id": "C",
+            "section_title": "Three Days to See",
+            "section_type": "informational",
+            "implied_lo": "Student identifies modal verbs and their functions (possibility, necessity, permission, ability, moral obligation) and uses them correctly in context-specific sentences.",
+            "tasks_anchored": [
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 1,
+                "task_brief": "Identify modal verbs and their functions in five sentences"
+              },
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 2,
+                "task_brief": "Fill blanks with appropriate modal verbs in seven situations"
+              }
+            ]
+          }
+        ]
+      },
+      "beyond_text": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "The Day the River Spoke",
+            "section_type": "prose",
+            "implied_lo": "Student analyses a visual text (poster) to identify its message about gender equity and connects it to broader social themes explored in the prose.",
+            "tasks_anchored": [
+              {
+                "spine": "beyond_text",
+                "task_index": 2,
+                "task_brief": "Analyse poster: girls' dignity and national happiness"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "assessment_items": [
+      {
+        "spine_code": "reading_for_comprehension",
+        "spine_title": "Reading for Comprehension",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-RFC-A-1",
+            "source_section_id": "A",
+            "source_section_title": "The Day the River Spoke",
+            "source_section_type": "prose",
+            "source_spine": "reading_for_comprehension",
+            "source_lo": "Student identifies details, main ideas, and character motivations in a prose narrative by responding to comprehension, inference, and extract-analysis tasks.",
+            "item_stem": "In 'The Day the River Spoke', Jahnavi sits by the river weeping because she has never been allowed to go to school. The River, speaking in a quiet, personified voice, gives her a piece of advice. Read the passage below and answer the questions that follow.\n\n'She had never been allowed to go to school — first she had to mind Ramu, then little Appu — while her brother Gopi and neighbour Meena went every morning. She was frightened it was too late. And yet she burned with curiosity: why were spiders yellow in yellow flowers? Why did bamboo trees rustle? Why did the moon always follow the same path?'\n\n(a) What does Jahnavi's long list of 'why' questions reveal about her character?\n(b) The River advises Jahnavi to 'slip into the school one morning and see what happens.' What quality does this advice encourage in Jahnavi?\n(c) Jahnavi says, 'I'm so old now, they'll never let me go.' What can you infer about how she views her own situation from this line?",
+            "question_type": "SCR",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "(a) Her questions reveal intense intellectual curiosity and a deep longing to understand the natural world around her, despite being denied formal schooling. (b) The River's advice encourages self-belief and courage — the willingness to take a risk and act despite fear. (c) The line reveals that Jahnavi has internalised the belief that she is too old and therefore unworthy of school, reflecting how social exclusion can erode a child's confidence.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "question_text": "In 'The Day the River Spoke', Jahnavi sits by the river weeping because she has never been allowed to go to school. The River, speaking in a quiet, personified voice, gives her a piece of advice. Read the passage below and answer the questions that follow.\n\n'She had never been allowed to go to school — first she had to mind Ramu, then little Appu — while her brother Gopi and neighbour Meena went every morning. She was frightened it was too late. And yet she burned with curiosity: why were spiders yellow in yellow flowers? Why did bamboo trees rustle? Why did the moon always follow the same path?'\n\n(a) What does Jahnavi's long list of 'why' questions reveal about her character?\n(b) The River advises Jahnavi to 'slip into the school one morning and see what happens.' What quality does this advice encourage in Jahnavi?\n(c) Jahnavi says, 'I'm so old now, they'll never let me go.' What can you infer about how she views her own situation from this line?",
+            "cognitive_demand": ""
+          },
+          {
+            "id": "Q-RFC-B-1",
+            "source_section_id": "B",
+            "source_section_title": "Try Again",
+            "source_section_type": "poem",
+            "source_spine": "reading_for_comprehension",
+            "source_lo": "Student demonstrates understanding of a narrative poem by identifying its central idea, literary devices (repetition, metaphor, simile), and the poet's purpose in crafting them.",
+            "item_stem": "Read the following stanza from 'Try Again' by Eliza Cook:\n\n'Up, up it ran, not a second to stay,\nTo utter the least complaint;\nTill it fell still lower, and there it lay,\nA little dizzy and faint.'\n\n(a) The poet uses the phrase 'Up, up' in this stanza. Identify the literary device used and explain the effect it creates in conveying the spider's determination.\n(b) The spider is described as 'a little dizzy and faint' after falling. How does this description make the spider's eventual success more meaningful?\n(c) King Bruce watches the spider and eventually cries 'Bravo, bravo! All honour to those who try.' What does Bruce's change from despair to celebration tell us about the poem's central message?",
+            "question_type": "ECR",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Identifies 'Up, up' as repetition; explains it mirrors the spider's physical rhythm of persistent effort.",
+                "Notes that the spider's vulnerability (dizzy, faint) makes its tenth success feel earned rather than easy.",
+                "Links Bruce's transformation from 'I'll give it all up' to 'why shouldn't I?' as the poem's perseverance message.",
+                "Connects the spider as an extended metaphor for Bruce's own repeated defeats and final resolve."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "question_text": "Read the following stanza from 'Try Again' by Eliza Cook:\n\n'Up, up it ran, not a second to stay,\nTo utter the least complaint;\nTill it fell still lower, and there it lay,\nA little dizzy and faint.'\n\n(a) The poet uses the phrase 'Up, up' in this stanza. Identify the literary device used and explain the effect it creates in conveying the spider's determination.\n(b) The spider is described as 'a little dizzy and faint' after falling. How does this description make the spider's eventual success more meaningful?\n(c) King Bruce watches the spider and eventually cries 'Bravo, bravo! All honour to those who try.' What does Bruce's change from despair to celebration tell us about the poem's central message?",
+            "cognitive_demand": ""
+          },
+          {
+            "id": "Q-RFC-C-1",
+            "source_section_id": "C",
+            "source_section_title": "Three Days to See",
+            "source_section_type": "informational",
+            "source_spine": "reading_for_comprehension",
+            "source_lo": "Student reads an informational essay critically, distinguishing true from false statements and sequencing the author's key ideas across a structured plan.",
+            "item_stem": "Helen Keller, who is blind and deaf, describes what she would most wish to see if given three days of sight. Read the statements below and write TRUE or FALSE for each. For every TRUE statement, write one sentence from the essay that supports it; for every FALSE statement, write a corrected version of the statement.\n\n1. On the first day, Keller would spend time visiting museums to see the history of humankind.\n2. Keller believes that her sense of touch gives her access to beauty that intensifies rather than satisfies her longing for sight.\n3. On the third day, Keller plans to stand at a busy city corner and observe people going about their lives.\n4. Keller concludes that the sense of hearing is the most delightful of all the senses.",
+            "question_type": "TRUE_FALSE",
+            "options": [
+              {
+                "label": "1",
+                "text": "On the first day, Keller would spend time visiting museums to see the history of humankind.",
+                "is_correct": false
+              },
+              {
+                "label": "2",
+                "text": "Keller believes that her sense of touch gives her access to beauty that intensifies rather than satisfies her longing for sight.",
+                "is_correct": true
+              },
+              {
+                "label": "3",
+                "text": "On the third day, Keller plans to stand at a busy city corner and observe people going about their lives.",
+                "is_correct": true
+              },
+              {
+                "label": "4",
+                "text": "Keller concludes that the sense of hearing is the most delightful of all the senses.",
+                "is_correct": false
+              }
+            ],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "1. FALSE — On the first day Keller would see the people whose kindness has enriched her life; museum visits are planned for Day 2. 2. TRUE — Keller describes how touch reveals delicate symmetry and texture, yet this richness makes her long even more for sight. 3. TRUE — On the third day she imagines standing at a busy city corner merely watching people and reading their faces. 4. FALSE — Keller concludes that sight, not hearing, must be the most delightful sense.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "question_text": "Helen Keller, who is blind and deaf, describes what she would most wish to see if given three days of sight. Read the statements below and write TRUE or FALSE for each. For every TRUE statement, write one sentence from the essay that supports it; for every FALSE statement, write a corrected version of the statement.\n\n1. On the first day, Keller would spend time visiting museums to see the history of humankind.\n2. Keller believes that her sense of touch gives her access to beauty that intensifies rather than satisfies her longing for sight.\n3. On the third day, Keller plans to stand at a busy city corner and observe people going about their lives.\n4. Keller concludes that the sense of hearing is the most delightful of all the senses.",
+            "cognitive_demand": ""
+          }
+        ]
+      },
+      {
+        "spine_code": "listening",
+        "spine_title": "Listening",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-LIS-A-1",
+            "source_section_id": "A",
+            "source_section_title": "The Day the River Spoke",
+            "source_section_type": "prose",
+            "source_spine": "listening",
+            "source_lo": "Student demonstrates listening comprehension by selecting words used in spoken passages and matching statements to the correct speakers.",
+            "item_stem": "You will listen to five people speaking about what school means to them. Before listening, read the word-box below. As you listen, circle the words actually used by the speakers. There are two words you will not need.\n\nWord box: friendship   careers   principal   homemaker   newspapers   desks   marriage   advertisements   books   lawyer\n\nAfter listening, match each statement (1–5) below to the speaker (i–v) who made it.\n\n1. Believes that education leads to freedom of personal choice.\n2. Values school as a place of companionship and shared experiences.\n3. Argues that learning skills should not depend on a person's gender.\n4. Promotes active participation of all students in school activities.\n5. Describes how school makes a difficult subject like Mathematics enjoyable.",
+            "question_type": "MATCH",
+            "options": [],
+            "visual_stimulus": "Statement|Speaker\n1. Believes that education leads to freedom of personal choice.|\n2. Values school as a place of companionship and shared experiences.|\n3. Argues that learning skills should not depend on a person's gender.|\n4. Promotes active participation of all students in school activities.|\n5. Describes how school makes a difficult subject like Mathematics enjoyable.|",
+            "transcript_ref": "p.39",
+            "teacher_guide": {
+              "suggested_answer": "Refer to the listening transcript at p.39 to verify the correct speaker-statement matches and the eight circled words. Answers depend on the transcript content.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": false,
+            "is_english": true,
+            "question_text": "You will listen to five people speaking about what school means to them. Before listening, read the word-box below. As you listen, circle the words actually used by the speakers. There are two words you will not need.\n\nWord box: friendship   careers   principal   homemaker   newspapers   desks   marriage   advertisements   books   lawyer\n\nAfter listening, match each statement (1–5) below to the speaker (i–v) who made it.\n\n1. Believes that education leads to freedom of personal choice.\n2. Values school as a place of companionship and shared experiences.\n3. Argues that learning skills should not depend on a person's gender.\n4. Promotes active participation of all students in school activities.\n5. Describes how school makes a difficult subject like Mathematics enjoyable.",
+            "cognitive_demand": ""
+          },
+          {
+            "id": "Q-LIS-B-1",
+            "source_section_id": "B",
+            "source_section_title": "Try Again",
+            "source_section_type": "poem",
+            "source_spine": "listening",
+            "source_lo": "Student demonstrates comprehension of a spoken narrative by predicting answers to inference-based questions before listening and verifying them after.",
+            "item_stem": "You will listen to a short story about a determined ant who tries to carry a piece of roti home. Before listening, write what you predict for each question. After listening, check and correct your predictions.\n\n1. The ant in the story was known for its — (a) strength  (b) determination  (c) wisdom\n   My prediction: _______   After listening: _______\n\n2. The ant could not carry the roti home at first because — (a) it was too heavy  (b) other ants were pulling it  (c) it was stuck under a rock\n   My prediction: _______   After listening: _______\n\n3. The bird in the story was — (a) searching for food  (b) playing with the ant  (c) picking up leaves\n   My prediction: _______   After listening: _______\n\n4. After watching the bird, the ant felt — (a) proud  (b) relaxed  (c) inspired\n   My prediction: _______   After listening: _______\n\n5. The fellow ants helped by — (a) advising the ant  (b) standing still  (c) joining the ant's efforts\n   My prediction: _______   After listening: _______",
+            "question_type": "MCQ",
+            "options": [
+              {
+                "label": "1",
+                "text": "determination",
+                "is_correct": true
+              },
+              {
+                "label": "2",
+                "text": "it was too heavy to carry",
+                "is_correct": true
+              },
+              {
+                "label": "3",
+                "text": "searching for food",
+                "is_correct": true
+              },
+              {
+                "label": "4",
+                "text": "inspired",
+                "is_correct": true
+              },
+              {
+                "label": "5",
+                "text": "by joining the ant in her efforts",
+                "is_correct": true
+              }
+            ],
+            "visual_stimulus": "",
+            "transcript_ref": "p.40",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [],
+              "note": "[Verification failed] Correct answers for questions 1–5 should be verified against the listening transcript at p.40 before administering this item."
+            },
+            "verified": false,
+            "is_english": true,
+            "question_text": "You will listen to a short story about a determined ant who tries to carry a piece of roti home. Before listening, write what you predict for each question. After listening, check and correct your predictions.\n\n1. The ant in the story was known for its — (a) strength  (b) determination  (c) wisdom\n   My prediction: _______   After listening: _______\n\n2. The ant could not carry the roti home at first because — (a) it was too heavy  (b) other ants were pulling it  (c) it was stuck under a rock\n   My prediction: _______   After listening: _______\n\n3. The bird in the story was — (a) searching for food  (b) playing with the ant  (c) picking up leaves\n   My prediction: _______   After listening: _______\n\n4. After watching the bird, the ant felt — (a) proud  (b) relaxed  (c) inspired\n   My prediction: _______   After listening: _______\n\n5. The fellow ants helped by — (a) advising the ant  (b) standing still  (c) joining the ant's efforts\n   My prediction: _______   After listening: _______",
+            "cognitive_demand": ""
+          }
+        ]
+      },
+      {
+        "spine_code": "speaking",
+        "spine_title": "Speaking",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-SPK-A-1",
+            "source_section_id": "A",
+            "source_section_title": "The Day the River Spoke",
+            "source_section_type": "prose",
+            "source_spine": "speaking",
+            "source_lo": "Student participates in guided conversation to seek and provide advice, adapting tone and register to varied situational contexts.",
+            "item_stem": "In 'The Day the River Spoke', Jahnavi turns to the River when she faces a difficult situation and the River gives her clear, encouraging advice. Now imagine you are in the situation below. Work with a partner: one of you plays the person seeking advice, the other plays the adviser. Then swap roles.\n\nSituation: A classmate from your school loves painting but has been told by a relative that art is not a serious subject and she should focus only on Mathematics and Science. She feels discouraged and is considering giving up art classes.\n\nSeek and give advice using this structure:\n— State the problem clearly.\n— Ask for advice ('What do you think I should do?').\n— Give at least two pieces of advice with reasons.\n— Respond to the advice and explain your next step.\n\nSpeak naturally; do not read from a script.",
+            "question_type": "ORAL_PROMPT",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "States the problem clearly and seeks advice using a direct question.",
+                "Gives at least two pieces of advice, each supported by a brief reason.",
+                "Adapts tone — empathetic when seeking, encouraging when advising.",
+                "Concludes with a stated next step or decision, showing resolution."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "question_text": "In 'The Day the River Spoke', Jahnavi turns to the River when she faces a difficult situation and the River gives her clear, encouraging advice. Now imagine you are in the situation below. Work with a partner: one of you plays the person seeking advice, the other plays the adviser. Then swap roles.\n\nSituation: A classmate from your school loves painting but has been told by a relative that art is not a serious subject and she should focus only on Mathematics and Science. She feels discouraged and is considering giving up art classes.\n\nSeek and give advice using this structure:\n— State the problem clearly.\n— Ask for advice ('What do you think I should do?').\n— Give at least two pieces of advice with reasons.\n— Respond to the advice and explain your next step.\n\nSpeak naturally; do not read from a script.",
+            "cognitive_demand": ""
+          },
+          {
+            "id": "Q-SPK-B-1",
+            "source_section_id": "B",
+            "source_section_title": "Try Again",
+            "source_section_type": "poem",
+            "source_spine": "speaking",
+            "source_lo": "Student delivers a structured personal oral narrative using guided prompts, organising ideas with appropriate sequencing and personal reflection.",
+            "item_stem": "King Bruce of Scotland was on the verge of giving up when a spider's repeated attempts to reach its cobweb home inspired him to try once more. Think of a time in your own life when you felt like giving up but chose to keep going — or a time when you saw someone else persist through difficulty.\n\nSpeak for two minutes on this experience. Organise your narration using these stages:\n1. Introduction — describe the situation briefly.\n2. The challenge — what made it difficult?\n3. The turning point — what or who inspired you to keep going?\n4. The outcome — what happened when you persisted?\n5. Reflection — what did this experience teach you about failure and perseverance?\n\nUse transition phrases such as 'To begin with', 'Then', 'At that point', and 'Looking back'.",
+            "question_type": "ORAL_PROMPT",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Narration follows the five-stage structure in the correct sequence.",
+                "Identifies a clear turning point or source of motivation.",
+                "Uses at least two transition phrases to signal movement between stages.",
+                "Reflection stage offers a genuine insight about failure or perseverance.",
+                "Maintains appropriate pace and addresses the audience, not the notes."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "question_text": "King Bruce of Scotland was on the verge of giving up when a spider's repeated attempts to reach its cobweb home inspired him to try once more. Think of a time in your own life when you felt like giving up but chose to keep going — or a time when you saw someone else persist through difficulty.\n\nSpeak for two minutes on this experience. Organise your narration using these stages:\n1. Introduction — describe the situation briefly.\n2. The challenge — what made it difficult?\n3. The turning point — what or who inspired you to keep going?\n4. The outcome — what happened when you persisted?\n5. Reflection — what did this experience teach you about failure and perseverance?\n\nUse transition phrases such as 'To begin with', 'Then', 'At that point', and 'Looking back'.",
+            "cognitive_demand": ""
+          },
+          {
+            "id": "Q-SPK-C-1",
+            "source_section_id": "C",
+            "source_section_title": "Three Days to See",
+            "source_section_type": "informational",
+            "source_spine": "speaking",
+            "source_lo": "Student speaks fluently for one minute on a personal viewpoint, organising ideas using a given prompt framework and maintaining audience awareness.",
+            "item_stem": "Helen Keller, who experienced the world entirely through touch, smell, and hearing, believed that sight would be the most delightful of all the senses. She urged sighted readers to use their eyes 'as if tomorrow they might be struck blind.'\n\nSpeak for one minute on the sense you personally value the most. Organise your response using this framework:\n— Name the sense and state why you value it above the others.\n— Describe one specific experience in which that sense gave you joy or understanding.\n— Reflect: if you were to lose this sense, what would you miss most?\n— Close with one piece of advice to a peer about appreciating their senses fully.\n\nDo not read from a script. Maintain eye contact with your audience.",
+            "question_type": "ORAL_PROMPT",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Clearly names the chosen sense and gives a specific personal reason.",
+                "Describes a vivid, concrete experience linked to that sense.",
+                "Reflection on loss is thoughtful, not merely hypothetical or vague.",
+                "Closing advice is directed to the audience and flows naturally from the reflection."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "question_text": "Helen Keller, who experienced the world entirely through touch, smell, and hearing, believed that sight would be the most delightful of all the senses. She urged sighted readers to use their eyes 'as if tomorrow they might be struck blind.'\n\nSpeak for one minute on the sense you personally value the most. Organise your response using this framework:\n— Name the sense and state why you value it above the others.\n— Describe one specific experience in which that sense gave you joy or understanding.\n— Reflect: if you were to lose this sense, what would you miss most?\n— Close with one piece of advice to a peer about appreciating their senses fully.\n\nDo not read from a script. Maintain eye contact with your audience.",
+            "cognitive_demand": ""
+          }
+        ]
+      },
+      {
+        "spine_code": "writing",
+        "spine_title": "Writing",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-WRI-A-1",
+            "source_section_id": "A",
+            "source_section_title": "The Day the River Spoke",
+            "source_section_type": "prose",
+            "source_spine": "writing",
+            "source_lo": "Student writes a descriptive paragraph using sensory details and a structured prompt framework, giving a title and sustaining focus on observed natural phenomena.",
+            "item_stem": "In 'The Day the River Spoke', Jahnavi sits by the river and notices the world around her in rich detail — a kingfisher swooping, a lizard basking in the sun, the river murmuring softly. Nature is not just a backdrop; it is alive and full of meaning for her.\n\nNow write a descriptive paragraph (100–120 words) about a natural scene you have observed — a river bank, a garden, a paddy field, a sky at dusk, or any place in nature that made an impression on you.\n\nYour paragraph must:\n— Have a title that reflects the scene.\n— Open with a sentence that immediately draws the reader into the place.\n— Include at least three sensory details (what you saw, heard, felt, smelled, or tasted).\n— Use at least one comparison (simile or personification).\n— End with a sentence that expresses how the scene made you feel or what it made you think.",
+            "question_type": "WRITING_TASK",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Title is present and clearly connected to the described scene.",
+                "Opening sentence is vivid and draws the reader into the setting immediately.",
+                "At least three distinct sensory details are woven into the paragraph.",
+                "At least one simile or personification is used accurately and purposefully.",
+                "Closing sentence conveys a personal feeling or reflection, not a summary."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "question_text": "In 'The Day the River Spoke', Jahnavi sits by the river and notices the world around her in rich detail — a kingfisher swooping, a lizard basking in the sun, the river murmuring softly. Nature is not just a backdrop; it is alive and full of meaning for her.\n\nNow write a descriptive paragraph (100–120 words) about a natural scene you have observed — a river bank, a garden, a paddy field, a sky at dusk, or any place in nature that made an impression on you.\n\nYour paragraph must:\n— Have a title that reflects the scene.\n— Open with a sentence that immediately draws the reader into the place.\n— Include at least three sensory details (what you saw, heard, felt, smelled, or tasted).\n— Use at least one comparison (simile or personification).\n— End with a sentence that expresses how the scene made you feel or what it made you think.",
+            "cognitive_demand": ""
+          },
+          {
+            "id": "Q-WRI-B-1",
+            "source_section_id": "B",
+            "source_section_title": "Try Again",
+            "source_section_type": "poem",
+            "source_spine": "writing",
+            "source_lo": "Student writes a formal personal letter using functional format conventions and transition words to organise advice in a logical sequence.",
+            "item_stem": "King Bruce of Scotland nearly gave up on his great deed but was inspired by a spider's nine failed attempts before its final success. Imagine you have a younger cousin who is preparing for a difficult school competition and has written to you saying she wants to quit because she keeps failing her practice sessions.\n\nWrite a letter (120–150 words) to your cousin advising her not to give up. In your letter:\n— Use the correct letter format: your address, date, greeting, body paragraphs, and closing.\n— Refer to the spider's story from 'Try Again' as an example of perseverance.\n— Use transition words (To begin with / Next / After that / Finally) to organise your advice.\n— End with an encouraging closing thought.\n\nBegin: [Your address] / [Date] / Dear [Name], / Thank you for your letter...",
+            "question_type": "WRITING_TASK",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Correct letter format: address, date, greeting, at least two body paragraphs, and closing.",
+                "At least one reference to the spider's perseverance from the poem, used as evidence.",
+                "Three or more transition words used to sequence the advice logically.",
+                "Tone is warm, encouraging, and appropriate for writing to a younger cousin.",
+                "Closing thought is original and motivating, not a repetition of the opening."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "question_text": "King Bruce of Scotland nearly gave up on his great deed but was inspired by a spider's nine failed attempts before its final success. Imagine you have a younger cousin who is preparing for a difficult school competition and has written to you saying she wants to quit because she keeps failing her practice sessions.\n\nWrite a letter (120–150 words) to your cousin advising her not to give up. In your letter:\n— Use the correct letter format: your address, date, greeting, body paragraphs, and closing.\n— Refer to the spider's story from 'Try Again' as an example of perseverance.\n— Use transition words (To begin with / Next / After that / Finally) to organise your advice.\n— End with an encouraging closing thought.\n\nBegin: [Your address] / [Date] / Dear [Name], / Thank you for your letter...",
+            "cognitive_demand": ""
+          }
+        ]
+      },
+      {
+        "spine_code": "vocabulary_grammar",
+        "spine_title": "Vocabulary and Grammar",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-VG-A-1",
+            "source_section_id": "A",
+            "source_section_title": "The Day the River Spoke",
+            "source_section_type": "prose",
+            "source_spine": "vocabulary_grammar",
+            "source_lo": "Student identifies and uses prepositions of place, direction, and time correctly, distinguishing them from adverbial uses of the same words in sentence context.",
+            "item_stem": "In 'The Day the River Spoke', the narrative is rich in words that show location and movement — Jahnavi crept into the back row, the River rushed toward the sea, Appu slept on her shoulder. Prepositions and adverbs that look identical (such as on, up, inside, through) behave differently depending on whether they are followed by a noun.\n\nRead each sentence below. Write P if the underlined word is a preposition and A if it is an adverb. Then write one original sentence of your own using the same word in the opposite role (i.e., if the sentence uses it as a preposition, write your sentence using it as an adverb, and vice versa).\n\n1. Jahnavi crept quietly through the classroom door.\n2. The kingfisher swooped down and then flew up again.\n3. She placed sleeping Appu carefully on the bench beside her.\n4. The river rushed on through the mangrove roots without stopping.\n5. He stepped outside to call Jahnavi's father to the verandah.",
+            "question_type": "SCR",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "1. P — 'through' links the verb 'crept' to the noun 'door'. Own sentence (adverb): 'She kept walking; the teacher's voice carried through.' 2. A — 'down' and 'up' modify the verb 'swooped'/'flew' with no following noun. Own sentence (preposition): 'The bird swooped down the steep bank.' 3. P — 'on' links 'placed' to 'bench'. Own sentence (adverb): 'She was tired but carried on.' 4. A — 'on' modifies 'rushed' with no following noun immediately. Own sentence (preposition): 'The catamaran sailed on the river at dawn.' 5. P — 'outside' links 'stepped' to an implied location with the following noun phrase. Own sentence (adverb): 'She waited nervously; he had gone outside.'",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "question_text": "In 'The Day the River Spoke', the narrative is rich in words that show location and movement — Jahnavi crept into the back row, the River rushed toward the sea, Appu slept on her shoulder. Prepositions and adverbs that look identical (such as on, up, inside, through) behave differently depending on whether they are followed by a noun.\n\nRead each sentence below. Write P if the underlined word is a preposition and A if it is an adverb. Then write one original sentence of your own using the same word in the opposite role (i.e., if the sentence uses it as a preposition, write your sentence using it as an adverb, and vice versa).\n\n1. Jahnavi crept quietly through the classroom door.\n2. The kingfisher swooped down and then flew up again.\n3. She placed sleeping Appu carefully on the bench beside her.\n4. The river rushed on through the mangrove roots without stopping.\n5. He stepped outside to call Jahnavi's father to the verandah.",
+            "cognitive_demand": ""
+          },
+          {
+            "id": "Q-VG-B-1",
+            "source_section_id": "B",
+            "source_section_title": "Try Again",
+            "source_section_type": "poem",
+            "source_spine": "vocabulary_grammar",
+            "source_lo": "Student identifies antonyms and classifies words by distance (near/far), demonstrating understanding of vocabulary related to spatial and directional contrast.",
+            "item_stem": "Eliza Cook's poem 'Try Again' is built on contrast — the spider falls down but climbs up, it is near the ground and then far above it, the king sinks into despair and then rises with resolve. The poem uses many words that show distance and direction.\n\nPart A — Antonyms from the poem: Write the antonym (opposite) for each word as it is used in the poem.\n\n| Word from poem | Antonym |\n|---|---|\n| low (as in 'low despair') | |\n| faint (as in 'dizzy and faint') | |\n| conquered | |\n| mounted (climbed upward) | |\n| brave (as in 'nine brave attempts') | |\n\nPart B — Far or Near? Classify each word or phrase in the list into the correct column.\n\nWords: vicinity · afar · a stone's throw · yonder · adjacent · remoteness\n\n| Near | Far |\n|---|---|",
+            "question_type": "FILL_IN",
+            "options": [],
+            "visual_stimulus": "Word from poem|Antonym\nlow (as in 'low despair')|\nfaint (as in 'dizzy and faint')|\nconquered|\nmounted (climbed upward)|\nbrave (as in 'nine brave attempts')|",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "Part A: low → high; faint → strong/sturdy; conquered → surrendered/failed; mounted → descended/fell; brave → cowardly/timid. Part B — Near: vicinity, a stone's throw, adjacent. Far: afar, yonder, remoteness.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "question_text": "Eliza Cook's poem 'Try Again' is built on contrast — the spider falls down but climbs up, it is near the ground and then far above it, the king sinks into despair and then rises with resolve. The poem uses many words that show distance and direction.\n\nPart A — Antonyms from the poem: Write the antonym (opposite) for each word as it is used in the poem.\n\n| Word from poem | Antonym |\n|---|---|\n| low (as in 'low despair') | |\n| faint (as in 'dizzy and faint') | |\n| conquered | |\n| mounted (climbed upward) | |\n| brave (as in 'nine brave attempts') | |\n\nPart B — Far or Near? Classify each word or phrase in the list into the correct column.\n\nWords: vicinity · afar · a stone's throw · yonder · adjacent · remoteness\n\n| Near | Far |\n|---|---|",
+            "cognitive_demand": ""
+          },
+          {
+            "id": "Q-VG-C-1",
+            "source_section_id": "C",
+            "source_section_title": "Three Days to See",
+            "source_section_type": "informational",
+            "source_spine": "vocabulary_grammar",
+            "source_lo": "Student identifies modal verbs and their functions (possibility, necessity, permission, ability, moral obligation) and uses them correctly in context-specific sentences.",
+            "item_stem": "Helen Keller uses modal verbs throughout her essay to express what she wishes, plans, and urges others to do. For example, she writes 'I should arise with the dawn' (expressing a wish) and 'You ought to use your eyes as if tomorrow you would be stricken blind' (expressing moral obligation).\n\nPart A — Read each sentence below. Underline the modal verb and write its function from this list: possibility / necessity / ability / polite request / moral obligation.\n\n1. Every person can find beauty in the world if they look carefully enough.\n2. We ought to appreciate the gifts of sight and hearing while we have them.\n3. It might be difficult to imagine life without any of the five senses.\n4. May I have a moment to describe what this sunrise means to me?\n5. She must engage with the world fully — through every sense available to her.\n\nPart B — Write your own sentence for each function below, inspired by the theme of Helen Keller's essay (appreciating the senses).\n\n1. A sentence using a modal verb to express possibility.\n2. A sentence using a modal verb to express moral obligation.",
+            "question_type": "SCR",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "Part A: 1. can — ability; 2. ought to — moral obligation; 3. might — possibility; 4. May — polite request; 5. must — necessity. Part B: Accept any grammatically correct sentences that use an appropriate modal and connect to the theme of appreciating the senses, e.g. 'We might take our hearing for granted until the day we lose it' (possibility); 'We ought to listen to birdsong with full attention every morning' (moral obligation).",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "question_text": "Helen Keller uses modal verbs throughout her essay to express what she wishes, plans, and urges others to do. For example, she writes 'I should arise with the dawn' (expressing a wish) and 'You ought to use your eyes as if tomorrow you would be stricken blind' (expressing moral obligation).\n\nPart A — Read each sentence below. Underline the modal verb and write its function from this list: possibility / necessity / ability / polite request / moral obligation.\n\n1. Every person can find beauty in the world if they look carefully enough.\n2. We ought to appreciate the gifts of sight and hearing while we have them.\n3. It might be difficult to imagine life without any of the five senses.\n4. May I have a moment to describe what this sunrise means to me?\n5. She must engage with the world fully — through every sense available to her.\n\nPart B — Write your own sentence for each function below, inspired by the theme of Helen Keller's essay (appreciating the senses).\n\n1. A sentence using a modal verb to express possibility.\n2. A sentence using a modal verb to express moral obligation.",
+            "cognitive_demand": ""
+          }
+        ]
+      },
+      {
+        "spine_code": "beyond_text",
+        "spine_title": "Beyond the Text",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-BT-A-1",
+            "source_section_id": "A",
+            "source_section_title": "The Day the River Spoke",
+            "source_section_type": "prose",
+            "source_spine": "beyond_text",
+            "source_lo": "Student analyses a visual text (poster) to identify its message about gender equity and connects it to broader social themes explored in the prose.",
+            "item_stem": "In 'The Day the River Spoke', Jahnavi's mother — who once longed for school herself but was denied by her own mother — warmly supports her daughter's wish to learn, saying that girls should learn as much as they want. The story ends with Jahnavi resolving to become a teacher who will bring all the village girls to school.\n\nThe poster below carries this message: 'The Happiness of a Nation lies in the Dignity of its Daughters.'\n\nAnswer the following questions:\n(a) What connection can you make between Jahnavi's story and the poster's message? Use one detail from the prose to support your answer.\n(b) The word 'dignity' means self-respect. In what way does being allowed to go to school give Jahnavi dignity?\n(c) Do you agree that a nation's happiness depends on the dignity of its daughters? Give two reasons to support your view.",
+            "question_type": "ECR",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Connects the poster's message to Jahnavi's denied schooling using a specific story detail.",
+                "Explains dignity as self-worth restored by equal access to education.",
+                "Gives two reasoned arguments about girls' education and national well-being.",
+                "Response is structured: at least one paragraph per sub-question."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "question_text": "In 'The Day the River Spoke', Jahnavi's mother — who once longed for school herself but was denied by her own mother — warmly supports her daughter's wish to learn, saying that girls should learn as much as they want. The story ends with Jahnavi resolving to become a teacher who will bring all the village girls to school.\n\nThe poster below carries this message: 'The Happiness of a Nation lies in the Dignity of its Daughters.'\n\nAnswer the following questions:\n(a) What connection can you make between Jahnavi's story and the poster's message? Use one detail from the prose to support your answer.\n(b) The word 'dignity' means self-respect. In what way does being allowed to go to school give Jahnavi dignity?\n(c) Do you agree that a nation's happiness depends on the dignity of its daughters? Give two reasons to support your view.",
+            "cognitive_demand": ""
+          }
+        ]
+      }
+    ],
+    "input_tokens": 31211,
+    "output_tokens": 18114,
+    "cost_inr": 30.6888
+  }
+}

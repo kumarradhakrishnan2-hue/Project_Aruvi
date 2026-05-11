@@ -107,8 +107,17 @@
 .vs-label { font-size: 9.5px; font-weight: 600; color: #6b6864; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
 .vs-table { width: 100%; border-collapse: collapse; font-size: 10.5px; }
 .vs-table th { background: #e8e5e0; color: #1a1917; font-weight: 600; padding: 4px 8px; border: 0.5px solid #ccc; text-align: left; }
-.vs-table td { background: #fff; color: #1a1917; padding: 4px 8px; border: 0.5px solid #dedad5; }
+.vs-table td { background: #fff; color: #1a1917; padding: 4px 8px; border: 0.5px solid #dedad5; vertical-align: middle; }
+.vs-table td.vs-answer-blank { background: #fafaf9; color: #9a9795; font-style: italic; min-width: 80px; }
 .vs-text { font-size: 11px; color: #5a5754; line-height: 1.5; }
+/* Word box */
+.vs-wordbox { background: #fff; border: 1px solid #b0aba5; border-radius: 4px; padding: 6px 10px; margin-bottom: 8px; font-size: 10.5px; color: #1a1917; line-height: 1.7; }
+.vs-wordbox-label { font-size: 9.5px; font-weight: 600; color: #6b6864; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+.vs-wordbox-words { display: flex; flex-wrap: wrap; gap: 6px; }
+.vs-wordbox-word { background: #f0ede8; border: 0.5px solid #ccc; border-radius: 3px; padding: 2px 7px; font-size: 10.5px; }
+/* Predict-then-listen MCQ blocks */
+.eng-sub-stem-mcq { margin-top: 4px; }
+.eng-mcq-q { font-size: 11px; color: #1a1917; line-height: 1.6; margin-bottom: 8px; padding: 6px 8px; background: #f9f8f7; border-left: 2px solid #dedad5; border-radius: 0 3px 3px 0; }
 .atoggle { font-size: 10px; color: #2c3e50; cursor: pointer; border: none; background: none; padding: 6px 0 2px; display: flex; align-items: center; gap: 4px; margin-top: 4px; }
 /* Exercise companion card — Mathematics only (Constitution v3.2 Rule 9) */
 .ex-box { margin-top: 8px; padding: 8px 10px; background: #fff8ec; border: 0.5px solid #e9dcb8; border-radius: 6px; font-size: 10.5px; color: #5a4716; line-height: 1.5; }
@@ -630,6 +639,23 @@ function escHtml(s) {
     .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
+/* Format a teacher-guide answer string so numbered / lettered items each
+   appear on their own line. Handles two cases:
+   (a) newline-separated  — \n → <br>
+   (b) run-together prose — inserts <br> before " 1." " 2." " (a)" " (b)" etc.
+   Only for English — safe to call on any string. */
+function fmtGuide(s) {
+  if (!s) return '';
+  var esc = escHtml(s);
+  /* If the string already has newlines, use those. */
+  if (esc.indexOf('\n') !== -1) return esc.replace(/\n/g, '<br>');
+  /* Otherwise insert breaks before run-together numbered items:
+     space + digit(s) + period/parenthesis at start of a new item. */
+  esc = esc.replace(/ (\d+)\.\s+/g, '<br>$1. ');
+  esc = esc.replace(/ \(([a-zA-Z])\)\s+/g, '<br>($1) ');
+  return esc;
+}
+
 /* Expand question-type abbreviations */
 function expandType(t) {
   if (!t) return t;
@@ -950,12 +976,89 @@ function renderEnglishQuestionCard(q, n) {
 
   html += '<div class="qbody">';
 
-  /* Task framing — always rendered when present (even when sub-items
-     repeat it as a synthetic stem; the duplication is intentional so the
-     card always opens with the textbook task). */
+  /* Task framing — rendered when present.
+     For MATCH items: extract any Word box line and render it as a styled
+     widget; then strip numbered statement lines that already appear in the
+     visual_stimulus table to avoid double-printing (fixes b + d).
+     For predict-then-listen MCQ items: break the flat stem into per-question
+     blocks so each question+options is clearly separated (fix f). */
   var framing = q.task_prompt || q.question || '';
+  var cardType = (q.type || '').toUpperCase();
+  /* Peek at the single sub-item's type when the card has no explicit type */
+  if (!cardType && subItems.length) cardType = (subItems[0].type || '').toUpperCase();
+
   if (framing) {
-    html += '<div class="qtext">' + escHtml(framing) + '</div>';
+    if (cardType === 'MATCH') {
+      /* ── MATCH framing: word box extraction + dedup of match-list lines (fix b,d) ── */
+      var matchLines = framing.split('\n');
+      var wordBoxWords = [];
+      var cleanMatchLines = [];
+
+      /* Build set of numbered statement texts from visual_stimulus table rows */
+      var vsForDedup = (subItems.length && subItems[0].visual_stimulus) ? subItems[0].visual_stimulus : (q.visual_stimulus || '');
+      var vsRowSet = {};
+      if (vsForDedup) {
+        vsForDedup.trim().split('\n').slice(1).forEach(function(vsLine) {
+          var vsCells = vsLine.split('|').map(function(c){ return c.trim(); });
+          if (vsCells[0] === '') vsCells.shift();
+          if (vsCells.length) vsRowSet[vsCells[0].toLowerCase()] = true;
+        });
+      }
+
+      matchLines.forEach(function(line) {
+        var wbMatch = line.match(/^Word\s+box\s*[:：]\s*(.+)/i);
+        if (wbMatch) {
+          wordBoxWords = wbMatch[1].split(/\s{2,}|\t/).filter(function(w){ return w.trim(); });
+          return;  /* don't add word box line to displayed stem */
+        }
+        /* Strip numbered match-list lines already in vs table (fix d) */
+        var trimLine = line.trim();
+        if (/^\d+\./.test(trimLine) && vsRowSet[trimLine.toLowerCase()]) {
+          return;
+        }
+        cleanMatchLines.push(line);
+      });
+
+      var cleanFraming = cleanMatchLines.join('\n').trim();
+      if (cleanFraming) {
+        html += '<div class="qtext">' + escHtml(cleanFraming).replace(/\n/g, '<br>') + '</div>';
+      }
+      if (wordBoxWords.length) {
+        html += renderWordBox(wordBoxWords);
+      }
+
+    } else if (cardType === 'MCQ' && framing.indexOf('My prediction') !== -1) {
+      /* ── Predict-then-listen MCQ: break into per-question blocks (fix f) ── */
+      var mcqAllLines = framing.split('\n');
+      var mcqIntroLines = [];
+      var mcqQBlocks = [];
+      var curBlock = null;
+      mcqAllLines.forEach(function(line) {
+        if (/^\s*\d+\./.test(line)) {
+          if (curBlock !== null) mcqQBlocks.push(curBlock);
+          curBlock = [line];
+        } else if (curBlock !== null) {
+          curBlock.push(line);
+        } else {
+          mcqIntroLines.push(line);
+        }
+      });
+      if (curBlock !== null) mcqQBlocks.push(curBlock);
+
+      if (mcqIntroLines.join('').trim()) {
+        html += '<div class="qtext">' + escHtml(mcqIntroLines.join('\n').trim()).replace(/\n/g, '<br>') + '</div>';
+      }
+      if (mcqQBlocks.length) {
+        html += '<div class="eng-sub-stem-mcq">';
+        mcqQBlocks.forEach(function(block) {
+          html += '<div class="eng-mcq-q">' + escHtml(block.join('\n').trim()).replace(/\n/g, '<br>') + '</div>';
+        });
+        html += '</div>';
+      }
+
+    } else {
+      html += '<div class="qtext">' + escHtml(framing).replace(/\n/g, '<br>') + '</div>';
+    }
   }
 
   /* Transcript reference (Listening only) belongs to the outer item — every
@@ -968,24 +1071,130 @@ function renderEnglishQuestionCard(q, n) {
   /* Sub-items list. */
   function renderSubItem(si, idx, includeStem) {
     var siType = (si.type || '').toUpperCase();
-    var siTypeLbl = escHtml(expandType(siType));
+    var isTrueFalse = siType === 'TRUE_FALSE';
+    var isMatch = siType === 'MATCH';
+    var isMCQ   = siType === 'MCQ';
     var s = '<div class="eng-sub">';
-    s += '<div class="eng-sub-hdr">';
-    if (idx !== null && idx !== undefined) {
-      s += '<span class="eng-sub-num">' + (idx + 1) + '.</span> ';
-    }
-    s += '<span class="eng-sub-type qtype-lbl">' + siTypeLbl + '</span>';
-    s += '</div>';
 
     if (includeStem && si.stem) {
-      s += '<div class="eng-sub-stem">' + escHtml(si.stem) + '</div>';
+      var stemText = si.stem;
+
+      if (isMatch) {
+        /* ── Fix (b) + (d): MATCH items with a word box ──────────────────────
+           The stem may contain a "Word box: word1  word2 ..." line. Extract it
+           and render as a styled word-box widget BEFORE the table. Then strip
+           from the displayed stem any numbered lines (^\d+\.) that are already
+           present as rows in the visual_stimulus table — avoids double-printing
+           them (fix d). */
+
+        /* Extract word-box line */
+        var wordBoxWords = [];
+        var stemLines = stemText.split('\n');
+        var filteredStemLines = [];
+        stemLines.forEach(function(line) {
+          var wbMatch = line.match(/^Word\s+box\s*[:：]\s*(.+)/i);
+          if (wbMatch) {
+            wordBoxWords = wbMatch[1].split(/\s{2,}|\t/).filter(function(w){ return w.trim(); });
+          } else {
+            filteredStemLines.push(line);
+          }
+        });
+
+        /* Build set of numbered statement texts already in visual_stimulus table */
+        var vsRowTexts = {};
+        if (si.visual_stimulus) {
+          var vsLines = si.visual_stimulus.trim().split('\n').map(function(l){ return l.trim(); });
+          vsLines.slice(1).forEach(function(vsLine) {  /* skip header row */
+            var vsCells = vsLine.split('|').map(function(c){ return c.trim(); });
+            if (vsCells[0] === '') vsCells.shift();
+            if (vsCells[vsCells.length-1] === '') vsCells.pop();
+            if (vsCells.length) vsRowTexts[vsCells[0].toLowerCase()] = true;
+          });
+        }
+
+        /* Strip numbered statement lines from stem that already appear in vs table (fix d) */
+        var dedupedStemLines = filteredStemLines.filter(function(line) {
+          var trimLine = line.trim();
+          /* Line is a numbered statement if it matches "N. text…" */
+          var numMatch = trimLine.match(/^(\d+\.\s*.+)/);
+          if (!numMatch) return true;  /* keep non-numbered lines */
+          return !vsRowTexts[trimLine.toLowerCase()];
+        });
+
+        var cleanStem = dedupedStemLines.join('\n').trim();
+        if (cleanStem) {
+          s += '<div class="eng-sub-stem">' + escHtml(cleanStem).replace(/\n/g, '<br>') + '</div>';
+        }
+        /* Render word box before the table (fix b) */
+        if (wordBoxWords.length) {
+          s += renderWordBox(wordBoxWords);
+        }
+
+      } else if (isMCQ) {
+        /* ── Fix (f): Predict-then-listen MCQ format ─────────────────────────
+           Stem embeds all questions with inline (a)(b)(c) options. When the
+           outer `options` array also carries the answers separately, the stem
+           paragraph is cluttered. Render the stem as-is but break it into
+           per-question blocks by splitting on the pattern "^\d+\." at line starts. */
+        var mcqLines = stemText.split('\n');
+        var mcqBlocks = [];
+        var currentBlock = [];
+        mcqLines.forEach(function(line) {
+          var isQStart = /^\s*\d+\./.test(line);
+          if (isQStart && currentBlock.length) {
+            mcqBlocks.push(currentBlock.join('\n').trim());
+            currentBlock = [line];
+          } else {
+            currentBlock.push(line);
+          }
+        });
+        if (currentBlock.length) mcqBlocks.push(currentBlock.join('\n').trim());
+
+        if (mcqBlocks.length > 1) {
+          /* Multiple question blocks — render the intro separately then each block */
+          var introBlock = mcqBlocks[0];
+          /* Check if first block is actually Q1 (starts with "1.") */
+          var firstIsQ = /^\s*1\./.test(introBlock);
+          if (firstIsQ) {
+            /* All blocks are questions — wrap in a styled list */
+            s += '<div class="eng-sub-stem eng-sub-stem-mcq">';
+            mcqBlocks.forEach(function(block) {
+              s += '<div class="eng-mcq-q">' + escHtml(block).replace(/\n/g, '<br>') + '</div>';
+            });
+            s += '</div>';
+          } else {
+            /* First block is intro text, rest are questions */
+            s += '<div class="eng-sub-stem">' + escHtml(introBlock).replace(/\n/g, '<br>') + '</div>';
+            s += '<div class="eng-sub-stem eng-sub-stem-mcq">';
+            mcqBlocks.slice(1).forEach(function(block) {
+              s += '<div class="eng-mcq-q">' + escHtml(block).replace(/\n/g, '<br>') + '</div>';
+            });
+            s += '</div>';
+          }
+        } else {
+          s += '<div class="eng-sub-stem">' + escHtml(stemText).replace(/\n/g, '<br>') + '</div>';
+        }
+
+      } else {
+        s += '<div class="eng-sub-stem">' + escHtml(stemText).replace(/\n/g, '<br>') + '</div>';
+      }
     }
 
     if (si.visual_stimulus) {
       s += renderVisualStimulus(si.visual_stimulus);
     }
 
-    if (si.options && si.options.length) {
+    /* Options: MCQ shows ticked options; TRUE_FALSE skips options entirely
+       (answers are in the teacher guide).
+       For the predict-then-listen MCQ format the correct answers are already
+       embedded in the framing above, so suppress the flat options list.
+       Detect by checking both the sub-item stem and the outer card framing. */
+    var _outerFraming = q.task_prompt || q.question || '';
+    var suppressOptions = isMCQ && (
+      (si.stem || '').indexOf('My prediction') !== -1 ||
+      _outerFraming.indexOf('My prediction') !== -1
+    );
+    if (!isTrueFalse && !suppressOptions && si.options && si.options.length) {
       s += '<div class="eng-opts">';
       si.options.forEach(function(o) {
         if (!o) return;
@@ -1000,15 +1209,30 @@ function renderEnglishQuestionCard(q, n) {
 
     var hasSug = si.suggested_answer && si.suggested_answer.length;
     var hasExp = si.expected_elements && si.expected_elements.length;
-    if (hasSug || hasExp) {
+    /* When options were suppressed (predict-listen MCQ), surface correct
+       answers in the teacher guide so the teacher can verify responses. */
+    var suppressedCorrectAnswers = [];
+    if (suppressOptions && si.options && si.options.length) {
+      si.options.forEach(function(o, oi) {
+        if (o && o.is_correct) {
+          var label = o.label || String(oi + 1);
+          suppressedCorrectAnswers.push(label + '. ' + escHtml(o.text || ''));
+        }
+      });
+    }
+    if (hasSug || hasExp || suppressedCorrectAnswers.length) {
       s += '<div class="abox open"><div class="eng-tg-lbl">Teacher Guide</div>';
+      if (suppressedCorrectAnswers.length) {
+        s += '<div class="eng-tg-suggest"><strong>Answers (After listening):</strong><br>' +
+             suppressedCorrectAnswers.join('<br>') + '</div>';
+      }
       if (hasSug) {
-        s += '<div class="eng-tg-suggest">' + escHtml(si.suggested_answer) + '</div>';
+        s += '<div class="eng-tg-suggest">' + fmtGuide(si.suggested_answer) + '</div>';
       }
       if (hasExp) {
         s += '<ul class="eng-tg-elems">';
         si.expected_elements.forEach(function(e) {
-          s += '<li>' + escHtml(e) + '</li>';
+          s += '<li>' + fmtGuide(e) + '</li>';
         });
         s += '</ul>';
       }
@@ -1307,9 +1531,12 @@ function renderVisualStimulus(vs) {
   /* Returns an HTML string for the visual_stimulus field.
      Permitted formats per assessment constitutions:
        1. Pipe-delimited table (2+ lines, every line contains |) — rendered
-          as a proper HTML table.
+          as a proper HTML table. Empty cells in non-header rows are rendered
+          as blank answer-line placeholders.
        2. Plain prose — rendered as italic text.
      Returns '' if vs is null / empty.
+     The "Visual stimulus" label is intentionally suppressed — the box speaks
+     for itself and the label clutters the student-facing view.
 
      Mathematics no longer permits inline SVG (Constitution v3.2 Rule 7);
      figures are referenced via the Exercise companion block instead. */
@@ -1318,23 +1545,36 @@ function renderVisualStimulus(vs) {
   var trimmed = vs.trim();
 
   var html = '<div class="vs-box">';
-  html += '<div class="vs-label">Visual stimulus</div>';
+  /* ── No vs-label rendered (fix c) ── */
 
   var lines = trimmed.split('\n').map(function(l) { return l.trim(); }).filter(Boolean);
   var isTable = lines.length >= 2 && lines.every(function(l) { return l.indexOf('|') !== -1; });
 
   if (isTable) {
-    html += '<table class="vs-table">';
-    lines.forEach(function(line, ri) {
+    /* Determine max column count across all rows for padding */
+    var parsedRows = lines.map(function(line) {
       var cells = line.split('|').map(function(c) { return c.trim(); });
-      /* Remove leading/trailing empty cells from surrounding pipes */
       if (cells[0] === '') cells.shift();
       if (cells[cells.length - 1] === '') cells.pop();
+      return cells;
+    });
+    var maxCols = parsedRows.reduce(function(m, r) { return Math.max(m, r.length); }, 0);
+
+    html += '<table class="vs-table">';
+    parsedRows.forEach(function(cells, ri) {
+      /* Pad rows to maxCols */
+      while (cells.length < maxCols) cells.push('');
       html += ri === 0 ? '<thead><tr>' : '<tr>';
       cells.forEach(function(cell) {
-        html += ri === 0
-          ? '<th>' + escHtml(cell) + '</th>'
-          : '<td>' + escHtml(cell) + '</td>';
+        if (ri === 0) {
+          html += '<th>' + escHtml(cell) + '</th>';
+        } else {
+          /* Empty data cells rendered as blank answer-line (fix e) */
+          var isEmpty = cell === '';
+          var cls = isEmpty ? ' class="vs-answer-blank"' : '';
+          var display = isEmpty ? '___________' : escHtml(cell);
+          html += '<td' + cls + '>' + display + '</td>';
+        }
       });
       html += ri === 0 ? '</tr></thead>' : '</tr>';
     });
@@ -1344,6 +1584,21 @@ function renderVisualStimulus(vs) {
   }
 
   html += '</div>';
+  return html;
+}
+
+/* ── Word-box renderer ───────────────────────────────────────────────────── */
+function renderWordBox(words) {
+  /* Renders a list of words as a styled word box (for Listening MATCH tasks).
+     words: array of strings. */
+  if (!words || !words.length) return '';
+  var html = '<div class="vs-wordbox">';
+  html += '<div class="vs-wordbox-label">Word Box</div>';
+  html += '<div class="vs-wordbox-words">';
+  words.forEach(function(w) {
+    if (w.trim()) html += '<span class="vs-wordbox-word">' + escHtml(w.trim()) + '</span>';
+  });
+  html += '</div></div>';
   return html;
 }
 

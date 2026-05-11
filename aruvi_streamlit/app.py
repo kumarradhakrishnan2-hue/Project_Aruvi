@@ -597,27 +597,45 @@ Produce a SINGLE valid JSON object with this top-level structure:
     {{
       "spine_code":  "reading_for_comprehension|listening|speaking|writing|vocabulary_grammar|beyond_text",
       "spine_title": "Reading for Comprehension|Listening|Speaking|Writing|Vocabulary and Grammar|Beyond the Text",
-      "note":        "<empty unless an empty-spine note applies>",
+      "note":        "",
       "items": [
-        <one COMPOSITE item per main_section that contains this spine,
-         per Assessment Rule 2: lift the FIRST task object from
-         summary.<spine>.tasks_verbatim — copy task_text into
-         task_prompt and copy ALL its nested question_bank entries
-         verbatim into sub_items[]. Generate ONLY when the cell has
-         no task at all. Required fields per outer item: id,
+        <one item per section_contribution in coverage_handoff for this
+         spine (Assessment Constitution Rule 2). Each item tests the
+         cell's implied_lo.
+
+         STRICT GENERATION RULES — these override everything else:
+         - DO NOT read summary.<spine>.tasks_verbatim[] or question_bank[].
+           These fields are FORBIDDEN inputs to the assessment generator.
+           Reading either field is a constitution violation regardless of
+           intent. The implied_lo in coverage_handoff already encodes
+           what was taught.
+         - Derive every item solely from the section's prose_summary
+           (prose/informational sections) or poem_text +
+           poem_appreciation_summary (poem sections) plus the
+           implied_lo from coverage_handoff.
+         - The item MUST be original — it must not reproduce, paraphrase,
+           or structurally echo any textbook exercise wording.
+         - The item MUST be visibly grounded in the section's actual
+           content: name a character, scene, specific line, grammar
+           concept, or writing context drawn from prose_summary /
+           poem_text. Generic questions that could apply to any chapter
+           are prohibited (Assessment Rule 3).
+
+         Required fields per item: id (e.g. "Q-RFC-A-1"),
          source_section_id, source_section_title, source_section_type,
-         source_spine_section, source ("lifted"|"generated"),
-         source_task_index (the lifted task's index in tasks_verbatim;
-         -1 if generated), task_prompt, question_type (only when
-         sub_items is empty; else ""), transcript_ref (listening only;
-         "" otherwise), sub_items (each carrying stem, question_type,
-         options ([] unless MCQ), visual_stimulus (pipe-table or ""),
-         teacher_guide {{ suggested_answer (CLOSED sub-item only),
-         expected_elements (OPEN sub-item only — 3 to 5 short bullets
-         per stage rubric depth in Rule 10), note (empty unless
-         fallback) }}, verified), teacher_guide (populated only when
-         sub_items is empty — same shape as sub-item teacher_guide),
-         verified (true only when every closed sub-item is verified).>
+         source_spine, source_lo (implied_lo copied verbatim from
+         coverage_handoff), item_stem (original question grounded in
+         section content), question_type (from Assessment Rule 4 set:
+         MCQ|SCR|ECR|MATCH|FILL_IN|TRUE_FALSE|ORAL_PROMPT|WRITING_TASK|
+         PROJECT), options ([] unless MCQ or TRUE_FALSE),
+         visual_stimulus ("" or pipe-table only), transcript_ref
+         (Listening items only; "" otherwise), teacher_guide
+         {{suggested_answer (CLOSED non-MCQ items; "" otherwise),
+         expected_elements (OPEN items: {rubric_bullets} bullets ≤ 12
+         words each; [] otherwise), note ("" unless fallback)}},
+         verified (true for open items; true for closed only when
+         answer is unambiguously supported by prose_summary or
+         poem_text).>
       ]
     }}
   ]
@@ -628,18 +646,15 @@ CRITICAL CONSTRAINTS:
   across (section × spine) cells in textbook order (LP Rule 1+2), with
   per-section period share roughly proportional to the section's
   char_count + total task count (±1 period tolerance).
-- Total assessment item count = number_of_main_sections × 6 (one
-  composite item per (section × spine) cell, per Assessment Rule 2).
-  For VII Ch 1 with 3 main_sections, that's 18 items. For each cell,
-  lift the FIRST task object from summary.<spine>.tasks_verbatim:
-  copy `task_text` into `task_prompt` AND copy ALL entries of the
-  task's nested `question_bank` verbatim into `sub_items[]`,
-  preserving each sub-item's stem, type, options, table, and
-  page_ref. Set source="lifted", source_task_index=0. If the cell
-  has no task at all, generate ONE typed item from the main_section's
-  prose_summary / poem_text + poem_appreciation_summary
-  (source="generated", source_task_index=-1, sub_items=[]). Subsequent
-  tasks in the cell are NOT lifted.
+- Total assessment item count = number of section_contributions across
+  all spines in coverage_handoff that have at least one anchored task
+  (one item per spine-cell implied_lo, per Assessment Rule 2). Spines
+  with no section_contributions are omitted entirely. For each item,
+  read ONLY the cell's implied_lo from coverage_handoff and the
+  section's prose_summary / poem_text + poem_appreciation_summary.
+  DO NOT read tasks_verbatim[] or question_bank[] for any purpose —
+  these fields are forbidden inputs to the assessment generator.
+  Generate one original item per cell grounded in the section content.
 - C-codes MUST NOT appear anywhere in the LP or assessment JSON.
 - `pedagogical_methods` per period MUST be an object whose keys equal
   `spines_taught` exactly. Each value MUST be drawn from that spine's
@@ -650,15 +665,14 @@ CRITICAL CONSTRAINTS:
   and middle (transcript inside chapter PDF) or `"appendix p.NN"` at
   secondary (transcript in a separate appendix file). The summary
   carries the value verbatim.
-- The answer layer applies PER SUB-ITEM. A closed sub-item (MCQ,
-  FILL_IN, MATCH, TRUE_FALSE, factual SCR) carries
-  `teacher_guide.suggested_answer` (verified). An open sub-item
-  (ORAL_PROMPT, WRITING_TASK, PROJECT, ECR, reflective SCR) carries
+- The answer layer applies per item. A closed item (MCQ, FILL_IN,
+  MATCH, TRUE_FALSE, factual SCR) carries
+  `teacher_guide.suggested_answer` (verified against prose_summary /
+  poem_text; omitted for MCQ — correct option is flagged in
+  options[].is_correct). An open item (ORAL_PROMPT, WRITING_TASK,
+  PROJECT, ECR, reflective SCR) carries
   `teacher_guide.expected_elements` ({rubric_bullets} short bullets,
-  each ≤ 12 words). No sub-item carries both fields. When the outer
-  composite has `sub_items: []` (open task with no textbook
-  sub-items, or a generated item), the OUTER `teacher_guide` carries
-  the same shape — populated according to the outer `question_type`.
+  each ≤ 12 words). No item carries both fields.
 
 LENGTH CONSTRAINTS:
 - Each phase `description`: 2-3 sentences maximum.
@@ -748,28 +762,13 @@ Produce your entire output as a single valid JSON object with this top-level str
   "chapter_title": "{chapter.get('chapter_title', '')}",
   "period_schedule": <derived from teacher period schedule above>,
   "lesson_plan": {{ "periods": [ <one object per period per LP constitution> ] }},
-  "coverage_handoff": {{
-    "section_a": {{ "goal_cluster": ["recall"], "goals": [ {{"section_ref": "§X.Y", "section_title": "...", "goal": "recall", "anchor_id": "E-N | WE-N | A-N", "anchor_book_ref": "...", "anchor_description": "..."}} ] }},
-    "section_b": {{ "goal_cluster": ["reason"], "goals": [ ... ] }},
-    "section_c": {{ "goal_cluster": ["apply"],  "goals": [ ... ] }}
-  }},
-  "assessment_items": [ <one object per section per Assessment Constitution> ]
+  "coverage_handoff": <per LP Constitution>,
+  "assessment_items": <per Assessment Constitution>
 }}
-
-For Mathematics, `coverage_handoff` is REQUIRED per LP Constitution
-Rule 11 — emit it every time, even if a cluster has no goals. Anchor
-selection walks `enumerated_exercises` → `enumerated_worked_examples`
-→ `enumerated_activities` in priority order; emit empty strings only
-when all three pools are exhausted for the section.
-For Science and Social Sciences, `coverage_handoff` MAY be omitted.
 
 LENGTH CONSTRAINTS (strictly enforced to keep output compact):
 - Each phase `description`: 2–3 sentences maximum.
 - Each `teacher_notes` field: 2–3 sentences maximum.
-- Each Mathematics assessment `teacher_guide`: structured object per
-  Assessment Constitution v3.2 Rule 6 — {{ expected_answer,
-  method_one_line, what_each_option_reveals (MCQ only), inclusivity }}.
-  Each string field one sentence only.
 
 Output only the raw JSON object. No markdown. No prose. No section headers. No ```json fences.
 """
@@ -791,11 +790,16 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
         # ── Record start time (ms epoch) for the timer ────────────────────────
         _gen_start_ms = int(_time.time() * 1000)
 
-        # ── Shared CSS (animations) ───────────────────────────────────────────
+        # ── Shared CSS (animations + Deploy button suppression) ──────────────
+        # The Deploy button is hidden for the entire duration of generation by
+        # embedding the hide rule in _pcss, which is prepended to every progress
+        # markdown update. When progress_placeholder.empty() is called at the end
+        # (or on error / stop), the <style> tag disappears and the button returns.
         _pcss = (
             "<style>"
             "@keyframes aruviPulse{0%,100%{opacity:1}50%{opacity:.3}}"
             "@keyframes spin{to{transform:rotate(360deg)}}"
+            "div[data-testid='stDeployButton']{display:none!important;}"
             "</style>"
         )
 
@@ -4391,7 +4395,6 @@ elif st.session_state.role == "Generate":
             st.markdown(
                 '<style>'
                 'div[class*="st-key-btn_stop_generation"]{display:none!important;}'
-                'div[data-testid="stDeployButton"]{display:none!important;}'
                 '</style>',
                 unsafe_allow_html=True,
             )

@@ -142,13 +142,16 @@ subheadings appear.
 
 ## Step 6 — Listening cells: capture transcript
 
-| Stage | What to capture | Why |
-|---|---|---|
-| Preparatory · Middle | `transcript_ref` only, format `"p.NN"` | Transcript lives inside the chapter PDF (under "TRANSCRIPTS" banner near the end). Downstream tools read the PDF directly. |
-| Secondary | BOTH `transcript_ref` (format `"appendix p.NN"`) AND `transcript_text` (full verbatim text from `appendix.pdf`, speaker labels and newlines preserved) | The appendix is a separate file; downstream tools do not reopen it. |
+All stages capture both `transcript_ref` and `transcript_text`.
 
-Per main_section: each listening cell carries its own
-`transcript_text` portion that matches its own listening tasks.
+| Stage | `transcript_ref` | `transcript_text` |
+|---|---|---|
+| Preparatory | `"p.NN"` — from TRANSCRIPTS section of chapter PDF | Shortened: 80–120 words. All speakers represented, filler trimmed, speaker labels preserved. |
+| Middle | `"p.NN"` — from TRANSCRIPTS section of chapter PDF | Shortened: 150–250 words. All speakers/segments represented, sequence and resolution intact, filler trimmed, speaker labels preserved. |
+| Secondary | `"appendix p.NN"` — from separate `appendix.pdf` | Full verbatim, speaker labels and newlines preserved. |
+
+Per main_section: each listening cell carries its own `transcript_ref`
+and `transcript_text` matching its own listening tasks.
 
 ## Step 7 — Effort signals
 
@@ -339,7 +342,15 @@ the file already exists.
         "listening": {
           "section_name": "Listen and Respond",
           "transcript_ref": "appendix p.263",
-          "transcript_text": "ROHAN: Priya, what should we get Grandma...\nPRIYA: I was thinking a hand pankha...",
+          "transcript_text": "ROHAN: Priya, what should we get Grandma...\nPRIYA: I was thinking a hand pankha...\n[full verbatim — secondary stage]",
+          "tasks_verbatim": [
+            { "task_text": "<task instruction>", "question_bank": [/* sub-items */] }
+          ]
+        },
+        "/* Middle-stage listening example */": {
+          "section_name": "Let us listen",
+          "transcript_ref": "p.39",
+          "transcript_text": "Speaker 1 (Teacher): School taught me that learning never stops...\nSpeaker 2 (Student): My favourite part is meeting friends every day...\n[150–250 words — shortened, all speakers represented]",
           "tasks_verbatim": [
             { "task_text": "<task instruction>", "question_bank": [/* sub-items */] }
           ]
@@ -412,8 +423,9 @@ Example: `ch_03 — "Winds of Change" — sections: 2 (1 prose + 1 poem) — spi
   `spine_to_cg.json` only — do NOT generate per-chapter competency tags.
 - `effort_index` is computed from the four bounded signals in Step 8b
   — do NOT estimate, do NOT clamp, keep one decimal place.
-- Listening transcripts: prep/middle = `transcript_ref` only;
-  secondary = `transcript_ref` + `transcript_text` (per Step 6).
+- Listening transcripts: all stages capture `transcript_ref` + `transcript_text`.
+  Prep = 80–120 words shortened; middle = 150–250 words shortened;
+  secondary = full verbatim from `appendix.pdf` (per Step 6).
 - Do NOT invent absent spines. Do NOT collapse a multi-subheading
   spine to the first subheading only (per Step 5).
 - Each `tasks_verbatim` entry MUST be an OBJECT

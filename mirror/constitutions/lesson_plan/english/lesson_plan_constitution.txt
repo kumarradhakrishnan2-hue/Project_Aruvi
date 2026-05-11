@@ -343,57 +343,42 @@ each entry records:
   - `section_id`         — main_section id (A, B, C, ...)
   - `section_title`      — copied verbatim from summary
   - `section_type`       — prose | poem | narrative | dialogue | informational
-  - `implied_lo`         — ONE sentence at SPINE-CELL level (see below).
-                           Written once for the whole cell, not per task.
+  - `implied_lo`         — ONE sentence, ≤ 15 words, at SPINE-CELL
+                           level. Written once for the whole cell,
+                           not per task.
+
+                           TEMPLATE (mandatory):
+                           "Student [one verb] [one skill or concept]
+                           [optional: in/by + one short qualifier]."
+
+                           HARD RULES:
+                           (a) One verb, one skill. If "and" connects
+                               two distinct skills, split — then pick
+                               the dominant one, since only one LO is
+                               permitted per cell.
+                           (b) Name the SKILL, not the task format or
+                               activity. "by selecting words",
+                               "by predicting before listening",
+                               "by responding to tasks" are task
+                               descriptions — forbidden.
+                           (c) No duration references ("for one
+                               minute", "in three steps").
+                           (d) No text-specific references (character
+                               names, section titles, poem names).
+                               The LO must hold if tested with a
+                               different equivalent text.
+                           (e) Vocabulary Grammar cells only: MUST name the grammatical
+                               concept or vocabulary set (e.g.,
+                               "modal verbs", "prepositions of place",
+                               "antonyms"). Never generic "grammar"
+                               or "vocabulary".
+
   - `tasks_anchored`     — array of task records for LP bookkeeping.
                            Each entry: { "spine", "task_index",
                            "task_brief" }. No implied_lo at task level.
                            The assessment generator does NOT read this
                            array — it reads only the cell-level
                            `implied_lo` above.
-
-                           The LO must:
-                           (a) Use one of the NCERT stage-level outcome
-                               verbs appropriate to the spine —
-                               e.g. "identifies … in textual material",
-                               "uses appropriate grammatical forms",
-                               "thinks critically … and relates to life",
-                               "organises sentences coherently".
-                           (b) Name the specific content or concept from
-                               THIS section that the tasks engaged with
-                               (prose character / theme / grammar
-                               concept / vocabulary item / writing type).
-                               For Vocabulary/Grammar cells: MUST name
-                               the grammatical concept or vocabulary
-                               set (e.g., "adverbs of manner", "synonyms
-                               for movement", "simple past tense") —
-                               never a generic "grammar" or "words".
-                           (c) Be expressible as a broad, observable
-                               classroom outcome — not a micro-skill
-                               tied to a single sub-question.
-
-                           The `tasks_anchored[]` array (which lists
-                           which tasks were selected) remains in the
-                           handoff as a record. The `implied_lo` is
-                           the single LO written for the whole cell.
-
-                           Examples:
-
-                           RFC cell, Section A (prose narrative):
-                           "Student identifies the main idea and
-                           sequence of events in [section title],
-                           supporting inferences with textual evidence."
-
-                           Vocabulary/Grammar cell, Section B
-                           (adverbs of manner task):
-                           "Student uses adverbs of manner correctly
-                           to describe actions in sentences drawn from
-                           [section title]."
-
-                           Writing cell, Section A (letter prompt):
-                           "Student organises a formal letter with
-                           appropriate salutation, body, and closing,
-                           using ideas from [section title]."
 
 If a spine has no anchored tasks across any section, emit the spine
 key with an empty `section_contributions: []` array. The assessment

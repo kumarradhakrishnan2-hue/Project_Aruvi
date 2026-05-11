@@ -117,6 +117,14 @@ def make_styles():
     st("comp_hdr_ctr", fontName="Helvetica-Bold", fontSize=6.5,  leading=9,  textColor=INK, alignment=TA_CENTER)
     st("comp_code",    fontName="Helvetica-Bold", fontSize=7.5,  leading=11, textColor=BLUE_TAG, alignment=TA_CENTER)
     st("comp_text",   fontName="Helvetica",      fontSize=7.5,  leading=11, textColor=INK)
+    # English competency table — all header words centre-aligned; font sizes match allocate report
+    st("eng_comp_hdr", fontName="Helvetica-Bold", fontSize=5.5,  leading=8,  textColor=colors.HexColor("#6b7280"), alignment=TA_CENTER)
+    st("eng_spine",    fontName="Helvetica-Bold", fontSize=6.5,  leading=10, textColor=INK,  alignment=TA_CENTER)
+    st("eng_sec",      fontName="Helvetica",      fontSize=6.5,  leading=10, textColor=colors.HexColor("#373737"), alignment=TA_CENTER)
+    st("eng_code",     fontName="Helvetica-Bold", fontSize=6.5,  leading=10, textColor=INK,  alignment=TA_CENTER)
+    st("eng_comp",     fontName="Helvetica",      fontSize=6.5,  leading=10, textColor=INK,  alignment=TA_LEFT)
+    # English section heading (above first period of each section — like Science stage header)
+    st("eng_sec_hdr",  fontName="Helvetica-Bold", fontSize=8.5,  leading=12, textColor=INK,  alignment=TA_CENTER)
     # Section label
     st("section_lbl", fontName="Helvetica-Bold", fontSize=6.5,  leading=9,  textColor=MUTE,
        alignment=TA_CENTER, spaceBefore=4, spaceAfter=4, letterSpacing=1.5)
@@ -380,6 +388,107 @@ def competency_table(competencies):
         ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
         ("LINEBELOW",     (0, 0), (-1, -2), 0.3, ROW_LINE),
     ]))
+    return t
+
+
+def english_competency_table(eng_competencies):
+    """
+    Four-column table for English LP:
+      Spine | Section Name | Code | Competency
+    All header words centre-aligned. Visual style matches the allocate report:
+      - Code is dark ink (not blue), bold 6.5pt
+      - Competency text is normal 6.5pt dark ink
+      - Light hairline between codes within a spine
+      - Heavier grey rule between spine groups
+    Spine and Section Name cells span all sub-rows for that spine.
+    """
+    uw = PAGE_W - L_MAR - R_MAR
+    # Column proportions — mirror allocate PDF: label≈32mm, sections≈38mm, code≈16mm, comp=rest
+    col_ws = [uw * 0.19, uw * 0.23, uw * 0.10, uw * 0.48]
+
+    SPINE_SEP  = colors.HexColor("#aaaaaa")   # heavier rule between spine groups
+    CODE_SEP   = colors.HexColor("#e8e8e8")   # light rule between codes within a spine
+
+    # Header row — all centre-aligned (grey label style like allocate report)
+    hdr = [
+        Paragraph("Spine",        ST["eng_comp_hdr"]),
+        Paragraph("Section Name", ST["eng_comp_hdr"]),
+        Paragraph("Code",         ST["eng_comp_hdr"]),
+        Paragraph("Competency",   ST["eng_comp_hdr"]),
+    ]
+    rows = [hdr]
+    span_cmds      = []   # ROWSPAN directives
+    spine_sep_rows = []   # row indices (0-based) after which to draw the heavier spine rule
+    code_sep_rows  = []   # row indices after which to draw the light code rule
+
+    for spine_entry in eng_competencies:
+        spine_label  = _clean_text(spine_entry.get("spine", ""))
+        section_name = _clean_text(spine_entry.get("section_name", ""))
+        codes        = spine_entry.get("codes", [])
+        if not codes:
+            continue
+        spine_start_row = len(rows)
+
+        for ci, (code, desc) in enumerate(codes):
+            if ci == 0:
+                row = [
+                    Paragraph(spine_label,      ST["eng_spine"]),
+                    Paragraph(section_name,     ST["eng_sec"]),
+                    Paragraph(_clean_text(code), ST["eng_code"]),
+                    Paragraph(_clean_text(desc), ST["eng_comp"]),
+                ]
+            else:
+                # Spine/section cells are empty — their content comes from the spanned first row
+                row = [
+                    Paragraph("", ST["eng_spine"]),
+                    Paragraph("", ST["eng_sec"]),
+                    Paragraph(_clean_text(code), ST["eng_code"]),
+                    Paragraph(_clean_text(desc), ST["eng_comp"]),
+                ]
+            rows.append(row)
+            # Light rule after every code row except the last of this spine
+            if ci < len(codes) - 1:
+                code_sep_rows.append(len(rows) - 1)
+
+        # Span Spine + Section Name cells across all sub-rows of this spine
+        if len(codes) > 1:
+            span_end_row = spine_start_row + len(codes) - 1
+            span_cmds.append(("SPAN", (0, spine_start_row), (0, span_end_row)))
+            span_cmds.append(("SPAN", (1, spine_start_row), (1, span_end_row)))
+
+        # Heavier rule after the last row of this spine (will be overridden by BOX on last row)
+        spine_sep_rows.append(len(rows) - 1)
+
+    # Remove the very last spine separator (it coincides with the outer BOX bottom)
+    if spine_sep_rows:
+        spine_sep_rows = spine_sep_rows[:-1]
+
+    # Build style commands
+    style_cmds = [
+        ("BOX",           (0, 0), (-1, -1), 0.5, HAIRLINE),
+        ("INNERGRID",     (0, 0), (-1, -1), 0.0, colors.white),   # suppress default grid
+        ("LINEBELOW",     (0, 0), (-1,  0), 0.5, HAIRLINE),       # header bottom rule
+        ("BACKGROUND",    (0, 0), (-1,  0), BG_META),
+        ("BACKGROUND",    (0, 1), (-1, -1), colors.white),
+        ("VALIGN",        (0, 0), (-1, -1), "MIDDLE"),
+        ("TOPPADDING",    (0, 0), (-1, -1), 4),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+        ("LEFTPADDING",   (0, 0), (-1, -1), 5),
+        ("RIGHTPADDING",  (0, 0), (-1, -1), 5),
+        # Vertical column separators (light)
+        ("LINEAFTER",     (0, 0), (2, -1), 0.3, HAIRLINE),
+    ]
+    # Light rule between codes within a spine
+    for r in code_sep_rows:
+        style_cmds.append(("LINEBELOW", (0, r), (-1, r), 0.3, CODE_SEP))
+    # Heavier rule between spine groups (drawn after code rules so it wins)
+    for r in spine_sep_rows:
+        style_cmds.append(("LINEBELOW", (0, r), (-1, r), 0.6, SPINE_SEP))
+    # SPAN commands last
+    style_cmds.extend(span_cmds)
+
+    t = Table(rows, colWidths=col_ws)
+    t.setStyle(TableStyle(style_cmds))
     return t
 
 
@@ -898,31 +1007,31 @@ SPINE_LABELS = {
 }
 
 
-def _english_period_block(period, uw):
+def _english_period_block(period, uw, is_first_in_section=False, is_first_period=False):
     """
     Returns a list of flowables for one English period.
 
     Layout:
-      Row 1  — Period header  (Period N | Duration | Activity title)
-      Row 2  — Section        (Section label + title)
-      Row 3  — Spines         (comma-joined spine labels)
-      Row 4  — Materials      (list joined)
-      Rows 5+ — Phases        (minutes | description), same style as Science
-      Row N  — Tasks in class (brief summary, italic)
-      Row N+1— Teacher notes  (blue-tinted, same as Maths teacher_notes row)
+      [if is_first_in_section] — Section heading above the period card
+      Row 1  — Period header  (Period N | Duration | Activity title | Pedagogical approach)
+      Row 2  — Materials      (left-aligned, no Spines)
+      Rows 3+ — Phases        (minutes | description)
+      Row N  — Homework       (if non-empty; no inverted commas)
+      Row N+1— Teacher notes  (blue-tinted)
+
+    is_first_in_section: emit the section heading above this period block
+    is_first_period:     show "Pedagogical approach:" prefix in header row
     """
+    import re as _re
+
     story = []
 
-    period_num  = period.get("period_number", "—")
-    duration    = period.get("period_duration_minutes", "—")
-    act_title   = _clean_text(str(period.get("activity_title") or "—"))
-    section_id  = _clean_text(str(period.get("section_id") or ""))
-    section_ttl = _clean_text(str(period.get("section_title") or ""))
-    spines      = period.get("spines_taught") or []
-    spine_str   = ", ".join(SPINE_LABELS.get(s, s.replace("_", " ").title()) for s in spines)
-    phases      = period.get("phases") or []
-    tasks       = period.get("tasks_in_class") or []
-    teacher_note= _clean_text(str(period.get("teacher_notes") or ""))
+    period_num   = period.get("period_number", "—")
+    duration     = period.get("period_duration_minutes", "—")
+    act_title    = _clean_text(str(period.get("activity_title") or "—"))
+    section_ttl  = _clean_text(str(period.get("section_title") or ""))
+    phases       = period.get("phases") or []
+    teacher_note = _clean_text(str(period.get("teacher_notes") or ""))
 
     raw_mat = period.get("materials") or []
     if isinstance(raw_mat, list):
@@ -930,13 +1039,61 @@ def _english_period_block(period, uw):
     else:
         mat_str = _clean_text(str(raw_mat))
 
-    # ── Row 1: Period header ──────────────────────────────────────────────────
+    spines     = period.get("spines_taught") or []
+    spine_str  = ", ".join(SPINE_LABELS.get(s, s.replace("_", " ").title()) for s in spines)
+
+    # ── Pedagogical approach (join all spine methods, comma-separated) ────────
+    ped_methods = period.get("pedagogical_methods") or {}
+    if isinstance(ped_methods, dict):
+        ped_values = list(ped_methods.values())
+    elif isinstance(ped_methods, list):
+        ped_values = [str(v) for v in ped_methods]
+    else:
+        ped_values = []
+    # Format: "literary-reading" → "Literary Reading"
+    ped_str = ", ".join(
+        _clean_text(v).replace("-", " ").title() for v in ped_values if v
+    )
+    if is_first_period:
+        ped_display = f"Pedagogical approach: {ped_str}" if ped_str else ""
+    else:
+        ped_display = ped_str
+
+    # ── Homework ──────────────────────────────────────────────────────────────
+    raw_hw = period.get("homework") or []
+    if isinstance(raw_hw, list):
+        hw_parts = []
+        for h in raw_hw:
+            if isinstance(h, dict):
+                brief = _clean_text(str(h.get("task_brief") or ""))
+            else:
+                brief = _clean_text(str(h))
+            # Strip surrounding inverted commas / quotation marks
+            brief = brief.strip().strip("\"'‘’“”")
+            if brief:
+                hw_parts.append(brief)
+        hw_str = "; ".join(hw_parts)
+    else:
+        hw_str = _clean_text(str(raw_hw)).strip().strip("\"'‘’“”")
+
+    # ── Section heading (above first period of each section) ──────────────────
+    if is_first_in_section and section_ttl:
+        sec_heading = Paragraph(
+            f"Section: {section_ttl}",
+            ST["eng_sec_hdr"],
+        )
+        story.append(Spacer(1, 3 * mm))
+        story.append(sec_heading)
+        story.append(Spacer(1, 2 * mm))
+
+    # ── Row 1: Period header (Period | Duration | Activity | Ped approach) ────
     hdr_data = [[
         Paragraph(f"<b>Period {period_num}</b>", ST["period_lbl"]),
         Paragraph(f"{duration} min",              ST["period_time"]),
         Paragraph(f"<b>{act_title}</b>",          ST["period_act"]),
+        Paragraph(_clean_text(ped_display),       ST["period_lbl"]),
     ]]
-    hdr_t = Table(hdr_data, colWidths=[uw * f for f in [0.13, 0.09, 0.78]])
+    hdr_t = Table(hdr_data, colWidths=[uw * f for f in [0.13, 0.09, 0.55, 0.23]])
     hdr_t.setStyle(TableStyle([
         ("BACKGROUND",    (0, 0), (-1, -1), BG_META),
         ("LINEABOVE",     (0, 0), (-1, -1), 1.0, INK),
@@ -946,45 +1103,32 @@ def _english_period_block(period, uw):
         ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
         ("LEFTPADDING",   (0, 0), (-1, -1), 6),
         ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+        ("ALIGN",         (3, 0), (3,  0), "RIGHT"),
     ]))
 
-    # ── Row 2: Section label ──────────────────────────────────────────────────
-    sec_label = f"Section {section_id}: {section_ttl}" if section_id else section_ttl
-    sec_t = Table(
-        [[Paragraph(f"<b>Section:</b> {sec_label}", ST["mat_text"])]],
-        colWidths=[uw],
+    # ── Row 2: Materials (left) + Spine (right) — two-column row ─────────────
+    spine_cell = Paragraph(f"<b>Spine:</b> {spine_str}", ST["mat_text"]) if spine_str else Paragraph("", ST["mat_text"])
+    mat_t = Table(
+        [[
+            Paragraph(f"<b>Materials:</b> {mat_str}", ST["mat_text"]),
+            spine_cell,
+        ]],
+        colWidths=[uw * 0.60, uw * 0.40],
     )
-    sec_t.setStyle(TableStyle([
+    mat_t.setStyle(TableStyle([
         ("BACKGROUND",    (0, 0), (-1, -1), colors.white),
         ("LINEBELOW",     (0, 0), (-1, -1), 0.5, HAIRLINE),
         ("VALIGN",        (0, 0), (-1, -1), "MIDDLE"),
         ("TOPPADDING",    (0, 0), (-1, -1), 3),
         ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
-        ("LEFTPADDING",   (0, 0), (-1, -1), 8),
-        ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
-    ]))
-
-    # ── Row 3: Spines + Materials (two-col row) ───────────────────────────────
-    spine_mat_t = Table(
-        [[
-            Paragraph(f"<b>Spines:</b> {spine_str}", ST["mat_text"]),
-            Paragraph(f"<b>Materials:</b> {mat_str}", ST["mat_text"]),
-        ]],
-        colWidths=[uw * 0.40, uw * 0.60],
-    )
-    spine_mat_t.setStyle(TableStyle([
-        ("BACKGROUND",    (0, 0), (-1, -1), colors.white),
-        ("LINEBELOW",     (0, 0), (-1, -1), 0.5, HAIRLINE),
-        ("VALIGN",        (0, 0), (-1, -1), "TOP"),
-        ("TOPPADDING",    (0, 0), (-1, -1), 3),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
         ("LEFTPADDING",   (0, 0), ( 0,  0), 8),
-        ("LEFTPADDING",   (1, 0), ( 1, -1), 6),
+        ("LEFTPADDING",   (1, 0), ( 1,  0), 6),
         ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+        ("ALIGN",         (1, 0), ( 1,  0), "RIGHT"),
     ]))
 
-    # Anchor: keep header + section + spines/materials together
-    story.append(KeepTogether([hdr_t, Spacer(1, 3), sec_t, spine_mat_t]))
+    # Anchor: keep header + materials together so header never orphans
+    story.append(KeepTogether([hdr_t, Spacer(1, 3), mat_t]))
 
     # ── Phase rows ────────────────────────────────────────────────────────────
     if phases:
@@ -1010,33 +1154,26 @@ def _english_period_block(period, uw):
         ]))
         story.append(phase_t)
 
-    # ── Tasks in class (LO summary, italic) ──────────────────────────────────
-    if tasks:
-        task_lines = []
-        for t in tasks:
-            brief = _clean_text(str(t.get("task_brief") or ""))
-            lo    = _clean_text(str(t.get("implied_lo") or ""))
-            if brief:
-                task_lines.append(f"<i>{brief}</i>")
-        if task_lines:
-            tasks_t = Table(
-                [[
-                    Paragraph("<b>Tasks:</b>", ST["mat_label"]),
-                    Paragraph("  |  ".join(task_lines), ST["mat_text"]),
-                ]],
-                colWidths=[uw * 0.10, uw * 0.90],
-            )
-            tasks_t.setStyle(TableStyle([
-                ("BACKGROUND",    (0, 0), (-1, -1), colors.white),
-                ("LINEBELOW",     (0, 0), (-1, -1), 0.5, HAIRLINE),
-                ("VALIGN",        (0, 0), (-1, -1), "TOP"),
-                ("TOPPADDING",    (0, 0), (-1, -1), 3),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
-                ("LEFTPADDING",   (0, 0), ( 0,  0), 8),
-                ("LEFTPADDING",   (1, 0), ( 1, -1), 6),
-                ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
-            ]))
-            story.append(tasks_t)
+    # ── Homework row (replaces Tasks row; no inverted commas) ─────────────────
+    if hw_str:
+        hw_t = Table(
+            [[
+                Paragraph("<b>Homework:</b>", ST["mat_label"]),
+                Paragraph(hw_str, ST["mat_text"]),
+            ]],
+            colWidths=[uw * 0.13, uw * 0.87],
+        )
+        hw_t.setStyle(TableStyle([
+            ("BACKGROUND",    (0, 0), (-1, -1), HW_BG),
+            ("LINEBELOW",     (0, 0), (-1, -1), 0.5, HAIRLINE),
+            ("VALIGN",        (0, 0), (-1, -1), "TOP"),
+            ("TOPPADDING",    (0, 0), (-1, -1), 3),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
+            ("LEFTPADDING",   (0, 0), ( 0,  0), 8),
+            ("LEFTPADDING",   (1, 0), ( 1, -1), 6),
+            ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+        ]))
+        story.append(hw_t)
 
     # ── Teacher notes (blue-tinted) ───────────────────────────────────────────
     if teacher_note:
@@ -1097,12 +1234,26 @@ def _build_english_lp(output_path, data):
     ))
     story.append(Spacer(1, 3 * mm))
 
-    if data.get("competencies"):
+    if data.get("eng_competencies"):
+        story.append(english_competency_table(data["eng_competencies"]))
+        story.append(Spacer(1, 4 * mm))
+    elif data.get("competencies"):
+        # Fallback: plain 2-column table if spine data not available
         story.append(competency_table(data["competencies"]))
         story.append(Spacer(1, 4 * mm))
 
-    for p in data["periods"]:
-        story.extend(_english_period_block(p, uw))
+    # Track section changes so we can emit the section heading above the
+    # first period of each new section, and flag the very first period overall.
+    _prev_section = None
+    for pi, p in enumerate(data["periods"]):
+        _sec_id  = str(p.get("section_id") or "")
+        _is_new  = (_sec_id != _prev_section)
+        story.extend(_english_period_block(
+            p, uw,
+            is_first_in_section=_is_new,
+            is_first_period=(pi == 0),
+        ))
+        _prev_section = _sec_id
 
     # ── Pass 1 ────────────────────────────────────────────────────────────────
     doc.build(
@@ -1198,26 +1349,69 @@ def _json_to_english_lp_data(j: dict, date_str: str, weight) -> dict:
         if isinstance(_raw, dict) and "curricular_goals" not in _raw:
             _comp_descs = _raw   # flat {c_code: text}
         elif "curricular_goals" in _raw:
-            for _cg in (_raw.get("curricular_goals") or []):
-                for _comp in (_cg.get("competencies") or []):
-                    _comp_descs[_comp.get("code", "")] = _comp.get("description", "")
+            _cgs = _raw["curricular_goals"]
+            if isinstance(_cgs, dict):
+                # Structure: {"CG-1": {"competency_codes": {"C-1.1": "desc", ...}}, ...}
+                for _cg_val in _cgs.values():
+                    for _code, _desc in (_cg_val.get("competency_codes") or {}).items():
+                        _comp_descs[_code] = _desc
+            elif isinstance(_cgs, list):
+                # Structure: [{"competencies": [{"code": ..., "description": ...}]}, ...]
+                for _cg in _cgs:
+                    for _comp in (_cg.get("competencies") or []):
+                        _comp_descs[_comp.get("code", "")] = _comp.get("description", "")
     except Exception:
         pass
 
     competencies = [(code, _comp_descs.get(code, "")) for code in _c_codes]
 
+    # ── Load spine_to_cg.json to build the 4-column English competency structure ──
+    _spine_path = os.path.join(
+        _project_root, "mirror", "framework", "english", _stage, "spine_to_cg.json",
+    )
+    _spines_raw: dict = {}
+    try:
+        _spine_file = _json.load(open(_spine_path, encoding="utf-8"))
+        _spines_raw = _spine_file.get("spines", {})
+    except Exception:
+        pass
+
+    # Build ordered list: one entry per spine that has at least one c_code present
+    # in _c_codes (the codes actually mapped for this chapter).
+    _c_codes_set = set(_c_codes)
+    _spine_order = [
+        "reading_for_comprehension", "listening", "speaking",
+        "writing", "vocabulary_grammar", "beyond_text",
+    ]
+    eng_competencies = []
+    for _sk in _spine_order:
+        _sp = _spines_raw.get(_sk)
+        if not _sp:
+            continue
+        # Keep only the codes that are mapped for this chapter
+        _relevant_codes = [c for c in (_sp.get("competency_codes") or []) if c in _c_codes_set]
+        if not _relevant_codes:
+            continue
+        _section_name = ", ".join(_sp.get("textbook_section_names") or [])
+        eng_competencies.append({
+            "spine":        _sp.get("label", _sk.replace("_", " ").title()),
+            "section_name": _section_name,
+            "codes":        [(_c, _comp_descs.get(_c, "")) for _c in _relevant_codes],
+        })
+
     # ── Build period list (pass raw dicts through; renderer reads keys directly) ──
     periods = list(lp.get("periods") or [])
 
     return {
-        "chapter_num":   j["chapter_number"],
-        "chapter_title": j["chapter_title"],
-        "grade":         str(j["grade"]).replace("Grade ", ""),
-        "subject":       j["subject"],
-        "date":          date_str,
-        "weight":        weight,
-        "competencies":  competencies,
-        "periods":       periods,
+        "chapter_num":       j["chapter_number"],
+        "chapter_title":     j["chapter_title"],
+        "grade":             str(j["grade"]).replace("Grade ", ""),
+        "subject":           j["subject"],
+        "date":              date_str,
+        "weight":            weight,
+        "competencies":      competencies,       # kept for fallback
+        "eng_competencies":  eng_competencies,   # new 4-column structure
+        "periods":           periods,
     }
 
 

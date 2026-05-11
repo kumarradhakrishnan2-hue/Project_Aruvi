@@ -31,6 +31,21 @@ Each subject for a grade involves the following steps:
 
 **Short term tasks**
 
-1\. Try to incorporate managed Agent with following credentials to replace 'Ask Aruvi' Haiku ask feature and feedback feature.
-agent= "agent_toolset_20260401", "agent_011Ca6z4gAUB897Nr3xfHNiT", environment_id="env_01L8dPr1NDwDzkiDXWPpn8YE", "file_id": "file_011Ca71pJpRQAZz3d2sKTfqA", 
+1\. [PARTIALLY DONE] Managed Agent integration for Ask Aruvi: `ask_aruvi_agent.py` is written and wired into `app.py` behind a `USE_MANAGED_AGENT` flag (currently `False`). Credentials used: `AGENT_ID = "agent_011Ca6z4gAUB897Nr3xfHNiT"`, `ENVIRONMENT_ID = "env_01L8dPr1NDwDzkiDXWPpn8YE"`. Outstanding: test the managed agent path end-to-end, then flip `USE_MANAGED_AGENT = True` in `app.py` to activate.
+
+2\. [DONE — May 2026] LP PDF v3 (`aruvi_streamlit/lp_pdf_generator.py`) wired into app.py for English and Mathematics. Science/SS LP PDF migration to v3 still pending.
+
+3\. [PENDING] Fix hardcoded `PROJECT_ROOT` in `app.py` and `ask_aruvi_agent.py` to use dynamic resolution (via `config_resolver.py`) before any cloud deployment.
+
+4\. [PENDING] Delete scratch test HTML files from project root (test_debug.html, test_fixed.html, test_minimal.html, test_trycatch.html, test_assess_only.html, test_assessment.html, test_assessment_full.html, test_debug2.html) — generated during English assessment renderer debugging, no longer needed.
+
+5\. [PENDING] Complete English VII: Ch 02 onwards — run combined summary+mapping prompt for remaining chapters, then full generate+test cycle.
+
+**Progress snapshot — as of 2026-05-10**
+
+- Mathematics VII: COMPLETE (all 8 chapters — summaries, mappings, LP + assessment tested)
+- English VII: Ch 01 complete (summary, mapping, LP, assessment tested). Ch 02–N pending.
+- Science VII: Complete (all 12 chapters)
+- Social Sciences VII: Complete (all 12 chapters)
+- Science VI / Social Sciences VI: ch_02 only — paused
 

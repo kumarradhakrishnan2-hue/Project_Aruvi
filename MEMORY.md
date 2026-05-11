@@ -161,3 +161,31 @@ Root cause: ReportLab's `Drawing` flowable clips its contents to the `width` × 
 Action taken: Added overscan padding to `_render_svg_stimulus()`. Now the function: (1) translates the drawing by `(pad, pad)` BEFORE applying the scale transform, (2) applies the uniform scale, (3) sets `drawing.width = (orig_w + 2*pad) * scale` and similarly for height. With pad=6 source-units, every edge stroke and label gets a guaranteed margin inside the canvas. Verified Q-C-2 now renders all elements (lines AB, CD, both transversals, labels A through G, both angle labels). Q-A-3 (previously working) confirmed unchanged — no regression.
 Carry-forward rule: When rendering an svglib `Drawing` inside a ReportLab story, never set `drawing.width`/`drawing.height` to exactly `orig * scale` — always add an overscan margin (~6 source-units of padding × scale) on every side, and apply a matching `drawing.translate(pad, pad)` before the scale transform. This is independent of the SVG's own viewBox correctness — even mathematically-sound SVGs lose pixels at the edges of the ReportLab canvas. Rule applies to any future renderer that embeds SVG into PDF via svglib.
 
+---
+
+[Learning #20] — 2026-04-29 to 2026-05-04 — Mathematics VII: Full Pipeline Completed
+
+Context: Post SVG-fix session to complete Mathematics VII end-to-end.
+Observation: All 8 chapter summaries (JSON format) and all 8 competency mappings generated and stored. Maths LP constitution updated to v3.1 (anchor_id priority widened to WE-N and A-N when exercise pool exhausted; phase descriptions capped at ~10 words). Assessment constitution updated to v3.2 (two-artefact design: freshly generated question + textbook exercise companion; structured teacher_guide replaces one-line form). A saved plan for Ch 02 confirmed the full pipeline works end-to-end.
+Action taken: All mirror data complete. Framework files for mathematics preparatory and secondary stages added.
+Carry-forward rule: Mathematics VII pipeline is fully operational. Any future Maths chapter generation is purely a run task — no constitution or pipeline changes needed unless a new chapter type surfaces an unhandled edge case.
+
+---
+
+[Learning #21] — 2026-05-04 to 2026-05-10 — English VII: Subject Architecture and Pipeline
+
+Context: English is structurally different from all prior subjects. No per-chapter competency mapping in the conventional sense — instead a 6-spine progression (Reading for Comprehension → Listening → Speaking → Writing → Vocabulary/Grammar → Beyond-the-Text) drives both LP and assessment.
+Observation: (1) English uses a TWO-AXIS structure: outer axis = main_sections (poem, prose, dialogue etc.), inner axis = 6-spine cells within each section. The LP walks sections in textbook order, then spines within each section. C-codes do NOT appear in the LP JSON — NCF compliance is implicit in the spine structure itself. (2) Competency mapping for English uses equal Weight 1 across all applicable C-codes, plus effort signals (spine_load, task_density, writing_demand, project_load) that combine into an effort_index — this drives the Allocate tab, same as Science/Maths. (3) The combined cowork prompt (`chapter_summary_competency_mapping_english.md`) generates both summary JSON and mapping JSON in a single pass. (4) English framework files (CG + pedagogy for middle/preparatory/secondary stages, spine_to_cg mappings) added to mirror/framework/english/. (5) Ch 01 (Learning Together) summary and mapping complete. Multiple saved plans generated and refined through several constitution iterations (LP v1.5, Assessment v3.0).
+Root cause of iteration: English assessment initially modelled on Science/SS (per-competency question types). Revised to LP→Assessment handoff arc: LP generates one implied_lo per (section × spine) cell; assessment generates one original item per implied_lo grounded in section text. Simpler and more faithful to language pedagogy.
+Action taken: English LP constitution v1.5 and Assessment constitution v3.0 finalised. Allocate page updated to handle English effort_index display (same visual as Science/Maths). app.py extended to load English summaries/mappings in JSON format (already in `_JSON_SUMMARY_SUBJECTS`). Multiple test HTML files generated during assessment renderer debugging (test_debug.html, test_fixed.html etc.) — these are scratch artefacts, can be deleted.
+Carry-forward rule: English assessment must NOT use C-codes or per-competency question-type rules. The sole driver is (section × spine) implied_lo values handed off from the LP. Any English chapter generation follows: run combined summary+mapping prompt → generate LP → LP handoff feeds assessment. No separate mapping step.
+
+---
+
+[Learning #22] — 2026-05-10 — LP PDF v3 Wired In (lp_pdf_generator.py)
+
+Context: The LP PDF generator was overhauled and the new file (`aruvi_streamlit/lp_pdf_generator.py`, v3) wired into app.py, replacing the old inline `generate_pdf_bytes_lp()` function for English and Mathematics.
+Key improvements in v3: Unicode sanitiser (_clean_text strips diacritics), Aruvi logo in page header with graceful fallback, dynamic page numbers via two-pass pypdf overlay, section anchor shows first sentence only, "LO" label drawn inside LOBox, "Confidential" footer removed, chapter_weight shown alongside total periods.
+Observation: app.py now imports `build_lp_pdf_bytes` from `lp_pdf_generator` for the Generate tab (both bot and manual paths) and My Plans tab. The old inline function remains in app.py for Science/SS (not yet migrated).
+Carry-forward rule: lp_pdf_generator.py (v3) is the current LP PDF standard. When migrating Science/SS to this generator, the main difference to handle is the Science/SS LP JSON structure (progression-stage based) versus the English/Maths structure (section × spine). Keep the old inline function in app.py until Science/SS migration is tested.
+
