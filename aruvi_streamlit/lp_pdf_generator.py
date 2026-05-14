@@ -1174,6 +1174,7 @@ def _english_period_block(period, uw, is_first_in_section=False, is_first_period
             ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
         ]))
         story.append(hw_t)
+        story.append(Spacer(1, 3 * mm))
 
     # ── Teacher notes (blue-tinted) ───────────────────────────────────────────
     if teacher_note:

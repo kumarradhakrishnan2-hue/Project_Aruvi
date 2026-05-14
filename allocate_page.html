@@ -1297,10 +1297,10 @@ function _downloadPDF_legacy_unused() {
   if (IS_ENGLISH && typeof ENGLISH_SPINE_DATA === 'object' && ENGLISH_SPINE_DATA) {
     var spineKeys = Object.keys(ENGLISH_SPINE_DATA);
     if (spineKeys.length > 0) {
-      /* Section heading */
+      /* Section heading — centre aligned */
       if (y + 30 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
       doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(26, 25, 23);
-      doc.text('Textbook Sections', mL, y); doc.setCharSpace(0);
+      doc.text('Competency Report', pageW / 2, y, { align: 'center' }); doc.setCharSpace(0);
       y += 4;
       rule(y, 0.18, 180); y += 3;
 
@@ -1380,36 +1380,6 @@ function _downloadPDF_legacy_unused() {
     }
   }
 
-  /* ── Science / Mathematics: structured "About the Effort Index" section ── */
-  if (IS_SCIENCE) {
-    if (y + 40 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
-    doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(26, 25, 23);
-    doc.text('About the Effort Index', mL, y); doc.setCharSpace(0);
-    y += 4;
-    rule(y, 0.18, 180); y += 4;
-
-    var _sciEiRows = [
-      { label: 'What it measures:', body: "The effort index tells you how much classroom time a chapter typically needs compared to other chapters. Chapters with a higher effort index get more periods; chapters with a lower one get fewer. It is calculated from four signals read from the chapter content." },
-      { label: 'Conceptual demand (\u00d72):', body: "The cognitive complexity of exercises and questions. High-order thinking or multi-step reasoning raises the score." },
-      { label: 'Student activities (\u00d71):', body: "The number of hands-on activities students perform themselves. Each adds classroom time for setup, execution and discussion." },
-      { label: 'Teacher demonstrations (\u00d71.5):', body: "The number of demonstrations the teacher must conduct. These need preparation and focused class attention." },
-      { label: 'Exercise execution load (\u00d72):', body: "The total exercise items students must complete. A heavier exercise count means more time for guided practice and assessment." },
-      { label: 'Note:', body: "The four signals are combined with fixed weights to give the effort index. Only relative values matter \u2014 it is used to share your available periods across chapters in proportion to their load." },
-    ];
-    var _eiLblW = 56;
-    var _eiBodyW = pageW - mL - mR - _eiLblW;
-    _sciEiRows.forEach(function(row) {
-      if (y + 8 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
-      doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5); doc.setTextColor(26, 68, 128);
-      doc.text(row.label, mL, y); doc.setCharSpace(0);
-      doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(75, 75, 75);
-      var _bLines = doc.splitTextToSize(row.body, _eiBodyW);
-      doc.text(_bLines, mL + _eiLblW, y); doc.setCharSpace(0);
-      y += Math.max(5, _bLines.length * 3.5);
-    });
-    y += 4;
-  }
-
   /* ── column widths — Fix 2: explicit mm, total 172mm ── */
   /* # | Code | Competency | Justification | Weight */
   var CW = { seq: 8, code: 14, desc: 62, just: 72, dots: 16 };
@@ -1460,34 +1430,38 @@ function _downloadPDF_legacy_unused() {
     }
 
     /* Fix 9: chapter title with setCharSpace(0) before/after each draw */
-    y += 6;
-    doc.setCharSpace(0);
-    doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor(26, 25, 23);
-    var _titleFull  = 'Ch\u00a0' + pad2(cd.chapter_number) + '\u2002' + cleanText(cd.chapter_title);
-    var _titleMaxW  = pillX - mL - 6;
-    var _titleLines = doc.splitTextToSize(_titleFull, _titleMaxW);
-    doc.text(_titleLines[0], mL, y);
-    doc.setCharSpace(0);
-
-    /* draw alloc pill — must use allocFS (same size used to measure pillW) */
-    doc.setFont('helvetica', 'normal'); doc.setFontSize(allocFS);
-    doc.setFillColor(26, 25, 23);
-    doc.roundedRect(pillX, y - 2.5, pillW, 4, 0.8, 0.8, 'F');
-    doc.setTextColor(255, 255, 255);
-    doc.setCharSpace(0);
-    doc.text(allocStr, pillX + pillW - CP, y, { align: 'right' });
-    doc.setCharSpace(0);
-
-    /* draw weight label (Social Sciences / other languages only) */
-    if (!IS_SCIENCE && !IS_ENGLISH) {
-      doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(100, 100, 100);
+    /* English skips per-chapter headings (covered in Competency Report above) */
+    if (!IS_ENGLISH) {
+      y += 6;
       doc.setCharSpace(0);
-      doc.text(wlText, pillX + pillW + 4, y);
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor(26, 25, 23);
+      var _titleFull  = 'Ch\u00a0' + pad2(cd.chapter_number) + '\u2002' + cleanText(cd.chapter_title);
+      var _titleMaxW  = pillX - mL - 6;
+      var _titleLines = doc.splitTextToSize(_titleFull, _titleMaxW);
+      doc.text(_titleLines[0], mL, y);
       doc.setCharSpace(0);
+
+      /* draw alloc pill — must use allocFS (same size used to measure pillW) */
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(allocFS);
+      doc.setFillColor(26, 25, 23);
+      doc.roundedRect(pillX, y - 2.5, pillW, 4, 0.8, 0.8, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setCharSpace(0);
+      doc.text(allocStr, pillX + pillW - CP, y, { align: 'right' });
+      doc.setCharSpace(0);
+
+      /* draw weight label (Social Sciences / other languages only) */
+      if (!IS_SCIENCE && !IS_ENGLISH) {
+        doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(100, 100, 100);
+        doc.setCharSpace(0);
+        doc.text(wlText, pillX + pillW + 4, y);
+        doc.setCharSpace(0);
+      }
+
+      y += 2;
+      rule(y, 0.53, 26); y += 6;
+
     }
-
-    y += 2;
-    rule(y, 0.53, 26); y += 6;
 
     if (IS_SCIENCE) {
       /* ── Science format: # | Code | Competency | Justification table ── */
@@ -1654,12 +1628,150 @@ function _downloadPDF_legacy_unused() {
     }
   });
 
+  /* ── English: period allocation report table (before effort index breakdown) ── */
+  if (IS_ENGLISH) {
+    if (y + 30 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
+
+    /* Period Allocation Report table — centre-aligned title */
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(26, 25, 23);
+    doc.text('Period Allocation Report', pageW / 2, y, { align: 'center' }); doc.setCharSpace(0);
+    y += 4;
+    rule(y, 0.18, 180); y += 3;
+
+    /* Column widths: #(8) | Chapter(66) | Effort Idx(20) | period-type cols(16 each) | Total(16) | Minutes(20) */
+    var palPtW = 16;
+    var palTailW = { total: 16, mins: 20 };
+    var palFixedCW = { seq: 8, name: 66, ei: 20 };
+
+    /* Header row */
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(5.5); doc.setTextColor(107, 114, 128);
+    var palHx = mL;
+    var palHeaders = [
+      { label: '#',            w: palFixedCW.seq,  align: 'right'  },
+      { label: 'Chapter',      w: palFixedCW.name, align: 'left'   },
+      { label: 'Effort Index', w: palFixedCW.ei,   align: 'center' },
+    ];
+    sortedPts.forEach(function(pt) {
+      palHeaders.push({ label: pt.mins + '-min', w: palPtW, align: 'center' });
+    });
+    palHeaders.push({ label: 'Total',   w: palTailW.total, align: 'center' });
+    palHeaders.push({ label: 'Minutes', w: palTailW.mins,  align: 'center' });
+
+    palHeaders.forEach(function(col) {
+      doc.setCharSpace(0);
+      if (col.align === 'right') {
+        doc.text(col.label, palHx + col.w - CP, y, { align: 'right' });
+      } else if (col.align === 'center') {
+        doc.text(col.label, palHx + col.w / 2, y, { align: 'center' });
+      } else {
+        doc.text(col.label, palHx + CP, y);
+      }
+      doc.setCharSpace(0);
+      palHx += col.w;
+    });
+    y += 2; rule(y, 0.1, 210); y += 3;
+
+    /* Data rows */
+    var palGrandPeriods = 0, palGrandMinutes = 0;
+    var palColSums = {};
+    sortedPts.forEach(function(pt) { palColSums[pt.mins] = 0; });
+
+    selChapters.forEach(function(cd, idx) {
+      var rowH = 7;
+      if (y + rowH > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
+
+      var alloc2  = allocMap[cd.chapter_number] || {};
+      var total2  = alloc2.total || 0;
+      var minutes2 = sortedPts.reduce(function(s, pt) { return s + (alloc2[String(pt.mins)] || 0) * pt.mins; }, 0);
+      palGrandPeriods += total2;
+      palGrandMinutes += minutes2;
+      sortedPts.forEach(function(pt) { palColSums[pt.mins] += (alloc2[String(pt.mins)] || 0); });
+
+      var rowBg2 = (idx % 2 === 0);
+      if (rowBg2) {
+        var palRowW = palFixedCW.seq + palFixedCW.name + palFixedCW.ei + palPtW * sortedPts.length + palTailW.total + palTailW.mins;
+        doc.setFillColor(248, 247, 245);
+        doc.rect(mL, y, palRowW, rowH, 'F');
+      }
+
+      var midY2 = y + rowH / 2;
+      var cx2 = mL;
+
+      /* # */
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6); doc.setTextColor(107, 114, 128);
+      doc.text(String(cd.chapter_number), cx2 + palFixedCW.seq - CP, midY2, { align: 'right', baseline: 'middle' });
+      doc.setCharSpace(0);
+      cx2 += palFixedCW.seq;
+
+      /* Chapter name */
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
+      var palNameText = cleanText(cd.chapter_title || '');
+      var palNameLines = doc.splitTextToSize(palNameText, palFixedCW.name - CP * 2);
+      doc.text(palNameLines[0], cx2 + CP, midY2, { baseline: 'middle' });
+      doc.setCharSpace(0);
+      cx2 += palFixedCW.name;
+
+      /* Effort Index */
+      var eiVal2 = (typeof cd.effort_index === 'number' && cd.effort_index > 0) ? String(cd.effort_index) : '-';
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
+      doc.text(eiVal2, cx2 + palFixedCW.ei / 2, midY2, { align: 'center', baseline: 'middle' });
+      doc.setCharSpace(0);
+      cx2 += palFixedCW.ei;
+
+      /* Period-type columns */
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
+      sortedPts.forEach(function(pt) {
+        var v2 = alloc2[String(pt.mins)] || 0;
+        doc.text(String(v2), cx2 + palPtW / 2, midY2, { align: 'center', baseline: 'middle' });
+        doc.setCharSpace(0);
+        cx2 += palPtW;
+      });
+
+      /* Total */
+      doc.text(String(total2), cx2 + palTailW.total / 2, midY2, { align: 'center', baseline: 'middle' });
+      doc.setCharSpace(0);
+      cx2 += palTailW.total;
+
+      /* Minutes */
+      doc.text(String(minutes2), cx2 + palTailW.mins / 2, midY2, { align: 'center', baseline: 'middle' });
+      doc.setCharSpace(0);
+
+      y += rowH;
+      rule(y, 0.1, 220);
+    });
+
+    /* Footer totals row */
+    if (y + 7 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
+    doc.setFillColor(214, 228, 248);
+    var palRowW3 = palFixedCW.seq + palFixedCW.name + palFixedCW.ei + palPtW * sortedPts.length + palTailW.total + palTailW.mins;
+    doc.rect(mL, y, palRowW3, 7, 'F');
+    var midYf = y + 3.5;
+    var cxf = mL;
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
+    cxf += palFixedCW.seq;
+    doc.text('Total', cxf + CP, midYf, { baseline: 'middle' });
+    cxf += palFixedCW.name;
+    cxf += palFixedCW.ei;
+    sortedPts.forEach(function(pt) {
+      doc.text(String(palColSums[pt.mins]), cxf + palPtW / 2, midYf, { align: 'center', baseline: 'middle' });
+      doc.setCharSpace(0);
+      cxf += palPtW;
+    });
+    doc.text(String(palGrandPeriods), cxf + palTailW.total / 2, midYf, { align: 'center', baseline: 'middle' });
+    doc.setCharSpace(0);
+    cxf += palTailW.total;
+    doc.text(String(palGrandMinutes), cxf + palTailW.mins / 2, midYf, { align: 'center', baseline: 'middle' });
+    doc.setCharSpace(0);
+    rule(y + 7, 0.3, 180);
+    y += 18;
+  }
+
   /* ── English: chapter-wise effort index summary table ── */
   if (IS_ENGLISH) {
     if (y + 30 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
 
     doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(26, 25, 23);
-    doc.text('Chapter-wise Effort Index', mL, y); doc.setCharSpace(0);
+    doc.text('Chapter-wise Effort Index', pageW / 2, y, { align: 'center' }); doc.setCharSpace(0);
     y += 4;
     rule(y, 0.18, 180); y += 3;
 
@@ -1751,6 +1863,65 @@ function _downloadPDF_legacy_unused() {
       rule(y, 0.1, 220);
     });
     y += 6;
+  }
+
+  /* ── "About the Effort Index" block — placed at END for English and Science/Mathematics ── */
+  if (IS_ENGLISH) {
+    if (y + 40 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(26, 68, 128);
+    doc.text('About the Effort Index', mL, y); doc.setCharSpace(0);
+    y += 4;
+    rule(y, 0.18, 180); y += 4;
+
+    var _engEiRows = [
+      { label: 'What it measures:', body: "The effort index tells you how much classroom time a chapter typically needs compared to other chapters in the subject. Chapters with a higher effort index get more periods; chapters with a lower one get fewer. It is calculated from four signals, each scored on a simple scale." },
+      { label: 'Spine load (×2):', body: "How many types of classroom work (reading for comprehension, listening, speaking, writing, vocabulary, beyond-text) appear on average per section. More types = higher score." },
+      { label: 'Task density (×1.5):', body: "How many tasks appear on average within each block of work. More tasks per block = higher score." },
+      { label: 'Writing demand (×1.5):', body: "Total exercise items under Writing and Beyond-the-Text across the chapter. These take longer to complete and assess, so a heavier count raises the score." },
+      { label: 'Project load (×1):', body: "How many Beyond-the-Text sections the chapter has. Each one adds to the score as these activities need extra planning time." },
+      { label: 'Note:', body: "The four scores are combined with fixed weights to give the effort index. Only relative values matter — it is used to share your available periods across chapters in proportion to their load." },
+    ];
+    var _engEiLblW = 50;
+    var _engEiBodyW = pageW - mL - mR - _engEiLblW;
+    _engEiRows.forEach(function(row) {
+      if (y + 8 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5); doc.setTextColor(26, 68, 128);
+      doc.text(row.label, mL, y); doc.setCharSpace(0);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(75, 75, 75);
+      var _eBLines = doc.splitTextToSize(row.body, _engEiBodyW);
+      doc.text(_eBLines, mL + _engEiLblW, y); doc.setCharSpace(0);
+      y += Math.max(5, _eBLines.length * 3.5);
+    });
+    y += 4;
+  }
+
+  if (IS_SCIENCE) {
+    if (y + 40 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(26, 68, 128);
+    doc.text('About the Effort Index', mL, y); doc.setCharSpace(0);
+    y += 4;
+    rule(y, 0.18, 180); y += 4;
+
+    var _sciEiRows2 = [
+      { label: 'What it measures:', body: "The effort index tells you how much classroom time a chapter typically needs compared to other chapters. Chapters with a higher effort index get more periods; chapters with a lower one get fewer. It is calculated from four signals read from the chapter content." },
+      { label: 'Conceptual demand (×2):', body: "The cognitive complexity of exercises and questions. High-order thinking or multi-step reasoning raises the score." },
+      { label: 'Student activities (×1):', body: "The number of hands-on activities students perform themselves. Each adds classroom time for setup, execution and discussion." },
+      { label: 'Teacher demonstrations (×1.5):', body: "The number of demonstrations the teacher must conduct. These need preparation and focused class attention." },
+      { label: 'Exercise execution load (×2):', body: "The total exercise items students must complete. A heavier exercise count means more time for guided practice and assessment." },
+      { label: 'Note:', body: "The four signals are combined with fixed weights to give the effort index. Only relative values matter — it is used to share your available periods across chapters in proportion to their load." },
+    ];
+    var _eiLblW2 = 56;
+    var _eiBodyW2 = pageW - mL - mR - _eiLblW2;
+    _sciEiRows2.forEach(function(row) {
+      if (y + 8 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5); doc.setTextColor(26, 68, 128);
+      doc.text(row.label, mL, y); doc.setCharSpace(0);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(75, 75, 75);
+      var _sBLines = doc.splitTextToSize(row.body, _eiBodyW2);
+      doc.text(_sBLines, mL + _eiLblW2, y); doc.setCharSpace(0);
+      y += Math.max(5, _sBLines.length * 3.5);
+    });
+    y += 4;
   }
 
   /* Change 2.7: footnote text rendering removed — both footnotes deleted from last page */

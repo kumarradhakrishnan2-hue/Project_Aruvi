@@ -67,7 +67,7 @@ The constitution-based generation approach is the IP — the subject constitutio
 - Science VII: summaries \+ mappings (all 12 chapters)  
 - Social Sciences VII: summaries \+ mappings (all 12 chapters)  
 - Mathematics VII: summaries \+ mappings (all 8 chapters — `.json` format)  
-- English VII: summaries \+ mappings (ch\_01 only — in progress; uses `.json` format)  
+- English VII: summaries \+ mappings (ch\_01, ch\_02 done — in progress; uses `.json` format)  
 - Science VI: summaries \+ mappings (ch\_02 only — in progress)  
 - Social Sciences VI: summaries \+ mappings (ch\_02 only — in progress)  
 - Framework text (CG \+ pedagogy): Science middle, Social Sciences middle, Mathematics middle/preparatory/secondary, English middle/preparatory/secondary

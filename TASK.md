@@ -39,12 +39,12 @@ Each subject for a grade involves the following steps:
 
 4\. [PENDING] Delete scratch test HTML files from project root (test_debug.html, test_fixed.html, test_minimal.html, test_trycatch.html, test_assess_only.html, test_assessment.html, test_assessment_full.html, test_debug2.html) — generated during English assessment renderer debugging, no longer needed.
 
-5\. [PENDING] Complete English VII: Ch 02 onwards — run combined summary+mapping prompt for remaining chapters, then full generate+test cycle.
+5\. [IN PROGRESS] Complete English VII: Ch 02–05 done (summary + mapping). Ch 06–N — run combined summary+mapping prompt for remaining chapters, then full generate+test cycle.
 
-**Progress snapshot — as of 2026-05-10**
+**Progress snapshot — as of 2026-05-12**
 
 - Mathematics VII: COMPLETE (all 8 chapters — summaries, mappings, LP + assessment tested)
-- English VII: Ch 01 complete (summary, mapping, LP, assessment tested). Ch 02–N pending.
+- English VII: Ch 01 complete (summary, mapping, LP, assessment tested). Ch 02–05 complete (summary + mapping, 2026-05-12). Ch 06–N pending. Assessment PDF/HTML layout fixes applied (2026-05-11): section name per-question, Notes to last page, LO below guide, word box pills, FILL_IN markdown tables, Part A/B guide splitting.
 - Science VII: Complete (all 12 chapters)
 - Social Sciences VII: Complete (all 12 chapters)
 - Science VI / Social Sciences VI: ch_02 only — paused

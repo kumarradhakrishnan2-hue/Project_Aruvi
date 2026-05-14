@@ -21,7 +21,7 @@ from reportlab.lib.units import mm
 from reportlab.pdfgen import canvas as rl_canvas
 from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle,
-    KeepTogether,
+    KeepTogether, PageBreak,
 )
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_RIGHT
@@ -52,6 +52,8 @@ def _make_ast():
 
     # Fix 7: LO / cognitive demand rows — dark grey, left-aligned
     st("q_meta",     fontName="Helvetica",         fontSize=6.5, leading=10, textColor=DARK_GREY)
+    # English LO row — one notch larger than q_meta (7.5pt)
+    st("q_lo",       fontName="Helvetica",         fontSize=7.5, leading=11, textColor=DARK_GREY)
     # Question text — readable, same size as LP body
     st("q_text",     fontName="Helvetica",         fontSize=8.5, leading=13, textColor=INK)
     # Fix 9: MCQ option label — INK (not BLUE_TAG), full-stop format
@@ -63,13 +65,45 @@ def _make_ast():
        leftIndent=8)
     # Fix 6: single combined italic note — 8pt
     st("combo_note", fontName="Helvetica-Oblique", fontSize=8.0, leading=12, textColor=MID)
-    # Fix 8: section header — dark grey (#444444), 7.5pt, bold, centred
-    st("sec_hdr",    fontName="Helvetica-Bold",    fontSize=7.5, leading=11, textColor=DARK_GREY,
+    # Section header — dark grey (#444444), 8.5pt, bold, centred (fix 1: font +1 from 7.5)
+    st("sec_hdr",    fontName="Helvetica-Bold",    fontSize=8.5, leading=12, textColor=DARK_GREY,
        alignment=TA_CENTER)
     return s
 
 
 AST = _make_ast()
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# English teacher-guide helper: break run-together numbered/lettered answers
+# onto separate lines (mirrors the HTML fmtGuide() function).
+# Returns a list of Paragraph flowables.
+# ──────────────────────────────────────────────────────────────────────────────
+def _eng_guide_paras(text: str, uw: float) -> list:
+    """
+    Splits a teacher-guide string on embedded newlines OR run-together numbered /
+    lettered items ("1. …  2. …" or "(a) … (b) …") OR Part A / Part B labels,
+    and returns one Paragraph per logical line, formatted in the guide style.
+    """
+    if not text:
+        return []
+    guide_style = ParagraphStyle(
+        "eng_guide", fontName="Helvetica", fontSize=7.5, leading=11,
+        textColor=colors.HexColor("#085041"), leftIndent=8,
+    )
+    raw = _clean_text(text)
+    if "\n" in raw:
+        lines = [ln.strip() for ln in raw.split("\n") if ln.strip()]
+    else:
+        # Insert split markers before Part A / Part B / Part C labels
+        marked = re.sub(r'\s+(Part\s+[A-Z][\s\-:—])', r'\n\1', raw)
+        # Insert split markers before run-together numbered items: " 1." " 2."
+        marked = re.sub(r' (\d+)\.\s+', r'\n\1. ', marked)
+        # Insert split markers before lettered items: " (a)" " (b)"
+        marked = re.sub(r' \(([a-zA-Z])\)\s+', r'\n(\1) ', marked)
+        lines = [ln.strip() for ln in marked.split("\n") if ln.strip()]
+    return [Paragraph(_clean_text(ln), guide_style) for ln in lines]
+
 
 # Fixed display order and display names for question-type groups
 TYPE_ORDER = ["MCQ", "SCR", "ECR", "open_task"]
@@ -270,8 +304,9 @@ def _render_visual_stimulus(vs_text: str, uw: float, story: list):
 # ──────────────────────────────────────────────────────────────────────────────
 def _render_word_box(words: list, uw: float, story: list):
     """
-    Renders a styled word-box widget — used by Listening MATCH items that ask
-    students to circle words from a box as they listen (fix b).
+    Renders a styled word-box widget matching the HTML pill layout —
+    used by Listening MATCH items.  Each word appears in its own bordered
+    pill cell; all pills flow in a single wrapping row.
     words: list of word strings.
     """
     if not words:
@@ -280,16 +315,39 @@ def _render_word_box(words: list, uw: float, story: list):
         "wb_lbl", fontName="Helvetica-Bold",
         fontSize=7, leading=10, textColor=MID,
     )
-    word_style = ParagraphStyle(
-        "wb_word", fontName="Helvetica",
-        fontSize=8, leading=11, textColor=INK,
+    pill_style = ParagraphStyle(
+        "wb_pill", fontName="Helvetica",
+        fontSize=8.5, leading=12, textColor=INK,
+        alignment=TA_CENTER,
     )
     lbl_para = Paragraph("WORD BOX", lbl_style)
-    # Render words as a single paragraph with spaces between pill-style spans
-    word_text = "    ".join(_clean_text(w) for w in words if w.strip())
-    word_para = Paragraph(word_text, word_style)
-    box = Table([[lbl_para], [word_para]], colWidths=[uw])
-    box.setStyle(TableStyle([
+
+    # Build a row of pill cells — each word in its own bordered cell
+    clean_words = [_clean_text(w) for w in words if w.strip()]
+    if clean_words:
+        pill_paras  = [Paragraph(w, pill_style) for w in clean_words]
+        # Equal-width columns; shrink each pill to fit inside the box
+        pill_w      = (uw - 14) / len(clean_words)   # 14 = 7px left+right pad of outer box
+        pills_tbl   = Table([pill_paras], colWidths=[pill_w] * len(clean_words))
+        pills_tbl.setStyle(TableStyle([
+            ("BACKGROUND",    (0, 0), (-1, -1), colors.HexColor("#f0ede8")),
+            ("BOX",           (0, 0), (-1, -1), 0.5, HAIRLINE),
+            ("INNERGRID",     (0, 0), (-1, -1), 0.5, HAIRLINE),
+            ("TOPPADDING",    (0, 0), (-1, -1), 3),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
+            ("LEFTPADDING",   (0, 0), (-1, -1), 4),
+            ("RIGHTPADDING",  (0, 0), (-1, -1), 4),
+            ("VALIGN",        (0, 0), (-1, -1), "MIDDLE"),
+        ]))
+    else:
+        pills_tbl = None
+
+    rows = [[lbl_para]]
+    if pills_tbl:
+        rows.append([pills_tbl])
+
+    outer_box = Table(rows, colWidths=[uw])
+    outer_box.setStyle(TableStyle([
         ("BACKGROUND",    (0, 0), (-1, -1), colors.HexColor("#f7f6f4")),
         ("BOX",           (0, 0), (-1, -1), 0.8, HAIRLINE),
         ("TOPPADDING",    (0, 0), (-1, -1), 4),
@@ -298,8 +356,96 @@ def _render_word_box(words: list, uw: float, story: list):
         ("RIGHTPADDING",  (0, 0), (-1, -1), 7),
         ("VALIGN",        (0, 0), (-1, -1), "TOP"),
     ]))
-    story.append(box)
+    story.append(outer_box)
     story.append(Spacer(1, 4))
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# FILL_IN markdown-table parser (English assessment Q5/6 fix)
+# ──────────────────────────────────────────────────────────────────────────────
+def _render_fill_in_stem(text: str, uw: float, story: list, q_num: int):
+    """
+    Parses a FILL_IN item_stem that may contain inline markdown tables
+    (pipe-delimited, e.g.  | Word | Antonym |\\n|---|---|\\n| low | |).
+
+    The stem is split into alternating segments:
+      - text segments  → rendered as normal q_text paragraphs
+      - table segments → rendered as proper PDF tables (via _render_visual_stimulus)
+
+    The separator row "|---|---|" is stripped before rendering.
+    Numbered question header (Q{n}.) is prepended to the first text segment.
+    """
+    # Split the stem into lines
+    lines = text.split("\n")
+
+    # We produce a list of segments: each is ("text", str) or ("table", [row_str, …])
+    segments = []
+    cur_text_lines = []
+    cur_table_lines = []
+    in_table = False
+
+    for line in lines:
+        stripped = line.strip()
+        is_pipe = "|" in stripped and stripped.startswith("|")
+        is_sep  = bool(re.match(r"^\|[-|\s:]+\|", stripped))
+
+        if is_pipe and not is_sep:
+            # Pipe data row
+            if not in_table:
+                # flush accumulated text
+                if cur_text_lines:
+                    segments.append(("text", "\n".join(cur_text_lines)))
+                    cur_text_lines = []
+                in_table = True
+            cur_table_lines.append(stripped)
+        elif is_sep:
+            # Separator row — skip but stay in table mode if we already are
+            if not in_table:
+                if cur_text_lines:
+                    segments.append(("text", "\n".join(cur_text_lines)))
+                    cur_text_lines = []
+                in_table = True
+        else:
+            # Regular text line
+            if in_table:
+                # flush table
+                if cur_table_lines:
+                    segments.append(("table", cur_table_lines))
+                    cur_table_lines = []
+                in_table = False
+            cur_text_lines.append(line)
+
+    # flush remainder
+    if in_table and cur_table_lines:
+        segments.append(("table", cur_table_lines))
+    elif cur_text_lines:
+        segments.append(("text", "\n".join(cur_text_lines)))
+
+    # Render segments
+    first_text = True
+    for seg_type, seg_data in segments:
+        if seg_type == "text":
+            seg_text = seg_data.strip()
+            if not seg_text:
+                continue
+            if first_text:
+                # Prepend Q number to first text segment
+                display = f"<b>Q{q_num}.</b>  {_clean_text(seg_text)}"
+                first_text = False
+            else:
+                display = _clean_text(seg_text)
+            # Preserve embedded newlines as line breaks
+            display = display.replace("\n", "<br/>")
+            story.append(Paragraph(display, AST["q_text"]))
+            story.append(Spacer(1, 3))
+        else:
+            # table segment — reuse _render_visual_stimulus with pipe format
+            # Skip tables that have only a header row and no data rows
+            # (e.g. Part B "| Near | Far |" with no actual entries)
+            if len(seg_data) <= 1:
+                continue  # header-only table — nothing meaningful to show
+            pipe_text = "\n".join(seg_data)
+            _render_visual_stimulus(pipe_text, uw, story)
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -374,146 +520,148 @@ def _render_math_num_box(uw: float, story: list, working_lines: int):
 # ──────────────────────────────────────────────────────────────────────────────
 def question_block(q_num, item, lo_text, uw, header_items=None):
     """
-    Fix 3: KeepTogether wraps only meta_block + q_para (not entire question).
-    Fix 4: header_items (section header flowables) embedded in KeepTogether
-           for the first question of each section to prevent orphaning.
-    Fix 7: LO + cog demand as 2-row single-col table with BG_META background.
-    Fix 9: Q number plain INK; option labels 'A.', 'B.', etc. in INK, tighter cols.
-    Fix 1: No 'Look for' blocks for SCR or ECR.
-    Fix 2: open_task backward-compatible ('task' key first, then 'task_instructions').
+    Renders one assessment question as a list of PDF flowables.
 
-    Science v2.1 additions (no-op for SS):
-    - OPEN_TASK (uppercase) normalised to open_task before branching so the
-      same rendering path handles both subjects.
-    - visual_stimulus: if present and non-empty, a note is printed after the
-      question stem. SS items never carry this field so the check is always
-      a no-op for SS.
+    English layout (revised):
+      [Section name centred, per-question, via header_items]  (fix 1: every Q)
+      [Q{n}. question text]     -- FILL_IN uses _render_fill_in_stem
+      [Word box if MATCH]
+      [Visual stimulus -- suppressed for FILL_IN]
+      [MCQ options / open-task body]
+      [Teacher Guide]
+      [blank spacer]
+      [Learning Outcome]            (fix 3: below teacher guide, 7.5pt font)
+
+    Section-header font 8.5pt (fix 1: +1 from previous 7.5pt).
+    LO font 7.5pt via q_lo style   (fix 3: +1 from q_meta 6.5pt).
     """
-    story = []
+    story    = []
     qtype    = item.get("question_type", "")
-    is_maths = item.get("_maths_section_code") is not None  # True for maths items
+    is_maths = item.get("_maths_section_code") is not None
 
-    # Science uses OPEN_TASK (uppercase); normalise to open_task so the shared
-    # rendering path below handles both subjects identically.
     if qtype == "OPEN_TASK":
         qtype = "open_task"
 
-    # ── Meta block: differs for Maths vs Science/SS ──────────────────────────────────────
+    is_fill_in = (item.get("question_type", "") or "").upper() == "FILL_IN"
+
+    # ── Meta block ────────────────────────────────────────────────────────────
     if is_maths:
-        # Mathematics: Section \u00b7 Question Type \u00b7 Goal (no LO / Cognitive demand \u2014
-        # math uses goal recall/reason/apply instead of Bloom's cognitive_demand).
         sec_ref   = _clean_text(item.get("section_ref", "") or "")
         qt_disp   = _clean_text((qtype or "").upper())
         goal_raw  = _clean_text(item.get("goal", "") or "")
         goal_disp = goal_raw.capitalize() if goal_raw else ""
-
         meta_parts = []
-        if sec_ref:
-            meta_parts.append(f"<b>Section:</b> {sec_ref}")
-        if qt_disp:
-            meta_parts.append(f"<b>Type:</b> {qt_disp}")
-        if goal_disp:
-            meta_parts.append(f"<b>Goal:</b> {goal_disp}")
-        meta_line = " &nbsp;\u00b7&nbsp; ".join(meta_parts) if meta_parts else "<b>Section:</b> \u2014"
-
-        meta_rows = [
-            [Paragraph(meta_line, AST["q_meta"])],
-        ]
+        if sec_ref:   meta_parts.append(f"<b>Section:</b> {sec_ref}")
+        if qt_disp:   meta_parts.append(f"<b>Type:</b> {qt_disp}")
+        if goal_disp: meta_parts.append(f"<b>Goal:</b> {goal_disp}")
+        meta_line = " &nbsp;·&nbsp; ".join(meta_parts) if meta_parts else "<b>Section:</b> —"
+        meta_rows = [[Paragraph(meta_line, AST["q_meta"])]]
     elif item.get("is_english"):
-        # English: Learning Outcome only (no Cognitive demand)
-        lo_disp = f"<b>Learning Outcome:</b> {_clean_text(lo_text)}" if lo_text else "<b>Learning Outcome:</b> \u2014"
-        meta_rows = [
-            [Paragraph(lo_disp, AST["q_meta"])],
-        ]
+        meta_rows = []   # no top meta block for English
     else:
-        # Science / Social Sciences: LO assessed + Cognitive demand
-        lo_disp  = f"<b>LO assessed:</b> {_clean_text(lo_text)}" if lo_text else "<b>LO assessed:</b> \u2014"
+        lo_disp  = f"<b>LO assessed:</b> {_clean_text(lo_text)}" if lo_text else "<b>LO assessed:</b> —"
         cog_disp = f"<b>Cognitive demand:</b> {_clean_text(item.get('cognitive_demand', ''))}"
         meta_rows = [
             [Paragraph(lo_disp,  AST["q_meta"])],
             [Paragraph(cog_disp, AST["q_meta"])],
         ]
-    meta_block = Table(meta_rows, colWidths=[uw])
-    meta_block.setStyle(TableStyle([
-        ("BACKGROUND",    (0, 0), (-1, -1), BG_META),
-        ("TOPPADDING",    (0, 0), (-1, -1), 3),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
-        ("LEFTPADDING",   (0, 0), (-1, -1), 6),
-        ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
-        ("VALIGN",        (0, 0), (-1, -1), "TOP"),
-    ]))
 
-    # ── Question number + text ────────────────────────────────────────────────
-    # open_task items may have no question_text — show number only
-    q_raw  = item.get("question_text") or ""
-    q_text = _clean_text(q_raw)
-    if q_text:
-        q_para = Paragraph(f"<b>Q{q_num}.</b>  {q_text}", AST["q_text"])
-    else:
-        q_para = Paragraph(f"<b>Q{q_num}.</b>", AST["q_text"])
-
-    # Section header flows freely — not constrained by KeepTogether
+    # ── Section header (English: every question; others: first question only) ─
     if header_items:
         story.extend(header_items)
-    # Single narrow KeepTogether: only meta_block + q_para prevents LO orphaning
-    story.append(KeepTogether([meta_block, Spacer(1, 2), q_para]))
 
-    # ── Word box — rendered after question stem, before visual stimulus (fix b) ──
-    # The English pre-processor stores extracted word-box words on the item
-    # so question_block can render them in the correct position.
+    # ── Source section label (English only, every question) ──────────────────
+    src_sec_lbl = item.get("_source_section_label", "")
+    if src_sec_lbl and item.get("is_english"):
+        src_style = ParagraphStyle(
+            "src_sec_lbl", fontName="Helvetica-Bold", fontSize=7,
+            leading=10, textColor=colors.black,
+            alignment=1,  # centre
+            spaceBefore=1, spaceAfter=2,
+        )
+        story.append(Paragraph(f"Source section: {src_sec_lbl}", src_style))
+
+    # ── Question number + text ────────────────────────────────────────────────
+    if is_fill_in and item.get("is_english"):
+        q_raw = item.get("question_text") or ""
+        if q_raw:
+            _render_fill_in_stem(q_raw, uw, story, q_num)
+        else:
+            story.append(Paragraph(f"<b>Q{q_num}.</b>", AST["q_text"]))
+    else:
+        q_raw = item.get("question_text") or ""
+        if item.get("is_english") and q_raw and "\n" in q_raw:
+            q_text = "<br/>".join(_clean_text(ln) for ln in q_raw.split("\n"))
+        else:
+            q_text = _clean_text(q_raw)
+
+        if q_text:
+            q_para = Paragraph(f"<b>Q{q_num}.</b>  {q_text}", AST["q_text"])
+        else:
+            q_para = Paragraph(f"<b>Q{q_num}.</b>", AST["q_text"])
+
+        if meta_rows:
+            meta_block = Table(meta_rows, colWidths=[uw])
+            meta_block.setStyle(TableStyle([
+                ("BACKGROUND",    (0, 0), (-1, -1), BG_META),
+                ("TOPPADDING",    (0, 0), (-1, -1), 3),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
+                ("LEFTPADDING",   (0, 0), (-1, -1), 6),
+                ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+                ("VALIGN",        (0, 0), (-1, -1), "TOP"),
+            ]))
+            story.append(KeepTogether([meta_block, Spacer(1, 2), q_para]))
+        else:
+            story.append(q_para)
+
+    # ── Word box (MATCH items) ─────────────────────────────────────────────────
     wb_words = item.get("_word_box_words")
     if wb_words:
         _render_word_box(wb_words, uw, story)
 
-    # ── Visual stimulus — render after question stem ──────────────────────────
-    vs = item.get("visual_stimulus")
-    if vs and isinstance(vs, str) and vs.strip():
-        _render_visual_stimulus(vs, uw, story)
+    # ── Visual stimulus ────────────────────────────────────────────────────────
+    # Suppressed for FILL_IN -- tables already rendered inline by
+    # _render_fill_in_stem so visual_stimulus would be a duplicate.
+    if not is_fill_in:
+        vs = item.get("visual_stimulus")
+        if vs and isinstance(vs, str) and vs.strip():
+            _render_visual_stimulus(vs, uw, story)
 
     # ── MCQ options ───────────────────────────────────────────────────────────
-    # Suppress the flat options list for predict-then-listen MCQ items — those
-    # items embed their questions+options in the question_text paragraph already
-    # (fix f). The _suppress_options flag is set by the English pre-processor.
-    if qtype == "MCQ" and not item.get("_suppress_options"):
-        # Fix 9: labels "A.", "B.", "C.", "D." with full stop; INK colour
+    _is_true_false = (item.get("question_type", "") or "").upper() == "TRUE_FALSE"
+    if qtype == "MCQ" and not item.get("_suppress_options") and not _is_true_false:
         label_map = {"A": "A.", "B": "B.", "C": "C.", "D": "D."}
         opt_rows = []
         for opt in item.get("options", []):
             raw_lbl     = _clean_text(opt.get("label", "")).rstrip(".")
             display_lbl = label_map.get(raw_lbl, raw_lbl + ".")
             opt_rows.append([
-                Paragraph(f"<b>{display_lbl}</b>",               AST["q_opt_lbl"]),
-                Paragraph(_clean_text(opt.get("text", "")),       AST["q_opt_txt"]),
+                Paragraph(f"<b>{display_lbl}</b>",         AST["q_opt_lbl"]),
+                Paragraph(_clean_text(opt.get("text", "")), AST["q_opt_txt"]),
             ])
         if opt_rows:
-            # Label col indented right (not flush with Q number); answer col full width
             opt_t = Table(opt_rows, colWidths=[uw * 0.07, uw * 0.93])
             opt_t.setStyle(TableStyle([
                 ("BACKGROUND",    (0, 0), (-1, -1), colors.white),
                 ("TOPPADDING",    (0, 0), (-1, -1), 2),
                 ("BOTTOMPADDING", (0, 0), (-1, -1), 2),
-                ("LEFTPADDING",   (0, 0), ( 0, -1), 18),  # shift A/B/C/D right
+                ("LEFTPADDING",   (0, 0), ( 0, -1), 18),
                 ("LEFTPADDING",   (1, 0), ( 1, -1), 4),
                 ("RIGHTPADDING",  (0, 0), (-1, -1), 4),
                 ("VALIGN",        (0, 0), (-1, -1), "TOP"),
             ]))
             story.append(opt_t)
 
-    # ── Math SCR / NUM / ECR: response boxes suppressed ──────────────────────
-    # Previously rendered ruled writing areas for students. Suppressed now
-    # because the PDF is teacher-facing only; guide is in the online HTML.
-    # Science / SS are unaffected — they never entered these elif branches.
+    # Math SCR / NUM / ECR: response boxes suppressed (teacher-facing PDF)
 
-    # ── Open task — task / scaffold / format_of_output ────────────────────────
+    # ── Open task ─────────────────────────────────────────────────────────────
     elif qtype == "open_task":
-        # Fix 2: check "task" first (new format), fall back to "task_instructions"
         task_txt = _clean_text(item.get("task") or item.get("task_instructions") or "")
         if task_txt:
             story.append(Spacer(1, 3))
             story.append(Paragraph("<b>Task</b>", AST["ot_lbl"]))
             story.append(Paragraph(task_txt, AST["ot_txt"]))
             story.append(Spacer(1, 3))
-
         scaffold = item.get("scaffold", "")
         if isinstance(scaffold, dict):
             scaf_txt = _clean_text(scaffold.get("description", ""))
@@ -523,8 +671,6 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
             story.append(Paragraph("<b>Scaffold</b>", AST["ot_lbl"]))
             story.append(Paragraph(scaf_txt, AST["ot_txt"]))
             story.append(Spacer(1, 3))
-
-        # Fix 2: format_of_output may be a list (new) or dict with format_type (old)
         fmt = item.get("format_of_output") or item.get("open_task_format")
         if fmt:
             story.append(Paragraph("<b>Format of output</b>", AST["ot_lbl"]))
@@ -536,23 +682,56 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
                 if fmt_type:
                     story.append(Paragraph(f"1. {fmt_type}", AST["ot_txt"]))
 
-    # ── Mathematics: Guide block suppressed in PDF ───────────────────────────
-    # Guide (expected_answer, method, what_each_option_reveals, inclusivity)
-    # is available in the online HTML only. The PDF shows only question prompt
-    # and the Exercise companion card below.
+    # ── English: Teacher Guide  then  Learning Outcome below (fix 3) ──────────
+    if item.get("is_english"):
+        _tg   = item.get("teacher_guide") or {}
+        _sug  = _tg.get("suggested_answer", "") or item.get("suggested_answer", "") or ""
+        _elems = _tg.get("expected_elements") or item.get("expected_elements") or []
+        tg_lbl_style = ParagraphStyle(
+            "eng_tg_lbl", fontName="Helvetica-Bold", fontSize=7,
+            leading=10, textColor=colors.HexColor("#085041"),
+        )
+        if _sug or _elems:
+            story.append(Spacer(1, 3))
+            story.append(Paragraph("Teacher Guide", tg_lbl_style))
+            if _sug:
+                for gp in _eng_guide_paras(str(_sug), uw):
+                    story.append(gp)
+            if _elems:
+                elem_style = ParagraphStyle(
+                    "eng_tg_elem", fontName="Helvetica", fontSize=7.5,
+                    leading=11, textColor=colors.HexColor("#085041"),
+                    leftIndent=8,
+                )
+                for ei, elem in enumerate(_elems, 1):
+                    story.append(Paragraph(f"{ei}. {_clean_text(str(elem))}", elem_style))
+            story.append(Spacer(1, 3))
+
+        # LO below teacher guide -- 7.5 pt, one blank row gap (fix 3)
+        lo_after = _clean_text(lo_text or "")
+        if lo_after:
+            story.append(Spacer(1, 4))
+            lo_tbl = Table(
+                [[Paragraph(f"<b>Learning Outcome:</b> {lo_after}", AST["q_lo"])]],
+                colWidths=[uw],
+            )
+            lo_tbl.setStyle(TableStyle([
+                ("BACKGROUND",    (0, 0), (-1, -1), BG_META),
+                ("TOPPADDING",    (0, 0), (-1, -1), 3),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
+                ("LEFTPADDING",   (0, 0), (-1, -1), 6),
+                ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+                ("VALIGN",        (0, 0), (-1, -1), "TOP"),
+            ]))
+            story.append(lo_tbl)
+
+    # ── Mathematics: Exercise companion card ──────────────────────────────────
     if is_maths:
-        # ── Exercise companion card (Constitution v3.2 Rule 9) ─────────────
-        # Pointer to the textbook item that anchors this goal (exercise,
-        # worked example, or activity per the LP's gamut walk). Skipped
-        # silently when both fields are empty — no "[Fallback]" text.
         ex = item.get("exercise") or {}
         ex_book_ref    = _clean_text(ex.get("book_ref", "") or "")
         ex_description = _clean_text(ex.get("description", "") or "")
         if ex_book_ref:
-            ex_label_para = Paragraph(
-                f"<b>Exercise — {ex_book_ref}</b>",
-                AST["q_meta"],
-            )
+            ex_label_para = Paragraph(f"<b>Exercise — {ex_book_ref}</b>", AST["q_meta"])
             ex_rows = [[ex_label_para]]
             if ex_description:
                 ex_rows.append([Paragraph(ex_description, AST["ot_txt"])])
@@ -574,6 +753,7 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
     story.append(HLine(uw, thickness=0.3, color=ROW_LINE, sb=2, sa=2))
 
     return story
+
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -604,24 +784,7 @@ def build_assessment_pdf(output_path, data):
     ))
     story.append(Spacer(1, 3 * mm))
 
-    _is_maths_note = data.get("is_maths", False)
-    if _is_maths_note:
-        _note_text = (
-            "Marks are not prescribed — assign per question based on formative assessment "
-            "weightage and cognitive demand.<br/>"
-            "Teacher guidance (expected answer, method, distractors, inclusivity) is available "
-            "in the online view under My Plans &gt; Chapter Assessment."
-        )
-    else:
-        _note_text = (
-            "Marks are not prescribed — assign per question based on formative assessment "
-            "weightage and cognitive demand.<br/>"
-            "Teacher guidance for each question, including what incorrect responses reveal and "
-            "inclusivity scaffolds, is available in the Aruvi platform under "
-            "My Plans &gt; Chapter Assessment."
-        )
-    story.append(Paragraph(_note_text, AST["combo_note"]))
-    story.append(Spacer(1, 5 * mm))
+    story.append(Spacer(1, 3 * mm))
 
     items      = data["assessment_items"]
     lo_map     = data["lo_map"]
@@ -717,7 +880,14 @@ def build_assessment_pdf(output_path, data):
                     item.setdefault("question_text", raw_stem)
 
                 # teacher_guide already present on item; question_block reads it
+                # Spine header: first question in this spine group only.
+                # Source section label: every question.
                 header_items = [sec_para, sec_hline] if idx == 0 else None
+
+                src_sec_title = _clean_text(item.get("source_section_title", "") or "")
+                if src_sec_title:
+                    item["_source_section_label"] = src_sec_title
+
                 story.extend(question_block(
                     q_counter, item, lo_text, uw,
                     header_items=header_items,
@@ -823,6 +993,49 @@ def build_assessment_pdf(output_path, data):
                 ))
 
             story.append(Spacer(1, 4 * mm))
+
+    # ── Notes section — pushed to the bottom of the last page (fix 2) ──────────
+    # Renamed from "Guidance" → "Notes" (fix 2, all subjects).
+    # PageBreak pushes it to the start of a fresh page so it always appears
+    # at the foot of the document and never mid-content.
+    _is_maths_notes = data.get("is_maths", False)
+    if _is_maths_notes:
+        _notes_line2 = (
+            "Teacher guidance (expected answer, method, distractors, inclusivity) is available "
+            "in the online view under My Plans > Chapter Assessment."
+        )
+    else:
+        _notes_line2 = (
+            "Teacher guidance for each question, including what incorrect responses reveal and "
+            "inclusivity scaffolds, is available in the Aruvi platform under "
+            "My Plans > Chapter Assessment."
+        )
+    notes_lbl_style = ParagraphStyle(
+        "notes_lbl", fontName="Helvetica-Bold", fontSize=8.5, leading=13,
+        textColor=INK, spaceBefore=6,
+    )
+    notes_style = ParagraphStyle(
+        "notes_body", fontName="Helvetica", fontSize=8.5, leading=13,
+        textColor=INK, leftIndent=10,
+    )
+    # Notes block: keep together and only break page if not enough room remains.
+    # CondPageBreak triggers a new page only when remaining space < the given height.
+    # Estimated height of the Notes block: ~55pt covers label + 2 lines + spacers.
+    from reportlab.platypus import CondPageBreak
+    notes_block = [
+        CondPageBreak(55),
+        HLine(uw, thickness=0.5, color=HAIRLINE, sb=4, sa=2),
+        Paragraph("Notes", notes_lbl_style),
+        Spacer(1, 3),
+        Paragraph(
+            "1.  Marks are not prescribed — assign per question based on formative assessment "
+            "weightage and cognitive demand.",
+            notes_style,
+        ),
+        Paragraph("2.  " + _notes_line2, notes_style),
+        Spacer(1, 4 * mm),
+    ]
+    story.extend(notes_block)
 
     # ── Pass 1: build PDF without page numbers ─────────────────────────────────
     doc.build(

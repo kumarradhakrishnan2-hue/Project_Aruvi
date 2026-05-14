@@ -1,0 +1,1245 @@
+{
+  "filename": "ch_02_20260512_122542.json",
+  "saved_at": "2026-05-12T12:25:42",
+  "grade": "Grade VII",
+  "subject": "English",
+  "chapter_number": 2,
+  "chapter_title": "Wit and Humour",
+  "period_schedule_display": "Period schedule:\n  Row 1: 40 minutes × 1 period = 40 minutes\nTotal: 1 periods · 40 minutes",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 40,
+      "count": 1
+    }
+  ],
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 40,
+          "section_id": "A",
+          "section_title": "Animals, Birds, and Dr. Dolittle",
+          "spines_taught": [
+            "reading_for_comprehension"
+          ],
+          "activity_title": "From Pet Talk to Animal Clinic: Pre-Reading and Part I",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "comprehension-discussion"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 0,
+              "task_brief": "Share thoughts on having a pet or domestic animal"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 3,
+              "task_brief": "Cat's-food-Man's reason for suggesting Dolittle become animal doctor"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 4,
+              "task_brief": "Fill blanks on Dolittle's reaction to Polynesia's animal-language revelation"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Teacher invites students to share whether they have a pet and why, as prompted by the pre-reading discussion on spending time with domestic animals. Two or three students share; teacher links responses to the story's theme of understanding animals."
+            },
+            {
+              "minutes": "8–22",
+              "description": "Teacher reads the opening of the prose aloud up to Polynesia's proposal, then poses the question about the Cat's-food-Man suggesting Dolittle should become an animal doctor because he knows more about animals than local veterinarians (page 46). Students discuss in pairs and select the correct reason."
+            },
+            {
+              "minutes": "22–35",
+              "description": "Students complete the fill-in-the-blank task on Dolittle's reaction to Polynesia's information about animal languages — choosing between certainty/curiosity and write/memorise (page 46). Teacher reviews answers with the class."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Teacher briefly previews the next part of the story — Polynesia teaching Dolittle the Birds' A.B.C. — to build curiosity for the next period."
+            }
+          ],
+          "teacher_notes": "This period activates prior knowledge before reading begins; ensure all students, including hesitant ones, get a turn to share in the pre-reading discussion. The prose_summary notes that Dolittle is initially hesitant because there are already plenty of animal doctors, so draw out that tension in the MCQ discussion.",
+          "materials": [
+            "Textbook (p.43–46)",
+            "Blackboard"
+          ]
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 40,
+          "section_id": "A",
+          "section_title": "Animals, Birds, and Dr. Dolittle",
+          "spines_taught": [
+            "reading_for_comprehension"
+          ],
+          "activity_title": "Spectacles for a Horse: Events and Extract Analysis",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "literary-reading"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 6,
+              "task_brief": "What became a common sight in Puddleby after Dolittle started treating animals"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 8,
+              "task_brief": "Arrange story events in correct order"
+            }
+          ],
+          "homework": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 7,
+              "task_brief": "Challenges Dolittle might face as more animals come to him"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Teacher briefly recaps Period 1 — Polynesia's revelation about animal languages — and reads aloud the plough-horse episode from the prose."
+            },
+            {
+              "minutes": "5–18",
+              "description": "Students discuss and answer the question about what became a common sight in Puddleby after Dolittle started treating animals (page 49), selecting from the four options. Teacher highlights the humour of farm animals wearing glasses."
+            },
+            {
+              "minutes": "18–35",
+              "description": "Students arrange the ten story events in correct sequence (page 50); items (i) and (ii) are pre-filled. Pairs compare answers before a whole-class review."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Teacher assigns homework — written response on challenges Dolittle might face — and previews the extract tasks for the next period."
+            }
+          ],
+          "teacher_notes": "The sequencing task draws on the full arc of the prose_summary — from the Cat's-food-Man's visit through to worldwide fame — so students should have read the full extract before this period. The horse episode is the comic high point; use it to discuss how humour and empathy work together in the story.",
+          "materials": [
+            "Textbook (p.46–52)",
+            "Blackboard"
+          ]
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 60,
+          "section_id": "A",
+          "section_title": "Animals, Birds, and Dr. Dolittle",
+          "spines_taught": [
+            "reading_for_comprehension",
+            "listening"
+          ],
+          "activity_title": "Extract Close-Up and Clinic Announcement",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "critical-reading",
+            "listening": "critical-listening"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 9,
+              "task_brief": "Analyse Extract 1 — Polynesia's bird language revelation to Dolittle"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 10,
+              "task_brief": "Analyse Extract 2 — horse's green spectacles and animal medicine comment"
+            },
+            {
+              "spine": "listening",
+              "task_index": 1,
+              "task_brief": "Listen to clinic announcement and complete details with exact words"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Teacher reviews homework answers on Dolittle's challenges and connects to Extract 1 — Polynesia's demonstration that even Jip communicates through body language."
+            },
+            {
+              "minutes": "5–20",
+              "description": "Students read Extract 1 closely (page 50–51) and answer the four sub-items: replacing 'Good Gracious', explaining why Polynesia never used bird language before, identifying the true/false statement about Polynesia munching, and choosing the word that best describes Dolittle's feeling."
+            },
+            {
+              "minutes": "20–35",
+              "description": "Students read Extract 2 (page 51) and answer the four sub-items: completing the digging analogy, identifying Dolittle's attitude, completing the inference about doctors taking animals for granted, and briefly sharing their view on the final sentence."
+            },
+            {
+              "minutes": "35–55",
+              "description": "Teacher reads aloud the clinic announcement twice; students complete the details task — filling in the town name, street name, opening hours, special bird timings, the care promise, and the types of animals welcome (page 55)."
+            },
+            {
+              "minutes": "55–60",
+              "description": "Teacher checks listening answers orally and previews the speaking activity for the next period."
+            }
+          ],
+          "teacher_notes": "The two extracts together move from comic surprise (Polynesia's bird language) to gentle satire (the horse's observation that 'anybody thinks he can doctor animals'); both themes are central to the prose_summary's wit-and-empathy message. For the listening task, read the announcement at natural pace — avoid over-enunciation.",
+          "materials": [
+            "Textbook (p.50–55)",
+            "Blackboard",
+            "Audio script (p.88)"
+          ]
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 40,
+          "section_id": "A",
+          "section_title": "Animals, Birds, and Dr. Dolittle",
+          "spines_taught": [
+            "speaking",
+            "writing"
+          ],
+          "activity_title": "Doctor's Consultation and Writing a Notice",
+          "pedagogical_methods": {
+            "speaking": "role-play",
+            "writing": "guided-writing"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "speaking",
+              "task_index": 0,
+              "task_brief": "Role-play doctor–patient conversations for four health problems"
+            },
+            {
+              "spine": "writing",
+              "task_index": 0,
+              "task_brief": "Write a notice for the Annual Health Check-up using given words"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–18",
+              "description": "Students work in pairs using cue cards to role-play doctor–patient conversations for the four problems — cough and cold, dry lips, sore throat, and fatigue — taking turns as doctor and patient (page 55–56). Teacher circulates and prompts use of the six cue steps."
+            },
+            {
+              "minutes": "18–35",
+              "description": "Teacher explains the features of a notice (heading, date, time, venue, contact) and students complete the draft Annual Health Check-up notice by filling in blanks using the eight given words and phrases (page 57)."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Two students read their notices aloud; teacher gives brief feedback on format and language before previewing vocabulary work in the next period."
+            }
+          ],
+          "teacher_notes": "The role-play connects naturally to the Doctor Dolittle prose — the story's theme of empathetic listening and diagnosis is mirrored in the doctor–patient cue cards. For the notice task, remind students that a notice is a formal piece of writing; the word box ensures scaffolding without removing the writing demand.",
+          "materials": [
+            "Textbook (p.55–57)",
+            "Cue cards",
+            "Blackboard"
+          ]
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 60,
+          "section_id": "A",
+          "section_title": "Animals, Birds, and Dr. Dolittle",
+          "spines_taught": [
+            "vocabulary_grammar"
+          ],
+          "activity_title": "Compound Words, Palindromes, and Tenses",
+          "pedagogical_methods": {
+            "vocabulary_grammar": "linguistic-aspects-in-context"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 0,
+              "task_brief": "Sort compound words into hyphenated, open, and closed columns"
+            },
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 3,
+              "task_brief": "Identify palindrome words and sentences from given examples"
+            },
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 5,
+              "task_brief": "Fill blanks using present perfect tense forms"
+            }
+          ],
+          "homework": [
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 4,
+              "task_brief": "Underline verbs and identify present continuous or simple present tense"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–18",
+              "description": "Teacher introduces the three types of compound words (hyphenated, open, closed) using examples from the text — Cat's-food-Man, bird language, flowerpots — and students sort the seven words from the box into the correct columns (page 52)."
+            },
+            {
+              "minutes": "18–35",
+              "description": "Teacher introduces palindromes using 'never' and 'even' from the text, then students identify palindrome words and sentences in the six given examples (page 54) and share one palindrome of their own creation."
+            },
+            {
+              "minutes": "35–55",
+              "description": "Teacher models the present perfect tense using the two sentences from the text, then students fill in the six blanks using the present perfect forms of the verbs in brackets (page 55). Teacher reviews answers on the board."
+            },
+            {
+              "minutes": "55–60",
+              "description": "Teacher assigns homework on tense identification (page 54) and previews the poem section starting next period."
+            }
+          ],
+          "teacher_notes": "Compound words, palindromes, and present perfect are drawn from the same prose text, so link each to its source sentence to reinforce contextual learning. The present perfect task (items 1–6) is longer; keep the compound-word sort brisk so adequate time remains for grammar work.",
+          "materials": [
+            "Textbook (p.52–55)",
+            "Blackboard"
+          ]
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 40,
+          "section_id": "A",
+          "section_title": "Animals, Birds, and Dr. Dolittle",
+          "spines_taught": [
+            "beyond_text"
+          ],
+          "activity_title": "Animal Welfare in the Real World",
+          "pedagogical_methods": {
+            "beyond_text": "project-work"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "beyond_text",
+              "task_index": 2,
+              "task_brief": "Discuss best way to care for stray and abandoned animals with reasons"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Teacher reviews homework on tense identification and connects the Dr. Dolittle story's theme of animal welfare to real-world questions students encounter."
+            },
+            {
+              "minutes": "8–30",
+              "description": "Teacher presents the three options for caring for stray animals — providing food and water, taking them to a shelter, or adopting them — and students discuss in small groups, drawing on reasons from the text's theme of empathy and communication as foundations of good care (page 58)."
+            },
+            {
+              "minutes": "30–38",
+              "description": "Groups share their preferred option and reasons; teacher facilitates a brief whole-class comparison."
+            },
+            {
+              "minutes": "38–40",
+              "description": "Teacher notes the goshala and Ayurveda tasks as self-study options and transitions to introducing the poem 'A Funny Man' in the next period."
+            }
+          ],
+          "teacher_notes": "The beyond-text discussion on stray animals naturally extends the prose_summary's satirical point that empathy is the foundation of good medicine. The goshala visit and the Ayurveda research tasks are not covered in class due to time constraints; flag them as enrichment self-study.",
+          "materials": [
+            "Textbook (p.58)",
+            "Blackboard"
+          ]
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 40,
+          "section_id": "B",
+          "section_title": "A Funny Man",
+          "spines_taught": [
+            "reading_for_comprehension"
+          ],
+          "activity_title": "Upside-Down World: Reading and Discussing the Nonsense Poem",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "literary-reading"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 1,
+              "task_brief": "Identify true statements about the funny man from a list"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 3,
+              "task_brief": "Complete sentences on tone, rhyme scheme, and repetition of 'funny'"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 4,
+              "task_brief": "Choose correct answers on imagery, structure, and alliteration in the poem"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Teacher reads the poem aloud expressively, modelling the absurdist tone, then invites students to name what makes it funny — shoe on head, hats on feet, currant bun as a rose."
+            },
+            {
+              "minutes": "8–20",
+              "description": "Students work in pairs to identify the true statements from the list of six (page 61), checking answers with the teacher. The four true statements — funny man wore two hats on his feet, hopped home on his head, smiled at the poet, and the poet never heard such an amusing song — are discussed."
+            },
+            {
+              "minutes": "20–35",
+              "description": "Students complete the three-part sentence completion task on tone, rhyme scheme, and the function of 'funny' (page 61), then answer the three MCQ items on imagery, structure, and alliteration (page 61)."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Teacher briefly explains the ABCB rhyme scheme by marking it on the board and previews the extract analysis for Period 8."
+            }
+          ],
+          "teacher_notes": "The poem_appreciation_summary identifies the ABCB rhyme scheme and the synesthetic oxymorons ('funny sounding sight', 'funny looking smell') as the poem's key literary features; anchor the discussion of tone and repetition to these. Ensure students understand 'alliteration' before the MCQ task.",
+          "materials": [
+            "Textbook (p.59–62)",
+            "Blackboard"
+          ]
+        },
+        {
+          "period_number": 8,
+          "period_duration_minutes": 60,
+          "section_id": "B",
+          "section_title": "A Funny Man",
+          "spines_taught": [
+            "reading_for_comprehension",
+            "listening"
+          ],
+          "activity_title": "Extract Analysis and a Funny Personal Incident",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "critical-reading",
+            "listening": "critical-listening"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 7,
+              "task_brief": "Analyse Extract 1 — the currant bun presented as a rose"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 8,
+              "task_brief": "Analyse Extract 2 — the funny man hops home on his head"
+            },
+            {
+              "spine": "listening",
+              "task_index": 0,
+              "task_brief": "Select picture related to the girl's narration of a funny incident"
+            },
+            {
+              "spine": "listening",
+              "task_index": 1,
+              "task_brief": "Arrange events from the girl's narration in order of occurrence"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–18",
+              "description": "Students read Extract 1 closely and answer the four sub-items: why the funny man addresses the poet as 'Your Highness', choosing the phrase showing a polite request, identifying a currant bun from images, and completing the sentence about the poet's 'Well!' of surprise (page 62)."
+            },
+            {
+              "minutes": "18–33",
+              "description": "Students read Extract 2 and answer the four sub-items: identifying the line that tells us the sound was unique, completing the sentence about why the poet calls the man 'my friend', explaining what the funny man's reaction reveals, and choosing the feeling the last line creates (page 63)."
+            },
+            {
+              "minutes": "33–48",
+              "description": "Teacher plays or reads the listening text about a girl who mixed up her shoes and her plate twice; students select the correct picture related to the narration (page 65) and then arrange the seven events in order of occurrence (page 66)."
+            },
+            {
+              "minutes": "48–57",
+              "description": "Teacher reviews the event-ordering answers on the board, then leads a brief discussion connecting the girl's preoccupied muddle to the funny man's inverted behaviour in the poem."
+            },
+            {
+              "minutes": "57–60",
+              "description": "Teacher previews the speaking activity — telling a joke with correct voice — for the next period."
+            }
+          ],
+          "teacher_notes": "The poem_appreciation_summary notes that the final stanza is the 'perfect non-answer'; use the Extract 2 discussion to help students see that the funny man's world is genuinely and permanently inverted, not just a one-off joke. For listening, the transcript includes the detail of putting shoes in the kitchen — ensure students catch this for the sequencing task.",
+          "materials": [
+            "Textbook (p.62–66)",
+            "Blackboard",
+            "Audio script (p.88)"
+          ]
+        },
+        {
+          "period_number": 9,
+          "period_duration_minutes": 40,
+          "section_id": "B",
+          "section_title": "A Funny Man",
+          "spines_taught": [
+            "speaking",
+            "writing"
+          ],
+          "activity_title": "Telling a Joke and Writing a Limerick",
+          "pedagogical_methods": {
+            "speaking": "role-play",
+            "writing": "guided-writing"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "speaking",
+              "task_index": 0,
+              "task_brief": "Tell the man-and-God joke with correct voice for each character"
+            },
+            {
+              "spine": "writing",
+              "task_index": 0,
+              "task_brief": "Write an original limerick using the AABBA structure and template"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–15",
+              "description": "Teacher models the man-and-God joke once with the three different voices, then pairs take turns performing it — narrator's matter-of-fact voice, man's louder respectful voice, God's deep pleasant voice (page 66)."
+            },
+            {
+              "minutes": "15–35",
+              "description": "Teacher explains the AABBA rhyme scheme using the example limericks, then students write their own limerick on the given template — introduction of a person or place, a silly story, and an unexpected ending (page 67)."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Two or three students read their limericks aloud; teacher gives brief feedback on rhyme scheme adherence and previews the vocabulary work on phrasal verbs."
+            }
+          ],
+          "teacher_notes": "The speaking task links directly to the poem's comic spirit — the joke's punchline 'Wait a minute' is a verbal inversion similar to the funny man's behaviour. For the limerick, ensure students understand that lines 1, 2, and 5 rhyme (A) and lines 3 and 4 rhyme (B) before they begin writing.",
+          "materials": [
+            "Textbook (p.66–67)",
+            "Blackboard"
+          ]
+        },
+        {
+          "period_number": 10,
+          "period_duration_minutes": 60,
+          "section_id": "B",
+          "section_title": "A Funny Man",
+          "spines_taught": [
+            "vocabulary_grammar"
+          ],
+          "activity_title": "Phrasal Verbs and Movement Words",
+          "pedagogical_methods": {
+            "vocabulary_grammar": "linguistic-aspects-in-context"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 0,
+              "task_brief": "Match 'take' phrasal verbs to their correct meanings"
+            },
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 1,
+              "task_brief": "Fill blanks using take up/after/in/over/off with correct tense"
+            },
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 3,
+              "task_brief": "Arrange movement words in increasing order of pace"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–15",
+              "description": "Teacher introduces phrasal verbs using 'walking down', 'taking out', 'sat down' from the poem, then students match the five 'take' phrasal verbs to their meanings (page 64)."
+            },
+            {
+              "minutes": "15–35",
+              "description": "Students fill in the five blanks using the correct 'take' phrasal verb with appropriate tense changes (page 64). Teacher reviews answers on the board, highlighting tense adjustment in item 4 (took off)."
+            },
+            {
+              "minutes": "35–52",
+              "description": "Teacher introduces the movement-words scale — stagger, walk, hop, run — and students fill in the three blanks with jog, trot, sprint in increasing order of pace (page 65). Class discusses how these words appear in the poem."
+            },
+            {
+              "minutes": "52–60",
+              "description": "Teacher notes that the Column 3 phrasal verb creation task (look/run/put/break/call) is an enrichment self-study activity, and previews Section C — the play 'Say the Right Thing'."
+            }
+          ],
+          "teacher_notes": "The movement-words task connects directly to the poem's comic physicality — 'walking down', 'staggered back', 'hopped home on his head'. The Column 3 task (creating new phrasal verbs for look/run/put/break/call) is not covered in class due to time; flag it as enrichment.",
+          "materials": [
+            "Textbook (p.64–65)",
+            "Blackboard"
+          ]
+        },
+        {
+          "period_number": 11,
+          "period_duration_minutes": 40,
+          "section_id": "C",
+          "section_title": "Say the Right Thing",
+          "spines_taught": [
+            "reading_for_comprehension"
+          ],
+          "activity_title": "Social Blunders: Introducing the Play and Scene I",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "comprehension-discussion"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 1,
+              "task_brief": "Choose statements that display polite behaviour with guests"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 3,
+              "task_brief": "Complete the Scene I speaker-words-reason table"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Teacher introduces the play by explaining that it is a two-scene comedy about a mother coaching her daughter for a guest visit. Students briefly discuss what 'Athithi Devo Bhava' means and why politeness with guests matters (page 70)."
+            },
+            {
+              "minutes": "8–22",
+              "description": "Students choose the statements from the list of five that display polite behaviour (page 70): offering water, enquiring about well-being, and accompanying guests to the door are polite; asking when they will leave and commenting critically are not."
+            },
+            {
+              "minutes": "22–38",
+              "description": "Students read Scene I and complete the speaker-words-reason table (page 74), filling in Mary's reasons for two lines and Mrs. Shaw's words about the importance of kindness."
+            },
+            {
+              "minutes": "38–40",
+              "description": "Teacher previews Scene II — and the comic catastrophe to come — building anticipation for the next period where Section C RFC work continues. Note: Section C coverage continues in next sessions with listening, speaking, writing, and grammar; remaining RFC and all other Section C spines will be addressed in teacher-led self-study due to the chapter running to the final period."
+            }
+          ],
+          "teacher_notes": "The prose_summary notes that Mrs. Shaw coaches Mary through several specific rules — be kind, say things that please people, and above all say 'Must you go?' not 'Can't you go?' — anchor the table task to these coaching instructions. This is the final LP period; the Section C RFC extract tasks, listening, speaking, writing, vocabulary-grammar, and beyond-text spines are not anchored but should be assigned as guided self-study.",
+          "materials": [
+            "Textbook (p.70–75)",
+            "Blackboard"
+          ]
+        }
+      ]
+    },
+    "coverage_handoff": {
+      "reading_for_comprehension": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Animals, Birds, and Dr. Dolittle",
+            "section_type": "prose",
+            "implied_lo": "Student identifies main events and character motivations in a prose narrative.",
+            "tasks_anchored": [
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 0,
+                "task_brief": "Share thoughts on having a pet or domestic animal"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 3,
+                "task_brief": "Cat's-food-Man's reason for suggesting Dolittle become animal doctor"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 4,
+                "task_brief": "Fill blanks on Dolittle's reaction to Polynesia's animal-language revelation"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 6,
+                "task_brief": "What became a common sight in Puddleby after Dolittle started treating animals"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 8,
+                "task_brief": "Arrange story events in correct order"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 9,
+                "task_brief": "Analyse Extract 1 — Polynesia's bird language revelation to Dolittle"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 10,
+                "task_brief": "Analyse Extract 2 — horse's green spectacles and animal medicine comment"
+              }
+            ]
+          },
+          {
+            "section_id": "B",
+            "section_title": "A Funny Man",
+            "section_type": "poem",
+            "implied_lo": "Student analyses literary devices and tone in a nonsense poem.",
+            "tasks_anchored": [
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 1,
+                "task_brief": "Identify true statements about the funny man from a list"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 3,
+                "task_brief": "Complete sentences on tone, rhyme scheme, and repetition of 'funny'"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 4,
+                "task_brief": "Choose correct answers on imagery, structure, and alliteration in the poem"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 7,
+                "task_brief": "Analyse Extract 1 — the currant bun presented as a rose"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 8,
+                "task_brief": "Analyse Extract 2 — the funny man hops home on his head"
+              }
+            ]
+          },
+          {
+            "section_id": "C",
+            "section_title": "Say the Right Thing",
+            "section_type": "dialogue",
+            "implied_lo": "Student identifies polite and impolite conversational behaviour in a dramatic dialogue.",
+            "tasks_anchored": [
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 1,
+                "task_brief": "Choose statements that display polite behaviour with guests"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 3,
+                "task_brief": "Complete the Scene I speaker-words-reason table"
+              }
+            ]
+          }
+        ]
+      },
+      "listening": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Animals, Birds, and Dr. Dolittle",
+            "section_type": "prose",
+            "implied_lo": "Student extracts specific details from a spoken announcement by listening carefully.",
+            "tasks_anchored": [
+              {
+                "spine": "listening",
+                "task_index": 1,
+                "task_brief": "Listen to clinic announcement and complete details with exact words"
+              }
+            ]
+          },
+          {
+            "section_id": "B",
+            "section_title": "A Funny Man",
+            "section_type": "poem",
+            "implied_lo": "Student sequences events from a listened personal narrative in correct order.",
+            "tasks_anchored": [
+              {
+                "spine": "listening",
+                "task_index": 0,
+                "task_brief": "Select picture related to the girl's narration of a funny incident"
+              },
+              {
+                "spine": "listening",
+                "task_index": 1,
+                "task_brief": "Arrange events from the girl's narration in order of occurrence"
+              }
+            ]
+          }
+        ]
+      },
+      "speaking": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Animals, Birds, and Dr. Dolittle",
+            "section_type": "prose",
+            "implied_lo": "Student conducts a structured role-play conversation using guided prompts.",
+            "tasks_anchored": [
+              {
+                "spine": "speaking",
+                "task_index": 0,
+                "task_brief": "Role-play doctor–patient conversations for four health problems"
+              }
+            ]
+          },
+          {
+            "section_id": "B",
+            "section_title": "A Funny Man",
+            "section_type": "poem",
+            "implied_lo": "Student performs oral narration using varied voice to convey character.",
+            "tasks_anchored": [
+              {
+                "spine": "speaking",
+                "task_index": 0,
+                "task_brief": "Tell the man-and-God joke with correct voice for each character"
+              }
+            ]
+          }
+        ]
+      },
+      "writing": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Animals, Birds, and Dr. Dolittle",
+            "section_type": "prose",
+            "implied_lo": "Student writes a formal notice using appropriate format and vocabulary.",
+            "tasks_anchored": [
+              {
+                "spine": "writing",
+                "task_index": 0,
+                "task_brief": "Write a notice for the Annual Health Check-up using given words"
+              }
+            ]
+          },
+          {
+            "section_id": "B",
+            "section_title": "A Funny Man",
+            "section_type": "poem",
+            "implied_lo": "Student composes a limerick using the AABBA rhyme scheme.",
+            "tasks_anchored": [
+              {
+                "spine": "writing",
+                "task_index": 0,
+                "task_brief": "Write an original limerick using the AABBA structure and template"
+              }
+            ]
+          }
+        ]
+      },
+      "vocabulary_grammar": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Animals, Birds, and Dr. Dolittle",
+            "section_type": "prose",
+            "implied_lo": "Student forms and classifies compound words and applies present perfect tense.",
+            "tasks_anchored": [
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 0,
+                "task_brief": "Sort compound words into hyphenated, open, and closed columns"
+              },
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 3,
+                "task_brief": "Identify palindrome words and sentences from given examples"
+              },
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 5,
+                "task_brief": "Fill blanks using present perfect tense forms"
+              }
+            ]
+          },
+          {
+            "section_id": "B",
+            "section_title": "A Funny Man",
+            "section_type": "poem",
+            "implied_lo": "Student identifies and uses phrasal verbs drawn from a poem's action language.",
+            "tasks_anchored": [
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 0,
+                "task_brief": "Match 'take' phrasal verbs to their correct meanings"
+              },
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 1,
+                "task_brief": "Fill blanks using take up/after/in/over/off with correct tense"
+              },
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 3,
+                "task_brief": "Arrange movement words in increasing order of pace"
+              }
+            ]
+          }
+        ]
+      },
+      "beyond_text": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Animals, Birds, and Dr. Dolittle",
+            "section_type": "prose",
+            "implied_lo": "Student evaluates options for animal welfare and justifies a reasoned position.",
+            "tasks_anchored": [
+              {
+                "spine": "beyond_text",
+                "task_index": 2,
+                "task_brief": "Discuss best way to care for stray and abandoned animals with reasons"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "assessment_items": [
+      {
+        "spine_code": "reading_for_comprehension",
+        "spine_title": "Reading for Comprehension",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-RFC-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Animals, Birds, and Dr. Dolittle",
+            "source_section_type": "prose",
+            "source_spine": "reading_for_comprehension",
+            "source_lo": "Student identifies main events and character motivations in a prose narrative.",
+            "item_stem": "In the story of Doctor Dolittle, three events below mark key turning points. Arrange them in the order they occur in the narrative by numbering them 1, 2, and 3.\n\n(a) Polynesia reveals that animals have their own languages and offers to teach Dolittle.\n(b) A plough horse explains that he needs green spectacles, not pills, to protect his failing eyesight.\n(c) The Cat's-food-Man visits Dolittle with a stomach-ache and suggests he would make a better animal doctor.",
+            "question_type": "MATCH",
+            "options": [],
+            "visual_stimulus": "Event|Order\nThe Cat's-food-Man visits Dolittle and suggests he would make a better animal doctor.|\nPolynesia reveals that animals have their own languages and offers to teach Dolittle.|\nA plough horse explains he needs green spectacles to protect his failing eyesight.|",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "The correct order is: 1 — Cat's-food-Man's visit and suggestion; 2 — Polynesia's revelation about animal languages; 3 — the plough horse's request for green spectacles.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "In the story of Doctor Dolittle, three events below mark key turning points. Arrange them in the order they occur in the narrative by numbering them 1, 2, and 3.\n\n(a) Polynesia reveals that animals have their own languages and offers to teach Dolittle.\n(b) A plough horse explains that he needs green spectacles, not pills, to protect his failing eyesight.\n(c) The Cat's-food-Man visits Dolittle with a stomach-ache and suggests he would make a better animal doctor.",
+            "_source_section_label": "Animals, Birds, and Dr. Dolittle"
+          },
+          {
+            "id": "Q-RFC-B-1",
+            "source_section_id": "B",
+            "source_section_title": "A Funny Man",
+            "source_section_type": "poem",
+            "source_spine": "reading_for_comprehension",
+            "source_lo": "Student analyses literary devices and tone in a nonsense poem.",
+            "item_stem": "Read the following stanza from the poem:\n\n'He said, \"Allow me to present\nYour Highness with a rose.\"\nAnd taking out a currant bun\nHe held it to my nose.'\n\nThe poet creates humour by having the man behave with perfect courtesy while doing something absurd. Identify ONE literary device used in this stanza and explain how it contributes to the comic tone of the poem.",
+            "question_type": "SCR",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "The device is inversion (or incongruity): the man uses formal, polite language ('Allow me to present Your Highness') but substitutes an ordinary currant bun for the rose he has promised, creating absurd humour by combining high courtesy with a completely wrong object.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "Read the following stanza from the poem:\n\n'He said, \"Allow me to present\nYour Highness with a rose.\"\nAnd taking out a currant bun\nHe held it to my nose.'\n\nThe poet creates humour by having the man behave with perfect courtesy while doing something absurd. Identify ONE literary device used in this stanza and explain how it contributes to the comic tone of the poem.",
+            "_source_section_label": "A Funny Man"
+          },
+          {
+            "id": "Q-RFC-C-1",
+            "source_section_id": "C",
+            "source_section_title": "Say the Right Thing",
+            "source_section_type": "dialogue",
+            "source_spine": "reading_for_comprehension",
+            "source_lo": "Student identifies polite and impolite conversational behaviour in a dramatic dialogue.",
+            "item_stem": "In the play, Mrs. Shaw coaches Mary before the guests arrive. Based on the instructions Mrs. Shaw gives Mary in Scene I, which TWO of the following behaviours would Mrs. Shaw consider polite? Choose the correct options.\n\nA. Telling a guest that their dog outside looks dirty.\nB. Laughing and keeping the conversation flowing.\nC. Asking guests to stay longer when they wish to leave.\nD. Sharing your opinion about a neighbour's daily habits.",
+            "question_type": "MCQ",
+            "options": [
+              {
+                "label": "A",
+                "text": "Telling a guest that their dog outside looks dirty.",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "Laughing and keeping the conversation flowing.",
+                "is_correct": true
+              },
+              {
+                "label": "C",
+                "text": "Asking guests to stay longer when they wish to leave.",
+                "is_correct": true
+              },
+              {
+                "label": "D",
+                "text": "Sharing your opinion about a neighbour's daily habits.",
+                "is_correct": false
+              }
+            ],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "In the play, Mrs. Shaw coaches Mary before the guests arrive. Based on the instructions Mrs. Shaw gives Mary in Scene I, which TWO of the following behaviours would Mrs. Shaw consider polite? Choose the correct options.\n\nA. Telling a guest that their dog outside looks dirty.\nB. Laughing and keeping the conversation flowing.\nC. Asking guests to stay longer when they wish to leave.\nD. Sharing your opinion about a neighbour's daily habits.",
+            "_source_section_label": "Say the Right Thing"
+          }
+        ]
+      },
+      {
+        "spine_code": "listening",
+        "spine_title": "Listening",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-LIS-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Animals, Birds, and Dr. Dolittle",
+            "source_section_type": "prose",
+            "source_spine": "listening",
+            "source_lo": "Student extracts specific details from a spoken announcement by listening carefully.",
+            "item_stem": "Listen to the announcement about Dr. John Dolittle's new clinic. Then fill in the blanks below with the exact details you hear.\n\n(1) The clinic is located in the town of ______.\n(2) The address is ______, Rose Lane.\n(3) The clinic is open Monday to Friday, from ______ a.m. to ______ p.m.\n(4) Special timings for ______ are on Saturdays.",
+            "question_type": "FILL_IN",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "p.88",
+            "teacher_guide": {
+              "suggested_answer": "(1) Woodstock; (2) 12; (3) 9 a.m. to 5 p.m.; (4) birds.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "Listen to the announcement about Dr. John Dolittle's new clinic. Then fill in the blanks below with the exact details you hear.\n\n(1) The clinic is located in the town of ______.\n(2) The address is ______, Rose Lane.\n(3) The clinic is open Monday to Friday, from ______ a.m. to ______ p.m.\n(4) Special timings for ______ are on Saturdays.",
+            "_source_section_label": "Animals, Birds, and Dr. Dolittle"
+          },
+          {
+            "id": "Q-LIS-B-1",
+            "source_section_id": "B",
+            "source_section_title": "A Funny Man",
+            "source_section_type": "poem",
+            "source_spine": "listening",
+            "source_lo": "Student sequences events from a listened personal narrative in correct order.",
+            "item_stem": "You will listen to a girl describe a funny incident that happened while she was preoccupied with preparing for a presentation. After listening, arrange the four events below in the order they occurred by writing 1, 2, 3, or 4 next to each.\n\n(a) She placed her plate in her room by mistake.\n(b) She removed her shoes at the door and went to the kitchen.\n(c) She laughed at herself after realising what she had done.\n(d) She took her shoes to the kitchen instead of putting them away.",
+            "question_type": "MATCH",
+            "options": [],
+            "visual_stimulus": "Event|Order\nShe removed her shoes at the door and went to the kitchen.|\nShe placed her plate in her room by mistake.|\nShe took her shoes to the kitchen instead of putting them away.|\nShe laughed at herself after realising what she had done.|",
+            "transcript_ref": "p.88",
+            "teacher_guide": {
+              "suggested_answer": "Correct order: (b) She removed her shoes at the door — 1; (a) She placed her plate in her room — 2; (d) She took her shoes to the kitchen — 3; (c) She laughed at herself — 4.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "You will listen to a girl describe a funny incident that happened while she was preoccupied with preparing for a presentation. After listening, arrange the four events below in the order they occurred by writing 1, 2, 3, or 4 next to each.\n\n(a) She placed her plate in her room by mistake.\n(b) She removed her shoes at the door and went to the kitchen.\n(c) She laughed at herself after realising what she had done.\n(d) She took her shoes to the kitchen instead of putting them away.",
+            "_source_section_label": "A Funny Man"
+          }
+        ]
+      },
+      {
+        "spine_code": "speaking",
+        "spine_title": "Speaking",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-SPK-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Animals, Birds, and Dr. Dolittle",
+            "source_section_type": "prose",
+            "source_spine": "speaking",
+            "source_lo": "Student conducts a structured role-play conversation using guided prompts.",
+            "item_stem": "Work with a partner. One of you plays a doctor and the other plays a patient who complains of a sore throat. Using the six steps below as a guide — greet the patient, enquire about the problem, ask about symptoms, make a diagnosis and give a solution, provide additional advice, and mention the next appointment — carry out a conversation of at least six exchanges. The doctor should suggest a practical remedy and give at least one piece of additional advice.",
+            "question_type": "ORAL_PROMPT",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Student greets the patient politely and enquires about the problem.",
+                "Student asks at least one follow-up question about symptoms.",
+                "Student offers a remedy and at least one additional piece of advice.",
+                "Conversation follows a logical, turn-taking structure of at least six exchanges."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "Work with a partner. One of you plays a doctor and the other plays a patient who complains of a sore throat. Using the six steps below as a guide — greet the patient, enquire about the problem, ask about symptoms, make a diagnosis and give a solution, provide additional advice, and mention the next appointment — carry out a conversation of at least six exchanges. The doctor should suggest a practical remedy and give at least one piece of additional advice.",
+            "_source_section_label": "Animals, Birds, and Dr. Dolittle"
+          },
+          {
+            "id": "Q-SPK-B-1",
+            "source_section_id": "B",
+            "source_section_title": "A Funny Man",
+            "source_section_type": "poem",
+            "source_spine": "speaking",
+            "source_lo": "Student performs oral narration using varied voice to convey character.",
+            "item_stem": "The poem 'A Funny Man' describes a character who behaves in an upside-down way but remains polite and cheerful. Prepare a short oral retelling (4–6 sentences) of the funny man's visit from the narrator's point of view. Use at least two different voices or tones — one for the narrator describing events, and one for the funny man's own words — and perform it for the class.",
+            "question_type": "ORAL_PROMPT",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Student uses a distinct narrator's voice and a separate voice for the funny man.",
+                "Retelling covers at least two absurd actions from the poem.",
+                "Student conveys the comic, cheerful tone rather than a serious or confused one.",
+                "Delivery is clear enough for the class to follow the sequence of events."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "The poem 'A Funny Man' describes a character who behaves in an upside-down way but remains polite and cheerful. Prepare a short oral retelling (4–6 sentences) of the funny man's visit from the narrator's point of view. Use at least two different voices or tones — one for the narrator describing events, and one for the funny man's own words — and perform it for the class.",
+            "_source_section_label": "A Funny Man"
+          }
+        ]
+      },
+      {
+        "spine_code": "writing",
+        "spine_title": "Writing",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-WRT-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Animals, Birds, and Dr. Dolittle",
+            "source_section_type": "prose",
+            "source_spine": "writing",
+            "source_lo": "Student writes a formal notice using appropriate format and vocabulary.",
+            "item_stem": "Dr. Dolittle has decided to open a new session of his animal clinic specifically for farm animals in Puddleby. Write a notice of about 50 words announcing this session. Your notice must include: a clear heading, the date and time of the session, the venue (Dr. Dolittle's garden on Puddleby High Street), the types of animals welcome, and the name and title of the person issuing the notice.",
+            "question_type": "WRITING_TASK",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Notice has a clear heading in capitals (e.g., NOTICE or ANIMAL CLINIC SESSION).",
+                "Date, time, and venue are all included and correctly formatted.",
+                "At least one type of animal is named and the welcome is clearly stated.",
+                "Notice closes with the issuer's name and title."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "Dr. Dolittle has decided to open a new session of his animal clinic specifically for farm animals in Puddleby. Write a notice of about 50 words announcing this session. Your notice must include: a clear heading, the date and time of the session, the venue (Dr. Dolittle's garden on Puddleby High Street), the types of animals welcome, and the name and title of the person issuing the notice.",
+            "_source_section_label": "Animals, Birds, and Dr. Dolittle"
+          },
+          {
+            "id": "Q-WRT-B-1",
+            "source_section_id": "B",
+            "source_section_title": "A Funny Man",
+            "source_section_type": "poem",
+            "source_spine": "writing",
+            "source_lo": "Student composes a limerick using the AABBA rhyme scheme.",
+            "item_stem": "Write a limerick about a funny character who, like the man in the poem, does everything the wrong way around. Your limerick must:\n- be exactly five lines long\n- follow the AABBA rhyme scheme (lines 1, 2, and 5 rhyme; lines 3 and 4 rhyme)\n- introduce your character in line 1\n- tell a silly story in lines 2–4\n- end with an unexpected twist in line 5",
+            "question_type": "WRITING_TASK",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Limerick is exactly five lines with AABBA rhyme scheme maintained.",
+                "Line 1 introduces a named character or place.",
+                "Lines 3 and 4 are shorter and rhyme with each other (BB pattern).",
+                "Line 5 contains an unexpected or funny conclusion."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "Write a limerick about a funny character who, like the man in the poem, does everything the wrong way around. Your limerick must:\n- be exactly five lines long\n- follow the AABBA rhyme scheme (lines 1, 2, and 5 rhyme; lines 3 and 4 rhyme)\n- introduce your character in line 1\n- tell a silly story in lines 2–4\n- end with an unexpected twist in line 5",
+            "_source_section_label": "A Funny Man"
+          }
+        ]
+      },
+      {
+        "spine_code": "vocabulary_grammar",
+        "spine_title": "Vocabulary and Grammar",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-VG-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Animals, Birds, and Dr. Dolittle",
+            "source_section_type": "prose",
+            "source_spine": "vocabulary_grammar",
+            "source_lo": "Student forms and classifies compound words and applies present perfect tense.",
+            "item_stem": "Part A — Compound words: The story mentions that Dr. Dolittle's garden was always crowded with animals from near and far. Read the four words below and classify each as a hyphenated compound word, an open compound word, or a closed compound word.\n\n(1) windowsill   (2) plough horse   (3) well-bred   (4) harvest mice\n\nPart B — Present perfect tense: Complete the two sentences below using the present perfect tense form of the verbs in brackets.\n\n(5) Since opening his clinic, Doctor Dolittle _______ (treat) hundreds of farm animals.\n(6) Polynesia _______ (teach) him to speak the language of birds.",
+            "question_type": "FILL_IN",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "Part A: (1) windowsill — closed; (2) plough horse — open; (3) well-bred — hyphenated; (4) harvest mice — open. Part B: (5) has treated; (6) has taught.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "Part A — Compound words: The story mentions that Dr. Dolittle's garden was always crowded with animals from near and far. Read the four words below and classify each as a hyphenated compound word, an open compound word, or a closed compound word.\n\n(1) windowsill   (2) plough horse   (3) well-bred   (4) harvest mice\n\nPart B — Present perfect tense: Complete the two sentences below using the present perfect tense form of the verbs in brackets.\n\n(5) Since opening his clinic, Doctor Dolittle _______ (treat) hundreds of farm animals.\n(6) Polynesia _______ (teach) him to speak the language of birds.",
+            "_source_section_label": "Animals, Birds, and Dr. Dolittle"
+          },
+          {
+            "id": "Q-VG-B-1",
+            "source_section_id": "B",
+            "source_section_title": "A Funny Man",
+            "source_section_type": "poem",
+            "source_spine": "vocabulary_grammar",
+            "source_lo": "Student identifies and uses phrasal verbs drawn from a poem's action language.",
+            "item_stem": "The poem describes the funny man 'walking down' the street, 'taking out' a currant bun, and sitting down on the ground. These are all phrasal verbs.\n\nFill in each blank below with the correct phrasal verb from the box. Change the tense if needed.\n\n[take off  /  take after  /  take in  /  take over  /  take up]\n\n(1) The new principal will _______ the management of the school from next month.\n(2) Riya decided to _______ sketching as a hobby after seeing street art.\n(3) The young comedian's act _______ so quickly that he was invited to perform in five cities.\n(4) It was hard to _______ the meaning of the poem at first, but the class discussion helped.",
+            "question_type": "FILL_IN",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "(1) take over; (2) take up; (3) took off; (4) take in.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "The poem describes the funny man 'walking down' the street, 'taking out' a currant bun, and sitting down on the ground. These are all phrasal verbs.\n\nFill in each blank below with the correct phrasal verb from the box. Change the tense if needed.\n\n[take off  /  take after  /  take in  /  take over  /  take up]\n\n(1) The new principal will _______ the management of the school from next month.\n(2) Riya decided to _______ sketching as a hobby after seeing street art.\n(3) The young comedian's act _______ so quickly that he was invited to perform in five cities.\n(4) It was hard to _______ the meaning of the poem at first, but the class discussion helped.",
+            "_source_section_label": "A Funny Man"
+          }
+        ]
+      },
+      {
+        "spine_code": "beyond_text",
+        "spine_title": "Beyond the Text",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-BT-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Animals, Birds, and Dr. Dolittle",
+            "source_section_type": "prose",
+            "source_spine": "beyond_text",
+            "source_lo": "Student evaluates options for animal welfare and justifies a reasoned position.",
+            "item_stem": "In the story, Doctor Dolittle installs separate labelled doors for different species and a tiny tunnel for mice so that every animal can reach him easily. This shows that caring for animals requires thought and effort.\n\nImagine you find a stray dog in your neighbourhood that looks hungry and unwell. Three people suggest different courses of action:\n- Person 1: Provide food and water regularly outside your home.\n- Person 2: Contact an animal shelter and arrange for the dog to be taken there.\n- Person 3: Adopt the dog and bring it home.\n\nWrite a short paragraph (5–7 sentences) explaining which option you think is best and giving at least two reasons for your choice. You may also explain why you did not choose one of the other options.",
+            "question_type": "ECR",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Student clearly states which option they prefer at the start.",
+                "Student gives at least two distinct reasons supporting their choice.",
+                "Student acknowledges at least one limitation of a different option.",
+                "Response is written in complete sentences and stays on topic."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "In the story, Doctor Dolittle installs separate labelled doors for different species and a tiny tunnel for mice so that every animal can reach him easily. This shows that caring for animals requires thought and effort.\n\nImagine you find a stray dog in your neighbourhood that looks hungry and unwell. Three people suggest different courses of action:\n- Person 1: Provide food and water regularly outside your home.\n- Person 2: Contact an animal shelter and arrange for the dog to be taken there.\n- Person 3: Adopt the dog and bring it home.\n\nWrite a short paragraph (5–7 sentences) explaining which option you think is best and giving at least two reasons for your choice. You may also explain why you did not choose one of the other options.",
+            "_source_section_label": "Animals, Birds, and Dr. Dolittle"
+          }
+        ]
+      }
+    ],
+    "input_tokens": 33342,
+    "output_tokens": 14056,
+    "cost_inr": 26.1127
+  }
+}

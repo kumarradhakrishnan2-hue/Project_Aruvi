@@ -1,10 +1,10 @@
 {
   "metadata": {
     "document": "Ask Aruvi Q&A Knowledge Base",
-    "version": "V1.1",
-    "last_refreshed": "2026-04-05",
-    "date": "April 2026",
-    "total_pairs": 89,
+    "version": "V2.0",
+    "last_refreshed": "2026-05-14",
+    "date": "May 2026",
+    "total_pairs": 83,
     "categories": [
       "cat_a",
       "cat_b",
@@ -12,481 +12,451 @@
       "cat_d",
       "cat_e"
     ],
-    "authoring_note": "Pairs are building blocks with consistent terminology. Pairs that span two categories are duplicated in both. All answers grounded in platform constitutions and design documents. V1.1: Science lesson-plan and assessment logic added across Cat A, B, C, D."
+    "authoring_note": "V2.0: Full restructure. Categories realigned to teacher mental model. Cat_c now covers period allocation, not competency framework. All pairs grounded in V7 Project Report and subject generation rules. 80-word hard limit on all answers."
   },
   "categories": {
     "cat_a": {
-      "label": "How Aruvi plans lessons",
-      "description": "Why periods are structured the way they are; what drives activity sequencing",
+      "label": "How Aruvi plans your lessons",
+      "description": "What Aruvi is for; how it approaches lesson planning; how each subject stream works",
       "pairs": [
         {
           "id": "a01",
-          "q": "Why does my lesson have 5 periods?",
-          "a": "For Social Sciences, Aruvi distributes periods proportionally based on chapter weight — the sum of all competency weights. Heavier chapters receive more periods. For Science, Aruvi uses the effort index — a score reflecting conceptual demand, student activities, teacher demonstrations, and exercise load. Both inputs are computed at mapping time and stored in the chapter record."
-        },
-        {
-          "id": "a15",
-          "q": "What does the effort index mean? Why do some chapters get more periods than others in Science?",
-          "a": "The effort index is Aruvi's measure of how much classroom effort a Science chapter requires. It is computed from four signals: conceptual demand of the exercises (×2), number of student-executed activities (×1), teacher demonstrations (×1.5), and exercise execution load — whether students must produce diagrams or multi-step calculations (×2). Higher effort index chapters receive more periods by default. A teacher can override any chapter's allocation in the Generate tab."
-        },
-        {
-          "id": "a16",
-          "q": "Why do the effort index signals have different multipliers? What is the rationale?",
-          "a": "Each multiplier reflects the signal's true classroom cost. Conceptual demand (×2) has the highest weight because difficult reasoning requires the most reteaching time. Teacher demonstrations (×1.5) carry a higher multiplier than student activities (×1) because demonstrations require advance preparation invisible in the period count itself. Exercise execution load (×2) matches conceptual demand because diagram production and multi-step calculation consume disproportionate classroom time relative to written reasoning tasks."
-        },
-        {
-          "id": "a17",
-          "q": "What is a cognitive progression? Why doesn't my Science lesson plan follow the textbook sections?",
-          "a": "A cognitive progression is the ordered sequence of increasingly demanding cognitive operations a Science chapter builds — from first encounter with a phenomenon to the highest-order operation the chapter was designed to teach. Aruvi derives this from the chapter summary and dissolution test. Activities advance through the progression stages, not through textbook sections. This is by design: Science chapters are structured around one central developing competency, and the progression is how that competency builds."
-        },
-        {
-          "id": "a18",
-          "q": "Why does my Science lesson plan not have a section-by-section structure like Social Sciences?",
-          "a": "Social Sciences chapters develop multiple competencies across named sections — Aruvi plans period by period through those sections. Science chapters are different: each builds one central competency through progressively demanding cognitive operations. Aruvi organises Science lesson plans around this cognitive progression because that is how the chapter's own architecture works. The textbook's embedded activities and exercises are the content source; the progression is the structure."
-        },
-        {
-          "id": "a19",
-          "q": "What is the dissolution test?",
-          "a": "The dissolution test is the primary question Aruvi uses to identify a Science chapter's central competency: what cognitive operation, if removed, would dissolve this chapter's reason for existing as a teaching unit? For example, if a chapter on nutrition is stripped of its central operation — classifying nutrients by function — it ceases to be a coherent teaching unit. The dissolution test names that operation and anchors the entire lesson plan and assessment to it."
-        },
-        {
-          "id": "a20",
-          "q": "What is a co-central competency?",
-          "a": "A co-central competency occurs when a Science chapter's task architecture is structurally equal across two distinct cognitive operations — neither dissolves without the other. Aruvi flags such chapters with co_central: true. The lesson plan derives one integrated cognitive progression converging both operations at the final stage, not two separate plans. The assessment produces one open task requiring the student to reason across both operations simultaneously."
-        },
-        {
-          "id": "a03",
-          "q": "Why is this activity placed in Period 3?",
-          "a": "For Social Sciences, activities follow the chapter's section order — each period is anchored to a named section, and higher-weighted competencies receive more periods proportionally. For Science, activities follow the chapter's cognitive progression — from initial observation through to the highest-order operation named in the dissolution test. Period 3's position reflects its progression stage."
+          "q": "How can Aruvi help me as a teacher?",
+          "a": "Aruvi generates a complete lesson plan and assessment for any NCERT chapter in Social Sciences, Science, English, or Mathematics for Grades VI to X. You enter your available periods — Aruvi builds a fully sequenced, NCF-aligned lesson plan with one activity per period and a matched chapter assessment. It reduces your planning time while ensuring every plan is traceable to the curriculum framework."
         },
         {
           "id": "a02",
-          "q": "Why does Aruvi give one activity per period? Can a period have more?",
-          "a": "Aruvi assigns exactly one activity per period by design. This is a constitutional rule, not a default. A period has a fixed duration — 40, 45, or 60 minutes — and a single well-designed activity that fits that duration is more executable than two rushed ones. The activity is calibrated to the specific period duration you have entered. Teachers are free to adapt delivery, but Aruvi’s output is built on the one-activity-per-period principle."
+          "q": "How can Aruvi help me as a curriculum planner or administrator?",
+          "a": "Aruvi's Allocate tab gives you a whole-year view of teaching time across all chapters for a subject and grade. It shows how periods should be distributed based on each chapter's content weight, surfaces chapters that are heavier or lighter, and lets you adjust before any plan is generated. This gives you a defensible, curriculum-grounded annual plan — not a guess."
+        },
+        {
+          "id": "a03",
+          "q": "How can Aruvi help if I am home-schooling my child or supporting self-study?",
+          "a": "Aruvi generates a structured path through any NCERT chapter — activities in sequence, one per session, with clear learning outcomes at each step. The paired assessment lets you check understanding at the end of each chapter. A home educator or self-directed student gets the same NCF-aligned plan a classroom teacher would use, scaled to their own pace and available time."
         },
         {
           "id": "a04",
-          "q": "Where do the activities come from? Does Aruvi invent them?",
-          "a": "Activities are not invented. Every activity in a lesson plan is anchored to a named section of the chapter — it must be derivable from the actual content of that section as it appears in the NCERT textbook. The pedagogical approach — discussion, inquiry, map work, group task, and so on — is drawn from the NCF Pedagogy document for the relevant subject and stage. The combination of chapter content and pedagogy document produces the activity. Nothing is generic."
+          "q": "How does Aruvi ensure policy compliance with NCF 2023?",
+          "a": "Every Aruvi output is traceable to NCF 2023. Competency codes from the NCF framework are embedded in the chapter mapping. Activities are drawn from the NCF Pedagogy document for the relevant subject and stage. Lesson plans and assessments are generated within a set of subject-specific rules — versioned, internally maintained documents that translate NCF policy into precise generation constraints. No output is generated outside these rules."
         },
         {
           "id": "a05",
-          "q": "Can I change the number of periods before generating a lesson plan?",
-          "a": "Yes. The period schedule is your input, not Aruvi’s. You enter your available periods — their duration and count — in the Generate tab before generating. Aruvi builds the lesson plan entirely within whatever period budget you provide. If you use the Allocate tab first, the suggested period allocation is a starting point that you can override for any chapter."
+          "q": "How does Aruvi use NCF Curricular Goals?",
+          "a": "NCF 2023 defines Curricular Goals for each subject and stage — broad learning destinations a student should reach by the end of Middle or Secondary school. Aruvi maps each chapter's competencies to these Curricular Goals during the mapping step. Every lesson plan activity and every assessment question is therefore traceable upward to a Curricular Goal. The Allocate tab shows which Curricular Goals are served across the year."
         },
         {
           "id": "a06",
-          "q": "What is an implied Learning Outcome and why does it appear in my lesson plan?",
-          "a": "An implied Learning Outcome (implied LO) is a precise, observable statement of what a student will do after completing a specific activity. It is called implied because it is derived from the activity itself, not from an external list. Aruvi generates exactly one implied LO per activity. These LOs are the sole bridge between the lesson plan and the assessment."
+          "q": "What is the common approach across all subjects to lesson planning?",
+          "a": "Across all four subjects, the mechanism is the same: the chapter's own content drives the lesson plan, the lesson plan generates implied learning outcomes for each activity, and only those outcomes pass through to the assessment. The organising principle — how activities are sequenced within a chapter — differs by subject, because NCERT textbook architecture differs by subject. The pipeline is universal; the logic inside it is subject-specific."
         },
         {
           "id": "a07",
-          "q": "Why does the lesson plan not include time for assessment?",
-          "a": "The lesson plan uses the full period budget for teaching. Assessment is a separate activity that happens after the teaching sequence is complete, not inside it. This is a deliberate constitutional rule: the teacher’s periods are fully available for teaching, and the assessment is generated separately from the lesson plan output. This keeps the two functions clean and prevents teaching time from being eroded by in-plan testing."
+          "q": "What is the difference between a competency and a learning outcome in Aruvi?",
+          "a": "A competency is a durable cognitive ability defined in the NCF framework — for example, 'interpret historical sources.' It develops across many chapters over a stage. A learning outcome is chapter-specific and activity-specific: it names exactly what a student can do after completing one activity in this chapter. Aruvi calls these implied learning outcomes because they are derived from the activity, not imported from an external list."
         },
         {
           "id": "a08",
-          "q": "My period durations are different across days. Can Aruvi handle that?",
-          "a": "Yes. The period schedule input accepts multiple rows — each row is a combination of duration in minutes and period count. For example, you can enter three 40-minute periods and two 60-minute periods. Aruvi calibrates each activity to its specific period duration. A 60-minute period will receive a more developed activity than a 40-minute period covering the same chapter section."
+          "q": "What is an implied Learning Outcome? How is it used across subject streams?",
+          "a": "An implied Learning Outcome (implied LO) is a precise, observable statement of what a student can do after completing a specific lesson plan activity. It is called implied because Aruvi derives it from the activity itself — not from a published LO list. In all four subjects, implied LOs are the primary bridge between the lesson plan and the assessment: the assessment reads them to determine what each question must test."
         },
         {
           "id": "a09",
-          "q": "Does Aruvi follow the NCF 2023 pedagogy approach?",
-          "a": "Yes. The pedagogical approaches used in Aruvi’s lesson plans are drawn exclusively from the NCF Pedagogy document for the relevant subject and stage. Aruvi does not apply generic teaching methods. The pedagogy document specifies what kinds of activities are appropriate for each subject group — inquiry-based approaches for Science, source analysis for Social Sciences, language task structures for Languages, and so on."
+          "q": "Are lesson plans based on external learning outcomes? If not, why?",
+          "a": "No. Board-published or externally prescribed learning outcomes are not used as inputs. Learning outcomes in Aruvi are derived from what each chapter's activities actually demand of a student — they are implied by the activity, not imported from outside. Using external LOs would disconnect the assessment from what was actually taught. Aruvi's approach ensures the LO is a precise record of what happened in the lesson, not a generic curriculum statement."
         },
         {
           "id": "a10",
-          "q": "Can I edit the lesson plan after Aruvi generates it?",
-          "a": "The lesson plan Aruvi generates is a complete, ready-to-use document. You can save it from the Generate tab and download it as a PDF. Aruvi does not currently provide an in-platform editing interface for individual activities — the generated plan is the output. You can regenerate with a different period schedule if the first output does not fit your situation."
+          "q": "Why does the NCERT textbook architecture differ by subject, and what is the implication for Aruvi's design?",
+          "a": "Social Sciences chapters sprawl across multiple competencies in named sections. Science chapters build one central cognitive operation through progressive stages. English is structured around six language skill spines applied to each text. Mathematics has an innate progression of worked examples, activities, and exercises. Because the textbook architectures are genuinely different, forcing one planning template across all subjects would flatten those differences. Aruvi uses four subject-specific sets of generation rules so each plan respects the textbook's own logic."
         },
         {
           "id": "a11",
-          "q": "Why does Aruvi need the chapter summary — why not just the chapter title?",
-          "a": "The chapter title tells Aruvi nothing about what the chapter actually requires students to do. The chapter summary captures the content, the exercise architecture, and the structural sections that drive both competency mapping and activity design. Without it, Aruvi cannot anchor activities to specific textbook content or derive accurate Learning Outcomes. The summary is the content input the entire pipeline runs on."
+          "q": "How does Social Sciences plan lessons?",
+          "a": "Social Sciences chapters develop several competencies across named sections. Aruvi walks the chapter section by section, anchoring each activity to a specific section of the textbook. Higher-weighted competencies receive more activities and more time. Each activity ends with one implied learning outcome — a single sentence describing what a student who completed that activity can now do. These implied LOs are the only input the assessment receives."
         },
         {
           "id": "a12",
-          "q": "Is the lesson plan the same every time I generate it for the same chapter?",
-          "a": "The lesson plan will be consistent in its competency logic and activity anchoring for the same chapter — the chapter mapping is fixed and stored. However, if you change your period schedule, the activities will be recalibrated to the new durations and count. Minor variations in phrasing may also occur across generations. The structural logic — which competencies are addressed, in what sequence, with what kind of activity — remains stable."
+          "q": "What is competency mapping and why does Aruvi do it?",
+          "a": "Competency mapping is the step where Aruvi reads the chapter's content architecture and identifies which NCF competencies the chapter develops, how central each competency is, and how much weight it carries. This mapping is computed once per chapter and stored. It is the foundation for everything that follows — period allocation, lesson plan sequencing, and assessment design. Without a mapping, Aruvi cannot generate a plan that is genuinely curriculum-grounded."
         },
         {
           "id": "a13",
-          "q": "What is the essence of the Lesson Plan constitution?",
-          "a": "The Lesson Plan constitution is a scheme to ground the lesson plans in NCF’s & pedagogical framework. The constitution drives the generation of lesson plan to target cognitive transformation in the students, by doing which, they would achieved the targeted competencies over the entire stage (example: middle school). The constitution also emphasizes pedagogical diversity, chapter orientation for activity development and comprehensiveness aimed at competency achievement and not content completion."
+          "q": "For Social Sciences, what are the three types of competencies and how do the lesson plan and assessment reflect the difference?",
+          "a": "Central competencies (weight 3) organise the chapter — their removal would dissolve its teaching logic. Substantive competencies (weight 2) have dedicated architectural presence across sections. Present competencies (weight 1) appear through at least one structural element. In the lesson plan, higher-weight competencies receive more activities and time. In the assessment, Central competencies receive an open task and extended questions; Substantive get short constructed responses; Present get diagnostic MCQs."
         },
         {
           "id": "a14",
-          "q": "Why are Board advised or other publicly available Learning Outcomes not used by Aruvi?",
-          "a": "Learning Outcomes (LO) are not ‘imported’ targets to achieve. Rather LOs are the cognitive outcome of an lesson plan activity. Hence, it is natural that Los are derived by Aruvi as implied by a particular activity. In short, a chapter’s inherent opportunity to achieve a competency is first identified. The lesson plan activities are generated so as to achieve those competencies over the full stage. At the level of activity, the student realizes certain Learning Outcomes (called ‘Implied Los’) which are then tested in the assessment."
+          "q": "In Social Sciences, what is cognitive transformation and how does it shape the lesson plan?",
+          "a": "A cognitive transformation is the specific intellectual operation a chapter requires a student to perform — such as interpreting a source, tracing a cause-effect chain, or classifying evidence. Aruvi identifies these from the chapter's section architecture before matching them to NCF competency codes. This sequence ensures the mapping is grounded in what the chapter actually demands. Activities in the lesson plan are built to produce these transformations, not merely to cover content."
+        },
+        {
+          "id": "a15",
+          "q": "How does Science plan lessons?",
+          "a": "Science chapters build one central cognitive operation through clear, ordered stages — from first encounter with a phenomenon to the highest-order thinking the chapter is designed to produce. Aruvi derives this cognitive progression from the chapter and plans activities along its stages. Each stage ends with one implied learning outcome. Activities are drawn exclusively from the chapter's own experiments, exercises, and exploratory prompts — nothing is invented."
+        },
+        {
+          "id": "a16",
+          "q": "Why does Science use one Core Competency per chapter while Social Sciences uses multiple?",
+          "a": "Science chapters are built as self-contained competency units — each is designed to produce one cognitive ability, developed through progressive stages. Social Sciences chapters sprawl across multiple competencies simultaneously, with different sections developing different thinking skills. Because the textbook architectures are genuinely different, the generation rules differ by subject. Forcing multiple competencies onto a Science chapter would misrepresent how that chapter actually works."
+        },
+        {
+          "id": "a17",
+          "q": "How does English plan lessons? What are the six spines?",
+          "a": "English lesson planning is built on six skill spines: Reading for Comprehension, Listening, Speaking, Writing, Vocabulary and Grammar, and Beyond-the-Text. For each main section of a chapter — poem, prose, dialogue — Aruvi walks all six spines and produces one implied learning outcome per (section × spine) pair. NCF competency codes sit underneath, but the teacher engages with spines, not codes. Each outcome directly drives a question in the assessment."
+        },
+        {
+          "id": "a18",
+          "q": "In English, how does the spine structure align with NCF?",
+          "a": "The six spines directly correspond to the language competency domains NCF 2023 defines for the language subject group. Each spine-based implied learning outcome is tagged to an NCF competency code. The teacher sees the spine structure — which is how language pedagogy is naturally organised — while the platform maintains full NCF alignment underneath. This keeps the plan usable for teachers without requiring them to navigate the framework directly."
+        },
+        {
+          "id": "a19",
+          "q": "How does Mathematics plan lessons?",
+          "a": "Mathematics chapters have an innate progression: worked examples introduce a method, activities make it tangible, exercises drill it. Each chapter also builds on the chapter before it. Aruvi respects this: each period is anchored to specific worked examples, activities, and exercise questions from the textbook, in order. Prior chapter knowledge is treated as the entry condition — the plan begins where the previous chapter left off, not at an abstract competency statement."
+        },
+        {
+          "id": "a20",
+          "q": "For Mathematics, why does Aruvi follow textbook flow more closely than other subjects?",
+          "a": "Mathematics is the only subject where the NCERT textbook itself already encodes a rigorous progression. The worked-example sequence, in-chapter activities, and exercise sets are not supplementary — they are the method. Aruvi co-opts the textbook's own architecture rather than overlaying an external structure. Departing from the textbook flow would introduce gaps in the method chain and undermine the coherence the textbook was designed to provide."
+        },
+        {
+          "id": "a21",
+          "q": "What is the role of stage-wise pedagogy in lesson plan development?",
+          "a": "The NCF Pedagogy document for each subject and stage specifies what kinds of activities are appropriate — inquiry-based approaches for Science, source analysis for Social Sciences, language task structures for English, and so on. Aruvi uses the pedagogy document to govern how an activity is structured. The chapter summary governs what the activity contains. The two work together: pedagogy determines the approach; chapter content determines the material."
+        },
+        {
+          "id": "a22",
+          "q": "By following the lesson plans, how do I achieve stage-wise Curricular Goals?",
+          "a": "Each lesson plan activity is mapped to an NCF competency, and each competency is linked to a Curricular Goal. A Curricular Goal is developed across many chapters over a stage — no single chapter achieves it. By using Aruvi plans consistently across the year, a teacher builds toward each Curricular Goal progressively. The Allocate tab shows which Curricular Goals are covered across the year, surfacing gaps before they accumulate."
+        },
+        {
+          "id": "a23",
+          "q": "Where do activities come from? Does Aruvi invent them?",
+          "a": "Activities are not invented. Every activity in a lesson plan is anchored to a named section of the chapter — it must be derivable from actual textbook content. The pedagogical approach — discussion, inquiry, map work, experiment, group task — is drawn from the NCF Pedagogy document for the relevant subject and stage. The chapter content and pedagogy document together produce the activity. Nothing generic or unanchored is introduced."
+        },
+        {
+          "id": "a24",
+          "q": "Why does Aruvi give one activity per period?",
+          "a": "A period has a fixed duration — 40, 45, or 60 minutes — and one well-designed activity calibrated to that duration is more executable than two rushed ones. This is a deliberate design principle, not a default. Each activity is built for the specific period length you have entered. Teachers are free to adapt delivery, but Aruvi's output is built on the one-activity-per-period principle to ensure every plan is realistically teachable."
+        },
+        {
+          "id": "a25",
+          "q": "Why is there suggested homework in the lesson plan?",
+          "a": "Homework in Aruvi is not supplementary content — it is a deliberate extension of the period's cognitive work. Each homework suggestion is derived from the same chapter section and progression stage as the period's activity. It gives students time to consolidate or extend what the period introduced, without requiring additional classroom time. It is a suggestion, not a prescription — teachers adapt it to their school's homework norms."
+        },
+        {
+          "id": "a26",
+          "q": "Why does the lesson plan not include time for assessment?",
+          "a": "The lesson plan uses the full period budget for teaching. Assessment is a separate activity designed to follow the teaching sequence — it is generated alongside the lesson plan but is not embedded in it. This is a deliberate design principle: teaching time is fully protected, and assessment is not allowed to erode it. The teacher chooses when to administer the assessment after the chapter's teaching is complete."
         }
       ]
     },
     "cat_b": {
-      "label": "How Aruvi builds assessments",
-      "description": "Why certain question types appear; what competency weight means in practice for assessment",
+      "label": "How Aruvi builds your assessments",
+      "description": "Purpose of assessment; how implied LOs drive question type and depth; teacher guide and inclusivity",
       "pairs": [
         {
-          "id": "b02",
-          "q": "What is a Central competency?",
-          "a": "A Central competency (weight 3) is one whose removal would dissolve the chapter's fundamental organising purpose — it is the chapter's reason for existing. In Social Sciences, Central competencies drive the deepest assessment tier: MCQs with diagnostic distractors, short and extended constructed responses, one open task, and a teacher guide. Only one open task is generated per assessment regardless of how many Central competencies a chapter has."
-        },
-        {
-          "id": "b15",
-          "q": "How does Aruvi decide what types of questions to include in a Science assessment?",
-          "a": "Question type follows the cognitive progression stage. The final stage — the highest-order operation — always receives two MCQs plus an open task. Middle stages receive two MCQs plus a short constructed response. The first (foundational) stage receives two MCQs only. Every question cites the implied learning outcome it tests. Every MCQ has three diagnostically intentional distractors with a teacher guide explaining what each wrong answer reveals about the student's specific misunderstanding."
-        },
-        {
-          "id": "b16",
-          "q": "What is an open task in an assessment?",
-          "a": "An open task is a question requiring the student to demonstrate the chapter's highest-order cognitive operation in an extended, constructed way — such as a data interpretation task, a predict-and-explain question, or a cause-effect map. Aruvi generates exactly one open task per assessment. For Science, it is always at the final progression stage. For Social Sciences, it is assigned to the Central competency with the most implied learning outcomes. The teacher guide explains what a strong response demonstrates."
-        },
-        {
           "id": "b01",
-          "q": "Why are there so many MCQs?",
-          "a": "Every learning outcome in every assessment gets at least two MCQs — this applies to all subjects. For Social Sciences, additional question types are added for higher-weight competencies. For Science, additional questions appear at middle and final progression stages. MCQs in Aruvi are not recall checks — every option is diagnostically intentional. The teacher guide tells you exactly what a student who chose each wrong option most likely misunderstood."
+          "q": "What do we mean by Assessment in Aruvi? What is the purpose?",
+          "a": "Assessment in Aruvi is a chapter-scoped, formative tool — generated alongside the lesson plan and designed to test whether students engaged with the chapter's activities in the spirit of developing its competencies. It is not an exam. Every question is traceable to an implied learning outcome from the lesson plan. Its purpose is to help the teacher see where understanding has formed and where it has not, at the chapter level."
         },
         {
-          "id": "b17",
-          "q": "What does the teacher guide in the assessment tell me?",
-          "a": "Every question in Aruvi's assessment has a teacher guide. For MCQs, it names what each wrong answer reveals about the student's specific misunderstanding. For short constructed responses, it lists elements a complete answer should contain. For extended responses, it describes qualitative markers distinguishing strong from weak answers. For open tasks, it explains what the task demonstrates, strong-vs-weak markers, and alternative pathways for different learners."
+          "id": "b02",
+          "q": "How is Aruvi assessment different from exams administered periodically to students?",
+          "a": "Periodic exams are summative — they test retention across many chapters at a fixed point. Aruvi assessments are formative and chapter-scoped — administered after teaching a single chapter, designed to reveal the quality of student engagement with that chapter's specific activities. They do not carry marks or contribute to certification. The teacher guide that accompanies each question is designed for diagnostic use, not grading."
         },
         {
           "id": "b03",
-          "q": "What is a Substantive competency?",
-          "a": "A Substantive competency is one that has a dedicated named section in the chapter, or is developed deliberately across multiple sections with evident continuity. It shares the chapter with the Central competency. In the assessment, a Substantive competency receives MCQs and short constructed responses — a meaningful treatment that reflects its genuine architectural presence in the chapter, without reaching the full depth reserved for the Central competency."
+          "q": "Are Aruvi assessments 'for', 'of', or 'as' learning?",
+          "a": "Aruvi assessments are primarily assessment for learning — they give the teacher diagnostic information to inform what comes next. They are not assessment of learning (certification or ranking) and not assessment as learning (student self-evaluation). Every question includes a teacher guide that names the learning outcome being tested and — for MCQs — explains what each wrong answer reveals about the student's specific misunderstanding."
         },
         {
           "id": "b04",
-          "q": "What is a Present competency?",
-          "a": "A Present competency is one that appears through at least one explicitly designated structural element in the chapter — typically a single activity or exercise. It is genuinely taught, but is not a primary focus. In the assessment, a Present competency receives MCQs only. This reflects its lighter footprint in the chapter: it has been covered, and a basic check is appropriate."
+          "q": "Why does the assessment test Learning Outcomes and not the competency directly?",
+          "a": "A competency develops across many chapters and cannot be fully assessed at the chapter level. An implied learning outcome is chapter-specific and activity-specific — it names exactly what a student should be able to do after one lesson plan activity. Testing the implied LO tests whether the specific teaching in this chapter produced its intended cognitive result. This keeps assessment honest and prevents generic competency questions that float free of what was actually taught."
         },
         {
           "id": "b05",
-          "q": "Why are the wrong answer options in the MCQs so specific?",
-          "a": "Every MCQ distractor in Aruvi is diagnostically intentional — it represents a specific, nameable failure of understanding, not an arbitrary wrong answer. The annotation layer (visible to teachers, not to students) names what each wrong answer reveals about a student’s thinking. This turns an MCQ from a simple right/wrong check into a professional diagnostic signal. A student who picks a particular distractor is telling the teacher something specific about where their understanding broke down."
+          "q": "Does the assessment cover the whole chapter?",
+          "a": "Yes. Every competency mapped to the chapter has at least one question in the assessment. Higher-weight competencies receive more questions and deeper question types. The assessment is generated from the same implied LOs that the lesson plan produced — so if the lesson plan addressed the whole chapter, the assessment does too. Assessment length is not capped: chapters with more competencies produce longer assessments."
         },
         {
           "id": "b06",
-          "q": "What is the open task in the assessment?",
-          "a": "The open task is a longer, more open-ended assessment activity — such as a poster, letter, diagram, role play, or short project — that requires the student to demonstrate the Central competency in an integrated way. There is exactly one open task per assessment, always assigned to the Central competency. The teacher may substitute any format from the subject group’s open task menu if a different format suits her class better."
+          "q": "Why does the number of questions differ across chapters?",
+          "a": "Assessment length in Aruvi is intentionally uncapped — it reflects how much the chapter itself demands. A chapter with more implied learning outcomes produces more questions. In Social Sciences, chapters with more or higher-weight competencies generate more LOs. In Science, more progression stages do the same. In English, more active spines per section add more outcomes. In Mathematics, more worked-example steps add more outcome pairs. Length is a function of chapter content, not an arbitrary target."
         },
         {
           "id": "b07",
-          "q": "Why does the assessment test Learning Outcomes and not the competency directly?",
-          "a": "Competencies are developed progressively across an entire stage — they are not achieved in a single chapter. What Aruvi can assess at the chapter level is whether students have performed the specific cognitive tasks that the chapter’s activities produced — the implied Learning Outcomes. The assessment tests those LOs. The LOs are the observable evidence that the competency is being developed. Testing the competency directly at chapter level would be premature and architecturally incorrect."
+          "q": "How is the assessment rubric developed in Social Sciences?",
+          "a": "In Social Sciences, competency weight governs question type and count. Central competencies (weight 3) receive MCQs, short constructed responses, and exactly one open task per assessment. Substantive competencies (weight 2) receive MCQs and short constructed responses. Present competencies (weight 1) receive MCQs only. Every question cites the implied LO it tests by period number. Weight numbers are never shown to students — only Central, Substantive, Present labels are used."
         },
         {
           "id": "b08",
-          "q": "Explain the Teacher guide functionality that I see in the online assessment?",
-          "a": "The Guide layer is teacher-facing information attached to every assessment question — not visible to students. It includes the implied LO being tested (cited by period number), the competency and its weight, and what each MCQ distractor reveals about student understanding. Annotation depth scales with competency weight: full for Central, standard for Substantive, minimal for Present. It is not available in the downloaded PDF report to reduce content in printed form but can be accessed by opening the saved plans anytime."
+          "q": "How is the assessment rubric developed in Science?",
+          "a": "In Science, question type follows the chapter's cognitive progression stages. Foundational stages receive MCQs. Middle stages add short constructed responses. The final stage — the highest-order cognitive operation — receives the open task. Every question is traceable to the implied LO of its progression stage. MCQs at every stage include diagnostically intentional distractors with a teacher guide explaining what each wrong answer reveals about the student's specific misunderstanding."
         },
         {
           "id": "b09",
-          "q": "Can I add my own questions to the assessment?",
-          "a": "Aruvi generates the assessment as a complete document. There is no in-platform tool to add questions to the generated output. You can download the PDF and supplement it with your own questions offline. If you need a different period distribution or want to shift the competency focus, regenerating with a different period schedule will produce a different assessment."
+          "q": "How is the assessment rubric developed in English?",
+          "a": "In English, each implied learning outcome corresponds to a (section × spine) pair from the lesson plan. The assessment generates one question per implied LO. A Reading outcome gets a comprehension question on the actual passage. A Writing outcome gets a writing task tied to the same passage. A Speaking or Listening outcome gets a structured task the teacher can facilitate in class. Every question is grounded in the chapter's actual text — nothing is generic."
         },
         {
           "id": "b10",
-          "q": "Does the assessment cover the whole chapter?",
-          "a": "The assessment covers all competencies that the lesson plan’s activities developed — which in turn covers all the competencies mapped for that chapter. Because the lesson plan moves through the chapter’s sections in order, and each activity produces an implied LO, the assessment effectively covers the full chapter through its LOs. The coverage is competency-driven, not topic-by-topic."
+          "q": "How is the assessment rubric developed in Mathematics?",
+          "a": "In Mathematics, each implied learning outcome pairs with two artefacts in the assessment: a freshly written question that tests whether the method generalises to an unfamiliar context, and a companion exercise drawn from the textbook's own exercise set. This tests both transferable understanding and internalisation of the textbook's own progression. The teacher sees both side by side for each outcome."
         },
         {
           "id": "b11",
-          "q": "Is this a summative test or a formative assessment?",
-          "a": "Aruvi generates formative assessments only. A formative assessment is a professional tool for the teacher to understand what students have and have not yet grasped — it is not a summative certification instrument. It is chapter-scoped, designed for a single session, and every question is traceable to a specific implied Learning Outcome from the lesson plan. Summative assessments, term-end tests, and Board examination preparation are explicitly outside Aruvi’s scope."
+          "q": "How are question types chosen in the assessment?",
+          "a": "Question type is prescribed by Aruvi's generation rules for each subject — it is not chosen freely by the AI. In Social Sciences, competency weight determines type. In Science, progression stage determines type. In English, each spine outcome maps to a specific question form. In Mathematics, every outcome gets a transfer question and a textbook exercise. The permitted types are MCQ, short constructed response, extended constructed response, and open task."
         },
         {
           "id": "b12",
-          "q": "Why does the number of questions differ across chapters?",
-          "a": "Assessment length is intentionally uncapped in Aruvi. More competencies mapped in a chapter means more questions in the assessment — this reflects the genuine density of what that chapter develops. A chapter that maps three competencies will produce a larger assessment than a chapter that maps two. The assessment length is an honest reflection of the chapter’s competency architecture, not an arbitrary target."
+          "q": "What are MCQ distractors and how can they help a teacher?",
+          "a": "In Aruvi assessments, every wrong option in an MCQ is written with diagnostic intent — it represents a specific, known misconception or reasoning error students typically make. The teacher guide for each MCQ explains exactly what a student who chose each wrong option most likely misunderstood. This turns a multiple-choice question into a diagnostic instrument: the teacher does not just see how many got it wrong, but why."
         },
         {
           "id": "b13",
-          "q": "What is the essence of Assessment Constitution?",
-          "a": "The Assessment Constitution establishes a governing framework to develop formative chapter-scoped assessment. It is grounded in the Learning Outcomes implied in the lesson plan activities and are designed to test those learning outcomes. The constitution gives detailed guidance for design of various question types, depth of assessment needed for different competency weights and provides design rules for the teacher guide notes."
+          "q": "What is the purpose of the teacher guide? How is it differentiated by question type?",
+          "a": "The teacher guide is attached to every question and is not visible to students. For MCQs, it names what each wrong option reveals about student thinking. For short constructed responses, it lists the expected answer elements. For extended responses, it provides look-for markers describing a strong answer. For the open task, it describes what a strong response demonstrates and what a weak one reveals. It replaces a marking scheme with a richer diagnostic tool."
         },
         {
           "id": "b14",
-          "q": "Can one assessment question test more than one Learning Outcome?",
-          "a": "Yes. A question may test a single implied LO, a group of related LOs from the same period, or synthesise across LOs from multiple activities — provided every LO being tested is cited by period number in the annotation. This allows the assessment to include integrative questions that reflect how competencies develop across a lesson sequence, not just isolated period-by-period checks."
+          "q": "What is inclusivity in the teacher guide?",
+          "a": "Every question's teacher guide includes an inclusivity note — a practical suggestion on two fronts: how to scaffold the question for students who are struggling, and how to extend the cognitive demand for students who need a higher challenge. This is embedded in the guide alongside the question, not in a separate worksheet. It gives the teacher a differentiation cue at the point of use, without requiring separate preparation."
+        },
+        {
+          "id": "b15",
+          "q": "Why do we not have a marking scheme for the assessment? How can I work around it?",
+          "a": "Aruvi does not generate traditional marking schemes with point allocations because the assessments are formative, not certification instruments. Instead, every question has a teacher guide: for MCQs, it names what each wrong answer indicates; for constructed responses, it lists expected elements or look-for markers; for open tasks, it describes strong-versus-weak response characteristics. If your school requires a numerical scheme, you can construct one from these guide elements."
+        },
+        {
+          "id": "b16",
+          "q": "What is an open task and when does it appear?",
+          "a": "An open task is a constructed-response question requiring the student to demonstrate a competency in an extended, integrated way — a poster, letter, diagram, explanation, or role play. There is exactly one open task per assessment. In Social Sciences, it is assigned to the Central competency with the most implied LOs. In Science, it appears at the final, highest-order progression stage. The teacher guide describes what a strong response demonstrates."
+        },
+        {
+          "id": "b17",
+          "q": "Can one question test more than one Learning Outcome?",
+          "a": "Yes. In Social Sciences assessments, a question may synthesise across several implied LOs from related activities — provided the guide block names each LO being tested by period number. This reflects the reality that some competencies are developed cumulatively across a chapter. The question tests the student's ability to reason across what several activities built, not just the output of one."
+        },
+        {
+          "id": "b18",
+          "q": "Should I conduct assessments alongside chapter teaching, at the end of each chapter, or at the end of term?",
+          "a": "Aruvi assessments are designed to follow the completion of a chapter's teaching sequence — not during teaching, and not at term end. They are chapter-scoped: every question assumes the student has completed all the activities in the lesson plan. Administering at term end would mix chapter content and reduce diagnostic value. One assessment per chapter, after teaching is complete, is the intended use."
         }
       ]
     },
     "cat_c": {
-      "label": "The competency framework",
-      "description": "What NCF 2023 and C-codes mean in real classroom terms",
+      "label": "How time is allocated across chapters",
+      "description": "Why chapters get different period counts; how the Planning Tool works by subject; how to override",
       "pairs": [
         {
-          "id": "c03",
-          "q": "What is a C-code?",
-          "a": "A C-code is a unique identifier assigned to each competency in the NCF 2023 Curricular Goals document. For example, C-4.2 refers to a specific competency within Curricular Goal 4 for a given subject and stage. Aruvi uses C-codes to tag every mapped competency precisely. When you see a C-code in your lesson plan or assessment, it tells you exactly which NCF competency that activity or question is developing — traceable to the official framework document."
-        },
-        {
-          "id": "c05",
-          "q": "How is a learning outcome different from a competency code?",
-          "a": "A competency code (C-code) is an NCF 2023 policy identifier for a cognitive operation tied to a Curricular Goal — it is set at curriculum level. An implied learning outcome is different: it is derived per activity by asking what the student will demonstrably be able to do after completing that specific activity. C-codes are curriculum policy; LOs are observable classroom targets derived from activities, not retrieved from any document."
-        },
-        {
-          "id": "c21",
-          "q": "Why does Aruvi not assign competency weights to Science chapters?",
-          "a": "In Social Sciences, a single chapter develops multiple competencies across its sections — weights signal which competencies are architecturally central versus supporting. In Science, each chapter builds one central competency (or two co-central ones) through a single developmental progression. There is no need to weight competencies relative to each other when there is only one. Period allocation and assessment depth in Science are governed by the effort index and cognitive progression stage instead."
-        },
-        {
-          "id": "c22",
-          "q": "What is the cognitive progression? How is it different from learning outcomes?",
-          "a": "The cognitive progression is the ordered sequence of cognitive operations Aruvi derives for a Science chapter — from first encounter to highest-order operation. Each progression stage spans one or more periods. One implied learning outcome is derived per activity within each stage — describing what the student can demonstrably do after completing that activity. The progression is the chapter-level road map; each activity's LO is the observable milestone within it."
-        },
-        {
-          "id": "c19",
-          "q": "What is the dissolution test?",
-          "a": "The dissolution test is the primary question Aruvi uses to identify a Science chapter's central competency: what cognitive operation, if removed, would dissolve this chapter's reason for existing as a teaching unit? For example, if a chapter on nutrition is stripped of its central operation — classifying nutrients by function — it ceases to be a coherent teaching unit. The dissolution test names that operation and anchors the entire lesson plan and assessment to it."
-        },
-        {
-          "id": "c20",
-          "q": "What is a co-central competency?",
-          "a": "A co-central competency occurs when a Science chapter's task architecture is structurally equal across two distinct cognitive operations — neither dissolves without the other. Aruvi flags such chapters with co_central: true. The lesson plan derives one integrated cognitive progression converging both operations at the final stage, not two separate plans. The assessment produces one open task requiring the student to reason across both operations simultaneously."
-        },
-        {
           "id": "c01",
-          "q": "What is NCF 2023?",
-          "a": "NCF 2023 is the National Curriculum Framework released by the Government of India in 2023. It represents a genuine shift in how Indian school education is conceived — away from chapter completion and content coverage, towards the development of competencies: the ability to think, analyse, communicate, and apply knowledge in meaningful ways. Aruvi is built entirely around this framework, translating its policy intent into practical, executable classroom teaching."
+          "q": "Why do some chapters get more periods than others?",
+          "a": "Period allocation in Aruvi reflects how much classroom effort a chapter genuinely requires — not how long it is in pages. The measure of effort differs by subject: Social Sciences uses competency weight; Science, English, and Mathematics use an effort index built from signals specific to each subject's architecture. The result is a defensible default allocation the teacher or administrator can audit and override for any chapter."
         },
         {
           "id": "c02",
-          "q": "What is a competency?",
-          "a": "A competency, in the NCF 2023 framework, is an integrated capacity — the ability to perform meaningful cognitive and practical tasks that require understanding, not just recall. Competencies are not achieved in a single lesson; they are developed progressively across a stage through sustained engagement with content. A student developing a competency is learning to do something — to analyse, to interpret, to communicate, to investigate — not just to remember something."
+          "q": "How does period allocation work for Social Sciences?",
+          "a": "Each chapter's weight is the sum of its competency weight scores: Central competencies contribute 3, Substantive contribute 2, Present contribute 1. The Planning Tool allocates teaching periods in proportion to chapter weight across the full year. A chapter developing three Central competencies receives substantially more periods than one developing a single Present competency."
+        },
+        {
+          "id": "c03",
+          "q": "How does period allocation work for Science?",
+          "a": "Science chapters are allocated periods using an effort index — a composite score built from four signals: conceptual demand of the exercises, number of student-executed activities, number of teacher demonstrations, and exercise execution load (whether students must produce diagrams or multi-step calculations). Each signal carries a multiplier reflecting its true classroom time cost. Higher effort index chapters receive more periods. The breakdown is visible in the Allocate tab — the score is never opaque."
         },
         {
           "id": "c04",
-          "q": "What is a Curricular Goal?",
-          "a": "A Curricular Goal is a broad statement of what students should be able to do by the end of a stage — for example, by the end of the Middle Stage (Grades VI–VIII). Each Curricular Goal contains several specific competencies identified by C-codes. Aruvi’s outputs are grounded in the Curricular Goals for each subject and stage: the chapter mapping identifies which Curricular Goal competencies a chapter develops, at what weight."
+          "q": "How does period allocation work for English?",
+          "a": "English chapters are allocated periods using an effort index built from four spine-based signals: spine load (how many of the six spines the chapter actively develops), task density (how many graded tasks the chapter sets), writing demand (the weight of long-form writing required), and project load (the scale of any Beyond-the-Text projects). These combine into an effort index that drives proportional allocation across the year."
+        },
+        {
+          "id": "c05",
+          "q": "How does period allocation work for Mathematics?",
+          "a": "Mathematics chapters are allocated periods using an effort index drawn from the textbook's own architecture: the size of the worked-example set, the count of in-chapter activities, the exercise load, and the conceptual demand of the methods introduced. Chapters with denser worked-example progressions and larger exercise sets naturally receive more periods. The allocation reflects how much the textbook itself signals a chapter requires."
         },
         {
           "id": "c06",
-          "q": "Why does the same competency appear across multiple chapters?",
-          "a": "This is by design and reflects how NCF 2023 works. Competencies are developed progressively — no single chapter achieves a competency in full. A competency like analytical thinking in Social Sciences will appear across many chapters at different weights, each chapter contributing a layer of development. Aruvi tracks this across the annual plan, so the principal can see which competencies are well-covered across the year and which may be underrepresented."
+          "q": "What is competency weight and how is it calculated? (Social Sciences)",
+          "a": "Competency weight is a numerical signal — 3, 2, or 1 — assigned to each competency mapped to a chapter. Weight 3 (Central): the chapter's teaching logic dissolves without this competency. Weight 2 (Substantive): the competency has dedicated architectural presence across multiple sections. Weight 1 (Present): it appears through at least one structural element. Weight is determined by applying structural tests to the chapter's architecture — not by content importance or difficulty."
         },
         {
           "id": "c07",
-          "q": "What does competency weight mean and how is it calculated?",
-          "a": "Competency weight — 1, 2, or 3 — reflects how structurally central a competency is to a chapter. Weight 3 (Central): the chapter dissolves without it. Weight 2 (Substantive): dedicated architectural presence across sections. Weight 1 (Present): appears through at least one structural element. Weight is determined by constitutional tests applied to the chapter architecture — not by content importance or difficulty."
+          "q": "What is the effort index?",
+          "a": "The effort index is Aruvi's measure of how much classroom effort a chapter requires — used for Science, English, and Mathematics. It is a composite score built from subject-specific signals, each carrying a multiplier that reflects its true classroom time cost. The index is computed once during the mapping step and stored with the chapter record. It is the basis for the Planning Tool's default period allocation for those subjects."
         },
         {
           "id": "c08",
-          "q": "What is the dissolution test?",
-          "a": "The dissolution test identifies the Central (weight 3) competency. It asks: would removing this competency dissolve the chapter’s fundamental organising purpose? Only one competency can pass. If two appear equally important, neither receives weight 3 — both receive weight 2. The test prevents rhetorical prominence — a competency that appears frequently — from being mistaken for structural centrality."
+          "q": "Can I override the suggested allocation for a chapter?",
+          "a": "Yes. The Planning Tool's default allocation is a starting point, not a final answer. The chapter specific Lesson Plan and Assessment generator permits input of available periods (time in minutes and number of periods) manually."
         },
         {
           "id": "c09",
-          "q": "Why are there four separate mapping constitutions for different subjects?",
-          "a": "Social Sciences, Languages, Mathematics, and Science organise their cognitive demands in fundamentally different ways. A unified constitution would require compromise rules that flatten these genuine differences. Social Sciences chapters are built around content-bound cognitive transformations. Language chapters are built around explicit language acts. Mathematics chapters are built around exercise progression. Science chapters distinguish between conceptual, procedural, and investigative competency types. Each constitution reflects the actual architecture of its subject — they are not variations of a common template."
+          "q": "What does the Planning Tool show me?",
+          "a": "The Planning Tool — accessible through the Allocate tab — shows the default period allocation for every chapter in a subject and grade, alongside the signals that drove it. For Social Sciences, you see each chapter's competency weight breakdown. For Science, English, and Mathematics, you see the effort index and its component signals. A principal view shows which Curricular Goals are served across the year and whether any are underserved."
         },
         {
           "id": "c10",
-          "q": "What is a cognitive transformation?",
-          "a": "A cognitive transformation is the specific intellectual operation a chapter’s exercises require a student to perform — identifying cause and effect, interpreting a source, classifying data, constructing an argument. Aruvi identifies these from the chapter’s structural architecture before matching them to NCF competencies. This sequence ensures mapping is grounded in what the chapter actually demands, not in what competencies appear attractive."
-        },
-        {
-          "id": "c11",
-          "q": "How does the annual plan use competency data?",
-          "a": "The annual plan — accessible through the Allocate tab — uses each chapter’s total competency weight to allocate teaching periods proportionately. A chapter with a higher total weight receives more periods than one with a lower weight. This means teaching time reflects how much competency development each chapter delivers, not how long the chapter is. The principal view of the annual plan also shows which Curricular Goals are represented across the year and whether any are underserved."
-        },
-        {
-          "id": "c12",
-          "q": "Does Aruvi cover all NCF competencies for a subject?",
-          "a": "Aruvi maps competencies as they genuinely appear in each chapter — it does not artificially assign competencies to achieve coverage. Some competencies will appear across many chapters; others may appear in only a few. The annual plan view surfaces which Curricular Goals are well-represented and which are not, so the principal can identify gaps in the textbook’s coverage. Aruvi reports what is there accurately — it does not inflate coverage."
-        },
-        {
-          "id": "c13",
-          "q": "What is the competency chain and why does Aruvi use it?",
-          "a": "The competency chain is the unidirectional pipeline that connects chapter content to assessment through three stages: competency mapping, lesson plan generation, and assessment. Each stage receives only the outputs of the stage before it — nothing flows backward. This structure ensures that every activity and every assessment question is traceable to what the chapter actually demands, not to what competencies look attractive from the outside."
-        },
-        {
-          "id": "c14",
-          "q": "Why does each stage in the chain receive only the previous stage output and nothing more?",
-          "a": "This is the structural guarantee against backward derivation — the named failure mode where a later stage reads the competency definition and works backward to produce questions or activities that appear aligned but are not grounded in chapter content. By restricting each stage to only what the previous stage produced, Aruvi ensures the chain is forward-only: content drives activities, activities drive Learning Outcomes, Learning Outcomes drive assessment."
-        },
-        {
-          "id": "c15",
-          "q": "Why does Aruvi have four separate mapping constitutions instead of one?",
-          "a": "Social Sciences, Languages, Mathematics, and Science organise their cognitive demands differently. A single constitution would require compromise rules that flatten these genuine differences. Social Sciences maps content-bound transformations; Languages maps explicit language acts; Mathematics maps exercise progression; Science distinguishes conceptual, procedural, and investigative types. Each constitution reflects the actual architecture of its subject."
-        },
-        {
-          "id": "c16",
-          "q": "How does the chapter mapping constitution decide what counts as evidence for a competency?",
-          "a": "Evidence must come from the chapter’s structural architecture — its exercises, tasks, and activities — not from explanatory text or thematic content. In Science, descriptive context earns zero weight regardless of detail. In Languages, content that invites a language act without explicitly instructing it earns no weight. The constitution defines the minimum evidence bar for each subject group, preventing surface prominence from being mistaken for structural development."
-        },
-        {
-          "id": "c17",
-          "q": "Using an example, show how a chapter's structure reveals the central (weight 3) competency is developed?",
-          "a": "The chapter’s named sections act as structural signals of the thinking students must perform. For instance, sections like “Types of Markets,” “Chain of Goods,” and “Case Study” collectively require classification, process tracing, and economic reasoning. When these operations recur across multiple sections and organise the chapter’s progression, they indicate the central competency. Removing this competency would disrupt the chapter’s organising logic, since the sections would no longer connect meaningfully."
-        },
-        {
-          "id": "c18",
-          "q": "Why must competency mapping begin with cognitive transformations before using codes?",
-          "a": "Beginning with cognitive transformations prevents premature categorisation based on keywords or format. By first identifying what students must do — classify market types, trace goods movement, infer price differences — the mapping remains grounded in actual learning demands. Only afterward are competencies matched to framework codes. This two-pass approach ensures the chapter’s architecture determines competency assignment rather than external labels."
+          "q": "How does Allocation tool help a school Administration?",
+          "a": "At the beginning of the term or the year, the administrators are involved in detailed planning with respect to time available for subjects.  The allocation tool takes input of a constrained number like say 100 periods (of 40 minutes each) available for teaching class VI Science of a term and splits it across selected NCERT book chapters. The time allotted for each chapter then can be used by a teacher to plan her own class."
         }
       ]
     },
     "cat_d": {
       "label": "Using the platform",
-      "description": "Navigation, saving, exporting, period allocation",
+      "description": "Tab-by-tab navigation; generating, saving, and downloading plans",
       "pairs": [
-        {
-          "id": "d03",
-          "q": "How do I save a lesson plan?",
-          "a": "After generating a lesson plan in the Generate tab, a Save button appears. Click it to save the plan. Saved plans are stored and accessible in the My Plans tab, organised by subject and grade. Each saved plan includes both the lesson plan and the assessment."
-        },
-        {
-          "id": "d13",
-          "q": "Can I change the number of periods for a chapter?",
-          "a": "Yes. The Planning Tool (Allocate tab) distributes periods across chapters using chapter weight for Social Sciences or the effort index for Science as the proportional input. This gives you a defensible default. You can override any chapter's period count directly in the Generate tab before generating the lesson plan. Your override applies to that generation only — it is not saved back to the allocation."
-        },
-        {
-          "id": "d14",
-          "q": "What does the Allocate tab show me for Science chapters?",
-          "a": "For Science chapters, the Allocate tab shows each chapter's effort index and its four signal components: conceptual demand, student activity count, teacher demonstration count, and exercise execution load. You can see exactly why a chapter received its default period allocation — clicking any chapter shows the signal breakdown, not an opaque score. This makes every allocation decision auditable for you and your principal."
-        },
-        {
-          "id": "d15",
-          "q": "Why does Ask Aruvi sometimes say it cannot answer my question?",
-          "a": "Ask Aruvi answers questions about how the platform works — lesson plans, assessments, competency framework, and navigation. If your question is about classroom logistics or general pedagogy, Ask Aruvi will say so honestly and forward your query to the Aruvi support team. No question is ignored. If your question is about the platform but Ask Aruvi doesn't have a specific answer yet, your query is logged and will be used to expand the knowledge base."
-        },
         {
           "id": "d01",
           "q": "What are the three tabs in Aruvi and what does each do?",
-          "a": "Aruvi has three tabs. Allocate: plan period allocation across chapters for a subject using competency weights, adjustable manually. Generate: produce a lesson plan and assessment for a specific chapter using your period schedule. My Plans: access all saved lesson plans and assessments, view them, and download PDFs."
+          "a": "Aruvi has three tabs. (1) Allocate: set your period schedule and see how teaching time is distributed across chapters for a subject and grade — adjust before generating. (2) Generate: select a chapter and input a period count, then generate the lesson plan and assessment. (3) My Plans: view and download all previously saved plans. ‘Ask Aruvi’ help tool is available from all three tabs as a floating help panel."
         },
         {
           "id": "d02",
           "q": "How do I generate a lesson plan?",
-          "a": "Go to the Generate tab. Select your subject, grade, and chapter from the sidebar. Enter your period schedule — the duration and count of periods available for that chapter. Click Generate. Aruvi will stream the lesson plan to the screen, followed by the assessment. Once generated, you can save the plan using the Save button, and download PDFs for both the lesson plan and the assessment."
+          "a": "Go to the Generate tab. Select your subject, grade, and chapter. Enter your period schedule — duration and count. Click Generate. Aruvi will stream the lesson plan and assessment to the screen. When generation is complete, you can save the plan using the Save button. The plan includes the full lesson plan, implied learning outcomes, and the complete chapter assessment. The plan may take between 3 minutes to 6 minutes to generate – the longer the time period and/or larger the chapter, the more the time taken."
+        },
+        {
+          "id": "d03",
+          "q": "How do I save a lesson plan?",
+          "a": "After generating a plan in the Generate tab, click the Save button. The plan is saved under your subject and grade in the My Plans tab. Each saved plan is timestamped. You can return to it at any time — saving does not require re-generation. Only explicitly saved plans appear in My Plans; generated-but-unsaved plans are not stored."
         },
         {
           "id": "d04",
           "q": "How do I download a PDF of my lesson plan or assessment?",
-          "a": "PDF download buttons appear after generation in the Generate tab, and also in the My Plans tab alongside each saved plan. There are separate PDF downloads for the lesson plan and the assessment. Click the relevant PDF button to download."
+          "a": "From the Generate tab or the My Plans tab, click the Download PDF button for the plan you want. Two PDFs are available: one for the lesson plan and one for the assessment. Due to length of the plans, the Guide may not be available on some subject PDFs. But the online HTML version provides full view of all information including teacher guides for assessment."
         },
         {
           "id": "d05",
           "q": "How does the Allocate tab work?",
-          "a": "In the Allocate tab, you select a subject, grade, and the chapters you want to plan for. You enter the total number of periods available — the total teaching time budget. Aruvi calculates each chapter’s proportional share of that budget based on competency weights. The result is a suggested period allocation across all selected chapters."
+          "a": "Select your subject and grade. Enter the total periods available for the year or term. Aruvi distributes those periods across the chosen chapters using the subject's allocation method — competency weight for Social Sciences, effort index for Science, English, and Mathematics. The Period Allocation report PDF can be downloaded from the site. The report provides compliance and audit function for NCF compliance and for teacher to track competency achievements chapterwise."
         },
         {
           "id": "d06",
           "q": "Can a teacher and a principal use Aruvi differently?",
-          "a": "Yes. The Allocate tab serves both users but in different ways. A teacher typically uses it for a term’s worth of chapters — a subset. A principal uses it across all chapters in a subject for the full year, getting a whole-school view of competency coverage and period allocation. The Generate tab is primarily teacher-facing — it produces the lesson plan and assessment for a specific chapter that the teacher will use in her classroom."
+          "a": "Yes. A teacher typically uses the Generate tab to produce and save chapter-level plans. A principal or curriculum coordinator uses the Allocate tab for a whole-year view — seeing how periods are distributed across all chapters, which Curricular Goals are served, and where gaps exist. Both roles access the same platform; the Allocate tab is where the school-wide planning perspective is most visible."
         },
         {
           "id": "d07",
-          "q": "Can I access the various constitutions to study them?",
-          "a": "No. The constitutions are not accessible for public viewing. However, in the Q&A under different sections they have been described in high level of details. Any specific queries can be forwarded to the Support team through online feedback portal on Ask Aruvi."
+          "q": "Can I access Aruvi's internal generation rules to study them?",
+          "a": "Aruvi's generation rules are internal documents — they are not published for teacher access. If you have questions about why Aruvi made a particular decision, Ask Aruvi can explain the relevant rule in plain language. Questions beyond Ask Aruvi's scope are automatically logged and forwarded to Aruvi management for follow-up."
         },
         {
           "id": "d08",
           "q": "Where are my saved plans stored?",
-          "a": "Saved plans are stored on the server in an organised folder structure — by subject and grade. They are accessible through the My Plans tab. Each plan is saved as a single file containing both the lesson plan and the assessment, with a timestamp. You can view and download plans from the My Plans tab at any time."
+          "a": "Saved plans are stored in Aruvi's configured storage — organised by subject and grade. They are accessible through the My Plans tab at any time. Each plan is a single file containing both the lesson plan and the assessment, with a timestamp. Plans saved in one session are available in all subsequent sessions under the same account."
         },
         {
           "id": "d09",
           "q": "Can I use Aruvi on my phone or tablet?",
-          "a": "Aruvi is a web application and can be accessed from a browser on any device. The interface is designed primarily for desktop and tablet use. On smaller screens, some elements may require horizontal scrolling. Core functions — generating, saving, and downloading plans — are accessible on mobile browsers."
+          "a": "Aruvi is a web application and can be opened in a mobile browser. The Allocate and My Plans tabs are usable on a phone. The Generate tab — which streams long plan outputs — is more comfortably used on a tablet or desktop. PDF downloads work on all devices."
         },
         {
           "id": "d10",
           "q": "What if I want to generate a lesson plan for a chapter that is not yet available?",
-          "a": "Lesson plan and assessment generation requires a completed chapter mapping for that chapter. If a chapter is not yet available in the Generate tab, its mapping has not yet been completed. You can check the available chapters from the chapter dropdown in the Generate tab. New chapters are added progressively — contact the Aruvi support team if you need a specific chapter prioritised."
+          "a": "Aruvi's chapter coverage is being built out progressively. If a chapter you need is not yet available, it means the chapter mapping has not yet been completed for that chapter. You can use the feedback feature in Ask Aruvi to flag the chapter — this is logged and feeds into the prioritisation of what gets mapped next."
         },
         {
           "id": "d11",
           "q": "Can I generate a lesson plan without using the Allocate tab first?",
-          "a": "Yes. The Allocate tab is independent of the Generate tab. You can go directly to Generate, select your chapter, enter your own period schedule, and generate. The Allocate tab helps you decide how many periods to give each chapter across a term or year — but using it is not a prerequisite for generating a lesson plan."
+          "a": "Yes. The Allocate tab is optional — it helps you plan time across the year but is not required before generating. In the Generate tab, you enter the period count for the chapter directly. If you have not used Allocate, you decide the period count yourself. Using Allocate first gives you a curriculum-grounded starting point for that number."
         },
         {
           "id": "d12",
           "q": "What does it mean when the generation is streaming?",
-          "a": "Streaming means the lesson plan and assessment text appears on screen progressively as Aruvi generates it — you do not wait for the full output before seeing results. This is normal behaviour. The generation is complete when the full lesson plan and assessment have appeared and the Save and PDF buttons become active. Do not close the tab while streaming is in progress."
+          "a": "Streaming means Aruvi is generating and displaying the lesson plan and assessment in real time as the content is produced — you see it appear progressively rather than waiting for a completed document. Do not close the tab or navigate away during streaming. When streaming stops and the Save button appears, generation is complete and the plan is ready to save."
+        },
+        {
+          "id": "d13",
+          "q": "Can I change the number of periods for a chapter?",
+          "a": "Yes, in two ways. In the Allocate tab, you can adjust the period count for any chapter before generating. In the Generate tab, you enter the period count directly at generation time. If you change the period count and regenerate, Aruvi rebuilds the plan for the new budget — activities are rescaled to the new count and duration. The chapter mapping is not recomputed; only the plan changes."
+        },
+        {
+          "id": "d14",
+          "q": "What does the Allocate tab show me for Science chapters?",
+          "a": "For Science chapters, the Allocate tab shows each chapter's effort index and the period count derived from it. Clicking any chapter reveals the signal breakdown that contributed to the effort index — making every allocation decision auditable. You can see exactly why a chapter received its default allocation and adjust it if your context requires a different distribution."
+        },
+        {
+          "id": "d15",
+          "q": "Why does Ask Aruvi sometimes say it cannot answer my question?",
+          "a": "Ask Aruvi is scoped to questions about how the platform works — its rules, its decisions, and its outputs. Questions about classroom logistics, specific pedagogical techniques, material sourcing, or student management are outside this scope. When Ask Aruvi cannot match a question to its knowledge base, it says so and automatically logs your question for Aruvi management review. No question goes unacknowledged."
         }
       ]
     },
     "cat_e": {
       "label": "What Aruvi cannot do",
-      "description": "Scope boundaries — proactive honesty about platform limitations",
+      "description": "Skill boundary; what teachers often ask for that Aruvi does not produce",
       "pairs": [
         {
-          "id": "e15",
+          "id": "e01",
           "q": "Can Aruvi tell me which student has mastered which competency?",
           "a": "No. Aruvi generates lesson plans, assessments, and teacher guides — it does not process student responses or maintain individual student records. The assessment output tells you what each question tests and what each wrong answer reveals, but recording student performance, tracking mastery, or generating progress reports is outside Aruvi's scope. Aruvi is a planning and generation tool, not a student information system."
         },
         {
-          "id": "e01",
-          "q": "Can Aruvi generate marking schemes?",
-          "a": "Aruvi does not generate traditional marking schemes with point allocations. Instead, every question comes with a teacher guide: for MCQs, it names what each wrong answer indicates; for constructed responses, it lists expected answer elements; for open tasks, it describes strong-vs-weak markers and inclusion pathways. This replaces a marking scheme with a richer diagnostic tool. If your school requires a numerical scheme, you would construct it from the guide content."
-        },
-        {
           "id": "e02",
-          "q": "Can Aruvi track individual student performance?",
-          "a": "No. Aruvi does not track, record, or profile individual students. It generates teaching and assessment tools for the teacher — it does not manage student data of any kind. Individual student tracking, progress records, and performance databases are outside Aruvi’s scope entirely."
+          "q": "Can Aruvi generate marking schemes?",
+          "a": "Aruvi does not generate traditional marking schemes with point allocations. Instead, every question comes with a teacher guide: for MCQs, it names what each wrong answer indicates; for constructed responses, it lists expected answer elements or look-for markers; for open tasks, it describes strong-versus-weak response characteristics. If your school requires a numerical scheme, you would construct it from the guide content."
         },
         {
           "id": "e03",
+          "q": "Can Aruvi track individual student performance?",
+          "a": "No. Aruvi does not track, record, or profile individual students. It generates teaching and assessment tools for the teacher — it does not manage student data of any kind. Individual student tracking, progress records, and performance databases are outside Aruvi's scope entirely."
+        },
+        {
+          "id": "e04",
           "q": "Can Aruvi prepare students for Board exams?",
           "a": "No. Aruvi generates chapter-scoped formative assessments aligned to NCF 2023 competencies. Board examination preparation — which involves summative testing, past paper practice, and exam-style question formats — is a different function. Aruvi is not designed for it and does not produce Board exam preparation materials."
         },
         {
-          "id": "e04",
-          "q": "Can Aruvi generate a summative test or term-end exam?",
-          "a": "No. Aruvi generates formative assessments only — chapter-scoped, designed for a single session, and intended as a professional teaching tool rather than a certification instrument. Summative tests, term-end exams, half-yearly and annual examinations are outside Aruvi’s scope."
-        },
-        {
           "id": "e05",
-          "q": "Can Aruvi suggest how to adapt an activity for a large class?",
-          "a": "Ask Aruvi is a tool to help users with questions on the platform. Questions about adapting activities for specific classroom conditions are beyond the scope of Ask Aruvi. Your query will be forwarded to the Aruvi support team."
+          "q": "Can Aruvi generate a summative test or term-end exam?",
+          "a": "No. Aruvi generates formative assessments only — chapter-scoped, designed for a single session, and intended as a professional teaching tool rather than a certification instrument. Summative tests, term-end exams, half-yearly and annual examinations are outside Aruvi's scope."
         },
         {
           "id": "e06",
-          "q": "Can Aruvi generate lesson plans for subjects not in NCERT — for example, a school’s own curriculum?",
-          "a": "No. Aruvi’s pipeline is built entirely on NCERT textbook content and NCF 2023 competency mapping. It requires an NCERT chapter summary as its content input. Non-NCERT curricula — school-designed courses, alternative textbooks, or international curricula — are outside Aruvi’s scope."
+          "q": "Can Aruvi suggest how to adapt an activity for a large class?",
+          "a": "Ask Aruvi is scoped to questions about how the platform works. Questions about adapting activities for specific classroom conditions — class size, available space, mixed-ability groups — are beyond this scope. Your question will be automatically logged and forwarded to Aruvi management for follow-up."
         },
         {
           "id": "e07",
-          "q": "Can Aruvi generate a Holistic Progress Card input?",
-          "a": "No. Holistic Progress Cards are multi-dimensional, cross-subject instruments designed for whole-child reporting — they are not appropriate at the chapter level and require inputs that go beyond what a chapter-scoped assessment can provide. HPC generation is explicitly outside Aruvi’s scope."
+          "q": "Can Aruvi generate lesson plans for subjects not in NCERT — for example, a school's own curriculum?",
+          "a": "No. Aruvi's pipeline is built entirely on NCERT textbook content and NCF 2023 competency mapping. It requires an NCERT chapter as its content input. Non-NCERT curricula — school-designed courses, alternative textbooks, or international curricula — are outside Aruvi's scope."
         },
         {
           "id": "e08",
-          "q": "Can Aruvi suggest visual aids, worksheets, or physical materials for a lesson?",
-          "a": "Aruvi’s lesson plan may include a visual_aids field noting when a visual reference is helpful for a particular activity. However, Aruvi does not generate visual content, design worksheets, or specify physical materials. These are teacher professional decisions. The lesson plan describes the activity and its pedagogical intent — the teacher decides how to resource it."
+          "q": "Can Aruvi generate a Holistic Progress Card input?",
+          "a": "No. Holistic Progress Cards are multi-dimensional, cross-subject instruments designed for whole-child reporting — they require inputs that go well beyond what a chapter-scoped assessment can provide. HPC generation is explicitly outside Aruvi's scope."
         },
         {
           "id": "e09",
-          "q": "Can Aruvi generate plans for classes below Grade VI or above Grade X?",
-          "a": "No. Aruvi is currently scoped to the Middle Stage and Secondary Stage — Grades VI through X — which correspond to the NCF 2023 stages for which Curricular Goals and competency frameworks are available in the format Aruvi uses. Foundational Stage and Preparatory Stage content is outside current scope."
+          "q": "Can Aruvi suggest visual aids, worksheets, or physical materials for a lesson?",
+          "a": "Aruvi's lesson plan may note when a visual reference is helpful for a particular activity. However, Aruvi does not generate visual content, design worksheets, or specify physical materials. These are teacher professional decisions. The lesson plan describes the activity and its pedagogical intent — the teacher decides how to resource it."
         },
         {
           "id": "e10",
-          "q": "Can Aruvi tell me whether my school is NCF 2023 compliant?",
-          "a": "No. Aruvi is a tool for generating NCF-aligned lesson plans and assessments — it is not a compliance auditing tool. Whether a school is NCF 2023 compliant depends on many factors beyond lesson plan generation, including administrative processes, professional development, and school-wide policy. Aruvi management can discuss how the platform contributes to alignment, but compliance determination is outside the platform’s scope."
+          "q": "Can Aruvi generate plans for classes below Grade II or above Grade X?",
+          "a": "No. Aruvi is currently scoped to the Middle Stage and Secondary Stage — Grades III through X — which correspond to the NCF 2023 stages for which Curricular Goals and competency frameworks are available in the format Aruvi uses. Foundational Stage and Preparatory Stage content is outside current scope."
         },
         {
           "id": "e11",
-          "q": "Can Aruvi generate multi-session projects or cross-subject tasks?",
-          "a": "No. Every assessment task Aruvi generates must be completable in a single session with no external coordination. Multi-session projects, cross-subject integrated tasks, and activities requiring materials or preparation outside the classroom are explicitly outside Aruvi’s assessment scope. This constraint exists to ensure that the assessment is executable by every teacher, in every school, regardless of resource availability."
+          "q": "Can Aruvi tell me whether my school is NCF 2023 compliant?",
+          "a": "No. Aruvi generates NCF-aligned lesson plans and assessments — it is not a compliance auditing tool. Whether a school is NCF 2023 compliant depends on many factors beyond lesson plan generation. Aruvi management can discuss how the platform contributes to alignment, but compliance determination is outside the platform's scope."
         },
         {
           "id": "e12",
-          "q": "Can Aruvi generate content in regional languages?",
-          "a": "Aruvi’s generated lesson plans and assessments are currently in English. The knowledge base and constitutions are maintained in English. Ask Aruvi — the help feature — accepts questions in any language and responds in the teacher’s language. Generation of lesson plans and assessments in regional language mediums is not currently available."
+          "q": "Can Aruvi generate multi-session projects or cross-subject tasks?",
+          "a": "No. Every assessment task Aruvi generates must be completable in a single session with no external coordination. Multi-session projects, cross-subject integrated tasks, and activities requiring materials or preparation outside the classroom are explicitly outside Aruvi's assessment scope. This constraint ensures the assessment is executable by every teacher, in every school, regardless of resource availability."
         },
         {
           "id": "e13",
-          "q": "Can Aruvi tell me what activities to use for a specific pedagogical goal I have in mind?",
-          "a": "Ask Aruvi is a tool to help users with questions on the platform. Questions about selecting activities for specific pedagogical goals are beyond the scope of Ask Aruvi. Aruvi’s Generate tab produces activities derived from chapter content and NCF pedagogy — the platform does not offer a reverse lookup from pedagogical goal to activity. Your query will be forwarded to the Aruvi support team."
+          "q": "Can Aruvi generate content in regional languages?",
+          "a": "Aruvi's generated lesson plans and assessments are currently in English. Ask Aruvi — the help feature — accepts questions in any language and responds in the teacher's language. Generation of lesson plans and assessments in regional language mediums is not currently available."
         },
         {
           "id": "e14",
-          "q": "Can I use Aruvi for professional development or teacher training?",
-          "a": "Aruvi’s outputs — lesson plans with annotated competency chains and diagnostically designed assessments — can be valuable references in professional development contexts, particularly for understanding how NCF 2023 competency alignment works in practice. However, Aruvi is not a professional development platform and does not generate training materials, session plans, or teacher observation frameworks."
+          "q": "Can Aruvi tell me what activities to use for a specific pedagogical goal I have in mind?",
+          "a": "Ask Aruvi is scoped to questions about how the platform works. Aruvi's Generate tab produces activities derived from chapter content and NCF pedagogy — the platform does not offer a reverse lookup from pedagogical goal to activity. Your question will be automatically logged and forwarded to Aruvi management for follow-up."
         }
       ]
     }

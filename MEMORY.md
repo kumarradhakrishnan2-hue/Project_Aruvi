@@ -189,3 +189,28 @@ Key improvements in v3: Unicode sanitiser (_clean_text strips diacritics), Aruvi
 Observation: app.py now imports `build_lp_pdf_bytes` from `lp_pdf_generator` for the Generate tab (both bot and manual paths) and My Plans tab. The old inline function remains in app.py for Science/SS (not yet migrated).
 Carry-forward rule: lp_pdf_generator.py (v3) is the current LP PDF standard. When migrating Science/SS to this generator, the main difference to handle is the Science/SS LP JSON structure (progression-stage based) versus the English/Maths structure (section × spine). Keep the old inline function in app.py until Science/SS migration is tested.
 
+---
+
+[Learning #23] — 2026-05-11 — English Assessment PDF/HTML: Seven Layout Fixes
+
+Context: Post-English-pipeline review of assessment PDF and HTML output for Ch 01.
+Fixes applied to assessment_pdf_generator.py and lpa_page.html:
+
+1. Section name (spine title) now appears centre-aligned above EVERY English question (not just the first in each spine section). The English build loop passes header_items for every question. Font increased from 7.5pt → 8.5pt. (Previously it only appeared on the first question of each spine group.)
+
+2. "Guidance" section renamed → "Notes" (all subjects). A PageBreak is inserted before it so it always begins on a fresh page at the end of the document, never mid-content.
+
+3. Learning Outcome row moved to below the Teacher Guide block (with a 4pt spacer gap). LO font increased from q_meta (6.5pt) → q_lo (7.5pt). Previously LO appeared above the prompt alongside the source section title.
+
+4. Word box (Listening MATCH, PDF): Rebuilt _render_word_box() to render individual pill cells in a nested table row, matching the HTML's pill-style layout (.vs-wordbox-word chips). Previously it rendered a flat paragraph with spaces between words.
+
+5+6. FILL_IN question (Vocab/Grammar): item_stem contains inline markdown tables (pipe syntax). Previously the raw markdown showed as text AND visual_stimulus (Part A table only) appeared below Part B. Fix: added _render_fill_in_stem() in PDF (splits text and pipe-table segments, renders each table inline) and renderMarkdownStemHtml() in HTML (same logic). visual_stimulus is now suppressed for FILL_IN in both renderers to prevent duplication. Rule: any FILL_IN item must store its tables inline in item_stem; visual_stimulus should be empty or omitted.
+
+7. Teacher Guide Part A / Part B shown as one paragraph: fmtGuide() (HTML) and _eng_guide_paras() (PDF) now split on "Part A / Part B / Part C" label patterns in addition to numbered items and lettered sub-items. Both functions use regex to insert line breaks before these patterns when they appear run-together in a single string.
+
+Carry-forward rules:
+- Any new question type that uses inline markdown tables in item_stem must go through renderMarkdownStemHtml (HTML) and _render_fill_in_stem (PDF) — not the default plain-text path.
+- visual_stimulus for FILL_IN must be left empty; put all tables in item_stem.
+- Teacher guide strings with Part A/B splits must not rely on newlines — the fmtGuide/eng_guide_paras regex handles run-together strings automatically.
+- The Notes section (formerly Guidance) always uses a PageBreak before it. Do not remove this — it ensures Notes never appears mid-document.
+

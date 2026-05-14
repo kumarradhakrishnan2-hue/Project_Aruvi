@@ -4940,8 +4940,21 @@ elif st.session_state.role == "Allocate":
             except Exception:
                 _mapping = {}
 
+            # English ch_02 schema nests effort signals under "effort_signals" and
+            # competencies under "competencies.primary" (a list of strings).
+            # Flatten both into the top-level mapping dict for uniform downstream access.
+            if "effort_signals" in _mapping:
+                _mapping.update(_mapping.pop("effort_signals"))
+            if "competencies" in _mapping and isinstance(_mapping["competencies"], dict):
+                _comp_block = _mapping.pop("competencies")
+                # Only promote if "primary" not already at top level
+                if "primary" not in _mapping:
+                    _mapping["primary"] = _comp_block.get("primary", [])
+                if "incidental" not in _mapping:
+                    _mapping["incidental"] = _comp_block.get("incidental", [])
+
             # Enrich primary competencies with full description text.
-            # Key order: "primary" (Science VII), "competencies" (VI schema),
+            # Key order: "primary" (Science VII / English), "competencies" (VI schema),
             # then Mathematics which uses "core_competencies" + "adjunct_competencies".
             if "primary" in _mapping or "competencies" in _mapping:
                 _primary_entries = _mapping.get("primary", _mapping.get("competencies", []))
@@ -4953,8 +4966,12 @@ elif st.session_state.role == "Allocate":
                 )
             _enriched_primary = []
             for _entry in _primary_entries:
-                _e = dict(_entry)
-                _e["description"] = _comp_descs.get(_entry.get("c_code", ""), "")
+                # _entry may be a dict {"c_code": ..., "weight": ...} or a bare string "C-1.1"
+                if isinstance(_entry, str):
+                    _e = {"c_code": _entry, "weight": 1}
+                else:
+                    _e = dict(_entry)
+                _e["description"] = _comp_descs.get(_e.get("c_code", ""), "")
                 _enriched_primary.append(_e)
 
             _result.append({
@@ -5357,9 +5374,9 @@ else:
 
 # ── Ask Aruvi FAB + Bottom Drawer ────────────────────────────────────────────
 CATEGORY_LABELS = {
-    "cat_c": "The competency framework",
-    "cat_a": "How Aruvi plans lessons",
-    "cat_b": "How Aruvi builds assessments",
+    "cat_a": "How Aruvi plans your lessons",
+    "cat_b": "How Aruvi builds your assessments",
+    "cat_c": "How time is allocated across chapters",
     "cat_d": "Using the platform",
     "cat_e": "What Aruvi cannot do",
 }
@@ -5832,14 +5849,22 @@ div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_fb_submit"] bu
 /* Thumbs buttons */
 div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-thumb_"] button {
     background: transparent !important;
-    border: 1px solid #E0DDD8 !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
     border-radius: 50% !important;
-    font-size: 0.75rem !important;
+    font-size: 1rem !important;
     width: 28px !important;
     height: 28px !important;
     min-height: 28px !important;
     padding: 0 !important;
-    filter: grayscale(1) brightness(0.42) !important;
+    color: #444444 !important;
+}
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-thumb_"] button *,
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-thumb_"] button p,
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-thumb_"] button div {
+    color: #444444 !important;
+    font-size: 1rem !important;
 }
 /* FAB */
 div[class*="st-key-ask_aruvi_fab"] button {
@@ -6067,7 +6092,7 @@ if st.session_state.ask_aruvi_open:
                     not st.session_state.ask_aruvi_thumb_done:
                 _t1, _t2, _t3 = st.columns([1, 1, 8])
                 with _t1:
-                    if st.button("👍", key="thumb_up"):
+                    if st.button("👍︎", key="thumb_up"):
                         write_thumbs_feedback(
                             session_id=st.session_state.ask_aruvi_session_id,
                             rating="up",
@@ -6078,7 +6103,7 @@ if st.session_state.ask_aruvi_open:
                         st.session_state.ask_aruvi_thumb_done = True
                         st.rerun()
                 with _t2:
-                    if st.button("👎", key="thumb_down"):
+                    if st.button("👎︎", key="thumb_down"):
                         st.session_state.ask_aruvi_show_followup = True
                         st.rerun()
 
@@ -6248,15 +6273,12 @@ if st.session_state.ask_aruvi_agent_open:
                 st.session_state.ask_aruvi_agent_fb_sent = False  # clear confirmation
                 st.rerun()
 
-            # Q&A box
-            st.markdown('<div class="aa-fb-label">Ask a question</div>',
-                        unsafe_allow_html=True)
-            _agent_query = st.text_area(
+            # Q&A pill
+            _agent_query = st.text_input(
                 "agent_query",
-                placeholder="Type your question on the platform.",
+                placeholder="Ask a specific question…",
                 label_visibility="collapsed",
                 key="ask_aruvi_agent_query_input",
-                height=104,
                 max_chars=140,
             )
             _agent_ask_clicked = st.button("↑", key="ask_aruvi_agent_submit",

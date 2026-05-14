@@ -639,21 +639,109 @@ function escHtml(s) {
     .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-/* Format a teacher-guide answer string so numbered / lettered items each
-   appear on their own line. Handles two cases:
+/* Format a teacher-guide answer string so numbered / lettered items and
+   Part A / Part B labels each appear on their own line.
+   Handles:
    (a) newline-separated  — \n → <br>
-   (b) run-together prose — inserts <br> before " 1." " 2." " (a)" " (b)" etc.
+   (b) run-together prose — inserts <br> before Part A/B/C, " 1." " 2.",
+       " (a)" " (b)" patterns.
    Only for English — safe to call on any string. */
 function fmtGuide(s) {
   if (!s) return '';
   var esc = escHtml(s);
   /* If the string already has newlines, use those. */
   if (esc.indexOf('\n') !== -1) return esc.replace(/\n/g, '<br>');
-  /* Otherwise insert breaks before run-together numbered items:
-     space + digit(s) + period/parenthesis at start of a new item. */
+  /* Insert breaks before Part A / Part B / Part C labels (fix 7) */
+  esc = esc.replace(/\s+(Part\s+[A-Z][\s\-:—])/g, '<br>$1');
+  /* Insert breaks before run-together numbered items: " 1." " 2." */
   esc = esc.replace(/ (\d+)\.\s+/g, '<br>$1. ');
+  /* Insert breaks before lettered items: " (a)" " (b)" */
   esc = esc.replace(/ \(([a-zA-Z])\)\s+/g, '<br>($1) ');
   return esc;
+}
+
+/* ── FILL_IN markdown-table renderer ────────────────────────────────────────
+   Parses an item_stem string that contains inline markdown tables
+   (pipe-delimited, e.g. "| Word | Antonym |\n|---|---|\n| low | |")
+   and returns an HTML string with text segments rendered as paragraphs
+   and table segments rendered as proper HTML tables.
+
+   Separator rows (|---|---| etc.) are stripped.
+   The Q number prefix is NOT prepended here — caller already shows it in
+   the card header or task_prompt.
+   Used for FILL_IN question type in both renderEnglishQuestionCard and
+   renderSubItem (fix 5+6). */
+function renderMarkdownStemHtml(stemText) {
+  if (!stemText) return '';
+  var lines = stemText.split('\n');
+  var segments = [];
+  var curTextLines = [];
+  var curTableLines = [];
+  var inTable = false;
+
+  function isPipeLine(l) { return l.trim().indexOf('|') !== -1 && l.trim().charAt(0) === '|'; }
+  function isSepLine(l)  { return /^\|[-|\s:]+\|/.test(l.trim()); }
+
+  lines.forEach(function(line) {
+    if (isSepLine(line)) {
+      /* separator row — enter table mode, skip the row itself */
+      if (!inTable) {
+        if (curTextLines.length) { segments.push({type:'text', lines: curTextLines}); curTextLines = []; }
+        inTable = true;
+      }
+    } else if (isPipeLine(line)) {
+      if (!inTable) {
+        if (curTextLines.length) { segments.push({type:'text', lines: curTextLines}); curTextLines = []; }
+        inTable = true;
+      }
+      curTableLines.push(line.trim());
+    } else {
+      if (inTable) {
+        if (curTableLines.length) { segments.push({type:'table', lines: curTableLines}); curTableLines = []; }
+        inTable = false;
+      }
+      curTextLines.push(line);
+    }
+  });
+  if (inTable && curTableLines.length) { segments.push({type:'table', lines: curTableLines}); }
+  else if (curTextLines.length)        { segments.push({type:'text',  lines: curTextLines}); }
+
+  var html = '';
+  segments.forEach(function(seg) {
+    if (seg.type === 'text') {
+      var txt = seg.lines.join('\n').trim();
+      if (txt) html += '<div class="qtext">' + escHtml(txt).replace(/\n/g, '<br>') + '</div>';
+    } else {
+      /* Parse pipe table */
+      var parsedRows = seg.lines.map(function(line) {
+        var cells = line.split('|').map(function(c){ return c.trim(); });
+        if (cells[0] === '') cells.shift();
+        if (cells[cells.length-1] === '') cells.pop();
+        return cells;
+      });
+      /* Skip header-only tables (no data rows — e.g. Part B "| Near | Far |") */
+      if (parsedRows.length <= 1) return;
+      var maxCols = parsedRows.reduce(function(m,r){ return Math.max(m,r.length); }, 0);
+      html += '<div class="vs-box"><table class="vs-table">';
+      parsedRows.forEach(function(cells, ri) {
+        while (cells.length < maxCols) cells.push('');
+        html += ri === 0 ? '<thead><tr>' : '<tr>';
+        cells.forEach(function(cell) {
+          if (ri === 0) {
+            html += '<th>' + escHtml(cell) + '</th>';
+          } else {
+            var isEmpty = cell === '';
+            var cls = isEmpty ? ' class="vs-answer-blank"' : '';
+            var display = isEmpty ? '___________' : escHtml(cell);
+            html += '<td' + cls + '>' + display + '</td>';
+          }
+        });
+        html += ri === 0 ? '</tr></thead>' : '</tr>';
+      });
+      html += '</table></div>';
+    }
+  });
+  return html;
 }
 
 /* Expand question-type abbreviations */
@@ -890,7 +978,7 @@ function renderEnglishPeriodCard(p, spineTitleMap) {
         /* Trim to 12 words if needed */
         var words = brief.split(/\s+/);
         if (words.length > 12) brief = words.slice(0, 12).join(' ') + '…';
-        return '“' + escHtml(brief) + '”';
+        return escHtml(brief);
       }).join('<br/>') +
     '</div></div>';
   }
@@ -1027,6 +1115,13 @@ function renderEnglishQuestionCard(q, n) {
         html += renderWordBox(wordBoxWords);
       }
 
+    } else if (cardType === 'FILL_IN') {
+      /* ── FILL_IN: parse inline markdown tables from the stem (fix 5+6) ──────
+         renderMarkdownStemHtml splits the stem into text segments and pipe-table
+         segments, rendering each table inline at the correct position. The
+         visual_stimulus field is suppressed below to avoid duplication. */
+      html += renderMarkdownStemHtml(framing);
+
     } else if (cardType === 'MCQ' && framing.indexOf('My prediction') !== -1) {
       /* ── Predict-then-listen MCQ: break into per-question blocks (fix f) ── */
       var mcqAllLines = framing.split('\n');
@@ -1072,8 +1167,9 @@ function renderEnglishQuestionCard(q, n) {
   function renderSubItem(si, idx, includeStem) {
     var siType = (si.type || '').toUpperCase();
     var isTrueFalse = siType === 'TRUE_FALSE';
-    var isMatch = siType === 'MATCH';
-    var isMCQ   = siType === 'MCQ';
+    var isMatch  = siType === 'MATCH';
+    var isMCQ    = siType === 'MCQ';
+    var isFillIn = siType === 'FILL_IN';
     var s = '<div class="eng-sub">';
 
     if (includeStem && si.stem) {
@@ -1175,12 +1271,21 @@ function renderEnglishQuestionCard(q, n) {
           s += '<div class="eng-sub-stem">' + escHtml(stemText).replace(/\n/g, '<br>') + '</div>';
         }
 
+      } else if (isFillIn) {
+        /* ── FILL_IN: parse inline markdown tables from the stem (fix 5+6) ──
+           renderMarkdownStemHtml splits text and table segments and renders
+           each table inline at the correct position. visual_stimulus is
+           suppressed below to avoid duplicate rendering. */
+        s += renderMarkdownStemHtml(stemText);
+
       } else {
         s += '<div class="eng-sub-stem">' + escHtml(stemText).replace(/\n/g, '<br>') + '</div>';
       }
     }
 
-    if (si.visual_stimulus) {
+    /* Suppress visual_stimulus for FILL_IN — tables already rendered inline
+       by renderMarkdownStemHtml (fix 5+6). Show it for all other types. */
+    if (si.visual_stimulus && !isFillIn) {
       s += renderVisualStimulus(si.visual_stimulus);
     }
 
