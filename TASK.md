@@ -29,6 +29,32 @@ Each subject for a grade involves the following steps:
      
 8. Once step 7 is through, expand the chapter basket to cover all chapters for that subject under the grade in question to complete the task. Note that in step 6, point (a) will require all chapters to be processed as chapter summary and mapping JSON.
 
+---
+
+## Cowork Prompts Required — by Subject Group
+
+The table below maps each subject to the cowork prompts that must be run (in order) to produce the artifacts needed for the **Allocate tab** and **LP + Assessment generation**.
+
+| Subject | Step | Cowork Prompt | Output Artifact | Purpose |
+|---|---|---|---|---|
+| **Social Sciences** | 1 | `chapter_summary.md` | `mirror/chapters/social_sciences/{grade}/summaries/ch_XX_summary.txt` | Chapter summary — feeds LP + Assessment generation |
+| **Social Sciences** | 2 | `competency_mapping_social_science.md` | `mirror/chapters/social_sciences/{grade}/mappings/ch_XX_mapping.json` | Competency weights — feeds Allocate tab |
+| **Science** | 1 | `chapter_summary.md` | `mirror/chapters/science/{grade}/summaries/ch_XX_summary.txt` | Chapter summary — feeds LP + Assessment generation |
+| **Science** | 2 | `effort_index_science.md` | `mirror/chapters/science/{grade}/mappings/ch_XX_mapping.json` | Effort index (central/co-central competency) — feeds Allocate tab |
+| **Mathematics** | 1 | `chapter_summary_mathematics.md` | `mirror/chapters/mathematics/{grade}/summaries/ch_XX_summary.json` | Chapter summary in JSON format — feeds LP + Assessment generation |
+| **Mathematics** | 2 | `competency_mapping_mathematics.md` | `mirror/chapters/mathematics/{grade}/mappings/ch_XX_mapping.json` | Competency weights — feeds Allocate tab |
+| **English** | Static (one-time) | *(manual / pre-built)* | `mirror/framework/english/{stage}/spine_to_cg.json` | Spine-to-CG mapping — static JSON; must exist before any English LP or Assessment can be generated. One file per stage (middle / preparatory / secondary). |
+| **English** | 1+2 (combined) | `chapter_summary_competency_mapping_english.md` | `mirror/chapters/english/{grade}/summaries/ch_XX_summary.json` + `mirror/chapters/english/{grade}/mappings/ch_XX_mapping.json` | Summary + effort index in a single pass — feeds LP, Assessment, and Allocate tab |
+
+
+**Notes:**
+- Social Sciences and Science summaries are `.txt`; Mathematics and English summaries are `.json`.
+- The `spine_to_cg.json` files for English are static — they do not need to be regenerated per chapter or per grade; they are stage-level constants (middle, preparatory, secondary). Verify they are present in `mirror/framework/english/` before starting any new English grade.
+- All mapping JSONs feed the Allocate tab's chapter-weight / effort-index display. The Allocate tab will be blank or incorrect for any chapter whose mapping JSON is missing.
+- LP and Assessment generation requires both the summary file AND the mapping JSON to be present for the target chapter.
+
+---
+
 **Short term tasks**
 
 1\. [PARTIALLY DONE] Managed Agent integration for Ask Aruvi: `ask_aruvi_agent.py` is written and wired into `app.py` behind a `USE_MANAGED_AGENT` flag (currently `False`). Credentials used: `AGENT_ID = "agent_011Ca6z4gAUB897Nr3xfHNiT"`, `ENVIRONMENT_ID = "env_01L8dPr1NDwDzkiDXWPpn8YE"`. Outstanding: test the managed agent path end-to-end, then flip `USE_MANAGED_AGENT = True` in `app.py` to activate.
@@ -41,10 +67,12 @@ Each subject for a grade involves the following steps:
 
 5\. [IN PROGRESS] Complete English VII: Ch 02–05 done (summary + mapping). Ch 06–N — run combined summary+mapping prompt for remaining chapters, then full generate+test cycle.
 
-**Progress snapshot — as of 2026-05-12**
+**Progress snapshot — as of 2026-05-15**
 
 - Mathematics VII: COMPLETE (all 8 chapters — summaries, mappings, LP + assessment tested)
 - English VII: Ch 01 complete (summary, mapping, LP, assessment tested). Ch 02–05 complete (summary + mapping, 2026-05-12). Ch 06–N pending. Assessment PDF/HTML layout fixes applied (2026-05-11): section name per-question, Notes to last page, LO below guide, word box pills, FILL_IN markdown tables, Part A/B guide splitting.
+- English VIII: Ch 01 complete (summary + mapping, 2026-05-15) — 3 sections (1 prose + 1 poem + 1 dialogue); effort_index 14.5. LP + assessment testing pending. Ch 02 complete (summary + mapping, 2026-05-15) — 3 sections (1 prose + 1 poem + 1 informational: A Tale of Valour, Somebody's Mother, Verghese Kurien); effort_index 15.0. Ch 03–N pending.
+- English VI: Ch 01–05 complete (summary + mapping). Ch 05 done 2026-05-15 — 4 sections (Kalakritiyon ka Bharat, The Kites, Ila Sachani, National War Memorial); effort_index 11.0. Ch 06 pending.
 - Science VII: Complete (all 12 chapters)
 - Social Sciences VII: Complete (all 12 chapters)
 - Science VI / Social Sciences VI: ch_02 only — paused

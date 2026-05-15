@@ -5422,41 +5422,15 @@ div[class*="st-key-ask_aruvi_agent_popup"] [data-testid="stVerticalBlockBorderWr
     margin: 0 !important;
     padding: 0 !important;
 }
-/* Agent panel — reuse same chip/button/textarea rules via agent selector */
-div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_query_input"] {
-    padding: 0 12px 0 12px !important;
-    margin: 0 !important;
-    overflow: visible !important;
-}
-div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_query_input"] [data-baseweb="textarea"],
-div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_query_input"] > div {
-    overflow: visible !important;
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-}
-div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_query_input"] textarea {
-    height: 104px !important;
-    min-height: 104px !important;
-    font-size: 0.85rem !important;
-    border-radius: 10px !important;
-    border: 1px solid #E0DDD8 !important;
-    resize: none !important;
-    line-height: 1.5 !important;
-    padding: 10px 36px 10px 12px !important;
-    background: #FAFAF8 !important;
-    color: #5A5754 !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-}
-div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_query_input"] textarea::placeholder {
-    color: #C0BCB8 !important;
-}
+/* Agent panel — white pill textareas with light boundary */
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_query_input"],
 div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_fb_text"] {
     padding: 0 12px 0 12px !important;
     margin: 0 !important;
     overflow: visible !important;
 }
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_query_input"] [data-baseweb="textarea"],
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_query_input"] > div,
 div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_fb_text"] [data-baseweb="textarea"],
 div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_fb_text"] > div {
     overflow: visible !important;
@@ -5464,24 +5438,26 @@ div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_fb
     border: none !important;
     padding: 0 !important;
 }
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_query_input"] textarea,
 div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_fb_text"] textarea {
-    height: 104px !important;
-    min-height: 104px !important;
+    height: 96px !important;
+    min-height: 96px !important;
     font-size: 0.85rem !important;
-    border-radius: 10px !important;
-    border: 1px solid #E0DDD8 !important;
+    border-radius: 14px !important;
+    border: 1px solid #D9D5CF !important;
     resize: none !important;
-    line-height: 1.5 !important;
-    padding: 10px 36px 10px 12px !important;
-    background: #FAFAF8 !important;
-    color: #5A5754 !important;
+    line-height: 1.45 !important;
+    padding: 10px 52px 10px 14px !important;
+    background: #FFFFFF !important;
+    color: #2A2826 !important;
     width: 100% !important;
     box-sizing: border-box !important;
 }
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_query_input"] textarea::placeholder,
 div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_fb_text"] textarea::placeholder {
-    color: #C0BCB8 !important;
+    color: #B8B4AE !important;
 }
-/* Submit buttons (↑) inside agent panel */
+/* Submit buttons (↑) overlaid inside the textareas, no border */
 div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_submit"],
 div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_fb_submit"] {
     position: relative !important;
@@ -5502,24 +5478,45 @@ div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_fb
 div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_submit"] button,
 div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_fb_submit"] button {
     position: absolute !important;
-    top: 4px !important;
-    right: 14px !important;
-    width: 26px !important;
-    height: 26px !important;
-    min-height: 26px !important;
-    min-width: 26px !important;
-    max-width: 26px !important;
-    border-radius: 50% !important;
-    background: #E8682A !important;
+    top: -88px !important;
+    right: 16px !important;
+    width: 34px !important;
+    height: 34px !important;
+    min-height: 34px !important;
+    min-width: 34px !important;
+    max-width: 34px !important;
+    border-radius: 8px !important;
+    background: transparent !important;
     border: none !important;
-    color: #FFFFFF !important;
-    font-size: 0.85rem !important;
+    box-shadow: none !important;
+    outline: none !important;
+    color: #1B2A3B !important;
+    font-size: 1.3rem !important;
+    line-height: 1 !important;
     padding: 0 !important;
     z-index: 20 !important;
 }
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_submit"] button *,
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_fb_submit"] button *,
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_submit"] button p,
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_fb_submit"] button p {
+    color: #1B2A3B !important;
+    font-size: 1.3rem !important;
+    line-height: 1 !important;
+}
 div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_submit"] button:hover,
 div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_fb_submit"] button:hover {
-    background: #C95820 !important;
+    color: #2C3E50 !important;
+    background: transparent !important;
+}
+/* Character counter under each textarea */
+div[class*="st-key-ask_aruvi_agent_popup"] .aa-char-count {
+    text-align: right !important;
+    font-size: 0.72rem !important;
+    color: #9A968F !important;
+    padding: 4px 16px 0 0 !important;
+    margin: 0 !important;
+    line-height: 1 !important;
 }
 /* Back + close buttons inside agent panel */
 div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-aa_agent_back_btn"] button {
@@ -6274,15 +6271,20 @@ if st.session_state.ask_aruvi_agent_open:
                 st.rerun()
 
             # Q&A pill
-            _agent_query = st.text_input(
+            _agent_query = st.text_area(
                 "agent_query",
                 placeholder="Ask a specific question…",
                 label_visibility="collapsed",
                 key="ask_aruvi_agent_query_input",
+                height=96,
                 max_chars=140,
             )
-            _agent_ask_clicked = st.button("↑", key="ask_aruvi_agent_submit",
+            _agent_ask_clicked = st.button("➤", key="ask_aruvi_agent_submit",
                                             use_container_width=False)
+            st.markdown(
+                f'<div class="aa-char-count">{len(_agent_query or "")}/140</div>',
+                unsafe_allow_html=True,
+            )
 
             if _agent_ask_clicked and _agent_query.strip():
                 with st.spinner(""):
@@ -6310,19 +6312,22 @@ if st.session_state.ask_aruvi_agent_open:
                 )
                 st.rerun()
 
-            # Feedback box
-            st.markdown('<hr class="aa-divider">', unsafe_allow_html=True)
-            st.markdown('<div class="aa-fb-label">Share feedback on Aruvi</div>',
-                        unsafe_allow_html=True)
+            # Feedback pill
+            st.markdown('<div style="height:18px"></div>', unsafe_allow_html=True)
             _agent_fb_text = st.text_area(
                 "agent_feedback",
-                placeholder="Tell us anything about your experience.",
+                placeholder="Share feedback on Aruvi…",
                 label_visibility="collapsed",
                 key=f"ask_aruvi_agent_fb_text_{st.session_state.ask_aruvi_agent_fb_reset}",
-                height=104,
+                height=96,
                 max_chars=140,
             )
-            if st.button("↑", key="ask_aruvi_agent_fb_submit"):
+            _agent_fb_clicked = st.button("➤", key="ask_aruvi_agent_fb_submit")
+            st.markdown(
+                f'<div class="aa-char-count">{len(_agent_fb_text or "")}/140</div>',
+                unsafe_allow_html=True,
+            )
+            if _agent_fb_clicked:
                 if _agent_fb_text.strip():
                     write_general_feedback(
                         session_id    = st.session_state.ask_aruvi_session_id,
