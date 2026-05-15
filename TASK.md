@@ -61,17 +61,17 @@ The table below maps each subject to the cowork prompts that must be run (in ord
 
 2\. [DONE — May 2026] LP PDF v3 (`aruvi_streamlit/lp_pdf_generator.py`) wired into app.py for English and Mathematics. Science/SS LP PDF migration to v3 still pending.
 
-3\. [PENDING] Fix hardcoded `PROJECT_ROOT` in `app.py` and `ask_aruvi_agent.py` to use dynamic resolution (via `config_resolver.py`) before any cloud deployment.
+3\. [DONE — May 2026] Fix hardcoded `PROJECT_ROOT` in `app.py` and `ask_aruvi_agent.py`. Both now use `Path(__file__).parent.parent` for dynamic resolution. The `load_dotenv` call in `app.py` was also fixed and `Path` import moved to the top of the file.
 
-4\. [PENDING] Delete scratch test HTML files from project root (test_debug.html, test_fixed.html, test_minimal.html, test_trycatch.html, test_assess_only.html, test_assessment.html, test_assessment_full.html, test_debug2.html) — generated during English assessment renderer debugging, no longer needed.
+4\. [DONE — May 2026] Scratch test HTML files (test_debug.html, test_fixed.html, test_minimal.html, test_trycatch.html, test_assess_only.html, test_assessment.html, test_assessment_full.html, test_debug2.html) confirmed deleted — no longer present in the project.
 
-5\. [IN PROGRESS] Complete English VII: Ch 02–05 done (summary + mapping). Ch 06–N — run combined summary+mapping prompt for remaining chapters, then full generate+test cycle.
+5\. [IN PROGRESS] Complete English VII: Ch 02–05 done (summary + mapping). Ch 06–N — run combined summary+mapping prompt for remaining chapters, then full generate+test cycle. Note: English VI and English VIII each have only 5 chapters — both grades are now COMPLETE for summaries + mappings.
 
 **Progress snapshot — as of 2026-05-15**
 
 - Mathematics VII: COMPLETE (all 8 chapters — summaries, mappings, LP + assessment tested)
 - English VII: Ch 01 complete (summary, mapping, LP, assessment tested). Ch 02–05 complete (summary + mapping, 2026-05-12). Ch 06–N pending. Assessment PDF/HTML layout fixes applied (2026-05-11): section name per-question, Notes to last page, LO below guide, word box pills, FILL_IN markdown tables, Part A/B guide splitting.
-- English VIII: Ch 01 complete (summary + mapping, 2026-05-15) — 3 sections (1 prose + 1 poem + 1 dialogue); effort_index 14.5. LP + assessment testing pending. Ch 02 complete (summary + mapping, 2026-05-15) — 3 sections (1 prose + 1 poem + 1 informational: A Tale of Valour, Somebody's Mother, Verghese Kurien); effort_index 15.0. Ch 03–N pending.
+- English VIII: Ch 01 complete (summary + mapping, 2026-05-15) — 3 sections (1 prose + 1 poem + 1 dialogue); effort_index 14.5. LP + assessment testing pending. Ch 02 complete (summary + mapping, 2026-05-15) — 3 sections (1 prose + 1 poem + 1 informational: A Tale of Valour, Somebody's Mother, Verghese Kurien); effort_index 15.0. Ch 03 complete (summary + mapping, 2026-05-15) — 3 sections; effort_index pending. Ch 04 complete (summary + mapping, 2026-05-15) — 3 sections (1 prose: The Cherry Tree + 1 poem: Harvest Hymn + 1 narrative: Waiting for the Rain); effort_index 16.0. Ch 05 complete (summary + mapping, 2026-05-15) — 3 sections (1 narrative: Feathered Friend by Arthur C. Clarke + 1 poem: Magnifying Glass by Walter de la Mare + 1 informational: Bibha Chowdhuri); effort_index 12.0. Ch 06–N pending.
 - English VI: Ch 01–05 complete (summary + mapping). Ch 05 done 2026-05-15 — 4 sections (Kalakritiyon ka Bharat, The Kites, Ila Sachani, National War Memorial); effort_index 11.0. Ch 06 pending.
 - Science VII: Complete (all 12 chapters)
 - Social Sciences VII: Complete (all 12 chapters)

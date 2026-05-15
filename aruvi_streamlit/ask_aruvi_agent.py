@@ -36,7 +36,7 @@ ENVIRONMENT_ID  = "env_01L8dPr1NDwDzkiDXWPpn8YE"
 _FILE_ID        = "file_011Ca71pJpRQAZz3d2sKTfqA"
 
 # ── Forwarded-query log location (mirrors ask_aruvi_qa.py) ───────────────────
-_PROJECT_ROOT            = Path("/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi")
+_PROJECT_ROOT            = Path(__file__).parent.parent
 _FEEDBACK_FORWARDED_ROOT = _PROJECT_ROOT / "mirror/feedback/forwarded_queries"
 
 

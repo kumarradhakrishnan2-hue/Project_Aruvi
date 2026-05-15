@@ -1,5 +1,6 @@
+from pathlib import Path
 from dotenv import load_dotenv
-load_dotenv("/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi/.env")
+load_dotenv(Path(__file__).parent.parent / ".env")
 
 import base64
 import csv
@@ -7,7 +8,6 @@ import io
 import json
 import re
 from datetime import datetime, date
-from pathlib import Path
 from fpdf import FPDF
 from docx import Document
 from docx.shared import Pt, RGBColor
@@ -38,7 +38,7 @@ from ask_aruvi_feedback import write_thumbs_feedback, write_general_feedback
 
 # ── Project root (needed by helper functions below) ───────────────────────────
 
-PROJECT_ROOT = Path("/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi")
+PROJECT_ROOT = Path(__file__).parent.parent
 MISC_DIR     = PROJECT_ROOT / "miscellaneous"
 
 # ── Stage derivation ──────────────────────────────────────────────────────────
