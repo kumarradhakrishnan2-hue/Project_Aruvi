@@ -1422,7 +1422,11 @@ function _downloadPDF_legacy_unused() {
       y += 6;
       doc.setCharSpace(0);
       doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor(26, 25, 23);
-      var _titleFull  = 'Ch\u00a0' + pad2(cd.chapter_number) + '\u2002' + cleanText(cd.chapter_title);
+      /* NOTE: avoid characters outside WinAnsi (e.g. U+2002 EN SPACE) \u2014 jsPDF
+         silently upgrades the whole string to UTF-16 BE, and Helvetica then
+         renders every high byte as .notdef, producing huge letter-spacing.
+         Stick to NBSP (U+00A0) and ASCII space for separators. */
+      var _titleFull  = 'Ch\u00a0' + pad2(cd.chapter_number) + '\u00a0 ' + cleanText(cd.chapter_title);
       var _titleLines = doc.splitTextToSize(_titleFull, _titleMaxW);
       /* All lines draw left-aligned; pill and weight label stay on the first-line y */
       doc.text(_titleLines, mL, y, { lineHeightFactor: 1.35 });
