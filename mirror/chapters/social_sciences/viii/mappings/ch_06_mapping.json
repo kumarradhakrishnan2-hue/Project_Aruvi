@@ -1,0 +1,41 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "VIII",
+  "chapter_number": 6,
+  "chapter_title": "Chapter 6: The Parliamentary System: Legislature and Executive",
+  "summary_path": "mirror/chapters/social_sciences/VIII/summaries/ch_06_summary.txt",
+  "competencies": [
+    {
+      "cg": "CG-4: Understands the functioning of social, cultural, and political institutions and their impact on society, and the way individuals and collectives shape these institutions",
+      "c_code": "C-4.1",
+      "weight": 3,
+      "justification": "The chapter is architecturally centred on the functioning of India's political institutions — Parliament (Lok Sabha, Rajya Sabha), Union Executive, Judiciary, and State legislatures. Every major section requires students to understand how these institutions are constituted, what roles they perform, and why they matter for society. Removing C-4.1 dissolves the chapter's entire organising purpose."
+    },
+    {
+      "cg": "CG-4: Understands the functioning of social, cultural, and political institutions and their impact on society, and the way individuals and collectives shape these institutions",
+      "c_code": "C-4.2",
+      "weight": 2,
+      "justification": "The chapter develops the influence of institutions on society substantively and deliberately across multiple sections: the Legislative Functions section shows how Parliament shapes society through lawmaking (RTE), accountability mechanisms, and budget oversight; the Challenges section analyses how institutional dysfunction affects democratic functioning. The chapter's own organising logic makes this continuity evident across sections."
+    },
+    {
+      "cg": "CG-8: Understands and appreciates the process of development of the Constitution of India and upholds its importance to promote democratic values in Indian society",
+      "c_code": "C-8.2",
+      "weight": 2,
+      "justification": "The chapter contains an architecturally distinct 'Constitutional function' subsection that directly requires students to explain Parliament's constitutional mandate — Universal Adult Franchise, separation of powers, federalism, Fundamental Rights, DPSPs. The 'Don't Miss Out' sidebars invoke the Constituent Assembly and India's civilisational heritage (Sengol from the Chola period, mahājanapadas, village panchayats), satisfying the demand to understand ideas drawn from India's civilisational heritage. This constitutes a dedicated, substantive architectural block."
+    },
+    {
+      "cg": "CG-8: Understands and appreciates the process of development of the Constitution of India and upholds its importance to promote democratic values in Indian society",
+      "c_code": "C-8.1",
+      "weight": 1,
+      "justification": "The Introduction and Constitutional function sections contain named structural elements addressing the need for a constitution and its deeper objectives — democratic governance, representation, and rule of law — but these are embedded within the broader C-8.2 architectural block rather than constituting a dedicated section of their own."
+    },
+    {
+      "cg": "CG-10: Understands and appreciates the contributions of India through history and in the present times, to the overall field of Social Science, including the different disciplines that constitute it",
+      "c_code": "C-10.1",
+      "weight": 1,
+      "justification": "Named structural elements — the 'Don't Miss Out' sidebars on India's democratic traditions (mahājanapadas, village panchayats, the Sengol from the Chola period, Atal Bihari Vajpayee's speech on democracy's endurance) — require students to recognise India's historical contributions to democratic thought and practice, as specifically referenced in C-10.1's illustrative note on India's democratic traditions."
+    }
+  ],
+  "chapter_weight": 9
+}

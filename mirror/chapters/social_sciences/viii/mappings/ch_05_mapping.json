@@ -1,0 +1,47 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "VIII",
+  "chapter_number": 5,
+  "chapter_title": "Chapter 5: Universal Franchise and India's Electoral System",
+  "summary_path": "mirror/chapters/social_sciences/VIII/summaries/ch_05_summary.txt",
+  "competencies": [
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1",
+      "weight": 3,
+      "justification": "The entire chapter is architecturally organised around collecting, understanding, and interpreting information about the ECI — a major political institution — and all the election types it manages. Removing this competency dissolves the chapter's fundamental organising purpose."
+    },
+    {
+      "cg": "CG-5",
+      "c_code": "C-5.2",
+      "weight": 2,
+      "justification": "Bridging Barriers, Enabling Participation is a dedicated, architecturally distinct named section that develops how the ECI as an institution makes deliberate efforts (home voting, postal voting, assistive technologies, polling stations in remote areas) to address barriers and ensure equity and inclusion in participation. It stands alone as a learning unit."
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.2",
+      "weight": 1,
+      "justification": "Named structural elements within the chapter — the mindmap on the importance of universal franchise, and the Challenges and Road Ahead section — require students to consider how the electoral institution (ECI, parliamentary democracy) influences individuals and society, but these are sub-elements within broader sections, not architecturally distinct units."
+    },
+    {
+      "cg": "CG-8",
+      "c_code": "C-8.3",
+      "weight": 1,
+      "justification": "A named Let's Remember sidebar in The Role of the ECI section specifically addresses local self-government elections managed by State Election Commissions — the third tier of democratic governance — requiring the student to distinguish this from ECI-managed elections. It is a named structural element but not a dedicated section."
+    },
+    {
+      "cg": "CG-5",
+      "c_code": "C-5.1",
+      "weight": 1,
+      "justification": "Named structural elements are present: the accessibility section identifies barriers faced by persons with disabilities; the DON'T MISS OUT on reserved SC/ST Lok Sabha seats raises questions about representation inequality; the mindmap explicitly names no discrimination as a rationale for universal franchise. These require students to identify forms of inequality and discrimination that elections must address."
+    },
+    {
+      "cg": "CG-10",
+      "c_code": "C-10.1",
+      "weight": 1,
+      "justification": "Multiple DON'T MISS OUT sidebars — India granting women's suffrage before Switzerland, the 10th-century Uttaramerur democratic inscription, T.N. Seshan's reforms strengthening election integrity, India's EVM technology adopted by other nations — are named structural elements requiring students to recognise India's democratic traditions and contributions."
+    }
+  ],
+  "chapter_weight": 9
+}

@@ -1,0 +1,41 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "viii",
+  "chapter_number": 7,
+  "chapter_title": "Chapter 7: Factors of Production",
+  "summary_path": "mirror/chapters/social_sciences/viii/summaries/ch_07_summary.txt",
+  "competencies": [
+    {
+      "cg": "CG-9",
+      "c_code": "C-9.1",
+      "weight": 3,
+      "justification": "The chapter's entire organising spine is an explanation of the key elements of production (land, labour, capital, entrepreneurship, technology) and their impact on individual life and society. Every major section — Land, Labour, Capital, Entrepreneurship, Technology, and How are the Factors Connected — directly addresses the demands of C-9.1. Removing this competency structurally dissolves the chapter's fundamental organising purpose."
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.3",
+      "weight": 2,
+      "justification": "The 'Responsibilities towards Factors of Production' section is a dedicated, architecturally distinct named section that could stand alone as a learning unit. It teaches responsible use of natural resources (avoiding pollution, reducing waste, protecting the environment for future generations), uses the Tamil Nadu leather factory and smartphone recycling examples, introduces Corporate Social Responsibility (CSR), and highlights India's 2014 CSR law as a formal sustainability mechanism."
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1",
+      "weight": 2,
+      "justification": "The competency is developed substantively and deliberately across multiple named sections: the Introduction Let's Explore activity requires students to collect and organise information about economic institutions (shops, services, inputs) in their locality; the Entrepreneurship section profiles J.R.D. Tata and the Tata Group as a major economic institution and its significance; the Technology section introduces SWAYAM and the National Career Service as government institutions and their societal significance. The chapter's own logic of learning about production through real-world economic institutions makes continuity of this competency evident."
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.2",
+      "weight": 1,
+      "justification": "The 'How are the Factors Connected?' section contains a named structural passage explicitly stating that production inputs are available at different geographic locations and that businesses procure them from varied locations (supply chain logic). The Land section also identifies natural resources (water, minerals, oil) as geographically distributed. These passages require students to recognise the geographic distribution of resources and its implications for production, but do not constitute a dedicated standalone section."
+    },
+    {
+      "cg": "CG-10",
+      "c_code": "C-10.1",
+      "weight": 1,
+      "justification": "The 'India's ancient skill heritage' named subsection is a structurally distinct passage whose primary subject is India's historical contributions to skill-based knowledge: the shilpa shastras (detailed design guidelines for sculpture, painting, buildings, jewellery) and stitched shipbuilding (a 2,000-year-old technique enabling maritime trade across the Indian Ocean). Students are required to know and appreciate these contributions. It is a named passage within the Labour section, not a standalone dedicated section."
+    }
+  ],
+  "chapter_weight": 9
+}
