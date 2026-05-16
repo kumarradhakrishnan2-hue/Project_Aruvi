@@ -1,0 +1,23 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "VI",
+  "chapter_number": 14,
+  "chapter_title": "Chapter 14: Economic Activities Around Us",
+  "summary_path": "mirror/chapters/social_sciences/VI/summaries/ch_14_summary.txt",
+  "competencies": [
+    {
+      "cg": "CG-9",
+      "c_code": "C-9.1",
+      "weight": 3,
+      "justification": "The chapter's entire architecture is built around classifying and explaining the three economic sectors (primary, secondary, and tertiary) and their processes of production, transformation, trade, and consumption. Removal of this competency would structurally dissolve the chapter's fundamental organising purpose. The Introduction, sections A, B, and C, and the Interdependence Among Sectors section — including the AMUL case study, the automobile production data, and the textbook production chain — all concretely develop the key elements of economic activity (commodity, production, consumption) and their impact on individual life and society that C-9.1 defines."
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1",
+      "weight": 2,
+      "justification": "The 'Dairy cooperative: from farm to plate' subsection is an architecturally distinct, named unit dedicated to explaining a cooperative as an economic institution — how AMUL was formed on Sardar Patel's advice, how collective decisions are made by member farmers, how it eliminated dependence on middlemen, and its significance for farmers' economic wellbeing and empowerment. This satisfies C-4.1's demand to understand an economic institution in one's region and realise its significance for human society."
+    }
+  ],
+  "chapter_weight": 5
+}

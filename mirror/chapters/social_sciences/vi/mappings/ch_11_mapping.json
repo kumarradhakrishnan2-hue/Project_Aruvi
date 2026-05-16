@@ -1,0 +1,41 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "VI",
+  "chapter_number": 11,
+  "chapter_title": "Chapter 11: Grassroots Democracy – Part 2: Local Government in Rural Areas",
+  "summary_path": "mirror/chapters/social_sciences/VI/summaries/ch_11_summary.txt",
+  "competencies": [
+    {
+      "cg": "CG-8",
+      "c_code": "C-8.3",
+      "weight": 3,
+      "justification": "The entire chapter is architecturally organised around explaining how the three-tier Panchayati Raj system (Gram Panchayat, Panchayat Samiti, Zila Parishad) works and its significance in upholding grassroots democracy. Removing this competency structurally dissolves the chapter's fundamental organising purpose. The chapter title, opening paragraph, and concluding synthesis ('Before we move on') all explicitly name the three-tier system. The primary sub-discipline is Political Science (local self-government), confirming Weight 3 eligibility."
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1",
+      "weight": 2,
+      "justification": "The sections on Gram Panchayat and Panchayat Samiti/Zila Parishad are architecturally distinct named sections that build detailed understanding of each institutional tier — their composition, leadership, administrative officers, functions, and significance for village life. This competency runs continuously and substantively across multiple named sections (Panchayati Raj System, Gram Panchayat, Panchayat Samiti and Zila Parishad), with the chapter's organising logic making its continuity evident throughout, satisfying Rule 5(b)."
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.2",
+      "weight": 2,
+      "justification": "Two architecturally distinct named sections — 'Exemplary Sarpanchs' and 'Child-Friendly Panchayat Initiative' — are specifically constructed to have students assess how the Panchayati Raj institution and its leadership influence communities. The Exemplary Sarpanchs section presents three real-world case studies (Kamble, Maida, Pawar) of institutional influence on village transformation. The Child-Friendly Panchayat Initiative section presents dedicated cases of institutional influence on children's welfare and social outcomes. Both sections satisfy Rule 5(a) as architecturally distinct activity blocks."
+    },
+    {
+      "cg": "CG-5",
+      "c_code": "C-5.2",
+      "weight": 2,
+      "justification": "The 'Exemplary Sarpanchs' section is architecturally structured around named individuals whose stories illustrate institutional and individual efforts for equity and inclusion (transgender leadership, women's leadership in a tribal community, environmental restoration). The 'Child-Friendly Panchayat Initiative' section is a dedicated named section explicitly addressing institutional mechanisms (Bal Sabhas, Bal Panchayats, Children's Parliament) to address child labour, child marriage, and education equity. The chapter also formally notes the one-third women's seat reservation at all three tiers as an institutional equity mechanism. Both sections are architecturally distinct units satisfying Rule 5(a)."
+    },
+    {
+      "cg": "CG-10",
+      "c_code": "C-10.1",
+      "weight": 1,
+      "justification": "The Arthashastra passage within the 'Panchayat Samiti and Zila Parishad' section is a designated named passage whose primary subject is connecting the modern three-tier Panchayati Raj structure to Kautilya's 2,300-year-old administrative model. This structural element requires the student to recognise continuity in India's democratic governance tradition through history. It is a named designated passage rather than a dedicated section or architecturally distinct activity block, satisfying Weight 1 per Rule 6."
+    }
+  ],
+  "chapter_weight": 10
+}

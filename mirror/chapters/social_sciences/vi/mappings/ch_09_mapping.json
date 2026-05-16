@@ -1,0 +1,41 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "vi",
+  "chapter_number": 9,
+  "chapter_title": "Chapter 9: Family and Community",
+  "summary_path": "mirror/chapters/social_sciences/vi/summaries/ch_09_summary.txt",
+  "competencies": [
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1",
+      "weight": 3,
+      "justification": "The chapter's entire architecture is built around helping students collect, organise, and interpret information about two social institutions — family and community — and realise their significance for human society. The named 'Family' section includes a Let's Explore activity asking students to survey family types in their neighbourhood, categorise them, and discuss. The named 'Community' section asks students to list people outside their family who support them, and traces multiple community institutions (halma, RWAs, Kamal Parmar's school). Removing C-4.1 structurally dissolves the chapter's fundamental organising purpose."
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.1",
+      "weight": 2,
+      "justification": "Across all three named sections the chapter deliberately uses diverse regional examples — Shalini's Kerala Onam story, Tenzing's Meghalaya family, the Bhil halma tradition of Jhabua, the Chennai floods response, and Kamal Parmar's Ahmedabad initiative — to reveal shared Indian family and community values (dharma, sevā, tyāga, halma). The kinship-vocabulary Let's Explore activity shows that beneath India's linguistic diversity, a common cultural bond (cousins as brothers/sisters) prevails. The chapter's organising logic consistently moves from regional particularity to pan-Indian cultural commonality, making C-7.1 development continuous and deliberate across multiple named sections."
+    },
+    {
+      "cg": "CG-3",
+      "c_code": "C-3.2",
+      "weight": 1,
+      "justification": "The Kamal Parmar discussion block is a named structural passage requiring students to identify reasons why some social groups (underprivileged children without school access) are excluded — a reason behind inter-group disparity affecting social harmony. The chapter broadly addresses conditions for harmony (shared values, duty, community solidarity) across its sections. However, it does not architecturally dedicate a section to analysing conflict between social groups, limiting this to Weight 1."
+    },
+    {
+      "cg": "CG-5",
+      "c_code": "C-5.1",
+      "weight": 1,
+      "justification": "Two named structural elements require students to identify and raise questions about inequality: (a) the Let's Explore household-tasks activity (who cooks, cleans, does homework) surfaces potential gender-based inequality at the family level; and (b) the Kamal Parmar discussion questions explicitly ask whether society has been unfair to underprivileged children and what should be done to ensure all children access education. Neither element is architecturally organised primarily around inequality as its defining purpose, so Weight 1 applies."
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.2",
+      "weight": 1,
+      "justification": "The 'Think About It' block in the Tenzing story and the Kamal Parmar discussion questions are named structural elements requiring students to assess how family and community institutions influence individual and group behaviour — why Tenzing's father consults his wife, how grandparents shape family life, what Kamal Parmar's initiative reveals about community attitudes. These are architecturally distinct reflection blocks but do not constitute a dedicated section, so Weight 1 applies."
+    }
+  ],
+  "chapter_weight": 8
+}

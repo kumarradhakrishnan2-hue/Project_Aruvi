@@ -1,0 +1,29 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "vi",
+  "chapter_number": 1,
+  "chapter_title": "Chapter 1: Locating Places on the Earth",
+  "summary_path": "mirror/chapters/social_sciences/vi/summaries/ch_01_summary.txt",
+  "competencies": [
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.2",
+      "weight": 3,
+      "justification": "The chapter's entire architecture is built around maps as representational tools and the coordinate grid as a spatial locating system. 'A Map and Its Components' compels the student to read, interpret, and construct maps (student activity: draw your school map using standard symbols and scale). 'Mapping the Earth', 'Understanding coordinates', 'Latitudes', 'Longitudes', and 'Understanding Time Zones' all develop the student's ability to represent and interpret geographical data on maps and grids. Removing this competency structurally dissolves the chapter's organising purpose."
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.1",
+      "weight": 1,
+      "justification": "The latitudes subsection explicitly connects latitude bands to climate zones (equatorial/torrid, mid-latitude/temperate, polar/frigid), requiring the student to correlate latitude with natural climatic phenomena. This is a named subsection with a deliberate conceptual link to climate, but the primary subject of the section is latitude as a coordinate — climate is a secondary explanatory dimension, not the section's organising purpose."
+    },
+    {
+      "cg": "CG-10",
+      "c_code": "C-10.1",
+      "weight": 1,
+      "justification": "The 'Don't Miss Out' sidebar on India's madhya rekhā (passing through Ujjain, used by astronomer Varāhamihira) is a named structural element whose primary subject is India's historical contribution to the chapter's core topic of longitude and Prime Meridian conventions. The student is required to know and explain this contribution as an example of India's scientific heritage within the curriculum domain."
+    }
+  ],
+  "chapter_weight": 5
+}

@@ -1401,47 +1401,36 @@ function _downloadPDF_legacy_unused() {
       return (alloc[String(pt.mins)] || 0) + '\u00d7' + pt.mins + 'min';
     }).join(' \u00b7 ') + ' \u00b7 ' + total + ' periods \u00b7 ' + minutes + 'min';
 
-    /* Fix 1: compute pill and weight label — track allocFS so draw matches measurement */
-    /* Science: no weight label; SS: show Weight X to the right of the pill */
+    /* Pill and weight label — always flush right, title wraps left of them */
     var wlText  = (IS_SCIENCE || IS_ENGLISH) ? '' : 'Weight\u00a0' + wt;
     doc.setFont('helvetica', 'bold'); doc.setFontSize(7);
     var wlWidth = (IS_SCIENCE || IS_ENGLISH) ? 0 : doc.getTextWidth(wlText);
 
-    /* measure pill text at default 6.5pt */
     var allocFS   = 6.5;
     doc.setFont('helvetica', 'normal'); doc.setFontSize(allocFS);
     var pillTextW = doc.getTextWidth(allocStr);
     var pillW     = pillTextW + 8;   /* 4mm pad each side */
 
-    /* measure chapter title to check for overlap */
-    doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5);
-    var chTitleW = doc.getTextWidth('Ch\u00a0' + pad2(cd.chapter_number) + '\u2002' + cleanText(cd.chapter_title));
-
-    /* pill left edge: [pill][4mm gap][weightLabel] ends flush at pageW-mR */
+    /* Pill always sits flush right — title wraps within whatever space remains */
     var pillGap = (IS_SCIENCE || IS_ENGLISH) ? 0 : (wlWidth + 4);
-    var pillX = pageW - mR - pillGap - pillW;
-    if (pillX < mL + chTitleW + 4) {
-      /* title would overlap pill — shrink alloc string to 7pt and remeasure */
-      allocFS   = 7;
-      doc.setFont('helvetica', 'normal'); doc.setFontSize(allocFS);
-      pillTextW = doc.getTextWidth(allocStr);
-      pillW     = pillTextW + 8;
-      pillX     = pageW - mR - pillGap - pillW;
-    }
+    var pillX   = pageW - mR - pillGap - pillW;
+    /* Title is constrained to the space left of the pill (min 40 mm so it always wraps rather than truncating) */
+    var _titleMaxW = Math.max(40, pillX - mL - 4);
 
-    /* Fix 9: chapter title with setCharSpace(0) before/after each draw */
     /* English skips per-chapter headings (covered in Competency Report above) */
     if (!IS_ENGLISH) {
       y += 6;
       doc.setCharSpace(0);
       doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor(26, 25, 23);
       var _titleFull  = 'Ch\u00a0' + pad2(cd.chapter_number) + '\u2002' + cleanText(cd.chapter_title);
-      var _titleMaxW  = pillX - mL - 6;
       var _titleLines = doc.splitTextToSize(_titleFull, _titleMaxW);
-      doc.text(_titleLines[0], mL, y);
+      /* All lines draw left-aligned; pill and weight label stay on the first-line y */
+      doc.text(_titleLines, mL, y, { lineHeightFactor: 1.35 });
       doc.setCharSpace(0);
+      /* Extra height from wrapped lines (8.5 pt ≈ 3.5 mm per extra line) */
+      var _titleExtraH = (_titleLines.length - 1) * 3.5;
 
-      /* draw alloc pill — must use allocFS (same size used to measure pillW) */
+      /* draw alloc pill flush right on first-line y */
       doc.setFont('helvetica', 'normal'); doc.setFontSize(allocFS);
       doc.setFillColor(26, 25, 23);
       doc.roundedRect(pillX, y - 2.5, pillW, 4, 0.8, 0.8, 'F');
@@ -1450,7 +1439,7 @@ function _downloadPDF_legacy_unused() {
       doc.text(allocStr, pillX + pillW - CP, y, { align: 'right' });
       doc.setCharSpace(0);
 
-      /* draw weight label (Social Sciences / other languages only) */
+      /* weight label (Social Sciences / other languages only) */
       if (!IS_SCIENCE && !IS_ENGLISH) {
         doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(100, 100, 100);
         doc.setCharSpace(0);
@@ -1458,7 +1447,7 @@ function _downloadPDF_legacy_unused() {
         doc.setCharSpace(0);
       }
 
-      y += 2;
+      y += _titleExtraH + 2;
       rule(y, 0.53, 26); y += 6;
 
     }
@@ -1677,7 +1666,10 @@ function _downloadPDF_legacy_unused() {
     sortedPts.forEach(function(pt) { palColSums[pt.mins] = 0; });
 
     selChapters.forEach(function(cd, idx) {
-      var rowH = 7;
+      /* Row height is dynamic — expand if the chapter name needs to wrap */
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5);
+      var _palNamePreview = doc.splitTextToSize(cleanText(cd.chapter_title || ''), palFixedCW.name - CP * 2);
+      var rowH = Math.max(7, _palNamePreview.length * 4.5);
       if (y + rowH > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
 
       var alloc2  = allocMap[cd.chapter_number] || {};
@@ -1707,7 +1699,8 @@ function _downloadPDF_legacy_unused() {
       doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
       var palNameText = cleanText(cd.chapter_title || '');
       var palNameLines = doc.splitTextToSize(palNameText, palFixedCW.name - CP * 2);
-      doc.text(palNameLines[0], cx2 + CP, midY2, { baseline: 'middle' });
+      /* Draw all lines left-aligned, top-padded so text sits inside the row */
+      doc.text(palNameLines, cx2 + CP, y + 2.5, { lineHeightFactor: 1.3 });
       doc.setCharSpace(0);
       cx2 += palFixedCW.name;
 
@@ -1806,7 +1799,10 @@ function _downloadPDF_legacy_unused() {
 
     /* Data rows */
     selChapters.forEach(function(cd, idx) {
-      var rowH = 7;
+      /* Dynamic rowH — expand if chapter name wraps */
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5);
+      var _eiNamePreview = doc.splitTextToSize(cleanText(cd.chapter_title || ''), eiTblCW.name - CP * 2);
+      var rowH = Math.max(7, _eiNamePreview.length * 4.5);
       if (y + rowH > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
 
       var rowBg = (idx % 2 === 0);
@@ -1828,7 +1824,8 @@ function _downloadPDF_legacy_unused() {
       doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
       var nameText = cleanText(cd.chapter_title || '');
       var nameLines = doc.splitTextToSize(nameText, eiTblCW.name - CP * 2);
-      doc.text(nameLines[0], cx + CP, midY, { baseline: 'middle' });
+      /* Draw all wrapped lines top-padded inside the row */
+      doc.text(nameLines, cx + CP, y + 2.5, { lineHeightFactor: 1.3 });
       doc.setCharSpace(0);
       cx += eiTblCW.name;
 

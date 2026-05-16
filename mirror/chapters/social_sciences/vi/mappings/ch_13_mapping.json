@@ -1,0 +1,29 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "vi",
+  "chapter_number": 13,
+  "chapter_title": "Chapter 13: The Value of Work",
+  "summary_path": "mirror/chapters/social_sciences/vi/summaries/ch_13_summary.txt",
+  "competencies": [
+    {
+      "cg": "CG-9",
+      "c_code": "C-9.1",
+      "weight": 3,
+      "justification": "The chapter's entire architectural purpose is to explain the key elements of economic activities — distinguishing them from non-economic activities, identifying forms of compensation (salary, wage, fee, payment in kind), and tracing value addition through a production and exchange sequence (Rajesh the carpenter). Removal of C-9.1 dissolves the chapter's fundamental organising purpose."
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1",
+      "weight": 2,
+      "justification": "The named section 'The strength of community participation' is a dedicated, architecturally distinct section whose primary subject is organised social institutions and practices (Swachh Bharat Abhiyan, Van Mahotsav) in the student's vicinity. Students are asked to collect information about community programmes and interpret their significance for human society — directly addressing C-4.1's demand. Rule 5(a) satisfied."
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.3",
+      "weight": 1,
+      "justification": "The named subsection 'Sevā: selfless service' has sevā — India's tradition of selfless communal giving across religious institutions (gurudwaras, temples) — as its primary subject. Students are asked to appreciate this tradition and distinguish it from paid activity, engaging with India's tradition of inclusion across communities and social groups. Satisfies Rule 6: named structural element with cognitive engagement on its primary subject."
+    }
+  ],
+  "chapter_weight": 6
+}

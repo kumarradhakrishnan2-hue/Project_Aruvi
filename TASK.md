@@ -67,7 +67,7 @@ The table below maps each subject to the cowork prompts that must be run (in ord
 
 5\. [IN PROGRESS] Complete English VII: Ch 02–05 done (summary + mapping). Ch 06–N — run combined summary+mapping prompt for remaining chapters, then full generate+test cycle. Note: English VI and English VIII each have only 5 chapters — both grades are now COMPLETE for summaries + mappings.
 
-**Progress snapshot — as of 2026-05-15**
+**Progress snapshot — as of 2026-05-16**
 
 - Mathematics VII: COMPLETE (all 8 chapters — summaries, mappings, LP + assessment tested)
 - English VII: Ch 01 complete (summary, mapping, LP, assessment tested). Ch 02–05 complete (summary + mapping, 2026-05-12). Ch 06–N pending. Assessment PDF/HTML layout fixes applied (2026-05-11): section name per-question, Notes to last page, LO below guide, word box pills, FILL_IN markdown tables, Part A/B guide splitting.
@@ -75,5 +75,6 @@ The table below maps each subject to the cowork prompts that must be run (in ord
 - English VI: Ch 01–05 complete (summary + mapping). Ch 05 done 2026-05-15 — 4 sections (Kalakritiyon ka Bharat, The Kites, Ila Sachani, National War Memorial); effort_index 11.0. Ch 06 pending.
 - Science VII: Complete (all 12 chapters)
 - Social Sciences VII: Complete (all 12 chapters)
-- Science VI / Social Sciences VI: ch_02 only — paused
+- Social Sciences VIII: Ch 01 done 2026-05-16 — "Natural Resources and Their Use"; C-6.2 (W3), C-6.3 (W2), C-6.4 (W1), C-10.1 (W1), C-9.1 (W1); chapter_weight 8. Ch 02–N pending.
+- Science VI / Social Sciences VI: Social Sciences VI — ch_02 through ch_12 complete (summary + mapping). Ch 10 done 2026-05-16 — "Grassroots Democracy – Part 1 Governance"; C-4.1 (W3), C-8.3 (W2), C-4.2 (W1), C-8.1 (W1), C-10.1 (W1); chapter_weight 8. Ch 11 done (summary + mapping, prior session). Ch 12 done 2026-05-16 — "Grassroots Democracy – Part 3 Local Government in Urban Areas"; C-4.1 (W3), C-4.2 (W2), C-8.3 (W2); chapter_weight 7. Ch 13–N pending. Science VI — ch_02 only, paused.
 

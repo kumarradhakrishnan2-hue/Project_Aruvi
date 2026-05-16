@@ -1,0 +1,41 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "vi",
+  "chapter_number": 3,
+  "chapter_title": "Chapter 3: Landforms and Life",
+  "summary_path": "mirror/chapters/social_sciences/vi/summaries/ch_03_summary.txt",
+  "competencies": [
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.4",
+      "weight": 3,
+      "justification": "The chapter's entire architecture is built around correlating landform type, resource availability, and climatic conditions with livelihood patterns. Three named landform sections (Mountains, Plateaus, Plains) each have a paired 'Life in…' section explicitly mapping terrain to human activity: terrace farming and herding in mountains, mineral mining in plateaus, agriculture and fishing in plains. The five tiṇais closing passage from Sangam poetry extends this correlation into cultural history (Kuriñji → hunting/gathering; Mullai → cattle rearing; Marudam → farming; Neydal → fishing; Pālai → journeying). Remove C-6.4 and the chapter's fundamental organising purpose dissolves."
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.1",
+      "weight": 2,
+      "justification": "Natural-process explanation is developed across two distinct named sections. The Mountains section introduces altitude, precipitation, and snow-melt feeding rivers as definitional content. The Plains section explicitly explains floodplain formation through river sedimentation — how rivers carry rock, sand, and silt from mountains and deposit them to create fertile plains soil. This explanatory layer is structurally continuous across both sections, embedded in the chapter's landform-introduction logic."
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.2",
+      "weight": 2,
+      "justification": "Indian topographic diversity is substantively developed across all major sections. The opening journey (Chhota Nagpur → Prayagraj → Almora) is explicitly an Indian transect illustrating landscape variety. The Mountains section covers contrasting Indian ranges: young Himalayas with tall sharp peaks, old eroded Aravallis, and southern Anamudi. The Plateaus section features the Deccan Plateau (oldest, volcanic origin) and the Chhota Nagpur Plateau (mineral-rich). The plains section centres on the Gangetic plain. The Thar Desert exemplifies India's arid zone with its cultural traditions. India's diverse landmass is the recurring geographic reference throughout."
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.2",
+      "weight": 1,
+      "justification": "The Plateaus section contains a named 'storehouses of minerals' passage whose primary subject is the identification and geographic distribution of mineral resources: gold and diamond mining on the East African Plateau, and iron, coal, and manganese reserves in the Chhota Nagpur Plateau. This named structural passage requires students to identify resource distribution across geographic locations, satisfying Rule 6. It does not rise to Weight 2 as it is a component within the Plateaus section rather than an architecturally distinct unit."
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.1",
+      "weight": 1,
+      "justification": "The named 'cultural significance of mountains' subsection has cross-cultural/spiritual significance as its primary subject: Mount Everest is named Chomolungma (Mother Goddess) by Tibetans and Sagarmatha (Goddess of the Sky) by Nepalis; Mount Kailash is held sacred by followers of Hinduism, Buddhism, Jainism, and the Tibetan Bon religion. This sidebar requires students to recognise India's and the broader region's cultural pluralism converging on shared natural landmarks, qualifying under Rule 6."
+    }
+  ],
+  "chapter_weight": 9
+}

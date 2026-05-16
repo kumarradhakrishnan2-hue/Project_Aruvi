@@ -1,0 +1,35 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "vi",
+  "chapter_number": 5,
+  "chapter_title": "Chapter 5: India, That Is Bharat",
+  "summary_path": "mirror/chapters/social_sciences/vi/summaries/ch_05_summary.txt",
+  "competencies": [
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.1",
+      "weight": 3,
+      "justification": "The chapter's entire organising purpose — answering 'What were the ancient names for India?' and 'How do we define India?' — is structured around tracing the changes in names over historical time, from 'Sapta Sindhava' in the Rig Veda to 'Bharatavarsha'/'Jambudvipa' in the Mahabharata, to 'Bharata' in the Vishnu Purana and the Indian Constitution, and from 'Sindhu' through Persian, Greek, and Chinese adaptations. Both main sections are dedicated architectural containers for this change-tracing. Removing C-2.1 would dissolve the chapter's fundamental organising purpose."
+    },
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.1",
+      "weight": 2,
+      "justification": "The chapter is structured around multiple named source types — the Rig Veda, Mahabharata, Ashoka's epigraphic inscriptions, the Vishnu Purana, ancient Tamil poetry, Persian inscriptions, Chinese texts, and the Indian Constitution. Both main sections organise evidence by source type (Indian texts vs. foreign records). 'Think About It' prompts ask students to evaluate sources and their geographical claims. The two sections together constitute a sustained, architecturally distinct treatment of source interpretation, making C-1.1 substantive across the chapter. C-2.1 is the primary analytical object; C-1.1 is the vehicle through which the chapter delivers it, hence Weight 2."
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.2",
+      "weight": 1,
+      "justification": "A physical map of the Indian Subcontinent (Fig. 5.2) and a 'Think About It' activity that asks students to identify natural boundaries and the 'snowy mountains' constitute a named structural element requiring a geographical cognitive operation. The Vishnu Purana verse ('north of the ocean, south of the snowy mountains') and the Tamil poem's reference to Cape Kumari and the great mountain also require students to map textual descriptions onto physical geography. This is a sidebar/activity-level container, not a dedicated section, warranting Weight 1."
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.3",
+      "weight": 1,
+      "justification": "The 'Don't Miss Out' sidebar on Xuanzang is a named structural element whose primary subject is India's cultural/religious influence on ancient China — the Chinese pilgrim travelled to India specifically to collect Buddhist texts, and the term 'Tianzhu' (heavenly master) reflects Chinese reverence for India as the land of the Buddha. This requires students to understand India's cultural reach as a primary cognitive object. The container is a sidebar, not a dedicated section, warranting Weight 1."
+    }
+  ],
+  "chapter_weight": 7
+}

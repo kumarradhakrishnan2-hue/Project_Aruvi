@@ -1,0 +1,41 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "vi",
+  "chapter_number": 10,
+  "chapter_title": "Chapter 10: Grassroots Democracy – Part 1 Governance",
+  "summary_path": "mirror/chapters/social_sciences/vi/summaries/ch_10_summary.txt",
+  "competencies": [
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1",
+      "weight": 3,
+      "justification": "The chapter's entire architecture is structured around collecting, organising, and interpreting information about political institutions. The Introduction defines governance and government; Three Organs of Government systematically explains the legislature, executive, and judiciary with a concrete example; Three Levels of Government presents a formal table (Fig. 10.5) mapping functions and responsibilities of political institutions across three tiers; Democracy interprets how representative political institutions operate. Removing C-4.1 dissolves the chapter's fundamental organising purpose — every section exists to build student understanding of what political institutions are and how they function."
+    },
+    {
+      "cg": "CG-8",
+      "c_code": "C-8.3",
+      "weight": 2,
+      "justification": "Three Levels of Government is an architecturally distinct named section dedicated to explaining India's three-tier governance structure (local, State, Central), including specific functions at each level and the flood-relief scenario illustrating how tiers interact. The Democracy section explicitly introduces the concept of grassroots democracy — a system enabling ordinary citizens to participate in decisions that affect them — which directly addresses the second demand of C-8.3 (appreciating its significance in upholding democracy at the grassroot level). Together these constitute a substantive, deliberately developed architectural block for this competency."
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.2",
+      "weight": 1,
+      "justification": "The Democracy section contains a named passage explaining how political institutions (elections, assemblies, MLAs, MPs) directly influence individuals — citizens vote for representatives who make laws that shape society. This is a named structural passage within the Democracy section whose primary subject is the influence of democratic institutions on individual citizens and communities, satisfying C-4.2's demand that students assess the influence of political institutions on individuals and groups."
+    },
+    {
+      "cg": "CG-8",
+      "c_code": "C-8.1",
+      "weight": 1,
+      "justification": "The Introduction section is a named structural element whose primary subject is the necessity of governance and formal rule-making systems for any society. It establishes why governance exists — without rules, society cannot function — which aligns with C-8.1's demand to understand the need for a constitution and formal governance systems for any country. The section does not address constitutions directly but establishes the foundational premise that C-8.1 requires students to engage with."
+    },
+    {
+      "cg": "CG-10",
+      "c_code": "C-10.1",
+      "weight": 1,
+      "justification": "Two named elements in the chapter address India's democratic heritage: the Don't Miss Out sidebar presenting the Government of India's motto (Satyameva Jayate) and the Supreme Court's motto (Yato Dharmastato Jayah) as expressions of India's institutional traditions; and the Dr. A.P.J. Abdul Kalam biographical feature, a named passage whose primary subject is the contribution of an Indian to the democratic tradition and the significance of India's democratic institutions. These elements require students to recognise India's democratic strengths as C-10.1 demands."
+    }
+  ],
+  "chapter_weight": 8
+}

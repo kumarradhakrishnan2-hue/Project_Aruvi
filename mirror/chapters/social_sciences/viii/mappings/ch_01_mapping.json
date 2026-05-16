@@ -1,0 +1,41 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "viii",
+  "chapter_number": 1,
+  "chapter_title": "Chapter 1: Natural Resources and Their Use",
+  "summary_path": "mirror/chapters/social_sciences/viii/summaries/ch_01_summary.txt",
+  "competencies": [
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.2",
+      "weight": 3,
+      "justification": "The 'Distribution of Natural Resources and its Implications' section is a dedicated, architecturally major section that directly requires students to identify the spatial distribution of resources — coal, oil, iron ore, bauxite — across India using a mineral distribution map, and to connect that distribution to trade, human settlements, conflict, and inter-state water disputes (Kaveri river). This is the full demand of C-6.2. Removing this competency would dissolve the chapter's second structural pillar entirely."
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.3",
+      "weight": 2,
+      "justification": "The 'Responsible and Wise Use of Natural Resources: Stewardship' section is a dedicated, architecturally distinct major section with multiple named subsections. It analyses Indian perspectives on conservation (Vrikshayurveda, traditional farming, Sikkim organic farming caselet), documents Indian and global efforts (International Solar Alliance, CPCB cement guidelines), and frames the urgency in the context of global climate change (glacier melt, biodiversity loss). All demands of C-6.3 are structurally addressed across this section."
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.4",
+      "weight": 1,
+      "justification": "The 'Overexploitation of groundwater: a caselet from Punjab' is a named subsection whose primary subject is the correlation between agricultural livelihood patterns (Green Revolution high-yield varieties, free power, chemical inputs) and groundwater resource availability and its depletion over time. Students must reason about how livelihood choices drove resource collapse, matching C-6.4's demand to correlate livelihood patterns with resource availability."
+    },
+    {
+      "cg": "CG-10",
+      "c_code": "C-10.1",
+      "weight": 1,
+      "justification": "The Vrikshayurveda passage (within 'The case of cement') and the International Solar Alliance box (within 'Responsible and judicious use of resources') are named structural elements whose primary subjects are India's contributions — respectively, an ancient Indian botanical science for sustainable agriculture and India's global leadership in renewable energy through the ISA co-launched with France in 2015. Students are required to explain these contributions, matching C-10.1's demand."
+    },
+    {
+      "cg": "CG-9",
+      "c_code": "C-9.1",
+      "weight": 1,
+      "justification": "The 'Natural Resource Curse' named subsection requires students to analyse why resource abundance does not automatically produce economic prosperity — engaging concepts of production, value conversion, and trade. The Distribution section also references how resources combined with skills generate trade goods (Wootz steel) and fuel empire development. Together these constitute a named structural element whose primary subject engages C-9.1's demand on trade, production, and economic impact on society."
+    }
+  ],
+  "chapter_weight": 8
+}

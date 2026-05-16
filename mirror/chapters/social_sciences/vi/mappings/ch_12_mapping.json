@@ -1,0 +1,29 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "vi",
+  "chapter_number": 12,
+  "chapter_title": "Grassroots Democracy – Part 3 Local Government in Urban Areas",
+  "summary_path": "mirror/chapters/social_sciences/vi/summaries/ch_12_summary.txt",
+  "competencies": [
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1",
+      "weight": 3,
+      "justification": "The entire 'Urban Local Bodies' section — the chapter's primary and sole named content section — is architecturally organised to have students collect, organise, and interpret information about urban local bodies as political institutions (their structure, decentralisation, ward system, types, historical examples, service portfolios) and realise their significance for society. Removing C-4.1 dissolves the chapter's fundamental organising purpose."
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.2",
+      "weight": 2,
+      "justification": "The chapter deliberately and substantively develops the bidirectional influence between urban local bodies and citizens across multiple structural elements: the citizen-duty passage (waste segregation, leak reporting), the Indore services diagram (citizens accessing institutional services), and the Sameer–Anita dialogue (citizens shaping and being shaped by governance institutions). This continuity is intrinsic to the chapter's own organising logic."
+    },
+    {
+      "cg": "CG-8",
+      "c_code": "C-8.3",
+      "weight": 2,
+      "justification": "The chapter is titled 'Grassroots Democracy – Part 3' and architecturally frames urban local bodies throughout as the third tier of local self-government. The Introduction situates ULBs in the governance pyramid, the Urban Local Bodies section explains their working, and the 'Before we move on' summary explicitly asserts their role in upholding grassroots democracy. The Madras Corporation and Indore examples ground this in concrete institutional reality, satisfying C-8.3's demand to explain the working of local self-government and appreciate its democratic significance."
+    }
+  ],
+  "chapter_weight": 7
+}

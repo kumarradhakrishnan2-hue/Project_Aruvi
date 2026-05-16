@@ -2157,6 +2157,52 @@ def _generate_pdf_bytes_alloc(
     grand_m = 0
     col_sums = {pt["mins"]: 0 for pt in sorted_pts}
 
+    # Chapter title is always col index 1; its column width drives wrapping
+    TITLE_COL_IDX = 1
+    title_col_w = col_widths[TITLE_COL_IDX]
+    LINE_H = 6  # standard cell line height (mm)
+
+    def _safe_str(s: str, w_col: int) -> str:
+        """Encode to latin-1 safely for fpdf.
+
+        FPDF's built-in Helvetica is latin-1 only, so common Unicode
+        punctuation that appears in chapter titles (em/en dashes, curly
+        quotes, ellipsis) would otherwise be rendered as `?`. Map those
+        to ASCII equivalents first, then fall back to replacement for
+        anything else.
+        """
+        _PUNCT_MAP = {
+            "‒": "-", "–": "-", "—": "-", "―": "-",
+            "‘": "'", "’": "'", "‚": "'", "‛": "'",
+            "“": '"', "”": '"', "„": '"', "‟": '"',
+            "…": "...",
+            "•": "*",
+            " ": " ",
+        }
+        s = s.translate({ord(k): v for k, v in _PUNCT_MAP.items()})
+        try:
+            s.encode("latin-1")
+            return s
+        except Exception:
+            return s.encode("latin-1", "replace").decode("latin-1")
+
+    def _count_title_lines(title: str, col_w: float) -> int:
+        """Estimate how many wrapped lines the title will occupy."""
+        # fpdf wraps at ~(col_w / char_width_approx) chars; at font size 7,
+        # Helvetica average char width ≈ 1.7 mm.
+        chars_per_line = max(1, int(col_w / 1.7))
+        words = title.split()
+        line_len = 0
+        lines = 1
+        for word in words:
+            token_len = len(word) + (1 if line_len > 0 else 0)
+            if line_len + token_len > chars_per_line:
+                lines += 1
+                line_len = len(word)
+            else:
+                line_len += token_len
+        return lines
+
     for idx, (ch, alloc) in enumerate(zip(chs, allocs)):
         if uses_effort_index:
             ei = ch.get("effort_index", 0)
@@ -2172,13 +2218,17 @@ def _generate_pdf_bytes_alloc(
         fill = (idx % 2 == 0)
         if fill:
             pdf.set_fill_color(248, 247, 245)
+        else:
+            pdf.set_fill_color(255, 255, 255)
+
+        chapter_title = ch.get("chapter_title", "")
 
         if uses_effort_index:
-            row_vals = [f"{ch['chapter_number']:02d}", ch.get("chapter_title", "")[:54], ei_str]
+            row_vals = [f"{ch['chapter_number']:02d}", chapter_title, ei_str]
         else:
             row_vals = [
                 f"{ch['chapter_number']:02d}",
-                ch.get("chapter_title", "")[:44],
+                chapter_title,
                 w3[:22], w2[:22], w1[:22],
             ]
         for pt in sorted_pts:
@@ -2187,14 +2237,35 @@ def _generate_pdf_bytes_alloc(
             row_vals.append(str(v))
         row_vals += [str(tp), str(tm)]
 
-        for val, w in zip(row_vals, col_widths):
-            align = "L" if w >= 40 else "C"
-            try:
-                pdf.cell(w, 6, val, border=1, fill=fill, align=align)
-            except Exception:
-                pdf.cell(w, 6, val.encode("latin-1", "replace").decode("latin-1"),
-                         border=1, fill=fill, align=align)
-        pdf.ln()
+        # Determine row height — title may wrap
+        n_title_lines = _count_title_lines(chapter_title, title_col_w)
+        row_h = max(LINE_H, n_title_lines * LINE_H)
+
+        row_start_x = pdf.get_x()
+        row_start_y = pdf.get_y()
+
+        for col_i, (val, w) in enumerate(zip(row_vals, col_widths)):
+            x_cur = row_start_x + sum(col_widths[:col_i])
+            if col_i == TITLE_COL_IDX:
+                # Multi-cell for the title column so long titles wrap left-aligned
+                safe_val = _safe_str(val, w)
+                # Fill background then draw border rectangle
+                if fill:
+                    pdf.set_fill_color(248, 247, 245)
+                    pdf.set_xy(x_cur, row_start_y)
+                    pdf.cell(w, row_h, "", border=1, fill=True, align="L")
+                else:
+                    pdf.set_xy(x_cur, row_start_y)
+                    pdf.cell(w, row_h, "", border=1, fill=False, align="L")
+                # Overlay the wrapped text inside the bordered cell
+                pdf.set_xy(x_cur + 1, row_start_y + 0.5)
+                pdf.multi_cell(w - 2, LINE_H, safe_val, border=0, align="L", fill=False)
+            else:
+                pdf.set_xy(x_cur, row_start_y)
+                safe_val = _safe_str(val, w)
+                pdf.cell(w, row_h, safe_val, border=1, fill=fill, align="C")
+
+        pdf.set_xy(row_start_x, row_start_y + row_h)
 
     # Footer row
     pdf.set_font("Helvetica", "B", 7)
@@ -2261,7 +2332,7 @@ def _generate_pdf_bytes_alloc(
              " activities need extra planning time."),
             ("Note:",
              "The four scores are combined with fixed weights to give the effort index. Only relative values"
-             " matter — it is used to share your available periods across chapters in proportion to their load."),
+             " matter - it is used to share your available periods across chapters in proportion to their load."),
         ]
         _lbl_w = 44
         _body_w = 180 - _lbl_w
@@ -2309,7 +2380,7 @@ def _generate_pdf_bytes_alloc(
              " for guided practice and assessment."),
             ("Note:",
              "The four signals are combined with fixed weights to give the effort index. Only relative values"
-             " matter — it is used to share your available periods across chapters in proportion to their load."),
+             " matter - it is used to share your available periods across chapters in proportion to their load."),
         ]
         _lbl_w = 50
         _body_w = 180 - _lbl_w

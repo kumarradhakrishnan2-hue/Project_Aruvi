@@ -1,0 +1,35 @@
+{
+  "stage": "middle",
+  "subject": "social_sciences",
+  "grade": "vi",
+  "chapter_number": 4,
+  "chapter_title": "Chapter 4: Timeline and Sources of History",
+  "summary_path": "mirror/chapters/social_sciences/vi/summaries/ch_04_summary.txt",
+  "competencies": [
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.1",
+      "weight": 3,
+      "justification": "The dedicated named section 'What Are the Sources of History?' has as its entire structural purpose exactly what C-1.1 demands: collecting and interpreting multiple sources of information to understand historical aspects of human life. The section taxonomises source types (archaeological, inscriptional, oral, literary, foreign accounts, artistic), explains how historians cross-check sources and adjudicate contradictions, and includes a student activity examining real artefacts to infer historical information. Removal of this competency would dissolve the chapter's second major structural pillar. Rule 8 adjudication confirms C-1.1 at Weight 3 over C-1.2: 'Sources of History' appears in the chapter title, in the opening Big Question ('How can various sources help us understand history?'), in the first defined term ('source of history'), and dominates the exercise and project set at the chapter's end."
+    },
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.2",
+      "weight": 2,
+      "justification": "The dedicated named section 'How Is Time Measured in History?' is architecturally distinct and self-contained; its primary structural activity is representing and analysing historical data in timeline form — exactly what C-1.2 requires. The section introduces the CE/BCE system, century and millennium units, and includes two 'Let's Explore' activity blocks where students construct personal timelines and perform date calculations by reading/building chronological diagrams. Rule 5a is satisfied. Rule 8 adjudication places C-1.2 at Weight 2 (not Weight 3) because C-1.1 more completely occupies the chapter's primary organising purpose as evidenced by the exercise set and chapter title order."
+    },
+    {
+      "cg": "CG-3",
+      "c_code": "C-3.1",
+      "weight": 2,
+      "justification": "Two consecutive named sections — 'The Beginnings of Human History' and 'The First Crops' — together trace the full causal arc that C-3.1 defines: from early Homo sapiens as hunter-gatherers (nomadism, rock shelters, stone tools, rock paintings, early ornament exchange) through the post-Ice Age transition to settled life, the emergence of agriculture and animal domestication, the growth of communities near rivers, changes in habitation (hamlets to villages to towns), evolving social structures (chieftains, collective ownership, community welfare), and the appearance of new basic technologies (pottery, copper and iron metallurgy). The chapter's organising logic explicitly connects these two sections as a continuous arc ending with the note that this 'prepared for the emergence of civilisation' (Chapter 6). Rule 5b is satisfied: C-3.1 is developed substantively and deliberately across multiple named sections with the chapter making continuity of this competency evident."
+    },
+    {
+      "cg": "CG-5",
+      "c_code": "C-5.1",
+      "weight": 1,
+      "justification": "A named structural element — the 'Think About It' box within 'The First Crops' section — has as its primary subject the assumed gender roles depicted in early human rock shelter and agricultural scenes. The box explicitly identifies that these role depictions 'may appear to be natural' but 'are not necessarily accurate and do not cover all situations', provides counter-examples (women painting rock art, men cooking or caring for children), and asks students to think and discuss these roles critically. This directly requires the student to identify and raise questions about gender-based assumptions — a form of inequality/prejudice — in their historical context. Rule 6 is satisfied: a named structural element whose primary subject is this competency requiring a cognitive operation (critical questioning of depicted roles), but not a dedicated section or architecturally distinct activity block."
+    }
+  ],
+  "chapter_weight": 8
+}
