@@ -1,0 +1,23 @@
+{
+  "stage": "middle",
+  "subject": "science",
+  "grade": "vi",
+  "chapter_number": 7,
+  "chapter_title": "Temperature and its Measurement",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": false,
+  "primary": [
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.3",
+      "justification": "The chapter's entire architectural purpose is to develop the student's ability to measure temperature as a physical property of matter using simple instruments. Sections 7.3.1 and 7.3.2 systematically teach how to use a digital clinical thermometer and a laboratory thermometer respectively — including correct technique, precautions, reading the scale, and understanding measurement range and smallest division. Section 7.2 introduces temperature as the standard, reliable measure of hotness or coldness and defines the thermometer as the instrument. The chapter explicitly introduces standard units — degree Celsius (°C), degree Fahrenheit (°F), and kelvin (K) — identifies kelvin as the SI unit of temperature, and provides the conversion formula from Celsius to Kelvin. Activity 7.2, 7.3, 7.4, and 7.5 all require students to handle thermometers and read measurements. This directly and structurally addresses C-1.3: 'Explains the importance of measurement and measures physical properties of matter (such as volume, weight, temperature, density) in indigenous, non-standard and standard units using simple instruments.'"
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to measure temperature as a physical property of matter by learning to use clinical and laboratory thermometers correctly, reading standard scales in Celsius, Fahrenheit, and Kelvin, and understanding the SI unit of temperature.",
+  "conceptual_demand": 1,
+  "activity_count": 5,
+  "demo_count": 1,
+  "exec_load": 0,
+  "effort_index": 8.5
+}

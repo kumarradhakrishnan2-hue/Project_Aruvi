@@ -1,0 +1,187 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "vi",
+  "chapter_number": 1,
+  "chapter_title": "Patterns in Mathematics",
+  "sections": [
+    { "ref": "section 1.1", "title": "What is Mathematics?", "section_goal": ["recall"] },
+    { "ref": "section 1.2", "title": "Patterns in Numbers", "section_goal": ["recall"] },
+    { "ref": "section 1.3", "title": "Visualising Number Sequences", "section_goal": ["reason"] },
+    { "ref": "section 1.4", "title": "Relations among Number Sequences", "section_goal": ["reason"] },
+    { "ref": "section 1.5", "title": "Patterns in Shapes", "section_goal": ["recall"] },
+    { "ref": "section 1.6", "title": "Relation to Number Sequences", "section_goal": ["reason"] }
+  ],
+  "prose_summary": "Section 1.1 introduces mathematics as, in large part, the search for patterns and the explanations for why those patterns exist. The section positions this search as both an art and a science — pattern-finding is framed as creative and aesthetic, not merely computational. The text connects mathematical reasoning to its real-world consequences: understanding patterns in planetary motion led to the theory of gravitation and space exploration; patterns in genomes have enabled disease diagnosis and treatment. Students are invited to reflect on further everyday applications of mathematics and to articulate how the discipline has propelled human progress.\n\nSection 1.2 identifies number sequences as the most basic and foundational type of mathematical pattern. The branch of mathematics that studies patterns in whole numbers (0, 1, 2, 3, 4, …) is named as number theory. Ten named sequences are presented in Table 1: all 1's, counting numbers, odd numbers, even numbers, triangular numbers, squares, cubes, Virahānka numbers, powers of 2, and powers of 3. Students are asked first to recognise the formation rule behind each sequence and then to extend each sequence by three further terms, articulating the rule in their own words.\n\nSection 1.3 explains that number sequences can often be visualised using pictures or dot diagrams, and that such visualisation is a powerful tool for understanding patterns and the relationships between them. Table 2 shows dot-based pictorial representations of the first seven sequences from Table 1 — all 1's, counting numbers, odd numbers, even numbers, triangular numbers, squares, and cubes — and the growth of each sequence is mirrored in the expanding geometry of its dot arrangement. The five Figure it Out questions ask students to copy and extend each picture, explain the geometric reasoning behind the names 'triangular numbers,' 'square numbers,' and 'cubes,' notice that 36 is simultaneously both triangular and square, identify the hexagonal number sequence (1, 7, 19, 37, …) from a given dot picture, and find pictorial ways to represent powers of 2 and powers of 3.\n\nSection 1.4 demonstrates that number sequences can be related to each other in surprising and illuminating ways. A worked example shows that summing successive odd numbers produces square numbers: 1 = 1, 1+3 = 4, 1+3+5 = 9, and so on. The explanation is visual: a square dot grid of side n can always be partitioned into successive L-shaped gnomons containing 1, 3, 5, 7, … dots, making the pattern universal and provable rather than merely observed. A second pattern — 'adding up and down,' where the sums 1, 1+2+1, 1+2+3+2+1, … also produce square numbers — is introduced as another instance of this cross-sequence relationship, and students are prompted to find a similar pictorial explanation for it. The nine Figure it Out questions in this section build extensively on these two patterns: students compute the sums of the first 10 and 100 odd numbers using the visual insight, determine the value of the symmetric sum 1 + 2 + 3 + … + 100 + … + 2 + 1, investigate what sequences arise from successively adding all 1's and counting numbers, explore the connection between pairs of consecutive triangular numbers and squares, discover what the running sums of powers of 2 yield and why adding 1 to each gives the next power, connect triangular numbers to hexagonal numbers via multiplication by 6, and find that partial sums of hexagonal numbers produce cubes.\n\nSection 1.5 introduces shape sequences as a second basic and fundamental category of mathematical pattern. The branch of mathematics that studies patterns in shapes — in one, two, or three (or more) dimensions — is named as geometry. Table 3 presents five shape sequences: regular polygons (triangle through decagon), complete graphs (K2 through K6, where every node connects to every other), stacked squares (growing n×n grids of unit squares), stacked triangles (growing triangular figures composed of smaller triangles), and the Koch snowflake (an iterative sequence in which each line segment is replaced by a four-segment speed-bump shape). Students are asked to identify the rule behind each shape sequence and to draw the next shape — a task that becomes progressively more intricate for the Koch snowflake.\n\nSection 1.6 establishes that shape sequences encode number sequences in equally surprising ways. A worked example identifies that the regular polygon sequence encodes the counting numbers starting at 3 (the triangle has 3 sides, the quadrilateral 4, the pentagon 5, and so on), and that the number of corners in each regular polygon matches its number of sides because in any closed polygon the two counts are always equal. The five Figure it Out questions ask students to verify and reason about the number sequences hidden in the other shape sequences of Table 3: complete graphs encode triangular numbers (1, 3, 6, 10, 15) because each new node connects to all previous ones; stacked squares encode square numbers (1, 4, 9, 16, 25) because each shape is an n×n grid; stacked triangles also encode square numbers via the same 'adding up and down' principle established in section 1.4; and the Koch snowflake encodes 3 times the powers of 4 (3, 12, 48, 192, …) because each line segment is replaced by four segments at every iteration.",
+  "enumerated_activities": [],
+  "enumerated_worked_examples": [
+    {
+      "id": "WE-1",
+      "source_section": "section 1.4",
+      "book_ref": "Example, section 1.4 p.6",
+      "description": "Shows that summing successive odd numbers (1, 1+3, 1+3+5, …) always yields square numbers, and provides a visual dot-grid proof by partitioning any n×n square into L-shaped gnomons of 1, 3, 5, … dots, explaining why the pattern holds for any square."
+    },
+    {
+      "id": "WE-2",
+      "source_section": "section 1.6",
+      "book_ref": "Example, section 1.6 p.11",
+      "description": "Identifies that the regular polygon shape sequence encodes the counting numbers starting at 3 (triangle = 3 sides, quadrilateral = 4, …), and explains that the number of corners always equals the number of sides in any closed polygon."
+    }
+  ],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 1.1",
+      "book_ref": "Figure it Out Q1, section 1.1 p.2",
+      "description": "Think of other examples where mathematics helps in everyday life (shopping, cooking, speed, area, design, etc.)."
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 1.1",
+      "book_ref": "Figure it Out Q2, section 1.1 p.2",
+      "description": "Explain how mathematics has propelled humanity forward, citing examples across scientific experiments, economy, infrastructure, technology, and timekeeping."
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 1.2",
+      "book_ref": "Figure it Out Q1, section 1.2 p.3",
+      "description": "Recognise the formation pattern in each of the ten number sequences listed in Table 1."
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 1.2",
+      "book_ref": "Figure it Out Q2, section 1.2 p.3",
+      "description": "Rewrite each sequence from Table 1 with the next three terms, and write the rule for each sequence in own words."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q1, section 1.3 p.5",
+      "description": "Copy each pictorial representation from Table 2 and draw the next picture in each dot-diagram sequence."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q2, section 1.3 p.5",
+      "description": "Explain geometrically why 1, 3, 6, 10, 15, … are called triangular numbers; why 1, 4, 9, 16, 25, … are called square numbers; and why 1, 8, 27, 64, 125, … are called cubes."
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q3, section 1.3 p.5",
+      "description": "Observe that 36 is both a triangular number and a square number; draw pictures showing 36 dots arranged as both a triangle and a square, and explore other numbers that can be represented pictorially in multiple ways."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q4, section 1.3 p.5",
+      "description": "Identify the sequence 1, 7, 19, 37, … as hexagonal numbers from a given dot diagram; draw these in a notebook and find the next number in the sequence."
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q5, section 1.3 p.5",
+      "description": "Devise pictorial ways to visualise the sequences of powers of 2 and powers of 3 using dot or geometric diagrams."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 1.4",
+      "book_ref": "Figure it Out Q1, section 1.4 p.8",
+      "description": "Find a pictorial explanation for why adding counting numbers up and down (1, 1+2+1, 1+2+3+2+1, …) gives square numbers."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 1.4",
+      "book_ref": "Figure it Out Q2, section 1.4 p.8",
+      "description": "Use the pictorial insight to determine the value of the symmetric sum 1 + 2 + 3 + … + 99 + 100 + 99 + … + 3 + 2 + 1."
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 1.4",
+      "book_ref": "Figure it Out Q3, section 1.4 p.8",
+      "description": "Determine what sequence is obtained by successively adding up the all 1's sequence, and what sequence results from adding the all 1's sequence up and then down."
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 1.4",
+      "book_ref": "Figure it Out Q4, section 1.4 p.8",
+      "description": "Identify the sequence obtained by successively adding the counting numbers (1, 1+2, 1+2+3, …) and provide a pictorial explanation."
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 1.4",
+      "book_ref": "Figure it Out Q5, section 1.4 p.8",
+      "description": "Investigate what sequence is produced by adding consecutive pairs of triangular numbers (1+3, 3+6, 6+10, …) and explain the result with a picture."
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 1.4",
+      "book_ref": "Figure it Out Q6, section 1.4 p.8",
+      "description": "Explore running sums of powers of 2 (1, 1+2, 1+2+4, …) and find what sequence results from adding 1 to each partial sum; explain why."
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 1.4",
+      "book_ref": "Figure it Out Q7, section 1.4 p.9",
+      "description": "Multiply each triangular number by 6 and add 1 (e.g., 1×6+1=7, 3×6+1=19, …); identify the resulting sequence and explain it with a picture."
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 1.4",
+      "book_ref": "Figure it Out Q8, section 1.4 p.9",
+      "description": "Add up hexagonal numbers successively (1, 1+7, 1+7+19, …); identify the resulting sequence and explain it using a picture of a cube."
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 1.4",
+      "book_ref": "Figure it Out Q9, section 1.4 p.9",
+      "description": "Discover own patterns or relations among the sequences in Table 1 and attempt to explain them with pictures or reasoning."
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 1.5",
+      "book_ref": "Figure it Out Q1, section 1.5 p.11",
+      "description": "Recognise the formation pattern or rule in each of the five shape sequences presented in Table 3."
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 1.5",
+      "book_ref": "Figure it Out Q2, section 1.5 p.11",
+      "description": "Redraw each of the five shape sequences from Table 3; attempt to draw the next shape in each sequence and describe the rule in own words."
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 1.6",
+      "book_ref": "Figure it Out Q1, section 1.6 p.11",
+      "description": "Count the number of sides and corners in each regular polygon in the sequence; identify which number sequence is produced and explain why sides and corners always give the same count."
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 1.6",
+      "book_ref": "Figure it Out Q2, section 1.6 p.11",
+      "description": "Count the number of lines in each complete graph (K2 through K6); identify the resulting number sequence and explain why it forms that pattern."
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 1.6",
+      "book_ref": "Figure it Out Q3, section 1.6 p.12",
+      "description": "Count the unit squares in each shape of the stacked squares sequence; identify the number sequence and explain why it arises."
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 1.6",
+      "book_ref": "Figure it Out Q4, section 1.6 p.12",
+      "description": "Count the unit triangles in each shape of the stacked triangles sequence; identify the number sequence and explain why, using the hint about triangles per row."
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 1.6",
+      "book_ref": "Figure it Out Q5, section 1.6 p.12",
+      "description": "Count the total line segments in each Koch snowflake iteration and identify the corresponding number sequence (3, 12, 48, … = 3 × powers of 4)."
+    }
+  ],
+  "conceptual_demand": 2,
+  "activity_count": 0,
+  "demo_count": 0,
+  "exec_load": 0
+}

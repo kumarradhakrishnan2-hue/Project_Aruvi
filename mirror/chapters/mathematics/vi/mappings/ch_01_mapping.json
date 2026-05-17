@@ -1,0 +1,39 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "vi",
+  "chapter_number": 1,
+  "chapter_title": "Patterns in Mathematics",
+
+  "core_cg": "CG-1",
+
+  "core_competencies": [
+    {
+      "c_code": "C-1.2",
+      "justification": "The chapter's entire organising purpose is discovering, identifying, and exploring patterns in whole-number sequences (Table 1: counting numbers, odd numbers, triangular numbers, squares, cubes, Virahānka numbers, powers of 2, powers of 3, etc.) and describing the rules of their formation. Sections 1.2–1.4 additionally ask students to explain relations between different sequences — for instance why summing odd numbers yields squares, why partial sums of hexagonal numbers yield cubes — which is the cross-sequence relational strand explicitly named in C-1.2."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-6.1",
+      "justification": "Section 1.4 constructs a visual geometric proof (L-shaped gnomon partition of a square dot grid) to establish why adding odd numbers always gives squares, and then invites students to devise a similar pictorial proof for the 'adding up and down' pattern. WE-1 and exercises E-10 through E-17 require students to produce or evaluate convincing logical arguments grounded in inductive observation — directly engaging the proof-construction and conjecture-evaluation strand of C-6.1 in elementary number theory."
+    },
+    {
+      "c_code": "C-9.2",
+      "justification": "Table 1 explicitly names the sequence 1, 2, 3, 5, 8, 13, 21, … as 'Virahānka numbers,' attributing the sequence to the Indian mathematician Virahānka. This is a deliberate pedagogical decision to have students encounter an Indian mathematical contribution at the very opening of Grade 6, directly engaging the appreciation of specific Indian mathematicians' work named in C-9.2."
+    },
+    {
+      "c_code": "C-7.1",
+      "justification": "E-18 explicitly asks students to 'find your own patterns or relations in and among the sequences in Table 1,' and exercises E-9, E-10, and E-14 require students to devise original pictorial explanations rather than follow a prescribed method. The chapter's opening framing of mathematics as 'both an art and a science' positions creative pattern-discovery as a core disposition, aligning with the creativity and appreciation of diverse solution-paths described in C-7.1."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to discover patterns in number sequences and explain relationships between them by identifying formation rules, visualising sequences with dot diagrams, and constructing logical arguments for why cross-sequence relationships hold.",
+
+  "conceptual_demand": 2,
+  "activity_count": 0,
+  "demo_count": 0,
+  "exec_load": 0,
+  "effort_index": 4.0
+}

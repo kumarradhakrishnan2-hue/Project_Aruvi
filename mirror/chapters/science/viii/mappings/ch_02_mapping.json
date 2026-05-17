@@ -1,0 +1,28 @@
+{
+    "stage": "middle",
+    "subject": "science",
+    "grade": "viii",
+    "chapter_number": 2,
+    "chapter_title": "The Invisible Living World: Beyond Our Naked Eye",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": true,
+    "primary": [
+        {
+            "cg": "CG-3",
+            "c_code": "C-3.1",
+            "justification": "The chapter's central domain is the diversity of living things at the microscopic scale. It introduces bacteria, fungi (bread mould, yeast), protozoa (Amoeba, Paramecium), and microalgae — all 'microscopic organisms' explicitly named in C-3.1. Students observe these organisms in pond water and soil suspension, describe their shapes and structures, and learn about their habitats and ecological roles. The chapter also covers the diversity of cell types (muscle, nerve, cheek, onion peel) and their structural variation, which is the microscopic face of living-world diversity."
+        },
+        {
+            "cg": "CG-3",
+            "c_code": "C-3.2",
+            "justification": "A distinct strand of the chapter builds the student's understanding of cellular organisation as the defining characteristic of life. Section 2.5 directly asks 'Why Is Cell Considered to Be a Basic Unit of Life?' and establishes that all living organisms — from bacteria to humans — are composed of one or more cells. The chapter contrasts cellular organisms with viruses (acellular, unable to reproduce independently), and introduces unicellular vs multicellular organisation, the levels of organisation hierarchy (Cell → Tissue → Organ → Organ system → Organism), and the specialised functions of different cell types — all core elements of C-3.2's 'cellular organisation' characteristic."
+        }
+    ],
+    "dissolution_test": "This chapter builds the student's ability to describe the diversity of microscopic living organisms and explain why cellular organisation is the defining characteristic of life, by grounding both in direct microscopic observation and structured comparison of cell types across organisms.",
+    "conceptual_demand": 3,
+    "activity_count": 7,
+    "demo_count": 1,
+    "exec_load": 0,
+    "effort_index": 14.5
+}

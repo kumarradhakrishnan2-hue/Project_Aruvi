@@ -1,0 +1,23 @@
+{
+  "stage": "middle",
+  "subject": "science",
+  "grade": "viii",
+  "chapter_number": 10,
+  "chapter_title": "Light: Mirrors and Lenses",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": false,
+  "primary": [
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.4",
+      "justification": "The chapter's central domain is the physical behaviour of light. It verifies both laws of reflection through multiple manipulative activities using plane and curved mirrors, explores how concave and convex mirrors form images of different characteristics depending on object distance, and extends this to transparent curved surfaces (lenses). This directly addresses C-2.4's mandate to demonstrate rectilinear propagation and verify the laws of reflection through manipulation of light sources, objects, and apparatus including curved mirrors."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to explain and predict image formation by curved mirrors and lenses by applying the laws of reflection and the converging/diverging behaviour of curved optical surfaces through repeated manipulation of mirrors, light beams, and lenses.",
+  "conceptual_demand": 2,
+  "activity_count": 11,
+  "demo_count": 0,
+  "exec_load": 0,
+  "effort_index": 15.0
+}

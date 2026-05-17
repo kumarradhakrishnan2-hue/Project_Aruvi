@@ -1,0 +1,28 @@
+{
+  "stage": "middle",
+  "subject": "science",
+  "grade": "vi",
+  "chapter_number": 3,
+  "chapter_title": "Mindful Eating: A Path to a Healthy Body",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": true,
+  "primary": [
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1",
+      "justification": "The chapter's central domain is nutritional analysis of food. Sections 3.2, 3.3, 3.4, and 3.5 systematically develop the student's ability to identify and classify the major nutrients — carbohydrates, fats, proteins, vitamins, minerals, dietary fibre, and water — describe their functions and sources with explicit reference to Indian foods (laddoos, ragi, dal, amla, iodised salt), conduct empirical tests for starch, fat, and protein, connect nutrient deficiency to specific diseases (scurvy, goitre, rickets, beriberi, anaemia, night blindness), and distinguish a balanced diet from junk food. This is the primary architectural purpose of the chapter."
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.2",
+      "justification": "Sections 3.1, 3.1.1, and 3.5 form a distinct strand examining the diversity of food across India's states and regions. Students explore how local crop cultivation (soil type, climate), cultural traditions, and taste preferences shape what people eat in Punjab, Karnataka, Manipur and other states. Section 3.5 extends this to millets — native Indian nutri-cereals cultivated across varied climatic zones. This strand directly builds the student's ability to examine food diversity through the dimensions of sources, nutrients, climatic conditions, and regional diets."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to analyse the nutritional components of food — carbohydrates, fats, proteins, vitamins, minerals, fibre, and water — with reference to Indian culinary practices, conduct simple nutrient tests, and explain how food diversity and balanced dietary choices affect health.",
+  "conceptual_demand": 3,
+  "activity_count": 2,
+  "demo_count": 1,
+  "exec_load": 0,
+  "effort_index": 9.5
+}

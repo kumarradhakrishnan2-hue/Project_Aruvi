@@ -1,0 +1,23 @@
+{
+  "stage": "middle",
+  "subject": "science",
+  "grade": "vi",
+  "chapter_number": 12,
+  "chapter_title": "Beyond Earth",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": false,
+  "primary": [
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.5",
+      "justification": "The chapter's entire architecture is built around observing and identifying celestial objects in the night sky — stars, constellations (Orion, Canis Major, Taurus, Big Dipper, Little Dipper, Pole Star), eight planets, natural satellites including the Moon, asteroids, and comets across sections 12.1 through 12.3. The role of celestial patterns in navigation is explicitly developed (Pole Star for finding north; historical use of constellations by caravans and sailors). Sections 12.4 and 12.5 extend the student's picture to the Milky Way Galaxy and the wider Universe including exoplanet searches for life. Practical sky-watching skills are developed through Activities 12.2, 12.3, and 12.4 and the Preparation for Night Sky Watching section."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to observe and identify celestial objects — stars, constellations, planets, natural satellites, asteroids, and comets — in the night sky, and to describe the structure of the Solar System and its place within the Milky Way Galaxy, by developing systematic knowledge of each class of celestial body alongside practical sky-observation skills.",
+  "conceptual_demand": 2,
+  "activity_count": 4,
+  "demo_count": 0,
+  "exec_load": 0,
+  "effort_index": 8.0
+}
