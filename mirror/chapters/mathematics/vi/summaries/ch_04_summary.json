@@ -1,0 +1,252 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "vi",
+  "chapter_number": 4,
+  "chapter_title": "Data Handling and Presentation",
+  "sections": [
+    { "ref": "section 4.1", "title": "Collecting and Organising Data", "section_goal": ["recall", "apply"] },
+    { "ref": "section 4.2", "title": "Pictographs", "section_goal": ["recall", "apply"] },
+    { "ref": "section 4.3", "title": "Bar Graphs", "section_goal": ["recall", "apply"] },
+    { "ref": "section 4.4", "title": "Drawing a Bar Graph", "section_goal": ["apply"] },
+    { "ref": "section 4.5", "title": "Artistic and Aesthetic Considerations", "section_goal": ["reason"] }
+  ],
+  "prose_summary": "Section 4.1 identifies and defines what data is — any collection of facts, numbers, measures, observations, or descriptions of things that convey information — then applies this concept by showing how students collect raw data about favourite games in their class. The section demonstrates that unorganised raw lists are difficult to interpret and introduces tally marks as a practical tool for organising data into a frequency table, where the count of each category is its frequency. It then applies the idea of arranging data in ascending order, using a shoe-size example, to show how ordering makes it easier to read off the largest and smallest values and count specific categories. Students are asked to carry out their own data collection tasks involving favourite games, tree counts along a route, and letter frequencies in newspaper articles, reinforcing the cycle of collecting, organising, and reading data.\n\nSection 4.2 defines pictographs and applies their construction and reading to several real contexts. The section recalls prior knowledge of pictographs from earlier classes and establishes the key structural features: data is represented through pictures or symbols, each carrying a stated scale or key (one symbol equals one or more units). A worked example by Nand Kishor on students' sleep habits demonstrates how to read a pictograph where each symbol represents 10 children, including how to interpret a half-symbol as five children. The section then applies the drawing process through Lakhanpal's absent-students data (one symbol equals one student), and explores how to choose a larger scale when data values are numerous, illustrated by Jarina (one symbol equals five students) and Sangita (one symbol equals ten students, with a half-symbol for five). Key properties are stated: pictographs provide a visual and suggestive representation, support quick comparison of frequencies, and require a clearly stated scale; they become challenging when data is large or values are not exact multiples of the chosen scale.\n\nSection 4.3 identifies bar graphs as a more precise and scalable alternative to pictographs for representing data. The section introduces bar graphs by revisiting Lakhanpal's absent-students data in bar-graph form and explains the structural rules: bars of uniform width, equal spacing between bars, and a scale where the length or height of each bar encodes its frequency. It then applies these principles to a worked example of Delhi vehicular traffic (horizontal bar graph, one unit equals 100 vehicles), showing how to identify the maximum and minimum bars and compute combined intervals. A second example presents the population of India across six decades as a vertical bar graph (one unit equals 10 crores), demonstrating scale selection to handle large numbers. Key properties of bar graphs are summarised: they enable faster frequency comparison than tables, allow glancing identification of the largest and smallest categories, and require a clearly stated scale starting from zero.\n\nSection 4.4 applies the full step-by-step procedure for drawing a bar graph from raw or tabular data. Beginning with Shri Nilesh's sweet-preference frequency table, the section explains drawing two perpendicular axes, labelling categories on the horizontal axis, choosing an appropriate scale (here one unit equals one student), computing bar heights equal to each frequency, and drawing bars of uniform width with equal spacing. A worked example of Smriti's cricket runs across eight matches (one unit equals 10 runs) demonstrates how to select a scale that avoids impractical bar heights when the maximum value is large. A second worked example with Imran's family monthly expenditure on six items (one unit equals two hundred rupees) demonstrates converting expenditure to bar heights by division, and then constructing and reading the completed bar graph. Students then apply the procedure themselves in a series of exercises involving insect counts, railway ticket data, transport frequency tables, dice experiments, cricket statistics, and more.\n\nSection 4.5 explains the artistic and aesthetic considerations that govern effective data presentation and reasons about when design choices aid or hinder accurate communication. The section establishes that scale selection and bar orientation both affect how well a graph fits its intended space and how intuitively it communicates its data. Using the tallest mountain on each continent as an example, it reasons that vertical bars (column graphs) are more intuitive for representing height, while horizontal bars suit lengths parallel to the ground. It then introduces infographics — visually enriched data presentations using engaging imagery — and cautions that artistic choices, such as using triangles of varying widths for mountains, can imply additional information (e.g., that taller mountains are wider) that may mislead. The section closes by emphasising that visual appeal must never come at the cost of accuracy, and that readers of infographics should be alert to potential distortions.",
+  "enumerated_activities": [],
+  "enumerated_worked_examples": [
+    {
+      "id": "WE-1",
+      "source_section": "section 4.2",
+      "book_ref": "Example, section 4.2 p.80",
+      "description": "Nand Kishor's pictograph on how often middle-school children slept at least 9 hours. Students read the pictograph (each symbol = 10 children) to find: children who always slept ≥9 hours (50), sometimes (25), and never (40). Full solutions provided demonstrating how to handle full and half symbols."
+    },
+    {
+      "id": "WE-2",
+      "source_section": "section 4.3",
+      "book_ref": "Example, section 4.3 p.87",
+      "description": "Horizontal bar graph of vehicular traffic at a busy Delhi road crossing from 6 am to 12 noon (one unit = 100 vehicles). Demonstrates reading maximum (7–8 am, 1200 vehicles), minimum (6–7 am, ~150 vehicles), second highest, and computing combined intervals (8–10 am total ~1800 vehicles)."
+    },
+    {
+      "id": "WE-3",
+      "source_section": "section 4.4",
+      "book_ref": "Example, section 4.4 p.90",
+      "description": "Vertical bar graph of runs scored by Smriti in 8 cricket matches (scores: 80, 50, 10, 100, 90, 0, 90, 50). Demonstrates selecting scale of 1 unit = 10 runs to avoid impractically tall bars and drawing the completed bar graph."
+    },
+    {
+      "id": "WE-4",
+      "source_section": "section 4.4",
+      "book_ref": "Example, section 4.4 p.91",
+      "description": "Vertical bar graph of Imran's family monthly expenditure across six items (house rent ₹3000, food ₹3400, education ₹800, electricity ₹400, transport ₹600, miscellaneous ₹1200). Demonstrates scale selection (1 unit = ₹200), computing bar heights by division (e.g. house rent = 15 units), and drawing and reading the completed bar graph."
+    }
+  ],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q1, section 4.1 p.75",
+      "description": "What would you do to find the most popular game among Naresh's and Navya's classmates? (Open-ended process question on data organisation.)"
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q2, section 4.1 p.75",
+      "description": "What is the most popular game in their class? (Read and interpret the raw data list to identify hockey as the most frequent.)"
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q3, section 4.1 p.75",
+      "description": "Try to find out the most popular game among your own classmates. (Real data collection activity.)"
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q4, section 4.1 p.75",
+      "description": "Pari wants to respond to four questions. Put a tick for questions requiring data collection and a cross for those that do not: (a) most popular TV show among classmates; (b) when India got independence; (c) water wasted in her locality; (d) capital of India."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q1, section 4.1 p.76",
+      "description": "Complete the tally-marks frequency table for Shri Nilesh's sweet-preference data. Sub-parts: (a) students who chose jalebi; (b) barfi count; (c) gujiya count; (d) rasgulla count; (e) gulab jamun count."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q2, section 4.1 p.77",
+      "description": "Is the frequency table sufficient to distribute each type of sweet to the correct student? Explain. If not, what is the alternative?"
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q1, section 4.1 p.77",
+      "description": "Help Sushri Sandhya figure out from shoe-size data arranged in ascending order: (a) largest shoe size; (b) smallest shoe size; (c) number of students wearing size 5; (d) number wearing sizes larger than 4."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q2, section 4.1 p.77",
+      "description": "Math Talk: How did arranging the data in ascending order help answer the shoe-size questions?"
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q3, section 4.1 p.77",
+      "description": "Math Talk: Are there other ways to arrange the shoe-size data?"
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q4, section 4.1 p.78",
+      "description": "Write names of trees seen on the way from home to school, record observations, complete a frequency table, then answer: (a) tree found in greatest number; (b) tree in smallest number; (c) any two trees found in equal numbers."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q5, section 4.1 p.78",
+      "description": "Paste a newspaper article, count letters c, e, i, r, x and one other of your choice, fill a frequency table. Sub-parts: (a) most frequent letter; (b) least frequent letter; (c) list the five letters in ascending frequency order and compare with classmates; (d) write the process followed; (e) discuss classmates' processes; (f) what process would you follow with a different article?"
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 4.2",
+      "book_ref": "Math Talk, section 4.2 p.83",
+      "description": "Math Talk: What problems would arise in preparing a pictograph (where one symbol = 10 students, half = 5) if the total number of students in a class is 33 or 27?"
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 4.2",
+      "book_ref": "Figure it Out Q1, section 4.2 p.83",
+      "description": "Use the pictograph of books borrowed from Middle School Ginnori library over a week to answer: (a) day with minimum books borrowed; (b) total books borrowed during the week; (c) day with maximum books borrowed and possible reason."
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 4.2",
+      "book_ref": "Figure it Out Q2, section 4.2 p.84",
+      "description": "Prepare a pictograph using one symbol = 100 kites for Magan Bhai's kite sales data (Chaman 250, Rani 300, Rukhsana 100, Jasmeet 450, Jetha Lal 250, Poonam Ben 700). Answer: (a) symbols for Rani; (b) maximum buyer; (c) Jasmeet vs Chaman; (d) whether Poonam Ben bought more than double Rani's amount."
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 4.3",
+      "book_ref": "Figure it Out Q1, section 4.3 p.86",
+      "description": "Use the bar graph of students absent per class (Classes I–VIII) to answer: In Class 2, how many were absent? Which class had maximum absences? Which class had full attendance?"
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 4.3",
+      "book_ref": "Figure it Out Q1, section 4.3 p.88",
+      "description": "How many total vehicles passed through the Delhi crossing between 6 am and noon?"
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 4.3",
+      "book_ref": "Figure it Out Q2, section 4.3 p.88",
+      "description": "Why do you think so little traffic occurred during 6–7 am compared to later hours?"
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 4.3",
+      "book_ref": "Figure it Out Q3, section 4.3 p.88",
+      "description": "Why do you think traffic was heaviest between 7–8 am?"
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 4.3",
+      "book_ref": "Figure it Out Q4, section 4.3 p.88",
+      "description": "Why do you think traffic was lesser and lesser each hour after 8 am until noon?"
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 4.3",
+      "book_ref": "Figure it Out, section 4.3 p.89",
+      "description": "Math Talk on India population bar graph: (a) what questions might you ask friends based on the graph; (b) how much did population increase over 50 years and in each decade?"
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 4.4",
+      "book_ref": "Figure it Out, section 4.4 p.93",
+      "description": "Use Imran's expenditure bar graph to answer: (1) which item family spends most and second most on; (2) is electricity cost about half the education cost; (3) is education cost less than one-fourth the food cost?"
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 4.4",
+      "book_ref": "Figure it Out Q1, section 4.4 p.93",
+      "description": "Help Samantha prepare a bar graph for insects seen in a tea garden: Mites 6, Caterpillars 10, Beetles 5, Butterflies 3, Grasshoppers 2."
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 4.4",
+      "book_ref": "Figure it Out Q2, section 4.4 p.93",
+      "description": "Pooja's partially erased bar graph of railway tickets sold for five MP cities (Vidisha 24, Jabalpur 20, Seoni 16, Indore 28, Sagar 16). Sub-parts: (a) tickets for Vidisha; (b) for Jabalpur; (c) determine the scale; (d) draw correct bar for Sagar; (e) add scale numbers to vertical axis; (f) are Seoni and Indore bars correct?"
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 4.4",
+      "book_ref": "Figure it Out Q3, section 4.4 p.94",
+      "description": "Chinu's transport data (bikes, cars, bicycles, autos, scooters, buses, bullock carts seen in one hour). Sub-parts: (a) prepare frequency distribution table; (b) most used transport; (c) describe process for collecting this data."
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 4.4",
+      "book_ref": "Figure it Out Q4, section 4.4 p.95",
+      "description": "Roll a die 30 times, record outcomes, prepare frequency distribution table with tally marks. Find: (a) number appearing minimum times; (b) number appearing maximum times; (c) numbers appearing equal number of times."
+    },
+    {
+      "id": "E-26",
+      "source_section": "section 4.4",
+      "book_ref": "Figure it Out Q5, section 4.4 p.95",
+      "description": "Faiz's frequency table of Bumrah's wickets in 30 matches. Sub-parts: (a) what information does the table give; (b) possible title; (c) what catches attention; (d) matches with 4 wickets; (e) why Mayank's method of adding 0+1+2+...+7 is wrong; (f) correct method to find total wickets."
+    },
+    {
+      "id": "E-27",
+      "source_section": "section 4.4",
+      "book_ref": "Figure it Out Q6, section 4.4 p.96",
+      "description": "Tractors pictograph for five villages. Answer: (a) village with fewest tractors; (b) most tractors; (c) how many more tractors Village C has than Village B; (d) is Komal correct that Village D has half the tractors of Village E?"
+    },
+    {
+      "id": "E-28",
+      "source_section": "section 4.4",
+      "book_ref": "Figure it Out Q7, section 4.4 p.97",
+      "description": "Girl students pictograph for Classes 1–8 (each symbol = 4 girls). Answer: (a) class with fewest girls; (b) difference between Classes 5 and 6; (c) how graph changes if 2 more girls join Class 2; (d) how many girls in Class 7."
+    },
+    {
+      "id": "E-29",
+      "source_section": "section 4.4",
+      "book_ref": "Figure it Out Q8, section 4.4 p.98",
+      "description": "Mudhol Hounds dog counts in six Karnataka villages (A:18, B:36, C:12, D:48, E:18, F:24). Prepare a pictograph and answer: (a) useful scale/key; (b) symbols for Village B; (c) is Kamini correct that Villages B and D together exceed the other four?"
+    },
+    {
+      "id": "E-30",
+      "source_section": "section 4.4",
+      "book_ref": "Figure it Out Q9, section 4.4 p.98",
+      "description": "Survey of 120 students' preferred free-time activities (Playing 45, Reading 30, Watching TV 20, Listening to music 10, Painting 15). Draw a bar graph (1 unit = 5 students). Which activity is preferred most after playing?"
+    },
+    {
+      "id": "E-31",
+      "source_section": "section 4.4",
+      "book_ref": "Figure it Out Q10, section 4.4 p.99",
+      "description": "Bar graph of tree saplings planted each day of a week by a school. Answer: (a) total saplings on Wednesday and Thursday; (b) total for the whole week; (c) day with most and least saplings planted, and reasons for the variation."
+    },
+    {
+      "id": "E-32",
+      "source_section": "section 4.4",
+      "book_ref": "Figure it Out Q11, section 4.4 p.99",
+      "description": "Shagufta and Divya's bar graph of tiger counts in India 2006–2022 (in 4-year intervals: 1400, 1700, 2200, 3000, 3700) contains mistakes. Identify and fix the errors in the bars."
+    },
+    {
+      "id": "E-33",
+      "source_section": "section 4.5",
+      "book_ref": "Figure it Out Q1, section 4.5 p.103",
+      "description": "Would you use vertical or horizontal bars to represent heights of the tallest persons in each class in your school? Why?"
+    },
+    {
+      "id": "E-34",
+      "source_section": "section 4.5",
+      "book_ref": "Figure it Out Q2, section 4.5 p.103",
+      "description": "For a table of longest rivers on each continent, would you prefer vertical or horizontal bars? Why? Find the data, make the table and bar graph. Which continents have the longest rivers?"
+    }
+  ],
+  "conceptual_demand": 1,
+  "activity_count": 0,
+  "demo_count": 4,
+  "exec_load": 1
+}

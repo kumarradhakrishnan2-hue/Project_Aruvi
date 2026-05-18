@@ -1,0 +1,433 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "vi",
+  "chapter_number": 10,
+  "chapter_title": "The Other Side of Zero",
+  "sections": [
+    { "ref": "section 10.1", "title": "Bela's Building of Fun", "section_goal": ["recall", "apply"] },
+    { "ref": "section 10.2", "title": "The Token Model", "section_goal": ["apply"] },
+    { "ref": "section 10.3", "title": "Integers in Other Places", "section_goal": ["apply"] },
+    { "ref": "section 10.4", "title": "Explorations with Integers", "section_goal": ["reason"] },
+    { "ref": "section 10.5", "title": "A Pinch of History", "section_goal": ["recall"] }
+  ],
+  "prose_summary": "Section 10.1 defines negative numbers, the integer number line, and the operations of addition and subtraction through the rich, multi-layered context of Bela's Building of Fun — a multi-storied building with floors both above and below ground. The ground floor is Floor 0, floors above are positive, and floors below are negative. A lift with '+' (up) and '–' (down) buttons introduces the notation +n and –n for movements. Floor numbering extends from below-ground shops like the Toy Store (Floor –1), Video Games (Floor –2), and Cinema (Floor –3) to above-ground venues like the Food Court (Floor +1), Art Centre (+2), Books (+3), and Ice Cream shop (+4). Students encounter the rule Starting Floor + Movement = Target Floor for addition, then discover that combining button presses is itself addition, leading naturally to the concept of additive inverse (the 'Back to Zero' idea: pressing +3 and then –3 returns to Floor 0). Comparison of integers is introduced using floor position: Floor –4 is lower and therefore less than Floor –3, establishing the ordering of integers on a vertical line. The section then applies subtraction as 'finding the movement needed': Target Floor – Starting Floor = Movement needed, with three worked examples covering (–1)–(–2), (–1)–(+3), and (+2)–(–2). This is extended to larger numbers through a mine context where levels range from –200 to +180 m, reinforcing addition and subtraction with larger integers. An infinite lift metaphor introduces the full integer number line (…–4,–3,–2,–1,0,1,2,3,4,…), connects the lift to the horizontal number line, and reveals that subtracting a negative number equals adding the corresponding positive. The subsections 'Adding and subtracting larger numbers', 'Adding, subtracting, and comparing any numbers', 'Back to the number line', 'Using the unmarked number line', and 'Converting subtraction to addition and addition to subtraction' all belong to this section's unfolding arc. Students apply these ideas across numerous Figure it Out sets involving both small and large integers.\n\nSection 10.2 applies the token model — a physical/visual representation using positive (green) and negative (red) tokens — to perform addition and subtraction of integers. The section opens with the lift attendant collecting positive and negative tokens in his pocket; after an hour, the number of tokens determines his floor. A zero pair (one positive + one negative = 0) is introduced as the key cancellation tool for addition. Students add integers by laying out tokens, removing all zero pairs, and reading the remainder. Subtraction using tokens is then demonstrated: taking away tokens of the required sign from an existing pool, with the key trick of adding zero pairs when there are not enough tokens of the required type to take away. Three worked examples — (+5)–(+6), (–7)–(–5), and +4–(–6) — demonstrate the technique systematically. The token model provides a concrete, manipulative justification for why subtracting a negative is the same as adding a positive.\n\nSection 10.3 applies integers to three real-world contexts. The first is banking (credits and debits): starting with a balance of ₹100, students track credits as positive changes and debits as negative changes, including the possibility of a negative balance. Figure it Out problems invite students to compute bank balances with multiple credits and debits. The second context is geographical cross-sections, where height above sea level is positive and below sea level is negative, using a cross-section chart with seven labelled points (A through G). Students read heights, order points, and research real-world extremes (Mount Everest, Challenger Deep). The third context is temperature in degrees Celsius, where 0°C is the freezing point of water, temperatures above are positive, and temperatures below are negative. Students identify sub-zero places in India and match temperature readings to times of day for Leh, Ladakh in November. These real-world connections consolidate integer sense and comparison.\n\nSection 10.4 applies integers to two exploratory puzzle activities. The first is a 'hollow integer grid' — a 3×3 grid where the border cells (top row, bottom row, left column, right column) must all sum to the same 'border sum'. Two example grids are given (border sum 0 and border sum –3), and students complete three more grids with specified border sums (+4, –2, –4), exploring multiple solutions and investigating which grids admit more than one filling. The second activity is an 'amazing grid of numbers' — a 4×4 integer grid where students circle any number, strike out its row and column, circle another unstruck number, and repeat; the sum of the four circled numbers is always the same regardless of choices. Two further grids are provided for exploration. A final standalone Figure it Out set consolidates integer arithmetic and ordering: writing integers between pairs, summing to –8, exploring sums achievable with integer dice, solving a table of eight arithmetic expressions, finding historical years using the integer line (including BCE considerations), completing sequences, creating expressions with integer cards, and determining the sign of results of various addition/subtraction combinations. The section closes with an integer Snakes and Ladders game extending from –50 to +50.\n\nSection 10.5 recalls the historical origins of integers, noting that negative numbers and zero were first formalised in Asia. Chinese work (Nine Chapters on Mathematical Art, c. 1st–2nd century CE) used red and black rods analogous to the chapter's tokens. India's Kautilya (Arthaśhāstra, c. 300 BCE) recognised negative bank balances; the Bakśhālī manuscript (c. 300 CE) used a special symbol for negatives. Brahmagupta's Brāhma-sphuṭa-siddhānta (628 CE) gave the first complete, explicit rules for addition and subtraction of positive numbers, negative numbers, and zero — essentially forming the modern integer ring. His five rules for addition and five rules for subtraction are quoted in the section. European resistance to negative numbers persisted into the 18th century (Lazare Carnot), but integers are now foundational and paved the way for algebra.",
+  "enumerated_activities": [
+    {
+      "id": "A-1",
+      "source_section": "section 10.1",
+      "book_ref": "Activity 1, p.243",
+      "description": "Students identify floors and their numbers in Bela's Building of Fun from a diagram, and determine what to press on the lift to travel four floors up and three floors down."
+    }
+  ],
+  "enumerated_worked_examples": [
+    {
+      "id": "WE-1",
+      "source_section": "section 10.1",
+      "book_ref": "Example (Addition to keep track of movement), p.245",
+      "description": "Starting from Food Court (Floor +1), pressing +2 in the lift leads to target floor (+1)+(+2)=+3, illustrating the rule Starting Floor + Movement = Target Floor."
+    },
+    {
+      "id": "WE-2",
+      "source_section": "section 10.1",
+      "book_ref": "Example (Combining button presses), p.245",
+      "description": "Gurmit presses +2 by mistake then –3 to correct; result is (+2)+(–3)=–1, illustrating that combining button presses is addition."
+    },
+    {
+      "id": "WE-3",
+      "source_section": "section 10.1",
+      "book_ref": "Example (Back to zero), p.246",
+      "description": "Pressing +3 and then –3 returns to Floor 0; introduces the concept of additive inverse. (+3)+(–3)=0."
+    },
+    {
+      "id": "WE-4",
+      "source_section": "section 10.1",
+      "book_ref": "Example (Subtraction a), p.249",
+      "description": "Target Floor –1, Starting Floor –2: movement needed is (+1). Expression: (–1)–(–2)=(+1)."
+    },
+    {
+      "id": "WE-5",
+      "source_section": "section 10.1",
+      "book_ref": "Example (Subtraction b), p.249",
+      "description": "Target Floor –1, Starting Floor +3: movement needed is –4. Expression: (–1)–(+3)=(–4)."
+    },
+    {
+      "id": "WE-6",
+      "source_section": "section 10.1",
+      "book_ref": "Example (Subtraction c), p.249",
+      "description": "Target Floor +2, Starting Floor –2: movement needed is +4. Expression: (+2)–(–2)=(+4)."
+    },
+    {
+      "id": "WE-7",
+      "source_section": "section 10.1",
+      "book_ref": "Example (Adding larger numbers, mine), p.250",
+      "description": "Mine context: (+40)+(+60)=+100 and (–90)+(–55)=–145 for addition; (+40)–(–50)=+90 and (–90)–(+40)=–130 for subtraction."
+    },
+    {
+      "id": "WE-8",
+      "source_section": "section 10.1",
+      "book_ref": "Example (Infinite lift subtraction), p.251",
+      "description": "Computing +2000–(–200): going from –200 to +2000 on the infinite lift requires pressing +2200. Reveals that subtracting a negative equals adding a positive."
+    },
+    {
+      "id": "WE-9",
+      "source_section": "section 10.1",
+      "book_ref": "Example (Unmarked number line addition), p.254",
+      "description": "UNL showing 85+(–60)=25 by marking –60 movement from +85."
+    },
+    {
+      "id": "WE-10",
+      "source_section": "section 10.1",
+      "book_ref": "Example (Unmarked number line subtraction), p.254",
+      "description": "UNL showing (–100)–(+250)=–350 by interpreting subtraction as missing addend."
+    },
+    {
+      "id": "WE-11",
+      "source_section": "section 10.1",
+      "book_ref": "Example (Conversion subtraction to addition), p.255",
+      "description": "Breaking journey from 2 to –3: (a) 2→0 is –2, (b) 0→–3 is –3; total movement is –3+(–2)=–5. Shows –3–2=–5 with no subtraction in second form."
+    },
+    {
+      "id": "WE-12",
+      "source_section": "section 10.2",
+      "book_ref": "Example (Token addition +5 and –8), p.256",
+      "description": "Lay out 5 positive and 8 negative tokens; remove 5 zero pairs; 3 negative tokens remain. (+5)+(–8)=–3."
+    },
+    {
+      "id": "WE-13",
+      "source_section": "section 10.2",
+      "book_ref": "Example (Token subtraction +5 minus +4), p.257",
+      "description": "From 5 positives, remove 4; 1 positive remains. (+5)–(+4)=+1."
+    },
+    {
+      "id": "WE-14",
+      "source_section": "section 10.2",
+      "book_ref": "Example (Token subtraction –7 minus –5), p.257",
+      "description": "From 7 negatives, remove 5; 2 negatives remain. (–7)–(–5)=–2. Also prompts: is this the same as (–7)+(+5)?"
+    },
+    {
+      "id": "WE-15",
+      "source_section": "section 10.2",
+      "book_ref": "Example (Token subtraction +5 minus +6), p.257-258",
+      "description": "5 positives, need to remove 6 — not enough. Add one zero pair; now remove 6 positives; 1 negative left. (+5)–(+6)=–1."
+    },
+    {
+      "id": "WE-16",
+      "source_section": "section 10.2",
+      "book_ref": "Example (Token subtraction +4 minus –6), p.258",
+      "description": "4 positives, need to remove 6 negatives — none present. Add 6 zero pairs (6 positives + 6 negatives); remove 6 negatives; 10 positives remain. +4–(–6)=+10."
+    }
+  ],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 10.1",
+      "book_ref": "Figure it Out Q1, section 10.1 p.245",
+      "description": "Start from Floor +2 and press –3. Where do you reach? Write an expression."
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 10.1",
+      "book_ref": "Figure it Out Q2, section 10.1 p.245",
+      "description": "Evaluate seven expressions (a–g) as Starting Floor + Movement: (+1)+(+4), (+4)+(+1), (+4)+(–3), (–1)+(+2), (–1)+(+1), 0+(+2), 0+(–2)."
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 10.1",
+      "book_ref": "Figure it Out Q3, section 10.1 p.245",
+      "description": "Find multiple starting floors and the movements needed to reach Floor –5; write expressions of the form (starting)+(movement)=–5."
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 10.1",
+      "book_ref": "Figure it Out, section 10.1 p.246",
+      "description": "Evaluate four expressions (a–d) as combined button presses: (+1)+(+4), (+4)+(+1), (+4)+(–3)+(–2), (–1)+(+2)+(–3)."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 10.1",
+      "book_ref": "Figure it Out Q1, section 10.1 p.247",
+      "description": "Compare six pairs of integers using < or > by referring to the Building of Fun: –2 vs +5, –5 vs +4, –5 vs –3, +6 vs –6, 0 vs –4, 0 vs +4."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 10.1",
+      "book_ref": "Figure it Out Q2, section 10.1 p.247",
+      "description": "Compare six pairs of larger integers with < or >: –10 vs –12, +17 vs –10, 0 vs –20, +9 vs –9, –25 vs –7, +15 vs –17."
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 10.1",
+      "book_ref": "Figure it Out Q3, section 10.1 p.247",
+      "description": "Given Floor A=–12, Floor D=–1, Floor E=+1 on a vertical number line, find the numbers of Floors B, C, F, G, and H."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 10.1",
+      "book_ref": "Figure it Out Q4, section 10.1 p.247",
+      "description": "Mark four floors (–7, –4, +3, –10) on a vertical building diagram."
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 10.1",
+      "book_ref": "Figure it Out, section 10.1 p.249",
+      "description": "Complete ten subtraction expressions (a–j) as movement from Starting Floor to Target Floor: (+1)–(+4), 0–(+2), (+4)–(+1), 0–(–2), (+4)–(–3), (–4)–(–3), (–1)–(+2), (–2)–(–2), (–1)–(+1), (+3)–(–3)."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 10.1",
+      "book_ref": "Figure it Out, section 10.1 p.251",
+      "description": "Complete seven expressions using the mine/larger number context (a–g): (+40)+__=+200, (+40)+__=–200, (–50)+__=+200, (–50)+__=–200, (–200)–(–40), (+200)–(+40), (–200)–(+40). Verify using the mineshaft."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 10.1",
+      "book_ref": "Figure it Out, section 10.1 p.251",
+      "description": "Evaluate eight expressions by imagining a suitable lift (a–h): –125+(–30), +105–(–55), +105+(+55), +80–(–150), +80+(+150), –99–(–200), –99+(+200), +1500–(–1500)."
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 10.1",
+      "book_ref": "Figure it Out, section 10.1 p.255",
+      "description": "Use unmarked number lines to evaluate four expressions: –125+(–30), +105–(–55), +80–(–150), –99–(–200)."
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 10.1",
+      "book_ref": "Figure it Out Q1, section 10.1 p.253",
+      "description": "Mark 3 positive and 3 negative numbers on a given number line (–10 to +10)."
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 10.1",
+      "book_ref": "Figure it Out Q2, section 10.1 p.253",
+      "description": "Write down the 3 marked negative numbers in boxes."
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 10.1",
+      "book_ref": "Figure it Out Q3, section 10.1 p.254",
+      "description": "Is 2 > –3? Why? Is –2 < 3? Why? Justify using the number line."
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 10.1",
+      "book_ref": "Figure it Out Q4, section 10.1 p.254",
+      "description": "Compute six integer expressions: –5+0, 7+(–7), –10+20, 10–20, 7–(–7), –8–(–10)."
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 10.2",
+      "book_ref": "Figure it Out Q1, section 10.2 p.257",
+      "description": "Complete four additions using token diagrams: (+6)+(+4), (–3)+(–2), (+5)+(–7), (–2)+(+6)."
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 10.2",
+      "book_ref": "Figure it Out Q2, section 10.2 p.257",
+      "description": "Cancel zero pairs in two given token sets (a: 3 positive + 5 negative; b: 6 positive + 3 negative). State which floor the attendant is on and write the corresponding addition statement."
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 10.2",
+      "book_ref": "Figure it Out Q1, section 10.2 p.258",
+      "description": "Evaluate six differences using tokens: (+10)–(+7), (–8)–(–4), (–9)–(–4), (+9)–(+12), (–5)–(–7), (–2)–(–6)."
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 10.2",
+      "book_ref": "Figure it Out Q2, section 10.2 p.258",
+      "description": "Complete six subtractions: (–5)–(–7), (+10)–(+13), (–7)–(–9), (+3)–(+8), (–2)–(–7), (+3)–(+15)."
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 10.2",
+      "book_ref": "Figure it Out Q1, section 10.2 p.259",
+      "description": "Subtract –3–(+5) using tokens. How many zero pairs are needed? What is the result?"
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 10.2",
+      "book_ref": "Figure it Out Q2, section 10.2 p.259",
+      "description": "Evaluate six expressions using tokens: (–3)–(+10), (+8)–(–7), (–5)–(+9), (–9)–(+10), (+6)–(–4), (–2)–(+7)."
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 10.3",
+      "book_ref": "Figure it Out Q1, section 10.3 p.260",
+      "description": "Bank account: start at ₹0, add credits of ₹30, ₹40, ₹50 and debits of ₹40, ₹50, ₹60. What is the balance?"
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 10.3",
+      "book_ref": "Figure it Out Q2, section 10.3 p.260",
+      "description": "Bank account: start at ₹0, debits of ₹1, 2, 4, 8, 16, 32, 64, 128 and a single credit of ₹256. What is the balance?"
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 10.3",
+      "book_ref": "Figure it Out Q3, section 10.3 p.260",
+      "description": "Why is it generally better to keep a positive bank balance? When might a temporary negative balance be worthwhile?"
+    },
+    {
+      "id": "E-26",
+      "source_section": "section 10.3",
+      "book_ref": "Figure it Out Q1, section 10.3 p.261",
+      "description": "Read heights A–G from a geographical cross-section chart and fill in the values."
+    },
+    {
+      "id": "E-27",
+      "source_section": "section 10.3",
+      "book_ref": "Figure it Out Q2, section 10.3 p.261",
+      "description": "Identify the highest and lowest points in the geographical cross-section."
+    },
+    {
+      "id": "E-28",
+      "source_section": "section 10.3",
+      "book_ref": "Figure it Out Q3, section 10.3 p.261",
+      "description": "Write points A–G in decreasing and increasing order of heights."
+    },
+    {
+      "id": "E-29",
+      "source_section": "section 10.3",
+      "book_ref": "Figure it Out Q4, section 10.3 p.261",
+      "description": "What is the highest point above sea level on Earth and its height?"
+    },
+    {
+      "id": "E-30",
+      "source_section": "section 10.3",
+      "book_ref": "Figure it Out Q5, section 10.3 p.261",
+      "description": "What is the lowest point on Earth with respect to sea level? What is its (negative) height?"
+    },
+    {
+      "id": "E-31",
+      "source_section": "section 10.3",
+      "book_ref": "Figure it Out Q1, section 10.3 p.262",
+      "description": "Research and find places in India where temperatures go below 0°C. What do they have in common and why?"
+    },
+    {
+      "id": "E-32",
+      "source_section": "section 10.3",
+      "book_ref": "Figure it Out Q2, section 10.3 p.262",
+      "description": "Match four temperatures (14°C, 8°C, –2°C, –4°C) with four times of day in Leh, Ladakh in November."
+    },
+    {
+      "id": "E-33",
+      "source_section": "section 10.4",
+      "book_ref": "Figure it Out Q1, section 10.4 p.263",
+      "description": "Compute the four border sums (top row, bottom row, left column, right column) for the second hollow integer grid and identify the border sum."
+    },
+    {
+      "id": "E-34",
+      "source_section": "section 10.4",
+      "book_ref": "Figure it Out Q2, section 10.4 p.264",
+      "description": "Complete three hollow integer grids to achieve specified border sums: +4, –2, –4."
+    },
+    {
+      "id": "E-35",
+      "source_section": "section 10.4",
+      "book_ref": "Figure it Out Q3, section 10.4 p.264",
+      "description": "Find more than one way to fill the border-sum –4 grid."
+    },
+    {
+      "id": "E-36",
+      "source_section": "section 10.4",
+      "book_ref": "Figure it Out Q4, section 10.4 p.264",
+      "description": "Which grids can be filled in multiple ways? What could be the reason?"
+    },
+    {
+      "id": "E-37",
+      "source_section": "section 10.4",
+      "book_ref": "Figure it Out Q5, section 10.4 p.264",
+      "description": "Make a border integer square puzzle and challenge classmates."
+    },
+    {
+      "id": "E-38",
+      "source_section": "section 10.4",
+      "book_ref": "Figure it Out Q1, section 10.4 p.265",
+      "description": "In the amazing grid, try the circle-and-strike game afresh with different chosen numbers. Does the final sum change?"
+    },
+    {
+      "id": "E-39",
+      "source_section": "section 10.4",
+      "book_ref": "Figure it Out Q2, section 10.4 p.265",
+      "description": "Play the circle-and-strike game on two other provided 4×4 grids (arithmetic progression grids)."
+    },
+    {
+      "id": "E-40",
+      "source_section": "section 10.4",
+      "book_ref": "Figure it Out Q3, section 10.4 p.265",
+      "description": "What is special about these grids — is the 'magic' in the numbers, the arrangement, or both? Can you make more such grids?"
+    },
+    {
+      "id": "E-41",
+      "source_section": "section 10.4",
+      "book_ref": "Figure it Out Q1, section 10.4 p.265",
+      "description": "Write all integers between four given pairs in increasing order: (a) 0 and –7, (b) –4 and 4, (c) –8 and –15, (d) –30 and –23."
+    },
+    {
+      "id": "E-42",
+      "source_section": "section 10.4",
+      "book_ref": "Figure it Out Q2, section 10.4 p.265",
+      "description": "Give three integers whose sum is –8."
+    },
+    {
+      "id": "E-43",
+      "source_section": "section 10.4",
+      "book_ref": "Figure it Out Q3, section 10.4 p.265",
+      "description": "Two dice with faces –1, 2, –3, 4, –5, 6. Find the numbers between –10 and +12 that cannot be obtained as a sum of the two dice."
+    },
+    {
+      "id": "E-44",
+      "source_section": "section 10.4",
+      "book_ref": "Figure it Out Q4, section 10.4 p.265",
+      "description": "Solve eight integer arithmetic expressions arranged in a 2×4 table: 8–13, (–8)–(13), (–13)–(–8), (–13)+(–8), 8+(–13), (–8)–(–13), (13)–8, 13–(–8)."
+    },
+    {
+      "id": "E-45",
+      "source_section": "section 10.4",
+      "book_ref": "Figure it Out Q5, section 10.4 p.265-266",
+      "description": "Find three historical years: (a) 150 years before the present year, (b) 2200 years before the present year (no year 0), (c) 320 years after 680 BCE."
+    },
+    {
+      "id": "E-46",
+      "source_section": "section 10.4",
+      "book_ref": "Figure it Out Q6, section 10.4 p.266",
+      "description": "Complete three integer sequences: (a) (–40),(–34),(–28),(–22),__,__,__; (b) 3,4,2,5,1,6,0,7,__,__,__; (c) __,__,12,6,1,(–3),(–6),__,__,__."
+    },
+    {
+      "id": "E-47",
+      "source_section": "section 10.4",
+      "book_ref": "Figure it Out Q7, section 10.4 p.266",
+      "description": "From six integer cards (+1, +7, +18, –5, –2, –9), construct an addition/subtraction expression whose value is closest to –30."
+    },
+    {
+      "id": "E-48",
+      "source_section": "section 10.4",
+      "book_ref": "Figure it Out Q8, section 10.4 p.266",
+      "description": "Determine whether each of six types of integer addition/subtraction combinations [(positive)–(negative), (positive)+(negative), (negative)+(negative), (negative)–(negative), (negative)–(positive), (negative)+(positive)] is always positive, always negative, or can be either."
+    },
+    {
+      "id": "E-49",
+      "source_section": "section 10.4",
+      "book_ref": "Figure it Out Q9, section 10.4 p.266",
+      "description": "A string of 100 tokens in a repeating pattern (+++––). What is the total value of the string?"
+    },
+    {
+      "id": "E-50",
+      "source_section": "section 10.5",
+      "book_ref": "Figure it Out Q1, section 10.5 p.268",
+      "description": "Explain each of Brahmagupta's rules for addition and subtraction in terms of Bela's Building of Fun or the number line."
+    },
+    {
+      "id": "E-51",
+      "source_section": "section 10.5",
+      "book_ref": "Figure it Out Q2, section 10.5 p.268",
+      "description": "Give your own examples of each of Brahmagupta's rules for addition and subtraction."
+    }
+  ],
+  "conceptual_demand": 2,
+  "activity_count": 1,
+  "demo_count": 0,
+  "exec_load": 1
+}

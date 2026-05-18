@@ -1,0 +1,39 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "vi",
+  "chapter_number": 6,
+  "chapter_title": "Perimeter and Area",
+
+  "core_cg": "CG-4",
+
+  "core_competencies": [
+    {
+      "c_code": "C-4.1",
+      "justification": "Section 6.2 applies area formulas for rectangles and squares to composite subtraction problems (uncarpeted floor, remaining land after flower beds), and section 6.3 derives the area of any triangle by decomposing it into halves of rectangles. Exercises E-43 to E-47 explicitly require students to find areas of composite figures by splitting them into rectangles and triangles — a direct match to 'develops strategies to find the areas of composite 2D shapes.'"
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-3.2",
+      "justification": "Section 6.1 uses the properties of rectangles (opposite sides equal), squares (all sides equal), equilateral triangles, and regular polygons to derive and generalise perimeter formulas; E-14 requires perimeter analysis of polygons drawn on dot grids using straight and diagonal units, engaging directly with properties of these 2D shapes."
+    },
+    {
+      "c_code": "C-6.1",
+      "justification": "Section 6.3 builds a deductive argument: cutting a rectangle along its diagonal yields two congruent triangles each with half the area, and a non-right triangle (ABE) is then shown to equal the sum of two such half-sub-rectangle areas, establishing the general triangle area principle through logical reasoning over geometric figures."
+    },
+    {
+      "c_code": "C-7.1",
+      "justification": "The Making it 'More' or 'Less' investigation (A-3, E-48–E-51), the Split and rejoin task (A-2, E-15–E-18), the 24-sq-unit rectangle exploration (E-34), and the folded-square reasoning question (E-59) all require students to discover solutions through open-ended exploration and conjecture rather than routine formula application."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to compute and reason about the perimeter and area of rectangles, squares, triangles, and composite 2D figures by applying and deriving the relevant formulae through direct formula recall, multi-step composite problems, and a geometric decomposition argument that shows any triangle has half the area of its enclosing rectangle.",
+
+  "conceptual_demand": 2,
+  "activity_count": 4,
+  "demo_count": 0,
+  "exec_load": 1,
+  "effort_index": 12.0
+}

@@ -1,0 +1,1323 @@
+{
+  "filename": "ch_02_20260518_104012.json",
+  "saved_at": "2026-05-18T10:40:12",
+  "grade": "Grade VI",
+  "subject": "English",
+  "chapter_number": 2,
+  "chapter_title": "Friendship",
+  "period_schedule_display": "Period schedule:\n  Row 1: 40 minutes × 6 periods = 240 minutes\nTotal: 6 periods · 4h 0min",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 40,
+      "count": 6
+    }
+  ],
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 40,
+          "section_id": "A",
+          "section_title": "The Unlikely Best Friends",
+          "spines_taught": [
+            "reading_for_comprehension"
+          ],
+          "activity_title": "Unlikely Friends: Pre-Reading and Story Entry",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "literary-reading"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 0,
+              "task_brief": "Pre-reading: complete friendship sentences in shapes"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 1,
+              "task_brief": "Discuss meaning of 'unlikely' and unlikely friends"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Open the chapter by asking students what makes a friendship surprising or unexpected. Students share brief personal experiences before completing 'With my friend I…' and 'With my friend I feel…' sentences in the shapes on page 39, then share with classmates."
+            },
+            {
+              "minutes": "8–22",
+              "description": "Read the title 'The Unlikely Best Friends' aloud together. In small groups students discuss the meaning of 'unlikely' (page 39) and then name some unlikely friends from stories or real life, reporting back to the class."
+            },
+            {
+              "minutes": "22–35",
+              "description": "Teacher reads the opening section aloud, pausing to question why Gajaraj feels lonely despite his royal comforts, helping students anticipate the dog's arrival."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Quick whole-class share-out: one sentence each on what makes Gajaraj's loneliness believable. Teacher previews the friendship activities coming in the next period."
+            }
+          ],
+          "teacher_notes": "This is the opening period of the chapter; no prior session to transition from. The prose_summary notes that Gajaraj's loneliness despite royal comforts is the emotional hook — use it to anchor the pre-reading discussion. The remaining RFC tasks (task_index 2 onwards) will be addressed in Period 2.",
+          "materials": [
+            "Textbook p.39–42",
+            "Whiteboard"
+          ]
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 40,
+          "section_id": "A",
+          "section_title": "The Unlikely Best Friends",
+          "spines_taught": [
+            "reading_for_comprehension"
+          ],
+          "activity_title": "Mid-Story Pause: Activities and Separation",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "comprehension-discussion"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 2,
+              "task_brief": "Write activities Gajaraj and Buntee did together"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 3,
+              "task_brief": "Mid-story discuss: why farmer hugged Buntee"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 4,
+              "task_brief": "End-story discuss: why Gajaraj refused food"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Brief recap: teacher asks one student to retell how Buntee arrived at the stable, connecting to Period 1's pre-reading activation."
+            },
+            {
+              "minutes": "5–18",
+              "description": "Students talk about the things Gajaraj and Buntee did together — bathing at the pond, the trunk spray, riding on Gajaraj's back — and write activities in the shapes on page 42. Pairs share their filled shapes aloud."
+            },
+            {
+              "minutes": "18–30",
+              "description": "Teacher reads Part I close and poses the mid-story discussion questions on page 42: why the farmer hugged Buntee, and whether Buntee will leave Gajaraj. Students discuss in groups of three before a whole-class debrief."
+            },
+            {
+              "minutes": "30–40",
+              "description": "Teacher reads the separation episode and asks the end-of-story questions on page 45: why Gajaraj refused food, and who were friends at the end of the story. Students give oral responses; teacher notes key points on the board."
+            }
+          ],
+          "teacher_notes": "Continuing from Period 1's story entry; today covers the emotional core of the narrative — separation and grief. The prose_summary highlights that both animals refuse food after separation, which is the most discussion-rich moment. Task_index 5 onwards (extract-based passage questions) are left as self-study; direct students to pages 45–46 for independent exploration.",
+          "materials": [
+            "Textbook p.42–45",
+            "Whiteboard"
+          ]
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 60,
+          "section_id": "A",
+          "section_title": "The Unlikely Best Friends",
+          "spines_taught": [
+            "listening",
+            "speaking"
+          ],
+          "activity_title": "Unlikely Friends: Listening Story and Friend Profile",
+          "pedagogical_methods": {
+            "listening": "critical-listening",
+            "speaking": "guided-conversation"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "listening",
+              "task_index": 0,
+              "task_brief": "Fill missing details in cow-leopard paragraph from listening"
+            },
+            {
+              "spine": "listening",
+              "task_index": 1,
+              "task_brief": "Number sentences in correct order after second listening"
+            },
+            {
+              "spine": "speaking",
+              "task_index": 0,
+              "task_brief": "Find common likes and dislikes; describe friend to class"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Teacher sets context: the listening passage tells a real story of an unlikely friendship between a cow and a leopard from Vadodara. Students listen for the first time and fill in the missing details in the paragraph on page 49."
+            },
+            {
+              "minutes": "8–18",
+              "description": "Teacher reads the passage again; students number the sentences in correct order on page 50, comparing with a partner before a whole-class check."
+            },
+            {
+              "minutes": "18–28",
+              "description": "Transition to speaking: students interview a partner to find common likes and dislikes, completing the 'I am / I like / My friend is / My friend likes / Both of us like' frame."
+            },
+            {
+              "minutes": "28–48",
+              "description": "Students stand and describe their friend to the class using the cue sentences provided: 'My friend and I like to play…', 'I like to ___ but my friend likes to ___', 'We are different as…'. Teacher circulates and prompts quieter students."
+            },
+            {
+              "minutes": "48–60",
+              "description": "Class debrief: what made the cow-leopard friendship as 'unlikely' as Gajaraj and Buntee's? Students offer one sentence each linking the listening passage to the narrative. Teacher previews the writing period."
+            }
+          ],
+          "teacher_notes": "Transition from RFC periods; listening and speaking are paired today per NCF guidance that these skills should occur together. The transcript (page 71) must be read aloud clearly twice; the leopard-cow story from Vadodara parallels the Jataka tale's cross-species friendship theme closely.",
+          "materials": [
+            "Textbook p.49–51",
+            "Listening script p.71"
+          ]
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 40,
+          "section_id": "A",
+          "section_title": "The Unlikely Best Friends",
+          "spines_taught": [
+            "writing"
+          ],
+          "activity_title": "Writing About a Friend: Similarities and Differences",
+          "pedagogical_methods": {
+            "writing": "functional-writing"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "writing",
+              "task_index": 0,
+              "task_brief": "Write six sentences about friend showing similarities and differences"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Quick recall of the speaking activity from Period 3: teacher asks two volunteers to share what they found similar and different about their friend. These ideas feed directly into the writing task."
+            },
+            {
+              "minutes": "8–18",
+              "description": "Teacher models writing two sample sentences on the board using the connector words given (same, different, but, both, neither, nor), showing how to combine similarity and difference in one sentence."
+            },
+            {
+              "minutes": "18–35",
+              "description": "Students independently write six sentences about their friend, using the facts they gathered in the speaking task and the connector words as scaffolds. Teacher circulates and provides individual feedback."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Two or three students read their sentences aloud. Class responds with a 'thumbs up' if the sentences capture both similarity and difference. Teacher previews the vocabulary period."
+            }
+          ],
+          "teacher_notes": "Transition from the speaking task in Period 3 — the friend-profile data students collected there is the direct input for today's writing. Beyond-text tasks for Section A are left as self-study; point students to page 51 for the Tarra and Bella news report and the Jataka exploration on their own time.",
+          "materials": [
+            "Textbook p.43",
+            "Whiteboard",
+            "Notebooks"
+          ]
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 40,
+          "section_id": "A",
+          "section_title": "The Unlikely Best Friends",
+          "spines_taught": [
+            "vocabulary_grammar"
+          ],
+          "activity_title": "Opposites, Crossword, and Three Forms of Past Tense",
+          "pedagogical_methods": {
+            "vocabulary_grammar": "linguistic-aspects-in-context"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 0,
+              "task_brief": "Complete crossword with opposites from the story"
+            },
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 2,
+              "task_brief": "Sort story verbs into simple past, past progressive, past perfect"
+            }
+          ],
+          "homework": [
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 3,
+              "task_brief": "Select correct past-tense form to complete passage on farmer and Buntee"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Teacher explains how opposites can be formed by adding prefixes (un-, in-, dis-, mis-) using 'unhappy' and 'incorrect' as anchors, then invites students to brainstorm story words. Students complete the crossword puzzle on page 47 independently."
+            },
+            {
+              "minutes": "10–22",
+              "description": "Pairs check crossword answers. Teacher introduces the three forms of past tense (Simple Past, Past Progressive, Past Perfect) with brief examples from the story text itself, writing the column headers on the board."
+            },
+            {
+              "minutes": "22–35",
+              "description": "Students individually sort the given story verbs (was looking, looked, gave, had ordered, etc.) into the three-column table on page 48. Pairs then compare and justify their choices to each other."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Teacher leads whole-class confirmation of the sorted verbs and clarifies common confusions between Simple Past and Past Progressive. Homework task on page 49 (selecting correct tense for the farmer-Buntee passage) is set and explained."
+            }
+          ],
+          "teacher_notes": "Vocabulary_grammar is isolated in its own period per Rule 4. The crossword task is grounded in story vocabulary, making it a seamless extension of the narrative study from Periods 1–2. Task_index 1 (paragraph fill using crossword words) and task_index 4 (neither/nor practice) are left as self-study; alert students to page 47 and page 49 respectively.",
+          "materials": [
+            "Textbook p.47–49",
+            "Whiteboard",
+            "Notebooks"
+          ]
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 40,
+          "section_id": "B",
+          "section_title": "A Friend's Prayer",
+          "spines_taught": [
+            "reading_for_comprehension"
+          ],
+          "activity_title": "Reading a Prayer-Poem: Tone, Theme, and Key Lines",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "literary-reading"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 0,
+              "task_brief": "Pre-reading: which sentence is closest to a prayer?"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 2,
+              "task_brief": "Read poem, underline agreed lines, share in groups"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 3,
+              "task_brief": "Circle correct words to complete the poem summary"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Teacher writes the three pre-reading sentences on the board and asks students which one reads like a prayer, prompting discussion on tone and intent. Students explain their choice to classmates, setting up the poem's devotional register."
+            },
+            {
+              "minutes": "8–22",
+              "description": "Students read the poem silently, underlining lines they agree with most. In groups of three they share which lines they chose and explain their reasons; the group identifies the line most commonly underlined and reports it to the class."
+            },
+            {
+              "minutes": "22–35",
+              "description": "Teacher guides students through the summary-completion task on page 54, circling the correct word from each pair (e.g., 'prayer for / speech on', 'complete life / school days'). Students explain why the incorrect option does not fit the poem's meaning."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Quick close: teacher asks — 'What makes this poem different from a simple wish?' Students offer one phrase each. Teacher previews the passage-extract questions for independent reading."
+            }
+          ],
+          "teacher_notes": "Transition from Section A; this poem section is much shorter (380 characters) than the narrative, so one RFC period is appropriate. The poem_appreciation_summary notes the AABB rhyme scheme and the devotional tone — draw attention to this when students discuss which lines feel like a prayer. Task_index 1, 4–10 are left as self-study.",
+          "materials": [
+            "Textbook p.52–55",
+            "Whiteboard"
+          ]
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 60,
+          "section_id": "B",
+          "section_title": "A Friend's Prayer",
+          "spines_taught": [
+            "listening",
+            "speaking"
+          ],
+          "activity_title": "Outdoor Friends: Listening and Role-Play Conversations",
+          "pedagogical_methods": {
+            "listening": "critical-listening",
+            "speaking": "role-play"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "listening",
+              "task_index": 0,
+              "task_brief": "Answer one-two word questions about Ajay and Dhiraj's activities"
+            },
+            {
+              "spine": "listening",
+              "task_index": 1,
+              "task_brief": "Circle pictures matching activities from listening passage"
+            },
+            {
+              "spine": "speaking",
+              "task_index": 0,
+              "task_brief": "Role-play two friend situations: park walk and tiffin sharing"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Teacher sets context: 'We heard about an unlikely friendship last time; now listen to two real friends — Ajay and Dhiraj — describing their favourite activities together.' Students listen to the passage and answer the one-or-two-word question about what the friends purchase at the park bench (page 56)."
+            },
+            {
+              "minutes": "8–20",
+              "description": "Teacher reads the passage a second time; students circle the correct pictures from the six shown on page 56, then compare with a partner. Class confirms answers together."
+            },
+            {
+              "minutes": "20–35",
+              "description": "Teacher models the role-play framework for Situation 1 (a walk in the park): greeting, invitation, planning activities, and expressing preference. One pair demonstrates; teacher coaches the register and politeness markers."
+            },
+            {
+              "minutes": "35–52",
+              "description": "Students work in pairs on both situations — the park walk and the tiffin-sharing conversation — taking turns in each role. Teacher circulates and cues quieter students with the printed sentence starters."
+            },
+            {
+              "minutes": "52–60",
+              "description": "Two pairs perform a short role-play for the class; peers give feedback on one thing done well. Teacher connects the friendship values in the role-plays back to the poem's idea of 'giving one's best' for a friend."
+            }
+          ],
+          "teacher_notes": "Transition from Section B's RFC period; listening and speaking are combined per NCF guidance. The transcript on page 72 should be read twice at a natural pace. Section B's writing task is left as self-study — point students to the 80-word paragraph prompt (page 56) for independent completion.",
+          "materials": [
+            "Textbook p.55–57",
+            "Listening script p.72"
+          ]
+        },
+        {
+          "period_number": 8,
+          "period_duration_minutes": 40,
+          "section_id": "B",
+          "section_title": "A Friend's Prayer",
+          "spines_taught": [
+            "vocabulary_grammar",
+            "beyond_text"
+          ],
+          "activity_title": "Synonyms for Blessed, Friend Qualities, and Friendship Quotations",
+          "pedagogical_methods": {
+            "vocabulary_grammar": "linguistic-aspects-in-context",
+            "beyond_text": "project-work"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 0,
+              "task_brief": "Select synonyms for 'blessed' from given word list"
+            },
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 1,
+              "task_brief": "Complete partial words for friend qualities; fill five sentences"
+            },
+            {
+              "spine": "beyond_text",
+              "task_index": 0,
+              "task_brief": "Interpret two friendship quotations; share matching life experience"
+            }
+          ],
+          "homework": [
+            {
+              "spine": "beyond_text",
+              "task_index": 1,
+              "task_brief": "Find, decorate and display a friendship quotation on class board"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Teacher highlights the line 'With special friends I feel I'm blessed' from the poem and asks students to select synonyms from the given list on page 55 (grateful, thankful, etc.), discussing why 'excited' does not fit the poem's devotional tone."
+            },
+            {
+              "minutes": "10–22",
+              "description": "Students decode the partially spelled qualities of a good friend (loyal, h-e-l-p-f-u-l, k-i-n-d, c-a-r-i-n-g, h-o-n-e-s-t) and then fill in the five sentences on pages 55–56, using each quality word in context."
+            },
+            {
+              "minutes": "22–35",
+              "description": "Teacher reads the two friendship quotations on page 58 aloud. Pairs discuss the meaning of each and then share a personal experience that matches one quotation. Three or four pairs share with the whole class."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Teacher sets the homework: find a famous friendship quotation in any language, write it neatly, colour and decorate it, and bring it for the class display board. Section B's writing task (80-word paragraph) is recommended as an additional self-study exercise."
+            }
+          ],
+          "teacher_notes": "Vocabulary_grammar and beyond_text are combined here because the poem section is short and the vocabulary tasks are brief; both spines can be fully covered within the 40 minutes. The poem_appreciation_summary notes that 'blessed' carries a sense of gratitude and devotion — use that nuance when discussing the synonym selection task.",
+          "materials": [
+            "Textbook p.55–58",
+            "Whiteboard",
+            "Coloured paper/pens for homework"
+          ]
+        },
+        {
+          "period_number": 9,
+          "period_duration_minutes": 40,
+          "section_id": "C",
+          "section_title": "The Chair",
+          "spines_taught": [
+            "reading_for_comprehension"
+          ],
+          "activity_title": "The Invisible Chair: Reading and Discovering True Friends",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "critical-reading"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 1,
+              "task_brief": "Find friendship words in word-search grid"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 4,
+              "task_brief": "Mid-story: True/False, attic question, and prediction"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 5,
+              "task_brief": "End-story: True/False, fill blank, match characters to actions"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Students quickly write two words that come to mind when they think of friendship, then scan the word-search grid on page 59 to find eight friendship-related words. Pairs share their found words with the class before reading begins."
+            },
+            {
+              "minutes": "8–22",
+              "description": "Teacher reads 'The Chair' aloud to the mid-story pause, then poses the questions on page 61: students respond to the True/False statement about Mario's pride, identify what grandfather brought from the attic, and predict whether Mario will face challenges with the invisible chair."
+            },
+            {
+              "minutes": "22–35",
+              "description": "Teacher reads to the end of the story. Students individually answer the end-of-story questions on page 64: True/False on Mario's first attempt, filling in the blank about the bet, and matching Guneet/Asma/Deepa and the rest of the class to their actions."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Class discussion: what is the grandfather's real lesson? Students summarise in one sentence. Teacher previews the extract-based passage questions as self-study and introduces the writing and grammar periods ahead."
+            }
+          ],
+          "teacher_notes": "Transition from Section B into the final and longest narrative section. The prose_summary notes that the invisible chair is a metaphor for the invisible tests of loyalty — draw this out in the end-of-story discussion. Extract-based passage tasks (task_index 6, 7, 8) are left as self-study; direct students to pages 64–65.",
+          "materials": [
+            "Textbook p.59–65",
+            "Whiteboard"
+          ]
+        },
+        {
+          "period_number": 10,
+          "period_duration_minutes": 60,
+          "section_id": "C",
+          "section_title": "The Chair",
+          "spines_taught": [
+            "vocabulary_grammar",
+            "beyond_text"
+          ],
+          "activity_title": "Suffixes, Adjectives, and Friendship Across Ages",
+          "pedagogical_methods": {
+            "vocabulary_grammar": "linguistic-aspects-in-context",
+            "beyond_text": "project-work"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 0,
+              "task_brief": "Split six words into root word and suffix in table"
+            },
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 2,
+              "task_brief": "Write adjectives around Mario's image to describe his character"
+            },
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 3,
+              "task_brief": "Match adjectives to nouns; form phrases and sentences"
+            },
+            {
+              "spine": "beyond_text",
+              "task_index": 2,
+              "task_brief": "Interview four age groups on friendship; record and present findings"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–12",
+              "description": "Teacher introduces root words and suffixes using 'friendly = friend + ly' from the story text, then students complete the table on page 65 splitting suddenly, talking, carrying, called, and showed. Pairs check and justify their splits."
+            },
+            {
+              "minutes": "12–25",
+              "description": "Teacher reads aloud 'Mario, brave and determined, took the strange invisible chair…' and briefly explains that words describing people or things are adjectives. Students write adjectives around the image of Mario on page 66, drawing on both story vocabulary and their own words."
+            },
+            {
+              "minutes": "25–38",
+              "description": "Students match adjectives (brave, clever, tasty, heavy, slight, true) with nouns from Column B on page 67, form phrases, and write one sentence each. Three or four students share their sentences aloud for peer feedback."
+            },
+            {
+              "minutes": "38–55",
+              "description": "Teacher introduces the age-group interview project on page 70: students plan which four age groups they will speak to, practise the question 'What does friendship mean to you?', and begin filling in the response table. Students discuss in groups what patterns they expect to find across age groups."
+            },
+            {
+              "minutes": "55–60",
+              "description": "Chapter close: teacher draws together the three sections — Gajaraj and Buntee, the prayer-poem, and Mario's invisible chair — asking what one idea about friendship all three share. Students give a one-word answer. Acrostic poem task (page 70) is recommended as a self-study creative extension."
+            }
+          ],
+          "teacher_notes": "Final period of the chapter; vocabulary_grammar and beyond_text are combined because the beyond-text project requires only planning and launching in-class — data collection is done independently. Task_index 1 (root-suffix matching with sentences) and task_index 4 (adjective-noun paragraph completion) from vocabulary_grammar are left as self-study; direct students to pages 66–67.",
+          "materials": [
+            "Textbook p.65–70",
+            "Whiteboard",
+            "Notebooks"
+          ]
+        }
+      ]
+    },
+    "coverage_handoff": {
+      "reading_for_comprehension": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "The Unlikely Best Friends",
+            "section_type": "narrative",
+            "implied_lo": "Student interprets events and emotional relationships in a narrative text.",
+            "tasks_anchored": [
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 0,
+                "task_brief": "Pre-reading: complete friendship sentences in shapes"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 1,
+                "task_brief": "Discuss meaning of 'unlikely' and unlikely friends"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 2,
+                "task_brief": "Write activities Gajaraj and Buntee did together"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 3,
+                "task_brief": "Mid-story discuss: why farmer hugged Buntee"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 4,
+                "task_brief": "End-story discuss: why Gajaraj refused food"
+              }
+            ]
+          },
+          {
+            "section_id": "B",
+            "section_title": "A Friend's Prayer",
+            "section_type": "poem",
+            "implied_lo": "Student identifies tone, central idea, and key imagery in a lyric poem.",
+            "tasks_anchored": [
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 0,
+                "task_brief": "Pre-reading: which sentence is closest to a prayer?"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 2,
+                "task_brief": "Read poem, underline agreed lines, share in groups"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 3,
+                "task_brief": "Circle correct words to complete the poem summary"
+              }
+            ]
+          },
+          {
+            "section_id": "C",
+            "section_title": "The Chair",
+            "section_type": "narrative",
+            "implied_lo": "Student analyses character motivation and distinguishes true friends from acquaintances.",
+            "tasks_anchored": [
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 1,
+                "task_brief": "Find friendship words in word-search grid"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 4,
+                "task_brief": "Mid-story: True/False, attic question, and prediction"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 5,
+                "task_brief": "End-story: True/False, fill blank, match characters to actions"
+              }
+            ]
+          }
+        ]
+      },
+      "listening": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "The Unlikely Best Friends",
+            "section_type": "narrative",
+            "implied_lo": "Student recalls sequence and specific details from a spoken narrative.",
+            "tasks_anchored": [
+              {
+                "spine": "listening",
+                "task_index": 0,
+                "task_brief": "Fill missing details in cow-leopard paragraph from listening"
+              },
+              {
+                "spine": "listening",
+                "task_index": 1,
+                "task_brief": "Number sentences in correct order after second listening"
+              }
+            ]
+          },
+          {
+            "section_id": "B",
+            "section_title": "A Friend's Prayer",
+            "section_type": "poem",
+            "implied_lo": "Student identifies specific activities and details from a short spoken description.",
+            "tasks_anchored": [
+              {
+                "spine": "listening",
+                "task_index": 0,
+                "task_brief": "Answer one-two word questions about Ajay and Dhiraj's activities"
+              },
+              {
+                "spine": "listening",
+                "task_index": 1,
+                "task_brief": "Circle pictures matching activities from listening passage"
+              }
+            ]
+          },
+          {
+            "section_id": "C",
+            "section_title": "The Chair",
+            "section_type": "narrative",
+            "implied_lo": "Student listens to a personal account and identifies key facts about a friendship.",
+            "tasks_anchored": [
+              {
+                "spine": "listening",
+                "task_index": 0,
+                "task_brief": "Fill blanks with exact words from Manu's talk about Monika"
+              }
+            ]
+          }
+        ]
+      },
+      "speaking": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "The Unlikely Best Friends",
+            "section_type": "narrative",
+            "implied_lo": "Student describes similarities and differences between self and a friend orally.",
+            "tasks_anchored": [
+              {
+                "spine": "speaking",
+                "task_index": 0,
+                "task_brief": "Find common likes and dislikes; describe friend to class"
+              }
+            ]
+          },
+          {
+            "section_id": "B",
+            "section_title": "A Friend's Prayer",
+            "section_type": "poem",
+            "implied_lo": "Student sustains a role-play conversation about shared activities with a partner.",
+            "tasks_anchored": [
+              {
+                "spine": "speaking",
+                "task_index": 0,
+                "task_brief": "Role-play two friend situations: park walk and tiffin sharing"
+              }
+            ]
+          }
+        ]
+      },
+      "writing": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "The Unlikely Best Friends",
+            "section_type": "narrative",
+            "implied_lo": "Student writes sentences comparing a friend using contrast connectors.",
+            "tasks_anchored": [
+              {
+                "spine": "writing",
+                "task_index": 0,
+                "task_brief": "Write six sentences about friend showing similarities and differences"
+              }
+            ]
+          }
+        ]
+      },
+      "vocabulary_grammar": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "The Unlikely Best Friends",
+            "section_type": "narrative",
+            "implied_lo": "Student uses three forms of past tense correctly in story context.",
+            "tasks_anchored": [
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 0,
+                "task_brief": "Complete crossword with opposites from the story"
+              },
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 2,
+                "task_brief": "Sort story verbs into simple past, past progressive, past perfect"
+              }
+            ]
+          },
+          {
+            "section_id": "B",
+            "section_title": "A Friend's Prayer",
+            "section_type": "poem",
+            "implied_lo": "Student identifies synonyms and vocabulary for positive qualities of friendship.",
+            "tasks_anchored": [
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 0,
+                "task_brief": "Select synonyms for 'blessed' from given word list"
+              },
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 1,
+                "task_brief": "Complete partial words for friend qualities; fill five sentences"
+              }
+            ]
+          },
+          {
+            "section_id": "C",
+            "section_title": "The Chair",
+            "section_type": "narrative",
+            "implied_lo": "Student applies adjectives to describe character and forms adjective-noun phrases.",
+            "tasks_anchored": [
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 0,
+                "task_brief": "Split six words into root word and suffix in table"
+              },
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 2,
+                "task_brief": "Write adjectives around Mario's image to describe his character"
+              },
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 3,
+                "task_brief": "Match adjectives to nouns; form phrases and sentences"
+              }
+            ]
+          }
+        ]
+      },
+      "beyond_text": {
+        "section_contributions": [
+          {
+            "section_id": "B",
+            "section_title": "A Friend's Prayer",
+            "section_type": "poem",
+            "implied_lo": "Student interprets friendship quotations and connects them to personal experience.",
+            "tasks_anchored": [
+              {
+                "spine": "beyond_text",
+                "task_index": 0,
+                "task_brief": "Interpret two friendship quotations; share matching life experience"
+              }
+            ]
+          },
+          {
+            "section_id": "C",
+            "section_title": "The Chair",
+            "section_type": "narrative",
+            "implied_lo": "Student investigates how perspectives on friendship change across age groups.",
+            "tasks_anchored": [
+              {
+                "spine": "beyond_text",
+                "task_index": 2,
+                "task_brief": "Interview four age groups on friendship; record and present findings"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "assessment_items": [
+      {
+        "spine_code": "reading_for_comprehension",
+        "spine_title": "Reading for Comprehension",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-RFC-A-1",
+            "source_section_id": "A",
+            "source_section_title": "The Unlikely Best Friends",
+            "source_section_type": "narrative",
+            "source_spine": "reading_for_comprehension",
+            "source_lo": "Student interprets events and emotional relationships in a narrative text.",
+            "item_stem": "In 'The Unlikely Best Friends', both Gajaraj and Buntee refuse all food after they are separated. Read the sentences below and mark each one TRUE or FALSE.\n(1) Gajaraj stopped eating because the mahout forgot to bring his food.\n(2) Buntee refused food because he missed Gajaraj after being taken away by the farmer.\n(3) The farmer realised something was wrong with Buntee by observing that Buntee did not eat.\n(4) The mahout suspected that Gajaraj was unhappy because of the absent dog.",
+            "question_type": "TRUE_FALSE",
+            "options": [
+              {
+                "label": "1",
+                "text": "Gajaraj stopped eating because the mahout forgot to bring his food.",
+                "is_correct": false
+              },
+              {
+                "label": "2",
+                "text": "Buntee refused food because he missed Gajaraj after being taken away by the farmer.",
+                "is_correct": true
+              },
+              {
+                "label": "3",
+                "text": "The farmer realised something was wrong with Buntee by observing that Buntee did not eat.",
+                "is_correct": true
+              },
+              {
+                "label": "4",
+                "text": "The mahout suspected that Gajaraj was unhappy because of the absent dog.",
+                "is_correct": true
+              }
+            ],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "Statement 1 is FALSE — Gajaraj refused food out of grief for Buntee, not because the mahout neglected him. Statements 2, 3, and 4 are TRUE, as supported by the narrative's account of both animals pining and the farmer and mahout drawing the same conclusion.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "In 'The Unlikely Best Friends', both Gajaraj and Buntee refuse all food after they are separated. Read the sentences below and mark each one TRUE or FALSE.\n(1) Gajaraj stopped eating because the mahout forgot to bring his food.\n(2) Buntee refused food because he missed Gajaraj after being taken away by the farmer.\n(3) The farmer realised something was wrong with Buntee by observing that Buntee did not eat.\n(4) The mahout suspected that Gajaraj was unhappy because of the absent dog.",
+            "_source_section_label": "The Unlikely Best Friends"
+          },
+          {
+            "id": "Q-RFC-B-1",
+            "source_section_id": "B",
+            "source_section_title": "A Friend's Prayer",
+            "source_section_type": "poem",
+            "source_spine": "reading_for_comprehension",
+            "source_lo": "Student identifies tone, central idea, and key imagery in a lyric poem.",
+            "item_stem": "Read the following stanza from 'A Friend's Prayer' by Jill Wolf:\n\n'Let me use my heart to see,\nTo realise what friends can be,\nAnd make no judgements from afar,\nBut love my friends the way they are.'\n\nWhich of the following best describes the central idea of these lines?",
+            "question_type": "MCQ",
+            "options": [
+              {
+                "label": "A",
+                "text": "True friendship requires giving expensive gifts to friends.",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "Empathy and unconditional acceptance are the foundations of genuine friendship.",
+                "is_correct": true
+              },
+              {
+                "label": "C",
+                "text": "A friend should judge others carefully before trusting them.",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "The heart is less important than the mind in understanding friendship.",
+                "is_correct": false
+              }
+            ],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "Read the following stanza from 'A Friend's Prayer' by Jill Wolf:\n\n'Let me use my heart to see,\nTo realise what friends can be,\nAnd make no judgements from afar,\nBut love my friends the way they are.'\n\nWhich of the following best describes the central idea of these lines?",
+            "_source_section_label": "A Friend's Prayer"
+          },
+          {
+            "id": "Q-RFC-C-1",
+            "source_section_id": "C",
+            "source_section_title": "The Chair",
+            "source_section_type": "narrative",
+            "source_spine": "reading_for_comprehension",
+            "source_lo": "Student analyses character motivation and distinguishes true friends from acquaintances.",
+            "item_stem": "In 'The Chair', Mario's grandfather challenges him with a wager and produces an invisible chair from the attic. When Mario takes the chair to school, he falls repeatedly while most classmates laugh. However, Guneet, Asma, and Deepa silently move behind him and hold him up on his final attempt. Why does the grandfather describe the chair as 'special'? What does the chair reveal about the difference between Mario's true friends and his other classmates? Write your answer in 3–4 sentences.",
+            "question_type": "ECR",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "The chair is 'special' because it reveals who genuinely cares for Mario.",
+                "True friends (Guneet, Asma, Deepa) act to help rather than mock his failure.",
+                "Other classmates are mere companions — they laugh at Mario's bad luck.",
+                "The grandfather's lesson: real friends never take joy in your misfortune."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "In 'The Chair', Mario's grandfather challenges him with a wager and produces an invisible chair from the attic. When Mario takes the chair to school, he falls repeatedly while most classmates laugh. However, Guneet, Asma, and Deepa silently move behind him and hold him up on his final attempt. Why does the grandfather describe the chair as 'special'? What does the chair reveal about the difference between Mario's true friends and his other classmates? Write your answer in 3–4 sentences.",
+            "_source_section_label": "The Chair"
+          }
+        ]
+      },
+      {
+        "spine_code": "listening",
+        "spine_title": "Listening",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-LIS-A-1",
+            "source_section_id": "A",
+            "source_section_title": "The Unlikely Best Friends",
+            "source_section_type": "narrative",
+            "source_spine": "listening",
+            "source_lo": "Student recalls sequence and specific details from a spoken narrative.",
+            "item_stem": "You will listen to a story about a cow and a leopard from Vadodara who became unlikely friends. After listening, number the following events (1–4) in the order they happened in the story.\n(a) The villagers were surprised the leopard never attacked the cow.\n(b) The leopard grew older and left the village.\n(c) The cow took care of the leopard cub like a mother.\n(d) The leopard began sitting quietly beside the cow at night.",
+            "question_type": "MATCH",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "p.71",
+            "teacher_guide": {
+              "suggested_answer": "The correct sequence is: (c) 1 — the cow cared for the cub first; (b) 2 — the leopard grew up and left; (d) 3 — it returned to sit beside the cow at night; (a) 4 — the villagers were ultimately surprised by their friendship.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "You will listen to a story about a cow and a leopard from Vadodara who became unlikely friends. After listening, number the following events (1–4) in the order they happened in the story.\n(a) The villagers were surprised the leopard never attacked the cow.\n(b) The leopard grew older and left the village.\n(c) The cow took care of the leopard cub like a mother.\n(d) The leopard began sitting quietly beside the cow at night.",
+            "_source_section_label": "The Unlikely Best Friends"
+          },
+          {
+            "id": "Q-LIS-B-1",
+            "source_section_id": "B",
+            "source_section_title": "A Friend's Prayer",
+            "source_section_type": "poem",
+            "source_spine": "listening",
+            "source_lo": "Student identifies specific activities and details from a short spoken description.",
+            "item_stem": "You will listen to a short talk about the outdoor activities that two friends, Ajay and Dhiraj, enjoy together. After listening, fill in the blanks with ONE or TWO words from the talk.\n\n1. On some days, Ajay and Dhiraj spend time at the _____________ in the park.\n2. Ajay's favourite activity at the park is the _____________.\n3. Both friends go _____________ around the neighbourhood on Saturdays.\n4. The one activity both friends truly enjoy is eating _____________ together.",
+            "question_type": "FILL_IN",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "p.72",
+            "teacher_guide": {
+              "suggested_answer": "1. swings; 2. slides; 3. cycling; 4. ice-cream.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "You will listen to a short talk about the outdoor activities that two friends, Ajay and Dhiraj, enjoy together. After listening, fill in the blanks with ONE or TWO words from the talk.\n\n1. On some days, Ajay and Dhiraj spend time at the _____________ in the park.\n2. Ajay's favourite activity at the park is the _____________.\n3. Both friends go _____________ around the neighbourhood on Saturdays.\n4. The one activity both friends truly enjoy is eating _____________ together.",
+            "_source_section_label": "A Friend's Prayer"
+          },
+          {
+            "id": "Q-LIS-C-1",
+            "source_section_id": "C",
+            "source_section_title": "The Chair",
+            "source_section_type": "narrative",
+            "source_spine": "listening",
+            "source_lo": "Student listens to a personal account and identifies key facts about a friendship.",
+            "item_stem": "You will listen to Manu talk about her friend Monika and how they became friends. After listening, decide whether each statement below is TRUE or FALSE.\n(1) Manu found it easy to adjust when she first joined the new school.\n(2) Monika introduced Manu to other students and shared her notes with her.\n(3) Manu and Monika have only experienced happy times together since meeting.\n(4) Manu is grateful to Monika for her help and friendship.",
+            "question_type": "TRUE_FALSE",
+            "options": [
+              {
+                "label": "1",
+                "text": "Manu found it easy to adjust when she first joined the new school.",
+                "is_correct": false
+              },
+              {
+                "label": "2",
+                "text": "Monika introduced Manu to other students and shared her notes with her.",
+                "is_correct": true
+              },
+              {
+                "label": "3",
+                "text": "Manu and Monika have only experienced happy times together since meeting.",
+                "is_correct": false
+              },
+              {
+                "label": "4",
+                "text": "Manu is grateful to Monika for her help and friendship.",
+                "is_correct": true
+              }
+            ],
+            "visual_stimulus": "",
+            "transcript_ref": "p.73",
+            "teacher_guide": {
+              "suggested_answer": "Statement 1 is FALSE — Manu says things were very difficult at first. Statement 2 is TRUE — Monika guided her and shared notes. Statement 3 is FALSE — they have been together through both difficult and happy times. Statement 4 is TRUE — Manu explicitly says she is thankful to Monika.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "You will listen to Manu talk about her friend Monika and how they became friends. After listening, decide whether each statement below is TRUE or FALSE.\n(1) Manu found it easy to adjust when she first joined the new school.\n(2) Monika introduced Manu to other students and shared her notes with her.\n(3) Manu and Monika have only experienced happy times together since meeting.\n(4) Manu is grateful to Monika for her help and friendship.",
+            "_source_section_label": "The Chair"
+          }
+        ]
+      },
+      {
+        "spine_code": "speaking",
+        "spine_title": "Speaking",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-SPK-A-1",
+            "source_section_id": "A",
+            "source_section_title": "The Unlikely Best Friends",
+            "source_section_type": "narrative",
+            "source_spine": "speaking",
+            "source_lo": "Student describes similarities and differences between self and a friend orally.",
+            "item_stem": "Gajaraj and Buntee were very different animals — one was a royal elephant and the other a stray dog — yet they found joy in being together. Think about yourself and a close friend. In 2–3 minutes, speak to your partner about: (a) one activity you both enjoy, (b) one way you are different from each other, and (c) why the difference does not affect your friendship. Use connecting words such as 'both', 'but', 'while', and 'still' in your response.",
+            "question_type": "ORAL_PROMPT",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Names at least one shared activity clearly.",
+                "States one genuine difference using a contrast word (but/while/still).",
+                "Explains why the difference does not weaken the friendship.",
+                "Speaks in complete sentences with acceptable fluency."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "Gajaraj and Buntee were very different animals — one was a royal elephant and the other a stray dog — yet they found joy in being together. Think about yourself and a close friend. In 2–3 minutes, speak to your partner about: (a) one activity you both enjoy, (b) one way you are different from each other, and (c) why the difference does not affect your friendship. Use connecting words such as 'both', 'but', 'while', and 'still' in your response.",
+            "_source_section_label": "The Unlikely Best Friends"
+          },
+          {
+            "id": "Q-SPK-B-1",
+            "source_section_id": "B",
+            "source_section_title": "A Friend's Prayer",
+            "source_section_type": "poem",
+            "source_spine": "speaking",
+            "source_lo": "Student sustains a role-play conversation about shared activities with a partner.",
+            "item_stem": "With a partner, role-play the following situation: You and your friend have just finished school and are deciding how to spend Saturday afternoon together. One of you wants to go to the park; the other prefers to stay in and read. Greet each other, share your preferences, listen to your partner's idea, suggest a compromise, and close the conversation politely. Your conversation should be at least 8 exchanges long.",
+            "question_type": "ORAL_PROMPT",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Opens with a natural greeting and states preference clearly.",
+                "Listens and responds to partner's suggestion without interrupting.",
+                "Proposes a reasonable compromise activity.",
+                "Maintains polite register throughout; closes conversation naturally."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "With a partner, role-play the following situation: You and your friend have just finished school and are deciding how to spend Saturday afternoon together. One of you wants to go to the park; the other prefers to stay in and read. Greet each other, share your preferences, listen to your partner's idea, suggest a compromise, and close the conversation politely. Your conversation should be at least 8 exchanges long.",
+            "_source_section_label": "A Friend's Prayer"
+          }
+        ]
+      },
+      {
+        "spine_code": "writing",
+        "spine_title": "Writing",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-WRT-A-1",
+            "source_section_id": "A",
+            "source_section_title": "The Unlikely Best Friends",
+            "source_section_type": "narrative",
+            "source_spine": "writing",
+            "source_lo": "Student writes sentences comparing a friend using contrast connectors.",
+            "item_stem": "Gajaraj and Buntee were alike in some ways — both loved being together and both felt deep sadness when separated — yet they were very different in size, species, and background. Think of a friend of yours. Write 5–6 sentences describing how you and your friend are both similar and different. Use at least THREE of the following connecting words in your sentences: both, but, unlike, still, neither, while.",
+            "question_type": "WRITING_TASK",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Mentions at least one genuine similarity between writer and friend.",
+                "States at least one clear difference, not just a physical detail.",
+                "Uses three or more contrast/comparison connectors correctly.",
+                "Writes in complete, grammatically complete sentences."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "Gajaraj and Buntee were alike in some ways — both loved being together and both felt deep sadness when separated — yet they were very different in size, species, and background. Think of a friend of yours. Write 5–6 sentences describing how you and your friend are both similar and different. Use at least THREE of the following connecting words in your sentences: both, but, unlike, still, neither, while.",
+            "_source_section_label": "The Unlikely Best Friends"
+          }
+        ]
+      },
+      {
+        "spine_code": "vocabulary_grammar",
+        "spine_title": "Vocabulary and Grammar",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-VG-A-1",
+            "source_section_id": "A",
+            "source_section_title": "The Unlikely Best Friends",
+            "source_section_type": "narrative",
+            "source_spine": "vocabulary_grammar",
+            "source_lo": "Student uses three forms of past tense correctly in story context.",
+            "item_stem": "The passage below describes events from 'The Unlikely Best Friends'. Choose the correct form of the verb from the brackets to fill each blank. Each blank tests one of the three past tense forms: Simple Past, Past Progressive, or Past Perfect.\n\nThe mahout (1) _____________ (noticed / was noticing / had noticed) that Gajaraj's mood changed the moment a stray dog entered the stable. By the time the farmer arrived, Gajaraj (2) _____________ (shared / was sharing / had shared) his food with the dog for several days. When the farmer led Buntee away, Gajaraj (3) _____________ (stood / was standing / had stood) motionless at the stable door. Neither the mahout nor the farmer (4) _____________ (realised / was realising / had realised) at first that both animals (5) _____________ (refused / were refusing / had refused) their food at exactly the same time.",
+            "question_type": "FILL_IN",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "1. noticed (Simple Past — single completed observation); 2. had shared (Past Perfect — action completed before farmer's arrival); 3. stood (Simple Past — single moment action); 4. realised (Simple Past — completed mental action); 5. were refusing (Past Progressive — ongoing action at that point in time).",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "The passage below describes events from 'The Unlikely Best Friends'. Choose the correct form of the verb from the brackets to fill each blank. Each blank tests one of the three past tense forms: Simple Past, Past Progressive, or Past Perfect.\n\nThe mahout (1) _____________ (noticed / was noticing / had noticed) that Gajaraj's mood changed the moment a stray dog entered the stable. By the time the farmer arrived, Gajaraj (2) _____________ (shared / was sharing / had shared) his food with the dog for several days. When the farmer led Buntee away, Gajaraj (3) _____________ (stood / was standing / had stood) motionless at the stable door. Neither the mahout nor the farmer (4) _____________ (realised / was realising / had realised) at first that both animals (5) _____________ (refused / were refusing / had refused) their food at exactly the same time.",
+            "_source_section_label": "The Unlikely Best Friends"
+          },
+          {
+            "id": "Q-VG-B-1",
+            "source_section_id": "B",
+            "source_section_title": "A Friend's Prayer",
+            "source_section_type": "poem",
+            "source_spine": "vocabulary_grammar",
+            "source_lo": "Student identifies synonyms and vocabulary for positive qualities of friendship.",
+            "item_stem": "The poet Jill Wolf uses the word 'blessed' to describe how special friends make her feel. Match each word in Column A with its closest meaning from Column B. All the words in Column A are qualities of a good friend.\n\nColumn A: 1. loyal  2. caring  3. honest  4. kind  5. helpful\nColumn B: (a) always tells the truth and does not deceive  (b) gives support and makes things easier for others  (c) shows warmth and concern for the feelings of others  (d) stays devoted and does not betray  (e) gentle and considerate in treatment of others",
+            "question_type": "MATCH",
+            "options": [],
+            "visual_stimulus": "Column A|Column B\n1. loyal|(a) always tells the truth and does not deceive\n2. caring|(b) gives support and makes things easier for others\n3. honest|(c) shows warmth and concern for the feelings of others\n4. kind|(d) stays devoted and does not betray\n5. helpful|(e) gentle and considerate in treatment of others",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "1-d (loyal: stays devoted and does not betray); 2-c (caring: shows warmth and concern); 3-a (honest: always tells the truth); 4-e (kind: gentle and considerate); 5-b (helpful: gives support and makes things easier).",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "The poet Jill Wolf uses the word 'blessed' to describe how special friends make her feel. Match each word in Column A with its closest meaning from Column B. All the words in Column A are qualities of a good friend.\n\nColumn A: 1. loyal  2. caring  3. honest  4. kind  5. helpful\nColumn B: (a) always tells the truth and does not deceive  (b) gives support and makes things easier for others  (c) shows warmth and concern for the feelings of others  (d) stays devoted and does not betray  (e) gentle and considerate in treatment of others",
+            "_source_section_label": "A Friend's Prayer"
+          },
+          {
+            "id": "Q-VG-C-1",
+            "source_section_id": "C",
+            "source_section_title": "The Chair",
+            "source_section_type": "narrative",
+            "source_spine": "vocabulary_grammar",
+            "source_lo": "Student applies adjectives to describe character and forms adjective-noun phrases.",
+            "item_stem": "In 'The Chair', Mario is described as brave and determined when he takes the invisible chair to school, and Guneet, Asma, and Deepa show that they are caring and supportive. Read the sentences below. Each sentence has a blank. Choose the most suitable adjective from the box to complete each sentence, then identify the noun that the adjective describes.\n\nAdjective box: determined, invisible, generous, boastful, silent\n\n1. Mario made a _____________ effort to sit on the chair even after falling several times.\n2. The grandfather produced a _____________ chair from the attic to test Mario's friends.\n3. Mario was _____________ about the number of friends he had at school.\n4. The three friends made a _____________ move to stand behind Mario without drawing attention.\n5. The grandfather was _____________ in offering fruit chaat to all four children that evening.",
+            "question_type": "FILL_IN",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "1. determined (describes effort); 2. invisible (describes chair); 3. boastful (describes Mario); 4. silent (describes move); 5. generous (describes grandfather).",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "In 'The Chair', Mario is described as brave and determined when he takes the invisible chair to school, and Guneet, Asma, and Deepa show that they are caring and supportive. Read the sentences below. Each sentence has a blank. Choose the most suitable adjective from the box to complete each sentence, then identify the noun that the adjective describes.\n\nAdjective box: determined, invisible, generous, boastful, silent\n\n1. Mario made a _____________ effort to sit on the chair even after falling several times.\n2. The grandfather produced a _____________ chair from the attic to test Mario's friends.\n3. Mario was _____________ about the number of friends he had at school.\n4. The three friends made a _____________ move to stand behind Mario without drawing attention.\n5. The grandfather was _____________ in offering fruit chaat to all four children that evening.",
+            "_source_section_label": "The Chair"
+          }
+        ]
+      },
+      {
+        "spine_code": "beyond_text",
+        "spine_title": "Beyond the Text",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-BT-B-1",
+            "source_section_id": "B",
+            "source_section_title": "A Friend's Prayer",
+            "source_section_type": "poem",
+            "source_spine": "beyond_text",
+            "source_lo": "Student interprets friendship quotations and connects them to personal experience.",
+            "item_stem": "In 'A Friend's Prayer', the poet writes: 'I want to do much more than share / The hopes and plans of friends who care.' This expresses the idea that a true friend gives more than they take. Consider the following well-known saying about friendship: 'A friend in need is a friend indeed.' In 4–5 sentences, explain what you think this saying means and describe a real or imagined situation in which you saw this quality of friendship in action.",
+            "question_type": "ECR",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "States the meaning of the quotation clearly in own words.",
+                "Gives a specific situation (real or imagined) that illustrates the saying.",
+                "Connects the situation to the quality of genuine care or support.",
+                "Links the quotation's meaning to the poem's theme of selfless friendship."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "In 'A Friend's Prayer', the poet writes: 'I want to do much more than share / The hopes and plans of friends who care.' This expresses the idea that a true friend gives more than they take. Consider the following well-known saying about friendship: 'A friend in need is a friend indeed.' In 4–5 sentences, explain what you think this saying means and describe a real or imagined situation in which you saw this quality of friendship in action.",
+            "_source_section_label": "A Friend's Prayer"
+          },
+          {
+            "id": "Q-BT-C-1",
+            "source_section_id": "C",
+            "source_section_title": "The Chair",
+            "source_section_type": "narrative",
+            "source_spine": "beyond_text",
+            "source_lo": "Student investigates how perspectives on friendship change across age groups.",
+            "item_stem": "Mario's grandfather uses the invisible chair to show Mario the difference between real friends and mere acquaintances. Different people at different stages of life may understand friendship very differently. Plan and carry out a short survey: ask at least ONE person from each of the following age groups the question 'What does friendship mean to you?' — Group 1: age 12–19; Group 2: age 20–30; Group 3: age 31–49; Group 4: age 50 and above. Record their responses in the table below. Then, in 3–4 sentences, describe ONE similarity and ONE difference you noticed across the age groups and explain what this tells you about friendship.",
+            "question_type": "PROJECT",
+            "options": [],
+            "visual_stimulus": "Age Group|Person Interviewed|Their Response\n12–19| | \n20–30| | \n31–49| | \n50 and above| | ",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Table is filled with actual responses from four distinct age groups.",
+                "Identifies one genuine similarity across at least two age groups.",
+                "Identifies one meaningful difference in how friendship is understood.",
+                "Reflection explains what the contrast reveals about life experience and friendship."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "Mario's grandfather uses the invisible chair to show Mario the difference between real friends and mere acquaintances. Different people at different stages of life may understand friendship very differently. Plan and carry out a short survey: ask at least ONE person from each of the following age groups the question 'What does friendship mean to you?' — Group 1: age 12–19; Group 2: age 20–30; Group 3: age 31–49; Group 4: age 50 and above. Record their responses in the table below. Then, in 3–4 sentences, describe ONE similarity and ONE difference you noticed across the age groups and explain what this tells you about friendship.",
+            "_source_section_label": "The Chair"
+          }
+        ]
+      }
+    ],
+    "input_tokens": 26574,
+    "output_tokens": 14863,
+    "cost_inr": 25.424
+  }
+}

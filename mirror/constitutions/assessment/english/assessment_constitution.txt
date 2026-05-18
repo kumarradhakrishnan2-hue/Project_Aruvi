@@ -330,6 +330,12 @@ Permitted formats:
 PROHIBITED: inline SVG, ASCII art, image markup, base64 image,
 external image reference, italic prose specs.
 
+MATCH items with a visual_stimulus table: `item_stem` must contain
+only the task instruction (e.g., "Match each word in Column A with
+its closest meaning from Column B."). The column contents are carried
+entirely in `visual_stimulus`. Do NOT repeat, paraphrase, or inline
+the column entries anywhere in `item_stem`.
+
 STRUCTURAL FIDELITY:
   Multi-line stems: when an item contains a numbered or lettered
   list (e.g., "Which of the following statements are true: (1)…

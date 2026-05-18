@@ -1,0 +1,23 @@
+{
+    "stage": "middle",
+    "subject": "science",
+    "grade": "viii",
+    "chapter_number": 8,
+    "chapter_title": "Nature of Matter: Elements, Compounds, and Mixtures",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": false,
+    "primary": [
+      {
+        "cg": "CG-1",
+        "c_code": "C-1.1",
+        "justification": "The chapter's entire domain is the classification of matter into elements, compounds, and mixtures using observable physical characteristics (colour, texture, magnetic behaviour, state) and chemical characteristics (reaction with HCl, gas identity, decomposition on heating). Activities 8.1–8.5 all require students to apply physical and chemical tests to classify substances, directly enacting C-1.1's requirement to classify matter based on physical and chemical characteristics including the element/compound distinction."
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's ability to classify matter into elements, compounds, and mixtures by applying physical and chemical tests to distinguish pure substances from mixtures and identify the fundamental building blocks of matter.",
+    "conceptual_demand": 3,
+    "activity_count": 3,
+    "demo_count": 2,
+    "exec_load": 0,
+    "effort_index": 12.0
+}

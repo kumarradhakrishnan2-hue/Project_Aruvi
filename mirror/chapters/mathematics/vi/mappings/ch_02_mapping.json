@@ -1,0 +1,43 @@
+{
+    "stage": "middle",
+    "subject": "mathematics",
+    "grade": "vi",
+    "chapter_number": 2,
+    "chapter_title": "Lines and Angles",
+
+    "core_cg": "CG-3",
+
+    "core_competencies": [
+        {
+            "c_code": "C-3.2",
+            "justification": "The chapter's organising purpose is to outline the properties of lines and angles: it defines points, line segments, lines, rays, and all five angle types (acute, right, obtuse, straight, reflex), establishes that a straight angle = 180° and a right angle = 90°, and applies these properties across 57 exercises including protractor measurement, angle classification, and real-life angle identification (sections 2.1–2.11)."
+        },
+        {
+            "c_code": "C-3.4",
+            "justification": "Section 2.10 teaches a four-step procedure to draw angles of specified degree measure using a protractor and ruler, practised through drawing 110°, 40°, 75°, 112°, 134°, 140°, 82°, 195°, 70°, and 35° angles; section 2.7 adds hands-on construction of angle models (rotating arms), and section 2.9's Make Your Own Protractor activity uses successive paper-folding to construct measured angles — an independent construction strand from C-3.2's property understanding."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-6.1",
+            "justification": "Section 2.6 applies deductive reasoning to justify angle equality via superimposition, and section 2.8 uses a paper-folding argument to prove that bisecting a straight angle yields two equal right angles; exercise E-36 has students measure triangle angles and reason inductively to conjecture that they always sum to 180°, substantively engaging both inductive and deductive logic."
+        },
+        {
+            "c_code": "C-9.1",
+            "justification": "Section 2.9 contains an explicit 'A pinch of history' passage tracing the 360° convention to the Rigveda's wheel of 360 spokes, ancient Indian, Babylonian, Persian, and Egyptian calendars, and Babylonian sexagesimal arithmetic — directly engaging the development of mathematical ideas across civilisations over time."
+        },
+        {
+            "c_code": "C-7.1",
+            "justification": "The rotating-arm slit challenge (A-1), the two team angle-guessing games (E-43, E-44), and the acute-angle multiplier puzzle (E-57) require students to devise and appreciate creative strategies for estimating, constructing, and reasoning about angles beyond procedural application."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to identify and apply properties of lines and angles by defining all foundational geometric objects, classifying angle types by degree measure, and constructing angles of specified measure using a protractor.",
+
+    "conceptual_demand": 2,
+    "activity_count": 2,
+    "demo_count": 1,
+    "exec_load": 1,
+    "effort_index": 10.0
+}

@@ -1,0 +1,260 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "vi",
+  "chapter_number": 8,
+  "chapter_title": "Playing with Constructions",
+  "sections": [
+    { "ref": "section 8.1", "title": "Artwork", "section_goal": ["apply"] },
+    { "ref": "section 8.2", "title": "Squares and Rectangles", "section_goal": ["recall"] },
+    { "ref": "section 8.3", "title": "Constructing Squares and Rectangles", "section_goal": ["apply"] },
+    { "ref": "section 8.4", "title": "An Exploration in Rectangles", "section_goal": ["reason", "apply"] },
+    { "ref": "section 8.5", "title": "Exploring Diagonals of Rectangles and Squares", "section_goal": ["reason"] },
+    { "ref": "section 8.6", "title": "Points Equidistant from Two Given Points", "section_goal": ["apply"] }
+  ],
+  "prose_summary": "Section 8.1 applies ruler and compass techniques to create freehand-inspired artwork figures — a person, a wavy wave, and a pair of eyes — introducing the compass as a precision drawing tool. The section opens by inviting students to replicate visual figures freehand, then challenges them to reproduce the same figures using only a ruler and compass. In doing so it establishes the core idea of a circle: all points on a circle are the same distance from its centre, and that distance is the radius. Students set the compass opening to 4 cm and trace every point 4 cm from a fixed centre P, discovering that the resulting curve is a circle. They then apply this understanding to construct composite artwork figures: the wavy wave is built from sequential half-circles drawn on a baseline; the 'A Person' figure combines circles and arcs; the eyes are constructed using arcs with carefully estimated compass placements. Each construction requires students to determine suitable centre positions and radii by trial and estimation rather than by formula, building spatial reasoning and instrument fluency. A Figure it Out set asks about the required radius and AX length for the wavy wave, and a Try This prompt asks students to recreate smaller, identical waves.\n\nSection 8.2 recalls the defining properties of squares and rectangles from prior knowledge, then identifies these properties through measurement and visual reasoning on dot-grid figures. The section names the parts of a rectangle ABCD — corners, sides, opposite sides, and angles — and states the two rectangle properties: opposite sides are equal (R1) and all angles are 90° (R2). The two square properties follow analogously: all sides equal (S1) and all angles 90° (S2). The section introduces valid naming conventions for rectangles and squares, explaining that a valid name requires corners to appear in order of travel around the figure, and presents a brief puzzle — which of four names is not valid for a given square. A key conceptual moment concerns rotated squares and rectangles: rotating does not change side lengths or angles, so a rotated square is still a square and a rotated rectangle is still a rectangle. Figure it Out exercises ask students to draw configurations on dot paper, identify squares by measurement among given figures, and draw rotated squares and rectangles on dot grids.\n\nSection 8.3 applies the rectangle and square properties to construct these figures with ruler and compass. The section walks through a six-step construction of a square PQRS of side 6 cm: draw PQ, raise a perpendicular at P (by two methods — ruler and compass), mark S on the perpendicular at distance 6 cm, raise a perpendicular at Q, and use the compass to mark R at the correct distance. Students observe that RS must equal 6 cm and that angles at R and S are each 90°, confirming both square properties. Construct exercises ask students to draw a 4 cm × 6 cm rectangle, a 2 cm × 10 cm rectangle, and to reason whether a quadrilateral with all 90° angles but unequal opposite sides is possible.\n\nSection 8.4 reasons about how the distance between a movable point X on side AD and a movable point Y on side BC of rectangle ABCD changes with position, then applies this insight to construct special rectangles. The section first poses the investigation as a Math Talk: at which positions are X and Y closest and farthest? Students fill a table tracking XY for various positions of X and Y and discover that when X and Y are equidistant from A and B respectively, XY equals AB and ABYX becomes a rectangle. They also find the farthest distance equals the diagonal AC. The section then develops a key construction technique: using the compass to transfer a length without a ruler — opening the compass to span a segment and swinging an arc to reproduce that length elsewhere. This is applied to construct a rectangle that can be divided into two identical squares (where length = twice the breadth), then extended to three identical squares. A series of Construct challenges — Square within a Rectangle, Falling Squares, Shadings, Square with a Hole, Square with More Holes, and Square with Curves — requires students to plan constructions using rough diagrams, determine side lengths from symmetry and divisibility constraints, and use the compass-length-transfer technique to achieve precision without trial and error.\n\nSection 8.5 reasons about the properties of diagonals of rectangles and squares through measurement and structured exploration. The section introduces the diagonals PR and QS of rectangle PQRS and asks students to first predict and then measure their lengths, discovering that the diagonals of a rectangle are equal. It then examines how each diagonal divides each pair of opposite angles into two smaller angles, labelling them a–h, and asks students to identify which pairs are equal. An Explore prompt asks how a rectangle must be constructed so that its diagonal divides opposite angles into equal halves, leading students to the answer that this occurs when the rectangle is a square. A structured table records sides and the eight angles formed by the two diagonals across different rectangles. A Math Talk prompt asks students to frame general laws about diagonal angles and sides and discuss how one can be sure they always hold.\n\nSection 8.6 applies the intersection of two circular arcs — each centred at one of two given points — to locate a third point equidistant from both, and uses this technique to construct a House figure with all sides 5 cm. The section opens with the House construction problem, where the apex A must be exactly 5 cm from both B and C, the two top corners of the rectangular walls. It shows that drawing a full circle of radius 5 cm centred at B yields all points 5 cm from B, and a second circle of radius 5 cm centred at C yields all points 5 cm from C; the intersection of the two circles is the required point A. The efficient Method 2 uses only the relevant arcs rather than full circles. Having located A, the arc from A touching B and C completes the roof of the house. Construct exercises ask students to build a larger house with 7 cm sides, recreate Artwork figures using the equidistant-point technique, and investigate whether a quadrilateral with all sides equal but not a square can be constructed (a rhombus), using the same arc-intersection method.",
+  "enumerated_activities": [
+    {
+      "id": "A-1",
+      "source_section": "section 8.1",
+      "book_ref": "Activity (compass exploration), section 8.1 p.188",
+      "description": "Students mark a point P, then use a compass set to 4 cm to trace all points 4 cm from P, discovering that the resulting curve is a circle with centre P and radius 4 cm."
+    }
+  ],
+  "enumerated_worked_examples": [
+    {
+      "id": "WE-1",
+      "source_section": "section 8.1",
+      "book_ref": "Construct (Wavy Wave), section 8.1 p.191",
+      "description": "Construct a wavy wave on a baseline AB of 8 cm by drawing successive half-circles: first half-circle has radius 2 cm centred at the midpoint X of AX = 4 cm, with each subsequent wave mirroring the first."
+    },
+    {
+      "id": "WE-2",
+      "source_section": "section 8.3",
+      "book_ref": "Construct (Square PQRS, 6 cm), section 8.3 p.195",
+      "description": "Six-step construction of square PQRS with side 6 cm: draw PQ; raise perpendicular at P; mark S at 6 cm on perpendicular; raise perpendicular at Q; use compass to mark R at 6 cm from both S and Q; join to complete."
+    },
+    {
+      "id": "WE-3",
+      "source_section": "section 8.4",
+      "book_ref": "Construct (Breaking Rectangles — two squares), section 8.4 p.200",
+      "description": "Plan and construct a rectangle divisible into two identical squares: set AF to any chosen length, transfer AF using compass to mark B at AB = AF, raise perpendicular at B, mark C at BC = AF, join to complete rectangle ACDF."
+    },
+    {
+      "id": "WE-4",
+      "source_section": "section 8.5",
+      "book_ref": "Construct (Rectangle with diagonal dividing angles 60°/30°), section 8.5 p.205",
+      "description": "Construct a rectangle ABCD where diagonal AC divides angle A into 60° and 30°: draw AB, raise a 60° line from B to locate C, draw perpendicular through A, use compass or perpendicular from C to locate D, join to complete the rectangle."
+    },
+    {
+      "id": "WE-5",
+      "source_section": "section 8.5",
+      "book_ref": "Construct (Rectangle, side 5 cm, diagonal 7 cm), section 8.5 p.208",
+      "description": "Construct a rectangle with one side CD = 5 cm and diagonal BD = 7 cm: draw CD; raise perpendicular at C; draw circle of radius 7 cm centred at D; intersection with the perpendicular gives B; complete the rectangle."
+    },
+    {
+      "id": "WE-6",
+      "source_section": "section 8.6",
+      "book_ref": "Construct (House, sides 5 cm), section 8.6 p.211",
+      "description": "Construct a 'House' figure with all border lines 5 cm: draw base and walls; draw arcs of radius 5 cm centred at B and C; intersection gives apex A equidistant from both; draw arc of radius 5 cm from A to complete the curved roof."
+    }
+  ],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 8.1",
+      "book_ref": "Figure it Out Q1, section 8.1 p.191",
+      "description": "What radius should be taken in the compass to draw the first half-circle of the Wavy Wave? What should be the length of AX?"
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 8.1",
+      "book_ref": "Figure it Out Q2, section 8.1 p.191",
+      "description": "Take a central baseline of a different length and draw the wavy wave on it."
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 8.1",
+      "book_ref": "Figure it Out Q3, section 8.1 p.191",
+      "description": "Try to recreate the figure where the waves are smaller than a half-circle (as in the neck of 'A Person'). The challenge is to get both waves identical."
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 8.2",
+      "book_ref": "Figure it Out Q (naming square), section 8.2 p.193",
+      "description": "Identify which of the four given names (PQSR, SPQR, RSPQ, QRSP) is not a valid name for the given square."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 8.2",
+      "book_ref": "Figure it Out Q1, section 8.2 p.194",
+      "description": "Draw the rectangle-and-four-squares configuration on dot paper and describe what was done to place the four squares symmetrically around the rectangle."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 8.2",
+      "book_ref": "Figure it Out Q2, section 8.2 p.194",
+      "description": "Identify if any of the four given figures (A, B, C, D) are squares using measurements; then reason whether sides and angles can be determined from dot-grid position alone."
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 8.2",
+      "book_ref": "Figure it Out Q3, section 8.2 p.194",
+      "description": "Draw at least 3 rotated squares and rectangles on a dot grid with corners on dots; verify they satisfy the respective properties."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 8.3",
+      "book_ref": "Construct Q1, section 8.3 p.197",
+      "description": "Draw a rectangle with sides 4 cm and 6 cm and verify it satisfies both rectangle properties."
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 8.3",
+      "book_ref": "Construct Q2, section 8.3 p.197",
+      "description": "Draw a rectangle with sides 2 cm and 10 cm and verify it satisfies both rectangle properties."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 8.3",
+      "book_ref": "Try This Q3, section 8.3 p.197",
+      "description": "Is it possible to construct a 4-sided figure in which all angles are 90° but opposite sides are not equal? Reason and answer."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 8.4",
+      "book_ref": "Math Talk, section 8.4 p.198",
+      "description": "In rectangle ABCD (AB = 7 cm, BC = 4 cm), predict and verify by measurement: at which positions of X on AD and Y on BC are they closest and farthest apart?"
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 8.4",
+      "book_ref": "Figure it Out Q (table), section 8.4 p.198",
+      "description": "Fill a table recording the length XY for at least three different positions of X and Y (given distances from A and B respectively)."
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 8.4",
+      "book_ref": "Figure it Out Q (same-distance), section 8.4 p.199",
+      "description": "Fill the table for cases where X and Y are equidistant from A and B respectively; observe the resulting length XY and the shape of ABYX."
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 8.4",
+      "book_ref": "Figure it Out Q (farthest distance), section 8.4 p.199",
+      "description": "How does the farthest distance between X and Y compare with the length of diagonal AC or BD?"
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 8.4",
+      "book_ref": "Construct (Breaking Rectangles — three squares), section 8.4 p.199",
+      "description": "Construct a rectangle that can be divided into three identical squares."
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 8.4",
+      "book_ref": "Explore (two squares), section 8.4 p.199",
+      "description": "Construct a rectangle that can be divided into two identical squares."
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 8.4",
+      "book_ref": "Figure it Out (sides not divisible), section 8.4 p.201",
+      "description": "Give the side lengths of a rectangle that cannot be divided into (a) two identical squares; (b) three identical squares."
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 8.4",
+      "book_ref": "Construct Q1 (Square within Rectangle), section 8.4 p.201",
+      "description": "Construct a rectangle of sides 8 cm and 4 cm, then construct a square inside it such that the centre of the square coincides with the centre of the rectangle."
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 8.4",
+      "book_ref": "Construct Q2 (Falling Squares), section 8.4 p.202",
+      "description": "Construct three aligned falling squares of side 4 cm each, then replicate the pattern with squares of sides 3 cm, 5 cm, and 7 cm."
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 8.4",
+      "book_ref": "Construct Q3 (Shadings), section 8.4 p.202",
+      "description": "Construct a shading figure (a square containing smaller squares) with measurements of own choice."
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 8.4",
+      "book_ref": "Construct Q4 (Square with a Hole), section 8.4 p.202",
+      "description": "Construct a square with a circular hole at its centre; the hole's centre coincides with the square's centre."
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 8.4",
+      "book_ref": "Construct Q5 (Square with More Holes), section 8.4 p.202",
+      "description": "Construct a square with multiple circular holes."
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 8.4",
+      "book_ref": "Try This (Square with Curves), section 8.4 p.202",
+      "description": "Construct a square of side 8 cm with four arcs bulging uniformly from each side; determine the correct centre placement for the compass to produce symmetric arcs."
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 8.5",
+      "book_ref": "Explore (diagonal bisects angles equally), section 8.5 p.204",
+      "description": "Determine how the rectangle must be constructed so that its diagonal divides the opposite angles into two equal parts."
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 8.5",
+      "book_ref": "Math Talk (general laws), section 8.5 p.204",
+      "description": "Frame general laws observed about diagonal angles and side lengths; discuss whether these laws will always hold."
+    },
+    {
+      "id": "E-26",
+      "source_section": "section 8.5",
+      "book_ref": "Construct Q1, section 8.5 p.211",
+      "description": "Construct a rectangle in which one diagonal divides opposite angles into 50° and 40°."
+    },
+    {
+      "id": "E-27",
+      "source_section": "section 8.5",
+      "book_ref": "Construct Q2, section 8.5 p.211",
+      "description": "Construct a rectangle in which one diagonal divides opposite angles into 45° and 45°; observe what this implies about the sides."
+    },
+    {
+      "id": "E-28",
+      "source_section": "section 8.5",
+      "book_ref": "Construct Q3, section 8.5 p.211",
+      "description": "Construct a rectangle with one side 4 cm and diagonal 8 cm."
+    },
+    {
+      "id": "E-29",
+      "source_section": "section 8.5",
+      "book_ref": "Construct Q4, section 8.5 p.211",
+      "description": "Construct a rectangle with one side 3 cm and diagonal 7 cm."
+    },
+    {
+      "id": "E-30",
+      "source_section": "section 8.6",
+      "book_ref": "Construct Q1, section 8.6 p.215",
+      "description": "Construct a bigger house in which all sides are of length 7 cm."
+    },
+    {
+      "id": "E-31",
+      "source_section": "section 8.6",
+      "book_ref": "Construct Q2, section 8.6 p.215",
+      "description": "Recreate 'A Person', 'Wavy Wave', and 'Eyes' from section 8.1 using ideas from the House construction (equidistant-point technique)."
+    },
+    {
+      "id": "E-32",
+      "source_section": "section 8.6",
+      "book_ref": "Construct Q3, section 8.6 p.215",
+      "description": "Is there a 4-sided figure in which all sides are equal but is not a square? If so, construct it using the arc-intersection technique."
+    }
+  ],
+  "conceptual_demand": 2,
+  "activity_count": 1,
+  "demo_count": 6,
+  "exec_load": 1
+}

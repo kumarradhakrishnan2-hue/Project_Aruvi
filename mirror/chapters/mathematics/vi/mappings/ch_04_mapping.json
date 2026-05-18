@@ -1,0 +1,43 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "vi",
+  "chapter_number": 4,
+  "chapter_title": "Data Handling and Presentation",
+
+  "core_cg": "CG-5",
+
+  "core_competencies": [
+    {
+      "c_code": "C-5.1",
+      "justification": "Section 4.1 has students collect data from real contexts (favourite games, shoe sizes, tree counts, letter frequencies), organise it using tally marks into frequency tables, and interpret findings such as which category is most or least frequent — directly exercising the collect-organise-interpret strand of C-5.1."
+    },
+    {
+      "c_code": "C-5.2",
+      "justification": "Sections 4.2 through 4.5 require students to select between pictographs and bar graphs, construct both types from raw or tabular data with an appropriate scale, and interpret completed graphs to answer questions — fully exercising C-5.2's create-and-use-graphical-representations strand across 30+ exercises and 4 worked examples."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-7.2",
+      "justification": "Section 4.5 explicitly engages students with the artistry and aesthetics of data presentation — reasoning about when visual choices (infographics, triangular mountain shapes, bar orientation) make presentations more appealing and when they mislead, directly aligning with C-7.2's focus on appreciating aesthetics in mathematical communication."
+    },
+    {
+      "c_code": "C-8.1",
+      "justification": "Section 4.4 presents bar-graph construction as an explicit multi-step algorithm (draw axes → label categories → choose scale → compute heights by division → draw bars), and exercises such as E-24 (Chinu's transport data: collect → tally → table → graph) require students to decompose a data task into a series of ordered steps, engaging C-8.1's algorithmic thinking."
+    },
+    {
+      "c_code": "C-8.2",
+      "justification": "Section 4.1 and exercises throughout (notably E-11 newspaper letter frequencies, E-25 die-roll experiment) engage systematic counting and listing using tally marks, ascending-order arrangement, and conversion between multiple representations (raw list → frequency table → pictograph or bar graph), directly exercising C-8.2's systematic counting and multiple data representation strand."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to collect, organise, and graphically represent real-life data by moving from raw lists through tally-frequency tables to pictographs and bar graphs, reading and constructing each visual form with an appropriate scale.",
+
+  "conceptual_demand": 1,
+  "activity_count": 0,
+  "demo_count": 4,
+  "exec_load": 1,
+  "effort_index": 8.0
+}

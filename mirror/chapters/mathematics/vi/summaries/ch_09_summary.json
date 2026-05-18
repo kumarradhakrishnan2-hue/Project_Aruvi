@@ -1,0 +1,253 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "vi",
+  "chapter_number": 9,
+  "chapter_title": "Symmetry",
+  "sections": [
+    { "ref": "section 9.1", "title": "Line of Symmetry", "section_goal": ["recall"] },
+    { "ref": "section 9.1 — Figures with more than one line of symmetry", "title": "Figures with more than one line of symmetry", "section_goal": ["recall", "reason"] },
+    { "ref": "section 9.1 — Generating shapes having lines of symmetry", "title": "Generating shapes having lines of symmetry", "section_goal": ["apply"] },
+    { "ref": "section 9.2", "title": "Rotational Symmetry", "section_goal": ["recall", "reason"] },
+    { "ref": "section 9.2 — Symmetries of a circle", "title": "Symmetries of a circle", "section_goal": ["recall"] }
+  ],
+  "prose_summary": "Section 9.1 defines and identifies the concept of line of symmetry for two-dimensional figures. Opening with a visual context of flowers, butterflies, rangoli, and pinwheels, the section introduces the idea that symmetry involves parts of a figure repeating in a definite pattern. It then demonstrates the core concept through folding: a triangle folded along a dotted line produces two halves that overlap exactly — these are called mirror halves — while a figure of four puzzle pieces folded along a central line does not produce overlapping halves. A line of symmetry is formally defined as a line that cuts a figure into two parts that exactly overlap when folded along that line.\n\nSection 9.1 (Figures with more than one line of symmetry) then applies this definition and reasons that a figure can have multiple lines of symmetry. Students physically fold a square piece of paper in four ways — vertically, horizontally, and along each diagonal — discovering that a square has four lines of symmetry. The section contrasts this with a non-square rectangle, leading students to reason that a rectangle's diagonal is not a line of symmetry. Several other figures with multiple lines of symmetry are presented, reinforcing that symmetry need not be limited to a single axis.\n\nSection 9.1 (Reflection) explains the connection between folding and reflection. When a figure is folded along a line of symmetry, the part on one side is reflected to the other side. The section illustrates this using a labelled square (corners A, B, C, D) and the vertical line of symmetry: folding reflects B and C to the positions of A and D respectively, and vice versa. Students reason about reflection along the diagonal and the horizontal line of symmetry. A figure possessing such a line is said to have reflection symmetry.\n\nSection 9.1 (Generating shapes having lines of symmetry) applies the concept practically through hands-on activities. In the Ink Blot Devils activity, students fold paper, apply ink to one half, press the halves together, and observe that the resulting figure is symmetric about the fold line. In the Paper Folding and Cutting activity, students fold and cut paper along dotted lines to generate symmetric shapes, then identify their lines of symmetry. A more intricate variant uses multiple folds to create decorative cut-out patterns. These activities move students from recognising to producing symmetrical shapes.\n\nSection 9.2 defines and reasons about rotational symmetry, a second fundamental type of symmetry. A paper windmill — which has no line of symmetry — looks exactly the same after a 90° rotation about its centre. The centre of rotation is defined as the fixed point about which rotation occurs, and an angle of rotational symmetry (or angle of symmetry) is defined as any angle through which the figure looks exactly the same. For the windmill, angles of symmetry are 90°, 180°, 270°, and 360°. A square is similarly examined with four angles of symmetry, and corner labels track where they map under each rotation. The section establishes that 360° is always an angle of symmetry. The section then reasons about radial-arm figures: a parallelogram-strip worked example shows it has no rotational symmetry (only 360°). For a figure with four radial arms spaced 90° apart, there are four angles of symmetry. An irregular three-arm figure also lacks rotational symmetry, but if three arms are spaced 120° apart (360° ÷ 3), the figure has three angles: 120°, 240°, 360°. The generalisation is developed that for n equal radial arms, the smallest angle of symmetry is 360°/n and all angles are multiples of this value. Students reason about 5-arm and 6-arm figures, and encounter the non-integer case of 7 arms (51 3/7°). True/False statements confirm: 360° is always an angle of symmetry, and the smallest whole-number angle must be a factor of 360.\n\nSection 9.2 (Symmetries of a circle) identifies the circle as uniquely symmetric: every angle of rotation is an angle of symmetry when rotating about the centre, and every diameter is a line of reflection symmetry. Real-world examples — ceiling fans, flowers, wheels — illustrate rotational symmetry. The chapter's extended Figure it Out set requires students to apply both types of symmetry to regular polygons, the Ashoka Chakra, the Parliament Building, Koch Snowflake sequences, and tile-based creative designs.",
+  "enumerated_activities": [
+    {
+      "id": "A-1",
+      "source_section": "section 9.1",
+      "book_ref": "Activity: Folding a square — finding all lines of symmetry, section 9.1 p.220",
+      "description": "Students take a square piece of paper and fold it four times (vertically, horizontally, along each diagonal) to discover that a square has four lines of symmetry."
+    },
+    {
+      "id": "A-2",
+      "source_section": "section 9.1 — Generating shapes having lines of symmetry",
+      "book_ref": "Activity: Ink Blot Devils, section 9.1 p.222",
+      "description": "Students fold paper in half, spill ink on one half, press halves together, and open to observe the symmetric figure formed, identifying the fold as the line of symmetry."
+    },
+    {
+      "id": "A-3",
+      "source_section": "section 9.1 — Generating shapes having lines of symmetry",
+      "book_ref": "Activity: Paper Folding and Cutting, section 9.1 p.223",
+      "description": "Students fold paper and cut along dotted lines to generate symmetric shapes; a more intricate variant uses multiple folds to create decorative cut-out patterns with identifiable lines of symmetry."
+    },
+    {
+      "id": "A-4",
+      "source_section": "section 9.1 — Generating shapes having lines of symmetry",
+      "book_ref": "Activity: Punching Game, section 9.1 p.223",
+      "description": "Students punch holes at different locations of a folded square sheet to create symmetric patterns, using the fold as the line of symmetry."
+    },
+    {
+      "id": "A-5",
+      "source_section": "section 9.2",
+      "book_ref": "Activity: Paper cutout rotation — three-arm radial figure, section 9.2 p.233",
+      "description": "Students trace and cut out a three-arm radial figure, then rotate the cutout over the original figure to determine its angles of rotation and verify observations about rotational symmetry."
+    },
+    {
+      "id": "A-6",
+      "source_section": "section 9.2 — Symmetries of a circle",
+      "book_ref": "Activity: Playing with Tiles, section 9.2 p.239",
+      "description": "Students use colour tiles to complete a figure with exactly 2 lines of symmetry, then use 16 tiles to create figures with exactly 1 or 2 lines of symmetry, and make creative symmetric designs."
+    }
+  ],
+  "enumerated_worked_examples": [
+    {
+      "id": "WE-1",
+      "source_section": "section 9.2",
+      "book_ref": "Example, section 9.2 p.232",
+      "description": "Find the angles of symmetry of a parallelogram-strip shape. A 180° rotation is demonstrated not to overlap with the original (asymmetry of the parallelogram); the figure returns to itself only after 360°, so it does not have rotational symmetry."
+    }
+  ],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 9.1",
+      "book_ref": "Figure it Out Q1, section 9.1 p.219",
+      "description": "Do you see any line of symmetry in the opening figures (flower, butterfly, rangoli, pinwheel)? What about the picture of the cloud?"
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 9.1",
+      "book_ref": "Figure it Out Q2, section 9.1 p.219",
+      "description": "For each of five given polygon figures, identify the line(s) of symmetry if any exist."
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 9.1 — Figures with more than one line of symmetry",
+      "book_ref": "Figure it Out, section 9.1 p.221",
+      "description": "Is there any other way to fold the square so that the two halves overlap? How many lines of symmetry does the square shape have?"
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 9.1 — Figures with more than one line of symmetry",
+      "book_ref": "Figure it Out, section 9.1 p.221",
+      "description": "Is the diagonal of a rectangle (that is not a square) a line of symmetry? Fold a rectangular piece of paper along its diagonal to check whether the two parts overlap."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 9.1 — Generating shapes having lines of symmetry",
+      "book_ref": "Figure it Out Q1, section 9.1 p.224",
+      "description": "In each of four figures, a hole was punched in a folded square sheet and then unfolded. Identify the fold line. For figure (d), created by a single punch, determine how the paper was folded."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 9.1 — Generating shapes having lines of symmetry",
+      "book_ref": "Figure it Out Q2, section 9.1 p.224",
+      "description": "Given the line(s) of symmetry, find the location of the other hole(s) in each of five figures."
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 9.1 — Generating shapes having lines of symmetry",
+      "book_ref": "Figure it Out Q3, section 9.1 p.224",
+      "description": "Paper cutting questions using vertical and horizontal fold notation; interpret representations of folded paper and associated cuts."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 9.1 — Generating shapes having lines of symmetry",
+      "book_ref": "Figure it Out Q4, section 9.1 p.225",
+      "description": "After each of four cuts on folded paper, predict the shape of the hole when the paper is opened; make cutouts to verify predictions — sub-parts (a), (b), (c), (d)."
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 9.1 — Generating shapes having lines of symmetry",
+      "book_ref": "Figure it Out Q5, section 9.1 p.226",
+      "description": "Determine how to obtain each of two shapes (both with a square hole in the centre) using folds and a single straight cut — sub-parts (a) aligned-square hole and (b) diamond-orientation square hole."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 9.1 — Generating shapes having lines of symmetry",
+      "book_ref": "Figure it Out Q6, section 9.1 p.226",
+      "description": "How many lines of symmetry do these shapes have? (a) two figures — a 4-pointed star (square) and an 8-pointed star; (b) a triangle with equal sides and equal angles; (c) a hexagon with equal sides and equal angles."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 9.1 — Generating shapes having lines of symmetry",
+      "book_ref": "Figure it Out Q7, section 9.1 p.227",
+      "description": "Trace each of eight figures (arrangements of rhombus shapes and polygons on grids) and draw the lines of symmetry, if any."
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 9.1 — Generating shapes having lines of symmetry",
+      "book_ref": "Figure it Out Q8, section 9.1 p.228",
+      "description": "Find the lines of symmetry for the given kolam (traditional Indian dot pattern)."
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 9.1 — Generating shapes having lines of symmetry",
+      "book_ref": "Figure it Out Q9, section 9.1 p.228",
+      "description": "Draw: (a) a triangle with exactly one line of symmetry; (b) a triangle with exactly three lines of symmetry; (c) a triangle with no line of symmetry. Is it possible to draw a triangle with exactly two lines of symmetry?"
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 9.1 — Generating shapes having lines of symmetry",
+      "book_ref": "Figure it Out Q10, section 9.1 p.228",
+      "description": "Draw figures containing at least one curved boundary with exactly: (a) one line of symmetry; (b) two lines of symmetry; (c) four lines of symmetry."
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 9.1 — Generating shapes having lines of symmetry",
+      "book_ref": "Figure it Out Q11, section 9.1 p.228",
+      "description": "Copy six partial figures on squared paper and complete each so that the given blue line is a line of symmetry — sub-parts (a) through (f), with a hint to rotate the book for (c) and (f)."
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 9.1 — Generating shapes having lines of symmetry",
+      "book_ref": "Figure it Out Q12, section 9.1 p.229",
+      "description": "Copy six partial drawings on squared paper and complete each so that the resulting figure has both blue lines as lines of symmetry — sub-parts (a) through (f)."
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 9.1 — Generating shapes having lines of symmetry",
+      "book_ref": "Figure it Out Q13, section 9.1 p.230",
+      "description": "Copy six figures on a dot grid and for each draw two more line segments to make a shape that has a line of symmetry."
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 9.2",
+      "book_ref": "Figure it Out Q1, section 9.2 p.235",
+      "description": "Find the angles of symmetry for three given figures about the marked centre point — sub-parts (a), (b), (c)."
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 9.2",
+      "book_ref": "Figure it Out Q2, section 9.2 p.235",
+      "description": "Which of seven given figures have more than one angle of symmetry?"
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 9.2",
+      "book_ref": "Figure it Out Q3, section 9.2 p.236",
+      "description": "Give the order of rotational symmetry for each of six figures (including an arrow, X-shape, star, tumbling figure, plus-shape, and pentagon)."
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 9.2 — Symmetries of a circle",
+      "book_ref": "Figure it Out Q1, section 9.2 p.238",
+      "description": "Colour the sectors of a 12-sector circle so that the figure has (i) 3 angles of symmetry, (ii) 4 angles of symmetry; (iii) determine all possible numbers of angles of symmetry obtainable by colouring sectors."
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 9.2 — Symmetries of a circle",
+      "book_ref": "Figure it Out Q2, section 9.2 p.238",
+      "description": "Draw two figures (other than a circle and a square) that have both reflection symmetry and rotational symmetry."
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 9.2 — Symmetries of a circle",
+      "book_ref": "Figure it Out Q3, section 9.2 p.238",
+      "description": "Draw rough sketches of: (a) a triangle with ≥2 lines and ≥2 angles of symmetry; (b) a triangle with exactly 1 line of symmetry and no rotational symmetry; (c) a quadrilateral with rotational symmetry but no reflection symmetry; (d) a quadrilateral with reflection symmetry but no rotational symmetry."
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 9.2 — Symmetries of a circle",
+      "book_ref": "Figure it Out Q4, section 9.2 p.238",
+      "description": "In a figure, 60° is the smallest angle of symmetry. What are the other angles of symmetry?"
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 9.2 — Symmetries of a circle",
+      "book_ref": "Figure it Out Q5, section 9.2 p.238",
+      "description": "In a figure, 60° is an angle of symmetry and the figure has two angles of symmetry less than 60°. What is its smallest angle of symmetry?"
+    },
+    {
+      "id": "E-26",
+      "source_section": "section 9.2 — Symmetries of a circle",
+      "book_ref": "Figure it Out Q6, section 9.2 p.238",
+      "description": "Can a figure have rotational symmetry whose smallest angle of symmetry is: (a) 45°? (b) 17°?"
+    },
+    {
+      "id": "E-27",
+      "source_section": "section 9.2 — Symmetries of a circle",
+      "book_ref": "Figure it Out Q7, section 9.2 p.239",
+      "description": "Parliament Building in Delhi: (a) Does its outer boundary have reflection symmetry — how many lines? (b) Does it have rotational symmetry about its centre — find the angles."
+    },
+    {
+      "id": "E-28",
+      "source_section": "section 9.2 — Symmetries of a circle",
+      "book_ref": "Figure it Out Q8, section 9.2 p.239",
+      "description": "How many lines of symmetry do the Regular Polygons (from Chapter 1, Table 3) have? What number sequence do you get?"
+    },
+    {
+      "id": "E-29",
+      "source_section": "section 9.2 — Symmetries of a circle",
+      "book_ref": "Figure it Out Q9, section 9.2 p.239",
+      "description": "How many angles of symmetry do the Regular Polygons (from Chapter 1, Table 3) have? What number sequence do you get?"
+    },
+    {
+      "id": "E-30",
+      "source_section": "section 9.2 — Symmetries of a circle",
+      "book_ref": "Figure it Out Q10, section 9.2 p.239",
+      "description": "How many lines of symmetry and angles of symmetry do the shapes in the Koch Snowflake sequence (Chapter 1, Table 3) have?"
+    },
+    {
+      "id": "E-31",
+      "source_section": "section 9.2 — Symmetries of a circle",
+      "book_ref": "Figure it Out Q11, section 9.2 p.239",
+      "description": "How many lines of symmetry and angles of symmetry does the Ashoka Chakra have?"
+    }
+  ],
+  "conceptual_demand": 2,
+  "activity_count": 6,
+  "demo_count": 1,
+  "exec_load": 1
+}

@@ -1077,14 +1077,13 @@ def _english_period_block(period, uw, is_first_in_section=False, is_first_period
         hw_str = _clean_text(str(raw_hw)).strip().strip("\"'‘’“”")
 
     # ── Section heading (above first period of each section) ──────────────────
+    # Built here so it can be included in the KeepTogether anchor below.
+    sec_heading = None
     if is_first_in_section and section_ttl:
         sec_heading = Paragraph(
             f"Section: {section_ttl}",
             ST["eng_sec_hdr"],
         )
-        story.append(Spacer(1, 3 * mm))
-        story.append(sec_heading)
-        story.append(Spacer(1, 2 * mm))
 
     # ── Row 1: Period header (Period | Duration | Activity | Ped approach) ────
     hdr_data = [[
@@ -1127,8 +1126,14 @@ def _english_period_block(period, uw, is_first_in_section=False, is_first_period
         ("ALIGN",         (1, 0), ( 1,  0), "RIGHT"),
     ]))
 
-    # Anchor: keep header + materials together so header never orphans
-    story.append(KeepTogether([hdr_t, Spacer(1, 3), mat_t]))
+    # Anchor: keep section heading (if any) + header + materials together
+    # so the section name never orphans at the bottom of a page without
+    # the period block that follows it.
+    if sec_heading:
+        story.append(Spacer(1, 3 * mm))
+        story.append(KeepTogether([sec_heading, Spacer(1, 2 * mm), hdr_t, Spacer(1, 3), mat_t]))
+    else:
+        story.append(KeepTogether([hdr_t, Spacer(1, 3), mat_t]))
 
     # ── Phase rows ────────────────────────────────────────────────────────────
     if phases:

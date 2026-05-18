@@ -1,0 +1,372 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "vi",
+  "chapter_number": 3,
+  "chapter_title": "Number Play",
+  "sections": [
+    { "ref": "section 3.1", "title": "Numbers can Tell us Things", "section_goal": ["reason"] },
+    { "ref": "section 3.2", "title": "Supercells", "section_goal": ["reason", "apply"] },
+    { "ref": "section 3.3", "title": "Patterns of Numbers on the Number Line", "section_goal": ["apply"] },
+    { "ref": "section 3.4", "title": "Playing with Digits", "section_goal": ["reason"] },
+    { "ref": "section 3.5", "title": "Pretty Palindromic Patterns", "section_goal": ["reason"] },
+    { "ref": "section 3.6", "title": "The Magic Number of Kaprekar", "section_goal": ["apply"] },
+    { "ref": "section 3.7", "title": "Clock and Calendar Numbers", "section_goal": ["apply"] },
+    { "ref": "section 3.8", "title": "Mental Math", "section_goal": ["apply"] },
+    { "ref": "section 3.9", "title": "Playing with Number Patterns", "section_goal": ["reason", "apply"] },
+    { "ref": "section 3.10", "title": "An Unsolved Mystery — the Collatz Conjecture!", "section_goal": ["reason"] },
+    { "ref": "section 3.11", "title": "Simple Estimation", "section_goal": ["apply"] },
+    { "ref": "section 3.12", "title": "Games and Winning Strategies", "section_goal": ["reason"] }
+  ],
+  "prose_summary": "Section 3.1 reasons through what numbers can communicate beyond simple counting. Students encounter a row of children of varying heights, each announcing a number representing how many of their immediate neighbours are taller. Through a Math Talk prompt and seven questions, students justify whether particular sequences of 0s, 1s, and 2s are achievable — for instance, why a child at the end cannot say '2' (they have only one neighbour), or why the sequence 1,1,1,1,1 is impossible in a group of five children of different heights. The reasoning is structural: students must think about constraints imposed by position and relative height, making this section a reasoning exercise in combinatorial logic rather than arithmetic.\n\nSection 3.2 defines the concept of a 'supercell' — a cell in a row or grid whose number is strictly greater than all adjacent cells — and then reasons through its properties before applying the definition. The definition is introduced via a worked table where students are asked to notice and explain why certain cells are coloured, and then extends to two-dimensional grids where adjacency includes top, bottom, left, and right neighbours. The Figure it Out block (10 questions) moves from marking supercells in a given row, to filling tables so that supercells fall exactly on pre-coloured cells, to exploring the maximum number of supercells possible and whether a table can be filled with no supercells at all. The reasoning act (justifying why the largest number is always a supercell; why the smallest can never be one) clearly precedes the application act (constructing tables to specification), making the dual goal sequence evident.\n\nSection 3.3 applies number line skills to place large numbers accurately in position. The section opens by placing eleven numbers (2180, 2754, 1500, 3600, 9950, 9590, 1050, 3050, 5030, 5300, 8400) on a number line spanning 1000 to 10,000. The Figure it Out block presents four number lines with different scales — units of 5, units of 1, units of 1, and units of 1000 — where students identify unlabelled positions and label remaining ones, then circle the smallest and box the largest. The section also includes a 5-digit number completion table using the digits 1, 0, 6, 3, 9 where only coloured cells may hold a number greater than all its neighbours, consolidating supercell logic within a multi-row grid at a larger number scale.\n\nSection 3.4 reasons about digit sums and digit frequency. It opens by establishing the count of numbers with 1, 2, 3, 4, and 5 digits (9, 90, 900, 9000, 90,000) through a table-completion task. Komal's observation that different numbers can share the same digit sum (68, 176, 545 all sum to 14) launches a Figure it Out block: students write numbers with digit sum 14, find the smallest and largest such numbers within a 5-digit constraint, and explore how large a number with digit sum 14 can be. The 'Digit Detectives' interlude asks students to reason about how many times the digit '7' appears in counting from 1 to 100 and from 1 to 1000, requiring systematic thinking about tens-place and units-place occurrences — a reasoning task about structure rather than a calculation.\n\nSection 3.5 reasons about palindromic numbers and the reverse-and-add procedure. After identifying the pattern in 66, 848, 575, 797, 1111, students write all 3-digit palindromes using the digits 1, 2, 3. The section then introduces the reverse-and-add process (add a number to its digit-reversal; if not a palindrome, repeat), illustrated through three examples that reach palindromes in one or two steps. A Math Talk prompt asks students to explore whether starting from any 2-digit number always yields a palindrome — the answer is yes for 2-digit numbers, though the note flags that 196 is suspected to never yield a palindrome. A puzzle-time challenge asks students to identify a 5-digit palindrome satisfying two digit-ratio constraints (h digit = double t digit; t digit = double u digit), which requires simultaneous reasoning about place value and palindrome symmetry.\n\nSection 3.6 applies a specific multi-step procedure — the Kaprekar process — to 4-digit numbers. Students take any 4-digit number with at least two distinct digits, form the largest and smallest rearrangements (call them A and B), compute C = A − B, and repeat using C's digits. The section walks through two complete iterations starting from 6382 before leaving two blanks for students to continue, demonstrating convergence to 6174. An Explore prompt asks students to verify this with different 4-digit numbers and then apply the same procedure to 3-digit numbers to discover that 495 plays the analogous role. The section is primarily an application: students execute the algorithm on chosen numbers and observe the invariant outcome.\n\nSection 3.7 applies number patterns and the concepts of palindromes and digit rearrangements to clock and calendar contexts. Students list all valid palindromic times on a 12-hour clock (e.g., 4:44, 10:01, 12:21) and all dates where digits read the same forwards and backwards. A calendar puzzle asks whether any year's calendar can repeat — the answer, given in the solution key, depends on the positioning of leap years within the cycle. The Figure it Out block (four questions) integrates skills from the chapter: choosing 4-digit sets to maximise or minimise digit-rearrangement differences and sums, computing palindrome sums and differences, finding the next palindromic time after 10:01, and determining how many Kaprekar rounds 5683 requires to reach 6174 (answer: 8 rounds).\n\nSection 3.8 applies mental arithmetic strategies to additions and subtractions involving large 5-digit numbers. The first activity presents a spider-web figure where numbers in a central column (400, 1500, 13000, 25000, 28000, 61600) must be combined — using each as many times as needed, with addition only — to produce target sums on the sides. Students think about which multiples and combinations of the given numbers reach each target. A second variant permits both addition and subtraction, and a third Figure it Out block asks students to write examples of multi-digit additions and subtractions satisfying given digit-count constraints (e.g., 5-digit + 3-digit giving a 6-digit sum) and to classify statements about digit-count outcomes as always, sometimes, or never true. This section is almost entirely applied computation and mental strategy.\n\nSection 3.9 reasons about and applies efficient counting strategies for visually arranged arrays of numbers. Six figures present rectangular or diamond grids of repeated numbers — 40s, 50s, 32s, 64s, mixed 15/25/35s, and powers of 2 — and students are asked to find the sum. The key pedagogical point is to reason about whether one-by-one addition is necessary, or whether a quicker method (counting the number of each value and multiplying) can be applied. The Math Talk prompt emphasises sharing different solution strategies, making the reasoning about computational efficiency as important as the sum itself. This dual arc — reasoning about why a shortcut works, then applying it — is clearly sequential in the section's structure.\n\nSection 3.10 reasons about the Collatz conjecture. The rule (halve if even; multiply by 3 and add 1 if odd; repeat) is illustrated through four sequences that all terminate at 1. Students are invited to generate their own Collatz sequences, evaluate whether they always reach 1, and reflect on whether Collatz's 1937 conjecture is likely to be true. The section explicitly frames this as an unsolved problem in mathematics, making the pedagogical purpose one of mathematical reasoning and conjecture rather than algorithmic computation. No formula is derived; the dominant act is reasoning about pattern and justification.\n\nSection 3.11 applies estimation to real-world magnitudes. After motivating why estimates are often sufficient, the section works through Paromita's estimate of her school population (32 + 29 + 35 ≈ 100 per class × 5 classes ≈ 500). The Figure it Out block asks students to estimate step counts across various distances, blink/breath rates across various time intervals, and names objects numbering in the thousands or tens of thousands. A second sub-block asks quick yes/no estimates (number of words in the maths textbook; school bus riders; cost of fruit custard; Gandhinagar–Kohima distance; Sheetal's claimed 13,000 school hours). Students then make their own estimation challenges. The dominant act throughout is applying reasoning about scale and magnitude to arrive at justified approximate values.\n\nSection 3.12 reasons about game theory and winning strategies through number games. Game #1: players alternately add 1, 2, or 3 to a running total; first to reach 21 wins. Game #2: start between 1 and 10; alternately add 1–10; first to reach 99 wins. Students play multiple rounds and are asked to identify the winning pattern — which player can always win, and what sequence of numbers to target. The Figure it Out block consolidates skills from the entire chapter: a supercell grid manipulation (swap two digits to create four supercells from one); a Kaprekar round count for a birth year; identifying 5-digit odd-digit numbers closest to 50,000; estimation questions; digit-sum constructions; number pattern sums; Collatz verification for 100; and a winning strategy for a variant starting at 0 targeting 22.",
+  "enumerated_activities": [],
+  "enumerated_worked_examples": [],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 3.1",
+      "book_ref": "Math Talk, section 3.1 p.55",
+      "description": "List five different situations in which numbers are used. Share and discuss with classmates."
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 3.1",
+      "book_ref": "Figure it Out Q1, section 3.1 p.56",
+      "description": "Can the children rearrange themselves so that the children standing at the ends say '2'?"
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 3.1",
+      "book_ref": "Figure it Out Q2, section 3.1 p.56",
+      "description": "Can we arrange the children in a line so that all would say only 0s?"
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 3.1",
+      "book_ref": "Figure it Out Q3, section 3.1 p.56",
+      "description": "Can two children standing next to each other say the same number?"
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 3.1",
+      "book_ref": "Figure it Out Q4, section 3.1 p.56",
+      "description": "There are 5 children all of different heights. Can they stand such that four say '1' and the last says '0'? Why or why not?"
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 3.1",
+      "book_ref": "Figure it Out Q5, section 3.1 p.56",
+      "description": "For a group of 5 children, is the sequence 1, 1, 1, 1, 1 possible?"
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 3.1",
+      "book_ref": "Figure it Out Q6, section 3.1 p.56",
+      "description": "Is the sequence 0, 1, 2, 1, 0 possible? Why or why not?"
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 3.1",
+      "book_ref": "Figure it Out Q7, section 3.1 p.56",
+      "description": "How would you rearrange the five children so that the maximum number of children say '2'?"
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 3.2",
+      "book_ref": "Figure it Out Q1, section 3.2 p.57",
+      "description": "Colour or mark the supercells in the given table: 6828, 670, 9435, 3780, 3708, 7308, 8000, 5583, 52."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 3.2",
+      "book_ref": "Figure it Out Q2, section 3.2 p.57",
+      "description": "Fill the table with only 4-digit numbers such that the supercells are exactly the pre-coloured cells (given seed values 5346, 1258, 9635)."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 3.2",
+      "book_ref": "Figure it Out Q3, section 3.2 p.57",
+      "description": "Fill the table to get as many supercells as possible using numbers between 100 and 1000 without repetitions."
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 3.2",
+      "book_ref": "Figure it Out Q4, section 3.2 p.57",
+      "description": "Out of the 9 numbers placed, how many supercells are there in the table?"
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 3.2",
+      "book_ref": "Figure it Out Q5, section 3.2 p.57",
+      "description": "Find out how many supercells are possible for different numbers of cells. Do you notice any pattern? What is the method to fill a table to get the maximum supercells?"
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 3.2",
+      "book_ref": "Try This Q6, section 3.2 p.58",
+      "description": "Can you fill a supercell table without repeating numbers such that there are no supercells? Why or why not?"
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 3.2",
+      "book_ref": "Figure it Out Q7, section 3.2 p.58",
+      "description": "Will the cell with the largest number always be a supercell? Can the cell with the smallest number be a supercell? Why or why not?"
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 3.2",
+      "book_ref": "Figure it Out Q8, section 3.2 p.58",
+      "description": "Fill a table such that the cell having the second largest number is not a supercell."
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 3.2",
+      "book_ref": "Figure it Out Q9, section 3.2 p.58",
+      "description": "Fill a table such that the second largest number is not a supercell but the second smallest number is a supercell. Is it possible?"
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 3.2",
+      "book_ref": "Figure it Out Q10, section 3.2 p.58",
+      "description": "Make other variations of the supercell puzzle and challenge your classmates."
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 3.3",
+      "book_ref": "Figure it Out, section 3.3 p.59",
+      "description": "Identify the numbers marked on four number lines at different scales and label the remaining positions. Sub-parts: (a) scale of 5, around 2010–2020; (b) scale of 1, around 9996–9997; (c) scale of 1, around 15077–15083; (d) scale of 1000, around 86705–87705. Circle smallest and box largest in each."
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 3.4",
+      "book_ref": "Figure it Out, section 3.4 p.60",
+      "description": "Find out how many numbers have two digits, three digits, four digits, and five digits. Complete the table."
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 3.4",
+      "book_ref": "Figure it Out Q1, section 3.4 p.60",
+      "description": "Digit sum 14: (a) write other numbers whose digits add up to 14; (b) what is the smallest number with digit sum 14? (c) what is the largest 5-digit number with digit sum 14? (d) how big a number can you form with digit sum 14?"
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 3.4",
+      "book_ref": "Figure it Out Q2, section 3.4 p.60",
+      "description": "Find out the digit sums of all numbers from 40 to 70 and share observations."
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 3.4",
+      "book_ref": "Figure it Out Q3, section 3.4 p.60",
+      "description": "Calculate the digit sums of 3-digit numbers with consecutive digits (e.g., 345). Do you see a pattern? Will it continue?"
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 3.4",
+      "book_ref": "Figure it Out, section 3.4 p.61",
+      "description": "Digit Detectives: among numbers 1–100, how many times does the digit '7' occur? Among 1–1000?"
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 3.5",
+      "book_ref": "Figure it Out, section 3.5 p.61",
+      "description": "Write all possible 3-digit palindromes using the digits 1, 2, and 3."
+    },
+    {
+      "id": "E-26",
+      "source_section": "section 3.5",
+      "book_ref": "Math Talk, section 3.5 p.62",
+      "description": "Will reversing and adding numbers repeatedly, starting with a 2-digit number, always give a palindrome? Explore and find out."
+    },
+    {
+      "id": "E-27",
+      "source_section": "section 3.5",
+      "book_ref": "Figure it Out, section 3.5 p.62",
+      "description": "Puzzle time: I am a 5-digit palindrome, odd, with 't' digit double 'u' digit and 'h' digit double 't' digit. Who am I?"
+    },
+    {
+      "id": "E-28",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out, section 3.6 p.63",
+      "description": "Take different 4-digit numbers and carry out the Kaprekar steps (form largest A and smallest B from digits, compute C = A − B, repeat). Find out what always happens."
+    },
+    {
+      "id": "E-29",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out, section 3.6 p.63",
+      "description": "Carry out the same Kaprekar steps with a few 3-digit numbers. What number starts repeating?"
+    },
+    {
+      "id": "E-30",
+      "source_section": "section 3.7",
+      "book_ref": "Figure it Out, section 3.7 p.64",
+      "description": "Find all possible times on a 12-hour clock of the type 4:44 (repeated digit), 10:10 (two pairs), and 12:21 (palindrome time)."
+    },
+    {
+      "id": "E-31",
+      "source_section": "section 3.7",
+      "book_ref": "Figure it Out, section 3.7 p.64",
+      "description": "Find other dates of the form 20/12/2012 where the same four digits repeat in order. Find all possible palindromic dates from the past (e.g., 11/02/2011)."
+    },
+    {
+      "id": "E-32",
+      "source_section": "section 3.7",
+      "book_ref": "Try This, section 3.7 p.64",
+      "description": "Will any year's calendar repeat again after some years? Will all dates and days match exactly with another year?"
+    },
+    {
+      "id": "E-33",
+      "source_section": "section 3.7",
+      "book_ref": "Figure it Out Q1, section 3.7 p.64",
+      "description": "Using four chosen digits, make the smallest and largest 4-digit numbers: (a) make the difference greater than 5085; (b) make the difference less than 5085; (c) make the sum greater than 9779; (d) make the sum less than 9779."
+    },
+    {
+      "id": "E-34",
+      "source_section": "section 3.7",
+      "book_ref": "Figure it Out Q2, section 3.7 p.65",
+      "description": "What is the sum of the smallest and largest 5-digit palindrome? What is their difference?"
+    },
+    {
+      "id": "E-35",
+      "source_section": "section 3.7",
+      "book_ref": "Figure it Out Q3, section 3.7 p.65",
+      "description": "The time is 10:01. How many minutes until the next palindromic time? What about the one after that?"
+    },
+    {
+      "id": "E-36",
+      "source_section": "section 3.7",
+      "book_ref": "Figure it Out Q4, section 3.7 p.65",
+      "description": "How many rounds does the number 5683 take to reach the Kaprekar constant (6174)?"
+    },
+    {
+      "id": "E-37",
+      "source_section": "section 3.8",
+      "book_ref": "Figure it Out, section 3.8 p.65",
+      "description": "Spider-web mental math: the numbers in the middle column (400, 1500, 13000, 25000, 28000, 61600) can be added (each used as many times as needed) to reach target sums on the sides. Draw arrows to show which central numbers combine to make each target."
+    },
+    {
+      "id": "E-38",
+      "source_section": "section 3.8",
+      "book_ref": "Math Talk, section 3.8 p.66",
+      "description": "Can we make 1,000 using the numbers in the middle? Why not? What about 14,000, 15,000, and 16,000? What thousands cannot be made?"
+    },
+    {
+      "id": "E-39",
+      "source_section": "section 3.8",
+      "book_ref": "Figure it Out, section 3.8 p.66",
+      "description": "Adding and subtracting with the boxes (40000, 300, 7000, 1500, 12000, 800): use addition and subtraction to reach 45000, 5900, 17500, and 21400."
+    },
+    {
+      "id": "E-40",
+      "source_section": "section 3.8",
+      "book_ref": "Figure it Out Q1, section 3.8 p.66",
+      "description": "Write an example for each scenario: 5-digit + 5-digit > 90250; 5-digit + 3-digit = 6-digit; 4-digit + 4-digit = 6-digit; 5-digit + 5-digit = 6-digit; 5-digit + 5-digit = 18500; 5-digit − 5-digit < 56503; 5-digit − 3-digit = 4-digit; 5-digit − 4-digit = 4-digit; 5-digit − 5-digit = 3-digit; 5-digit − 5-digit = 91500."
+    },
+    {
+      "id": "E-41",
+      "source_section": "section 3.8",
+      "book_ref": "Figure it Out Q2, section 3.8 p.67",
+      "description": "Always, Sometimes, Never? (a) 5-digit + 5-digit gives a 5-digit number; (b) 4-digit + 2-digit gives a 4-digit number; (c) 4-digit + 2-digit gives a 6-digit number; (d) 5-digit − 5-digit gives a 5-digit number; (e) 5-digit − 2-digit gives a 3-digit number."
+    },
+    {
+      "id": "E-42",
+      "source_section": "section 3.9",
+      "book_ref": "Figure it Out, section 3.9 p.67",
+      "description": "Find the sum of numbers in six patterned arrays: (a) 3×4 grid of 40s and 50s; (b) 3×5 grid of 40s and 50s; (c) 4×4 grid of 32s; (d) 4×4 grid of 32s and 64s; (e) diamond arrangement of 15s, 25s, and 35s; (f) diamond of powers of 2 (125, 250, 500, 1000). Sub-parts (a)–(f)."
+    },
+    {
+      "id": "E-43",
+      "source_section": "section 3.10",
+      "book_ref": "Figure it Out, section 3.10 p.69",
+      "description": "Make Collatz sequences starting from your favourite whole numbers. Do you always reach 1? Do you believe Collatz's conjecture? Why or why not?"
+    },
+    {
+      "id": "E-44",
+      "source_section": "section 3.11",
+      "book_ref": "Figure it Out, section 3.11 p.69",
+      "description": "Estimate the number of steps to walk: (a) to the classroom door; (b) across the school ground; (c) from classroom to school gate; (d) from school to home."
+    },
+    {
+      "id": "E-45",
+      "source_section": "section 3.11",
+      "book_ref": "Figure it Out, section 3.11 p.70",
+      "description": "Estimate the number of times you blink or the number of breaths you take: (a) in a minute; (b) in an hour; (c) in a day."
+    },
+    {
+      "id": "E-46",
+      "source_section": "section 3.11",
+      "book_ref": "Figure it Out, section 3.11 p.70",
+      "description": "Name objects around you that are (a) a few thousand in number, (b) more than ten thousand in number."
+    },
+    {
+      "id": "E-47",
+      "source_section": "section 3.11",
+      "book_ref": "Figure it Out, section 3.11 p.70",
+      "description": "Quick 30-second estimate questions: (1) number of words in the maths textbook — more or less than 5000? (2) school students travelling by bus — more or less than 200? (3) Does Roshan's ₹100 estimate for fruit custard for 5 people seem right? (4) Estimate the Gandhinagar–Kohima distance. (5) Has Sheetal spent around 13,000 hours in school? (6) Estimate walking time to a favourite place, a neighbouring state capital, and tip-to-tip India. (7) Make your own estimation questions."
+    },
+    {
+      "id": "E-48",
+      "source_section": "section 3.12",
+      "book_ref": "Figure it Out Q1, section 3.12 p.72",
+      "description": "Try This: there is only one supercell in the given 3×3 grid (16200, 39344, 29765 / 23609, 62871, 45306 / 19381, 50319, 38408). Exchange two digits of one number to create exactly 4 supercells. Figure out which digits to swap."
+    },
+    {
+      "id": "E-49",
+      "source_section": "section 3.12",
+      "book_ref": "Figure it Out Q2, section 3.12 p.72",
+      "description": "How many rounds does your year of birth take to reach the Kaprekar constant?"
+    },
+    {
+      "id": "E-50",
+      "source_section": "section 3.12",
+      "book_ref": "Figure it Out Q3, section 3.12 p.72",
+      "description": "5-digit numbers between 35,000 and 75,000 with all odd digits: who is the largest? Who is the smallest? Who is closest to 50,000?"
+    },
+    {
+      "id": "E-51",
+      "source_section": "section 3.12",
+      "book_ref": "Figure it Out Q4, section 3.12 p.72",
+      "description": "Estimate the number of holidays you get in a year including weekends, festivals, and vacation. Then get an exact number and see how close your estimate is."
+    },
+    {
+      "id": "E-52",
+      "source_section": "section 3.12",
+      "book_ref": "Figure it Out Q5, section 3.12 p.72",
+      "description": "Estimate the number of litres a mug, a bucket, and an overhead tank can hold."
+    },
+    {
+      "id": "E-53",
+      "source_section": "section 3.12",
+      "book_ref": "Figure it Out Q6, section 3.12 p.72",
+      "description": "Write one 5-digit number and two 3-digit numbers such that their sum is 18,670."
+    },
+    {
+      "id": "E-54",
+      "source_section": "section 3.12",
+      "book_ref": "Figure it Out Q7, section 3.12 p.72",
+      "description": "Choose a number between 210 and 390. Create a number pattern similar to those in Section 3.9 that sums to this number."
+    },
+    {
+      "id": "E-55",
+      "source_section": "section 3.12",
+      "book_ref": "Figure it Out Q8, section 3.12 p.72",
+      "description": "Recall the powers of 2 from Chapter 1. Why is the Collatz conjecture correct for all starting numbers in this sequence?"
+    },
+    {
+      "id": "E-56",
+      "source_section": "section 3.12",
+      "book_ref": "Figure it Out Q9, section 3.12 p.73",
+      "description": "Check if the Collatz conjecture holds for the starting number 100."
+    },
+    {
+      "id": "E-57",
+      "source_section": "section 3.12",
+      "book_ref": "Figure it Out Q10, section 3.12 p.73",
+      "description": "Starting with 0, players alternate adding numbers between 1 and 3. The first person to reach 22 wins. What is the winning strategy now?"
+    }
+  ],
+  "conceptual_demand": 2,
+  "activity_count": 0,
+  "demo_count": 0,
+  "exec_load": 1
+}

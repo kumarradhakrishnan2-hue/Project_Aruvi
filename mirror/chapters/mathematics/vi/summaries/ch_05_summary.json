@@ -1,0 +1,368 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "vi",
+  "chapter_number": 5,
+  "chapter_title": "Prime Time",
+  "sections": [
+    { "ref": "section 5.1", "title": "Common Multiples and Common Factors", "section_goal": ["recall", "apply"] },
+    { "ref": "section 5.2", "title": "Prime Numbers", "section_goal": ["recall", "reason"] },
+    { "ref": "section 5.3", "title": "Co-prime Numbers for Safekeeping Treasures", "section_goal": ["recall", "apply"] },
+    { "ref": "section 5.4", "title": "Prime Factorisation", "section_goal": ["reason", "apply"] },
+    { "ref": "section 5.5", "title": "Divisibility Tests", "section_goal": ["reason", "apply"] },
+    { "ref": "section 5.6", "title": "Fun with Numbers", "section_goal": ["apply"] }
+  ],
+  "prose_summary": "Section 5.1 recalls the concepts of multiples and factors and applies them through two engaging games — the Idli-Vada game and Jump Jackpot — to build intuition about common multiples and common factors. In the Idli-Vada game, students say 'idli' for multiples of 3, 'vada' for multiples of 5, and 'idli-vada' for common multiples of both; this playful context motivates the idea of the least common multiple as the first number where both conditions coincide. The Jump Jackpot game then applies the same logic from the other direction: Jumpy must choose a jump size that lands on two treasure numbers simultaneously, which requires the jump size to divide both numbers — that is, to be a common factor. A Venn-diagram-style figure (Fig. 5.1) visually organises multiples of 3 and multiples of 5 into overlapping regions, with common multiples sitting at the intersection. Students are prompted to explore games with other number pairs and to discover that the common multiples of two numbers are the multiples of their LCM, and that the common factors are the factors of their GCF. A shaded table of numbers from 31 to 70 provides a further stimulus for a Math Talk on which cells are multiples of 3, multiples of 4, or both. The section closes with a rich Figure it Out set requiring computation of common multiples, common factors, and reconstruction of Venn diagrams from only the common-multiple region.\n\nSection 5.2 defines prime numbers and composite numbers by reasoning about rectangular arrangements of objects, then identifies the Sieve of Eratosthenes as a systematic method to list all primes up to 100. The opening narrative contrasts Guna (who can arrange 12 figs in multiple rectangles because 12 has more than two factors) with Anshu (who can only arrange 7 figs in a single 1 × 7 or 7 × 1 strip because 7 has exactly two factors). From this, the section defines prime numbers as those with exactly two factors (1 and itself) and composite numbers as those with more than two factors; it additionally states that 1 is neither prime nor composite. The Sieve of Eratosthenes is introduced with step-by-step instructions — circle 2 and strike out its multiples, circle 3 and strike out its multiples, continue — and a Math Talk prompt invites students to reason why the procedure works. A historical note on Eratosthenes situates the method 2,200 years ago, and a sidebar notes that the largest known prime would require 6,500 pages to write. The Figure it Out set following the Sieve asks students to analyse patterns among primes up to 100: identify twin primes, find consecutive composites, classify true/false statements about parity and primality, and find primes whose doubling-plus-one is also prime.\n\nSection 5.3 recalls the treasure-hunting game from section 5.1 and applies it to introduce the concept of co-prime numbers, defining two numbers as co-prime if their only common factor is 1. The section extends the game with a new rule — jump size 1 is forbidden — so that Grumpy must place treasures on numbers that share no common factor greater than 1, making them unreachable by a single jump size. Students check whether pairs such as (15, 39), (4, 15), (18, 29) and (20, 55) are safe (co-prime) or unsafe, building operational understanding of the definition before any formal test. A Math Talk prompt asks students to connect the co-prime property to the Idli-Vada game: when the two game numbers are co-prime, the first common multiple equals their product; when they are not co-prime, it is strictly smaller. A visual Co-prime Art activity presents thread diagrams wound around pegs: when the peg count and thread-gap are co-prime, every peg is visited exactly once before the thread returns to the start; when they share a common factor, only some pegs are visited. Students apply this by predicting and drawing patterns for four peg/gap combinations.\n\nSection 5.4 reasons about the limitations of ad hoc factorisation and then applies prime factorisation as the definitive tool for determining co-primality and divisibility. The opening dialogue between Anshu and Guna exposes Anshu's error: writing 56 = 14 × 4 does not reveal all factors of 56, so a common factor (7) shared with 63 can be missed. This motivates the need for a complete, systematic factorisation. The section defines prime factorisation — expressing a number as a product of primes by repeatedly breaking composite factors — and shows through a tree diagram that 36 can be factorised four different ways yet always yields two 2s and two 3s. A diagram connecting 30 = 2 × 3 × 5 along different multiplication paths illustrates why order does not matter (commutativity and associativity, to be studied formally later). The uniqueness of prime factorisation (up to order) is stated as a remarkable fact without proof. Two applications are then developed: first, checking co-primality by comparing prime factor lists (56 = 2³ × 7 and 63 = 3² × 7 share the factor 7, so they are not co-prime; 80 = 2⁴ × 5 and 63 = 3² × 7 share no prime, so they are co-prime); second, checking divisibility by verifying that the prime factorisation of the potential divisor is included in that of the dividend (168 = 2³ × 3 × 7 is divisible by 12 = 2² × 3; 42 = 2 × 3 × 7 is not divisible by 12 = 2² × 3 because 2 appears only once in 42 but twice in 12).\n\nSection 5.5 reasons about patterns in multiples to derive simple divisibility tests for 10, 5, 2, 4, and 8 without performing long division, and applies each test to a running example. The section opens by noting that finding factors of large numbers by trial is tedious and motivates the search for short-cut rules. For divisibility by 10, the pattern that all multiples of 10 end in 0 is observed and stated; Math Talk prompts invite students to agree or disagree with the general rule. For 5, the last-digit pattern (0 or 5) is derived similarly. For 2, the even last-digit pattern (0, 2, 4, 6, 8) is established. Divisibility by 4 is more subtle: a single last digit is insufficient because 12 and 22 share a last digit yet only 12 is divisible by 4. Students are led to discover through exploration that only the last two digits determine divisibility by 4, and three explicit statements about the equivalence of the last-two-digit rule are presented for Math Talk verification. Divisibility by 8 extends this reasoning to the last three digits; the same three-statement structure is used. The section closes by noting that tests for 3, 6, 7, and 9 will be developed in later classes. The Figure it Out set applies all five rules together: a leap-year problem requires divisibility by 4, 100, and 400; palindrome questions combine divisibility by 4 with digit-reversal constraints; and a culminating problem asks which two of the five divisors (2, 4, 5, 8, 10) it is sufficient to check to certify divisibility by all five.\n\nSection 5.6 applies number-theory concepts from the chapter in open-ended, playful contexts that reward creative mathematical reasoning. The Special Numbers activity presents boxes of four numbers and challenges students to explain, for each number, what property makes it different from the other three — the same number can be special for multiple reasons, and the class activity surfaces different valid arguments for the same number (e.g., 43 is special both as the only prime and as the only non-square). This section is a Math Talk-led exploration with no unique correct answer. A Prime Puzzle challenges students to fill a grid with prime numbers so that the product of each row equals a given number on the right and the product of each column equals a given number at the bottom, applying prime factorisation skills in a two-dimensional constraint-satisfaction setting.",
+  "enumerated_activities": [
+    {
+      "id": "A-1",
+      "source_section": "section 5.1",
+      "book_ref": "Activity (Idli-Vada Game), section 5.1 p.107",
+      "description": "Students sit in a circle and count aloud; they replace multiples of 3 with 'idli', multiples of 5 with 'vada', and common multiples of both with 'idli-vada'. Players who make a mistake are eliminated. Builds intuition for common multiples through a social game."
+    },
+    {
+      "id": "A-2",
+      "source_section": "section 5.1",
+      "book_ref": "Activity (Jump Jackpot), section 5.1 p.109",
+      "description": "Grumpy places treasures on two numbers; Jumpy selects a jump size and can only land on multiples of that size. Students explore which jump sizes reach both treasure numbers, connecting common factors to a game mechanic."
+    },
+    {
+      "id": "A-3",
+      "source_section": "section 5.3",
+      "book_ref": "Activity (Co-prime Art), section 5.3 p.116",
+      "description": "Students observe and analyse thread-art diagrams with different peg counts and thread-gaps. They predict which combinations visit all pegs (co-prime pairs) versus only some pegs (non-co-prime pairs) and create their own diagrams for four specified peg/gap combinations."
+    }
+  ],
+  "enumerated_worked_examples": [
+    {
+      "id": "WE-1",
+      "source_section": "section 5.4",
+      "book_ref": "Example, section 5.4 p.120",
+      "description": "Check if 40 and 231 are co-prime using prime factorisation. 40 = 2 × 2 × 2 × 5 and 231 = 3 × 7 × 11 share no common prime factor; therefore 40 and 231 are co-prime."
+    },
+    {
+      "id": "WE-2",
+      "source_section": "section 5.4",
+      "book_ref": "Example, section 5.4 p.121",
+      "description": "Check if 242 and 195 are co-prime using prime factorisation. 242 = 2 × 11 × 11 and 195 = 3 × 5 × 13 share no common prime factor; therefore 242 and 195 are co-prime."
+    },
+    {
+      "id": "WE-3",
+      "source_section": "section 5.4",
+      "book_ref": "Example, section 5.4 p.121",
+      "description": "Check if 168 is divisible by 12. 168 = 2 × 2 × 2 × 3 × 7 and 12 = 2 × 2 × 3. Since the prime factorisation of 12 is fully contained in that of 168 (168 = 12 × 14), 168 is divisible by 12."
+    },
+    {
+      "id": "WE-4",
+      "source_section": "section 5.4",
+      "book_ref": "Example, section 5.4 p.121",
+      "description": "Check if 75 is divisible by 21. 75 = 3 × 5 × 5 and 21 = 3 × 7. Since 7 is a prime factor of 21 but not of 75, 75 is not divisible by 21."
+    },
+    {
+      "id": "WE-5",
+      "source_section": "section 5.4",
+      "book_ref": "Example, section 5.4 p.122",
+      "description": "Check if 42 is divisible by 12. 42 = 2 × 3 × 7 and 12 = 2 × 2 × 3. The prime factor 2 appears twice in 12 but only once in 42; therefore the prime factorisation of 12 is not included in that of 42, so 42 is not divisible by 12."
+    }
+  ],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q1, section 5.1 p.108",
+      "description": "At what number is 'idli-vada' said for the 10th time? (Find the 10th common multiple of 3 and 5.)"
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q2, section 5.1 p.108",
+      "description": "If the game is played from 1 to 90, find: (a) how many times 'idli' is said (including 'idli-vada'); (b) how many times 'vada' is said (including 'idli-vada'); (c) how many times 'idli-vada' is said."
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q3, section 5.1 p.108",
+      "description": "What if the game was played till 900? How would the answers to Q2 change?"
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q4, section 5.1 p.108",
+      "description": "Is Fig. 5.1 (Venn diagram of multiples of 3 and 5) related to the Idli-Vada game? Draw the figure if the game is played till 60."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q5, section 5.1 p.108",
+      "description": "Play the Idli-Vada game with different number pairs — (a) 2 and 5, (b) 3 and 7, (c) 4 and 6 — and draw Venn diagrams like Fig. 5.1 for each pair up to 60."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q6, section 5.1 p.108",
+      "description": "One number in an Idli-Vada game was 4 and nobody ever said just 'vada'. Which of 2, 3, 5, 8, 10 could be the other number?"
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q1, section 5.1 p.110",
+      "description": "Find all multiples of 40 that lie between 310 and 410."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q2, section 5.1 p.110",
+      "description": "Who am I? (a) A number less than 40, one factor is 7, digit sum is 8. (b) A number less than 100, two factors are 3 and 5, one digit is 1 more than the other."
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q3, section 5.1 p.111",
+      "description": "A perfect number equals the sum of all its factors divided by 2. Given that 28 is perfect, find a perfect number between 1 and 10."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q4, section 5.1 p.111",
+      "description": "Find the common factors of: (a) 20 and 28; (b) 35 and 50; (c) 4, 8 and 12; (d) 5, 15 and 25."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q5, section 5.1 p.111",
+      "description": "Find any three numbers that are multiples of 25 but not multiples of 50."
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q6, section 5.1 p.111",
+      "description": "Anshu plays Idli-Vada with two numbers both smaller than 10. The first 'idli-vada' comes after number 50. What could the two numbers be?"
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q7, section 5.1 p.111",
+      "description": "In Jump Jackpot, treasures are on 28 and 70. What jump sizes land on both numbers?"
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q8, section 5.1 p.111",
+      "description": "Guna erased numbers from a Venn diagram leaving only the common multiples 24, 48, 72. Find possible values for the two circle labels (the individual multiples regions)."
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q9, section 5.1 p.111",
+      "description": "Find the smallest number that is a multiple of all numbers from 1 to 10, except 7. (Try This)"
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q10, section 5.1 p.111",
+      "description": "Find the smallest number that is a multiple of all the numbers from 1 to 10. (Try This)"
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q1, section 5.2 p.114",
+      "description": "Is there any even prime other than 2?"
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q2, section 5.2 p.114",
+      "description": "From the list of primes up to 100, what is the smallest difference between two successive primes? What is the largest difference?"
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q3, section 5.2 p.114",
+      "description": "Are there an equal number of primes in every row of the sieve table? Which decades have the fewest primes? Which have the most?"
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q4, section 5.2 p.114",
+      "description": "Which of the following numbers are prime: 23, 51, 37, 26?"
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q5, section 5.2 p.114",
+      "description": "Write three pairs of prime numbers less than 20 whose sum is a multiple of 5."
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q6, section 5.2 p.114",
+      "description": "The numbers 13 and 31 are prime and use the same digits. Find other such digit-reversal prime pairs up to 100."
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q7, section 5.2 p.114",
+      "description": "Find seven consecutive composite numbers between 1 and 100."
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q8, section 5.2 p.114",
+      "description": "Twin primes differ by 2. Find all twin prime pairs between 1 and 100."
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q9, section 5.2 p.114",
+      "description": "Identify whether each statement is true or false and explain: (a) no prime has units digit 4; (b) a product of primes can be prime; (c) primes have no factors; (d) all even numbers are composite; (e) for every prime other than 2, the next number is composite."
+    },
+    {
+      "id": "E-26",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q10, section 5.2 p.115",
+      "description": "Which of 45, 60, 91, 105, 330 is the product of exactly three distinct prime numbers?"
+    },
+    {
+      "id": "E-27",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q11, section 5.2 p.115",
+      "description": "How many three-digit prime numbers can you make using each of 2, 4 and 5 exactly once?"
+    },
+    {
+      "id": "E-28",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q12, section 5.2 p.115",
+      "description": "3 is prime and 2 × 3 + 1 = 7 is also prime. Find at least five other primes p for which 2p + 1 is also prime."
+    },
+    {
+      "id": "E-29",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out Q1, section 5.3 p.115",
+      "description": "Check if each pair is 'safe' (co-prime): (a) 15 and 39; (b) 4 and 15; (c) 18 and 29; (d) 20 and 55."
+    },
+    {
+      "id": "E-30",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out Q2, section 5.3 p.116",
+      "description": "Which of the following pairs are co-prime: (a) 18 and 35; (b) 15 and 37; (c) 30 and 415; (d) 17 and 69; (e) 81 and 18?"
+    },
+    {
+      "id": "E-31",
+      "source_section": "section 5.3",
+      "book_ref": "Math Talk, section 5.3 p.116",
+      "description": "Find examples where the LCM equals the product of the two numbers, and examples where LCM is less than the product. How is this related to the pair being co-prime?"
+    },
+    {
+      "id": "E-32",
+      "source_section": "section 5.4",
+      "book_ref": "Figure it Out Q1, section 5.4 p.120",
+      "description": "Find the prime factorisations of: 64, 104, 105, 243, 320, 141, 1728, 729, 1024, 1331, 1000."
+    },
+    {
+      "id": "E-33",
+      "source_section": "section 5.4",
+      "book_ref": "Figure it Out Q2, section 5.4 p.120",
+      "description": "A number's prime factorisation has one 2, two 3s, and one 11. What is the number?"
+    },
+    {
+      "id": "E-34",
+      "source_section": "section 5.4",
+      "book_ref": "Figure it Out Q3, section 5.4 p.120",
+      "description": "Find three prime numbers, all less than 30, whose product is 1955."
+    },
+    {
+      "id": "E-35",
+      "source_section": "section 5.4",
+      "book_ref": "Figure it Out Q4, section 5.4 p.120",
+      "description": "Find the prime factorisation without multiplying first: (a) 56 × 25; (b) 108 × 75; (c) 1000 × 81."
+    },
+    {
+      "id": "E-36",
+      "source_section": "section 5.4",
+      "book_ref": "Figure it Out Q5, section 5.4 p.120",
+      "description": "What is the smallest number whose prime factorisation has: (a) three different prime numbers; (b) four different prime numbers?"
+    },
+    {
+      "id": "E-37",
+      "source_section": "section 5.4",
+      "book_ref": "Figure it Out Q1, section 5.4 p.122",
+      "description": "Are the following pairs co-prime? Guess first, then verify using prime factorisation: (a) 30 and 45; (b) 57 and 85; (c) 121 and 1331; (d) 343 and 216."
+    },
+    {
+      "id": "E-38",
+      "source_section": "section 5.4",
+      "book_ref": "Figure it Out Q2, section 5.4 p.122",
+      "description": "Is the first number divisible by the second? Use prime factorisation: (a) 225 and 27; (b) 96 and 24; (c) 343 and 17; (d) 999 and 99."
+    },
+    {
+      "id": "E-39",
+      "source_section": "section 5.4",
+      "book_ref": "Figure it Out Q3, section 5.4 p.122",
+      "description": "First number has prime factorisation 2 × 3 × 7; second has 3 × 7 × 11. Are they co-prime? Does one divide the other?"
+    },
+    {
+      "id": "E-40",
+      "source_section": "section 5.4",
+      "book_ref": "Figure it Out Q4, section 5.4 p.122",
+      "description": "Guna says any two prime numbers are co-prime. Is he right?"
+    },
+    {
+      "id": "E-41",
+      "source_section": "section 5.5",
+      "book_ref": "Figure it Out Q1, section 5.5 p.125",
+      "description": "2024 is a leap year. Leap years are multiples of 4, except multiples of 100 that are not multiples of 400. (a) From your birth year to now, which years were leap years? (b) From 2024 to 2099, how many leap years are there?"
+    },
+    {
+      "id": "E-42",
+      "source_section": "section 5.5",
+      "book_ref": "Figure it Out Q2, section 5.5 p.125",
+      "description": "Find the largest and smallest 4-digit numbers that are both divisible by 4 and palindromes."
+    },
+    {
+      "id": "E-43",
+      "source_section": "section 5.5",
+      "book_ref": "Figure it Out Q3, section 5.5 p.125",
+      "description": "Explore whether each statement is always, sometimes, or never true: (a) sum of two even numbers is a multiple of 4; (b) sum of two odd numbers is a multiple of 4."
+    },
+    {
+      "id": "E-44",
+      "source_section": "section 5.5",
+      "book_ref": "Figure it Out Q4, section 5.5 p.126",
+      "description": "Find the remainders when 78, 99, 173, 572, 980, 1111, 2345 are each divided by (a) 10, (b) 5, (c) 2."
+    },
+    {
+      "id": "E-45",
+      "source_section": "section 5.5",
+      "book_ref": "Figure it Out Q5, section 5.5 p.126",
+      "description": "The teacher asked if 14560 is divisible by all of 2, 4, 5, 8 and 10. Guna checked only two of these numbers and declared divisibility by all. What could those two numbers be?"
+    },
+    {
+      "id": "E-46",
+      "source_section": "section 5.5",
+      "book_ref": "Figure it Out Q6, section 5.5 p.126",
+      "description": "Which of 572, 2352, 5600, 6000, 77622160 are divisible by all of 2, 4, 5, 8 and 10?"
+    },
+    {
+      "id": "E-47",
+      "source_section": "section 5.5",
+      "book_ref": "Figure it Out Q7, section 5.5 p.126",
+      "description": "Write two numbers whose product is 10000, where neither number has 0 as its units digit."
+    },
+    {
+      "id": "E-48",
+      "source_section": "section 5.6",
+      "book_ref": "Math Talk (Special Numbers), section 5.6 p.126",
+      "description": "In each box of four numbers, explain how each number is special compared to the others. Share and compare reasons with classmates. Boxes include: {9, 16, 25, 43}; {5, 7, 3, 8}; {27, 3, 17, 27}; {12, 35, 11, 24}; {123, 31, 44, 65}."
+    },
+    {
+      "id": "E-49",
+      "source_section": "section 5.6",
+      "book_ref": "Math Talk (Prime Puzzle), section 5.6 p.127",
+      "description": "Fill grids with prime numbers so that the product of each row equals the number to its right and the product of each column equals the number below it. Two grids provided (3×3 and larger). Sub-parts: (a) solve the first puzzle; (b) solve the second larger puzzle."
+    }
+  ],
+  "conceptual_demand": 3,
+  "activity_count": 3,
+  "demo_count": 0,
+  "exec_load": 2
+}

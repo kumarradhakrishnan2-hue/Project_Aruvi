@@ -1,0 +1,437 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "vi",
+  "chapter_number": 6,
+  "chapter_title": "Perimeter and Area",
+  "sections": [
+    {
+      "ref": "section 6.1",
+      "title": "Perimeter",
+      "section_goal": ["recall", "apply"]
+    },
+    {
+      "ref": "section 6.2",
+      "title": "Area",
+      "section_goal": ["recall", "apply"]
+    },
+    {
+      "ref": "section 6.3",
+      "title": "Area of a Triangle",
+      "section_goal": ["reason", "apply"]
+    }
+  ],
+  "prose_summary": "Section 6.1 defines the perimeter of any closed polygon as the total boundary distance — the sum of all side lengths — and then recalls the three standard formulas for polygons students have encountered before. For a rectangle, the perimeter equals twice the sum of its length and breadth, a formula derived by recognising that opposite sides are equal (AB = CD, AD = BC), so the four-sided sum collapses to 2 × (l + b). For a square, since all four sides are equal, the perimeter is simply four times the side length. For a triangle, the perimeter is the direct sum of all three sides. Two worked examples anchor the formulas in context: one finds the lace required around a 3 m × 2 m tablecloth, the other computes the distance Usha travels in three rounds of a 75 m square park.\n\nSection 6.1 then extends perimeter reasoning to richer situations. The Matha Pachchi scenario applies and compares perimeters by computing how far Akshi and Toshi run on two concentric rectangular tracks (outer: 70 m × 40 m; inner: 60 m × 30 m), introducing the idea of positional reasoning after a given distance covered. The Estimate and Verify activity asks students to cut irregular paper shapes and physically measure boundary length before computing. The section introduces straight and diagonal units to make perimeter measurement on dot-grid figures precise, noting that diagonal segments are longer than straight segments. Regular polygons are then defined as closed figures with all sides and all angles equal; the perimeter of an equilateral triangle and the general rule (perimeter = number of sides × side length) generalise the formulas already seen for squares. The Split and rejoin task has students cut a 6 cm × 4 cm rectangle and rejoin the two halves in four different configurations, computing the boundary of each arrangement, including a target configuration with perimeter 22 cm. The Making it 'More' or 'Less' investigation asks students to arrange 9 unit squares in connected figures and explore the range of achievable perimeters, distinguishing minimum (compact 3×3 arrangement, 12 units) from maximum (linear 1×9 arrangement, 20 units), and reasoning about how attaching a new square to an existing figure changes the perimeter depending on how many sides become shared.\n\nSection 6.2 recalls that area is the amount of region enclosed by a closed figure and is measured in square units, then applies the formulas (area of rectangle = l × b; area of square = s²) to composite real-life contexts. Two worked examples solve composite subtraction problems: one finds the uncarpeted floor area when a 3 m square carpet is placed in a 5 m × 4 m room, another finds the remaining land after four 4 m square flower beds are placed at the corners of a 12 m × 10 m plot. The section reinforces that regions can be found by subtracting one area from another, or by splitting an irregular shape into rectangles. The tangram activity builds area intuition by having students compare pieces whose areas are equal or related by simple multiples, then count the area of the combined square in terms of the smallest piece. Area estimation on grid paper is formalised with four conventions for counting partial squares. The Let's Explore activity justifies why area is measured in squares (they tile perfectly without gaps or overlaps, unlike circles), then investigates all rectangles of a fixed area of 24 square units to discover that the rectangle approaching a square shape has the smallest perimeter while the most elongated has the largest. Two house-plan problems (Charan's and Sharan's) apply area and perimeter computation to architectural floor plans with several missing dimensions to recover. The Area Maze Puzzles require multi-step reasoning: given areas of sub-rectangles and some dimensions, students must compute missing areas or side lengths.\n\nSection 6.3 develops the area formula for a triangle by building on the rectangle. Students physically cut a rectangle along its diagonal and discover that the two triangles are congruent and each has exactly half the area of the rectangle. The key conceptual step is that this holds even for a triangle (such as triangle ABE) whose apex does not sit directly above a base vertex: the triangle is decomposed into two right triangles (AEF and BEF), each of which is half of a sub-rectangle (AFED and BFEC respectively), so the total area of triangle ABE is half the area of the enclosing rectangle ABCD. This reasoning establishes the general principle that the area of any triangle with base b and corresponding height h equals ½ × b × h, stated implicitly through the cutting argument. Exercises on grid paper require students to compute areas of five given triangular and composite figures by decomposing them into rectangular and triangular sub-regions. The Making it 'More' or 'Less' strand revisits the tension between area and perimeter, and a final Figure it Out block at p.149 applies all area and perimeter ideas to eight problems that mix direct calculation, inverse problems, design challenges, and a logical reasoning question about what happens to perimeter and area when a square is folded and cut.",
+  "enumerated_activities": [
+    {
+      "id": "A-1",
+      "source_section": "section 6.1",
+      "book_ref": "Estimate and Verify, section 6.1 p.134",
+      "description": "Cut irregular paper shapes from a rough sheet; estimate total boundary length by eye, then measure with a scale or measuring tape to verify the perimeter. Also discuss whether the perimeter of a dot-grid triangle is 9 straight units or more than 9 units (diagonal vs. straight length)."
+    },
+    {
+      "id": "A-2",
+      "source_section": "section 6.1",
+      "book_ref": "Split and rejoin, section 6.1 p.136",
+      "description": "Cut a 6 cm × 4 cm rectangular paper chit into two equal halves and rejoin in four different configurations (a–d); find the perimeter of each arrangement and then find an arrangement with perimeter 22 cm."
+    },
+    {
+      "id": "A-3",
+      "source_section": "section 6.1",
+      "book_ref": "Making it 'More' or 'Less', section 6.1 p.145",
+      "description": "Arrange or draw different connected figures made from 9 unit squares; find the smallest and largest possible perimeters, make a figure with perimeter 18 units, and explore the effect of attaching one more unit square to a figure of perimeter 24 units."
+    },
+    {
+      "id": "A-4",
+      "source_section": "section 6.3",
+      "book_ref": "Cut rectangle activity, section 6.3 p.142",
+      "description": "Draw a rectangle, draw one diagonal, cut along the diagonal to produce two triangles; check whether the triangles overlap exactly and have the same area. Repeat with rectangles of different dimensions and with a square. Use grid paper to verify the triangle-rectangle area relationship for both right triangles and non-right triangles."
+    }
+  ],
+  "enumerated_worked_examples": [
+    {
+      "id": "WE-1",
+      "source_section": "section 6.1",
+      "book_ref": "Example (lace around tablecloth), section 6.1 p.131",
+      "description": "Akshi wants to put lace all around a rectangular tablecloth 3 m long and 2 m wide; find the length of lace required using P = 2 × (l + b) = 10 m."
+    },
+    {
+      "id": "WE-2",
+      "source_section": "section 6.1",
+      "book_ref": "Example (Usha runs three rounds), section 6.1 p.131",
+      "description": "Find the total distance Usha travels if she takes three rounds of a square park of side 75 m; perimeter = 300 m, total distance = 900 m."
+    },
+    {
+      "id": "WE-3",
+      "source_section": "section 6.2",
+      "book_ref": "Example (floor and carpet), section 6.2 p.137",
+      "description": "A floor 5 m × 4 m has a square carpet of side 3 m laid on it; find the area of the floor that is not carpeted: 20 – 9 = 11 sq m."
+    },
+    {
+      "id": "WE-4",
+      "source_section": "section 6.2",
+      "book_ref": "Example (four flower beds), section 6.2 p.137-138",
+      "description": "A piece of land 12 m × 10 m has four square flower beds of side 4 m at the four corners; find the area of the remaining part: 120 – 64 = 56 sq m."
+    }
+  ],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out Q1a, section 6.1 p.132",
+      "description": "Find missing length of a rectangle whose perimeter is 14 cm and breadth is 2 cm."
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out Q1b, section 6.1 p.132",
+      "description": "Find the side length of a square whose perimeter is 20 cm."
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out Q1c, section 6.1 p.132",
+      "description": "Find missing breadth of a rectangle whose perimeter is 12 m and length is 3 m."
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out Q2, section 6.1 p.132",
+      "description": "A wire bent into a 5 cm × 3 cm rectangle is straightened and re-bent into a square; find the side length of the square."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out Q3, section 6.1 p.132",
+      "description": "Find the third side of a triangle with perimeter 55 cm and two sides 20 cm and 14 cm."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out Q4, section 6.1 p.132",
+      "description": "Find the cost of fencing a rectangular park 150 m × 120 m at ₹40 per metre."
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out Q5a, section 6.1 p.132",
+      "description": "A 36 cm string is formed into a square; find the side length."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out Q5b, section 6.1 p.132",
+      "description": "A 36 cm string is formed into an equilateral triangle; find the side length."
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out Q5c, section 6.1 p.132",
+      "description": "A 36 cm string is formed into a regular hexagon; find the side length."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out Q6, section 6.1 p.132",
+      "description": "A rectangular field 230 m × 160 m is fenced with 3 rounds of rope; find the total rope length needed."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out Q1, section 6.1 p.133",
+      "description": "Find the total distance Akshi covers in 5 rounds of the outer rectangular track (70 m × 40 m)."
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out Q2, section 6.1 p.133",
+      "description": "Find the total distance Toshi covers in 7 rounds of the inner rectangular track (60 m × 30 m); determine who ran further."
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out Q3a-f, section 6.1 p.133",
+      "description": "Mark positions A, B, C on Akshi's track after 250 m, 500 m, 1000 m; mark X, Y, Z on Toshi's track after 250 m, 500 m, 1000 m."
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out (straight and diagonal units), section 6.1 p.135",
+      "description": "Write the perimeters of four dot-grid figures in terms of straight (s) and diagonal (d) units."
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 6.1",
+      "book_ref": "Split and rejoin Q b, section 6.1 p.136",
+      "description": "Find the perimeter of arrangement b (two 6 cm × 2 cm pieces joined in an L-shape with 2 cm overlap)."
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 6.1",
+      "book_ref": "Split and rejoin Q c, section 6.1 p.136",
+      "description": "Find the perimeter of arrangement c (two pieces joined in a T-shape)."
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 6.1",
+      "book_ref": "Split and rejoin Q d, section 6.1 p.136",
+      "description": "Find the perimeter of arrangement d (two pieces joined in a staircase configuration)."
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 6.1",
+      "book_ref": "Split and rejoin (target 22 cm), section 6.1 p.136",
+      "description": "Arrange the two 6 cm × 2 cm pieces to form a figure with perimeter exactly 22 cm."
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out Q1, section 6.2 p.138",
+      "description": "A rectangular garden 25 m long has area 300 sq m; find the width."
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out Q2, section 6.2 p.138",
+      "description": "Find the cost of tiling a 500 m × 200 m plot at ₹8 per 100 sq m."
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out Q3, section 6.2 p.138",
+      "description": "A coconut grove 100 m × 50 m; each tree needs 25 sq m; find the maximum number of trees."
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out Q4a, section 6.2 p.138",
+      "description": "Split figure a (L-shaped composite) into rectangles and find its area in metres."
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out Q4b, section 6.2 p.138",
+      "description": "Split figure b (rectangular frame) into rectangles and find its area in metres."
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out Q1, section 6.2 p.139",
+      "description": "Using tangram pieces, explore and identify which pieces have the same area."
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out Q2, section 6.2 p.139",
+      "description": "Determine how many times bigger Shape D is compared to Shape C; describe the relationship between Shapes C, D, and E."
+    },
+    {
+      "id": "E-26",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out Q3, section 6.2 p.139",
+      "description": "Determine which tangram shape has more area: Shape D or Shape F; give reasons."
+    },
+    {
+      "id": "E-27",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out Q4, section 6.2 p.139",
+      "description": "Determine which tangram shape has more area: Shape F or Shape G; give reasons."
+    },
+    {
+      "id": "E-28",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out Q5, section 6.2 p.139",
+      "description": "Compare the area of Shape A to Shape G; determine whether A is twice or four times as big as G."
+    },
+    {
+      "id": "E-29",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out Q6, section 6.2 p.139",
+      "description": "Find the area of the big square formed with all seven tangram pieces in terms of the area of Shape C."
+    },
+    {
+      "id": "E-30",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out Q7, section 6.2 p.139",
+      "description": "Arrange the 7 tangram pieces into a rectangle and state its area in terms of Shape C; give reasons."
+    },
+    {
+      "id": "E-31",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out Q8, section 6.2 p.139",
+      "description": "Compare the perimeters of the square and the rectangle formed from the 7 tangram pieces; explain whether they are the same or different."
+    },
+    {
+      "id": "E-32",
+      "source_section": "section 6.2",
+      "book_ref": "Let's Explore Q1, section 6.2 p.141",
+      "description": "Find the area in square metres of the floor outside of the school corridor."
+    },
+    {
+      "id": "E-33",
+      "source_section": "section 6.2",
+      "book_ref": "Let's Explore Q2, section 6.2 p.141",
+      "description": "Find the area in square metres occupied by the school playground."
+    },
+    {
+      "id": "E-34",
+      "source_section": "section 6.2",
+      "book_ref": "Let's Explore (24 sq units), section 6.2 p.141",
+      "description": "On grid paper, make as many whole-number rectangles as possible with area 24 sq units; identify which has the greatest perimeter (a), the least perimeter (b), and explore the pattern for area 32 sq cm (c)."
+    },
+    {
+      "id": "E-35",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out (Charan's house), section 6.2 p.146",
+      "description": "Using Charan's house floor plan (30 ft × 35 ft overall), find the missing room dimensions and total house area."
+    },
+    {
+      "id": "E-36",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out (Sharan's house), section 6.2 p.147",
+      "description": "Using Sharan's house floor plan (42 ft wide), find missing room dimensions and total area; compare areas and perimeters of both houses."
+    },
+    {
+      "id": "E-37",
+      "source_section": "section 6.2",
+      "book_ref": "Area Maze Puzzles Qa, section 6.2 p.148",
+      "description": "Given sub-rectangle areas 13, 26, and 15 sq cm in a 2×2 grid arrangement, find the missing fourth area."
+    },
+    {
+      "id": "E-38",
+      "source_section": "section 6.2",
+      "book_ref": "Area Maze Puzzles Qb, section 6.2 p.148",
+      "description": "Given two sub-rectangles of 10 sq cm each with dimensions 2 cm and 3 cm visible, find the missing area of the third sub-rectangle (3 cm × 2 cm top right)."
+    },
+    {
+      "id": "E-39",
+      "source_section": "section 6.2",
+      "book_ref": "Area Maze Puzzles Qc, section 6.2 p.148",
+      "description": "Given a composite figure with total height 15 cm, sub-rectangles of 42 sq cm and 60 sq cm with some dimensions given, find the missing top sub-rectangle area."
+    },
+    {
+      "id": "E-40",
+      "source_section": "section 6.2",
+      "book_ref": "Area Maze Puzzles Qd, section 6.2 p.148",
+      "description": "Given two stacked sub-rectangles with areas 38 sq cm and 18 sq cm and dimensions 4 cm and 5 cm visible, find the missing width (top side length) of the larger rectangle."
+    },
+    {
+      "id": "E-41",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q1, section 6.3 p.143",
+      "description": "Using the grid, find the area of blue triangle BAD in rectangle ABCD."
+    },
+    {
+      "id": "E-42",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q2, section 6.3 p.143",
+      "description": "Using the grid, find the area of red triangle ABE by decomposing into triangles AEF and BEF over sub-rectangles AFED and BFEC."
+    },
+    {
+      "id": "E-43",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q1a, section 6.3 p.144",
+      "description": "Find the area of composite figure a on the grid by dividing into rectangles and triangles."
+    },
+    {
+      "id": "E-44",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q1b, section 6.3 p.144",
+      "description": "Find the area of composite figure b on the grid by dividing into rectangles and triangles."
+    },
+    {
+      "id": "E-45",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q1c, section 6.3 p.144",
+      "description": "Find the area of composite figure c on the grid by dividing into rectangles and triangles."
+    },
+    {
+      "id": "E-46",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q1d, section 6.3 p.144",
+      "description": "Find the area of composite figure d on the grid by dividing into rectangles and triangles."
+    },
+    {
+      "id": "E-47",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q1e, section 6.3 p.144",
+      "description": "Find the area of composite figure e on the grid by dividing into rectangles and triangles."
+    },
+    {
+      "id": "E-48",
+      "source_section": "section 6.3",
+      "book_ref": "Making it 'More' or 'Less' Q1, section 6.3 p.145",
+      "description": "Using 9 connected unit squares, find the smallest possible perimeter."
+    },
+    {
+      "id": "E-49",
+      "source_section": "section 6.3",
+      "book_ref": "Making it 'More' or 'Less' Q2, section 6.3 p.145",
+      "description": "Using 9 connected unit squares, find the largest possible perimeter."
+    },
+    {
+      "id": "E-50",
+      "source_section": "section 6.3",
+      "book_ref": "Making it 'More' or 'Less' Q3, section 6.3 p.145",
+      "description": "Using 9 connected unit squares, make a figure with a perimeter of 18 units."
+    },
+    {
+      "id": "E-51",
+      "source_section": "section 6.3",
+      "book_ref": "Making it 'More' or 'Less' Q4, section 6.3 p.145",
+      "description": "Determine whether other shaped figures can be made with the same perimeters found in Q1–Q3, or whether only one shape gives each perimeter; explain the reasoning."
+    },
+    {
+      "id": "E-52",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q1, section 6.3 p.149",
+      "description": "Give dimensions of a rectangle whose area equals the sum of the areas of a 5 m × 10 m rectangle and a 2 m × 7 m rectangle."
+    },
+    {
+      "id": "E-53",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q2, section 6.3 p.149",
+      "description": "A rectangular garden 50 m long has area 1000 sq m; find its width."
+    },
+    {
+      "id": "E-54",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q3, section 6.3 p.149",
+      "description": "Floor 5 m × 4 m; square carpet of side 3 m laid on it; find the area not carpeted."
+    },
+    {
+      "id": "E-55",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q4, section 6.3 p.149",
+      "description": "Four flower beds 2 m × 1 m at corners of a garden 15 m × 12 m; find available lawn area."
+    },
+    {
+      "id": "E-56",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q5, section 6.3 p.149",
+      "description": "Draw Shape A (area 18 sq units) and Shape B (area 20 sq units) such that Shape A has a longer perimeter than Shape B."
+    },
+    {
+      "id": "E-57",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q6, section 6.3 p.149",
+      "description": "Draw a rectangular border on a page that is 1 cm from top and bottom and 1.5 cm from left and right sides; find its perimeter."
+    },
+    {
+      "id": "E-58",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q7, section 6.3 p.149",
+      "description": "Draw a 12 units × 8 units rectangle; inside it draw another rectangle (not touching the outer) that occupies exactly half the area."
+    },
+    {
+      "id": "E-59",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out Q8, section 6.3 p.149",
+      "description": "A square is folded in half and cut into two rectangles; identify which of four statements (a–d) about area and perimeter relationships is always true."
+    }
+  ],
+  "conceptual_demand": 2,
+  "activity_count": 4,
+  "demo_count": 0,
+  "exec_load": 1
+}

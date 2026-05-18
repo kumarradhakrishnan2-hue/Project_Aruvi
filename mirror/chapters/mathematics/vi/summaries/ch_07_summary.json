@@ -1,0 +1,341 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "vi",
+  "chapter_number": 7,
+  "chapter_title": "Fractions",
+  "sections": [
+    { "ref": "section 7.1", "title": "Fractional Units and Equal Shares", "section_goal": ["recall"] },
+    { "ref": "section 7.2", "title": "Fractional Units as Parts of a Whole", "section_goal": ["recall"] },
+    { "ref": "section 7.3", "title": "Measuring Using Fractional Units", "section_goal": ["recall", "apply"] },
+    { "ref": "section 7.4", "title": "Marking Fraction Lengths on the Number Line", "section_goal": ["apply"] },
+    { "ref": "section 7.5", "title": "Mixed Fractions", "section_goal": ["recall", "apply"] },
+    { "ref": "section 7.6", "title": "Equivalent Fractions", "section_goal": ["reason", "apply"] },
+    { "ref": "section 7.7", "title": "Comparing Fractions", "section_goal": ["apply"] },
+    { "ref": "section 7.8", "title": "Addition and Subtraction of Fractions", "section_goal": ["reason", "apply"] },
+    { "ref": "section 7.9", "title": "A Pinch of History", "section_goal": ["recall"] }
+  ],
+  "prose_summary": "Section 7.1 identifies fractional units through the familiar context of sharing rotis equally, establishing that when one unit is divided into equal parts each part is a fractional unit (unit fraction). The section opens with a dialogue exploring why 1/2 > 1/4 — more children sharing the same roti means each gets less — and extends this reasoning to compare any two unit fractions. Students recognise that the larger the denominator, the smaller the fractional unit, and practice ordering everyday fraction words from smallest to largest.\n\nSection 7.2 identifies how fractions arise as parts of a whole, using a chikki (peanut brittle) as the physical referent. Students see that the same whole can be divided into equal parts of different shapes yet identical size, reinforcing that the fractional unit depends on the number of equal parts rather than their shape. The section grounds the concept that a fraction like 3/4 means three parts each of size 1/4 of the whole.\n\nSection 7.3 defines how fractional quantities are measured by collecting fractional units, then applies this by paper-strip folding to produce fractions with denominators 2, 4, and 8. Students repeatedly fold a unit strip, name the resulting fractional units, and build repeated-addition statements (e.g., 3 times 1/4 = 3/4). The section then introduces the numerator–denominator vocabulary explicitly, explaining that reading 3/4 as '3 times 1/4' communicates size more transparently than merely saying 'three quarters'.\n\nSection 7.4 applies fraction knowledge to the number line, marking lengths less than and greater than one using unit intervals divided into equal parts. Students plot fractions with denominators 3, 5, and 8, and discover that the number of fractions between 0 and 1 is infinite. The section also introduces fractions greater than 1 on the number line, setting the stage for mixed fractions, and exercises require writing fractions that match coloured line-segment lengths.\n\nSection 7.5 recalls fractions greater than one, then applies conversions between improper fractions and mixed numbers in both directions. Students first identify how many whole units are contained in a given improper fraction, decompose the remainder, and write the result as a mixed number (e.g., 8/3 = 2 and 2/3). The section then applies the reverse: converting a mixed number such as 3¼ back to an improper fraction by reconstructing it as a sum of unit fractions. Both procedures are practised through Figure it Out exercises covering a wide range of examples.\n\nSection 7.6 reasons about equivalent fractions through two complementary lenses — equal fractional lengths on a paper fraction wall, and equal shares of rotis among children. The fraction-wall approach establishes that 1/2 = 2/4 = 4/8 visually; the equal-shares approach explains why doubling both numerator and denominator preserves value. Students then apply these ideas to find missing numerators or denominators, express fractions in lowest terms by dividing by the highest common factor (using worked examples like 16/20 → 4/5 and 36/60 → 3/5), and compare fractions such as 1/2 vs 5/8 by converting to a common denominator. A short comparison puzzle about which group of children receives more chikki formalises the rule: same numerator, larger denominator means smaller share; same denominator, larger numerator means larger share.\n\nSection 7.7 applies fraction comparison systematically using the common-denominator method. Two fractions (4/5 and 7/9, then 7/9 and 17/21) are compared by rewriting them with the product of their denominators as the common denominator and then comparing numerators. A summary box formalises the two-step method: (1) find equivalent fractions with the same denominator; (2) compare numerators. Exercises include ordering three fractions in ascending and descending order.\n\nSection 7.8 reasons about and then applies Brahmagupta's method for adding and subtracting fractions. The section opens visually with a chikki-sharing story and rectangular-strip models to show why 1/2 + 1/4 = 3/4 (converting 1/2 to 2/4 and then summing). Addition with unlike denominators is handled by finding a common multiple of the denominators, rewriting each fraction, and summing numerators. Brahmagupta's three-step procedure is stated explicitly and credited to its 628 CE source. Subtraction follows the identical logic — same-denominator cases first, then unlike denominators via equivalent fractions. Exercises range from pure computation to word problems involving paint volumes, lace lengths, and travel distances.\n\nSection 7.9 recalls the ancient Indian origins of fraction notation, noting that the bhinna/bhaga terminology predates the Arabic–European transmission and that Brahmagupta's formal codification in 628 CE is still the method used today. The section offers an enrichment puzzle: expressing 1 as a sum of distinct fractional units. Students reason that two distinct unit fractions cannot sum to 1, find the unique three-unit-fraction solution (1/2 + 1/3 + 1/6 = 1), and are challenged to find the six four-unit-fraction solutions.",
+  "enumerated_activities": [
+    {
+      "id": "A-1",
+      "source_section": "section 7.3",
+      "book_ref": "Activity (paper strip folding), section 7.3 p.156",
+      "description": "Students fold a paper strip into halves, then quarters, then eighths to generate fractional units 1/2, 1/4, and 1/8 and record multiples of each unit in a table."
+    },
+    {
+      "id": "A-2",
+      "source_section": "section 7.6",
+      "book_ref": "Activity (fraction wall), section 7.6 p.164",
+      "description": "Students make a paper fraction wall using strips divided into halves through sixths and use it to identify equal fractional lengths and equivalent fractions."
+    }
+  ],
+  "enumerated_worked_examples": [
+    {
+      "id": "WE-1",
+      "source_section": "section 7.6",
+      "book_ref": "Example (lowest terms 16/20), section 7.6 p.172",
+      "description": "Express 16/20 in lowest terms by dividing numerator and denominator by the common factor 4, giving 4/5."
+    },
+    {
+      "id": "WE-2",
+      "source_section": "section 7.6",
+      "book_ref": "Example (lowest terms 36/60), section 7.6 p.173",
+      "description": "Express 36/60 in lowest terms, demonstrated in two ways: step-by-step division by 2, then 2, then 3; and direct division by 12. Both yield 3/5."
+    },
+    {
+      "id": "WE-3",
+      "source_section": "section 7.7",
+      "book_ref": "Example (compare 4/5 vs 7/9), section 7.7 p.173",
+      "description": "Compare 4/5 and 7/9 by converting to the common denominator 45: 4/5 = 36/45, 7/9 = 35/45; therefore 4/5 > 7/9."
+    },
+    {
+      "id": "WE-4",
+      "source_section": "section 7.7",
+      "book_ref": "Example (compare 7/9 vs 17/21), section 7.7 p.174",
+      "description": "Compare 7/9 and 17/21 using common denominator 63: 7/9 = 49/63, 17/21 = 51/63; therefore 7/9 < 17/21."
+    },
+    {
+      "id": "WE-5",
+      "source_section": "section 7.8",
+      "book_ref": "Example (add 2/5 + 1/5), section 7.8 p.176",
+      "description": "Add fractions with the same denominator using rectangular strip model: 2/5 + 1/5 = 3/5."
+    },
+    {
+      "id": "WE-6",
+      "source_section": "section 7.8",
+      "book_ref": "Example (add 4/7 + 6/7), section 7.8 p.176",
+      "description": "Add 4/7 + 6/7 = 10/7 = 1 and 3/7, demonstrating result as a mixed number."
+    },
+    {
+      "id": "WE-7",
+      "source_section": "section 7.8",
+      "book_ref": "Example (add 1/4 + 1/3), section 7.8 p.177",
+      "description": "Add fractions with unlike denominators using LCM 12: 1/4 = 3/12, 1/3 = 4/12; sum = 7/12."
+    },
+    {
+      "id": "WE-8",
+      "source_section": "section 7.8",
+      "book_ref": "Example (add 2/3 + 1/5), section 7.8 p.178",
+      "description": "Apply Brahmagupta's method: LCM of 3 and 5 is 15; 2/3 = 10/15, 1/5 = 3/15; sum = 13/15."
+    },
+    {
+      "id": "WE-9",
+      "source_section": "section 7.8",
+      "book_ref": "Example (add 1/6 + 1/3), section 7.8 p.179",
+      "description": "Add 1/6 + 1/3 using LCM 6: 1/3 = 2/6; sum = 3/6 = 1/2 after simplification."
+    },
+    {
+      "id": "WE-10",
+      "source_section": "section 7.8",
+      "book_ref": "Example (subtract 6/7 - 4/7), section 7.8 p.180",
+      "description": "Subtract fractions with same denominator using rectangular strip model: 6/7 - 4/7 = 2/7."
+    },
+    {
+      "id": "WE-11",
+      "source_section": "section 7.8",
+      "book_ref": "Example (subtract 3/4 - 2/3), section 7.8 p.181",
+      "description": "Subtract fractions with unlike denominators using common denominator 12: 3/4 = 9/12, 2/3 = 8/12; difference = 1/12."
+    }
+  ],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 7.1",
+      "book_ref": "Figure it Out Q1, section 7.1 p.152",
+      "description": "Three guavas together weigh 1 kg and are roughly the same size — find each guava's weight as a fraction."
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 7.1",
+      "book_ref": "Figure it Out Q2, section 7.1 p.152",
+      "description": "1 kg of rice packed equally into four packets — find the weight of each packet as a fraction."
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 7.1",
+      "book_ref": "Figure it Out Q3, section 7.1 p.152",
+      "description": "Four friends share 3 glasses of sugarcane juice equally — find each friend's share (Math Talk)."
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 7.1",
+      "book_ref": "Figure it Out Q4, section 7.1 p.153",
+      "description": "A big fish weighs 1/2 kg and a small fish weighs 1/4 kg — find their combined weight (Math Talk)."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 7.1",
+      "book_ref": "Figure it Out Q5, section 7.1 p.153",
+      "description": "Arrange fraction words (half, quarter, three quarters, one and a quarter, one and a half, two and a half) in ascending order of size."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 7.2",
+      "book_ref": "Figure it Out Q(a–h), section 7.2 p.155",
+      "description": "Eight chikki pieces are shown; for each, identify what fractional unit of the whole chikki each piece represents (denominators ranging from 4 to 24)."
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 7.3",
+      "book_ref": "Figure it Out Q1, section 7.3 p.158",
+      "description": "Continue the table of 1/2 for two more steps (extending repeated addition of 1/2)."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 7.3",
+      "book_ref": "Figure it Out Q2, section 7.3 p.158",
+      "description": "Create a similar repeated-addition table for the fractional unit 1/4."
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 7.3",
+      "book_ref": "Figure it Out Q3, section 7.3 p.158",
+      "description": "Make 1/3 using a paper strip and use it to also make 1/6."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 7.3",
+      "book_ref": "Figure it Out Q4, section 7.3 p.158",
+      "description": "Draw pictures and write addition statements for 5 times 1/4 of a roti and 9 times 1/4 of a roti."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 7.3",
+      "book_ref": "Figure it Out Q5, section 7.3 p.158",
+      "description": "Match each of the four fractional units (1/3, 1/5, 1/6, 1/8) with the correct picture."
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 7.4",
+      "book_ref": "Figure it Out Q1, section 7.4 p.160",
+      "description": "On a number line draw lines of lengths 1/10, 3/10, and 4/5."
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 7.4",
+      "book_ref": "Figure it Out Q2, section 7.4 p.160",
+      "description": "Write five fractions of own choice and mark them on the number line (Math Talk)."
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 7.4",
+      "book_ref": "Figure it Out Q3, section 7.4 p.160",
+      "description": "How many fractions lie between 0 and 1? Think and discuss (Math Talk)."
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 7.4",
+      "book_ref": "Figure it Out Q4, section 7.4 p.160",
+      "description": "Identify the fraction for the length of a black line on a number line where 0–1 is divided into 2 equal parts."
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 7.4",
+      "book_ref": "Figure it Out Q5, section 7.4 p.160",
+      "description": "Write fractions giving the lengths of black lines on a number line where 0–1 is divided into 5 equal parts."
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 7.5",
+      "book_ref": "Figure it Out Q1, section 7.5 p.162",
+      "description": "How many whole units are in 7/2? (Math Talk)"
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 7.5",
+      "book_ref": "Figure it Out Q2, section 7.5 p.162",
+      "description": "How many whole units are in 4/3 and in 7/3? (Math Talk)"
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 7.5",
+      "book_ref": "Figure it Out Q1 (a–c), section 7.5 p.162",
+      "description": "Figure out the number of whole units in 8/3, 11/5, and 9/4."
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 7.5",
+      "book_ref": "Figure it Out Q2, section 7.5 p.162",
+      "description": "Can all fractions greater than 1 be written as mixed numbers? Reason and answer."
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 7.5",
+      "book_ref": "Figure it Out Q3 (a–f), section 7.5 p.162",
+      "description": "Write six improper fractions (9/2, 9/5, 21/19, 47/9, 12/11, 19/6) as mixed fractions."
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 7.5",
+      "book_ref": "Figure it Out Q1 (a–f), section 7.5 p.163",
+      "description": "Write six mixed numbers (3¼, 7⅔, 9 4/9, 3⅙, 2 3/11, 3 9/10) as improper fractions (Math Talk)."
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 7.6",
+      "book_ref": "Figure it Out Q1–Q4, section 7.6 p.164",
+      "description": "Use the fraction wall to answer four questions about equal fractional lengths (e.g., is 1/2 = 3/6? are 2/3 and 4/6 equivalent? how many 1/6 pieces make 1/2?)."
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 7.6",
+      "book_ref": "Figure it Out Q1–Q3, section 7.6 p.165",
+      "description": "Three questions using the extended fraction wall: are 3/6, 4/8, 5/10 equivalent? write two equivalent fractions for 2/6; write as many equivalents of 4/6 as possible."
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 7.6",
+      "book_ref": "Figure it Out Q1–Q3, section 7.6 p.166",
+      "description": "Three equal-share problems: (1) 3 rotis shared by 4 children — write division, addition, multiplication facts; (2) 2 rotis shared by 4 children; (3) 2 cakes shared by 5 children."
+    },
+    {
+      "id": "E-26",
+      "source_section": "section 7.6",
+      "book_ref": "Figure it Out Q1 (a–c), section 7.6 p.168",
+      "description": "Find missing numbers in three equivalent-fraction statements (e.g., 5/4 = ?/8; 4/3 = 12/?; 7/5 = ?/?)."
+    },
+    {
+      "id": "E-27",
+      "source_section": "section 7.6",
+      "book_ref": "Figure it Out (a–h), section 7.6 p.172",
+      "description": "Find equivalent fractions for eight pairs of fractions such that both have the same denominator (e.g., 7/2 and 3/5; 8/3 and 5/6)."
+    },
+    {
+      "id": "E-28",
+      "source_section": "section 7.6",
+      "book_ref": "Figure it Out (a–d), section 7.6 p.173",
+      "description": "Express four fractions in lowest terms: 17/51, 64/144, 126/147, 525/112."
+    },
+    {
+      "id": "E-29",
+      "source_section": "section 7.7",
+      "book_ref": "Figure it Out Q1 (a–e), section 7.7 p.174",
+      "description": "Compare five pairs of fractions (8/3 vs 5/2; 4/9 vs 3/7; 7/10 vs 9/14; 12/5 vs 8/5; 9/4 vs 5/2) and justify."
+    },
+    {
+      "id": "E-30",
+      "source_section": "section 7.7",
+      "book_ref": "Figure it Out Q2 (a–b), section 7.7 p.174",
+      "description": "Write two sets of three fractions each in ascending order (7/10, 11/15, 2/5; 19/24, 5/6, 7/12)."
+    },
+    {
+      "id": "E-31",
+      "source_section": "section 7.7",
+      "book_ref": "Figure it Out Q3 (a–b), section 7.7 p.174",
+      "description": "Write two sets of four fractions each in descending order (25/16, 7/8, 13/4, 17/32; 3/4, 12/5, 7/12, 5/4)."
+    },
+    {
+      "id": "E-32",
+      "source_section": "section 7.8",
+      "book_ref": "Figure it Out Q1 (a–m), section 7.8 p.179",
+      "description": "Add thirteen fraction expressions using Brahmagupta's method, including sums of two and three fractions with unlike denominators (e.g., 2/7+5/7+6/7; 3/4+1/3; 2/3+5/6; 9/2+5/4; 9/2+5/4+7/6)."
+    },
+    {
+      "id": "E-33",
+      "source_section": "section 7.8",
+      "book_ref": "Figure it Out Q2, section 7.8 p.179",
+      "description": "Word problem: Rahim mixes 2/3 litres of yellow paint and 3/4 litres of blue paint — find total volume of green paint."
+    },
+    {
+      "id": "E-34",
+      "source_section": "section 7.8",
+      "book_ref": "Figure it Out Q3, section 7.8 p.179",
+      "description": "Word problem: Geeta buys 2/5 m and Shamim buys 3/4 m of lace — find total and determine if 1 m border can be covered."
+    },
+    {
+      "id": "E-35",
+      "source_section": "section 7.8",
+      "book_ref": "Figure it Out Q1 (a–c), section 7.8 p.181",
+      "description": "Three same-denominator subtractions: 5/8 − 3/8; 7/9 − 5/9; 10/27 − 1/27."
+    },
+    {
+      "id": "E-36",
+      "source_section": "section 7.8",
+      "book_ref": "Figure it Out Q1 (a–d), section 7.8 p.182",
+      "description": "Four unlike-denominator subtractions using Brahmagupta's method: 8/15 − 3/15; 2/5 − 4/15; 5/6 − 4/9; 2/3 − 1/2."
+    },
+    {
+      "id": "E-37",
+      "source_section": "section 7.8",
+      "book_ref": "Figure it Out Q2 (a–c), section 7.8 p.182",
+      "description": "Subtract as indicated: 13/4 from 10/3; 18/5 from 23/3; 29/7 from 45/7."
+    },
+    {
+      "id": "E-38",
+      "source_section": "section 7.8",
+      "book_ref": "Figure it Out Q3 (a–b), section 7.8 p.182",
+      "description": "Two word problems: (a) Jaya's school is 7/10 km away; she takes an auto for 1/2 km — how far does she walk? (b) Jeevika takes 10/3 min and Namit takes 13/4 min per lap — who is faster and by how much?"
+    },
+    {
+      "id": "E-39",
+      "source_section": "section 7.9",
+      "book_ref": "Try This Q1–Q2, section 7.9 p.184",
+      "description": "Enrichment puzzle: (1) find three different fractional units that sum to 1; (2) find four different fractional units that sum to 1 (six solutions exist)."
+    }
+  ],
+  "conceptual_demand": 2,
+  "activity_count": 2,
+  "demo_count": 0,
+  "exec_load": 1
+}

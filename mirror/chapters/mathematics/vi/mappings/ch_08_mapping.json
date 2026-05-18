@@ -1,0 +1,43 @@
+{
+    "stage": "middle",
+    "subject": "mathematics",
+    "grade": "vi",
+    "chapter_number": 8,
+    "chapter_title": "Playing with Constructions",
+
+    "core_cg": "CG-3",
+
+    "core_competencies": [
+        {
+            "c_code": "C-3.4",
+            "justification": "The chapter's primary throughline is compass-and-straightedge construction: sections 8.1–8.4 and 8.6 require students to construct circles, arcs, squares, rectangles, and composite artwork figures using only ruler and compass, with explicit multi-step construction sequences (e.g., WE-2 through WE-6) and 32 construction exercises demanding precision instrument use."
+        },
+        {
+            "c_code": "C-3.2",
+            "justification": "Sections 8.2, 8.3, 8.4, and 8.5 establish and apply the defining properties of rectangles (R1: opposite sides equal; R2: all angles 90°) and squares (S1: all sides equal; S2: all angles 90°), then extend to diagonal properties — equal diagonals, angle bisection — as the basis for all constructions and the diagonal exploration in section 8.5."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-6.1",
+            "justification": "Section 8.5 asks students to frame general laws about diagonal lengths and angle pairs, predict outcomes before measuring, and reason about whether those laws will always hold — constituting substantive inductive argument-building rather than mere observation."
+        },
+        {
+            "c_code": "C-7.1",
+            "justification": "Sections 8.4 and 8.6 repeatedly ask students to devise their own construction sequences through planning (rough diagrams, estimates of compass placement), and creative challenges such as Square with Curves, Square with a Hole, and the rhombus construction in E-32 require students to discover original solutions without prescribed steps."
+        },
+        {
+            "c_code": "C-4.3",
+            "justification": "Section 8.1's artwork constructions (A Person, Wavy Wave, Eyes) and section 8.4's Shadings and Square with Curves challenges directly engage students in constructing visual designs on a plane using 2D shapes and arcs, connecting geometric construction to aesthetic pattern-making."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to construct geometric figures — circles, squares, rectangles, and composite shapes — using compass and straightedge, by applying the defining properties of these shapes and the principle that all points on a circle are equidistant from its centre.",
+
+    "conceptual_demand": 2,
+    "activity_count": 1,
+    "demo_count": 6,
+    "exec_load": 1,
+    "effort_index": 13.5
+}
