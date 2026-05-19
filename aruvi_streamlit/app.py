@@ -799,7 +799,13 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             "<style>"
             "@keyframes aruviPulse{0%,100%{opacity:1}50%{opacity:.3}}"
             "@keyframes spin{to{transform:rotate(360deg)}}"
-            "div[data-testid='stDeployButton']{display:none!important;}"
+            # Hide Deploy button + toolbar chrome for the duration of a generate run.
+            # Multiple selectors cover the rename across Streamlit versions
+            # (stDeployButton -> stAppDeployButton) and the wrapping stToolbar.
+            "body [data-testid='stDeployButton'],"
+            "body [data-testid='stAppDeployButton'],"
+            "body [data-testid='stToolbar']"
+            "{display:none!important;visibility:hidden!important;}"
             "</style>"
         )
 

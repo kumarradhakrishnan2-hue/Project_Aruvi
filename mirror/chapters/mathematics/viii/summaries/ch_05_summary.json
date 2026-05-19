@@ -1,0 +1,614 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "viii",
+  "chapter_number": 5,
+  "chapter_title": "Number Play",
+  "sections": [
+    { "ref": "section 5.1", "title": "Is This a Multiple Of?", "section_goal": ["reason", "apply"] },
+    { "ref": "section 5.2", "title": "Checking Divisibility Quickly", "section_goal": ["reason"] },
+    { "ref": "section 5.3", "title": "Digits in Disguise", "section_goal": ["apply"] }
+  ],
+  "prose_summary": "Section 5.1, 'Is This a Multiple Of?', reasons through a rich cluster of number-theory ideas centred on multiples, factors, parity, and remainders, then applies algebraic and visual arguments to prove them. The section opens with Anshu's exploration of sums of consecutive numbers—whether every natural number, or every even number, can be expressed as such a sum—and immediately invites students to investigate these conjectures by trying specific cases and extending them with negative numbers. A Math Talk prompt asks students to take four consecutive numbers, place all eight possible combinations of '+' and '−' signs between them, evaluate each expression, and observe that every result is even. Three distinct algebraic explanations are given to prove this parity invariance: one using sign-switching and the observation that each switch changes the value by an even amount (2 times the affected number); a second using the rule that a ± b always has the same parity regardless of the parities of a and b, so all expressions a ± b ± c ± d share parity; and a third referencing the token model from the chapter on Integers. Students are then challenged to extend the result from four numbers to any count of numbers. The subsection 'Breaking Even' applies parity rules to determine, without computation, which arithmetic and algebraic expressions always produce even numbers—introducing the key ideas that a product is even if any factor is even, and that expressions like 4m + 2q are always even because 2 divides them regardless of the values of m and q. The subsection 'Pairs to Make Fours' deepens this reasoning: even numbers split into two classes—multiples of 4 (remainder 0 when divided by 4) and non-multiples of 4 (remainder 2)—and students prove with algebra and visualisation that the sum of two multiples of 4 is always a multiple of 4, the sum of two non-multiples of 4 is also always a multiple of 4, while the sum of one of each type is never a multiple of 4. The subsection 'Always, Sometimes, or Never' extends this reasoning framework to a sequence of five numbered statements about factors, multiples, and divisibility by 8, 7, 12, and 6—each justified with algebra, visualisation, and examples, establishing general laws: if a divides M and a divides N, then a divides M + N and M − N; if A is divisible by k then all multiples of A are divisible by k; if A is divisible by k then A is divisible by all factors of k; if A is divisible by both k and m then A is divisible by their LCM. The subsection 'What Remains?' introduces the idea of numbers characterised by their remainder when divided by a given number, derives the algebraic expression 5k + 3 for numbers leaving remainder 3 on division by 5, and notes that 5k − 2 (for k ≥ 1) generates the same set. The section's Figure it Out (eight questions) requires students to use all these ideas—to find consecutive numbers summing to 34, to describe consecutive numbers algebraically, to classify seven divisibility statements as always/sometimes/never true with algebraic justification, to find numbers satisfying simultaneous remainder conditions, to solve a remainder riddle, to verify a claim about sums of numbers leaving remainder 2 on division by 6, to use remainder arithmetic for 661 and 4779 both algebraically and visually, and to find the smallest number leaving specified remainders when divided by 3, 4, and 5.",
+
+    "Section 5.2, 'Checking Divisibility Quickly', reasons through why standard divisibility shortcuts for 2, 4, 5, 8, and 10 work using place-value algebra, then develops and proves new shortcuts for divisibility by 9, 3, and 11. The section begins by writing any number in its general expanded form …1000d + 100c + 10b + a and observing that all place values except the units place are multiples of 10, which immediately explains the divisibility shortcuts for 10, 5, and 2; students are prompted to extend the same reasoning to 4 (last two digits) and 8 (last three digits). The shortcut for 9 is derived by noting that each place value is one more than a repunit multiple of 9: 1 = 9×0 + 1, 10 = 9×1 + 1, 100 = 99 + 1, 1000 = 999 + 1, and so on, so the remainder when any number is divided by 9 equals the sum of its digits, and iterating this digit-sum until a single digit is reached gives the digital root, which equals the remainder on division by 9. Students explore the rule for divisibility by 3 (digit sum divisible by 3) by examining remainders of powers of 10 on division by 3. The shortcut for 11 is derived from the alternating pattern: each odd-positioned place value is one more than a multiple of 11, and each even-positioned place value is one less—leading to the rule that the difference between the sum of digits in odd positions and the sum of digits in even positions must be 0 or a multiple of 11 for divisibility by 11. A worked example uses 320185 to demonstrate both the long and short versions of the rule. The section introduces the concept of digital roots, notes that Aryabhata II described this method in the Mahāsiddhānta (c. 950 CE), and connects it to remainder arithmetic. A divisibility table exercise (Figure it Out, p. 126) gives four questions on divisibility by 9, and the section closes with a Figure it Out (p. 131) of four questions on digital roots, including finding patterns in sequences generated by adding 11, computing the digital root of algebraic expressions, and conjecturing relationships between parity, digital roots, and remainders on division by 3 or 9.",
+
+    "Section 5.3, 'Digits in Disguise', applies divisibility and place-value reasoning to solve cryptarithms—arithmetic puzzles in which each letter represents a distinct non-zero-leading digit. The section opens with four addition cryptarithms of increasing complexity (A1 + 1B = B0; AB + 37 = 6A; ON + ON + ON = PO; QR + QR + QR = PRR) and then extends to multiplication cryptarithms: PQ × 8 = RS, GH × H = 9K (solved by identifying that the units digit of the product must equal H and that 16 × 6 = 96 fits), and BYE × 6 = RAY (where B = 1 since the product must stay three digits and Y must be even and less than 7). Six further multiplication cryptarithms are posed for students: UT × 3 = PUT, AB × 5 = BC, L2N × 2 = 2NP, XY × 4 = ZX, PP × QQ = PRP, and JK × 6 = KKK. The Figure it Out (sixteen questions) integrates all three sections: it includes a multi-part divisibility by 9 and digit-reversal problem, a two-remainder characterisation problem, analysis of when sums of multiples of 3 are multiples of 6, a digit-shuffle invariance result for multiples of 9, finding all digit pairs for 48a23b divisible by 18 and 3p7q8 divisible by 44, consecutive-number multiple problems, multiples of 36 in a range, consecutive even numbers in terms of a parameter, constructing a six-digit number divisible by 15 whose reversal is divisible by 6, examining a false conjecture about doubling multiples of 11, classifying four algebraic statements, a general three-number divisibility-by-3 exploration, a product-of-consecutive-integers investigation, two more complex cryptarithms (EF × E = GGG; WOW × 5 = MEOW), and a Venn diagram question on multiples of 4, 8, and 32.",
+  "enumerated_activities": [],
+  "enumerated_worked_examples": [
+    {
+      "id": "WE-1",
+      "source_section": "section 5.1",
+      "book_ref": "Explanation 1, section 5.1 p.114",
+      "description": "Algebraic proof that switching any '+' or '−' sign between four numbers changes the value by 2 times the affected number (an even amount), so all eight expressions formed from four numbers share the same parity."
+    },
+    {
+      "id": "WE-2",
+      "source_section": "section 5.1",
+      "book_ref": "Explanation 2, section 5.1 p.114",
+      "description": "Parity-rules proof that a ± b always has the same parity, extending to show all expressions a ± b ± c ± d share parity."
+    },
+    {
+      "id": "WE-3",
+      "source_section": "section 5.1",
+      "book_ref": "Example, section 5.1 p.116",
+      "description": "Two justifications that 4m + 2q is always even: (i) both 4m and 2q are individually even; (ii) factoring gives 2(2m + q), showing 2 is a factor. Contrasted with x² + 2, which is not always even."
+    },
+    {
+      "id": "WE-4",
+      "source_section": "section 5.1",
+      "book_ref": "Pairs to Make Fours table, section 5.1 p.117",
+      "description": "Algebraic and visualisation proof for three cases: 4p + 4q = 4(p+q) always multiple of 4; (4p+2) + (4q+2) = 4(p+q+1) always multiple of 4; 4p + (4q+2) = 4(p+q)+2 never a multiple of 4."
+    },
+    {
+      "id": "WE-5",
+      "source_section": "section 5.1",
+      "book_ref": "Always, Sometimes, or Never — statements 1–5, section 5.1 pp.118–120",
+      "description": "Five worked statements about divisibility (by 8, 7, 12, 6) classified as always/sometimes/never true with algebraic proofs, visualisations, and examples; establishes four general divisibility laws."
+    },
+    {
+      "id": "WE-6",
+      "source_section": "section 5.2",
+      "book_ref": "Divisibility by 10 — place-value algebra, section 5.2 p.123",
+      "description": "Derivation using the general form …1000d + 100c + 10b + a showing all place values except units are multiples of 10, proving the divisibility-by-10 rule; students extend this to 5, 2, 4, 8."
+    },
+    {
+      "id": "WE-7",
+      "source_section": "section 5.2",
+      "book_ref": "Shortcut for Divisibility by 9, section 5.2 pp.124–125",
+      "description": "Proof that the remainder when any number is divided by 9 equals the sum of its digits, using the decomposition 10^n = (10^n − 1) + 1 where 10^n − 1 is always a repunit multiple of 9. Worked example with 7309."
+    },
+    {
+      "id": "WE-8",
+      "source_section": "section 5.2",
+      "book_ref": "Shortcut for Divisibility by 11, section 5.2 pp.127–128",
+      "description": "Proof of the alternating digit-sum rule for divisibility by 11 using the pattern that 10^n is alternately 1 more or 1 less than a multiple of 11. Two equivalent methods shown; worked example with 320185."
+    },
+    {
+      "id": "WE-9",
+      "source_section": "section 5.3",
+      "book_ref": "Cryptarithm PQ × 8 = RS, section 5.3 p.131",
+      "description": "Worked solution showing that only PQ = 12 satisfies the constraint that a 2-digit number times 8 gives a 2-digit number with distinct digits."
+    },
+    {
+      "id": "WE-10",
+      "source_section": "section 5.3",
+      "book_ref": "Cryptarithm BYE × 6 = RAY, section 5.3 p.132",
+      "description": "Guided reasoning: B = 1 (product must stay 3-digit), Y must be even and less than 7; students deduce remaining digits."
+    }
+  ],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 5.1",
+      "book_ref": "Math Talk Q1, section 5.1 p.112",
+      "description": "Explore whether every natural number, every even number, and 0 (using negatives) can be written as a sum of consecutive numbers; discuss with class."
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 5.1",
+      "book_ref": "Math Talk Q2, section 5.1 p.112",
+      "description": "Take four consecutive numbers; place '+' and '−' signs between them in all eight ways; list all possibilities."
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 5.1",
+      "book_ref": "Math Talk Q3, section 5.1 p.113",
+      "description": "Evaluate each of the eight expressions formed from 3, 4, 5, 6; record results; repeat for another set of four consecutive numbers; share findings."
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 5.1",
+      "book_ref": "Math Talk Q4, section 5.1 p.113",
+      "description": "Take any four consecutive numbers; place '+'/'-' signs in all eight ways; observe parities; repeat for another set."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 5.1",
+      "book_ref": "Math Talk Q5, section 5.1 p.114",
+      "description": "Is there a way to explain why all eight expressions from four numbers share parity? Hint: parity rules for sum/difference of two numbers."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 5.1",
+      "book_ref": "Math Talk Q6, section 5.1 p.114",
+      "description": "Replace any negative sign in a + b − c − d with positive; find the difference between the two numbers; conclude."
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 5.1",
+      "book_ref": "Math Talk Q7, section 5.1 p.115",
+      "description": "Is the phenomenon of all expressions having the same parity limited to four numbers? Investigate."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 5.1",
+      "book_ref": "Breaking Even — arithmetic expressions, section 5.1 p.115",
+      "description": "Without computing, determine which of the eight arithmetic expressions (43+37; 672−348; 4×347×3; 708−477; 809+214; 119×303; 543−479; 513³) are even."
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 5.1",
+      "book_ref": "Breaking Even — algebraic expressions, section 5.1 p.115",
+      "description": "Identify which algebraic expressions (2a+2b; 3g+5h; 4m+2n; 2u−4v; 13k−5k; 6m−3n; x²+2; b²+1; 4k×3j) always give an even number for any integer values; give examples and non-examples for each."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 5.1",
+      "book_ref": "Breaking Even — write algebraic expressions, section 5.1 p.116",
+      "description": "Write a few algebraic expressions that always give an even number."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 5.1",
+      "book_ref": "Pairs to Make Fours Q1, section 5.1 p.116",
+      "description": "Take a pair of even numbers, add them, check if divisible by 4; try different pairs; find when the sum is a multiple of 4 and when not; identify a general rule."
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 5.1",
+      "book_ref": "Pairs to Make Fours Q2, section 5.1 p.117",
+      "description": "What happens when you add a multiple of 4 to an even non-multiple of 4? Write the corresponding explanation and examples for the third row of the table."
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 5.1",
+      "book_ref": "Always, Sometimes, or Never — examine statements, section 5.1 p.118",
+      "description": "We know the sum of two multiples of 2 is a multiple of 2. Determine if statement 1 (if 8 divides two numbers separately it divides their sum) is also true with subtraction."
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 5.1",
+      "book_ref": "Always, Sometimes, or Never Q2, section 5.1 p.119",
+      "description": "Examine statement 2: if a number is divisible by 8, then 8 also divides any two numbers that add up to it — is this always, sometimes, or never true?"
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 5.1",
+      "book_ref": "Always, Sometimes, or Never Q3, section 5.1 p.119",
+      "description": "Examine statement 3: if a number is divisible by 7, all multiples of that number are divisible by 7 — always, sometimes, or never true?"
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 5.1",
+      "book_ref": "Always, Sometimes, or Never Q4, section 5.1 p.120",
+      "description": "Examine statement 4: if a number is divisible by 12, it is also divisible by all factors of 12 — always, sometimes, or never true?"
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 5.1",
+      "book_ref": "Always, Sometimes, or Never Q5, section 5.1 p.120",
+      "description": "Examine statement 5: if a number is divisible by 7, it is also divisible by any multiple of 7 — always, sometimes, or never true?"
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 5.1",
+      "book_ref": "Always, Sometimes, or Never — extra statements, section 5.1 p.121",
+      "description": "Determine for statements 6–8: (6) if divisible by both 9 and 4, must be divisible by 36; (7) if divisible by both 6 and 4, must be divisible by 24; (8) odd + even gives a multiple of 6 — always, sometimes, or never true."
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 5.1",
+      "book_ref": "What Remains? Q1, section 5.1 p.121",
+      "description": "Find a number that has a remainder of 3 when divided by 5; write more such numbers."
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 5.1",
+      "book_ref": "What Remains? Q2, section 5.1 p.121",
+      "description": "Which algebraic expression(s) capture all numbers leaving remainder 3 when divided by 5: (i) 3k+5; (ii) 3k−5; (iii) 3k/5; (iv) 5k+3; (v) 5k−2; (vi) 5k−3?"
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 5.1",
+      "book_ref": "What Remains? Q3, section 5.1 p.122",
+      "description": "Are there other expressions that generate numbers that are 3 more than a multiple of 5?"
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q1, section 5.1 p.122",
+      "description": "The sum of four consecutive numbers is 34. What are these numbers?"
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q2, section 5.1 p.122",
+      "description": "Suppose p is the greatest of five consecutive numbers. Describe the other four in terms of p."
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q3, section 5.1 p.122",
+      "description": "For five statements, determine always/sometimes/never true with algebraic justification: (i) sum of two even numbers is a multiple of 3; (ii) not divisible by 18 implies not divisible by 9; (iii) if two numbers not divisible by 6, sum not divisible by 6; (iv) sum of multiple of 6 and multiple of 9 is multiple of 3; (v) sum of multiple of 6 and multiple of 3 is multiple of 9."
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q4, section 5.1 p.122",
+      "description": "Find numbers leaving remainder 2 when divided by both 3 and 4. Write an algebraic expression for all such numbers."
+    },
+    {
+      "id": "E-26",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q5, section 5.1 p.122",
+      "description": "Pebble riddle: number leaves remainder 1 when grouped by 3 or 5, is divisible by 7, and is less than 100. Find the number."
+    },
+    {
+      "id": "E-27",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q6, section 5.1 p.122",
+      "description": "Tathagat claims that adding any three numbers that each leave remainder 2 when divided by 6 always gives a multiple of 6. Is this true?"
+    },
+    {
+      "id": "E-28",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q7, section 5.1 p.123",
+      "description": "661 leaves remainder 3 and 4779 leaves remainder 5 when divided by 7. Without calculating, find the remainders when (i) 4779 + 661 and (ii) 4779 − 661 are divided by 7; show algebraically and visually."
+    },
+    {
+      "id": "E-29",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q8, section 5.1 p.123",
+      "description": "Find the smallest number that leaves remainder 2 when divided by 3, remainder 3 when divided by 4, and remainder 4 when divided by 5. Explain why it is the smallest."
+    },
+    {
+      "id": "E-30",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q1, section 5.2 p.123",
+      "description": "Explain using algebra why divisibility shortcuts for 5, 2, 4, and 8 work."
+    },
+    {
+      "id": "E-31",
+      "source_section": "section 5.2",
+      "book_ref": "Math Talk Q1, section 5.2 p.124",
+      "description": "Can any number made of only digits '0' and '9' (in any order) always be divisible by 9?"
+    },
+    {
+      "id": "E-32",
+      "source_section": "section 5.2",
+      "book_ref": "Math Talk Q2, section 5.2 p.124",
+      "description": "Is 10 divisible by 9? What is the remainder? Check other multiples of 10 (10, 20, 30, …) divided by 9; observe the pattern."
+    },
+    {
+      "id": "E-33",
+      "source_section": "section 5.2",
+      "book_ref": "Math Talk Q3, section 5.2 p.124",
+      "description": "Look at remainders when multiples of 100 are divided by 9; what do you notice?"
+    },
+    {
+      "id": "E-34",
+      "source_section": "section 5.2",
+      "book_ref": "Math Talk Q4, section 5.2 p.124",
+      "description": "Using the place-value remainder observation, find the remainder when 427 is divided by 9."
+    },
+    {
+      "id": "E-35",
+      "source_section": "section 5.2",
+      "book_ref": "Math Talk Q5, section 5.2 p.125",
+      "description": "Will the digit-sum method work with bigger numbers?"
+    },
+    {
+      "id": "E-36",
+      "source_section": "section 5.2",
+      "book_ref": "Math Talk Q6, section 5.2 p.125",
+      "description": "Examine which of four statements about divisibility by 9 and digit sums are correct: (i) divisible by 9 ⟹ digit sum divisible by 9; (ii) digit sum divisible by 9 ⟹ divisible by 9; (iii) not divisible by 9 ⟹ digit sum not divisible by 9; (iv) digit sum not divisible by 9 ⟹ not divisible by 9."
+    },
+    {
+      "id": "E-37",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q1, section 5.2 p.126",
+      "description": "Find, without dividing, whether the following numbers are divisible by 9: (i) 123; (ii) 405; (iii) 8888; (iv) 93547; (v) 358095."
+    },
+    {
+      "id": "E-38",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q2, section 5.2 p.126",
+      "description": "Find the smallest multiple of 9 with no odd digits."
+    },
+    {
+      "id": "E-39",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q3, section 5.2 p.126",
+      "description": "Find the multiple of 9 closest to 6000."
+    },
+    {
+      "id": "E-40",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q4, section 5.2 p.126",
+      "description": "How many multiples of 9 are there between 4300 and 4400?"
+    },
+    {
+      "id": "E-41",
+      "source_section": "section 5.2",
+      "book_ref": "Math Talk — divisibility by 3, section 5.2 p.126",
+      "description": "A number is divisible by 3 if the sum of its digits is divisible by 3. Explore remainders when powers of 10 are divided by 3 and explain why the method works."
+    },
+    {
+      "id": "E-42",
+      "source_section": "section 5.2",
+      "book_ref": "Math Talk Q1, section 5.2 p.127",
+      "description": "Using the alternating place-value pattern, determine whether 462 is divisible by 11."
+    },
+    {
+      "id": "E-43",
+      "source_section": "section 5.2",
+      "book_ref": "Math Talk Q2, section 5.2 p.127",
+      "description": "What is a general method or shortcut to check divisibility by 11?"
+    },
+    {
+      "id": "E-44",
+      "source_section": "section 5.2",
+      "book_ref": "Math Talk Q3, section 5.2 p.128",
+      "description": "If the difference between the two digit-sum groups is 11 or a multiple of 11, what does that say about the remainder when the number is divided by 11?"
+    },
+    {
+      "id": "E-45",
+      "source_section": "section 5.2",
+      "book_ref": "Divisibility by 11 — check six numbers, section 5.2 p.128",
+      "description": "Using the shortcut, determine whether (i) 158; (ii) 841; (iii) 481; (iv) 5529; (v) 90904; (vi) 857076 are divisible by 11; find remainder if not."
+    },
+    {
+      "id": "E-46",
+      "source_section": "section 5.2",
+      "book_ref": "Math Talk Q4, section 5.2 p.129",
+      "description": "Is the alternating-signs method (place '−' and '+' alternately before digits from units place, evaluate expression) similar to or different from the two-sum method for divisibility by 11?"
+    },
+    {
+      "id": "E-47",
+      "source_section": "section 5.2",
+      "book_ref": "Fill in the table, section 5.2 p.129",
+      "description": "Complete the divisibility table for ten numbers (128, 990, 1586, 275, 6686, 639210, 429714, 2856, 3060, 406839) against divisors 2, 3, 4, 5, 6, 8, 9, 10, 11."
+    },
+    {
+      "id": "E-48",
+      "source_section": "section 5.2",
+      "book_ref": "More on Divisibility Shortcuts Q1, section 5.2 p.129",
+      "description": "How can we find if a number is divisible by 6? Will checking divisibility by 2 and 3 work? Verify with 38, 225, 186, 64."
+    },
+    {
+      "id": "E-49",
+      "source_section": "section 5.2",
+      "book_ref": "More on Divisibility Shortcuts Q2, section 5.2 p.130",
+      "description": "How about checking divisibility by 24 — does checking factors 4 and 6 work? Why or why not? Explain using prime factorisation why checking 3 and 8 works instead."
+    },
+    {
+      "id": "E-50",
+      "source_section": "section 5.2",
+      "book_ref": "Digital Roots Q1, section 5.2 p.130",
+      "description": "What property does the digital root have? Recall how it connects to divisibility by 9."
+    },
+    {
+      "id": "E-51",
+      "source_section": "section 5.2",
+      "book_ref": "Digital Roots Q2, section 5.2 p.130",
+      "description": "Between 600 and 700, which numbers have digital root: (i) 5; (ii) 7; (iii) 3?"
+    },
+    {
+      "id": "E-52",
+      "source_section": "section 5.2",
+      "book_ref": "Digital Roots Q3, section 5.2 p.130",
+      "description": "Write the digital roots of any 12 consecutive numbers. What do you observe?"
+    },
+    {
+      "id": "E-53",
+      "source_section": "section 5.2",
+      "book_ref": "Digital Roots Q4, section 5.2 p.130",
+      "description": "Find the digital roots of some consecutive multiples of (i) 3; (ii) 4; (iii) 6."
+    },
+    {
+      "id": "E-54",
+      "source_section": "section 5.2",
+      "book_ref": "Digital Roots Q5, section 5.2 p.130",
+      "description": "What are the digital roots of numbers that are 1 more than a multiple of 6? What do you notice? Try to explain the pattern."
+    },
+    {
+      "id": "E-55",
+      "source_section": "section 5.2",
+      "book_ref": "Digital Roots Q6 (riddle), section 5.2 p.130",
+      "description": "Riddle: a number made of digits each of which is tiniest and odd, sharing no common factor with 1 other than 1, whose digit count, digit sum, and digital root all point to the largest odd single digit. What is it?"
+    },
+    {
+      "id": "E-56",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q1, section 5.2 p.131",
+      "description": "The digital root of an 8-digit number is 5. What is the digital root of 10 more than that number?"
+    },
+    {
+      "id": "E-57",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q2, section 5.2 p.131",
+      "description": "Write any number; generate a sequence by repeatedly adding 11; find the digital roots of this sequence; share observations."
+    },
+    {
+      "id": "E-58",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q3, section 5.2 p.131",
+      "description": "What is the digital root of the number 9a + 36b + 13?"
+    },
+    {
+      "id": "E-59",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q4, section 5.2 p.131",
+      "description": "Make conjectures about (i) the parity of a number and its digital root; (ii) the digital root of a number and the remainder when divided by 3 or 9."
+    },
+    {
+      "id": "E-60",
+      "source_section": "section 5.3",
+      "book_ref": "Cryptarithms Q1, section 5.3 p.131",
+      "description": "Solve addition cryptarithm (i): A1 + 1B = B0."
+    },
+    {
+      "id": "E-61",
+      "source_section": "section 5.3",
+      "book_ref": "Cryptarithms Q2, section 5.3 p.131",
+      "description": "Solve addition cryptarithm (ii): AB + 37 = 6A."
+    },
+    {
+      "id": "E-62",
+      "source_section": "section 5.3",
+      "book_ref": "Cryptarithms Q3, section 5.3 p.131",
+      "description": "Solve addition cryptarithm (iii): ON + ON + ON = PO."
+    },
+    {
+      "id": "E-63",
+      "source_section": "section 5.3",
+      "book_ref": "Cryptarithms Q4, section 5.3 p.131",
+      "description": "Solve addition cryptarithm (iv): QR + QR + QR = PRR."
+    },
+    {
+      "id": "E-64",
+      "source_section": "section 5.3",
+      "book_ref": "Cryptarithms Q5, section 5.3 p.131",
+      "description": "Solve multiplication cryptarithm (v): PQ × 8 = RS."
+    },
+    {
+      "id": "E-65",
+      "source_section": "section 5.3",
+      "book_ref": "Cryptarithms Q6, section 5.3 p.132",
+      "description": "Solve multiplication cryptarithm (vi): GH × H = 9K. Choose from the options given."
+    },
+    {
+      "id": "E-66",
+      "source_section": "section 5.3",
+      "book_ref": "Cryptarithms Q7, section 5.3 p.132",
+      "description": "What can you say about 'Y' in BYE × 6 = RAY? What digits are possible or not possible for Y?"
+    },
+    {
+      "id": "E-67",
+      "source_section": "section 5.3",
+      "book_ref": "Solve the following Q1, section 5.3 p.132",
+      "description": "Solve multiplication cryptarithm: UT × 3 = PUT."
+    },
+    {
+      "id": "E-68",
+      "source_section": "section 5.3",
+      "book_ref": "Solve the following Q2, section 5.3 p.132",
+      "description": "Solve multiplication cryptarithm: AB × 5 = BC."
+    },
+    {
+      "id": "E-69",
+      "source_section": "section 5.3",
+      "book_ref": "Solve the following Q3, section 5.3 p.132",
+      "description": "Solve multiplication cryptarithm: L2N × 2 = 2NP."
+    },
+    {
+      "id": "E-70",
+      "source_section": "section 5.3",
+      "book_ref": "Solve the following Q4, section 5.3 p.132",
+      "description": "Solve multiplication cryptarithm: XY × 4 = ZX."
+    },
+    {
+      "id": "E-71",
+      "source_section": "section 5.3",
+      "book_ref": "Solve the following Q5, section 5.3 p.132",
+      "description": "Solve multiplication cryptarithm: PP × QQ = PRP."
+    },
+    {
+      "id": "E-72",
+      "source_section": "section 5.3",
+      "book_ref": "Solve the following Q6, section 5.3 p.132",
+      "description": "Solve multiplication cryptarithm: JK × 6 = KKK."
+    },
+    {
+      "id": "E-73",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out Q1, section 5.3 p.132",
+      "description": "If 31z5 is a multiple of 9 where z is a digit, find the value of z. Explain why there are two answers."
+    },
+    {
+      "id": "E-74",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out Q2, section 5.3 p.132",
+      "description": "Snehal claims: a number leaving remainder 8 when divided by 12, plus a number that is 4 short of a multiple of 12, always gives a multiple of 8. Is this true?"
+    },
+    {
+      "id": "E-75",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out Q3, section 5.3 p.132",
+      "description": "When is the sum of two multiples of 3 a multiple of 6, and when is it not? Explain all cases and generalise."
+    },
+    {
+      "id": "E-76",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out Q4, section 5.3 p.132",
+      "description": "Sreelatha says a multiple of 9 remains divisible by 9 after digit reversal. (i) Examine if true for any multiple of 9. (ii) Are other digit shuffles also possible?"
+    },
+    {
+      "id": "E-77",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out Q5, section 5.3 p.132",
+      "description": "If 48a23b is a multiple of 18, list all possible pairs (a, b)."
+    },
+    {
+      "id": "E-78",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out Q6, section 5.3 p.133",
+      "description": "If 3p7q8 is divisible by 44, list all possible pairs (p, q)."
+    },
+    {
+      "id": "E-79",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out Q7, section 5.3 p.133",
+      "description": "Find three consecutive numbers where the first is a multiple of 2, the second a multiple of 3, and the third a multiple of 4. Are there more? How often do they occur?"
+    },
+    {
+      "id": "E-80",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out Q8, section 5.3 p.133",
+      "description": "Write five multiples of 36 between 45,000 and 47,000. Share your approach."
+    },
+    {
+      "id": "E-81",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out Q9, section 5.3 p.133",
+      "description": "The middle number in a sequence of 5 consecutive even numbers is 5p. Express the other four in terms of p."
+    },
+    {
+      "id": "E-82",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out Q10, section 5.3 p.133",
+      "description": "Write a 6-digit number divisible by 15 such that when its digits are reversed the result is divisible by 6."
+    },
+    {
+      "id": "E-83",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out Q11, section 5.3 p.133",
+      "description": "Deepak claims some multiples of 11, when doubled, are still multiples of 11, but others are not. Examine his conjecture."
+    },
+    {
+      "id": "E-84",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out Q12, section 5.3 p.133",
+      "description": "Determine always/sometimes/never for: (i) product of a multiple of 6 and a multiple of 3 is a multiple of 9; (ii) sum of three consecutive even numbers divisible by 6; (iii) if abcdef is a multiple of 6, then badcef is too; (iv) 8(7b−3) − 4(11b+1) is a multiple of 12."
+    },
+    {
+      "id": "E-85",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out Q13, section 5.3 p.133",
+      "description": "Choose any 3 numbers. When is their sum divisible by 3? Explore all cases and generalise."
+    },
+    {
+      "id": "E-86",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out Q14, section 5.3 p.133",
+      "description": "Is the product of two consecutive integers always a multiple of 2? Three consecutive? (multiple of 6?) Four consecutive? Five consecutive? Justify each."
+    },
+    {
+      "id": "E-87",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out Q15, section 5.3 p.133",
+      "description": "Solve cryptarithms: (i) EF × E = GGG; (ii) WOW × 5 = MEOW."
+    },
+    {
+      "id": "E-88",
+      "source_section": "section 5.3",
+      "book_ref": "Figure it Out Q16, section 5.3 p.133",
+      "description": "Which Venn diagram (i)–(iv) correctly captures the relationship between multiples of 4, 8, and 32?"
+    }
+  ],
+  "conceptual_demand": 3,
+  "activity_count": 0,
+  "demo_count": 0,
+  "exec_load": 1
+}

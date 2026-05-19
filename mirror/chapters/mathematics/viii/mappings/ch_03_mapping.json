@@ -1,0 +1,39 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "viii",
+  "chapter_number": 3,
+  "chapter_title": "A Story of Numbers",
+
+  "core_cg": "CG-1",
+
+  "core_competencies": [
+    {
+      "c_code": "C-1.2",
+      "justification": "The chapter is architecturally organised around discovering and describing patterns in number representation: counting in groups of 2 (section 3.2.III), using powers of a fixed base as landmark numbers (section 3.3.II), and position as an encoding of those powers (section 3.4.I–IV). Students identify the rule that multiplying any landmark number by the base yields the next landmark number, explain the relationship between different number systems (tally → grouping → base-n → positional), and articulate why base-structure makes arithmetic efficient. Exercises E-4, E-8, E-9, E-15, E-23, E-25, E-28, E-29 all require pattern-finding and rule-articulation across number systems."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-9.1",
+      "justification": "The entire chapter traces how the concept of number evolved across civilisations — Stone Age tallying, Gumulgal (Australia), Bakairi (South America), Bushmen (South Africa), Roman, Egyptian, Mesopotamian (Babylonian), Mayan, Chinese, and Indian — showing how each innovation (grouping, base, place value, zero) arose from the limitations of the previous system. Sections 3.1 through 3.4.IV are structurally devoted to this civilisational history, and multiple Figure it Out prompts ask students to engage with it directly."
+    },
+    {
+      "c_code": "C-9.2",
+      "justification": "Section 3.1 and section 3.4.IV explicitly name Aryabhata (Āryabhaṭīya, 499 CE — first to fully explain and compute with the Indian system of 10 symbols including zero) and Brahmagupta (Brāhmasphuṭasiddhānta, 628 CE — codified arithmetic properties of zero and negative numbers, creating what is now called a ring). Al-Khwārizmī is noted as the source of the word 'algorithm'. These contributions are presented as pivotal to the evolution of the Hindu number system."
+    },
+    {
+      "c_code": "C-6.1",
+      "justification": "Section 3.3.II requires students to apply deductive logic: they prove that the product of any two landmark numbers in a base-n system is another landmark number (using the distributive law and the property of powers), reason from specific cases (base-5, base-10) to a general claim about base-n systems, and construct logically argued answers to questions such as whether any number can be unrepresentable in the base-5 system (E-14) or whether an Egyptian symbol can appear 10 or more times (E-23). These exercises demand formulating and evaluating mathematical arguments within elementary number theory."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to identify patterns in number representation by reasoning about why grouping in powers of a fixed base — and using position to encode those powers — creates efficient, unambiguous number systems.",
+
+  "conceptual_demand": 2,
+  "activity_count": 0,
+  "demo_count": 0,
+  "exec_load": 0,
+  "effort_index": 4.0
+}

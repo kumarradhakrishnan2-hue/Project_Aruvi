@@ -1,4 +1,4 @@
-ARUVI — ENGLISH ASSESSMENT CONSTITUTION · VERSION 3.0
+ARUVI — ENGLISH ASSESSMENT CONSTITUTION · VERSION 3.1
 Stages: Preparatory, Middle, Secondary
 
 ================================================================================
@@ -47,12 +47,14 @@ INPUTS
      - `section_id`       string
      - `section_title`    string
      - `section_type`     string
-     - `implied_lo`       string — one broad NCERT-style outcome
-                          for the whole cell, e.g.:
-                          "Student identifies details, main idea, and
-                          sequence of events in [section title]."
-                          "Student uses adverbs of manner correctly in
-                          sentences drawn from [section title]."
+     - `implied_lo`       string — the transferable spine skill this
+                          cell develops, expressed independently of
+                          chapter content. Drives question type and
+                          cognitive demand.
+     - `section_context`  string — 10–15 words naming the specific
+                          content, text, or topic this item must be
+                          grounded in. Determines what the question
+                          is about.
      - `tasks_anchored[]` array — task records used by the LP to
                           record which tasks were selected. The
                           assessment generator DOES NOT READ this
@@ -114,7 +116,10 @@ RULE 2 | ITEM GENERATION — ONE ITEM PER SPINE-CELL IMPLIED LO
 
 For each section_contribution in the LP handoff (one per section ×
 spine cell with at least one anchored task), generate exactly ONE
-assessment item that tests the cell's `implied_lo`.
+assessment item. Use `implied_lo` to determine the question type and
+cognitive demand; use `section_context` to determine what the question
+is specifically about. The two fields work together — neither alone
+is sufficient.
 
 Generation constraints:
   a) The item MUST be grounded strictly in the section's content —
@@ -427,9 +432,10 @@ ASSESSMENT JSON SCHEMA
           "source_section_type":  string,   // prose|poem|narrative|
                                             // dialogue|informational
           "source_spine":         string,   // spine key
-          "source_lo":            string,   // spine-cell implied_lo
-                                            // from LP handoff;
+          "source_lo":            string,   // implied_lo from LP handoff;
                                             // copied verbatim
+          "source_context":       string,   // section_context from LP
+                                            // handoff; copied verbatim
 
           "item_stem":            string,   // the assessment question /
                                             // task framing; original,
@@ -468,5 +474,5 @@ ASSESSMENT JSON SCHEMA
 
 ================================================================================
 Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
-English Assessment Constitution · Version 3.0 · Internal Document
+English Assessment Constitution · Version 3.1 · Internal Document
 ================================================================================

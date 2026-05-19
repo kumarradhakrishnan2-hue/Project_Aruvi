@@ -1,0 +1,363 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "viii",
+  "chapter_number": 11,
+  "chapter_title": "Exploring Some Geometric Themes",
+  "sections": [
+    { "ref": "section 4.1", "title": "Fractals", "section_goal": ["recall", "reason"] },
+    { "ref": "section 4.1.1", "title": "Sierpinski Carpet", "section_goal": ["reason"] },
+    { "ref": "section 4.1.2", "title": "Sierpinski Gasket", "section_goal": ["apply"] },
+    { "ref": "section 4.1.3", "title": "Koch Snowflake", "section_goal": ["apply"] },
+    { "ref": "section 4.1.4", "title": "Fractals in Art", "section_goal": ["recall"] },
+    { "ref": "section 4.2", "title": "Visualising Solids", "section_goal": ["apply"] },
+    { "ref": "section 4.2.1", "title": "Build it in Your Imagination", "section_goal": ["apply"] },
+    { "ref": "section 4.2.2", "title": "Making Solids", "section_goal": ["recall", "apply"] },
+    { "ref": "section 4.2.3", "title": "Shortest Paths on a Cube", "section_goal": ["reason"] },
+    { "ref": "section 4.2.4", "title": "Projections", "section_goal": ["recall", "apply"] },
+    { "ref": "section 4.2.5", "title": "Shadows", "section_goal": ["reason"] },
+    { "ref": "section 4.2.6", "title": "Isometric Projections", "section_goal": ["recall", "apply"] },
+    { "ref": "section 4.2.7", "title": "Drawing on Isometric Grids", "section_goal": ["apply"] }
+  ],
+  "prose_summary": "Section 4.1 introduces fractals and identifies them as self-similar geometric objects in which the same or similar pattern repeats at smaller and smaller scales. The section opens by recognising fractals in nature — ferns, trees, clouds, coastlines, mountains, and lightning — before proceeding to construct and reason about mathematical fractals. The introductory pages establish the concept firmly so that the three named fractals that follow can be understood both visually and analytically.\n\nSection 4.1.1 reasons about the Sierpinski Carpet by constructing it iteratively: a square is divided into nine smaller squares and the central square removed, then the procedure is repeated on the eight remaining squares. The section then derives recurrence relations — Rn+1 = 8Rn for remaining squares and Hn+1 = Hn + Rn for holes — and uses these to find the closed-form formula Rn = 8^n. Students are guided through an activity of drawing the first few steps and then analysing the pattern of holes and remaining squares using the recurrence. The section demands genuine algebraic reasoning: recognising how local rules generate global formulas and building a table to verify the pattern before generalising.\n\nSection 4.1.2 applies a parallel construction to the Sierpinski Gasket (Sierpinski Triangle): an equilateral triangle is subdivided by joining midpoints into four smaller equilateral triangles, the central one removed, and the procedure repeated. The section includes a reasoning prompt — proving that midpoint-joining divides an equilateral triangle into four identical equilateral triangles — and then extends to computing holes, remaining triangles, and areas at each step. Students draw the sequence, compute counts, and find the area of the remaining region at the nth step for both the Carpet and the Gasket.\n\nSection 4.1.3 applies the same iterative construction philosophy to the Koch Snowflake, attributing it to Swedish mathematician Von Koch (1904) and noting it was encountered in Grade 6. Each side of an equilateral triangle is divided into thirds, an equilateral triangle raised over the middle third, and the middle portion removed — effectively replacing each side with a bump. Students compute the number of sides and the perimeter at each step, practising geometric series reasoning as the perimeter grows without bound while the shape remains bounded.\n\nSection 4.1.4 recalls the presence of fractal-like patterns in human art and architecture across cultures — including the Kandariya Mahadev Temple in Khajuraho (c. 1025 CE), Nigerian Fulani wedding blankets, and the work of M.C. Escher — providing cultural and aesthetic grounding without any computation.\n\nSection 4.2 opens the second major theme by introducing the idea that seeing a solid means seeing its profile from a specific viewpoint, and that the same solid can produce very different profiles depending on the direction of viewing. This framing motivates the visualisation exercises that follow and connects everyday experience (shadows, cartoons, photographs) to mathematical structure.\n\nSection 4.2.1 applies spatial visualisation through a set of imagination-only exercises — no paper drawing allowed. Students mentally picture their name reversed, cut corners from imaginary squares and triangles, and identify the resulting shapes. They then apply this skill to solids: identifying a solid whose profile is a square, a circle, or a triangle, and imagining solids with contrasting profiles from two perpendicular viewpoints (rectangular–circular, circular–triangular, rectangular–triangular, trapezium–circular, pentagonal–rectangular).\n\nSection 4.2.2 recalls and applies the vocabulary and properties of common three-dimensional solids — cuboid, parallelepiped, cylinder, cone, prism, pyramid, tetrahedron, octahedron, and dodecahedron — including faces, edges, and vertices. It then introduces the concept of a net (the flat shape obtained by unfolding a solid) and applies it by having students identify valid nets of a cube (including the Try This task for the regular tetrahedron and square pyramid), draw nets of cuboids with specified dimensions, reason about nets of a cylinder and cone, and make physical cutouts to verify. The section also notes that a cube has exactly 11 distinct nets and an octahedron likewise, and that a dodecahedron has 43,380 nets.\n\nSection 4.2.3 reasons about the shortest path between two points on the surface of a cuboid using the key insight that a path on the cuboid surface corresponds to a path of the same length on any net, so the shortest surface path corresponds to the straight-line path on the appropriate unfolding. The section guides students through two introductory cases (ant–laddu, where one standard unfolding gives a straight line) and then a trickier case (6 × 30 × 12 cm cuboid) where multiple unfoldings must be compared and the Baudhayana–Pythagoras theorem used to compute distances, requiring students to enumerate all distinct unfoldings and select the minimum.\n\nSection 4.2.4 recalls the definition of projection (the perpendicular mapping of a point or object onto a plane) and applies it to reason about projections of lines, squares, parallelograms, polygons, cubes, and cones. The section establishes that projection preserves parallelism — parallel lines project to parallel lines — and introduces the three standard engineering views: front view (vertical plane), top view (horizontal plane), and side view (side plane). It shows that a given projection does not uniquely determine the object (multiple objects can share the same projection), motivating the use of three simultaneous projections.\n\nSection 4.2.5 reasons about the physical counterpart of projection through a shadows experiment: shining a torch perpendicularly at an object near a wall produces a shadow that, as the torch moves infinitely far away, converges to the mathematical projection. The section uses sunlight as the real-world example of a parallel light source producing true projections, and derives that since the projection of a pair of parallel lines is always parallel, the shadow of a parallelogram is always a parallelogram regardless of orientation.\n\nSection 4.2.6 recalls and applies the concept of isometric projection: an orientation of a cube in which the projections of all edges are equal in length. The section explains that balancing a cube on a corner vertex and projecting downward produces this isometric view (a regular hexagon with all edges and their projections equal), and that this structure tiles the plane with hexagons to form the isometric grid used in engineering drawing. Students reason about why the three families of parallel edges map to three directions on the grid.\n\nSection 4.2.7 applies isometric grid drawing to represent three-dimensional solids on paper. The section connects the three axes (height, depth, length) to the three edge directions on the isometric grid (vertical, two diagonals), uses the five Tetris shapes (arrangements of four cubes) as drawing exercises, and shows step-by-step how to draw a 1×1×1 cube and a row of four cubes along various orientations. Students draw given solids on the isometric grid, recreate an impossible path and an impossible triangle (Penrose triangle), and discuss why spatial illusions arise from isometric drawings.",
+  "enumerated_activities": [
+    {
+      "id": "A-1",
+      "source_section": "section 4.1.1",
+      "book_ref": "Sierpinski Carpet activity, p.71",
+      "description": "Draw the initial few steps (at least till Step 2) of the shape sequence that leads to the Sierpinski Carpet."
+    },
+    {
+      "id": "A-2",
+      "source_section": "section 4.2.1",
+      "book_ref": "Build it in Your Imagination activity, p.75",
+      "description": "A set of mental visualisation prompts to be done without drawing on paper — picture name reversed, cut corners of imaginary squares and triangles, and identify resulting shapes purely through spatial imagination."
+    },
+    {
+      "id": "A-3",
+      "source_section": "section 4.2.5",
+      "book_ref": "Shadows Try This, p.94",
+      "description": "Place an object in front of a wall, shine a torch perpendicular to the wall, and observe the shadow; then vary the distance between torch and object to see how the shadow changes; use sunlight to observe true projections."
+    },
+    {
+      "id": "A-4",
+      "source_section": "section 4.2.6",
+      "book_ref": "Isometric Projections Math Talk, p.97",
+      "description": "Construct a model of a cube and balance it on one corner vertex to understand why all projected edges have equal length in an isometric projection."
+    }
+  ],
+  "enumerated_worked_examples": [
+    {
+      "id": "WE-1",
+      "source_section": "section 4.1.1",
+      "book_ref": "Sierpinski Carpet worked derivation, p.71",
+      "description": "Derives the recurrence Rn+1 = 8Rn and the closed formula Rn = 8^n for remaining squares, and the recurrence Hn+1 = Hn + Rn for holes, with a table of values for steps 0–3."
+    },
+    {
+      "id": "WE-2",
+      "source_section": "section 4.2.2",
+      "book_ref": "Net of a cube, Fig. 4.1, p.80",
+      "description": "Presents a net of a cube (Fig. 4.1) and discusses practical aspects of making a cube from its net — sturdiness, attachment mechanisms, and flaps — distinguishing the mathematical net from physical construction aids."
+    },
+    {
+      "id": "WE-3",
+      "source_section": "section 4.2.3",
+      "book_ref": "Shortest path ant-laddu worked cases, p.84-87",
+      "description": "Works through two ant–laddu cases: (1) ant at centre of side face, laddu at centre of top face — unfolding shows a straight-line path; (2) ant at face centre of an 8×2×4 cm cuboid, showing the standard unfolding sends the path outside the net and a different unfolding gives the true shortest path. Then a trickier 6×30×12 cm case shows multiple unfoldings with different path lengths and uses the Baudhayana theorem to compute d = 40 cm for one candidate."
+    },
+    {
+      "id": "WE-4",
+      "source_section": "section 4.2.4",
+      "book_ref": "Projection of a line, Fig. 4.3, p.89",
+      "description": "Defines projection formally: OP perpendicular to plane M means angle POX = 90° for all lines OX on M. Then analyses projection of a line segment: draws AE perpendicular to BC in a right triangle to show p (projected length) is less than or equal to l (actual length), with equality when the line is parallel to the projection plane."
+    },
+    {
+      "id": "WE-5",
+      "source_section": "section 4.2.4",
+      "book_ref": "Three views of lines and cuboids, Fig. 4.6, p.90-92",
+      "description": "Shows front view, top view, and side view for several differently-oriented lines and cuboids, demonstrating that different objects can give the same projection and motivating the use of three simultaneous standard views."
+    },
+    {
+      "id": "WE-6",
+      "source_section": "section 4.2.7",
+      "book_ref": "Isometric drawing of 1×1×1 cube and row of four cubes, p.99-100",
+      "description": "Step-by-step demonstration of how to draw a 1×1×1 cube on isometric paper by associating height to the vertical direction and depth/length to the two diagonal directions; then draws the first Tetris shape (row of four cubes) oriented along the depth axis, showing both cube-by-cube and all-at-once approaches."
+    }
+  ],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 4.1.1",
+      "book_ref": "Sierpinski Carpet Figure it Out Q1, p.71",
+      "description": "Show that the midpoint-joining construction of the Sierpinski Carpet produces the given pattern."
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 4.1.2",
+      "book_ref": "Sierpinski Gasket Math Talk, p.72",
+      "description": "Show that by joining the midpoints of an equilateral triangle, it is divided into 4 identical equilateral triangles. (Hint: corner triangles are isosceles.)"
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 4.1.2",
+      "book_ref": "Figure it Out Q1, section 4.1.2, p.72",
+      "description": "Draw the initial few steps (at least till Step 2) of the shape sequence that leads to the Sierpinski Triangle."
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 4.1.2",
+      "book_ref": "Figure it Out Q2, section 4.1.2, p.72",
+      "description": "Find the number of holes and the number of triangles that remain at each step of the Sierpinski Triangle sequence."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 4.1.2",
+      "book_ref": "Figure it Out Q3, section 4.1.2, p.72",
+      "description": "Find the area of the region remaining at the nth step for both the Sierpinski Carpet and the Sierpinski Triangle sequences, taking the starting area to be 1 sq. unit."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 4.1.3",
+      "book_ref": "Figure it Out Q1, section 4.1.3, p.73",
+      "description": "Draw the initial few steps (at least till Step 2) of the shape sequence that leads to the Koch Snowflake."
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 4.1.3",
+      "book_ref": "Figure it Out Q2, section 4.1.3, p.73",
+      "description": "Find the number of sides in the nth step of the shape sequence leading to the Koch Snowflake."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 4.1.3",
+      "book_ref": "Figure it Out Q3, section 4.1.3, p.73",
+      "description": "Find the perimeter of the Koch Snowflake shape at the nth step, taking the starting equilateral triangle to have side length 1 unit."
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 4.2.1",
+      "book_ref": "Build it in Your Imagination Q1, p.75",
+      "description": "Picture your name mentally and read off the letters backwards by sight, not by sound; try with a friend's name."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 4.2.1",
+      "book_ref": "Build it in Your Imagination Q2, p.76",
+      "description": "Cut off the four corners of an imaginary square with each cut going between midpoints of adjacent edges; identify the remaining shape and how the four corners reassemble into another square."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 4.2.1",
+      "book_ref": "Build it in Your Imagination Q3, p.76",
+      "description": "Mark the sides of an equilateral triangle into thirds and cut off each corner as far as the marks; identify the resulting shape."
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 4.2.1",
+      "book_ref": "Build it in Your Imagination Q4, p.76",
+      "description": "Mark the sides of a square into thirds and cut off each corner as far as the marks; identify the remaining shape."
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 4.2.1",
+      "book_ref": "Build it in Your Imagination Q5, p.77",
+      "description": "Describe a solid and a viewpoint whose profile has a square outline."
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 4.2.1",
+      "book_ref": "Build it in Your Imagination Q6, p.77",
+      "description": "Describe a solid and a viewpoint whose profile has a circular outline."
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 4.2.1",
+      "book_ref": "Build it in Your Imagination Q7, p.77",
+      "description": "Describe a solid and a viewpoint whose profile has a triangular outline."
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 4.2.1",
+      "book_ref": "Build it in Your Imagination Q8, p.77",
+      "description": "Visualise a solid with a rectangular profile from one viewpoint and a circular profile from another."
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 4.2.1",
+      "book_ref": "Build it in Your Imagination Q9, p.77",
+      "description": "Visualise a solid with a circular profile from one viewpoint and a triangular profile from another."
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 4.2.1",
+      "book_ref": "Build it in Your Imagination Q10, p.77",
+      "description": "Visualise a solid with a rectangular profile from one viewpoint and a triangular profile from another."
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 4.2.1",
+      "book_ref": "Build it in Your Imagination Q11, p.77",
+      "description": "Visualise a solid with a trapezium-shaped profile from one viewpoint and a circular profile from another."
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 4.2.1",
+      "book_ref": "Build it in Your Imagination Q12, p.77",
+      "description": "Visualise a solid with a pentagonal profile from one viewpoint and a rectangular profile from another."
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 4.2.2",
+      "book_ref": "Figure it Out Q1, section 4.2.2, p.80",
+      "description": "Identify which of six given flat shapes (i)–(vi) are valid nets of a cube, first by visualisation then by cutout verification."
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 4.2.2",
+      "book_ref": "Figure it Out Q2, section 4.2.2, p.81",
+      "description": "Find all 11 nets of a cube, treating two nets as the same if one can be obtained from the other by rotation or flip."
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 4.2.2",
+      "book_ref": "Figure it Out Q3, section 4.2.2, p.81",
+      "description": "Draw nets of a cuboid with side lengths (i) 5 cm, 3 cm, 1 cm and (ii) 6 cm, 3 cm, 2 cm."
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 4.2.2",
+      "book_ref": "Try This — regular tetrahedron net, p.81",
+      "description": "Draw a net with appropriate measurements that can be folded into a regular tetrahedron; verify by making an actual cutout."
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 4.2.2",
+      "book_ref": "Try This — square pyramid net, p.81",
+      "description": "Draw a net with appropriate measurements that can be folded into a square pyramid; verify by making an actual cutout."
+    },
+    {
+      "id": "E-26",
+      "source_section": "section 4.2.2",
+      "book_ref": "Math Talk — cylinder net, p.82",
+      "description": "Determine what the net of a cylinder looks like and identify the side lengths of the rectangle obtained when the curved surface is cut along the height."
+    },
+    {
+      "id": "E-27",
+      "source_section": "section 4.2.2",
+      "book_ref": "Math Talk — cone net, p.82",
+      "description": "Determine how the net of a cone looks after slitting along a slant line and unrolling; explain why the boundary of the net is a portion of a circle with centre O."
+    },
+    {
+      "id": "E-28",
+      "source_section": "section 4.2.2",
+      "book_ref": "Try This — triangular prism net, p.82",
+      "description": "Draw a net with appropriate measurements that can be folded into a triangular prism; verify by making an actual cutout."
+    },
+    {
+      "id": "E-29",
+      "source_section": "section 4.2.2",
+      "book_ref": "Math Talk — octahedron net, p.83",
+      "description": "Visualise the net of an octahedron; make a cutout of the given net (all equilateral triangles) and fold it to form an octahedron."
+    },
+    {
+      "id": "E-30",
+      "source_section": "section 4.2.2",
+      "book_ref": "Math Talk — prism faces/edges/vertices, p.79",
+      "description": "For a prism whose congruent polygons have 10 sides (and n sides in general), find the number of faces, edges, and vertices."
+    },
+    {
+      "id": "E-31",
+      "source_section": "section 4.2.2",
+      "book_ref": "Math Talk — pyramid faces/edges/vertices, p.79",
+      "description": "For a pyramid whose base has 10 sides (and n sides in general), find the number of faces, edges, and vertices."
+    },
+    {
+      "id": "E-32",
+      "source_section": "section 4.2.3",
+      "book_ref": "Shortest Paths Try This, p.87",
+      "description": "Find the shortest path on the surface of a 6×30×12 cm cuboid between the ant (centre of one face) and the laddu (centre of the back face) by listing all distinct unfoldings, computing path lengths (using the Baudhayana theorem where needed), and identifying the minimum."
+    },
+    {
+      "id": "E-33",
+      "source_section": "section 4.2.4",
+      "book_ref": "Figure it Out Q1, section 4.2.4, p.92",
+      "description": "Observe the front, top, and side views of the different lines in Fig. 4.6 and identify any relation between their lengths."
+    },
+    {
+      "id": "E-34",
+      "source_section": "section 4.2.4",
+      "book_ref": "Figure it Out Q2, section 4.2.4, p.92",
+      "description": "Find the front view, top view, and side view of each of the following solids in a fixed orientation: cube, cuboid, parallelepiped, cylinder, cone, prism, and pyramid."
+    },
+    {
+      "id": "E-35",
+      "source_section": "section 4.2.4",
+      "book_ref": "Figure it Out Q3, section 4.2.4, p.93",
+      "description": "Match each of the given objects (shown as images) with its front view, top view, and side view projections."
+    },
+    {
+      "id": "E-36",
+      "source_section": "section 4.2.5",
+      "book_ref": "Figure it Out Q1, section 4.2.5, p.95",
+      "description": "Draw the top view, front view, and side view of each of the five given combinations of identical cubes."
+    },
+    {
+      "id": "E-37",
+      "source_section": "section 4.2.5",
+      "book_ref": "Figure it Out Q2, section 4.2.5, p.95",
+      "description": "Imagine eight identical cubes glued to form the letter 'L': (i) describe the side and top views; (ii) add cubes to make a given letter from front and top; (iii) add more to specify all three views; (iv) invent other letter combinations achievable with a single solid."
+    },
+    {
+      "id": "E-38",
+      "source_section": "section 4.2.5",
+      "book_ref": "Figure it Out Q3, section 4.2.5, p.96",
+      "description": "Match each of the seven given sets of front, top, and side views with the corresponding solid (from (i) to (vii))."
+    },
+    {
+      "id": "E-39",
+      "source_section": "section 4.2.5",
+      "book_ref": "Figure it Out Q4, section 4.2.5, p.96",
+      "description": "Using identical cubes, make a solid that gives each of the nine specified sets of top, front, and side view projections ((i) through (ix))."
+    },
+    {
+      "id": "E-40",
+      "source_section": "section 4.2.5",
+      "book_ref": "Figure it Out Q5, section 4.2.5, p.97",
+      "description": "Find the number of cubes in a given stack of identical cubes shown in an isometric-style illustration."
+    },
+    {
+      "id": "E-41",
+      "source_section": "section 4.2.5",
+      "book_ref": "Figure it Out Q6, section 4.2.5, p.97",
+      "description": "Identify all the different shapes the projection of a cube can make under different orientations."
+    },
+    {
+      "id": "E-42",
+      "source_section": "section 4.2.7",
+      "book_ref": "Figure it Out Q1, section 4.2.7, p.100",
+      "description": "In addition to the 5 Tetris shapes in Fig. 4.8, determine if there are any additional ways of gluing four cubes together along faces; visualise and draw any additional shapes on the isometric grid."
+    },
+    {
+      "id": "E-43",
+      "source_section": "section 4.2.7",
+      "book_ref": "Figure it Out Q2, section 4.2.7, p.101",
+      "description": "Draw a set of specified three-dimensional solids on the isometric grid, determining the direction (up or down along the height axis) for each edge."
+    },
+    {
+      "id": "E-44",
+      "source_section": "section 4.2.7",
+      "book_ref": "Figure it Out Q3, section 4.2.7, p.101",
+      "description": "Identify what is strange about the path of a given ball on an isometric grid (an impossible path) and recreate it on the isometric grid."
+    },
+    {
+      "id": "E-45",
+      "source_section": "section 4.2.7",
+      "book_ref": "Figure it Out Q4, section 4.2.7, p.101",
+      "description": "Observe an impossible (Penrose) triangle: (i) determine whether it could be built from actual cubes and find its front, top, and side profiles; (ii) recreate it on an isometric grid; (iii) explain why the spatial illusion works."
+    }
+  ],
+  "conceptual_demand": 3,
+  "activity_count": 4,
+  "demo_count": 0,
+  "exec_load": 1
+}

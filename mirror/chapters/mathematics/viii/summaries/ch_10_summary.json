@@ -1,0 +1,230 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "viii",
+  "chapter_number": 10,
+  "chapter_title": "Proportional Reasoning–2",
+  "sections": [
+    { "ref": "section 3.1", "title": "Proportionality—A Quick Recap", "section_goal": ["recall"] },
+    { "ref": "section 3.2", "title": "Ratios in Maps", "section_goal": ["apply"] },
+    { "ref": "section 3.3", "title": "Ratios with More than 2 Terms", "section_goal": ["recall"] },
+    { "ref": "section 3.4", "title": "Dividing a Whole in a Given Ratio", "section_goal": ["apply"] },
+    { "ref": "section 3.5", "title": "A Slice of the Pie", "section_goal": ["apply"] },
+    { "ref": "section 3.6", "title": "Inverse Proportions", "section_goal": ["reason", "apply"] }
+  ],
+  "prose_summary": "Section 3.1 recalls and identifies the core principle of proportional relationships: two ratios a:b and c:d are proportional if the cross-products are equal (a×d = b×c), or equivalently a/c = b/d. The idli batter example (Viswanath 6:3 vs Puneet 4:2) grounds the definition in a real-world cooking scenario and confirms both mixtures maintain the same 2:1 ratio, making the proportional relationship concrete before formal notation is introduced.\n\nSection 3.2 applies proportional reasoning to map scales. It defines the Representative Fraction (RF) as the ratio of map distance to actual ground distance, using RF 1:60,00,000 as the working example (1 cm on map equals 60 km on ground). Students use a ruler on a printed map of South India to measure distances between city pairs (Bengaluru–Chennai, Mangaluru–Chennai) and convert using the RF. A teacher-guided Map Making Activity directs students to sketch their own classroom to scale (1:50), placing furniture and fixtures at proportionally correct positions using appropriate symbols.\n\nSection 3.3 extends ratio notation beyond two terms and defines multi-term proportionality. Using a four-ingredient spice mix (coriander:chillies:dal:fenugreek :: 8:4:2:1), it shows how all terms scale by the same factor when quantities change proportionally. The general rule a/p = b/q = c/r = d/s formalises the relationship. Two worked examples apply multi-term ratios to mixing paint shades (Red:Blue:White :: 2:3:5, find red and blue for a given volume of white) and cement concrete (cement:sand:gravel :: 1:1.5:3, find total bags for 3 bags of cement).\n\nSection 3.4 solves for individual components when a whole quantity is divided in a given multi-term ratio. It extends the two-term division algorithm — divide the whole by the sum of ratio terms, then multiply each term — to three or more terms, stating the general formula: each part equals x × (its ratio term) / (sum of all ratio terms). Three worked examples cover finding component quantities in 110 units of concrete (ratio 1:1.5:3), finding ml of each paint colour for 50 ml of purple (ratio 2:3:5), and constructing a triangle whose angles are in ratio 1:3:5 (using the angle-sum constraint of 180°).\n\nSection 3.5 applies ratio-based division to pie chart construction. Starting from a grade-distribution table (A:B:C:D:E :: 12:10:8:6:4), it reduces the ratio to simplest form (6:5:4:3:2) using the HCF, then divides 360° proportionally to obtain sector angles (108°, 90°, 72°, 54°, 36°). A step-by-step construction procedure guides students to draw a circle, mark a radius, and measure successive angles with a protractor to complete and colour the pie chart. The section connects data visualisation directly back to the proportional division framework established in section 3.4.\n\nSection 3.6 defines inverse proportions and applies the relationship to a range of word problems. It begins by contrasting inverse with direct proportion: using a speed-time table (walk 5 km/h / 18h, bicycle 15/6, motorcycle 30/3, car 60/1.5), it shows that when one quantity increases by factor n, the other decreases by the same factor n, so their product xy = k (constant distance of 90 km). The formal rule x₁y₁ = x₂y₂ is derived and then applied across six worked examples — workers-and-days road laying, pump-and-hours tank filling, food provisions for expanding school population, and combined work rates (Ram 1hr + Shyam 1.5hr cutting vegetables together, yielding 3/5 hr). The final example introduces unit-work-rate reasoning as a bridge between inverse and direct proportionality, requiring students to identify which relationship governs each sub-step.",
+  "enumerated_activities": [
+    {
+      "id": "A-1",
+      "source_section": "section 3.2",
+      "book_ref": "Map Making Activity, p.57",
+      "description": "Students make a sketch of their classroom at scale 1:50, marking locations of teacher's desk, blackboard, fans, lights, and other objects using appropriate symbols."
+    }
+  ],
+  "enumerated_worked_examples": [
+    {
+      "id": "WE-1",
+      "source_section": "section 3.3",
+      "book_ref": "Example 1, section 3.3 p.58",
+      "description": "Purple paint mixed in ratio Red:Blue:White :: 2:3:5; given 10 litres of white, find litres of red and blue."
+    },
+    {
+      "id": "WE-2",
+      "source_section": "section 3.3",
+      "book_ref": "Example 2, section 3.3 p.58",
+      "description": "Cement concrete ratio 1:1.5:3; given 3 bags of cement, find total bags of concrete mixture."
+    },
+    {
+      "id": "WE-3",
+      "source_section": "section 3.4",
+      "book_ref": "Example 3, section 3.4 p.59",
+      "description": "110 units of concrete needed in ratio 1:1.5:3; find units of cement, sand, and gravel."
+    },
+    {
+      "id": "WE-4",
+      "source_section": "section 3.4",
+      "book_ref": "Example 4, section 3.4 p.59",
+      "description": "50 ml of purple paint in ratio 2:3:5; find ml of red, blue, and white paint."
+    },
+    {
+      "id": "WE-5",
+      "source_section": "section 3.4",
+      "book_ref": "Example 5, section 3.4 p.60",
+      "description": "Construct a triangle with angles in ratio 1:3:5; compute each angle using angle-sum = 180°."
+    },
+    {
+      "id": "WE-6",
+      "source_section": "section 3.6",
+      "book_ref": "Example 1, section 3.6 p.63",
+      "description": "5 workers move 4500 bricks in a day; find number of workers needed to move 18000 bricks in a day (direct proportion / rule of three)."
+    },
+    {
+      "id": "WE-7",
+      "source_section": "section 3.6",
+      "book_ref": "Example 2, section 3.6 p.63",
+      "description": "Motorcycle at 30 km/h takes 3 hours Lucknow–Kanpur; introduces speed-time table to show inverse relationship, leading to the xy=k definition."
+    },
+    {
+      "id": "WE-8",
+      "source_section": "section 3.6",
+      "book_ref": "Example 3, section 3.6 p.65",
+      "description": "20 workers complete road in 4 days; find days needed for 10 workers using x₁y₁ = x₂y₂."
+    },
+    {
+      "id": "WE-9",
+      "source_section": "section 3.6",
+      "book_ref": "Example 4, section 3.6 p.66",
+      "description": "2 pumps fill tank in 18 hours; find time for 4 pumps using inverse proportion."
+    },
+    {
+      "id": "WE-10",
+      "source_section": "section 3.6",
+      "book_ref": "Example 5, section 3.6 p.66",
+      "description": "Food provisions for 80 students for 15 days; 20 more students join — find how many days provisions last."
+    },
+    {
+      "id": "WE-11",
+      "source_section": "section 3.6",
+      "book_ref": "Example 6, section 3.6 p.66",
+      "description": "Ram cuts vegetables in 1 hour, Shyam in 1.5 hours; find combined time using unit-work rates and direct proportion."
+    }
+  ],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 3.4",
+      "book_ref": "Figure it Out Q1, section 3.4 p.60",
+      "description": "Cricket practice session 150 min in ratio warm-up:batting:bowling:fielding :: 3:4:3:5; find time for each activity."
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 3.4",
+      "book_ref": "Figure it Out Q2, section 3.4 p.60",
+      "description": "Library books Odiya:Hindi:English :: 3:2:1; given 288 Odiya books, find Hindi and English counts."
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 3.4",
+      "book_ref": "Figure it Out Q3, section 3.4 p.60",
+      "description": "100 coins in ratio ₹10:₹5:₹2:₹1 :: 4:3:2:1; find total monetary value."
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 3.4",
+      "book_ref": "Figure it Out Q4, section 3.4 p.60",
+      "description": "Construct triangle with sidelengths in ratio 3:4:5; discuss whether all such triangles are congruent (Math Talk)."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 3.4",
+      "book_ref": "Figure it Out Q5, section 3.4 p.60",
+      "description": "Can a triangle be constructed with sidelengths in ratio 1:3:5? Justify why or why not."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 3.5",
+      "book_ref": "Figure it Out Q1, section 3.5 p.62",
+      "description": "360 people vote on favourite season (90 summer, 120 rainy, rest winter); draw pie chart."
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 3.5",
+      "book_ref": "Figure it Out Q2, section 3.5 p.62",
+      "description": "Draw pie chart from TV channel preference data: Entertainment 50%, Sports 25%, News 15%, Information 10%."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 3.5",
+      "book_ref": "Figure it Out Q3, section 3.5 p.62",
+      "description": "Survey classmates on favourite subject; record data in table across 7 subjects and construct pie chart."
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out Q1, section 3.6 p.65",
+      "description": "Identify which of three x-y tables shows inverse proportion by checking whether xy is constant. (Three sub-tables: (i) not inverse, (ii) direct proportion, (iii) inverse proportion.)"
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out Q2, section 3.6 p.65",
+      "description": "Fill empty cells in an inverse proportion table (x: 16, 12, ?, 36; y: 9, ?, 48, ?)."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out Q1, section 3.6 p.67",
+      "description": "Classify six real-world quantity pairs as inverse proportion or not (taps-time, painters-days, distance-petrol, cyclist speed-time, cloth length-price, pages-reading time)."
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out Q2, section 3.6 p.67",
+      "description": "24 pencils cost ₹120; find cost of 20 pencils."
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out Q3, section 3.6 p.67",
+      "description": "Tank water sufficient for 20 families for 6 days; 10 more families move in — find how long water lasts; state assumptions (Math Talk)."
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out Q4, section 3.6 p.67",
+      "description": "Read pie charts showing sleep proportions for 8 living beings; select appropriate hours from a given list (15, 2.5, 20, 8, 3.5, 13, 10.5, 18)."
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out Q5, section 3.6 p.68",
+      "description": "Analyse pie chart of children's school transport modes (Walk 90°, Bus 120°, Cycle 60°, Two-wheeler 60°, Car 30°); answer four sub-questions including finding number of children if 18 travel by car."
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out Q6, section 3.6 p.68",
+      "description": "3 workers paint fence in 4 days; one more worker joins — find days to finish; state assumptions."
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out Q7, section 3.6 p.68",
+      "description": "6 hours to fill 2 same-size tanks with a pump; find time to fill 5 such tanks with the same pump."
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out Q8, section 3.6 p.68",
+      "description": "25 rows × 12 chairs per row; rearrange with 20 chairs per row — find new number of rows."
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out Q9, section 3.6 p.68",
+      "description": "8 periods × 45 minutes; find period duration if school has 9 periods (total school hours unchanged)."
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out Q10, section 3.6 p.68",
+      "description": "Small pump fills tank in 3 hours, large pump in 2 hours; find time if both work together."
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out Q11, section 3.6 p.68",
+      "description": "42 machines produce toys in 63 days; find machines needed to produce same number in 54 days."
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 3.6",
+      "book_ref": "Figure it Out Q12, section 3.6 p.68",
+      "description": "Car at 60 km/h reaches destination in 2 hours; find time at 80 km/h."
+    }
+  ],
+  "conceptual_demand": 2,
+  "activity_count": 1,
+  "demo_count": 0,
+  "exec_load": 1
+}

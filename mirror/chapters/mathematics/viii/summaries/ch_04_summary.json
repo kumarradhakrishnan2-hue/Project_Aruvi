@@ -1,0 +1,247 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "viii",
+  "chapter_number": 4,
+  "chapter_title": "Quadrilaterals",
+  "sections": [
+    { "ref": "section 4.1", "title": "Rectangles and Squares", "section_goal": ["recall", "reason"] },
+    { "ref": "section 4.2", "title": "Angles in a Quadrilateral", "section_goal": ["reason"] },
+    { "ref": "section 4.3", "title": "More Quadrilaterals with Parallel Opposite Sides", "section_goal": ["reason", "apply"] },
+    { "ref": "section 4.4", "title": "Quadrilaterals with Equal Sidelengths", "section_goal": ["reason"] },
+    { "ref": "section 4.5", "title": "Playing with Quadrilaterals", "section_goal": ["apply"] },
+    { "ref": "section 4.6", "title": "Kite and Trapezium", "section_goal": ["recall", "reason"] }
+  ],
+  "prose_summary": "Section 4.1 defines rectangles and squares and then reasons out their diagonal and angle properties through a sequence of ten deductions driven by congruence arguments. The section opens with the Carpenter's Problem: two equal wooden strips joined at their midpoints must span the vertices of a rectangle, motivating the question of what diagonal conditions force a quadrilateral to be a rectangle. Deduction 1 proves that the diagonals of a rectangle are equal using SAS congruence on triangles formed by a diagonal; Deduction 2 proves that they bisect each other using AAS congruence, so the carpenter must join the strips at their midpoints. Deduction 3 then works in reverse — starting from two equal, mutually bisecting diagonals at an arbitrary angle x, it computes all interior angles of the resulting quadrilateral algebraically and shows they are all 90°, establishing that any such diagonal configuration yields a rectangle regardless of the crossing angle. Deduction 4 further simplifies the definition: a quadrilateral in which all angles are 90° must have opposite sides equal (by AAS congruence on the two triangles formed by a diagonal), so 'all angles 90°' alone suffices as the defining condition. The section then introduces squares as the special subclass of rectangles in which all sides are equal, uses a Venn diagram to display the squares-within-rectangles containment, and poses the Carpenter's Problem for squares. Deduction 5 shows that if equal bisecting diagonals produce a square, they must cross at 90° (by SSS congruence, the two half-diagonal triangles are congruent and their shared angle must be a straight angle split equally). The section closes by listing five properties of rectangles (all angles 90°; opposite sides equal; opposite sides parallel; diagonals equal and bisecting) and five properties of squares (all sides equal; opposite sides parallel; all angles 90°; diagonals equal, bisecting, and perpendicular; diagonals bisect the corner angles).\n\nSection 4.2 reasons about a general angle-sum property of quadrilaterals. The section asks whether a quadrilateral with three right angles can have a fourth angle that is not 90°, then justifies that this is impossible by proving the angle-sum theorem. Drawing one diagonal of any quadrilateral splits it into two triangles, each with angle sum 180°; the six triangle angles pair up exactly into the four quadrilateral angles, giving a total of 360°. This directly explains why three right angles force the fourth to be 90° as well, closing the question raised at the outset.\n\nSection 4.3 reasons about parallelograms and then applies the deduced properties to find their sides and angles. The section begins by asking whether quadrilaterals with parallel opposite sides but non-right angles exist, and constructs one by drawing two non-perpendicular pairs of parallel lines, defining a parallelogram as a quadrilateral whose opposite sides are parallel. A Venn diagram places rectangles as a special subclass of parallelograms. Deduction 6 proves that adjacent angles of a parallelogram add to 180° (co-interior angles on parallel lines) and opposite angles are equal, using a general angle x to derive all four angles algebraically. Deduction 7 proves that opposite sides of a parallelogram are equal via AAS congruence on the two triangles formed by a diagonal. Deduction 8 proves that the diagonals bisect each other using ASA congruence on the two triangles formed at the intersection point, exploiting alternate angles from the parallel sides. The section lists four properties of parallelograms: opposite sides equal; opposite sides parallel; adjacent angles supplementary and opposite angles equal; diagonals bisect each other.\n\nSection 4.4 reasons about rhombuses — quadrilaterals with all sides equal — and deduces their angle and diagonal properties. The section constructs a rhombus by fixing two equal adjacent sides at an arbitrary angle and locating the fourth vertex by intersecting equal-radius arcs from the other two vertices, showing that such a figure exists for any non-straight angle. Deduction 9 proves that in any rhombus the diagonal divides it into two isosceles triangles whose base angles are all equal (four equal angles per diagonal), so opposite angles of the rhombus are equal and adjacent angles are supplementary. The argument further shows that opposite sides of a rhombus are parallel (alternate angles from the equal diagonal angles), establishing that every rhombus is a parallelogram — so all four parallelogram properties carry over. Deduction 10 proves that the diagonals of a rhombus intersect at 90°: SSS congruence of the two half-triangles at the intersection forces the two angles there to be equal and supplementary, hence each is 90°. Six properties of a rhombus are listed: all sides equal; opposite sides parallel; adjacent angles supplementary and opposite angles equal; diagonals bisect each other; diagonals bisect the corner angles; diagonals perpendicular.\n\nSection 4.5 applies the diagonal-construction principles studied so far through hands-on geoboard and triangle-joining activities. The Geoboard Activity asks students to place two rubber bands as perpendicular equal-length diagonals, identify the resulting quadrilateral, and then extend one diagonal by 2 cm on both sides and re-identify the shape, practising the link between diagonal properties and quadrilateral type. The Joining Triangles activity uses cardboard cutouts: two equilateral triangles joined along a common side produce a rhombus (to be justified); two isosceles triangles (8, 8, 6 cm sides) joined in two different orientations produce a rhombus or a kite (to be identified and justified); two scalene triangles (6, 9, 12 cm sides) joined in different ways produce various quadrilaterals for students to identify and justify. These activities consolidate the definitions and diagonal properties of parallelograms, rhombuses, and kites through construction and geometric reasoning.\n\nSection 4.6 recalls the definitions of kites and trapeziums and then reasons about their key properties. The kite is defined as a quadrilateral ABCD with AB = BC and CD = DA (two pairs of consecutive equal sides). Property 1 of the kite states that the diagonal BD bisects both vertex angles (∠ABC and ∠ADC) and is the perpendicular bisector of diagonal AC (AO = OC and BD ⊥ AC); students are prompted to justify this using congruent triangles (∆AOB ≅ ∆COB by SSS). The trapezium is defined as a quadrilateral with at least one pair of parallel opposite sides, and students are asked to construct one and find its remaining angles using co-interior angle properties (Property 1: ∠S + ∠P = 180° and ∠R + ∠Q = 180° for PQ ∥ SR). An isosceles trapezium — one whose non-parallel sides are equal — is then introduced; by dropping perpendiculars from the parallel side and showing the two corner triangles congruent (by RHS), Property 2 is derived: the base angles (angles opposite the equal sides) of an isosceles trapezium are equal.",
+  "enumerated_activities": [
+    {
+      "id": "A-1",
+      "source_section": "section 4.5",
+      "book_ref": "Activity 1 (Geoboard), p.103",
+      "description": "Geoboard Activity: place two rubber bands as perpendicular equal-length diagonals, join the ends to form a quadrilateral, identify and justify its type; then extend one diagonal by 2 cm on both sides and re-identify the resulting quadrilateral."
+    },
+    {
+      "id": "A-2",
+      "source_section": "section 4.5",
+      "book_ref": "Activity 2 (Joining Triangles), p.103–105",
+      "description": "Joining Triangles Activity: (1) join two equilateral triangle cutouts (8 cm sides) along a common edge and identify the quadrilateral; (2) join two isosceles triangle cutouts (8, 8, 6 cm) in two different orientations and identify each resulting quadrilateral; (3) join two scalene triangle cutouts (6, 9, 12 cm) in different ways and identify the resulting quadrilaterals. Justify each answer."
+    }
+  ],
+  "enumerated_worked_examples": [],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 4.1",
+      "book_ref": "Math Talk, p.84",
+      "description": "Can the three equalities (AO = CO, ∠AOB = ∠COD as vertically opposite angles, and AD = CB) be used to establish ∆AOD ≅ ∆COB? Examine whether these three conditions are sufficient for a congruence condition."
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q1(i), p.94",
+      "description": "Find all other angles inside the rectangle with one marked angle of 30° (at vertex A)."
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q1(ii), p.94",
+      "description": "Find all other angles inside the rectangle with one marked angle of 110° (at vertex P)."
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q2(i), p.94",
+      "description": "Draw a quadrilateral whose diagonals have equal lengths of 8 cm, bisect each other, and intersect at an angle of 30°."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q2(ii), p.94",
+      "description": "Draw a quadrilateral whose diagonals have equal lengths of 8 cm, bisect each other, and intersect at an angle of 40°."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q2(iii), p.94",
+      "description": "Draw a quadrilateral whose diagonals have equal lengths of 8 cm, bisect each other, and intersect at an angle of 90°."
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q2(iv), p.94",
+      "description": "Draw a quadrilateral whose diagonals have equal lengths of 8 cm, bisect each other, and intersect at an angle of 140°."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q3, p.94",
+      "description": "Consider a circle with centre O. Line segments PL and AM are two perpendicular diameters. Reason and/or experiment to determine what figure APML is."
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 4.1",
+      "book_ref": "Figure it Out Q4, p.94",
+      "description": "Without paper (only two equal-length sticks and a thread), construct an exact 90° angle. Explain the method."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 4.1",
+      "book_ref": "Math Talk Q5, p.94",
+      "description": "Can 'opposite sides parallel and equal' serve as a definition of a rectangle? That is, is every such quadrilateral a rectangle? (Try This prompt)"
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 4.3",
+      "book_ref": "Figure it Out Q1(i), p.102",
+      "description": "Find the remaining angles in the parallelogram with one marked angle of 40° (at vertex R)."
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 4.3",
+      "book_ref": "Figure it Out Q1(ii), p.102",
+      "description": "Find the remaining angles in the parallelogram with one marked angle of 110° (at vertex E)."
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 4.3",
+      "book_ref": "Figure it Out Q1(iii), p.102",
+      "description": "Find the remaining angles in the rhombus with one marked angle of 30° (at vertex U)."
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 4.3",
+      "book_ref": "Figure it Out Q1(iv), p.102",
+      "description": "Find the remaining angles in the quadrilateral with a marked angle of 20° (at vertex A)."
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 4.3",
+      "book_ref": "Figure it Out Q2, p.102",
+      "description": "Using diagonal properties, construct a parallelogram whose diagonals are of lengths 7 cm and 5 cm and intersect at an angle of 140°."
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 4.3",
+      "book_ref": "Figure it Out Q3, p.102",
+      "description": "Using diagonal properties, construct a rhombus whose diagonals are of lengths 4 cm and 5 cm."
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 4.6",
+      "book_ref": "Figure it Out Q1, p.107",
+      "description": "Find all the sides and the angles of the quadrilateral obtained by joining two equilateral triangles with sides 4 cm."
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 4.6",
+      "book_ref": "Figure it Out Q2, p.107",
+      "description": "Construct a kite whose diagonals are of lengths 6 cm and 8 cm."
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 4.6",
+      "book_ref": "Figure it Out Q3(i), p.107",
+      "description": "Find the remaining angles in the trapezium with one marked angle of 100°."
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 4.6",
+      "book_ref": "Figure it Out Q3(ii), p.107",
+      "description": "Find the remaining angles in the trapezium with one marked angle of 105°."
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 4.6",
+      "book_ref": "Figure it Out Q3(iii), p.107",
+      "description": "Find the remaining angles in the trapezium with one marked angle of 135°."
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 4.6",
+      "book_ref": "Figure it Out Q4, p.107",
+      "description": "Draw a Venn diagram showing the sets of parallelograms, kites, rhombuses, rectangles, and squares. Then answer: (i) What quadrilateral is both a kite and a parallelogram? (ii) Can a quadrilateral be both a kite and a rectangle? (iii) Is every kite a rhombus — if not, what is the correct relationship?"
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 4.6",
+      "book_ref": "Figure it Out Q5, p.107",
+      "description": "PAIR and RODS are two rectangles sharing vertex R with OR = 5 cm and ∠P = 30°. Find ∠IOD."
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 4.6",
+      "book_ref": "Figure it Out Q6, p.107",
+      "description": "Construct a square with diagonal 6 cm without using a protractor."
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 4.6",
+      "book_ref": "Figure it Out Q7, p.108",
+      "description": "CASE is a square with midpoints U, V, W, X of its sides. Determine what type of quadrilateral UVWX is using geometric reasoning and construction/measurement. Find other ways of inscribing a square within a square with vertices on the sides."
+    },
+    {
+      "id": "E-26",
+      "source_section": "section 4.6",
+      "book_ref": "Figure it Out Q8, p.108",
+      "description": "If a quadrilateral has four equal sides and one angle of 90°, will it be a square? Find the answer using geometric reasoning and construction/measurement."
+    },
+    {
+      "id": "E-27",
+      "source_section": "section 4.6",
+      "book_ref": "Figure it Out Q9, p.108",
+      "description": "What type of quadrilateral has opposite sides equal? Justify your answer. (Hint: draw a diagonal and check for congruent triangles.)"
+    },
+    {
+      "id": "E-28",
+      "source_section": "section 4.6",
+      "book_ref": "Figure it Out Q10, p.108",
+      "description": "Will the angle sum also be 360° for a non-convex quadrilateral (one with a reflex interior angle)? Find the answer using geometric reasoning and construction/measurement. (Try This)"
+    },
+    {
+      "id": "E-29",
+      "source_section": "section 4.6",
+      "book_ref": "Figure it Out Q11(i), p.108",
+      "description": "True or false: A quadrilateral whose diagonals are equal and bisect each other must be a square. Justify."
+    },
+    {
+      "id": "E-30",
+      "source_section": "section 4.6",
+      "book_ref": "Figure it Out Q11(ii), p.108",
+      "description": "True or false: A quadrilateral having three right angles must be a rectangle. Justify."
+    },
+    {
+      "id": "E-31",
+      "source_section": "section 4.6",
+      "book_ref": "Figure it Out Q11(iii), p.108",
+      "description": "True or false: A quadrilateral whose diagonals bisect each other must be a parallelogram. Justify."
+    },
+    {
+      "id": "E-32",
+      "source_section": "section 4.6",
+      "book_ref": "Figure it Out Q11(iv), p.108",
+      "description": "True or false: A quadrilateral whose diagonals are perpendicular to each other must be a rhombus. Justify."
+    },
+    {
+      "id": "E-33",
+      "source_section": "section 4.6",
+      "book_ref": "Figure it Out Q11(v), p.109",
+      "description": "True or false: A quadrilateral in which the opposite angles are equal must be a parallelogram. Justify."
+    },
+    {
+      "id": "E-34",
+      "source_section": "section 4.6",
+      "book_ref": "Figure it Out Q11(vi), p.109",
+      "description": "True or false: A quadrilateral in which all the angles are equal is a rectangle. Justify."
+    },
+    {
+      "id": "E-35",
+      "source_section": "section 4.6",
+      "book_ref": "Figure it Out Q11(vii), p.109",
+      "description": "True or false: Isosceles trapeziums are parallelograms. Justify."
+    }
+  ],
+  "conceptual_demand": 3,
+  "activity_count": 2,
+  "demo_count": 0,
+  "exec_load": 1
+}

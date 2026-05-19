@@ -1,0 +1,39 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "viii",
+  "chapter_number": 7,
+  "chapter_title": "Proportional Reasoning-1",
+
+  "core_cg": "CG-1",
+
+  "core_competencies": [
+    {
+      "c_code": "C-1.6",
+      "justification": "The entire chapter is built on exploring and applying ratios — a specific form of fractions — in daily-life situations. Sections 7.1–7.6 develop the concept from image similarity through ratio simplification, proportionality checks, the Rule of Three (cross multiplication), partitioning quantities in a given ratio, and unit-conversion problems; all 12 worked examples and 26 exercises operationalise C-1.6 across diverse real-world contexts (lemonade, cement, profit sharing, tea price, bus capacity, farming, ancient Lilavati problems)."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-2.4",
+      "justification": "Section 7.4 derives the cross-multiplication rule algebraically (a:b::c:d → ad = bc → d = bc/a), and WE-9, WE-10, and WE-12 each set up and solve a linear equation in one unknown to find the missing fourth term in a proportion — substantively engaging the skill of posing and solving equations to find an unknown."
+    },
+    {
+      "c_code": "C-9.2",
+      "justification": "Section 7.4 explicitly introduces Aryabhata's Trairasika (Rule of Three, 499 CE) by name and explains his pramana:phala::ichchha:ichchhaphala formulation, which students use to solve WE-8 and WE-9; E-19 poses an original Lilavati problem attributing it to Bhaskara — both instances require students to recognise and apply contributions of named Indian mathematicians, not merely read about them."
+    },
+    {
+      "c_code": "C-6.1",
+      "justification": "Section 7.1 asks students to reason inductively from image measurements to discover why multiplicative change preserves similarity while additive change does not; Section 7.4 provides a deductive algebraic derivation of cross multiplication from the definition of proportionality; and the recurring Math Talk prompts throughout the chapter require students to formulate and evaluate arguments — collectively constituting substantive engagement with inductive and deductive logic."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to recognise, set up, and solve proportional relationships involving ratios by developing multiplicative reasoning — moving from visual similarity through ratio simplification and cross-multiplication to partitioning quantities — and applying these skills fluently across diverse real-world and historical contexts.",
+
+  "conceptual_demand": 3,
+  "activity_count": 3,
+  "demo_count": 0,
+  "exec_load": 2,
+  "effort_index": 14.5
+}

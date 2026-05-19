@@ -1,0 +1,350 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "viii",
+  "chapter_number": 2,
+  "chapter_title": "Power Play",
+  "sections": [
+    { "ref": "section 2.1", "title": "Experiencing the Power Play", "section_goal": ["recall", "reason"] },
+    { "ref": "section 2.2", "title": "Exponential Notation and Operations", "section_goal": ["recall", "apply"] },
+    { "ref": "section 2.3", "title": "The Other Side of Powers", "section_goal": ["reason", "apply"] },
+    { "ref": "section 2.4", "title": "Powers of 10", "section_goal": ["apply"] },
+    { "ref": "section 2.5", "title": "Did You Ever Wonder?", "section_goal": ["apply"] },
+    { "ref": "section 2.5A", "title": "A Pinch of History", "section_goal": ["recall"] }
+  ],
+  "prose_summary": "Section 2.1 introduces and then reasons through the phenomenon of exponential growth using the concrete situation of paper folding. The section opens by inviting students to fold a sheet of paper repeatedly and guess the resulting thickness. A table of thicknesses after successive folds is provided, and students are guided to observe that each fold doubles the thickness. After filling in missing entries, students discover that 46 folds would produce a thickness exceeding 7,00,000 km. The section identifies this pattern as multiplicative or exponential growth and initiates the idea that a fixed multiplier applied repeatedly produces dramatically different outcomes from additive growth — a foundational reasoning arc that runs through the entire chapter.\n\nSection 2.2 defines exponential notation and derives its operational laws. The section introduces the base-exponent notation (na) as a compact representation of repeated multiplication, building from the paper-folding context. It establishes that n² means n×n and nⁿ means n multiplied by itself a times, and extends this to algebraic expressions such as a³b². Three core laws are then derived from first principles: the product rule (nᵃ × nᵇ = nᵃ⁺ᵇ), the power-of-a-power rule ((nᵃ)ᵇ = nᵃᵇ), and the product-of-same-powers rule (mᵃ × nᵃ = (mn)ᵃ), with the corresponding quotient form. Each law emerges from a narrative context — 'The Stones that Shine', 'Magical Pond', and 'How Many Combinations' — so students apply the notation to count arrangements and combinatorial outcomes. Prime factorisation using exponential form is also practised here. The section applies these ideas to counting passwords on digit-locks and letter-locks.\n\nSection 2.3 extends the exponent laws to zero and negative exponents. The section reasons from the division rule nᵃ ÷ nᵇ = nᵃ⁻ᵇ to define n⁰ = 1 (for n ≠ 0), demonstrating that 2⁴ ÷ 2⁴ = 2⁰ = 1. It then extends further: when the divisor's exponent exceeds the dividend's (e.g., 2⁴ ÷ 2⁵), the result must be 2⁻¹ = 1/2, thereby defining negative exponents as reciprocals. The 'Power Lines' activity presents powers of 4 and 7 arranged on a number line, connecting multiplication/division by the base to moving up or down the line. Students use this tool to read off values, verify relationships, and compare quantities. The section closes by posing whether the laws extend to integer exponents in general.\n\nSection 2.4 applies powers of 10 to the place-value representation of numbers and introduces scientific notation. The section begins by writing multi-digit integers like 47561 in expanded form using powers of 10, then extends this to decimals using negative powers (e.g., 10⁻¹ for tenths). It motivates scientific notation by showing how large numbers — the Sun's distance from the galactic centre, the mass of the Earth — become unreadable when written in full. The standard form x × 10ʸ (1 ≤ x < 10, y any integer) is defined, and students practise converting numbers into and out of this form. The section clarifies that in scientific notation the exponent conveys magnitude while the coefficient conveys precision — a key conceptual point about approximate measurement.\n\nSection 2.5 applies exponential reasoning and scientific notation to open-ended estimation problems. The section introduces a two-phase problem-solving approach: first guess instinctively, then model with assumptions and compute. Contexts include the 'Tulābhāra' tradition (donating goods equal to a person's weight), the number of 1-rupee coins needed to balance a person, and a ladder of steps to the Moon. Students contrast linear growth (additive, fixed step of 20 cm) with exponential growth (multiplicative, each fold doubles) to show that 1,92,20,00,000 ladder steps equal just 46 paper folds. A survey of large numbers in nature — populations of endangered species, ants, trees, drops of water — is presented using powers of 10, followed by a timeline mapping powers of 10 in seconds to geological and cosmological events.\n\nSection 2.5A (A Pinch of History) recalls that Indian mathematical traditions assigned names to very large powers of ten long before modern notation. The section identifies how Lalitavistara, Mahaviracharya's Ganita-sara-sangraha, and Jaina texts like Amalasiddhi assigned names to powers up to 10⁹⁶ and beyond. The Indian naming system (lakh, crore, arab, kharab, neel, padma, shankh) and the American system (million, billion, trillion) are compared using exponential notation, showing how each extends by a factor of 100 or 1000 respectively. The section concludes with the googol (10¹⁰⁰) and googolplex, and notes record-high denominations of currency notes as an amusing application.",
+  "enumerated_activities": [
+    {
+      "id": "A-1",
+      "source_section": "section 2.1",
+      "book_ref": "Activity 1, p.19",
+      "description": "Fold different types of paper (regular sheet, newspaper, tissue) repeatedly and record how many times each can be folded. Observe the pattern of thickness doubling with each fold."
+    },
+    {
+      "id": "A-2",
+      "source_section": "section 2.1",
+      "book_ref": "Activity 2, p.20",
+      "description": "Fill in the missing thickness values in the table for folds 18–26 (given fold 17 ≈ 131 cm, fold 20 ≈ 10.4 m) and then for folds 27–30 and 31–45 to experience the scale of exponential growth."
+    }
+  ],
+  "enumerated_worked_examples": [
+    {
+      "id": "WE-1",
+      "source_section": "section 2.2",
+      "book_ref": "Example, section 2.2 p.22",
+      "description": "Express 32400 as a product of prime factors in exponential form using a factor tree: 32400 = 2⁴ × 5² × 3⁴."
+    },
+    {
+      "id": "WE-2",
+      "source_section": "section 2.2",
+      "book_ref": "Example, section 2.2 p.24",
+      "description": "Write p⁴ × p⁶ in exponential form: p⁴ × p⁶ = p¹⁰, illustrating the product rule nᵃ × nᵇ = nᵃ⁺ᵇ with an algebraic base."
+    },
+    {
+      "id": "WE-3",
+      "source_section": "section 2.2",
+      "book_ref": "Example, section 2.2 p.24",
+      "description": "Evaluate 4⁶ in two ways: as (4³)² = 64² = 4096 and as (4²)³ = 16³ = 4096, demonstrating the power-of-a-power rule."
+    },
+    {
+      "id": "WE-4",
+      "source_section": "section 2.2",
+      "book_ref": "Example, section 2.2 p.25",
+      "description": "Compute 2⁵ × 5⁵ using the rule mᵃ × nᵃ = (mn)ᵃ: 2⁵ × 5⁵ = 10⁵ = 1,00,000."
+    },
+    {
+      "id": "WE-5",
+      "source_section": "section 2.2",
+      "book_ref": "Example, section 2.2 p.25",
+      "description": "Simplify 10⁴ ÷ 5⁴ using the quotient rule mᵃ ÷ nᵃ = (m÷n)ᵃ: 10⁴ ÷ 5⁴ = 2⁴ = 16."
+    },
+    {
+      "id": "WE-6",
+      "source_section": "section 2.3",
+      "book_ref": "Example, section 2.3 p.27",
+      "description": "Derive the division law nᵃ ÷ nᵇ = nᵃ⁻ᵇ by cancelling common factors: 2⁴ ÷ 2³ = 2¹, 2⁴ ÷ 2² = 2², step by step."
+    },
+    {
+      "id": "WE-7",
+      "source_section": "section 2.3",
+      "book_ref": "Example, section 2.3 p.28",
+      "description": "Define n⁰ = 1 by applying the division rule to 2⁴ ÷ 2⁴ = 2⁰ = 1, then extend to show x⁰ = 1 for any non-zero x."
+    },
+    {
+      "id": "WE-8",
+      "source_section": "section 2.3",
+      "book_ref": "Example, section 2.3 p.28",
+      "description": "Define negative exponents: 2⁴ ÷ 2⁵ = 2⁻¹ = 1/2; 2⁴ ÷ 2¹⁰ = 2⁻⁶ = 1/64. Show that n⁻ᵃ = 1/nᵃ and equivalently nᵃ = 1/n⁻ᵃ."
+    },
+    {
+      "id": "WE-9",
+      "source_section": "section 2.4",
+      "book_ref": "Example, section 2.4 p.30",
+      "description": "Write 47561 in expanded form using powers of 10: (4×10⁴) + (7×10³) + (5×10²) + (6×10¹) + (1×10⁰)."
+    },
+    {
+      "id": "WE-10",
+      "source_section": "section 2.4",
+      "book_ref": "Example, section 2.4 p.30",
+      "description": "Write 561.903 in expanded form using positive and negative powers of 10: (5×10²) + (6×10¹) + (1×10⁰) + (9×10⁻¹) + (0×10⁻²) + (3×10⁻³)."
+    },
+    {
+      "id": "WE-11",
+      "source_section": "section 2.4",
+      "book_ref": "Example, section 2.4 p.31",
+      "description": "Convert 5900 to scientific notation in multiple ways, establishing that the standard form is 5.9 × 10³. Similarly convert 20800 = 2.08 × 10⁴ and 80,00,000 = 8 × 10⁶."
+    },
+    {
+      "id": "WE-12",
+      "source_section": "section 2.5",
+      "book_ref": "Example, section 2.5 p.33",
+      "description": "Model the Tulābhāra problem: assuming Roxie's weight = 45 kg and jaggery cost = ₹70/kg, compute worth of donated jaggery = 45 × 70 = ₹3150; similarly for wheat."
+    },
+    {
+      "id": "WE-13",
+      "source_section": "section 2.5",
+      "book_ref": "Example, section 2.5 p.35",
+      "description": "Calculate the number of 20 cm steps in a ladder to the Moon (3,84,400 km), deriving 1,92,20,00,000 steps ≈ 1.922 × 10⁹ — linear growth — contrasted with just 46 exponential folds."
+    }
+  ],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 2.1",
+      "book_ref": "Math Talk, section 2.1 p.20",
+      "description": "Fill the table of paper-fold thicknesses for folds 18–26, then 27–30, then 31–45. Observe and discuss the pattern of exponential growth."
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 2.2",
+      "book_ref": "Figure it Out Q1, section 2.2 p.22",
+      "description": "Express repeated-multiplication expressions in exponential form: (i) 6×6×6×6, (ii) y×y, (iii) b×b×b×b, (iv) 5×5×7×7×7, (v) 2×2×a×a, (vi) a×a×a×c×c×c×c×d."
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 2.2",
+      "book_ref": "Figure it Out Q2, section 2.2 p.23",
+      "description": "Express each number as a product of prime-factor powers in exponential form: (i) 648, (ii) 405, (iii) 540, (iv) 3600."
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 2.2",
+      "book_ref": "Figure it Out Q3, section 2.2 p.23",
+      "description": "Write the numerical value of each exponential expression: (i) 2×10³, (ii) 7²×2³, (iii) 3×4⁴, (iv) (–3)²×(–5)², (v) 3²×10⁴, (vi) (–2)⁵×(–10)⁶."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 2.2",
+      "book_ref": "Math Talk, section 2.2 p.24",
+      "description": "Use the product rule to compute: (i) 2⁹, (ii) 5⁷, (iii) 4⁶ — each by splitting the exponent into two convenient parts and multiplying the resulting values."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 2.2",
+      "book_ref": "Figure it Out, section 2.2 p.24",
+      "description": "Express each power as a power-of-a-power in at least two different ways: (i) 8⁶, (ii) 7¹⁵, (iii) 9¹⁴, (iv) 5⁸."
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 2.2",
+      "book_ref": "Try This, section 2.2 p.26",
+      "description": "Think about how many password combinations are possible in different real-world contexts: (i) Indian Pincodes, (ii) mobile numbers, (iii) vehicle registration numbers. Find out how these codes are allotted/generated."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 2.3",
+      "book_ref": "Math Talk, section 2.3 p.27",
+      "description": "Express 2¹⁰⁰ ÷ 2²⁵ as a power of 2 using the division rule."
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 2.3",
+      "book_ref": "Math Talk, section 2.3 p.28",
+      "description": "Discuss why n cannot be 0 in the division law nᵃ ÷ nᵇ = nᵃ⁻ᵇ, and define n⁰ using the derived identity 2⁴ ÷ 2⁴ = 1."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 2.3",
+      "book_ref": "Figure it Out, section 2.3 p.29",
+      "description": "Write equivalent forms of negative exponents: (i) 2⁻⁴, (ii) 10⁻⁵, (iii) (–7)⁻², (iv) (–5)⁻³, (v) 10⁻¹⁰⁰."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 2.3",
+      "book_ref": "Figure it Out, section 2.3 p.29",
+      "description": "Simplify and write in exponential form: (i) 2⁻⁴ × 2⁷, (ii) 3² × 3⁻⁵ × 3⁶, (iii) p³ × p⁻¹⁰, (iv) 2⁴ × (–4)⁻², (v) 8ᵖ × 8ᵍ."
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 2.3",
+      "book_ref": "Figure it Out, section 2.3 p.30",
+      "description": "Use the power line for 7 to answer fill-in questions: e.g., 2401×49 = ?, 49³ = ?, 343×2401 = ?, 16807/49 = ?, 7/343 = ?, 16807/823543 = ?, 117649 × 1/343 = ?, (1/343)×(1/343) = ?."
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 2.4",
+      "book_ref": "Figure it Out, section 2.4 p.30",
+      "description": "Write these numbers in expanded form using powers of 10: (i) 172, (ii) 5642, (iii) 6374."
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 2.4",
+      "book_ref": "Figure it Out, section 2.4 p.32",
+      "description": "Express the following numbers in standard (scientific) form: (i) 59,853; (ii) 65,950; (iii) 34,30,000; (iv) 70,04,00,00,000."
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 2.5",
+      "book_ref": "Figure it Out, section 2.5 p.33",
+      "description": "Estimate the worth (in rupees) of jaggery equal to Roxie's weight and wheat equal to Estu's weight for the Tulābhāra scenario. Make necessary assumptions about weights and current market prices."
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 2.5",
+      "book_ref": "Try This, section 2.5 p.34",
+      "description": "Estimate the number of 1-rupee coins needed to equal a person's weight. First guess instinctively, then model and compute. Extend to 5-rupee coins and 10-rupee notes."
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 2.5",
+      "book_ref": "Math Talk, section 2.5 p.34",
+      "description": "Estimate how many people might benefit from donating notebooks equal to one's weight annually, and from annadāna equal to one's weight. Guess first, then compute."
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 2.5",
+      "book_ref": "Try This, section 2.5 p.34",
+      "description": "Estimate how long ago a group of pādayātra pilgrims started their 400 km walk (assuming they arrived this morning). Make assumptions about walking pace and hours walked per day."
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 2.5",
+      "book_ref": "Try This, section 2.5 p.35",
+      "description": "How many times could a person circumnavigate the Earth (40,000 km) in their lifetime walking non-stop? Guess first, then compute."
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 2.5",
+      "book_ref": "Figure it Out, section 2.5 p.38",
+      "description": "Calculate using scientific notation from the animal-population data: (i) ants per human, (ii) number of starling flocks of 10,000, (iii) total leaves if each of 3×10¹² trees has 10⁴ leaves, (iv) sheets of paper needed to reach the Moon."
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 2.5",
+      "book_ref": "Try This, section 2.5 p.39",
+      "description": "Estimate Roxie's age in hours (given she completed 13 years a few weeks ago), and find Estu's date of birth given he is 4070 days old. Find out how old you would be if you had lived for a million seconds."
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 2.5",
+      "book_ref": "Figure it Out, section 2.5 p.42",
+      "description": "Calculate using scientific notation from the time-scale data: (i) time in seconds to count all stars in the universe (2×10²³) at one per second; (ii) time to drink all water on Earth (200 ml/glass every 10 seconds)."
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 2.5",
+      "book_ref": "Try This, section 2.5 p.42",
+      "description": "Think of real-world events or phenomena whose duration is of the order of (i) 10⁵ seconds and (ii) 10⁶ seconds. Write them in scientific notation."
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 2.5A",
+      "book_ref": "Figure it Out, section 2.5A p.43",
+      "description": "What does the first part of each name (million, billion, trillion, quadrillion …) denote in the American naming system?"
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 2.5A",
+      "book_ref": "Try This, section 2.5A p.43",
+      "description": "Find the highest denomination currency note ever printed in the world and express its face value using powers of 10 in scientific notation."
+    },
+    {
+      "id": "E-26",
+      "source_section": "section 2.5A",
+      "book_ref": "Figure it Out Q1, section 2.5A p.44",
+      "description": "Find the units digit in the value of 22²⁴ ÷ 43². [Hint: 4 = 2²]"
+    },
+    {
+      "id": "E-27",
+      "source_section": "section 2.5A",
+      "book_ref": "Figure it Out Q2, section 2.5A p.44",
+      "description": "There are 5 bottles in a container. Every day a new container is brought in. How many bottles are there after 40 days?"
+    },
+    {
+      "id": "E-28",
+      "source_section": "section 2.5A",
+      "book_ref": "Figure it Out Q3, section 2.5A p.44",
+      "description": "Write each given number as the product of two or more powers in three different ways (powers can be any integers): (i) 64³, (ii) 192⁸, (iii) 32⁻⁵."
+    },
+    {
+      "id": "E-29",
+      "source_section": "section 2.5A",
+      "book_ref": "Figure it Out Q4, section 2.5A p.44",
+      "description": "Examine each statement and decide if it is Always True, Only Sometimes True, or Never True: (i) cube numbers are also square numbers; (ii) fourth powers are also square numbers; (iii) fifth power divisible by cube; (iv) product of two cubes is a cube; (v) q⁴⁶ is both a 4th power and a 6th power."
+    },
+    {
+      "id": "E-30",
+      "source_section": "section 2.5A",
+      "book_ref": "Figure it Out Q5, section 2.5A p.44",
+      "description": "Simplify and write in exponential form: (i) 10⁻² × 10⁻⁵, (ii) 5⁷ ÷ 5⁴, (iii) 9⁻⁷ ÷ 9⁴, (iv) (13⁻²)⁻³, (v) m⁵n¹²(mn)⁹."
+    },
+    {
+      "id": "E-31",
+      "source_section": "section 2.5A",
+      "book_ref": "Figure it Out Q6, section 2.5A p.45",
+      "description": "Given 12² = 144, find: (i) (1.2)², (ii) (0.12)², (iii) (0.012)², (iv) 120²."
+    },
+    {
+      "id": "E-32",
+      "source_section": "section 2.5A",
+      "book_ref": "Figure it Out Q7, section 2.5A p.45",
+      "description": "Circle the numbers that are the same among: 2⁴×3⁶, 6⁴×3², 6¹⁰, 18²×6², 6²⁴."
+    },
+    {
+      "id": "E-33",
+      "source_section": "section 2.5A",
+      "book_ref": "Figure it Out Q8, section 2.5A p.45",
+      "description": "Identify the greater number in each pair: (i) 4³ or 3⁴, (ii) 2⁸ or 8², (iii) 100² or 2¹⁰⁰."
+    },
+    {
+      "id": "E-34",
+      "source_section": "section 2.5A",
+      "book_ref": "Figure it Out Q9, section 2.5A p.45",
+      "description": "A dairy needs unique ID codes for 8.5 billion milk packets using digits 0–9. How many digits must each code consist of?"
+    },
+    {
+      "id": "E-35",
+      "source_section": "section 2.5A",
+      "book_ref": "Figure it Out Q10, section 2.5A p.45",
+      "description": "64 is both a square (8²) and a cube (4³). Are there other such numbers? Describe all numbers that are both perfect squares and perfect cubes in general. (Math Talk)"
+    },
+    {
+      "id": "E-36",
+      "source_section": "section 2.5A",
+      "book_ref": "Figure it Out Q11, section 2.5A p.45",
+      "description": "A digital locker has an alphanumeric passcode of length 5 (digits 0–9 and letters A–Z). How many such codes are possible?"
+    },
+    {
+      "id": "E-37",
+      "source_section": "section 2.5A",
+      "book_ref": "Figure it Out Q12, section 2.5A p.45",
+      "description": "The worldwide population of sheep and goats is each about 10⁹. What is the total population? Choose the correct option from: (i) 20⁹, (ii) 10¹¹, (iii) 10¹⁰, (iv) 10¹⁸, (v) 2×10⁹, (vi) 10⁹+10⁹."
+    },
+    {
+      "id": "E-38",
+      "source_section": "section 2.5A",
+      "book_ref": "Figure it Out Q13, section 2.5A p.45",
+      "description": "Calculate and write in scientific notation: (i) total pieces of clothing if each of 8.2×10⁹ people has 30 pieces; (ii) total honeybees if 10⁸ colonies each have 50,000 bees; (iii) total bacterial cells in all humans (38 trillion per person × world population); (iv) total time spent eating in a lifetime in seconds."
+    },
+    {
+      "id": "E-39",
+      "source_section": "section 2.5A",
+      "book_ref": "Figure it Out Q14, section 2.5A p.45",
+      "description": "What was the date 1 arab (1 billion) seconds ago? (Try This)"
+    }
+  ],
+  "conceptual_demand": 2,
+  "activity_count": 2,
+  "demo_count": 0,
+  "exec_load": 1
+}

@@ -1,0 +1,491 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "viii",
+  "chapter_number": 8,
+  "chapter_title": "Fractions in Disguise",
+  "sections": [
+    { "ref": "section 1.1", "title": "Fractions as Percentages", "section_goal": ["recall", "apply"] },
+    { "ref": "section 1.2", "title": "Percentage of Some Quantity", "section_goal": ["apply"] },
+    { "ref": "section 1.3", "title": "Using Percentages", "section_goal": ["apply"] }
+  ],
+  "prose_summary": "Section 1.1 defines percentages as fractions with denominator 100, tracing the word 'per cent' to the Latin 'per centum' meaning 'out of hundred', then applies two methods — equivalent-fraction scaling and cross-multiplication — to convert any fraction to a percentage and vice versa. The section opens with concrete visual examples: Surya's red-paint mixture (3/4 = 75%) and prize-money savings (2/5 = 40%), each illustrated with bar models and multiple solution strategies. It also introduces the FDP trio — fractions, decimals, and percentages — showing their interchangeability (e.g., 4/10 = 0.4 = 40%). Historical context is woven in, noting that 'per hundred' ideas appear in Kautilya's Arthashastra and Roman tax practices. The section closes with a contextual motivation: percentages unify comparisons that are otherwise opaque (e.g., 9/34 vs. 13/45 of sugar in biscuits), and base 100 is privileged because it integrates cleanly with the decimal system.\n\nSection 1.2 applies percentage reasoning to compute the percentage of a given quantity. Starting from the principle that y% of a value means (y/100) × value, the section works through increasingly complex situations: finding the weight of sugar in biscuits consumed (25% of 120 g = 30 g), computing percentages by free-hand mental strategies (25% = 1/4, 10% doubles to 20%), and interpreting ratios as percentages (millet:water = 2:7 means 22.22% millet). It also introduces percentages greater than 100 through Kishanlal's daily sales targets (120% meaning 20% above target, 250% meaning 2.5 times the original). The farmer harvest example (650/260 × 100 = 250%) consolidates this. The section emphasises estimation before calculation and the use of bar models to visualise proportional relationships.\n\nSection 1.3 applies percentages to four major real-world contexts. First, it uses percentage conversion to compare proportions — Eesha's English (84%) vs. Science (87.5%) scores and badam drink mix ingredient proportions. Second, it defines and computes percentage increase and decrease (tomato price up 40%; theatre footfall down 37.5%) and clarifies that 'population is 165% of' and 'population increased by 65%' are equivalent statements. Third, it develops profit and loss: cost price, marked price, selling price, discount, profit margin, and loss percentage are all computed using proportional reasoning; worked examples include Kishanlal's sweater (43.3% profit), Raghu's rice loss (14.28%), Shyamala's vase (18% loss → sell at 82% of CP), and the paradox that a 50% markup followed by a 50% discount results in a 25% loss, not break-even. The GST context extends the idea to taxes. Fourth, it introduces simple interest and compound interest: without compounding, the total amount is p(1 + rt); with compounding, it is p(1 + r)^t. The contrast is built up step-by-step with ₹6000 at 10% p.a. over three years (₹7800 vs. ₹7986). Depreciation is treated as negative compounding — a TV losing 5% per year and a village population declining 10% per decade both follow the same multiplicative pattern (multiply by 0.95 or 0.9 each period). The section closes with 'tricky percentages': compound discounts (30% + 20% ≠ 50% sequential discount; only 44% effective reduction vs. 50% at a rival), and the Surbhi mishap showing that a 50% margin + 50% discount yields 0.75x not x, a 25% loss.",
+  "enumerated_activities": [
+    {
+      "id": "A-1",
+      "source_section": "section 1.2",
+      "book_ref": "Activity: How Close Can You Get?, p.8",
+      "description": "Students work in pairs, each choosing a number; both independently estimate the percentage equivalent of the fraction a/b (a < b) formed by the two numbers and announce answers within 5 seconds. The closer estimate wins. Played for 10 rounds to build proportional number sense."
+    }
+  ],
+  "enumerated_worked_examples": [
+    {
+      "id": "WE-1",
+      "source_section": "section 1.1",
+      "book_ref": "Example 1, section 1.1 p.1",
+      "description": "Surya mixes red and yellow paint; red makes up 3/4 of the mixture. Convert 3/4 to a percentage using equivalent fractions and two algebraic methods. Answer: 75%."
+    },
+    {
+      "id": "WE-2",
+      "source_section": "section 1.1",
+      "book_ref": "Example 2, section 1.1 p.2",
+      "description": "Surya saves 2/5 of prize money for a canvas. Express 2/5 as a percentage using three methods (equivalent fraction, cross-multiplication, bar model). Answer: 40%."
+    },
+    {
+      "id": "WE-3",
+      "source_section": "section 1.1",
+      "book_ref": "Example 3, section 1.1 p.3",
+      "description": "Express 24% as a fraction. Since percentage = fraction over 100, 24% = 24/100 = 12/50 = 6/25. Generalises: z% equals any fraction equivalent to z/100."
+    },
+    {
+      "id": "WE-4",
+      "source_section": "section 1.2",
+      "book_ref": "Example 1, section 1.2 p.5",
+      "description": "Madhu eats 120 g of 25%-sugar biscuits (30 g sugar); Madhav eats 95 g of 35%-sugar biscuits (33.25 g sugar). Multiple methods: ratio, proportional equation, unit-rate. Concludes Madhav consumed more sugar."
+    },
+    {
+      "id": "WE-5",
+      "source_section": "section 1.2",
+      "book_ref": "Example 2, section 1.2 p.7",
+      "description": "Free-hand computation table: find 25%, 10%, 20%, 5% of values 100, 200, 50, 80, 10, 35, 287 without pen and paper, exploiting the relationships between percentages (e.g., 20% = 2 × 10%)."
+    },
+    {
+      "id": "WE-6",
+      "source_section": "section 1.2",
+      "book_ref": "Example 2, section 1.2 p.8",
+      "description": "The FDP trio: show that 50% = 1/2 = 0.5, so multiplying a value by 0.5 gives 50% of it. Similarly for 10%. Students complete a table converting percents to fractions and decimals for 50%, 100%, 25%, 75%, 10%, 1%, 5%, 43%."
+    },
+    {
+      "id": "WE-7",
+      "source_section": "section 1.2",
+      "book_ref": "Example 3, section 1.2 p.8",
+      "description": "Zubin needs 80% of 75 marks to get an A grade. Three methods: fraction multiplication (4/5 × 75 = 60), decimal multiplication (0.8 × 75 = 60), proportional reasoning with bar model. Answer: 60 marks."
+    },
+    {
+      "id": "WE-8",
+      "source_section": "section 1.2",
+      "book_ref": "Example 4, section 1.2 p.9",
+      "description": "Millet kanji: millet-to-water ratio is 2:7, so millet is 2/9 of mixture. Estimate first, then compute 2/9 × 100 = 22.22%. For 500 ml of mixture, millet = 5 × 22.22 = 111.1 ml."
+    },
+    {
+      "id": "WE-9",
+      "source_section": "section 1.2",
+      "book_ref": "Example 5, section 1.2 p.10",
+      "description": "A cyclist has covered 40% (92 km) of the Delhi-to-Agra route. Find remaining distance using four methods: proportional equation (d = 230, remainder = 138 km), ratio method, percentage scaling (40% → 20% → 60%), and algebraic setup."
+    },
+    {
+      "id": "WE-10",
+      "source_section": "section 1.2",
+      "book_ref": "Example 6, section 1.2 p.10",
+      "description": "Kishanlal's daily sales vs. ₹5000 target: Day 1 ₹2000 = 40%, Day 2 ₹3500 = 70%, Day 3 ₹5000 = 100%, Day 4 ₹6000 = 120%. Introduces percentages greater than 100. Students compute Days 5–8."
+    },
+    {
+      "id": "WE-11",
+      "source_section": "section 1.2",
+      "book_ref": "Example 7, section 1.2 p.12",
+      "description": "A farmer's harvest this year (650 kg) as a percentage of last year's (260 kg): 650/260 × 100 = 250%. Illustrates that 250% means 2.5 times the original."
+    },
+    {
+      "id": "WE-12",
+      "source_section": "section 1.3",
+      "book_ref": "Example 1, section 1.3 p.14",
+      "description": "Eesha: English score 42/50 = 84%, Science score 70/80 = 87.5%. Resolves apparent ambiguity about which is better by converting both to percentages. Science score is higher."
+    },
+    {
+      "id": "WE-13",
+      "source_section": "section 1.3",
+      "book_ref": "Example 2, section 1.3 p.15",
+      "description": "Know Your Contents (KYC): Two badam drink mixes (DEF: 99 g sugar in 150 g total = 66%; Zacni: unknown). Students complete a table converting ingredient weights to percentages to compare proportions."
+    },
+    {
+      "id": "WE-14",
+      "source_section": "section 1.3",
+      "book_ref": "Example 3, section 1.3 p.15",
+      "description": "'Population in 1991 is 165% of 1961' and 'increased by 65% from 1961 to 1991' — both mean q = 1.65p. Algebra confirms equivalence of 'is P% of' and 'increased by (P−100)%' statements."
+    },
+    {
+      "id": "WE-15",
+      "source_section": "section 1.3",
+      "book_ref": "Example 4, section 1.3 p.17",
+      "description": "Kishanlal buys a sweater at ₹300, marks it at ₹480, sells at ₹430. Profit = ₹130 on CP of ₹300 → percentage profit = 130/300 × 100 = 43.3%. Students also find wholesaler and manufacturer profit percentages."
+    },
+    {
+      "id": "WE-16",
+      "source_section": "section 1.3",
+      "book_ref": "Example 5, section 1.3 p.17",
+      "description": "Raghu buys rice at ₹35/kg, sells 10 kg for ₹300 (CP = ₹350). Loss = ₹50. Percentage loss = 50/350 × 100 = 14.28%."
+    },
+    {
+      "id": "WE-17",
+      "source_section": "section 1.3",
+      "book_ref": "Example 6, section 1.3 p.17",
+      "description": "Shyamala sells a damaged vase at 18% loss on CP of ₹2650. Two methods: SP = 82% of 2650 = ₹2173; or loss amount = 18/100 × 2650 = 477, SP = 2650 − 477 = ₹2173."
+    },
+    {
+      "id": "WE-18",
+      "source_section": "section 1.3",
+      "book_ref": "Example 7, section 1.3 p.21",
+      "description": "₹6000 deposited at 10% p.a. for 3 years. Option 1 (no compounding): interest returned each year, total = ₹7800. Option 2 (compounding): interest added back each year, total = ₹7986. Side-by-side tables build intuition."
+    },
+    {
+      "id": "WE-19",
+      "source_section": "section 1.3",
+      "book_ref": "Example 8, section 1.3 p.22",
+      "description": "What % of the deposited amount is returned under each option? Without compounding: 7800/6000 × 100 = 130% (30% gain). With compounding: 7986/6000 × 100 = 133.1% (33.1% gain). Compounding expressed as 6000 × 1.1³."
+    },
+    {
+      "id": "WE-20",
+      "source_section": "section 1.3",
+      "book_ref": "Example 9, section 1.3 p.23",
+      "description": "Generalises to principal p, rate r, time t. Without compounding: total = p(1 + rt). With compounding: total = p(1 + r)^t. Derivation shown step by step for both options."
+    },
+    {
+      "id": "WE-21",
+      "source_section": "section 1.3",
+      "book_ref": "Example 10, section 1.3 p.24",
+      "description": "TV bought at ₹21,000; depreciates 5% after 1 year. Two equivalent methods: reduce by 5% (21000 − 1050 = ₹19,950) or multiply by 95% (0.95 × 21000 = ₹19,950)."
+    },
+    {
+      "id": "WE-22",
+      "source_section": "section 1.3",
+      "book_ref": "Example 11, section 1.3 p.24",
+      "description": "Village population decreasing by 10% per decade from 1250. After 3 decades: 1250 × 0.9³ ≈ 911. Side-by-side: multiplicative vs. iterative subtraction approach. Rounds to ~910."
+    },
+    {
+      "id": "WE-23",
+      "source_section": "section 1.3",
+      "book_ref": "Example 12, section 1.3 p.26",
+      "description": "Cakely offers 30% + 20% sequential discount vs. Cakify's flat 50%. On ₹200 cake: Cakely → ₹140 → ₹112 (44% total reduction); Cakify → ₹100 (50% reduction). Compounding of discounts means 30% + 20% < 50%."
+    },
+    {
+      "id": "WE-24",
+      "source_section": "section 1.3",
+      "book_ref": "Example 13, section 1.3 p.27",
+      "description": "Surbhi marks goods at 50% profit margin (1.5x), then offers 50% discount (0.75x). Results in 25% loss, not break-even. Derives the correct discount for break-even: 33.33%. Bar model illustrates the three price levels."
+    }
+  ],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 1.1",
+      "book_ref": "Figure it Out Q1, section 1.1 p.3",
+      "description": "Express six fractions as percentages: 3/5, 7/14, 9/20, 72/150, 1/3, 5/11."
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 1.1",
+      "book_ref": "Figure it Out Q2, section 1.1 p.3",
+      "description": "Nandini has 25 marbles, 15 white. What percentage are white? Choose from given options (MCQ)."
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 1.1",
+      "book_ref": "Figure it Out Q3, section 1.1 p.3",
+      "description": "15 of 80 students come to school by walking. What percentage come by walking?"
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 1.1",
+      "book_ref": "Figure it Out Q4, section 1.1 p.3",
+      "description": "Match four runners (A, B, C, D) shown at different positions on a race track to their approximate percentage completion from a given set (55%, 20%, 38%, 72%, 84%, 93%)."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 1.1",
+      "book_ref": "Figure it Out Q5, section 1.1 p.4",
+      "description": "Insert >, <, or = without calculating: (i) 50% __ 5%; (ii) 5/10 __ 50%; (iii) 3/11 __ 61%; (iv) 30% __ 1/3."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 1.2",
+      "book_ref": "Figure it Out Q1, section 1.2 p.12",
+      "description": "Find missing numbers using percentage bar models: (i) 20% of ? = 12 (given 100% shown); (ii) ? is 60% of 75; (iii) ? is 140% of ?, with two unknowns and bar models provided."
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 1.2",
+      "book_ref": "Figure it Out Q2, section 1.2 p.12",
+      "description": "Find the value and draw bar models for: (i) 25% of 160; (ii) 16% of 250; (iii) 62% of 360; (iv) 140% of 40; (v) 1% of 1 hour; (vi) 7% of 10 kg."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 1.2",
+      "book_ref": "Figure it Out Q3, section 1.2 p.12",
+      "description": "Surya made 60 ml of deep orange paint with red paint making up 3/4. How much red paint was used? (Apply percentage/fraction to find a quantity.)"
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 1.2",
+      "book_ref": "Figure it Out Q4, section 1.2 p.13",
+      "description": "Insert >, <, = without computing (verify after estimating): (i) 50% of 510 vs. 50% of 515; (ii) 37% of 148 vs. 73% of 148; (iii) 29% of 43 vs. 92% of 110; (iv) 30% of 40 vs. 40% of 50; (v) 45% of 200 vs. 10% of 490; (vi) 30% of 80 vs. 24% of 64."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 1.2",
+      "book_ref": "Figure it Out Q5, section 1.2 p.13",
+      "description": "Fill in the blanks using scaling relationships: (i) given 30% of k = 70, find 60%, 90%, 120% of k; (ii) given 100% of m = 215, find 10%, 1%, 6%; (iii) given 90% of n = 270, find 9%, 18%, 100%; (iv) make 2 more questions for peers."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 1.2",
+      "book_ref": "Figure it Out Q6, section 1.2 p.13",
+      "description": "Fill in the blanks: (i) 3 is __% of 300; (ii) __ is 40% of 4; (iii) 40 is 80% of __."
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 1.2",
+      "book_ref": "Figure it Out Q7, section 1.2 p.13",
+      "description": "Is 10% of a day longer than 1% of a week? Create similar comparison questions for peers."
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 1.2",
+      "book_ref": "Figure it Out Q8, section 1.2 p.13",
+      "description": "Math Talk: Mariam's bull ate (n−1) of n units of fodder each day for days 1 through 99. Represent each day's eaten fodder as a percentage of what was given. What pattern emerges? (Class-wide task.)"
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 1.2",
+      "book_ref": "Figure it Out Q9, section 1.2 p.13",
+      "description": "Workers pick coffee berries in 20% of a plantation in 18 days. How long to cover the whole plantation at the same rate? Why must we assume constant rate?"
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 1.2",
+      "book_ref": "Figure it Out Q10, section 1.2 p.13",
+      "description": "Badminton training: warm-up:play:cool-down = 10%:80%:10% of 90 minutes. Find the duration of each activity."
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 1.2",
+      "book_ref": "Figure it Out Q11, section 1.2 p.13",
+      "description": "An estimated 90% of the world's population lives in the Northern Hemisphere. Find the approximate number using current worldwide population."
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 1.2",
+      "book_ref": "Figure it Out Q12, section 1.2 p.13",
+      "description": "Halwa recipe for 4 people: Rava 40%, Sugar 40%, Ghee 20%. (i) Proportions remain the same for 8 people? (ii) If total weight is 2 kg, find weight of each ingredient."
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q1, section 1.3 p.19",
+      "description": "Shopkeeper buys a geometry box for ₹75 and sells for ₹110. Find profit margin with respect to cost."
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q2, section 1.3 p.19",
+      "description": "Carpenter's cost for a chair is ₹475 with a desired 50% profit margin. Find the selling price."
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q3, section 1.3 p.19",
+      "description": "Company revenue was ₹2.5 crore with 25% profit margin. Find total expenditure."
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q4, section 1.3 p.19",
+      "description": "A clothing shop offers 25% discount on shirts originally priced at ₹300. How much does Anwar pay?"
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q5, section 1.3 p.19",
+      "description": "Petrol price was ₹60 in 2015 and ₹100 in 2025. Find percentage increase. Choose from MCQ options."
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q3, section 1.3 p.19",
+      "description": "Samson bought a car for ₹4,40,000 after a 15% discount. Find the original (pre-discount) price."
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q4, section 1.3 p.19",
+      "description": "1600 people voted; winner got 500 votes. Find percentage of total votes won. Guess the minimum number of candidates."
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q5, section 1.3 p.19",
+      "description": "Rice price was ₹38/kg in 2024 and ₹42/kg in 2025. Find the rate of inflation (percentage increase in price)."
+    },
+    {
+      "id": "E-26",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q6, section 1.3 p.19",
+      "description": "A number increased by 20% becomes 90. Find the original number."
+    },
+    {
+      "id": "E-27",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q7, section 1.3 p.19",
+      "description": "A milkman sold two buffaloes at ₹80,000 each — one at 5% profit and one at 10% loss. Find overall profit or loss."
+    },
+    {
+      "id": "E-28",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q8, section 1.3 p.20",
+      "description": "Population of elephants increased by 5%. If last decade's population is p, which expression describes current population? (MCQ with options including p × 1.05.)"
+    },
+    {
+      "id": "E-29",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q9, section 1.3 p.20",
+      "description": "'Demand for cameras has fallen by 85%.' Which statement(s) mean the same? (MCQ with six options involving 85%, 15%, 185% comparisons.)"
+    },
+    {
+      "id": "E-30",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q1, section 1.3 p.22",
+      "description": "Bank of Yahapur: 10% p.a. Compare the return on ₹20,000 for 2 years with and without annual compounding."
+    },
+    {
+      "id": "E-31",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q2, section 1.3 p.22",
+      "description": "Bank of Wahapur: 5% p.a. Compare the return on ₹20,000 for 4 years with and without annual compounding."
+    },
+    {
+      "id": "E-32",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q3, section 1.3 p.22",
+      "description": "Observe and discuss any interesting pattern in the solutions to Q1 and Q2 above."
+    },
+    {
+      "id": "E-33",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q4, section 1.3 p.23",
+      "description": "Jasmine invests p for 4 years at 6% p.a. without compounding. Which expression(s) give the total amount? (MCQ with seven options.)"
+    },
+    {
+      "id": "E-34",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q5, section 1.3 p.23",
+      "description": "Post office: 7% p.a. Find interest on ₹50,000 for 3 years without compounding. How much more with compounding?"
+    },
+    {
+      "id": "E-35",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q6, section 1.3 p.23",
+      "description": "Giridhar: ₹12,500 at 12% p.a. for 3 years (no compounding). Raghava: same amount at 10% p.a. for 3 years (compounded annually). Who pays more interest and by how much?"
+    },
+    {
+      "id": "E-36",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q7, section 1.3 p.24",
+      "description": "Math Talk: ₹1000 growing at 10% p.a. — how long to double with vs. without compounding? Is compounding exponential and non-compounding linear growth?"
+    },
+    {
+      "id": "E-37",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q8, section 1.3 p.24",
+      "description": "A city's population rises 3% every year. Current population is 1.5 crore. Find expected population after 3 years."
+    },
+    {
+      "id": "E-38",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q9, section 1.3 p.24",
+      "description": "Bacteria count increases at 2.5% per hour. Find count after 2 hours starting from 5,06,000."
+    },
+    {
+      "id": "E-39",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q1, section 1.3 p.28",
+      "description": "Population of Bengaluru in 2025 is 250% of its 2000 population (50 lakhs). Find 2025 population."
+    },
+    {
+      "id": "E-40",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q2, section 1.3 p.28",
+      "description": "Match countries (Germany 83 million, India 1.46 billion, Bangladesh 175 million, USA 347 million) to their approximate % share of world population (8.2 billion)."
+    },
+    {
+      "id": "E-41",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q3, section 1.3 p.28",
+      "description": "Mobile phone costs ₹8,250 with 18% GST. Which expression(s) give the final price including GST? (MCQ with seven options.)"
+    },
+    {
+      "id": "E-42",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q4, section 1.3 p.28",
+      "description": "Mice population changes: +5%, −2%, −3% over 3 months. Which statement(s) are true regarding final population compared to initial p? (MCQ with six options.)"
+    },
+    {
+      "id": "E-43",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q5, section 1.3 p.28",
+      "description": "Shopkeeper sets price with 35% profit margin, then offers 30% discount on selling price. Does he make a profit or a loss? Give reasons."
+    },
+    {
+      "id": "E-44",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q6, section 1.3 p.28",
+      "description": "A rectangle is divided into regions A, B, C, D, E. Find the percentage of area occupied by region E."
+    },
+    {
+      "id": "E-45",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q7, section 1.3 p.28",
+      "description": "Explore: 5% of 40 = 40% of 5; 25% of 12 = 12% of 25; 15% of 60 = 60% of 15. Generalise: is x% of y always equal to y% of x? Justify algebraically."
+    },
+    {
+      "id": "E-46",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q8, section 1.3 p.29",
+      "description": "School excursion: 40% are Grade 8 students; 60% of Grade 8 are girls. (i) What % of total students are Grade 8 girls? (ii) If 160 students total, how many are Grade 8 girls?"
+    },
+    {
+      "id": "E-47",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q9, section 1.3 p.29",
+      "description": "Try This: A shopkeeper's SP of 3 pencils equals CP of 5 pencils. Does he make a profit or loss? Find profit/loss percentage."
+    },
+    {
+      "id": "E-48",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q10, section 1.3 p.29",
+      "description": "Bus fares increased 3% last year and 4% this year. Find overall percentage price increase over 2 years."
+    },
+    {
+      "id": "E-49",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q11, section 1.3 p.29",
+      "description": "Rectangle's length increased by 10% with area unchanged. By what exact percentage does the breadth decrease?"
+    },
+    {
+      "id": "E-50",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q12, section 1.3 p.29",
+      "description": "A 65 g chips packet shows ingredient percentages. Find the weight each ingredient makes up."
+    },
+    {
+      "id": "E-51",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q13, section 1.3 p.29",
+      "description": "Three shops offer deals: Shop A 'Buy 1 get 1 free', Shop B 'Buy 2 get 1 free', Shop C 'Buy 3 get 1 free'. (i) Find effective price per item and rank shops. (ii) Find percentage discount for each. (iii) Which shop for 4 items?"
+    },
+    {
+      "id": "E-52",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q14, section 1.3 p.30",
+      "description": "Try This: 100 people, 99% left-handed. How many left-handed people must leave to bring the percentage down to 98%?"
+    },
+    {
+      "id": "E-53",
+      "source_section": "section 1.3",
+      "book_ref": "Figure it Out Q15, section 1.3 p.30",
+      "description": "Interpret a bar graph showing computer literacy by age and gender (NSS Round 79, 2023). Identify which of six given statements are valid (e.g., twenties most literate, women lag, more than a quarter in thirties, etc.)."
+    }
+  ],
+  "conceptual_demand": 2,
+  "activity_count": 1,
+  "demo_count": 0,
+  "exec_load": 2
+}

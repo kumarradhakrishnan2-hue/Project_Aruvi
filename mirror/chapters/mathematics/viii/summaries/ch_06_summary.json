@@ -1,0 +1,267 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "viii",
+  "chapter_number": 6,
+  "chapter_title": "We Distribute, Yet Things Multiply",
+  "sections": [
+    {
+      "ref": "section 6.1",
+      "title": "Some Properties of Multiplication",
+      "section_goal": ["recall", "apply"]
+    },
+    {
+      "ref": "section 6.2",
+      "title": "Special Cases of the Distributive Property",
+      "section_goal": ["reason"]
+    },
+    {
+      "ref": "section 6.3",
+      "title": "Mind the Mistake, Mend the Mistake",
+      "section_goal": ["apply"]
+    },
+    {
+      "ref": "section 6.4",
+      "title": "This Way or That Way, All Ways Lead to the Bay",
+      "section_goal": ["reason"]
+    }
+  ],
+  "prose_summary": "Section 6.1 defines the distributive property of multiplication over addition — a(b+c) = ab+ac — and applies it systematically to reason about how products change when the numbers being multiplied are incremented or decremented. The section opens with an exploratory prompt about what happens to 23×27 when each factor is increased by 1, using this concrete case to motivate the general identity. Using distributivity, the chapter establishes that increasing b by 1 in the product ab increases the product by a; increasing both a and b by 1 increases the product by a+b+1. This is formalised as Identity 1: (a+m)(b+n) = ab+mb+an+mn, visualised through an area diagram partitioning a rectangle into four sub-regions. The section then shows that the same single identity handles all combinations of increase and decrease by treating decrements as addition of negative quantities. Three worked examples illustrate the mechanics: Example 1 expands a monomial over a three-term expression (3a/2)(a−b+1/5), introducing like-term collection and exponent notation; Example 2 derives (a+b)(a+b) = a²+2ab+b², noting the pairing of like terms ba and ab; Example 3 extends this to (a+b)(a²+2ab+b²) = a³+3a²b+3ab²+b³, demonstrating multi-step like-term collection. The second subsection shows how distributivity enables fast mental multiplication: multiplying a number by 11 is equivalent to shifting the number one place left and adding — reducing to digit-by-digit adjacent sums. Brahmagupta's khaṇḍa-guṇanam (multiplication by parts, Brahmasphuṭasiddhānta Verse 12.56) is cited as the earliest explicit statement of distributivity. The subsection extends the same logic to multiplication by 101, 1001, 10001 and to products such as 9734×99, all handled through the identity (a+m)(b+n).\n\nSection 6.2 derives and proves three special cases of Identity 1, grouping them under the heading of special products. The section reasons from geometry first: a square of sidelength (a+b) is partitioned into two smaller squares and two equal rectangles, yielding the visual justification of (a+b)² = a²+2ab+b² (Identity 1A). The same geometric argument is applied to (60−5)² to show that removing two rectangles and restoring one small square gives (a−b)² = a²−2ab+b² (Identity 1B). The section proves algebraically that (a+b)(a−b) = a²−b² (Identity 1C) by expanding via distributivity and cancelling the like terms ab and −ab. Pattern 1 demonstrates that 2(a²+b²) = (a+b)²+(a−b)², derived by adding the expanded forms of 1A and 1B, connecting numerical observations (e.g. 2(5²+6²) = 11²+1²) to their algebraic explanation. Pattern 2 observes that differences of squares of equally-spaced numbers factor as a product of their sum and difference — verified by expanding (a+b)(a−b) — and notes Sridharacharya's method of computing a² as (a+b)(a−b)+b² for fast squaring. Both patterns are shown to hold for all integers and fractions.\n\nSection 6.3 applies all the algebraic rules learned so far to a diagnostic task: twelve simplified expressions are presented, some correct and some containing errors such as misapplied distributivity (e.g. −3p(−5p+2q) simplified as p−2q), incorrect squaring of binomials (e.g. (5m+6n)² stated as 25m²+36n²), confused multiplication and addition of like terms, and spurious factoring (e.g. y+2(y+2) rewritten as (y+2)²). Students must identify each error, explain the likely misconception, and write the correct expression. This section consolidates procedural fluency with all three identities and the basic distributive rule.\n\nSection 6.4 presents a growing visual pattern of circles arranged in stepped rectangular arrays and asks students to count circles at each step. Four distinct algebraic methods each yield a different-looking expression — (k+1)²−1, k²+2k, k(k+1)+k, k(k+2) — and the section reasons that all four are equivalent by expanding each to k²+2k, illustrating that multiple algebraic representations can describe the same quantity. The same multi-method approach is applied to a square-tile border pattern and two area problems involving rectangles and squares. In the area problems, Tadang's method (total square minus four rectangles), Yusuf's method (inner square directly), and Aditya's method (doubling a half-region) each produce a different expression that proves equivalent upon expansion using Identities 1A, 1B, or 1C. The final Figure it Out consolidates all three identities through computational practice (computing 46², 397×403, 91², 43×45), multi-step products, algebraic expression identification, calendar diagonal-product patterns, and verification of number-theoretic claims using remainder arithmetic and consecutive-number identities.",
+  "enumerated_activities": [],
+  "enumerated_worked_examples": [
+    {
+      "id": "WE-1",
+      "source_section": "section 6.1",
+      "book_ref": "Example 1, section 6.1 p.140",
+      "description": "Expand (3a/2)(a − b + 1/5) using distributivity over three terms; collect like terms using exponent notation."
+    },
+    {
+      "id": "WE-2",
+      "source_section": "section 6.1",
+      "book_ref": "Example 2, section 6.1 p.141",
+      "description": "Expand (a+b)(a+b) by treating (a+b) as a single factor; collect like terms ba and ab to derive a²+2ab+b²."
+    },
+    {
+      "id": "WE-3",
+      "source_section": "section 6.1",
+      "book_ref": "Example 3, section 6.1 p.141",
+      "description": "Expand (a+b)(a²+2ab+b²) using distributivity; collect like terms a²b+2a²b and ab²+2ab² to derive a³+3a²b+3ab²+b³."
+    }
+  ],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out Q1, section 6.1 p.142",
+      "description": "Observe the 10×10 multiplication grid; if the middle entry of a 3×3 frame is pq, write algebraic expressions for the other 8 entries using Identity 1."
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out Q2, section 6.1 p.143",
+      "description": "Expand six products: (3+u)(v−3), (2/3)(15+6a), (10a+b)(10c+d), (3−x)(x−6), (−5a+b)(c+d), (5+z)(y+9)."
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out Q3, section 6.1 p.143",
+      "description": "Find 3 pairs of numbers whose product is unchanged when one is increased by 2 and the other decreased by 4. (Math Talk)"
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out Q4, section 6.1 p.143",
+      "description": "Expand (i) (a+ab−3b²)(4+b) and (ii) (4y+7)(y+11z−3) using distributivity over multi-term expressions."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out Q5, section 6.1 p.143",
+      "description": "Expand (a−b)(a+b), (a−b)(a²+ab+b²), and (a−b)(a³+a²b+ab²+b³); identify the pattern and predict the next identity."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 6.1",
+      "book_ref": "Math Talk, section 6.1 p.143",
+      "description": "Describe the general rule for multiplying any number by 11 in one line; evaluate 94×11, 495×11, 3279×11, 4791256×11."
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 6.1",
+      "book_ref": "Figure it Out, section 6.1 p.144",
+      "description": "Use the ×101 rule to multiply 3874×101 in one line."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 6.1",
+      "book_ref": "Math Talk, section 6.1 p.144",
+      "description": "State the general rule for multiplying by 101; extend to 1001, 10001; evaluate 89×101, 949×101, 265831×1001, 1111×1001, 9734×99, 23478×999."
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out, section 6.2 p.146",
+      "description": "Use Identity 1A to write expressions for (m+3)² and (6+p)²."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out, section 6.2 p.146",
+      "description": "Expand (6x+5)² using the distributive property; verify with Identity 1A."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out, section 6.2 p.146",
+      "description": "Expand (3j+2k)² using both Identity 1A and by applying the distributive property directly."
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out, section 6.2 p.147",
+      "description": "Expand (b−6)², (−2a+3)², and (7y−3/4z)² using Identity 1B and by applying the distributive property."
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out, section 6.2 p.148",
+      "description": "Use Identity 1C to calculate 98×102 and 45×55."
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out Q1, section 6.2 p.149",
+      "description": "Which is greater: (a−b)² or (b−a)²? Justify."
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out Q2, section 6.2 p.149",
+      "description": "Express 100 as the difference of two perfect squares."
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out Q3, section 6.2 p.149",
+      "description": "Compute 406², 72², 145², 1097², and 124² using the identities learned so far."
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 6.2",
+      "book_ref": "Figure it Out Q4, section 6.2 p.149",
+      "description": "Do Patterns 1 and 2 hold for negative integers and fractions? Justify with examples and algebraic reasoning."
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 6.3",
+      "book_ref": "Figure it Out, section 6.3 p.150",
+      "description": "Examine 12 given algebraic simplifications; for each, determine if there is an error, identify the likely misconception, and write the correct expression."
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 6.4",
+      "book_ref": "Math Talk, section 6.4 p.150",
+      "description": "Draw the next figure in the growing circle-array pattern; determine the number of circles in Step 10 and write an expression for Step k."
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 6.4",
+      "book_ref": "Figure it Out, section 6.4 p.152",
+      "description": "Simplify each of the four methods' expressions ((k+1)²−1, k²+2k, k(k+1)+k, k(k+2)) and verify they all equal k²+2k."
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 6.4",
+      "book_ref": "Math Talk, section 6.4 p.152",
+      "description": "Count tiles in the square-tile border pattern; write an algebraic expression for the number of tiles in Step n using more than one method."
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 6.4",
+      "book_ref": "Figure it Out, section 6.4 p.153",
+      "description": "Verify that (m+n)²−4mn = (n−m)² by expanding both expressions (Tadang's and Yusuf's methods for interior shaded region)."
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 6.4",
+      "book_ref": "Figure it Out, section 6.4 p.153",
+      "description": "Verify that x²−xy, x(x+2y)−3xy, and x(x−y) are equivalent expressions for the slanting-lines area; find the area when x=8, y=3."
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 6.4",
+      "book_ref": "Math Talk, section 6.4 p.154",
+      "description": "Write an expression for the dashed region in the L-shaped figure using more than one method; substitute p=6, r=3.5, s=9."
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 6.4",
+      "book_ref": "Figure it Out Q1, section 6.4 p.154",
+      "description": "Compute 46² using Identity 1A, 397×403 and 43×45 using Identity 1C, and 91² using Identity 1B."
+    },
+    {
+      "id": "E-26",
+      "source_section": "section 6.4",
+      "book_ref": "Figure it Out Q2, section 6.4 p.154",
+      "description": "Use a suitable identity or distributive property to find: (p−1)(p+11), (3a−9b)(3a+9b), −(2y+5)(3y+4), (6x+5y)², (2x−1/2)², (7p)×(3r)×(p+2)."
+    },
+    {
+      "id": "E-27",
+      "source_section": "section 6.4",
+      "book_ref": "Figure it Out Q3, section 6.4 p.155",
+      "description": "Identify the correct algebraic expression(s) for: (i) two more than a square number; (ii) sum of squares of two consecutive numbers."
+    },
+    {
+      "id": "E-28",
+      "source_section": "section 6.4",
+      "book_ref": "Figure it Out Q4, section 6.4 p.155",
+      "description": "Examine 2×2 calendar squares; show that the difference of diagonal products is always 7 by labelling entries as a, a+1, a+7, a+8 and expanding."
+    },
+    {
+      "id": "E-29",
+      "source_section": "section 6.4",
+      "book_ref": "Figure it Out Q5, section 6.4 p.155",
+      "description": "Verify which of four algebraic statements are true: (i) (k+1)(k+2)−(k+3) is always 2; (ii) (2q+1)(2q−3) is a multiple of 4; (iii) even squares are multiples of 4 and odd squares are 1 more than multiples of 8; (iv) (6n+2)²−(4n+3)² is 5 less than a square."
+    },
+    {
+      "id": "E-30",
+      "source_section": "section 6.4",
+      "book_ref": "Figure it Out Q6, section 6.4 p.155",
+      "description": "A number leaves remainder 3 when divided by 7, another leaves remainder 5. Find the remainders when their sum, difference, and product are divided by 7."
+    },
+    {
+      "id": "E-31",
+      "source_section": "section 6.4",
+      "book_ref": "Figure it Out Q7, section 6.4 p.155",
+      "description": "Choose three consecutive numbers, square the middle one, subtract the product of the other two; identify the pattern, write as an algebraic identity, and verify by expansion."
+    },
+    {
+      "id": "E-32",
+      "source_section": "section 6.4",
+      "book_ref": "Figure it Out Q8, section 6.4 p.156",
+      "description": "Write the algebraic expression for: add two numbers, then multiply by half their sum; prove the result equals half the square of their sum."
+    },
+    {
+      "id": "E-33",
+      "source_section": "section 6.4",
+      "book_ref": "Figure it Out Q9, section 6.4 p.156",
+      "description": "Without fully computing, determine which is larger: 14×26 or 16×24; and 25×75 or 26×74."
+    },
+    {
+      "id": "E-34",
+      "source_section": "section 6.4",
+      "book_ref": "Figure it Out Q10, section 6.4 p.156",
+      "description": "Write an expression for the area of the walking path surrounding two square green plots (each area g² sq ft) in a rectangular park with path width w ft."
+    },
+    {
+      "id": "E-35",
+      "source_section": "section 6.4",
+      "book_ref": "Figure it Out Q11, section 6.4 p.156",
+      "description": "For two tile patterns (L-shape and square array): draw Step 4, count basic units in Step 10, write an expression for Step y."
+    }
+  ],
+  "conceptual_demand": 3,
+  "activity_count": 0,
+  "demo_count": 3,
+  "exec_load": 1
+}

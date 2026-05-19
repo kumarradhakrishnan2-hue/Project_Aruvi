@@ -1,0 +1,43 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "viii",
+  "chapter_number": 6,
+  "chapter_title": "We Distribute, Yet Things Multiply",
+
+  "core_cg": "CG-2",
+
+  "core_competencies": [
+    {
+      "c_code": "C-2.3",
+      "justification": "The entire chapter is constituted by forming algebraic expressions and manipulating them through basic operations: expanding products via distributivity, collecting like terms, simplifying multi-term expressions. WE-1 through WE-3 and virtually every exercise in sections 6.1 and 6.2 directly exercise this competency."
+    },
+    {
+      "c_code": "C-2.5",
+      "justification": "Section 6.4 is architecturally dedicated to developing students' own algebraic methods — four distinct approaches to the circle-pattern and three distinct area-computation methods are presented and students are asked to find their own. The fast-multiplication subsection in 6.1 similarly invites invention of rules for ×11, ×101, ×1001. This is a structurally independent strand from C-2.3."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-6.1",
+      "justification": "Sections 6.2 and 6.4 explicitly prove the three special-product identities through deductive reasoning, and Pattern 1 and Pattern 2 move from inductive numerical observation to algebraic proof. Section 6.3 requires evaluating the correctness of given arguments — a direct application of logical analysis."
+    },
+    {
+      "c_code": "C-1.3",
+      "justification": "Section 6.1 explicitly extends the distributive property and product-increment identities to negative integers, prompting students to substitute negative values (a=−5, b=8; a=−4, b=−5). Brahmagupta's role in formalising arithmetic operations on integers is cited in the Pinch of History, connecting the algebra to the history of integer arithmetic."
+    },
+    {
+      "c_code": "C-9.2",
+      "justification": "The chapter contains a dedicated 'Pinch of History' section crediting Brahmagupta's Brahmasphuṭasiddhānta (Verses 12.55 and 12.56) for the first explicit statement of distributivity and the method of ista-gunana, and credits Sridharacharya (750 CE) and Bhaskaracharya's Lilavati (1150 CE) for fast-multiplication methods — three named Indian mathematicians with specific attributed contributions."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to expand and manipulate algebraic products by applying the distributive property as an identity-generating tool, deriving (a+b)², (a−b)², and (a+b)(a−b) through structured algebraic reasoning.",
+
+  "conceptual_demand": 3,
+  "activity_count": 0,
+  "demo_count": 3,
+  "exec_load": 1,
+  "effort_index": 11.0
+}

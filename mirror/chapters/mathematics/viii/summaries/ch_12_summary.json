@@ -1,0 +1,253 @@
+{
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "viii",
+  "chapter_number": 12,
+  "chapter_title": "Tales by Dots and Lines",
+  "sections": [
+    {
+      "ref": "section 5.1",
+      "title": "The Balancing Act",
+      "section_goal": ["reason", "apply"]
+    },
+    {
+      "ref": "section 5.2",
+      "title": "Visualising and Interpreting Data",
+      "section_goal": ["apply"]
+    }
+  ],
+  "prose_summary": "Section 5.1 (The Balancing Act) reasons about the mean as a balance point and applies this insight to predict how mean and median shift when values are added, removed, or uniformly transformed. The section opens by revisiting mean as arithmetic average and reframes it geometrically: the mean is the unique point on a number line where the total distance of all values to its left equals the total distance to its right. Using dot plots, students verify this balance property for collections of two and three numbers and argue why the centre must be unique — shifting left or right immediately disturbs the equality of distances. The section then explores how the mean responds to adding or removing values: a value greater than the mean pulls it up, a value smaller pulls it down, and removing a value equal to the mean leaves it unchanged. Students investigate whether pairs or triples of values can be added or removed without changing the mean, discovering that symmetric additions around the current mean preserve balance. Next, the section proves algebraically what happens when every value in a dataset is increased or decreased by a fixed constant: the mean shifts by exactly that constant. A similar algebraic argument shows that multiplying every value by a constant scales the mean by the same factor, using the distributive property in both proofs. A parallel treatment covers the median: because the median is the middle value in sorted order, including a value larger than the current median increases it, while a value smaller decreases it. The section then moves to applied problem-solving: two worked problems (finding a smudged weight in a wrestler's record and correcting an over-counted coconut harvest) model how to use the mean formula to recover an unknown from a given average. The sub-section on mean and median with frequencies introduces frequency tables and shows that multiplying each value by its frequency before summing is necessary when data is not listed individually; it also shows how cumulative frequencies allow the median position to be located without writing out all values. The section closes with a spreadsheets sub-topic: students see how a digital spreadsheet is structured (rows, columns, cell references), learn to read a marks table, and learn to write SUM and AVERAGE formulae over row and column ranges, connecting the abstract concept of mean to a practical computational tool.\n\nSection 5.2 (Visualising and Interpreting Data) applies a two-step interpret-and-infer process to several real data visualisations, building skill in reading line graphs, infographics, and time-use strips. The section introduces line graphs as the appropriate choice when data evolves over time, contrasting them with the clustered bar graphs seen in earlier grades. Two worked examples are developed in depth: monthly maximum temperature data for Kerala and Punjab across 2023, and annual satellite-launch counts for India, China, Russia, and worldwide from 2012 to 2024. For each, students first identify what the graph shows (scale, units, colour/marker conventions, time range) and then infer patterns and comparisons — Punjab's wider temperature range versus Kerala's near-constant climate, or the sharp acceleration of worldwide launches after 2020 driven largely by USA. The rainfall line graph for six Indian coastal cities introduces the idea that monthly-average data is itself a derived quantity (averaged over multiple years), prompting discussion of what the data can and cannot tell us. The section then presents an infographic — a choropleth map comparing per-capita rice and wheat consumption across Indian states — illustrating how colour encoding can reveal geographic patterns not visible in a table, and probing what inferences are valid versus speculative. The activity-strip sub-section introduces a novel representation: a 48-box colour-coded strip where each box represents a 30-minute interval across one day, and five activities are distinguished by colour. Students read and decode three of Manoj's day-strips (Friday through Sunday), infer which day features a long movie outing, and then create their own strips. The section ends with the sleep-duration curve — a line graph of average daily sleep time from age 6 to 75 — illustrating that a graph with 80 closely spaced data points looks like a smooth curve, making a line graph more readable than 70 columns would be, and prompting students to notice that sleep time decreases through adolescence, bottoms out in mid-adulthood, and rises again after age 50.",
+  "enumerated_activities": [
+    {
+      "id": "A-1",
+      "source_section": "section 5.1",
+      "book_ref": "Try This, p.107",
+      "description": "Students explain algebraically (and using fair-share interpretation) what happens to the average when a fixed number is subtracted from every value, and then investigate what happens when every value is doubled."
+    },
+    {
+      "id": "A-2",
+      "source_section": "section 5.2",
+      "book_ref": "Try This, p.125",
+      "description": "Students create their own 48-box activity strip for different days of the week, marking five activity types in 30-minute intervals, and compare their strip with an adult family member's strip."
+    },
+    {
+      "id": "A-3",
+      "source_section": "section 5.2",
+      "book_ref": "Try This, p.131",
+      "description": "Students read a line graph of moonrise and moonset times over a month, identify the dates of amavasya (new moon) and purnima (full moon), and note patterns."
+    }
+  ],
+  "enumerated_worked_examples": [
+    {
+      "id": "WE-1",
+      "source_section": "section 5.1",
+      "book_ref": "Finding the Unknown (wrestlers), p.109",
+      "description": "Given the mean weight of 10 wrestlers (39.2 kg) and 9 of the 10 weights, uses the mean formula to set up and solve a linear equation to find the missing weight (43 kg)."
+    },
+    {
+      "id": "WE-2",
+      "source_section": "section 5.1",
+      "book_ref": "Finding the Unknown (coconuts), p.109",
+      "description": "Given the average coconut harvest per tree (25.6) across 15 trees and the information that one tree's count was recorded 3 more than actual, recovers the total harvest and computes the corrected average (25.4)."
+    },
+    {
+      "id": "WE-3",
+      "source_section": "section 5.1",
+      "book_ref": "Mean and Median with Frequencies (family size), p.110",
+      "description": "Calculates mean and median of a frequency-table dataset of family sizes for 36 students, demonstrating the weighted-sum formula for mean and the cumulative-frequency method for locating the median position."
+    },
+    {
+      "id": "WE-4",
+      "source_section": "section 5.2",
+      "book_ref": "Line Graphs — Temperature (Kerala and Punjab), p.116–118",
+      "description": "Demonstrates the two-step identify-then-infer process on a clustered line graph of monthly maximum temperatures (2023), identifying scale, markers, and trends; inferring Punjab's higher variability versus Kerala's near-constant tropical climate."
+    },
+    {
+      "id": "WE-5",
+      "source_section": "section 5.2",
+      "book_ref": "Line Graphs — Space Launches, p.119–120",
+      "description": "Applies the two-step process to a multi-series line graph of annual space-object launches (2012–2024) for USA, China, Russia, and worldwide; distinguishes valid inferences from invalid ones (e.g., cannot infer Nepal launched nothing, cannot read individual year counts precisely from the graph)."
+    }
+  ],
+  "enumerated_exercises": [
+    {
+      "id": "E-1",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q1, section 5.1 p.113",
+      "description": "Find the mean of (i) first 50 natural numbers, (ii) first 50 odd numbers, (iii) first 50 multiples of 4; share observations."
+    },
+    {
+      "id": "E-2",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q2, section 5.1 p.113",
+      "description": "A dot plot shows a collection with its mean of 9 but one dot is missing; mark the missing value to restore the balance."
+    },
+    {
+      "id": "E-3",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q3, section 5.1 p.113",
+      "description": "Class average height of 24 students is 150.2 cm, measured with shoes adding 1 cm; determine whether remeasurement is needed and compute the correct average height (149.2 cm) from six options."
+    },
+    {
+      "id": "E-4",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q4, section 5.1 p.114",
+      "description": "Three dot plots show song lengths for different albums; identify which has a mean of 5.57 minutes and explain the reasoning."
+    },
+    {
+      "id": "E-5",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q5, section 5.1 p.114",
+      "description": "Find the median of a 16-value dataset; then reason about (i) one value that can be added without changing the median, (ii) two values that can be added without changing it, (iii) one value that can be removed without changing it."
+    },
+    {
+      "id": "E-6",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q6, section 5.1 p.115",
+      "description": "Examine four statements about mean/median behaviour (removing a value less than median; including a value less than mean; including 4 values; including 4 values less than median) and classify each as always/sometimes/never true."
+    },
+    {
+      "id": "E-7",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q7, section 5.1 p.115",
+      "description": "The mean of 8 numbers (8, 13, 10, 4, 5, 20, y, 10) is 10.375; find the value of y."
+    },
+    {
+      "id": "E-8",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q8, section 5.1 p.115",
+      "description": "A dataset has 15 values with mean 134; find the sum of the data."
+    },
+    {
+      "id": "E-9",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q9, section 5.1 p.115",
+      "description": "Given 11 values including unknown p and median 29, determine which candidate values of p (10, 25, 40, 100, 29, 47, 30) are consistent with the given median."
+    },
+    {
+      "id": "E-10",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q10, section 5.1 p.115",
+      "description": "Dot plot shows weekly cycle-riding frequency; four students rode twice. Find average, median, evaluate five validity statements about the data, and predict next week's average and median if everyone rode one extra time."
+    },
+    {
+      "id": "E-11",
+      "source_section": "section 5.1",
+      "book_ref": "Figure it Out Q11, section 5.1 p.115",
+      "description": "Frequency table shows number of trials to hit a dart bull's-eye for a school competition; describe the data using minimum, maximum, mean, and median."
+    },
+    {
+      "id": "E-12",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q1, section 5.2 p.122",
+      "description": "Tabular data of average daily customers visiting vs. purchasing across days of the week; visualise on a line graph."
+    },
+    {
+      "id": "E-13",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q2, section 5.2 p.122",
+      "description": "Average monthly rainfall (days) for Mangaluru, New Delhi, Port Blair, Rameswaram; plot three cities on a given line graph, fill in New Delhi data from the graph, compare rainiest and driest cities, identify rainy seasons."
+    },
+    {
+      "id": "E-14",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q3 (births graph), section 5.2 p.123",
+      "description": "Line graph of monthly births in India over a time period; make observations, estimate births in July 2017, identify time period captured, compare January births across 2018–2020, estimate total births in 2019."
+    },
+    {
+      "id": "E-15",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q1, section 5.2 p.127",
+      "description": "Mean grids: (i) fill a 3×3 grid with 9 distinct numbers so each row, column, and diagonal averages 10; (ii) vary numbers while preserving the average in all directions."
+    },
+    {
+      "id": "E-16",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q2, section 5.2 p.127",
+      "description": "Give two examples each for: (i) 3 numbers with mean 8; (ii) 4 numbers with median 15.5; (iii) 5 numbers with mean 13.6; (iv) 6 numbers where mean = median; (v) 6 numbers where mean > median."
+    },
+    {
+      "id": "E-17",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q3, section 5.2 p.127",
+      "description": "Fill three blanks in the collection (5, 21, 14, _, _, _) so its median is 13; count how many possibilities exist for counting numbers."
+    },
+    {
+      "id": "E-18",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q4, section 5.2 p.127",
+      "description": "Fill two blanks in (3, 11, _, _, 15, 6) so its mean is 6.5; count possibilities for counting numbers."
+    },
+    {
+      "id": "E-19",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q5, section 5.2 p.127",
+      "description": "Check whether each statement is true (with algebraic justification): (i) average of two even numbers is even; (ii) average of any two multiples of 5 is a multiple of 5; (iii) average of any 5 multiples of 5 is a multiple of 5."
+    },
+    {
+      "id": "E-20",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q6, section 5.2 p.128",
+      "description": "Two new students join a class where average height is 150.2 cm: (i) evaluate four statements about whether/how the average changes; (ii) given new heights 149 and 152 cm, evaluate four statements about the average; (iii) evaluate four statements about what happens to the median."
+    },
+    {
+      "id": "E-21",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q7, section 5.2 p.128",
+      "description": "Dot plot of data near 14–23; determine whether 17 is the mean, sharing the method used."
+    },
+    {
+      "id": "E-22",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q8, section 5.2 p.128",
+      "description": "Average weight was 65.3 kg, median 67 kg; one person lost 2 kg and two gained 1 kg each — predict what happens to mean and median this month."
+    },
+    {
+      "id": "E-23",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q9, section 5.2 p.129",
+      "description": "Retail price of iodised salt (INR) across 6 states from 2016–2025: (i) plot 3 states on a line graph; (ii) share observations; (iii) compare Gujarat and Uttar Pradesh; (iv) find the state with the greatest price increase; (v) explore further."
+    },
+    {
+      "id": "E-24",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q10, section 5.2 p.130",
+      "description": "Line graph on primary lighting source (kerosene vs electricity) in rural/urban India 1983–2023; evaluate four validity statements."
+    },
+    {
+      "id": "E-25",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q11, section 5.2 p.130",
+      "description": "Line graph of daily time spent on hobbies and games by rural/urban children by age; answer two read-off questions and evaluate two interpretive statements."
+    },
+    {
+      "id": "E-26",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q12, section 5.2 p.131",
+      "description": "Individual project: create activity strips for different days of the week; track eating/sleeping regularity and outdoor time; calculate average time per activity; compare with an adult's strip."
+    },
+    {
+      "id": "E-27",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q13, section 5.2 p.131",
+      "description": "Small-group project: either (i) track daily sleep time of family members for a week, represent on strips, compute group averages for children/adults/elderly; or (ii) survey school timing data from different schools and analyse/present it."
+    },
+    {
+      "id": "E-28",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q14, section 5.2 p.131",
+      "description": "Four line graphs show sunrise and sunset times across the year at 4 Indian locations; identify sunrise vs sunset lines, find earliest January sunrise, find location with longest day, share observations."
+    },
+    {
+      "id": "E-29",
+      "source_section": "section 5.2",
+      "book_ref": "Figure it Out Q15, section 5.2 p.132",
+      "description": "Line graph of moonrise and moonset times over one month; identify dates of new moon and full moon, note patterns."
+    }
+  ],
+  "conceptual_demand": 2,
+  "activity_count": 3,
+  "demo_count": 3,
+  "exec_load": 1,
+  "effort_index": 13.5
+}

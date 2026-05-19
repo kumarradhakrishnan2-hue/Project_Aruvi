@@ -1868,7 +1868,7 @@ function _downloadPDF_legacy_unused() {
 
   /* ── "About the Effort Index" block — placed at END for English and Science/Mathematics ── */
   if (IS_ENGLISH) {
-    if (y + 40 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
+    if (y + 40 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 18; }
     doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(26, 68, 128);
     doc.text('About the Effort Index', mL, y); doc.setCharSpace(0);
     y += 4;
@@ -1897,7 +1897,7 @@ function _downloadPDF_legacy_unused() {
   }
 
   if (IS_SCIENCE) {
-    if (y + 40 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
+    if (y + 40 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 18; }
     doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(26, 68, 128);
     doc.text('About the Effort Index', mL, y); doc.setCharSpace(0);
     y += 4;
