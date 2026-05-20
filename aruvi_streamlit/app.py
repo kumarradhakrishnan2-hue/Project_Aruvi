@@ -115,14 +115,29 @@ def load_api_rates() -> dict:
     except Exception:
         return {}
 
-def calculate_cost_inr(model: str, input_tokens: int, output_tokens: int) -> float:
+def calculate_cost_inr(
+    model: str,
+    input_tokens: int,
+    output_tokens: int,
+    cache_write_tokens: int = 0,
+    cache_read_tokens:  int = 0,
+) -> float:
     rates       = load_api_rates()
     usd_to_inr  = rates.get("usd_to_inr", 84.0)
     model_rates = rates.get("models", {}).get(model, {})
     input_rate  = model_rates.get("input_per_1k_usd",  0.003)
     output_rate = model_rates.get("output_per_1k_usd", 0.015)
-    cost_usd    = (input_tokens  / 1000) * input_rate + \
-                  (output_tokens / 1000) * output_rate
+    # Prompt caching pricing:
+    #   cache write  = 1.25× input rate  (12.5% surcharge on top of normal)
+    #   cache read   = 0.10× input rate  (90% discount vs normal)
+    cache_write_rate = input_rate * 1.25
+    cache_read_rate  = input_rate * 0.10
+    cost_usd = (
+        (input_tokens       / 1000) * input_rate        +
+        (output_tokens      / 1000) * output_rate       +
+        (cache_write_tokens / 1000) * cache_write_rate  +
+        (cache_read_tokens  / 1000) * cache_read_rate
+    )
     return round(cost_usd * usd_to_inr, 4)
 
 def grade_to_roman(grade: str) -> str:
@@ -134,14 +149,16 @@ def grade_to_roman(grade: str) -> str:
     return mapping.get(grade, grade.lower().replace("grade ", ""))
 
 def log_tokens(
-    call_type:      str,
-    grade:          str,
-    subject:        str,
-    chapter_number: int,
-    chapter_title:  str,
-    input_tokens:   int,
-    output_tokens:  int,
-    model:          str = "claude-sonnet-4-6",
+    call_type:              str,
+    grade:                  str,
+    subject:                str,
+    chapter_number:         int,
+    chapter_title:          str,
+    input_tokens:           int,
+    output_tokens:          int,
+    model:                  str = "claude-sonnet-4-6",
+    cache_write_tokens:     int = 0,
+    cache_read_tokens:      int = 0,
 ):
     cost_inr = calculate_cost_inr(model, input_tokens, output_tokens)
     row = [
@@ -155,6 +172,8 @@ def log_tokens(
         output_tokens,
         input_tokens + output_tokens,
         cost_inr,
+        cache_write_tokens,
+        cache_read_tokens,
     ]
     try:
         with open(TOKEN_LOG_PATH, "a", newline="", encoding="utf-8") as f:
@@ -526,22 +545,32 @@ def _build_lpa_prompts_english(
         else "4-5"
     )
 
-    system_prompt = f"""You are Aruvi's English lesson plan and assessment generator.
+    # ── Prompt caching for English path ─────────────────────────────────────
+    # system: English constitutions — cached; changes only on subject switch.
+    system_prompt_blocks = [
+        {
+            "type": "text",
+            "text": (
+                "You are Aruvi's English lesson plan and assessment generator.\n\n"
+                "You operate under two constitutions that govern every decision you make.\n"
+                "These constitutions are binding. No instruction in the user prompt overrides them.\n\n"
+                f"=== ENGLISH LESSON PLAN CONSTITUTION ===\n{lp_const}\n\n"
+                f"=== ENGLISH ASSESSMENT CONSTITUTION ===\n{assess_const}\n"
+            ),
+            "cache_control": {"type": "ephemeral", "ttl": "3600"},
+        }
+    ]
 
-You operate under two constitutions that govern every decision you make.
-These constitutions are binding. No instruction in the user prompt overrides them.
+    # static user content: pedagogy only — cached.
+    # Pedagogy is identical for every English chapter within the same stage.
+    # Summary is chapter-specific so it goes in the variable block —
+    # including it here would make each chapter a unique cache entry.
+    _static_user_text = (
+        f"=== NCF LANGUAGES PEDAGOGY ({stage} stage) ===\n{pedagogy}\n"
+    )
 
-=== ENGLISH LESSON PLAN CONSTITUTION ===
-{lp_const}
-
-=== ENGLISH ASSESSMENT CONSTITUTION ===
-{assess_const}
-"""
-
-    user_prompt = f"""Generate a complete lesson plan and chapter assessment for the following English chapter.
-
-=== NCF LANGUAGES PEDAGOGY ({stage} stage) ===
-{pedagogy}
+    # variable user content: summary + period schedule + instructions — not cached.
+    _variable_user_text = f"""Generate a complete lesson plan and chapter assessment for the following English chapter.
 
 === CHAPTER SUMMARY (JSON, two-axis: main_sections × spines) ===
 {summary}
@@ -683,7 +712,19 @@ LENGTH CONSTRAINTS:
 Output only the raw JSON object. No markdown. No prose. No headers. No ```json fences.
 """
 
-    return system_prompt, user_prompt
+    user_message_blocks = [
+        {
+            "type": "text",
+            "text": _static_user_text,
+            "cache_control": {"type": "ephemeral", "ttl": "3600"},
+        },
+        {
+            "type": "text",
+            "text": _variable_user_text,
+        },
+    ]
+
+    return system_prompt_blocks, user_message_blocks
 
 
 def generate_lpa(
@@ -714,7 +755,7 @@ def generate_lpa(
     # English uses a two-axis (main_section × spine) schema and has no
     # per-chapter competency mapping; the prompt is built differently.
     if subject_to_folder(subject) == "english":
-        system_prompt, user_prompt = _build_lpa_prompts_english(
+        system_prompt_blocks, user_message_blocks = _build_lpa_prompts_english(
             grade, subject, chapter, period_sched, paths
         )
     else:
@@ -725,22 +766,35 @@ def generate_lpa(
         summary      = read_file(paths["chapter_summary"])
         mapping_raw  = read_file(paths["chapter_mapping"])
 
-        system_prompt = f"""You are Aruvi's lesson plan and assessment generator.
+        # ── Prompt caching: system carries the two constitutions (cached) ──────
+        # Constitutions change only when the subject changes, so this block
+        # is a cache hit for every chapter within the same subject group.
+        system_prompt_blocks = [
+            {
+                "type": "text",
+                "text": (
+                    "You are Aruvi's lesson plan and assessment generator.\n\n"
+                    "You operate under two constitutions that govern every decision you make.\n"
+                    "These constitutions are binding. No instruction in the user prompt overrides them.\n\n"
+                    f"=== LESSON PLAN GENERATION CONSTITUTION ===\n{lp_const}\n\n"
+                    f"=== ASSESSMENT CONSTITUTION ===\n{assess_const}\n"
+                ),
+                "cache_control": {"type": "ephemeral", "ttl": "3600"},
+            }
+        ]
 
-You operate under two constitutions that govern every decision you make.
-These constitutions are binding. No instruction in the user prompt overrides them.
+        # ── Static user content: pedagogy only — cached ───────────────────────
+        # Pedagogy is identical for every chapter within the same subject+stage.
+        # Summary and mapping are chapter-specific so they go in the variable
+        # block — including them here would make each chapter a unique cache
+        # entry, defeating cross-chapter cache hits.
+        _static_user_text = (
+            f"=== PEDAGOGY DOCUMENT ===\n{pedagogy}\n"
+        )
 
-=== LESSON PLAN GENERATION CONSTITUTION ===
-{lp_const}
-
-=== ASSESSMENT CONSTITUTION ===
-{assess_const}
-"""
-
-        user_prompt = f"""Generate a complete lesson plan and chapter assessment for the following chapter.
-
-=== PEDAGOGY DOCUMENT ===
-{pedagogy}
+        # ── Variable user content (summary + mapping + schedule + instructions)
+        # Everything that changes per-chapter or per-teacher goes here.
+        _variable_user_text = f"""Generate a complete lesson plan and chapter assessment for the following chapter.
 
 === CHAPTER SUMMARY ===
 {summary}
@@ -773,6 +827,18 @@ LENGTH CONSTRAINTS (strictly enforced to keep output compact):
 Output only the raw JSON object. No markdown. No prose. No section headers. No ```json fences.
 """
 
+        user_message_blocks = [
+            {
+                "type": "text",
+                "text": _static_user_text,
+                "cache_control": {"type": "ephemeral", "ttl": "3600"},
+            },
+            {
+                "type": "text",
+                "text": _variable_user_text,
+            },
+        ]
+
     try:
         client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
@@ -795,19 +861,28 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
         # embedding the hide rule in _pcss, which is prepended to every progress
         # markdown update. When progress_placeholder.empty() is called at the end
         # (or on error / stop), the <style> tag disappears and the button returns.
-        _pcss = (
+        # Animations only — safe to keep in the DOM both during and after a run.
+        _pcss_anim = (
             "<style>"
             "@keyframes aruviPulse{0%,100%{opacity:1}50%{opacity:.3}}"
             "@keyframes spin{to{transform:rotate(360deg)}}"
-            # Hide Deploy button + toolbar chrome for the duration of a generate run.
-            # Multiple selectors cover the rename across Streamlit versions
-            # (stDeployButton -> stAppDeployButton) and the wrapping stToolbar.
+            "</style>"
+        )
+        # Deploy/toolbar hide rule — only emitted while generation is ACTIVE.
+        # Multiple selectors cover the rename across Streamlit versions
+        # (stDeployButton -> stAppDeployButton) and the wrapping stToolbar.
+        # This MUST NOT be included in the "Generation complete" markdown — once
+        # the run ends and the placeholder is not cleared (success path), any
+        # lingering hide rule would leave Deploy permanently hidden/inert.
+        _pcss_hide = (
+            "<style>"
             "body [data-testid='stDeployButton'],"
             "body [data-testid='stAppDeployButton'],"
             "body [data-testid='stToolbar']"
             "{display:none!important;visibility:hidden!important;}"
             "</style>"
         )
+        _pcss = _pcss_anim + _pcss_hide
 
         # ── Live timer badge (separate components.html block) ────────────────
         # Streamlit's components.html mounts in a sandboxed iframe and DOES run
@@ -937,7 +1012,15 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             'animation:aruviPulse 1.4s infinite;flex-shrink:0;"></div>'
             '<span style="font-size:11px;color:#7a776f;font-weight:500;flex:1;">'
             'Aruvi is working&#8230;</span>'
-            '<button onclick="window.parent.postMessage({type:\'aruvi_stop\'},\'*\')" '
+            # Directly click the hidden Streamlit stop button (wrapper carries the
+            # auto-assigned 'st-key-btn_stop_generation' class). postMessage to
+            # window.parent did not work because the only listener lived inside
+            # a components.html child iframe, which never receives messages
+            # posted to its parent window.
+            '<button onclick="(function(){'
+            'var w=document.querySelector(\'[class*=st-key-btn_stop_generation]\');'
+            'if(w){var b=w.querySelector(\'button\');if(b)b.click();}'
+            '})()" '
             'style="display:inline-flex;align-items:center;gap:4px;font-size:10px;'
             'color:#9c9895;background:#f2f0ec;border:1px solid #dddad5;'
             'border-radius:4px;padding:3px 7px;cursor:pointer;white-space:nowrap;'
@@ -1049,8 +1132,11 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
         with client.messages.stream(
             model="claude-sonnet-4-6",
             max_tokens=32000,
-            system=system_prompt,
-            messages=[{"role": "user", "content": user_prompt}],
+            system=system_prompt_blocks,
+            messages=[{"role": "user", "content": user_message_blocks}],
+            extra_headers={
+                "anthropic-beta": "prompt-caching-2024-07-31"
+            },
         ) as stream:
             for text in stream.text_stream:
                 # ── Stop-button check ─────────────────────────────────────────
@@ -1070,20 +1156,26 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
         if _stopped_by_user:
             try:
                 _partial_usage = stream.get_current_message_snapshot().usage
-                input_tokens  = getattr(_partial_usage, "input_tokens",  0)
-                output_tokens = getattr(_partial_usage, "output_tokens", 0)
+                input_tokens        = getattr(_partial_usage, "input_tokens",                0)
+                output_tokens       = getattr(_partial_usage, "output_tokens",               0)
+                _cache_write_stopped = getattr(_partial_usage, "cache_creation_input_tokens", 0)
+                _cache_read_stopped  = getattr(_partial_usage, "cache_read_input_tokens",     0)
             except Exception:
-                input_tokens  = 0
-                output_tokens = 0
+                input_tokens         = 0
+                output_tokens        = 0
+                _cache_write_stopped = 0
+                _cache_read_stopped  = 0
             log_tokens(
-                call_type      = "lpa_generation_stopped",
-                grade          = grade,
-                subject        = subject,
-                chapter_number = chapter["chapter_number"],
-                chapter_title  = chapter.get("chapter_title", ""),
-                input_tokens   = input_tokens,
-                output_tokens  = output_tokens,
-                model          = "claude-sonnet-4-6",
+                call_type          = "lpa_generation_stopped",
+                grade              = grade,
+                subject            = subject,
+                chapter_number     = chapter["chapter_number"],
+                chapter_title      = chapter.get("chapter_title", ""),
+                input_tokens       = input_tokens,
+                output_tokens      = output_tokens,
+                model              = "claude-sonnet-4-6",
+                cache_write_tokens = _cache_write_stopped,
+                cache_read_tokens  = _cache_read_stopped,
             )
             progress_placeholder.empty()
             timer_placeholder.empty()
@@ -1105,18 +1197,22 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             return _stopped_result
 
         usage = stream.get_final_message().usage
-        input_tokens  = usage.input_tokens
-        output_tokens = usage.output_tokens
+        input_tokens       = usage.input_tokens
+        output_tokens      = usage.output_tokens
+        cache_write_tokens = getattr(usage, "cache_creation_input_tokens", 0)
+        cache_read_tokens  = getattr(usage, "cache_read_input_tokens",     0)
 
         log_tokens(
-            call_type      = "lpa_generation",
-            grade          = grade,
-            subject        = subject,
-            chapter_number = chapter["chapter_number"],
-            chapter_title  = chapter.get("chapter_title", ""),
-            input_tokens   = input_tokens,
-            output_tokens  = output_tokens,
-            model          = "claude-sonnet-4-6",
+            call_type          = "lpa_generation",
+            grade              = grade,
+            subject            = subject,
+            chapter_number     = chapter["chapter_number"],
+            chapter_title      = chapter.get("chapter_title", ""),
+            input_tokens       = input_tokens,
+            output_tokens      = output_tokens,
+            model              = "claude-sonnet-4-6",
+            cache_write_tokens = cache_write_tokens,
+            cache_read_tokens  = cache_read_tokens,
         )
 
         parsed = {}
@@ -1172,7 +1268,9 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                     f'{_tick_sm}<span>{text}</span></div>'
                 )
             PROGRESS_HTML_DONE = (
-                _pcss
+                # Use animations-only style here — NOT _pcss — so the Deploy
+                # button + toolbar reappear as soon as generation completes.
+                _pcss_anim
                 + '<div class="aruvi-progress-box" style="position:fixed;top:80px;right:24px;'
                 'width:280px;z-index:9999;background:white;border:1px solid #d9d6d0;'
                 'border-radius:10px;overflow:hidden;">'
@@ -4440,35 +4538,48 @@ elif st.session_state.role == "Generate":
         selected_ch = chapters[st.session_state.teacher_ch_idx]
         if st.session_state.lpa_generating:
 
-            # ── Launch background thread (once) and block until done ─────────
+            # ── Launch background thread (only once per generate run) ────────
             # generate_lpa calls st.* inside the thread for progress rendering.
             # add_script_run_ctx propagates the current Streamlit script context
             # to the thread so those calls are valid and non-silent.
-            _stop_ev = threading.Event()
-            _rq      = queue.Queue()
-            st.session_state.lpa_stop_event   = _stop_ev
-            st.session_state.lpa_result_queue = _rq
-            _t = threading.Thread(
-                target=generate_lpa,
-                kwargs=dict(
-                    grade        = st.session_state.grade,
-                    subject      = st.session_state.subject,
-                    chapter      = selected_ch,
-                    period_rows  = st.session_state.get("period_rows", [0]),
-                    session      = st.session_state,
-                    result_queue = _rq,
-                    stop_event   = _stop_ev,
-                ),
-                daemon=True,
-            )
-            add_script_run_ctx(_t)   # allow st.* calls from the thread
-            _t.start()
-            st.session_state.lpa_thread = _t
+            #
+            # IMPORTANT: when the user clicks Stop, Streamlit triggers a rerun
+            # of THIS script block. We must NOT spawn a second worker thread on
+            # the rerun — instead, we re-bind to the existing thread/queue/
+            # event already stored in session state.
+            _existing_thread = st.session_state.get("lpa_thread")
+            if (_existing_thread is not None and _existing_thread.is_alive()
+                and st.session_state.lpa_result_queue is not None):
+                # Mid-run rerun — reuse the already-running worker.
+                _stop_ev = st.session_state.lpa_stop_event
+                _rq      = st.session_state.lpa_result_queue
+            else:
+                # Fresh generation — spawn the worker.
+                _stop_ev = threading.Event()
+                _rq      = queue.Queue()
+                st.session_state.lpa_stop_event   = _stop_ev
+                st.session_state.lpa_result_queue = _rq
+                _t = threading.Thread(
+                    target=generate_lpa,
+                    kwargs=dict(
+                        grade        = st.session_state.grade,
+                        subject      = st.session_state.subject,
+                        chapter      = selected_ch,
+                        period_rows  = st.session_state.get("period_rows", [0]),
+                        session      = st.session_state,
+                        result_queue = _rq,
+                        stop_event   = _stop_ev,
+                    ),
+                    daemon=True,
+                )
+                add_script_run_ctx(_t)   # allow st.* calls from the thread
+                _t.start()
+                st.session_state.lpa_thread = _t
 
-            # ── Hidden Streamlit stop button + JS bridge ──────────────────────
-            # The visible stop pill lives inside the progress box HTML header.
-            # It fires a postMessage; the components.html listener below catches
-            # it and clicks this hidden Streamlit button to set the stop_event.
+            # ── Hidden Streamlit stop button ──────────────────────────────────
+            # The visible stop pill in the progress popup clicks this button
+            # directly via DOM querySelector (see the pill HTML above), which
+            # triggers a Streamlit rerun where the click is registered here.
             st.markdown(
                 '<style>'
                 'div[class*="st-key-btn_stop_generation"]{display:none!important;}'
@@ -4478,31 +4589,20 @@ elif st.session_state.role == "Generate":
             if st.button("stop", key="btn_stop_generation"):
                 if st.session_state.lpa_stop_event is not None:
                     st.session_state.lpa_stop_event.set()
-            components.html(
-                '<script>'
-                'window.addEventListener("message",function(e){'
-                '  if(e.data&&e.data.type==="aruvi_stop"){'
-                '    var btns=window.parent.document'
-                '      .querySelectorAll(\'button\');'
-                '    for(var i=0;i<btns.length;i++){'
-                '      if(btns[i].innerText.trim()==="stop"){'
-                '        btns[i].click();break;'
-                '      }'
-                '    }'
-                '  }'
-                '});'
-                '</script>',
-                height=0,
-                scrolling=False,
-            )
 
-            # ── Block until the thread puts a result on the queue ─────────────
-            # This is intentionally blocking on the main thread — no rerun loop,
-            # no flashing. generate_lpa drives all progress rendering itself via
-            # progress_placeholder / timer_placeholder (valid because we passed
-            # the script run context above). When the thread finishes (completed
-            # or stopped), it puts the result dict on _rq and we continue.
-            result = _rq.get()   # blocks until thread is done
+            # ── Poll the result queue with an st.* heartbeat ─────────────────
+            # A naked _rq.get() blocks the script-runner thread, so Streamlit
+            # can never inject a rerun in response to the Stop click. The
+            # heartbeat below is a no-op st.* call that gives Streamlit a
+            # checkpoint to raise RerunException when a rerun is queued.
+            _heartbeat = st.empty()
+            result = None
+            while result is None:
+                try:
+                    result = _rq.get(timeout=0.25)
+                except queue.Empty:
+                    _heartbeat.markdown("")
+            _heartbeat.empty()
 
             st.session_state.lpa_thread       = None
             st.session_state.lpa_stop_event   = None
@@ -4634,35 +4734,27 @@ div[data-testid="stDownloadButton"] button[kind="primary"] {
     font-size: 0.82rem !important;
 }
 div[class*="st-key-gen_save_top"] button,
-div[class*="st-key-gen-save-top"] button,
-div[class*="st-key-gen_save_bot"] button,
-div[class*="st-key-gen-save-bot"] button {
+div[class*="st-key-gen-save-top"] button {
     background-color: #E87722 !important;
     color: #ffffff !important;
     border: none !important;
     font-size: 0.82rem !important;
 }
 div[class*="st-key-gen_clear_top"] button,
-div[class*="st-key-gen-clear-top"] button,
-div[class*="st-key-gen_clear_bot"] button,
-div[class*="st-key-gen-clear-bot"] button {
+div[class*="st-key-gen-clear-top"] button {
     background-color: #1e2a38 !important;
     color: #ffffff !important;
     border: none !important;
     font-size: 0.82rem !important;
 }
 div[class*="st-key-gen_clear_top"] button:hover,
-div[class*="st-key-gen-clear-top"] button:hover,
-div[class*="st-key-gen_clear_bot"] button:hover,
-div[class*="st-key-gen-clear-bot"] button:hover {
+div[class*="st-key-gen-clear-top"] button:hover {
     background-color: #2c3e52 !important;
     color: #ffffff !important;
     border: none !important;
 }
 div[class*="st-key-gen_clear_top"] button p,
-div[class*="st-key-gen-clear-top"] button p,
-div[class*="st-key-gen_clear_bot"] button p,
-div[class*="st-key-gen-clear-bot"] button p {
+div[class*="st-key-gen-clear-top"] button p {
     color: #ffffff !important;
 }
 </style>""", unsafe_allow_html=True)
@@ -4746,6 +4838,66 @@ div[class*="st-key-gen-clear-bot"] button p {
                 st.session_state.plan_already_saved = False
                 st.session_state.plan_just_saved    = False
                 st.rerun()
+        if st.session_state.get("plan_just_saved"):
+            st.components.v1.html(
+                """
+                <script>
+                (function() {
+                    // Build modal overlay
+                    var overlay = document.createElement('div');
+                    overlay.style.cssText = [
+                        'position:fixed','top:0','left:0','width:100%','height:100%',
+                        'background:rgba(0,0,0,0.45)','z-index:99999',
+                        'display:flex','align-items:center','justify-content:center'
+                    ].join(';');
+
+                    var box = document.createElement('div');
+                    box.style.cssText = [
+                        'background:#ffffff','border-radius:12px',
+                        'padding:40px 48px','text-align:center',
+                        'box-shadow:0 8px 32px rgba(0,0,0,0.18)',
+                        'min-width:280px','max-width:380px'
+                    ].join(';');
+
+                    var icon = document.createElement('div');
+                    icon.textContent = '✓';
+                    icon.style.cssText = [
+                        'font-size:2.4rem','color:#2e7d32',
+                        'font-weight:700','margin-bottom:12px'
+                    ].join(';');
+
+                    var msg = document.createElement('p');
+                    msg.textContent = 'Saved — view it in My Plans.';
+                    msg.style.cssText = [
+                        'font-size:1.05rem','color:#1a1a1a',
+                        'margin:0 0 24px 0','font-family:sans-serif'
+                    ].join(';');
+
+                    var btn = document.createElement('button');
+                    btn.textContent = 'OK';
+                    btn.style.cssText = [
+                        'background:#2e7d32','color:#fff','border:none',
+                        'border-radius:6px','padding:10px 36px',
+                        'font-size:1rem','cursor:pointer','font-family:sans-serif'
+                    ].join(';');
+                    btn.onmouseover = function() { btn.style.background = '#1b5e20'; };
+                    btn.onmouseout  = function() { btn.style.background = '#2e7d32'; };
+                    btn.onclick = function() { overlay.remove(); };
+
+                    box.appendChild(icon);
+                    box.appendChild(msg);
+                    box.appendChild(btn);
+                    overlay.appendChild(box);
+
+                    // Attach to the top-level parent document (outside the iframe)
+                    var target = window.parent ? window.parent.document.body : document.body;
+                    target.appendChild(overlay);
+                })();
+                </script>
+                """,
+                height=0,
+            )
+            st.session_state.plan_just_saved = False
         st.markdown('<div style="height:0.5rem;"></div>', unsafe_allow_html=True)
 
         # ── LPA HTML page ─────────────────────────────────────────────────
@@ -4868,90 +5020,6 @@ div[class*="st-key-gen-clear-bot"] button p {
         _lpa_html = _lpa_html + _lpa_height_script
         components.html(_lpa_html, height=2200, scrolling=False)
 
-        st.markdown('<div style="height:0.5rem;"></div>', unsafe_allow_html=True)
-        _bot_c1, _bot_c2, _bot_c3, _bot_c4, _bot_spc = st.columns([1, 1, 1, 1, 1])
-        with _bot_c1:
-            try:
-                from lp_pdf_generator import build_lp_pdf_bytes as _blpb_bot
-                _bot_lp_payload = {
-                    "saved_at":       datetime.now().isoformat(timespec="seconds"),
-                    "grade":          _res_grade,
-                    "subject":        _res_subject,
-                    "chapter_number": _chapter_export.get("chapter_number", 0),
-                    "chapter_title":  _chapter_export.get("chapter_title",  ""),
-                    "result":         {"lesson_plan": result.get("lesson_plan", {})},
-                }
-                _bot_lp_bytes = _blpb_bot(_bot_lp_payload)
-                st.download_button(
-                    label="Lesson plan  ⬇",
-                    data=_bot_lp_bytes,
-                    file_name=f"{_filename_stem}_LP.pdf",
-                    mime="application/pdf",
-                    key="gen_lp_bot_dl",
-                    type="primary",
-                    use_container_width=True,
-                )
-            except Exception as _bot_lp_err:
-                st.caption(f"LP PDF error: {_bot_lp_err}")
-        with _bot_c2:
-            try:
-                from assessment_pdf_generator import build_assessment_pdf_bytes as _bapb_bot
-                _bot_assess_payload = {
-                    "saved_at":       datetime.now().isoformat(timespec="seconds"),
-                    "grade":          _res_grade,
-                    "subject":        _res_subject,
-                    "chapter_number": _chapter_export.get("chapter_number", 0),
-                    "chapter_title":  _chapter_export.get("chapter_title",  ""),
-                    "result": {
-                        "lesson_plan":      result.get("lesson_plan", {}),
-                        "assessment_items": result.get("assessment_items", []),
-                    },
-                }
-                _bot_assess_bytes = _bapb_bot(_bot_assess_payload)
-            except Exception:
-                _bot_assess_bytes = b""
-            st.download_button(
-                label="Assessment  ⬇",
-                data=_bot_assess_bytes if _bot_assess_bytes else b"",
-                file_name=f"{_filename_stem}_Assessment.pdf",
-                mime="application/pdf",
-                key="gen_assess_bot_dl",
-                type="primary",
-                use_container_width=True,
-            )
-        with _bot_c3:
-            _already_saved_bot = st.session_state.get("plan_already_saved", False)
-            if st.button(
-                "Saved ✓" if _already_saved_bot else "Save to my plans",
-                key="gen_save_bot",
-                use_container_width=True,
-                disabled=_already_saved_bot,
-            ):
-                save_plan(
-                    grade       = _res_grade,
-                    subject     = _res_subject,
-                    chapter     = _chapter_export,
-                    period_rows = st.session_state.get("period_rows", [0]),
-                    session     = st.session_state,
-                    result      = result,
-                )
-                st.session_state.plan_just_saved    = True
-                st.session_state.plan_already_saved = True
-                st.rerun()
-        with _bot_c4:
-            if st.button(
-                "Clear",
-                key="gen_clear_bot",
-                use_container_width=True,
-            ):
-                st.session_state.lpa_result         = None
-                st.session_state.show_save_prompt   = False
-                st.session_state.plan_already_saved = False
-                st.session_state.plan_just_saved    = False
-                st.rerun()
-        if st.session_state.get("plan_just_saved"):
-            st.success("Saved — view it in My Plans.")
-            st.session_state.plan_just_saved = False
 
 
 # ═════════════════════════════════════════════════

@@ -24,6 +24,8 @@ from reportlab.platypus import (
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_RIGHT
 from pypdf import PdfReader, PdfWriter
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 
 PAGE_W, PAGE_H = A4
 L_MAR = 18 * mm
@@ -50,6 +52,56 @@ LOGO_PATH = os.path.normpath(
 )
 
 
+# ── Devanagari font registration ─────────────────────────────────────────────
+# "Devanagari Sangam MN" ships with macOS and renders Hindi/Sanskrit correctly
+# in ReportLab.  We try multiple candidate paths (different macOS versions) and
+# fall back gracefully — if no font is found the PDF still builds, but Devanagari
+# text will be invisible (same as before this fix).
+_DEVANAGARI_FONT = "DevanagariSangam"   # registered ReportLab font name
+_DEVANAGARI_FONT_BOLD = "DevanagariSangamBold"
+
+def _register_devanagari_font():
+    candidates_regular = [
+        ("/System/Library/Fonts/Supplemental/Devanagari Sangam MN.ttc", 0),
+        ("/System/Library/Fonts/Supplemental/Devanagari Sangam MN Bold.ttc", 0),
+    ]
+    candidates_bold = [
+        ("/System/Library/Fonts/Supplemental/Devanagari Sangam MN.ttc", 1),
+        ("/System/Library/Fonts/Supplemental/Devanagari Sangam MN Bold.ttc", 0),
+    ]
+    registered = False
+    for path, idx in candidates_regular:
+        if os.path.exists(path):
+            try:
+                pdfmetrics.registerFont(TTFont(_DEVANAGARI_FONT, path, subfontIndex=idx))
+                registered = True
+                break
+            except Exception:
+                pass
+    # Bold: try index 1 of same TTC first, then fall back to regular
+    bold_registered = False
+    for path, idx in candidates_bold:
+        if os.path.exists(path):
+            try:
+                pdfmetrics.registerFont(TTFont(_DEVANAGARI_FONT_BOLD, path, subfontIndex=idx))
+                bold_registered = True
+                break
+            except Exception:
+                pass
+    if registered and not bold_registered:
+        # Alias bold to regular so code can always reference _DEVANAGARI_FONT_BOLD
+        pdfmetrics.registerFont(TTFont(_DEVANAGARI_FONT_BOLD,
+                                       candidates_regular[0][0],
+                                       subfontIndex=candidates_regular[0][1]))
+    return registered
+
+_DEVANAGARI_AVAILABLE = _register_devanagari_font()
+
+def _has_devanagari(text: str) -> bool:
+    """Return True if text contains any Devanagari Unicode character (U+0900–U+097F)."""
+    return any("ऀ" <= ch <= "ॿ" for ch in text)
+
+
 # ── Unicode sanitiser ────────────────────────────────────────────────────────
 # Characters outside the latin-1 range that must be substituted before
 # passing to ReportLab's standard (Helvetica) PDF built-in fonts.
@@ -70,7 +122,10 @@ def _clean_text(s) -> str:
     """
     Sanitise text for ReportLab's standard (Helvetica / latin-1) fonts:
       1. Substitute known out-of-range Unicode characters (e.g. ₹ → Rs.).
-      2. Strip combining diacritical marks via NFD decomposition.
+      2. Strip combining diacritical marks via NFD decomposition — but ONLY
+         for Latin-range marks (U+0000–U+036F).  Devanagari vowel matras
+         (Mn category, U+0900–U+097F) are essential to correct rendering
+         and must be preserved.
     Non-string values are coerced to str first.
     """
     if s is None:
@@ -79,7 +134,12 @@ def _clean_text(s) -> str:
     for src, dst in _UNICODE_SUBS.items():
         s = s.replace(src, dst)
     nfd = unicodedata.normalize("NFD", s)
-    return "".join(ch for ch in nfd if unicodedata.category(ch) != "Mn")
+    cleaned = "".join(
+        ch for ch in nfd
+        if not (unicodedata.category(ch) == "Mn" and ord(ch) <= 0x036F)
+    )
+    # Recompose so Devanagari multi-codepoint sequences are intact
+    return unicodedata.normalize("NFC", cleaned)
 
 
 def make_styles():

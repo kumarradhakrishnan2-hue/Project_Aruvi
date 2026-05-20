@@ -1,4 +1,4 @@
-ARUVI · LESSON PLAN GENERATION CONSTITUTION · VERSION 1.4
+ARUVI · LESSON PLAN GENERATION CONSTITUTION · VERSION 1.5
 
 INPUTS (given — do not regenerate or supplement):
 1.  Competency mapping JSON (competencies + weights)
@@ -80,17 +80,22 @@ PROHIBITION
 3. MUST NOT choose an approach for variety alone.
 
 ================================================================================
-RULE 7 · INVERTED LO FLOW — ONE IMPLIED LO PER ACTIVITY
+RULE 7 · INVERTED LO FLOW — ONE IMPLIED LO + SECTION CONTEXT PER ACTIVITY
 
 MANDATE
-Generate exactly one implied Learning Outcome per activity — a single observable statement of what the student will be able to do upon completing that specific activity. The LO is derived from the activity; it is never retrieved from any document.
-Derivation test: given the activity as designed, what is the one thing a teacher can observe the student doing that they could not do before? That is the implied LO.
+Generate exactly one implied_lo and one section_context per activity.
+
+implied_lo — the transferable skill this activity develops, stated independently of chapter content. Format: "Students can [skill verb phrase]." Derivation test: what can the student now do that they could apply equally in a different chapter?
+
+section_context — a compact label of 10–12 words naming the specific artefacts, places, events, or phenomena this activity drew from. This is what the assessment question is about. MUST NOT be a full inventory — name the key items only.
+
+The assessment generator reads both together: implied_lo drives cognitive demand; section_context drives content.
 
 PROHIBITION
-1. MUST NOT generate more than one implied LO per activity.
-2. MUST NOT retrieve, match, or reference any LO document. LOs are outputs of activity design, not inputs.
-3. MUST NOT write LOs that restate the competency code or competency statement.
-4. MUST NOT write LOs describing internal states ("understand", "appreciate"). LOs must describe observable behaviours ("explain", "produce", "identify and justify").
+1. MUST NOT generate more than one implied_lo per activity.
+2. MUST NOT retrieve or reference any LO document. LOs are outputs of activity design, not inputs.
+3. MUST NOT write LOs that restate the competency or use internal-state verbs ("understand", "appreciate") — use observable verbs only.
+4. MUST NOT include chapter-specific proper nouns in implied_lo — they belong in section_context.
 
 ================================================================================
 INTEGRITY CONSTRAINTS
@@ -129,7 +134,8 @@ visual_aids: name any visual resource the activity naturally requires (textbook 
         "time_bands": [
           { "minutes": "string e.g. 0-5", "activity": "string" }
         ],
-        "implied_lo": "string — single observable student behaviour",
+        "implied_lo": "string — transferable skill statement; no proper nouns for civilisations/peoples/sites",
+        "section_context": "string — 10–12 word compact label: key artefacts, places, or events this activity drew from",
         "competency": {
           "c_code": "string",
           "cg": "string",

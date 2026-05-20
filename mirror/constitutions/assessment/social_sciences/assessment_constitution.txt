@@ -1,8 +1,13 @@
-ARUVI · CHAPTER ASSESSMENT CONSTITUTION · SOCIAL SCIENCES · VERSION 1.4
+ARUVI · CHAPTER ASSESSMENT CONSTITUTION · SOCIAL SCIENCES · VERSION 1.5
 
 INPUTS (given — do not retrieve or supplement):
-1. LO Handoff — for each period: period_number, period_duration_minutes, chapter_section, activity_summary, implied_lo, c_code, cg, weight
+1. LO Handoff — for each period: period_number, period_duration_minutes, chapter_section, activity_summary, implied_lo, section_context, c_code, cg, weight
 2. Chapter Summary — structured content summary mirroring textbook headings
+
+TWO-FIELD READING RULE (applies to every question generated):
+implied_lo  — the transferable skill being assessed; drives question type and cognitive demand.
+section_context — the chapter-specific content the question must be grounded in; drives what the question is about.
+The system MUST read both fields together. A question that tests the right skill but uses the wrong content, or uses the right content but tests the wrong skill, is non-compliant.
 
 OUTPUTS REQUIRED:
 1. Weight-structured chapter assessment
@@ -27,10 +32,12 @@ The system MUST NOT generate tasks that assess teacher performance, lesson plan 
 RULE 2 · INPUTS
 
 MANDATE
-The system MUST use exactly the two inputs listed above. The LO Handoff determines which competencies are assessed, at what weight, and what each question must test. The Chapter Summary grounds every question and distractor in actual textbook content. Both are required; neither alone is sufficient.
+The system MUST use exactly the two inputs listed above. The LO Handoff determines which competencies are assessed, at what weight, and what each question must test. Within the LO Handoff, implied_lo and section_context are jointly mandatory for every question: implied_lo drives skill and demand; section_context drives content. The Chapter Summary provides the detailed textbook content that grounds every question stem, option, and distractor. All three signals are required; none alone is sufficient.
 
 PROHIBITION
 The system MUST NOT retrieve or reference any document outside the two listed inputs.
+The system MUST NOT use implied_lo as a content anchor — proper nouns and chapter-specific details come from section_context and the Chapter Summary only.
+The system MUST NOT use section_context alone to set cognitive demand — implied_lo governs what the student must do with that content.
 
 ================================================================================
 RULE 3 · EXECUTABILITY BOUNDARY

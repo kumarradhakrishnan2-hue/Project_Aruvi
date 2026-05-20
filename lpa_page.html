@@ -631,6 +631,7 @@ var g_lo_map = {};
 /* LO deduplication tracker for English assessment — shared across renderAssessment
    and renderEnglishQuestionCard (which is called from within renderAssessment). */
 var lastLO = '';
+var lastLOCompetency = '';   /* tracks c_code of the competency set lastLO belongs to */
 
 function escHtml(s) {
   if (!s) return '';
@@ -1721,7 +1722,8 @@ function renderAssessment(sections) {
 
   var html = '<div class="assess-divider"><div class="adivlabel">Chapter Assessment</div>';
   var qCounter = 0;  /* sequential question number across all sections */
-  lastLO = '';       /* reset deduplication tracker (global var, shared with renderEnglishQuestionCard) */
+  lastLO = '';           /* reset deduplication trackers (global vars, shared with renderEnglishQuestionCard) */
+  lastLOCompetency = '';
 
   /* Science assessment: each section becomes a collapsible stage row */
   var sciStageIdx = 0;
@@ -1868,19 +1870,21 @@ function renderAssessment(sections) {
           html +=   '<div class="qhdr-ref" style="width:0;padding:0;border:none;overflow:hidden"><span class="qchev">▼</span></div>';
         } else {
           /* ── Science / Social Sciences: show Implied LO in the Question column ──
-             Deduplication is global across all sections in render order:
-               • first occurrence (or changed text): show full text
-               • repeated text: show "same as above" in italics
+             Deduplication within a competency set only:
+               • first occurrence, changed text, or competency boundary: show full text
+               • repeated text within the same competency: show "same as above" in italics
              An empty value leaves the cell blank and does not update lastLO. */
-          var _qlo = (q.implied_lo || '').trim();
+          var _qlo  = (q.implied_lo || '').trim();
+          var _qccode = ((q.competency && q.competency.c_code) || '').trim();
           var _qLabel = 'Learning Outcome: ';
           var _loLine;
           if (!_qlo) {
             _loLine = '<div class="qhdr-lo"></div>';
-          } else if (_qlo === lastLO) {
+          } else if (_qlo === lastLO && _qccode === lastLOCompetency) {
             _loLine = '<div class="qhdr-lo"><span class="lo-lbl">' + _qLabel + '</span><em>same as above</em></div>';
           } else {
-            lastLO  = _qlo;
+            lastLO           = _qlo;
+            lastLOCompetency = _qccode;
             _loLine = '<div class="qhdr-lo"><span class="lo-lbl">' + _qLabel + '</span>' + escHtml(_qlo) + '</div>';
           }
           html +=   '<div class="qhdr-title">' + _loLine + '</div>';
@@ -2331,9 +2335,10 @@ function renderLPA() {
 
       var timeSlotsHtml = renderTimeSlots(p.time_slots || []);
 
-      /* loBar — shown for SS/Science only; Maths uses materialRow for this */
+      /* loBar — shown for SS only (Social Sciences rendering path);
+         Maths uses materialRow for this; Science has its own path above */
       var loBar = isMath ? '' :
-        '<div class="lobar"><div class="lolabel">Pedagogical Approach</div>' +
+        '<div class="lobar"><div class="lolabel">Learning Outcome</div>' +
         '<div class="lotext">' + escHtml(p.implied_lo) + '</div></div>';
 
       var teacherNotesBar = (p.teacher_notes || '').trim()

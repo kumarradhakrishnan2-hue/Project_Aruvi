@@ -37,6 +37,9 @@ from lp_pdf_generator import (
     on_page,
     HLine,
     LOBox,
+    _has_devanagari,
+    _DEVANAGARI_FONT,
+    _DEVANAGARI_AVAILABLE,
 )
 
 # ── Assessment-only palette ───────────────────────────────────────────────────
@@ -596,7 +599,39 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
             q_text = _clean_text(q_raw)
 
         if q_text:
-            q_para = Paragraph(f"<b>Q{q_num}.</b>  {q_text}", AST["q_text"])
+            # When text contains Devanagari (e.g. Sanskrit verse), we can't mix
+            # Helvetica bold markup with a TTFont in a single Paragraph — ReportLab
+            # doesn't support per-run font switching via XML in TTFont paragraphs.
+            # Solution: put the "Q{n}." label in a narrow Helvetica-Bold cell and
+            # the body text in a wider Devanagari-font cell, side by side in a Table.
+            if _DEVANAGARI_AVAILABLE and _has_devanagari(q_text):
+                q_num_style = ParagraphStyle(
+                    "q_num_deva", fontName="Helvetica-Bold",
+                    fontSize=AST["q_text"].fontSize,
+                    leading=AST["q_text"].leading,
+                    textColor=AST["q_text"].textColor,
+                )
+                q_body_style = ParagraphStyle(
+                    "q_text_deva",
+                    fontName=_DEVANAGARI_FONT,
+                    fontSize=AST["q_text"].fontSize,
+                    leading=AST["q_text"].leading,
+                    textColor=AST["q_text"].textColor,
+                )
+                q_para = Table(
+                    [[Paragraph(f"Q{q_num}.", q_num_style),
+                      Paragraph(q_text, q_body_style)]],
+                    colWidths=[uw * 0.06, uw * 0.94],
+                )
+                q_para.setStyle(TableStyle([
+                    ("VALIGN",        (0, 0), (-1, -1), "TOP"),
+                    ("LEFTPADDING",   (0, 0), (-1, -1), 0),
+                    ("RIGHTPADDING",  (0, 0), (-1, -1), 0),
+                    ("TOPPADDING",    (0, 0), (-1, -1), 0),
+                    ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+                ]))
+            else:
+                q_para = Paragraph(f"<b>Q{q_num}.</b>  {q_text}", AST["q_text"])
         else:
             q_para = Paragraph(f"<b>Q{q_num}.</b>", AST["q_text"])
 
@@ -610,7 +645,10 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
                 ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
                 ("VALIGN",        (0, 0), (-1, -1), "TOP"),
             ]))
-            story.append(KeepTogether([meta_block, Spacer(1, 2), q_para]))
+            # LO Assessed / Cognitive demand rendered BELOW the question text
+            story.append(q_para)
+            story.append(Spacer(1, 2))
+            story.append(meta_block)
         else:
             story.append(q_para)
 
