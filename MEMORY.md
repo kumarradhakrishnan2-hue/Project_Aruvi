@@ -214,3 +214,14 @@ Carry-forward rules:
 - Teacher guide strings with Part A/B splits must not rely on newlines — the fmtGuide/eng_guide_paras regex handles run-together strings automatically.
 - The Notes section (formerly Guidance) always uses a PageBreak before it. Do not remove this — it ensures Notes never appears mid-document.
 
+---
+
+[Learning #24] — 2026-05-21 — SS Assessment: Competency-LO Coherence Constraint
+
+Context: Audit of saved plans SS VIII Ch 03, Ch 04, Ch 05 examining LP→Assessment coherence.
+Observation: The assessment was occasionally assigning an implied_lo to a question whose competency.c_code did not match the c_code of the period that generated that implied_lo in the LP handoff. For example, Ch 03 Q7 (filed under C-3.2) carried the implied_lo from P5 (C-4.1). Ch 04 Q9 (filed under C-2.1) carried the implied_lo from P4 (C-3.2). The violation is narrow and specific — most questions were clean. It occurs when the system fills a competency's weight-slot and reaches for an LO from a thematically adjacent period belonging to a different competency, rather than reframing the question to fit the competency's own periods' LOs.
+Root cause: The SS assessment constitution (pre-v1.6) permitted cross-period LO synthesis (Rule 1) without any constraint requiring the implied_lo to be sourced from a period whose c_code matches the question's competency. The period_ref could legitimately span multiple competencies for content grounding — and this is correct and should remain permitted — but the implied_lo field was also being sourced from those cross-competency periods, which is wrong.
+Important distinction: A cross-competency period appearing in period_ref as a content reference is NOT itself a violation. Q6 in Ch 04 (refs=[10,4]) is clean — P4 is cited because the question content genuinely draws on P4's section, but the implied_lo comes from P10 (C-2.1). Only the implied_lo field's sourcing matters for this constraint.
+Action taken: Added COMPETENCY-LO COHERENCE CONSTRAINT to Rule 2 of SS Assessment Constitution v1.6. The constraint requires that implied_lo must come from a period whose c_code matches the question's competency.c_code. Cross-competency period_refs for content remain permitted. If no suitable implied_lo exists among the competency's own periods, the system must reframe the question — not borrow from another competency's period.
+Carry-forward rule: When auditing SS assessment output, check that every item's implied_lo text matches one of the implied_los in the LP handoff periods assigned to that same c_code. A mismatch between implied_lo origin and competency.c_code is a constitution violation from v1.6 onward. Science, Mathematics, and English are not exposed to this issue — their architectures (stage-position, one-item-per-goal, and C-code-free respectively) do not create the competency slot-filling dynamic that produces this problem in SS.
+

@@ -1,4 +1,4 @@
-ARUVI · CHAPTER ASSESSMENT CONSTITUTION · SOCIAL SCIENCES · VERSION 1.5
+ARUVI · CHAPTER ASSESSMENT CONSTITUTION · SOCIAL SCIENCES · VERSION 1.6
 
 INPUTS (given — do not retrieve or supplement):
 1. LO Handoff — for each period: period_number, period_duration_minutes, chapter_section, activity_summary, implied_lo, section_context, c_code, cg, weight
@@ -34,10 +34,14 @@ RULE 2 · INPUTS
 MANDATE
 The system MUST use exactly the two inputs listed above. The LO Handoff determines which competencies are assessed, at what weight, and what each question must test. Within the LO Handoff, implied_lo and section_context are jointly mandatory for every question: implied_lo drives skill and demand; section_context drives content. The Chapter Summary provides the detailed textbook content that grounds every question stem, option, and distractor. All three signals are required; none alone is sufficient.
 
+COMPETENCY-LO COHERENCE CONSTRAINT (applies to every question generated)
+The implied_lo assigned to any assessment item MUST be sourced from a period in the LO Handoff whose c_code matches the item's own competency.c_code. Where a question draws content from multiple periods across different competencies — which is permitted — the period_ref may include those periods as content references, but the implied_lo must still come exclusively from a period belonging to the item's own competency. If a competency's own periods do not yield an implied_lo that fits the question the system wants to write, the system MUST reframe the question to fit an available implied_lo from that competency's own periods — it MUST NOT borrow an implied_lo from another competency's period.
+
 PROHIBITION
 The system MUST NOT retrieve or reference any document outside the two listed inputs.
 The system MUST NOT use implied_lo as a content anchor — proper nouns and chapter-specific details come from section_context and the Chapter Summary only.
 The system MUST NOT use section_context alone to set cognitive demand — implied_lo governs what the student must do with that content.
+The system MUST NOT assign an implied_lo to a question whose competency.c_code does not match the c_code of the period that generated that implied_lo in the LO Handoff.
 
 ================================================================================
 RULE 3 · EXECUTABILITY BOUNDARY

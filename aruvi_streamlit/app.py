@@ -6190,41 +6190,68 @@ else:
         _v_lpa_height_script = """
 <script>
 (function() {
-  /* Measure the .lpa content element directly — avoids the scrollHeight==viewport
-     problem that occurs when the iframe is taller than its content. */
-  function fitIframe() {
+  /* Track the largest height seen during initial render so an early/partial
+     measurement can never shrink the iframe below already-rendered content.
+     A "settle" flag flips on after the page has been stable for a beat,
+     after which collapses are allowed to shrink the iframe. */
+  var maxSeen = 0;
+  var settled = false;
+  function measure() {
     var lpa = document.querySelector('.lpa');
-    if (!lpa) return;
-    var h = Math.ceil(lpa.getBoundingClientRect().height) + 20;
+    var lpaH = lpa ? Math.ceil(lpa.getBoundingClientRect().height) : 0;
+    return Math.max(
+      lpaH,
+      lpa ? lpa.scrollHeight : 0,
+      lpa ? lpa.offsetHeight : 0,
+      document.body ? document.body.scrollHeight : 0,
+      document.documentElement ? document.documentElement.scrollHeight : 0,
+      document.documentElement ? document.documentElement.offsetHeight : 0
+    );
+  }
+  function fitIframe() {
+    var h = measure();
     if (h < 100) return;
-    /* Primary: set the parent <iframe> height directly (same-origin) */
-    try {
-      if (window.frameElement) {
-        window.frameElement.style.height = h + 'px';
-      }
-    } catch(e) {}
-    /* Fallback: Streamlit postMessage protocol */
+    h += 30;
+    if (!settled) {
+      if (h < maxSeen) return;       /* never shrink during initial render */
+      maxSeen = h;
+    }
     try {
       window.parent.postMessage(
         { isStreamlitMessage: true, type: 'streamlit:setFrameHeight', height: h }, '*'
       );
     } catch(e) {}
   }
-  /* Fire at staggered intervals to cover all JS rendering phases */
-  setTimeout(fitIframe, 50);
-  setTimeout(fitIframe, 250);
-  setTimeout(fitIframe, 600);
-  setTimeout(fitIframe, 1000);
-  /* Re-fit whenever collapsible sections expand / collapse */
-  var debounceTimer = null;
-  function debouncedFit() {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(fitIframe, 150);
+  /* Aggressive cascade of timeouts to cover slow async rendering */
+  [30, 100, 250, 500, 900, 1500, 2500, 4000].forEach(function(d) {
+    setTimeout(fitIframe, d);
+  });
+  /* After 4.5s assume the page has settled — collapses may now shrink it. */
+  setTimeout(function() { settled = true; fitIframe(); }, 4500);
+
+  /* ResizeObserver is the reliable signal that content size has changed
+     (handles font loads, image decodes, accordion toggles). */
+  function attachObservers() {
+    var lpa = document.querySelector('.lpa');
+    if (window.ResizeObserver) {
+      var ro = new ResizeObserver(fitIframe);
+      if (lpa) ro.observe(lpa);
+      if (document.body) ro.observe(document.body);
+    }
+    /* MutationObserver as a backstop for browsers without ResizeObserver
+       and for attribute-only changes that don't alter size synchronously. */
+    var debounceTimer = null;
+    if (document.body) {
+      new MutationObserver(function() {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(fitIframe, 120);
+      }).observe(document.body, { childList: true, subtree: true, attributes: true });
+    }
   }
-  if (document.body) {
-    new MutationObserver(debouncedFit).observe(
-      document.body, { childList: true, subtree: true, attributes: true }
-    );
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachObservers);
+  } else {
+    attachObservers();
   }
 })();
 </script>
