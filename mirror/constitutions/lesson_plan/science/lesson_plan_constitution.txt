@@ -1,4 +1,4 @@
-ARUVI — LESSON PLAN GENERATION CONSTITUTION · SCIENCE · VERSION 2.0
+ARUVI — LESSON PLAN GENERATION CONSTITUTION · SCIENCE · VERSION 2.1
 
 INPUTS (given — do not regenerate):
 1. Competency mapping JSON (dissolution_test sentence, co_central flag, primary array)
@@ -10,7 +10,7 @@ OUTPUTS REQUIRED:
 1. Cognitive progression (named arc stages in sequence)
 2. Period-by-period lesson plan (one activity per period) — Amendment A3
 3. One implied LO per arc stage
-4. LO Handoff JSON array — Amendment A4 (sole input to assessment constitution)
+4. Coverage Handoff JSON array — Amendment A4 (sole input to assessment constitution; output field: coverage_handoff)
 
 ================================================================================
 RULE 1 — COGNITIVE PROGRESSION DERIVATION (before any period assignment)
@@ -68,7 +68,7 @@ MUST NOT generate LOs that:
 
 Each LO must be specific to its stage and observably distinct from adjacent LOs.
 
-Implied LOs are recorded exclusively in the A4 handoff array. MUST NOT appear inside individual period objects in A3.
+Implied LOs are recorded exclusively in the coverage_handoff array. MUST NOT appear inside individual period objects in A3.
 
 ================================================================================
 RULE 6 — TIME CONSTRAINT
@@ -87,11 +87,12 @@ MUST NOT use the same approach in more than two consecutive periods.
 Approach must fit the progression stage: early stages (observation, classification) suit hands-on and guided inquiry; later stages (causal reasoning, application to unfamiliar context) suit discussion, think-pair-share, and problem-solving.
 
 ================================================================================
-RULE 8 — LO HANDOFF — REQUIRED COMPANION OUTPUT
+RULE 8 — COVERAGE HANDOFF — REQUIRED COMPANION OUTPUT
 
-At the close of the lesson plan, produce the LO Handoff as a JSON array conforming to Amendment A4. This is the sole input to the assessment constitution.
+At the close of the lesson plan, produce the Coverage Handoff as a JSON array under the key "coverage_handoff", conforming to Amendment A4. This is the sole input to the assessment constitution. Outputting it as an explicit, named field in the JSON response enforces chain-of-thought discipline: the assessment generator MUST ground every question in the committed handoff, not in a re-derived or hallucinated intermediate.
 
-MUST NOT omit the LO Handoff — it is a required output of every generation run regardless of period count.
+MUST NOT omit the coverage_handoff — it is a required output of every generation run regardless of period count.
+MUST NOT fold coverage_handoff into lesson_plan — it is a sibling key at the top level of the JSON response.
 
 ================================================================================
 AMENDMENT A3 — FULL LP JSON SCHEMA
@@ -127,11 +128,13 @@ Each period in lesson_plan.periods[] MUST conform to this object schema:
 }
 
 ================================================================================
-AMENDMENT A4 — LO HANDOFF JSON SCHEMA (SCIENCE)
+AMENDMENT A4 — COVERAGE HANDOFF JSON SCHEMA (SCIENCE)
 
-Each element represents one progression stage. The array is produced at the close of the lesson plan and is read by the assessment constitution.
+Output field name: "coverage_handoff" (sibling of "lesson_plan" and "assessment_items" in the top-level JSON response).
 
-[
+Each element represents one progression stage. The array is produced after the lesson plan is fully constructed and before assessment_items are generated. The assessment constitution reads coverage_handoff as its sole structural input — assessment questions MUST be grounded in this array and MUST NOT be derived from any re-reading of the chapter summary or mapping JSON.
+
+"coverage_handoff": [
   {
     "stage_number":            integer   — sequential stage number; 1 = lowest-order, final = highest
     "stage_label":             string    — name of the stage as derived in Rule 1
@@ -139,9 +142,9 @@ Each element represents one progression stage. The array is produced at the clos
     "period_numbers":          [integer] — period numbers assigned to this stage
     "period_duration_minutes": integer   — period duration in minutes; if mixed, record most common
     "activity_summary":        string    — one sentence on what students do across this stage
-    "implied_lo":              string    — single observable LO for this stage
+    "implied_lo":              string    — single observable LO for this stage (copied from Rule 5 derivation)
     "cg":                      string    — parent Curricular Goal from competency mapping JSON (auditability only)
     "c_code":                  string    — competency code from competency mapping JSON (auditability only)
-    "co_central":              boolean   — true when chapter has two co-central competencies
+    "co_central":              boolean   — true when chapter has two co-central competencies; false otherwise
   }
 ]

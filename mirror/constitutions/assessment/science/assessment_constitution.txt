@@ -2,7 +2,7 @@ ARUVI · PEDAGOGICAL PLATFORM
 
 Chapter Assessment Constitution — Science
 
-Version 1.1 · Ten rules governing AI assessment generation for Science · Inputs: LO Handoff + Chapter Summary
+Version 1.2 · Ten rules governing AI assessment generation for Science · Inputs: coverage_handoff + Chapter Summary
 
 +----------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Rule 1 · Governing Purpose |                                                                                                                                                                                                                                                                           |
@@ -21,7 +21,7 @@ Version 1.1 · Ten rules governing AI assessment generation for Science · Input
 +-----------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | MANDATE                     | Inputs (exactly two — both required):                                                                                                                                                                    |
 |                             |                                                                                                                                                                                                          |
-|                             | 1. LO Handoff — for each progression stage: stage_position, total_stages, stage_name, period_numbers, activity_summary, implied_lo, C-code, CG, co_central. Determines what is tested and at what depth. |
+|                             | 1. coverage_handoff — JSON array produced by the LP constitution (Amendment A4). For each progression stage: stage_number, total_stages, stage_label, period_numbers, activity_summary, implied_lo, c_code, cg, co_central. Determines what is tested and at what depth. MUST be read as committed — do not re-derive or supplement from any other source. |
 |                             |                                                                                                                                                                                                          |
 |                             | 2. Chapter Summary — structured content summary mirroring textbook headings. Grounds every question and distractor in actual textbook content.                                                           |
 |                             |                                                                                                                                                                                                          |
@@ -35,7 +35,7 @@ Version 1.1 · Ten rules governing AI assessment generation for Science · Input
 +-----------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | PROHIBITION                 | The system MUST NOT retrieve or reference the Curricular Goals document, Chapter Mapping JSON, Pedagogy document, any Learning Outcome document, or any other document outside the two listed inputs.    |
 |                             |                                                                                                                                                                                                          |
-|                             | The system MUST NOT re-evaluate competencies, re-open chapter mapping, or derive question format from any source other than the LO Handoff.                                                              |
+|                             | The system MUST NOT re-evaluate competencies, re-open chapter mapping, or derive question format from any source other than the coverage_handoff.                                                              |
 +-----------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
   --------------------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

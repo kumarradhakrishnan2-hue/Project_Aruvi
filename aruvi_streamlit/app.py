@@ -487,6 +487,10 @@ def save_plan(
             }
             for r in (period_rows or [])
         ],
+        # plan_status is a top-level key (not inside result) so My Plans can
+        # read it cheaply without unpacking the result dict. lp_only plans
+        # have empty assessment_items; deferred assessment fills them later.
+        "plan_status":            result.get("plan_status", "full_lpa"),
         "result": {
             "lesson_plan":      result.get("lesson_plan", {}),
             "coverage_handoff": result.get("coverage_handoff", {}),
@@ -494,9 +498,43 @@ def save_plan(
             "input_tokens":     result.get("input_tokens", 0),
             "output_tokens":    result.get("output_tokens", 0),
             "cost_inr":         result.get("cost_inr", 0),
+            # Assessment-run tokens stored separately so LP and A costs are
+            # individually auditable when assessment is deferred.
+            "assess_input_tokens":  result.get("assess_input_tokens", 0),
+            "assess_output_tokens": result.get("assess_output_tokens", 0),
+            "assess_cost_inr":      result.get("assess_cost_inr", 0.0),
         },
     }
     (d / filename).write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def update_saved_plan_with_assessment(
+    filename:      str,
+    grade:         str,
+    subject:       str,
+    assess_result: dict,
+) -> None:
+    """Merge deferred assessment items into an existing lp_only saved plan.
+
+    Overwrites the file in place. Idempotent — safe to call twice.
+    """
+    d    = _saved_plans_dir(grade, subject)
+    path = d / filename
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return
+
+    payload["plan_status"] = "full_lpa"
+    payload["result"]["assessment_items"]     = assess_result.get("assessment_items", [])
+    payload["result"]["assess_input_tokens"]  = assess_result.get("assess_input_tokens", 0)
+    payload["result"]["assess_output_tokens"] = assess_result.get("assess_output_tokens", 0)
+    payload["result"]["assess_cost_inr"]      = assess_result.get("assess_cost_inr", 0.0)
+
+    path.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
 
 def load_saved_plans(grade: str, subject: str) -> list:
     d = _saved_plans_dir(grade, subject)
@@ -522,19 +560,25 @@ def _build_lpa_prompts_english(
     chapter: dict,
     period_sched: str,
     paths: dict,
+    include_assessment: bool = False,
 ) -> tuple[str, str]:
-    """Build (system_prompt, user_prompt) for English LP+A generation.
+    """Build (system_prompt, user_prompt) for English LP (and optionally A).
 
     English uses a two-axis schema (main_section × spine). The chapter
     summary is JSON (produced by the cowork prompt
     `chapter_summary_competency_mapping_english.md`) and is the source
     of truth for the LP and assessment. C-codes do not appear in LP/A
     output; the Allocate page reads `spine_to_cg.json` separately.
+
+    When include_assessment=False the assessment constitution is dropped
+    from the system prompt and the output schema instruction omits
+    assessment_items — the LP-only run produces lesson_plan plus
+    coverage_handoff that a later deferred run will consume.
     """
     stage = get_stage(grade)
 
     lp_const     = read_file(paths["lp_constitution"])
-    assess_const = read_file(paths["assessment_const"])
+    assess_const = read_file(paths["assessment_const"]) if include_assessment else ""
     pedagogy     = read_file(paths["pedagogy"])
     summary      = read_file(paths["chapter_summary"])
 
@@ -551,13 +595,20 @@ def _build_lpa_prompts_english(
         {
             "type": "text",
             "text": (
-                "You are Aruvi's English lesson plan and assessment generator.\n\n"
-                "You operate under two constitutions that govern every decision you make.\n"
-                "These constitutions are binding. No instruction in the user prompt overrides them.\n\n"
-                f"=== ENGLISH LESSON PLAN CONSTITUTION ===\n{lp_const}\n\n"
-                f"=== ENGLISH ASSESSMENT CONSTITUTION ===\n{assess_const}\n"
+                (
+                    "You are Aruvi's English lesson plan and assessment generator.\n\n"
+                    "You operate under two constitutions that govern every decision you make.\n"
+                    "These constitutions are binding. No instruction in the user prompt overrides them.\n\n"
+                    f"=== ENGLISH LESSON PLAN CONSTITUTION ===\n{lp_const}\n\n"
+                    f"=== ENGLISH ASSESSMENT CONSTITUTION ===\n{assess_const}\n"
+                ) if include_assessment else (
+                    "You are Aruvi's English lesson plan generator.\n\n"
+                    "You operate under the English Lesson Plan Constitution below. It is binding.\n"
+                    "No instruction in the user prompt overrides it.\n\n"
+                    f"=== ENGLISH LESSON PLAN CONSTITUTION ===\n{lp_const}\n"
+                )
             ),
-            "cache_control": {"type": "ephemeral", "ttl": "3600"},
+            "cache_control": {"type": "ephemeral", "ttl": "1h"},
         }
     ]
 
@@ -570,7 +621,13 @@ def _build_lpa_prompts_english(
     )
 
     # variable user content: summary + period schedule + instructions — not cached.
-    _variable_user_text = f"""Generate a complete lesson plan and chapter assessment for the following English chapter.
+    if include_assessment:
+        _eng_task_line  = "Generate a complete lesson plan and chapter assessment for the following English chapter."
+        _eng_intro_line = "Follow the English LP Constitution and Assessment Constitution exactly."
+    else:
+        _eng_task_line  = "Generate a complete lesson plan for the following English chapter."
+        _eng_intro_line = "Follow the English LP Constitution exactly."
+    _variable_user_text = f"""{_eng_task_line}
 
 === CHAPTER SUMMARY (JSON, two-axis: main_sections × spines) ===
 {summary}
@@ -579,7 +636,7 @@ def _build_lpa_prompts_english(
 {period_sched}
 
 === INSTRUCTIONS ===
-Follow the English LP Constitution and Assessment Constitution exactly.
+{_eng_intro_line}
 Produce a SINGLE valid JSON object with this top-level structure:
 
 {{
@@ -712,11 +769,54 @@ LENGTH CONSTRAINTS:
 Output only the raw JSON object. No markdown. No prose. No headers. No ```json fences.
 """
 
+    # LP-only path: strip the assessment_items schema block and the assessment-
+    # related critical constraints from the variable user text. The full prompt
+    # above stays the source of truth for the LPA path; the surgery below is
+    # bounded by unique anchor strings so a constitution edit upstream would
+    # surface as a clear failure rather than silent drift.
+    if not include_assessment:
+        _vt = _variable_user_text
+        # Remove the comma after coverage_handoff's closing brace and the entire
+        # assessment_items array (from `,\n\n  "assessment_items": [` through
+        # the next `]\n}`).
+        # Anchors below match the *rendered* f-string output — i.e. each `{{`
+        # in source becomes `{` and each `}}` becomes `}`. Do NOT add escapes.
+        _start_marker = '  },\n\n  "assessment_items": ['
+        _end_marker   = ']\n}\n\nCRITICAL CONSTRAINTS:'
+        _si = _vt.find(_start_marker)
+        _ei = _vt.find(_end_marker)
+        if _si != -1 and _ei != -1:
+            _vt = _vt[:_si] + '  }\n}\n\nCRITICAL CONSTRAINTS:' + _vt[_ei + len(_end_marker):]
+        # Drop assessment-only critical constraints (the "Total assessment item
+        # count …" paragraph through "Generate one original item …").
+        _ac_start = '- Total assessment item count'
+        _ac_end   = '- C-codes MUST NOT'
+        _si2 = _vt.find(_ac_start)
+        _ei2 = _vt.find(_ac_end)
+        if _si2 != -1 and _ei2 != -1:
+            _vt = _vt[:_si2] + _vt[_ei2:]
+        # Drop the answer-layer paragraph (closed/open items) — only relevant
+        # to assessment items.
+        _al_start = '- The answer layer applies per item.'
+        _al_end   = '\nLENGTH CONSTRAINTS:'
+        _si3 = _vt.find(_al_start)
+        _ei3 = _vt.find(_al_end)
+        if _si3 != -1 and _ei3 != -1:
+            _vt = _vt[:_si3] + _vt[_ei3 + 1:]  # +1 to consume the leading \n of LENGTH
+        # Drop assessment-only length constraints (suggested_answer,
+        # expected_elements bullets) — they have no effect for LP-only output.
+        for _line in (
+            "- Each `suggested_answer`: 1-2 sentences plain prose.\n",
+            "- Each `expected_elements` bullet: ≤ 12 words.\n",
+        ):
+            _vt = _vt.replace(_line, "")
+        _variable_user_text = _vt
+
     user_message_blocks = [
         {
             "type": "text",
             "text": _static_user_text,
-            "cache_control": {"type": "ephemeral", "ttl": "3600"},
+            "cache_control": {"type": "ephemeral", "ttl": "1h"},
         },
         {
             "type": "text",
@@ -727,25 +827,31 @@ Output only the raw JSON object. No markdown. No prose. No headers. No ```json f
     return system_prompt_blocks, user_message_blocks
 
 
-def generate_lpa(
+def generate_lp_only(
     grade: str,
     subject: str,
     chapter: dict,
     period_rows: list,
     session: dict,
+    include_assessment: bool = False,
     result_queue: "queue.Queue | None" = None,
     stop_event:   "threading.Event | None" = None,
 ) -> dict:
-    """Generate lesson plan + assessment.
+    """Generate lesson plan (and optionally assessment) in one call.
+
+    When include_assessment=False: the system prompt carries only the LP
+    Constitution, the output schema instruction omits assessment_items, and
+    the returned dict has plan_status="lp_only" with an empty assessment_items
+    list. This is the default for the LP/A split (assessment deferred).
+
+    When include_assessment=True: behaves like the original generate_lpa() —
+    LP + Assessment in a single API call. Returned plan_status="full_lpa".
 
     When called from the background-thread path, *result_queue* and
     *stop_event* are provided:
       • result_queue – the completed (or stopped) result dict is put here.
       • stop_event   – checked on every streamed chunk; if set, the stream
                        is abandoned and a stopped-result dict is returned.
-
-    When called synchronously (legacy path / tests), both are None and the
-    function returns the result dict directly as before.
     """
     paths = resolve_paths(grade, subject, chapter["chapter_number"])
 
@@ -756,30 +862,43 @@ def generate_lpa(
     # per-chapter competency mapping; the prompt is built differently.
     if subject_to_folder(subject) == "english":
         system_prompt_blocks, user_message_blocks = _build_lpa_prompts_english(
-            grade, subject, chapter, period_sched, paths
+            grade, subject, chapter, period_sched, paths,
+            include_assessment=include_assessment,
         )
     else:
         # ── Math / Science / Social Sciences (existing path) ──────────────
         lp_const     = read_file(paths["lp_constitution"])
-        assess_const = read_file(paths["assessment_const"])
+        # Assessment constitution only loaded when running the combined LPA path.
+        # Skipping it on LP-only runs both shortens context and keeps the model
+        # focused on lesson plan structure.
+        assess_const = read_file(paths["assessment_const"]) if include_assessment else ""
         pedagogy     = read_file(paths["pedagogy"])
         summary      = read_file(paths["chapter_summary"])
         mapping_raw  = read_file(paths["chapter_mapping"])
 
-        # ── Prompt caching: system carries the two constitutions (cached) ──────
+        # ── Prompt caching: system carries the constitution(s) (cached) ────────
         # Constitutions change only when the subject changes, so this block
         # is a cache hit for every chapter within the same subject group.
+        if include_assessment:
+            _system_text = (
+                "You are Aruvi's lesson plan and assessment generator.\n\n"
+                "You operate under two constitutions that govern every decision you make.\n"
+                "These constitutions are binding. No instruction in the user prompt overrides them.\n\n"
+                f"=== LESSON PLAN GENERATION CONSTITUTION ===\n{lp_const}\n\n"
+                f"=== ASSESSMENT CONSTITUTION ===\n{assess_const}\n"
+            )
+        else:
+            _system_text = (
+                "You are Aruvi's lesson plan generator.\n\n"
+                "You operate under the Lesson Plan Constitution below. It is binding.\n"
+                "No instruction in the user prompt overrides it.\n\n"
+                f"=== LESSON PLAN GENERATION CONSTITUTION ===\n{lp_const}\n"
+            )
         system_prompt_blocks = [
             {
                 "type": "text",
-                "text": (
-                    "You are Aruvi's lesson plan and assessment generator.\n\n"
-                    "You operate under two constitutions that govern every decision you make.\n"
-                    "These constitutions are binding. No instruction in the user prompt overrides them.\n\n"
-                    f"=== LESSON PLAN GENERATION CONSTITUTION ===\n{lp_const}\n\n"
-                    f"=== ASSESSMENT CONSTITUTION ===\n{assess_const}\n"
-                ),
-                "cache_control": {"type": "ephemeral", "ttl": "3600"},
+                "text": _system_text,
+                "cache_control": {"type": "ephemeral", "ttl": "1h"},
             }
         ]
 
@@ -794,7 +913,33 @@ def generate_lpa(
 
         # ── Variable user content (summary + mapping + schedule + instructions)
         # Everything that changes per-chapter or per-teacher goes here.
-        _variable_user_text = f"""Generate a complete lesson plan and chapter assessment for the following chapter.
+        if include_assessment:
+            _output_schema = f"""{{
+  "grade": "{grade}",
+  "subject": "{subject}",
+  "chapter_number": {chapter["chapter_number"]},
+  "chapter_title": "{chapter.get('chapter_title', '')}",
+  "period_schedule": <derived from teacher period schedule above>,
+  "lesson_plan": {{ "periods": [ <one object per period per LP constitution> ] }},
+  "coverage_handoff": <per LP Constitution>,
+  "assessment_items": <per Assessment Constitution>
+}}"""
+            _intro_line = "Follow the Lesson Plan Constitution and Assessment Constitution exactly."
+            _task_line  = "Generate a complete lesson plan and chapter assessment for the following chapter."
+        else:
+            _output_schema = f"""{{
+  "grade": "{grade}",
+  "subject": "{subject}",
+  "chapter_number": {chapter["chapter_number"]},
+  "chapter_title": "{chapter.get('chapter_title', '')}",
+  "period_schedule": <derived from teacher period schedule above>,
+  "lesson_plan": {{ "periods": [ <one object per period per LP constitution> ] }},
+  "coverage_handoff": <per LP Constitution>
+}}"""
+            _intro_line = "Follow the Lesson Plan Constitution exactly."
+            _task_line  = "Generate a complete lesson plan for the following chapter."
+
+        _variable_user_text = f"""{_task_line}
 
 === CHAPTER SUMMARY ===
 {summary}
@@ -806,19 +951,10 @@ def generate_lpa(
 {period_sched}
 
 === INSTRUCTIONS ===
-Follow the Lesson Plan Constitution and Assessment Constitution exactly.
+{_intro_line}
 Produce your entire output as a single valid JSON object with this top-level structure:
 
-{{
-  "grade": "{grade}",
-  "subject": "{subject}",
-  "chapter_number": {chapter["chapter_number"]},
-  "chapter_title": "{chapter.get('chapter_title', '')}",
-  "period_schedule": <derived from teacher period schedule above>,
-  "lesson_plan": {{ "periods": [ <one object per period per LP constitution> ] }},
-  "coverage_handoff": <per LP Constitution>,
-  "assessment_items": <per Assessment Constitution>
-}}
+{_output_schema}
 
 LENGTH CONSTRAINTS (strictly enforced to keep output compact):
 - Each phase `description`: 2–3 sentences maximum.
@@ -831,7 +967,7 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             {
                 "type": "text",
                 "text": _static_user_text,
-                "cache_control": {"type": "ephemeral", "ttl": "3600"},
+                "cache_control": {"type": "ephemeral", "ttl": "1h"},
             },
             {
                 "type": "text",
@@ -982,7 +1118,10 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                 f'font-size:12px;opacity:0.45;">{_dot_icon}<span>{text}</span></div>'
             )
 
-        _steps = [
+        # LP/A split — choose the 6-step (LPA) or 5-step (LP-only) progress list.
+        # Branch off `include_assessment` so the LP-only path doesn't display
+        # an Assessment step that never fires.
+        _steps_lpa = [
             "Reading LP &amp; Assessment Constitutions",
             "Reading chapter summary",
             "Loading matched competencies",
@@ -990,6 +1129,14 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             "Building period-by-period activities&#8230;",
             "Writing assessment questions",
         ]
+        _steps_lp = [
+            "Reading LP Constitution",
+            "Reading chapter summary",
+            "Loading matched competencies",
+            "Loading stage pedagogy",
+            "Building period-by-period activities&#8230;",
+        ]
+        _steps = _steps_lpa if include_assessment else _steps_lp
         _note_html = (
             '<div style="display:flex;flex-direction:column;align-items:center;'
             'gap:0.5rem;padding:8px 0 4px 0;">'
@@ -1034,94 +1181,57 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             '<div style="padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px;">'
         )
 
-        # Phase 1: 4 ticked · step 5 (activities) active · step 6 (assessment) pending
-        PROGRESS_HTML_WORKING = (
-            _pcss + _box_open + _hdr_working + _body_open
-            + _row_done(_steps[0])
-            + _row_done(_steps[1])
-            + _row_done(_steps[2])
-            + _row_done(_steps[3])
-            + _row_active(_steps[4])
-            + _row_pending(_steps[5])
-            + _note_html
-            + '</div>'
-            + _timer_badge
-            + '</div>'
-            + _timer_js
-        )
-        # Phase 2: 5 ticked · step 6 (assessment questions) active
+        # Build a step-row block where indices < active_idx are done, exactly
+        # one (active_idx) is spinning, and the rest are pending. Works for
+        # both the 6-step LPA list and the 5-step LP-only list.
+        def _steps_block(active_idx: int) -> str:
+            parts = []
+            for _i, _s in enumerate(_steps):
+                if _i < active_idx:
+                    parts.append(_row_done(_s))
+                elif _i == active_idx:
+                    parts.append(_row_active(_s))
+                else:
+                    parts.append(_row_pending(_s))
+            return "".join(parts)
+
+        def _progress_html(active_idx: int) -> str:
+            return (
+                _pcss + _box_open + _hdr_working + _body_open
+                + _steps_block(active_idx)
+                + _note_html
+                + '</div>'
+                + _timer_badge
+                + '</div>'
+                + _timer_js
+            )
+
+        # Phase 1: 4 ticked · step 5 (activities) active · step 6 (assessment)
+        # pending. For LP-only runs (5 steps), this also functions as the
+        # terminal "working" view.
+        PROGRESS_HTML_WORKING = _progress_html(4)
+        # Phase 2: only fires when include_assessment is True.
         PROGRESS_HTML_ASSESSMENT_ACTIVE = (
-            _pcss + _box_open + _hdr_working + _body_open
-            + _row_done(_steps[0])
-            + _row_done(_steps[1])
-            + _row_done(_steps[2])
-            + _row_done(_steps[3])
-            + _row_done(_steps[4])
-            + _row_active(_steps[5])
-            + _note_html
-            + '</div>'
-            + _timer_badge
-            + '</div>'
-            + _timer_js
+            _progress_html(5) if include_assessment else PROGRESS_HTML_WORKING
         )
 
-        # Stage 0 (immediately): step 1 active, steps 2–6 pending
-        progress_placeholder.markdown(
-            _pcss + _box_open + _hdr_working + _body_open
-            + _row_active(_steps[0])
-            + _row_pending(_steps[1])
-            + _row_pending(_steps[2])
-            + _row_pending(_steps[3])
-            + _row_pending(_steps[4])
-            + _row_pending(_steps[5])
-            + _note_html + '</div>' + _timer_badge + '</div>' + _timer_js,
-            unsafe_allow_html=True,
-        )
+        # Stage 0 — step 1 active
+        progress_placeholder.markdown(_progress_html(0), unsafe_allow_html=True)
         _time.sleep(5)
 
-        # Stage 1: step 1 done, step 2 active, steps 3–6 pending
-        progress_placeholder.markdown(
-            _pcss + _box_open + _hdr_working + _body_open
-            + _row_done(_steps[0])
-            + _row_active(_steps[1])
-            + _row_pending(_steps[2])
-            + _row_pending(_steps[3])
-            + _row_pending(_steps[4])
-            + _row_pending(_steps[5])
-            + _note_html + '</div>' + _timer_badge + '</div>' + _timer_js,
-            unsafe_allow_html=True,
-        )
+        # Stage 1 — step 2 active
+        progress_placeholder.markdown(_progress_html(1), unsafe_allow_html=True)
         _time.sleep(5)
 
-        # Stage 2: steps 1–2 done, step 3 active, steps 4–6 pending
-        progress_placeholder.markdown(
-            _pcss + _box_open + _hdr_working + _body_open
-            + _row_done(_steps[0])
-            + _row_done(_steps[1])
-            + _row_active(_steps[2])
-            + _row_pending(_steps[3])
-            + _row_pending(_steps[4])
-            + _row_pending(_steps[5])
-            + _note_html + '</div>' + _timer_badge + '</div>' + _timer_js,
-            unsafe_allow_html=True,
-        )
+        # Stage 2 — step 3 active
+        progress_placeholder.markdown(_progress_html(2), unsafe_allow_html=True)
         _time.sleep(5)
 
-        # Stage 3: steps 1–3 done, step 4 active, steps 5–6 pending
-        progress_placeholder.markdown(
-            _pcss + _box_open + _hdr_working + _body_open
-            + _row_done(_steps[0])
-            + _row_done(_steps[1])
-            + _row_done(_steps[2])
-            + _row_active(_steps[3])
-            + _row_pending(_steps[4])
-            + _row_pending(_steps[5])
-            + _note_html + '</div>' + _timer_badge + '</div>' + _timer_js,
-            unsafe_allow_html=True,
-        )
+        # Stage 3 — step 4 active
+        progress_placeholder.markdown(_progress_html(3), unsafe_allow_html=True)
         _time.sleep(5)
 
-        # Stage 4: steps 1–4 done, step 5 active, step 6 pending — PROGRESS_HTML_WORKING
+        # Stage 4 — step 5 (activities) active
         progress_placeholder.markdown(PROGRESS_HTML_WORKING, unsafe_allow_html=True)
 
         # ── Stream loop ───────────────────────────────────────────────────────
@@ -1144,7 +1254,11 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                     _stopped_by_user = True
                     break
                 streamed_text += text
-                if not _assessment_triggered and '"assessment_items"' in streamed_text:
+                # Phase-2 transition only applies when assessment is being
+                # generated in the same run. LP-only runs end at coverage_handoff.
+                if (include_assessment
+                    and not _assessment_triggered
+                    and '"assessment_items"' in streamed_text):
                     _assessment_triggered = True
                     progress_placeholder.markdown(
                         PROGRESS_HTML_ASSESSMENT_ACTIVE, unsafe_allow_html=True
@@ -1166,7 +1280,9 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                 _cache_write_stopped = 0
                 _cache_read_stopped  = 0
             log_tokens(
-                call_type          = "lpa_generation_stopped",
+                call_type          = ("lpa_generation_stopped"
+                                       if include_assessment
+                                       else "lp_generation_stopped"),
                 grade              = grade,
                 subject            = subject,
                 chapter_number     = chapter["chapter_number"],
@@ -1190,6 +1306,7 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                 "input_tokens":   input_tokens,
                 "output_tokens":  output_tokens,
                 "cost_inr":       calculate_cost_inr("claude-sonnet-4-6", input_tokens, output_tokens),
+                "plan_status":    "full_lpa" if include_assessment else "lp_only",
                 "stopped":        True,
             }
             if result_queue is not None:
@@ -1203,7 +1320,7 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
         cache_read_tokens  = getattr(usage, "cache_read_input_tokens",     0)
 
         log_tokens(
-            call_type          = "lpa_generation",
+            call_type          = "lpa_generation" if include_assessment else "lp_generation",
             grade              = grade,
             subject            = subject,
             chapter_number     = chapter["chapter_number"],
@@ -1245,13 +1362,18 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             _n_comps   = len(_c_codes - {""})
             _n_qs      = len(parsed.get("assessment_items", []))
             _sv        = "color:#2d8a5e;font-weight:500;"
+            _assess_line = (
+                f'Assessment: <span style="{_sv}">{_n_qs}</span> questions'
+                if include_assessment
+                else 'Assessment: <span style="color:#9c9895;">deferred</span>'
+            )
             _summary   = (
                 '<div style="font-family:monospace;font-size:10.5px;background:#f7f5f2;'
                 'border-radius:6px;padding:8px 10px;margin-bottom:8px;">'
                 f'Lesson plan: <span style="{_sv}">{_n_periods}</span> periods'
                 f' &#183; <span style="{_sv}">{_n_acts}</span> activities<br>'
                 f'Competencies: <span style="{_sv}">{_n_comps}</span> mapped<br>'
-                f'Assessment: <span style="{_sv}">{_n_qs}</span> questions'
+                f'{_assess_line}'
                 '</div>'
             )
             _tick_sm   = (
@@ -1287,12 +1409,7 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                 '</div>'
                 '<div style="padding:10px 12px 12px;display:flex;flex-direction:column;gap:3px;">'
                 + _summary
-                + _row_sm(_steps[0])
-                + _row_sm(_steps[1])
-                + _row_sm(_steps[2])
-                + _row_sm(_steps[3])
-                + _row_sm(_steps[4])
-                + _row_sm(_steps[5])
+                + "".join(_row_sm(_s) for _s in _steps)
                 + '<div style="display:flex;justify-content:flex-end;padding:4px 12px 8px 0;">'
                 '<span style="font-family:monospace;font-size:10px;color:#2d8a5e;'
                 'background:#f0faf5;border:1px solid #b8e8d0;border-radius:4px;'
@@ -1354,10 +1471,11 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             "chapter_title":    chapter.get("chapter_title", ""),
             "lesson_plan":      parsed.get("lesson_plan", {}),
             "coverage_handoff": parsed.get("coverage_handoff", {}),
-            "assessment_items": parsed.get("assessment_items", []),
+            "assessment_items": parsed.get("assessment_items", []) if include_assessment else [],
             "input_tokens":     input_tokens,
             "output_tokens":    output_tokens,
             "cost_inr":         calculate_cost_inr("claude-sonnet-4-6", input_tokens, output_tokens),
+            "plan_status":      "full_lpa" if include_assessment else "lp_only",
         }
         if result_queue is not None:
             result_queue.put(_final_result)
@@ -1372,11 +1490,407 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             "lesson_plan":      {},
             "coverage_handoff": {},
             "assessment_items": [],
+            "plan_status":      "full_lpa" if include_assessment else "lp_only",
             "error":            str(e),
         }
         if result_queue is not None:
             result_queue.put(_err_result)
         return _err_result
+
+
+# Backwards-compat alias — old name still resolves for any external callers
+# during the migration. New code should call generate_lp_only() directly.
+generate_lpa = generate_lp_only
+
+
+def generate_assessment_only(
+    saved_plan:   dict,
+    result_queue: "queue.Queue | None" = None,
+    stop_event:   "threading.Event | None" = None,
+) -> dict:
+    """Generate assessment items for a previously saved LP-only plan.
+
+    Inputs are sourced from the saved plan and mirror — the teacher already
+    committed all decisions (grade, subject, chapter, period schedule) at
+    LP generation time, so no parameter entry is required.
+
+    Returns a result dict carrying assessment_items plus the run's token
+    accounting under assess_* keys (kept separate from the LP run's tokens
+    so per-stage costs remain auditable in the saved plan).
+    """
+    grade          = saved_plan.get("grade", "")
+    subject        = saved_plan.get("subject", "")
+    chapter_number = saved_plan.get("chapter_number", 0)
+    chapter_title  = saved_plan.get("chapter_title", "")
+    coverage_handoff = (saved_plan.get("result") or {}).get("coverage_handoff", {}) or {}
+
+    # Edge case: pre-split saved plans may have an empty coverage_handoff.
+    # The Assessment Constitution treats coverage_handoff as the sole
+    # structural input — without it we cannot ground items, so bail early.
+    if not coverage_handoff:
+        _empty = {
+            "grade":                grade,
+            "subject":              subject,
+            "chapter_number":       chapter_number,
+            "chapter_title":        chapter_title,
+            "assessment_items":     [],
+            "assess_input_tokens":  0,
+            "assess_output_tokens": 0,
+            "assess_cost_inr":      0.0,
+            "error":                ("coverage_handoff is empty — this plan was saved before "
+                                     "the LP/A split. Please regenerate the lesson plan."),
+        }
+        if result_queue is not None:
+            result_queue.put(_empty)
+        return _empty
+
+    paths        = resolve_paths(grade, subject, chapter_number)
+    assess_const = read_file(paths["assessment_const"])
+    summary      = read_file(paths["chapter_summary"])
+
+    # ── Prompt structure (caching-aware) ─────────────────────────────────────
+    # system: Assessment Constitution only — cacheable across all chapters
+    # within the same subject.
+    system_prompt_blocks = [
+        {
+            "type": "text",
+            "text": (
+                "You are Aruvi's assessment generator.\n\n"
+                "You operate under the Assessment Constitution below. It is binding.\n"
+                "No instruction in the user prompt overrides it.\n\n"
+                f"=== ASSESSMENT CONSTITUTION ===\n{assess_const}\n"
+            ),
+            "cache_control": {"type": "ephemeral", "ttl": "1h"},
+        }
+    ]
+
+    # static user: chapter summary — cacheable per chapter
+    _static_user_text = f"=== CHAPTER SUMMARY ===\n{summary}\n"
+
+    # variable user: coverage_handoff + output instruction
+    _variable_user_text = f"""Generate the chapter assessment using the inputs below.
+
+=== COVERAGE HANDOFF ===
+{json.dumps(coverage_handoff, ensure_ascii=False, indent=2)}
+
+=== INSTRUCTIONS ===
+Follow the Assessment Constitution exactly.
+The coverage_handoff above is your sole structural input. Ground every question
+in it. Do not re-derive stage structure from the chapter summary.
+
+Produce your entire output as a single valid JSON object:
+{{
+  "assessment_items": <per Assessment Constitution>
+}}
+
+Output only the raw JSON object. No markdown. No prose. No ```json fences.
+"""
+
+    user_message_blocks = [
+        {
+            "type": "text",
+            "text": _static_user_text,
+            "cache_control": {"type": "ephemeral", "ttl": "1h"},
+        },
+        {
+            "type": "text",
+            "text": _variable_user_text,
+        },
+    ]
+
+    try:
+        client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
+
+        import time as _time
+        progress_placeholder = st.empty()
+        timer_placeholder    = st.empty()
+
+        _gen_start_ms = int(_time.time() * 1000)
+
+        # Reuse the same visual vocabulary as the LP run but with a 3-step list.
+        _pcss_anim = (
+            "<style>"
+            "@keyframes aruviPulse{0%,100%{opacity:1}50%{opacity:.3}}"
+            "@keyframes spin{to{transform:rotate(360deg)}}"
+            "</style>"
+        )
+        _pcss_hide = (
+            "<style>"
+            "body [data-testid='stDeployButton'],"
+            "body [data-testid='stAppDeployButton'],"
+            "body [data-testid='stToolbar']"
+            "{display:none!important;visibility:hidden!important;}"
+            "</style>"
+        )
+        _pcss = _pcss_anim + _pcss_hide
+
+        # Hidden 0-height driver iframe that reaches into the parent document
+        # every second and updates a visible <span id="aruvi-da-timer"> that
+        # lives INSIDE the popup body. Putting the time text inline (instead
+        # of in a separately-floated iframe) keeps it visually tied to the
+        # popup regardless of how tall the popup is.
+        _timer_widget_html = (
+            '<!doctype html><html><body><script>'
+            '(function(){'
+            f'  var _start={_gen_start_ms};'
+            '  function _tick(){'
+            '    try {'
+            '      var el=window.parent.document.getElementById("aruvi-da-timer");'
+            '      if(!el){return;}'
+            '      var s=Math.floor((Date.now()-_start)/1000);'
+            '      var m=Math.floor(s/60);var sc=s%60;'
+            '      el.textContent=(m<10?"0"+m:m)+":"+(sc<10?"0"+sc:sc);'
+            '    } catch(e) {}'
+            '  }'
+            '  _tick();'
+            '  setInterval(_tick,1000);'
+            '})();'
+            '</script></body></html>'
+        )
+        st.markdown(
+            "<style>"
+            "iframe[srcdoc*='aruvi-da-timer']{"
+            "  width:0!important;height:0!important;border:0!important;"
+            "  position:absolute!important;left:-9999px!important;"
+            "}"
+            "</style>",
+            unsafe_allow_html=True,
+        )
+        with timer_placeholder.container():
+            components.html(_timer_widget_html, height=0, scrolling=False)
+
+        _tick_icon = (
+            '<div style="width:12px;height:12px;border-radius:50%;background:#d4f0e4;'
+            'display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">'
+            '<div style="width:5px;height:3px;border-left:1.5px solid #2d8a5e;'
+            'border-bottom:1.5px solid #2d8a5e;transform:rotate(-45deg);'
+            'margin-top:-1px;"></div></div>'
+        )
+        _spin_icon = (
+            '<div style="width:12px;height:12px;border-radius:50%;'
+            'border:1.5px solid #e8a83e;border-top-color:transparent;'
+            'animation:spin 0.7s linear infinite;flex-shrink:0;'
+            'margin-top:1px;box-sizing:border-box;"></div>'
+        )
+        _dot_icon = (
+            '<div style="width:12px;height:12px;display:flex;align-items:center;'
+            'justify-content:center;flex-shrink:0;margin-top:1px;">'
+            '<div style="width:6px;height:6px;background:#d9d6d0;border-radius:50%;"></div></div>'
+        )
+        def _row_done(t):    return f'<div style="display:flex;align-items:flex-start;gap:8px;font-size:12px;color:#9c9895;">{_tick_icon}<span>{t}</span></div>'
+        def _row_active(t):  return f'<div style="display:flex;align-items:flex-start;gap:8px;font-size:12px;color:#3d3b38;font-weight:500;">{_spin_icon}<span>{t}</span></div>'
+        def _row_pending(t): return f'<div style="display:flex;align-items:flex-start;gap:8px;font-size:12px;opacity:0.45;">{_dot_icon}<span>{t}</span></div>'
+
+        _steps_assess = [
+            "Reading Assessment Constitution",
+            "Reading chapter summary",
+            "Writing assessment questions&#8230;",
+        ]
+
+        _box_open = (
+            '<div class="aruvi-progress-box" style="position:fixed;top:80px;right:24px;'
+            'width:280px;z-index:9999;background:white;border:1px solid #d9d6d0;'
+            'border-radius:10px;overflow:hidden;">'
+        )
+        _hdr_working = (
+            '<div style="padding:8px 12px;border-bottom:1px solid #ece9e4;'
+            'display:flex;gap:8px;align-items:center;">'
+            '<div style="width:10px;height:10px;border-radius:50%;background:#e8a83e;'
+            'animation:aruviPulse 1.4s infinite;flex-shrink:0;"></div>'
+            '<span style="font-size:11px;color:#7a776f;font-weight:500;flex:1;">'
+            'Generating assessment&#8230;</span>'
+            '<button onclick="(function(){'
+            'var w=document.querySelector(\'[class*=st-key-btn_stop_da_generation]\');'
+            'if(w){var b=w.querySelector(\'button\');if(b)b.click();}'
+            '})()" '
+            'style="display:inline-flex;align-items:center;gap:4px;font-size:10px;'
+            'color:#9c9895;background:#f2f0ec;border:1px solid #dddad5;'
+            'border-radius:4px;padding:3px 7px;cursor:pointer;white-space:nowrap;'
+            'font-family:inherit;line-height:1;">'
+            '<span style="width:7px;height:7px;background:#9c9895;border-radius:1px;'
+            'display:inline-block;flex-shrink:0;"></span>'
+            'stop</button>'
+            '</div>'
+        )
+        _body_open = (
+            '<div style="padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px;">'
+        )
+        # Visible live-time pill inside the popup. The hidden driver iframe
+        # rewrites this span's textContent every second via
+        # window.parent.document.getElementById("aruvi-da-timer").
+        _timer_badge = (
+            '<div style="display:flex;justify-content:flex-end;padding:4px 12px 8px 0;">'
+            '<span id="aruvi-da-timer" style="font-family:monospace;font-size:10px;'
+            'color:#5a5754;background:#f7f5f2;border-radius:4px;'
+            'padding:2px 6px;">00:00</span></div>'
+        )
+
+        def _da_progress(active_idx: int) -> str:
+            parts = []
+            for _i, _s in enumerate(_steps_assess):
+                if _i < active_idx:    parts.append(_row_done(_s))
+                elif _i == active_idx: parts.append(_row_active(_s))
+                else:                  parts.append(_row_pending(_s))
+            return (
+                _pcss + _box_open + _hdr_working + _body_open
+                + "".join(parts)
+                + '</div>'
+                + _timer_badge
+                + '</div>'
+            )
+
+        progress_placeholder.markdown(_da_progress(0), unsafe_allow_html=True)
+        _time.sleep(3)
+        progress_placeholder.markdown(_da_progress(1), unsafe_allow_html=True)
+        _time.sleep(3)
+        progress_placeholder.markdown(_da_progress(2), unsafe_allow_html=True)
+
+        streamed_text   = ""
+        _stopped_by_user = False
+        with client.messages.stream(
+            model="claude-sonnet-4-6",
+            max_tokens=32000,
+            system=system_prompt_blocks,
+            messages=[{"role": "user", "content": user_message_blocks}],
+            extra_headers={"anthropic-beta": "prompt-caching-2024-07-31"},
+        ) as stream:
+            for text in stream.text_stream:
+                if stop_event is not None and stop_event.is_set():
+                    _stopped_by_user = True
+                    break
+                streamed_text += text
+
+        if _stopped_by_user:
+            try:
+                _u = stream.get_current_message_snapshot().usage
+                _it = getattr(_u, "input_tokens", 0)
+                _ot = getattr(_u, "output_tokens", 0)
+                _cw = getattr(_u, "cache_creation_input_tokens", 0)
+                _cr = getattr(_u, "cache_read_input_tokens", 0)
+            except Exception:
+                _it = _ot = _cw = _cr = 0
+            log_tokens(
+                call_type          = "assessment_generation_deferred_stopped",
+                grade              = grade,
+                subject            = subject,
+                chapter_number     = chapter_number,
+                chapter_title      = chapter_title,
+                input_tokens       = _it,
+                output_tokens      = _ot,
+                model              = "claude-sonnet-4-6",
+                cache_write_tokens = _cw,
+                cache_read_tokens  = _cr,
+            )
+            progress_placeholder.empty()
+            timer_placeholder.empty()
+            _stopped = {
+                "grade":                grade,
+                "subject":              subject,
+                "chapter_number":       chapter_number,
+                "chapter_title":        chapter_title,
+                "assessment_items":     [],
+                "assess_input_tokens":  _it,
+                "assess_output_tokens": _ot,
+                "assess_cost_inr":      calculate_cost_inr("claude-sonnet-4-6", _it, _ot),
+                "stopped":              True,
+            }
+            if result_queue is not None:
+                result_queue.put(_stopped)
+            return _stopped
+
+        usage = stream.get_final_message().usage
+        input_tokens       = usage.input_tokens
+        output_tokens      = usage.output_tokens
+        cache_write_tokens = getattr(usage, "cache_creation_input_tokens", 0)
+        cache_read_tokens  = getattr(usage, "cache_read_input_tokens",     0)
+        log_tokens(
+            call_type          = "assessment_generation_deferred",
+            grade              = grade,
+            subject            = subject,
+            chapter_number     = chapter_number,
+            chapter_title      = chapter_title,
+            input_tokens       = input_tokens,
+            output_tokens      = output_tokens,
+            model              = "claude-sonnet-4-6",
+            cache_write_tokens = cache_write_tokens,
+            cache_read_tokens  = cache_read_tokens,
+        )
+
+        _raw = streamed_text.strip()
+        if _raw.startswith("```"):
+            _fence_end = _raw.find("```", 3)
+            _raw = (_raw[_raw.index("\n") + 1 : _fence_end] if _fence_end > 3 else _raw).strip()
+        _brace = _raw.find("{")
+        if _brace > 0:
+            _raw = _raw[_brace:]
+
+        parsed = {}
+        try:
+            parsed = json.loads(_raw)
+        except Exception as _je:
+            try:
+                _debug_dir = Path(__file__).parent.parent / "mirror" / "debug"
+                _debug_dir.mkdir(parents=True, exist_ok=True)
+                _debug_file = _debug_dir / f"raw_da_output_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+                _debug_file.write_text(_raw, encoding="utf-8")
+                _debug_path_str = str(_debug_file)
+            except Exception as _dfe:
+                _debug_path_str = f"(could not write debug file: {_dfe})"
+            _preview = _raw[:500] + (" … [truncated] … " + _raw[-200:] if len(_raw) > 700 else "")
+            st.warning(
+                f"⚠️ Assessment JSON parse failed ({_je}). "
+                f"Raw output saved to: {_debug_path_str}\n\n"
+                f"Preview:\n\n```\n{_preview}\n```"
+            )
+            progress_placeholder.empty()
+            timer_placeholder.empty()
+            _err = {
+                "grade":                grade,
+                "subject":              subject,
+                "chapter_number":       chapter_number,
+                "chapter_title":        chapter_title,
+                "assessment_items":     [],
+                "assess_input_tokens":  input_tokens,
+                "assess_output_tokens": output_tokens,
+                "assess_cost_inr":      calculate_cost_inr("claude-sonnet-4-6", input_tokens, output_tokens),
+                "error":                f"JSON parse failed: {_je}",
+            }
+            if result_queue is not None:
+                result_queue.put(_err)
+            return _err
+
+        progress_placeholder.empty()
+        timer_placeholder.empty()
+
+        _final = {
+            "grade":                grade,
+            "subject":              subject,
+            "chapter_number":       chapter_number,
+            "chapter_title":        chapter_title,
+            "assessment_items":     parsed.get("assessment_items", []),
+            "assess_input_tokens":  input_tokens,
+            "assess_output_tokens": output_tokens,
+            "assess_cost_inr":      calculate_cost_inr("claude-sonnet-4-6", input_tokens, output_tokens),
+        }
+        if result_queue is not None:
+            result_queue.put(_final)
+        return _final
+
+    except Exception as e:
+        _err = {
+            "grade":                grade,
+            "subject":              subject,
+            "chapter_number":       chapter_number,
+            "chapter_title":        chapter_title,
+            "assessment_items":     [],
+            "assess_input_tokens":  0,
+            "assess_output_tokens": 0,
+            "assess_cost_inr":      0.0,
+            "error":                str(e),
+        }
+        if result_queue is not None:
+            result_queue.put(_err)
+        return _err
 
 # ── LPA normalisation helpers ─────────────────────────────────────────────────
 # These bridge the old (lo_handoff flat list) and new (A3 lesson_plan.periods)
@@ -2892,7 +3406,10 @@ section[data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="sele
    ═══════════════════════════════════════════════════ */
 section[data-testid="stSidebar"] div[class*="st-key-grade_select"] [data-baseweb="select"] > div:first-child,
 section[data-testid="stSidebar"] div[class*="st-key-subject_select"] [data-baseweb="select"] > div:first-child,
-section[data-testid="stSidebar"] div[class*="st-key-teacher_ch_select"] [data-baseweb="select"] > div:first-child {
+section[data-testid="stSidebar"] div[class*="st-key-teacher_ch_select"] [data-baseweb="select"] > div:first-child,
+section[data-testid="stSidebar"] div[class*="st-key-mp_grade_select"] [data-baseweb="select"] > div:first-child,
+section[data-testid="stSidebar"] div[class*="st-key-mp_subject_select"] [data-baseweb="select"] > div:first-child,
+section[data-testid="stSidebar"] div[class*="st-key-mp_saved_select"] [data-baseweb="select"] > div:first-child {
     border: 1px solid #d0cdc9 !important;
     border-radius: 8px !important;
     background: #ffffff !important;
@@ -2911,7 +3428,16 @@ section[data-testid="stSidebar"] div[class*="st-key-subject_select"] [data-basew
 section[data-testid="stSidebar"] div[class*="st-key-subject_select"] [data-baseweb="select"] span,
 section[data-testid="stSidebar"] div[class*="st-key-teacher_ch_select"] [data-baseweb="select"] [data-baseweb="value"],
 section[data-testid="stSidebar"] div[class*="st-key-teacher_ch_select"] [data-baseweb="select"] [data-baseweb="placeholder"],
-section[data-testid="stSidebar"] div[class*="st-key-teacher_ch_select"] [data-baseweb="select"] span {
+section[data-testid="stSidebar"] div[class*="st-key-teacher_ch_select"] [data-baseweb="select"] span,
+section[data-testid="stSidebar"] div[class*="st-key-mp_grade_select"] [data-baseweb="select"] [data-baseweb="value"],
+section[data-testid="stSidebar"] div[class*="st-key-mp_grade_select"] [data-baseweb="select"] [data-baseweb="placeholder"],
+section[data-testid="stSidebar"] div[class*="st-key-mp_grade_select"] [data-baseweb="select"] span,
+section[data-testid="stSidebar"] div[class*="st-key-mp_subject_select"] [data-baseweb="select"] [data-baseweb="value"],
+section[data-testid="stSidebar"] div[class*="st-key-mp_subject_select"] [data-baseweb="select"] [data-baseweb="placeholder"],
+section[data-testid="stSidebar"] div[class*="st-key-mp_subject_select"] [data-baseweb="select"] span,
+section[data-testid="stSidebar"] div[class*="st-key-mp_saved_select"] [data-baseweb="select"] [data-baseweb="value"],
+section[data-testid="stSidebar"] div[class*="st-key-mp_saved_select"] [data-baseweb="select"] [data-baseweb="placeholder"],
+section[data-testid="stSidebar"] div[class*="st-key-mp_saved_select"] [data-baseweb="select"] span {
     font-size: 0.76rem !important;
     color: #2c2a27 !important;
 }
@@ -3806,7 +4332,8 @@ div[class*="st-key-export_pdf"] button * {
    MY PLANS — VIEW / PDF BUTTONS
    ═══════════════════════════════════════════════════ */
 div[class*="st-key-view_"] button,
-div[class*="st-key-pdf_"] button {
+div[class*="st-key-pdf_"] button,
+div[class*="st-key-mp_gen_assess_"] button {
     background: #2c3e50 !important;
     border: none !important;
     color: #ffffff !important;
@@ -3815,8 +4342,29 @@ div[class*="st-key-pdf_"] button {
     border-radius: 8px !important;
 }
 div[class*="st-key-view_"] button:hover,
-div[class*="st-key-pdf_"] button:hover {
+div[class*="st-key-pdf_"] button:hover,
+div[class*="st-key-mp_gen_assess_"] button:hover {
     background: #3d5166 !important;
+}
+/* "Generate Assessment" sits in the same narrow column as View — drop the
+   font a notch and let the label wrap so "Generate" / "Assessment" stack
+   on two lines instead of clipping. */
+div[class*="st-key-mp_gen_assess_"] button {
+    font-size: 0.38rem !important;
+    line-height: 1.1 !important;
+    padding: 0.25rem 0.4rem !important;
+    white-space: normal !important;
+}
+div[class*="st-key-mp_gen_assess_"] button * {
+    color: #ffffff !important;
+    white-space: normal !important;
+    word-break: normal !important;
+}
+div[class*="st-key-mp_gen_assess_"] button p {
+    /* Force a line break between the two words via word-spacing trick:
+       Streamlit wraps the label in a <p>; with white-space:normal and a
+       narrow column, "Generate Assessment" wraps naturally on the space. */
+    margin: 0 !important;
 }
 
 /* MY PLANS — BACK BUTTONS (match primary / Generate button colours) */
@@ -4072,6 +4620,15 @@ if "lpa_start_ts"             not in st.session_state: st.session_state.lpa_star
 if "lpa_stop_event"           not in st.session_state: st.session_state.lpa_stop_event           = None
 if "no_chapter_warning"       not in st.session_state: st.session_state.no_chapter_warning       = False
 if "plan_just_saved"          not in st.session_state: st.session_state.plan_just_saved          = False
+# LP/A split — Generate-tab confirmation dialog state
+if "gen_include_assessment"        not in st.session_state: st.session_state.gen_include_assessment        = False
+if "show_gen_confirm"              not in st.session_state: st.session_state.show_gen_confirm              = False
+# LP/A split — deferred assessment (My Plans) state
+if "mp_deferred_assess_generating" not in st.session_state: st.session_state.mp_deferred_assess_generating = False
+if "mp_deferred_assess_plan"       not in st.session_state: st.session_state.mp_deferred_assess_plan       = None
+if "mp_da_thread"                  not in st.session_state: st.session_state.mp_da_thread                  = None
+if "mp_da_stop_event"              not in st.session_state: st.session_state.mp_da_stop_event              = None
+if "mp_da_result_queue"            not in st.session_state: st.session_state.mp_da_result_queue            = None
 
 @st.dialog(" ")
 def _no_chapter_dialog():
@@ -4146,7 +4703,99 @@ with _nc4:
 
 with st.sidebar:
     if st.session_state.role == "My Plans":
-        st.markdown('<div style="display:none"></div>', unsafe_allow_html=True)
+        # On the My Plans tab, the Grade and Subject selectboxes act as filters
+        # for the saved-plans table. Unlike Allocate/Generate they expose an
+        # explicit "All" option (the default), and they write through to the
+        # shared session-state keys so any specific selection persists when
+        # the user switches tabs. "All" maps to None in shared state.
+
+        _g_icon = f'<img src="{GRADE_SRC}" class="field-icon-grade" alt="">' if GRADE_SRC else ""
+        st.markdown(
+            f'<div class="sidebar-field-label">{_g_icon}'
+            f'<span class="field-label-text">Grade</span></div>',
+            unsafe_allow_html=True,
+        )
+        _mp_grade_opts = ["All"] + GRADES
+        _mp_grade_cur  = st.session_state.grade if st.session_state.grade in GRADES else "All"
+        grade = st.selectbox(
+            "Grade",
+            _mp_grade_opts,
+            index=_mp_grade_opts.index(_mp_grade_cur),
+            label_visibility="collapsed",
+            key="mp_grade_select",
+        )
+        _grade_val = None if grade == "All" else grade
+        if _grade_val != st.session_state.grade:
+            st.session_state.grade               = _grade_val
+            st.session_state.teacher_ch_idx      = None
+            st.session_state.teacher_generated   = False
+            st.session_state.principal_generated = False
+            if _grade_val:
+                st.query_params["grade"] = _grade_val
+            else:
+                st.query_params.pop("grade", None)
+            st.rerun()
+
+        _s_icon = f'<img src="{SUBJECT_SRC}" class="field-icon" alt="">' if SUBJECT_SRC else ""
+        st.markdown(
+            f'<div class="sidebar-field-label">{_s_icon}'
+            f'<span class="field-label-text">Subject</span></div>',
+            unsafe_allow_html=True,
+        )
+        _mp_subj_opts = ["All"] + SUBJECTS
+        _mp_subj_cur  = st.session_state.subject if st.session_state.subject in SUBJECTS else "All"
+        subject = st.selectbox(
+            "Subject",
+            _mp_subj_opts,
+            index=_mp_subj_opts.index(_mp_subj_cur),
+            label_visibility="collapsed",
+            key="mp_subject_select",
+        )
+        _subject_val = None if subject == "All" else subject
+        if _subject_val != st.session_state.subject:
+            st.session_state.subject             = _subject_val
+            st.session_state.teacher_ch_idx      = None
+            st.session_state.teacher_generated   = False
+            st.session_state.principal_generated = False
+            if _subject_val:
+                st.query_params["subject"] = _subject_val
+            else:
+                st.query_params.pop("subject", None)
+            st.rerun()
+
+        # ── Saved date filter ─────────────────────────────────────────────────
+        st.markdown(
+            '<div class="sidebar-field-label">'
+            '<span class="field-label-text">Saved</span></div>',
+            unsafe_allow_html=True,
+        )
+        _mp_saved_opts = ["Today", "Yesterday", "This week", "This month", "All"]
+        if "mp_saved_filter" not in st.session_state:
+            st.session_state.mp_saved_filter = "All"
+        _saved_choice = st.selectbox(
+            "Saved",
+            _mp_saved_opts,
+            index=_mp_saved_opts.index(st.session_state.mp_saved_filter),
+            label_visibility="collapsed",
+            key="mp_saved_select",
+        )
+        if _saved_choice != st.session_state.mp_saved_filter:
+            st.session_state.mp_saved_filter = _saved_choice
+            st.rerun()
+
+        st.markdown('<div class="sidebar-spacer"></div>', unsafe_allow_html=True)
+        st.markdown("""
+    <div class="sidebar-user-footer">
+      <hr style="border:none;border-top:1px solid #d9d6d0;margin:0;" />
+      <div class="user-footer-inner">
+        <div class="user-avatar">RT</div>
+        <div class="user-info">
+          <span class="user-name">Ramesh Tripathi</span>
+          <span class="user-plan">Free plan</span>
+        </div>
+      </div>
+    </div>
+    """, unsafe_allow_html=True)
     else:
 
         # ── Grade selector — label above, value below (left-aligned) ─────────────
@@ -4367,7 +5016,7 @@ section[data-testid="stSidebar"] div[class*="st-key-add_period_row"] button:hove
                 )
             )
             if st.button(
-                "Generate Lesson Plan & Assessment",
+                "Generate Lesson Plan",
                 disabled=not can_gen,
                 type="primary",
                 use_container_width=True,
@@ -4376,13 +5025,17 @@ section[data-testid="stSidebar"] div[class*="st-key-add_period_row"] button:hove
                 if st.session_state.teacher_ch_idx is None:
                     st.session_state.no_chapter_warning = True
                 else:
-                    st.session_state.no_chapter_warning  = False
-                    st.session_state.lpa_generating      = True
-                    st.session_state.lpa_result          = None
-                    st.session_state.plan_already_saved  = False
+                    st.session_state.no_chapter_warning = False
+                    # LP/A split — open the confirmation dialog before kicking
+                    # off generation. The checkbox in the dialog decides whether
+                    # assessment is included in the same run or deferred.
+                    st.session_state.show_gen_confirm   = True
+                    st.session_state.plan_already_saved = False
                     st.rerun()
 
             # ── No-chapter warning popup ──────────────────────────────────────────
+            # The Include-Assessment confirmation card lives in the main
+            # workspace (right of the sidebar) — see the Generate role block.
             if st.session_state.get("no_chapter_warning"):
                 _no_chapter_dialog()
 
@@ -4529,6 +5182,208 @@ if not has_chapter_data and st.session_state.role != "My Plans" and st.session_s
 # ═════════════════════════════════════════════════
 elif st.session_state.role == "Generate":
 
+    # ── Deferred assessment generation ────────────────────────────────────────
+    # Triggered when "Generate Assessment" is clicked on an lp_only row in
+    # My Plans. The role flip there lands the teacher here so the popup
+    # appears in the regular Generate-tab spot. On completion, role flips
+    # back to My Plans so the now-PDF row is visible.
+    if (st.session_state.get("mp_deferred_assess_generating")
+        and st.session_state.get("mp_deferred_assess_plan") is not None):
+
+        _dap = st.session_state.mp_deferred_assess_plan
+
+        _existing_da_thread = st.session_state.get("mp_da_thread")
+        if (_existing_da_thread is not None and _existing_da_thread.is_alive()
+                and st.session_state.mp_da_result_queue is not None):
+            _da_stop_ev = st.session_state.mp_da_stop_event
+            _da_rq      = st.session_state.mp_da_result_queue
+        else:
+            _da_stop_ev = threading.Event()
+            _da_rq      = queue.Queue()
+            st.session_state.mp_da_stop_event   = _da_stop_ev
+            st.session_state.mp_da_result_queue = _da_rq
+            _da_t = threading.Thread(
+                target=generate_assessment_only,
+                kwargs=dict(
+                    saved_plan   = _dap,
+                    result_queue = _da_rq,
+                    stop_event   = _da_stop_ev,
+                ),
+                daemon=True,
+            )
+            add_script_run_ctx(_da_t)
+            _da_t.start()
+            st.session_state.mp_da_thread = _da_t
+
+        # Hidden Stop button — the visible pill inside the popup clicks this
+        # via DOM querySelector (see _hdr_working in generate_assessment_only).
+        st.markdown(
+            '<style>'
+            'div[class*="st-key-btn_stop_da_generation"]{display:none!important;}'
+            '</style>',
+            unsafe_allow_html=True,
+        )
+        if st.button("stop", key="btn_stop_da_generation"):
+            if st.session_state.mp_da_stop_event is not None:
+                st.session_state.mp_da_stop_event.set()
+
+        _da_heartbeat = st.empty()
+        _da_result = None
+        while _da_result is None:
+            try:
+                _da_result = _da_rq.get(timeout=0.25)
+            except queue.Empty:
+                _da_heartbeat.markdown("")
+        _da_heartbeat.empty()
+
+        st.session_state.mp_da_thread       = None
+        st.session_state.mp_da_stop_event   = None
+        st.session_state.mp_da_result_queue = None
+
+        if (not _da_result.get("stopped")
+            and not _da_result.get("error")
+            and _da_result.get("assessment_items")):
+            update_saved_plan_with_assessment(
+                filename      = _dap.get("filename", ""),
+                grade         = _dap.get("grade", ""),
+                subject       = _dap.get("subject", ""),
+                assess_result = _da_result,
+            )
+        elif _da_result.get("error"):
+            st.error(f"Assessment generation failed: {_da_result['error']}")
+
+        st.session_state.mp_deferred_assess_generating = False
+        st.session_state.mp_deferred_assess_plan       = None
+        # Hand control back to My Plans so the row re-renders with PDF ⬇.
+        st.session_state.role = "My Plans"
+        st.query_params["role"] = "My Plans"
+        st.rerun()
+
+    # ── Confirmation card: Include Assessment? ──────────────────────────────
+    # Rendered in the main workspace (not the sidebar) so the card sits over
+    # the body content. Layout: stacked rows (Grade / Subject / Chapter title)
+    # then the Include-Assessment toggle, then the action buttons.
+    if (st.session_state.get("show_gen_confirm")
+        and not st.session_state.lpa_generating
+        and st.session_state.lpa_result is None):
+        _confirm_ch = None
+        if st.session_state.teacher_ch_idx is not None and st.session_state.teacher_ch_idx < len(chapters):
+            _confirm_ch = chapters[st.session_state.teacher_ch_idx]
+        st.markdown("""<style>
+div[class*="st-key-gen_confirm_box"] {
+    background:#fff;
+    border:1px solid #d9d6d0;
+    border-radius:12px;
+    padding:1.25rem 1.5rem;
+    margin:0.5rem 0 1rem 0;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    max-width:540px;
+}
+/* Generate button — match the sidebar Generate button (dark slate pill with
+   the ✦ AI twinkle prepended via ::before). */
+div[class*="st-key-gen_confirm_go"] button {
+    height: 56px !important;
+    min-height: 56px !important;
+    border-radius: 12px !important;
+    background: #2c3e50 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18) !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    letter-spacing: 0.02em !important;
+    border: none !important;
+    justify-content: center !important;
+}
+div[class*="st-key-gen_confirm_go"] button:hover {
+    background: #3d5166 !important;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.24) !important;
+}
+div[class*="st-key-gen_confirm_go"] button * {
+    color: #ffffff !important;
+    visibility: visible !important;
+}
+div[class*="st-key-gen_confirm_go"] button::before {
+    content: "✦";
+    font-size: 0.85rem;
+    color: #ffffff;
+    flex-shrink: 0;
+    visibility: visible !important;
+    margin-right: 0.35rem;
+}
+/* Cancel button — white text on dark grey, font size matches Generate. */
+div[class*="st-key-gen_confirm_cancel"] button {
+    height: 56px !important;
+    min-height: 56px !important;
+    border-radius: 12px !important;
+    background: #5a5754 !important;
+    color: #ffffff !important;
+    border: none !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.02em !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18) !important;
+}
+div[class*="st-key-gen_confirm_cancel"] button:hover {
+    background: #6e6b67 !important;
+}
+div[class*="st-key-gen_confirm_cancel"] button * {
+    color: #ffffff !important;
+}
+</style>""", unsafe_allow_html=True)
+        with st.container(key="gen_confirm_box"):
+            st.markdown(
+                '<div style="font-size:1.05rem;font-weight:600;color:#3d3b38;'
+                'margin-bottom:0.85rem;">Ready to generate</div>',
+                unsafe_allow_html=True,
+            )
+            _meta_row_style = (
+                'font-size:0.88rem;color:#3d3b38;margin:0.15rem 0;'
+                'display:flex;gap:0.5rem;'
+            )
+            _meta_label_style = (
+                'font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;'
+                'color:#7a776f;width:5.5rem;flex-shrink:0;align-self:center;'
+            )
+            _grade_val   = st.session_state.grade   or ""
+            _subject_val = st.session_state.subject or ""
+            _chapter_val = _confirm_ch.get("chapter_title", "") if _confirm_ch else ""
+            st.markdown(
+                f'<div style="{_meta_row_style}">'
+                f'<span style="{_meta_label_style}">Grade</span>'
+                f'<span>{_grade_val}</span></div>'
+                f'<div style="{_meta_row_style}">'
+                f'<span style="{_meta_label_style}">Subject</span>'
+                f'<span>{_subject_val}</span></div>'
+                f'<div style="{_meta_row_style}">'
+                f'<span style="{_meta_label_style}">Chapter</span>'
+                f'<span>{_chapter_val}</span></div>',
+                unsafe_allow_html=True,
+            )
+            st.markdown('<div style="height:0.75rem;"></div>', unsafe_allow_html=True)
+            st.checkbox(
+                "Include Assessment",
+                key="gen_confirm_include_assess",
+                value=False,
+                help="Assessment can also be generated later from My Plans.",
+            )
+            st.markdown('<div style="height:0.5rem;"></div>', unsafe_allow_html=True)
+            _gc1, _gc2, _gc_rest = st.columns([1.3, 1.3, 2])
+            with _gc1:
+                if st.button("Generate", key="gen_confirm_go",
+                             type="primary", use_container_width=True):
+                    st.session_state.gen_include_assessment = bool(
+                        st.session_state.get("gen_confirm_include_assess", False)
+                    )
+                    st.session_state.lpa_generating  = True
+                    st.session_state.lpa_result      = None
+                    st.session_state.show_gen_confirm = False
+                    st.rerun()
+            with _gc2:
+                if st.button("Cancel", key="gen_confirm_cancel",
+                             use_container_width=True):
+                    st.session_state.show_gen_confirm = False
+                    st.rerun()
+
     # ── Generation (needs chapter selected) ──────────────────────────────────
     if st.session_state.lpa_generating and st.session_state.teacher_ch_idx is not None and st.session_state.teacher_ch_idx < len(chapters):
         if st.session_state.teacher_ch_idx >= len(chapters):
@@ -4560,15 +5415,16 @@ elif st.session_state.role == "Generate":
                 st.session_state.lpa_stop_event   = _stop_ev
                 st.session_state.lpa_result_queue = _rq
                 _t = threading.Thread(
-                    target=generate_lpa,
+                    target=generate_lp_only,
                     kwargs=dict(
-                        grade        = st.session_state.grade,
-                        subject      = st.session_state.subject,
-                        chapter      = selected_ch,
-                        period_rows  = st.session_state.get("period_rows", [0]),
-                        session      = st.session_state,
-                        result_queue = _rq,
-                        stop_event   = _stop_ev,
+                        grade              = st.session_state.grade,
+                        subject            = st.session_state.subject,
+                        chapter            = selected_ch,
+                        period_rows        = st.session_state.get("period_rows", [0]),
+                        session            = st.session_state,
+                        include_assessment = st.session_state.get("gen_include_assessment", False),
+                        result_queue       = _rq,
+                        stop_event         = _stop_ev,
                     ),
                     daemon=True,
                 )
@@ -4632,12 +5488,15 @@ elif st.session_state.role == "Generate":
             unsafe_allow_html=True,
         )
     elif result is None:
-        st.markdown(
-            '<div class="ws-placeholder">'
-            'Set your period budget and click Generate Lesson Plan &amp; Assessment.'
-            '</div>',
-            unsafe_allow_html=True,
-        )
+        # Skip the placeholder while the confirmation card is on screen —
+        # the card already occupies the workspace.
+        if not st.session_state.get("show_gen_confirm"):
+            st.markdown(
+                '<div class="ws-placeholder">'
+                'Set your period budget and click Generate Lesson Plan.'
+                '</div>',
+                unsafe_allow_html=True,
+            )
     elif result.get("error"):
         st.error(f"Generation failed: {result['error']}")
     else:
@@ -4783,31 +5642,39 @@ div[class*="st-key-gen-clear-top"] button p {
             except Exception as _gen_lp_err:
                 st.caption(f"LP PDF error: {_gen_lp_err}")
         with _pdl_c2:
-            try:
-                from assessment_pdf_generator import build_assessment_pdf_bytes as _bapb_gen
-                _gen_assess_payload = {
-                    "saved_at":       datetime.now().isoformat(timespec="seconds"),
-                    "grade":          _res_grade,
-                    "subject":        _res_subject,
-                    "chapter_number": _chapter_export.get("chapter_number", 0),
-                    "chapter_title":  _chapter_export.get("chapter_title",  ""),
-                    "result": {
-                        "lesson_plan":      result.get("lesson_plan", {}),
-                        "assessment_items": result.get("assessment_items", []),
-                    },
-                }
-                _gen_assess_bytes = _bapb_gen(_gen_assess_payload)
-            except Exception as _gen_assess_err:
-                _gen_assess_bytes = b""
-            st.download_button(
-                label="Assessment  ⬇",
-                data=_gen_assess_bytes if _gen_assess_bytes else b"",
-                file_name=f"{_filename_stem}_Assessment.pdf",
-                mime="application/pdf",
-                key="gen_assess_primary_dl",
-                type="primary",
-                use_container_width=True,
+            # LP/A split — only show the Assessment download when the result
+            # actually carries assessment_items. LP-only runs leave this slot
+            # empty; the teacher generates assessment later from My Plans.
+            _gen_has_assessment = (
+                result.get("plan_status", "full_lpa") == "full_lpa"
+                and bool(result.get("assessment_items"))
             )
+            if _gen_has_assessment:
+                try:
+                    from assessment_pdf_generator import build_assessment_pdf_bytes as _bapb_gen
+                    _gen_assess_payload = {
+                        "saved_at":       datetime.now().isoformat(timespec="seconds"),
+                        "grade":          _res_grade,
+                        "subject":        _res_subject,
+                        "chapter_number": _chapter_export.get("chapter_number", 0),
+                        "chapter_title":  _chapter_export.get("chapter_title",  ""),
+                        "result": {
+                            "lesson_plan":      result.get("lesson_plan", {}),
+                            "assessment_items": result.get("assessment_items", []),
+                        },
+                    }
+                    _gen_assess_bytes = _bapb_gen(_gen_assess_payload)
+                except Exception as _gen_assess_err:
+                    _gen_assess_bytes = b""
+                st.download_button(
+                    label="Assessment  ⬇",
+                    data=_gen_assess_bytes if _gen_assess_bytes else b"",
+                    file_name=f"{_filename_stem}_Assessment.pdf",
+                    mime="application/pdf",
+                    key="gen_assess_primary_dl",
+                    type="primary",
+                    use_container_width=True,
+                )
         with _pdl_c3:
             _already_saved = st.session_state.get("plan_already_saved", False)
             if st.button(
@@ -5250,10 +6117,13 @@ else:
     #  MY PLANS WORKSPACE
     # ═════════════════════════════════════════════════
 
-    if "mp_grade_filter"   not in st.session_state: st.session_state.mp_grade_filter   = "All"
-    if "mp_subject_filter" not in st.session_state: st.session_state.mp_subject_filter = "All"
-
     _sp_root = PROJECT_ROOT / "mirror" / "saved_plans"
+
+    # NOTE: the deferred-assessment generation block has moved to the Generate
+    # workspace (see the role=="Generate" branch). When "Generate Assessment"
+    # is clicked here, role flips to "Generate" so the popup appears in the
+    # same place as a normal LP/A run, then flips back to "My Plans" on
+    # completion so the teacher lands on the now-PDF row.
 
     # ── Detail view — shown when a plan row's View button has been clicked ────
     if st.session_state.mp_viewing_plan is not None:
@@ -5384,28 +6254,41 @@ else:
                 except Exception:
                     pass
 
-        # Filter dropdowns — inline, no sidebar
-        _f_grade, _f_subject, _f_spacer = st.columns([2, 2, 5])
-        with _f_grade:
-            _grade_opts = ["All"] + GRADES
-            _g_idx = _grade_opts.index(st.session_state.mp_grade_filter) if st.session_state.mp_grade_filter in _grade_opts else 0
-            _new_g = st.selectbox("Grade", _grade_opts, index=_g_idx, label_visibility="collapsed", key="mp_grade_sel")
-            if _new_g != st.session_state.mp_grade_filter:
-                st.session_state.mp_grade_filter = _new_g
-                st.rerun()
-        with _f_subject:
-            _subj_opts = ["All"] + SUBJECTS
-            _s_idx = _subj_opts.index(st.session_state.mp_subject_filter) if st.session_state.mp_subject_filter in _subj_opts else 0
-            _new_s = st.selectbox("Subject", _subj_opts, index=_s_idx, label_visibility="collapsed", key="mp_subject_sel")
-            if _new_s != st.session_state.mp_subject_filter:
-                st.session_state.mp_subject_filter = _new_s
-                st.rerun()
+        # Filters come from the sidebar Grade / Subject / Saved selectboxes.
+        # Grade & Subject map None → unfiltered ("All"). Saved filters on the
+        # ISO date in saved_at: Today = today, Yesterday = today-1, This week
+        # = last 7 days inclusive of today, This month = current calendar
+        # month from day 1 through today.
+        from datetime import date as _date, timedelta as _td
+        _today = _date.today()
+        _saved_choice = st.session_state.get("mp_saved_filter", "All")
+        if _saved_choice == "Today":
+            _date_lo, _date_hi = _today, _today
+        elif _saved_choice == "Yesterday":
+            _y = _today - _td(days=1)
+            _date_lo, _date_hi = _y, _y
+        elif _saved_choice == "This week":
+            _date_lo, _date_hi = _today - _td(days=6), _today
+        elif _saved_choice == "This month":
+            _date_lo, _date_hi = _today.replace(day=1), _today
+        else:
+            _date_lo, _date_hi = None, None
 
-        # Apply filters
+        def _in_date_window(plan):
+            if _date_lo is None:
+                return True
+            _ts = plan.get("saved_at", "")[:10]
+            try:
+                _d = _date.fromisoformat(_ts)
+            except Exception:
+                return False
+            return _date_lo <= _d <= _date_hi
+
         _visible = [
             p for p in _all_plans
-            if (st.session_state.mp_grade_filter   == "All" or p.get("grade")   == st.session_state.mp_grade_filter)
-            and (st.session_state.mp_subject_filter == "All" or p.get("subject") == st.session_state.mp_subject_filter)
+            if (st.session_state.grade   is None or p.get("grade")   == st.session_state.grade)
+            and (st.session_state.subject is None or p.get("subject") == st.session_state.subject)
+            and _in_date_window(p)
         ]
 
         st.markdown('<div style="height:0.5rem;"></div>', unsafe_allow_html=True)
@@ -5504,14 +6387,40 @@ else:
                         type="primary",
                     )
                 with _rc[5]:
-                    st.download_button(
-                        label="PDF ⬇",
-                        data=_mp_assess_bytes if _mp_assess_bytes else b"",
-                        file_name=f"Aruvi_{_safe_t}_Assessment.pdf",
-                        mime="application/pdf",
-                        key=f"mp_assess_{_safe_fn}",
-                        type="primary",
-                    )
+                    # LP/A split — assessment column branches on plan_status.
+                    # full_lpa  → PDF download (existing behaviour).
+                    # lp_only   → "Generate Assessment" button that triggers
+                    #             a deferred run handled by the workspace block
+                    #             at the top of this tab.
+                    # Old plans (no plan_status key) default to full_lpa so the
+                    # existing My Plans rows continue to work unchanged.
+                    _plan_status   = _p.get("plan_status", "full_lpa")
+                    _has_assessment = (_plan_status == "full_lpa")
+                    if _has_assessment:
+                        st.download_button(
+                            label="PDF ⬇",
+                            data=_mp_assess_bytes if _mp_assess_bytes else b"",
+                            file_name=f"Aruvi_{_safe_t}_Assessment.pdf",
+                            mime="application/pdf",
+                            key=f"mp_assess_{_safe_fn}",
+                            type="primary",
+                        )
+                    else:
+                        if st.button(
+                            "Generate Assessment",
+                            key=f"mp_gen_assess_{_safe_fn}",
+                            use_container_width=True,
+                            type="secondary",
+                        ):
+                            st.session_state.mp_deferred_assess_plan       = _p
+                            st.session_state.mp_deferred_assess_generating = True
+                            # Switch to the Generate tab so the popup renders
+                            # in the same place as a normal LP/A run. The
+                            # deferred block below auto-switches back to
+                            # My Plans once the run completes.
+                            st.session_state.role = "Generate"
+                            st.query_params["role"] = "Generate"
+                            st.rerun()
                 st.markdown(
                     '<hr style="margin:2px 0;border:none;border-top:0.5px solid #f0ede9;">',
                     unsafe_allow_html=True,
