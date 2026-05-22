@@ -1,0 +1,1156 @@
+{
+  "filename": "ch_11_20260522_120405.json",
+  "saved_at": "2026-05-22T12:04:05",
+  "grade": "Grade VII",
+  "subject": "Science",
+  "chapter_number": 11,
+  "chapter_title": "Light — Shadows and Reflections",
+  "period_schedule_display": "Period schedule:\n  Row 1: 40 minutes × 1 period = 40 minutes\nTotal: 1 periods · 40 minutes",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 40,
+      "count": 1
+    }
+  ],
+  "plan_status": "full_lpa",
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 40,
+          "progression_stage": 1,
+          "stage_label": "Observe and classify light sources and material transparency",
+          "pedagogical_approach": "Hands-on Science",
+          "activity_title": "Does It Glow or Borrow? Sorting Light Sources",
+          "activity_description": "Students examine a set of real or pictured objects and sort them into luminous and non-luminous groups based on whether each object produces its own light. They record their reasoning in a two-column table and share surprising cases such as the Moon and glow-worms.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Introduces the opening shadow-puppet scenario from the chapter, poses the sorting task, and circulates to prompt reasoning rather than giving answers."
+            },
+            {
+              "actor": "Students (Groups)",
+              "role_description": "Sort object cards into luminous or non-luminous, record justifications, and flag any objects the group disagrees about."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–7",
+              "description": "The teacher narrates the story of Reza and her grandmother's shadow puppet show, asks what makes the puppet shadow appear, and poses the question of which objects in the room produce their own light."
+            },
+            {
+              "minutes": "7–25",
+              "description": "Groups receive object cards (Sun, candle, Moon, table, electric bulb, firefly, book, LED, glow-worm) and sort them, writing one-sentence justifications for each placement. Groups flag objects they are uncertain about."
+            },
+            {
+              "minutes": "25–35",
+              "description": "Groups share their sorted lists; the class resolves disagreements by applying the criterion of self-produced light. The teacher introduces the terms luminous and non-luminous and mentions bioluminescence as a special case."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Each student writes a single sentence defining luminous and non-luminous in their own words as a quick exit check."
+            }
+          ],
+          "materials": [
+            "Object sorting cards (printed or hand-drawn)",
+            "Two-column recording sheet",
+            "Pencils"
+          ]
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 40,
+          "progression_stage": 1,
+          "stage_label": "Observe and classify light sources and material transparency",
+          "pedagogical_approach": "Hands-on Science",
+          "activity_title": "Let the Light Through — Transparent, Translucent, or Opaque?",
+          "activity_description": "Students shine a torch through different materials — clear glass, cardboard, butter paper, thin cloth, and a plastic bag — and observe how clearly a printed letter behind each material can be read. They classify each material and link the classification to shadow sharpness.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Sets up the task protocol, models the first observation with clear glass, and guides groups to connect shadow clarity with material category."
+            },
+            {
+              "actor": "Students (Groups)",
+              "role_description": "Shine the torch through each material, observe and record clarity of the letter behind it, and classify each material as transparent, translucent, or opaque."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "The teacher briefly reviews luminous versus non-luminous from Period 1, then poses the new question: do all materials block light equally? Students predict which materials will block, partially block, or allow light through."
+            },
+            {
+              "minutes": "5–25",
+              "description": "Groups systematically test each material by holding it between a lit torch and a printed letter card, recording what they see in a three-column table (material, observation, classification). Cardboard is tested last to anchor the opaque end."
+            },
+            {
+              "minutes": "25–35",
+              "description": "Groups share results and the teacher consolidates definitions of transparent, translucent, and opaque on the board, linking each to how sharp or fuzzy the shadow cast by that material would be."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Students individually answer: 'Why does frosted glass cast a less sharp shadow than clear glass?' as a written consolidation sentence."
+            }
+          ],
+          "materials": [
+            "Torch",
+            "Clear glass piece or glass tumbler",
+            "Cardboard sheet",
+            "Butter paper",
+            "Thin cloth",
+            "Plastic bag",
+            "Printed letter card",
+            "Three-column recording sheet"
+          ]
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 40,
+          "progression_stage": 2,
+          "stage_label": "Investigate and explain rectilinear propagation and shadow formation",
+          "pedagogical_approach": "Inquiry approach",
+          "activity_title": "Through the Holes — Proving Light Travels Straight",
+          "activity_description": "Students set up three cardboard sheets each with a small aligned hole and a candle at one end, observe that the flame is visible only when holes are aligned, then shift one card to break alignment and observe the flame disappear. They also pass a torch beam through a straight tube and a bent tube.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Poses the inquiry question, oversees safe candle handling, and prompts groups to formulate an explanation rather than simply state the result."
+            },
+            {
+              "actor": "Students (Groups)",
+              "role_description": "Conduct both the three-card and the tube activities, record observations, and construct a written explanation for why the flame disappears when cards are shifted."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–6",
+              "description": "The teacher poses the question: 'Can light go around corners?' and invites student predictions with brief justifications before any apparatus is introduced."
+            },
+            {
+              "minutes": "6–22",
+              "description": "Groups set up three cards with holes aligned and observe the candle flame, then shift the middle card and record what changes. They then repeat with the straight hollow tube and the bent tube, recording observations in both cases."
+            },
+            {
+              "minutes": "22–33",
+              "description": "Groups write a one-paragraph causal explanation linking their observations to the claim that light travels only in straight lines, then share with another group for peer comparison."
+            },
+            {
+              "minutes": "33–40",
+              "description": "The teacher introduces the term rectilinear propagation and the ray diagram convention, drawing a labelled ray with arrowhead on the board to formalise what groups have discovered."
+            }
+          ],
+          "materials": [
+            "Three cardboard sheets with small holes",
+            "Candle and matchbox",
+            "Straight hollow tube",
+            "Bent hollow tube",
+            "Torch",
+            "Recording sheets"
+          ]
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 40,
+          "progression_stage": 2,
+          "stage_label": "Investigate and explain rectilinear propagation and shadow formation",
+          "pedagogical_approach": "Discovery approach",
+          "activity_title": "Shadow Size Detectives — What Changes the Shadow?",
+          "activity_description": "Students cast the shadow of a hand or opaque cut-out using a torch, systematically varying the distance between the torch and the object and between the object and the wall, and observe how shadow size changes in each case. They sketch the ray paths to explain their findings.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Draws attention to the chapter's opening scene where the puppet shadow changes size, poses the structured discovery question, and ensures groups vary one distance at a time."
+            },
+            {
+              "actor": "Students (Groups)",
+              "role_description": "Vary the position of the opaque object systematically, measure or estimate relative shadow sizes, and sketch straight-line ray diagrams to explain the size change."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "The teacher recalls Reza noticing her shadow growing and shrinking and asks: what exactly controls how big a shadow is? Students briefly predict which factor — object distance from source or from screen — matters more."
+            },
+            {
+              "minutes": "5–26",
+              "description": "Groups use a torch fixed at one point, vary the object's distance from the torch (keeping the wall fixed), record the shadow size for three distances, then keep the object fixed and vary distance to the wall for three positions. Results are recorded in a table."
+            },
+            {
+              "minutes": "26–36",
+              "description": "Students sketch ray diagrams for two contrasting cases, using straight lines to show how rays from the source diverge around the object and reach the screen, explaining why the shadow grows or shrinks."
+            },
+            {
+              "minutes": "36–40",
+              "description": "Quick whole-class share: one group explains their ray diagram; the teacher corrects or affirms and links back to rectilinear propagation as the cause."
+            }
+          ],
+          "materials": [
+            "Torch",
+            "Opaque cardboard cut-out or hand",
+            "Measuring tape or ruler",
+            "White wall or screen",
+            "Recording table sheet",
+            "Pencil for sketching"
+          ]
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 60,
+          "progression_stage": 2,
+          "stage_label": "Investigate and explain rectilinear propagation and shadow formation",
+          "pedagogical_approach": "Project-centred approach",
+          "activity_title": "Build and Observe — The Pinhole Camera",
+          "activity_description": "Students construct a pinhole camera from two nested cardboard boxes with a pinhole on one face and a tracing-paper screen on the other, point it at a bright window or outdoor scene, observe and sketch the image, and explain why the image is inverted using a ray diagram.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Demonstrates how to make the pinhole and assemble the boxes, guides groups through the construction, and prompts students to predict image orientation before observing."
+            },
+            {
+              "actor": "Students (Groups)",
+              "role_description": "Construct the pinhole camera, observe the image of a bright scene, sketch the inverted image, and draw a ray diagram showing how light from the top and bottom of the scene crosses through the pinhole."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "The teacher asks students to predict what an image through a tiny hole would look like and which way up it would be. Groups record predictions before building."
+            },
+            {
+              "minutes": "10–30",
+              "description": "Groups construct the pinhole camera: cut one box slightly smaller to slide inside the other, make a neat pinhole on the closed outer face, attach tracing paper as a screen on the open inner face, and seal light leaks with tape."
+            },
+            {
+              "minutes": "30–45",
+              "description": "Groups point their cameras at a bright window or outdoor scene, observe the image on the tracing-paper screen, and sketch exactly what they see, noting orientation (upright or inverted) and colour."
+            },
+            {
+              "minutes": "45–55",
+              "description": "Groups draw a labelled ray diagram showing how a ray from the top of the object passes through the pinhole to the bottom of the screen and vice versa, explaining inversion using rectilinear propagation."
+            },
+            {
+              "minutes": "55–60",
+              "description": "The teacher connects the pinhole camera to the camera obscura historical fact and asks: 'What would happen if you made the pinhole bigger?' Students predict and note it for follow-up curiosity."
+            }
+          ],
+          "materials": [
+            "Two nested cardboard boxes of slightly different sizes",
+            "Pin or sharp pencil for pinhole",
+            "Tracing paper",
+            "Black tape or dark paper",
+            "Scissors",
+            "Pencil and sketching sheet"
+          ]
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 40,
+          "progression_stage": 3,
+          "stage_label": "Verify the laws of reflection through systematic measurement",
+          "pedagogical_approach": "Inquiry approach",
+          "activity_title": "Ray Tracing — Finding the Pattern in Reflection",
+          "activity_description": "Students direct a ray of light at a plane mirror at several different angles, trace the incident and reflected rays on paper, draw the normal, measure the angle of incidence and angle of reflection for each trial, and record results in a table to identify the pattern.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Introduces the terms normal, angle of incidence, and angle of reflection before the activity, then circulates to ensure accurate tracing and angle measurement."
+            },
+            {
+              "actor": "Students (Groups)",
+              "role_description": "Conduct at least four trials at different incident angles, trace rays, measure both angles with a protractor, and record all values in a systematic table."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "The teacher directs a torch at a mirror in a darkened corner and asks students to describe where the reflected beam goes. The terms incident ray, reflected ray, normal, angle of incidence, and angle of reflection are introduced with a board diagram."
+            },
+            {
+              "minutes": "8–28",
+              "description": "Groups place a mirror on paper, direct a ray at four different angles (approximately 20°, 40°, 60°, 70°), trace both rays and the mirror line, construct the normal with a set square, measure angles with a protractor, and record all values."
+            },
+            {
+              "minutes": "28–38",
+              "description": "Groups inspect their data tables and write one sentence stating what pattern they observe across all four trials, comparing angle of incidence and angle of reflection values."
+            },
+            {
+              "minutes": "38–40",
+              "description": "The teacher consolidates the first law of reflection from group findings and notes that the second law (coplanarity) will be confirmed in the next period's discussion."
+            }
+          ],
+          "materials": [
+            "Plane mirror",
+            "Torch or ray box",
+            "White paper sheets",
+            "Pencil",
+            "Protractor",
+            "Set square or ruler",
+            "Data recording table"
+          ]
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 40,
+          "progression_stage": 3,
+          "stage_label": "Verify the laws of reflection through systematic measurement",
+          "pedagogical_approach": "Didactic approach",
+          "activity_title": "Formalising Reflection — Laws, Ibn al-Haytham, and the Virtual Image",
+          "activity_description": "Using the data collected in Period 6, the teacher formalises both laws of reflection, profiles Ibn al-Haytham's contribution to optics, and then leads a guided investigation where students locate the image of a pin in a plane mirror using a second identical pin to establish image distance, size, and virtual nature.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Formalises the two laws from student data, narrates Ibn al-Haytham's contribution, and guides the pin-image activity step by step."
+            },
+            {
+              "actor": "Students (Individual)",
+              "role_description": "Confirm the laws from their own Period 6 data, then individually perform the two-pin activity to locate the image and record image distance, size comparison, and whether the image can be caught on a screen."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–12",
+              "description": "The teacher displays a compiled table of all groups' Period 6 data, asks the class to state the pattern, and formally states both laws of reflection. A brief mention of Ibn al-Haytham's Book of Optics contextualises where these laws were first systematically studied."
+            },
+            {
+              "minutes": "12–30",
+              "description": "Students individually set up a plane mirror on a sheet, place one pin in front, and use a second identical pin behind the mirror to find the exact position where it appears to coincide with the image of the first pin. They mark both positions and measure object distance and image distance."
+            },
+            {
+              "minutes": "30–38",
+              "description": "Students attempt to catch the image on a piece of paper held behind the mirror and record that it cannot be caught, then write two observations: image distance equals object distance, and the image is virtual."
+            },
+            {
+              "minutes": "38–40",
+              "description": "Quick pair-share: each student tells their partner one property of a plane mirror image, and the teacher corrects any misconceptions on the board."
+            }
+          ],
+          "materials": [
+            "Plane mirror with stand",
+            "Two identical pins",
+            "White paper",
+            "Ruler",
+            "Small piece of paper or card for screen test",
+            "Pencil"
+          ]
+        },
+        {
+          "period_number": 8,
+          "period_duration_minutes": 60,
+          "progression_stage": 4,
+          "stage_label": "Apply reflection principles to construct and explain optical devices",
+          "pedagogical_approach": "Project-centred approach",
+          "activity_title": "Lateral Inversion and the Periscope Mirror",
+          "activity_description": "Students first demonstrate lateral inversion by writing text in front of a mirror and reading it in the reflection, then connect this to the AMBULANCE example. They then design and construct a simple periscope using two plane mirrors at 45° and explain how each reflection redirects the light path.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Introduces lateral inversion through the AMBULANCE example, oversees periscope construction, and prompts students to trace the light path through both mirrors using ray diagrams."
+            },
+            {
+              "actor": "Students (Groups)",
+              "role_description": "Demonstrate lateral inversion with text and mirror, construct the periscope from the provided template, and draw a ray diagram showing the path of light through both mirrors."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "The teacher asks students to write their name on paper and hold it in front of a mirror, then asks why emergency vehicles have reversed text. Groups briefly discuss and share; lateral inversion is defined from their observations."
+            },
+            {
+              "minutes": "10–35",
+              "description": "Groups assemble a periscope using a cardboard tube template with two slots for mirrors at 45° angles, fix the mirrors, and test by looking through the periscope at an object above or around a barrier."
+            },
+            {
+              "minutes": "35–50",
+              "description": "Groups draw a labelled ray diagram showing how a ray from the scene hits the top mirror at 45°, reflects downward, hits the bottom mirror at 45°, and reflects to the eye, applying the law of reflection at each surface."
+            },
+            {
+              "minutes": "50–58",
+              "description": "Groups share ray diagrams; the teacher highlights how rectilinear propagation and the law of reflection together explain the periscope's function, connecting this period to all earlier stages of the chapter."
+            },
+            {
+              "minutes": "58–60",
+              "description": "Students individually write one sentence explaining why a periscope produces an upright (not inverted) image unlike the pinhole camera."
+            }
+          ],
+          "materials": [
+            "Plane mirrors (two per group)",
+            "Cardboard periscope template or box",
+            "Tape",
+            "Pencil",
+            "Paper for writing name",
+            "Ray diagram sheet",
+            "Ruler"
+          ]
+        },
+        {
+          "period_number": 9,
+          "period_duration_minutes": 60,
+          "progression_stage": 4,
+          "stage_label": "Apply reflection principles to construct and explain optical devices",
+          "pedagogical_approach": "Hands-on Science",
+          "activity_title": "Multiple Reflections and the Kaleidoscope",
+          "activity_description": "Students place an object between two plane mirrors at decreasing angles (90°, 60°, 45°) and count images formed at each angle, then construct a simple kaleidoscope from three mirrors in a triangular prism arrangement with coloured beads, observe the symmetrical patterns, and explain the pattern using multiple reflections.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Introduces the multiple-reflection phenomenon with a demonstration at 90°, guides angle variation, and connects kaleidoscope symmetry to the number of reflections."
+            },
+            {
+              "actor": "Students (Groups)",
+              "role_description": "Systematically vary the angle between two mirrors, count images at each angle, record results in a table, construct the kaleidoscope, and write an explanation linking pattern symmetry to multiple reflections."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "The teacher places an object between two mirrors at 90° and asks students to count the images. Students predict what will happen as the angle decreases and record predictions."
+            },
+            {
+              "minutes": "8–28",
+              "description": "Groups test angles of 90°, 60°, and 45°, count images at each setting, and record in a table. They note that as angle decreases, image count increases, and attempt a verbal explanation."
+            },
+            {
+              "minutes": "28–50",
+              "description": "Groups assemble a kaleidoscope by taping three mirrors into a triangular prism, placing coloured bead pieces at one end, capping with translucent paper, and observing the pattern through the open end. Groups sketch two different patterns they observe."
+            },
+            {
+              "minutes": "50–57",
+              "description": "Groups write a two-sentence explanation of how multiple reflections between three mirrors produce the symmetric pattern seen in the kaleidoscope."
+            },
+            {
+              "minutes": "57–60",
+              "description": "The teacher asks a closing question: 'What would happen with parallel mirrors?' to connect to the chapter's final point about a very large number of images, and students make a brief verbal prediction."
+            }
+          ],
+          "materials": [
+            "Two plane mirrors with stands",
+            "Three mirror strips for kaleidoscope",
+            "Tape",
+            "Coloured beads or glass pieces",
+            "Translucent paper",
+            "Protractor",
+            "Recording table sheet",
+            "Pencil"
+          ]
+        },
+        {
+          "period_number": 10,
+          "period_duration_minutes": 40,
+          "progression_stage": 4,
+          "stage_label": "Apply reflection principles to construct and explain optical devices",
+          "pedagogical_approach": "Inquiry approach",
+          "activity_title": "Light Travels Straight, Mirrors Redirect — Connecting the Whole Chapter",
+          "activity_description": "Students work through a set of three unfamiliar scenario problems drawn from chapter content — predicting shadow size for a new source-object-screen arrangement, determining the image position for an object moved farther from a plane mirror, and tracing the light path in a periscope with a specified angle — and justify each answer using rectilinear propagation and the laws of reflection.",
+          "roles": [
+            {
+              "actor": "Teacher",
+              "role_description": "Presents the three scenarios, facilitates think-pair-share discussion after each, and asks groups to explain their reasoning rather than just state answers."
+            },
+            {
+              "actor": "Students (Individual)",
+              "role_description": "Independently attempt each scenario, sketch supporting diagrams, write justifications, then compare with a partner before whole-class discussion."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "The teacher frames the period as a challenge to use everything learned: 'No new content — only your reasoning about light.' Three scenario cards are distributed."
+            },
+            {
+              "minutes": "5–20",
+              "description": "Students individually tackle all three scenarios, drawing ray or reflection diagrams and writing one-sentence justifications for each answer. No group discussion yet."
+            },
+            {
+              "minutes": "20–32",
+              "description": "Students pair and compare their diagrams and reasoning for each scenario, resolving differences through reference to rectilinear propagation and the law of reflection."
+            },
+            {
+              "minutes": "32–38",
+              "description": "Whole-class discussion on the most contested scenario; the teacher draws the definitive diagram on the board and highlights which principle resolves the dispute."
+            },
+            {
+              "minutes": "38–40",
+              "description": "Students write a two-sentence reflection on which concept from the chapter they feel most confident applying and which they would like to revisit."
+            }
+          ],
+          "materials": [
+            "Three scenario problem cards",
+            "Plain paper for diagrams",
+            "Protractor and ruler",
+            "Pencil"
+          ]
+        }
+      ]
+    },
+    "coverage_handoff": [
+      {
+        "stage_number": 1,
+        "stage_label": "Observe and classify light sources and material transparency",
+        "total_stages": 4,
+        "period_numbers": [
+          1,
+          2
+        ],
+        "period_duration_minutes": 40,
+        "activity_summary": "Students sort objects as luminous or non-luminous and classify materials as transparent, translucent, or opaque by observing how much light each allows through and linking transparency to shadow sharpness.",
+        "implied_lo": "Given a set of objects or materials, the student correctly classifies each as luminous or non-luminous and as transparent, translucent, or opaque, and states the observable criterion used for each classification.",
+        "cg": "CG-2",
+        "c_code": "C-2.4",
+        "co_central": false
+      },
+      {
+        "stage_number": 2,
+        "stage_label": "Investigate and explain rectilinear propagation and shadow formation",
+        "total_stages": 4,
+        "period_numbers": [
+          3,
+          4,
+          5
+        ],
+        "period_duration_minutes": 40,
+        "activity_summary": "Students use the three-card and tube activities to establish that light travels in straight lines, vary source-object-screen distances to explain shadow size changes with ray diagrams, and construct a pinhole camera to observe and explain image inversion.",
+        "implied_lo": "The student constructs a ray diagram to explain why a shadow grows or shrinks when object or screen distance changes, and explains why the pinhole camera produces an inverted image, citing rectilinear propagation as the cause in both cases.",
+        "cg": "CG-2",
+        "c_code": "C-2.4",
+        "co_central": false
+      },
+      {
+        "stage_number": 3,
+        "stage_label": "Verify the laws of reflection through systematic measurement",
+        "total_stages": 4,
+        "period_numbers": [
+          6,
+          7
+        ],
+        "period_duration_minutes": 40,
+        "activity_summary": "Students direct rays at a plane mirror at multiple angles, measure angles of incidence and reflection, tabulate results to verify the first law of reflection, and locate the image of a pin to establish that the image is virtual, the same size as the object, and equidistant behind the mirror.",
+        "implied_lo": "The student presents a completed data table showing angle of incidence equal to angle of reflection across at least four trials, and states two properties of the image formed in a plane mirror based on their own pin-location experiment.",
+        "cg": "CG-2",
+        "c_code": "C-2.4",
+        "co_central": false
+      },
+      {
+        "stage_number": 4,
+        "stage_label": "Apply reflection principles to construct and explain optical devices",
+        "total_stages": 4,
+        "period_numbers": [
+          8,
+          9,
+          10
+        ],
+        "period_duration_minutes": 60,
+        "activity_summary": "Students demonstrate lateral inversion, construct and explain a periscope using ray diagrams, investigate multiple reflections between mirrors at varying angles, build a kaleidoscope, and apply rectilinear propagation and the laws of reflection to solve unfamiliar scenario problems.",
+        "implied_lo": "The student draws a labelled ray diagram tracing the light path through a periscope or between two mirrors at a given angle, and correctly predicts or explains the outcome of an unfamiliar reflection or shadow scenario by citing the relevant principle.",
+        "cg": "CG-2",
+        "c_code": "C-2.4",
+        "co_central": false
+      }
+    ],
+    "assessment_items": [
+      {
+        "progression_stage": 1,
+        "stage_label": "Observe and classify light sources and material transparency",
+        "implied_lo_assessed": "Given a set of objects or materials, the student correctly classifies each as luminous or non-luminous and as transparent, translucent, or opaque, and states the observable criterion used for each classification.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-2.4",
+          "competency_text": "Classifies objects and materials based on observable properties using systematic criteria."
+        },
+        "cognitive_demand": "Understanding",
+        "visual_stimulus": null,
+        "question_text": "A student says: 'The Moon is a luminous object because it is very bright in the night sky.' Which statement correctly identifies the flaw in this reasoning?",
+        "options": [
+          {
+            "label": "A",
+            "text": "The Moon is non-luminous because it reflects sunlight rather than producing its own light.",
+            "is_correct": true
+          },
+          {
+            "label": "B",
+            "text": "The Moon is non-luminous because it is not as bright as the Sun.",
+            "is_correct": false
+          },
+          {
+            "label": "C",
+            "text": "The Moon is luminous because it emits light during the night when the Sun is absent.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "The Moon is non-luminous because it is very far away from Earth.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 1
+            },
+            "what_each_option_reveals": {
+              "B": "The student confuses the criterion for luminosity (source of own light) with relative brightness, indicating they have not grasped the defining observable criterion — production of light versus reflection of light.",
+              "C": "The student holds the misconception that the Moon produces its own light at night, conflating visibility with light production and failing to apply the luminous/non-luminous distinction from Activity 11.1.",
+              "D": "The student substitutes distance for the correct criterion, recalling a related but irrelevant detail (distance of the Moon) rather than the observable property that defines non-luminous objects."
+            },
+            "inclusivity": "Students who struggle with abstract definitions can approach this by recalling the activity in which they decided whether each object on the list 'makes its own light.' A student who finds verbal reasoning difficult may be asked to point to the criterion stated in class rather than construct a sentence."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 1,
+        "stage_label": "Observe and classify light sources and material transparency",
+        "implied_lo_assessed": "Given a set of objects or materials, the student correctly classifies each as luminous or non-luminous and as transparent, translucent, or opaque, and states the observable criterion used for each classification.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-2.4",
+          "competency_text": "Classifies objects and materials based on observable properties using systematic criteria."
+        },
+        "cognitive_demand": "Understanding",
+        "visual_stimulus": "Material | Shadow cast | Appearance of objects behind it\nClear glass | No shadow | Objects seen clearly\nFrosted glass | Faint shadow | Objects appear blurry\nWood | Dark, sharp shadow | No objects visible behind",
+        "question_text": "Refer to the table provided. A student uses these observations to classify the three materials. Which row correctly matches all three materials to their classification?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Clear glass — transparent; Frosted glass — translucent; Wood — opaque.",
+            "is_correct": true
+          },
+          {
+            "label": "B",
+            "text": "Clear glass — translucent; Frosted glass — transparent; Wood — opaque.",
+            "is_correct": false
+          },
+          {
+            "label": "C",
+            "text": "Clear glass — transparent; Frosted glass — opaque; Wood — translucent.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Clear glass — transparent; Frosted glass — translucent; Wood — translucent.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 1
+            },
+            "what_each_option_reveals": {
+              "B": "The student has confused transparent and translucent — possibly because both allow some light through — indicating they have not distinguished between 'clearly visible objects' (transparent) and 'blurry objects' (translucent) as the operative criterion from Activity 11.5.",
+              "C": "The student has misclassified frosted glass as opaque, likely recalling only that it casts a shadow without noting that a faint shadow and blurry visibility place it in the translucent category, not the opaque category.",
+              "D": "The student has correctly identified clear glass as transparent and frosted glass as translucent but incorrectly applied translucent to wood, confusing the complete blocking of light (opaque criterion) with partial transmission."
+            },
+            "inclusivity": "Students who find reading a table challenging can be supported by directing attention to just one column at a time — for example, 'which material lets you see objects clearly?' before moving to the others. Students who found the sorting activity in class easier than verbal descriptions can refer to their own classification records."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 2,
+        "stage_label": "Investigate and explain rectilinear propagation and shadow formation",
+        "implied_lo_assessed": "The student constructs a ray diagram to explain why a shadow grows or shrinks when object or screen distance changes, and explains why the pinhole camera produces an inverted image, citing rectilinear propagation as the cause in both cases.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-2.4",
+          "competency_text": "Constructs explanations of observed phenomena by applying the principle of rectilinear propagation of light."
+        },
+        "cognitive_demand": "Application",
+        "visual_stimulus": null,
+        "question_text": "During the three-card activity, a student can see the candle flame only when the holes in all three cards are perfectly aligned. When she shifts the middle card slightly to the side, the flame disappears. Which statement correctly explains this observation?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Light travels only in a straight line, so any misalignment blocks the path from the flame to the eye.",
+            "is_correct": true
+          },
+          {
+            "label": "B",
+            "text": "Light bends slightly at each hole, so shifting the middle card redirects the light away from the eye.",
+            "is_correct": false
+          },
+          {
+            "label": "C",
+            "text": "The cardboard absorbs the light, so covering part of the hole reduces the light reaching the eye.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Light travels in a straight line only when the holes are very small; larger holes allow light to spread.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 2
+            },
+            "what_each_option_reveals": {
+              "B": "The student holds the misconception that light bends at small openings, a confusion between rectilinear propagation and diffraction that goes beyond this chapter; they have not consolidated the straight-line conclusion from the activity.",
+              "C": "The student confuses absorption (an opaque material property from Stage 1) with the propagation principle, recalling a related but incorrect mechanism from Section 11.3 rather than the Activity 11.2 conclusion.",
+              "D": "The student has partially grasped rectilinear propagation but incorrectly adds a hole-size condition not present in the chapter, indicating incomplete consolidation of the principle as unconditional."
+            },
+            "inclusivity": "Students who drew the three-card setup in class can re-sketch it to reason through the answer. Students who struggle with abstract principle statements can be prompted to describe what happened step by step before identifying the explanation."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 2,
+        "stage_label": "Investigate and explain rectilinear propagation and shadow formation",
+        "implied_lo_assessed": "The student constructs a ray diagram to explain why a shadow grows or shrinks when object or screen distance changes, and explains why the pinhole camera produces an inverted image, citing rectilinear propagation as the cause in both cases.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-2.4",
+          "competency_text": "Constructs explanations of observed phenomena by applying the principle of rectilinear propagation of light."
+        },
+        "cognitive_demand": "Application",
+        "visual_stimulus": null,
+        "question_text": "When Reza points her pinhole camera at a tree, she sees the image of the tree on the screen inside. The top of the tree appears at the bottom of the screen and the bottom of the tree appears at the top. What causes this?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Light from the top of the tree travels in a straight line through the pinhole and reaches the bottom of the screen; light from the bottom travels straight through and reaches the top.",
+            "is_correct": true
+          },
+          {
+            "label": "B",
+            "text": "The pinhole is too small, so it flips the image as light squeezes through the narrow opening.",
+            "is_correct": false
+          },
+          {
+            "label": "C",
+            "text": "The translucent screen reverses the image because it scatters light in the opposite direction.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Light from the top of the tree bends downward as it passes through the pinhole, making it appear at the bottom.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 2
+            },
+            "what_each_option_reveals": {
+              "B": "The student attributes inversion to the size of the pinhole rather than to straight-line travel, showing they have engaged with the device construction activity but not with the geometric explanation underpinning inversion.",
+              "C": "The student misattributes the inversion to the screen material, confusing the role of the translucent screen (to display the image) with the mechanism of image formation, and importing translucency from Stage 1 incorrectly.",
+              "D": "The student substitutes bending of light for straight-line travel, directly contradicting the rectilinear propagation principle the stage is designed to consolidate."
+            },
+            "inclusivity": "Students who sketched the pinhole camera in Activity 11.6 can re-draw two rays — one from the top and one from the bottom of the object — and trace where each crosses the pinhole before identifying the answer. Students who find diagrams easier than text can demonstrate the answer by drawing rather than selecting."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 2,
+        "stage_label": "Investigate and explain rectilinear propagation and shadow formation",
+        "implied_lo_assessed": "The student constructs a ray diagram to explain why a shadow grows or shrinks when object or screen distance changes, and explains why the pinhole camera produces an inverted image, citing rectilinear propagation as the cause in both cases.",
+        "question_type": "SCR",
+        "competency": {
+          "c_code": "C-2.4",
+          "competency_text": "Constructs explanations of observed phenomena by applying the principle of rectilinear propagation of light."
+        },
+        "cognitive_demand": "Application",
+        "visual_stimulus": null,
+        "question_text": "In Activity 11.4, a student holds her hand between a torch and a wall and observes a shadow. She then moves her hand closer to the torch, keeping the wall at the same distance. Draw a simple ray diagram showing the shadow size in both positions and use it to explain why the shadow changes size.",
+        "options": [],
+        "expected_elements": [
+          "Ray diagram showing the torch as a light source, the hand in two positions (one closer to the torch, one farther from the torch), and the wall as the screen.",
+          "Rays drawn as straight lines from the light source, passing the edges of the hand in each position, reaching the wall.",
+          "The shadow region on the wall clearly marked as larger when the hand is closer to the torch and smaller when the hand is farther from the torch.",
+          "An explanation that cites rectilinear propagation: because light travels in straight lines, rays from the source are intercepted over a wider spread when the object is closer to the source, casting a larger shadow on the screen."
+        ],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": null,
+          "SCR": {
+            "learning_outcome": {
+              "stage": 2
+            },
+            "inclusivity": "Students who find diagrammatic representation difficult may label positions with arrows and distances instead of a geometrically precise drawing, provided the relative shadow sizes are correctly indicated. Students who find written explanations challenging may give a verbal explanation to the teacher using the diagram as support."
+          },
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 3,
+        "stage_label": "Verify the laws of reflection through systematic measurement",
+        "implied_lo_assessed": "The student presents a completed data table showing angle of incidence equal to angle of reflection across at least four trials, and states two properties of the image formed in a plane mirror based on their own pin-location experiment.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-2.4",
+          "competency_text": "Uses systematic measurement and tabulated data to verify a scientific law and characterise image properties."
+        },
+        "cognitive_demand": "Analysis",
+        "visual_stimulus": "Trial | Angle of incidence (°) | Angle of reflection (°)\n1 | 20 | 20\n2 | 35 | 35\n3 | 50 | 48\n4 | 65 | 65\n5 | 80 | 80",
+        "question_text": "A student recorded these results during Activity 11.8. Refer to the table provided. The student claims the data fully supports the first law of reflection. Which response correctly evaluates this claim?",
+        "options": [
+          {
+            "label": "A",
+            "text": "The claim is not fully supported — Trial 3 shows a 2° discrepancy between the angle of incidence and angle of reflection, which the student should investigate as a possible measurement error before concluding.",
+            "is_correct": true
+          },
+          {
+            "label": "B",
+            "text": "The claim is fully supported — four out of five trials show equal angles, and one trial with a small difference is acceptable in any experiment.",
+            "is_correct": false
+          },
+          {
+            "label": "C",
+            "text": "The claim cannot be evaluated because the table does not include the angle with the mirror surface, which is required by the law of reflection.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "The claim is not supported — the law of reflection requires that the angle of incidence and angle of reflection add up to 90°, which the data does not show.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 3
+            },
+            "what_each_option_reveals": {
+              "B": "The student has adopted a majority-vote approach to data evaluation, failing to treat a discrepant result as requiring investigation — indicating engagement with the procedure but not with the scientific practice of scrutinising anomalous data.",
+              "C": "The student confuses the angle of incidence (measured from the normal) with the angle to the mirror surface, recalling a related but incorrect detail from the measurement procedure described in Activity 11.8.",
+              "D": "The student misremembers the law, substituting a 90° sum rule (applicable to complementary angles with the mirror surface) for the correct equality relationship, indicating a confusion between two related but distinct angle relationships in the same section."
+            },
+            "inclusivity": "Students who struggle with table reading can be directed to scan Trial 3 specifically and compare the two values before reading any option. Students who found the measurement activity concrete can relate this to their own recorded tables rather than reasoning abstractly."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 3,
+        "stage_label": "Verify the laws of reflection through systematic measurement",
+        "implied_lo_assessed": "The student presents a completed data table showing angle of incidence equal to angle of reflection across at least four trials, and states two properties of the image formed in a plane mirror based on their own pin-location experiment.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-2.4",
+          "competency_text": "Uses systematic measurement and tabulated data to verify a scientific law and characterise image properties."
+        },
+        "cognitive_demand": "Understanding",
+        "visual_stimulus": null,
+        "question_text": "In Activity 11.9, a student locates the image of a pin in a plane mirror using a second pin. She finds the image after moving the second pin to a specific position. Which pair of properties does this experiment directly demonstrate about the image?",
+        "options": [
+          {
+            "label": "A",
+            "text": "The image is the same size as the object and is located as far behind the mirror as the object is in front.",
+            "is_correct": true
+          },
+          {
+            "label": "B",
+            "text": "The image is magnified and appears closer to the mirror than the object.",
+            "is_correct": false
+          },
+          {
+            "label": "C",
+            "text": "The image is the same size as the object and can be projected onto a screen placed behind the mirror.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "The image is the same size as the object and is located at the same distance in front of the mirror as the object.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 3
+            },
+            "what_each_option_reveals": {
+              "B": "The student incorrectly recalls that mirrors magnify, possibly confusing a plane mirror with a curved or magnifying mirror, and also misremembers the image distance relationship — indicating confusion between plane mirror properties and other mirror types mentioned incidentally.",
+              "C": "The student correctly recalls same-size but adds the property of a real image that can be projected on a screen, confusing the virtual nature of the plane mirror image with a real image — a direct confusion between two concepts within Section 11.5.3.",
+              "D": "The student correctly recalls same-size and the concept of equal distances but locates the image in front of the mirror rather than behind it, inverting the key spatial property established in Activity 11.9."
+            },
+            "inclusivity": "Students who conducted Activity 11.9 can recall the physical action of moving the second pin to behind the mirror to find the match, using the procedural memory to reconstruct the spatial property. Students who find two-part answers challenging can be prompted to evaluate the size and the position properties separately before combining them."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 3,
+        "stage_label": "Verify the laws of reflection through systematic measurement",
+        "implied_lo_assessed": "The student presents a completed data table showing angle of incidence equal to angle of reflection across at least four trials, and states two properties of the image formed in a plane mirror based on their own pin-location experiment.",
+        "question_type": "SCR",
+        "competency": {
+          "c_code": "C-2.4",
+          "competency_text": "Uses systematic measurement and tabulated data to verify a scientific law and characterise image properties."
+        },
+        "cognitive_demand": "Analysis",
+        "visual_stimulus": null,
+        "question_text": "A student directs a ray of light at a plane mirror at an angle of incidence of 40°. State the angle of reflection and name the law that determines this. Then state two observable properties of the image that the pin-location experiment (Activity 11.9) demonstrates, and identify one feature that makes this a virtual image.",
+        "options": [],
+        "expected_elements": [
+          "States that the angle of reflection is 40°.",
+          "Names the first law of reflection (angle of incidence equals angle of reflection).",
+          "States that the image is the same size as the object (from Activity 11.9 pin-location observation).",
+          "States that the image appears as far behind the mirror as the object is in front (from Activity 11.9 pin-location observation).",
+          "Identifies that the image cannot be formed on a screen (it is virtual) — meaning it exists only as a perceived position behind the mirror, not as a real projection."
+        ],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": null,
+          "SCR": {
+            "learning_outcome": {
+              "stage": 3
+            },
+            "inclusivity": "Students who tabulated results in Activity 11.8 can reference their own recorded data to justify the 40° answer. Students who find multi-part written responses challenging may answer each part as a labelled list rather than in full sentences — the expected elements remain the same."
+          },
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 4,
+        "stage_label": "Apply reflection principles to construct and explain optical devices",
+        "implied_lo_assessed": "The student draws a labelled ray diagram tracing the light path through a periscope or between two mirrors at a given angle, and correctly predicts or explains the outcome of an unfamiliar reflection or shadow scenario by citing the relevant principle.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-2.4",
+          "competency_text": "Applies reflection principles and ray diagrams to predict and explain outcomes in unfamiliar optical scenarios."
+        },
+        "cognitive_demand": "Analysis",
+        "visual_stimulus": null,
+        "question_text": "A student writes her name on a piece of paper and holds it in front of a plane mirror. She notices that the letters appear reversed left to right but not upside down. She then asks: 'If I tilt the mirror backward so it now faces the ceiling, will the image be upside down instead of reversed?' Which prediction is correct, and why?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Yes — when the mirror faces the ceiling, it now reverses the top-to-bottom direction, so the image appears upside down rather than left-to-right reversed.",
+            "is_correct": true
+          },
+          {
+            "label": "B",
+            "text": "No — a plane mirror always reverses left to right regardless of its orientation, because lateral inversion is a fixed property of all mirrors.",
+            "is_correct": false
+          },
+          {
+            "label": "C",
+            "text": "Yes — but the image will be both upside down and left-to-right reversed, because tilting the mirror increases the number of reflections.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "No — the image will disappear because the angle of incidence will become 90° and the light will not reflect back toward the observer.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 4
+            },
+            "what_each_option_reveals": {
+              "B": "The student has treated lateral inversion as an absolute property of all mirrors in all orientations rather than understanding it as a directional reversal perpendicular to the mirror surface — indicating memorisation of the term without understanding the geometric mechanism from Section 11.5.3.",
+              "C": "The student confuses single-mirror lateral inversion with the multiple-image phenomenon from Section 11.5.4 (multiple reflections), importing an unrelated concept from the same chapter to explain a single-mirror scenario.",
+              "D": "The student misapplies the angle-of-incidence measurement, incorrectly concluding that a 90° incidence angle eliminates reflection — confusing the angle-of-incidence definition (measured from the normal, not the surface) with a surface angle, indicating incomplete consolidation of Stage 3 measurement conventions."
+            },
+            "inclusivity": "Students who physically tilted a mirror during class activities can re-enact the scenario mentally step by step. Students who find the abstract orientation change difficult can be encouraged to draw the mirror in its new position and trace one ray from an object point to reason about which direction is reversed."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 4,
+        "stage_label": "Apply reflection principles to construct and explain optical devices",
+        "implied_lo_assessed": "The student draws a labelled ray diagram tracing the light path through a periscope or between two mirrors at a given angle, and correctly predicts or explains the outcome of an unfamiliar reflection or shadow scenario by citing the relevant principle.",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-2.4",
+          "competency_text": "Applies reflection principles and ray diagrams to predict and explain outcomes in unfamiliar optical scenarios."
+        },
+        "cognitive_demand": "Application",
+        "visual_stimulus": null,
+        "question_text": "In a periscope, two plane mirrors are positioned at 45° to the vertical, one at the top and one at the bottom of a vertical tube. A student looks through the bottom opening and sees a scene above. Which description correctly traces the path of light through the periscope?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Light from the scene enters the top, strikes the upper mirror at 45° and is reflected downward, travels down the tube, strikes the lower mirror at 45° and is reflected horizontally toward the observer's eye.",
+            "is_correct": true
+          },
+          {
+            "label": "B",
+            "text": "Light from the scene enters the top, is refracted by the upper mirror downward, travels down the tube, is refracted again by the lower mirror toward the observer.",
+            "is_correct": false
+          },
+          {
+            "label": "C",
+            "text": "Light from the scene enters the top, strikes the upper mirror and is reflected upward, bounces off the top of the tube, then travels down to the observer.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Light from the scene enters the top and travels in a straight line diagonally through the tube to reach the observer's eye directly.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "stage": 4
+            },
+            "what_each_option_reveals": {
+              "B": "The student substitutes refraction for reflection, confusing two different optical phenomena — likely because both involve a change in direction of light — indicating that the distinction between reflection (same medium, bouncing) and refraction (different media, bending) has not been firmly established for this device.",
+              "C": "The student correctly identifies that the upper mirror reflects light but predicts the wrong direction (upward instead of downward), suggesting they have not applied the 45° geometry and the laws of reflection to reason about the output direction.",
+              "D": "The student applies rectilinear propagation correctly (light travels straight) but fails to account for the two reflections that redirect the light, indicating that they have not integrated the mirror positions into the ray path — a selective application of Stage 2 knowledge without Stage 3 reflection principles."
+            },
+            "inclusivity": "Students who built or observed a periscope in class can trace the physical path they observed before selecting an option. Students who find the directional language difficult can draw the vertical tube with two mirrors at 45° and add arrows representing rays to determine the correct path physically before reading the options."
+          },
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 4,
+        "stage_label": "Apply reflection principles to construct and explain optical devices",
+        "implied_lo_assessed": "The student draws a labelled ray diagram tracing the light path through a periscope or between two mirrors at a given angle, and correctly predicts or explains the outcome of an unfamiliar reflection or shadow scenario by citing the relevant principle.",
+        "question_type": "ECR",
+        "competency": {
+          "c_code": "C-2.4",
+          "competency_text": "Applies reflection principles and ray diagrams to predict and explain outcomes in unfamiliar optical scenarios."
+        },
+        "cognitive_demand": "Evaluation",
+        "visual_stimulus": null,
+        "question_text": "Two students are investigating multiple reflections. Priya places two plane mirrors at 60° to each other with a small object between them and counts the images. Aryan then closes the mirrors so they are nearly parallel (about 5° apart) and counts the images. Priya says: 'I see 5 images. If you bring the mirrors to exactly 0°, you should see exactly 6 images.' Aryan says: 'No — as the angle decreases toward 0°, the number of images keeps increasing without limit.' Using your knowledge of multiple reflections, evaluate both claims and state which student is correct, giving a reason for each judgement.",
+        "options": [],
+        "expected_elements": [],
+        "look_for": [
+          "Correctly evaluates Priya's count of 5 images at 60°, noting that 360/60 = 6, giving 6 − 1 = 5 images, which is consistent with the chapter's treatment of multiple reflections.",
+          "Identifies the flaw in Priya's prediction about 0°: at 0° (parallel mirrors) the formula breaks down and the number of images does not cap at 6 — it increases very greatly.",
+          "Correctly supports Aryan's claim: as the angle between the mirrors decreases toward 0° (parallel), the number of images increases without limit (approaches infinity), consistent with the chapter's observation that parallel mirrors produce a very large number of images.",
+          "Cites the mechanism: each additional reflection between the mirrors creates a new image, so reducing the angle allows more repeated reflections before light escapes the mirror system.",
+          "Uses precise language distinguishing between the number of images (a count) and the angle, and correctly relates one to the other."
+        ],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": null,
+          "SCR": null,
+          "ECR": {
+            "learning_outcome": {
+              "stage": 4
+            },
+            "inclusivity": "Students who constructed and observed the multiple-mirror setup in class can ground their evaluation in their own observations rather than the formula alone. Students who find evaluative writing difficult may structure their response as two separate short paragraphs — one for each student — with a labelled verdict, rather than an integrated argument."
+          },
+          "OPEN_TASK": null
+        }
+      },
+      {
+        "progression_stage": 4,
+        "stage_label": "Apply reflection principles to construct and explain optical devices",
+        "implied_lo_assessed": "The student draws a labelled ray diagram tracing the light path through a periscope or between two mirrors at a given angle, and correctly predicts or explains the outcome of an unfamiliar reflection or shadow scenario by citing the relevant principle.",
+        "question_type": "OPEN_TASK",
+        "competency": {
+          "c_code": "C-2.4",
+          "competency_text": "Applies reflection principles and ray diagrams to predict and explain outcomes in unfamiliar optical scenarios."
+        },
+        "cognitive_demand": "Evaluation",
+        "visual_stimulus": "Scenario | Device / Setup | Observed or predicted outcome | Principle(s) responsible | Diagram required?\nA child sees a street scene reflected in a puddle | Flat water surface acting as mirror | Image seen in water | | Yes — show incident and reflected rays\nAn opaque puppet held close to a bright lamp casts a large shadow on a wall | Lamp, puppet, wall screen | Shadow grows larger when puppet moves closer to lamp | | Yes — show light rays and shadow region\nA submarine uses a periscope to see above the water surface | Two plane mirrors at 45° | Scene above is visible from below | | Yes — show the complete ray path through both mirrors\nAMBULANCE is printed in reverse on the front of an emergency vehicle | Plane mirror in driver's rear-view mirror | Driver reads AMBULANCE correctly | | No diagram required — written explanation only",
+        "question_text": "",
+        "options": [],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "Four real-world scenarios involving light are presented in the table provided. For each scenario: (1) name the principle(s) of light responsible for the observed or predicted outcome; (2) where indicated, draw a labelled ray diagram showing how light behaves; (3) write one sentence explaining how the principle produces the outcome. Use the Diagram required? column to know which scenarios need a diagram.",
+        "scaffold": "Work through each scenario row by row. For each row: first decide whether the outcome involves reflection, rectilinear propagation, or both. Then draw the diagram (if required) — label the light source, the object or surface, any relevant angles or normals, and the direction of the rays. Finally, write your explanatory sentence citing the named principle.",
+        "format_of_output": [
+          "Completed table with Principle(s) responsible column filled for all four rows.",
+          "Labelled ray diagrams for Scenarios A, B, and C — each showing direction of rays with arrowheads, relevant surfaces or objects, and any angles or normals where applicable.",
+          "One written explanatory sentence per scenario (four sentences total)."
+        ],
+        "guide": {
+          "MCQ": null,
+          "SCR": null,
+          "ECR": null,
+          "OPEN_TASK": {
+            "learning_outcome": {
+              "stage": 4
+            },
+            "format_type": "Data interpretation task (provided table or graph)",
+            "format_rationale": "The scenario table requires students to read structured information across multiple contexts and apply both rectilinear propagation and laws of reflection, directly matching the Final Stage implied LO of predicting and explaining outcomes across unfamiliar scenarios by citing relevant principles.",
+            "what_this_demonstrates": "A complete response demonstrates that the student can transfer both rectilinear propagation and reflection principles to novel contexts — moving beyond the specific devices encountered in class (periscope, pinhole camera, shadow activities) to apply the same principles to related but unfamiliar setups, and can represent this understanding both diagrammatically and in precise written explanation.",
+            "reading_the_scaffold": "The scaffold asks students to make a principle decision before drawing — this separates the conceptual identification step from the representational step. Teachers should look for whether students correctly attribute scenarios A and C to reflection (with rectilinear propagation implicit in ray path), scenario B to rectilinear propagation (shadow formation), and scenario D to lateral inversion. Students who complete diagrams before filling the principle column may be working representationally rather than conceptually; this is not wrong, but the teacher may probe whether the principle label was derived from the diagram or informed it.",
+            "strong_vs_weak_markers": "Strong responses: ray diagrams include correctly placed normals, arrowheads showing direction of travel, and labels for incident and reflected rays where applicable; explanatory sentences name the specific principle and link it causally to the outcome (e.g. 'Because light travels in straight lines, rays from the lamp spread out past the puppet's edges, and moving the puppet closer intercepts a wider cone of rays, casting a larger shadow'). Weak responses: diagrams show rays without arrowheads or normals; principles are named without causal explanation; scenario D receives a diagram despite the column indicating none is required, suggesting the student is not reading the task structure; explanations use vague language such as 'light bounces' without identifying the specific law.",
+            "inclusivity": "Students who find drawing precise diagrams challenging may annotate a simplified sketch (e.g. arrows only, no measured angles) provided they label all key elements. Students who find all four scenarios demanding within the period may complete three scenarios fully and indicate their reasoning strategy for the fourth in note form — the teacher can assess principle application from the partial response. The teacher may substitute a 'Predict-and-explain task' format if the scenario table is not suited to the class context."
+          }
+        }
+      }
+    ],
+    "input_tokens": 2504,
+    "output_tokens": 7161,
+    "cost_inr": 9.6539,
+    "assess_input_tokens": 1025,
+    "assess_output_tokens": 9652,
+    "assess_cost_inr": 12.4198
+  }
+}

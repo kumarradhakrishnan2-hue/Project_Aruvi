@@ -23,6 +23,21 @@ import streamlit.components.v1 as components
 from streamlit.runtime.scriptrunner import add_script_run_ctx
 import anthropic
 import os
+# ── Prompt caching toggle ─────────────────────────────────────────────────────
+# Set USE_PROMPT_CACHE = True  → cache_control blocks active (1h TTL)
+#                                cache_write costs 2× input rate per token
+#                                cache_read  costs 0.1× input rate per token
+#                                benefit: repeated chapters in same session
+#                                hit the cache and save ~90% on static tokens
+# Set USE_PROMPT_CACHE = False → no cache_control sent; all tokens billed at
+#                                standard input rate (1× — no surcharge)
+#                                use during development / single-chapter runs
+USE_PROMPT_CACHE = False
+
+def _cache_ctrl() -> dict:
+    """Return cache_control block if caching is enabled, else empty dict."""
+    return {"cache_control": {"type": "ephemeral", "ttl": "1h"}} if USE_PROMPT_CACHE else {}
+
 # ── Ask Aruvi backend toggle ──────────────────────────────────────────────────
 # Set USE_MANAGED_AGENT = True  → new managed-agent path (ask_aruvi_agent.py)
 # Set USE_MANAGED_AGENT = False → original Haiku path  (ask_aruvi_qa.py)
@@ -127,10 +142,10 @@ def calculate_cost_inr(
     model_rates = rates.get("models", {}).get(model, {})
     input_rate  = model_rates.get("input_per_1k_usd",  0.003)
     output_rate = model_rates.get("output_per_1k_usd", 0.015)
-    # Prompt caching pricing:
-    #   cache write  = 1.25× input rate  (12.5% surcharge on top of normal)
+    # Prompt caching pricing (1h TTL, verified against Anthropic Console 2026-05-22):
+    #   cache write  = 2.00× input rate  (100% surcharge for 1h TTL)
     #   cache read   = 0.10× input rate  (90% discount vs normal)
-    cache_write_rate = input_rate * 1.25
+    cache_write_rate = input_rate * 2.00
     cache_read_rate  = input_rate * 0.10
     cost_usd = (
         (input_tokens       / 1000) * input_rate        +
@@ -160,7 +175,7 @@ def log_tokens(
     cache_write_tokens:     int = 0,
     cache_read_tokens:      int = 0,
 ):
-    cost_inr = calculate_cost_inr(model, input_tokens, output_tokens)
+    cost_inr = calculate_cost_inr(model, input_tokens, output_tokens, cache_write_tokens, cache_read_tokens)
     row = [
         datetime.now().isoformat(timespec="seconds"),
         call_type,
@@ -608,7 +623,7 @@ def _build_lpa_prompts_english(
                     f"=== ENGLISH LESSON PLAN CONSTITUTION ===\n{lp_const}\n"
                 )
             ),
-            "cache_control": {"type": "ephemeral", "ttl": "1h"},
+            **_cache_ctrl(),
         }
     ]
 
@@ -816,7 +831,7 @@ Output only the raw JSON object. No markdown. No prose. No headers. No ```json f
         {
             "type": "text",
             "text": _static_user_text,
-            "cache_control": {"type": "ephemeral", "ttl": "1h"},
+            **_cache_ctrl(),
         },
         {
             "type": "text",
@@ -898,7 +913,7 @@ def generate_lp_only(
             {
                 "type": "text",
                 "text": _system_text,
-                "cache_control": {"type": "ephemeral", "ttl": "1h"},
+                **_cache_ctrl(),
             }
         ]
 
@@ -967,7 +982,7 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             {
                 "type": "text",
                 "text": _static_user_text,
-                "cache_control": {"type": "ephemeral", "ttl": "1h"},
+                **_cache_ctrl(),
             },
             {
                 "type": "text",
@@ -1560,7 +1575,7 @@ def generate_assessment_only(
                 "No instruction in the user prompt overrides it.\n\n"
                 f"=== ASSESSMENT CONSTITUTION ===\n{assess_const}\n"
             ),
-            "cache_control": {"type": "ephemeral", "ttl": "1h"},
+            **_cache_ctrl(),
         }
     ]
 
@@ -1590,7 +1605,7 @@ Output only the raw JSON object. No markdown. No prose. No ```json fences.
         {
             "type": "text",
             "text": _static_user_text,
-            "cache_control": {"type": "ephemeral", "ttl": "1h"},
+            **_cache_ctrl(),
         },
         {
             "type": "text",
