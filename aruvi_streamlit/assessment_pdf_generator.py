@@ -538,9 +538,10 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
     Section-header font 8.5pt (fix 1: +1 from previous 7.5pt).
     LO font 7.5pt via q_lo style   (fix 3: +1 from q_meta 6.5pt).
     """
-    story    = []
-    qtype    = item.get("question_type", "")
-    is_maths = item.get("_maths_section_code") is not None
+    story      = []
+    meta_block = None   # Science deferred LO/CogDemand block; None for all other subjects
+    qtype      = item.get("question_type", "")
+    is_maths   = item.get("_maths_section_code") is not None
 
     if qtype == "OPEN_TASK":
         qtype = "open_task"
@@ -635,7 +636,24 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
         else:
             q_para = Paragraph(f"<b>Q{q_num}.</b>", AST["q_text"])
 
-        if meta_rows:
+        story.append(q_para)
+        # For Science and SS: defer LO/Cognitive-Demand meta to end of question content.
+        # For Maths/English: render immediately after question text (original behaviour).
+        _defer_meta = meta_rows and not is_maths and not item.get("is_english")
+        if meta_rows and not _defer_meta:
+            _mb = Table(meta_rows, colWidths=[uw])
+            _mb.setStyle(TableStyle([
+                ("BACKGROUND",    (0, 0), (-1, -1), BG_META),
+                ("TOPPADDING",    (0, 0), (-1, -1), 3),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
+                ("LEFTPADDING",   (0, 0), (-1, -1), 6),
+                ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+                ("VALIGN",        (0, 0), (-1, -1), "TOP"),
+            ]))
+            story.append(Spacer(1, 2))
+            story.append(_mb)
+            meta_block = None   # already rendered, nothing to defer
+        elif _defer_meta:
             meta_block = Table(meta_rows, colWidths=[uw])
             meta_block.setStyle(TableStyle([
                 ("BACKGROUND",    (0, 0), (-1, -1), BG_META),
@@ -645,12 +663,8 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
                 ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
                 ("VALIGN",        (0, 0), (-1, -1), "TOP"),
             ]))
-            # LO Assessed / Cognitive demand rendered BELOW the question text
-            story.append(q_para)
-            story.append(Spacer(1, 2))
-            story.append(meta_block)
         else:
-            story.append(q_para)
+            meta_block = None
 
     # ── Word box (MATCH items) ─────────────────────────────────────────────────
     wb_words = item.get("_word_box_words")
@@ -786,9 +800,19 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
             story.append(Spacer(1, 3))
             story.append(ex_tbl)
 
+    # ── Science / SS: LO assessed + Cognitive demand — after all question content ──
+    if meta_block is not None:
+        story.append(Spacer(1, 4))
+        story.append(meta_block)
+    else:
+        story.append(Spacer(1, 4))
+
     # ── Separator ─────────────────────────────────────────────────────────────
-    story.append(Spacer(1, 4))
     story.append(HLine(uw, thickness=0.3, color=ROW_LINE, sb=2, sa=2))
+
+    # ── Two-row gap after separator (Science, SS, English) ────────────────────
+    if meta_block is not None or item.get("is_english"):
+        story.append(Spacer(1, 24))
 
     return story
 

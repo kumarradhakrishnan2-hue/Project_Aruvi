@@ -793,21 +793,19 @@ def period_card_maths(period_num, duration_min, activity_name, anchored_section,
 def _science_stage_summary(stages, uw):
     """
     Section 1 for Science PDFs.
-    Three-column table: Stage No. | Progression Stage | Description
+    Two-column table: Stage No. | Progression Stage
     One header row + one data row per progression stage.
     """
-    col_ws = [uw * 0.12, uw * 0.25, uw * 0.63]
+    col_ws = [uw * 0.12, uw * 0.88]
     hdr = [
         Paragraph("Stage No.",         ST["comp_hdr"]),
         Paragraph("Progression Stage", ST["comp_hdr"]),
-        Paragraph("Description",       ST["comp_hdr"]),
     ]
     rows = [hdr]
     for stage in stages:
         rows.append([
             Paragraph(_clean_text(str(stage.get("stage_number") or "—")), ST["comp_code"]),
             Paragraph(_clean_text(str(stage.get("stage_label")  or "—")), ST["comp_text"]),
-            Paragraph(_clean_text(str(stage.get("description")  or "—")), ST["comp_text"]),
         ])
     t = Table(rows, colWidths=col_ws)
     t.setStyle(TableStyle([
@@ -1713,7 +1711,7 @@ def _json_to_science_lp_data(j: dict, date_str: str, weight) -> dict:
     Actual JSON layout
     ------------------
     result.lesson_plan.cognitive_progression  — list of stage summary dicts
-        {stage_number, stage_label, description}
+        {stage_number, stage_label}  (description field ignored — not in constitution)
     result.lesson_plan.periods                — flat list of all periods
         {period_number, period_duration_minutes, progression_stage (int),
          activity_title, activity_description, materials (list), phases (list)}
@@ -1790,8 +1788,7 @@ def _json_to_science_lp_data(j: dict, date_str: str, weight) -> dict:
         sn = s.get("stage_number") or "—"
         stage_map[sn] = {
             "stage_number": sn,
-            "stage_label":  s.get("stage_label")  or "—",
-            "description":  s.get("description")  or "—",
+            "stage_label":  s.get("stage_label") or "—",
             "periods":      [],
         }
 
@@ -1821,16 +1818,18 @@ def _json_to_science_lp_data(j: dict, date_str: str, weight) -> dict:
                 stage_map[sn] = {
                     "stage_number": sn,
                     "stage_label":  p.get("stage_label") or "—",
-                    "description":  "—",
                     "periods":      [],
                 }
             stage_map[sn]["periods"].append(period_entry)
 
     # ── Preserve stage order (cognitive_progression order, then any orphans) ──
     ordered_keys = [s.get("stage_number") or "—" for s in cog_stages]
-    for k in stage_map:
-        if k not in ordered_keys:
-            ordered_keys.append(k)
+    orphans = [k for k in stage_map if k not in ordered_keys]
+    try:
+        orphans.sort(key=lambda k: int(k))
+    except (TypeError, ValueError):
+        pass
+    ordered_keys.extend(orphans)
     progression_stages = [stage_map[k] for k in ordered_keys if k in stage_map]
 
     return {
