@@ -1501,12 +1501,14 @@ function buildGuideHtml(q, isSci) {
     if (guide.inclusivity) {
       if (parts.length) parts.push('');
       parts.push('<strong>Inclusivity</strong>');
-      /* Bold the words "Support" and "Challenge" wherever they appear */
+      /* Bold the words "Support", "Challenge", and "Struggling" wherever they appear */
       var inclText = escHtml(guide.inclusivity)
         .replace(/\bSupport\b/g, '<strong>Support</strong>')
         .replace(/\bsupport\b/g, '<strong>Support</strong>')
         .replace(/\bChallenge\b/g, '<strong>Challenge</strong>')
-        .replace(/\bchallenge\b/g, '<strong>Challenge</strong>');
+        .replace(/\bchallenge\b/g, '<strong>Challenge</strong>')
+        .replace(/\bStruggling\b/g, '<strong>Struggling</strong>')
+        .replace(/\bstruggling\b/g, '<strong>Struggling</strong>');
       parts.push(inclText);
     }
     while (parts.length && parts[parts.length - 1] === '') parts.pop();

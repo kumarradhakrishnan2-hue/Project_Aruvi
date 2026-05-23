@@ -594,6 +594,19 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
             story.append(Paragraph(f"<b>Q{q_num}.</b>", AST["q_text"]))
     else:
         q_raw = item.get("question_text") or ""
+        # ── Mathematics: strip pipe-table lines already in visual_stimulus ──
+        # The LLM sometimes embeds the table in both `prompt` (→ question_text)
+        # and `visual_stimulus`. For mathematics, visual_stimulus is always
+        # rendered as a proper table immediately after the question text, so
+        # any duplicate pipe-table lines in the prompt must be removed here.
+        if item.get("is_mathematics") and q_raw:
+            _vs = (item.get("visual_stimulus") or "").strip()
+            if _vs and "|" in _vs:
+                _vs_lines = set(ln.strip() for ln in _vs.splitlines() if ln.strip())
+                _q_lines = q_raw.splitlines()
+                import re as _re
+                _q_lines = [ln for ln in _q_lines if ln.strip() not in _vs_lines]
+                q_raw = _re.sub(r'\n{3,}', '\n\n', "\n".join(_q_lines)).rstrip()
         if item.get("is_english") and q_raw and "\n" in q_raw:
             q_text = "<br/>".join(_clean_text(ln) for ln in q_raw.split("\n"))
         else:

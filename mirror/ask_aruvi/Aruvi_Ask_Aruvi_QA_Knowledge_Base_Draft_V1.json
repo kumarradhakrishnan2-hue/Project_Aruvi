@@ -1,10 +1,10 @@
 {
   "metadata": {
     "document": "Ask Aruvi Q&A Knowledge Base",
-    "version": "V2.0",
-    "last_refreshed": "2026-05-14",
+    "version": "V2.1",
+    "last_refreshed": "2026-05-23",
     "date": "May 2026",
-    "total_pairs": 83,
+    "total_pairs": 88,
     "categories": [
       "cat_a",
       "cat_b",
@@ -310,12 +310,12 @@
         {
           "id": "d01",
           "q": "What are the three tabs in Aruvi and what does each do?",
-          "a": "Aruvi has three tabs. (1) Allocate: set your period schedule and see how teaching time is distributed across chapters for a subject and grade — adjust before generating. (2) Generate: select a chapter and input a period count, then generate the lesson plan and assessment. (3) My Plans: view and download all previously saved plans. ‘Ask Aruvi’ help tool is available from all three tabs as a floating help panel."
+          "a": "Aruvi has three tabs. (1) Allocate: set your period schedule and see how teaching time is distributed across chapters for a subject and grade — adjust before generating. (2) Generate: select a chapter and input a period count, then generate the lesson plan — with an option to add the assessment at the same time or later from My Plans. (3) My Plans: view, download, and add assessments to all previously saved plans. ‘Ask Aruvi’ help tool is available from all three tabs as a floating help panel."
         },
         {
           "id": "d02",
           "q": "How do I generate a lesson plan?",
-          "a": "Go to the Generate tab. Select your subject, grade, and chapter. Enter your period schedule — duration and count. Click Generate. Aruvi will stream the lesson plan and assessment to the screen. When generation is complete, you can save the plan using the Save button. The plan includes the full lesson plan, implied learning outcomes, and the complete chapter assessment. The plan may take between 3 minutes to 6 minutes to generate – the longer the time period and/or larger the chapter, the more the time taken."
+          "a": "Go to the Generate tab. Select your subject, grade, and chapter. Enter your period schedule — duration and count. Click Generate. Aruvi will stream the lesson plan to the screen. You can choose to add the Assessment at this stage by selecting 'Add Assessment', or generate it later from My Plans. When generation is complete, save the plan using the Save button. The plan includes the full lesson plan and implied learning outcomes. Each part may take between 2 and 5 minutes to generate — the longer the time period and/or larger the chapter, the more the time taken."
         },
         {
           "id": "d03",
@@ -325,7 +325,7 @@
         {
           "id": "d04",
           "q": "How do I download a PDF of my lesson plan or assessment?",
-          "a": "From the Generate tab or the My Plans tab, click the Download PDF button for the plan you want. Two PDFs are available: one for the lesson plan and one for the assessment. Due to length of the plans, the Guide may not be available on some subject PDFs. But the online HTML version provides full view of all information including teacher guides for assessment."
+          "a": "From the Generate tab or the My Plans tab, click the Download PDF button for the plan you want. Two PDFs are available: one for the lesson plan and one for the assessment. If the assessment has not yet been generated for a saved plan, the assessment PDF option will not appear until you generate it from My Plans. Due to length of the plans, the Guide may not be available on some subject PDFs. The online HTML version provides a full view of all information including teacher guides."
         },
         {
           "id": "d05",
@@ -345,7 +345,7 @@
         {
           "id": "d08",
           "q": "Where are my saved plans stored?",
-          "a": "Saved plans are stored in Aruvi's configured storage — organised by subject and grade. They are accessible through the My Plans tab at any time. Each plan is a single file containing both the lesson plan and the assessment, with a timestamp. Plans saved in one session are available in all subsequent sessions under the same account."
+          "a": "Saved plans are stored in Aruvi's configured storage — organised by subject and grade. They are accessible through the My Plans tab at any time. Each plan entry contains the lesson plan and, if generated, the assessment — stored separately but linked under the same chapter record, with a timestamp. A plan saved without an assessment shows a 'Generate Assessment' option in My Plans. Plans saved in one session are available in all subsequent sessions under the same account."
         },
         {
           "id": "d09",
@@ -381,6 +381,31 @@
           "id": "d15",
           "q": "Why does Ask Aruvi sometimes say it cannot answer my question?",
           "a": "Ask Aruvi is scoped to questions about how the platform works — its rules, its decisions, and its outputs. Questions about classroom logistics, specific pedagogical techniques, material sourcing, or student management are outside this scope. When Ask Aruvi cannot match a question to its knowledge base, it says so and automatically logs your question for Aruvi management review. No question goes unacknowledged."
+        },
+        {
+          "id": "d16",
+          "q": "Does Aruvi generate the lesson plan and assessment together or separately?",
+          "a": "Aruvi generates them separately — in two parts. Part 1 generates the Lesson Plan. Part 2 generates the Assessment. You can choose to run both in a single session by selecting 'Add Assessment' at inception, or generate the Lesson Plan first and add the Assessment later from the My Plans tab. This gives you flexibility: review the lesson plan before committing to the assessment, or share the plan with a colleague first."
+        },
+        {
+          "id": "d17",
+          "q": "Can I generate only a lesson plan without an assessment?",
+          "a": "Yes. Generation defaults to the Lesson Plan only. If you want the Assessment as well, select 'Add Assessment' at the start of generation. Alternatively, skip it at inception and run the Assessment separately from My Plans at any time after the Lesson Plan has been saved. Both approaches produce the same quality of assessment — the timing is your choice."
+        },
+        {
+          "id": "d18",
+          "q": "How do I add an assessment to a lesson plan I already saved?",
+          "a": "Go to the My Plans tab, locate the saved lesson plan, and click 'Generate Assessment'. Aruvi uses the same chapter mapping and implied learning outcomes from the original lesson plan to build the assessment — no re-entry of period details is required. Once generated, the assessment is attached to that saved plan and available for download from My Plans."
+        },
+        {
+          "id": "d19",
+          "q": "If I generate the assessment separately from My Plans, will it be consistent with the lesson plan?",
+          "a": "Yes. The assessment is always generated from the implied learning outcomes produced by the lesson plan — regardless of when it is run. Running the assessment from My Plans uses the same LOs that were locked in when the lesson plan was saved, so the questions and teacher guides are fully aligned with what was taught."
+        },
+        {
+          "id": "d20",
+          "q": "How long does it take to generate the lesson plan and the assessment?",
+          "a": "Each part takes between 2 and 5 minutes depending on chapter length and the number of periods. If you generate both in a single session, expect a combined time of 4 to 10 minutes. Generating the assessment separately from My Plans takes the same time as generating it at inception — the generation process is identical."
         }
       ]
     },

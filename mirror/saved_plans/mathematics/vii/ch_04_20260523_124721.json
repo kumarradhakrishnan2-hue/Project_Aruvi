@@ -1,0 +1,1172 @@
+{
+  "filename": "ch_04_20260523_124721.json",
+  "saved_at": "2026-05-23T12:47:21",
+  "grade": "Grade VII",
+  "subject": "Mathematics",
+  "chapter_number": 4,
+  "chapter_title": "Expressions Using Letter-Numbers",
+  "period_schedule_display": "Period schedule:\n  Row 1: 40 minutes × 2 periods = 80 minutes\nTotal: 2 periods · 1h 20min",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 40,
+      "count": 2
+    }
+  ],
+  "plan_status": "full_lpa",
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            {
+              "ref": "section 4.1",
+              "title": "The Notion of Letter-Numbers"
+            }
+          ],
+          "section_goal": "recall",
+          "activity_title": "Naming Unknowns: Introducing Letter-Numbers Through Situations",
+          "pedagogical_method": "Inductive",
+          "textbook_items_in_class": [
+            {
+              "id": "WE-1",
+              "type": "worked_example",
+              "source_section": "section 4.1",
+              "book_ref": "Example 1, section 4.1 p.81",
+              "description": "Shabnam is 3 years older than Aftab. Derive the expression s = a + 3 for Shabnam's age from Aftab's; use it to find Shabnam's age when Aftab is 23."
+            },
+            {
+              "id": "WE-2",
+              "type": "worked_example",
+              "source_section": "section 4.1",
+              "book_ref": "Example 2, section 4.1 p.82",
+              "description": "Parthiv's L-shaped matchstick pattern: derive the expression 2n for the number of matchsticks needed to make n L-shapes."
+            },
+            {
+              "id": "E-1",
+              "type": "exercise",
+              "source_section": "section 4.1",
+              "book_ref": "Figure it Out Q1, section 4.1 p.84",
+              "description": "Write perimeter formulas for: (a) equilateral triangle; (b) regular pentagon; (c) regular hexagon."
+            }
+          ],
+          "homework": [
+            {
+              "id": "E-2",
+              "type": "exercise",
+              "source_section": "section 4.1",
+              "book_ref": "Figure it Out Q2, section 4.1 p.84",
+              "description": "Munirathna joins a pipe of unknown length k metres to a 20 m pipe. Write the expression for the combined length."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Open with the question: 'Can a single rule capture infinitely many number pairs?' Walk students through Example 1, section 4.1 p.81 ('Shabnam is 3 years older than Aftab....'), building the table of values and deriving s = a + 3. Introduce the vocabulary 'letter-number' and 'algebraic expression'."
+            },
+            {
+              "minutes": "8–18",
+              "description": "Present Example 2, section 4.1 p.82 ('Parthiv's L-shaped matchstick pattern....'), guiding students to count matchsticks for 1, 2, 3 L-shapes and generalise the pattern to 2n. Emphasise that a single expression replaces repeated calculations."
+            },
+            {
+              "minutes": "18–32",
+              "description": "Students work in pairs on Figure it Out Q1, section 4.1 p.84 ('Write perimeter formulas for equilateral triangle....'), writing expressions for each polygon. Circulate and prompt: 'How did you decide which letter to use?'"
+            },
+            {
+              "minutes": "32–40",
+              "description": "Pair-share: two groups compare perimeter expressions and discuss whether different letter choices produce equivalent formulas. Close by previewing that multi-variable expressions will extend this idea."
+            }
+          ],
+          "teacher_notes": "This is the entry period; no prior algebraic notation assumed — build from the age-relationship story before moving to geometry. Watch for students who write 'a3' instead of 'a + 3', conflating concatenation with addition. For self-study, direct students to Example 4, section 4.1 p.83 on square perimeter as 4 × q.",
+          "materials": [
+            "Matchsticks or drawn L-shape diagrams",
+            "Squared paper for polygon perimeters"
+          ]
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            {
+              "ref": "section 4.1",
+              "title": "The Notion of Letter-Numbers"
+            }
+          ],
+          "section_goal": "apply",
+          "activity_title": "Building Formulas for Real Situations: Cost, Length, and Calendar",
+          "pedagogical_method": "Problem-solving",
+          "textbook_items_in_class": [
+            {
+              "id": "WE-3",
+              "type": "worked_example",
+              "source_section": "section 4.1",
+              "book_ref": "Example 3, section 4.1 p.82",
+              "description": "Ketaki's coconut-jaggery cost: derive the two-variable expression c × 35 + j × 60 and use it to compute cost for 7 coconuts and 4 kg jaggery."
+            },
+            {
+              "id": "E-3",
+              "type": "exercise",
+              "source_section": "section 4.1",
+              "book_ref": "Figure it Out Q3, section 4.1 p.84",
+              "description": "Complete the table for total amount Krithika has given counts of ₹100, ₹20, and ₹5 notes, including the general algebraic expression 100x + 20y + 5z."
+            },
+            {
+              "id": "E-5",
+              "type": "exercise",
+              "source_section": "section 4.1",
+              "book_ref": "Figure it Out Q5, section 4.1 p.84",
+              "description": "Write algebraic expressions for: (a) 5 more than a number; (b) 4 less than a number; (c) 2 less than 13 times a number; (d) 13 less than 2 times a number."
+            }
+          ],
+          "homework": [
+            {
+              "id": "E-6",
+              "type": "exercise",
+              "source_section": "section 4.1",
+              "book_ref": "Figure it Out Q6, section 4.1 p.85",
+              "description": "Describe real-world situations corresponding to: (a) 8 × x + 3 × y; (b) 15 × j – 2 × k."
+            },
+            {
+              "id": "E-7",
+              "type": "exercise",
+              "source_section": "section 4.1",
+              "book_ref": "Figure it Out Q7, section 4.1 p.85",
+              "description": "In a 2 × 3 calendar grid with bottom-middle date 'w', write expressions for the dates in all blank cells."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Recap single-variable expressions from period 1; pose the question 'What if two unknowns affect the total?' Analyse Example 3, section 4.1 p.82 ('Ketaki's coconut-jaggery cost....'), building the two-variable expression step by step and evaluating for specific values."
+            },
+            {
+              "minutes": "10–25",
+              "description": "Students work individually on Figure it Out Q3, section 4.1 p.84 ('Complete the table for total amount Krithika has....') to construct the three-variable expression, then on Figure it Out Q5, section 4.1 p.84 ('Write algebraic expressions for 5 more than a number....') to practise English-to-expression translation."
+            },
+            {
+              "minutes": "25–36",
+              "description": "Small-group discussion: groups compare their expressions for Q5 parts (c) and (d) and debate why '2 less than 13 times a number' differs from '13 less than 2 times a number'. Teacher facilitates agreement on correct form."
+            },
+            {
+              "minutes": "36–40",
+              "description": "Whole-class close: one student reads a situation from Figure it Out Q6, section 4.1 p.85 ('Describe real-world situations corresponding to 8 × x + 3 × y....') as a preview; remainder set as homework. Briefly flag Figure it Out Q4, section 4.1 p.84 for strong students."
+            }
+          ],
+          "teacher_notes": "Recap period 1 expressions before introducing multi-variable formulas; preview that section 4.2 will revisit arithmetic rules needed to evaluate these expressions. A frequent error is treating c × 35 + j × 60 as (c + j) × (35 + 60); use Ketaki's specific values to disprove this immediately. For self-study, point students to Example 4, section 4.1 p.83 on square perimeter.",
+          "materials": [
+            "Price list cards (coconut ₹35, jaggery ₹60)",
+            "Currency denomination strips for Q3"
+          ]
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 60,
+          "textbook_segments": [
+            {
+              "ref": "section 4.2",
+              "title": "Revisiting Arithmetic Expressions"
+            }
+          ],
+          "section_goal": "apply",
+          "activity_title": "Order Matters: Applying Arithmetic Rules Before Algebra",
+          "pedagogical_method": "Discovery",
+          "textbook_items_in_class": [
+            {
+              "id": "E-8",
+              "type": "exercise",
+              "source_section": "section 4.2",
+              "book_ref": "Figure it Out, section 4.2 p.85",
+              "description": "Find the values of the arithmetic expressions: (1) 23 – 10 × 2; (2) 83 + 28 – 13 + 32; (3) 34 – 14 + 20; (4) 42 + 15 – (8 – 7); (5) 68 – (18 + 13); (6) 7 × 4 + 9 × 6; (7) 20 + 8 × (16 – 6). (Items 1, 2 and 5 are worked; complete items 3, 4, 6, 7.)"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Briefly recap perimeter expressions from periods 1–2 and explain that evaluating algebraic expressions requires solid arithmetic rules. Ask students to evaluate '23 – 10 × 2' individually, then reveal common wrong answers (3, 6, 26) to spark discussion about operation order."
+            },
+            {
+              "minutes": "10–25",
+              "description": "Walk through Figure it Out, section 4.2 p.85 ('Find the values of the arithmetic expressions....') items 1, 2, and 5 as class demonstrations, explicitly naming each rule used: multiplication-before-addition, swap-and-group for addition chains, distributing a negative over a bracket."
+            },
+            {
+              "minutes": "25–45",
+              "description": "Students work individually on items 3, 4, 6, and 7 from Figure it Out, section 4.2 p.85, then exchange books with a neighbour to check. Teacher circulates and targets item 7 ('20 + 8 × (16 – 6)'), where bracket-first vs. left-to-right errors surface most."
+            },
+            {
+              "minutes": "45–55",
+              "description": "Whole-class debrief: a student explains item 6 using two grouping strategies; teacher connects bracket-distribution to the upcoming algebraic work. Pose the bridge question: 'What changes when 10 becomes a letter n in 23 – n × 2?'"
+            },
+            {
+              "minutes": "55–60",
+              "description": "Consolidation: students write one self-composed arithmetic expression using at least one bracket and swap with a partner to evaluate. Teacher collects two examples on the board to preview the next session's notation shorthand."
+            }
+          ],
+          "teacher_notes": "Transition: connect this revision directly to the declaration in the chapter prose that algebraic expressions yield numerical values when letter-numbers are replaced by numbers. The most common error here is left-to-right evaluation that ignores multiplication priority — address it explicitly with item 1 before moving on. No worked example in this section is left un-walked; all seven items are addressed either by the teacher or by students.",
+          "materials": [
+            "Whiteboard for error-display",
+            "Mini whiteboards or rough paper for self-composed expressions"
+          ]
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 60,
+          "textbook_segments": [
+            {
+              "ref": "section 4.3",
+              "title": "Omission of the Multiplication Symbol in Algebraic Expressions"
+            }
+          ],
+          "section_goal": "recall",
+          "activity_title": "Shorthand Fluency: Reading and Writing Coefficient Notation",
+          "pedagogical_method": "Inductive",
+          "textbook_items_in_class": [
+            {
+              "id": "E-9",
+              "type": "exercise",
+              "source_section": "section 4.3",
+              "book_ref": "Figure it Out, section 4.3 p.87",
+              "description": "Mind the Mistake, Mend the Mistake: nine algebraic substitutions (e.g. if a = –4, then 10 – a = 6; if d = 6, then 3d = 36; etc.). For each: identify whether there is a mistake, explain what went wrong, and give the correct value."
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Recap arithmetic evaluation from period 3. Introduce the shorthand: write '4 × n' and '4n' side by side on the board, and ask students which is more compact. Display the sequence 4, 8, 12, 16, … and guide students to name the nth term as 4n."
+            },
+            {
+              "minutes": "10–22",
+              "description": "Work through evaluating 7k when k = 4 and 5m + 3 when m = 2 together, stressing that the coefficient and the letter are multiplied — not concatenated. Invite two students to show working on the board, then discuss any discrepancies."
+            },
+            {
+              "minutes": "22–42",
+              "description": "Students work in pairs on Figure it Out, section 4.3 p.87 ('Mind the Mistake, Mend the Mistake: nine algebraic substitutions....'), identifying which substitutions are wrong, explaining the error type, and giving the correct value. Pairs swap and cross-check responses."
+            },
+            {
+              "minutes": "42–52",
+              "description": "Class discussion: teacher selects the two most instructive errors (the 10 – a = 6 when a = –4 item and the 3d = 36 concatenation error) and leads a structured explanation of each, connecting them to the rules introduced in section 4.2."
+            },
+            {
+              "minutes": "52–60",
+              "description": "Quick oral round: teacher says an expression (e.g. '5t, where t = 3') and students give the value on mini whiteboards. Extend to two-term expressions such as '3p + 2, where p = 4'. Summarise the notation rules as a class-generated reference list."
+            }
+          ],
+          "teacher_notes": "Transition: connect the coefficient notation back to the × symbol used in section 4.1 expressions (c × 35) and forward to the like-term collection in section 4.4. The dominant error in this section is reading 3d as the two-digit number 36 when d = 6; spend extra time on the concatenation-vs-multiplication distinction. For self-study, students may revisit the sequence 4, 8, 12, 16, … derivation in the section prose.",
+          "materials": [
+            "Mini whiteboards or response cards",
+            "Sequence strips (4, 8, 12, 16, …) for visual display"
+          ]
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            {
+              "ref": "section 4.4",
+              "title": "Simplification of Algebraic Expressions"
+            }
+          ],
+          "section_goal": "reason",
+          "activity_title": "Like Terms and Rectangle Areas: Why Simplification Works",
+          "pedagogical_method": "Deductive",
+          "textbook_items_in_class": [
+            {
+              "id": "WE-5",
+              "type": "worked_example",
+              "source_section": "section 4.4",
+              "book_ref": "Example 5, section 4.4 p.88",
+              "description": "Pencil-eraser shop over three days: simplify 5c + 3c + 10c = 18c using the distributive property; set up 18c + 11d for total earnings."
+            },
+            {
+              "id": "WE-6",
+              "type": "worked_example",
+              "source_section": "section 4.4",
+              "book_ref": "Example 6, section 4.4 p.89",
+              "description": "Big rectangle split into two smaller rectangles: show 4v + 3v = 7v and 12n – 4n = 8n using two methods of computing area."
+            },
+            {
+              "id": "WE-10",
+              "type": "worked_example",
+              "source_section": "section 4.4",
+              "book_ref": "Example 10, section 4.4 p.92",
+              "description": "Show that 5u and 5 + u are not equal by evaluating both for u = 2, 5, 8; similarly compare 10y – 3 and 10(y – 3) for several values of y."
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Recap coefficient notation from period 4. State the key reasoning question for this period: 'When can two different-looking expressions mean the same thing?' Introduce like terms and unlike terms using the vocabulary from the section prose."
+            },
+            {
+              "minutes": "8–20",
+              "description": "Walk through Example 5, section 4.4 p.88 ('Pencil-eraser shop over three days....') and Example 6, section 4.4 p.89 ('Big rectangle split into two smaller rectangles....'), using the area diagram to prove — not just claim — that 4v + 3v = 7v by computing total area two ways."
+            },
+            {
+              "minutes": "20–32",
+              "description": "Analyse Example 10, section 4.4 p.92 ('Show that 5u and 5 + u are not equal....') as a class: students substitute u = 2, 5, 8 and record both values, then reason that if expressions differ for even one value they cannot be simplified to the same form."
+            },
+            {
+              "minutes": "32–40",
+              "description": "Students write a two-sentence justification: 'Two expressions are equal when…' using their own words, then share with a neighbour. Teacher collects two responses to read aloud, correcting imprecise language before the next period extends these ideas."
+            }
+          ],
+          "teacher_notes": "Transition: period 4 established that 3d ≠ 36; now extend that precision to the equality of expressions — two expressions are equal only when they yield the same value for all substitutions. A common error is students treating 'unlike terms' as simplifiable (e.g. 3a + 2b = 5ab); use the rectangle-area proof to make clear why only like terms combine. For self-study, direct students to Example 11, section 4.4 p.93 on the symmetric 4×4 grid.",
+          "materials": [
+            "Graph paper for rectangle-area diagram",
+            "Whiteboard for side-by-side expression comparisons"
+          ]
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            {
+              "ref": "section 4.4",
+              "title": "Simplification of Algebraic Expressions"
+            }
+          ],
+          "section_goal": "apply",
+          "activity_title": "Bracket Removal and Like-Term Collection: Practice at Scale",
+          "pedagogical_method": "Problem-solving",
+          "textbook_items_in_class": [
+            {
+              "id": "WE-7",
+              "type": "worked_example",
+              "source_section": "section 4.4",
+              "book_ref": "Example 7, section 4.4 p.90",
+              "description": "Chair-table rental shop: simplify (40x + 75y) – (6x + 10y) to 34x + 65y by distributing the negative sign and collecting like terms."
+            },
+            {
+              "id": "WE-8",
+              "type": "worked_example",
+              "source_section": "section 4.4",
+              "book_ref": "Example 8, section 4.4 p.91",
+              "description": "Charu's three-round quiz scores 7p – 3q, 8p – 4q, 6p – 2q: add to get total 21p – 9q; compare with Krishita's 23p – 7q by finding their difference."
+            },
+            {
+              "id": "E-11",
+              "type": "exercise",
+              "source_section": "section 4.4",
+              "book_ref": "Figure it Out Q2, section 4.4 p.94",
+              "description": "Simplify each expression: (a) p+p+p+p; p+p+p+q; p+q+p–q; (b) p–q+p–q; p+q–p+q; (c) p+q–(p+q); p–q–p–q; (d) 2d–d–d–d; 2d–d–d–c; (e) 2d–d–(d–c); 2d–(d–d)–c; (f) 2d–d–c–c."
+            }
+          ],
+          "homework": [
+            {
+              "id": "E-10",
+              "type": "exercise",
+              "source_section": "section 4.4",
+              "book_ref": "Figure it Out Q1, section 4.4 p.93",
+              "description": "Add the numbers in each of three grid pictures (containing letter-number terms like 5y, x, –6, 2p, 3q, –5g, 5k, etc.). Write corresponding expressions and simplify; try at least two different grouping methods and confirm the same result."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Brief recap of like/unlike terms from period 5. Introduce the negative-bracket trap using Example 7, section 4.4 p.90 ('Chair-table rental shop....'), showing step by step how – (6x + 10y) becomes –6x – 10y before collecting terms."
+            },
+            {
+              "minutes": "8–20",
+              "description": "Walk through Example 8, section 4.4 p.91 ('Charu's three-round quiz scores....'), adding multi-term expressions and then subtracting two simplified expressions to find a difference — reinforcing that bracket distribution applies in both addition and subtraction contexts."
+            },
+            {
+              "minutes": "20–36",
+              "description": "Students work individually on Figure it Out Q2, section 4.4 p.94 ('Simplify each expression: p+p+p+p....'), covering all six sub-groups. After 10 minutes of solo work, pairs compare answers on the trickier bracket parts (e) and (f)."
+            },
+            {
+              "minutes": "36–40",
+              "description": "Collect common errors on board and resolve as a class. Assign Figure it Out Q1, section 4.4 p.93 as homework, asking students to use at least two grouping orders to confirm their grid sums are invariant."
+            }
+          ],
+          "teacher_notes": "Transition: period 5 built the conceptual justification; this period is for fluency practice — move quickly from teacher demonstration to student work. The most persistent error is dropping the negative sign when distributing over a bracket: '–(6x + 10y) = –6x + 10y'; address it with a deliberate counter-example from Example 7. For self-study, direct students to Example 9, section 4.4 p.92 on distributive expansion of 4(x + y) – y.",
+          "materials": [
+            "Printed expression strips for pair-checking",
+            "Whiteboard section for error gallery"
+          ]
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 50,
+          "textbook_segments": [
+            {
+              "ref": "section 4.4",
+              "title": "Simplification of Algebraic Expressions"
+            },
+            {
+              "ref": "section 4.5",
+              "title": "Pick Patterns and Reveal Relationships"
+            }
+          ],
+          "section_goal": "apply",
+          "activity_title": "Error Clinic and Pattern Detective: Bridging Simplification to Patterns",
+          "pedagogical_method": "Problem-solving",
+          "textbook_items_in_class": [
+            {
+              "id": "E-12",
+              "type": "exercise",
+              "source_section": "section 4.4",
+              "book_ref": "Figure it Out, section 4.4 p.94",
+              "description": "Mind the Mistake, Mend the Mistake: eleven algebraic simplifications (e.g. 3a+2b = 5; 6(p+2) = 6p+8; 5–(2–6z) = 3–6z; etc.). For each: identify the mistake, explain it, and give the correct simplest form."
+            },
+            {
+              "id": "E-13",
+              "type": "exercise",
+              "source_section": "section 4.5",
+              "book_ref": "Figure it Out, section 4.5 p.95",
+              "description": "Formula Detective: find the formulas for two number machines shown (input-output diagrams with 4–5 pairs each) and write the algebraic expression for each set of inputs, including the general a, b expression."
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–12",
+              "description": "Review homework Figure it Out Q1, section 4.4 p.93 by asking two students to present their two grouping methods; confirm that both give the same grid sum. This validates the distributive/associative properties used in the simplification exercises."
+            },
+            {
+              "minutes": "12–28",
+              "description": "Students work in pairs on Figure it Out, section 4.4 p.94 ('Mind the Mistake, Mend the Mistake: eleven algebraic simplifications....'), categorising each mistake by error type (unlike-term addition, bracket-sign error, or distributive error). Pairs write one-sentence explanations for each."
+            },
+            {
+              "minutes": "28–42",
+              "description": "Transition to section 4.5: introduce Figure it Out, section 4.5 p.95 ('Formula Detective: find the formulas for two number machines....'), where students examine input-output pairs and reverse-engineer the rule. Guide the first machine as a class, then release students to handle the second independently."
+            },
+            {
+              "minutes": "42–50",
+              "description": "Class debrief on the Formula Detective: discuss how the reverse-engineering process mirrors the section 4.1 work of building formulas, now running in reverse. Preview that section 4.5 will use this skill to prove that pattern formulas always hold."
+            }
+          ],
+          "teacher_notes": "Transition: close the section 4.4 error-clinic strand and open section 4.5 — explicitly tell students that simplification skills are now the tool for proving patterns rather than just evaluating expressions. Watch for students who write 3a + 2b = 5ab in the Mind the Mistake exercise; this is the most common unlike-term error. For self-study, point students to Example 11, section 4.4 p.93 on the symmetric grid sum as an elegant application.",
+          "materials": [
+            "Formula Detective input-output diagrams (projected or printed)",
+            "Error-type classification chart"
+          ]
+        },
+        {
+          "period_number": 8,
+          "period_duration_minutes": 50,
+          "textbook_segments": [
+            {
+              "ref": "section 4.5",
+              "title": "Pick Patterns and Reveal Relationships"
+            }
+          ],
+          "section_goal": "reason",
+          "activity_title": "Proving Patterns Always Hold: Calendar Diagonals and Matchstick Sequences",
+          "pedagogical_method": "Deductive",
+          "textbook_items_in_class": [
+            {
+              "id": "WE-12",
+              "type": "worked_example",
+              "source_section": "section 4.5",
+              "book_ref": "Example 12, section 4.5 p.96",
+              "description": "Saree-border repeating pattern A, B, C, D, E, F: derive that design C appears at position 3n, design B at 3n – 1, design A at 3n – 2; use remainder on division by 3 to identify designs at positions 99, 122, 148."
+            },
+            {
+              "id": "E-24",
+              "type": "exercise",
+              "source_section": "section 4.5",
+              "book_ref": "Figure it Out Q11, section 4.5 p.103",
+              "description": "Rope-cutting pattern: 1 cut → 2 pieces; fold once + cut → 3 pieces. Observe the pattern and find: (a) pieces if folded 10 times and cut; (b) expression for pieces when folded r times and cut."
+            },
+            {
+              "id": "E-25",
+              "type": "exercise",
+              "source_section": "section 4.5",
+              "book_ref": "Figure it Out Q12, section 4.5 p.104",
+              "description": "Matchstick square pattern: identify the pattern, find how many matchsticks for 10 squares, and write the expression for w squares."
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–12",
+              "description": "Recall the Formula Detective from period 7; now frame the inverse challenge — given a pattern, prove the formula works for every position, not just observed cases. Walk through Example 12, section 4.5 p.96 ('Saree-border repeating pattern A, B, C....'), deriving 3n, 3n – 1, 3n – 2 and using remainder logic for positions 99, 122, 148."
+            },
+            {
+              "minutes": "12–28",
+              "description": "Students work in pairs on Figure it Out Q11, section 4.5 p.103 ('Rope-cutting pattern: 1 cut → 2 pieces....'), building a table of folds and pieces, identifying the linear pattern, and writing the expression. Partners justify why the expression holds for all r, not just the tabulated cases."
+            },
+            {
+              "minutes": "28–42",
+              "description": "Students move to Figure it Out Q12, section 4.5 p.104 ('Matchstick square pattern....'), deriving the expression for w squares and verifying it for w = 10. Teacher invites one group to explain how they moved from observation to a proved formula."
+            },
+            {
+              "minutes": "42–50",
+              "description": "Whole-class discussion: what makes an algebraic proof different from checking several cases? Students articulate the distinction between 'evidence' and 'proof by expression'. Teacher previews the calendar-grid diagonal proof from section 4.5 as a further example of algebraic modelling."
+            }
+          ],
+          "teacher_notes": "Transition: period 7 built pattern-reading skills; this period formalises them into deductive proof by algebraic expression — make this shift explicit. Students often stop at 'it works for the cases I checked'; push them to explain why the expression guarantees the pattern for all values. For self-study, direct students to the 5-cell cross-shape calendar sum discussed in the section 4.5 prose (Math Talk).",
+          "materials": [
+            "Coloured saree-border strip (repeated A-B-C pattern)",
+            "Matchsticks for Q12 verification"
+          ]
+        },
+        {
+          "period_number": 9,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            {
+              "ref": "section 4.5",
+              "title": "Pick Patterns and Reveal Relationships"
+            }
+          ],
+          "section_goal": "apply",
+          "activity_title": "Expressions in Context: Real Situations and Simplification Practice",
+          "pedagogical_method": "Problem-solving",
+          "textbook_items_in_class": [
+            {
+              "id": "E-14",
+              "type": "exercise",
+              "source_section": "section 4.5",
+              "book_ref": "Figure it Out Q1, section 4.5 p.102",
+              "description": "One plate of Jowar roti costs ₹30 and pulao costs ₹20. Which of the expressions (a)–(e) correctly describes the total amount earned for x rotis and y pulaos?"
+            },
+            {
+              "id": "E-16",
+              "type": "exercise",
+              "source_section": "section 4.5",
+              "book_ref": "Figure it Out Q3, section 4.5 p.102",
+              "description": "Snail in a well: climbs u cm by day, slips d cm by night for 10 days/nights. (a) Write the expression for net distance from start. (b) What can we say if d > u?"
+            },
+            {
+              "id": "E-19",
+              "type": "exercise",
+              "source_section": "section 4.5",
+              "book_ref": "Figure it Out Q6, section 4.5 p.103",
+              "description": "Train from Yahapur to Vahapur with 3 equal-distance stops, t minutes per segment, 2 minutes per stop. (a) If t = 4, find total travel time. (b) Write the algebraic expression for total travel time."
+            }
+          ],
+          "homework": [
+            {
+              "id": "E-17",
+              "type": "exercise",
+              "source_section": "section 4.5",
+              "book_ref": "Try This Q4, section 4.5 p.102",
+              "description": "Radha cycles 5 km/day in week 1, increasing by z km/day each subsequent week. How many km has she cycled after 3 weeks?"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Recap the proved matchstick and rope expressions from period 8 and connect them to the idea of choosing the correct expression from a list. Introduce Figure it Out Q1, section 4.5 p.102 ('One plate of Jowar roti costs ₹30....') and ask students to eliminate wrong options before confirming the correct expression."
+            },
+            {
+              "minutes": "8–22",
+              "description": "Students work individually on Figure it Out Q3, section 4.5 p.102 ('Snail in a well: climbs u cm by day....') and Figure it Out Q6, section 4.5 p.103 ('Train from Yahapur to Vahapur with 3 equal-distance stops....'), writing expressions from situation descriptions and evaluating for given values."
+            },
+            {
+              "minutes": "22–34",
+              "description": "Pair work: partners discuss Q3 part (b) — what happens when d > u — and formulate a verbal-and-algebraic explanation. Two pairs share their reasoning; teacher highlights that the expression 10u – 10d reveals the answer directly."
+            },
+            {
+              "minutes": "34–40",
+              "description": "Assign Try This Q4, section 4.5 p.102 ('Radha cycles 5 km/day in week 1, increasing by z km/day....') as homework. Close with a quick check: students state in one sentence what 'writing an expression for a situation' requires."
+            }
+          ],
+          "teacher_notes": "Transition: shift from pattern-proving (period 8) to applied expression-writing in varied real contexts; remind students to first identify the unknowns before constructing the expression. A common error is writing 10u + 10d instead of 10u – 10d for the snail problem because students overlook the subtraction implied by 'slips'. For self-study, direct students to the expression-path diagram Figure it Out Q5, section 4.5 p.102.",
+          "materials": [
+            "Situation card set (roti/pulao, snail, train)",
+            "Number line for snail problem visualisation"
+          ]
+        },
+        {
+          "period_number": 10,
+          "period_duration_minutes": 60,
+          "textbook_segments": [
+            {
+              "ref": "section 4.5",
+              "title": "Pick Patterns and Reveal Relationships"
+            }
+          ],
+          "section_goal": "apply",
+          "activity_title": "Multi-Operation Simplification and Grid Pattern Analysis",
+          "pedagogical_method": "Problem-solving",
+          "textbook_items_in_class": [
+            {
+              "id": "E-20",
+              "type": "exercise",
+              "source_section": "section 4.5",
+              "book_ref": "Figure it Out Q7, section 4.5 p.103",
+              "description": "Simplify: (a) 3a+9b–6+8a–4b–7a+16; (b) 3(3a–3b)–8a–4b–16; (c) 2(2x–3)+8x+12; (d) 8x–(2x–3)+12; (e) 8h–(5+7h)+9; (f) 23+4(6m–3n)–8n–3m–18."
+            },
+            {
+              "id": "E-21",
+              "type": "exercise",
+              "source_section": "section 4.5",
+              "book_ref": "Figure it Out Q8, section 4.5 p.103",
+              "description": "Add the expressions: (a) 4d–7c+9 and 8c–11+9d; (b) –6f+19–8s and –23+13f+12s; (c) 8d–14c+9 and 16c–(11+9d); (d) 6f–20+8s and 23–13f–12s; (e) 13m–12n and 12n–13m; (f) –26m+24n and 26m–24n."
+            },
+            {
+              "id": "E-28",
+              "type": "exercise",
+              "source_section": "section 4.5",
+              "book_ref": "Figure it Out Q15, section 4.5 p.105",
+              "description": "4-column endless grid (numbers 1, 2, 3, 4, 5, … filling row by row): (a) write expressions for numbers in each column; (b) find row and column for 124, 147, 201; (c) what number is in row r, column c? (d) observe positions of multiples of 3."
+            }
+          ],
+          "homework": [
+            {
+              "id": "E-22",
+              "type": "exercise",
+              "source_section": "section 4.5",
+              "book_ref": "Figure it Out Q9, section 4.5 p.103",
+              "description": "Subtract the expressions: (a) 9a–6b+14 from 6a+9b–18; (b) –15x+13–9y from 7y–10+3x; (c) 17g+9–7h from 11–10g+3h; (d) 9a–6b+14 from 6a–(9b+18); (e) 10x+2+10y from –3y+8–3x; (f) 8g+4h–10 from 7h–8g+20."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Review homework Try This Q4, section 4.5 p.102 ('Radha cycles 5 km/day....') briefly, confirming the total expression. Explain that this period consolidates multi-term addition, subtraction, and bracket expansion before the final pattern analysis."
+            },
+            {
+              "minutes": "5–25",
+              "description": "Students work in small groups on Figure it Out Q7, section 4.5 p.103 ('Simplify: 3a+9b–6+8a–4b–7a+16....'), dividing parts (a)–(f) among group members, then checking each other's work. Teacher targets parts (b) and (f) which involve nested distribution."
+            },
+            {
+              "minutes": "25–42",
+              "description": "Students continue with Figure it Out Q8, section 4.5 p.103 ('Add the expressions: 4d–7c+9 and 8c–11+9d....'), individually. After completing, pairs cross-check parts (e) and (f) where the sum collapses to zero, prompting a discussion about additive inverses."
+            },
+            {
+              "minutes": "42–56",
+              "description": "Teacher-led walkthrough of Figure it Out Q15, section 4.5 p.105 ('4-column endless grid....'), building expressions for each column together as a class and then applying them to locate 124, 147, and 201. Students work part (d) on multiples of 3 independently."
+            },
+            {
+              "minutes": "56–60",
+              "description": "Assign Figure it Out Q9, section 4.5 p.103 ('Subtract the expressions....') as homework. Quick exit-reflection: 'Name one type of simplification error you will not repeat next period.'"
+            }
+          ],
+          "teacher_notes": "Transition: builds directly on the bracket-distribution fluency from periods 5–6 and the grid pattern reasoning from period 8; emphasise the connection. A recurring error in multi-term subtraction (Q9 and Q8 parts c–d) is failing to distribute the negative across all terms in the bracket — remind students of the chair-table rental example from period 6. For self-study, direct students to Example 8, section 4.4 p.91 on quiz-score addition as a model for multi-term expression sums.",
+          "materials": [
+            "Printed Q7 and Q8 strips for group distribution",
+            "Grid paper for the 4-column number-grid Q15"
+          ]
+        },
+        {
+          "period_number": 11,
+          "period_duration_minutes": 60,
+          "textbook_segments": [
+            {
+              "ref": "section 4.5",
+              "title": "Pick Patterns and Reveal Relationships"
+            }
+          ],
+          "section_goal": "apply",
+          "activity_title": "Traffic Signals, Growing Squares, and Chapter Consolidation",
+          "pedagogical_method": "Play-way",
+          "textbook_items_in_class": [
+            {
+              "id": "E-26",
+              "type": "exercise",
+              "source_section": "section 4.5",
+              "book_ref": "Figure it Out Q13, section 4.5 p.104",
+              "description": "Traffic signal colour sequence (R, G, Y, R, G, Y, …): find the colour at positions 90, 190, and 343; write expressions for positions of each colour."
+            },
+            {
+              "id": "E-27",
+              "type": "exercise",
+              "source_section": "section 4.5",
+              "book_ref": "Figure it Out Q14, section 4.5 p.104",
+              "description": "Step-sequence growing square pattern: how many squares in Step 4, Step 10, Step 50? Write a general formula. How does the formula change if counting vertices instead of squares?"
+            },
+            {
+              "id": "E-23",
+              "type": "exercise",
+              "source_section": "section 4.5",
+              "book_ref": "Figure it Out Q10, section 4.5 p.103",
+              "description": "Describe real-world situations for: (a) 8x + 3y; (b) 15x – 2x."
+            },
+            {
+              "id": "E-15",
+              "type": "exercise",
+              "source_section": "section 4.5",
+              "book_ref": "Figure it Out Q2, section 4.5 p.102",
+              "description": "Pushpita's flower stall: p champak-only, q marigold-only, r both-types customers each receive a flag. Which of expressions (a)–(f) gives the number of flags given away?"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Review homework Figure it Out Q9, section 4.5 p.103 subtraction exercise: teacher writes one answer on the board with a deliberate sign error and invites students to identify and correct it. Transition by framing the period as 'pattern games to consolidate the chapter'."
+            },
+            {
+              "minutes": "8–22",
+              "description": "Small-group game: groups use Figure it Out Q13, section 4.5 p.104 ('Traffic signal colour sequence R, G, Y....') as a competition — each group finds the colours at positions 90, 190, and 343 using expression reasoning and explains their method. The group with the clearest algebraic justification earns a point."
+            },
+            {
+              "minutes": "22–38",
+              "description": "Students work on Figure it Out Q14, section 4.5 p.104 ('Step-sequence growing square pattern....') in pairs, building the step-count table, writing the general formula, and then extending to the vertex-count formula. Pairs compare formulas and discuss why the two formulas differ by a constant."
+            },
+            {
+              "minutes": "38–50",
+              "description": "Individual consolidation: students complete Figure it Out Q10, section 4.5 p.103 ('Describe real-world situations for 8x + 3y....') and Figure it Out Q2, section 4.5 p.102 ('Pushpita's flower stall: p champak-only....') to practise both directions of the expression-situation link."
+            },
+            {
+              "minutes": "50–60",
+              "description": "Chapter close: teacher poses the dissolution test — 'Form an expression for a new situation, simplify it, and use it to prove that your pattern holds for all values.' Two volunteers share their mini-examples. Summarise the arc: from naming unknowns (§4.1) to proving patterns always hold (§4.5)."
+            }
+          ],
+          "teacher_notes": "Transition: this is the final period — explicitly narrate the chapter's journey from letter-number notation through simplification to pattern proof. A common consolidation error is students reverting to checking specific values rather than using the expression to argue generally; prompt them with 'Does your expression prove it or just suggest it?' For self-study, direct students to Figure it Out Q18, section 4.5 p.102 on the expression-path diagram.",
+          "materials": [
+            "Traffic-light colour cards (R/G/Y) for the group game",
+            "Squared paper for growing square pattern",
+            "Chapter summary poster (teacher-prepared)"
+          ]
+        }
+      ]
+    },
+    "coverage_handoff": {
+      "section_a": {
+        "goal_cluster": [
+          "recall"
+        ],
+        "goals": [
+          {
+            "section_ref": "section 4.1",
+            "section_title": "The Notion of Letter-Numbers",
+            "goal": "recall",
+            "anchor_id": "E-1",
+            "anchor_book_ref": "Figure it Out Q1, section 4.1 p.84",
+            "anchor_description": "Write perimeter formulas for: (a) equilateral triangle; (b) regular pentagon; (c) regular hexagon."
+          },
+          {
+            "section_ref": "section 4.3",
+            "section_title": "Omission of the Multiplication Symbol in Algebraic Expressions",
+            "goal": "recall",
+            "anchor_id": "E-9",
+            "anchor_book_ref": "Figure it Out, section 4.3 p.87",
+            "anchor_description": "Mind the Mistake, Mend the Mistake: nine algebraic substitutions (e.g. if a = –4, then 10 – a = 6; if d = 6, then 3d = 36; etc.). For each: identify whether there is a mistake, explain what went wrong, and give the correct value."
+          }
+        ]
+      },
+      "section_b": {
+        "goal_cluster": [
+          "reason"
+        ],
+        "goals": [
+          {
+            "section_ref": "section 4.4",
+            "section_title": "Simplification of Algebraic Expressions",
+            "goal": "reason",
+            "anchor_id": "WE-5",
+            "anchor_book_ref": "Example 5, section 4.4 p.88",
+            "anchor_description": "Pencil-eraser shop over three days: simplify 5c + 3c + 10c = 18c using the distributive property; set up 18c + 11d for total earnings."
+          },
+          {
+            "section_ref": "section 4.5",
+            "section_title": "Pick Patterns and Reveal Relationships",
+            "goal": "reason",
+            "anchor_id": "E-24",
+            "anchor_book_ref": "Figure it Out Q11, section 4.5 p.103",
+            "anchor_description": "Rope-cutting pattern: 1 cut → 2 pieces; fold once + cut → 3 pieces. Observe the pattern and find: (a) pieces if folded 10 times and cut; (b) expression for pieces when folded r times and cut."
+          }
+        ]
+      },
+      "section_c": {
+        "goal_cluster": [
+          "apply"
+        ],
+        "goals": [
+          {
+            "section_ref": "section 4.1",
+            "section_title": "The Notion of Letter-Numbers",
+            "goal": "apply",
+            "anchor_id": "E-3",
+            "anchor_book_ref": "Figure it Out Q3, section 4.1 p.84",
+            "anchor_description": "Complete the table for total amount Krithika has given counts of ₹100, ₹20, and ₹5 notes, including the general algebraic expression 100x + 20y + 5z."
+          },
+          {
+            "section_ref": "section 4.2",
+            "section_title": "Revisiting Arithmetic Expressions",
+            "goal": "apply",
+            "anchor_id": "E-8",
+            "anchor_book_ref": "Figure it Out, section 4.2 p.85",
+            "anchor_description": "Find the values of the arithmetic expressions: (1) 23 – 10 × 2; (2) 83 + 28 – 13 + 32; (3) 34 – 14 + 20; (4) 42 + 15 – (8 – 7); (5) 68 – (18 + 13); (6) 7 × 4 + 9 × 6; (7) 20 + 8 × (16 – 6). (Items 1, 2 and 5 are worked; complete items 3, 4, 6, 7.)"
+          },
+          {
+            "section_ref": "section 4.4",
+            "section_title": "Simplification of Algebraic Expressions",
+            "goal": "apply",
+            "anchor_id": "E-11",
+            "anchor_book_ref": "Figure it Out Q2, section 4.4 p.94",
+            "anchor_description": "Simplify each expression: (a) p+p+p+p; p+p+p+q; p+q+p–q; (b) p–q+p–q; p+q–p+q; (c) p+q–(p+q); p–q–p–q; (d) 2d–d–d–d; 2d–d–d–c; (e) 2d–d–(d–c); 2d–(d–d)–c; (f) 2d–d–c–c."
+          },
+          {
+            "section_ref": "section 4.4",
+            "section_title": "Simplification of Algebraic Expressions",
+            "goal": "apply",
+            "anchor_id": "E-12",
+            "anchor_book_ref": "Figure it Out, section 4.4 p.94",
+            "anchor_description": "Mind the Mistake, Mend the Mistake: eleven algebraic simplifications (e.g. 3a+2b = 5; 6(p+2) = 6p+8; 5–(2–6z) = 3–6z; etc.). For each: identify the mistake, explain it, and give the correct simplest form."
+          },
+          {
+            "section_ref": "section 4.5",
+            "section_title": "Pick Patterns and Reveal Relationships",
+            "goal": "apply",
+            "anchor_id": "E-14",
+            "anchor_book_ref": "Figure it Out Q1, section 4.5 p.102",
+            "anchor_description": "One plate of Jowar roti costs ₹30 and pulao costs ₹20. Which of the expressions (a)–(e) correctly describes the total amount earned for x rotis and y pulaos?"
+          },
+          {
+            "section_ref": "section 4.5",
+            "section_title": "Pick Patterns and Reveal Relationships",
+            "goal": "apply",
+            "anchor_id": "E-20",
+            "anchor_book_ref": "Figure it Out Q7, section 4.5 p.103",
+            "anchor_description": "Simplify: (a) 3a+9b–6+8a–4b–7a+16; (b) 3(3a–3b)–8a–4b–16; (c) 2(2x–3)+8x+12; (d) 8x–(2x–3)+12; (e) 8h–(5+7h)+9; (f) 23+4(6m–3n)–8n–3m–18."
+          },
+          {
+            "section_ref": "section 4.5",
+            "section_title": "Pick Patterns and Reveal Relationships",
+            "goal": "apply",
+            "anchor_id": "E-26",
+            "anchor_book_ref": "Figure it Out Q13, section 4.5 p.104",
+            "anchor_description": "Traffic signal colour sequence (R, G, Y, R, G, Y, …): find the colour at positions 90, 190, and 343; write expressions for positions of each colour."
+          }
+        ]
+      }
+    },
+    "assessment_items": [
+      {
+        "section_code": "A",
+        "section_title": "Recall and Apply",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-A-1",
+            "section_ref": "section 4.1",
+            "section_title": "The Notion of Letter-Numbers",
+            "goal": "recall",
+            "question_type": "MCQ",
+            "prompt": "A regular octagon has all sides equal. If each side has length s cm, which of the following is the correct algebraic expression for its perimeter?",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "s + 8",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "8 × s",
+                "is_correct": true
+              },
+              {
+                "label": "C",
+                "text": "8 + 8 × s",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "s ÷ 8",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "B — 8 × s, because a regular octagon has 8 equal sides, so the perimeter is the sum of all 8 sides, giving 8 × s.",
+              "method_one_line": "Identify the number of equal sides in a regular polygon and multiply by the side-length letter-number to form the perimeter formula.",
+              "what_each_option_reveals": {
+                "A": "The student adds 8 to s instead of multiplying, confusing 'a polygon with 8 sides' with an additive relationship.",
+                "B": "The student correctly applies the perimeter formula: number of sides × side length = 8 × s.",
+                "C": "The student both adds and multiplies by 8, perhaps attempting to account for sides and vertices separately — a confused formula.",
+                "D": "The student divides instead of multiplying, reversing the relationship between perimeter and side length."
+              },
+              "inclusivity": "Struggling: let the student count sides on a drawn octagon first; challenge: write the perimeter formula for a regular n-gon in their own words."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out Q1, section 4.1 p.84",
+              "description": "Write perimeter formulas for: (a) equilateral triangle; (b) regular pentagon; (c) regular hexagon."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-A-2",
+            "section_ref": "section 4.3",
+            "section_title": "Omission of the Multiplication Symbol in Algebraic Expressions",
+            "goal": "recall",
+            "question_type": "MCQ",
+            "prompt": "In the algebraic shorthand used in this chapter, the expression 7k means:\n(Note: k is a letter-number.)",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "The two-digit number seventy-k, formed by placing 7 and k side by side.",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "7 added to k, i.e., 7 + k.",
+                "is_correct": false
+              },
+              {
+                "label": "C",
+                "text": "7 multiplied by k, i.e., 7 × k.",
+                "is_correct": true
+              },
+              {
+                "label": "D",
+                "text": "k multiplied by itself 7 times.",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "C — 7k means 7 × k. The chapter convention is that when a number is written immediately before a letter-number, the multiplication symbol is omitted; 7k is shorthand for 7 × k.",
+              "method_one_line": "Recall the chapter convention: writing a numeral directly before a letter-number denotes multiplication, so 7k = 7 × k.",
+              "what_each_option_reveals": {
+                "A": "The student is confusing algebraic notation with place-value concatenation (e.g., thinking 7k is like the number 76), a key misconception addressed in the 'Mind the Mistake' exercise.",
+                "B": "The student confuses multiplication shorthand with addition, perhaps over-generalising from expressions like k + 7.",
+                "C": "The student correctly understands the omission-of-multiplication-symbol convention introduced in section 4.3.",
+                "D": "The student is confusing coefficient notation with exponent notation, a common but out-of-chapter confusion."
+              },
+              "inclusivity": "Struggling: ask the student to look back at the section where 4n for the matchstick sequence is introduced; challenge: give one more example of their own using a different number and letter."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out, section 4.3 p.87",
+              "description": "Mind the Mistake, Mend the Mistake: nine algebraic substitutions (e.g. if a = –4, then 10 – a = 6; if d = 6, then 3d = 36; etc.). For each: identify whether there is a mistake, explain what went wrong, and give the correct value."
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "section_code": "B",
+        "section_title": "Reason and Explain",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-B-1",
+            "section_ref": "section 4.4",
+            "section_title": "Simplification of Algebraic Expressions",
+            "goal": "reason",
+            "question_type": "ECR",
+            "prompt": "A student says: '3x + 5x + 2x can be simplified to 10x because you can collect the like terms.' Another student says: 'I can get the same result using the distributive property — I can write 3x + 5x + 2x as (3 + 5 + 2) × x.' Are both students correct? Explain why the two methods give the same result, using the idea of like terms and the distributive property as discussed in your textbook.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "Both students are correct. Collecting like terms means recognising that 3x, 5x, and 2x all have the same letter-number x, so their coefficients can be added: 3 + 5 + 2 = 10, giving 10x. The distributive property justifies this: 3x + 5x + 2x = (3 + 5 + 2) × x = 10 × x = 10x. The two methods are two descriptions of the same algebraic step.",
+              "method_one_line": "Identify like terms (same letter-number), then apply the distributive property to factor out the common letter-number and add the coefficients.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Struggling: invite the student to try a pair-share — explain in words before writing; challenge: alter one coefficient to a negative value and re-explain whether the reasoning still holds."
+            },
+            "exercise": {
+              "book_ref": "Example 5, section 4.4 p.88",
+              "description": "Pencil-eraser shop over three days: simplify 5c + 3c + 10c = 18c using the distributive property; set up 18c + 11d for total earnings."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-2",
+            "section_ref": "section 4.5",
+            "section_title": "Pick Patterns and Reveal Relationships",
+            "goal": "reason",
+            "question_type": "ECR",
+            "prompt": "Observe the following matchstick pattern for making a row of triangles:\n\n| Step (number of triangles) | Number of matchsticks |\n|---|---|\n| 1 | 3 |\n| 2 | 5 |\n| 3 | 7 |\n| 4 | 9 |\n\nA student claims: 'Each new triangle adds exactly 2 matchsticks to the previous total, so the number of matchsticks for n triangles is always 2n + 1.' Justify this claim algebraically. In your explanation, show how the expression 2n + 1 can be derived from the structure of the pattern, and verify it matches the table values above.",
+            "visual_stimulus": "| Step (number of triangles) | Number of matchsticks |\n|---|---|\n| 1 | 3 |\n| 2 | 5 |\n| 3 | 7 |\n| 4 | 9 |",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "The first triangle needs 3 matchsticks. Every additional triangle shares one side with the previous triangle and adds only 2 new matchsticks. So for n triangles: start with 3 matchsticks for the first triangle, then add 2 matchsticks for each of the remaining (n – 1) triangles: 3 + 2(n – 1) = 3 + 2n – 2 = 2n + 1. Verification: n=1 gives 2(1)+1=3 ✓; n=2 gives 5 ✓; n=3 gives 7 ✓; n=4 gives 9 ✓. So 2n + 1 is correct.",
+              "method_one_line": "Identify the starting value and the constant increment, build the expression 3 + 2(n – 1), then simplify using the distributive property to get 2n + 1.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Struggling: suggest the student draw the pattern for Steps 1–3 and count matchsticks aloud before writing; challenge: ask what happens to the expression if each triangle shared two sides with the next — would 2n + 1 change?"
+            },
+            "exercise": {
+              "book_ref": "Figure it Out Q11, section 4.5 p.103",
+              "description": "Rope-cutting pattern: 1 cut → 2 pieces; fold once + cut → 3 pieces. Observe the pattern and find: (a) pieces if folded 10 times and cut; (b) expression for pieces when folded r times and cut."
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "section_code": "C",
+        "section_title": "Apply in Context",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-C-1",
+            "section_ref": "section 4.1",
+            "section_title": "The Notion of Letter-Numbers",
+            "goal": "apply",
+            "question_type": "NUM",
+            "prompt": "A stall sells three items: notebooks at ₹15 each, pens at ₹8 each, and erasers at ₹3 each.\n(a) Write an algebraic expression for the total amount (in ₹) if a customer buys n notebooks, p pens, and e erasers.\n(b) Use your expression to find the total amount when n = 4, p = 6, and e = 10.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "(a) Total amount = 15n + 8p + 3e. (b) Substituting n = 4, p = 6, e = 10: 15 × 4 + 8 × 6 + 3 × 10 = 60 + 48 + 30 = 138. The total amount is ₹138.",
+              "method_one_line": "Multiply each item's price by its letter-number quantity, sum the resulting terms to form a multi-variable expression, then substitute given values and evaluate.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Struggling: suggest drawing a table with item, price, and count columns before writing the expression; challenge: change the eraser count to e + 5 and re-evaluate — how does the expression and total change?"
+            },
+            "exercise": {
+              "book_ref": "Figure it Out Q3, section 4.1 p.84",
+              "description": "Complete the table for total amount Krithika has given counts of ₹100, ₹20, and ₹5 notes, including the general algebraic expression 100x + 20y + 5z."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-C-2",
+            "section_ref": "section 4.2",
+            "section_title": "Revisiting Arithmetic Expressions",
+            "goal": "apply",
+            "question_type": "NUM",
+            "prompt": "Evaluate the following arithmetic expressions, showing your working clearly. Apply the correct order of operations (multiplication before addition/subtraction; brackets first).\n(a) 5 + 6 × 4\n(b) 50 – (12 + 9)\n(c) 9 × 3 + 4 × 7",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "(a) 5 + 6 × 4 = 5 + 24 = 29. (b) 50 – (12 + 9) = 50 – 21 = 29. (c) 9 × 3 + 4 × 7 = 27 + 28 = 55.",
+              "method_one_line": "Apply the rules from Chapter 2 revision: evaluate multiplication before addition/subtraction, and evaluate brackets first when present.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Struggling: encourage use of a number line or step-by-step bracket marking on the expression; challenge: change part (a) to (5 + 6) × 4 and explain why the answer differs."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out, section 4.2 p.85",
+              "description": "Find the values of the arithmetic expressions: (1) 23 – 10 × 2; (2) 83 + 28 – 13 + 32; (3) 34 – 14 + 20; (4) 42 + 15 – (8 – 7); (5) 68 – (18 + 13); (6) 7 × 4 + 9 × 6; (7) 20 + 8 × (16 – 6). (Items 1, 2 and 5 are worked; complete items 3, 4, 6, 7.)"
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-C-3",
+            "section_ref": "section 4.4",
+            "section_title": "Simplification of Algebraic Expressions",
+            "goal": "apply",
+            "question_type": "NUM",
+            "prompt": "Simplify each of the following algebraic expressions by collecting like terms. Show your working.\n(a) 3a + 7b + 5a – 2b\n(b) 6x – (2x + 4y) + y\n(c) 4m + 3n – m – 3n + 2m",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "(a) 3a + 5a = 8a; 7b – 2b = 5b. Simplified: 8a + 5b. (b) 6x – 2x – 4y + y = 4x – 3y. (c) 4m – m + 2m = 5m; 3n – 3n = 0. Simplified: 5m.",
+              "method_one_line": "Distribute any negative sign across brackets first, then group like terms (same letter-number) and add or subtract their coefficients.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Struggling: suggest underlining all a-terms in one colour and all b-terms in another before combining; challenge: tweak part (b) to 6x – (2x – 4y) + y and re-simplify, noticing how the sign change affects the result."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out Q2, section 4.4 p.94",
+              "description": "Simplify each expression: (a) p+p+p+p; p+p+p+q; p+q+p–q; (b) p–q+p–q; p+q–p+q; (c) p+q–(p+q); p–q–p–q; (d) 2d–d–d–d; 2d–d–d–c; (e) 2d–d–(d–c); 2d–(d–d)–c; (f) 2d–d–c–c."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-C-4",
+            "section_ref": "section 4.4",
+            "section_title": "Simplification of Algebraic Expressions",
+            "goal": "apply",
+            "question_type": "SCR",
+            "prompt": "A student simplifies 5 – (3 – 2t) and writes the answer as 2 – 2t. Identify the mistake, explain what went wrong, and write the correct simplified expression.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "The mistake is in how the negative sign is distributed. When expanding –(3 – 2t), the negative sign applies to both terms inside the bracket: –3 + 2t (not –3 – 2t). Correct working: 5 – (3 – 2t) = 5 – 3 + 2t = 2 + 2t. The correct answer is 2 + 2t, not 2 – 2t.",
+              "method_one_line": "Distribute the negative sign across the bracket correctly: –(3 – 2t) = –3 + 2t, then collect remaining terms.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Struggling: ask the student to first substitute a value like t = 1 into both the original and the claimed answer to see they differ; challenge: construct their own similar expression where distributing a negative changes a sign unexpectedly."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out, section 4.4 p.94",
+              "description": "Mind the Mistake, Mend the Mistake: eleven algebraic simplifications (e.g. 3a+2b = 5; 6(p+2) = 6p+8; 5–(2–6z) = 3–6z; etc.). For each: identify the mistake, explain it, and give the correct simplest form."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-C-5",
+            "section_ref": "section 4.5",
+            "section_title": "Pick Patterns and Reveal Relationships",
+            "goal": "apply",
+            "question_type": "MCQ",
+            "prompt": "A bookshop sells fiction books at ₹120 each and non-fiction books at ₹90 each. Rajan buys f fiction books and g non-fiction books. Which expression correctly gives the total amount (in ₹) Rajan pays?",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "120 + f + 90 + g",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "(120 + 90) × (f + g)",
+                "is_correct": false
+              },
+              {
+                "label": "C",
+                "text": "120f + 90g",
+                "is_correct": true
+              },
+              {
+                "label": "D",
+                "text": "120g + 90f",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "C — 120f + 90g. Fiction costs ₹120 each, so f fiction books cost 120 × f = 120f. Non-fiction costs ₹90 each, so g non-fiction books cost 90 × g = 90g. Total = 120f + 90g.",
+              "method_one_line": "Multiply each item's unit price by its letter-number quantity and sum the products to form the two-variable expression.",
+              "what_each_option_reveals": {
+                "A": "The student adds prices and quantities separately rather than multiplying each price by its corresponding quantity.",
+                "B": "The student adds the two prices and multiplies by the total number of books, ignoring that the two items have different prices.",
+                "C": "The student correctly forms a two-variable expression by multiplying each price by its quantity and adding.",
+                "D": "The student swaps the letter-numbers, assigning the fiction price to non-fiction books and vice versa."
+              },
+              "inclusivity": "Struggling: suggest writing out the cost for a specific small number of books first before generalising; challenge: change g to g + 2 and re-write the total cost expression, then simplify."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out Q1, section 4.5 p.102",
+              "description": "One plate of Jowar roti costs ₹30 and pulao costs ₹20. Which of the expressions (a)–(e) correctly describes the total amount earned for x rotis and y pulaos?"
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-C-6",
+            "section_ref": "section 4.5",
+            "section_title": "Pick Patterns and Reveal Relationships",
+            "goal": "apply",
+            "question_type": "NUM",
+            "prompt": "Simplify the following algebraic expressions. Show all steps.\n(a) 4a + 6b – 2 + 3a – b + 8\n(b) 2(3x + 4) + 5x – 10",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "(a) Group like terms: (4a + 3a) + (6b – b) + (–2 + 8) = 7a + 5b + 6. (b) Expand the bracket first: 2 × 3x + 2 × 4 = 6x + 8. Then: 6x + 8 + 5x – 10 = (6x + 5x) + (8 – 10) = 11x – 2.",
+              "method_one_line": "Expand brackets using the distributive property first, then collect like terms by grouping terms with the same letter-number and adding their coefficients.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Struggling: suggest highlighting each variable's terms in a different colour before adding; challenge: change part (b) to 2(3x + 4) – (5x – 10) and re-simplify, paying attention to the negative bracket."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out Q7, section 4.5 p.103",
+              "description": "Simplify: (a) 3a+9b–6+8a–4b–7a+16; (b) 3(3a–3b)–8a–4b–16; (c) 2(2x–3)+8x+12; (d) 8x–(2x–3)+12; (e) 8h–(5+7h)+9; (f) 23+4(6m–3n)–8n–3m–18."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-C-7",
+            "section_ref": "section 4.5",
+            "section_title": "Pick Patterns and Reveal Relationships",
+            "goal": "apply",
+            "question_type": "NUM",
+            "prompt": "A sequence of coloured beads follows the repeating pattern: Red, Blue, Yellow, Red, Blue, Yellow, … (positions 1, 2, 3, 4, 5, 6, …)\n(a) What colour is the bead at position 25?\n(b) What colour is the bead at position 61?\n(c) Write an expression for the positions of all Red beads.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "(a) The pattern repeats every 3 beads. 25 ÷ 3 = 8 remainder 1. Remainder 1 corresponds to Red. So position 25 is Red. (b) 61 ÷ 3 = 20 remainder 1. Remainder 1 corresponds to Red. So position 61 is Red. (c) Red beads occupy positions where the remainder on division by 3 is 1, i.e., positions 1, 4, 7, 10, … These are positions of the form 3n – 2 for n = 1, 2, 3, …",
+              "method_one_line": "Divide the position number by the cycle length (3), interpret the remainder to identify the colour, and express all positions of one colour as 3n – 2, 3n – 1, or 3n depending on remainder.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Struggling: suggest writing out the pattern for positions 1–12 first to see the colour at each remainder; challenge: change the sequence to a 4-colour repeating pattern and derive the position expressions for all four colours."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out Q13, section 4.5 p.104",
+              "description": "Traffic signal colour sequence (R, G, Y, R, G, Y, …): find the colour at positions 90, 190, and 343; write expressions for positions of each colour."
+            },
+            "verified": true
+          }
+        ]
+      }
+    ],
+    "input_tokens": 14919,
+    "output_tokens": 14174,
+    "cost_inr": 23.6778,
+    "assess_input_tokens": 11554,
+    "assess_output_tokens": 6623,
+    "assess_cost_inr": 12.3286
+  }
+}

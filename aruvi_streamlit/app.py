@@ -2225,6 +2225,20 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
                     continue
                 _qtype = it.get("question_type", "")
                 _prompt = it.get("prompt", "")
+                # ── Strip pipe-table from prompt when visual_stimulus already
+                # carries the same table (avoids double-printing in HTML + PDF).
+                _vs_raw = it.get("visual_stimulus", "") or ""
+                if _vs_raw.strip() and "|" in _vs_raw:
+                    _vs_lines = set(ln.strip() for ln in _vs_raw.strip().splitlines() if ln.strip())
+                    _prompt_lines = _prompt.splitlines()
+                    _cleaned_lines = []
+                    for _ln in _prompt_lines:
+                        if _ln.strip() in _vs_lines:
+                            continue  # this line is the table — skip it
+                        _cleaned_lines.append(_ln)
+                    # Collapse multiple consecutive blank lines and trim trailing
+                    import re as _re
+                    _prompt = _re.sub(r'\n{3,}', '\n\n', "\n".join(_cleaned_lines)).rstrip()
                 # Exercise companion (Constitution v3.2 Rule 9) — pointer to
                 # textbook item that anchors this goal. Both fields empty when
                 # the LP gamut walk found no anchor.
@@ -3115,6 +3129,7 @@ LOGO_SRC    = _img_src(LOGO_PATH)
 GRADE_SRC   = _img_src(MISC_DIR / "grade.png")
 SUBJECT_SRC = _img_src(MISC_DIR / "subject.png")
 CHAPTER_SRC = _img_src(MISC_DIR / "chapter.png")
+SAVED_SRC   = _img_src(MISC_DIR / "saved.png")            # My Plans "Saved" filter icon
 PERIOD_SRC      = _img_src(MISC_DIR / "period.png")       # row header add-icon
 TIME_SRC        = _img_src(MISC_DIR / "time.png")         # "Available time" label icon
 FULL_PERIOD_SRC = _img_src(MISC_DIR / "full_period.png")  # Principal "Period Budget" label icon
@@ -4353,8 +4368,11 @@ div[class*="st-key-mp_gen_assess_"] button {
     border: none !important;
     color: #ffffff !important;
     font-weight: 600 !important;
-    font-size: 0.78rem !important;
     border-radius: 8px !important;
+}
+div[class*="st-key-view_"] button,
+div[class*="st-key-pdf_"] button {
+    font-size: 0.78rem !important;
 }
 div[class*="st-key-view_"] button:hover,
 div[class*="st-key-pdf_"] button:hover,
@@ -4365,20 +4383,18 @@ div[class*="st-key-mp_gen_assess_"] button:hover {
    font a notch and let the label wrap so "Generate" / "Assessment" stack
    on two lines instead of clipping. */
 div[class*="st-key-mp_gen_assess_"] button {
-    font-size: 0.38rem !important;
+    font-size: 0.78rem !important;
     line-height: 1.1 !important;
     padding: 0.25rem 0.4rem !important;
     white-space: normal !important;
 }
-div[class*="st-key-mp_gen_assess_"] button * {
+div[class*="st-key-mp_gen_assess_"] button *,
+div[class*="st-key-mp_gen_assess_"] button p,
+div[class*="st-key-mp_gen_assess_"] button span {
     color: #ffffff !important;
     white-space: normal !important;
     word-break: normal !important;
-}
-div[class*="st-key-mp_gen_assess_"] button p {
-    /* Force a line break between the two words via word-spacing trick:
-       Streamlit wraps the label in a <p>; with white-space:normal and a
-       narrow column, "Generate Assessment" wraps naturally on the space. */
+    font-size: 0.78rem !important;
     margin: 0 !important;
 }
 
@@ -4779,9 +4795,10 @@ with st.sidebar:
             st.rerun()
 
         # ── Saved date filter ─────────────────────────────────────────────────
+        _sv_icon = f'<img src="{SAVED_SRC}" class="field-icon" alt="">' if SAVED_SRC else ""
         st.markdown(
-            '<div class="sidebar-field-label">'
-            '<span class="field-label-text">Saved</span></div>',
+            f'<div class="sidebar-field-label">{_sv_icon}'
+            f'<span class="field-label-text">Saved</span></div>',
             unsafe_allow_html=True,
         )
         _mp_saved_opts = ["Today", "Yesterday", "This week", "This month", "All"]
@@ -5181,7 +5198,9 @@ section[data-testid="stSidebar"] div[class*="st-key-add_period_row"] button:hove
 
 # ── Workspace ─────────────────────────────────────────────────────────────────
 
-if not has_chapter_data and st.session_state.role != "My Plans" and st.session_state.lpa_result is None:
+if (not has_chapter_data and st.session_state.role != "My Plans"
+        and st.session_state.lpa_result is None
+        and not st.session_state.get("mp_deferred_assess_generating")):
     if st.session_state.grade is None or st.session_state.subject is None:
         _msg = "Choose a grade and subject to get started."
     else:
@@ -5204,6 +5223,13 @@ elif st.session_state.role == "Generate":
     # back to My Plans so the now-PDF row is visible.
     if (st.session_state.get("mp_deferred_assess_generating")
         and st.session_state.get("mp_deferred_assess_plan") is not None):
+
+        # Render a blank full-height placeholder so no stale DOM from the
+        # previous My Plans render bleeds through as a shadow behind the popup.
+        st.markdown(
+            '<div style="min-height:80vh;"></div>',
+            unsafe_allow_html=True,
+        )
 
         _dap = st.session_state.mp_deferred_assess_plan
 
@@ -6456,6 +6482,15 @@ else:
                         ):
                             st.session_state.mp_deferred_assess_plan       = _p
                             st.session_state.mp_deferred_assess_generating = True
+                            # Clear any stale Generate-tab display state so the
+                            # Generate workspace renders cleanly (no shadow of a
+                            # previous LP result showing behind the deferred
+                            # assessment popup).
+                            st.session_state.lpa_result        = None
+                            st.session_state.lpa_generating    = False
+                            st.session_state.show_gen_confirm  = False
+                            st.session_state.show_save_prompt  = False
+                            st.session_state.teacher_ch_idx    = None
                             # Switch to the Generate tab so the popup renders
                             # in the same place as a normal LP/A run. The
                             # deferred block below auto-switches back to
