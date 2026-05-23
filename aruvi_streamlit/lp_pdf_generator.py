@@ -102,31 +102,122 @@ def _has_devanagari(text: str) -> bool:
     return any("ऀ" <= ch <= "ॿ" for ch in text)
 
 
-# ── Unicode sanitiser ────────────────────────────────────────────────────────
+# ── Unicode sanitiser ────────────────────────────────────────────
 # Characters outside the latin-1 range that must be substituted before
 # passing to ReportLab's standard (Helvetica) PDF built-in fonts.
 _UNICODE_SUBS = {
-    "₹": "Rs.",   # ₹ Indian Rupee Sign → Rs.
-    "–": "-",     # en dash
-    "—": "-",     # em dash
-    "‘": "'",     # left single quotation mark
-    "’": "'",     # right single quotation mark
-    "“": '"',     # left double quotation mark
-    "”": '"',     # right double quotation mark
-    "…": "...",   # horizontal ellipsis
-    "·": ".",     # middle dot (already in latin-1 but mapped for safety)
+    '₹': 'Rs.',   # Indian Rupee Sign
+    '–': '-',     # en dash
+    '—': '-',     # em dash
+    '‘': "'",     # left single quotation mark
+    '’': "'",     # right single quotation mark
+    '"': '"',     # left double quotation mark
+    '"': '"',     # right double quotation mark
+    '…': '...',   # horizontal ellipsis
+    '·': '.',     # middle dot
+    # ── Mathematics / science symbols ─────────────────────────────
+    '→': '->',    # rightwards arrow
+    '←': '<-',    # leftwards arrow
+    '↔': '<->',   # left-right arrow
+    '−': '-',     # minus sign (U+2212, distinct from hyphen-minus)
+    '×': 'x',     # multiplication sign
+    '÷': '/',     # division sign
+    '≤': '<=',    # less-than or equal to
+    '≥': '>=',    # greater-than or equal to
+    '≠': '!=',    # not equal to
+    '≈': '~=',    # almost equal to
+    '∞': 'inf',   # infinity
+    '√': 'sqrt',  # square root
+    '∑': 'sum',   # summation
+    '∏': 'prod',  # product
+    '∈': 'in',    # element of
+    '∉': 'not in',# not an element of
+    '∩': 'n',     # intersection (set)
+    '∪': 'u',     # union (set)
+    '✓': '(ok)',  # check mark
+    '✗': '(x)',   # ballot x
+    # Superscript digits outside latin-1 (U+2070, U+2074-U+2079):
+    # Handled by _apply_superscripts() for <super> tag rendering;
+    # entries here are plain-text fallbacks for non-XML contexts.
+    '⁰': '^0',   '⁴': '^4',   '⁵': '^5',
+    '⁶': '^6',   '⁷': '^7',   '⁸': '^8',   '⁹': '^9',
+    '⁺': '^+',   '⁻': '^-',   'ⁿ': '^n',
+    # Subscript digits (U+2080-U+2089)
+    '₀': '_0',   '₁': '_1',   '₂': '_2',   '₃': '_3',
+    '₄': '_4',   '₅': '_5',   '₆': '_6',   '₇': '_7',
+    '₈': '_8',   '₉': '_9',
 }
+
+# Superscript Unicode chars -> digit/letter for <super> tag rendering.
+# Includes latin-1 superscripts (^1 ^2 ^3) so they also render as raised digits.
+_SUPERSCRIPT_MAP = {
+    '¹': '1',   # superscript 1 (latin-1)
+    '²': '2',   # superscript 2 (latin-1)
+    '³': '3',   # superscript 3 (latin-1)
+    '⁰': '0',   # superscript 0
+    '⁴': '4',   # superscript 4
+    '⁵': '5',   # superscript 5
+    '⁶': '6',   # superscript 6
+    '⁷': '7',   # superscript 7
+    '⁸': '8',   # superscript 8
+    '⁹': '9',   # superscript 9
+    '⁺': '+',   # superscript +
+    '⁻': '-',   # superscript -
+    'ⁿ': 'n',   # superscript n
+}
+
+
+def _apply_superscripts(s: str) -> str:
+    """
+    Convert Unicode superscript chars to ReportLab XML <super> tags.
+
+    Consecutive superscripts are grouped into one span, so
+    "2⁴ x 5⁴" becomes "2<super>4</super> x 5<super>4</super>".
+
+    Call AFTER _clean_text() but BEFORE passing to Paragraph().
+    Only use where the Paragraph style supports XML markup.
+    """
+    if not s:
+        return s
+    result = []
+    i = 0
+    while i < len(s):
+        if s[i] in _SUPERSCRIPT_MAP:
+            run = []
+            while i < len(s) and s[i] in _SUPERSCRIPT_MAP:
+                run.append(_SUPERSCRIPT_MAP[s[i]])
+                i += 1
+            result.append('<super>' + ''.join(run) + '</super>')
+        else:
+            ch = s[i]
+            if ch == '&':
+                result.append('&amp;')
+            elif ch == '<':
+                result.append('&lt;')
+            elif ch == '>':
+                result.append('&gt;')
+            else:
+                result.append(ch)
+            i += 1
+    return ''.join(result)
 
 
 def _clean_text(s) -> str:
     """
-    Sanitise text for ReportLab's standard (Helvetica / latin-1) fonts:
+    Sanitise text for ReportLab’s standard (Helvetica / latin-1) fonts:
       1. Substitute known out-of-range Unicode characters (e.g. ₹ → Rs.).
       2. Strip combining diacritical marks via NFD decomposition — but ONLY
          for Latin-range marks (U+0000–U+036F).  Devanagari vowel matras
          (Mn category, U+0900–U+097F) are essential to correct rendering
          and must be preserved.
     Non-string values are coerced to str first.
+
+    NOTE: For Mathematics content where Unicode superscripts (⁴ ² ³ etc.)
+    should render as raised digits, call _apply_superscripts() FIRST on the
+    raw string, then pass the result to _clean_text().  Correct order:
+        _clean_text(_apply_superscripts(raw_text))
+    Reversing the order causes _clean_text to strip ⁴→^4 before the
+    superscript tags are inserted.
     """
     if s is None:
         return ""
@@ -721,9 +812,11 @@ def period_card_maths(period_num, duration_min, activity_name, anchored_section,
     # ── Time breakdown rows ───────────────────────────────────────────────────
     tb_rows = []
     for span, desc in time_breakdown:
+        # Apply superscript conversion for Maths phase descriptions so that
+        # notation like "10000 = 2⁴ × 5⁴" renders as raised digits in the PDF.
         tb_rows.append([
             Paragraph(_clean_text(str(span)), ST["tb_time"]),
-            Paragraph(_clean_text(str(desc)), ST["tb_desc"]),
+            Paragraph(_clean_text(_apply_superscripts(str(desc))), ST["tb_desc"]),
         ])
     if tb_rows:
         tb_t = Table(tb_rows, colWidths=[uw * 0.10, uw * 0.90])
@@ -1127,12 +1220,12 @@ def _english_period_block(period, uw, is_first_in_section=False, is_first_period
             else:
                 brief = _clean_text(str(h))
             # Strip surrounding inverted commas / quotation marks
-            brief = brief.strip().strip("\"'‘’“”")
+            brief = brief.strip().strip("\"'‘’""")
             if brief:
                 hw_parts.append(brief)
         hw_str = "; ".join(hw_parts)
     else:
-        hw_str = _clean_text(str(raw_hw)).strip().strip("\"'‘’“”")
+        hw_str = _clean_text(str(raw_hw)).strip().strip("\"'‘’""")
 
     # ── Section heading (above first period of each section) ──────────────────
     # Built here so it can be included in the KeepTogether anchor below.

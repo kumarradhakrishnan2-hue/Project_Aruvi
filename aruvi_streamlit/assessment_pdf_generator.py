@@ -34,6 +34,7 @@ from lp_pdf_generator import (
     LOGO_PATH,
     ST,
     _clean_text,
+    _apply_superscripts,
     on_page,
     HLine,
     LOBox,
@@ -609,6 +610,12 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
                 q_raw = _re.sub(r'\n{3,}', '\n\n', "\n".join(_q_lines)).rstrip()
         if item.get("is_english") and q_raw and "\n" in q_raw:
             q_text = "<br/>".join(_clean_text(ln) for ln in q_raw.split("\n"))
+        elif is_maths:
+            # Mathematics: convert Unicode superscripts to <super> tags so that
+            # e.g. "2⁴ × 5⁴" renders as raised digits rather than being blanked.
+            # Order is critical: _apply_superscripts FIRST (before _clean_text
+            # strips ⁴→^4), then _clean_text handles remaining out-of-range chars.
+            q_text = _clean_text(_apply_superscripts(q_raw))
         else:
             q_text = _clean_text(q_raw)
 
@@ -794,7 +801,8 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
     if is_maths:
         ex = item.get("exercise") or {}
         ex_book_ref    = _clean_text(ex.get("book_ref", "") or "")
-        ex_description = _clean_text(ex.get("description", "") or "")
+        # Apply superscript conversion so e.g. "2⁴ × 5⁴" renders as raised digits
+        ex_description = _clean_text(_apply_superscripts(ex.get("description", "") or ""))
         if ex_book_ref:
             ex_label_para = Paragraph(f"<b>Exercise — {ex_book_ref}</b>", AST["q_meta"])
             ex_rows = [[ex_label_para]]
@@ -823,8 +831,9 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
     # ── Separator ─────────────────────────────────────────────────────────────
     story.append(HLine(uw, thickness=0.3, color=ROW_LINE, sb=2, sa=2))
 
-    # ── Two-row gap after separator (Science, SS, English) ────────────────────
-    if meta_block is not None or item.get("is_english"):
+    # ── Two-row gap after separator (Science, SS, English, Mathematics) ─────────
+    is_maths_item = bool(item.get("_maths_section_code"))
+    if meta_block is not None or item.get("is_english") or is_maths_item:
         story.append(Spacer(1, 24))
 
     return story
