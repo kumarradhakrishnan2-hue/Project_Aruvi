@@ -1133,6 +1133,76 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                 f'font-size:12px;opacity:0.45;">{_dot_icon}<span>{text}</span></div>'
             )
 
+        # ── Pre-compute totals for tick-based proximity tracking ─────────────
+        # Total LP periods: sum of counts across all period_rows.
+        _total_periods = sum(session.get(f"cnt_{rid}", 1) for rid in period_rows) if period_rows else 0
+
+        # Assessment group totals per subject (known before the API call):
+        #   Science   → unique progression_stages (3 or 4 — read from LP stream)
+        #   SS        → competency count from mapping JSON
+        #   Maths     → always 3 sections (A, B, C)
+        #   English   → always 6 spines
+        _subj_folder = subject_to_folder(subject)
+        if _subj_folder == "social_sciences":
+            try:
+                _mapping_obj = json.loads(mapping_raw) if mapping_raw else {}
+                _total_assess_groups = len(_mapping_obj.get("competencies", []))
+            except Exception:
+                _total_assess_groups = 0
+        elif _subj_folder == "mathematics":
+            # Sections A/B/C are structurally fixed today, but derive from
+            # coverage_handoff at the phase-2 transition to stay future-proof.
+            # Start at 0; set when "assessment_items" is detected in the stream.
+            _total_assess_groups = 0   # will be set at phase-2 transition
+        elif _subj_folder == "english":
+            # Spine count varies by chapter — only spines with LP contributions
+            # are emitted. Derived from coverage_handoff at the LP→assessment
+            # transition (coverage_handoff keys = present spines). Start at 0;
+            # set when "assessment_items" is detected in the stream.
+            _total_assess_groups = 0   # will be set at phase-2 transition
+        else:
+            # Science: stage count not in mapping — discovered from LP stream.
+            # Start at 0; updated when "progression_stage" tokens appear in LP portion.
+            _total_assess_groups = 0   # will be set once LP portion completes
+
+        # ── Tick-row helpers ──────────────────────────────────────────────────
+        # Renders a compact row of green tick pills: e.g. "✓ ✓ ✓ · 3 of 8 done"
+        def _ticks_row(done: int, total: int, label: str) -> str:
+            if total <= 0:
+                return (
+                    f'<div style="display:flex;align-items:flex-start;gap:8px;'
+                    f'font-size:12px;color:#3d3b38;font-weight:500;">'
+                    f'{_spin_icon}<span>{label}</span></div>'
+                )
+            # Tick pills — green filled for done, grey outline for remaining
+            _pill_done = (
+                'display:inline-flex;align-items:center;justify-content:center;'
+                'width:14px;height:14px;border-radius:3px;background:#d4f0e4;'
+                'font-size:8px;color:#2d8a5e;font-weight:700;margin:0 1px;flex-shrink:0;'
+            )
+            _pill_todo = (
+                'display:inline-flex;align-items:center;justify-content:center;'
+                'width:14px;height:14px;border-radius:3px;background:#f2f0ec;'
+                'border:1px solid #d9d6d0;margin:0 1px;flex-shrink:0;'
+            )
+            pills = "".join(
+                f'<span style="{_pill_done}">✓</span>' if i < done
+                else f'<span style="{_pill_todo}"></span>'
+                for i in range(total)
+            )
+            fraction = f'<span style="font-size:10px;color:#5c5a56;margin-left:4px;">{done}&thinsp;/&thinsp;{total}</span>'
+            spin = _spin_icon if done < total else _tick_icon
+            return (
+                f'<div style="display:flex;align-items:flex-start;gap:8px;'
+                f'font-size:12px;color:#3d3b38;font-weight:500;">'
+                f'{spin}'
+                f'<div style="display:flex;flex-direction:column;gap:3px;">'
+                f'<span>{label}</span>'
+                f'<div style="display:flex;align-items:center;flex-wrap:wrap;">'
+                f'{pills}{fraction}'
+                f'</div></div></div>'
+            )
+
         # LP/A split — choose the 6-step (LPA) or 5-step (LP-only) progress list.
         # Branch off `include_assessment` so the LP-only path doesn't display
         # an Assessment step that never fires.
@@ -1199,21 +1269,35 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
         # Build a step-row block where indices < active_idx are done, exactly
         # one (active_idx) is spinning, and the rest are pending. Works for
         # both the 6-step LPA list and the 5-step LP-only list.
-        def _steps_block(active_idx: int) -> str:
+        # lp_ticks_row / assess_ticks_row: when provided, replace the plain
+        # row text for step index 4 (LP) and 5 (assessment) with tick rows.
+        def _steps_block(active_idx: int,
+                         lp_ticks_row: str = "",
+                         assess_ticks_row: str = "") -> str:
             parts = []
             for _i, _s in enumerate(_steps):
                 if _i < active_idx:
                     parts.append(_row_done(_s))
                 elif _i == active_idx:
-                    parts.append(_row_active(_s))
+                    # Use tick-row override if provided for LP (4) or assess (5)
+                    if _i == 4 and lp_ticks_row:
+                        parts.append(lp_ticks_row)
+                    elif _i == 5 and assess_ticks_row:
+                        parts.append(assess_ticks_row)
+                    else:
+                        parts.append(_row_active(_s))
                 else:
                     parts.append(_row_pending(_s))
             return "".join(parts)
 
-        def _progress_html(active_idx: int) -> str:
+        def _progress_html(active_idx: int,
+                           lp_ticks_row: str = "",
+                           assess_ticks_row: str = "") -> str:
             return (
                 _pcss + _box_open + _hdr_working + _body_open
-                + _steps_block(active_idx)
+                + _steps_block(active_idx,
+                               lp_ticks_row=lp_ticks_row,
+                               assess_ticks_row=assess_ticks_row)
                 + _note_html
                 + '</div>'
                 + _timer_badge
@@ -1254,6 +1338,11 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
         _assessment_triggered = False
         _stopped_by_user = False
 
+        # Tick-tracking counters — updated each time a new period or assessment
+        # group is detected in the accumulating stream text.
+        _lp_periods_seen    = 0   # count of "period_number" tokens in LP portion
+        _assess_groups_seen = 0   # count of assessment group tokens post-trigger
+
         with client.messages.stream(
             model="claude-sonnet-4-6",
             max_tokens=32000,
@@ -1269,15 +1358,90 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                     _stopped_by_user = True
                     break
                 streamed_text += text
-                # Phase-2 transition only applies when assessment is being
-                # generated in the same run. LP-only runs end at coverage_handoff.
+
+                # ── Phase-2 transition: LP done → assessment starting ─────────
                 if (include_assessment
-                    and not _assessment_triggered
-                    and '"assessment_items"' in streamed_text):
+                        and not _assessment_triggered
+                        and '"assessment_items"' in streamed_text):
                     _assessment_triggered = True
+                    import re as _re_trans
+                    # Science: unique progression_stage values in the LP portion.
+                    if _subj_folder == "science":
+                        _stage_hits = _re_trans.findall(
+                            r'"progression_stage"\s*:\s*(\d+)', streamed_text
+                        )
+                        _total_assess_groups = len(set(int(x) for x in _stage_hits))
+                    # English: distinct spine_code values in LP/coverage_handoff
+                    # portion — only present spines appear there.
+                    elif _subj_folder == "english":
+                        _spine_hits = _re_trans.findall(
+                            r'"spine_code"\s*:\s*"([^"]+)"', streamed_text
+                        )
+                        _total_assess_groups = len(set(_spine_hits)) if _spine_hits else 6
+                    # Maths: distinct single-letter section keys (section_a/b/c)
+                    # in coverage_handoff — future-proof against a Section D.
+                    elif _subj_folder == "mathematics":
+                        _sect_hits = _re_trans.findall(
+                            r'"(section_[a-z])"(?:\s*:)', streamed_text
+                        )
+                        _total_assess_groups = len(set(_sect_hits)) if _sect_hits else 3
                     progress_placeholder.markdown(
-                        PROGRESS_HTML_ASSESSMENT_ACTIVE, unsafe_allow_html=True
+                        _progress_html(5, assess_ticks_row=_ticks_row(
+                            0, _total_assess_groups, "Writing assessment questions"
+                        )),
+                        unsafe_allow_html=True,
                     )
+
+                elif not _assessment_triggered:
+                    # ── LP tick tracking ──────────────────────────────────────
+                    # Count "period_number" occurrences — each new one = one more
+                    # period fully started. Gate total to avoid over-counting.
+                    _new_lp = streamed_text.count('"period_number"')
+                    _capped  = min(_new_lp, _total_periods) if _total_periods else _new_lp
+                    if _capped != _lp_periods_seen:
+                        _lp_periods_seen = _capped
+                        progress_placeholder.markdown(
+                            _progress_html(4, lp_ticks_row=_ticks_row(
+                                _lp_periods_seen, _total_periods,
+                                "Building period-by-period activities"
+                            )),
+                            unsafe_allow_html=True,
+                        )
+
+                else:
+                    # ── Assessment tick tracking ──────────────────────────────
+                    # Token to count varies by subject:
+                    #   Science   → "progression_stage" (each new unique value)
+                    #   SS        → "c_code" (each new unique value post-trigger)
+                    #   Maths     → "section_code"
+                    #   English   → "spine_code"
+                    _assess_text = streamed_text[
+                        streamed_text.index('"assessment_items"'):
+                    ]
+                    if _subj_folder == "science":
+                        import re as _re2
+                        _ag = len(set(int(x) for x in _re2.findall(
+                            r'"progression_stage"\s*:\s*(\d+)', _assess_text
+                        )))
+                    elif _subj_folder == "social_sciences":
+                        import re as _re3
+                        _ag = len(set(_re3.findall(
+                            r'"c_code"\s*:\s*"([^"]+)"', _assess_text
+                        )))
+                    elif _subj_folder == "mathematics":
+                        _ag = _assess_text.count('"section_code"')
+                    else:  # english
+                        _ag = _assess_text.count('"spine_code"')
+                    _ag_capped = min(_ag, _total_assess_groups) if _total_assess_groups else _ag
+                    if _ag_capped != _assess_groups_seen:
+                        _assess_groups_seen = _ag_capped
+                        progress_placeholder.markdown(
+                            _progress_html(5, assess_ticks_row=_ticks_row(
+                                _assess_groups_seen, _total_assess_groups,
+                                "Writing assessment questions"
+                            )),
+                            unsafe_allow_html=True,
+                        )
 
         full_output = streamed_text
 
@@ -1702,6 +1866,95 @@ Output only the raw JSON object. No markdown. No prose. No ```json fences.
             "Writing assessment questions&#8230;",
         ]
 
+        # ── Pre-compute assessment group totals for tick tracking ─────────────
+        _da_subj_folder = subject_to_folder(subject)
+        if _da_subj_folder == "social_sciences":
+            try:
+                _da_mapping_raw = paths["chapter_mapping"].read_text(encoding="utf-8")
+                _da_mapping_obj = json.loads(_da_mapping_raw)
+                _da_total_groups = len(_da_mapping_obj.get("competencies", []))
+            except Exception:
+                _da_total_groups = 0
+        elif _da_subj_folder == "mathematics":
+            # coverage_handoff has section_a/b/c keys — count them directly.
+            # Future-proof: if a Section D is added, the count auto-adjusts.
+            try:
+                import re as _re_da_m
+                _da_sect = _re_da_m.findall(
+                    r'"(section_[a-z])"(?:\s*:)',
+                    json.dumps(coverage_handoff)
+                )
+                _da_total_groups = len(set(_da_sect)) if _da_sect else 3
+            except Exception:
+                _da_total_groups = 3
+        elif _da_subj_folder == "english":
+            # coverage_handoff is a dict keyed by spine_code — only present
+            # spines appear. len() gives the exact spine count for this chapter.
+            _da_total_groups = len(coverage_handoff) if isinstance(coverage_handoff, dict) else 0
+        else:  # science — coverage_handoff is a list of stage objects
+            try:
+                # coverage_handoff for science is a list of stage dicts,
+                # one per progression stage. Its length is exactly the stage count.
+                _da_total_groups = len(coverage_handoff) if isinstance(coverage_handoff, list) else 0
+            except Exception:
+                _da_total_groups = 0
+
+        def _da_ticks_row(done: int, total: int) -> str:
+            """Compact tick-pill row for assessment popup (deferred path)."""
+            if total <= 0:
+                return (
+                    f'<div style="display:flex;align-items:flex-start;gap:8px;'
+                    f'font-size:12px;color:#3d3b38;font-weight:500;">'
+                    f'{_spin_icon}<span>Writing assessment questions&#8230;</span></div>'
+                )
+            _pill_done = (
+                'display:inline-flex;align-items:center;justify-content:center;'
+                'width:14px;height:14px;border-radius:3px;background:#d4f0e4;'
+                'font-size:8px;color:#2d8a5e;font-weight:700;margin:0 1px;flex-shrink:0;'
+            )
+            _pill_todo = (
+                'display:inline-flex;align-items:center;justify-content:center;'
+                'width:14px;height:14px;border-radius:3px;background:#f2f0ec;'
+                'border:1px solid #d9d6d0;margin:0 1px;flex-shrink:0;'
+            )
+            pills = "".join(
+                f'<span style="{_pill_done}">✓</span>' if i < done
+                else f'<span style="{_pill_todo}"></span>'
+                for i in range(total)
+            )
+            fraction = f'<span style="font-size:10px;color:#5c5a56;margin-left:4px;">{done}&thinsp;/&thinsp;{total}</span>'
+            spin = _spin_icon if done < total else _tick_icon
+            return (
+                f'<div style="display:flex;align-items:flex-start;gap:8px;'
+                f'font-size:12px;color:#3d3b38;font-weight:500;">'
+                f'{spin}'
+                f'<div style="display:flex;flex-direction:column;gap:3px;">'
+                f'<span>Writing assessment questions</span>'
+                f'<div style="display:flex;align-items:center;flex-wrap:wrap;">'
+                f'{pills}{fraction}'
+                f'</div></div></div>'
+            )
+
+        def _da_progress(active_idx: int, ticks_row: str = "") -> str:
+            parts = []
+            for _i, _s in enumerate(_steps_assess):
+                if _i < active_idx:
+                    parts.append(_row_done(_s))
+                elif _i == active_idx:
+                    if _i == 2 and ticks_row:
+                        parts.append(ticks_row)
+                    else:
+                        parts.append(_row_active(_s))
+                else:
+                    parts.append(_row_pending(_s))
+            return (
+                _pcss + _box_open + _hdr_working + _body_open
+                + "".join(parts)
+                + '</div>'
+                + _timer_badge
+                + '</div>'
+            )
+
         _box_open = (
             '<div class="aruvi-progress-box" style="position:fixed;top:80px;right:24px;'
             'width:280px;z-index:9999;background:white;border:1px solid #d9d6d0;'
@@ -1740,28 +1993,19 @@ Output only the raw JSON object. No markdown. No prose. No ```json fences.
             'padding:2px 6px;">00:00</span></div>'
         )
 
-        def _da_progress(active_idx: int) -> str:
-            parts = []
-            for _i, _s in enumerate(_steps_assess):
-                if _i < active_idx:    parts.append(_row_done(_s))
-                elif _i == active_idx: parts.append(_row_active(_s))
-                else:                  parts.append(_row_pending(_s))
-            return (
-                _pcss + _box_open + _hdr_working + _body_open
-                + "".join(parts)
-                + '</div>'
-                + _timer_badge
-                + '</div>'
-            )
-
         progress_placeholder.markdown(_da_progress(0), unsafe_allow_html=True)
         _time.sleep(3)
         progress_placeholder.markdown(_da_progress(1), unsafe_allow_html=True)
         _time.sleep(3)
-        progress_placeholder.markdown(_da_progress(2), unsafe_allow_html=True)
+        progress_placeholder.markdown(
+            _da_progress(2, ticks_row=_da_ticks_row(0, _da_total_groups)),
+            unsafe_allow_html=True,
+        )
 
         streamed_text   = ""
         _stopped_by_user = False
+        _da_groups_seen = 0
+
         with client.messages.stream(
             model="claude-sonnet-4-6",
             max_tokens=32000,
@@ -1774,6 +2018,31 @@ Output only the raw JSON object. No markdown. No prose. No ```json fences.
                     _stopped_by_user = True
                     break
                 streamed_text += text
+
+                # ── Assessment tick tracking (deferred path) ──────────────────
+                if _da_subj_folder == "science":
+                    import re as _re_da
+                    _dag = len(set(int(x) for x in _re_da.findall(
+                        r'"progression_stage"\s*:\s*(\d+)', streamed_text
+                    )))
+                elif _da_subj_folder == "social_sciences":
+                    import re as _re_da2
+                    _dag = len(set(_re_da2.findall(
+                        r'"c_code"\s*:\s*"([^"]+)"', streamed_text
+                    )))
+                elif _da_subj_folder == "mathematics":
+                    _dag = streamed_text.count('"section_code"')
+                else:  # english
+                    _dag = streamed_text.count('"spine_code"')
+                _dag_capped = min(_dag, _da_total_groups) if _da_total_groups else _dag
+                if _dag_capped != _da_groups_seen:
+                    _da_groups_seen = _dag_capped
+                    progress_placeholder.markdown(
+                        _da_progress(2, ticks_row=_da_ticks_row(
+                            _da_groups_seen, _da_total_groups
+                        )),
+                        unsafe_allow_html=True,
+                    )
 
         if _stopped_by_user:
             try:
