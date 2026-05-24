@@ -1,0 +1,1020 @@
+{
+  "filename": "ch_09_20260524_102221.json",
+  "saved_at": "2026-05-24T10:22:21",
+  "grade": "Grade VIII",
+  "subject": "Mathematics",
+  "chapter_number": 9,
+  "chapter_title": "The Baudhāyana-Pythagoras Theorem",
+  "period_schedule_display": "Period schedule:\n  Row 1: 40 minutes × 2 periods = 80 minutes\nTotal: 2 periods · 1h 20min",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 40,
+      "count": 2
+    }
+  ],
+  "plan_status": "full_lpa",
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            {
+              "ref": "section 2.1",
+              "title": "Doubling a Square"
+            }
+          ],
+          "section_goal": "reason",
+          "activity_title": "Why Does the Diagonal Square Double the Area?",
+          "pedagogical_method": "Inductive",
+          "textbook_items_in_class": [
+            {
+              "id": "E-5",
+              "type": "exercise",
+              "source_section": "section 2.1",
+              "book_ref": "Math Talk, section 2.1, p.34",
+              "description": "Why should the extension of the vertical and horizontal sides of the original square pass through the vertices of the dotted (doubled) square?"
+            },
+            {
+              "id": "A-1",
+              "type": "activity",
+              "source_section": "section 2.1",
+              "book_ref": "Activity 1 (Doubling a Square Using Paper), p.35",
+              "description": "Cut two identical squares of paper; cut Square 1 along diagonals into 4 triangular pieces (labelled 1–4) and Square 2 into 4 pieces (5–8); arrange pieces 5, 6, 7, 8 around intact Square 1 to form a square with double the area."
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Pose Baudhāyana's opening question: how do you build a square with exactly double the area of a given square? Students sketch a guess individually, then share with a neighbour to surface the common error of simply doubling the side."
+            },
+            {
+              "minutes": "8–20",
+              "description": "Walk through the geometric reasoning using the diagonal construction and auxiliary east-west/north-south lines. Use Math Talk, section 2.1, p.34 (\"Why should the extension of the vertical and horizontal sides....\") to prompt students to articulate why the four triangles in the original square equal the four in the new one."
+            },
+            {
+              "minutes": "20–40",
+              "description": "Students carry out Activity 1 (Doubling a Square Using Paper), p.35 (\"Cut two identical squares of paper; cut Square 1 along diagonals....\") in pairs. They assemble the pieces and verify the area relationship, then discuss in groups why the tiling works."
+            }
+          ],
+          "teacher_notes": "This is the first period of the chapter, so spend a moment contextualising Baudhāyana's Śulba-Sūtra before the activity. Watch for students who think doubling the side doubles the area — the paper-cutting step should correct this viscerally. Keep group discussion brief so the assembly is completed within the period.",
+          "materials": [
+            "Scissors",
+            "Square paper sheets (two per student pair)",
+            "Ruler",
+            "Pencil"
+          ]
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            {
+              "ref": "section 2.2",
+              "title": "Halving a Square"
+            }
+          ],
+          "section_goal": "reason",
+          "activity_title": "Folding Inward to Find the Half-Area Square",
+          "pedagogical_method": "Deductive",
+          "textbook_items_in_class": [
+            {
+              "id": "A-2",
+              "type": "activity",
+              "source_section": "section 2.2",
+              "book_ref": "Activity 2 (Halving a Square Using Paper), p.36",
+              "description": "Cut out a square from paper; fold it inward such that crease lines pass through midpoints of the four sides to obtain quadrilateral PQRS, which is a square with half the area. Verify using diagonal properties and triangle congruence."
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–6",
+              "description": "Briefly connect to last period: doubling used the diagonal; today the reverse — halving — uses midpoints. Ask students to predict what shape appears when all four midpoints of a square's sides are joined."
+            },
+            {
+              "minutes": "6–20",
+              "description": "Students perform Activity 2 (Halving a Square Using Paper), p.36 (\"Cut out a square from paper; fold it inward such that crease lines pass through midpoints....\"). They identify quadrilateral PQRS from the crease lines and record its apparent properties."
+            },
+            {
+              "minutes": "20–35",
+              "description": "Guide the class through the deductive proof: using east-west and north-south auxiliary lines, triangle congruence, and diagonal properties to establish that PQRS is a square and has exactly half the area. Students write each step in their own words."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Exit check: each student states one geometric fact (in a sentence) that guarantees PQRS is a square. Collect responses verbally to gauge understanding before the next period."
+            }
+          ],
+          "teacher_notes": "Students built intuition for the doubling construction last period; the halving argument is its mirror and should feel natural. Watch for confusion between showing all sides are equal (rhombus) versus also proving all angles are right angles (square) — both steps are needed. The diagonal-bisection argument is the key link to emphasise.",
+          "materials": [
+            "Square paper sheets (one per student)",
+            "Ruler",
+            "Pencil",
+            "Blackboard/whiteboard for proof steps"
+          ]
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 60,
+          "textbook_segments": [
+            {
+              "ref": "section 2.3",
+              "title": "Hypotenuse of an Isosceles Right Triangle"
+            }
+          ],
+          "section_goal": "reason",
+          "activity_title": "From √2 to Irrational: Reasoning About the Hypotenuse",
+          "pedagogical_method": "Inductive",
+          "textbook_items_in_class": [
+            {
+              "id": "E-1",
+              "type": "exercise",
+              "source_section": "section 2.3",
+              "book_ref": "Figure it Out Q1, section 2.3, p.39",
+              "description": "Two identical square papers are each cut diagonally into two triangles (4 pieces total labelled 1–4). Arrange these pieces to create a square with double the area of either original square."
+            },
+            {
+              "id": "E-4",
+              "type": "exercise",
+              "source_section": "section 2.3",
+              "book_ref": "Try This, section 2.3, p.39",
+              "description": "Can √2 be expressed as a fraction m/n where m and n are counting numbers? Reason using prime factorization of square numbers."
+            },
+            {
+              "id": "WE-1",
+              "type": "worked_example",
+              "source_section": "section 2.3",
+              "book_ref": "Example 1, section 2.3, p.40",
+              "description": "Find the hypotenuse of an isosceles right triangle whose equal sides have length 12. Using c² = 2a² with a = 12 gives c = √288; since 16² = 256 and 17² = 289, the hypotenuse lies between 16 and 17."
+            },
+            {
+              "id": "WE-2",
+              "type": "worked_example",
+              "source_section": "section 2.3",
+              "book_ref": "Example 2, section 2.3, p.40",
+              "description": "If the hypotenuse of an isosceles right triangle is √72, find the other two sides. Using c² = 2a²: 72 = 2a², so a² = 36 and a = 6. Each equal side has length 6."
+            },
+            {
+              "id": "E-2",
+              "type": "exercise",
+              "source_section": "section 2.3",
+              "book_ref": "Figure it Out Q2, section 2.3, p.39",
+              "description": "The length of the two equal sides of an isosceles right triangle is given. Find the length of the hypotenuse and find bounds with at least one digit after the decimal point. (i) 3, (ii) 4, (iii) 6, (iv) 8, (v) 9."
+            }
+          ],
+          "homework": [
+            {
+              "id": "E-3",
+              "type": "exercise",
+              "source_section": "section 2.3",
+              "book_ref": "Figure it Out Q3, section 2.3, p.40",
+              "description": "The hypotenuse of an isosceles right triangle is 10. Find its other two sidelengths. [Hint: Find the area of the square composed of two such right triangles.]"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Revisit the doubling result: the diagonal of a unit square has area 2 built on it. Use Figure it Out Q1, section 2.3, p.39 (\"Two identical square papers are each cut diagonally....\") as a quick hands-on warm-up to anchor c² = 2 for the unit isosceles right triangle."
+            },
+            {
+              "minutes": "8–20",
+              "description": "Lead the class inductively through successive bounding of √2: establish 1 < √2 < 2, then narrow to 1.4 < √2 < 1.5, then 1.41 < √2 < 1.42, recording each squeeze on the board. Students identify the pattern of bounding and predict the next interval."
+            },
+            {
+              "minutes": "20–35",
+              "description": "Use Try This, section 2.3, p.39 (\"Can √2 be expressed as a fraction m/n....\") as a guided group investigation. Groups reason via last-digit analysis and prime factorisation arguments, then share findings; teacher consolidates the proof that √2 is irrational."
+            },
+            {
+              "minutes": "35–48",
+              "description": "Walk through Example 1, section 2.3, p.40 (\"Find the hypotenuse of an isosceles right triangle whose equal sides have length 12....\") and Example 2, section 2.3, p.40 (\"If the hypotenuse of an isosceles right triangle is √72....\") on the board, emphasising how c² = 2a² drives both directions of the problem."
+            },
+            {
+              "minutes": "48–60",
+              "description": "Students work individually on Figure it Out Q2, section 2.3, p.39 (\"Find the length of the hypotenuse and find bounds....\") for all five parts. Teacher circulates and addresses bounding errors; assign Figure it Out Q3, section 2.3, p.40 as homework."
+            }
+          ],
+          "teacher_notes": "Students have now seen area-doubling geometrically; this period extends that into the formula c² = 2a² and the surprising irrationality of √2. Watch for students who try to simplify √288 to a rational — use the bounding method to show the value is genuinely between two integers. Example 2 is a good self-study pointer for students who finish early.",
+          "materials": [
+            "Square paper (for Q1 warm-up)",
+            "Calculator (optional, for bounding checks)",
+            "Blackboard",
+            "Rulers"
+          ]
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            {
+              "ref": "section 2.3",
+              "title": "Hypotenuse of an Isosceles Right Triangle"
+            }
+          ],
+          "section_goal": "apply",
+          "activity_title": "Applying the Hypotenuse Formula Across Varied Problems",
+          "pedagogical_method": "Problem-solving",
+          "textbook_items_in_class": [
+            {
+              "id": "E-3",
+              "type": "exercise",
+              "source_section": "section 2.3",
+              "book_ref": "Figure it Out Q3, section 2.3, p.40",
+              "description": "The hypotenuse of an isosceles right triangle is 10. Find its other two sidelengths. [Hint: Find the area of the square composed of two such right triangles.]"
+            },
+            {
+              "id": "E-2",
+              "type": "exercise",
+              "source_section": "section 2.3",
+              "book_ref": "Figure it Out Q2, section 2.3, p.39",
+              "description": "The length of the two equal sides of an isosceles right triangle is given. Find the length of the hypotenuse and find bounds with at least one digit after the decimal point. (i) 3, (ii) 4, (iii) 6, (iv) 8, (v) 9."
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Review homework: discuss Figure it Out Q3, section 2.3, p.40 (\"The hypotenuse of an isosceles right triangle is 10....\") as a class. Highlight the hint about composing two triangles into a square, connecting back to the area reasoning of section 2.1."
+            },
+            {
+              "minutes": "8–25",
+              "description": "Students work in pairs on any remaining parts of Figure it Out Q2, section 2.3, p.39 (\"Find the length of the hypotenuse and find bounds....\"), focusing on producing clean decimal bounds. Pairs compare answers and resolve discrepancies through discussion."
+            },
+            {
+              "minutes": "25–40",
+              "description": "Whole-class debrief: select two pairs to present contrasting approaches (algebraic vs. bounding). Teacher closes by posing the bridge question — what happens when the two sides of a right triangle are not equal? — to motivate section 2.4."
+            }
+          ],
+          "teacher_notes": "The previous period established the formula and irrationality reasoning; this period consolidates application before moving to the general theorem. A common error is using c² = a² + a² but then forgetting to take the square root — reinforce the two-step process. Students who struggled with bounding in period 3 should be paired with stronger peers.",
+          "materials": [
+            "Exercise books",
+            "Blackboard",
+            "Ruler (for any sketch diagrams)"
+          ]
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 50,
+          "textbook_segments": [
+            {
+              "ref": "section 2.4",
+              "title": "Combining Two Different Squares"
+            }
+          ],
+          "section_goal": "reason",
+          "activity_title": "Building the General Theorem from Two Different Squares",
+          "pedagogical_method": "Discovery",
+          "textbook_items_in_class": [
+            {
+              "id": "A-3",
+              "type": "activity",
+              "source_section": "section 2.4",
+              "book_ref": "Activity 3 (Combining Two Squares Using Paper), p.45",
+              "description": "Cut out and join two different-sized squares (sides a and b); make two cuts to produce three pieces; rearrange the three pieces into a larger square of side c (the hypotenuse of a right triangle with legs a and b)."
+            },
+            {
+              "id": "E-8",
+              "type": "exercise",
+              "source_section": "section 2.4",
+              "book_ref": "Figure it Out Q3, section 2.4, p.47",
+              "description": "Using the constructions seen in the chapter, how would you construct a square whose area is triple the area of a given square? Five times the area of a given square?"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Bridge from the isosceles case: show two different-sized squares on the board and ask students to guess the area of the square built on the diagonal of the right triangle with those side lengths. Record guesses without confirming them."
+            },
+            {
+              "minutes": "8–28",
+              "description": "Students carry out Activity 3 (Combining Two Squares Using Paper), p.45 (\"Cut out and join two different-sized squares (sides a and b); make two cuts....\") in pairs. They discover the rearrangement into a larger square and measure all sides to conjecture a² + b² = c²."
+            },
+            {
+              "minutes": "28–42",
+              "description": "Lead the geometric proof: four congruent right-triangle copies placed around the hypotenuse square; use angle complementarity to prove all angles of the inner figure are right angles, confirming it is a square with area a² + b²."
+            },
+            {
+              "minutes": "42–50",
+              "description": "Students attempt Figure it Out Q3, section 2.4, p.47 (\"How would you construct a square whose area is triple....\") as a discovery extension, sketching constructions and comparing with a neighbour."
+            }
+          ],
+          "teacher_notes": "Students arrive with the special (isosceles) case well practised; the discovery activity now generalises it. The most common reasoning gap is proving all four angles of the central figure are 90° — the complementarity argument (two acute angles of a right triangle summing to 90°) needs to be made explicit. Worked example (Using Baudhāyana's Theorem), section 2.4, p.47 with the 3-4-5 triangle is a good self-study reference for students who want a concrete numerical anchor.",
+          "materials": [
+            "Scissors",
+            "Square paper in two different sizes per pair",
+            "Ruler",
+            "Protractor",
+            "Pencil"
+          ]
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 50,
+          "textbook_segments": [
+            {
+              "ref": "section 2.4",
+              "title": "Combining Two Different Squares"
+            }
+          ],
+          "section_goal": "apply",
+          "activity_title": "Applying Baudhāyana's Theorem to Find Missing Sides",
+          "pedagogical_method": "Problem-solving",
+          "textbook_items_in_class": [
+            {
+              "id": "E-6",
+              "type": "exercise",
+              "source_section": "section 2.4",
+              "book_ref": "Figure it Out Q1, section 2.4, p.47",
+              "description": "If a right-angled triangle has shorter sides of lengths 5 cm and 12 cm, what is the length of its hypotenuse? First draw and measure, then verify using Baudhāyana's Theorem."
+            },
+            {
+              "id": "E-7",
+              "type": "exercise",
+              "source_section": "section 2.4",
+              "book_ref": "Figure it Out Q2, section 2.4, p.47",
+              "description": "If a right-angled triangle has a short side of 8 cm and hypotenuse of 17 cm, what is the length of the third side? Draw, measure, then verify using Baudhāyana's Theorem."
+            },
+            {
+              "id": "WE-3",
+              "type": "worked_example",
+              "source_section": "section 2.4",
+              "book_ref": "Worked example (Using Baudhāyana's Theorem), section 2.4, p.47",
+              "description": "Make a right-angled triangle with shorter sides 3 cm and 4 cm; apply a² + b² = c²: 9 + 16 = 25, so c = 5 cm. The hypotenuse is exactly 5 cm."
+            },
+            {
+              "id": "E-9",
+              "type": "exercise",
+              "source_section": "section 2.4",
+              "book_ref": "Figure it Out Q4, section 2.4, p.47",
+              "description": "Let a, b, c denote the sides of a right triangle (c = hypotenuse). Find the missing sidelength: (i) a=5, b=7; (ii) a=8, b=12; (iii) a=9, c=15; (iv) a=7, b=12; (v) a=1.5, b=3.5."
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Quick review of the proof from last period; walk through Worked example (Using Baudhāyana's Theorem), section 2.4, p.47 (\"Make a right-angled triangle with shorter sides 3 cm and 4 cm....\") together, emphasising the draw-then-verify workflow."
+            },
+            {
+              "minutes": "10–22",
+              "description": "Students individually solve Figure it Out Q1, section 2.4, p.47 (\"If a right-angled triangle has shorter sides of lengths 5 cm and 12 cm....\") and Figure it Out Q2, section 2.4, p.47 (\"If a right-angled triangle has a short side of 8 cm and hypotenuse of 17 cm....\"), drawing diagrams before applying algebra."
+            },
+            {
+              "minutes": "22–42",
+              "description": "Students work through Figure it Out Q4, section 2.4, p.47 (\"Find the missing sidelength: (i) a=5, b=7; (ii)....\") in small groups, noting which sub-parts require finding a leg versus the hypotenuse. Groups reconcile any discrepancies before sharing answers."
+            },
+            {
+              "minutes": "42–50",
+              "description": "Whole-class discussion of sub-part (iii) (a=9, c=15) as representative of the leg-finding case. Teacher reinforces rearranging a² + b² = c² to b² = c² − a² and closes with a preview of integer triples in section 2.5."
+            }
+          ],
+          "teacher_notes": "Students proved the theorem last period; this period is pure application fluency. Watch for the common error of using a² + b² = c² when c is not the hypotenuse — part (iii) of Q4 specifically targets this. Encourage students to always label which side is the hypotenuse before writing any equation.",
+          "materials": [
+            "Exercise books",
+            "Ruler",
+            "Blackboard"
+          ]
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            {
+              "ref": "section 2.5",
+              "title": "Right-Triangles Having Integer Sidelengths"
+            }
+          ],
+          "section_goal": "reason",
+          "activity_title": "Generating Infinitely Many Integer Right Triangles",
+          "pedagogical_method": "Inductive",
+          "textbook_items_in_class": [
+            {
+              "id": "E-10",
+              "type": "exercise",
+              "source_section": "section 2.5",
+              "book_ref": "Math Talk, section 2.5, p.48",
+              "description": "List down all the Baudhāyana triples with numbers less than or equal to 20."
+            },
+            {
+              "id": "E-11",
+              "type": "exercise",
+              "source_section": "section 2.5",
+              "book_ref": "Figure it Out Q1, section 2.5, p.50",
+              "description": "Find 5 more Baudhāyana triples using the odd-square method (i.e., find odd perfect squares, identify n, and use (n−1)² + (2n−1) = n²)."
+            },
+            {
+              "id": "E-12",
+              "type": "exercise",
+              "source_section": "section 2.5",
+              "book_ref": "Figure it Out Q2, section 2.5, p.50",
+              "description": "Does the odd-square method yield non-primitive Baudhāyana triples? [Hint: Observe that one of the smaller sidelengths is one less than the hypotenuse among triples generated.]"
+            }
+          ],
+          "homework": [
+            {
+              "id": "E-13",
+              "type": "exercise",
+              "source_section": "section 2.5",
+              "book_ref": "Figure it Out Q3, section 2.5, p.50",
+              "description": "Are there primitive Baudhāyana triples that cannot be obtained through the odd-square method? If yes, give examples."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Pose the question: are there right triangles with all integer sides besides 3-4-5? Students individually brainstorm and list candidates. Collect on the board to motivate a systematic approach."
+            },
+            {
+              "minutes": "8–20",
+              "description": "Use Math Talk, section 2.5, p.48 (\"List down all the Baudhāyana triples with numbers less than or equal to 20\") as a structured group task. Groups record triples, identify which are multiples of others, and introduce the primitive vs. non-primitive distinction inductively."
+            },
+            {
+              "minutes": "20–35",
+              "description": "Introduce the identity (n−1)² + (2n−1) = n² and walk through n=5 and n=13 together. Students then tackle Figure it Out Q1, section 2.5, p.50 (\"Find 5 more Baudhāyana triples using the odd-square method....\") and begin Figure it Out Q2, section 2.5, p.50 (\"Does the odd-square method yield non-primitive Baudhāyana triples?....\")."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Brief class share: confirm that the method always yields primitive triples and that scaling produces non-primitive ones. Assign Figure it Out Q3, section 2.5, p.50 as homework to investigate the method's completeness."
+            }
+          ],
+          "teacher_notes": "Students have been applying the theorem numerically; this period shifts to algebraic reasoning about triples. Watch for students who confuse primitive triples (no common factor) with triples produced by the odd-square method — Q2 specifically targets this subtlety. The proof that (ka, kb, kc) is also a triple follows directly from squaring, and should be derived with the class rather than stated.",
+          "materials": [
+            "Exercise books",
+            "Blackboard",
+            "Number chart or multiplication table (optional)"
+          ]
+        },
+        {
+          "period_number": 8,
+          "period_duration_minutes": 60,
+          "textbook_segments": [
+            {
+              "ref": "section 2.6",
+              "title": "A Long-Standing Open Problem"
+            }
+          ],
+          "section_goal": "recall",
+          "activity_title": "Fermat's Conjecture and Wiles's Proof: A 300-Year Story",
+          "pedagogical_method": "Discovery",
+          "textbook_items_in_class": [],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Recap: students have shown infinitely many Baudhāyana triples exist for n=2. Now pose the question: what if the exponent were 3 or higher? Students guess whether integer solutions might still exist for xⁿ + yⁿ = zⁿ with n > 2."
+            },
+            {
+              "minutes": "10–28",
+              "description": "Present Fermat's 17th-century marginal note and his claim of a proof never written down. Students discuss in groups: why might a mathematician claim a proof without writing it? What would it take to verify or refute the claim over centuries?"
+            },
+            {
+              "minutes": "28–45",
+              "description": "Narrate the 300-year history of failed attempts by great mathematicians, leading to Andrew Wiles who set himself this goal as a 10-year-old in 1963 and completed the proof in 1994. Students reflect in writing: what does this story tell us about mathematical persistence?"
+            },
+            {
+              "minutes": "45–60",
+              "description": "Small-group discussion: connect Fermat's Last Theorem back to the chapter — why does the existence of infinitely many Baudhāyana triples make Fermat's question natural? Groups share one-sentence summaries and teacher closes with the distinction between an open problem and a solved one."
+            }
+          ],
+          "teacher_notes": "Section 2.6 has no enumerated exercises but is rich in mathematical culture; the 60-minute period allows genuine discussion rather than just narration. Watch for students who conflate 'unproven for a long time' with 'impossible to prove' — the Wiles story directly addresses this. Encourage students to look up other open problems (Goldbach's conjecture, twin primes) as a voluntary extension.",
+          "materials": [
+            "Blackboard",
+            "Short printed timeline of Fermat's Last Theorem (optional handout)"
+          ]
+        },
+        {
+          "period_number": 9,
+          "period_duration_minutes": 60,
+          "textbook_segments": [
+            {
+              "ref": "section 2.7",
+              "title": "Further Applications of the Baudhāyana-Pythagoras Theorem"
+            }
+          ],
+          "section_goal": "apply",
+          "activity_title": "Lotus Stems, Rhombuses, and Grid Squares: Real Applications",
+          "pedagogical_method": "Problem-solving",
+          "textbook_items_in_class": [
+            {
+              "id": "E-14",
+              "type": "exercise",
+              "source_section": "section 2.7",
+              "book_ref": "Figure it Out Q1, section 2.7, p.52",
+              "description": "Find the diagonal of a square with sidelength 5 cm."
+            },
+            {
+              "id": "E-15",
+              "type": "exercise",
+              "source_section": "section 2.7",
+              "book_ref": "Figure it Out Q2, section 2.7, p.52",
+              "description": "Find the missing sidelengths in the following right triangles (six diagrams with known values: sides 7 and 9; sides 4 and 10; sides 40 and 41; sides 10 and √200; sides 10 and √150; sides 27 and 45)."
+            },
+            {
+              "id": "E-16",
+              "type": "exercise",
+              "source_section": "section 2.7",
+              "book_ref": "Figure it Out Q3, section 2.7, p.53",
+              "description": "Find the sidelength of a rhombus whose diagonals are of length 24 units and 70 units."
+            },
+            {
+              "id": "E-17",
+              "type": "exercise",
+              "source_section": "section 2.7",
+              "book_ref": "Figure it Out Q4, section 2.7, p.53",
+              "description": "Is the hypotenuse the longest side of a right triangle? Justify your answer."
+            },
+            {
+              "id": "E-19",
+              "type": "exercise",
+              "source_section": "section 2.7",
+              "book_ref": "Figure it Out Q6, section 2.7, p.53",
+              "description": "Give 5 examples of rectangles whose sidelengths and diagonals are all integers."
+            },
+            {
+              "id": "E-21",
+              "type": "exercise",
+              "source_section": "section 2.7",
+              "book_ref": "Figure it Out Q8, section 2.7, p.53",
+              "description": "(i) Using dots of a grid as vertices, create squares of area (a) 2, (b) 3, (c) 4, (d) 5 sq. units. (ii) Suppose the grid extends indefinitely — what are the possible integer-valued areas of squares you can create?"
+            }
+          ],
+          "homework": [
+            {
+              "id": "E-18",
+              "type": "exercise",
+              "source_section": "section 2.7",
+              "book_ref": "Figure it Out Q5, section 2.7, p.53",
+              "description": "True or False — Every Baudhāyana triple is either a primitive triple or a scaled version of a primitive triple."
+            },
+            {
+              "id": "E-20",
+              "type": "exercise",
+              "source_section": "section 2.7",
+              "book_ref": "Figure it Out Q7, section 2.7, p.53",
+              "description": "Construct a square whose area is equal to the difference of the areas of squares of sidelengths 5 units and 7 units."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Open with the Bhāskarāchārya Līlāvatī lotus-stem problem as a narrative hook, solving it together as a class to model how real-world situations translate into right-triangle algebra. Emphasise the setup — identifying which segment is the hypotenuse — before any computation."
+            },
+            {
+              "minutes": "10–22",
+              "description": "Students work individually on Figure it Out Q1, section 2.7, p.52 (\"Find the diagonal of a square with sidelength 5 cm\") and Figure it Out Q2, section 2.7, p.52 (\"Find the missing sidelengths in the following right triangles....\"). Teacher circulates to address errors in identifying legs versus hypotenuse."
+            },
+            {
+              "minutes": "22–38",
+              "description": "Pairs tackle Figure it Out Q3, section 2.7, p.53 (\"Find the sidelength of a rhombus whose diagonals are of length 24 units and 70 units\") and Figure it Out Q4, section 2.7, p.53 (\"Is the hypotenuse the longest side....\"), requiring both computation and written justification."
+            },
+            {
+              "minutes": "38–52",
+              "description": "Small groups explore Figure it Out Q6, section 2.7, p.53 (\"Give 5 examples of rectangles whose sidelengths and diagonals are all integers\") and Figure it Out Q8, section 2.7, p.53 (\"Using dots of a grid as vertices, create squares of various areas....\"), connecting Baudhāyana triples to integer rectangles and grid geometry."
+            },
+            {
+              "minutes": "52–60",
+              "description": "Whole-class debrief of Q8 part (ii): what integer areas are achievable? Students conjecture and discuss. Assign Figure it Out Q5 and Q7 as homework and preview the final period's consolidation questions."
+            }
+          ],
+          "teacher_notes": "The Līlāvatī problem is an elegant entry point — students often find it surprising that a poetic riddle reduces to a clean right-triangle setup. For Q3 (rhombus), watch for students who do not recognise that diagonals of a rhombus bisect each other at right angles; this property should be recalled rather than proved here. Q8 is rich enough for gifted students to explore beyond the period.",
+          "materials": [
+            "Grid/dot paper",
+            "Ruler",
+            "Compass (optional for Q7 construction)",
+            "Exercise books"
+          ]
+        },
+        {
+          "period_number": 10,
+          "period_duration_minutes": 40,
+          "textbook_segments": [
+            {
+              "ref": "section 2.7",
+              "title": "Further Applications of the Baudhāyana-Pythagoras Theorem"
+            }
+          ],
+          "section_goal": "apply",
+          "activity_title": "Consolidating Applications: Equilateral Triangles and Integer Rectangles",
+          "pedagogical_method": "Problem-solving",
+          "textbook_items_in_class": [
+            {
+              "id": "E-22",
+              "type": "exercise",
+              "source_section": "section 2.7",
+              "book_ref": "Figure it Out Q9, section 2.7, p.54",
+              "description": "Find the area of an equilateral triangle with sidelength 6 units. [Hint: Show that an altitude bisects the opposite side; use this to find the height.]"
+            },
+            {
+              "id": "E-18",
+              "type": "exercise",
+              "source_section": "section 2.7",
+              "book_ref": "Figure it Out Q5, section 2.7, p.53",
+              "description": "True or False — Every Baudhāyana triple is either a primitive triple or a scaled version of a primitive triple."
+            },
+            {
+              "id": "E-20",
+              "type": "exercise",
+              "source_section": "section 2.7",
+              "book_ref": "Figure it Out Q7, section 2.7, p.53",
+              "description": "Construct a square whose area is equal to the difference of the areas of squares of sidelengths 5 units and 7 units."
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Discuss Figure it Out Q5, section 2.7, p.53 (\"True or False — Every Baudhāyana triple is either a primitive triple or a scaled version of a primitive triple\") as homework review, connecting back to section 2.5's algebraic proof. Confirm the true/false verdict with a class vote and then the justification."
+            },
+            {
+              "minutes": "8–25",
+              "description": "Students work individually on Figure it Out Q9, section 2.7, p.54 (\"Find the area of an equilateral triangle with sidelength 6 units....\"), guided by the hint to first establish the altitude via bisection. Teacher circulates and prompts with 'which side is the hypotenuse of your right triangle?'"
+            },
+            {
+              "minutes": "25–40",
+              "description": "Class tackles Figure it Out Q7, section 2.7, p.53 (\"Construct a square whose area is equal to the difference of the areas of squares of sidelengths 5 and 7 units\") together, drawing on the chapter's construction arc. Teacher closes with a full-chapter summary: doubling, halving, the theorem, triples, open problems, and applications."
+            }
+          ],
+          "teacher_notes": "The chapter's closing period should feel like a panoramic review — each problem today echoes a theme from earlier sections. For Q9, students may not immediately see that the altitude creates a right triangle; prompt them to draw it rather than telling them. Q7 is a satisfying final construction problem because it reverses the area-addition idea of section 2.4 into area subtraction.",
+          "materials": [
+            "Ruler",
+            "Compass",
+            "Grid paper",
+            "Exercise books",
+            "Blackboard"
+          ]
+        }
+      ]
+    },
+    "coverage_handoff": {
+      "section_a": {
+        "goal_cluster": [
+          "recall"
+        ],
+        "goals": [
+          {
+            "section_ref": "section 2.6",
+            "section_title": "A Long-Standing Open Problem",
+            "goal": "recall",
+            "anchor_id": "",
+            "anchor_book_ref": "",
+            "anchor_description": ""
+          }
+        ]
+      },
+      "section_b": {
+        "goal_cluster": [
+          "reason"
+        ],
+        "goals": [
+          {
+            "section_ref": "section 2.1",
+            "section_title": "Doubling a Square",
+            "goal": "reason",
+            "anchor_id": "E-5",
+            "anchor_book_ref": "Math Talk, section 2.1, p.34",
+            "anchor_description": "Why should the extension of the vertical and horizontal sides of the original square pass through the vertices of the dotted (doubled) square?"
+          },
+          {
+            "section_ref": "section 2.2",
+            "section_title": "Halving a Square",
+            "goal": "reason",
+            "anchor_id": "A-2",
+            "anchor_book_ref": "Activity 2 (Halving a Square Using Paper), p.36",
+            "anchor_description": "Cut out a square from paper; fold it inward such that crease lines pass through midpoints of the four sides to obtain quadrilateral PQRS, which is a square with half the area. Verify using diagonal properties and triangle congruence."
+          },
+          {
+            "section_ref": "section 2.3",
+            "section_title": "Hypotenuse of an Isosceles Right Triangle",
+            "goal": "reason",
+            "anchor_id": "E-1",
+            "anchor_book_ref": "Figure it Out Q1, section 2.3, p.39",
+            "anchor_description": "Two identical square papers are each cut diagonally into two triangles (4 pieces total labelled 1–4). Arrange these pieces to create a square with double the area of either original square."
+          },
+          {
+            "section_ref": "section 2.4",
+            "section_title": "Combining Two Different Squares",
+            "goal": "reason",
+            "anchor_id": "E-8",
+            "anchor_book_ref": "Figure it Out Q3, section 2.4, p.47",
+            "anchor_description": "Using the constructions seen in the chapter, how would you construct a square whose area is triple the area of a given square? Five times the area of a given square?"
+          },
+          {
+            "section_ref": "section 2.5",
+            "section_title": "Right-Triangles Having Integer Sidelengths",
+            "goal": "reason",
+            "anchor_id": "E-10",
+            "anchor_book_ref": "Math Talk, section 2.5, p.48",
+            "anchor_description": "List down all the Baudhāyana triples with numbers less than or equal to 20."
+          }
+        ]
+      },
+      "section_c": {
+        "goal_cluster": [
+          "apply"
+        ],
+        "goals": [
+          {
+            "section_ref": "section 2.3",
+            "section_title": "Hypotenuse of an Isosceles Right Triangle",
+            "goal": "apply",
+            "anchor_id": "E-3",
+            "anchor_book_ref": "Figure it Out Q3, section 2.3, p.40",
+            "anchor_description": "The hypotenuse of an isosceles right triangle is 10. Find its other two sidelengths. [Hint: Find the area of the square composed of two such right triangles.]"
+          },
+          {
+            "section_ref": "section 2.4",
+            "section_title": "Combining Two Different Squares",
+            "goal": "apply",
+            "anchor_id": "E-6",
+            "anchor_book_ref": "Figure it Out Q1, section 2.4, p.47",
+            "anchor_description": "If a right-angled triangle has shorter sides of lengths 5 cm and 12 cm, what is the length of its hypotenuse? First draw and measure, then verify using Baudhāyana's Theorem."
+          },
+          {
+            "section_ref": "section 2.7",
+            "section_title": "Further Applications of the Baudhāyana-Pythagoras Theorem",
+            "goal": "apply",
+            "anchor_id": "E-14",
+            "anchor_book_ref": "Figure it Out Q1, section 2.7, p.52",
+            "anchor_description": "Find the diagonal of a square with sidelength 5 cm."
+          },
+          {
+            "section_ref": "section 2.7",
+            "section_title": "Further Applications of the Baudhāyana-Pythagoras Theorem",
+            "goal": "apply",
+            "anchor_id": "E-15",
+            "anchor_book_ref": "Figure it Out Q2, section 2.7, p.52",
+            "anchor_description": "Find the missing sidelengths in the following right triangles (six diagrams with known values: sides 7 and 9; sides 4 and 10; sides 40 and 41; sides 10 and √200; sides 10 and √150; sides 27 and 45)."
+          }
+        ]
+      }
+    },
+    "assessment_items": [
+      {
+        "section_code": "A",
+        "section_title": "Recall and Apply",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-A-1",
+            "section_ref": "section 2.6",
+            "section_title": "A Long-Standing Open Problem",
+            "goal": "recall",
+            "question_type": "MCQ",
+            "prompt": "Fermat's Last Theorem states that there are no positive integer solutions to xⁿ + yⁿ = zⁿ for n > 2. Who finally proved this theorem, and in which year?",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "Carl Friedrich Gauss, in 1801",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "Andrew Wiles, in 1994",
+                "is_correct": true
+              },
+              {
+                "label": "C",
+                "text": "Leonhard Euler, in 1770",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "Pierre de Fermat, in 1637",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "Andrew Wiles proved Fermat's Last Theorem in 1994.",
+              "method_one_line": "Recall the historical account of Fermat's Last Theorem from section 2.6.",
+              "what_each_option_reveals": {
+                "A": "The student confuses Gauss, a prominent mathematician of the era, with the actual prover; suggests weak recall of the theorem's history.",
+                "B": "The student correctly recalls that Andrew Wiles completed the proof in 1994 after working on it since childhood.",
+                "C": "The student may know that Euler contributed partial results (proving the case n=3) but mistakes that for the full proof.",
+                "D": "The student knows Fermat posed the conjecture but confuses the poser with the prover; a common and instructive misconception."
+              },
+              "inclusivity": "Let struggling students reread the section's historical narrative; challenge others to describe what Fermat's marginal note claimed."
+            },
+            "exercise": {
+              "book_ref": "",
+              "description": ""
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "section_code": "B",
+        "section_title": "Reason and Explain",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-B-1",
+            "section_ref": "section 2.1",
+            "section_title": "Doubling a Square",
+            "goal": "reason",
+            "question_type": "ECR",
+            "prompt": "A square of side length s is drawn on paper. A new square is constructed on the diagonal of the original square. Using the geometric reasoning from the chapter — about how the original square and the doubled square are composed of congruent triangles — explain why the new square has exactly twice the area of the original square.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "The diagonal of the original square of side s divides it into two congruent right triangles. When the tilted square is drawn on this diagonal, drawing horizontal and vertical lines through the tilted square shows that the original square is made up of 2 such triangles, while the tilted (doubled) square is made up of 4 congruent triangles of the same size. Since 4 triangles = 2 × 2 triangles, the doubled square has exactly twice the area of the original square.",
+              "method_one_line": "Use the triangle-counting argument: original square = 2 congruent triangles; diagonal square = 4 congruent triangles of the same size, so area doubles.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Pair-share before writing; ask early finishers to re-explain the argument if the original square had side 2s instead."
+            },
+            "exercise": {
+              "book_ref": "Math Talk, section 2.1, p.34",
+              "description": "Why should the extension of the vertical and horizontal sides of the original square pass through the vertices of the dotted (doubled) square?"
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-2",
+            "section_ref": "section 2.2",
+            "section_title": "Halving a Square",
+            "goal": "reason",
+            "question_type": "ECR",
+            "prompt": "A square ABCD has its four midpoints marked — one on each side. These midpoints are joined in order to form a quadrilateral PQRS inside the square. Using geometric reasoning from the chapter, argue: (a) why PQRS is a square, and (b) why its area is exactly half the area of ABCD.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "(a) Each side of PQRS is a segment joining midpoints of adjacent sides of ABCD. By triangle congruence (each corner triangle has two equal legs, so all four corner triangles are congruent), all four sides of PQRS are equal. The angle at each vertex of PQRS equals 90° because the two angles of the corner triangle at that vertex are complementary (they add to 90°, and together with the right angle of ABCD they form 180°, confirming each interior angle of PQRS is 90°). Equal sides and right angles confirm PQRS is a square. (b) The four congruent corner triangles together fill exactly half of ABCD (each triangle is half of a small rectangle formed by the midpoints). Therefore PQRS, which is what remains, also has half the area of ABCD.",
+              "method_one_line": "Use triangle congruence to show all sides of PQRS are equal and all angles are 90°; then use the four corner triangles accounting for half the area to confirm the half-area result.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Encourage struggling students to fold and cut a square before writing; ask confident students to re-argue the angle proof if the midpoints were replaced by quarter-points."
+            },
+            "exercise": {
+              "book_ref": "Activity 2 (Halving a Square Using Paper), p.36",
+              "description": "Cut out a square from paper; fold it inward such that crease lines pass through midpoints of the four sides to obtain quadrilateral PQRS, which is a square with half the area. Verify using diagonal properties and triangle congruence."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-3",
+            "section_ref": "section 2.3",
+            "section_title": "Hypotenuse of an Isosceles Right Triangle",
+            "goal": "reason",
+            "question_type": "SCR",
+            "prompt": "Two identical squares, each of side length a, are placed side by side. Their combined shape is a rectangle of area 2a². Now consider an isosceles right triangle with both equal legs of length a. Explain, using the doubling-a-square reasoning from the chapter, why the hypotenuse c of this triangle satisfies c² = 2a². Then state what value c takes.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "The diagonal of a square of side a is the hypotenuse of an isosceles right triangle with legs a. From the doubling result in section 2.1, the square built on the diagonal has exactly twice the area of the original square of side a. Therefore the square on the hypotenuse has area 2a², which means c² = 2a². Taking the positive square root, c = a√2.",
+              "method_one_line": "Apply the diagonal-doubling result: square on diagonal = double the original square's area, so c² = 2a² and c = a√2.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Let students draw and label the unit square first; challenge them to extend the reasoning to find c when a = 7 and bound the result between consecutive integers."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out Q1, section 2.3, p.39",
+              "description": "Two identical square papers are each cut diagonally into two triangles (4 pieces total labelled 1–4). Arrange these pieces to create a square with double the area of either original square."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-4",
+            "section_ref": "section 2.4",
+            "section_title": "Combining Two Different Squares",
+            "goal": "reason",
+            "question_type": "ECR",
+            "prompt": "Baudhāyana's construction in section 2.4 uses four congruent right triangles (with legs a and b) to form a tilted quadrilateral over the hypotenuse c. Using the reasoning from the chapter, explain: (a) why that quadrilateral must have all sides equal, and (b) why all its interior angles are right angles. Conclude why this quadrilateral is a square of side c, so that a² + b² = c².",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "(a) All four sides of the tilted quadrilateral are hypotenuses of congruent right triangles (legs a and b), so all four sides equal c. (b) At each corner of the outer square, two acute angles of the right triangles meet: one angle whose tangent is a/b and the adjacent angle whose tangent is b/a. These are the two acute angles of the same right triangle, so they add to 90°. Together with the 90° corner of the outer bounding square, the interior angle of the tilted quadrilateral at that vertex is 180° − 90° = 90°. With all four sides equal and all angles 90°, the tilted quadrilateral is a square of side c. Its area equals c², and it also equals the area of the outer square minus the four corner triangles = (a+b)² − 4·(½ab) = a² + 2ab + b² − 2ab = a² + b². Hence a² + b² = c².",
+              "method_one_line": "Use congruent triangles to show all sides equal c; use angle complementarity to show all angles are 90°; then compute area two ways to derive a² + b² = c².",
+              "what_each_option_reveals": {},
+              "inclusivity": "Suggest struggling students sketch the four-triangle arrangement and label angles before writing; ask advanced students to re-derive the area identity if a = b (the isosceles case)."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out Q3, section 2.4, p.47",
+              "description": "Using the constructions seen in the chapter, how would you construct a square whose area is triple the area of a given square? Five times the area of a given square?"
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-5",
+            "section_ref": "section 2.5",
+            "section_title": "Right-Triangles Having Integer Sidelengths",
+            "goal": "reason",
+            "question_type": "SCR",
+            "prompt": "The chapter shows that (3, 4, 5) is a Baudhāyana triple. Using the algebraic result from the chapter — that if (a, b, c) is a Baudhāyana triple then (ka, kb, kc) is also a Baudhāyana triple for any positive integer k — explain why (6, 8, 10) is a Baudhāyana triple. Then state whether (6, 8, 10) is primitive or non-primitive, and give a reason.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "Since (3, 4, 5) is a Baudhāyana triple (3² + 4² = 9 + 16 = 25 = 5²), applying the scaling result with k = 2 gives (6, 8, 10). Indeed 6² + 8² = 36 + 64 = 100 = 10², confirming it is a Baudhāyana triple. It is non-primitive because it is obtained by scaling the primitive triple (3, 4, 5) by k = 2; equivalently, 6, 8, and 10 share the common factor 2.",
+              "method_one_line": "Apply the scaling theorem with k = 2 to (3, 4, 5) and verify 6² + 8² = 10²; conclude non-primitive since the three numbers share a common factor.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Let hesitant students verify 6² + 8² = 10² numerically first; ask confident students to produce one more non-primitive triple from (5, 12, 13) and justify it."
+            },
+            "exercise": {
+              "book_ref": "Math Talk, section 2.5, p.48",
+              "description": "List down all the Baudhāyana triples with numbers less than or equal to 20."
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "section_code": "C",
+        "section_title": "Apply in Context",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-C-1",
+            "section_ref": "section 2.3",
+            "section_title": "Hypotenuse of an Isosceles Right Triangle",
+            "goal": "apply",
+            "question_type": "NUM",
+            "prompt": "An isosceles right triangle has a hypotenuse of length √50 units. Find the length of each of its two equal legs. Show your working.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "Let each equal leg have length a. Using c² = 2a²: (√50)² = 2a², so 50 = 2a², giving a² = 25 and a = 5. Each equal leg is 5 units long.",
+              "method_one_line": "Apply c² = 2a² with c = √50; solve for a to get a = 5.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Offer a number-line or area diagram to ground the equation for struggling students; challenge others to also bound √50 between consecutive integers to verify reasonableness."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out Q3, section 2.3, p.40",
+              "description": "The hypotenuse of an isosceles right triangle is 10. Find its other two sidelengths. [Hint: Find the area of the square composed of two such right triangles.]"
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-C-2",
+            "section_ref": "section 2.4",
+            "section_title": "Combining Two Different Squares",
+            "goal": "apply",
+            "question_type": "NUM",
+            "prompt": "A right-angled triangle has one shorter side of length 9 cm and a hypotenuse of length 41 cm. Use Baudhāyana's Theorem to find the length of the other shorter side. Show all steps.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "Using a² + b² = c² with a = 9 and c = 41: 9² + b² = 41², so 81 + b² = 1681, giving b² = 1600 and b = 40. The other shorter side is 40 cm.",
+              "method_one_line": "Substitute into a² + b² = c²: 81 + b² = 1681, so b² = 1600 and b = 40 cm.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Allow students to draw and label the triangle first; challenge them to verify their answer is part of a known Baudhāyana triple (9, 40, 41) and check it by scaling."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out Q1, section 2.4, p.47",
+              "description": "If a right-angled triangle has shorter sides of lengths 5 cm and 12 cm, what is the length of its hypotenuse? First draw and measure, then verify using Baudhāyana's Theorem."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-C-3",
+            "section_ref": "section 2.7",
+            "section_title": "Further Applications of the Baudhāyana-Pythagoras Theorem",
+            "goal": "apply",
+            "question_type": "NUM",
+            "prompt": "A square has a side length of 7 cm. Using the Baudhāyana-Pythagoras Theorem, find the length of its diagonal. Express your answer in surd form and also state which two consecutive integers it lies between.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "The diagonal of a square of side 7 cm is the hypotenuse of an isosceles right triangle with both legs equal to 7. Using c² = 2a²: c² = 2 × 49 = 98, so c = √98. Since 9² = 81 and 10² = 100, we have 81 < 98 < 100, giving 9 < √98 < 10. The diagonal is √98 cm, which lies between 9 cm and 10 cm.",
+              "method_one_line": "Apply c² = 2 × 7² = 98 to get diagonal = √98 cm; bound by comparing with 9² = 81 and 10² = 100.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Let students use the formula c² = side² + side² as an entry point; challenge them to narrow the bound to one decimal place (9.8 < √98 < 9.9)."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out Q1, section 2.7, p.52",
+              "description": "Find the diagonal of a square with sidelength 5 cm."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-C-4",
+            "section_ref": "section 2.7",
+            "section_title": "Further Applications of the Baudhāyana-Pythagoras Theorem",
+            "goal": "apply",
+            "question_type": "NUM",
+            "prompt": "A rhombus has diagonals of length 18 units and 80 units. The diagonals of a rhombus bisect each other at right angles. Use the Baudhāyana-Pythagoras Theorem to find the side length of the rhombus. Show your working.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "The diagonals bisect each other at right angles, creating right triangles with legs equal to half each diagonal: 18 ÷ 2 = 9 units and 80 ÷ 2 = 40 units. The side of the rhombus is the hypotenuse: s² = 9² + 40² = 81 + 1600 = 1681, so s = 41 units.",
+              "method_one_line": "Halve each diagonal to get legs 9 and 40, then apply a² + b² = c²: 81 + 1600 = 1681, so side = 41 units.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Encourage students to sketch the rhombus and mark the right-angle intersection; challenge them to change one diagonal to 32 units and re-solve."
+            },
+            "exercise": {
+              "book_ref": "Figure it Out Q2, section 2.7, p.52",
+              "description": "Find the missing sidelengths in the following right triangles (six diagrams with known values: sides 7 and 9; sides 4 and 10; sides 40 and 41; sides 10 and √200; sides 10 and √150; sides 27 and 45)."
+            },
+            "verified": true
+          }
+        ]
+      }
+    ],
+    "input_tokens": 13762,
+    "output_tokens": 11462,
+    "cost_inr": 19.6159,
+    "assess_input_tokens": 9623,
+    "assess_output_tokens": 5191,
+    "assess_cost_inr": 9.8195
+  }
+}

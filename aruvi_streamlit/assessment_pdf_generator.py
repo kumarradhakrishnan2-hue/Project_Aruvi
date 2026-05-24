@@ -610,14 +610,12 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
                 q_raw = _re.sub(r'\n{3,}', '\n\n', "\n".join(_q_lines)).rstrip()
         if item.get("is_english") and q_raw and "\n" in q_raw:
             q_text = "<br/>".join(_clean_text(ln) for ln in q_raw.split("\n"))
-        elif is_maths:
-            # Mathematics: convert Unicode superscripts to <super> tags so that
-            # e.g. "2⁴ × 5⁴" renders as raised digits rather than being blanked.
-            # Order is critical: _apply_superscripts FIRST (before _clean_text
-            # strips ⁴→^4), then _clean_text handles remaining out-of-range chars.
-            q_text = _clean_text(_apply_superscripts(q_raw))
         else:
-            q_text = _clean_text(q_raw)
+            # Apply superscript + math symbol conversion for all subjects:
+            # - Maths: converts ⁴⁵ → <super> tags AND √ → Symbol font glyph
+            # - Science/SS: same pipeline covers any √ that appears in formulas
+            # Order is critical: _apply_superscripts FIRST, then _clean_text.
+            q_text = _clean_text(_apply_superscripts(q_raw))
 
         if q_text:
             # When text contains Devanagari (e.g. Sanskrit verse), we can't mix
@@ -709,7 +707,7 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
             display_lbl = label_map.get(raw_lbl, raw_lbl + ".")
             opt_rows.append([
                 Paragraph(f"<b>{display_lbl}</b>",         AST["q_opt_lbl"]),
-                Paragraph(_clean_text(opt.get("text", "")), AST["q_opt_txt"]),
+                Paragraph(_clean_text(_apply_superscripts(opt.get("text", ""))), AST["q_opt_txt"]),
             ])
         if opt_rows:
             opt_t = Table(opt_rows, colWidths=[uw * 0.07, uw * 0.93])
@@ -728,7 +726,7 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
 
     # ── Open task ─────────────────────────────────────────────────────────────
     elif qtype == "open_task":
-        task_txt = _clean_text(item.get("task") or item.get("task_instructions") or "")
+        task_txt = _clean_text(_apply_superscripts(item.get("task") or item.get("task_instructions") or ""))
         if task_txt:
             story.append(Spacer(1, 3))
             story.append(Paragraph("<b>Task</b>", AST["ot_lbl"]))
@@ -736,9 +734,9 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
             story.append(Spacer(1, 3))
         scaffold = item.get("scaffold", "")
         if isinstance(scaffold, dict):
-            scaf_txt = _clean_text(scaffold.get("description", ""))
+            scaf_txt = _clean_text(_apply_superscripts(scaffold.get("description", "")))
         else:
-            scaf_txt = _clean_text(str(scaffold)) if scaffold else ""
+            scaf_txt = _clean_text(_apply_superscripts(str(scaffold))) if scaffold else ""
         if scaf_txt:
             story.append(Paragraph("<b>Scaffold</b>", AST["ot_lbl"]))
             story.append(Paragraph(scaf_txt, AST["ot_txt"]))

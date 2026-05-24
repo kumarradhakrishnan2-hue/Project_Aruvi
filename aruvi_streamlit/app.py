@@ -1371,6 +1371,9 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                             r'"progression_stage"\s*:\s*(\d+)', streamed_text
                         )
                         _total_assess_groups = len(set(int(x) for x in _stage_hits))
+                    # SS: 3 fixed weight bands (Central / Substantive / Present).
+                    elif _subj_folder == "social_sciences":
+                        _total_assess_groups = 3
                     # English: distinct spine_code values in LP/coverage_handoff
                     # portion — only present spines appear there.
                     elif _subj_folder == "english":
@@ -1394,10 +1397,11 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
 
                 elif not _assessment_triggered:
                     # ── LP tick tracking ──────────────────────────────────────
-                    # Count "period_number" occurrences — each new one = one more
-                    # period fully started. Gate total to avoid over-counting.
-                    _new_lp = streamed_text.count('"period_number"')
-                    _capped  = min(_new_lp, _total_periods) if _total_periods else _new_lp
+                    # Tick period N when period N+1 starts — i.e. done =
+                    # (occurrences of "period_number") - 1, so the final period
+                    # only ticks after the stream completes (see post-loop below).
+                    _new_lp  = streamed_text.count('"period_number"')
+                    _capped  = min(max(_new_lp - 1, 0), _total_periods) if _total_periods else max(_new_lp - 1, 0)
                     if _capped != _lp_periods_seen:
                         _lp_periods_seen = _capped
                         progress_placeholder.markdown(
@@ -1410,11 +1414,13 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
 
                 else:
                     # ── Assessment tick tracking ──────────────────────────────
-                    # Token to count varies by subject:
-                    #   Science   → "progression_stage" (each new unique value)
-                    #   SS        → "c_code" (each new unique value post-trigger)
-                    #   Maths     → "section_code"
-                    #   English   → "spine_code"
+                    # Tick group N when group N+1 starts (done = raw_count - 1),
+                    # so the final group only ticks after the stream ends.
+                    # Token varies by subject:
+                    #   Science   → "progression_stage" (unique int values)
+                    #   SS        → "weight_label"      (unique string values: 3 bands)
+                    #   Maths     → "section_code"      (occurrence count)
+                    #   English   → "spine_code"        (occurrence count)
                     _assess_text = streamed_text[
                         streamed_text.index('"assessment_items"'):
                     ]
@@ -1426,13 +1432,15 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                     elif _subj_folder == "social_sciences":
                         import re as _re3
                         _ag = len(set(_re3.findall(
-                            r'"c_code"\s*:\s*"([^"]+)"', _assess_text
+                            r'"weight_label"\s*:\s*"([^"]+)"', _assess_text
                         )))
                     elif _subj_folder == "mathematics":
                         _ag = _assess_text.count('"section_code"')
                     else:  # english
                         _ag = _assess_text.count('"spine_code"')
-                    _ag_capped = min(_ag, _total_assess_groups) if _total_assess_groups else _ag
+                    # N-1: tick N fires when group N+1 starts
+                    _ag_done   = max(_ag - 1, 0)
+                    _ag_capped = min(_ag_done, _total_assess_groups) if _total_assess_groups else _ag_done
                     if _ag_capped != _assess_groups_seen:
                         _assess_groups_seen = _ag_capped
                         progress_placeholder.markdown(
@@ -1444,6 +1452,35 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                         )
 
         full_output = streamed_text
+
+        # ── Final LP tick: mark all periods done once stream completes ────────
+        # The last period's tick is intentionally deferred until here — it only
+        # fires when the full LP content has been streamed (not when its opening
+        # "period_number" token first appeared).
+        if not _stopped_by_user and not _assessment_triggered and _total_periods > 0:
+            if _lp_periods_seen < _total_periods:
+                _lp_periods_seen = _total_periods
+                progress_placeholder.markdown(
+                    _progress_html(4, lp_ticks_row=_ticks_row(
+                        _lp_periods_seen, _total_periods,
+                        "Building period-by-period activities"
+                    )),
+                    unsafe_allow_html=True,
+                )
+
+        # ── Final assessment tick: mark all groups done once stream completes ──
+        # Same deferred-last logic as LP — the final group's tick fires here,
+        # not when its opening token first appeared mid-stream.
+        if not _stopped_by_user and _assessment_triggered and _total_assess_groups > 0:
+            if _assess_groups_seen < _total_assess_groups:
+                _assess_groups_seen = _total_assess_groups
+                progress_placeholder.markdown(
+                    _progress_html(5, assess_ticks_row=_ticks_row(
+                        _assess_groups_seen, _total_assess_groups,
+                        "Writing assessment questions"
+                    )),
+                    unsafe_allow_html=True,
+                )
 
         # ── If user stopped, record partial tokens and return a stopped result ─
         if _stopped_by_user:
@@ -4918,6 +4955,8 @@ if "lpa_result"               not in st.session_state: st.session_state.lpa_resu
 if "lpa_generating"           not in st.session_state: st.session_state.lpa_generating           = False
 if "lpa_start_ts"             not in st.session_state: st.session_state.lpa_start_ts             = None
 if "lpa_stop_event"           not in st.session_state: st.session_state.lpa_stop_event           = None
+if "lpa_thread"               not in st.session_state: st.session_state.lpa_thread               = None
+if "lpa_result_queue"         not in st.session_state: st.session_state.lpa_result_queue         = None
 if "no_chapter_warning"       not in st.session_state: st.session_state.no_chapter_warning       = False
 if "plan_just_saved"          not in st.session_state: st.session_state.plan_just_saved          = False
 # LP/A split — Generate-tab confirmation dialog state

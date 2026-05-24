@@ -51,6 +51,28 @@ LOGO_PATH = os.path.normpath(
                  "..", "miscellaneous", "aruvi_logo-transparent.png")
 )
 
+# ── DejaVu Sans — bundled math-symbol font ───────────────────────────────────
+# DejaVuSans.ttf is stored in miscellaneous/ alongside the logo so it travels
+# with the codebase on any machine (Mac, Linux, cloud).  It covers U+221A (√)
+# and other mathematical symbols that Helvetica (latin-1 only) cannot render.
+# Used inline via <font face="DejaVuSans">…</font> in Paragraph markup.
+_DEJAVU_FONT = "DejaVuSans"
+_DEJAVU_FONT_PATH = os.path.normpath(
+    os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                 "..", "miscellaneous", "DejaVuSans.ttf")
+)
+
+def _register_dejavu_font():
+    if os.path.exists(_DEJAVU_FONT_PATH):
+        try:
+            pdfmetrics.registerFont(TTFont(_DEJAVU_FONT, _DEJAVU_FONT_PATH))
+            return True
+        except Exception:
+            pass
+    return False
+
+_DEJAVU_AVAILABLE = _register_dejavu_font()
+
 
 # ── Devanagari font registration ─────────────────────────────────────────────
 # "Devanagari Sangam MN" ships with macOS and renders Hindi/Sanskrit correctly
@@ -127,7 +149,8 @@ _UNICODE_SUBS = {
     '≠': '!=',    # not equal to
     '≈': '~=',    # almost equal to
     '∞': 'inf',   # infinity
-    '√': 'sqrt',  # square root
+    # √ is handled by _apply_superscripts() via Symbol font inline tag;
+    # no plain-text fallback here so it never silently becomes 'sqrt'.
     '∑': 'sum',   # summation
     '∏': 'prod',  # product
     '∈': 'in',    # element of
@@ -169,27 +192,40 @@ _SUPERSCRIPT_MAP = {
 
 def _apply_superscripts(s: str) -> str:
     """
-    Convert Unicode superscript chars to ReportLab XML <super> tags.
+    Convert Unicode superscript chars and math symbols to ReportLab XML tags.
 
-    Consecutive superscripts are grouped into one span, so
-    "2⁴ x 5⁴" becomes "2<super>4</super> x 5<super>4</super>".
+    - Consecutive superscripts (⁴⁵ etc.) → <super>45</super>
+    - Square root √ → <font face="Symbol">&#214;</font>  (Symbol font glyph 0xD6)
 
-    Call AFTER _clean_text() but BEFORE passing to Paragraph().
-    Only use where the Paragraph style supports XML markup.
+    MUST be called BEFORE _clean_text().  Correct order:
+        _clean_text(_apply_superscripts(raw_text))
+    If _clean_text runs first it will consume the √ character and this
+    function will never see it.
+
+    Only use where the Paragraph style supports XML markup (allowMarkup=True
+    is the default for ParagraphStyle in ReportLab).
     """
     if not s:
         return s
     result = []
     i = 0
     while i < len(s):
-        if s[i] in _SUPERSCRIPT_MAP:
+        ch = s[i]
+        if ch == '√':
+            # Render √ using DejaVu Sans (bundled in miscellaneous/), which
+            # carries U+221A.  Falls back to plain 'sqrt' if font unavailable.
+            if _DEJAVU_AVAILABLE:
+                result.append('<font face="DejaVuSans">&#8730;</font>')
+            else:
+                result.append('sqrt')
+            i += 1
+        elif ch in _SUPERSCRIPT_MAP:
             run = []
             while i < len(s) and s[i] in _SUPERSCRIPT_MAP:
                 run.append(_SUPERSCRIPT_MAP[s[i]])
                 i += 1
             result.append('<super>' + ''.join(run) + '</super>')
         else:
-            ch = s[i]
             if ch == '&':
                 result.append('&amp;')
             elif ch == '<':
@@ -994,7 +1030,7 @@ def _science_period_block(period, uw):
         phase_rows = []
         for ph in phases:
             mins = _clean_text(str(ph.get("minutes") or "—"))
-            desc = _clean_text(str(ph.get("description") or "—"))
+            desc = _clean_text(_apply_superscripts(str(ph.get("description") or "—")))
             phase_rows.append([
                 Paragraph(mins, ST["tb_time"]),
                 Paragraph(desc, ST["tb_desc"]),
@@ -1291,7 +1327,7 @@ def _english_period_block(period, uw, is_first_in_section=False, is_first_period
         phase_rows = []
         for ph in phases:
             mins = _clean_text(str(ph.get("minutes") or "—"))
-            desc = _clean_text(str(ph.get("description") or "—"))
+            desc = _clean_text(_apply_superscripts(str(ph.get("description") or "—")))
             phase_rows.append([
                 Paragraph(mins, ST["tb_time"]),
                 Paragraph(desc, ST["tb_desc"]),
