@@ -1,0 +1,430 @@
+ARUVI — ENGLISH ASSESSMENT CONSTITUTION · PREPARATORY · VERSION 1.0
+Stage: Preparatory (Grades III–V)
+
+================================================================================
+DESIGN PRINCIPLE
+================================================================================
+
+The English LP → Assessment arc has two phases:
+
+  LP          → selects priority tasks, enacts them in class, and
+                writes ONE spine-cell `implied_lo` per (section × spine)
+                cell that was taught.
+  Assessment  → reads the LP handoff and the section's text summary
+                from the chapter summary. It generates ONE original
+                item per spine-cell implied_lo, grounded entirely in
+                that section's own content.
+
+THE ASSESSMENT GENERATOR DOES NOT READ `tasks_verbatim[]` OR
+`question_bank[]` FROM THE SUMMARY. Items are derived from the
+section's text-summary fields, not from the textbook exercise
+wording. The one narrow exception is listening items in the oracy
+spine — see INPUTS below.
+
+The 5 prep-native spines (reading, oracy, writing,
+vocabulary_phonics_word_play, beyond_text) carry NCF compliance
+through the static spine→CG lookup. C-codes do not appear anywhere
+in the assessment JSON.
+
+
+================================================================================
+INPUTS
+================================================================================
+
+1. LP JSON → `coverage_handoff`, keyed by the 5 prep spines, each
+   carrying `section_contributions[]`. Each contribution is a
+   (section × spine) cell with at least one anchored task, providing:
+     - `section_id`, `section_title`, `section_type`
+     - `implied_lo`       drives question type and cognitive demand
+     - `section_context`  drives what the question is specifically about
+     - `tasks_anchored[]` LP audit only — NOT READ by the generator
+   This is the primary driver of item generation.
+
+2. Summary JSON → per main_section, the content sources are:
+     - `prose_summary`            prose / narrative / dialogue / informational
+     - `poem_text` + `poem_appreciation_summary`  poem
+     - `picture_story_summary` + `dialogue_text`  picture_narrative
+   These are the ONLY content sources for generated items.
+
+   The generator MUST NOT read `tasks_verbatim[]` or `question_bank[]`
+   from the summary.
+
+   NARROW CARVE-OUT — listening tasks inside oracy:
+   When generating or verifying a listening-type oracy item, the
+   generator MAY read `transcript_ref` and `transcript_text` from the
+   relevant task object inside the section's `oracy` cell. No other
+   field of any `tasks_verbatim[]` entry is readable.
+
+
+================================================================================
+OUTPUT
+================================================================================
+
+Assessment JSON per chapter: header + spine-keyed sections. Only
+spines with at least one `section_contribution` in the LP handoff
+appear. Each spine section is a flat array of items ordered by
+`section_id` (A before B before C).
+
+
+================================================================================
+RULE 1 | PRESENT SPINES ONLY
+================================================================================
+
+Emit only spines that have at least one `section_contribution` in
+the LP handoff. A spine with zero contributions is OMITTED entirely
+— no note, no placeholder.
+
+Present spines are emitted in this fixed order (skip absent ones):
+  reading · oracy · writing · vocabulary_phonics_word_play · beyond_text
+
+Within each spine, items are ordered by `section_id` (A → B → C).
+
+
+================================================================================
+RULE 2 | ONE ITEM PER SPINE-CELL IMPLIED LO
+================================================================================
+
+For each `section_contribution` in the handoff, generate exactly ONE
+assessment item. `implied_lo` determines question type and cognitive
+demand; `section_context` determines what the question is about.
+Neither alone is sufficient.
+
+Constraints:
+  a) The item MUST be grounded strictly in the section's content
+     source (per INPUTS §2). No outside content.
+  b) The item MUST be original — must not reproduce, paraphrase, or
+     structurally echo any textbook exercise wording.
+  c) The item MUST directly test the `implied_lo` — not a generic
+     comprehension question, not a tangentially related exercise.
+  d) Question type is drawn from the spine's permitted set (Rule 4).
+  e) ECR is BANNED at preparatory (Rule 4).
+
+There is no fallback path: a spine cell with no contribution
+produces no item. Item count per chapter = total
+`section_contributions` across all spines in the handoff.
+
+
+================================================================================
+RULE 3 | RICHNESS — GROUND ITEMS IN SECTION CONTENT
+================================================================================
+
+Every item must be visibly anchored in the section's actual content.
+Generic questions usable across any chapter are prohibited.
+
+Required — items must draw on at least ONE of:
+  - A named character, speaker, or person from the section.
+  - A specific event, scene, or episode from `prose_summary` or
+    `picture_story_summary`.
+  - A specific line, image, or phrase from `poem_text`.
+  - A speech-bubble line from `dialogue_text` (picture_narrative).
+  - The vocabulary, phonics, or grammar concept as it appears in the
+    section (for vocabulary_phonics_word_play items: the concept
+    MUST be named explicitly in the stem — e.g. "consonant blend
+    'gr'", "action words", "compound words").
+  - A specific writing prompt or communicative context from the
+    section's theme.
+
+Prohibited:
+  - Stems answerable without reading the section.
+  - Stems recycled from textbook exercise wording.
+  - Phonics or vocabulary items that test a concept in isolation
+    without grounding in the section's language.
+
+
+================================================================================
+RULE 4 | QUESTION TYPE
+================================================================================
+
+Permitted `question_type` values at preparatory:
+
+  MCQ           Multiple Choice (4 options, exactly one correct)
+  SCR           Short Constructed Response (1–3 sentences)
+  MATCH         Matching (Column 1 ↔ Column 2)
+  FILL_IN       Fill in the blank (one or more blanks)
+  TRUE_FALSE    True / False (with optional justification)
+  ORAL_PROMPT   Speaking / listening task with rubric
+  WRITING_TASK  Short-form writing task with rubric
+  PROJECT       Beyond-text project / hands-on extension
+
+ECR is BANNED at preparatory. Long-form writing is short-form
+`WRITING_TASK` (rubric) or `SCR` (1–3 sentences). Emitting
+`question_type: "ECR"` is a constitution violation.
+
+Default mapping by spine — pick the type that best fits the
+`implied_lo`:
+
+  reading                       → MCQ · SCR · TRUE_FALSE · FILL_IN · MATCH
+  oracy                         → ORAL_PROMPT (default) ·
+                                  SCR (short written response to a
+                                  listening prompt) ·
+                                  MCQ / TRUE_FALSE (sound discrimination,
+                                  listen-and-judge)
+  writing                       → WRITING_TASK · SCR
+  vocabulary_phonics_word_play  → FILL_IN · MATCH · MCQ · TRUE_FALSE ·
+                                  ORAL_PROMPT (phonics drill, blend-and-say,
+                                  sight-word read-aloud)
+  beyond_text                   → PROJECT · ORAL_PROMPT (riddles,
+                                  share-out) · MATCH
+
+TRUE_FALSE vs MCQ disambiguation:
+  TRUE_FALSE — every option is a complete declarative sentence the
+               student must judge true/false. `options[]` carries
+               `is_correct` per statement.
+  MCQ        — exactly one option is correct and the options are NOT
+               full declarative sentences being judged for truth
+               (e.g. "Choose the correct meaning of…"). `options[]`
+               flags the one correct entry; `suggested_answer` is
+               omitted.
+
+Do NOT classify "select the true statements" tasks as MCQ.
+
+
+================================================================================
+RULE 5 | ANSWER LAYER — CLOSED VS OPEN
+================================================================================
+
+Each item is CLOSED or OPEN by its `question_type`:
+
+  CLOSED  →  MCQ · FILL_IN · MATCH · TRUE_FALSE · SCR (when factual)
+  OPEN    →  ORAL_PROMPT · WRITING_TASK · PROJECT · SCR (when reflective)
+
+CLOSED items carry `teacher_guide.suggested_answer` with type-specific
+rules:
+  MCQ           — `suggested_answer` MUST be "" (correct option already
+                  flagged in `options[].is_correct`).
+  MATCH         — matched pairs (e.g. "1-c, 2-a, 3-b").
+  FILL_IN       — the fill values in order.
+  TRUE_FALSE    — verdicts plus a one-sentence justification from the
+                  source text.
+  SCR (factual) — verified answer in 1–2 sentences.
+
+OPEN items carry `teacher_guide.expected_elements` — 3 bullets,
+each ≤ 8 words (Rule 11).
+
+OPEN items MUST NOT carry `suggested_answer`.
+CLOSED items MUST NOT carry `expected_elements`.
+
+
+================================================================================
+RULE 6 | ANSWER VERIFICATION
+================================================================================
+
+For every CLOSED item, verify the answer against the section's content
+source:
+  - prose / narrative / dialogue / informational → `prose_summary`
+  - poem                                         → `poem_text` +
+                                                   `poem_appreciation_summary`
+  - picture_narrative                            → `picture_story_summary` +
+                                                   `dialogue_text`
+
+For oracy items that are listening-based (carry a `transcript_ref`):
+verify against `transcript_text` from the relevant task object in
+the section's `oracy` cell (the one allowed read of a tasks_verbatim
+sub-field, per INPUTS §2 carve-out).
+
+Set `verified: true` only if the answer is unambiguously supported by
+the source.
+
+For OPEN items: `verified` is always `true` (rubrics are not solved).
+
+If a closed item's answer cannot be verified, Rule 7 applies.
+
+
+================================================================================
+RULE 7 | FALLBACK (VERIFICATION FAILURE)
+================================================================================
+
+When a closed item's answer cannot be verified:
+
+  - `item_stem`                       = ""
+  - `verified`                        = false
+  - `teacher_guide.suggested_answer`  = ""
+  - `teacher_guide.note`              = "[Verification failed]
+    Refer to the section text for <spine> content in <section_title>."
+
+The fallback item is still emitted (not silently dropped) so the
+teacher sees the gap and can substitute.
+
+
+================================================================================
+RULE 8 | SOURCE TAGGING
+================================================================================
+
+Every item carries:
+
+  - `source_section_id`     A | B | C ...
+  - `source_section_title`  copied verbatim
+  - `source_section_type`   poem | prose | narrative | dialogue |
+                            informational | picture_narrative
+  - `source_spine`          reading | oracy | writing |
+                            vocabulary_phonics_word_play | beyond_text
+  - `source_lo`             the spine-cell `implied_lo` from the LP
+                            handoff, copied verbatim
+  - `source_context`        the `section_context` from the LP handoff,
+                            copied verbatim
+
+
+================================================================================
+RULE 9 | VISUAL STIMULUS
+================================================================================
+
+`visual_stimulus` is a STRING. Permitted formats at preparatory:
+
+  ""                            no stimulus (default for most items)
+
+  Pipe-delimited table          2+ lines, every line contains "|",
+                                first row is header. Used for MATCH
+                                items and tabular comprehension built
+                                from the source text.
+
+  "PICTURE: <description>"      picture prompt (NEW at preparatory).
+                                The string starts with the literal
+                                prefix `PICTURE: ` followed by a 1–2
+                                sentence description of the image the
+                                student is shown. Used for items
+                                grounded in picture_narrative sections,
+                                picture-prompted writing, and oral
+                                observation prompts. The renderer
+                                detects the prefix and renders the
+                                description as a labelled placeholder
+                                (or, when wired, the actual image).
+
+Prohibited: inline SVG, ASCII art, image markup, base64 image,
+external image reference, italic prose specs.
+
+MATCH items with a pipe-table `visual_stimulus`: `item_stem` carries
+ONLY the task instruction (e.g. "Match each animal with its young
+one."). The column contents are entirely in `visual_stimulus`. Do
+NOT repeat the column entries in `item_stem`.
+
+Structural fidelity:
+  - Multi-line stems (numbered or lettered lists) — reproduce each
+    line separately, do NOT collapse into prose.
+  - Tabular structures — render as pipe-delimited table in
+    `visual_stimulus`.
+
+
+================================================================================
+RULE 10 | TRANSCRIPT REF FOR LISTENING ITEMS
+================================================================================
+
+At preparatory, listening lives WITHIN the oracy spine — there is no
+separate listening spine.
+
+A listening-based oracy item carries `transcript_ref` at the item
+level:
+  - Format: "p. NN"
+  - Lifted verbatim from the relevant task object's `transcript_ref`
+    in the section's `oracy` cell.
+
+The transcript text is NOT inlined into the item. The generator
+reads `transcript_text` for verification only (Rule 6); the teacher
+reads aloud from the textbook at the indicated page.
+
+Non-listening oracy items (free conversation, recitation, picture
+discussion, etc.) carry `transcript_ref: ""`.
+
+
+================================================================================
+RULE 11 | RUBRIC DEPTH (OPEN ITEMS)
+================================================================================
+
+`expected_elements` at preparatory: 3 bullets, each ≤ 8 words, plain
+expectations. No register critique, no literary-device requirements
+— those belong to middle and secondary.
+
+
+================================================================================
+RULE 12 | HEADER
+================================================================================
+
+Appears once at the top of the assessment document:
+  - `chapter_number`, `chapter_title`, `stage` ("preparatory"), `grade`
+  - `main_sections_inventory[]` — id, title, type
+  - `total_items` — count across all spines
+
+Item bodies MUST NOT reference C-codes.
+
+
+================================================================================
+RULE 13 | NO INTERNAL IDS IN TEACHER PROSE
+================================================================================
+
+Internal item IDs (e.g. "Q-READ-A-1") live only in the JSON `id`
+field as a join key. They MUST NEVER appear in teacher-facing prose
+(stems, suggested answers, expected_elements, notes).
+
+
+================================================================================
+ASSESSMENT JSON SCHEMA
+================================================================================
+
+{
+  "subject":        "english",
+  "stage":          "preparatory",
+  "grade":          string,                   // "iii" | "iv" | "v"
+  "chapter_number": integer,
+  "chapter_title":  string,
+  "total_items":    integer,
+
+  "main_sections_inventory": [
+    { "section_id": string, "title": string, "type": string }
+    // type ∈ poem | prose | narrative | dialogue | informational | picture_narrative
+  ],
+
+  "assessment_items": [
+    {
+      "spine_code":  string,                  // reading | oracy | writing |
+                                              // vocabulary_phonics_word_play |
+                                              // beyond_text
+      "spine_title": string,                  // human-readable label
+      "items": [
+        {
+          "id":                    string,    // e.g. "Q-READ-A-1"
+          "source_section_id":     string,    // "A" | "B" | "C"
+          "source_section_title":  string,
+          "source_section_type":   string,    // see inventory
+          "source_spine":          string,    // see spine_code
+          "source_lo":             string,    // implied_lo from LP handoff
+          "source_context":        string,    // section_context from LP handoff
+
+          "item_stem":             string,    // the assessment question / task
+                                              // framing; original; grounded
+                                              // per Rule 3
+
+          "question_type":         string,    // see Rule 4
+
+          "options": [                        // MCQ and TRUE_FALSE only;
+                                              // [] otherwise
+            { "label":      string,           // "A"|"B"|"C"|"D" (MCQ) |
+                                              // "1"…"N" (TRUE_FALSE)
+              "text":       string,
+              "is_correct": boolean }
+          ],
+
+          "visual_stimulus":       string,    // "" | pipe-table |
+                                              // "PICTURE: <description>"
+                                              // (Rule 9)
+
+          "transcript_ref":        string,    // listening-based oracy only;
+                                              // "" otherwise
+
+          "teacher_guide": {
+            "suggested_answer":    string,    // CLOSED only (not MCQ); ""
+                                              // otherwise
+            "expected_elements":   [string],  // OPEN only; [] otherwise
+            "note":                string     // empty unless fallback
+          },
+
+          "verified":              boolean
+        }
+      ]
+    }
+  ]
+}
+
+
+================================================================================
+Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
+English Assessment Constitution · Preparatory · Version 1.0
+================================================================================

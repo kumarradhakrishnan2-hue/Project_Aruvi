@@ -4,7 +4,6 @@
   "grade": "vi",
   "chapter_number": 4,
   "chapter_title": "Sports and Wellness",
-
   "main_sections": [
     {
       "section_id": "A",
@@ -43,25 +42,37 @@
                 {
                   "stem": "Tick the correct meaning of the following: 1. friendly matches (i) matches played to win a trophy (ii) matches played without competition",
                   "type": "MCQ",
-                  "options": ["matches played to win a trophy", "matches played without competition"],
+                  "options": [
+                    "matches played to win a trophy",
+                    "matches played without competition"
+                  ],
                   "page_ref": "p.103"
                 },
                 {
                   "stem": "Tick the correct meaning: opponent (i) someone who you compete with (ii) someone you want to be a partner with",
                   "type": "MCQ",
-                  "options": ["someone who you compete with", "someone you want to be a partner with"],
+                  "options": [
+                    "someone who you compete with",
+                    "someone you want to be a partner with"
+                  ],
                   "page_ref": "p.103"
                 },
                 {
                   "stem": "Tick the correct meaning: tally of marks (i) final marks on a report card (ii) record of points in a game/match",
                   "type": "MCQ",
-                  "options": ["final marks on a report card", "record of points in a game/match"],
+                  "options": [
+                    "final marks on a report card",
+                    "record of points in a game/match"
+                  ],
                   "page_ref": "p.103"
                 },
                 {
                   "stem": "Tick the correct meaning: sporting spirit (i) following all the rules in a game (ii) being fair and respecting each player in a game",
                   "type": "MCQ",
-                  "options": ["following all the rules in a game", "being fair and respecting each player in a game"],
+                  "options": [
+                    "following all the rules in a game",
+                    "being fair and respecting each player in a game"
+                  ],
                   "page_ref": "p.103"
                 }
               ]
@@ -117,7 +128,12 @@
                 {
                   "stem": "Surprisingly, Prabhat could not sleep well that night... (i) Select the one option that tells us about the way Prabhat was feeling that night. A. hurt  B. unhappy  C. afraid  D. focused (ii) Why does Prabhat find Surya's behaviour 'surprising'? (iii) Fill in the blank: We can say that Surya's reaction to not winning was ____________________ (similar to/as serious as/different from) Prabhat's.",
                   "type": "MCQ",
-                  "options": ["hurt", "unhappy", "afraid", "focused"],
+                  "options": [
+                    "hurt",
+                    "unhappy",
+                    "afraid",
+                    "focused"
+                  ],
                   "page_ref": "p.108"
                 }
               ]
@@ -170,7 +186,11 @@
                 {
                   "stem": "Circle the pair that was chosen to play chess: Rima-Dhiraj / Gita-Hitesh / Sarita-Nupur",
                   "type": "MCQ",
-                  "options": ["Rima - Dhiraj", "Gita - Hitesh", "Sarita - Nupur"],
+                  "options": [
+                    "Rima - Dhiraj",
+                    "Gita - Hitesh",
+                    "Sarita - Nupur"
+                  ],
                   "page_ref": "p.110"
                 }
               ]
@@ -488,13 +508,23 @@
                 {
                   "stem": "We run so fast / I / can't / even / catch / my / breath. (i) Complete the sentence: The speaker needs to catch her breath because ____________________________________. A. everyone decides to walk  B. all the friends wish to go home  C. running fast results in being breathless  D. they need to do breathing exercises. (ii) Is the speaker alone? Why do you say so? (iii) What does the pattern in the lines tell us?",
                   "type": "MCQ",
-                  "options": ["everyone decides to walk", "all the friends wish to go home", "running fast results in being breathless", "they need to do breathing exercises"],
+                  "options": [
+                    "everyone decides to walk",
+                    "all the friends wish to go home",
+                    "running fast results in being breathless",
+                    "they need to do breathing exercises"
+                  ],
                   "page_ref": "p.117"
                 },
                 {
                   "stem": "When blue dark turns to black, / cold grass aches our feet, / trees creep close— / game's over. / Night wins! (i) Give one reason why the grass is cold. (ii) Complete the sentence: The children's feet are aching because_________________. (iii) Why does 'Night' win? Night wins because the ___________________________. A. time for play has ended  B. children are tired  C. time to play at home begins  D. night follows day",
                   "type": "MCQ",
-                  "options": ["time for play has ended", "children are tired", "time to play at home begins", "night follows day"],
+                  "options": [
+                    "time for play has ended",
+                    "children are tired",
+                    "time to play at home begins",
+                    "night follows day"
+                  ],
                   "page_ref": "p.117"
                 }
               ]
@@ -708,7 +738,15 @@
                 {
                   "stem": "Select the FOUR true statements from the following: 1. The girl sees people at the park doing breathing exercises. 2. Her grandfather began practising yoga sixteen years ago. 3. The girl practises some easy yoga exercises with her grandfather. 4. The girl practises breathing exercises to relax. 5. Her grandfather is fit even though he has untimely meals. 6. Her grandfather's regular yoga practise has kept him strong. 7. The girl wishes to learn asanas over the weekend.",
                   "type": "MCQ",
-                  "options": ["The girl sees people at the park doing breathing exercises.", "Her grandfather began practising yoga sixteen years ago.", "The girl practises some easy yoga exercises with her grandfather.", "The girl practises breathing exercises to relax.", "Her grandfather is fit even though he has untimely meals.", "Her grandfather's regular yoga practise has kept him strong.", "The girl wishes to learn asanas over the weekend."],
+                  "options": [
+                    "The girl sees people at the park doing breathing exercises.",
+                    "Her grandfather began practising yoga sixteen years ago.",
+                    "The girl practises some easy yoga exercises with her grandfather.",
+                    "The girl practises breathing exercises to relax.",
+                    "Her grandfather is fit even though he has untimely meals.",
+                    "Her grandfather's regular yoga practise has kept him strong.",
+                    "The girl wishes to learn asanas over the weekend."
+                  ],
                   "page_ref": "p.125"
                 }
               ]
@@ -838,18 +876,40 @@
       }
     }
   ],
-
   "competency_reporting": {
     "by_spine": {
-      "reading_for_comprehension": ["C-1.1", "C-2.1", "C-2.2"],
-      "listening":                 ["C-1.1", "C-1.2"],
-      "speaking":                  ["C-1.2", "C-1.3", "C-2.3"],
-      "writing":                   ["C-1.4", "C-1.5", "C-2.3", "C-3.2"],
-      "vocabulary_grammar":        ["C-3.1", "C-5.1", "C-5.2", "C-5.3"],
-      "beyond_text":               ["C-2.1", "C-4.2"]
+      "reading_for_comprehension": [
+        "C-1.1",
+        "C-2.1",
+        "C-2.2"
+      ],
+      "listening": [
+        "C-1.1",
+        "C-1.2"
+      ],
+      "speaking": [
+        "C-1.2",
+        "C-1.3",
+        "C-2.3"
+      ],
+      "writing": [
+        "C-1.4",
+        "C-1.5",
+        "C-2.3",
+        "C-3.2"
+      ],
+      "vocabulary_grammar": [
+        "C-3.1",
+        "C-5.1",
+        "C-5.2",
+        "C-5.3"
+      ],
+      "beyond_text": [
+        "C-2.1",
+        "C-4.2"
+      ]
     }
   },
-
   "effort_signals": {
     "spine_load": 3,
     "task_density": 1,

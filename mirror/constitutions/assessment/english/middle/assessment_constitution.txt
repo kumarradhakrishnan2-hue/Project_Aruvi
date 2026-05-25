@@ -1,5 +1,5 @@
 ARUVI — ENGLISH ASSESSMENT CONSTITUTION · VERSION 3.1
-Stages: Preparatory, Middle, Secondary
+Stage: Middle (Grades VI–VIII)
 
 ================================================================================
 DESIGN PRINCIPLE
@@ -76,8 +76,7 @@ INPUTS
    intent.
 
    For Listening cells:
-     - `transcript_ref`   (page pointer; all stages)
-     - `transcript_text`  (full transcript inlined; secondary only)
+     - `transcript_ref`   (page pointer)
 
 
 ================================================================================
@@ -203,8 +202,7 @@ Each item carries `question_type` from this fixed set:
 Default mapping by spine — governs all generated items. Select the
 type that best fits the `implied_lo` being tested:
 
-  Reading for Comprehension → MCQ, SCR, ECR (secondary only),
-                              TRUE_FALSE, FILL_IN
+  Reading for Comprehension → MCQ, SCR, TRUE_FALSE, FILL_IN
   Listening                 → SCR, FILL_IN, MCQ, TRUE_FALSE
   Speaking                  → ORAL_PROMPT
   Writing                   → WRITING_TASK
@@ -267,12 +265,9 @@ For every CLOSED item, verify the suggested answer against:
   - Reading / Vocabulary / Beyond items → the section's
     `prose_summary` (or `poem_text` + `poem_appreciation_summary`
     for poem sections).
-  - Listening items → the listening cell's transcript:
-      · Secondary: `transcript_text` is inlined in the summary —
-        read it directly.
-      · Preparatory / Middle: only `transcript_ref` is recorded.
-        The cowork session has the chapter PDF and reads the
-        transcript at that page for verification.
+  - Listening items → the listening cell's `transcript_ref` page in
+    the chapter PDF. The cowork session reads the transcript at that
+    page for verification.
 Set `verified: true` only if the answer is unambiguously supported
 by the source.
 
@@ -355,29 +350,21 @@ RULE 10 | TRANSCRIPT REFERENCE FOR LISTENING ITEMS
 ================================================================================
 
 Every Listening item carries `transcript_ref` at the item level:
-  - Format: "p. NN" (preparatory/middle) or "appendix p. NN"
-    (secondary).
+  - Format: "p. NN"
   - Lifted verbatim from the summary's listening cell.
 
-The transcript is NOT inlined into the assessment item. At
-secondary, `transcript_text` is held in the summary for the
-generator's verification only — it is not echoed into the item.
+The transcript is NOT inlined into the assessment item. The
+generator reads the transcript from the chapter PDF at the
+referenced page for verification only — it is not echoed into the
+item.
 
 
 ================================================================================
-RULE 11 | RUBRIC GUIDANCE FOR OPEN ITEMS — STAGE-AWARE
+RULE 11 | RUBRIC DEPTH FOR OPEN ITEMS
 ================================================================================
 
-`expected_elements` depth scales with stage:
-
-  Preparatory  → 3 bullets, each ≤ 8 words, plain expectations.
-
-  Middle       → 3–4 bullets, each ≤ 10 words; includes a register
-                 expectation (e.g., "Use formal letter format").
-
-  Secondary    → 4–5 bullets, each ≤ 12 words; includes a critical
-                 element (e.g., "Argue with at least two reasons",
-                 "Use one literary device covered in the chapter").
+`expected_elements`: 3–4 bullets, each ≤ 10 words; includes a
+register expectation (e.g., "Use formal letter format").
 
 
 ================================================================================
@@ -407,7 +394,7 @@ ASSESSMENT JSON SCHEMA
 
 {
   "subject":        "english",
-  "stage":          string,           // "preparatory"|"middle"|"secondary"
+  "stage":          string,           // "middle"
   "chapter_number": integer,
   "chapter_title":  string,
   "total_items":    integer,

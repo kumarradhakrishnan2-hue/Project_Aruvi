@@ -1,0 +1,434 @@
+ARUVI — ENGLISH LESSON PLAN CONSTITUTION · PREPARATORY · VERSION 1.0
+Stage: Preparatory (Grades III–V)
+
+================================================================================
+DESIGN PRINCIPLE
+================================================================================
+
+Two-axis structure per chapter:
+
+  Outer  →  main_section (poem / prose / narrative / dialogue /
+            informational / picture_narrative). Prep default is 1
+            section, occasionally 2 (e.g. picture story followed by
+            a poem).
+
+  Inner  →  5 prep-native spines in textbook order:
+            reading · oracy (merged listening+speaking) · writing ·
+            vocabulary_phonics_word_play · beyond_text.
+
+LP walks main_sections in textbook order, then walks the spines that
+each section actually carries (per the summary's `spines{}`). Period
+bin-packing is across (section × spine) cells, not across spines alone.
+
+Static spine→CG lookup at the prep stage carries NCF compliance.
+Per-chapter competency mapping is NOT performed. C-codes do not
+appear anywhere in the LP JSON.
+
+
+================================================================================
+INPUTS
+================================================================================
+
+1. Summary JSON written by
+   `cowork prompts/english/preparatory/step_1_chapter_summary_and_mapping.md`.
+   The LP reads `chapter_title`, `stage`, `grade`, `chapter_number`,
+   `main_sections[]` (with type-specific text-summary fields:
+   `prose_summary` / `poem_text` + `poem_appreciation_summary` /
+   `picture_story_summary` + `dialogue_text`), and `spines{}` per
+   section. Each `tasks_verbatim[]` entry is an OBJECT
+   `{ task_text, question_bank, visual_stimulus?, transcript_ref?,
+   transcript_text? }`. Listening tasks live INSIDE `oracy` with
+   per-task transcript fields — no separate listening spine at prep.
+
+2. NCF pedagogy at
+   `mirror/framework/english/preparatory/pedagogy_preparatory_english.txt`
+   — sources the permitted methods per spine (Rule 4).
+
+3. Period schedule: `{ period_duration_minutes, period_count }`.
+   `period_count = B` from the Allocate tab.
+   `period_duration_minutes` is 30 or 35 at prep (35 default).
+
+
+================================================================================
+OUTPUT
+================================================================================
+
+LP JSON per chapter: header, periods array, coverage_handoff keyed by
+the 5 prep spines.
+
+
+================================================================================
+RULE 1 | TWO-AXIS ANCHORING
+================================================================================
+
+LP walks main_sections in textbook order, then spines within each
+section in textbook order. Do not reorder, interleave, or re-sequence.
+
+Each period anchors to exactly ONE main_section and one or two
+adjacent spines within it. A period MUST NOT straddle two sections.
+
+ONE spine per period is preferred at prep. Two spines are permitted
+only when (a) both spines exist in the same section, (b) both fit the
+task budget (Rule 2 Step 1), (c) they are adjacent in the spine walk,
+and (d) the secondary spine carries 1 task only.
+
+
+================================================================================
+RULE 2 | PERIOD ALLOCATION
+================================================================================
+
+STEP 1 — Per-period task budget (hard ceiling).
+
+  oracy                          → 1 task per  8–12 min
+  reading                        → 1 task per 10–15 min
+  vocabulary_phonics_word_play   → 1 task per  6–10 min
+  writing                        → 1 task per 15–20 min
+  beyond_text                    → 1 task per 12–20 min
+
+A 30-min period holds at most 2–3 tasks; a 35-min period holds 2–4.
+Do not exceed these ceilings regardless of summary task count.
+
+STEP 2 — Distribute B periods across sections proportional to
+`char_count`. Round to the nearest integer. No section may receive
+zero periods. No correction is applied after initial allocation.
+
+PICTURE_NARRATIVE CARVE-OUT: `picture_narrative` sections carry
+`char_count: 0`. For Step 2 only, substitute:
+
+  weight = 200 + (total_task_count_in_section × 30)
+
+The actual `char_count: 0` is preserved everywhere else.
+
+STEP 3 — Within each section, cover spines in textbook order, packing
+tasks per Step 1 budget. When the section's allocated periods are
+exhausted, stop. Remaining spines/tasks are NOT forced into a period
+— flag them in `teacher_notes` of the section's last period as a
+self-study pointer. This is an honest reflection of available time,
+not a defect.
+
+STEP 4 — Vocabulary/Phonics/Word-Play isolation.
+A period whose primary content is a phonics drill, sight-word
+practice, alphabet repetition, or a word-game/crossword occupies its
+own period slot and is NOT merged. Light vocab work (a single
+word-meaning task, one fill-in, in-context grammar) MAY merge with
+reading or writing if Rule 1's two-spine clause is satisfied.
+
+
+================================================================================
+RULE 2A | TEXT ENCOUNTER IS CLASS TIME
+================================================================================
+
+The teacher-led encounter with the section's primary text must appear
+as an explicit timed phase within the periods allocated to that
+section. It does not consume a `tasks_in_class[]` slot but counts
+toward the period's minutes (Rule 5). The period's `materials` must
+include the textbook with page range.
+
+Form depends on section type:
+
+  poem                → read-aloud + repeated/choral reading.
+                        6–10 min for a short prep poem.
+  prose / narrative / → read-aloud + shared-reading. Proportional to
+  dialogue /            char_count; typically 8–15 min.
+  informational
+  picture_narrative   → picture walk: teacher walks students through
+                        the visual sequence picture by picture, elicits
+                        observation, reads any speech-bubble dialogue
+                        aloud (from `dialogue_text`). 8–12 min for a
+                        typical 2–3 page picture story.
+
+For a multi-period section, the full text encounter appears in the
+FIRST period; later periods may include a 2–3 min re-recite phase but
+are not required to.
+
+
+================================================================================
+RULE 3 | TASK SELECTION — CURATE, DON'T EXHAUST
+================================================================================
+
+Tasks are drawn from the summary's `tasks_verbatim[]` for the
+anchored (section, spine). The LP selects a SUBSET that fits the
+period's task budget (Rule 2 Step 1). Anchoring every task is neither
+required nor desirable.
+
+Selection priority when budget forces a choice:
+  1. Tasks whose `task_text` is the primary pedagogical move for the
+     spine (core comprehension discussion, primary phonics drill, main
+     writing prompt, central picture-walk discussion, flagship craft).
+  2. Tasks with the most substantive `question_bank`.
+  3. Tasks requiring teacher facilitation (oral/listening, pair,
+     modelled writing) outrank self-study or Do-You-Know info boxes.
+
+Unselected tasks go to homework (max 1 per period — Rule 8) or remain
+unanchored. Unanchored tasks do not appear in `tasks_in_class[]`,
+generate no `implied_lo`, and are invisible to the assessment
+generator. Flag them briefly in `teacher_notes`.
+
+ANCHORING means allocating period time for `task_text` PLUS the full
+`question_bank`. If the question_bank does not fit, do not anchor —
+move to homework or leave unanchored. Partial anchoring (covering
+only some sub-items) is forbidden.
+
+Task references in `tasks_in_class[]` use `{ spine, task_index }`
+(0-based index into the section's `tasks_verbatim[]`). Phase
+descriptions reference tasks by `spine_section_name` + brief; they do
+not restate `task_text` or enumerate sub-items verbatim.
+
+LISTENING TASKS INSIDE ORACY: when an anchored oracy task carries
+`transcript_ref` + `transcript_text`, the period MUST include a 3–5
+min listening phase (teacher reads the transcript aloud, 3–4
+repetitions per NCF prep guidance) and a 2–3 min student response
+phase. These phases sit inside the parent oracy task's period and do
+NOT consume additional task slots.
+
+A summary task split across two periods (e.g. writing: plan+draft in
+period N, share+revise in N+1) lists the same task key in both
+periods; phase descriptions distinguish the two halves.
+
+Forbidden:
+- Exceeding the period's task budget.
+- Inventing tasks not in the summary.
+- Paraphrasing or substituting a summary task.
+- Splitting a summary task into sub-parts the summary doesn't itself
+  enumerate as separate task objects.
+- Emitting `type: ECR` anywhere (banned at prep — see Rule 4).
+
+
+================================================================================
+RULE 4 | PEDAGOGICAL METHOD
+================================================================================
+
+One method per spine taught; when two spines are present, each gets
+its own method drawn STRICTLY from that spine's permitted list below.
+Methods are sourced from
+`mirror/framework/english/preparatory/pedagogy_preparatory_english.txt`
+(NCF §2.6.1.1.1) and the prep CG document. The generator MUST NOT
+invent methods outside these sources.
+
+  reading                       → read-aloud · shared-reading ·
+                                  guided-reading · independent-reading ·
+                                  repeated-reading · choral-reading ·
+                                  picture-reading · comprehension-discussion ·
+                                  summarising · relating-to-prior-knowledge
+
+  oracy                         → listen-and-respond ·
+                                  summarising-from-listening ·
+                                  sound-pair-discrimination ·
+                                  free-conversation · guided-conversation ·
+                                  role-play · describing-experiences ·
+                                  narrating · retelling · discussing ·
+                                  recitation · oral-presentation
+                                  (show-and-tell, welcome notes,
+                                  anchoring small events, short speeches,
+                                  class debates — per C-1.3)
+
+  writing                       → planning-drafting · modelled-writing ·
+                                  guided-writing · independent-writing ·
+                                  formative-feedback ·
+                                  picture-prompted-writing ·
+                                  sentence-frame-scaffolding
+
+  vocabulary_phonics_word_play  → phonics-drill · blend-and-decode ·
+                                  sight-word-practice · word-building ·
+                                  dictionary-work · contextual-prediction ·
+                                  word-games (crosswords, word search,
+                                  riddles, palindromes, anagrams) ·
+                                  grammar-in-context (never as isolated
+                                  rules)
+
+  beyond_text                   → library-exploration · hands-on-extension ·
+                                  craft-and-make · riddles-and-puzzles ·
+                                  songs-and-rhymes · observational-curiosity
+
+ECR is BANNED at prep. The writing spine produces short outputs:
+labels, captions, single sentences, picture-prompted SCRs, simple
+paragraphs (by Grade V), short stories from poems, simple dialogues.
+A summary task of `type: WRITING_TASK` is treated as rubric-scored
+short-form; 1–3 sentence outputs use `SCR`.
+
+Diversity: no spine's method may repeat across more than two
+consecutive periods. Each spine present in the chapter SHOULD see at
+least one period with a method from its permitted list.
+
+
+================================================================================
+RULE 5 | TIME CONSTRAINT
+================================================================================
+
+Each period's phases sum exactly to `period_duration_minutes`.
+Minimum 3 phases; prep periods typically have 4–6.
+
+`phases[].minutes` is a STRING time-range (e.g. "0–8", "8–20").
+Ranges tile 0..duration with no gaps and no overlaps. Overrun is not
+permitted.
+
+
+================================================================================
+RULE 6 | CHAPTER HEADER
+================================================================================
+
+Once at the top of the LP JSON: `chapter_number`, `chapter_title`,
+`stage` ("preparatory"), `grade`, `main_sections_inventory[]` (id,
+title, type), `periods_allocated` (= B).
+
+
+================================================================================
+RULE 7 | COMPETENCIES DO NOT DRIVE LP
+================================================================================
+
+C-codes MUST NOT appear anywhere in the LP JSON. Static spine→CG
+lookup at `mirror/framework/english/preparatory/spine_to_cg.json` is
+read only by the Allocate tab, never by the LP generator.
+
+
+================================================================================
+RULE 8 | HOMEWORK IS OPTIONAL AND LIGHT
+================================================================================
+
+`homework` is `[]` by default. Populate with at most 1 item per
+period when in-class overflows or reinforcement is judged useful.
+Prep gets less homework than middle/secondary. Homework is not
+consumed by the assessment generator.
+
+
+================================================================================
+RULE 9 | PHASE NARRATION
+================================================================================
+
+When a phase invokes a textbook task, the description names the task
+by anchor location + brief (≤ 10 words).
+
+Format: `<spine_section_name> ("brief ≤ 10 words")`
+Example: `Let us Learn — A. Consonant-cluster blend-and-say drill`
+
+Teacher-facing narrative must NOT expose internal planning machinery:
+no task indices, rule numbers, schema keys, planner identifiers, or
+implementation metadata. Internal references appear only in
+structured machine-readable fields.
+
+
+================================================================================
+RULE 10 | COVERAGE HANDOFF
+================================================================================
+
+After period assignment, emit `coverage_handoff` — a block with 5
+spine keys: `reading`, `oracy`, `writing`,
+`vocabulary_phonics_word_play`, `beyond_text`.
+
+Each spine carries `section_contributions[]`, one entry per
+(section × spine) cell anchored in any period:
+
+  - `section_id`, `section_title`, `section_type`     copied from inventory
+  - `implied_lo`       Transferable spine skill, independent of chapter
+                       content. Format: "Student [skill verb phrase]
+                       using [section type / spine mode] as the vehicle."
+                       e.g. "Student infers and predicts events using a
+                       wordless picture story as the vehicle."
+  - `section_context`  10–15 words naming the specific content the
+                       assessment item must be grounded in.
+                       e.g. "Consonant-cluster phonics (gr, cr, dr, pr),
+                       action words, alphabet repetition."
+  - `tasks_anchored[]` `{ spine, task_index, task_brief }` per task
+                       covered — LP audit only, NOT read by the
+                       assessment generator.
+
+The assessment generator reads `implied_lo` (drives question type and
+cognitive demand) and `section_context` (drives what the question is
+about). A spine with no anchored tasks emits its key with
+`section_contributions: []`; the assessment generator omits it
+entirely. Total assessment items = total `section_contributions`
+across all spines (one item per (section × spine) cell).
+
+
+================================================================================
+LP JSON SCHEMA
+================================================================================
+
+{
+  "subject":        "english",
+  "stage":          "preparatory",
+  "grade":          string,                   // "iii" | "iv" | "v"
+  "chapter_number": integer,
+  "chapter_title":  string,
+
+  "main_sections_inventory": [
+    { "section_id": string, "title": string, "type": string }
+    // type ∈ poem | prose | narrative | dialogue | informational | picture_narrative
+  ],
+
+  "periods_allocated": integer,
+
+  "lesson_plan": { "periods": [ <period>, ... ] },
+
+  "coverage_handoff": {
+    "reading":                      { "section_contributions": [ <contribution>, ... ] },
+    "oracy":                        { "section_contributions": [ <contribution>, ... ] },
+    "writing":                      { "section_contributions": [ <contribution>, ... ] },
+    "vocabulary_phonics_word_play": { "section_contributions": [ <contribution>, ... ] },
+    "beyond_text":                  { "section_contributions": [ <contribution>, ... ] }
+  }
+}
+
+<period>:
+{
+  "period_number":           integer,
+  "period_duration_minutes": integer,         // 30 or 35
+
+  "section_id":    string,                    // exactly one
+  "section_title": string,
+
+  "spines_taught": [string],                  // 1 or 2; textbook order; each ∈
+                                              // { reading, oracy, writing,
+                                              //   vocabulary_phonics_word_play,
+                                              //   beyond_text }
+
+  "activity_title": string,                   // ≤ 10 words
+
+  "pedagogical_methods": {                    // keys equal `spines_taught`;
+                                              // values from Rule 4
+    "<spine>": string
+  },
+
+  "tasks_in_class": [
+    { "spine": string, "task_index": integer, "task_brief": string }
+  ],
+
+  "homework": [ /* same shape; [] or 1 item max */ ],
+
+  "phases": [
+    { "minutes": string, "description": string }
+    // minutes tiles 0..duration; description per Rule 9
+  ],
+
+  "teacher_notes": string,                    // 2–3 sentences max. Scope
+                                              // (priority order):
+                                              //  1. transition from prior period;
+                                              //     preview into next
+                                              //  2. common pitfall in this spine,
+                                              //     drawn from the section's text
+                                              //     summary (no fabrication)
+                                              //  3. self-study pointer for an
+                                              //     unanchored task
+                                              // No C-code refs.
+
+  "materials": [string]                       // include "Textbook pp. X–Y" for
+                                              // any period with a Rule 2A phase
+}
+
+<contribution>:
+{
+  "section_id":      string,
+  "section_title":   string,
+  "section_type":    string,
+  "implied_lo":      string,                  // Rule 10 format
+  "section_context": string,                  // 10–15 words
+  "tasks_anchored": [
+    { "spine": string, "task_index": integer, "task_brief": string }
+  ]
+}
+
+
+================================================================================
+Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
+English Lesson Plan Constitution · Preparatory · Version 1.0
+================================================================================

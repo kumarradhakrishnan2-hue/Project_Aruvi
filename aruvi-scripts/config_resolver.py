@@ -92,12 +92,19 @@ def resolve_paths(config_path: str, subject_group: str, grade: str,
     # ── Lesson plan and assessment constitution paths ──────────────────────────
     lp_const_root = root / config["paths"]["lp_constitution_root"]
     ac_const_root = root / config["paths"]["assessment_constitution_root"]
-    lp_constitution = (
-        lp_const_root / subject_group / "lesson_plan_constitution.txt"
-    )
-    assessment_const = (
-        ac_const_root / subject_group / "assessment_constitution.txt"
-    )
+    # Prefer stage-routed LP constitution
+    # (`{subject}/{stage}/lesson_plan_constitution.txt`); fall back to the
+    # flat `{subject}/lesson_plan_constitution.txt` for subjects that
+    # haven't been split by stage yet.
+    _lp_staged = lp_const_root / subject_group / stage / "lesson_plan_constitution.txt"
+    _lp_flat   = lp_const_root / subject_group / "lesson_plan_constitution.txt"
+    lp_constitution = _lp_staged if _lp_staged.exists() else _lp_flat
+    # Prefer stage-routed assessment constitution
+    # (`{subject}/{stage}/assessment_constitution.txt`); fall back to the
+    # flat path for subjects that haven't been split by stage yet.
+    _ac_staged = ac_const_root / subject_group / stage / "assessment_constitution.txt"
+    _ac_flat   = ac_const_root / subject_group / "assessment_constitution.txt"
+    assessment_const = _ac_staged if _ac_staged.exists() else _ac_flat
 
     # ── CG and Pedagogy text paths — resolved from mirror/framework ───────────
     mirror_fw_base = root / config["paths"]["mirror_framework"] / fw_subdir / stage

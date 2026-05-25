@@ -1,56 +1,51 @@
-# Cowork Session — English: Chapter Summary + Static Competency Mapping
+# Cowork Session — English (Middle): Chapter Summary + Static Competency Mapping
 
-Reads an English chapter PDF and writes two files per chapter:
-a structured summary JSON and a mapping JSON.
-Cowork reads and writes directly. No API calls.
+Reads an English chapter PDF for the **Middle stage (Grades VI–VIII)**
+and writes two files per chapter: a structured summary JSON and a
+mapping JSON. Cowork reads and writes directly. No API calls.
 
-The summary follows the **two-axis** structure of an English NCERT
-chapter: an **outer axis** of 1–3 `main_sections` (each a distinct
-text the student reads — prose, poem, narrative, dialogue, or
-informational), and an **inner axis** of the 6 spines within each
-section (Reading for Comprehension, Listening, Speaking, Writing,
-Vocabulary/Grammar, Beyond-the-Text).
+The summary follows the **two-axis** structure of a middle-stage
+English NCERT chapter: an **outer axis** of 1–3 `main_sections` (each
+a distinct text the student reads — `prose`, `poem`, `narrative`,
+`dialogue`, or `informational`), and an **inner axis** of the 6 spines
+within each section (Reading for Comprehension, Listening, Speaking,
+Writing, Vocabulary/Grammar, Beyond-the-Text).
 
 Competency mapping is **static at the stage level** — looked up from
-`spine_to_cg.json` and attached decoratively. **No per-chapter
-competency mapping is performed.**
+`spine_to_cg.json` and **restricted to spines that are actually present
+in the chapter**. **No per-chapter competency mapping is performed.**
+**All English competencies carry weight 1.**
 
 ## Run scope
 
-Subject is `english`. `{stage}` derives from grade: III–V →
-`preparatory`, VI–VIII → `middle`, IX–X → `secondary`.
+Subject is `english`. Stage is `middle`. Grades VI, VII, VIII.
 
 ## Paths
 
 | Item | Path |
 |------|------|
 | Chapter PDFs | `mnt/data/knowledge_commons/textbooks/english/{grade}/` |
-| Listening transcript appendix (secondary only) | `mnt/data/knowledge_commons/textbooks/english/ix/appendix.pdf` |
-| Static spine→CG | `mnt/data/mirror/framework/english/{stage}/spine_to_cg.json` |
-| NCF CG (context) | `mnt/data/mirror/framework/english/{stage}/cg_{stage}_english.txt` |
-| NCF Pedagogy (context) | `mnt/data/mirror/framework/english/{stage}/pedagogy_{stage}_english.txt` |
+| Static spine→CG | `mnt/data/mirror/framework/english/middle/spine_to_cg.json` |
+| NCF CG (context) | `mnt/data/mirror/framework/english/middle/cg_middle_english.txt` |
+| NCF Pedagogy (context) | `mnt/data/mirror/framework/english/middle/pedagogy_middle_english.txt` |
 | Summary output | `mnt/data/mirror/chapters/english/{grade}/summaries/ch_NN_summary.json` |
 | Mapping output | `mnt/data/mirror/chapters/english/{grade}/mappings/ch_NN_mapping.json` |
 
 ## Step 1 — Chapter title and stage
 
-Extract `chapter_title` verbatim from the opening page. Set `stage`
-from the grade per Run scope.
+Extract `chapter_title` verbatim from the opening page. Set `stage` to
+`"middle"`.
 
 ## Step 2 — Detect main_sections (1 to 3)
 
 A `main_section` is a distinct text the student reads. New main_section
 starts when ANY of these holds: a new chapter-title-style heading
-appears (often with a separate author byline); the textbook introduces
-a new text under "Reading for Appreciation"; a clear shift between
+appears (often with a separate author byline); a clear shift between
 prose and poem; or the textbook re-runs a spine cycle (a second
-"Let us read" / "Reading for Meaning" for a different text).
+"Let us read" for a different text).
 
-Stage defaults (verify against the PDF, do not assume):
-- **Preparatory**: usually 1; occasionally 2 (a separate fable / riddle).
-- **Middle**: usually 2–3 (primary text + secondary text/poem).
-- **Secondary**: usually 2 (primary prose + closing poem under
-  "Reading for Appreciation").
+Stage default for middle: usually **2–3 sections** (a primary prose
+text plus a second text or closing poem).
 
 Per main_section capture: `section_id` ("A"/"B"/"C" in textbook
 order), `title`, `type` (`prose | poem | narrative | dialogue |
@@ -77,14 +72,14 @@ by MULTIPLE textbook subheadings — see the table. A spine MAY be
 absent (e.g. a closing poem often carries only Reading + Vocabulary).
 Do NOT invent missing spines.
 
-| Spine | Preparatory | Middle | Secondary |
-|---|---|---|---|
-| `reading_for_comprehension` | Let us Read · Let us Recite · Let us Think | Let us read · Let us discuss · Let us think and reflect | Reading for Meaning · Check Your Understanding · Critical Reflection · Reflect and Respond · Reading for Appreciation |
-| `listening` | Let us Listen | Let us listen | Listen and Respond |
-| `speaking` | Let us Speak | Let us speak | Speaking Activity |
-| `writing` | Let us Write | Let us write | Writing Task |
-| `vocabulary_grammar` | Let us Learn | Let us learn | Vocabulary and Structures in Context · Vocabulary in Context |
-| `beyond_text` | Let us Do · Let us Explore · Just for Fun | Let us do · Let us explore | Learning Beyond the Text · POINTS TO REMEMBER |
+| Spine | Middle textbook subheadings |
+|---|---|
+| `reading_for_comprehension` | Let us read · Let us discuss · Let us think and reflect |
+| `listening` | Let us listen |
+| `speaking` | Let us speak |
+| `writing` | Let us write |
+| `vocabulary_grammar` | Let us learn |
+| `beyond_text` | Let us do · Let us explore |
 
 ## Step 5 — Per (section, spine) cell, capture tasks with nested sub-items
 
@@ -136,19 +131,19 @@ Reading-for-Comprehension spine in a middle-stage section MUST
 contain tasks from "Let us read" AND "Let us discuss" AND "Let us
 think and reflect" if all three are present in the PDF. Each parent
 task from any of those subheadings becomes its own task object (with
-its own nested `question_bank`). Same applies to Vocabulary/Grammar
-at secondary (two subheadings) and Beyond-the-Text where multiple
-subheadings appear.
+its own nested `question_bank`). Same applies to Beyond-the-Text
+where multiple subheadings appear.
 
 ## Step 6 — Listening cells: capture transcript
 
-All stages capture both `transcript_ref` and `transcript_text`.
+Each listening cell captures both `transcript_ref` and
+`transcript_text`.
 
-| Stage | `transcript_ref` | `transcript_text` |
-|---|---|---|
-| Preparatory | `"p.NN"` — from TRANSCRIPTS section of chapter PDF | Shortened: 80–120 words. All speakers represented, filler trimmed, speaker labels preserved. |
-| Middle | `"p.NN"` — from TRANSCRIPTS section of chapter PDF | Shortened: 150–250 words. All speakers/segments represented, sequence and resolution intact, filler trimmed, speaker labels preserved. |
-| Secondary | `"appendix p.NN"` — from separate `appendix.pdf` | Full verbatim, speaker labels and newlines preserved. |
+- `transcript_ref`: `"p.NN"` — from the TRANSCRIPTS section of the
+  chapter PDF.
+- `transcript_text`: shortened to **150–250 words**. All
+  speakers/segments represented, sequence and resolution intact,
+  filler trimmed, speaker labels preserved.
 
 Per main_section: each listening cell carries its own `transcript_ref`
 and `transcript_text` matching its own listening tasks.
@@ -178,14 +173,22 @@ tier:
 - avg 3.1–6.0 → 2
 - avg ≥ 6.1 → 3
 
-**`writing_demand` (integer 0–2):** total sub-item count under the
-`writing` and `beyond_text` spines only, computed by traversing the
-nested shape:
-`sum(len(t.question_bank) for cell in (writing + beyond_text spine cells) for t in cell.tasks_verbatim)`.
+**`writing_demand` (integer 0–2):** total exercise-item count under
+the `writing` and `beyond_text` spines only. For each task in those
+spines, count `max(1, len(t.question_bank))` — i.e. a task with
+sub-items contributes its sub-item count, and an **open task** (one
+with zero sub-items, e.g. "write a paragraph", "make a poster") still
+counts as **1 item**, not 0. Formula:
+`sum(max(1, len(t.question_bank)) for cell in (writing + beyond_text spine cells) for t in cell.tasks_verbatim)`.
 Then tier:
 - 0–5 → 0
 - 6–15 → 1
 - 16+ → 2
+
+Rationale: an open writing/project task represents real student work
+even though the textbook doesn't enumerate sub-items. The earlier
+sub-items-only count under-reported chapters whose writing or
+beyond-text tasks were long-form prompts.
 
 **`project_load` (integer 0–3):** count of cells where the spine key
 is `beyond_text` (one cell = one unit, one per section that has it).
@@ -210,10 +213,18 @@ All five values (`spine_load`, `task_density`, `writing_demand`,
 
 ### 8a — Attach to summary JSON
 
-Read `mirror/framework/english/{stage}/spine_to_cg.json` and copy each
-spine's `competency_codes` array verbatim into
-`competency_reporting.by_spine`. **Do NOT generate per-chapter
+Read `mirror/framework/english/middle/spine_to_cg.json`. For each
+spine that is **actually present in this chapter** (i.e. appears as a
+key under any `main_section.spines`), copy that spine's
+`competency_codes` array verbatim into
+`competency_reporting.by_spine`. **Do NOT emit entries for spines that
+are absent from the chapter.** **Do NOT generate per-chapter
 competency tags.**
+
+To compute "spines present in this chapter", take the union of
+`spines` keys across every `main_section` in the summary. A spine that
+has no task objects in any section is, by Step 9, omitted from
+`main_sections[*].spines` — and therefore must also be absent here.
 
 ### 8b — Write chapter mapping JSON
 
@@ -227,17 +238,20 @@ mapping files.
 
 **How to populate each field:**
 
-- `stage`, `subject` (`"english"`), `grade`, `chapter_number`,
-  `chapter_title` — copy from the summary JSON.
+- `stage` (`"middle"`), `subject` (`"english"`), `grade`,
+  `chapter_number`, `chapter_title` — copy from the summary JSON.
 - `summary_path` — relative path string:
   `"mirror/chapters/english/{grade}/summaries/ch_NN_summary.json"`
-- `primary` — build from `spine_to_cg.json`. For each spine in
-  `spines` (in order: `reading_for_comprehension`, `listening`,
-  `speaking`, `writing`, `vocabulary_grammar`, `beyond_text`), emit
-  one entry per unique `c_code` in that spine's `competency_codes`
-  array. De-duplicate
-  across spines: if the same `c_code` appears in multiple spines, emit
-  it only once (first occurrence wins). Each entry:
+- `primary` — build from `spine_to_cg.json`, **restricted to spines
+  that are actually present in this chapter** (same union rule as Step
+  8a — a spine appears here only if it appears as a key under at
+  least one `main_section.spines`). Walk the present spines in the
+  canonical order `reading_for_comprehension`, `listening`, `speaking`,
+  `writing`, `vocabulary_grammar`, `beyond_text` (skipping any absent
+  spine), and emit one entry per unique `c_code` in that spine's
+  `competency_codes` array. De-duplicate across spines: if the same
+  `c_code` appears in multiple spines, emit it only once (first
+  occurrence wins). Each entry:
   ```json
   {
     "c_code": "C-1.1",
@@ -254,7 +268,7 @@ mapping files.
 - `chapter_weight` — set to `null` (English uses `effort_index` for
   allocation, not `chapter_weight`).
 
-**Mapping JSON template** (Ch 01, middle stage, computed values shown):
+**Mapping JSON template** (Ch 01, middle stage, all 6 spines present):
 
 ```json
 {
@@ -291,9 +305,13 @@ mapping files.
 ```
 
 The `primary` list above is derived from the middle-stage
-`spine_to_cg.json` with de-duplication applied. It will be the same
-for every middle-stage English chapter — only `effort_index` varies
-per chapter.
+`spine_to_cg.json` with de-duplication applied **and restricted to
+spines present in this chapter**. If a chapter omits a spine (for
+example a closing poem section that has no `listening` or `writing`
+tasks anywhere in the chapter), the c-codes contributed solely by
+that spine must NOT appear in `primary`. Two chapters with the same
+spine coverage will share the same `primary` list; chapters with
+different spine coverage will differ.
 
 UTF-8. Create `mappings/` directory if it does not exist. Overwrite if
 the file already exists.
@@ -303,51 +321,34 @@ the file already exists.
 ```json
 {
   "subject": "english",
-  "stage": "secondary",
-  "grade": "ix",
-  "chapter_number": 3,
-  "chapter_title": "Winds of Change",
+  "stage": "middle",
+  "grade": "vii",
+  "chapter_number": 1,
+  "chapter_title": "Learning Together",
 
   "main_sections": [
     {
       "section_id": "A",
-      "title": "Pankhas Across India",
+      "title": "A Day in School",
       "type": "prose",
-      "page_range": "p.69-80",
-      "char_count": 25000,
+      "page_range": "p.1-12",
+      "char_count": 18000,
       "prose_summary": "<200–400 word textbook-grounded summary>",
       "spines": {
         "reading_for_comprehension": {
-          "section_name": "Reading for Meaning + Check Your Understanding + Critical Reflection",
+          "section_name": "Let us read + Let us discuss + Let us think and reflect",
           "tasks_verbatim": [
             {
-              "task_text": "Work in pairs to complete the table on pankha and answer the questions that follow.",
+              "task_text": "Work in pairs to discuss the following questions about the passage.",
               "question_bank": [
-                {
-                  "stem": "Complete the table.",
-                  "type": "MATCH",
-                  "table": "State|Type of Fan|Material Used\nRajasthan|appliqué hand fan|...",
-                  "page_ref": "p.73"
-                },
-                {
-                  "stem": "Which state's pankha uses peacock feathers?",
-                  "type": "SCR",
-                  "page_ref": "p.74"
-                }
+                { "stem": "What did the narrator notice on the first day?", "type": "SCR", "page_ref": "p.5" },
+                { "stem": "Why is teamwork important according to the author?", "type": "SCR", "page_ref": "p.6" }
               ]
             },
             { "task_text": "<next reading-for-comprehension task verbatim>", "question_bank": [] }
           ]
         },
         "listening": {
-          "section_name": "Listen and Respond",
-          "transcript_ref": "appendix p.263",
-          "transcript_text": "ROHAN: Priya, what should we get Grandma...\nPRIYA: I was thinking a hand pankha...\n[full verbatim — secondary stage]",
-          "tasks_verbatim": [
-            { "task_text": "<task instruction>", "question_bank": [/* sub-items */] }
-          ]
-        },
-        "/* Middle-stage listening example */": {
           "section_name": "Let us listen",
           "transcript_ref": "p.39",
           "transcript_text": "Speaker 1 (Teacher): School taught me that learning never stops...\nSpeaker 2 (Student): My favourite part is meeting friends every day...\n[150–250 words — shortened, all speakers represented]",
@@ -355,35 +356,35 @@ the file already exists.
             { "task_text": "<task instruction>", "question_bank": [/* sub-items */] }
           ]
         },
-        "speaking":           { "section_name": "Speaking Activity",                    "tasks_verbatim": [{ "task_text": "...", "question_bank": [/* ... */] }] },
-        "writing":            { "section_name": "Writing Task",                         "tasks_verbatim": [{ "task_text": "...", "question_bank": [/* ... */] }] },
-        "vocabulary_grammar": { "section_name": "Vocabulary and Structures in Context", "tasks_verbatim": [{ "task_text": "...", "question_bank": [/* ... */] }] },
-        "beyond_text":        { "section_name": "Learning Beyond the Text",             "tasks_verbatim": [{ "task_text": "...", "question_bank": [/* ... */] }] }
+        "speaking":           { "section_name": "Let us speak", "tasks_verbatim": [{ "task_text": "...", "question_bank": [/* ... */] }] },
+        "writing":            { "section_name": "Let us write", "tasks_verbatim": [{ "task_text": "...", "question_bank": [/* ... */] }] },
+        "vocabulary_grammar": { "section_name": "Let us learn", "tasks_verbatim": [{ "task_text": "...", "question_bank": [/* ... */] }] },
+        "beyond_text":        { "section_name": "Let us do + Let us explore", "tasks_verbatim": [{ "task_text": "...", "question_bank": [/* ... */] }] }
       }
     },
     {
       "section_id": "B",
-      "title": "Canvas of Soil",
+      "title": "The Morning Bell",
       "type": "poem",
-      "page_range": "p.79",
+      "page_range": "p.13",
       "char_count": 600,
-      "poem_text": "Palette of earth, rich and deep,\nWhere dreams of gardeners seep.\n...",
+      "poem_text": "The morning bell rings clear and loud,\nWaking the lanes, waking the crowd.\n...",
       "poem_appreciation_summary": "<80–150 word appreciation>",
       "spines": {
-        "reading_for_comprehension": { "section_name": "Reading for Appreciation", "tasks_verbatim": [{ "task_text": "...", "question_bank": [/* ... */] }] },
-        "vocabulary_grammar":        { "section_name": "Vocabulary in Context",    "tasks_verbatim": [{ "task_text": "...", "question_bank": [/* ... */] }] }
+        "reading_for_comprehension": { "section_name": "Let us read + Let us discuss", "tasks_verbatim": [{ "task_text": "...", "question_bank": [/* ... */] }] },
+        "vocabulary_grammar":        { "section_name": "Let us learn",                 "tasks_verbatim": [{ "task_text": "...", "question_bank": [/* ... */] }] }
       }
     }
   ],
 
   "competency_reporting": {
     "by_spine": {
-      "reading_for_comprehension": ["C-2.1", "C-2.2", "C-3.1", "C-4.1"],
-      "listening":                 ["C-3.1"],
-      "speaking":                  ["C-1.1", "C-3.2"],
-      "writing":                   ["C-1.2", "C-1.3", "C-1.4", "C-2.3"],
-      "vocabulary_grammar":        ["C-2.2"],
-      "beyond_text":               ["C-4.2", "C-4.3", "C-4.4", "C-4.5"]
+      "reading_for_comprehension": ["C-1.1", "C-2.1", "C-2.2"],
+      "listening":                 ["C-1.1", "C-1.2"],
+      "speaking":                  ["C-1.2", "C-1.3", "C-2.3"],
+      "writing":                   ["C-1.4", "C-1.5", "C-2.3", "C-3.2"],
+      "vocabulary_grammar":        ["C-3.1", "C-5.1", "C-5.2", "C-5.3"],
+      "beyond_text":               ["C-2.1", "C-4.2"]
     }
   },
 
@@ -411,21 +412,25 @@ Where:
 - `total_task_object_count` = sum of `len(spine.tasks_verbatim)` across all (section, spine) cells.
 - `total_subitem_count` = sum of `len(t.question_bank) for cell in all cells for t in cell.tasks_verbatim`.
 
-Example: `ch_03 — "Winds of Change" — sections: 2 (1 prose + 1 poem) — spines_total: 8 — tasks: 28 — sub_items: 14 — project_load: 2 — effort_index: 1.72`
+Example: `ch_01 — "Learning Together" — sections: 2 (1 prose + 1 poem) — spines_total: 8 — tasks: 24 — sub_items: 32 — project_load: 1 — effort_index: 13.5`
 
 ## Constraints
 
 - No API calls. Cowork reads PDFs and writes JSON directly.
 - No consulting LOs, Syllabus, Assessment Framework, or Position
-  Papers. Pedagogy beyond `mirror/framework/english/{stage}/` is
+  Papers. Pedagogy beyond `mirror/framework/english/middle/` is
   off-limits.
-- Competency mapping is static (Step 8b): `primary` codes come from
-  `spine_to_cg.json` only — do NOT generate per-chapter competency tags.
-- `effort_index` is computed from the four bounded signals in Step 8b
+- Competency mapping is static-by-stage (Step 8b): `primary` codes
+  come from `spine_to_cg.json` only — do NOT generate per-chapter
+  competency tags. But `primary` is **filtered to the spines actually
+  present in this chapter** — c-codes contributed only by spines that
+  the chapter does not exercise must be dropped.
+- `effort_index` is computed from the four bounded signals in Step 7
   — do NOT estimate, do NOT clamp, keep one decimal place.
-- Listening transcripts: all stages capture `transcript_ref` + `transcript_text`.
-  Prep = 80–120 words shortened; middle = 150–250 words shortened;
-  secondary = full verbatim from `appendix.pdf` (per Step 6).
+- `writing_demand` uses the `max(1, …)` rule — open tasks count as 1
+  item, not 0.
+- Listening transcripts: capture `transcript_ref` + `transcript_text`,
+  shortened to 150–250 words (per Step 6).
 - Do NOT invent absent spines. Do NOT collapse a multi-subheading
   spine to the first subheading only (per Step 5).
 - Each `tasks_verbatim` entry MUST be an OBJECT

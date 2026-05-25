@@ -4,7 +4,6 @@
   "grade": "vi",
   "chapter_number": 1,
   "chapter_title": "Fables and Folk Tales",
-
   "main_sections": [
     {
       "section_id": "A",
@@ -74,7 +73,12 @@
                 {
                   "stem": "Choose the option that lists the events given below in the correct order. A. The sage smiled. B. Rama Natha gave the bottle to the sage. C. Rama Natha dropped a few drops of water on a copper vessel. D. He said something in a low voice over the water. E. Rama Natha waited to see if the magic worked. (a) A, E, D, B, C  (b) B, A, D, C, E  (c) C, D, A, B, E  (d) A, D, B, E, C",
                   "type": "MCQ",
-                  "options": ["A, E, D, B, C", "B, A, D, C, E", "C, D, A, B, E", "A, D, B, E, C"],
+                  "options": [
+                    "A, E, D, B, C",
+                    "B, A, D, C, E",
+                    "C, D, A, B, E",
+                    "A, D, B, E, C"
+                  ],
                   "page_ref": "p.7"
                 },
                 {
@@ -315,25 +319,41 @@
                 {
                   "stem": "Stanza 1: (i) Mr Raven is a __________. (bird/frog) (ii) The name of the fox is __________. (Raven/Reynard) (iii) Mr Raven had __________ in his beak. (a piece of food/a bunch of leaves)",
                   "type": "MCQ",
-                  "options": ["bird", "Reynard", "a piece of food"],
+                  "options": [
+                    "bird",
+                    "Reynard",
+                    "a piece of food"
+                  ],
                   "page_ref": "p.14"
                 },
                 {
                   "stem": "Stanza 2: (i) The Fox calls the Raven a __________ bird. (foolish/good-looking) (ii) The Fox asks the Raven to __________. (dance/sing) (iii) The Raven and the Fox live in the __________. (trees/woods)",
                   "type": "MCQ",
-                  "options": ["good-looking", "sing", "woods"],
+                  "options": [
+                    "good-looking",
+                    "sing",
+                    "woods"
+                  ],
                   "page_ref": "p.14"
                 },
                 {
                   "stem": "Stanza 3: (i) The Raven ___________ that he croaked. (remembered/forgot) (ii) The Raven opened its beak to ___________. (eat/sing) (iii) The ___________ fell down. (food/Raven)",
                   "type": "MCQ",
-                  "options": ["forgot", "sing", "food"],
+                  "options": [
+                    "forgot",
+                    "sing",
+                    "food"
+                  ],
                   "page_ref": "p.14"
                 },
                 {
                   "stem": "Stanza 4: (i) The Fox ___________ at the Raven. (laughed/looked) (ii) It is not ___________ to be too proud of oneself. (wise/unwise) (iii) The Raven learnt a ______________. (lesson/teaching)",
                   "type": "MCQ",
-                  "options": ["laughed", "wise", "lesson"],
+                  "options": [
+                    "laughed",
+                    "wise",
+                    "lesson"
+                  ],
                   "page_ref": "p.14"
                 }
               ]
@@ -365,7 +385,12 @@
                 {
                   "stem": "From lines 'Sir Raven, you are a handsome bird. Such feathers! If you would only sing, The birds of these woods would call you King.' — (i) 'Such feathers' refer to __________ feathers. A. shiny and beautiful B. black and dull C. grey and long D. short and unattractive (ii) Why would the birds of the woods call the Raven 'King'? (iii) Why does the Fox address the Raven as 'Sir'?",
                   "type": "MCQ",
-                  "options": ["shiny and beautiful", "black and dull", "grey and long", "short and unattractive"],
+                  "options": [
+                    "shiny and beautiful",
+                    "black and dull",
+                    "grey and long",
+                    "short and unattractive"
+                  ],
                   "page_ref": "p.16"
                 },
                 {
@@ -534,7 +559,10 @@
                 {
                   "stem": "Circle the odd one: 1. The characters are: husband, wife, children. 2. Who entered the house? guest, robber, Kotwal.",
                   "type": "MCQ",
-                  "options": ["children", "Kotwal"],
+                  "options": [
+                    "children",
+                    "Kotwal"
+                  ],
                   "page_ref": "p.22"
                 }
               ]
@@ -591,13 +619,23 @@
                 {
                   "stem": "From the lines 'Man: What's the matter? What are you looking at? / Wife: Ssssh! Listen! / Man: Somebody is trying to get in. / Wife: I … I think he has got in … the noise has stopped.' — (i) What makes the man say the first line? (ii) The wife says 'Ssssh! Listen!'. What does the word 'Ssssh' mean here? A. sleep B. help C. rest D. be silent (iii) How can you tell that the wife was listening carefully?",
                   "type": "MCQ",
-                  "options": ["sleep", "help", "rest", "be silent"],
+                  "options": [
+                    "sleep",
+                    "help",
+                    "rest",
+                    "be silent"
+                  ],
                   "page_ref": "p.26"
                 },
                 {
                   "stem": "From the lines 'Rama, the village kotwal, ran to the house from which he heard his name being called. Rama: Oh, Oh! Some thief has dug his way into this house.' — (i) Fill in the blank with the correct word from the given lines: The villagers caught the thief and took him to the _____________________. (ii) What do the words 'Oh, Oh!' show here? A. surprise B. anger C. pain D. happiness (iii) How can you tell that the kotwal was good at his job?",
                   "type": "MCQ",
-                  "options": ["surprise", "anger", "pain", "happiness"],
+                  "options": [
+                    "surprise",
+                    "anger",
+                    "pain",
+                    "happiness"
+                  ],
                   "page_ref": "p.27"
                 }
               ]
@@ -715,7 +753,11 @@
                 {
                   "stem": "These sentences refer to actions that _____________ [are going on at the time of speaking / happened in the past / will take place in the future].",
                   "type": "MCQ",
-                  "options": ["are going on at the time of speaking", "happened in the past", "will take place in the future"],
+                  "options": [
+                    "are going on at the time of speaking",
+                    "happened in the past",
+                    "will take place in the future"
+                  ],
                   "page_ref": "p.28"
                 }
               ]
@@ -762,7 +804,11 @@
                 {
                   "stem": "Study the sentences and choose the correct option: (i) 'Oh, hum! What a hard day it has been!' expresses a feeling of _____ (tiredness/joy). (ii) 'Ah, at last, they've stopped their chatter!' expresses a feeling of _____ (wonder/relief). (iii) 'What should we do?' and 'What should we name our child?' ask _____ (answers/questions).",
                   "type": "MCQ",
-                  "options": ["tiredness", "relief", "questions"],
+                  "options": [
+                    "tiredness",
+                    "relief",
+                    "questions"
+                  ],
                   "page_ref": "p.31"
                 },
                 {
@@ -802,18 +848,40 @@
       }
     }
   ],
-
   "competency_reporting": {
     "by_spine": {
-      "reading_for_comprehension": ["C-1.1", "C-2.1", "C-2.2"],
-      "listening": ["C-1.1", "C-1.2"],
-      "speaking": ["C-1.2", "C-1.3", "C-2.3"],
-      "writing": ["C-1.4", "C-1.5", "C-2.3", "C-3.2"],
-      "vocabulary_grammar": ["C-3.1", "C-5.1", "C-5.2", "C-5.3"],
-      "beyond_text": ["C-2.1", "C-4.2"]
+      "reading_for_comprehension": [
+        "C-1.1",
+        "C-2.1",
+        "C-2.2"
+      ],
+      "listening": [
+        "C-1.1",
+        "C-1.2"
+      ],
+      "speaking": [
+        "C-1.2",
+        "C-1.3",
+        "C-2.3"
+      ],
+      "writing": [
+        "C-1.4",
+        "C-1.5",
+        "C-2.3",
+        "C-3.2"
+      ],
+      "vocabulary_grammar": [
+        "C-3.1",
+        "C-5.1",
+        "C-5.2",
+        "C-5.3"
+      ],
+      "beyond_text": [
+        "C-2.1",
+        "C-4.2"
+      ]
     }
   },
-
   "effort_signals": {
     "spine_load": 3,
     "task_density": 1,

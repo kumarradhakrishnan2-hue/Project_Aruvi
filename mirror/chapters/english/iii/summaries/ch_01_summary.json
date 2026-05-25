@@ -1,0 +1,296 @@
+{
+  "subject": "english",
+  "stage": "preparatory",
+  "grade": "iii",
+  "chapter_number": 1,
+  "chapter_title": "Fun with Friends",
+  "main_sections": [
+    {
+      "section_id": "A",
+      "title": "Fun with Friends (Picture Reading)",
+      "type": "picture_narrative",
+      "page_range": "p.1-3",
+      "char_count": 0,
+      "picture_story_summary": "A duck and a hen who are friends decide to visit a village fair together. The duck invites the hen, who agrees and collects her chicks. The two mothers and their young ones set off across open countryside. When they reach a stream, the hen is alarmed — she cannot swim and does not know how to get her chicks across. The duck reassures her, saying she has a plan. In the next picture, the ducklings swim across while carrying the chicks on their backs, so all of them cross the stream safely. The story conveys themes of friendship, mutual help, and the idea that each friend's strength can solve the other's difficulty.",
+      "dialogue_text": "Duck: Come dear hen, let us go to the village fair.\nHen: All right. Let me bring my chicks.\nHen (to ducklings): Come ducklings, let us go.\nDuck: We have reached the stream.\nHen: I cannot swim. How shall we cross the stream?\nDuck: I have a plan …",
+      "spines": {
+        "reading": {
+          "section_name": "Picture Reading",
+          "tasks_verbatim": [
+            {
+              "task_text": "Look at this picture story.",
+              "question_bank": [],
+              "visual_stimulus": [
+                {
+                  "type": "picture",
+                  "count": 4,
+                  "brief_description": "Sequenced illustrations of a duck and hen with their ducklings and chicks travelling to a village fair, reaching a stream, and crossing it with the ducklings carrying the chicks.",
+                  "page_ref": "p.1-2"
+                }
+              ]
+            }
+          ]
+        },
+        "oracy": {
+          "section_name": "Now discuss with your friends",
+          "tasks_verbatim": [
+            {
+              "task_text": "Now discuss with your friends.\n1. How many ducklings and chicks can you see in the picture?\n2. The duck and the hen — are they friends? How do you know?\n3. How did the hen and the chicks cross the stream?\n4. Have you ever helped your friend? How did you help?\n5. Did you feel happy to help your friend?",
+              "question_bank": [
+                {
+                  "stem": "How many ducklings and chicks can you see in the picture?",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.3"
+                },
+                {
+                  "stem": "The duck and the hen — are they friends? How do you know?",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.3"
+                },
+                {
+                  "stem": "How did the hen and the chicks cross the stream?",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.3"
+                },
+                {
+                  "stem": "Have you ever helped your friend? How did you help?",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.3"
+                },
+                {
+                  "stem": "Did you feel happy to help your friend?",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.3"
+                }
+              ]
+            }
+          ]
+        },
+        "vocabulary_phonics_word_play": {
+          "section_name": "Match the following animals with their young ones",
+          "tasks_verbatim": [
+            {
+              "task_text": "Match the following animals with their young ones.\nAnimals: Duck, Hen, Cow, Cat, Dog\nYoung ones: Kitten, Calf, Puppy, Duckling, Chick",
+              "question_bank": [
+                {
+                  "stem": "Match each animal with its young one.",
+                  "type": "MATCH",
+                  "table": "Animal|Young one\nDuck|Duckling\nHen|Chick\nCow|Calf\nCat|Kitten\nDog|Puppy",
+                  "page_ref": "p.3"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "section_id": "B",
+      "title": "Colours",
+      "type": "poem",
+      "page_range": "p.4-14",
+      "char_count": 155,
+      "poem_text": "You have a few crayons,\nRed, yellow and blue.\nGreen, purple and black,\nI have some too.\n\nI need the red\nand you need the black.\nIf we share our crayons,\nwe have a full pack!",
+      "poem_appreciation_summary": "This short two-stanza poem is built around the idea of sharing. Two children each have a partial set of crayons; neither has all the colours, but together they have a full pack. The tone is cheerful and matter-of-fact, suited to young learners. Colour words are the central imagery, doubling as a vocabulary scaffold. The dominant device is contrast — 'you have' versus 'I have' — resolved joyfully by the act of sharing. The poem connects naturally to the picture story's theme of friendship and mutual help, and its simple rhythm makes it ideal for classroom recitation.",
+      "spines": {
+        "reading": {
+          "section_name": "Let us think — A",
+          "tasks_verbatim": [
+            {
+              "task_text": "A. Answer the questions. Write your answer in the given space.\n1. How many children are there in the poem?\n2. Why did the children want to share the crayons?\n3. How can the children in the poem have a full pack?",
+              "question_bank": [
+                {
+                  "stem": "How many children are there in the poem?",
+                  "type": "SCR",
+                  "page_ref": "p.5"
+                },
+                {
+                  "stem": "Why did the children want to share the crayons?",
+                  "type": "SCR",
+                  "page_ref": "p.5"
+                },
+                {
+                  "stem": "How can the children in the poem have a full pack?",
+                  "type": "SCR",
+                  "page_ref": "p.5"
+                }
+              ]
+            }
+          ]
+        },
+        "oracy": {
+          "section_name": "Let us think — B + Let us speak — B",
+          "tasks_verbatim": [
+            {
+              "task_text": "B. Think and say.\n1. The children in the poem shared their crayons. Do you share anything with your friends? What do you share?\n2. You have only green, blue and red crayons. Talk in pairs what you would want to draw.\n3. Now you have blue, green, red, yellow, brown and orange crayons. What can you draw? Draw here:",
+              "question_bank": [
+                {
+                  "stem": "The children in the poem shared their crayons. Do you share anything with your friends? What do you share?",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.5"
+                },
+                {
+                  "stem": "You have only green, blue and red crayons. Talk in pairs what you would want to draw.",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.5"
+                },
+                {
+                  "stem": "Now you have blue, green, red, yellow, brown and orange crayons. What can you draw? Draw here:",
+                  "type": "WRITING_TASK",
+                  "page_ref": "p.5"
+                }
+              ]
+            },
+            {
+              "task_text": "B. Have fun! Here is a fun task for you! Look at the words. Read out the COLOUR but not the words. For example: The word 'yellow' is written in green colour, so you should read YELLOW as GREEN instead of YELLOW for the first word.\nYELLOW  BLUE  ORANGE\nBLACK  RED  GREEN\nPURPLE  YELLOW  RED\nBLUE  ORANGE  BLACK",
+              "question_bank": [
+                {
+                  "stem": "Read out the colour of the ink for each word, not the word itself.",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.7"
+                }
+              ]
+            }
+          ]
+        },
+        "vocabulary_phonics_word_play": {
+          "section_name": "Let us think — item 4 + Let us speak — A + Let us learn — A, B, C + alphabetical order",
+          "tasks_verbatim": [
+            {
+              "task_text": "4. Rearrange the letters to find the hidden colour.\na) LEBU\nb) LYLEWO\nc) RENEG\nd) RUPPEL\ne) NROBW",
+              "question_bank": [
+                {
+                  "stem": "Rearrange the letters: LEBU",
+                  "type": "FILL_IN",
+                  "page_ref": "p.6"
+                },
+                {
+                  "stem": "Rearrange the letters: LYLEWO",
+                  "type": "FILL_IN",
+                  "page_ref": "p.6"
+                },
+                {
+                  "stem": "Rearrange the letters: RENEG",
+                  "type": "FILL_IN",
+                  "page_ref": "p.6"
+                },
+                {
+                  "stem": "Rearrange the letters: RUPPEL",
+                  "type": "FILL_IN",
+                  "page_ref": "p.6"
+                },
+                {
+                  "stem": "Rearrange the letters: NROBW",
+                  "type": "FILL_IN",
+                  "page_ref": "p.6"
+                }
+              ]
+            },
+            {
+              "task_text": "A. Say aloud. This is a green crayon. The word green begins with 'gr'. The word crayon begins with 'cr'. Now say these words aloud:\ngr: green, grey, grass, grapes, grandmother\ncr: crayon, crab, crane, crow, cradle\ndr: draw, drum, dress, drop, dragon\npr: prince, princess, prize, pray, present\nForm a sentence using each of these words and say it aloud.",
+              "question_bank": [
+                {
+                  "stem": "Say each consonant-cluster word aloud and form a sentence using it.",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.6"
+                }
+              ]
+            },
+            {
+              "task_text": "A. Words used to show actions are called action words. Read the words given below. Circle the action words.\ncarrot, laugh, dance, leg, eat, cry, swim, potato, sleep, play, sun, dig, jump, run, book, face, write, cat, smile, push",
+              "question_bank": [
+                {
+                  "stem": "Circle the action words from the list: carrot, laugh, dance, leg, eat, cry, swim, potato, sleep, play, sun, dig, jump, run, book, face, write, cat, smile, push.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.7"
+                }
+              ]
+            },
+            {
+              "task_text": "B. Find the action words in the grid below. One is done for you.\nWords to find: walk, yawn, pour, cough, give, see, open, help",
+              "question_bank": [
+                {
+                  "stem": "Find and circle each action word in the grid: walk, yawn, pour, cough, give, see, open, help.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.8"
+                }
+              ],
+              "visual_stimulus": [
+                {
+                  "type": "grid",
+                  "count": 1,
+                  "brief_description": "8×8 letter grid containing hidden action words: walk, yawn, pour, cough, give, see, open, help.",
+                  "page_ref": "p.8"
+                }
+              ]
+            },
+            {
+              "task_text": "C. There are 26 letters in the English alphabet. They are: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z\nRead each sentence and notice the repeated letter.\nAnu eats an apple. (A) | Basu has a bat and a ball. (B) | Chandu likes cabbage and carrots. (C) | Dinesh dances day and night. (D) | Esha enjoys an elephant ride. (E) | Faiz feeds a fish. (F) | Govind goes to get guavas. (G) | Hari helps Hemant. (H) | I like ice-cream. (I) | Jack just jumps down. (J) | Kavita keeps the kittens on her knees. (K) | Lata loves lemonade. (L) | Madhav mixes milk and mango pulp. (M) | Navneet writes his name on new notebooks. (N) | Om opens a box of oranges. (O) | Prema puts a pencil in her pocket. (P) | Queue up quietly. (Q) | Radha rolls the red ribbon. (R) | Six sparrows sit on a sack. (S) | The teacher tells a tale. (T) | Usha uses an umbrella. (U) | Vishnu visits a village in a van. (V) | We see a watchman near the white wall. (W) | X is the last letter in ox, fox and box. (X) | Yasmeen and Yana are friends. (Y) | Zebras graze in the zoo. (Z)",
+              "question_bank": [
+                {
+                  "stem": "Read each alphabet sentence aloud and notice the repeated letter.",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.8-12"
+                }
+              ]
+            },
+            {
+              "task_text": "Let us arrange some words in alphabetical order. Now, write these colours in alphabetical order: YELLOW, BLUE, PURPLE, GREEN, RED",
+              "question_bank": [
+                {
+                  "stem": "Write the colours YELLOW, BLUE, PURPLE, GREEN, RED in alphabetical order.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.13"
+                }
+              ]
+            }
+          ]
+        },
+        "beyond_text": {
+          "section_name": "Let us do",
+          "tasks_verbatim": [
+            {
+              "task_text": "You all have friends, don't you? Like you, words also have friends. Look at these words. Match each word with its friend-word. Write the new word in the space given. The picture clue will help you. One has been done for you:\nrain + paper = ___\nblue + ball = ___\nnews + bow = rainbow (done)\nbasket + worm = ___\nearth + berry = ___",
+              "question_bank": [
+                {
+                  "stem": "Match each word with its friend-word to form a compound word.",
+                  "type": "MATCH",
+                  "table": "Word|Friend|New word\nrain|paper|\nblue|ball|\nnews|bow|rainbow\nbasket|worm|\nearth|berry|",
+                  "page_ref": "p.14"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "competency_reporting": {
+    "by_spine": {
+      "reading": [
+        "C-2.1",
+        "C-2.2"
+      ],
+      "oracy": [
+        "C-1.1",
+        "C-1.2",
+        "C-1.3"
+      ],
+      "vocabulary_phonics_word_play": [
+        "C-4.1",
+        "C-4.2"
+      ],
+      "beyond_text": [
+        "C-5.1",
+        "C-5.2"
+      ]
+    }
+  },
+  "effort_signals": {
+    "spine_load": 2,
+    "task_density": 1,
+    "writing_demand": 0,
+    "project_load": 1,
+    "effort_index": 6.5
+  }
+}

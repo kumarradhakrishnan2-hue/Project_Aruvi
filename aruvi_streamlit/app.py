@@ -98,9 +98,16 @@ def resolve_paths(grade: str, subject: str, chapter_number: int) -> dict:
     subj_f  = subject_to_folder(subject)
     mirror  = PROJECT_ROOT / "mirror"
     nn      = f"{chapter_number:02d}"
+    # Prefer stage-routed LP and assessment constitutions
+    # (`{subject}/{stage}/...txt`); fall back to the flat path for subjects
+    # that haven't been split by stage yet.
+    _lp_staged = mirror / f"constitutions/lesson_plan/{subj_f}/{stage}/lesson_plan_constitution.txt"
+    _lp_flat   = mirror / f"constitutions/lesson_plan/{subj_f}/lesson_plan_constitution.txt"
+    _ac_staged = mirror / f"constitutions/assessment/{subj_f}/{stage}/assessment_constitution.txt"
+    _ac_flat   = mirror / f"constitutions/assessment/{subj_f}/assessment_constitution.txt"
     return {
-        "lp_constitution":  mirror / f"constitutions/lesson_plan/{subj_f}/lesson_plan_constitution.txt",
-        "assessment_const": mirror / f"constitutions/assessment/{subj_f}/assessment_constitution.txt",
+        "lp_constitution":  _lp_staged if _lp_staged.exists() else _lp_flat,
+        "assessment_const": _ac_staged if _ac_staged.exists() else _ac_flat,
         "pedagogy":         mirror / f"framework/{subj_f}/{stage}/pedagogy_{stage}_{subj_f}.txt",
         # Mathematics and English summaries are .json (structured for LP/A
         # constitutions); all others are plain .txt.
