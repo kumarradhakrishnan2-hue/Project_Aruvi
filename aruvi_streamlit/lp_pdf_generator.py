@@ -1572,10 +1572,12 @@ def _json_to_english_lp_data(j: dict, date_str: str, weight) -> dict:
     # Build ordered list: one entry per spine that has at least one c_code present
     # in _c_codes (the codes actually mapped for this chapter).
     _c_codes_set = set(_c_codes)
-    _spine_order = [
-        "reading_for_comprehension", "listening", "speaking",
-        "writing", "vocabulary_grammar", "beyond_text",
-    ]
+    _spine_order = (
+        ["oracy", "reading", "writing", "word_work", "beyond_text"]
+        if _stage == "preparatory"
+        else ["reading_for_comprehension", "listening", "speaking",
+              "writing", "vocabulary_grammar", "beyond_text"]
+    )
     eng_competencies = []
     for _sk in _spine_order:
         _sp = _spines_raw.get(_sk)

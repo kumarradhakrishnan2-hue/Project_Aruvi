@@ -22,7 +22,7 @@ wording. The one narrow exception is listening items in the oracy
 spine — see INPUTS below.
 
 The 5 prep-native spines (reading, oracy, writing,
-vocabulary_phonics_word_play, beyond_text) carry NCF compliance
+word_work, beyond_text) carry NCF compliance
 through the static spine→CG lookup. C-codes do not appear anywhere
 in the assessment JSON.
 
@@ -75,7 +75,7 @@ the LP handoff. A spine with zero contributions is OMITTED entirely
 — no note, no placeholder.
 
 Present spines are emitted in this fixed order (skip absent ones):
-  reading · oracy · writing · vocabulary_phonics_word_play · beyond_text
+  reading · oracy · writing · word_work · beyond_text
 
 Within each spine, items are ordered by `section_id` (A → B → C).
 
@@ -118,7 +118,7 @@ Required — items must draw on at least ONE of:
   - A specific line, image, or phrase from `poem_text`.
   - A speech-bubble line from `dialogue_text` (picture_narrative).
   - The vocabulary, phonics, or grammar concept as it appears in the
-    section (for vocabulary_phonics_word_play items: the concept
+    section (for word_work items: the concept
     MUST be named explicitly in the stem — e.g. "consonant blend
     'gr'", "action words", "compound words").
   - A specific writing prompt or communicative context from the
@@ -160,7 +160,7 @@ Default mapping by spine — pick the type that best fits the
                                   MCQ / TRUE_FALSE (sound discrimination,
                                   listen-and-judge)
   writing                       → WRITING_TASK · SCR
-  vocabulary_phonics_word_play  → FILL_IN · MATCH · MCQ · TRUE_FALSE ·
+  word_work  → FILL_IN · MATCH · MCQ · TRUE_FALSE ·
                                   ORAL_PROMPT (phonics drill, blend-and-say,
                                   sight-word read-aloud)
   beyond_text                   → PROJECT · ORAL_PROMPT (riddles,
@@ -257,7 +257,7 @@ Every item carries:
   - `source_section_type`   poem | prose | narrative | dialogue |
                             informational | picture_narrative
   - `source_spine`          reading | oracy | writing |
-                            vocabulary_phonics_word_play | beyond_text
+                            word_work | beyond_text
   - `source_lo`             the spine-cell `implied_lo` from the LP
                             handoff, copied verbatim
   - `source_context`        the `section_context` from the LP handoff,
@@ -370,7 +370,7 @@ ASSESSMENT JSON SCHEMA
   "assessment_items": [
     {
       "spine_code":  string,                  // reading | oracy | writing |
-                                              // vocabulary_phonics_word_play |
+                                              // word_work |
                                               // beyond_text
       "spine_title": string,                  // human-readable label
       "items": [

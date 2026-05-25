@@ -67,7 +67,11 @@ INPUTS
                                     informational sections)
      - `poem_text` and
        `poem_appreciation_summary` (poem sections)
-   These are the ONLY content sources for generated items.
+   These are the primary content sources for generated items. Exception:
+   when section_context names a skill type with no foothold in poem_text
+   (e.g. homophone pairs, spelling near-misses, word-ordering sets,
+   riddles), generate a fresh exercise instance of that skill type —
+   new examples only, themed around the poem's world where natural.
 
    THE GENERATOR DOES NOT READ from the summary:
      - `tasks_verbatim[]`   — forbidden; belongs to the LP
@@ -121,10 +125,11 @@ is specifically about. The two fields work together — neither alone
 is sufficient.
 
 Generation constraints:
-  a) The item MUST be grounded strictly in the section's content —
+  a) The item MUST be grounded in the section's content —
      `prose_summary` (for prose/narrative/dialogue/informational
      sections) or `poem_text` + `poem_appreciation_summary` (for
-     poem sections). No content from outside these fields.
+     poem sections). Exception: see INPUTS §2 for skill-type spines
+     where poem_text has no foothold for the section_context skill.
   b) The item MUST be original. It must not reproduce, paraphrase,
      or structurally echo any textbook exercise wording. Since the
      generator never reads tasks_verbatim[] or question_bank[],
@@ -163,11 +168,14 @@ REQUIRED — items must draw on at least ONE of:
     [word]", "simple past tense").
   - A specific writing prompt or communicative context drawn from
     the section's theme or content.
+  - A fresh exercise instance of the skill named in section_context,
+    using new examples themed around the poem's characters, objects,
+    or setting (applies when poem_text has no foothold for the skill).
 
 PROHIBITED:
   - Stems that could be answered without reading the section
     (e.g., "What is the main idea?" with no section-specific anchor).
-  - Stems recycled from textbook exercise wording.
+  - Stems recycled from textbook exercise wording or question_bank entries.
   - Grammar items that test the concept in isolation without
     connection to the section's language or content.
 

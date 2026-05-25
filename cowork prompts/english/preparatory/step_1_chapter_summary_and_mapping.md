@@ -6,7 +6,7 @@ Reads an English chapter PDF for the **Preparatory stage (Grades III–V)** and 
 
 Cowork reads PDFs and writes JSON directly. No API calls.
 
-**Shape.** Each chapter has 1–3 `main_sections` (a distinct text or visual narrative — `poem`, `prose`, `narrative`, `dialogue`, `informational`, or `picture_narrative`). Within each section, the 5 prep-native spines are: **Oracy**, **Reading**, **Writing**, **Vocabulary, Phonics & Word Play**, **Beyond-the-Text**. Competency mapping is static-by-stage (looked up from `spine_to_cg.json`), filtered to spines actually present, all weights = 1.
+**Shape.** Each chapter has 1–3 `main_sections` (a distinct text or visual narrative — `poem`, `prose`, `narrative`, `dialogue`, `informational`, or `picture_narrative`). Within each section, the 5 prep-native spines are: **Oracy**, **Reading**, **Writing**, **Word Work**, **Beyond-the-Text**. Competency mapping is static-by-stage (looked up from `spine_to_cg.json`), filtered to spines actually present, all weights = 1.
 
 Sibling of the middle/secondary prompt (`chapter_summary_competency_mapping_english.md`, 6-spine model). NCF treats prep and middle as distinct stages; the two prompts are intentionally separate. **Do not use this prompt for grade VI or above.**
 
@@ -60,12 +60,12 @@ Walk each main_section in textbook order. A spine may be fed by **multiple** tex
 | `oracy` | Let us Speak · Let us Listen · Let us Think (when oral) · Let us Recite (when oral repetition) |
 | `reading` | Picture Reading · Let us Read · Let us Recite (when silent/shared reading) · Let us Think (when written Q&A) |
 | `writing` | Let us Write |
-| `vocabulary_phonics_word_play` | Let us Learn (default) · Let us Speak (when phonics drill) |
+| `word_work` | Let us Learn (default) · Let us Speak (when phonics drill) |
 | `beyond_text` | Let us Do · Let us Explore · Just for Fun · Do You Know |
 
 Splits and overlaps:
 - "Let us Think" → `reading` if written ("Answer. Write in the given space"); → `oracy` if oral ("Think and say", "Talk in pairs").
-- "Let us Speak" → `oracy` for conversation; → `vocabulary_phonics_word_play` for phonics drills (sound blends, sight words, blend-and-decode).
+- "Let us Speak" → `oracy` for conversation; → `word_work` for phonics drills (sound blends, sight words, blend-and-decode).
 - "Let us Recite" is typically the **display** of the poem itself (no tasks); tasks follow under Let us Think / Let us Speak / etc.
 - For a `picture_narrative` section: the visual comprehension is `reading`; discussion tasks attached to it go under `oracy`.
 - For multi-subheading spines, do not collapse to the first subheading only — pull all matching tasks and join their subheadings in `section_name` with ` + ` in textbook order.
@@ -157,7 +157,7 @@ After computing, re-walk the JSON and confirm counts match actual array lengths.
 }
 ```
 
-- `primary`: walk present spines in canonical order (`oracy`, `reading`, `writing`, `vocabulary_phonics_word_play`, `beyond_text`), emit one entry per unique `c_code` from each spine's `competency_codes`, de-duplicating across spines (first occurrence wins). All weights = 1. English uses `effort_index`, not weights, for period allocation.
+- `primary`: walk present spines in canonical order (`oracy`, `reading`, `writing`, `word_work`, `beyond_text`), emit one entry per unique `c_code` from each spine's `competency_codes`, de-duplicating across spines (first occurrence wins). All weights = 1. English uses `effort_index`, not weights, for period allocation.
 - `spine_load`, `task_density`, `writing_demand`, `project_load`, `effort_index`: copy verbatim from the summary JSON's `effort_signals` block. Do not recompute.
 - `chapter_weight`: always `null` for English.
 - Two chapters share `primary` only when they share spine coverage.

@@ -621,12 +621,12 @@ def _build_lpa_prompts_english(
             '    "reading":                      { "section_contributions": [<contribution>] },\n'
             '    "oracy":                        { "section_contributions": [...] },\n'
             '    "writing":                      { "section_contributions": [...] },\n'
-            '    "vocabulary_phonics_word_play": { "section_contributions": [...] },\n'
+            '    "word_work": { "section_contributions": [...] },\n'
             '    "beyond_text":                  { "section_contributions": [...] }\n'
             '  }'
         )
-        _spine_code_enum  = "reading|oracy|writing|vocabulary_phonics_word_play|beyond_text"
-        _spine_title_enum = "Reading|Oracy|Writing|Vocabulary, Phonics & Word Play|Beyond the Text"
+        _spine_code_enum  = "reading|oracy|writing|word_work|beyond_text"
+        _spine_title_enum = "Reading|Oracy|Writing|Word Work|Beyond the Text"
         _qtype_enum       = "MCQ|SCR|MATCH|FILL_IN|TRUE_FALSE|ORAL_PROMPT|WRITING_TASK|PROJECT"
         _open_types_list  = "ORAL_PROMPT, WRITING_TASK, PROJECT, reflective SCR"
         _bullet_word_cap  = "8"
@@ -2724,7 +2724,7 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
             # Preparatory-stage spines (listening folded into oracy)
             "reading":                      "Encountering text and demonstrating comprehension at the preparatory stage.",
             "oracy":                        "Merged listening and speaking — recitation, conversation, sound discrimination.",
-            "vocabulary_phonics_word_play": "Phonics, sight words, vocabulary, word games, and grammar-in-context.",
+            "word_work": "Phonics, sight words, vocabulary, word games, and grammar-in-context.",
         }
         # Closed types render `teacher_guide.suggested_answer`; open types
         # render `teacher_guide.expected_elements` as bullets.

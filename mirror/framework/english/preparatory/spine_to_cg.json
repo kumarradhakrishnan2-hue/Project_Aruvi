@@ -1,7 +1,7 @@
 {
   "subject": "English",
   "stage": "preparatory",
-  "source": "Aruvi static lookup. Spines derived from NCF Languages CG (Section 2.4.1.1, Preparatory Stage) and NCF pedagogy for preparatory English (Section 2.6.1.1.1). 5 prep-native spines replace the middle-stage 6-spine model: Listening and Speaking are merged into Oracy (per NCF: 'Listening and speaking activities occur together'); Vocabulary/Grammar is expanded to Vocabulary, Phonics & Word Play (foundational decoding work at this stage). Per-chapter c_code emission is restricted to spines actually present in the chapter (see cowork prompt Step 8).",
+  "source": "Aruvi static lookup. Spines derived from NCF Languages CG (Section 2.4.1.1, Preparatory Stage) and NCF pedagogy for preparatory English (Section 2.6.1.1.1). 5 prep-native spines replace the middle-stage 6-spine model: Listening and Speaking are merged into Oracy (per NCF: 'Listening and speaking activities occur together'); Vocabulary/Grammar is expanded to Word Work (foundational decoding work at this stage). Per-chapter c_code emission is restricted to spines actually present in the chapter (see cowork prompt Step 8).",
   "notes_on_stretch": "Two prep CG outcomes don't fully cover the actual chapter content: (a) phonics, sound-blend drills, alphabet/sight-word work have no native prep CG home (CG-5 at prep is library use, not phonetics — the phonetics CG appears only at middle). We stretch phonics under C-4.1 (vocabulary through listening) since pronunciation is a facet of word knowledge. (b) Craft/puzzle/riddle tasks in Beyond-the-Text are not strictly library-use either. We stretch them under C-5.2 (interest in reading extends to interest-in-extension activities). Both stretches are flagged here for honesty; they keep the mapping NCF-grounded without inventing codes.",
   "spines": {
     "oracy": {
@@ -22,8 +22,8 @@
       "competency_codes": ["C-3.1", "C-3.2", "C-3.3", "C-3.4"],
       "notes": "Modelled → guided → independent progression. Outputs at prep are short: labels, captions, single sentences, picture-prompted SCRs, lists, simple paragraphs by Grade V, simple poems/dialogues. No ECR at prep."
     },
-    "vocabulary_phonics_word_play": {
-      "label": "Vocabulary, Phonics & Word Play",
+    "word_work": {
+      "label": "Word Work",
       "textbook_section_names": ["Let us Learn", "Let us Speak (when phonics drill)"],
       "competency_codes": ["C-4.1", "C-4.2"],
       "notes": "First-class home for phonics (sound blends, sight words, alphabet work), word-building, contextual prediction, spelling discrimination, crosswords, word search, riddles, and word games. Grammar appears in context only — never as isolated rules — and is tagged under C-3.4 (grammar in writing). Phonics tasks are stretched under C-4.1 (see notes_on_stretch)."

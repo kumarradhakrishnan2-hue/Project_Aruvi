@@ -216,6 +216,36 @@ Carry-forward rules:
 
 ---
 
+[Learning #26] — 2026-05-25 — English Assessment: Textbook Content Contamination in Poem Chapters
+
+Context: Grade V Ch 01 (Papa's Spectacles — a short poem) assessment generated for the first time. Assessment items across all five spines (Reading, Oracy, Writing, Word Work, Beyond Text) were found to reproduce textbook exercise content verbatim or near-verbatim — ascending-order word groups, spelling near-miss sets, homophone pairs, the onion riddle — all lifted directly from question_bank[] entries in the chapter summary JSON.
+
+Observation: The May 2026 English VII fix (commit 0f59c23) that banned tasks_verbatim[] / question_bank[] via prompt instruction alone worked for VII because VII Ch 01 is a prose chapter with a 1,989-character prose_summary. The model anchored to that rich content naturally. Grade V Ch 01 is a short poem — poem_text is only 407 characters and poem_appreciation_summary is 730 characters. For Word Work, Oracy, and Beyond Text spines, the section_context in the coverage_handoff describes skills (ascending-order logic, homophone discrimination, riddle solving) that have no foothold in the poem text itself. Facing thin legitimate content, the model reached for the ready-made question_bank[] content despite explicit prohibition.
+
+Root cause: Two distinct problems:
+(1) Poem text too thin to support skill-type spines — for Oracy/Word Work/Beyond Text, the LP taught textbook exercises completely detached from the poem. No amount of prompt instruction can make the model generate from poem_text when poem_text has no relevant content for those skills.
+(2) Even for Reading and Writing where poem_text is sufficient, the model still copied textbook framing because question_bank[] was visible in context — the path of least resistance.
+The core principle: you cannot reliably instruct a model to ignore data that is sitting in its context window.
+
+Constitution fix: Four minimal edits to English Assessment Constitution (middle) v3.1:
+- INPUTS §2: "ONLY" → "primary" + exception clause for skill-type spines with no poem foothold
+- Rule 2a: removed "strictly", added pointer to INPUTS §2 exception
+- Rule 3 REQUIRED: added sixth bullet for fresh skill-type exercise instances themed around the poem world
+- Rule 3 PROHIBITED: added "or question_bank entries" to the recycled-wording prohibition
+Constitution fix alone was insufficient — model still contaminated because forbidden fields remained visible.
+
+Definitive fix (confirmed by test): Strip tasks_verbatim[] and question_bank[] from the summary JSON in memory before building the assessment prompt. Tested by temporarily stripping the summary file — output was clean across all five spines. The model generated original items: fresh homophone pairs, new word-ordering sets, new spelling examples, a new riddle, all themed around the poem's world.
+
+Pending permanent fix: `generate_assessment_only()` in app.py must strip tasks_verbatim and question_bank from the summary dict before passing it as `_static_user_text`. ~10-line addition, no architectural change. Also applies to `build_english_prompts()` for the combined LPA path.
+
+Carry-forward rules:
+- Constitution prohibitions alone cannot override data the model can see. If a field must not influence output, strip it from the prompt — do not rely on instruction.
+- Short poem chapters (single section, thin poem_text) are the highest-risk case. Prose chapters with rich prose_summary are naturally safer.
+- The strip must happen in both assessment paths: generate_assessment_only() (deferred) and build_english_prompts() (combined LPA).
+- After stripping, the model correctly falls back to: section_context (skill type) + implied_lo (cognitive demand) + poem_text/poem_appreciation_summary (thematic anchor) — which is exactly the intended design.
+
+---
+
 [Learning #24] — 2026-05-21 — SS Assessment: Competency-LO Coherence Constraint
 
 Context: Audit of saved plans SS VIII Ch 03, Ch 04, Ch 05 examining LP→Assessment coherence.

@@ -1,0 +1,670 @@
+{
+  "filename": "ch_01_20260525_165845.json",
+  "saved_at": "2026-05-25T16:58:45",
+  "grade": "Grade V",
+  "subject": "English",
+  "chapter_number": 1,
+  "chapter_title": "Papa's Spectacles",
+  "period_schedule_display": "Period schedule:\n  Row 1: 40 minutes × 1 period = 40 minutes\nTotal: 1 periods · 40 minutes",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 40,
+      "count": 1
+    }
+  ],
+  "plan_status": "full_lpa",
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 35,
+          "section_id": "A",
+          "section_title": "Papa's Spectacles",
+          "spines_taught": [
+            "reading"
+          ],
+          "activity_title": "Meet the Poem — Read-Aloud and First Response",
+          "pedagogical_methods": {
+            "reading": "read-aloud"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading",
+              "task_index": 0,
+              "task_brief": "Let us Recite — read poem aloud with class"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–3",
+              "description": "Teacher invites students to look at the illustrations on p.1 and predict what the poem might be about. Students share one-word or one-phrase guesses aloud."
+            },
+            {
+              "minutes": "3–10",
+              "description": "Teacher reads 'Papa's Spectacles' aloud twice with expression and gesture, pausing at the comic reveal in the final stanza. Students track the text in their textbooks (p.1)."
+            },
+            {
+              "minutes": "10–18",
+              "description": "Choral reading: class reads the poem together twice, teacher models the bouncy four-beat rhythm. Students are encouraged to add hand gestures for each 'He can't…' line."
+            },
+            {
+              "minutes": "18–26",
+              "description": "Paired repeated reading: partners take turns reading two stanzas each while the other listens. Teacher circulates, noting fluency and intonation."
+            },
+            {
+              "minutes": "26–31",
+              "description": "Quick picture walk of the five illustrations (p.1): teacher points to each image and asks 'What is Papa doing here?' — students respond in one sentence."
+            },
+            {
+              "minutes": "31–35",
+              "description": "Teacher closes by asking 'What is funny about this poem?' and accepts two or three brief responses to warm up comprehension for the next period."
+            }
+          ],
+          "teacher_notes": "The poem's humour depends on the build-up of repeated 'He can't…' and 'He checked… He glanced… He searched…' lines; use exaggerated gestures to highlight the anaphora before the cheerful reveal. Students who rush through the rhythm may lose the comedic effect — model the bouncy four-beat pattern deliberately. Next period will move into comprehension questions (Let us Think A).",
+          "materials": [
+            "Textbook pp. 1–2",
+            "Blackboard / whiteboard for key words"
+          ]
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 35,
+          "section_id": "A",
+          "section_title": "Papa's Spectacles",
+          "spines_taught": [
+            "reading"
+          ],
+          "activity_title": "Comprehension Discussion — Let us Think A",
+          "pedagogical_methods": {
+            "reading": "comprehension-discussion"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading",
+              "task_index": 1,
+              "task_brief": "Let us Think A — three comprehension questions"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–3",
+              "description": "Brief re-recite: class reads the poem aloud once together as a warm-up, maintaining the rhythm practised in Period 1."
+            },
+            {
+              "minutes": "3–10",
+              "description": "Teacher poses Let us Think A, Question 1 ('What is Papa searching for?') as an open question; students find the answer in the poem text and respond in a full sentence. Teacher writes the model answer on the board."
+            },
+            {
+              "minutes": "10–18",
+              "description": "Teacher poses Question 2 ('What are the possible places where Papa can find it?') and invites students to list the places mentioned in the poem. Class cross-checks answers against lines 9–12."
+            },
+            {
+              "minutes": "18–26",
+              "description": "Teacher poses Question 3 ('At last, where does Papa find his lost item?') and asks students to quote the exact lines from the poem. Discuss why the ending is surprising and funny."
+            },
+            {
+              "minutes": "26–32",
+              "description": "Students write answers to all three questions in their notebooks in full sentences. Teacher circulates and provides brief individual feedback on sentence construction."
+            },
+            {
+              "minutes": "32–35",
+              "description": "Two students read their written answers aloud; class suggests one improvement per answer. Teacher previews the oracy discussion activity coming in the next period."
+            }
+          ],
+          "teacher_notes": "Students may list only one place for Question 2; prompt them to scan all four stanzas systematically so they capture pockets, chair, and window. The irony in the final stanza (spectacles on the head) is central to the poem's theme — ensure students articulate the surprise in their own words rather than just quoting. This period completes the reading spine for Section A.",
+          "materials": [
+            "Textbook pp. 1–2",
+            "Notebooks",
+            "Blackboard"
+          ]
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 40,
+          "section_id": "A",
+          "section_title": "Papa's Spectacles",
+          "spines_taught": [
+            "oracy"
+          ],
+          "activity_title": "Think and Discuss — Chores, Gratitude, and Words for Father",
+          "pedagogical_methods": {
+            "oracy": "guided-conversation"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "oracy",
+              "task_index": 0,
+              "task_brief": "Let us Think B — chores, papa's happiness, misplaced-things tables"
+            },
+            {
+              "spine": "oracy",
+              "task_index": 1,
+              "task_brief": "Let us Speak — words for 'father' across languages"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–4",
+              "description": "Teacher recaps the poem's theme: Papa could not do any chores without his spectacles. Teacher asks 'Can you name one chore Papa struggled with?' to bridge from Period 2."
+            },
+            {
+              "minutes": "4–12",
+              "description": "Guided conversation on Let us Think B, Q1: students brainstorm other chores that would be difficult without spectacles (e.g., threading a needle, reading medicine labels). Teacher lists responses on the board."
+            },
+            {
+              "minutes": "12–18",
+              "description": "Guided conversation on Let us Think B, Q2: students share what makes their papa happy, building personal connections to the poem's affectionate tone. Three or four students share; teacher affirms and extends."
+            },
+            {
+              "minutes": "18–28",
+              "description": "Students complete the two misplaced-things tables (home and school) in pairs in their notebooks, then discuss orally: 'How would you express gratitude to the person who helped?' Each pair shares one sentence of thanks with the class."
+            },
+            {
+              "minutes": "28–36",
+              "description": "Let us Speak activity: teacher asks students to say aloud the word they use for 'father' in their home language. Students call out words; teacher writes them on the board and the class reads them together. Students copy the list into notebooks."
+            },
+            {
+              "minutes": "36–40",
+              "description": "Whole-class share: students say one new word for 'father' they learned today. Teacher previews the listening task for the next period."
+            }
+          ],
+          "teacher_notes": "The gratitude conversation in the table activity draws on the poem's tender domestic theme — accept all forms of thanks (a hug, a thank-you card, helping back) so students feel their home experiences are valid. For the multilingual words-for-father activity, note that some students may be unfamiliar with the word in their heritage language; allow 'I don't know yet' as an acceptable answer and treat it as a homework inquiry. Next period focuses on the homophone listening task.",
+          "materials": [
+            "Textbook pp. 2–3",
+            "Notebooks",
+            "Blackboard"
+          ]
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 30,
+          "section_id": "A",
+          "section_title": "Papa's Spectacles",
+          "spines_taught": [
+            "oracy"
+          ],
+          "activity_title": "Listen and Encircle — Homophone Sound Pairs",
+          "pedagogical_methods": {
+            "oracy": "listen-and-respond"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "oracy",
+              "task_index": 2,
+              "task_brief": "Let us Listen — encircle sound-different word pairs"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–3",
+              "description": "Teacher writes two pairs on the board — 'sun / son' and 'bed / bad' — and asks students 'Do these words sound the same or different?' This primes the ear-discrimination skill needed for the task."
+            },
+            {
+              "minutes": "3–8",
+              "description": "Teacher explains the task: 'I will read pairs of words. If the two words in a pair sound different, encircle the pair in your textbook (p.8). If they sound the same, leave it.' Teacher reads the first two pairs slowly as a demonstration."
+            },
+            {
+              "minutes": "8–20",
+              "description": "Teacher reads all 16 pairs aloud from the transcript (p.8), each pair repeated 3–4 times with a clear pause between words. Students listen and encircle pairs where the words sound different."
+            },
+            {
+              "minutes": "20–25",
+              "description": "Teacher reads pairs again; class calls out 'same' or 'different' chorally for each pair. Teacher confirms correct answers and explains any tricky pairs (e.g., 'cold / could' — same vowel sound but different consonant endings)."
+            },
+            {
+              "minutes": "25–30",
+              "description": "Students count how many pairs they encircled and compare with a partner. Teacher briefly previews the vocabulary tasks coming in the next period."
+            }
+          ],
+          "teacher_notes": "The 30-minute period is tight; do not slow down the read-aloud phase beyond 3–4 repetitions per pair. Watch for confusion between 'knot / not' (same sound) and 'knot / note' (different) — the silent-k pairs are the most common pitfall at this level. Next period opens the word_work spine with the ascending-order task.",
+          "materials": [
+            "Textbook p. 8",
+            "Notebooks or textbook for encircling"
+          ]
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 40,
+          "section_id": "A",
+          "section_title": "Papa's Spectacles",
+          "spines_taught": [
+            "word_work"
+          ],
+          "activity_title": "Word Work — Ordering, Pairs, and Spelling Drill",
+          "pedagogical_methods": {
+            "word_work": "word-building"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "word_work",
+              "task_index": 0,
+              "task_brief": "Let us Learn A — ascending-order word grouping"
+            },
+            {
+              "spine": "word_work",
+              "task_index": 1,
+              "task_brief": "Let us Learn B — 'a pair of' phrase completion with pictures"
+            },
+            {
+              "spine": "word_work",
+              "task_index": 2,
+              "task_brief": "Let us Learn C — encircle correctly spelt word"
+            }
+          ],
+          "homework": [
+            {
+              "spine": "word_work",
+              "task_index": 3,
+              "task_brief": "Let us Learn D — preposition fill-in story (self-study)"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Teacher introduces Let us Learn A by modelling the first set on the board: 'Which is smallest — a handkerchief or a bedsheet?' Students answer and teacher explains ascending order (smallest/lightest first)."
+            },
+            {
+              "minutes": "5–15",
+              "description": "Students complete all five groups of Let us Learn A in their notebooks, then write their own two examples. Two students share examples with the class and explain their reasoning."
+            },
+            {
+              "minutes": "15–22",
+              "description": "Teacher holds up the textbook to show the pictures on p.4 (Let us Learn B) and elicits 'What do you see?' before students fill in the blanks. Students complete all seven 'a pair of ___' phrases using the picture clues."
+            },
+            {
+              "minutes": "22–30",
+              "description": "Let us Learn C: teacher reads the three spelling options aloud for item 1 ('watter / water / weter') and students identify the correct spelling together. Students then complete items 2–10 independently and check with a partner."
+            },
+            {
+              "minutes": "30–37",
+              "description": "Class review of Let us Learn C: teacher calls random students to say the correct spelling and spell it aloud letter by letter. Teacher highlights the rule for double-letter traps (balloon, elephant, vegetables)."
+            },
+            {
+              "minutes": "37–40",
+              "description": "Teacher sets homework: Let us Learn D (preposition story, p.6) as self-study, reminding students to use the word bank given. Teacher previews the crossword puzzle and writing task for the final period."
+            }
+          ],
+          "teacher_notes": "In the ascending-order task, students may confuse size with weight for animals (e.g., placing a crow before a sparrow by size alone); accept reasonable justifications but guide them to focus on the criterion given. Let us Learn D (prepositions) and Let us Learn E (crossword) are not anchored in class due to the period budget — D is set as homework and E is flagged as an independent self-study activity students may attempt at home or during library time. Next period covers writing and beyond_text.",
+          "materials": [
+            "Textbook pp. 3–7",
+            "Notebooks",
+            "Blackboard"
+          ]
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 35,
+          "section_id": "A",
+          "section_title": "Papa's Spectacles",
+          "spines_taught": [
+            "writing",
+            "beyond_text"
+          ],
+          "activity_title": "Poem to Story — Drafting and Just for Fun",
+          "pedagogical_methods": {
+            "writing": "modelled-writing",
+            "beyond_text": "riddles-and-puzzles"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "writing",
+              "task_index": 0,
+              "task_brief": "Let us Write — retell poem as a short story"
+            },
+            {
+              "spine": "beyond_text",
+              "task_index": 3,
+              "task_brief": "Just for Fun — onion riddle"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Teacher briefly recaps the poem's four stanzas using the board. Teacher asks 'If this poem were a story, what would the first sentence be?' and writes the starter 'Today, my father is unhappy…' on the board."
+            },
+            {
+              "minutes": "5–14",
+              "description": "Modelled writing: teacher thinks aloud and writes sentence 2 on the board ('He could not find his spectacles anywhere.'), demonstrating how to expand the poem's second stanza into prose. Class contributes ideas for sentence 3 together."
+            },
+            {
+              "minutes": "14–26",
+              "description": "Students independently write their story of 4–6 sentences in their notebooks, following the poem's sequence. Teacher circulates and gives brief oral feedback on sentence structure and story order."
+            },
+            {
+              "minutes": "26–30",
+              "description": "Two students share their stories with the class; the class identifies one thing they liked and one suggestion. Teacher collects a quick show of hands: 'Who ended with the funny reveal?' to reinforce story structure."
+            },
+            {
+              "minutes": "30–35",
+              "description": "Beyond-text closure: teacher reads the 'Just for Fun' riddle aloud (p.10) with dramatic pauses. Students guess in pairs, then reveal the answer (an onion). Teacher invites students to bring one riddle from home for the next English lesson."
+            }
+          ],
+          "teacher_notes": "The writing task asks students to retell the poem as a story, so the sequence from the poem (searching → revelation) must be preserved — remind students to use the poem as a checklist as they write. Beyond-text activities A (matchstick puzzle) and B (optical illusion) on p.9 are not anchored in class due to time; flag them in the teacher's resource folder as enrichment tasks for early finishers or a fun Friday slot. The riddle makes an effective, low-pressure closure that sustains the chapter's playful tone.",
+          "materials": [
+            "Textbook pp. 1–2 (poem reference)",
+            "Textbook p. 10 (riddle)",
+            "Notebooks",
+            "Blackboard"
+          ]
+        }
+      ]
+    },
+    "coverage_handoff": {
+      "reading": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Papa's Spectacles",
+            "section_type": "poem",
+            "implied_lo": "Student identifies literal details and explains the comic irony of a situation using a humorous narrative poem as the vehicle.",
+            "section_context": "Humorous poem; father searches for spectacles already on his head.",
+            "tasks_anchored": [
+              {
+                "spine": "reading",
+                "task_index": 0,
+                "task_brief": "Let us Recite — read poem aloud with class"
+              },
+              {
+                "spine": "reading",
+                "task_index": 1,
+                "task_brief": "Let us Think A — three comprehension questions"
+              }
+            ]
+          }
+        ]
+      },
+      "oracy": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Papa's Spectacles",
+            "section_type": "poem",
+            "implied_lo": "Student participates in guided conversation, expresses gratitude, and discriminates between same-sounding and differently-sounding word pairs using a poem as the vehicle.",
+            "section_context": "Domestic chores discussion, gratitude tables, multilingual father-words, homophone pairs.",
+            "tasks_anchored": [
+              {
+                "spine": "oracy",
+                "task_index": 0,
+                "task_brief": "Let us Think B — chores, papa's happiness, misplaced-things tables"
+              },
+              {
+                "spine": "oracy",
+                "task_index": 1,
+                "task_brief": "Let us Speak — words for 'father' across languages"
+              },
+              {
+                "spine": "oracy",
+                "task_index": 2,
+                "task_brief": "Let us Listen — encircle sound-different word pairs"
+              }
+            ]
+          }
+        ]
+      },
+      "writing": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Papa's Spectacles",
+            "section_type": "poem",
+            "implied_lo": "Student retells a poem as a sequenced short prose story using a narrative poem as the vehicle.",
+            "section_context": "Poem-to-story retelling; father searching for spectacles; 4–6 sentences.",
+            "tasks_anchored": [
+              {
+                "spine": "writing",
+                "task_index": 0,
+                "task_brief": "Let us Write — retell poem as a short story"
+              }
+            ]
+          }
+        ]
+      },
+      "word_work": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Papa's Spectacles",
+            "section_type": "poem",
+            "implied_lo": "Student applies word-ordering logic, identifies collocations with 'pair of', and selects correctly spelt words from near-miss options using vocabulary tasks as the vehicle.",
+            "section_context": "Ascending-order word groups, 'a pair of' phrases, correct-spelling identification.",
+            "tasks_anchored": [
+              {
+                "spine": "word_work",
+                "task_index": 0,
+                "task_brief": "Let us Learn A — ascending-order word grouping"
+              },
+              {
+                "spine": "word_work",
+                "task_index": 1,
+                "task_brief": "Let us Learn B — 'a pair of' phrase completion with pictures"
+              },
+              {
+                "spine": "word_work",
+                "task_index": 2,
+                "task_brief": "Let us Learn C — encircle correctly spelt word"
+              }
+            ]
+          }
+        ]
+      },
+      "beyond_text": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Papa's Spectacles",
+            "section_type": "poem",
+            "implied_lo": "Student solves a language riddle and explains the reasoning behind the answer using a riddle-and-puzzle activity as the vehicle.",
+            "section_context": "Onion riddle; playful language puzzle connected to the poem's humorous tone.",
+            "tasks_anchored": [
+              {
+                "spine": "beyond_text",
+                "task_index": 3,
+                "task_brief": "Just for Fun — onion riddle"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "assessment_items": [
+      {
+        "spine_code": "reading",
+        "spine_title": "Reading",
+        "items": [
+          {
+            "id": "Q-READ-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Papa's Spectacles",
+            "source_section_type": "poem",
+            "source_spine": "reading",
+            "source_lo": "Student identifies literal details and explains the comic irony of a situation using a humorous narrative poem as the vehicle.",
+            "source_context": "Humorous poem; father searches for spectacles already on his head.",
+            "item_stem": "Read the statements below and write True or False. Give one reason from the poem for each answer.\n1. Papa could not watch TV because the TV was broken.\n2. Papa searched for his spectacles in his pockets, under his chair, and near the window.\n3. It was a stranger who told Papa where his spectacles were.\n4. The funny part of the poem is that Papa's spectacles were on his head all along.",
+            "question_type": "TRUE_FALSE",
+            "options": [
+              {
+                "label": "1",
+                "text": "Papa could not watch TV because the TV was broken.",
+                "is_correct": false
+              },
+              {
+                "label": "2",
+                "text": "Papa searched for his spectacles in his pockets, under his chair, and near the window.",
+                "is_correct": true
+              },
+              {
+                "label": "3",
+                "text": "It was a stranger who told Papa where his spectacles were.",
+                "is_correct": false
+              },
+              {
+                "label": "4",
+                "text": "The funny part of the poem is that Papa's spectacles were on his head all along.",
+                "is_correct": true
+              }
+            ],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "1. False — Papa could not watch TV because he had lost his spectacles, not because the TV was broken. 2. True — The poem says 'He checked inside his pockets, He glanced under his chair, He searched near the window.' 3. False — It was his own child who told him, saying 'I told him, Stop, Papa!' 4. True — The irony is that the spectacles were right on his head the whole time, which is what makes the poem funny.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "spine_code": "oracy",
+        "spine_title": "Oracy",
+        "items": [
+          {
+            "id": "Q-ORACY-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Papa's Spectacles",
+            "source_section_type": "poem",
+            "source_spine": "oracy",
+            "source_lo": "Student participates in guided conversation, expresses gratitude, and discriminates between same-sounding and differently-sounding word pairs using a poem as the vehicle.",
+            "source_context": "Domestic chores discussion, gratitude tables, multilingual father-words, homophone pairs.",
+            "item_stem": "Listen carefully as your teacher reads each pair of words aloud. Circle S if the two words sound the same, or D if they sound different.\n1. pair — pear\n2. head — had\n3. lost — last\n4. where — wear\n5. chair — cheer",
+            "question_type": "TRUE_FALSE",
+            "options": [
+              {
+                "label": "1",
+                "text": "pair — pear sound the same.",
+                "is_correct": true
+              },
+              {
+                "label": "2",
+                "text": "head — had sound the same.",
+                "is_correct": false
+              },
+              {
+                "label": "3",
+                "text": "lost — last sound the same.",
+                "is_correct": false
+              },
+              {
+                "label": "4",
+                "text": "where — wear sound the same.",
+                "is_correct": true
+              },
+              {
+                "label": "5",
+                "text": "chair — cheer sound the same.",
+                "is_correct": false
+              }
+            ],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "1. S — 'pair' and 'pear' are homophones; they sound the same. 2. D — 'head' and 'had' have different vowel sounds. 3. D — 'lost' and 'last' have different vowel sounds. 4. S — 'where' and 'wear' are homophones; they sound the same. 5. D — 'chair' and 'cheer' have different vowel sounds.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "spine_code": "writing",
+        "spine_title": "Writing",
+        "items": [
+          {
+            "id": "Q-WRITE-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Papa's Spectacles",
+            "source_section_type": "poem",
+            "source_spine": "writing",
+            "source_lo": "Student retells a poem as a sequenced short prose story using a narrative poem as the vehicle.",
+            "source_context": "Poem-to-story retelling; father searching for spectacles; 4–6 sentences.",
+            "item_stem": "The poem 'Papa's Spectacles' tells a funny story. Retell this story in your own words as a short paragraph of 4 to 6 sentences. Include what Papa was looking for, what he could not do without them, where he searched, and how his child helped him.",
+            "question_type": "WRITING_TASK",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Names what Papa lost and why he needs them.",
+                "Mentions at least two places Papa searched.",
+                "Ends with the child's discovery on Papa's head."
+              ],
+              "note": ""
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "spine_code": "word_work",
+        "spine_title": "Word Work",
+        "items": [
+          {
+            "id": "Q-WORD-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Papa's Spectacles",
+            "source_section_type": "poem",
+            "source_spine": "word_work",
+            "source_lo": "Student applies word-ordering logic, identifies collocations with 'pair of', and selects correctly spelt words from near-miss options using vocabulary tasks as the vehicle.",
+            "source_context": "Ascending-order word groups, 'a pair of' phrases, correct-spelling identification.",
+            "item_stem": "The poem talks about a 'pair' of spectacles. The phrase 'a pair of' is used for things that come in twos.\n\nPart A — Fill in the blank with the correct phrase using 'a pair of':\n1. Papa lost ______________ spectacles.\n2. She wore ______________ gloves to keep warm.\n3. He bought ______________ shoes for the trip.\n\nPart B — Circle the correctly spelt word in each group:\n4. (a) spektacles   (b) spectacles   (c) spectaclles\n5. (a) serching     (b) searchin     (c) searching\n6. (a) evrywhere    (b) everywhere   (c) everywher",
+            "question_type": "FILL_IN",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "Part A: 1. a pair of   2. a pair of   3. a pair of\nPart B: 4. (b) spectacles   5. (c) searching   6. (b) everywhere",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "spine_code": "beyond_text",
+        "spine_title": "Beyond Text",
+        "items": [
+          {
+            "id": "Q-BEY-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Papa's Spectacles",
+            "source_section_type": "poem",
+            "source_spine": "beyond_text",
+            "source_lo": "Student solves a language riddle and explains the reasoning behind the answer using a riddle-and-puzzle activity as the vehicle.",
+            "source_context": "Onion riddle; playful language puzzle connected to the poem's humorous tone.",
+            "item_stem": "In the poem, Papa searched and searched but could not find what was right on his head! Here is another puzzle for you.\n\nRead this riddle:\n'I have many layers. You peel me and peel me, but you never find a centre. I make you cry, but I am not sad. What am I?'\n\n(a) What is the answer to this riddle?\n(b) Write one sentence explaining how you figured out the answer.",
+            "question_type": "ORAL_PROMPT",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Correctly names the answer as an onion.",
+                "Refers to a clue from the riddle (layers, crying, no centre).",
+                "Explains reasoning in at least one clear sentence."
+              ],
+              "note": ""
+            },
+            "verified": true
+          }
+        ]
+      }
+    ],
+    "input_tokens": 12108,
+    "output_tokens": 5504,
+    "cost_inr": 10.9373,
+    "assess_input_tokens": 6308,
+    "assess_output_tokens": 2539,
+    "assess_cost_inr": 5.2448
+  }
+}

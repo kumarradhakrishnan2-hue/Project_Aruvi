@@ -890,7 +890,7 @@ def build_assessment_pdf(output_path, data):
             # Preparatory-stage spines (listening folded into oracy)
             "reading":                      "Reading",
             "oracy":                        "Oracy",
-            "vocabulary_phonics_word_play": "Vocabulary, Phonics & Word Play",
+            "word_work": "Word Work",
         }
         for spine_sec in items:
             if not isinstance(spine_sec, dict):

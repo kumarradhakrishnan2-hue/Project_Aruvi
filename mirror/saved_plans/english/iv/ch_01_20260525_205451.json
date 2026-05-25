@@ -1,0 +1,655 @@
+{
+  "filename": "ch_01_20260525_205451.json",
+  "saved_at": "2026-05-25T20:54:51",
+  "grade": "Grade IV",
+  "subject": "English",
+  "chapter_number": 1,
+  "chapter_title": "Together We Can",
+  "period_schedule_display": "Period schedule:\n  Row 1: 35 minutes × 2 periods = 70 minutes\nTotal: 2 periods · 1h 10min",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 35,
+      "count": 2
+    }
+  ],
+  "plan_status": "full_lpa",
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 35,
+          "section_id": "A",
+          "section_title": "Together We Can",
+          "spines_taught": [
+            "reading"
+          ],
+          "activity_title": "First Encounter: Read Aloud and Explore",
+          "pedagogical_methods": {
+            "reading": "read-aloud"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading",
+              "task_index": 0,
+              "task_brief": "Let us Think — A. Answer comprehension questions"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Teacher reads the poem aloud from Textbook pp. 1–2 with expression, pausing to let students hear the rhymes (tall/fall, sing/anything). Students follow along in their books and clap softly at each rhyming pair."
+            },
+            {
+              "minutes": "8–16",
+              "description": "Choral reading: the class reads the poem together twice, with the teacher modelling stress on 'Together', 'Teamwork', and 'joy'. Students note words or lines they find powerful."
+            },
+            {
+              "minutes": "16–28",
+              "description": "Teacher facilitates Let us Think — A, posing the two comprehension questions orally and inviting 2–3 student responses each before students write brief answers in their notebooks."
+            },
+            {
+              "minutes": "28–35",
+              "description": "Wrap-up: teacher asks students to identify the end-rhymes they heard and writes two rhyming pairs on the board, closing with a preview of the speaking activity in the next period."
+            }
+          ],
+          "teacher_notes": "The poem uses a chant-like rhythm; keep the read-aloud energetic to mirror its joyful, affirming tone. Students may confuse 'bond' and 'bound' — clarify 'bond of trust' using a simple class example. In the next period, students will move into guided conversation based on the poem's theme.",
+          "materials": [
+            "Textbook pp. 1–2",
+            "Blackboard/whiteboard"
+          ]
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 35,
+          "section_id": "A",
+          "section_title": "Together We Can",
+          "spines_taught": [
+            "oracy"
+          ],
+          "activity_title": "Think, Discuss, and Share Experiences",
+          "pedagogical_methods": {
+            "oracy": "guided-conversation"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "oracy",
+              "task_index": 0,
+              "task_brief": "Let us Think — B. Think and discuss four prompts"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–4",
+              "description": "Quick recite: students say the last couplet of the poem from memory ('Together we shine… joy's begun!') to re-activate the theme before speaking. Teacher briefly connects the theme of unity to today's discussion."
+            },
+            {
+              "minutes": "4–16",
+              "description": "Teacher poses the first two prompts from Let us Think — B ('What makes you feel joyful?' and 'Can you think of a good activity you can do together with a friend?') in a whole-class guided format, inviting 3–4 students to share and encouraging peers to respond with 'I agree because…' or 'I also feel…'"
+            },
+            {
+              "minutes": "16–28",
+              "description": "Teacher poses the remaining two prompts ('Have you ever lost a game? How did you feel?' and the team-leader scenario). Students first think for 1 minute silently, then share with a partner before 2–3 pairs report to the class."
+            },
+            {
+              "minutes": "28–35",
+              "description": "Class debrief: teacher draws out common ideas and writes three key words from the discussion (e.g. teamwork, trust, unity) on the board. Students copy these into their vocabulary sections as a bridge to the next lesson's word work."
+            }
+          ],
+          "teacher_notes": "The team-leader scenario prompt requires higher-order thinking — give quieter students the think-pair step before whole-class sharing. The poem's line 'Win or lose, we always share' can be referenced to anchor students who find the losing-game prompt uncomfortable. The next period opens word work on collective nouns.",
+          "materials": [
+            "Textbook p. 2",
+            "Blackboard/whiteboard"
+          ]
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 40,
+          "section_id": "A",
+          "section_title": "Together We Can",
+          "spines_taught": [
+            "oracy"
+          ],
+          "activity_title": "Bokali and Darsana: Partner Conversation Exchange",
+          "pedagogical_methods": {
+            "oracy": "role-play"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "oracy",
+              "task_index": 1,
+              "task_brief": "Let us Speak — Bokali & Darsana conversation exchange"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Teacher reads Bokali and Darsana's dialogue aloud from Textbook p. 3 once, then invites two volunteers to read the parts. Students identify the key idea: unity despite different traditions, food, and festivals."
+            },
+            {
+              "minutes": "5–15",
+              "description": "Teacher models the sentence frame ('Hello, I am ___. My favourite food is ___. My favourite festival is ___.') with a personal example, then students individually fill in their frames in writing before speaking."
+            },
+            {
+              "minutes": "15–30",
+              "description": "Students turn to the friend beside them and exchange the conversation using their completed frames, speaking 3–4 sentences each. Teacher circulates, offering prompt cards for students who need support, and listens to 3–4 pairs."
+            },
+            {
+              "minutes": "30–38",
+              "description": "Three or four pairs share their exchanges with the class. Teacher highlights diverse foods and festivals mentioned, reinforcing the poem's theme of unity through variety."
+            },
+            {
+              "minutes": "38–40",
+              "description": "Teacher previews the next period: 'We have spoken about togetherness — now we will learn words that name groups of things together.' Students close books in readiness."
+            }
+          ],
+          "teacher_notes": "Some students may be unfamiliar with each other's festivals; treat any moment of curiosity as a teachable unity opportunity, echoing the poem's theme. Keep the sentence frame visible on the board throughout the exchange activity. The unanchored beyond_text 'Do You Know' fact about honeybees and ants may be shared as a 2-minute verbal curiosity note at the end of any period as self-study reading.",
+          "materials": [
+            "Textbook p. 3",
+            "Sentence-frame strips or board display",
+            "Blackboard/whiteboard"
+          ]
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 35,
+          "section_id": "A",
+          "section_title": "Together We Can",
+          "spines_taught": [
+            "word_work"
+          ],
+          "activity_title": "Collective Nouns: Groups Have Names Too",
+          "pedagogical_methods": {
+            "word_work": "word-building"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "word_work",
+              "task_index": 0,
+              "task_brief": "Let us Learn — A. Collective nouns fill-in with picture cues"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–6",
+              "description": "Teacher introduces the concept of collective nouns by connecting to the poem: 'In our poem, we heard about a team — a team is a group. English has special names for different groups.' Teacher writes 'a bunch of keys' on the board and elicits why 'bunch' fits."
+            },
+            {
+              "minutes": "6–16",
+              "description": "Students open Textbook pp. 3–4. Teacher walks through the picture cues for items 1–4 (sticks, sheep, wolves, flowers), eliciting guesses before revealing the words from the box. Students write answers in their books."
+            },
+            {
+              "minutes": "16–26",
+              "description": "Students complete items 5–8 (trees, bees, boys, keys) in pairs using the word box, then compare answers with a neighbouring pair. Teacher invites pairs to share answers and writes all seven collective nouns on the board."
+            },
+            {
+              "minutes": "26–35",
+              "description": "Word-game consolidation: teacher calls out a collective noun (e.g. 'swarm') and students race to name the group it belongs to. Closes with a quick reminder that the next period covers prepositions using a map."
+            }
+          ],
+          "teacher_notes": "Students commonly confuse 'herd' (sheep) and 'pack' (wolves) — use the mental image of wolves 'packing together for a hunt' to distinguish them. The word box on pp. 3–4 is the primary scaffold; do not remove it during independent pair work at this grade level. The prepositions task in the next period requires the map on p. 5.",
+          "materials": [
+            "Textbook pp. 3–4",
+            "Blackboard/whiteboard"
+          ]
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 35,
+          "section_id": "A",
+          "section_title": "Together We Can",
+          "spines_taught": [
+            "word_work"
+          ],
+          "activity_title": "Position Words: Reading a Town Map",
+          "pedagogical_methods": {
+            "word_work": "grammar-in-context"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "word_work",
+              "task_index": 1,
+              "task_brief": "Let us Learn — B. Prepositions of place using town map"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–6",
+              "description": "Teacher opens Textbook p. 5 and leads a map-walk: 'Let us look at our town — I can see a hospital, a bank, a school. Where are they?' Students name buildings they can spot, using informal positional language."
+            },
+            {
+              "minutes": "6–14",
+              "description": "Teacher introduces the four position words (behind, between, near, in front of) by pointing to the map and demonstrating: 'The bank is near the school — near means close to.' Students repeat each phrase chorally."
+            },
+            {
+              "minutes": "14–26",
+              "description": "Students complete the four fill-in sentences individually using the word box, then exchange books with a partner to check. Teacher reads correct answers aloud and students self-correct."
+            },
+            {
+              "minutes": "26–35",
+              "description": "Students invent one original sentence describing the map using a position word not used in the task (e.g. 'The park is next to the bookstore.'). Two or three students share aloud, and teacher writes the best examples on the board."
+            }
+          ],
+          "teacher_notes": "Between requires exactly two reference points — reinforce this with the ambulance sentence as a clear model. Students may translate directly from their home language and write 'in back of' instead of 'behind'; correct gently in context. Writing practice begins in the next period using picture-prompted scenes.",
+          "materials": [
+            "Textbook p. 5",
+            "Blackboard/whiteboard"
+          ]
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 40,
+          "section_id": "A",
+          "section_title": "Together We Can",
+          "spines_taught": [
+            "writing"
+          ],
+          "activity_title": "Picture-Prompted Writing: Acts of Helping",
+          "pedagogical_methods": {
+            "writing": "picture-prompted-writing"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "writing",
+              "task_index": 0,
+              "task_brief": "Let us Write — A. Describe helping scenes in pictures"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–6",
+              "description": "Teacher opens Textbook pp. 6–7 and leads a picture walk, briefly narrating each of the five scenes (Lubang and injured friend, classroom cleaning, Anna and old lady, group art project, students raising hands). Students predict what each person might say."
+            },
+            {
+              "minutes": "6–14",
+              "description": "Modelled writing: teacher selects one scene (e.g. Anna assisting the old lady) and thinks aloud while drafting a 2-sentence answer on the board: 'Anna is helping the old lady cross the road. Next, the old lady will thank Anna and cross safely.' Students identify present-tense and future-tense elements."
+            },
+            {
+              "minutes": "14–30",
+              "description": "Students write their own answers for the remaining four scenes independently. Teacher circulates and offers formative prompts ('What is the character doing right now? What will happen next?') to students who are stuck."
+            },
+            {
+              "minutes": "30–38",
+              "description": "Three students share one answer each aloud. Class gives one piece of positive feedback per response. Teacher highlights any strong use of action words or complete sentences."
+            },
+            {
+              "minutes": "38–40",
+              "description": "Teacher previews the beyond-text craft activity for the next period and tells students to bring crayons and scissors."
+            }
+          ],
+          "teacher_notes": "The five scenes mirror the poem's theme of helping — explicitly connect at the start ('Our poem said we help each other; these pictures show what that looks like'). Watch for students writing only one tense; the task asks for what IS happening and what WILL happen next. The craft activity in Period 7 consolidates the theme.",
+          "materials": [
+            "Textbook pp. 6–7",
+            "Blackboard/whiteboard",
+            "Notebooks"
+          ]
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 35,
+          "section_id": "A",
+          "section_title": "Together We Can",
+          "spines_taught": [
+            "beyond_text"
+          ],
+          "activity_title": "Symbol of Togetherness: Craft and Share",
+          "pedagogical_methods": {
+            "beyond_text": "craft-and-make"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "beyond_text",
+              "task_index": 1,
+              "task_brief": "Let us Do — A+B. Create and paste togetherness symbol"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–4",
+              "description": "Teacher reads the project instructions aloud from Textbook p. 8 and demonstrates the fold-and-cut technique using a pre-prepared example, showing how unfolding reveals a chain of figures."
+            },
+            {
+              "minutes": "4–22",
+              "description": "Students follow the five steps: fold the paper, draw one figure, cut, unfold, and colour. Teacher circulates to assist with cutting and encourages creative colouring choices. Students who finish early write the poem's opening couplet along the chain."
+            },
+            {
+              "minutes": "22–30",
+              "description": "Students paste their chain in the designated box on Textbook p. 8. Gallery walk: students move around to see classmates' work, noting one thing they find interesting about each chain."
+            },
+            {
+              "minutes": "30–35",
+              "description": "Whole-class debrief: teacher asks 'How does your paper chain show the poem's message?' Students connect the physical chain to the poem's imagery of joined hands. Teacher closes the chapter by reciting the final couplet together."
+            }
+          ],
+          "teacher_notes": "Ensure scissors are available for all students; pair students who lack materials with a neighbour for the cutting step. The Do You Know text about honeybees and ants (unanchored in class) can be pointed to briefly during the debrief as a real-world example of teamwork for students to read at home. This period completes all five spines for the chapter.",
+          "materials": [
+            "Textbook p. 8",
+            "Plain paper",
+            "Pencils",
+            "Crayons or sketch pens",
+            "Scissors",
+            "Glue sticks"
+          ]
+        }
+      ]
+    },
+    "coverage_handoff": {
+      "reading": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Together We Can",
+            "section_type": "poem",
+            "implied_lo": "Student locates and interprets information using a poem as the vehicle.",
+            "section_context": "Poem about teamwork, joined hands, shared wins and losses, team spirit.",
+            "tasks_anchored": [
+              {
+                "spine": "reading",
+                "task_index": 0,
+                "task_brief": "Let us Think — A. Answer comprehension questions"
+              }
+            ]
+          }
+        ]
+      },
+      "oracy": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Together We Can",
+            "section_type": "poem",
+            "implied_lo": "Student expresses personal experience and opinion using guided conversation as the vehicle.",
+            "section_context": "Discussion prompts on joy, friendship, losing a game, leading a team.",
+            "tasks_anchored": [
+              {
+                "spine": "oracy",
+                "task_index": 0,
+                "task_brief": "Let us Think — B. Think and discuss four prompts"
+              },
+              {
+                "spine": "oracy",
+                "task_index": 1,
+                "task_brief": "Let us Speak — Bokali & Darsana conversation exchange"
+              }
+            ]
+          }
+        ]
+      },
+      "writing": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Together We Can",
+            "section_type": "poem",
+            "implied_lo": "Student constructs descriptive sentences using picture-prompted writing as the vehicle.",
+            "section_context": "Five scenes of helping: Lubang, classroom cleaning, Anna, group art, classroom.",
+            "tasks_anchored": [
+              {
+                "spine": "writing",
+                "task_index": 0,
+                "task_brief": "Let us Write — A. Describe helping scenes in pictures"
+              }
+            ]
+          }
+        ]
+      },
+      "word_work": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Together We Can",
+            "section_type": "poem",
+            "implied_lo": "Student identifies and applies collective nouns using contextual word-building as the vehicle.",
+            "section_context": "Collective nouns: herd, pack, bouquet, grove, swarm, choir, bunch.",
+            "tasks_anchored": [
+              {
+                "spine": "word_work",
+                "task_index": 0,
+                "task_brief": "Let us Learn — A. Collective nouns fill-in with picture cues"
+              }
+            ]
+          },
+          {
+            "section_id": "A",
+            "section_title": "Together We Can",
+            "section_type": "poem",
+            "implied_lo": "Student uses prepositions of place accurately using grammar-in-context as the vehicle.",
+            "section_context": "Prepositions of place (behind, between, near, in front of) using a town map.",
+            "tasks_anchored": [
+              {
+                "spine": "word_work",
+                "task_index": 1,
+                "task_brief": "Let us Learn — B. Prepositions of place using town map"
+              }
+            ]
+          }
+        ]
+      },
+      "beyond_text": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Together We Can",
+            "section_type": "poem",
+            "implied_lo": "Student demonstrates the theme of togetherness using a hands-on craft as the vehicle.",
+            "section_context": "Paper-chain figure craft symbolising unity, linked to poem's joined-hands imagery.",
+            "tasks_anchored": [
+              {
+                "spine": "beyond_text",
+                "task_index": 1,
+                "task_brief": "Let us Do — A+B. Create and paste togetherness symbol"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "assessment_items": [
+      {
+        "spine_code": "reading",
+        "spine_title": "Reading",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-READ-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Together We Can",
+            "source_section_type": "poem",
+            "source_spine": "reading",
+            "source_lo": "Student locates and interprets information using a poem as the vehicle.",
+            "source_context": "Poem about teamwork, joined hands, shared wins and losses, team spirit.",
+            "item_stem": "Read the lines from the poem: 'Win or lose, we always share, / Our bond of trust is always there.' What do these lines tell us about how a team behaves during both victories and defeats?",
+            "question_type": "SCR",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "These lines tell us that a team shares both wins and losses together and that their trust in each other never breaks, even when they do not win.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "Read the lines from the poem: 'Win or lose, we always share, / Our bond of trust is always there.' What do these lines tell us about how a team behaves during both victories and defeats?",
+            "_source_section_label": "Together We Can"
+          }
+        ]
+      },
+      {
+        "spine_code": "oracy",
+        "spine_title": "Oracy",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-ORACY-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Together We Can",
+            "source_section_type": "poem",
+            "source_spine": "oracy",
+            "source_lo": "Student expresses personal experience and opinion using guided conversation as the vehicle.",
+            "source_context": "Discussion prompts on joy, friendship, losing a game, leading a team.",
+            "item_stem": "The poem says 'Team spirit fills the air with cheer.' Think of a time when you and a friend or classmate did something together. Tell your partner: what did you do together, how did it feel, and why is it better to do some things as a team?",
+            "question_type": "ORAL_PROMPT",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Names a specific shared activity with a friend.",
+                "Describes a feeling (happy, excited, proud, etc.).",
+                "Gives one reason teamwork is better than working alone."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "The poem says 'Team spirit fills the air with cheer.' Think of a time when you and a friend or classmate did something together. Tell your partner: what did you do together, how did it feel, and why is it better to do some things as a team?",
+            "_source_section_label": "Together We Can"
+          }
+        ]
+      },
+      {
+        "spine_code": "writing",
+        "spine_title": "Writing",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-WRITE-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Together We Can",
+            "source_section_type": "poem",
+            "source_spine": "writing",
+            "source_lo": "Student constructs descriptive sentences using picture-prompted writing as the vehicle.",
+            "source_context": "Five scenes of helping: Lubang, classroom cleaning, Anna, group art, classroom.",
+            "item_stem": "Look at the picture on Textbook page 6 that shows Anna helping an old lady cross the road. Write two sentences: one sentence describing what Anna is doing right now, and one sentence saying what the old lady will do next.",
+            "question_type": "WRITING_TASK",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "One sentence describes Anna's present helping action.",
+                "One sentence states what the old lady will do next.",
+                "Both sentences are complete and correctly formed."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "Look at the picture on Textbook page 6 that shows Anna helping an old lady cross the road. Write two sentences: one sentence describing what Anna is doing right now, and one sentence saying what the old lady will do next.",
+            "_source_section_label": "Together We Can"
+          }
+        ]
+      },
+      {
+        "spine_code": "word_work",
+        "spine_title": "Word Work",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-WW-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Together We Can",
+            "source_section_type": "poem",
+            "source_spine": "word_work",
+            "source_lo": "Student identifies and applies collective nouns using contextual word-building as the vehicle.",
+            "source_context": "Collective nouns: herd, pack, bouquet, grove, swarm, choir, bunch.",
+            "item_stem": "Match each group of living things with its correct collective noun. The collective nouns used here name groups that also appear in the chapter's word-work section.",
+            "question_type": "MATCH",
+            "options": [],
+            "visual_stimulus": "| Group | Collective Noun |\n|---|---|\n| 1. wolves | a. swarm |\n| 2. bees | b. grove |\n| 3. trees | c. bouquet |\n| 4. flowers | d. pack |",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "1-d, 2-a, 3-b, 4-c",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "Match each group of living things with its correct collective noun. The collective nouns used here name groups that also appear in the chapter's word-work section.",
+            "_source_section_label": "Together We Can"
+          },
+          {
+            "id": "Q-WW-A-2",
+            "source_section_id": "A",
+            "source_section_title": "Together We Can",
+            "source_section_type": "poem",
+            "source_spine": "word_work",
+            "source_lo": "Student uses prepositions of place accurately using grammar-in-context as the vehicle.",
+            "source_context": "Prepositions of place (behind, between, near, in front of) using a town map.",
+            "item_stem": "Fill in each blank with the correct preposition of place from the box.\n[Box: behind, between, near, in front of]\n1. The park is _______ the school.\n2. The ambulance is parked _______ the hospital and the post office.\n3. The children are standing _______ the bookstore, waiting to go inside.\n4. The teacher's desk is _______ the students.",
+            "question_type": "FILL_IN",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "1. near  2. between  3. in front of  4. behind",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "Fill in each blank with the correct preposition of place from the box.\n[Box: behind, between, near, in front of]\n1. The park is _______ the school.\n2. The ambulance is parked _______ the hospital and the post office.\n3. The children are standing _______ the bookstore, waiting to go inside.\n4. The teacher's desk is _______ the students.",
+            "_source_section_label": "Together We Can"
+          }
+        ]
+      },
+      {
+        "spine_code": "beyond_text",
+        "spine_title": "Beyond the Text",
+        "note": "",
+        "items": [
+          {
+            "id": "Q-BT-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Together We Can",
+            "source_section_type": "poem",
+            "source_spine": "beyond_text",
+            "source_lo": "Student demonstrates the theme of togetherness using a hands-on craft as the vehicle.",
+            "source_context": "Paper-chain figure craft symbolising unity, linked to poem's joined-hands imagery.",
+            "item_stem": "The poem says 'With each hand joined, the goal is near.' You created a paper chain of figures whose hands are joined. Draw your paper chain in the box below OR describe it in two sentences. Then explain in one sentence how your paper chain shows the poem's message about teamwork.",
+            "question_type": "PROJECT",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Shows or describes the linked paper-chain figures.",
+                "Connects joined hands in craft to poem's imagery.",
+                "States one idea about teamwork from the poem."
+              ],
+              "note": ""
+            },
+            "verified": true,
+            "is_english": true,
+            "cognitive_demand": "",
+            "question_text": "The poem says 'With each hand joined, the goal is near.' You created a paper chain of figures whose hands are joined. Draw your paper chain in the box below OR describe it in two sentences. Then explain in one sentence how your paper chain shows the poem's message about teamwork.",
+            "_source_section_label": "Together We Can"
+          }
+        ]
+      }
+    ],
+    "input_tokens": 14839,
+    "output_tokens": 7246,
+    "cost_inr": 14.095,
+    "assess_input_tokens": 0,
+    "assess_output_tokens": 0,
+    "assess_cost_inr": 0.0
+  }
+}

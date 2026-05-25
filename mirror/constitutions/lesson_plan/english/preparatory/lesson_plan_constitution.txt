@@ -14,7 +14,7 @@ Two-axis structure per chapter:
 
   Inner  →  5 prep-native spines in textbook order:
             reading · oracy (merged listening+speaking) · writing ·
-            vocabulary_phonics_word_play · beyond_text.
+            word_work · beyond_text.
 
 LP walks main_sections in textbook order, then walks the spines that
 each section actually carries (per the summary's `spines{}`). Period
@@ -81,7 +81,7 @@ STEP 1 — Per-period task budget (hard ceiling).
 
   oracy                          → 1 task per  8–12 min
   reading                        → 1 task per 10–15 min
-  vocabulary_phonics_word_play   → 1 task per  6–10 min
+  word_work   → 1 task per  6–10 min
   writing                        → 1 task per 15–20 min
   beyond_text                    → 1 task per 12–20 min
 
@@ -228,7 +228,7 @@ invent methods outside these sources.
                                   picture-prompted-writing ·
                                   sentence-frame-scaffolding
 
-  vocabulary_phonics_word_play  → phonics-drill · blend-and-decode ·
+  word_work  → phonics-drill · blend-and-decode ·
                                   sight-word-practice · word-building ·
                                   dictionary-work · contextual-prediction ·
                                   word-games (crosswords, word search,
@@ -313,7 +313,7 @@ RULE 10 | COVERAGE HANDOFF
 
 After period assignment, emit `coverage_handoff` — a block with 5
 spine keys: `reading`, `oracy`, `writing`,
-`vocabulary_phonics_word_play`, `beyond_text`.
+`word_work`, `beyond_text`.
 
 Each spine carries `section_contributions[]`, one entry per
 (section × spine) cell anchored in any period:
@@ -364,7 +364,7 @@ LP JSON SCHEMA
     "reading":                      { "section_contributions": [ <contribution>, ... ] },
     "oracy":                        { "section_contributions": [ <contribution>, ... ] },
     "writing":                      { "section_contributions": [ <contribution>, ... ] },
-    "vocabulary_phonics_word_play": { "section_contributions": [ <contribution>, ... ] },
+    "word_work": { "section_contributions": [ <contribution>, ... ] },
     "beyond_text":                  { "section_contributions": [ <contribution>, ... ] }
   }
 }
@@ -379,7 +379,7 @@ LP JSON SCHEMA
 
   "spines_taught": [string],                  // 1 or 2; textbook order; each ∈
                                               // { reading, oracy, writing,
-                                              //   vocabulary_phonics_word_play,
+                                              //   word_work,
                                               //   beyond_text }
 
   "activity_title": string,                   // ≤ 10 words
