@@ -611,6 +611,66 @@ def _build_lpa_prompts_english(
         else "4-5"
     )
 
+    # Stage-aware prompt template fragments. Prep uses the 5-spine prep-native
+    # vocabulary; middle uses the 6-spine model. Prep bans ECR, adds the
+    # picture_narrative section type, and folds listening into oracy.
+    if stage == "preparatory":
+        _section_type_enum = "prose|poem|narrative|dialogue|informational|picture_narrative"
+        _coverage_handoff_block = (
+            '"coverage_handoff": {\n'
+            '    "reading":                      { "section_contributions": [<contribution>] },\n'
+            '    "oracy":                        { "section_contributions": [...] },\n'
+            '    "writing":                      { "section_contributions": [...] },\n'
+            '    "vocabulary_phonics_word_play": { "section_contributions": [...] },\n'
+            '    "beyond_text":                  { "section_contributions": [...] }\n'
+            '  }'
+        )
+        _spine_code_enum  = "reading|oracy|writing|vocabulary_phonics_word_play|beyond_text"
+        _spine_title_enum = "Reading|Oracy|Writing|Vocabulary, Phonics & Word Play|Beyond the Text"
+        _qtype_enum       = "MCQ|SCR|MATCH|FILL_IN|TRUE_FALSE|ORAL_PROMPT|WRITING_TASK|PROJECT"
+        _open_types_list  = "ORAL_PROMPT, WRITING_TASK, PROJECT, reflective SCR"
+        _bullet_word_cap  = "8"
+        _content_sources_long = (
+            "prose_summary (prose/narrative/dialogue/informational sections), "
+            "poem_text + poem_appreciation_summary (poem sections), or "
+            "picture_story_summary + dialogue_text (picture_narrative sections)"
+        )
+        _content_sources_short = (
+            "prose_summary / poem_text + poem_appreciation_summary / "
+            "picture_story_summary + dialogue_text"
+        )
+        _transcript_constraint = (
+            "Listening tasks at preparatory live INSIDE the oracy spine. "
+            "Each listening-based oracy item carries transcript_ref \"p.NN\" "
+            "lifted from the relevant task object in the summary's oracy cell."
+        )
+    else:
+        _section_type_enum = "prose|poem|narrative|dialogue|informational"
+        _coverage_handoff_block = (
+            '"coverage_handoff": {\n'
+            '    "reading_for_comprehension": { "section_contributions": [<contribution>] },\n'
+            '    "listening":                 { "section_contributions": [...] },\n'
+            '    "speaking":                  { "section_contributions": [...] },\n'
+            '    "writing":                   { "section_contributions": [...] },\n'
+            '    "vocabulary_grammar":        { "section_contributions": [...] },\n'
+            '    "beyond_text":               { "section_contributions": [...] }\n'
+            '  }'
+        )
+        _spine_code_enum  = "reading_for_comprehension|listening|speaking|writing|vocabulary_grammar|beyond_text"
+        _spine_title_enum = "Reading for Comprehension|Listening|Speaking|Writing|Vocabulary and Grammar|Beyond the Text"
+        _qtype_enum       = "MCQ|SCR|ECR|MATCH|FILL_IN|TRUE_FALSE|ORAL_PROMPT|WRITING_TASK|PROJECT"
+        _open_types_list  = "ORAL_PROMPT, WRITING_TASK, PROJECT, ECR, reflective SCR"
+        _bullet_word_cap  = "12"
+        _content_sources_long = (
+            "prose_summary (prose/informational sections) or "
+            "poem_text + poem_appreciation_summary (poem sections)"
+        )
+        _content_sources_short = "prose_summary / poem_text + poem_appreciation_summary"
+        _transcript_constraint = (
+            "Listening items: transcript_ref format is \"p.NN\" (transcript "
+            "inside the chapter PDF). The summary carries the value verbatim."
+        )
+
     # ── Prompt caching for English path ─────────────────────────────────────
     # system: English constitutions — cached; changes only on subject switch.
     system_prompt_blocks = [
@@ -670,7 +730,7 @@ Produce a SINGLE valid JSON object with this top-level structure:
   "period_schedule": <derived from teacher period schedule above>,
 
   "main_sections_inventory": [
-    {{ "section_id": "A|B|C", "title": "...", "type": "prose|poem|narrative|dialogue|informational" }}
+    {{ "section_id": "A|B|C", "title": "...", "type": "{_section_type_enum}" }}
   ],
 
   "periods_allocated": <integer = total period count from the teacher schedule>,
@@ -692,19 +752,12 @@ Produce a SINGLE valid JSON object with this top-level structure:
     ]
   }},
 
-  "coverage_handoff": {{
-    "reading_for_comprehension": {{ "section_contributions": [<contribution>] }},
-    "listening":                 {{ "section_contributions": [...] }},
-    "speaking":                  {{ "section_contributions": [...] }},
-    "writing":                   {{ "section_contributions": [...] }},
-    "vocabulary_grammar":        {{ "section_contributions": [...] }},
-    "beyond_text":               {{ "section_contributions": [...] }}
-  }},
+  {_coverage_handoff_block},
 
   "assessment_items": [
     {{
-      "spine_code":  "reading_for_comprehension|listening|speaking|writing|vocabulary_grammar|beyond_text",
-      "spine_title": "Reading for Comprehension|Listening|Speaking|Writing|Vocabulary and Grammar|Beyond the Text",
+      "spine_code":  "{_spine_code_enum}",
+      "spine_title": "{_spine_title_enum}",
       "note":        "",
       "items": [
         <one item per section_contribution in coverage_handoff for this
@@ -717,10 +770,9 @@ Produce a SINGLE valid JSON object with this top-level structure:
            Reading either field is a constitution violation regardless of
            intent. The implied_lo in coverage_handoff already encodes
            what was taught.
-         - Derive every item solely from the section's prose_summary
-           (prose/informational sections) or poem_text +
-           poem_appreciation_summary (poem sections) plus the
-           implied_lo from coverage_handoff.
+         - Derive every item solely from the section's content sources
+           ({_content_sources_long}) plus the implied_lo from
+           coverage_handoff.
          - The item MUST be original — it must not reproduce, paraphrase,
            or structurally echo any textbook exercise wording.
          - The item MUST be visibly grounded in the section's actual
@@ -734,16 +786,15 @@ Produce a SINGLE valid JSON object with this top-level structure:
          source_spine, source_lo (implied_lo copied verbatim from
          coverage_handoff), item_stem (original question grounded in
          section content), question_type (from Assessment Rule 4 set:
-         MCQ|SCR|ECR|MATCH|FILL_IN|TRUE_FALSE|ORAL_PROMPT|WRITING_TASK|
-         PROJECT), options ([] unless MCQ or TRUE_FALSE),
+         {_qtype_enum}), options ([] unless MCQ or TRUE_FALSE),
          visual_stimulus ("" or pipe-table only), transcript_ref
          (Listening items only; "" otherwise), teacher_guide
          {{suggested_answer (CLOSED non-MCQ items; "" otherwise),
-         expected_elements (OPEN items: {rubric_bullets} bullets ≤ 12
+         expected_elements (OPEN items: {rubric_bullets} bullets ≤ {_bullet_word_cap}
          words each; [] otherwise), note ("" unless fallback)}},
          verified (true for open items; true for closed only when
-         answer is unambiguously supported by prose_summary or
-         poem_text).>
+         answer is unambiguously supported by the section's content
+         sources).>
       ]
     }}
   ]
@@ -759,7 +810,7 @@ CRITICAL CONSTRAINTS:
   (one item per spine-cell implied_lo, per Assessment Rule 2). Spines
   with no section_contributions are omitted entirely. For each item,
   read ONLY the cell's implied_lo from coverage_handoff and the
-  section's prose_summary / poem_text + poem_appreciation_summary.
+  section's content sources ({_content_sources_short}).
   DO NOT read tasks_verbatim[] or question_bank[] for any purpose —
   these fields are forbidden inputs to the assessment generator.
   Generate one original item per cell grounded in the section content.
@@ -769,24 +820,20 @@ CRITICAL CONSTRAINTS:
   permitted method list in LP Constitution Rule 4 for the {stage}
   stage. Do NOT invent methods. Do NOT collapse multiple spines onto
   a single method.
-- Listening items: `transcript_ref` format is `"p.NN"` at preparatory
-  and middle (transcript inside chapter PDF) or `"appendix p.NN"` at
-  secondary (transcript in a separate appendix file). The summary
-  carries the value verbatim.
+- {_transcript_constraint}
 - The answer layer applies per item. A closed item (MCQ, FILL_IN,
   MATCH, TRUE_FALSE, factual SCR) carries
-  `teacher_guide.suggested_answer` (verified against prose_summary /
-  poem_text; omitted for MCQ — correct option is flagged in
-  options[].is_correct). An open item (ORAL_PROMPT, WRITING_TASK,
-  PROJECT, ECR, reflective SCR) carries
+  `teacher_guide.suggested_answer` (verified against the section's
+  content sources; omitted for MCQ — correct option is flagged in
+  options[].is_correct). An open item ({_open_types_list}) carries
   `teacher_guide.expected_elements` ({rubric_bullets} short bullets,
-  each ≤ 12 words). No item carries both fields.
+  each ≤ {_bullet_word_cap} words). No item carries both fields.
 
 LENGTH CONSTRAINTS:
 - Each phase `description`: 2-3 sentences maximum.
 - Each `teacher_notes`: 2-3 sentences maximum.
 - Each `suggested_answer`: 1-2 sentences plain prose.
-- Each `expected_elements` bullet: ≤ 12 words.
+- Each `expected_elements` bullet: ≤ {_bullet_word_cap} words.
 
 Output only the raw JSON object. No markdown. No prose. No headers. No ```json fences.
 """
@@ -2667,12 +2714,17 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
     )
     if _is_english_assessment:
         _ENGLISH_SPINE_DESC = {
-            "reading_for_comprehension": "Encountering text and demonstrating comprehension — recall, inference, reflection.",
-            "listening":                 "Active listening — meaning, attitude, summarisation.",
-            "speaking":                  "Structured talk — conversation, discussion, debate.",
-            "writing":                   "Drafting and editing — formal and creative composition.",
-            "vocabulary_grammar":        "Word-building and grammar embedded in context.",
-            "beyond_text":               "Library work, projects, and interdisciplinary extensions.",
+            # Middle-stage spines
+            "reading_for_comprehension":    "Encountering text and demonstrating comprehension — recall, inference, reflection.",
+            "listening":                    "Active listening — meaning, attitude, summarisation.",
+            "speaking":                     "Structured talk — conversation, discussion, debate.",
+            "writing":                      "Drafting and editing — formal and creative composition.",
+            "vocabulary_grammar":           "Word-building and grammar embedded in context.",
+            "beyond_text":                  "Library work, projects, and interdisciplinary extensions.",
+            # Preparatory-stage spines (listening folded into oracy)
+            "reading":                      "Encountering text and demonstrating comprehension at the preparatory stage.",
+            "oracy":                        "Merged listening and speaking — recitation, conversation, sound discrimination.",
+            "vocabulary_phonics_word_play": "Phonics, sight words, vocabulary, word games, and grammar-in-context.",
         }
         # Closed types render `teacher_guide.suggested_answer`; open types
         # render `teacher_guide.expected_elements` as bullets.

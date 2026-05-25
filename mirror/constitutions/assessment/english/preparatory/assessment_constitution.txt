@@ -277,17 +277,12 @@ RULE 9 | VISUAL STIMULUS
                                 items and tabular comprehension built
                                 from the source text.
 
-  "PICTURE: <description>"      picture prompt (NEW at preparatory).
-                                The string starts with the literal
-                                prefix `PICTURE: ` followed by a 1–2
-                                sentence description of the image the
-                                student is shown. Used for items
-                                grounded in picture_narrative sections,
-                                picture-prompted writing, and oral
-                                observation prompts. The renderer
-                                detects the prefix and renders the
-                                description as a labelled placeholder
-                                (or, when wired, the actual image).
+For items grounded in a textbook picture (picture_narrative sections,
+picture-prompted writing, oral observation prompts), do NOT introduce
+a separate visual format. Instead, reference the textbook page in
+`item_stem` itself — e.g. "Look at the picture on Textbook page 6
+and write what each character is doing." The teacher has the book;
+the image lives there.
 
 Prohibited: inline SVG, ASCII art, image markup, base64 image,
 external image reference, italic prose specs.
@@ -402,9 +397,7 @@ ASSESSMENT JSON SCHEMA
               "is_correct": boolean }
           ],
 
-          "visual_stimulus":       string,    // "" | pipe-table |
-                                              // "PICTURE: <description>"
-                                              // (Rule 9)
+          "visual_stimulus":       string,    // "" | pipe-table (Rule 9)
 
           "transcript_ref":        string,    // listening-based oracy only;
                                               // "" otherwise

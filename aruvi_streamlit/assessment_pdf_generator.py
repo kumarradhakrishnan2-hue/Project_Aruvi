@@ -880,12 +880,17 @@ def build_assessment_pdf(output_path, data):
         # Each spine becomes a section header; items are in order within spine.
         # lo_text per item = source_lo (spine-cell LO from LP handoff).
         _ENG_SPINE_TITLES = {
-            "reading_for_comprehension": "Reading for Comprehension",
-            "listening":                 "Listening",
-            "speaking":                  "Speaking",
-            "writing":                   "Writing",
-            "vocabulary_grammar":        "Vocabulary and Grammar",
-            "beyond_text":               "Beyond the Text",
+            # Middle-stage spines
+            "reading_for_comprehension":    "Reading for Comprehension",
+            "listening":                    "Listening",
+            "speaking":                     "Speaking",
+            "writing":                      "Writing",
+            "vocabulary_grammar":           "Vocabulary and Grammar",
+            "beyond_text":                  "Beyond the Text",
+            # Preparatory-stage spines (listening folded into oracy)
+            "reading":                      "Reading",
+            "oracy":                        "Oracy",
+            "vocabulary_phonics_word_play": "Vocabulary, Phonics & Word Play",
         }
         for spine_sec in items:
             if not isinstance(spine_sec, dict):
