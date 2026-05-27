@@ -1,0 +1,279 @@
+{
+  "subject": "english",
+  "stage": "preparatory",
+  "grade": "iii",
+  "chapter_number": 7,
+  "chapter_title": "The Big Laddoo",
+  "main_sections": [
+    {
+      "section_id": "A",
+      "title": "Good Food — Picture Reading",
+      "type": "picture_narrative",
+      "page_range": "68–69",
+      "char_count": 0,
+      "picture_story_summary": "Five numbered pictures trace the journey of wheat from farm to table. Picture 1 shows farmers harvesting wheat in a sunny field — workers shovel grain into sacks, a blue truck is loaded with heavy sacks, and a scarecrow stands in the background. Picture 2 shows wheat being ground at a flour mill; workers pour sacks into the grinder while another truck unloads, and bags labelled 'Fresh Atta / Wheat Flour' are packed. Picture 3 shows a man arriving at a grocery store to buy flour, with an older woman leaving. Picture 4 shows two adults (a woman in a sari and a man) at home, rolling chapatti dough on a board. Picture 5 shows a girl happily eating chapattis at a dining table with side dishes. The visual sequence illustrates the complete farm-to-table journey of wheat and connects food production with community labour, trade, and home cooking.",
+      "spines": {
+        "reading": {
+          "section_name": "Picture reading",
+          "tasks_verbatim": [
+            {
+              "task_text": "Look at the pictures and answer.\n1. What can you see in Picture 1?\n2. Look at Picture 2. What is the man doing with the wheat?\n3. Look at Picture 4. Who are they? What are they doing?\n4. What is the girl doing in the last picture?",
+              "question_bank": [
+                {
+                  "stem": "What can you see in Picture 1?",
+                  "type": "SCR",
+                  "page_ref": "p.69"
+                },
+                {
+                  "stem": "Look at Picture 2. What is the man doing with the wheat?",
+                  "type": "SCR",
+                  "page_ref": "p.69"
+                },
+                {
+                  "stem": "Look at Picture 4. Who are they? What are they doing?",
+                  "type": "SCR",
+                  "page_ref": "p.69"
+                },
+                {
+                  "stem": "What is the girl doing in the last picture?",
+                  "type": "SCR",
+                  "page_ref": "p.69"
+                }
+              ],
+              "visual_stimulus": [
+                {
+                  "type": "photo_series",
+                  "count": 5,
+                  "brief_description": "Five sequential illustrations showing the journey of wheat: (1) harvesting and loading wheat into a truck at a farm, (2) grinding wheat at a flour mill and packing bags, (3) buying flour at a grocery store, (4) rolling chapatti dough at home, (5) a girl eating chapattis at the table",
+                  "page_ref": "p.68–69"
+                }
+              ]
+            }
+          ]
+        },
+        "oracy": {
+          "section_name": "Picture reading",
+          "tasks_verbatim": [
+            {
+              "task_text": "Look at the pictures and answer.\n5. What do you have along with chapatti?\n6. Have you seen a field? What was growing there? Speak about it.",
+              "question_bank": [
+                {
+                  "stem": "What do you have along with chapatti?",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.69"
+                },
+                {
+                  "stem": "Have you seen a field? What was growing there? Speak about it.",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.69"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "section_id": "B",
+      "title": "The Big Laddoo",
+      "type": "poem",
+      "page_range": "70–77",
+      "char_count": 198,
+      "poem_text": "If all the laddoos were one Laddoo\nOh! What a BIG Laddoo it would be!\n\nIf all the children were one child\nOh! What a BIG child that would be!\n\nIf all the seas were one sea\nOh! What a BIG sea it would be!\n\nThen if the BIG child\npicked the BIG Laddoo\nAnd threw it into the BIG sea\nOh! What a BIG SPLISH-SPLASH it would be!",
+      "poem_appreciation_summary": "The poem is a cumulative, playful fantasy built on the imaginative premise of collapsing all members of a category — laddoos, children, seas — into one impossibly giant version. The tone is exuberant and wonder-filled. The dominant structural device is anaphora ('If all the … were one …') which builds rhythmic momentum across three stanzas before releasing into a gleeful final action: the giant child hurling the giant laddoo into the giant sea. The central image is joyful gigantism. The onomatopoeic 'SPLISH-SPLASH' is the climactic device, landing with comic delight. Theme: the pleasure of boundless imagination and playful 'what if' thinking.",
+      "spines": {
+        "reading": {
+          "section_name": "Let us recite",
+          "tasks_verbatim": [
+            {
+              "task_text": "Let us recite the poem 'The Big Laddoo'.",
+              "question_bank": []
+            }
+          ]
+        },
+        "oracy": {
+          "section_name": "Let us think + Let us speak",
+          "tasks_verbatim": [
+            {
+              "task_text": "Let us think.\n1. Have you seen a big laddoo? How big was it? Did you eat it all by yourself? Tell your friends about it.\n2. Have you eaten anything that is very big? What was it? Talk about it.\n3. What different kinds of laddoos have you eaten?",
+              "question_bank": [
+                {
+                  "stem": "Have you seen a big laddoo? How big was it? Did you eat it all by yourself? Tell your friends about it.",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.72"
+                },
+                {
+                  "stem": "Have you eaten anything that is very big? What was it? Talk about it.",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.72"
+                },
+                {
+                  "stem": "What different kinds of laddoos have you eaten?",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.72"
+                }
+              ]
+            },
+            {
+              "task_text": "Let us speak.\nJithu and Meena are friends. Meena cannot see properly. It was her birthday. Jithu gifted her a box of mixed sweets. She felt the sweets and excitedly picked up the big laddoo. She said, 'I love laddoos!' Jithu was surprised and asked her, 'How did you know it was a laddoo?' Think and say what Meena answered.",
+              "question_bank": [
+                {
+                  "stem": "Think and say what Meena answered when Jithu asked: 'How did you know it was a laddoo?'",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.73"
+                }
+              ],
+              "visual_stimulus": [
+                {
+                  "type": "picture",
+                  "count": 1,
+                  "brief_description": "Jithu and Meena (with glasses) at a birthday table, Meena holding a laddoo from a box of mixed sweets, balloons and cake in background",
+                  "page_ref": "p.73"
+                }
+              ]
+            }
+          ]
+        },
+        "writing": {
+          "section_name": "Let us think + Let us write",
+          "tasks_verbatim": [
+            {
+              "task_text": "Let us think.\n4. Name a few things that are round in shape. Can you eat all of them? Write them in the correct column.\nThat can be eaten | That cannot be eaten",
+              "question_bank": [
+                {
+                  "stem": "Name a few things that are round in shape. Write them in the correct column: 'That can be eaten' and 'That cannot be eaten'.",
+                  "type": "WRITING_TASK",
+                  "table": "That can be eaten|That cannot be eaten\n(student response)|(student response)",
+                  "page_ref": "p.72"
+                }
+              ]
+            },
+            {
+              "task_text": "Let us think.\n5. The child threw the Big Laddoo into the sea. What do you think happened to the Laddoo?",
+              "question_bank": [
+                {
+                  "stem": "The child threw the Big Laddoo into the sea. What do you think happened to the Laddoo?",
+                  "type": "SCR",
+                  "page_ref": "p.72"
+                }
+              ]
+            },
+            {
+              "task_text": "Let us write.\nA. Frame a few sentences using the given words.\n1. play\n2. plum\n3. cloud\n4. clock\n5. blue\n6. blanket",
+              "question_bank": [
+                {
+                  "stem": "Frame a sentence using the word: play",
+                  "type": "WRITING_TASK",
+                  "page_ref": "p.74"
+                },
+                {
+                  "stem": "Frame a sentence using the word: plum",
+                  "type": "WRITING_TASK",
+                  "page_ref": "p.74"
+                },
+                {
+                  "stem": "Frame a sentence using the word: cloud",
+                  "type": "WRITING_TASK",
+                  "page_ref": "p.74"
+                },
+                {
+                  "stem": "Frame a sentence using the word: clock",
+                  "type": "WRITING_TASK",
+                  "page_ref": "p.74"
+                },
+                {
+                  "stem": "Frame a sentence using the word: blue",
+                  "type": "WRITING_TASK",
+                  "page_ref": "p.74"
+                },
+                {
+                  "stem": "Frame a sentence using the word: blanket",
+                  "type": "WRITING_TASK",
+                  "page_ref": "p.74"
+                }
+              ]
+            },
+            {
+              "task_text": "Let us write.\nA. Which is your favourite festival? Write the names of some sweets and dishes prepared on that day.",
+              "question_bank": [
+                {
+                  "stem": "Which is your favourite festival? Write the names of some sweets and dishes prepared on that day.",
+                  "type": "WRITING_TASK",
+                  "page_ref": "p.77"
+                }
+              ]
+            }
+          ]
+        },
+        "word_work": {
+          "section_name": "Let us learn + Let us write",
+          "tasks_verbatim": [
+            {
+              "task_text": "Let us learn.\nLaddoos are sweets, commonly eaten in every house. Write words that tell us about the laddoo.",
+              "question_bank": [
+                {
+                  "stem": "Write words that tell us about the laddoo (describing words / adjectives).",
+                  "type": "WRITING_TASK",
+                  "page_ref": "p.73"
+                }
+              ]
+            },
+            {
+              "task_text": "Let us write.\nB. Match the following.\n1. cock — lioness / cow / hen / duck / peahen / horse\n2. lion\n3. peacock\n4. mare\n5. bull\n6. drake\n(Match male animals to their female counterparts.)",
+              "question_bank": [
+                {
+                  "stem": "Match the male animals to their female counterparts: cock, lion, peacock, mare, bull, drake — with lioness, cow, hen, duck, peahen, horse.",
+                  "type": "MATCH",
+                  "page_ref": "p.74"
+                }
+              ]
+            },
+            {
+              "task_text": "Let us learn.\nDid you know that not only sweets but a few other dishes are also prepared especially during festivals? [Informational text about khichdi, Sankranti festival, and regional names — Pongal, Lohri, Bihu, Maghi Sankrant, Makara Sankranti, Sakraat, Magha Saaji. Khichdi known by different names: Gujarati khichdi (Gujarat), Pongal (Tamil Nadu), Bihari khichdi (Bihar), Bajra khichdi (Rajasthan), Kichuri (West Bengal), Bisi bele bhat (Karnataka), Moong khetchir (Kashmir).]",
+              "question_bank": []
+            }
+          ]
+        },
+        "beyond_text": {
+          "section_name": "Let us explore",
+          "tasks_verbatim": [
+            {
+              "task_text": "A. Look at these objects shown here. Collect and put them one by one into a tub of water. See which one will float and which one will sink. Tick the objects that float and cross the objects that sink.\na piece of paper\na small stone\na green leaf\na pencil\nan eraser\na feather\na spoon",
+              "question_bank": [
+                {
+                  "stem": "Collect each object listed (paper, stone, leaf, pencil, eraser, feather, spoon) and test in a tub of water. Tick objects that float and cross objects that sink.",
+                  "type": "PROJECT",
+                  "page_ref": "p.75"
+                }
+              ],
+              "visual_stimulus": [
+                {
+                  "type": "picture",
+                  "count": 7,
+                  "brief_description": "Seven small illustrations of objects — piece of paper, small stone, green leaf, pencil, eraser, feather, spoon — shown beside blank lines for tick/cross results, with an illustration of a child in a water tub",
+                  "page_ref": "p.75"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "competency_reporting": {
+    "by_spine": {
+      "oracy": ["C-1.1", "C-1.2", "C-1.3"],
+      "reading": ["C-2.1", "C-2.2"],
+      "writing": ["C-3.1", "C-3.2", "C-3.3", "C-3.4"],
+      "word_work": ["C-4.1", "C-4.2"],
+      "beyond_text": ["C-5.1", "C-5.2"]
+    }
+  },
+  "effort_signals": {
+    "spine_load": 2,
+    "task_density": 1,
+    "writing_demand": 2,
+    "project_load": 1,
+    "effort_index": 9.5
+  }
+}

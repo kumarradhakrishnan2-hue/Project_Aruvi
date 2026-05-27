@@ -1,0 +1,231 @@
+{
+  "subject": "english",
+  "stage": "preparatory",
+  "grade": "v",
+  "chapter_number": 8,
+  "chapter_title": "The Decision of the Panchayat",
+  "main_sections": [
+    {
+      "section_id": "A",
+      "title": "The Decision of the Panchayat",
+      "type": "narrative",
+      "page_range": "pp.91–104",
+      "char_count": 1520,
+      "prose_summary": "A hardworking farmer in a small village prospers and buys a third field along with the well next to it from his cunning neighbour. The next day the neighbour refuses to let the farmer draw water from the well, arguing that he sold only the well structure and not the water inside it. The confused farmer approaches the village chief, who convenes a Panchayat meeting under the banyan tree in the village centre. Both parties are summoned and heard. When the neighbour stubbornly repeats his claim, the Panchayat delivers a clever judgment: if the water belongs to the neighbour, he has no right to store it in someone else's well and must remove or use it immediately, otherwise the water transfers to the well's owner. The cunning neighbour is outwitted, has to pay a fine, and apologises to the farmer. The villagers praise the wisdom of the Panchayat, and the story ends as a lesson that cheating leads nowhere.",
+      "spines": {
+        "reading": {
+          "section_name": "Let us Think",
+          "tasks_verbatim": [
+            {
+              "task_text": "A. Answer the following questions.\n1. Why did the farmer buy the well?\n2. Why did the farmer become upset?\n3. How did the Panchayat solve the problem?\n4. What was the final judgment given by the Panchayat?",
+              "question_bank": [
+                {
+                  "stem": "Why did the farmer buy the well?",
+                  "type": "SCR",
+                  "page_ref": "p.95"
+                },
+                {
+                  "stem": "Why did the farmer become upset?",
+                  "type": "SCR",
+                  "page_ref": "p.95"
+                },
+                {
+                  "stem": "How did the Panchayat solve the problem?",
+                  "type": "SCR",
+                  "page_ref": "p.95"
+                },
+                {
+                  "stem": "What was the final judgment given by the Panchayat?",
+                  "type": "SCR",
+                  "page_ref": "p.95"
+                }
+              ]
+            }
+          ]
+        },
+        "oracy": {
+          "section_name": "Let us Think + Let us Speak + Let us Listen",
+          "tasks_verbatim": [
+            {
+              "task_text": "B. Think and discuss.\n1. Do you think the decision of the Panchayat was correct?\n2. You have an extra painting box which you wish to share with your friends in the class to complete an activity. Two of your best friends, Radha and Sita, fight for the box. How would you deal with the situation so that you are fair to both of them?\n3. Who said to whom:\n   a. "I sold only the well, not the water."\n   b. "Remove the water or use it all up immediately."\n   c. "He is not letting me take the water."",
+              "question_bank": [
+                {
+                  "stem": "Do you think the decision of the Panchayat was correct?",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.95"
+                },
+                {
+                  "stem": "You have an extra painting box which you wish to share with your friends in the class to complete an activity. Two of your best friends, Radha and Sita, fight for the box. How would you deal with the situation so that you are fair to both of them?",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.95"
+                },
+                {
+                  "stem": "Who said to whom: (a) "I sold only the well, not the water." (b) "Remove the water or use it all up immediately." (c) "He is not letting me take the water."",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.95"
+                }
+              ]
+            },
+            {
+              "task_text": "Let us Speak: Look at the pictures below. What do you think will happen next? Sit in small groups and discuss. One student from each group will narrate the ending to the whole class.",
+              "question_bank": [],
+              "visual_stimulus": [
+                {
+                  "type": "photo_series",
+                  "count": 4,
+                  "brief_description": "Four sequential pictures showing two families living next to each other — a quarrel escalates between neighbours involving a child and parental intervention; students predict the ending",
+                  "page_ref": "pp.98–99"
+                }
+              ]
+            },
+            {
+              "task_text": "Let us Listen: Listen to your teacher read out this passage and answer the questions by choosing the correct option.\n\nSri Ramakrishna Paramahamsa\n\nA long time ago, in a small village of West Bengal, there lived a kind and wise man named Sri Ramakrishna Paramahamsa. He loved to talk to people about God and taught that all religions are like rivers—they may take different paths, but they all lead to the same ocean. He lived a simple life, wearing plain clothes and eating very little, but his smile and loving words made everyone feel special.\n\nOne day, a curious young boy named Naren came to meet him. Ramakrishna saw something special in Naren and became his teacher. He taught Naren about courage, kindness, and how to find peace within. Naren later grew up to become the famous Swami Vivekananda, spreading his teacher's wisdom to the world. Even today, Ramakrishna's teachings inspire many people everywhere.",
+              "question_bank": [
+                {
+                  "stem": "Where was Sri Ramakrishna Paramahamsa born?",
+                  "type": "MCQ",
+                  "options": ["A colony in Kolkata", "A small village in West Bengal", "A mountain in the Himalayas", "A forest in Kerala"],
+                  "page_ref": "p.101"
+                },
+                {
+                  "stem": "Who was the curious boy that became Sri Ramakrishna's student?",
+                  "type": "MCQ",
+                  "options": ["Mahatma Gandhi", "Swami Vivekananda (Naren)", "Rabindranath Tagore", "Sri Aurobindo"],
+                  "page_ref": "p.101"
+                },
+                {
+                  "stem": "What kind of life did Sri Ramakrishna live?",
+                  "type": "MCQ",
+                  "options": ["A life full of luxury", "A simple and loving life", "A life of traveling", "A secretive life"],
+                  "page_ref": "p.102"
+                },
+                {
+                  "stem": "What did Sri Ramakrishna compare religions to?",
+                  "type": "MCQ",
+                  "options": ["Trees in a forest", "Stars in the sky", "Rivers flowing to the ocean", "Books in a library"],
+                  "page_ref": "p.102"
+                },
+                {
+                  "stem": "What did Sri Ramakrishna teach Naren?",
+                  "type": "MCQ",
+                  "options": ["To find a teacher", "To become wealthy", "To travel the world", "To find peace"],
+                  "page_ref": "p.102"
+                }
+              ],
+              "transcript_ref": "p.101",
+              "transcript_text": "A long time ago, in a small village of West Bengal, there lived a kind and wise man named Sri Ramakrishna Paramahamsa. He loved to talk about God and taught that all religions are like rivers — they may take different paths, but they all lead to the same ocean. He lived simply, wearing plain clothes and eating very little, but his smile made everyone feel special. One day, a curious boy named Naren came to meet him. Ramakrishna saw something special in Naren and became his teacher, teaching him about courage, kindness, and finding peace within. Naren grew up to become Swami Vivekananda, spreading his teacher's wisdom to the world."
+            }
+          ]
+        },
+        "word_work": {
+          "section_name": "Let us Learn",
+          "tasks_verbatim": [
+            {
+              "task_text": "A. Match the words with their meanings.\nWord — Meaning\n1. prospered — a. clever in a tricky way.\n2. cunning — b. refusing to change one's mind.\n3. worried — c. to order someone come to a particular place.\n4. summon — d. a decision made by a group.\n5. adamant — e. very upset.\n6. judgment — f. to grow wealthy.",
+              "question_bank": [
+                { "stem": "Match: prospered", "type": "MATCH", "options": ["clever in a tricky way", "refusing to change one's mind", "to order someone to come to a particular place", "a decision made by a group", "very upset", "to grow wealthy"], "page_ref": "p.96" },
+                { "stem": "Match: cunning", "type": "MATCH", "options": ["clever in a tricky way", "refusing to change one's mind", "to order someone to come to a particular place", "a decision made by a group", "very upset", "to grow wealthy"], "page_ref": "p.96" },
+                { "stem": "Match: worried", "type": "MATCH", "options": ["clever in a tricky way", "refusing to change one's mind", "to order someone to come to a particular place", "a decision made by a group", "very upset", "to grow wealthy"], "page_ref": "p.96" },
+                { "stem": "Match: summon", "type": "MATCH", "options": ["clever in a tricky way", "refusing to change one's mind", "to order someone to come to a particular place", "a decision made by a group", "very upset", "to grow wealthy"], "page_ref": "p.96" },
+                { "stem": "Match: adamant", "type": "MATCH", "options": ["clever in a tricky way", "refusing to change one's mind", "to order someone to come to a particular place", "a decision made by a group", "very upset", "to grow wealthy"], "page_ref": "p.96" },
+                { "stem": "Match: judgment", "type": "MATCH", "options": ["clever in a tricky way", "refusing to change one's mind", "to order someone to come to a particular place", "a decision made by a group", "very upset", "to grow wealthy"], "page_ref": "p.96" }
+              ]
+            },
+            {
+              "task_text": "B. Fill in the blanks with the correct prepositions (in, at, by, after, before, under, with, to, for). A preposition can be used more than once.\n1. The farmer went _____ the village chief to explain his problem.\n2. The neighbour was standing _____ the well, blocking the way.\n3. The villagers tried to reason _____ the cunning man.\n4. The decision was made _____ careful consideration of both sides.\n5. Their lived a farmer _____ the small village.\n6. The Panchayat members listen to both the sides _____ coming to decision.\n7. The villagers gathered the Panchayat _____ the banyan tree.\n8. The neighbour was punished _____ his dishonesty.\n9. The chief listened carefully _____ both the farmer and the neighbour.\n10. The villagers agreed to meet _____ a later time to discuss the issue.\n11. The farmer decided to buy a well _____ buying his third field.",
+              "question_bank": [
+                { "stem": "The farmer went _____ the village chief to explain his problem.", "type": "FILL_IN", "page_ref": "p.96" },
+                { "stem": "The neighbour was standing _____ the well, blocking the way.", "type": "FILL_IN", "page_ref": "p.96" },
+                { "stem": "The villagers tried to reason _____ the cunning man.", "type": "FILL_IN", "page_ref": "p.96" },
+                { "stem": "The decision was made _____ careful consideration of both sides.", "type": "FILL_IN", "page_ref": "p.96" },
+                { "stem": "Their lived a farmer _____ the small village.", "type": "FILL_IN", "page_ref": "p.96" },
+                { "stem": "The Panchayat members listen to both the sides _____ coming to decision.", "type": "FILL_IN", "page_ref": "p.97" },
+                { "stem": "The villagers gathered the Panchayat _____ the banyan tree.", "type": "FILL_IN", "page_ref": "p.97" },
+                { "stem": "The neighbour was punished _____ his dishonesty.", "type": "FILL_IN", "page_ref": "p.97" },
+                { "stem": "The chief listened carefully _____ both the farmer and the neighbour.", "type": "FILL_IN", "page_ref": "p.97" },
+                { "stem": "The villagers agreed to meet _____ a later time to discuss the issue.", "type": "FILL_IN", "page_ref": "p.97" },
+                { "stem": "The farmer decided to buy a well _____ buying his third field.", "type": "FILL_IN", "page_ref": "p.97" }
+              ]
+            },
+            {
+              "task_text": "C. Rearrange the events in the correct order.\n1. Sam sat by a small stream to rest and enjoy the peaceful sound of the water.\n2. Sam felt grateful for the time he spent in nature.\n3. Sam decided to go for a walk in the forest near his house.\n4. Sam walked along the narrow path, listening to the sound of birds chirping and leaves rustling.\n5. After resting, Sam continued his walk, feeling refreshed.",
+              "question_bank": [
+                { "stem": "Rearrange these 5 events about Sam's forest walk in correct sequence.", "type": "SCR", "page_ref": "p.97" }
+              ]
+            }
+          ]
+        },
+        "writing": {
+          "section_name": "Let us Write",
+          "tasks_verbatim": [
+            {
+              "task_text": "A. Imagine you are the farmer. Write a letter to your friend about the incident and the decision of the Panchayat.\nYou may begin as follows:\nMy dear friend,\nSomething happened last week, which I want to tell you. I wanted to buy a well ...",
+              "question_bank": [
+                {
+                  "stem": "Write a letter as the farmer to your friend describing the incident with the neighbour and the Panchayat's decision.",
+                  "type": "WRITING_TASK",
+                  "page_ref": "p.100"
+                }
+              ]
+            },
+            {
+              "task_text": "B. Read the following sentence: Water is priceless. It means that water is valuable — so valuable that you cannot put a price on it. The 'less' at the end of the word is a suffix. Complete the following by adding the suffix 'less' to the given words and make sentences using the new words in your notebook.\nWords + suffix = New word\nUse + less = ______\nCare + less = ______\nHope + less = ______\nFear + less = ______\nColour + less = ______",
+              "question_bank": [
+                { "stem": "Use + less = ______", "type": "FILL_IN", "page_ref": "p.100" },
+                { "stem": "Care + less = ______", "type": "FILL_IN", "page_ref": "p.100" },
+                { "stem": "Hope + less = ______", "type": "FILL_IN", "page_ref": "p.100" },
+                { "stem": "Fear + less = ______", "type": "FILL_IN", "page_ref": "p.100" },
+                { "stem": "Colour + less = ______", "type": "FILL_IN", "page_ref": "p.100" }
+              ]
+            }
+          ]
+        },
+        "beyond_text": {
+          "section_name": "Let us Do",
+          "tasks_verbatim": [
+            {
+              "task_text": "A. Read the passage carefully and answer the following questions.\n\nThe Neem Tree\n\nYou must have seen a neem tree near your house, or near the school, or beside the road. Almost everyone can recognise a neem tree. The neem is a magic medicine tree because almost every part of the tree is used for medicine. Sometimes, sick people are given neem juice to drink. People use the twigs of the neem tree as a toothbrush to clean their teeth. Burn some dry neem leaves inside the house and see the mosquitoes disappear! When you store winter clothing or blankets, keep dry neem leaves between them. This helps keep away insects. When you store rice, keep dry neem leaves at the bottom of the rice bin. This keeps pests away.\n\nAnswer the following questions.\n1. Where can you find neem trees?\n2. Why do you think 'neem' is called a magic tree?\n3. What happens when dry neem leaves are burnt?\n4. Why do people put neem leaves in clothes and rice containers?\n5. How are neem twigs used?\n6. Find the meaning of the word 'disappear': a. Appear  b. Vanish  c. Grow  d. Fly\n7. Find the word in the passage which means 'a short stick': a. Tree  b. Part  c. Twig  d. Leaf",
+              "question_bank": [
+                { "stem": "Where can you find neem trees?", "type": "SCR", "page_ref": "p.103" },
+                { "stem": "Why do you think 'neem' is called a magic tree?", "type": "SCR", "page_ref": "p.103" },
+                { "stem": "What happens when dry neem leaves are burnt?", "type": "SCR", "page_ref": "p.103" },
+                { "stem": "Why do people put neem leaves in clothes and rice containers?", "type": "SCR", "page_ref": "p.103" },
+                { "stem": "How are neem twigs used?", "type": "SCR", "page_ref": "p.103" },
+                { "stem": "Find the meaning of the word 'disappear'.", "type": "MCQ", "options": ["Appear", "Vanish", "Grow", "Fly"], "page_ref": "p.103" },
+                { "stem": "Find the word in the passage which means 'a short stick'.", "type": "MCQ", "options": ["Tree", "Part", "Twig", "Leaf"], "page_ref": "p.103" }
+              ]
+            },
+            {
+              "task_text": "B. Point out 11 differences in the two pictures given below. Work in pairs and write down the 11 differences in your notebook.",
+              "question_bank": [],
+              "visual_stimulus": [
+                {
+                  "type": "photo_series",
+                  "count": 2,
+                  "brief_description": "Two nearly identical pictures of a woman in yellow saree sitting on steps holding a fan, with a tulsi plant and house visible — 11 differences to be spotted",
+                  "page_ref": "p.104"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "competency_reporting": {
+    "by_spine": {
+      "oracy": ["C-1.1", "C-1.2", "C-1.3"],
+      "reading": ["C-2.1", "C-2.2"],
+      "writing": ["C-3.1", "C-3.2", "C-3.3", "C-3.4"],
+      "word_work": ["C-4.1", "C-4.2"],
+      "beyond_text": ["C-5.1", "C-5.2"]
+    }
+  },
+  "effort_signals": {
+    "spine_load": 3,
+    "task_density": 1,
+    "writing_demand": 1,
+    "project_load": 1,
+    "effort_index": 10.0
+  }
+}

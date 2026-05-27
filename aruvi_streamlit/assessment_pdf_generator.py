@@ -105,6 +105,8 @@ def _eng_guide_paras(text: str, uw: float) -> list:
         marked = re.sub(r' (\d+)\.\s+', r'\n\1. ', marked)
         # Insert split markers before lettered items: " (a)" " (b)"
         marked = re.sub(r' \(([a-zA-Z])\)\s+', r'\n(\1) ', marked)
+        # Insert split markers before MCQ distractor labels: " A:" " B:" " C:" " D:"
+        marked = re.sub(r'\s+([A-D]):\s+', r'\n\1: ', marked)
         lines = [ln.strip() for ln in marked.split("\n") if ln.strip()]
     return [Paragraph(_clean_text(ln), guide_style) for ln in lines]
 
@@ -755,7 +757,14 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
     # ── English: Teacher Guide  then  Learning Outcome below (fix 3) ──────────
     if item.get("is_english"):
         _tg   = item.get("teacher_guide") or {}
-        _sug  = _tg.get("suggested_answer", "") or item.get("suggested_answer", "") or ""
+        _note = _tg.get("note", "") or ""
+        # For MCQ items, teacher_guide.note holds distractor analysis.
+        # suggested_answer is intentionally "" for MCQ (correct option is
+        # already highlighted in green for the teacher).
+        if qtype == "MCQ":
+            _sug = _note  # render distractor note as the teacher guidance text
+        else:
+            _sug = _tg.get("suggested_answer", "") or item.get("suggested_answer", "") or ""
         _elems = _tg.get("expected_elements") or item.get("expected_elements") or []
         tg_lbl_style = ParagraphStyle(
             "eng_tg_lbl", fontName="Helvetica-Bold", fontSize=7,

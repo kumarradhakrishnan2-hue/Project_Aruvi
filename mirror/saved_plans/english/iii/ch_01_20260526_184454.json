@@ -1,0 +1,697 @@
+{
+  "filename": "ch_01_20260526_184454.json",
+  "saved_at": "2026-05-26T18:44:54",
+  "grade": "Grade III",
+  "subject": "English",
+  "chapter_number": 1,
+  "chapter_title": "Fun with Friends",
+  "period_schedule_display": "Period schedule:\n  Row 1: 35 minutes × 3 periods = 105 minutes\nTotal: 3 periods · 1h 45min",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 35,
+      "count": 3
+    }
+  ],
+  "plan_status": "full_lpa",
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 35,
+          "section_id": "A",
+          "section_title": "Fun with Friends (Picture Reading)",
+          "spines_taught": [
+            "reading"
+          ],
+          "activity_title": "Picture Walk: Duck, Hen and the Stream",
+          "pedagogical_methods": {
+            "reading": "picture-reading"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading",
+              "task_index": 0,
+              "task_brief": "Look at this picture story"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Teacher greets the class and introduces the chapter title 'Fun with Friends'. Students are invited to say one word that comes to mind when they hear the word 'friends'."
+            },
+            {
+              "minutes": "5–17",
+              "description": "Picture walk: Teacher displays or points to each of the four sequenced illustrations on pp. 1–2 one by one, eliciting student observations before moving forward. Teacher reads the dialogue aloud ('Duck: Come dear hen…') giving each character a distinct voice, then invites students to echo key lines."
+            },
+            {
+              "minutes": "17–27",
+              "description": "Picture Reading task (p. 1–2): Students observe the pictures silently for one minute, then share what they notice — who the characters are, where they are going, and what problem they face at the stream. Teacher guides with open prompts such as 'What do you see here?' and 'What happens next?'"
+            },
+            {
+              "minutes": "27–35",
+              "description": "Teacher summarises the picture story in two or three sentences and asks students to predict: 'How do you think the ducklings helped?' Students share predictions aloud before the next period."
+            }
+          ],
+          "teacher_notes": "This is the first class encounter with the text; take time with each picture before turning to the next so students build the narrative mentally. Watch for students who confuse ducklings and chicks — use the illustrations to distinguish them clearly. The oracy discussion task will follow in the next period.",
+          "materials": [
+            "Textbook pp. 1–3",
+            "Pointer or ruler for picture walk"
+          ]
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 35,
+          "section_id": "A",
+          "section_title": "Fun with Friends (Picture Reading)",
+          "spines_taught": [
+            "oracy"
+          ],
+          "activity_title": "Friend Talk: Helping Each Other Across the Stream",
+          "pedagogical_methods": {
+            "oracy": "guided-conversation"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "oracy",
+              "task_index": 0,
+              "task_brief": "Discuss with friends — five oral prompts"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–4",
+              "description": "Brief recap: Teacher shows the last illustration again and asks one student to retell in one sentence how the chicks crossed the stream. This bridges from Period 1's picture walk."
+            },
+            {
+              "minutes": "4–10",
+              "description": "Pair warm-up on prompts 1 and 2 (p. 3): 'How many ducklings and chicks can you see?' and 'Are the duck and hen friends — how do you know?' Pairs discuss for two minutes, then two or three pairs share with the class."
+            },
+            {
+              "minutes": "10–20",
+              "description": "Whole-class guided conversation on prompt 3 (p. 3): 'How did the hen and the chicks cross the stream?' Teacher draws out the key idea that ducklings used their strength to help the chicks, connecting it to the picture-story theme of mutual help."
+            },
+            {
+              "minutes": "20–30",
+              "description": "Personal-experience prompts 4 and 5 (p. 3): 'Have you ever helped your friend? Did you feel happy?' Students share in a circle or small groups; teacher affirms each response and models a complete sentence if needed."
+            },
+            {
+              "minutes": "30–35",
+              "description": "Closure: Teacher invites one student to say the 'big idea' of the story in their own words. Teacher previews the word-work activity coming next period."
+            }
+          ],
+          "teacher_notes": "Encourage shy students by pairing them with a supportive partner for the first two prompts before opening to whole class. Prompts 4 and 5 invite personal sharing — accept home-language responses and help students restate in English without pressure. The word-work matching task will be covered in Period 3.",
+          "materials": [
+            "Textbook p. 3"
+          ]
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 35,
+          "section_id": "A",
+          "section_title": "Fun with Friends (Picture Reading)",
+          "spines_taught": [
+            "word_work"
+          ],
+          "activity_title": "Animals and Their Young Ones — Match It!",
+          "pedagogical_methods": {
+            "word_work": "word-building"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "word_work",
+              "task_index": 0,
+              "task_brief": "Match animals with their young ones"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Quick recall: Teacher asks 'What do we call the duck's baby? The hen's baby?' Students reply from memory, anchoring prior learning from the picture story."
+            },
+            {
+              "minutes": "5–15",
+              "description": "Teacher writes the five animal names on the board and reads them aloud; students repeat. Teacher then writes the five young-one names in a scrambled column and asks students to guess matches before consulting the textbook."
+            },
+            {
+              "minutes": "15–27",
+              "description": "Students complete the match task (p. 3) individually in their textbooks — Duck–Duckling, Hen–Chick, Cow–Calf, Cat–Kitten, Dog–Puppy. Teacher circulates, offering prompts rather than answers for uncertain students."
+            },
+            {
+              "minutes": "27–35",
+              "description": "Whole-class verification: Teacher calls on volunteers to read each pair aloud; class signals thumbs-up or thumbs-down. Teacher closes by asking students to use two pairs in an oral sentence, e.g. 'The cow has a calf.'"
+            }
+          ],
+          "teacher_notes": "Students often confuse 'calf' and 'kitten' — emphasise that 'calf' belongs to the cow and connect it to the Hindi/regional equivalent if helpful. This period completes all anchored tasks in Section A; Section B begins in Period 4. No homework is assigned as all tasks have been handled in class.",
+          "materials": [
+            "Textbook p. 3",
+            "Chalk/whiteboard"
+          ]
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 40,
+          "section_id": "B",
+          "section_title": "Colours",
+          "spines_taught": [
+            "reading"
+          ],
+          "activity_title": "Poem Encounter and Comprehension: Colours",
+          "pedagogical_methods": {
+            "reading": "shared-reading"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading",
+              "task_index": 0,
+              "task_brief": "Answer three comprehension questions about the poem"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Teacher reads the poem 'Colours' aloud expressively (pp. 4–5), then leads a choral reading: class reads together once slowly, then at a natural pace. Teacher points to each colour word as it is read."
+            },
+            {
+              "minutes": "8–16",
+              "description": "Shared reading: Teacher and students read the poem together again, pausing after each stanza for students to restate in their own words what happened. Teacher draws attention to the contrast 'You have … I have …' and the resolution 'we have a full pack.'"
+            },
+            {
+              "minutes": "16–28",
+              "description": "Reading task — Let us think A (p. 5): Students answer the three comprehension questions (How many children? Why share? How do they get a full pack?) orally first in pairs, then write their answers in the textbook."
+            },
+            {
+              "minutes": "28–40",
+              "description": "Pair review: Partners swap books and read each other's answers aloud. Teacher takes whole-class responses for question 3, reinforcing the poem's key message that sharing makes both children richer."
+            }
+          ],
+          "teacher_notes": "This is a 40-minute period; the extra five minutes allow unhurried writing after oral rehearsal. Guide students to write complete sentences rather than single words — model one answer on the board before independent writing. The poem's contrast device ('you / I / we') is worth highlighting as it mirrors the friendship theme from Section A.",
+          "materials": [
+            "Textbook pp. 4–5",
+            "Chalk/whiteboard for model sentence"
+          ]
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 35,
+          "section_id": "B",
+          "section_title": "Colours",
+          "spines_taught": [
+            "oracy"
+          ],
+          "activity_title": "Sharing Crayons — Paired Talk and Colour-Reading Game",
+          "pedagogical_methods": {
+            "oracy": "guided-conversation"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "oracy",
+              "task_index": 0,
+              "task_brief": "Think-and-say: sharing, crayon pairs talk"
+            },
+            {
+              "spine": "oracy",
+              "task_index": 1,
+              "task_brief": "Read the colour of the ink, not the word"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Warm-up: Teacher holds up a crayon (or draws a coloured square) and asks 'What would you draw with only these three colours — green, blue, red?' Students respond quickly in pairs."
+            },
+            {
+              "minutes": "5–17",
+              "description": "Guided conversation — Let us think B, prompts 1 and 2 (p. 5): 'Do you share anything with your friends?' and 'What would you draw with three crayons?' Pairs discuss for three minutes; four or five pairs share with the class. Teacher models a complete spoken sentence for hesitant students."
+            },
+            {
+              "minutes": "17–28",
+              "description": "Colour-reading game — Let us speak B / Have fun! (p. 7): Teacher explains the rule — read the colour of the ink, not the printed word. Teacher models one example, then the class attempts the grid together, first slowly row by row, then faster as a choral drill."
+            },
+            {
+              "minutes": "28–35",
+              "description": "Cool-down reflection: Teacher asks, 'Which colour word was hardest to say in the wrong way? Why?' Students share responses. Teacher previews that next period will focus on consonant-cluster words from the poem."
+            }
+          ],
+          "teacher_notes": "The colour-reading game (Stroop-type task) is cognitively demanding for Grade III; keep the first pass slow and choral before any individual attempts. Prompt 3 from Let us think B (drawing activity) is better suited as a free-time or art-integrated task and is left unanchored in this plan; flag it as optional classroom extension. No homework tonight.",
+          "materials": [
+            "Textbook pp. 5, 7",
+            "Crayons or coloured chalk for demonstration"
+          ]
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 35,
+          "section_id": "B",
+          "section_title": "Colours",
+          "spines_taught": [
+            "word_work"
+          ],
+          "activity_title": "Consonant Clusters and Action Words",
+          "pedagogical_methods": {
+            "word_work": "phonics-drill"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "word_work",
+              "task_index": 1,
+              "task_brief": "Say-aloud consonant-cluster words: gr, cr, dr, pr"
+            },
+            {
+              "spine": "word_work",
+              "task_index": 2,
+              "task_brief": "Circle the action words from the list"
+            }
+          ],
+          "homework": [
+            {
+              "spine": "word_work",
+              "task_index": 0,
+              "task_brief": "Rearrange letters to find hidden colour words"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–6",
+              "description": "Teacher writes 'green' and 'crayon' on the board and underlines 'gr' and 'cr'. Students say both words aloud three times; teacher explains that two consonants together at the start of a word make a cluster."
+            },
+            {
+              "minutes": "6–18",
+              "description": "Phonics drill — Let us speak A (p. 6): Teacher leads choral reading of all four cluster columns (gr, cr, dr, pr), pointing to each word. Students then form one oral sentence per cluster word of their choice and share with a partner."
+            },
+            {
+              "minutes": "18–28",
+              "description": "Action-word task — Let us learn A (p. 7): Teacher writes five words on the board (laugh, carrot, dance, leg, eat) and models identifying 'laugh' as an action word. Students then work individually to circle all action words in the full list in their textbooks."
+            },
+            {
+              "minutes": "28–35",
+              "description": "Quick whole-class check: Teacher reads each word; students signal thumbs-up for action words. Disputed cases are discussed briefly. Teacher issues the homework: anagram/colour rearrangement task (p. 6)."
+            }
+          ],
+          "teacher_notes": "Students may circle nouns that feel 'active' (e.g. 'sun', 'potato') — reinforce the definition: action words are things you DO, not things you see. The Let us learn B word-search grid (p. 8) is not anchored this period due to time; flag it as a self-study or early-finisher task. Homework: rearrange colour letters (p. 6, five items).",
+          "materials": [
+            "Textbook pp. 6–8",
+            "Chalk/whiteboard"
+          ]
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 40,
+          "section_id": "B",
+          "section_title": "Colours",
+          "spines_taught": [
+            "word_work",
+            "beyond_text"
+          ],
+          "activity_title": "Alphabetical Order and Compound Word Friends",
+          "pedagogical_methods": {
+            "word_work": "word-games",
+            "beyond_text": "hands-on-extension"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "word_work",
+              "task_index": 5,
+              "task_brief": "Write five colours in alphabetical order"
+            },
+            {
+              "spine": "beyond_text",
+              "task_index": 0,
+              "task_brief": "Match word-friends to form compound words"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Homework review: Teacher calls on three students to say their answers to the colour-anagram homework from Period 6. Class confirms or corrects together."
+            },
+            {
+              "minutes": "5–15",
+              "description": "Alphabetical order task — Let us learn / alphabetical order (p. 13): Teacher recaps the alphabet sequence by leading a quick A–Z chant. Students then arrange YELLOW, BLUE, PURPLE, GREEN, RED alphabetically in their textbooks individually."
+            },
+            {
+              "minutes": "15–22",
+              "description": "Whole-class review: Teacher elicits the correct order (BLUE, GREEN, PURPLE, RED, YELLOW) and writes it on the board. Students self-correct; teacher briefly explains how to compare second letters when first letters match."
+            },
+            {
+              "minutes": "22–35",
+              "description": "Beyond-text task — Let us do (p. 14): Teacher reads the introductory sentence aloud — 'Like you, words also have friends.' Students match word-pairs (rain+bow done; rain+paper, blue+ball, basket+worm, earth+berry) and write the compound word. Teacher circulates and offers picture-clue prompts."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Closing celebration: Teacher displays the five compound words on the board. Students read them aloud together and teacher asks, 'Which compound word do you find the most surprising?' One or two responses end the chapter on a cheerful note."
+            }
+          ],
+          "teacher_notes": "The Let us learn C alphabet sentences (pp. 8–12) are extensive and are left unanchored due to time constraints; direct students to read them independently or during library time as a fun alphabet-recitation activity. Period 7 being 40 minutes allows both word_work and beyond_text to be completed without rushing. The chapter theme of friendship is reinforced by framing compound words as 'word-friends' in the beyond_text task.",
+          "materials": [
+            "Textbook pp. 13–14",
+            "Chalk/whiteboard",
+            "Crayons (optional, for compound word illustrations)"
+          ]
+        }
+      ]
+    },
+    "coverage_handoff": {
+      "reading": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Fun with Friends (Picture Reading)",
+            "section_type": "picture_narrative",
+            "implied_lo": "Student infers narrative sequence and character motivation using a wordless picture story as the vehicle.",
+            "section_context": "Duck and hen travel to village fair; ducklings carry chicks across stream.",
+            "tasks_anchored": [
+              {
+                "spine": "reading",
+                "task_index": 0,
+                "task_brief": "Look at this picture story"
+              }
+            ]
+          },
+          {
+            "section_id": "B",
+            "section_title": "Colours",
+            "section_type": "poem",
+            "implied_lo": "Student answers literal and inferential comprehension questions using a short poem as the vehicle.",
+            "section_context": "Two-stanza poem about sharing crayons; colour words; sharing resolves scarcity.",
+            "tasks_anchored": [
+              {
+                "spine": "reading",
+                "task_index": 0,
+                "task_brief": "Answer three comprehension questions about the poem"
+              }
+            ]
+          }
+        ]
+      },
+      "oracy": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Fun with Friends (Picture Reading)",
+            "section_type": "picture_narrative",
+            "implied_lo": "Student responds to guided oral prompts connecting picture-story events to personal experience using a picture narrative as the vehicle.",
+            "section_context": "Duck-hen friendship; ducklings carrying chicks; student's own helping experience.",
+            "tasks_anchored": [
+              {
+                "spine": "oracy",
+                "task_index": 0,
+                "task_brief": "Discuss with friends — five oral prompts"
+              }
+            ]
+          },
+          {
+            "section_id": "B",
+            "section_title": "Colours",
+            "section_type": "poem",
+            "implied_lo": "Student participates in guided pair and whole-class conversation using a poem as the vehicle.",
+            "section_context": "Sharing crayons; pair crayon-colour talk; Stroop colour-reading game.",
+            "tasks_anchored": [
+              {
+                "spine": "oracy",
+                "task_index": 0,
+                "task_brief": "Think-and-say: sharing, crayon pairs talk"
+              },
+              {
+                "spine": "oracy",
+                "task_index": 1,
+                "task_brief": "Read the colour of the ink, not the word"
+              }
+            ]
+          }
+        ]
+      },
+      "writing": {
+        "section_contributions": []
+      },
+      "word_work": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Fun with Friends (Picture Reading)",
+            "section_type": "picture_narrative",
+            "implied_lo": "Student matches animal names to their young-one names using vocabulary from a picture narrative as the vehicle.",
+            "section_context": "Duck–duckling, hen–chick, cow–calf, cat–kitten, dog–puppy matching.",
+            "tasks_anchored": [
+              {
+                "spine": "word_work",
+                "task_index": 0,
+                "task_brief": "Match animals with their young ones"
+              }
+            ]
+          },
+          {
+            "section_id": "B",
+            "section_title": "Colours",
+            "section_type": "poem",
+            "implied_lo": "Student identifies and applies consonant clusters, action words, and alphabetical ordering using a poem as the vehicle.",
+            "section_context": "Consonant clusters gr/cr/dr/pr; action-word identification; colours in alphabetical order.",
+            "tasks_anchored": [
+              {
+                "spine": "word_work",
+                "task_index": 1,
+                "task_brief": "Say-aloud consonant-cluster words: gr, cr, dr, pr"
+              },
+              {
+                "spine": "word_work",
+                "task_index": 2,
+                "task_brief": "Circle the action words from the list"
+              },
+              {
+                "spine": "word_work",
+                "task_index": 5,
+                "task_brief": "Write five colours in alphabetical order"
+              }
+            ]
+          }
+        ]
+      },
+      "beyond_text": {
+        "section_contributions": [
+          {
+            "section_id": "B",
+            "section_title": "Colours",
+            "section_type": "poem",
+            "implied_lo": "Student forms compound words by combining word-pairs using a hands-on extension activity as the vehicle.",
+            "section_context": "Compound words: rainbow, bluebell, newspaper, earthworm, strawberry formed from word-pairs.",
+            "tasks_anchored": [
+              {
+                "spine": "beyond_text",
+                "task_index": 0,
+                "task_brief": "Match word-friends to form compound words"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "assessment_items": [
+      {
+        "spine_code": "reading",
+        "spine_title": "Reading",
+        "items": [
+          {
+            "id": "Q-READ-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Fun with Friends (Picture Reading)",
+            "source_section_type": "picture_narrative",
+            "source_spine": "reading",
+            "source_lo": "Student infers narrative sequence and character motivation using a wordless picture story as the vehicle.",
+            "source_context": "Duck and hen travel to village fair; ducklings carry chicks across stream.",
+            "item_stem": "Look at the picture story on Textbook pages 1–2. The hen is worried when she reaches the stream. Why is she worried, and what does the duck do to help everyone cross safely?",
+            "question_type": "SCR",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "The hen is worried because she cannot swim and does not know how her chicks will cross the stream. The duck says she has a plan, and the ducklings swim across while carrying the chicks on their backs, so all of them get to the other side safely.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-READ-B-1",
+            "source_section_id": "B",
+            "source_section_title": "Colours",
+            "source_section_type": "poem",
+            "source_spine": "reading",
+            "source_lo": "Student answers literal and inferential comprehension questions using a short poem as the vehicle.",
+            "source_context": "Two-stanza poem about sharing crayons; colour words; sharing resolves scarcity.",
+            "item_stem": "Read the poem 'Colours' and choose the correct answer.",
+            "question_type": "MCQ",
+            "options": [
+              {
+                "label": "A",
+                "text": "The two children each have all the colours they need, so they do not share.",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "Neither child has a full pack of crayons alone, but sharing gives them all the colours they need.",
+                "is_correct": true
+              },
+              {
+                "label": "C",
+                "text": "One child has a full pack and gives some crayons to the other child.",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "The children buy a new pack of crayons at the shop.",
+                "is_correct": false
+              }
+            ],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [],
+              "note": "A: Students who choose this have missed the poem's premise — both children lack colours, neither has a full set. C: Suggests a misreading where one child is generous rather than both being incomplete; probe whether the student can distinguish 'giving from surplus' from 'sharing out of mutual need'. D: Introduces a plot element not present in the poem; the student may be drawing on real-world experience rather than the text."
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "spine_code": "oracy",
+        "spine_title": "Oracy",
+        "items": [
+          {
+            "id": "Q-ORACY-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Fun with Friends (Picture Reading)",
+            "source_section_type": "picture_narrative",
+            "source_spine": "oracy",
+            "source_lo": "Student responds to guided oral prompts connecting picture-story events to personal experience using a picture narrative as the vehicle.",
+            "source_context": "Duck-hen friendship; ducklings carrying chicks; student's own helping experience.",
+            "item_stem": "Look at the picture story on Textbook pages 1–2. Tell your teacher: How did the ducklings show kindness to the hen's chicks at the stream? Have you ever helped a friend the way the ducklings helped the chicks? Tell what you did and how you felt.",
+            "question_type": "ORAL_PROMPT",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Mentions ducklings carrying chicks across the stream.",
+                "Shares a personal helping experience clearly.",
+                "Expresses a feeling about helping the friend."
+              ],
+              "note": ""
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-ORACY-B-1",
+            "source_section_id": "B",
+            "source_section_title": "Colours",
+            "source_section_type": "poem",
+            "source_spine": "oracy",
+            "source_lo": "Student participates in guided pair and whole-class conversation using a poem as the vehicle.",
+            "source_context": "Sharing crayons; pair crayon-colour talk; Stroop colour-reading game.",
+            "item_stem": "Work with a partner. In the poem 'Colours', one child needs red and the other needs black. Imagine you have only green, blue, and red crayons. Tell your partner: what would you draw with just these three colours? Listen to your partner's idea and say one thing you like about it.",
+            "question_type": "ORAL_PROMPT",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Suggests a drawing using only green, blue, and red.",
+                "Listens and responds to partner's idea.",
+                "Uses at least one colour word from the poem."
+              ],
+              "note": ""
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "spine_code": "word_work",
+        "spine_title": "Word Work",
+        "items": [
+          {
+            "id": "Q-WW-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Fun with Friends (Picture Reading)",
+            "source_section_type": "picture_narrative",
+            "source_spine": "word_work",
+            "source_lo": "Student matches animal names to their young-one names using vocabulary from a picture narrative as the vehicle.",
+            "source_context": "Duck–duckling, hen–chick, cow–calf, cat–kitten, dog–puppy matching.",
+            "item_stem": "In the picture story, the duck travels with her ducklings and the hen travels with her chicks. Match each animal from the story and beyond with its young one.",
+            "question_type": "MATCH",
+            "options": [],
+            "visual_stimulus": "Animal | Young one\nDuck | Kitten\nHen | Calf\nCow | Puppy\nCat | Duckling\nDog | Chick",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "Duck – Duckling, Hen – Chick, Cow – Calf, Cat – Kitten, Dog – Puppy",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-WW-B-1",
+            "source_section_id": "B",
+            "source_section_title": "Colours",
+            "source_section_type": "poem",
+            "source_spine": "word_work",
+            "source_lo": "Student identifies and applies consonant clusters, action words, and alphabetical ordering using a poem as the vehicle.",
+            "source_context": "Consonant clusters gr/cr/dr/pr; action-word identification; colours in alphabetical order.",
+            "item_stem": "The poem 'Colours' uses the word 'green' (consonant blend 'gr') and the word 'draw' (consonant blend 'dr'). Do the following tasks.\n1. Fill in the blank with a word that begins with the consonant blend 'cr': The children use a _______ to colour their picture.\n2. Three words are given below. Circle only the action words: share, crayon, draw, purple, swim.\n3. Write the five colours from the poem in alphabetical order: RED, BLUE, GREEN, YELLOW, BLACK.",
+            "question_type": "FILL_IN",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "1. crayon (or any valid 'cr' blend word such as 'crab', 'crane' — accept any correct 'cr' word). 2. Action words: share, draw, swim. 3. Alphabetical order: BLACK, BLUE, GREEN, RED, YELLOW.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "spine_code": "beyond_text",
+        "spine_title": "Beyond Text",
+        "items": [
+          {
+            "id": "Q-BT-B-1",
+            "source_section_id": "B",
+            "source_section_title": "Colours",
+            "source_section_type": "poem",
+            "source_spine": "beyond_text",
+            "source_lo": "Student forms compound words by combining word-pairs using a hands-on extension activity as the vehicle.",
+            "source_context": "Compound words: rainbow, bluebell, newspaper, earthworm, strawberry formed from word-pairs.",
+            "item_stem": "Just like friends help each other, some words join together to make a new word. Match each word in Column A with its partner in Column B to make a compound word. Write the new compound word in Column C.",
+            "question_type": "MATCH",
+            "options": [],
+            "visual_stimulus": "Column A | Column B | Compound Word\nrain | worm | \nblue | paper | \nnews | bow | \nearth | berry | \nstraw | bell | ",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "rain + bow = rainbow, blue + bell = bluebell, news + paper = newspaper, earth + worm = earthworm, straw + berry = strawberry",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true
+          }
+        ]
+      }
+    ],
+    "input_tokens": 10942,
+    "output_tokens": 5690,
+    "cost_inr": 10.8722,
+    "assess_input_tokens": 9852,
+    "assess_output_tokens": 2680,
+    "assess_cost_inr": 6.4176
+  }
+}

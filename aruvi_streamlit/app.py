@@ -2730,10 +2730,15 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
         # render `teacher_guide.expected_elements` as bullets.
         _ENG_CLOSED_TYPES = {"MCQ", "FILL_IN", "MATCH", "TRUE_FALSE"}
 
-        def _eng_resolve_answer(qtype: str, tg: dict) -> tuple[str, list]:
+        def _eng_resolve_answer(qtype: str, tg: dict, options: list = None) -> tuple[str, list]:
             qtype_u = (qtype or "").strip().upper()
             tg = tg if isinstance(tg, dict) else {}
-            sug = tg.get("suggested_answer", "") or ""
+            # For MCQ: the correct option is already highlighted visually.
+            # teacher_guide.note holds distractor analysis; render that instead.
+            if qtype_u == "MCQ":
+                sug = tg.get("note", "") or ""
+            else:
+                sug = tg.get("suggested_answer", "") or ""
             exp = tg.get("expected_elements") or []
             if not isinstance(exp, list):
                 exp = []
@@ -2773,11 +2778,12 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
                             continue
                         _si_qtype = (si.get("question_type") or "").strip().upper()
                         _si_tg    = si.get("teacher_guide") or {}
-                        _si_expected, _si_exp_elems = _eng_resolve_answer(_si_qtype, _si_tg)
+                        _si_opts = si.get("options") or []
+                        _si_expected, _si_exp_elems = _eng_resolve_answer(_si_qtype, _si_tg, _si_opts)
                         _sub_items_render.append({
                             "stem":              si.get("stem", "") or "",
                             "type":              _si_qtype,
-                            "options":           si.get("options") or [],
+                            "options":           _si_opts,
                             "visual_stimulus":   si.get("visual_stimulus", "") or "",
                             "expected":          _si_expected,
                             "expected_elements": _si_exp_elems,
@@ -2786,7 +2792,7 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
                         })
                 else:
                     # Outer task itself owns the answer layer.
-                    _outer_expected, _outer_exp_elems = _eng_resolve_answer(_outer_qtype, _outer_tg)
+                    _outer_expected, _outer_exp_elems = _eng_resolve_answer(_outer_qtype, _outer_tg, it.get("options") or [])
                     _sub_items_render.append({
                         "stem":              _task_prompt,
                         "type":              _outer_qtype,
@@ -2813,7 +2819,7 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
                 _card_exp_elems = []
                 _card_suggested = ""
                 if not _sub_items_raw:
-                    _card_expected, _card_exp_elems = _eng_resolve_answer(_outer_qtype, _outer_tg)
+                    _card_expected, _card_exp_elems = _eng_resolve_answer(_outer_qtype, _outer_tg, it.get("options") or [])
                     _card_suggested = (_outer_tg if isinstance(_outer_tg, dict) else {}).get("suggested_answer", "") or ""
 
                 _qs.append({

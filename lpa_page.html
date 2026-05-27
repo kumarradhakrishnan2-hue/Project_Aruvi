@@ -479,7 +479,7 @@
 /* English LP: Pedagogical Approach column in the period header (5th col) */
 .eng-ped-col {
   width: 180px; flex-shrink: 0; font-size: 11px; font-weight: 400;
-  color: #1a1917; line-height: 1.4; text-align: left; white-space: normal;
+  color: #1a1917; line-height: 1.4; text-align: center; white-space: normal;
 }
 
 /* English LP: pedagogical methods row at top of period body — kept for body display */
@@ -658,6 +658,10 @@ function fmtGuide(s) {
   esc = esc.replace(/ (\d+)\.\s+/g, '<br>$1. ');
   /* Insert breaks before lettered items: " (a)" " (b)" */
   esc = esc.replace(/ \(([a-zA-Z])\)\s+/g, '<br>($1) ');
+  /* Bold MCQ distractor labels: A: B: C: D: — first one at start of string,
+     rest preceded by whitespace with a line break before them. */
+  esc = esc.replace(/^([A-D]):\s+/, '<strong>$1:</strong> ');
+  esc = esc.replace(/\s+([A-D]):\s+/g, '<br><strong>$1:</strong> ');
   return esc;
 }
 
@@ -1313,7 +1317,10 @@ function renderEnglishQuestionCard(q, n) {
       s += '</div>';
     }
 
-    var hasSug = si.suggested_answer && si.suggested_answer.length;
+    /* For MCQ, distractor analysis is in si.expected (derived from
+       teacher_guide.note); for other closed types, si.suggested_answer. */
+    var guideText = si.suggested_answer || si.expected || '';
+    var hasSug = guideText.length > 0;
     var hasExp = si.expected_elements && si.expected_elements.length;
     /* When options were suppressed (predict-listen MCQ), surface correct
        answers in the teacher guide so the teacher can verify responses. */
@@ -1333,7 +1340,7 @@ function renderEnglishQuestionCard(q, n) {
              suppressedCorrectAnswers.join('<br>') + '</div>';
       }
       if (hasSug) {
-        s += '<div class="eng-tg-suggest">' + fmtGuide(si.suggested_answer) + '</div>';
+        s += '<div class="eng-tg-suggest">' + fmtGuide(guideText) + '</div>';
       }
       if (hasExp) {
         s += '<ul class="eng-tg-elems">';

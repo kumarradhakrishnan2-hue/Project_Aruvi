@@ -248,10 +248,17 @@ Each item is classified CLOSED or OPEN by its `question_type`:
 CLOSED items carry `teacher_guide.suggested_answer` — a verified
 single answer in plain prose, with type-specific rules:
 
-  MCQ        — `suggested_answer` MUST be omitted (set to "").
-               The correct option is identified by `is_correct: true`
-               in `options[]`. Duplicating it in the teacher guide
-               is forbidden.
+  MCQ        — `suggested_answer` MUST be "" (the correct option is
+               already marked `is_correct: true` in `options[]` and
+               highlighted visually for the teacher; do not repeat it).
+               Instead, populate `note` with distractor analysis: for
+               each INCORRECT option, one sentence explaining what
+               misconception a student who chose it likely holds.
+               Example note: "A: Students who choose this confuse
+               individual ownership with shared benefit. C: Suggests
+               a misreading of the poem's symmetry — both children
+               lack, neither has a full pack. D: Introduces a plot
+               element not present in the poem."
   MATCH      — Give the matched pairs (e.g., "1-c, 2-a, 3-b").
   FILL_IN    — Give the fill values in order.
   TRUE_FALSE — Give the correct verdicts and a one-sentence
@@ -453,10 +460,13 @@ ASSESSMENT JSON SCHEMA
           "transcript_ref":       string,   // Listening only; "" otherwise
 
           "teacher_guide": {
-            "suggested_answer":   string,   // CLOSED only (not MCQ);
-                                            // "" otherwise
+            "suggested_answer":   string,   // CLOSED (non-MCQ): verified
+                                            // answer in plain prose;
+                                            // "" for MCQ and OPEN types
             "expected_elements":  [string], // OPEN only; [] otherwise
-            "note":               string    // empty unless fallback
+            "note":               string    // MCQ: distractor analysis
+                                            // (one sentence per wrong
+                                            // option); empty otherwise
           },
 
           "verified":             boolean

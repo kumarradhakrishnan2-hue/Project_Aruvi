@@ -190,8 +190,16 @@ Each item is CLOSED or OPEN by its `question_type`:
 
 CLOSED items carry `teacher_guide.suggested_answer` with type-specific
 rules:
-  MCQ           — `suggested_answer` MUST be "" (correct option already
-                  flagged in `options[].is_correct`).
+  MCQ           — `suggested_answer` MUST be "" (the correct option is
+                  already marked `is_correct: true` in `options[]` and
+                  highlighted visually for the teacher; do not repeat it).
+                  Instead, populate `note` with distractor analysis: for
+                  each INCORRECT option, one sentence explaining what
+                  misconception a student who chose it likely holds.
+                  Example note: "A: Students who choose this may conflate
+                  friendship with material giving. C: Reveals a literal
+                  reading that misses the poem's invitation to empathy.
+                  D: Suggests the student has reversed the poem's logic."
   MATCH         — matched pairs (e.g. "1-c, 2-a, 3-b").
   FILL_IN       — the fill values in order.
   TRUE_FALSE    — verdicts plus a one-sentence justification from the
@@ -403,8 +411,9 @@ ASSESSMENT JSON SCHEMA
                                               // "" otherwise
 
           "teacher_guide": {
-            "suggested_answer":    string,    // CLOSED only (not MCQ); ""
-                                              // otherwise
+            "suggested_answer":    string,    // CLOSED (non-MCQ): verified
+                                              // answer in plain prose;
+                                              // "" for MCQ and OPEN types
             "expected_elements":   [string],  // OPEN only; [] otherwise
             "note":                string     // empty unless fallback
           },
