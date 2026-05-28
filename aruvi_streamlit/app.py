@@ -71,18 +71,17 @@ def grade_to_folder(grade: str) -> str:
         "Grade I":    "i",    "Grade II":   "ii",   "Grade III": "iii",
         "Grade IV":   "iv",   "Grade V":    "v",    "Grade VI":  "vi",
         "Grade VII":  "vii",  "Grade VIII": "viii",
-        "Grade IX":   "ix",   "Grade X":    "x",
+        "Grade IX":   "ix",
     }
     return _mapping.get(grade, grade.lower().replace("grade ", ""))
 
 def subject_to_folder(subject: str) -> str:
     mapping = {
-        "Social Science": "social_sciences",
-        "Mathematics":    "mathematics",
-        "Science":        "science",
-        "English":        "english",
-        "Second Language":"languages",
-        "EVS":            "evs",
+        "Social Science":       "social_sciences",
+        "Mathematics":          "mathematics",
+        "Science":              "science",
+        "English":              "english",
+        "The World Around Us":  "the_world_around_us",
     }
     return mapping.get(subject, subject.lower().replace(" ", "_"))
 
@@ -166,7 +165,7 @@ def grade_to_roman(grade: str) -> str:
     mapping = {
         "Grade III": "iii", "Grade IV": "iv",  "Grade V":   "v",
         "Grade VI":  "vi",  "Grade VII": "vii", "Grade VIII":"viii",
-        "Grade IX":  "ix",  "Grade X":   "x",
+        "Grade IX":  "ix",
     }
     return mapping.get(grade, grade.lower().replace("grade ", ""))
 
@@ -3431,13 +3430,27 @@ WEIGHT_LABEL     = {3: "Central", 2: "Substantive", 1: "Present"}
 
 GRADES = [
     "Grade III", "Grade IV", "Grade V", "Grade VI",
-    "Grade VII", "Grade VIII", "Grade IX", "Grade X",
+    "Grade VII", "Grade VIII", "Grade IX",
 ]
 
 SUBJECTS = [
-    "English", "EVS", "Mathematics", "Science",
-    "Second Language", "Social Science",
+    "English", "Mathematics", "Science",
+    "Social Science", "The World Around Us",
 ]
+
+# Grades available per subject.
+# "The World Around Us" → preparatory only (III–V)
+# Science / Social Science → middle + secondary only (VI–X)
+# All other subjects → all grades (III–X)
+_PREPARATORY_GRADES = ["Grade III", "Grade IV", "Grade V"]
+_MIDDLE_SEC_GRADES  = ["Grade VI", "Grade VII", "Grade VIII", "Grade IX"]
+
+def grades_for_subject(subject: str) -> list:
+    if subject == "The World Around Us":
+        return _PREPARATORY_GRADES
+    if subject in ("Science", "Social Science"):
+        return _MIDDLE_SEC_GRADES
+    return GRADES
 
 # ── Page config ───────────────────────────────────────────────────────────────
 
@@ -5113,33 +5126,6 @@ with st.sidebar:
         # shared session-state keys so any specific selection persists when
         # the user switches tabs. "All" maps to None in shared state.
 
-        _g_icon = f'<img src="{GRADE_SRC}" class="field-icon-grade" alt="">' if GRADE_SRC else ""
-        st.markdown(
-            f'<div class="sidebar-field-label">{_g_icon}'
-            f'<span class="field-label-text">Grade</span></div>',
-            unsafe_allow_html=True,
-        )
-        _mp_grade_opts = ["All"] + GRADES
-        _mp_grade_cur  = st.session_state.grade if st.session_state.grade in GRADES else "All"
-        grade = st.selectbox(
-            "Grade",
-            _mp_grade_opts,
-            index=_mp_grade_opts.index(_mp_grade_cur),
-            label_visibility="collapsed",
-            key="mp_grade_select",
-        )
-        _grade_val = None if grade == "All" else grade
-        if _grade_val != st.session_state.grade:
-            st.session_state.grade               = _grade_val
-            st.session_state.teacher_ch_idx      = None
-            st.session_state.teacher_generated   = False
-            st.session_state.principal_generated = False
-            if _grade_val:
-                st.query_params["grade"] = _grade_val
-            else:
-                st.query_params.pop("grade", None)
-            st.rerun()
-
         _s_icon = f'<img src="{SUBJECT_SRC}" class="field-icon" alt="">' if SUBJECT_SRC else ""
         st.markdown(
             f'<div class="sidebar-field-label">{_s_icon}'
@@ -5159,12 +5145,45 @@ with st.sidebar:
         if _subject_val != st.session_state.subject:
             st.session_state.subject             = _subject_val
             st.session_state.teacher_ch_idx      = None
+            # Clear grade if it is not valid for the new subject
+            if st.session_state.grade and _subject_val and \
+                    st.session_state.grade not in grades_for_subject(_subject_val):
+                st.session_state.grade = None
             st.session_state.teacher_generated   = False
             st.session_state.principal_generated = False
             if _subject_val:
                 st.query_params["subject"] = _subject_val
             else:
                 st.query_params.pop("subject", None)
+            st.rerun()
+
+        # Grade options depend on selected subject (All = no subject filter → show all grades)
+        _g_icon = f'<img src="{GRADE_SRC}" class="field-icon-grade" alt="">' if GRADE_SRC else ""
+        st.markdown(
+            f'<div class="sidebar-field-label">{_g_icon}'
+            f'<span class="field-label-text">Grade</span></div>',
+            unsafe_allow_html=True,
+        )
+        _mp_base_grades = grades_for_subject(_subject_val) if _subject_val else GRADES
+        _mp_grade_opts  = ["All"] + _mp_base_grades
+        _mp_grade_cur   = st.session_state.grade if st.session_state.grade in _mp_base_grades else "All"
+        grade = st.selectbox(
+            "Grade",
+            _mp_grade_opts,
+            index=_mp_grade_opts.index(_mp_grade_cur),
+            label_visibility="collapsed",
+            key="mp_grade_select",
+        )
+        _grade_val = None if grade == "All" else grade
+        if _grade_val != st.session_state.grade:
+            st.session_state.grade               = _grade_val
+            st.session_state.teacher_ch_idx      = None
+            st.session_state.teacher_generated   = False
+            st.session_state.principal_generated = False
+            if _grade_val:
+                st.query_params["grade"] = _grade_val
+            else:
+                st.query_params.pop("grade", None)
             st.rerun()
 
         # ── Saved date filter ─────────────────────────────────────────────────
@@ -5203,31 +5222,6 @@ with st.sidebar:
     """, unsafe_allow_html=True)
     else:
 
-        # ── Grade selector — label above, value below (left-aligned) ─────────────
-        _g_icon = f'<img src="{GRADE_SRC}" class="field-icon-grade" alt="">' if GRADE_SRC else ""
-        st.markdown(
-            f'<div class="sidebar-field-label">{_g_icon}'
-            f'<span class="field-label-text">Grade</span></div>',
-            unsafe_allow_html=True,
-        )
-        grade = st.selectbox(
-            "Grade",
-            GRADES,
-            index=None if st.session_state.grade is None
-                  else GRADES.index(st.session_state.grade),
-            placeholder="Choose a grade",
-            label_visibility="collapsed",
-            key="grade_select",
-        )
-        if grade != st.session_state.grade:
-            st.session_state.grade               = grade
-            st.session_state.teacher_ch_idx      = None
-            st.session_state.teacher_generated   = False
-            st.session_state.principal_generated = False
-            if grade:
-                st.query_params["grade"] = grade
-            st.rerun()
-
         # ── Subject selector — label above, value below (left-aligned) ───────────
         _s_icon = f'<img src="{SUBJECT_SRC}" class="field-icon" alt="">' if SUBJECT_SRC else ""
         st.markdown(
@@ -5247,10 +5241,42 @@ with st.sidebar:
         if subject != st.session_state.subject:
             st.session_state.subject             = subject
             st.session_state.teacher_ch_idx      = None
+            # If current grade is not valid for the new subject, clear it
+            if st.session_state.grade and subject and \
+                    st.session_state.grade not in grades_for_subject(subject):
+                st.session_state.grade = None
             st.session_state.teacher_generated   = False
             st.session_state.principal_generated = False
             if subject:
                 st.query_params["subject"] = subject
+            st.rerun()
+
+        # ── Grade selector — label above, value below (left-aligned) ─────────────
+        # Available grades depend on the selected subject.
+        _g_icon = f'<img src="{GRADE_SRC}" class="field-icon-grade" alt="">' if GRADE_SRC else ""
+        st.markdown(
+            f'<div class="sidebar-field-label">{_g_icon}'
+            f'<span class="field-label-text">Grade</span></div>',
+            unsafe_allow_html=True,
+        )
+        _avail_grades = grades_for_subject(st.session_state.subject) if st.session_state.subject else GRADES
+        _cur_grade    = st.session_state.grade if st.session_state.grade in _avail_grades else None
+        grade = st.selectbox(
+            "Grade",
+            _avail_grades,
+            index=None if _cur_grade is None
+                  else _avail_grades.index(_cur_grade),
+            placeholder="Choose a grade",
+            label_visibility="collapsed",
+            key="grade_select",
+        )
+        if grade != st.session_state.grade:
+            st.session_state.grade               = grade
+            st.session_state.teacher_ch_idx      = None
+            st.session_state.teacher_generated   = False
+            st.session_state.principal_generated = False
+            if grade:
+                st.query_params["grade"] = grade
             st.rerun()
 
         # ── No data for this combination ──────────────────────────────────────────

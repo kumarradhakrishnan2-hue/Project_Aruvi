@@ -1502,7 +1502,7 @@ def _json_to_english_lp_data(j: dict, date_str: str, weight) -> dict:
         "Grade I":    "i",    "Grade II":   "ii",   "Grade III": "iii",
         "Grade IV":   "iv",   "Grade V":    "v",    "Grade VI":  "vi",
         "Grade VII":  "vii",  "Grade VIII": "viii",
-        "Grade IX":   "ix",   "Grade X":    "x",
+        "Grade IX":   "ix",
     }
     _stage_map = {
         "i": "primary", "ii": "preparatory", "iii": "preparatory",
@@ -1721,18 +1721,17 @@ def json_to_lp_data(j: dict) -> dict:
     # subject_group: "Social Science" → "social_sciences" etc. (mirrors app.py subject_to_folder)
     # grade:         "Grade VII" → "vii"  (roman-numeral folder name, matching mirror/ layout)
     _subject_map = {
-        "Social Science":  "social_sciences",
-        "Mathematics":     "mathematics",
-        "Science":         "science",
-        "English":         "languages",
-        "Second Language": "languages",
-        "EVS":             "science",
+        "Social Science":      "social_sciences",
+        "Mathematics":         "mathematics",
+        "Science":             "science",
+        "English":             "languages",
+        "The World Around Us": "the_world_around_us",
     }
     _grade_map = {
         "Grade I":    "i",    "Grade II":   "ii",   "Grade III": "iii",
         "Grade IV":   "iv",   "Grade V":    "v",    "Grade VI":  "vi",
         "Grade VII":  "vii",  "Grade VIII": "viii",
-        "Grade IX":   "ix",   "Grade X":    "x",
+        "Grade IX":   "ix",
     }
     _subject_grp  = _subject_map.get(j.get("subject", ""), j.get("subject", "").lower().replace(" ", "_"))
     _raw_grade    = j.get("grade", "")
@@ -1856,13 +1855,13 @@ def _json_to_science_lp_data(j: dict, date_str: str, weight) -> dict:
 
     # ── Load competencies from chapter mapping + framework description files ──
     _subject_map = {
-        "Science": "science", "EVS": "science",
+        "Science": "science",
     }
     _grade_map = {
         "Grade I":    "i",    "Grade II":   "ii",   "Grade III": "iii",
         "Grade IV":   "iv",   "Grade V":    "v",    "Grade VI":  "vi",
         "Grade VII":  "vii",  "Grade VIII": "viii",
-        "Grade IX":   "ix",   "Grade X":    "x",
+        "Grade IX":   "ix",
     }
     _stage_map = {
         "i": "primary", "ii": "primary", "iii": "primary",
@@ -2009,7 +2008,7 @@ def _json_to_maths_lp_data(j: dict, date_str: str, weight) -> dict:
         "Grade I":    "i",    "Grade II":   "ii",   "Grade III": "iii",
         "Grade IV":   "iv",   "Grade V":    "v",    "Grade VI":  "vi",
         "Grade VII":  "vii",  "Grade VIII": "viii",
-        "Grade IX":   "ix",   "Grade X":    "x",
+        "Grade IX":   "ix",
     }
     _stage_map = {
         "i": "primary", "ii": "primary", "iii": "primary",
