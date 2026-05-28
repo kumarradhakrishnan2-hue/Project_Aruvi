@@ -257,6 +257,20 @@ Carry-forward rule: When auditing SS assessment output, check that every item's 
 
 ---
 
+[Learning #27] — 2026-05-28 — TWAU Grade III Consistency Check: Architecture Holds, Three Constitution Guards Added
+
+Context: Grade III Unit 3 chapters (Ch 7 Water, Ch 8 Food, Ch 9 Staying Healthy and Happy) reviewed against the proposed TWAU Aruvi architecture developed from Grade IV/V sample chapters.
+Observation: The full architecture (effort index for allocation, single-axis LP by sections, CG codes at period level, one assessment item per CG-strand per period, Option B activity rule) is consistent with Grade III content. No structural breaks found.
+Three constitution-level guards identified:
+(1) CG-3 natural flagging: Grade III has strong CG-3 content (safety, hygiene, stranger safety in Ch 9). Decision: trust the CG-mapping process to flag CG-3 naturally — no special constitution instruction needed. Revisit only if actual pilot runs under-assign CG-3 for Grade III chapters. [WATCH ITEM — check in first Grade III run]
+(2) OPEN_TASK performance variant: When C&E/R&A content maps to physical behaviour (hygiene routines, safety role-play), the assessment item should be flagged as a performance_task subtype within OPEN_TASK, not a written creative task. Constitution should note this distinction for lower primary.
+(3) IKS lower-primary anchor: The constitution's IKS guidance (indian_knowledge_element field) should include at least one lower-primary example (datun/neem tradition, matka/surahi water vessels, seasonal eating) so the LLM does not default exclusively to upper-primary IKS examples.
+Root cause: Grade IV/V sample had no CG-3-dominant chapters and no physical-behaviour OPEN_TASKs, so these edge cases were not visible in the initial design.
+Action taken: Guard (1) — deferred, watch item. Guard (2) and (3) — noted as constitution refinements; to be applied when TWAU constitution is authored (not an architecture change).
+Carry-forward rule: TWAU architecture is grade-agnostic (III through V). Grade III's lower effort indices and coarser section grain are expected outputs of the formula, not anomalies. CG-3 watch item must be checked against first Grade III pilot run.
+
+---
+
 [Learning #25] — 2026-05-23 — Mathematics PDF: Superscript and Math Symbol Blanking
 
 Context: Mathematics Ch 05 (Prime Time) PDF showed blanked-out content wherever superscript notation like 2⁴ × 5⁴ appeared. HTML rendered correctly; PDF was blank at those positions.

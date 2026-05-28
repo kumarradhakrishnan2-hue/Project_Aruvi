@@ -42,7 +42,7 @@ All chapters    : map all chapters for this subject and grade
 
 ## Step 1 — Load inputs
 
-For each chapter:
+For each chapter, load ONLY the two inputs Pass 1 is permitted to see:
 1. **Resolve `chapter_title` first (mandatory).** Read the first line
    of `ch_NN_summary.txt` — the title is written there as a plain text
    heading. Use that line verbatim as `chapter_title`. Do not infer
@@ -51,9 +51,13 @@ For each chapter:
    that chapter.
 2. Read `ch_NN_summary.txt` from mirror — this is the sole chapter
    content reference. Do not read the chapter PDF.
-3. Read `cg_{stage}_{subject}.txt` from mirror/framework/ — this is
-   the Curricular Goals reference.
-4. Read the mapping constitution for the subject from mirror.
+3. Read the mapping constitution for the subject from mirror.
+
+**Do NOT open the Curricular Goals reference (`cg_{stage}_{subject}.txt`)
+here.** Rule 1 requires Pass 1 to be C-code-blind, and a model cannot
+reliably ignore C-codes already sitting in its context. The CG reference is
+loaded only at the start of Pass 2 (Step 2), after the transformation
+inventory is complete.
 
 If `ch_NN_summary.txt` is absent, log a warning and skip that chapter.
 Do not attempt to generate the summary here — run
@@ -65,7 +69,10 @@ Do not attempt to generate the summary here — run
 
 Apply the subject-specific Competency Mapping Constitution exactly.
 The constitution is the governing document — all mapping decisions
-must follow its rules without exception. This step produces a
+must follow its rules without exception. Run Pass 1 (the C-code-blind
+transformation inventory) first; only at the start of Pass 2 open the
+Curricular Goals reference `cg_{stage}_{subject}.txt` — this is the first
+point at which C-codes enter the session. This step produces a
 verified in-memory competency list (cg, c_code, weight, justification)
 ready for Step 3 to transcribe into JSON. No file is written here.
 

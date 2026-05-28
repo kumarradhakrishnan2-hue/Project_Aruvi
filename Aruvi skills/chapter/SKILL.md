@@ -5,9 +5,11 @@ description: >
   competency mapping (or effort index) in the correct serialized order.
   USE THIS SKILL whenever the user says things like: "run chapter skill for chapter 5 maths grade vii",
   "process chapter 3 science class vi", "generate chapter summary for social sciences chapter 8 grade viii",
-  "do chapter 2 english grade v", "run the chapter pipeline", or any instruction that mentions a chapter
-  number, subject, and grade together with intent to generate mirror data. Also trigger when the user
-  says "run step 1" or "run step 2" for a chapter in the context of this project.
+  "do chapter 2 english grade v", "run chapter 7 twau grade iii", "process the world around us chapter 4
+  grade iv", "run the chapter pipeline", or any instruction that mentions a chapter number, subject, and
+  grade together with intent to generate mirror data. Also trigger when the user says "run step 1" or
+  "run step 2" for a chapter in the context of this project. Subjects include: science, social_sciences,
+  mathematics, english, and the_world_around_us (TWAU — preparatory stage only, Grades III–V).
 ---
 
 # Chapter Pipeline Skill
@@ -25,11 +27,12 @@ that the Allocate tab and the LP + Assessment generator depend on.
 | **Science** | Chapter summary (`.txt`) | Effort index computation → `ch_NN_mapping.json` |
 | **Social Sciences** | Chapter summary (`.txt`) | Competency mapping → `ch_NN_mapping.json` |
 | **Mathematics** | Chapter summary (`.json`) | Competency mapping → `ch_NN_mapping.json` |
+| **The World Around Us (TWAU)** | Chapter summary (`.json`) | Competency mapping → `ch_NN_mapping.json` |
 | **English – Middle (VI–VIII)** | *(combined)* Chapter summary + mapping in one pass | — |
 | **English – Preparatory (III–V)** | *(combined)* Chapter summary + mapping in one pass | — |
 
-English is a single-step subject. All others are two-step: Step 1 must fully complete before
-Step 2 begins.
+English is a single-step subject. All others (including TWAU) are two-step: Step 1 must fully
+complete before Step 2 begins.
 
 ---
 
@@ -37,7 +40,8 @@ Step 2 begins.
 
 Extract from the user's instruction:
 
-- **subject** — one of: `science`, `social_sciences`, `mathematics`, `english`
+- **subject** — one of: `science`, `social_sciences`, `mathematics`, `english`, `the_world_around_us`
+  (accept "twau", "the world around us", "TWAU" → normalise to `the_world_around_us`)
 - **grade** — roman numeral or arabic (e.g. "vii", "7", "grade 7", "class vii") → normalise to
   lowercase roman: `iii`, `iv`, `v`, `vi`, `vii`, `viii`, `ix`, `x`
 - **chapter(s)** — single number, list, or "all"
@@ -45,6 +49,10 @@ Extract from the user's instruction:
   - III–V → `preparatory`
   - VI–VIII → `middle`
   - IX–X → `secondary`
+
+**TWAU constraint:** The World Around Us is only available for the preparatory stage (Grades III, IV, V).
+If the user requests TWAU for grade VI or higher, reject with: "TWAU is a preparatory-stage subject
+(Grades III–V only). Did you mean a different subject?"
 
 If any of subject, grade, or chapter scope is missing or ambiguous, ask for clarification before
 proceeding. Do not guess.
@@ -78,12 +86,23 @@ Prompt file:
   Step 1: cowork prompts/english/middle/step_1_chapter_summary_and_mapping.md
 ```
 
+For The World Around Us (TWAU):
+```
+Subject : The World Around Us (TWAU)
+Grade   : IV (preparatory stage)
+Chapters: 7
+Pipeline: Step 1 — Chapter summary (JSON) → Step 2 — Competency mapping
+Prompt files:
+  Step 1: cowork prompts/the_world_around_us/step_1_chapter_summary.md
+  Step 2: cowork prompts/the_world_around_us/step_2_competency_mapping.md
+```
+
 ---
 
 ## Step 2 — Locate and read the prompt file(s)
 
 All prompt files live under:
-`mnt/data/cowork prompts/{subject}/` (for science, social_sciences, mathematics)
+`mnt/data/cowork prompts/{subject}/` (for science, social_sciences, mathematics, the_world_around_us)
 `mnt/data/cowork prompts/english/{stage}/` (for english)
 
 ### Subject → prompt file map
@@ -99,6 +118,10 @@ All prompt files live under:
 **Mathematics:**
 - Step 1: `mnt/data/cowork prompts/mathematics/step_1_chapter_summary.md`
 - Step 2: `mnt/data/cowork prompts/mathematics/step_2_competency_mapping.md`
+
+**The World Around Us / TWAU (preparatory — grades III, IV, V):**
+- Step 1: `mnt/data/cowork prompts/the_world_around_us/step_1_chapter_summary.md`
+- Step 2: `mnt/data/cowork prompts/the_world_around_us/step_2_competency_mapping.md`
 
 **English (middle — grades VI, VII, VIII):**
 - Step 1 (only): `mnt/data/cowork prompts/english/middle/step_1_chapter_summary_and_mapping.md`
@@ -137,6 +160,12 @@ After all Step 1 files are confirmed written, read the Step 2 prompt file and fo
 
 Step 2 reads from the summary files produced in Step 1 — it never reads the source PDF.
 
+**TWAU note:** TWAU Step 2 reads the summary JSON (`.json`, same as Mathematics) and the CG
+reference file at `mnt/data/mirror/framework/The World Around US/competency_descriptions_twau.json`.
+The constitution is at `mnt/data/mirror/constitutions/competency_mapping/the_world_around_us/mapping_constitution_twau.txt`.
+Note the capitalisation difference: framework folder is `The World Around US` (capital S);
+chapter mirror folder is `The World Around Us` (lowercase s). Preserve both exactly.
+
 ---
 
 ## Step 5 — Final confirmation
@@ -156,12 +185,20 @@ Chapter | Title          | Summary + Mapping
 ch_03   | The Great Game | ✓ effort_index: 14.5
 ```
 
+For TWAU (two-step, same format as Science/Mathematics):
+```
+Chapter | Title              | Step 1        | Step 2
+--------|--------------------|---------------|----------------------------------
+ch_07   | Water              | summary ✓     | mapping ✓ EI:9.0 cw:4
+```
+
 ---
 
 ## Common error guards
 
 - **Summary file missing when Step 2 runs**: halt and report. Do not fabricate. Re-run Step 1.
 - **Grade out of range for stage**: warn and ask — e.g. English preparatory prompt used for grade VI
-  would be wrong; correct prompt is english/middle.
+  would be wrong; correct prompt is english/middle. TWAU requested for grade VI or above — reject;
+  TWAU only exists for grades III, IV, V.
 - **Chapter PDF not found**: log a warning for that chapter and skip — do not halt the whole run.
 - **Existing file will be overwritten**: this is expected behaviour — all prompts overwrite silently.
