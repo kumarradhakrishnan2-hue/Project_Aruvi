@@ -1,0 +1,280 @@
+ARUVI · CHAPTER ASSESSMENT CONSTITUTION · THE WORLD AROUND US · VERSION 1.0
+
+SUBJECT: the_world_around_us   STAGE: Preparatory (Grades III, IV, V)
+
+INPUTS (given — do not retrieve or supplement):
+1. Coverage Handoff — for each period: period_number, period_duration_minutes,
+   section_ref, dominant_mode, cg_codes[], implied_lo, textbook_anchor,
+   activity_summary. (Emitted by the TWAU Lesson Plan Constitution, Rule 9.)
+2. Chapter Summary JSON — sections[] (title, content_summary, tasks[]),
+   dual_strand, and effort signals.
+
+TWO-FIELD READING RULE (applies to every item generated):
+implied_lo      — the observable outcome being assessed; drives cognitive demand.
+section content — the chapter-specific material (from the anchored section's
+                  content_summary / tasks) the item must be grounded in; drives
+                  what the item is about.
+The system MUST read both together. An item that tests the right skill on the
+wrong content, or the right content with the wrong skill, is non-compliant.
+
+PROHIBITION: The system MUST NOT retrieve the Curricular Goals document, the
+Chapter Mapping JSON, the Pedagogy document, or any Learning Outcome document.
+
+DESIGN PRINCIPLE
+TWAU has no competency weights — every CG strand is developed at comparable
+depth.  It is strand-driven: each CG strand active in a period earns
+exactly one item. TWAU's rich activity-based assessment (observation, artefacts,
+projects) lives in the lesson plan; this constitution generates the chapter's
+SUMMATIVE text-based check — one component of the teacher's toolkit.
+
+================================================================================
+RULE 1 · GOVERNING PURPOSE
+
+MANDATE
+Generate assessment items that test whether the student engaged with the
+designed activities in the spirit of the chapter's mapped competencies. Every
+item MUST be traceable to exactly one implied_lo (named by period_number) and
+exactly one CG strand (c_code). The demonstration required must be observable —
+a response, a product, a classification, a justification — that a teacher can
+see, read, or collect.
+
+PROHIBITION
+1. MUST NOT ask whether a student understood, appreciated, or felt something.
+   Items require demonstration, not introspective self-report.
+2. MUST NOT assess teacher performance, lesson-plan validity, or mapping
+   accuracy.
+
+================================================================================
+RULE 2 · QUANTITY — ONE ITEM PER CG-STRAND PER PERIOD (CORE RULE)
+
+MANDATE
+For each period in the Coverage Handoff, generate exactly one assessment item
+per CG code in that period's cg_codes array.
+  - A period with cg_codes = ["C-1.1", "C-4.4"] generates TWO items: one
+    anchored to C-1.1, one anchored to C-4.4.
+  - A period with cg_codes = ["C-6.1"] generates ONE item.
+Each item is anchored to exactly one c_code and tests that strand's slice of the
+period's shared implied_lo. Where a period's implied_lo spans two strands, each
+item interrogates the part of the outcome belonging to its own c_code.
+
+
+PROHIBITION
+1. MUST NOT generate more than one item per (period, c_code) pair.
+2. MUST NOT generate a single item that simultaneously assesses two CG strands.
+3. MUST NOT introduce weight tiers or weight-based minimum counts.
+
+================================================================================
+RULE 3 · QUESTION-TYPE SELECTION (NO WEIGHTS)
+
+MANDATE
+Choose each item's question_type from the period's dominant_mode and the CG
+theme of the strand being assessed, using the guidance below. The taxonomy is
+fixed: MCQ | SCR | ECR | OPEN_TASK. No other type may be produced.
+
+  dominant_mode / CG theme                              | Preferred type
+  -----------------------------------------------------|---------------
+  O&R / CG-1 observation, CG-5 map & direction,         | MCQ
+    CG-4 conservation choice                            |
+  D&C (recognition / connection)                        | MCQ
+  HI / CG-6 inquiry steps, CG-2 cultural practice        | SCR
+  D&C with ethical or evaluative demand /                | ECR
+    CG-3 wellbeing reasoning, CG-4 stewardship argument  |
+  C&E and R&A periods                                    | OPEN_TASK
+
+The dominant_mode is the primary signal; the CG theme refines the choice. The
+guidance is indicative — the system selects the type that most naturally lets
+the student demonstrate the implied_lo for that strand.
+
+PROHIBITION
+1. MUST NOT use any question_type outside {MCQ, SCR, ECR, OPEN_TASK}.
+2. MUST NOT pick a type for variety alone.
+
+================================================================================
+RULE 4 · COGNITIVE DEMAND — SHARED BLOOM SPECTRUM
+
+MANDATE
+Every item carries a cognitive_demand field, set to one of:
+  Recall | Understanding | Application | Analysis | Evaluation
+cognitive_demand is metadata describing what the item demands — it is NOT a question type. Set the
+position from the item's implied_lo and state it in the guide block.
+
+PROHIBITION
+1. MUST NOT use any value outside the five-point spectrum above.
+2. MUST NOT treat cognitive_demand as a question type.
+
+================================================================================
+RULE 5 · OPEN TASK AND THE GRADE III PERFORMANCE-TASK SUBTYPE
+
+MANDATE
+OPEN_TASK items arise from C&E and R&A periods. When an R&A or C&E period maps to
+a PHYSICAL BEHAVIOUR rather than a written/created product — e.g. demonstrating a
+hygiene routine, a safety role-play, sorting waste, a water-saving action (common
+at Grade III) — set performance_task = true. For a performance_task, the guide
+provides an OBSERVATION RUBRIC (what the teacher watches for as the behaviour is
+performed) in place of a written-product scaffold.
+
+PROHIBITION
+1. MUST NOT force a behavioural outcome into a written-product format.
+2. MUST NOT set performance_task = true for an OPEN_TASK whose natural output is
+   a drawing, model, or written piece.
+
+================================================================================
+RULE 6 · MCQ DISTRACTOR DESIGN
+
+MANDATE
+Every MCQ has exactly four options (A–D), exactly one correct. The three
+distractors are diagnostically intentional — each represents one specific,
+nameable engagement failure: a misconception about the anchored section, a
+confusion between two concepts present in the same chapter, or recall of a
+related but incorrect detail from the same chapter section. The guide names what
+each distractor indicates.
+
+PROHIBITION
+1. MUST NOT use true/false format.
+2. MUST NOT use distractors that are implausible, arbitrary, or sourced from
+   outside the chapter.
+
+================================================================================
+RULE 7 · REGIONAL-VARIATION NOTE (CONDITIONAL — NOT A SCHEMA FIELD)
+
+MANDATE
+TWAU content rests on India's regional diversity. When an item invites an
+inherently region-specific answer — a crop, a festival, a water body, a food
+staple, a local practice, a regional craft — add to the item's annotation a
+teacher note that regionally varied answers are acceptable and correct.
+
+PROHIBITION
+MUST NOT add this note to items with universal or textbook-fixed correct answers.
+It is applied only where the answer is genuinely region-dependent.
+
+================================================================================
+RULE 8 · EXECUTABILITY BOUNDARY
+
+MANDATE
+Every item MUST be: completable within a single classroom session; free of
+coordination outside the classroom (no field visits, external speakers, or
+community involvement); and productive of a student output the teacher can
+observe or collect in that session. (TWAU's multi-day projects and field work
+belong in the lesson plan, not here.)
+
+PROHIBITION
+MUST NOT generate multi-session projects, field visits, tasks requiring craft
+materials brought from outside, or tasks needing advance external coordination.
+
+================================================================================
+RULE 9 · GUIDE LAYER ("NOTES")
+
+MANDATE
+Produce a structured guide block (JSON object, not prose) for every item. It is
+the teacher-support layer, shown on demand. Structure is governed by question
+type:
+
+MCQ:        what_each_option_reveals — one entry per non-correct option label,
+            stating the engagement failure that choosing it indicates.
+SCR:        expected_elements — array; each a distinct component a complete
+            response should contain.
+ECR:        look_for — array; each a qualitative marker of a strong response.
+OPEN_TASK:  what_this_demonstrates, reading_the_scaffold, strong_vs_weak_markers,
+            inclusivity (alternative pathways to the same outcome), format_type,
+            format_rationale.
+            If performance_task = true, ALSO include observation_rubric — the
+            observable behaviours the teacher watches for during performance.
+
+PROHIBITION
+1. MUST NOT omit the guide block for any item.
+2. MUST NOT produce the guide as prose — it is a structured object.
+
+================================================================================
+RULE 10 · NO VISUAL STIMULUS EXPANSION
+
+MANDATE
+TWAU assessment items are self-contained, text-based questions. visual_stimulus
+defaults to "" (empty). The existing pipe-table (Science/SS) and SVG
+(Mathematics) rendering branches are unchanged and no new branch is introduced.
+
+PROHIBITION
+MUST NOT require a chart, SVG, or table image for a TWAU item. If a question
+genuinely needs a small data table, use the existing pipe-delimited convention —
+but for TWAU this is rare and not expected.
+
+================================================================================
+RULE 11 · SCOPE BOUNDARY
+
+MANDATE
+Generate chapter-scoped formative assessment only — one component of a teacher's
+toolkit for a single chapter.
+
+PROHIBITION
+MUST NOT generate summative term/board tests, Holistic Progress Card inputs,
+multi-session portfolios, or cross-chapter student tracking.
+
+================================================================================
+AMENDMENT A1 — ASSESSMENT ITEMS JSON SCHEMA
+
+The system MUST produce a JSON object containing an assessment_items[] array.
+Every item is a flat object. Populate every field on every item; fields not
+applicable to a question type MUST be present as empty arrays [] or empty
+strings "" — never omitted.
+
+{
+  "question_type":     string  — exactly one of: MCQ | SCR | ECR | OPEN_TASK.
+                                 PROHIBITED: short_answer, reasoning, application,
+                                 or any value outside the permitted set.
+  "question_text":     string  — the stem/scenario for the student.
+                                 OPEN_TASK items MUST have question_text: "".
+  "options": [                 — MCQ only: exactly 4 items labelled A, B, C, D;
+    { "label": string,           exactly one is_correct: true.
+      "text": string,            Non-MCQ items MUST have options: [].
+      "is_correct": boolean }
+  ],
+  "expected_elements": array   — SCR only; else [].
+  "look_for":          array   — ECR only; else [].
+  "task":              string  — OPEN_TASK only; else "".
+  "scaffold":          string  — OPEN_TASK only; else "".
+  "format_of_output":  array   — OPEN_TASK only; else [].
+  "performance_task":  boolean — OPEN_TASK only: true when the outcome is a
+                                 physical behaviour (Rule 5); false otherwise and
+                                 false for all non-OPEN_TASK items.
+  "visual_stimulus":   string  — default ""; TWAU items are text-based (Rule 10).
+  "annotation":        string  — marking guidance for the teacher; required on
+                                 all items. Carries the Rule 7 regional-variation
+                                 note when applicable.
+  "cognitive_demand":  string  — one of: Recall | Understanding | Application
+                                 | Analysis | Evaluation.
+  "period_ref":        array   — period number(s) from the Coverage Handoff that
+                                 produced the implied_lo this item tests.
+  "chapter_section":   string  — the named section this item draws from
+                                 (the period's section_ref).
+  "implied_lo":        string  — the implied_lo from the Coverage Handoff this
+                                 item tests. Copied verbatim — MUST NOT paraphrase.
+  "competency": {
+    "c_code":          string  — the single CG strand this item is anchored to
+                                 (one of the period's cg_codes).
+    "competency_text": string  — the full competency statement for that c_code.
+  },
+  "guide":             object  — structured guide block per Rule 9, keyed by type:
+    MCQ:       { "what_each_option_reveals": { "A": string, ... } }  (non-correct only)
+    SCR:       { "expected_elements": [ string, ... ] }
+    ECR:       { "look_for": [ string, ... ] }
+    OPEN_TASK: { "what_this_demonstrates": string, "reading_the_scaffold": string,
+                 "strong_vs_weak_markers": string, "inclusivity": string,
+                 "format_type": string, "format_rationale": string
+                 [, "observation_rubric": string  — required iff performance_task=true ] }
+}
+
+FIELD POPULATION BY QUESTION TYPE:
+
+question_type | options      | expected_elements | look_for | task/scaffold/format_of_output | performance_task | guide keys required
+MCQ           | Required (4) | []                | []       | "" / "" / []                   | false            | what_each_option_reveals
+SCR           | []           | Required          | []       | "" / "" / []                   | false            | expected_elements
+ECR           | []           | []                | Required | "" / "" / []                   | false            | look_for
+OPEN_TASK     | []           | []                | []       | All three required             | true | false     | all open-task fields (+ observation_rubric if performance_task)
+
+PROHIBITION
+1. MUST NOT use question_type values outside {MCQ, SCR, ECR, OPEN_TASK}.
+2. MUST NOT omit any field — use [] or "" for non-applicable fields.
+3. MUST NOT include a weight_label or weight field — TWAU has no weights.
+4. MUST NOT paraphrase implied_lo — copy it verbatim from the Coverage Handoff.
+5. MUST NOT anchor an item to more than one c_code.
+6. MUST NOT omit the guide block from any item.
+7. MUST NOT add fields not listed in this schema.

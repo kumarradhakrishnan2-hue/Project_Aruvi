@@ -1,0 +1,118 @@
+{
+  "chapter_number": 7,
+  "chapter_title": "How Things Work",
+  "grade": "iv",
+  "sections": [
+    {
+      "title": "How Things Work",
+      "content_summary": "The chapter opens by inviting students to wonder about how everyday objects work and whether they always behave the same way. Through the story of Meera and Dhruv, students are introduced to spinning: they observe a coin spinning, compare different objects (coin, bangle, pencil, stone, wooden top, eraser) for their ability to spin, and build their own cardboard spinners with toothpick axles in different configurations. They discover that position of the axle (centre vs. off-centre) and shape of the spinner affect spinning quality, and they explore colouring spinners to observe colour-mixing effects during rotation. IKS content includes the charkha (spinning wheel) used by Mahatma Gandhi to spin cotton into thread, and the lattu, an Indian wooden spinning top used for thousands of years.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Activity",
+          "task_text": "Do you think all objects can spin? Make a list of a few objects that can spin.",
+          "page": 105
+        },
+        {
+          "id": "T-2",
+          "banner": "Activity",
+          "task_text": "Collect the objects mentioned in the table given below. Spin and observe them. Then, complete the table.",
+          "page": 105
+        },
+        {
+          "id": "T-3",
+          "banner": "Activity",
+          "task_text": "Collect things, such as pieces of cardboard, toothpicks, an empty tube of a ballpoint pen, and other small objects. Make the following spinners. Spin them and record your observations.",
+          "page": 106
+        },
+        {
+          "id": "T-4",
+          "banner": "Discuss",
+          "task_text": "Which of the spinners did not spin properly? Discuss the possible reasons.",
+          "page": 108
+        },
+        {
+          "id": "T-5",
+          "banner": "Discuss",
+          "task_text": "Have you noticed the position of the hole in the first two spinners? Did this difference in the position of the hole make a difference in the spinning of these spinners?",
+          "page": 108
+        }
+      ]
+    },
+    {
+      "title": "Floating and Sinking",
+      "content_summary": "This section introduces floating and sinking through Meera and Dhruv making paper boats after rain and noticing some float upright while others flip. Students predict and test whether various objects (leaf, iron nail, empty bowl, stone, empty bottle, water-filled bottle) float or sink, discovering that weight alone does not determine the outcome. A second experiment with aluminium foil in three shapes (spread out, ball, cup) shows that shape significantly affects floating and sinking — the same material floats in one shape and sinks in another. Students then design and build their own boats using locally available materials (paper, cardboard, ice-cream sticks, clay) and exhibit them, exploring traditional Indian boat forms using coconut shells and walnut shells.",
+      "tasks": [
+        {
+          "id": "T-6",
+          "banner": "Activity",
+          "task_text": "Collect objects, such as a leaf, an iron nail, an empty bowl (katori), a plastic bottle with a lid, pieces of stone, aluminium foil and other things of your choice. Fill a bucket with water. Before dropping the things listed in the table, guess whether things will float or sink. You may try other things too. Then, observe what happens when it is actually dropped in water. You can write 'F' for objects that float and 'S' for objects that sink.",
+          "page": 110
+        },
+        {
+          "id": "T-7",
+          "banner": "Discuss",
+          "task_text": "Did all the light objects float and all the heavy objects sink? Name the heavy objects that floated and lighter objects that sank.",
+          "page": 111
+        },
+        {
+          "id": "T-8",
+          "banner": "Activity",
+          "task_text": "Let us find out whether shape plays a role in floating and sinking. Test aluminium foil when spread out, pressed tightly into a ball, and in a cup-like shape — record whether each floats (F) or sinks (S) and the possible reason.",
+          "page": 112
+        },
+        {
+          "id": "T-9",
+          "banner": "Activity",
+          "task_text": "Let us create some boats: Collect some paper, cardboard boxes, ice-cream sticks, clay, adhesive tape, etc. Create groups of three to four students. Think of how you can make a boat using some of the materials that you have. Draw a picture. Prepare a boat. Try to ensure that your boat is different from boats made by other groups. Organise an exhibition of boats in the class.",
+          "page": 113
+        },
+        {
+          "id": "T-10",
+          "banner": "Write",
+          "task_text": "Compare your boat with others' boats. Fill in the table with the strengths of your boat and the challenges of your boat.",
+          "page": 114
+        }
+      ]
+    },
+    {
+      "title": "Let us reflect",
+      "content_summary": "This closing section asks students to apply and extend their learning from spinning, balancing, and floating/sinking through three types of tasks. Students frame inquiry questions about a spinning phenomenon, reason about balance using a visual of a hanging mobile, think about how to change whether objects float or sink, and classify a list of everyday objects (wax, marble, thermocol, candle, coin, cork, leaf, eraser, spoon, ice-cube, potato, tomato, pumpkin, lemon) into floaters and sinkers.",
+      "tasks": [
+        {
+          "id": "T-11",
+          "banner": "Let us reflect — Write",
+          "task_text": "When Ravi spins a spinner, he notices that it slows down and eventually stops. He is curious about this and asks his teacher some questions. List at least two questions that he could ask.",
+          "page": 115
+        },
+        {
+          "id": "T-12",
+          "banner": "Let us reflect — Write",
+          "task_text": "The following figure is bending towards the side 'A'. What should be done to balance it?",
+          "page": 115
+        },
+        {
+          "id": "T-13",
+          "banner": "Let us reflect — Write",
+          "task_text": "How would you make a floating object sink and a sinking object float?",
+          "page": 115
+        },
+        {
+          "id": "T-14",
+          "banner": "Let us reflect — Activity",
+          "task_text": "Classify the objects below based on whether they float or sink in water. Objects: Wax, Marble, Thermocol, Candle, Coin, Cork, Leaf, Eraser, Spoon, Ice-cube, Potato, Tomato, Pumpkin, Lemon.",
+          "page": 116
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 3,
+  "task_load": 1,
+  "project_load": 1,
+  "map_work": 0,
+  "effort_index": 12.5,
+  "dual_strand": {
+    "natural": "Spinning, floating, and sinking as physical phenomena governed by shape, balance, and material properties",
+    "human_cultural": "Traditional Indian spinning tools (charkha, lattu) and boat-making using locally available natural materials (coconut shells, walnut shells)"
+  }
+}

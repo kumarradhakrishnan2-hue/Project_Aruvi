@@ -25,15 +25,14 @@ All chapters    : map all chapters for this grade
 | Item | Path |
 |------|------|
 | Project root (Cowork mount) | `mnt/data/` |
-| Chapter summary (input) | `mnt/data/mirror/chapters/The World Around Us/{grade}/summaries/ch_NN_summary.json` |
-| CG reference | `mnt/data/mirror/framework/The World Around US/competency_descriptions_twau.json` |
+| Chapter summary (input) | `mnt/data/mirror/chapters/the_world_around_us/{grade}/summaries/ch_NN_summary.json` |
+| CG reference | `mnt/data/mirror/framework/the_world_around_us/competency_descriptions_twau.json` |
 | Constitution | `mnt/data/mirror/constitutions/competency_mapping/the_world_around_us/mapping_constitution_twau.txt` |
-| Mapping output (per chapter) | `mnt/data/mirror/chapters/The World Around Us/{grade}/mappings/ch_NN_mapping.json` |
+| Mapping output (per chapter) | `mnt/data/mirror/chapters/the_world_around_us/{grade}/mappings/ch_NN_mapping.json` |
 
-`{grade}` is the lowercase Roman numeral: `iii`, `iv`, or `v`.
-Note the folder spellings differ: the framework folder is
-`The World Around US` (capital S); chapters use `The World Around Us`
-(lowercase s). Preserve both exactly.
+`{grade}` is the lowercase Roman numeral: `iii`, `iv`, or `v`. All TWAU folders
+use the subject token `the_world_around_us` (matching the app's
+`subject_to_folder`).
 
 ## Step 1 — Load inputs
 
@@ -72,6 +71,10 @@ document; all mapping decisions follow its rules without exception.
   read the full C-code definition, and match only if the chapter's
   architecture compels the student to execute the operation the C-code
   defines. Verify each distinct demand in a multi-demand C-code independently.
+  As you accept each match, record the **named sections** (from the Pass-1
+  inventory) whose transformation supports that c_code — this is the c_code's
+  `sections[]`. Include EVERY section whose content genuinely develops the
+  competency, not only the single strongest one.
 - **Rule 3 — Reject vocabulary-only matches** and incidental mentions inside
   sections whose primary subject is something else.
 - **Rule 4 — Flattened weight.** Every matched C-code receives `weight: 1`.
@@ -79,10 +82,12 @@ document; all mapping decisions follow its rules without exception.
   typically yields 3–5 matched C-codes at comparable depth.
 
 This step produces a verified in-memory competency list of
-`{cg, c_code, competency_text, weight, justification}`. `competency_text` is
-copied verbatim from `competency_descriptions_twau.json`. Each `justification`
-must cite a named section or activity verifiably present in THIS chapter's
-summary. No file is written in this step.
+`{cg, c_code, competency_text, weight, justification, sections}`.
+`competency_text` is copied verbatim from `competency_descriptions_twau.json`.
+Each `justification` must cite a named section or activity verifiably present
+in THIS chapter's summary. `sections[]` lists the section titles (exactly as
+they appear in the summary's `sections[].title`) that develop this c_code; the
+lesson plan uses it to bind CG codes to periods. No file is written in this step.
 
 **Prohibited documents:** Learning Outcomes, Pedagogy, Syllabus, Assessment
 Framework, Position Papers — constitutionally excluded.
@@ -90,7 +95,7 @@ Framework, Position Papers — constitutionally excluded.
 ## Step 3 — Write the mapping JSON
 
 Write one JSON record per chapter to:
-`mnt/data/mirror/chapters/The World Around Us/{grade}/mappings/ch_NN_mapping.json`
+`mnt/data/mirror/chapters/the_world_around_us/{grade}/mappings/ch_NN_mapping.json`
 
 ```json
 {
@@ -106,7 +111,8 @@ Write one JSON record per chapter to:
       "c_code": "C-1.1",
       "competency_text": "exact text from competency_descriptions_twau.json",
       "weight": 1,
-      "justification": "cites a named section/activity verifiably present in this chapter's summary"
+      "justification": "cites a named section/activity verifiably present in this chapter's summary",
+      "sections": ["exact summary section title(s) whose content develops this c_code"]
     }
   ],
   "chapter_weight": 4
@@ -124,6 +130,7 @@ Field sourcing rules:
 | `subject` | Fixed | Always `"the_world_around_us"`. |
 | `effort_index` | Summary JSON | Copied verbatim from the summary. |
 | `competencies` | Step 2 output | Transcribe verbatim; every `weight` is `1`. |
+| `competencies[].sections` | Step 2 output | Section titles (verbatim from the summary's `sections[].title`) that develop this c_code; lists every supporting section, not just the strongest. |
 | `chapter_weight` | Calculated | Count of entries in `competencies` (= sum of weights, since all are 1). |
 
 **Post-write verification (mandatory).** Read the file back and confirm:
@@ -133,6 +140,10 @@ Field sourcing rules:
    (Learning #15 guard).
 3. `chapter_weight` equals the number of competencies.
 4. `effort_index` equals the summary's `effort_index`.
+5. Every entry in each competency's `sections[]` matches a `sections[].title`
+   in the summary verbatim, and every summary section is covered by at least
+   one competency's `sections[]` OR is a section the lesson plan will fall back
+   on (a section legitimately developing no mapped competency).
 
 If any discrepancy is found, overwrite with the correct values before moving
 to the next chapter.

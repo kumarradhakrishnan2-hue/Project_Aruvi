@@ -1,0 +1,77 @@
+{
+  "chapter_number": 7,
+  "chapter_title": "How Things Work",
+  "grade": "iv",
+  "stage": "preparatory",
+  "subject": "the_world_around_us",
+  "effort_index": 12.5,
+  "competencies": [
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.3",
+      "competency_text": "Asks questions and makes predictions about simple patterns (season change, food chain, phases of the moon, movement of stars and planets, shapes of trees, plants, leaves, and flowers, rituals, celebrations) observed in the immediate environment",
+      "weight": 1,
+      "justification": "Activity 3 ('Floating and Sinking') requires students to predict whether each object will float or sink before testing. 'Let us reflect' sub-section 1 ('Enquire about something') explicitly asks students to list at least two questions about why a spinner slows down — directly compelling the formulation of inquiry questions about an observed phenomenon.",
+      "sections": [
+        "Floating and Sinking",
+        "Let us reflect"
+      ]
+    },
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.5",
+      "competency_text": "Uses local materials to create simple objects (family tree, envelopes, origami animals) on their own for display or use in classroom processes",
+      "weight": 1,
+      "justification": "Activity 5 ('Floating and Sinking' section) requires students to design and build boats using locally available materials (paper, cardboard, ice-cream sticks, clay, coconut shells, walnut shells) and organise a classroom exhibition — directly matching the competency's demand to create objects from local materials for display.",
+      "sections": [
+        "Floating and Sinking"
+      ]
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.1",
+      "competency_text": "Performs simple inquiry related to specific questions independently or in groups",
+      "weight": 1,
+      "justification": "The entire chapter is structured around hands-on inquiry: Activities 1–4 follow a predict-test-observe-explain cycle (spinning objects, making spinners, float/sink of various objects, shape effects on aluminium foil). Students perform these investigations independently and in groups, anchored to specific questions in each activity.",
+      "sections": [
+        "How Things Work",
+        "Floating and Sinking"
+      ]
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.2",
+      "competency_text": "Presents observations and findings through different creative modes (drawing, diagram, poem, play, skit, oral and written expression)",
+      "weight": 1,
+      "justification": "Activity 5 ('Floating and Sinking') explicitly asks students to 'Draw a picture' of their boat design before constructing it. Activities 2, 3, and 4 require students to record observations and findings in structured tables (written expression). The boat exhibition also requires students to compare and present their findings orally.",
+      "sections": [
+        "How Things Work",
+        "Floating and Sinking"
+      ]
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.1",
+      "competency_text": "Gains familiarity with using the scientific method in investigations, as well as familiarity with other crosscutting concepts such as energy, matter, and systems that apply across the domains of science and engineering",
+      "weight": 1,
+      "justification": "Activities 1–4 follow the scientific method structure (observation, prediction, testing, recording, reasoning). Activity 4 (shape of aluminium foil) introduces the crosscutting concept that the same material behaves differently based on shape — a core matter/structure concept. 'Let us reflect' item 2(b) asks students to reason about changing float/sink behaviour, applying crosscutting reasoning about matter properties.",
+      "sections": [
+        "How Things Work",
+        "Floating and Sinking",
+        "Let us reflect"
+      ]
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.2",
+      "competency_text": "Gains familiarity with disciplinary core ideas in the natural sciences, as well as in engineering, technology, and applications of science, which reflect the content that will be learned across subject areas in later Grades",
+      "weight": 1,
+      "justification": "The chapter introduces disciplinary core ideas in physical science — spinning/balance (rotational motion), floating and sinking (buoyancy), and the effect of shape on material behaviour. Activity 5 is an engineering design challenge (boat construction). These are foundational physical science and engineering concepts developed further in later grades.",
+      "sections": [
+        "How Things Work",
+        "Floating and Sinking"
+      ]
+    }
+  ],
+  "chapter_weight": 6
+}

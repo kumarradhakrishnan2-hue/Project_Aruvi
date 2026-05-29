@@ -186,6 +186,17 @@
 .sscb-weight { font-size: 10px; color: #5a5754; white-space: nowrap; }
 .sscb-text   { font-size: 11px; color: #5a5754; line-height: 1.4; }
 
+/* ── TWAU LP: dominant_mode badge + CG code chips inside the comp bar ────── */
+.twau-mode-badge {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.3px; color: #fff;
+  background: #2f7d6e; border-radius: 4px; padding: 2px 7px; white-space: nowrap;
+  margin-right: 4px;
+}
+.twau-cg-chip {
+  font-size: 11px; font-weight: 600; color: #1a1917; background: #eee9e1;
+  border-radius: 4px; padding: 2px 6px; white-space: nowrap;
+}
+
 /* ── Science LP: centre-align Pedagogical Approach column value ─────────── */
 .ptag-sc { font-size: 11px; font-weight: 400; color: #1a1917; width: 220px; flex-shrink: 0; white-space: normal; line-height: 1.4; text-align: center; }
 
@@ -1633,6 +1644,12 @@ function buildGuideHtml(q, isSci) {
       parts.push('<strong>Inclusivity</strong>');
       parts.push(escHtml(otIncl));
     }
+    /* TWAU performance_task subtype: observation rubric the teacher watches for. */
+    if (guide.observation_rubric) {
+      if (parts.length) parts.push('');
+      parts.push('<strong>Observation rubric</strong>');
+      parts.push(escHtml(guide.observation_rubric));
+    }
   }
 
   /* Strip any trailing blank lines */
@@ -1906,6 +1923,11 @@ function renderAssessment(sections) {
 
         /* Main question text */
         if (type === 'OPEN_TASK') {
+          /* TWAU behavioural subtype — performed and observed, not written. */
+          if (q.performance_task) {
+            html += '<div class="qtext"><span class="twau-mode-badge">Performance Task</span> ' +
+                    'Observe the student performing this; use the observation rubric in the guide.</div>';
+          }
           var taskText = q.task || q.task_instructions || q.question || '';
           if (taskText) {
             html += '<div class="qtext"><strong>Task</strong></div>';
@@ -2386,14 +2408,32 @@ function renderLPA() {
 
       /* Competency bar — top of pbody, styled with old period-header tan/beige palette.
          Skipped entirely for chapters where no competency drives the period
-         (Mathematics LP per Rule 8: competencies do not drive periods). */
-      var compBar = (p.c_code || wlblP || p.competency_text)
-        ? '<div class="ss-comp-bar">' +
-            '<span class="sscb-code">' + escHtml(p.c_code || '') + '</span>' +
-            (wlblP ? '<span class="sscb-weight">(' + escHtml(wlblP) + ')</span>' : '') +
-            (p.competency_text ? '<span class="sscb-text">— ' + escHtml(p.competency_text) + '</span>' : '') +
-          '</div>'
-        : '';
+         (Mathematics LP per Rule 8: competencies do not drive periods).
+         TWAU: a dominant_mode badge + a flat row of CG-code chips (all strands
+         at comparable depth — no single c_code, no weight). */
+      var compBar;
+      if (Array.isArray(p.cg_codes) && p.cg_codes.length) {
+        var _modeFull = { 'O&R':'Observe & Record', 'HI':'Hands-on Investigation',
+                          'D&C':'Discussion & Connection', 'C&E':'Create & Express',
+                          'R&A':'Reflect & Act' };
+        var _mode = p.dominant_mode || '';
+        var modeBadge = _mode
+          ? '<span class="twau-mode-badge" title="' + escHtml(_modeFull[_mode] || _mode) + '">' +
+              escHtml(_mode) + '</span>'
+          : '';
+        var cgChips = p.cg_codes.map(function (c) {
+          return '<span class="twau-cg-chip">' + escHtml(c) + '</span>';
+        }).join(' ');
+        compBar = '<div class="ss-comp-bar">' + modeBadge + cgChips + '</div>';
+      } else {
+        compBar = (p.c_code || wlblP || p.competency_text)
+          ? '<div class="ss-comp-bar">' +
+              '<span class="sscb-code">' + escHtml(p.c_code || '') + '</span>' +
+              (wlblP ? '<span class="sscb-weight">(' + escHtml(wlblP) + ')</span>' : '') +
+              (p.competency_text ? '<span class="sscb-text">— ' + escHtml(p.competency_text) + '</span>' : '') +
+            '</div>'
+          : '';
+      }
 
       var cardEl = document.createElement('div');
       cardEl.className = 'period-card ss-period-card' + (pIdx === 0 ? ' open' : '');

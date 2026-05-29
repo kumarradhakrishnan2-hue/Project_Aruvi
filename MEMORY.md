@@ -257,6 +257,15 @@ Carry-forward rule: When auditing SS assessment output, check that every item's 
 
 ---
 
+[Learning #28] — 2026-05-28 — TWAU: Unit Information Belongs Only in unit_map.json, Not in Summary JSON
+
+Context: TWAU chapter PDFs do not carry unit information. Unit names appear only in the Prelims PDF (table of contents). Question arose whether the chapter summary should source unit info from the Prelims PDF or unit_map.json.
+Decision: Unit information serves a single purpose — chapter listing in the Allocate tab. It has no role in lesson plan generation, assessment, or competency mapping. unit_map.json (one static file per grade, already created for iii, iv, v) is the canonical source for unit info at the Allocate tab. The summary JSON does not carry a `unit` field.
+Action taken: Removed `unit` field from step_1_chapter_summary.md: (1) deleted the "Also record the unit..." instruction from Step 1, (2) removed `"unit"` from the Step 6 schema example, (3) added `"unit"` to the explicit exclusion list ("No `unit` field").
+Carry-forward rule: TWAU unit info lives exclusively in `mirror/chapters/the_world_around_us/{grade}/mappings/unit_map.json`. The Allocate tab reads from there. Nothing else in the pipeline reads or writes unit information. Do not re-introduce a `unit` field into summary or mapping JSONs.
+
+---
+
 [Learning #27] — 2026-05-28 — TWAU Grade III Consistency Check: Architecture Holds, Three Constitution Guards Added
 
 Context: Grade III Unit 3 chapters (Ch 7 Water, Ch 8 Food, Ch 9 Staying Healthy and Happy) reviewed against the proposed TWAU Aruvi architecture developed from Grade IV/V sample chapters.

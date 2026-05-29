@@ -87,7 +87,7 @@ def subject_to_folder(subject: str) -> str:
 
 # Subjects whose chapter summaries are JSON (structured for downstream LP/A
 # constitutions). All others are plain .txt.
-_JSON_SUMMARY_SUBJECTS = {"mathematics", "english"}
+_JSON_SUMMARY_SUBJECTS = {"mathematics", "english", "the_world_around_us"}
 
 # ── Path resolver ─────────────────────────────────────────────────────────────
 
@@ -2453,6 +2453,46 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
                     "teacher_notes":           p.get("teacher_notes", ""),
                 })
                 continue
+            # ── The World Around Us (TWAU) format detection ─────────────────
+            # Unique signals: dominant_mode (string) + cg_codes (list). Single-axis
+            # by section; CG codes shown as an array at period level; routed
+            # through the SS-style HTML render path (no stage_label/activity_title
+            # at top level so the HTML does not misdetect Science).
+            _is_twau = (
+                p.get("dominant_mode") is not None
+                and isinstance(p.get("cg_codes"), list)
+            )
+            if _is_twau:
+                mat = p.get("materials", "")
+                if isinstance(mat, list):
+                    mat = ", ".join(mat)
+                # time_bands [{minutes, activity}] → time_slots [{time, desc}]
+                time_slots = [
+                    {"time": tb.get("minutes", ""), "desc": tb.get("activity", "")}
+                    for tb in (p.get("time_bands") or [])
+                ]
+                out.append({
+                    "period_number":           p.get("period_number"),
+                    "period_duration_minutes": p.get("period_duration_minutes"),
+                    "chapter_section":         p.get("section_ref", "") or p.get("textbook_anchor", ""),
+                    "activity_name":           p.get("activity_title", ""),
+                    "activity_summary":        p.get("activity_title", ""),
+                    "time_slots":              time_slots,
+                    "material":                mat,
+                    "implied_lo":              p.get("implied_lo", ""),
+                    "c_code":                  "",
+                    "cg":                      "",
+                    "weight":                  0,
+                    "competency_text":         "",
+                    "visual_representation":   None,
+                    # ── TWAU-specific fields surfaced to lpa_page.html ──────────
+                    "is_twau":                 True,
+                    "cg_codes":                p.get("cg_codes") or [],
+                    "dominant_mode":           p.get("dominant_mode", ""),
+                    "textbook_anchor":         p.get("textbook_anchor", ""),
+                    "teacher_notes":           p.get("teacher_facilitation_note", ""),
+                })
+                continue
             # ── Science format detection ────────────────────────────────────
             # Only use truly Science-specific fields (stage_label / progression_stage).
             # activity_title is NOT a reliable Science signal — Social Sciences plans
@@ -3009,6 +3049,8 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
             "title":              _build_title(qtype, item.get("task", "") or item.get("question_text", "")),
             "expected":           _build_expected(item),
             "cognitive_demand":   item.get("cognitive_demand", ""),
+            # TWAU: OPEN_TASK behavioural subtype → renderers show a "Performance Task" label.
+            "performance_task":   bool(item.get("performance_task", False)),
             "guide":                    item.get("guide", {}),
             "expected_elements":        item.get("expected_elements", []),
             "look_for":                 item.get("look_for", []),

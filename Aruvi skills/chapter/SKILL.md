@@ -161,10 +161,10 @@ After all Step 1 files are confirmed written, read the Step 2 prompt file and fo
 Step 2 reads from the summary files produced in Step 1 — it never reads the source PDF.
 
 **TWAU note:** TWAU Step 2 reads the summary JSON (`.json`, same as Mathematics) and the CG
-reference file at `mnt/data/mirror/framework/The World Around US/competency_descriptions_twau.json`.
+reference file at `mnt/data/mirror/framework/the_world_around_us/competency_descriptions_twau.json`.
 The constitution is at `mnt/data/mirror/constitutions/competency_mapping/the_world_around_us/mapping_constitution_twau.txt`.
-Note the capitalisation difference: framework folder is `The World Around US` (capital S);
-chapter mirror folder is `The World Around Us` (lowercase s). Preserve both exactly.
+All TWAU folders (framework, chapters, textbooks) use the subject token `the_world_around_us`,
+matching the app's `subject_to_folder`.
 
 ---
 

@@ -1764,6 +1764,11 @@ def json_to_lp_data(j: dict) -> dict:
     if j.get("subject") == "English":
         return _json_to_english_lp_data(j, date_str, weight)
 
+    # ── Subject routing: The World Around Us — single-axis, cg_codes array,
+    # dominant_mode metadata; no per-period competency object ─────────────────
+    if j.get("subject") == "The World Around Us":
+        return _json_to_twau_lp_data(j, date_str, weight)
+
     # ── Load canonical competency descriptions from framework JSON ────────────
     # The AI-generated competency_text in each period is unreliable (it tends
     # to paraphrase the mapping justification rather than use the canonical
@@ -1825,6 +1830,81 @@ def json_to_lp_data(j: dict) -> dict:
         "chapter_num":   j["chapter_number"],
         "chapter_title": j["chapter_title"],
         "grade":         str(j["grade"]).replace("Grade ", ""),   # "Grade VII" → "VII"
+        "subject":       j["subject"],
+        "date":          date_str,
+        "weight":        weight,
+        "competencies":  competencies,
+        "periods":       periods,
+    }
+
+
+def _json_to_twau_lp_data(j: dict, date_str: str, weight) -> dict:
+    """
+    Adapter for The World Around Us LP JSON → build_lp_pdf() data dict.
+
+    TWAU periods differ from the Social Sciences shape: a single-axis
+    `section_ref`, a `cg_codes` array (all strands at comparable depth — no
+    per-period `competency` object and no weight), `dominant_mode` metadata,
+    and `teacher_facilitation_note`. The dominant_mode + CG codes are folded
+    into the anchored-section label so they remain visible in the PDF (the
+    HTML view shows them as a badge + chips).
+    """
+    import json as _json
+    from collections import OrderedDict
+
+    _grade_folder = str(j.get("grade", "")).lower().replace("grade ", "").strip()
+    _project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    # Canonical CG descriptions (nested curricular_goals format), flat file.
+    _comp_descs: dict = {}
+    _cd_path = os.path.join(
+        _project_root, "mirror", "framework", "the_world_around_us",
+        "competency_descriptions_twau.json",
+    )
+    try:
+        with open(_cd_path, encoding="utf-8") as _f:
+            _raw = _json.load(_f)
+        for _cg in _raw.get("curricular_goals", []):
+            for _c in _cg.get("competencies", []):
+                _comp_descs[_c.get("code", "")] = _c.get("description", "")
+    except Exception:
+        pass  # fall back to bare codes if the file is missing
+
+    _periods_raw = j["result"]["lesson_plan"]["periods"]
+
+    # Competencies table: unique CG codes across periods, in first-seen order.
+    seen = OrderedDict()
+    for p in _periods_raw:
+        for c_code in (p.get("cg_codes") or []):
+            if c_code and c_code not in seen:
+                seen[c_code] = _comp_descs.get(c_code, "")
+    competencies = list(seen.items())
+
+    periods = []
+    for p in _periods_raw:
+        mat = p.get("materials") or p.get("material") or ""
+        if isinstance(mat, list):
+            mat = ", ".join(str(m) for m in mat)
+        _section = p.get("section_ref") or p.get("textbook_anchor") or ""
+        _mode    = (p.get("dominant_mode") or "").strip()
+        _codes   = ", ".join(p.get("cg_codes") or [])
+        _meta    = " · ".join(x for x in (_mode, _codes) if x)
+        anchored = f"{_section} — {_meta}" if (_section and _meta) else (_section or _meta)
+        _bands = p.get("time_bands") or []
+        periods.append({
+            "num":              p.get("period_number"),
+            "duration":         p.get("period_duration_minutes"),
+            "activity_name":    p.get("activity_title") or p.get("activity_name", ""),
+            "anchored_section": anchored,
+            "time_breakdown":   [(tb.get("minutes", ""), tb.get("activity", "")) for tb in _bands],
+            "materials":        mat,
+            "learning_outcome": p.get("implied_lo", ""),
+        })
+
+    return {
+        "chapter_num":   j["chapter_number"],
+        "chapter_title": j["chapter_title"],
+        "grade":         str(j["grade"]).replace("Grade ", ""),
         "subject":       j["subject"],
         "date":          date_str,
         "weight":        weight,

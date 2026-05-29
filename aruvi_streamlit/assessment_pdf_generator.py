@@ -728,6 +728,14 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
 
     # ── Open task ─────────────────────────────────────────────────────────────
     elif qtype == "open_task":
+        # TWAU behavioural subtype — flag as a performance task (observed, not written).
+        if item.get("performance_task"):
+            story.append(Spacer(1, 3))
+            story.append(Paragraph(
+                '<b>Performance Task</b> — observe the student performing this; '
+                'use the observation rubric in the guide.',
+                AST["q_meta"],
+            ))
         task_txt = _clean_text(_apply_superscripts(item.get("task") or item.get("task_instructions") or ""))
         if task_txt:
             story.append(Spacer(1, 3))
