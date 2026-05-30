@@ -689,7 +689,7 @@ function _lrm(rawFloats, total) {
 
 function _chapterWeight(cd) {
   /* Science / Mathematics / English: use effort_index as the allocation driver */
-  if (IS_SCIENCE || IS_ENGLISH) return (typeof cd.effort_index === 'number' && cd.effort_index > 0) ? cd.effort_index : 0;
+  if (IS_SCIENCE || IS_ENGLISH || IS_TWAU) return (typeof cd.effort_index === 'number' && cd.effort_index > 0) ? cd.effort_index : 0;
   return cd.chapter_weight || 0;
 }
 
@@ -821,6 +821,22 @@ function setFootnote() {
       + '</div>';
     return;
   }
+  /* TWAU: own effort index formula */
+  if (IS_TWAU && aboutEl) {
+    aboutEl.innerHTML =
+      '<div class="about-ei">'
+      + '<h4>About the Effort Index</h4>'
+      + '<p>Formula: <b>(Conceptual demand \u00d73) + (Task load \u00d72) + (Project load \u00d71.5) + Map work</b>. Chapters with a higher effort index get more periods.</p>'
+      + '<ul>'
+      + '<li><b>Conceptual demand (\u00d73)</b> \u2014 How abstract the chapter\u2019s reasoning is. 1\u00a0=\u00a0concrete/tangible; 3\u00a0=\u00a0classification or material properties; 5\u00a0=\u00a0geological, astronomical, or cultural-history abstraction.</li>'
+      + '<li><b>Task load (\u00d72)</b> \u2014 Discrete score 0\u20133 based on the total count of student tasks (Activities, Discuss, Write, Find out, Draw, Let us reflect). 0\u00a0=\u00a0fewer than 10; 1\u00a0=\u00a010\u201320; 2\u00a0=\u00a021\u201330; 3\u00a0=\u00a0more than 30.</li>'
+      + '<li><b>Project load (\u00d71.5)</b> \u2014 0\u00a0=\u00a0none; 1\u00a0=\u00a0light (multi-day observation); 2\u00a0=\u00a0substantial (artefact construction or sustained build project).</li>'
+      + '<li><b>Map work (\u00d71)</b> \u2014 0\u00a0=\u00a0no maps; 1\u00a0=\u00a0map reading; 2\u00a0=\u00a0map drawing or regional comparison.</li>'
+      + '</ul>'
+      + '<p class="about-ei-close">Only relative values matter \u2014 the effort index is used to share your available periods across chapters in proportion to their load.</p>'
+      + '</div>';
+    return;
+  }
   /* Science / Mathematics: structured "About the Effort Index" block */
   if (IS_SCIENCE && aboutEl) {
     aboutEl.innerHTML =
@@ -888,11 +904,11 @@ function generateReport() {
     sortedPts.forEach(function (pt) { colSums[pt.mins] += (alloc[String(pt.mins)] || 0); });
 
     var rowBg = idx % 2 === 0 ? '#f9f8f6' : '#ffffff';
-    bodyHTML += '<tr' + ((IS_SCIENCE || IS_ENGLISH) ? ' class="sci-row"' : '') + ' style="background:' + rowBg + '">';
+    bodyHTML += '<tr' + ((IS_SCIENCE || IS_ENGLISH || IS_TWAU) ? ' class="sci-row"' : '') + ' style="background:' + rowBg + '">';
     bodyHTML += '<td>' + pad2(cd.chapter_number) + '</td>';
     /* ── second + third columns: Chapter name (+ optional breakdown) and EI/Weight ── */
-    if (IS_SCIENCE || IS_ENGLISH) {
-      /* ── Science / Mathematics / English: pill in EI cell, bar breakdown inside chapter name cell ── */
+    if (IS_SCIENCE || IS_ENGLISH || IS_TWAU) {
+      /* ── Science / Mathematics / English / TWAU: pill in EI cell, bar breakdown inside chapter name cell ── */
       var ei = (typeof cd.effort_index === 'number' && cd.effort_index > 0) ? cd.effort_index : 0;
 
       /* chapter name cell — holds the title + hidden bar breakdown */
@@ -914,6 +930,21 @@ function generateReport() {
             { label: 'Task density',   val: tdVal, mult: '\u00d71.5', cont: tdCont },
             { label: 'Writing demand', val: wdVal, mult: '\u00d71.5', cont: wdCont },
             { label: 'Project load',   val: plVal, mult: '\u00d71',   cont: plCont }
+          ];
+        } else if (IS_TWAU) {
+          var twCd   = cd.conceptual_demand || 0;
+          var twTl   = cd.task_load         || 0;
+          var twPl   = cd.project_load      || 0;
+          var twMw   = cd.map_work          || 0;
+          var twCdC  = parseFloat((twCd * 3).toFixed(1));
+          var twTlC  = parseFloat((twTl * 2).toFixed(1));
+          var twPlC  = parseFloat((twPl * 1.5).toFixed(1));
+          var twMwC  = parseFloat((twMw * 1).toFixed(1));
+          _signals = [
+            { label: 'Conceptual demand', val: twCd, mult: '\u00d73',   cont: twCdC },
+            { label: 'Task load',         val: twTl, mult: '\u00d72',   cont: twTlC },
+            { label: 'Project load',      val: twPl, mult: '\u00d71.5', cont: twPlC },
+            { label: 'Map work',          val: twMw, mult: '\u00d71',   cont: twMwC }
           ];
         } else {
           var cdVal  = cd.conceptual_demand || 0;
@@ -965,7 +996,7 @@ function generateReport() {
           + '</button>'
           + '</td>';
       }
-      /* No competency drawer for Science/Mathematics/English chapters */
+      /* No competency drawer for Science/Mathematics/English/TWAU chapters */
     } else {
       /* ── Social Sciences / other languages: weight button opens competency drawer ── */
       bodyHTML += '<td class="left wrap">' + esc(cd.chapter_title) + '</td>';
@@ -983,7 +1014,7 @@ function generateReport() {
     bodyHTML += '</tr>';
 
     /* ── competency drawer row (Social Sciences / other languages only) ── */
-    if (!IS_SCIENCE && !IS_ENGLISH) {
+    if (!IS_SCIENCE && !IS_ENGLISH && !IS_TWAU) {
       var drawerWt = 0, cmpRowsHTML = '';
       primary.forEach(function (comp, ci) {
         var w = comp.weight || 0;
@@ -1052,8 +1083,8 @@ function generateReport() {
   var headHTML = '<thead><tr>';
   headHTML += '<th>#</th>';
   headHTML += '<th class="left">Chapter</th>';
-  if (IS_SCIENCE || IS_ENGLISH) {
-    /* Science / Mathematics / English: single Effort Index column replaces Weight */
+  if (IS_SCIENCE || IS_ENGLISH || IS_TWAU) {
+    /* Science / Mathematics / English / TWAU: single Effort Index column replaces Weight */
     headHTML += '<th class="ei-th">Effort Index<span class="ei-hint">(click value to expand)</span></th>';
   } else {
     /* Social Sciences / other languages: competency-load weight column */
@@ -1265,18 +1296,18 @@ function _downloadPDF_legacy_unused() {
     var c = selChapters.reduce(function (s, cd) { return s + ((allocMap[cd.chapter_number] || {})[String(pt.mins)] || 0); }, 0);
     return c + '\u00d7' + pt.mins + 'min';
   }).join(' \u00b7 ');
-  var summaryMetricLbl = (IS_SCIENCE || IS_ENGLISH) ? 'Sum of effort idx' : 'Total weight';
-  var summaryMetricVal = (IS_SCIENCE || IS_ENGLISH)
+  var summaryMetricLbl = (IS_SCIENCE || IS_ENGLISH || IS_TWAU) ? 'Sum of effort idx' : 'Total weight';
+  var summaryMetricVal = (IS_SCIENCE || IS_ENGLISH || IS_TWAU)
     ? String(selChapters.reduce(function (s, cd) { return s + (cd.effort_index || 0); }, 0))
     : String(grandWeight);
-  /* Change 2.6: exclude "Sum of effort idx" from summary strip for Science */
+  /* Change 2.6: exclude "Sum of effort idx" from summary strip for Science/TWAU */
   var stripItems = [
     { lbl: 'Chapters',     val: String(selChapters.length) },
     { lbl: 'Periods',      val: String(grandPeriods) },
     { lbl: 'Minutes',      val: String(grandMinutes) },
     { lbl: 'Period types', val: ptBreak },
   ];
-  if (!IS_SCIENCE && !IS_ENGLISH) {
+  if (!IS_SCIENCE && !IS_ENGLISH && !IS_TWAU) {
     stripItems.push({ lbl: summaryMetricLbl, val: summaryMetricVal });
   }
   var sx = mL;
@@ -1402,9 +1433,9 @@ function _downloadPDF_legacy_unused() {
     }).join(' \u00b7 ') + ' \u00b7 ' + total + ' periods \u00b7 ' + minutes + 'min';
 
     /* Pill and weight label — always flush right, title wraps left of them */
-    var wlText  = (IS_SCIENCE || IS_ENGLISH) ? '' : 'Weight\u00a0' + wt;
+    var wlText  = (IS_SCIENCE || IS_ENGLISH || IS_TWAU) ? '' : 'Weight\u00a0' + wt;
     doc.setFont('helvetica', 'bold'); doc.setFontSize(7);
-    var wlWidth = (IS_SCIENCE || IS_ENGLISH) ? 0 : doc.getTextWidth(wlText);
+    var wlWidth = (IS_SCIENCE || IS_ENGLISH || IS_TWAU) ? 0 : doc.getTextWidth(wlText);
 
     var allocFS   = 6.5;
     doc.setFont('helvetica', 'normal'); doc.setFontSize(allocFS);
@@ -1412,7 +1443,7 @@ function _downloadPDF_legacy_unused() {
     var pillW     = pillTextW + 8;   /* 4mm pad each side */
 
     /* Pill always sits flush right — title wraps within whatever space remains */
-    var pillGap = (IS_SCIENCE || IS_ENGLISH) ? 0 : (wlWidth + 4);
+    var pillGap = (IS_SCIENCE || IS_ENGLISH || IS_TWAU) ? 0 : (wlWidth + 4);
     var pillX   = pageW - mR - pillGap - pillW;
     /* Title is constrained to the space left of the pill (min 40 mm so it always wraps rather than truncating) */
     var _titleMaxW = Math.max(40, pillX - mL - 4);
@@ -1444,7 +1475,7 @@ function _downloadPDF_legacy_unused() {
       doc.setCharSpace(0);
 
       /* weight label (Social Sciences / other languages only) */
-      if (!IS_SCIENCE && !IS_ENGLISH) {
+      if (!IS_SCIENCE && !IS_ENGLISH && !IS_TWAU) {
         doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(100, 100, 100);
         doc.setCharSpace(0);
         doc.text(wlText, pillX + pillW + 4, y);
@@ -1456,8 +1487,8 @@ function _downloadPDF_legacy_unused() {
 
     }
 
-    if (IS_SCIENCE) {
-      /* ── Science format: # | Code | Competency | Justification table ── */
+    if (IS_SCIENCE || IS_TWAU) {
+      /* ── Science / TWAU format: # | Code | Competency | Justification table ── */
       var sciCW = { seq: 8, code: 16, desc: 58, just: 90 };
 
       /* column headers */
@@ -1529,10 +1560,18 @@ function _downloadPDF_legacy_unused() {
       doc.text(eiPart1, mL, y + 3);
       doc.setCharSpace(0);
       if (ei) {
-        var eiSuffix = '  Conceptual demand: ' + (cd.conceptual_demand || 0)
-            + '  Activities: ' + (cd.activity_count || 0)
-            + '  Demos: '      + (cd.demo_count    || 0)
-            + '  Exec load: '  + (cd.exec_load     || 0);
+        var eiSuffix;
+        if (IS_TWAU) {
+          eiSuffix = '  Conceptual demand: ' + (cd.conceptual_demand || 0)
+              + '  Task load: '    + (cd.task_load    || 0)
+              + '  Project load: ' + (cd.project_load || 0)
+              + '  Map work: '     + (cd.map_work     || 0);
+        } else {
+          eiSuffix = '  Conceptual demand: ' + (cd.conceptual_demand || 0)
+              + '  Activities: ' + (cd.activity_count || 0)
+              + '  Demos: '      + (cd.demo_count    || 0)
+              + '  Exec load: '  + (cd.exec_load     || 0);
+        }
         doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(95, 95, 95);
         doc.text(eiSuffix, mL + _eiPart1Width, y + 3);
         doc.setCharSpace(0);
@@ -1892,6 +1931,35 @@ function _downloadPDF_legacy_unused() {
       var _eBLines = doc.splitTextToSize(row.body, _engEiBodyW);
       doc.text(_eBLines, mL + _engEiLblW, y); doc.setCharSpace(0);
       y += Math.max(5, _eBLines.length * 3.5);
+    });
+    y += 4;
+  }
+
+  if (IS_TWAU) {
+    if (y + 40 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 18; }
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(26, 68, 128);
+    doc.text('About the Effort Index', mL, y); doc.setCharSpace(0);
+    y += 4;
+    rule(y, 0.18, 180); y += 4;
+
+    var _twauEiRows = [
+      { label: 'Formula:', body: 'effort_index = (Conceptual demand ×3) + (Task load ×2) + (Project load ×1.5) + Map work' },
+      { label: 'Conceptual demand (×3):', body: 'How abstract the chapter\'s reasoning is. 1 = concrete/tangible (e.g. family, simple observations); 3 = classification or material properties; 5 = geological, astronomical, or cultural-history abstraction. Judged from chapter content, not the grade alone.' },
+      { label: 'Task load (×2):', body: 'Discrete score 0–3 based on total student tasks (Activities, Discuss, Write, Find out, Draw, Let us reflect). 0 = fewer than 10; 1 = 10–20; 2 = 21–30; 3 = more than 30.' },
+      { label: 'Project load (×1.5):', body: '0 = none; 1 = light (multi-day observation, e.g. watch a plant grow over a week); 2 = substantial (artefact construction or sustained build project).' },
+      { label: 'Map work (×1):', body: '0 = no maps; 1 = map reading; 2 = map drawing or regional comparison.' },
+      { label: 'Note:', body: 'Only relative values matter — the effort index is used to share your available periods across chapters in proportion to their load.' },
+    ];
+    var _twauEiLblW = 58;
+    var _twauEiBodyW = pageW - mL - mR - _twauEiLblW;
+    _twauEiRows.forEach(function(row) {
+      if (y + 8 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5); doc.setTextColor(26, 68, 128);
+      doc.text(row.label, mL, y); doc.setCharSpace(0);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(75, 75, 75);
+      var _tBLines = doc.splitTextToSize(row.body, _twauEiBodyW);
+      doc.text(_tBLines, mL + _twauEiLblW, y); doc.setCharSpace(0);
+      y += Math.max(5, _tBLines.length * 3.5);
     });
     y += 4;
   }

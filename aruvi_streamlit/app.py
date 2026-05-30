@@ -3183,7 +3183,8 @@ def _generate_pdf_bytes_alloc(
     pdf.ln(3)
 
     # Detect subject group for column layout and footnote wording
-    is_science = subject in ("Science", "Mathematics")
+    is_twau    = subject == "The World Around Us"
+    is_science = subject in ("Science", "Mathematics") or is_twau
     is_english = subject == "English"
     uses_effort_index = is_science or is_english
 
@@ -3396,6 +3397,53 @@ def _generate_pdf_bytes_alloc(
         _lbl_w = 44
         _body_w = 180 - _lbl_w
         for lbl, body in _ei_rows_en:
+            y0 = pdf.get_y()
+            pdf.set_font("Helvetica", "B", 6.5)
+            pdf.set_text_color(26, 68, 128)
+            pdf.set_x(pdf.l_margin)
+            pdf.multi_cell(_lbl_w, 4, lbl, ln=False)
+            y1 = pdf.get_y()
+            pdf.set_xy(pdf.l_margin + _lbl_w, y0)
+            pdf.set_font("Helvetica", "", 6.5)
+            pdf.set_text_color(75, 75, 75)
+            pdf.multi_cell(_body_w, 4, body)
+            y2 = pdf.get_y()
+            pdf.set_y(max(y1, y2))
+            pdf.ln(1)
+
+    elif is_twau:
+        pdf.ln(4)
+        pdf.set_font("Helvetica", "B", 7)
+        pdf.set_text_color(26, 68, 128)
+        pdf.cell(0, 5, "About the Effort Index", ln=True)
+        pdf.set_draw_color(147, 188, 232)
+        pdf.set_line_width(0.3)
+        pdf.line(pdf.get_x(), pdf.get_y(), pdf.get_x() + 180, pdf.get_y())
+        pdf.ln(1)
+
+        _ei_rows_twau = [
+            ("Formula:",
+             "effort_index = (Conceptual demand x3) + (Task load x2) + (Project load x1.5) + Map work"),
+            ("Conceptual demand (x3):",
+             "How abstract the chapter's reasoning is. 1 = concrete/tangible (e.g. family, simple"
+             " observations); 3 = classification or material properties; 5 = geological, astronomical,"
+             " or cultural-history abstraction. Judged from the chapter content, not the grade alone."),
+            ("Task load (x2):",
+             "Discrete score (0-3) based on the total count of student tasks (Activities, Discuss,"
+             " Write, Find out, Draw, Let us reflect items). 0 = fewer than 10; 1 = 10-20;"
+             " 2 = 21-30; 3 = more than 30."),
+            ("Project load (x1.5):",
+             "0 = none; 1 = light (multi-day observation, e.g. watch a plant grow over a week);"
+             " 2 = substantial (artefact construction or sustained build project)."),
+            ("Map work (x1):",
+             "0 = no maps; 1 = map reading; 2 = map drawing or regional comparison."),
+            ("Note:",
+             "Only relative values matter - the effort index is used to share your available"
+             " periods across chapters in proportion to their load."),
+        ]
+        _lbl_w = 54
+        _body_w = 180 - _lbl_w
+        for lbl, body in _ei_rows_twau:
             y0 = pdf.get_y()
             pdf.set_font("Helvetica", "B", 6.5)
             pdf.set_text_color(26, 68, 128)
@@ -6468,13 +6516,34 @@ elif st.session_state.role == "Allocate":
                 _e["description"] = _comp_descs.get(_e.get("c_code", ""), "")
                 _enriched_primary.append(_e)
 
+            # TWAU: effort signals live in the summary JSON (not the mapping).
+            # Read summary to pull conceptual_demand, task_load, project_load, map_work.
+            _twau_signals = {}
+            if subject == "The World Around Us":
+                try:
+                    _summary_raw = json.loads(
+                        _paths["chapter_summary"].read_text(encoding="utf-8")
+                    )
+                    _twau_signals = {
+                        "conceptual_demand": _summary_raw.get("conceptual_demand", 0),
+                        "task_load":         _summary_raw.get("task_load", 0),
+                        "project_load":      _summary_raw.get("project_load", 0),
+                        "map_work":          _summary_raw.get("map_work", 0),
+                    }
+                except Exception:
+                    _twau_signals = {
+                        "conceptual_demand": 0, "task_load": 0,
+                        "project_load": 0, "map_work": 0,
+                    }
+
             _result.append({
                 "chapter_number":    _ch["chapter_number"],
                 "chapter_title":     _ch.get("chapter_title", ""),
                 "chapter_weight":    _mapping.get("chapter_weight", 0),
                 "effort_index":      _mapping.get("effort_index", 0),
                 # Science signals
-                "conceptual_demand": _mapping.get("conceptual_demand", 0),
+                "conceptual_demand": _twau_signals.get("conceptual_demand",
+                                         _mapping.get("conceptual_demand", 0)),
                 "activity_count":    _mapping.get("activity_count", 0),
                 "demo_count":        _mapping.get("demo_count", 0),
                 "exec_load":         _mapping.get("exec_load", 0),
@@ -6482,7 +6551,11 @@ elif st.session_state.role == "Allocate":
                 "spine_load":        _mapping.get("spine_load", 0),
                 "task_density":      _mapping.get("task_density", 0),
                 "writing_demand":    _mapping.get("writing_demand", 0),
-                "project_load":      _mapping.get("project_load", 0),
+                "project_load":      _twau_signals.get("project_load",
+                                         _mapping.get("project_load", 0)),
+                # TWAU-specific signals
+                "task_load":         _twau_signals.get("task_load", 0),
+                "map_work":          _twau_signals.get("map_work", 0),
                 "primary":           _enriched_primary,
                 "incidental":        _mapping.get("incidental", []),
             })
@@ -6521,6 +6594,7 @@ elif st.session_state.role == "Allocate":
         f"const SUBJECT_LABEL  = {json.dumps(st.session_state.subject  or '')};\n"
         f"const IS_SCIENCE     = {json.dumps(st.session_state.subject in ('Science', 'Mathematics'))};\n"
         f"const IS_ENGLISH     = {json.dumps(st.session_state.subject == 'English')};\n"
+        f"const IS_TWAU        = {json.dumps(st.session_state.subject == 'The World Around Us')};\n"
         f"const ARUVI_LOGO_B64 = {json.dumps(_logo_b64)};\n"
         f"const ENGLISH_SPINE_DATA = {json.dumps(_english_spine_data, ensure_ascii=False)};\n"
     )
@@ -6558,6 +6632,30 @@ elif st.session_state.role == "Allocate":
             'fixed weights to give the effort index. Only relative values '
             'matter — it is used to share your available periods across '
             'chapters in proportion to their load.</p>'
+            '</div>'
+        )
+    elif _subject == "The World Around Us":
+        _fn1_text = (
+            '<div class="about-ei">'
+            '<h4>About the Effort Index</h4>'
+            '<p>The effort index tells you how much classroom time a chapter typically '
+            'needs compared to other chapters. Formula: '
+            '<b>(Conceptual demand × 3) + (Task load × 2) + (Project load × 1.5) + Map work</b>. '
+            'Chapters with a higher effort index get more periods.</p>'
+            '<ul>'
+            '<li><b>Conceptual demand (×3)</b> — How abstract the chapter\'s reasoning is '
+            '(1 = concrete/tangible, 3 = classification or material properties, '
+            '5 = geological/astronomical/cultural-history abstraction).</li>'
+            '<li><b>Task load (×2)</b> — Discrete score (0–3) based on the total count of '
+            'student tasks (Activities, Discuss, Write, Find out, Draw, Let us reflect). '
+            '0 = fewer than 10 tasks; 1 = 10–20; 2 = 21–30; 3 = more than 30.</li>'
+            '<li><b>Project load (×1.5)</b> — 0 = none; 1 = light (multi-day observation); '
+            '2 = substantial (artefact construction or sustained build project).</li>'
+            '<li><b>Map work (×1)</b> — 0 = no maps; 1 = map reading; 2 = map drawing or '
+            'regional comparison.</li>'
+            '</ul>'
+            '<p class="about-ei-close">Only relative values matter — the effort index is used '
+            'to share your available periods across chapters in proportion to their load.</p>'
             '</div>'
         )
     elif _subject in ("Science", "Mathematics"):
