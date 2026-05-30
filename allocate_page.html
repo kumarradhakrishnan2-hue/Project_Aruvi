@@ -1512,7 +1512,7 @@ function _downloadPDF_legacy_unused() {
 
       /* competency rows */
       primary.forEach(function (comp, ci) {
-        var descText  = cleanText(comp.description || comp.cg || '');
+        var descText  = cleanText(comp.description || comp.competency_text || comp.cg || '');
         var justText  = cleanText(comp.justification || '');
         doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5);
         var descLines = doc.splitTextToSize(descText, sciCW.desc - CP * 2);
@@ -1613,7 +1613,7 @@ function _downloadPDF_legacy_unused() {
       /* competency rows — Fix 2: use CP padding; Fix 3: explicit font per cell */
       primary.forEach(function (comp, ci) {
         var w         = comp.weight || 0;
-        var descText  = cleanText(comp.description || comp.cg || '');
+        var descText  = cleanText(comp.description || comp.competency_text || comp.cg || '');
         var justText  = cleanText(comp.justification || '');
         var descLines = doc.splitTextToSize(descText, CW.desc - CP * 2);
         var justLines = doc.splitTextToSize(justText, CW.just - CP * 2);

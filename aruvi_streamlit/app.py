@@ -3102,15 +3102,23 @@ def _ch_w2_codes(ch: dict) -> list:
 def _ch_w1_codes(ch: dict) -> list:
     return [item["c_code"] for item in ch.get("primary", []) if item.get("weight") == 1]
 
-def _alloc_chapter_weight(ch: dict) -> int:
-    """Competency-load weight: W3×3 + W2×2 + W1×1, using pre-stored chapter_weight if available."""
+def _alloc_chapter_weight(ch: dict, subject: str = "") -> int:
+    """Return the allocation weight for a chapter.
+
+    For TWAU, Science, and Mathematics the effort_index is the weight.
+    For Social Sciences and other subjects the stored chapter_weight
+    (competency load) is used.
+    """
+    _effort_subjects = {"Science", "Mathematics", "The World Around Us"}
+    if subject in _effort_subjects:
+        effort = ch.get("effort_index")
+        if isinstance(effort, (int, float)) and effort > 0:
+            return int(round(effort))
+        return 0
+    # Social Sciences / other: competency-load weight
     stored = ch.get("chapter_weight")
     if isinstance(stored, (int, float)) and stored > 0:
         return int(stored)
-    # Science: use effort_index as allocation weight
-    effort = ch.get("effort_index")
-    if isinstance(effort, (int, float)) and effort > 0:
-        return int(round(effort))
     return sum(item.get("weight", 0) for item in ch.get("primary", []))
 
 def _lrm(raw_floats: list, total: int) -> list:
@@ -3123,7 +3131,7 @@ def _lrm(raw_floats: list, total: int) -> list:
         result[remainders[k][0]] += 1
     return result
 
-def _compute_allocation(chs: list, period_types: list) -> list:
+def _compute_allocation(chs: list, period_types: list, subject: str = "") -> list:
     """
     Returns one allocation dict per chapter.
     Each dict has {mins: count, ..., 'total': int}.
@@ -3135,7 +3143,7 @@ def _compute_allocation(chs: list, period_types: list) -> list:
         alloc["total"] = sum(pt["count"] for pt in period_types)
         return [alloc]
 
-    weights  = [_alloc_chapter_weight(ch) for ch in chs]
+    weights  = [_alloc_chapter_weight(ch, subject) for ch in chs]
     sum_w    = sum(weights) or 1
     sorted_types  = sorted(period_types, key=lambda pt: -pt["mins"])
     total_periods = sum(pt["count"] for pt in sorted_types)
@@ -6513,7 +6521,12 @@ elif st.session_state.role == "Allocate":
                     _e = {"c_code": _entry, "weight": 1}
                 else:
                     _e = dict(_entry)
-                _e["description"] = _comp_descs.get(_e.get("c_code", ""), "")
+                # Prefer the shared descriptions lookup; fall back to inline
+                # competency_text (TWAU stores it directly in the mapping entry).
+                _e["description"] = (
+                    _comp_descs.get(_e.get("c_code", ""), "")
+                    or _e.get("competency_text", "")
+                )
                 _enriched_primary.append(_e)
 
             # TWAU: effort signals live in the summary JSON (not the mapping).
