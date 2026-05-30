@@ -1,4 +1,4 @@
-ARUVI · LESSON PLAN GENERATION CONSTITUTION · THE WORLD AROUND US · VERSION 1.0
+ARUVI · LESSON PLAN GENERATION CONSTITUTION · THE WORLD AROUND US · VERSION 1.2
 
 SUBJECT: the_world_around_us   STAGE: Preparatory (Grades III, IV, V)
 
@@ -25,9 +25,10 @@ The World Around Us is organically interdisciplinary and activity-centric. The
 lesson plan's single structural axis is the textbook's named SECTIONS in
 reading order. The chapter's two strands — a natural phenomenon and the
 human-cultural response to it (dual_strand) — are both developed through that
-same section sequence; neither is a separate axis. Pedagogical approach
-(dominant_mode) and CG codes are metadata attached to each period — they
-describe the period, they do not structure the plan.
+same section sequence; neither is a separate axis. Pedagogical approach (dominant_mode) is metadata attached to each period —
+it describes the period, it does not structure the plan. CG competency
+descriptions are a chapter-level input to the Assessment Constitution only;
+they are not attached to individual periods.
 
 ================================================================================
 RULE 1 · SINGLE-AXIS SECTION ANCHORING
@@ -122,55 +123,30 @@ PROHIBITION
    activity.
 
 ================================================================================
-RULE 5 · CG CODES AT PERIOD LEVEL — DETERMINISTIC SECTION BINDING
+RULE 5 · IMPLIED LO + SECTION CONTEXT + TEXTBOOK ANCHOR + FACILITATION NOTE
+(formerly Rule 6)
 
 MANDATE
-Each period carries a cg_codes array. The codes are NOT chosen by free judgement
-— they are BOUND to the period's anchored section using the mapping JSON's
-sections[] field, by the following two-part rule:
+Generate exactly one implied_lo and one section_context per period.
 
-(a) PRIMARY (deterministic lookup). For a period anchored to section S,
-    cg_codes = every competency c_code in the mapping JSON whose sections[]
-    list contains S. This is a lookup, not an interpretation: a code is included
-    if and only if the mapping recorded S among that competency's sections.
+implied_lo — the transferable skill this period develops, stated independently
+of the specific objects or phenomena used in the activity. Derivation test:
+what can the student now do that they could apply equally in a different TWAU
+chapter? Format: "Students can [skill verb phrase]."
+Use a class of object or phenomenon where needed (e.g. "everyday objects",
+"the same material in different shapes") but MUST NOT name the specific items
+from this activity (coin, aluminium foil, toothpick). Those belong in
+section_context.
 
-(b) FALLBACK (gated). Only if S appears in NO competency's sections[] — i.e. the
-    mapping anchored no competency to this section — may the period instead carry
-    the single CG code, drawn ONLY from the mapping JSON's competencies, that the
-    section's content most plausibly develops. The fallback is reachable solely
-    on this binary condition (S cited by zero competencies); it MUST NOT be used
-    because a lookup result seems small, large, or otherwise undesirable.
+section_context — a compact label of 10–15 words naming the specific objects,
+phenomena, or tasks this period drew from. This is what the assessment question
+is about. Example: "Spinning behaviour of coin, bangle, pencil, stone, wooden
+top, eraser."
 
-All active CG codes are treated at comparable depth — TWAU's competencies are all
-Weight 1. Intra-chapter period allocation (how many periods a section earns) is
-driven by SECTION-LEVEL effort signals (task density, conceptual demand,
-project/map components), NOT by competency weight.
-
-PROHIBITION
-1. MUST NOT assign a cg_code to a period whose anchored section is not in that
-   competency's sections[] — UNLESS clause (b) applies (section cited by no
-   competency at all).
-2. MUST NOT invent a CG code; every cg_code (primary or fallback) must exist in
-   the mapping JSON's competencies.
-3. MUST NOT take the fallback for any reason other than the binary trigger in
-   clause (b).
-4. MUST NOT assign proportionally greater emphasis to any competency over
-   another, and MUST NOT use a competency code as the content source for a
-   period, or apply any arithmetic weight-to-period formula.
-
-================================================================================
-RULE 6 · ONE IMPLIED LO + TEXTBOOK ANCHOR + FACILITATION NOTE PER PERIOD
-
-MANDATE
-Generate exactly one implied_lo per period.
-
-implied_lo — a specific, observable learning outcome for the period, stated with
-an observable verb. It may legitimately span more than one CG strand at once
-(the Assessment Constitution splits it into one item per strand). Format:
-"Students can [observable verb phrase]."
-
-textbook_anchor — the named activity or section element the period is built on
-(e.g. an Activity, a Find-out, a Draw task, or a named section heading).
+textbook_anchor — the textbook location this period is built on.
+Format: <section_name> — brief description of what the task asks (p. X)
+Example: "How Things Work — observe and record which objects spin well (p. 105)"
+MUST use the section name and page number from the chapter summary's tasks[].
 
 teacher_facilitation_note — a brief note on facilitation: an open question to
 pose, grouping, or pacing guidance.
@@ -179,7 +155,12 @@ PROHIBITION
 1. MUST NOT generate more than one implied_lo per period.
 2. MUST NOT write an implied_lo using internal-state verbs ("understand",
    "appreciate", "feel"). Use observable verbs only.
-3. MUST NOT retrieve or reference any Learning Outcome document — implied_lo is
+3. MUST NOT include specific activity objects or proper nouns in implied_lo —
+   they belong in section_context.
+4. MUST NOT reference tasks by internal identifiers (T-1, T-2, etc.) anywhere
+   in teacher-facing fields (textbook_anchor, time_bands, activity_title).
+   Use section name + brief description + page number instead.
+5. MUST NOT retrieve or reference any Learning Outcome document — implied_lo is
    an output of period design, not an input.
 
 ================================================================================
@@ -215,15 +196,37 @@ Emit a coverage_handoff array — one entry per period — as a required sibling
 output. This is the SOLE lesson-plan input the Assessment Constitution reads.
 Each entry contains:
   { "period_number", "period_duration_minutes", "section_ref",
-    "dominant_mode", "cg_codes": [ ... ], "implied_lo",
-    "textbook_anchor", "activity_summary" }
+    "dominant_mode", "implied_lo",
+    "section_context", "textbook_anchor", "activity_summary" }
 
-cg_codes and implied_lo are copied exactly from the period that produced them.
+implied_lo and section_context are copied exactly from the period that produced
+them. The assessment generator reads implied_lo to set cognitive demand and
+section_context to ground the question content. Competency selection for
+assessment is handled by the Assessment Constitution using a chapter-level
+competency descriptions block — cg_codes are NOT part of the handoff.
 
 PROHIBITION
 1. MUST NOT omit the coverage_handoff — it is required on every run.
-2. MUST NOT include a cg_code in a handoff entry that is not present in the
-   mapping JSON.
+2. MUST NOT include cg_codes in any handoff entry.
+3. MUST NOT omit section_context from any handoff entry.
+
+================================================================================
+RULE 10 · INDIAN KNOWLEDGE SYSTEMS — INTEGRATED, NOT LABELLED
+
+MANDATE
+Indian Knowledge Systems (IKS) content — traditional practices, local vessels,
+seasonal knowledge, folk conservation, craft traditions — surfaces through
+faithful use of the section content_summary and tasks. Where IKS material is
+present in the section, the teacher_facilitation_note MUST include a brief
+prompt guiding the teacher to draw it out naturally in conversation.
+
+PROHIBITION
+1. MUST NOT create a dedicated time band or phase for IKS content.
+2. MUST NOT use the word "IKS" or the phrase "Indian Knowledge Systems"
+   anywhere in teacher-facing output — not in activity_title, time_bands,
+   teacher_facilitation_note, or any other field the teacher reads.
+3. MUST NOT treat IKS as a structural axis or label it as a moment — it is
+   woven into the activity, not appended to it.
 
 ================================================================================
 INTEGRITY CONSTRAINTS (system-level; override any other instruction)
@@ -233,10 +236,6 @@ INTEGRITY CONSTRAINTS (system-level; override any other instruction)
 - The Pedagogy document is the sole source for pedagogical approach; the five
   dominant_mode values are the closed set for this subject.
 - Learning Outcomes are outputs only. No LO document is an input.
-- IKS (Indian Knowledge Systems) content surfaces through faithful use of the
-  section content_summary and tasks — there is NO dedicated IKS field. Draw on
-  the textbook's own IKS material (traditional practices, local vessels,
-  seasonal knowledge, folk conservation) where the section places it.
 - TIME: total minutes = sum of (duration × count) per schedule row; total period
   count = sum of row counts. The full budget is teaching only.
 
@@ -264,14 +263,14 @@ MUST NOT invent visual aid requirements.
         "activity_title": "string — short label for this period's activity",
         "section_ref": "string — named chapter section this period anchors to",
         "dominant_mode": "string — one of: O&R | HI | D&C | C&E | R&A",
-        "cg_codes": ["string — e.g. C-1.1", "..."],
-        "textbook_anchor": "string — named activity/section element from the textbook",
+        "textbook_anchor": "string — <section_name> — brief description (p. X)",
         "materials": ["string", "..."],
         "visual_aids": "string | null",
         "time_bands": [
           { "minutes": "string e.g. 0-5", "activity": "string" }
         ],
-        "implied_lo": "string — one observable outcome; may span >1 CG strand",
+        "implied_lo": "string — transferable skill; no specific activity objects; format: 'Students can [skill verb phrase]'",
+        "section_context": "string — 10–15 words naming the specific objects, phenomena, or tasks this period drew from",
         "teacher_facilitation_note": "string — open question, grouping, or pacing guidance"
       }
     ]
@@ -282,9 +281,9 @@ MUST NOT invent visual aid requirements.
       "period_duration_minutes": "integer",
       "section_ref": "string",
       "dominant_mode": "string — O&R | HI | D&C | C&E | R&A",
-      "cg_codes": ["string", "..."],
       "implied_lo": "string — copied verbatim from the period",
-      "textbook_anchor": "string",
+      "section_context": "string — copied verbatim from the period",
+      "textbook_anchor": "string — copied verbatim from the period",
       "activity_summary": "string — one-line summary of the period's activity"
     }
   ]

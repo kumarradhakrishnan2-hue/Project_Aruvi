@@ -73,6 +73,16 @@ Carry-forward rule: At the end of any session where significant work was done, u
 
 ---
 
+[Learning #12] — 2026-05-30 — TWAU Lesson Plan Template: No Toggle Inheritance from Science
+
+Context: TWAU (The World Around Us) chapters are heterogeneous — some lean science (How Things Work), some lean social/cultural (Family, Community), and many are blended within a single period.
+Observation: Considered introducing the lesson view / time view toggle (used in Science) for TWAU. But the toggle assumes a chapter-level or strand-level uniformity that TWAU does not have — inquiry and cultural strands can coexist within the same period.
+Root cause: TWAU's pedagogical nature is fundamentally different from Science. Strand classification cannot be done at chapter or period level cleanly.
+Action taken: Decision to give TWAU its own lesson plan template with activity-type labels (e.g. Explore / Discuss / Create) rather than inheriting Science's view toggle. No toggle for TWAU. No strand-level routing.
+Carry-forward rule: TWAU is a distinct subject with its own constitution and template. Do not map it onto Science or Social Sciences mental models. Any TWAU-specific UI or generation logic must be designed ground-up for its blended nature.
+
+---
+
 [Learning #11] — 2026-04-17 — Competency Mapping: Constitutions Must Be Read Before Coding
 
 Context: Session running competency mapping for Social Sciences Class VII chapters 1–5.

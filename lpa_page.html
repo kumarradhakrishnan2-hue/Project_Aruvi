@@ -186,15 +186,13 @@
 .sscb-weight { font-size: 10px; color: #5a5754; white-space: nowrap; }
 .sscb-text   { font-size: 11px; color: #5a5754; line-height: 1.4; }
 
-/* ── TWAU LP: dominant_mode badge + CG code chips inside the comp bar ────── */
-.twau-mode-badge {
-  font-size: 10px; font-weight: 700; letter-spacing: 0.3px; color: #fff;
-  background: #2f7d6e; border-radius: 4px; padding: 2px 7px; white-space: nowrap;
-  margin-right: 4px;
+/* ── TWAU LP: Pedagogical Approach label + full mode text inside the comp bar ── */
+.twau-ped-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.3px; color: #5a5754;
+  white-space: nowrap; margin-right: 6px; text-transform: uppercase;
 }
-.twau-cg-chip {
-  font-size: 11px; font-weight: 600; color: #1a1917; background: #eee9e1;
-  border-radius: 4px; padding: 2px 6px; white-space: nowrap;
+.twau-ped-mode {
+  font-size: 11px; font-weight: 600; color: #1a1917; line-height: 1.4;
 }
 
 /* ── Science LP: centre-align Pedagogical Approach column value ─────────── */
@@ -2409,22 +2407,20 @@ function renderLPA() {
       /* Competency bar — top of pbody, styled with old period-header tan/beige palette.
          Skipped entirely for chapters where no competency drives the period
          (Mathematics LP per Rule 8: competencies do not drive periods).
-         TWAU: a dominant_mode badge + a flat row of CG-code chips (all strands
-         at comparable depth — no single c_code, no weight). */
+         TWAU: show Pedagogical Approach label + full mode name only; CG codes removed from v1.2. */
       var compBar;
-      if (Array.isArray(p.cg_codes) && p.cg_codes.length) {
-        var _modeFull = { 'O&R':'Observe & Record', 'HI':'Hands-on Investigation',
-                          'D&C':'Discussion & Connection', 'C&E':'Create & Express',
-                          'R&A':'Reflect & Act' };
+      if (p.is_twau || (Array.isArray(p.cg_codes) && p.cg_codes.length)) {
+        var _modeFull = { 'O&R':'Observe and Record', 'HI':'Hands-on Investigation',
+                          'D&C':'Discussion and Connection', 'C&E':'Create and Express',
+                          'R&A':'Reflect and Act' };
         var _mode = p.dominant_mode || '';
-        var modeBadge = _mode
-          ? '<span class="twau-mode-badge" title="' + escHtml(_modeFull[_mode] || _mode) + '">' +
-              escHtml(_mode) + '</span>'
+        var _modeText = _modeFull[_mode] || _mode;
+        compBar = _modeText
+          ? '<div class="ss-comp-bar">' +
+              '<span class="twau-ped-label">Pedagogical Approach:</span>' +
+              '<span class="twau-ped-mode">' + escHtml(_modeText) + '</span>' +
+            '</div>'
           : '';
-        var cgChips = p.cg_codes.map(function (c) {
-          return '<span class="twau-cg-chip">' + escHtml(c) + '</span>';
-        }).join(' ');
-        compBar = '<div class="ss-comp-bar">' + modeBadge + cgChips + '</div>';
       } else {
         compBar = (p.c_code || wlblP || p.competency_text)
           ? '<div class="ss-comp-bar">' +

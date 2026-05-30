@@ -680,7 +680,8 @@ def english_competency_table(eng_competencies):
 
 
 def period_card(period_num, duration_min, activity_name, anchored_section,
-                time_breakdown, materials, learning_outcome):
+                time_breakdown, materials, learning_outcome,
+                pedagogical_approach="", show_ped_label=False):
     """
     Returns a LIST of flowables (not a KeepTogether) so that long periods
     flow naturally across page boundaries.
@@ -693,13 +694,26 @@ def period_card(period_num, duration_min, activity_name, anchored_section,
     # Fix 4: first sentence of anchored section only (split at '/')
     sec_short = _clean_text(anchored_section.split("/")[0].strip())
 
-    # ── Period header row — Period | Duration | Activity (3 cols, no Section) ─
-    hdr_data = [[
-        Paragraph(f"<b>Period {period_num}</b>",              ST["period_lbl"]),
-        Paragraph(f"{duration_min} min",                       ST["period_time"]),
-        Paragraph(f"<b>{_clean_text(activity_name)}</b>",      ST["period_act"]),
-    ]]
-    hdr_t = Table(hdr_data, colWidths=[uw * f for f in [0.13, 0.09, 0.78]])
+    # ── Period header row — Period | Duration | Activity | Ped.Approach ────────
+    _ped = _clean_text(str(pedagogical_approach)) if pedagogical_approach else ""
+    if _ped:
+        _ped_text = (
+            f"<b>Pedagogical approach:</b> {_ped}" if show_ped_label else _ped
+        )
+        hdr_data = [[
+            Paragraph(f"<b>Period {period_num}</b>",         ST["period_lbl"]),
+            Paragraph(f"{duration_min} min",                  ST["period_time"]),
+            Paragraph(f"<b>{_clean_text(activity_name)}</b>", ST["period_act"]),
+            Paragraph(_ped_text,                              ST["mat_text"]),
+        ]]
+        hdr_t = Table(hdr_data, colWidths=[uw * f for f in [0.13, 0.09, 0.55, 0.23]])
+    else:
+        hdr_data = [[
+            Paragraph(f"<b>Period {period_num}</b>",              ST["period_lbl"]),
+            Paragraph(f"{duration_min} min",                       ST["period_time"]),
+            Paragraph(f"<b>{_clean_text(activity_name)}</b>",      ST["period_act"]),
+        ]]
+        hdr_t = Table(hdr_data, colWidths=[uw * f for f in [0.13, 0.09, 0.78]])
     hdr_t.setStyle(TableStyle([
         ("BACKGROUND",    (0, 0), (-1, -1), BG_META),
         ("LINEABOVE",     (0, 0), (-1, -1), 1.0, INK),
@@ -1666,6 +1680,8 @@ def build_lp_pdf(output_path, data):
                 p["num"], p["duration"],
                 p["activity_name"], p["anchored_section"],
                 p["time_breakdown"], p["materials"], p["learning_outcome"],
+                pedagogical_approach=p.get("pedagogical_approach", ""),
+                show_ped_label=p.get("show_ped_label", False),
             ))
     # ── Pass 1: build PDF without page numbers ────────────────────────────────
     doc.build(
@@ -1872,33 +1888,59 @@ def _json_to_twau_lp_data(j: dict, date_str: str, weight) -> dict:
 
     _periods_raw = j["result"]["lesson_plan"]["periods"]
 
-    # Competencies table: unique CG codes across periods, in first-seen order.
-    seen = OrderedDict()
-    for p in _periods_raw:
-        for c_code in (p.get("cg_codes") or []):
-            if c_code and c_code not in seen:
-                seen[c_code] = _comp_descs.get(c_code, "")
-    competencies = list(seen.items())
+    _MODE_FULL = {
+        "O&R": "Observe and Record",
+        "HI":  "Hands-on Investigation",
+        "D&C": "Discussion and Connection",
+        "C&E": "Create and Express",
+        "R&A": "Reflect and Act",
+    }
+
+    # Competencies table: read from chapter mapping JSON (not per-period cg_codes
+    # which are absent from v1.2 plans). Fall back to scanning periods for legacy plans.
+    competencies = []
+    try:
+        _mapping_path = os.path.join(
+            _project_root, "mirror", "chapters", "the_world_around_us",
+            _grade_folder, "mappings",
+            f"ch_{str(j['chapter_number']).zfill(2)}_mapping.json",
+        )
+        with open(_mapping_path, encoding="utf-8") as _mf:
+            _mapping = _json.load(_mf)
+        seen = OrderedDict()
+        for _c in _mapping.get("competencies", []):
+            _cc = _c.get("c_code", "")
+            if _cc and _cc not in seen:
+                seen[_cc] = _comp_descs.get(_cc, _c.get("competency_text", ""))
+        competencies = list(seen.items())
+    except Exception:
+        # Legacy fallback: gather from per-period cg_codes if mapping unreadable
+        seen = OrderedDict()
+        for p in _periods_raw:
+            for c_code in (p.get("cg_codes") or []):
+                if c_code and c_code not in seen:
+                    seen[c_code] = _comp_descs.get(c_code, "")
+        competencies = list(seen.items())
 
     periods = []
-    for p in _periods_raw:
+    for _pidx, p in enumerate(_periods_raw):
         mat = p.get("materials") or p.get("material") or ""
         if isinstance(mat, list):
             mat = ", ".join(str(m) for m in mat)
         _section = p.get("section_ref") or p.get("textbook_anchor") or ""
         _mode    = (p.get("dominant_mode") or "").strip()
-        _codes   = ", ".join(p.get("cg_codes") or [])
-        _meta    = " · ".join(x for x in (_mode, _codes) if x)
-        anchored = f"{_section} — {_meta}" if (_section and _meta) else (_section or _meta)
+        _mode_full = _MODE_FULL.get(_mode, _mode)
         _bands = p.get("time_bands") or []
         periods.append({
-            "num":              p.get("period_number"),
-            "duration":         p.get("period_duration_minutes"),
-            "activity_name":    p.get("activity_title") or p.get("activity_name", ""),
-            "anchored_section": anchored,
-            "time_breakdown":   [(tb.get("minutes", ""), tb.get("activity", "")) for tb in _bands],
-            "materials":        mat,
-            "learning_outcome": p.get("implied_lo", ""),
+            "num":                  p.get("period_number"),
+            "duration":             p.get("period_duration_minutes"),
+            "activity_name":        p.get("activity_title") or p.get("activity_name", ""),
+            "anchored_section":     _section,
+            "time_breakdown":       [(tb.get("minutes", ""), tb.get("activity", "")) for tb in _bands],
+            "materials":            mat,
+            "learning_outcome":     p.get("implied_lo", ""),
+            "pedagogical_approach": _mode_full,
+            "show_ped_label":       (_pidx == 0),
         })
 
     return {

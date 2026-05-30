@@ -1213,6 +1213,9 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             # transition (coverage_handoff keys = present spines). Start at 0;
             # set when "assessment_items" is detected in the stream.
             _total_assess_groups = 0   # will be set at phase-2 transition
+        elif _subj_folder == "the_world_around_us":
+            # TWAU: one item per period — total known upfront from period schedule.
+            _total_assess_groups = _total_periods
         else:
             # Science: stage count not in mapping — discovered from LP stream.
             # Start at 0; updated when "progression_stage" tokens appear in LP portion.
@@ -1489,6 +1492,9 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                         )))
                     elif _subj_folder == "mathematics":
                         _ag = _assess_text.count('"section_code"')
+                    elif _subj_folder == "the_world_around_us":
+                        # One item per period — count implied_lo occurrences
+                        _ag = _assess_text.count('"implied_lo"')
                     else:  # english
                         _ag = _assess_text.count('"spine_code"')
                     # N-1: tick N fires when group N+1 starts
@@ -1817,6 +1823,26 @@ def generate_assessment_only(
     assess_const = read_file(paths["assessment_const"])
     summary      = read_file(paths["chapter_summary"])
 
+    # ── TWAU: build competency descriptions block from mapping JSON ───────────
+    _subj_folder_da = subject_to_folder(subject)
+    _comp_desc_block = ""
+    if _subj_folder_da == "the_world_around_us":
+        try:
+            _da_mapping = json.loads(paths["chapter_mapping"].read_text(encoding="utf-8"))
+            _da_comp_lookup = {
+                c["c_code"]: c["competency_text"]
+                for c in _da_mapping.get("competencies", [])
+                if c.get("c_code") and c.get("competency_text")
+            }
+            if _da_comp_lookup:
+                _comp_desc_block = (
+                    "\n=== COMPETENCY DESCRIPTIONS ===\n"
+                    + json.dumps(_da_comp_lookup, ensure_ascii=False, indent=2)
+                    + "\n"
+                )
+        except Exception:
+            _comp_desc_block = ""
+
     # ── Prompt structure (caching-aware) ─────────────────────────────────────
     # system: Assessment Constitution only — cacheable across all chapters
     # within the same subject.
@@ -1836,12 +1862,12 @@ def generate_assessment_only(
     # static user: chapter summary — cacheable per chapter
     _static_user_text = f"=== CHAPTER SUMMARY ===\n{summary}\n"
 
-    # variable user: coverage_handoff + output instruction
+    # variable user: coverage_handoff + competency descriptions (TWAU) + output instruction
     _variable_user_text = f"""Generate the chapter assessment using the inputs below.
 
 === COVERAGE HANDOFF ===
 {json.dumps(coverage_handoff, ensure_ascii=False, indent=2)}
-
+{_comp_desc_block}
 === INSTRUCTIONS ===
 Follow the Assessment Constitution exactly.
 The coverage_handoff above is your sole structural input. Ground every question
@@ -2122,6 +2148,10 @@ Output only the raw JSON object. No markdown. No prose. No ```json fences.
                     )))
                 elif _da_subj_folder == "mathematics":
                     _dag = streamed_text.count('"section_code"')
+                elif _da_subj_folder == "the_world_around_us":
+                    # One item per period — count completed items via implied_lo
+                    # field occurrences (one per assessment item in the schema).
+                    _dag = streamed_text.count('"implied_lo"')
                 else:  # english
                     _dag = streamed_text.count('"spine_code"')
                 _dag_capped = min(_dag, _da_total_groups) if _da_total_groups else _dag
@@ -2454,13 +2484,14 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
                 })
                 continue
             # ── The World Around Us (TWAU) format detection ─────────────────
-            # Unique signals: dominant_mode (string) + cg_codes (list). Single-axis
-            # by section; CG codes shown as an array at period level; routed
-            # through the SS-style HTML render path (no stage_label/activity_title
-            # at top level so the HTML does not misdetect Science).
+            # Primary signal: dominant_mode (one of O&R|HI|D&C|C&E|R&A).
+            # cg_codes is no longer emitted from v1.2 of the LP constitution
+            # so detection must not depend on it.
+            _TWAU_MODES = {"O&R", "HI", "D&C", "C&E", "R&A"}
             _is_twau = (
-                p.get("dominant_mode") is not None
-                and isinstance(p.get("cg_codes"), list)
+                p.get("dominant_mode") in _TWAU_MODES
+                and p.get("stage_label") is None
+                and p.get("progression_stage") is None
             )
             if _is_twau:
                 mat = p.get("materials", "")
@@ -6327,11 +6358,23 @@ div[class*="st-key-gen-clear-top"] button p {
         _stage  = get_stage(_grade_ctx)
         _subj_f = subject_to_folder(_subject_ctx)
         try:
-            _comp_descs = json.loads(
-                (PROJECT_ROOT / f"mirror/framework/{_subj_f}/{_stage}"
-                 / f"competency_descriptions_{_stage}.json")
-                .read_text(encoding="utf-8")
-            )
+            if _subj_f == "the_world_around_us":
+                _comp_descs_raw = json.loads(
+                    (PROJECT_ROOT / f"mirror/framework/{_subj_f}"
+                     / "competency_descriptions_twau.json")
+                    .read_text(encoding="utf-8")
+                )
+                # TWAU file has curricular_goals list — flatten to {c_code: description}
+                _comp_descs = {}
+                for _cg in _comp_descs_raw.get("curricular_goals", []):
+                    for _c in _cg.get("competencies", []):
+                        _comp_descs[_c["code"]] = _c["description"]
+            else:
+                _comp_descs = json.loads(
+                    (PROJECT_ROOT / f"mirror/framework/{_subj_f}/{_stage}"
+                     / f"competency_descriptions_{_stage}.json")
+                    .read_text(encoding="utf-8")
+                )
         except Exception:
             _comp_descs = {}
 
@@ -6450,11 +6493,19 @@ elif st.session_state.role == "Allocate":
         _subj_f = subject_to_folder(subject)
 
         # Load competency descriptions lookup (keyed by c_code → description text)
-        _comp_desc_path = (
-            PROJECT_ROOT
-            / f"mirror/framework/{_subj_f}/{_stage}"
-            / f"competency_descriptions_{_stage}.json"
-        )
+        # TWAU has a single file with no stage subfolder.
+        if _subj_f == "the_world_around_us":
+            _comp_desc_path = (
+                PROJECT_ROOT
+                / f"mirror/framework/{_subj_f}"
+                / "competency_descriptions_twau.json"
+            )
+        else:
+            _comp_desc_path = (
+                PROJECT_ROOT
+                / f"mirror/framework/{_subj_f}/{_stage}"
+                / f"competency_descriptions_{_stage}.json"
+            )
         try:
             _raw_descs = json.loads(_comp_desc_path.read_text(encoding="utf-8"))
             # Three formats exist:

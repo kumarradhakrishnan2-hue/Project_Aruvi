@@ -1,12 +1,17 @@
-ARUVI · CHAPTER ASSESSMENT CONSTITUTION · THE WORLD AROUND US · VERSION 1.0
+ARUVI · CHAPTER ASSESSMENT CONSTITUTION · THE WORLD AROUND US · VERSION 1.2
 
 SUBJECT: the_world_around_us   STAGE: Preparatory (Grades III, IV, V)
 
 INPUTS (given — do not retrieve or supplement):
 1. Coverage Handoff — for each period: period_number, period_duration_minutes,
-   section_ref, dominant_mode, cg_codes[], implied_lo, textbook_anchor,
+   section_ref, dominant_mode, implied_lo, section_context, textbook_anchor,
    activity_summary. (Emitted by the TWAU Lesson Plan Constitution, Rule 9.)
-2. Chapter Summary JSON — sections[] (title, content_summary, tasks[]),
+   Note: cg_codes are NOT in the handoff — competency selection is handled
+   here via the COMPETENCY DESCRIPTIONS block below.
+2. Competency Descriptions — a flat {c_code: description} block listing every
+   competency mapped to this chapter with its canonical NCF description.
+   This is the sole source for c_code selection and competency_text.
+3. Chapter Summary JSON — sections[] (title, content_summary, tasks[]),
    dual_strand, and effort signals.
 
 TWO-FIELD READING RULE (applies to every item generated):
@@ -21,11 +26,12 @@ PROHIBITION: The system MUST NOT retrieve the Curricular Goals document, the
 Chapter Mapping JSON, the Pedagogy document, or any Learning Outcome document.
 
 DESIGN PRINCIPLE
-TWAU has no competency weights — every CG strand is developed at comparable
-depth.  It is strand-driven: each CG strand active in a period earns
-exactly one item. TWAU's rich activity-based assessment (observation, artefacts,
-projects) lives in the lesson plan; this constitution generates the chapter's
-SUMMATIVE text-based check — one component of the teacher's toolkit.
+TWAU has no competency weights and periods commonly carry multiple CG strands
+simultaneously — blended inquiry and cultural strands often coexist within a
+single period. One item per period reflects this reality.  TWAU's rich
+activity-based assessment (observation, artefacts, projects) lives in the lesson
+plan; this constitution generates the chapter's SUMMATIVE text-based check —
+one component of the teacher's toolkit.
 
 ================================================================================
 RULE 1 · GOVERNING PURPOSE
@@ -45,23 +51,28 @@ PROHIBITION
    accuracy.
 
 ================================================================================
-RULE 2 · QUANTITY — ONE ITEM PER CG-STRAND PER PERIOD (CORE RULE)
+RULE 2 · QUANTITY AND COMPETENCY SELECTION (CORE RULE)
 
 MANDATE
-For each period in the Coverage Handoff, generate exactly one assessment item
-per CG code in that period's cg_codes array.
-  - A period with cg_codes = ["C-1.1", "C-4.4"] generates TWO items: one
-    anchored to C-1.1, one anchored to C-4.4.
-  - A period with cg_codes = ["C-6.1"] generates ONE item.
-Each item is anchored to exactly one c_code and tests that strand's slice of the
-period's shared implied_lo. Where a period's implied_lo spans two strands, each
-item interrogates the part of the outcome belonging to its own c_code.
+For each period in the Coverage Handoff, generate exactly one assessment item.
+Total items = total periods in the Coverage Handoff. No more, no less.
 
+For each item, select the single competency whose description in the
+COMPETENCY DESCRIPTIONS block most directly matches what the period's implied_lo
+requires the student to demonstrate. Anchor the item to that c_code and copy
+its description verbatim as competency_text. Do not paraphrase.
+
+Selection method: read the implied_lo, then read each competency description in
+the block. Ask: which description names the observable capability this implied_lo
+is testing? That is the anchor. If two descriptions are close, prefer the one
+whose verb most precisely matches the implied_lo's verb.
 
 PROHIBITION
-1. MUST NOT generate more than one item per (period, c_code) pair.
-2. MUST NOT generate a single item that simultaneously assesses two CG strands.
-3. MUST NOT introduce weight tiers or weight-based minimum counts.
+1. MUST NOT generate more than one item per period.
+2. MUST NOT paraphrase or rewrite the competency description — copy verbatim.
+3. MUST NOT anchor an item to a c_code not present in the COMPETENCY
+   DESCRIPTIONS block.
+4. MUST NOT introduce weight tiers or weight-based minimum counts.
 
 ================================================================================
 RULE 3 · QUESTION-TYPE SELECTION (NO WEIGHTS)
