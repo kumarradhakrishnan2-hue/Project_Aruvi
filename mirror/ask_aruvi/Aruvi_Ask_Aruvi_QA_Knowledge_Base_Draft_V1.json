@@ -1,10 +1,10 @@
 {
   "metadata": {
     "document": "Ask Aruvi Q&A Knowledge Base",
-    "version": "V2.1",
-    "last_refreshed": "2026-05-23",
+    "version": "V2.2",
+    "last_refreshed": "2026-05-31",
     "date": "May 2026",
-    "total_pairs": 88,
+    "total_pairs": 93,
     "categories": [
       "cat_a",
       "cat_b",
@@ -22,7 +22,7 @@
         {
           "id": "a01",
           "q": "How can Aruvi help me as a teacher?",
-          "a": "Aruvi generates a complete lesson plan and assessment for any NCERT chapter in Social Sciences, Science, English, or Mathematics for Grades VI to X. You enter your available periods — Aruvi builds a fully sequenced, NCF-aligned lesson plan with one activity per period and a matched chapter assessment. It reduces your planning time while ensuring every plan is traceable to the curriculum framework."
+          "a": "Aruvi generates a complete lesson plan and assessment for any NCERT chapter across five subjects: Social Sciences and Science (Grades VI–IX), Mathematics and English (Grades III–IX), and The World Around Us (Grades III–V). You enter your available periods — Aruvi builds a fully sequenced, NCF-aligned lesson plan with one activity per period and a matched chapter assessment. It reduces your planning time while ensuring every plan is traceable to the curriculum framework."
         },
         {
           "id": "a02",
@@ -146,6 +146,21 @@
         },
         {
           "id": "a26",
+          "q": "How does The World Around Us (TWAU) plan lessons?",
+          "a": "TWAU is designed for the Preparatory Stage (Grades III–V) and centres on structured interaction with the child's immediate natural and social environment — the NCF-prescribed pedagogical approach. Aruvi plans TWAU lessons by identifying the chapter's central inquiry and building activities from the chapter's own observation tasks, hands-on experiments, surveys, and discussion prompts. Each activity reflects one of the NCF's core TWAU pedagogical modes — observation, exploration, role play, or task-oriented work — and ends with one implied learning outcome describing what the student can notice, describe, or explain after that session."
+        },
+        {
+          "id": "a27",
+          "q": "Why is TWAU treated as a separate subject from Science and Social Sciences?",
+          "a": "At the Preparatory Stage, NCF 2023 does not separate natural and social world learning into distinct subjects. TWAU integrates both into a single inquiry-oriented subject. The textbook architecture is also different — chapters are built around a child's observable world rather than disciplinary concepts. Aruvi therefore uses TWAU-specific generation rules rather than applying Science or Social Sciences logic, which would misrepresent how these chapters are designed to be taught."
+        },
+        {
+          "id": "a28",
+          "q": "What competencies does TWAU develop, and how are they different from middle-stage subjects?",
+          "a": "TWAU develops observation, description, classification, and simple causal reasoning — foundational cognitive operations appropriate for Grades III–V. These are precursors to the subject-specific competencies that Science and Social Sciences develop at the Middle Stage. Unlike middle-stage subjects, TWAU competencies are not differentiated by discipline — a single chapter may develop observation of a natural phenomenon and awareness of a community practice within the same activity sequence."
+        },
+        {
+          "id": "a29",
           "q": "Why does the lesson plan not include time for assessment?",
           "a": "The lesson plan uses the full period budget for teaching. Assessment is a separate activity designed to follow the teaching sequence — it is generated alongside the lesson plan but is not embedded in it. This is a deliberate design principle: teaching time is fully protected, and assessment is not allowed to erode it. The teacher chooses when to administer the assessment after the chapter's teaching is complete."
         }
@@ -300,6 +315,16 @@
           "id": "c10",
           "q": "How does Allocation tool help a school Administration?",
           "a": "At the beginning of the term or the year, the administrators are involved in detailed planning with respect to time available for subjects.  The allocation tool takes input of a constrained number like say 100 periods (of 40 minutes each) available for teaching class VI Science of a term and splits it across selected NCERT book chapters. The time allotted for each chapter then can be used by a teacher to plan her own class."
+        },
+        {
+          "id": "c11",
+          "q": "How does period allocation work for TWAU?",
+          "a": "TWAU chapters are allocated periods using an effort index built from signals appropriate to the Preparatory Stage: the number of observation or field tasks the chapter requires, the count of hands-on classroom activities, the reading and description load, and any project or craft element. Chapters with more student-executed observation tasks and higher description demand receive more periods. The allocation is visible in the Allocate tab and can be adjusted."
+        },
+        {
+          "id": "c12",
+          "q": "Does TWAU use an effort index or competency weights for allocation?",
+          "a": "TWAU uses an effort index — the same approach as Science, English, and Mathematics — rather than competency weights. Competency weights are specific to Social Sciences, where multiple named competencies with defined centrality scores structure each chapter. TWAU chapters are not built around multiple competing competencies; they develop one central inquiry. An effort index built from observable task signals better reflects the actual classroom demand of a TWAU chapter."
         }
       ]
     },

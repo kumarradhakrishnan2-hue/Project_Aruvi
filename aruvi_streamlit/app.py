@@ -5159,6 +5159,8 @@ st.session_state.setdefault("ask_aruvi_agent_show_followup",False)
 st.session_state.setdefault("ask_aruvi_agent_fb_sent",      False)
 st.session_state.setdefault("ask_aruvi_agent_fb_reset",     0)
 st.session_state.setdefault("ask_aruvi_agent_mode",         "question")  # "question" | "feedback"
+st.session_state.setdefault("ask_aruvi_agent_fu_done",      False)  # thumbs-down follow-up submitted
+st.session_state.setdefault("ask_aruvi_agent_fu_skipped",   False)  # True when Skip pressed (not Submit)
 if "lpa_result"               not in st.session_state: st.session_state.lpa_result               = None
 if "lpa_generating"           not in st.session_state: st.session_state.lpa_generating           = False
 if "lpa_start_ts"             not in st.session_state: st.session_state.lpa_start_ts             = None
@@ -7244,6 +7246,92 @@ div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_fb
     color: #2C3E50 !important;
     background: transparent !important;
 }
+/* Thumbs-up / thumbs-down buttons under the response — drop border, grey the emoji */
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-agent_thumb_up"] button,
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-agent_thumb_down"] button {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 4px 6px !important;
+    min-height: unset !important;
+}
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-agent_thumb_up"] button:hover,
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-agent_thumb_down"] button:hover {
+    background: transparent !important;
+    border: none !important;
+}
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-agent_thumb_up"] button *,
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-agent_thumb_down"] button * {
+    filter: grayscale(1) brightness(0.45) !important;
+}
+/* Follow-up textarea (shown after thumbs-down) — unfilled box with dark grey border */
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_followup"] {
+    padding: 0 16px !important;
+    margin: 0 !important;
+}
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_followup"] [data-baseweb="textarea"],
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_followup"] > div {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_followup"] textarea {
+    background: transparent !important;
+    border: 1px solid #4A4A4A !important;
+    border-radius: 10px !important;
+    font-size: 0.78rem !important;
+    color: #2A2826 !important;
+    line-height: 1.4 !important;
+    padding: 10px 12px !important;
+    resize: none !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_followup"] textarea::placeholder {
+    color: #6B6760 !important;
+    font-size: 0.78rem !important;
+}
+/* Submit / Skip pill buttons under the follow-up textarea */
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-agent_fu_submit"] button,
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-agent_fu_skip"] button {
+    background: #3A3A3A !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 999px !important;
+    font-size: 0.7rem !important;
+    font-weight: 500 !important;
+    padding: 4px 14px !important;
+    min-height: unset !important;
+    width: auto !important;
+    white-space: nowrap !important;
+    min-width: max-content !important;
+}
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-agent_fu_submit"] button *,
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-agent_fu_skip"] button * {
+    color: #FFFFFF !important;
+    font-size: 0.7rem !important;
+}
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-agent_fu_submit"] button:hover,
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-agent_fu_skip"] button:hover {
+    background: #2A2A2A !important;
+    color: #FFFFFF !important;
+}
+/* Action row holding the Submit / Skip pills — same horizontal inset as the textarea */
+div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-agent_fu_actions"] {
+    padding: 8px 16px 0 16px !important;
+}
+/* Prevent narrow-popup column wrap — keep Submit & Skip side by side */
+div[class*="st-key-agent_fu_actions"] [data-testid="stHorizontalBlock"] {
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+}
+/* Submit / Skip columns shrink-wrap to the pill's natural width */
+div[class*="st-key-agent_fu_actions"] [data-testid="stColumn"]:nth-child(1),
+div[class*="st-key-agent_fu_actions"] [data-testid="stColumn"]:nth-child(2) {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: max-content !important;
+}
 /* Character counter under each textarea */
 div[class*="st-key-ask_aruvi_agent_popup"] .aa-char-count {
     text-align: right !important;
@@ -7957,77 +8045,123 @@ if st.session_state.ask_aruvi_agent_open:
         # ── RESPONSE VIEW ─────────────────────────────────────────────────────
         if st.session_state.ask_aruvi_agent_response:
 
-            if st.button("‹  Back", key="aa_agent_back_btn",
-                          use_container_width=True):
-                st.session_state.ask_aruvi_agent_response      = ""
-                st.session_state.ask_aruvi_agent_last_query    = ""
-                st.session_state.ask_aruvi_agent_show_thumbs   = False
-                st.session_state.ask_aruvi_agent_thumb_done    = False
-                st.session_state.ask_aruvi_agent_show_followup = False
-                st.rerun()
-
-            st.markdown(
-                f'<div class="aa-qa-pair">'
-                f'<div class="aa-qa-q">{st.session_state.ask_aruvi_agent_last_query}</div>'
-                f'<div class="aa-qa-a">{st.session_state.ask_aruvi_agent_response}</div>'
-                f'</div>',
-                unsafe_allow_html=True,
-            )
-
-            # Thumbs feedback
-            if st.session_state.ask_aruvi_agent_show_thumbs and \
-                    not st.session_state.ask_aruvi_agent_thumb_done:
-                _at1, _at2, _at3 = st.columns([1, 1, 8])
-                with _at1:
-                    if st.button("👍", key="agent_thumb_up"):
-                        write_thumbs_feedback(
-                            session_id        = st.session_state.ask_aruvi_session_id,
-                            rating            = "up",
-                            query             = st.session_state.ask_aruvi_agent_last_query,
-                            response_excerpt  = st.session_state.ask_aruvi_agent_response[:200],
-                            category_selected = "managed_agent",
-                        )
-                        st.session_state.ask_aruvi_agent_thumb_done = True
-                        st.rerun()
-                with _at2:
-                    if st.button("👎", key="agent_thumb_down"):
-                        st.session_state.ask_aruvi_agent_show_followup = True
-                        st.rerun()
-
-            if st.session_state.ask_aruvi_agent_show_followup and \
-                    not st.session_state.ask_aruvi_agent_thumb_done:
-                _afu_text = st.text_area(
-                    "agent_followup",
-                    placeholder="Please provide feedback on what is missing?",
-                    label_visibility="collapsed",
-                    key="ask_aruvi_agent_followup",
-                    max_chars=140,
-                    height=90,
+            # ── Thanks view (after thumbs-down + Submit/Skip) ─────────────────
+            if st.session_state.ask_aruvi_agent_fu_done:
+                if st.button("‹  Back", key="aa_agent_back_btn",
+                              use_container_width=True):
+                    # Reset all agent state and return to the main Ask Aruvi menu
+                    st.session_state.ask_aruvi_agent_open           = False
+                    st.session_state.ask_aruvi_open                 = True
+                    st.session_state.ask_aruvi_agent_response       = ""
+                    st.session_state.ask_aruvi_agent_last_query     = ""
+                    st.session_state.ask_aruvi_agent_show_thumbs    = False
+                    st.session_state.ask_aruvi_agent_thumb_done     = False
+                    st.session_state.ask_aruvi_agent_show_followup  = False
+                    st.session_state.ask_aruvi_agent_fu_done        = False
+                    st.session_state.ask_aruvi_agent_fu_skipped     = False
+                    st.rerun()
+                if st.session_state.ask_aruvi_agent_fu_skipped:
+                    _thanks_body = '<p>Thank you.</p>'
+                else:
+                    _thanks_body = (
+                        '<p>Thanks for letting us know. Your feedback will help us '
+                        'improve the service.</p>'
+                    )
+                st.markdown(
+                    '<div class="aa-scope-note">'
+                    '<div class="aa-scope-block">'
+                    f'{_thanks_body}'
+                    '</div>'
+                    '</div>',
+                    unsafe_allow_html=True,
                 )
-                _afu1, _afu2 = st.columns([1, 1])
-                with _afu1:
-                    if st.button("Submit", key="agent_fu_submit"):
-                        write_thumbs_feedback(
-                            session_id        = st.session_state.ask_aruvi_session_id,
-                            rating            = "down",
-                            query             = st.session_state.ask_aruvi_agent_last_query,
-                            response_excerpt  = st.session_state.ask_aruvi_agent_response[:200],
-                            category_selected = "managed_agent",
-                            follow_up_text    = _afu_text or None,
-                        )
-                        st.session_state.ask_aruvi_agent_thumb_done = True
-                        st.rerun()
-                with _afu2:
-                    if st.button("Skip", key="agent_fu_skip"):
-                        write_thumbs_feedback(
-                            session_id        = st.session_state.ask_aruvi_session_id,
-                            rating            = "down",
-                            query             = st.session_state.ask_aruvi_agent_last_query,
-                            response_excerpt  = st.session_state.ask_aruvi_agent_response[:200],
-                            category_selected = "managed_agent",
-                        )
-                        st.session_state.ask_aruvi_agent_thumb_done = True
-                        st.rerun()
+
+            # ── Standard answer + thumbs + follow-up view ─────────────────────
+            else:
+                if st.button("‹  Back", key="aa_agent_back_btn",
+                              use_container_width=True):
+                    st.session_state.ask_aruvi_agent_response      = ""
+                    st.session_state.ask_aruvi_agent_last_query    = ""
+                    st.session_state.ask_aruvi_agent_show_thumbs   = False
+                    st.session_state.ask_aruvi_agent_thumb_done    = False
+                    st.session_state.ask_aruvi_agent_show_followup = False
+                    st.rerun()
+
+                st.markdown(
+                    f'<div class="aa-qa-pair">'
+                    f'<div class="aa-qa-q">{st.session_state.ask_aruvi_agent_last_query}</div>'
+                    f'<div class="aa-qa-a">{st.session_state.ask_aruvi_agent_response}</div>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
+
+                # Thumbs feedback
+                if st.session_state.ask_aruvi_agent_show_thumbs and \
+                        not st.session_state.ask_aruvi_agent_thumb_done:
+                    _at1, _at2, _at3 = st.columns([1, 1, 8])
+                    with _at1:
+                        if st.button("👍", key="agent_thumb_up"):
+                            write_thumbs_feedback(
+                                session_id        = st.session_state.ask_aruvi_session_id,
+                                rating            = "up",
+                                query             = st.session_state.ask_aruvi_agent_last_query,
+                                response_excerpt  = st.session_state.ask_aruvi_agent_response[:200],
+                                category_selected = "managed_agent",
+                            )
+                            # Reset all agent state and return to the main Ask Aruvi menu
+                            st.session_state.ask_aruvi_agent_open           = False
+                            st.session_state.ask_aruvi_open                 = True
+                            st.session_state.ask_aruvi_agent_response       = ""
+                            st.session_state.ask_aruvi_agent_last_query     = ""
+                            st.session_state.ask_aruvi_agent_show_thumbs    = False
+                            st.session_state.ask_aruvi_agent_thumb_done     = False
+                            st.session_state.ask_aruvi_agent_show_followup  = False
+                            st.session_state.ask_aruvi_agent_fu_done        = False
+                            st.session_state.ask_aruvi_agent_fu_skipped     = False
+                            st.rerun()
+                    with _at2:
+                        if st.button("👎", key="agent_thumb_down"):
+                            st.session_state.ask_aruvi_agent_show_followup = True
+                            st.rerun()
+
+                if st.session_state.ask_aruvi_agent_show_followup and \
+                        not st.session_state.ask_aruvi_agent_thumb_done:
+                    _afu_text = st.text_area(
+                        "agent_followup",
+                        placeholder="Please provide feedback on what is missing?",
+                        label_visibility="collapsed",
+                        key="ask_aruvi_agent_followup",
+                        max_chars=140,
+                        height=90,
+                    )
+                    with st.container(key="agent_fu_actions"):
+                        _afu1, _afu2, _afu3 = st.columns([1, 1, 6])
+                        with _afu1:
+                            if st.button("Submit", key="agent_fu_submit"):
+                                write_thumbs_feedback(
+                                    session_id        = st.session_state.ask_aruvi_session_id,
+                                    rating            = "down",
+                                    query             = st.session_state.ask_aruvi_agent_last_query,
+                                    response_excerpt  = st.session_state.ask_aruvi_agent_response[:200],
+                                    category_selected = "managed_agent",
+                                    follow_up_text    = _afu_text or None,
+                                )
+                                st.session_state.ask_aruvi_agent_thumb_done = True
+                                st.session_state.ask_aruvi_agent_fu_done    = True
+                                st.rerun()
+                        with _afu2:
+                            if st.button("Skip", key="agent_fu_skip"):
+                                write_thumbs_feedback(
+                                    session_id        = st.session_state.ask_aruvi_session_id,
+                                    rating            = "down",
+                                    query             = st.session_state.ask_aruvi_agent_last_query,
+                                    response_excerpt  = st.session_state.ask_aruvi_agent_response[:200],
+                                    category_selected = "managed_agent",
+                                )
+                                st.session_state.ask_aruvi_agent_thumb_done = True
+                                st.session_state.ask_aruvi_agent_fu_done    = True
+                                st.session_state.ask_aruvi_agent_fu_skipped = True
+                                st.rerun()
 
             st.markdown('<div style="height:12px"></div>', unsafe_allow_html=True)
 
