@@ -5158,6 +5158,7 @@ st.session_state.setdefault("ask_aruvi_agent_thumb_done",   False)
 st.session_state.setdefault("ask_aruvi_agent_show_followup",False)
 st.session_state.setdefault("ask_aruvi_agent_fb_sent",      False)
 st.session_state.setdefault("ask_aruvi_agent_fb_reset",     0)
+st.session_state.setdefault("ask_aruvi_agent_mode",         "question")  # "question" | "feedback"
 if "lpa_result"               not in st.session_state: st.session_state.lpa_result               = None
 if "lpa_generating"           not in st.session_state: st.session_state.lpa_generating           = False
 if "lpa_start_ts"             not in st.session_state: st.session_state.lpa_start_ts             = None
@@ -7289,8 +7290,9 @@ div[class*="st-key-ask_aruvi_agent_popup"] div[class*="st-key-ask_aruvi_agent_cl
     background: #F5F9F9 !important;
     color: #1B2A3B !important;
 }
-/* Entry-point button in main popup — style as a subdued link row */
-div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_open_agent_panel"] button {
+/* Entry-point buttons in main popup — style as subdued link rows */
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_open_question"] button,
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_open_feedback"] button {
     background: transparent !important;
     border: none !important;
     border-top: 1px solid #F0EDE9 !important;
@@ -7304,9 +7306,31 @@ div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_open_agent_pan
     padding: 12px 16px !important;
     min-height: unset !important;
 }
-div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_open_agent_panel"] button:hover {
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_open_question"] button:hover,
+div[class*="st-key-ask_aruvi_popup"] div[class*="st-key-ask_aruvi_open_feedback"] button:hover {
     background: #F5F9F9 !important;
     color: #1B2A3B !important;
+}
+/* Inline scope disclaimer shown above the question textarea */
+div[class*="st-key-ask_aruvi_agent_popup"] .aa-scope-note {
+    font-size: 0.78rem !important;
+    color: #5C5852 !important;
+    padding: 8px 16px 10px 16px !important;
+    margin: 0 !important;
+    line-height: 1.45 !important;
+}
+div[class*="st-key-ask_aruvi_agent_popup"] .aa-scope-note .aa-scope-head {
+    color: #2C3E50 !important;
+    font-weight: 600 !important;
+    display: block !important;
+    margin-bottom: 3px !important;
+}
+div[class*="st-key-ask_aruvi_agent_popup"] .aa-scope-note .aa-scope-block + .aa-scope-block {
+    margin-top: 12px !important;
+}
+div[class*="st-key-ask_aruvi_agent_popup"] .aa-scope-note p {
+    margin: 0 !important;
+    padding: 0 !important;
 }
 /* Kill all Streamlit internal spacing */
 div[class*="st-key-ask_aruvi_popup"] [data-testid="stVerticalBlock"] {
@@ -7707,17 +7731,19 @@ div[class*="st-key-fu_skip"] button {
     border-radius: 6px !important;
     border: none !important;
 }
-/* Feedback confirmation div */
+/* Feedback confirmation div — matches the inline intro paragraph */
 .aruvi-fb-confirm {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 4px 12px;
+    padding: 0 16px;
+    margin-top: 22px;
     font-family: inherit;
-    font-weight: 700;
-    font-size: 0.72rem;
-    letter-spacing: 0.06em;
-    color: #2C7A7B;
+    font-weight: 400;
+    font-size: 0.78rem;
+    letter-spacing: normal;
+    line-height: 1.45;
+    color: #5C5852;
     background: transparent;
 }
 .aruvi-fb-confirm-text {
@@ -7899,14 +7925,25 @@ if st.session_state.ask_aruvi_open:
                     st.session_state.ask_aruvi_detail_cat = _key
                     st.rerun()
 
-            # ── Entry-point button — always visible, opens secondary panel ────
-            # Border-top styling applied via CSS on ask_aruvi_open_agent_panel.
+            # ── Entry-point buttons — always visible, open secondary panel ────
+            # Two stacked rows: question vs. feedback. The mode flag controls
+            # which section the secondary panel renders.
             if st.button(
-                "💬  Ask a specific question or share feedback  ›",
-                key="ask_aruvi_open_agent_panel",
+                "💬  Ask a specific question  ›",
+                key="ask_aruvi_open_question",
                 use_container_width=True,
             ):
                 st.session_state.ask_aruvi_agent_open = True
+                st.session_state.ask_aruvi_agent_mode = "question"
+                st.session_state.ask_aruvi_open = False   # hide category popup
+                st.rerun()
+            if st.button(
+                "📝  Share feedback  ›",
+                key="ask_aruvi_open_feedback",
+                use_container_width=True,
+            ):
+                st.session_state.ask_aruvi_agent_open = True
+                st.session_state.ask_aruvi_agent_mode = "feedback"
                 st.session_state.ask_aruvi_open = False   # hide category popup
                 st.rerun()
 
@@ -8004,80 +8041,116 @@ if st.session_state.ask_aruvi_agent_open:
                 st.session_state.ask_aruvi_agent_fb_sent = False  # clear confirmation
                 st.rerun()
 
-            # Q&A pill
-            _agent_query = st.text_area(
-                "agent_query",
-                placeholder="Ask a specific question…",
-                label_visibility="collapsed",
-                key="ask_aruvi_agent_query_input",
-                height=96,
-                max_chars=140,
-            )
-            _agent_ask_clicked = st.button("➤", key="ask_aruvi_agent_submit",
-                                            use_container_width=False)
-            st.markdown(
-                f'<div class="aa-char-count">{len(_agent_query or "")}/140</div>',
-                unsafe_allow_html=True,
-            )
-
-            if _agent_ask_clicked and _agent_query.strip():
-                with st.spinner(""):
-                    _agent_result = aruvi_ask(
-                        query      = _agent_query.strip(),
-                        session_id = st.session_state.ask_aruvi_session_id,
-                        tab        = st.session_state.role,
-                        subject    = st.session_state.get("subject", ""),
-                        grade      = st.session_state.get("grade", ""),
-                    )
-                st.session_state.ask_aruvi_agent_response      = _agent_result["response"]
-                st.session_state.ask_aruvi_agent_last_query    = _agent_query.strip()
-                st.session_state.ask_aruvi_agent_show_thumbs   = True
-                st.session_state.ask_aruvi_agent_thumb_done    = False
-                st.session_state.ask_aruvi_agent_show_followup = False
-                log_ask_aruvi_tokens(
-                    session_id    = st.session_state.ask_aruvi_session_id,
-                    query         = _agent_query.strip(),
-                    category      = "managed_agent",
-                    tab           = st.session_state.role,
-                    subject       = st.session_state.get("subject", ""),
-                    grade         = st.session_state.get("grade", ""),
-                    input_tokens  = _agent_result.get("input_tokens", 0),
-                    output_tokens = _agent_result.get("output_tokens", 0),
-                )
-                st.rerun()
-
-            # Feedback pill
-            st.markdown('<div style="height:18px"></div>', unsafe_allow_html=True)
-            _agent_fb_text = st.text_area(
-                "agent_feedback",
-                placeholder="Share feedback on Aruvi…",
-                label_visibility="collapsed",
-                key=f"ask_aruvi_agent_fb_text_{st.session_state.ask_aruvi_agent_fb_reset}",
-                height=96,
-                max_chars=140,
-            )
-            _agent_fb_clicked = st.button("➤", key="ask_aruvi_agent_fb_submit")
-            st.markdown(
-                f'<div class="aa-char-count">{len(_agent_fb_text or "")}/140</div>',
-                unsafe_allow_html=True,
-            )
-            if _agent_fb_clicked:
-                if _agent_fb_text.strip():
-                    write_general_feedback(
-                        session_id    = st.session_state.ask_aruvi_session_id,
-                        feedback_text = _agent_fb_text.strip(),
-                        tab           = st.session_state.role,
-                        subject       = st.session_state.get("subject", ""),
-                        grade         = st.session_state.get("grade", ""),
-                    )
-                    st.session_state.ask_aruvi_agent_fb_sent  = True
-                    st.session_state.ask_aruvi_agent_fb_reset += 1
-                    st.rerun()
-            if st.session_state.ask_aruvi_agent_fb_sent:
+            # Q&A pill — shown only in question mode
+            if st.session_state.ask_aruvi_agent_mode == "question":
+                # Inline scope disclaimer — sets expectations before tokens are spent
                 st.markdown(
-                    '<div class="aruvi-fb-confirm">'
-                    '<span class="aruvi-fb-confirm-text">Thank you for your feedback.</span>'
+                    '<div class="aa-scope-note">'
+                    '<div class="aa-scope-block">'
+                    '<span class="aa-scope-head">What I can help with</span>'
+                    '<p>Ask me anything about how Aruvi works — how chapters are '
+                    'allocated time, how your lesson plans and assessments are built, '
+                    'how the NCF shapes what\'s taught, or how to find your way around '
+                    'the app.</p>'
+                    '</div>'
+                    '<div class="aa-scope-block">'
+                    '<span class="aa-scope-head">What I can\'t help with</span>'
+                    '<p>I\'m not built to teach the lesson itself — explaining '
+                    'chapter concepts, solving textbook questions, or summarising a '
+                    'lesson isn\'t something I can do. Your textbook is the better '
+                    'place for those.</p>'
+                    '</div>'
                     '</div>',
                     unsafe_allow_html=True,
                 )
+                _agent_query = st.text_area(
+                    "agent_query",
+                    placeholder="Ask a specific question…",
+                    label_visibility="collapsed",
+                    key="ask_aruvi_agent_query_input",
+                    height=96,
+                    max_chars=140,
+                )
+                _agent_ask_clicked = st.button("➤", key="ask_aruvi_agent_submit",
+                                                use_container_width=False)
+                st.markdown(
+                    f'<div class="aa-char-count">{len(_agent_query or "")}/140</div>',
+                    unsafe_allow_html=True,
+                )
+
+                if _agent_ask_clicked and _agent_query.strip():
+                    with st.spinner(""):
+                        _agent_result = aruvi_ask(
+                            query      = _agent_query.strip(),
+                            session_id = st.session_state.ask_aruvi_session_id,
+                            tab        = st.session_state.role,
+                            subject    = st.session_state.get("subject", ""),
+                            grade      = st.session_state.get("grade", ""),
+                        )
+                    st.session_state.ask_aruvi_agent_response      = _agent_result["response"]
+                    st.session_state.ask_aruvi_agent_last_query    = _agent_query.strip()
+                    st.session_state.ask_aruvi_agent_show_thumbs   = True
+                    st.session_state.ask_aruvi_agent_thumb_done    = False
+                    st.session_state.ask_aruvi_agent_show_followup = False
+                    log_ask_aruvi_tokens(
+                        session_id    = st.session_state.ask_aruvi_session_id,
+                        query         = _agent_query.strip(),
+                        category      = "managed_agent",
+                        tab           = st.session_state.role,
+                        subject       = st.session_state.get("subject", ""),
+                        grade         = st.session_state.get("grade", ""),
+                        input_tokens  = _agent_result.get("input_tokens", 0),
+                        output_tokens = _agent_result.get("output_tokens", 0),
+                    )
+                    st.rerun()
+
+            # Feedback pill — shown only in feedback mode
+            elif st.session_state.ask_aruvi_agent_mode == "feedback":
+                if not st.session_state.ask_aruvi_agent_fb_sent:
+                    # Inline intro — warms up the ask and sets the follow-up expectation
+                    st.markdown(
+                        '<div class="aa-scope-note">'
+                        '<div class="aa-scope-block">'
+                        '<p>Tell me what\'s working, what\'s not, or anything you\'d '
+                        'like Aruvi to do better. We read every note and will get back '
+                        'to you soon.</p>'
+                        '</div>'
+                        '</div>',
+                        unsafe_allow_html=True,
+                    )
+                    _agent_fb_text = st.text_area(
+                        "agent_feedback",
+                        placeholder="Share feedback on Aruvi…",
+                        label_visibility="collapsed",
+                        key=f"ask_aruvi_agent_fb_text_{st.session_state.ask_aruvi_agent_fb_reset}",
+                        height=96,
+                        max_chars=140,
+                    )
+                    _agent_fb_clicked = st.button("➤", key="ask_aruvi_agent_fb_submit")
+                    if _agent_fb_text:
+                        st.markdown(
+                            f'<div class="aa-char-count">{len(_agent_fb_text)}/140</div>',
+                            unsafe_allow_html=True,
+                        )
+                    if _agent_fb_clicked and _agent_fb_text.strip():
+                        write_general_feedback(
+                            session_id    = st.session_state.ask_aruvi_session_id,
+                            feedback_text = _agent_fb_text.strip(),
+                            tab           = st.session_state.role,
+                            subject       = st.session_state.get("subject", ""),
+                            grade         = st.session_state.get("grade", ""),
+                        )
+                        st.session_state.ask_aruvi_agent_fb_sent  = True
+                        st.session_state.ask_aruvi_agent_fb_reset += 1
+                        st.rerun()
+                else:
+                    # Box is hidden after submit — user must close & reopen feedback
+                    # to leave another note (avoids confusion about double-submit).
+                    st.markdown(
+                        '<div class="aruvi-fb-confirm">'
+                        '<span class="aruvi-fb-confirm-text">Thank you. We\'ve received your note and will get back to you soon.</span>'
+                        '</div>',
+                        unsafe_allow_html=True,
+                    )
+
             st.markdown('<div style="height:12px"></div>', unsafe_allow_html=True)

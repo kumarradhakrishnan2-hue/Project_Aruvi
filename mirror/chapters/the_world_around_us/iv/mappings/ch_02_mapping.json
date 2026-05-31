@@ -1,0 +1,67 @@
+{
+  "chapter_number": 2,
+  "chapter_title": "Exploring Our Neighbourhood",
+  "grade": "iv",
+  "stage": "preparatory",
+  "subject": "the_world_around_us",
+  "effort_index": 15.0,
+  "competencies": [
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.4",
+      "competency_text": "Explains the functioning of local institutions (family, school, bank/post office, market, and panchayat) in different forms (story, drawing, tabulating data, reports), and analyses their roles",
+      "weight": 1,
+      "justification": "The post office (Section 1), bank and ATM (Section 2), and the full suite of neighbourhood public institutions — hospital, fire station, police station, library, post office — (Section 3) are the architectural spine of the chapter. Students write a letter, visit a post office, visit a bank, examine a passbook and currency note, and tabulate the people and vehicles in each institution.",
+      "sections": [
+        "On Our Way Back Home",
+        "Savings for the Future",
+        "Looking Around the Neighbourhood"
+      ]
+    },
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.1",
+      "competency_text": "Identifies natural and humanmade systems that support their lives (water supply, water cycle, river flow systems, seasons, life cycle of plants and animals, food, household items, transport, communication, electricity in the home)",
+      "weight": 1,
+      "justification": "Section 1 traces the entire arc of communication systems from drumbeats and rock carvings through messengers, pigeons, postal services, telephone, radio, television, and mobile internet. Section 3 introduces metro trains and flyovers as urban transport infrastructure. Students identify these as humanmade systems that support daily life.",
+      "sections": [
+        "On Our Way Back Home",
+        "Looking Around the Neighbourhood"
+      ]
+    },
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.3",
+      "competency_text": "Connects changes in the environment and the lives of their family and community, as communicated by elders and through local stories (changes in occupation, food habits, resources, celebrations, communication)",
+      "weight": 1,
+      "justification": "Activity 2 in Section 1 explicitly asks students to interview elders and compare communication methods across three generations (self, parents, grandparents). Section 2 similarly contrasts Dada ji's experience of bank queues and money orders with today's instant mobile payments. Elder testimony is the structural device in both sections.",
+      "sections": [
+        "On Our Way Back Home",
+        "Savings for the Future"
+      ]
+    },
+    {
+      "cg": "CG-5",
+      "c_code": "C-5.2",
+      "competency_text": "Draws a sketch of their school, village, and ward using symbols and directions",
+      "weight": 1,
+      "justification": "Activity 4 in Section 3 requires students to draw a map of the route from school to the public library, identifying landmarks such as parks, shops, hospitals, and bus stops. The Write tasks require students to identify and name places in N, S, E, W directions from Navya's home and from their own school. The direction-giving task uses spatial navigation with landmarks.",
+      "sections": [
+        "Looking Around the Neighbourhood"
+      ]
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.1",
+      "competency_text": "Performs simple inquiry related to specific questions independently or in groups",
+      "weight": 1,
+      "justification": "Activity 2 (interview elders, compare communication, fill structured table), Activity 3 (visit bank, examine currency note, answer specific questions), and the Find out task (interview family about historical travel modes) are all structured field inquiries with explicit questions. Inquiry is the dominant student task format across all three sections.",
+      "sections": [
+        "On Our Way Back Home",
+        "Savings for the Future",
+        "Looking Around the Neighbourhood"
+      ]
+    }
+  ],
+  "chapter_weight": 5
+}

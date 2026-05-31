@@ -1,0 +1,75 @@
+{
+  "chapter_number": 4,
+  "chapter_title": "Growing up with Nature",
+  "grade": "iv",
+  "stage": "preparatory",
+  "subject": "the_world_around_us",
+  "effort_index": 12.5,
+  "competencies": [
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.2",
+      "competency_text": "Describes relationships (including between humans and animals/nature) and traditions (art forms, celebrations, festivals) in the family and community",
+      "weight": 1,
+      "justification": "Section 'Welcome to the Village!' presents traditional art forms (Gond art, wall painting with rice flour dye) and the grandmother's craft; 'Sparkling Light, Happy Life' has students record nature-connected rituals and festivals (Vat Purnima, Hari Jiroti, Kaziranga Elephant Festival) from elders (Activity 7) and describes the harvest festival, traditional dance, and the Jenu Kurubas honey-collection tradition.",
+      "sections": ["Welcome to the Village!", "Sparkling Light, Happy Life"]
+    },
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.5",
+      "competency_text": "Uses local materials to create simple objects (family tree, envelopes, origami animals) on their own for display or use in classroom processes",
+      "weight": 1,
+      "justification": "Activity 2 in 'Welcome to the Village!' requires students to construct a model house from clay, wooden sticks, hay, grass, and leaves; Activity 3 requires students to prepare a natural dye from plant parts and use it to paint a cloth — both are explicit artefact-creation tasks using local natural materials.",
+      "sections": ["Welcome to the Village!"]
+    },
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.2",
+      "competency_text": "Describes the relationship between the natural environment and cultural practices in their immediate environment (nature of work, food, festivals, traditions)",
+      "weight": 1,
+      "justification": "'Welcome to the Village!' shows earthen pots lined with neem leaves and bamboo baskets coated with cow dung as traditional grain-storage practices, and neem oil as a natural mosquito repellent (Activity 5); 'Sparkling Light, Happy Life' presents harvest festivals, Sacred Groves, and nature-worship traditions as cultural practices arising from the natural environment.",
+      "sections": ["Welcome to the Village!", "Sparkling Light, Happy Life"]
+    },
+    {
+      "cg": "CG-3",
+      "c_code": "C-3.2",
+      "competency_text": "Discusses how to prepare for emergency situations (smoke, fire, small injuries, burns, electrical safety, unseasonal rains, fallen trees) based on discussions with family and community, or personal experiences",
+      "weight": 1,
+      "justification": "Activity 5 and the dedicated Discuss block in 'Welcome to the Village!' ask students to discuss what belongs in a first-aid box and why providing first-aid is important when someone is injured — both questions directly require deliberation on emergency preparedness drawn from family and community knowledge.",
+      "sections": ["Welcome to the Village!"]
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.3",
+      "competency_text": "Describes usage of natural resources in their immediate environment",
+      "weight": 1,
+      "justification": "'Welcome to the Village!' shows neem leaves, cow dung, clay, hay, plant extracts, and solar energy used for pest control, construction, dye-making, and energy; Let us reflect items 1–2 in 'Sparkling Light, Happy Life' explicitly ask students to list things collected from nature for eating, clothing, healthcare, and to describe consequences of overusing natural resources (water, soil, sea products, wood).",
+      "sections": ["Welcome to the Village!", "Sparkling Light, Happy Life"]
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.4",
+      "competency_text": "Demonstrates how natural resources can be shared, maintained, and conserved (trees, use of rainwater, benefits of millets)",
+      "weight": 1,
+      "justification": "'Sparkling Light, Happy Life' introduces Sacred Groves as community-protected forest patches, presents concrete conservation actions (reduce paper waste, no plastic, plant trees, keep food and water for birds, clean-up drives), and Let us reflect item 3 asks students to plan how to protect the natural environment at home, school, parks, and locality; Activity 7 links nature-worship festivals to conservation traditions.",
+      "sections": ["Sparkling Light, Happy Life"]
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.1",
+      "competency_text": "Performs simple inquiry related to specific questions independently or in groups",
+      "weight": 1,
+      "justification": "Activity 1 asks students to research local flower names from their area; Activity 4 asks them to find out traditional grain-preservation methods from their community; Activity 5 asks them to consult family elders about medicinal plants; Activity 7 asks them to ask elders about nature-connected rituals — all four activities require students to independently gather information through community inquiry.",
+      "sections": ["Welcome to the Village!", "Sparkling Light, Happy Life"]
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.1",
+      "competency_text": "Gains familiarity with using the scientific method in investigations, as well as familiarity with other crosscutting concepts such as energy, matter, and systems that apply across the domains of science and engineering",
+      "weight": 1,
+      "justification": "Activity 3 in 'Welcome to the Village!' is a structured multi-step procedural investigation: collect plant materials with colouring properties, boil in water, strain to obtain dye, apply to cloth and observe the result — a foundational scientific method sequence (collection, process, observation, outcome).",
+      "sections": ["Welcome to the Village!"]
+    }
+  ],
+  "chapter_weight": 8
+}

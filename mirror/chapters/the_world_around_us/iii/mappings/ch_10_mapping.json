@@ -1,0 +1,111 @@
+{
+  "chapter_number": 10,
+  "chapter_title": "This World of Things",
+  "grade": "iii",
+  "stage": "preparatory",
+  "subject": "the_world_around_us",
+  "effort_index": 8.0,
+  "competencies": [
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.1",
+      "competency_text": "Observes and identifies the natural (insects, plants, birds, animals, geographical features, sun and moon, stars, planets, natural resources) and social (houses, relationships) components in their immediate environment",
+      "weight": 1,
+      "justification": "Activity 1 and the chapter's opening compel students to observe and identify objects in their classroom (social components of immediate environment); the Natural–Artificial section extends identification to natural components (mango tree, birds, rocks) vs. artificial objects.",
+      "sections": [
+        "Let's Take a Look Around Us!",
+        "Natural — Artificial",
+        "Let us reflect"
+      ]
+    },
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.1",
+      "competency_text": "Identifies natural and humanmade systems that support their lives (water supply, water cycle, river flow systems, seasons, life cycle of plants and animals, food, household items, transport, communication, electricity in the home)",
+      "weight": 1,
+      "justification": "The 'What is it made of?' section and the chain-game Write task compel students to identify household items (table, chair, windowpanes, electric switches) and the natural resource systems that produce their materials; the Does it Flow? section identifies water and air as natural matter that students engage with daily.",
+      "sections": [
+        "Let's Take a Look Around Us!",
+        "What is it made of?",
+        "Does it Flow?"
+      ]
+    },
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.3",
+      "competency_text": "Connects changes in the environment and the lives of their family and community, as communicated by elders and through local stories (changes in occupation, food habits, resources, celebrations, communication)",
+      "weight": 1,
+      "justification": "Three dedicated Find-out tasks (T-7, T-8, T-9) in the 'What is it made of?' section explicitly direct students to interview grandparents about whether materials used in childhood were the same, what new materials exist now, and what materials have fallen out of use — directly connecting resource changes across generations through family elders.",
+      "sections": [
+        "What is it made of?"
+      ]
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.3",
+      "competency_text": "Describes usage of natural resources in their immediate environment",
+      "weight": 1,
+      "justification": "The chain-game Write task and the source-tracing prompt in 'What is it made of?' compel students to name natural resources (trees → wood, ore → metal, sand → glass) and describe what each is used for; the Natural–Artificial section reinforces distinguishing resources that come from nature.",
+      "sections": [
+        "What is it made of?",
+        "Natural — Artificial"
+      ]
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.1",
+      "competency_text": "Performs simple inquiry related to specific questions independently or in groups",
+      "weight": 1,
+      "justification": "Six numbered Activity tasks and multiple Find-out tasks across the chapter constitute structured student inquiry: collecting objects and testing transparency (Activity 3), sorting materials by light-transmission (Activity 4), tapping objects and recording sounds (Activity 5), sorting matter by state (Activity 6), and investigating grandparents for material history (T-7–T-9).",
+      "sections": [
+        "Let's Take a Look Around Us!",
+        "See-through Materials!",
+        "What is it made of?",
+        "Does it Bend?",
+        "Does it Flow?",
+        "Natural — Artificial",
+        "Let us reflect"
+      ]
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.2",
+      "competency_text": "Presents observations and findings through different creative modes (drawing, diagram, poem, play, skit, oral and written expression)",
+      "weight": 1,
+      "justification": "Activity 1 requires drawing and labelling the classroom; Activity 5 asks students to capture sounds in invented words and compose beats (oral/written expression); Let us reflect — Draw requires drawing natural and artificial things; Let us reflect — Write and Discuss require written and oral presentation of findings.",
+      "sections": [
+        "Let's Take a Look Around Us!",
+        "Does it Bend?",
+        "Natural — Artificial",
+        "Let us reflect"
+      ]
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.1",
+      "competency_text": "Gains familiarity with using the scientific method in investigations, as well as familiarity with other crosscutting concepts such as energy, matter, and systems that apply across the domains of science and engineering",
+      "weight": 1,
+      "justification": "'Does it Flow?' explicitly introduces the crosscutting concept of states of matter (solid, liquid, gas) and their defining properties; 'See-through Materials!' and 'Does it Bend?' build familiarity with systematic observation and classification of physical properties — the scientific method in action.",
+      "sections": [
+        "See-through Materials!",
+        "Does it Bend?",
+        "Does it Flow?"
+      ]
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.2",
+      "competency_text": "Gains familiarity with disciplinary core ideas in the natural sciences, as well as in engineering, technology, and applications of science, which reflect the content that will be learned across subject areas in later Grades",
+      "weight": 1,
+      "justification": "The chapter covers multiple physical-science disciplinary core ideas foundational for later grades: properties of materials (transparency, translucency, opacity; hardness vs. flexibility); states of matter (solid, liquid, gas); natural vs. artificial classification — all content developed further in middle-school science.",
+      "sections": [
+        "See-through Materials!",
+        "What is it made of?",
+        "Does it Bend?",
+        "Does it Flow?",
+        "Natural — Artificial"
+      ]
+    }
+  ],
+  "chapter_weight": 8
+}

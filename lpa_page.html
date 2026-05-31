@@ -173,6 +173,7 @@
 .ss-period-card .pname { color: rgba(255,255,255,0.92); }
 .ss-period-card .pdur  { color: rgba(255,255,255,0.75); }
 .ss-period-card .ptag  { color: rgba(255,255,255,0.88); }
+.ss-period-card .ptag-twau { color: rgba(255,255,255,0.88); }
 .ss-period-card .pchev { color: rgba(255,255,255,0.6); }
 
 /* ── Social Sciences LP: competency info bar inside period body ─────────── */
@@ -197,6 +198,9 @@
 
 /* ── Science LP: centre-align Pedagogical Approach column value ─────────── */
 .ptag-sc { font-size: 11px; font-weight: 400; color: #1a1917; width: 220px; flex-shrink: 0; white-space: normal; line-height: 1.4; text-align: center; }
+
+/* ── TWAU LP: centre-align Anchored Section column value ────────────────── */
+.ptag-twau { font-size: 11px; font-weight: 400; color: #1a1917; width: 220px; flex-shrink: 0; white-space: normal; line-height: 1.4; text-align: center; }
 
 /* ── Science Assessment: collapsible Progression Stage rows ─────────────── */
 .asec-stage-hdr { display: flex; align-items: center; justify-content: center; background: #787674; border-radius: 8px; padding: 10px 12px; cursor: pointer; user-select: none; gap: 8px; margin-bottom: 0; }
@@ -1935,7 +1939,22 @@ function renderAssessment(sections) {
           html += renderVisualStimulus(q.visual_stimulus);
           if (q.scaffold) {
             html += '<div class="qtext"><strong>Scaffold</strong></div>';
-            html += '<div class="qtext">' + escHtml(q.scaffold) + '</div>';
+            /* Split on newlines or step/numbered markers so each renders on its own row */
+            var _scaffoldRaw = q.scaffold;
+            /* First split on literal \n */
+            var _scaffoldParts = _scaffoldRaw.split(/\n/);
+            /* Then further split each chunk on inline Step/Part markers (e.g. "Step 2 —", "2.") */
+            var _scaffoldLines = [];
+            _scaffoldParts.forEach(function(chunk) {
+              var sub = chunk.split(/(?=\bStep\s+\d+\b|\bPart\s+[A-Z]\b|\b\d+\.\s)/);
+              sub.forEach(function(s){ _scaffoldLines.push(s); });
+            });
+            var _scaffoldHtml = _scaffoldLines
+              .map(function(s){ return s.trim(); })
+              .filter(function(s){ return s.length > 0; })
+              .map(function(s){ return '<div class="qtext" style="margin-bottom:2px;">' + escHtml(s) + '</div>'; })
+              .join('');
+            html += _scaffoldHtml;
           }
           var fof = q.format_of_output;
           if (fof && fof.length) {
@@ -2338,7 +2357,7 @@ function renderLPA() {
         ? (p.section_title || '').trim()
         : _rawSection;
       var sectionTag = _displaySection
-        ? '<div class="ptag">' + escHtml(_displaySection) + '</div>'
+        ? '<div class="' + (p.is_twau ? 'ptag-twau' : 'ptag') + '">' + escHtml(_displaySection) + '</div>'
         : '';
 
       var _rawActivity = (p.activity_name || (p.activity_summary||'').split(',')[0].substring(0,60))
