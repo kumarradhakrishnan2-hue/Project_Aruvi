@@ -1,0 +1,741 @@
+{
+  "filename": "ch_07_20260531_103400.json",
+  "saved_at": "2026-05-31T10:34:00",
+  "grade": "Grade IV",
+  "subject": "The World Around Us",
+  "chapter_number": 7,
+  "chapter_title": "How Things Work",
+  "period_schedule_display": "Period schedule:\n  Row 1: 35 minutes × 1 period = 35 minutes\nTotal: 1 periods · 35 minutes",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 35,
+      "count": 1
+    }
+  ],
+  "plan_status": "full_lpa",
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 35,
+          "activity_title": "Can It Spin? Observing and Listing Spinning Objects",
+          "section_ref": "How Things Work",
+          "dominant_mode": "O&R",
+          "textbook_anchor": "How Things Work — Students list objects they think can spin and predict which ones from a given set will spin (p. 105)",
+          "materials": [
+            "Coin",
+            "Bangle",
+            "Pencil",
+            "Small stone",
+            "Wooden top",
+            "Eraser",
+            "Notebook",
+            "Pencil for writing"
+          ],
+          "visual_aids": "Textbook p. 105 activity table",
+          "time_bands": [
+            {
+              "minutes": "0-5",
+              "activity": "Teacher opens a discussion: 'Have you ever seen something spinning? What made it spin?' Students share brief responses orally."
+            },
+            {
+              "minutes": "5-12",
+              "activity": "Students open Textbook p. 105 and read the introductory scenario of Meera and Dhruv. They individually write a list of objects they think can spin in their notebooks."
+            },
+            {
+              "minutes": "12-25",
+              "activity": "Students collect the six objects (coin, bangle, pencil, stone, wooden top, eraser) and attempt to spin each one on the desk. They fill in the observation table from Textbook p. 105, marking which objects spin and which do not."
+            },
+            {
+              "minutes": "25-32",
+              "activity": "Class shares findings aloud. Teacher records surprising results on the board — objects students expected to spin but did not, and vice versa."
+            },
+            {
+              "minutes": "32-35",
+              "activity": "Quick oral reflection: 'What do the objects that spin well have in common?' Students share one idea each."
+            }
+          ],
+          "implied_lo": "Students can observe and record whether everyday objects exhibit a particular physical behaviour and identify patterns in their findings.",
+          "section_context": "Spinning behaviour of coin, bangle, pencil, stone, wooden top, eraser.",
+          "teacher_facilitation_note": "Ask: 'Why do you think the stone did not spin like the top?' Encourage students to notice shape and symmetry. If a lattu (traditional spinning top) is available locally, show it and ask students how it compares to the wooden top."
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 30,
+          "activity_title": "Building Cardboard Spinners — Centre vs. Off-Centre Axle",
+          "section_ref": "How Things Work",
+          "dominant_mode": "HI",
+          "textbook_anchor": "How Things Work — Students make cardboard spinners with toothpick axles in different configurations and record observations (p. 106)",
+          "materials": [
+            "Pieces of cardboard",
+            "Toothpicks",
+            "Empty ballpoint pen tube",
+            "Scissors",
+            "Ruler",
+            "Sketch pens or crayons",
+            "Notebook"
+          ],
+          "visual_aids": "Textbook p. 106 spinner diagrams",
+          "time_bands": [
+            {
+              "minutes": "0-5",
+              "activity": "Teacher briefly recaps yesterday's finding: some objects spin better than others. Poses the question: 'Does it matter where you put the axle on a spinner?' Students make a quick prediction in notebooks."
+            },
+            {
+              "minutes": "5-20",
+              "activity": "Students open Textbook p. 106 and follow the spinner-making instructions. In pairs, they cut cardboard shapes and push toothpick axles through the centre of one spinner and off-centre in another. They spin both and record their observations in the table."
+            },
+            {
+              "minutes": "20-27",
+              "activity": "Pairs discuss Textbook p. 108 questions: which spinner did not spin properly and why, and whether the hole position made a difference. They note their reasoning in their notebooks."
+            },
+            {
+              "minutes": "27-30",
+              "activity": "Teacher draws a simple diagram on the board showing centre vs. off-centre axle and asks: 'What does this tell us about balance?' Students respond briefly."
+            }
+          ],
+          "implied_lo": "Students can test how a single variable (position of axle) affects the performance of a self-made device and record the outcome.",
+          "section_context": "Cardboard spinners with toothpick axles — centre-hole and off-centre-hole configurations.",
+          "teacher_facilitation_note": "Prompt students: 'Have you seen a charkha or a bicycle wheel? Where is the axle on those?' This draws out the principle of centred rotation naturally through familiar objects."
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 40,
+          "activity_title": "Colour-Mixing Spinners — Observing Rotation Effects",
+          "section_ref": "How Things Work",
+          "dominant_mode": "C&E",
+          "textbook_anchor": "How Things Work — Students make cardboard spinners with toothpick axles in different configurations and record observations (p. 106)",
+          "materials": [
+            "Cardboard discs (pre-cut from previous period or freshly cut)",
+            "Toothpicks",
+            "Sketch pens or crayons in different colours",
+            "Notebook"
+          ],
+          "visual_aids": "Textbook p. 106 spinner diagrams",
+          "time_bands": [
+            {
+              "minutes": "0-5",
+              "activity": "Teacher recaps the centre-axle finding. Poses a new question: 'What do you think will happen to the colours on a spinner when it spins very fast?'"
+            },
+            {
+              "minutes": "5-20",
+              "activity": "Students create coloured spinners by dividing their cardboard discs into sections and colouring each section differently using the patterns shown in or inspired by Textbook p. 106. They spin the discs and observe what happens to the colours during rotation. They sketch what they see in their notebooks."
+            },
+            {
+              "minutes": "20-30",
+              "activity": "Students experiment with different colour combinations (two colours, three colours) and record which combinations produce the most striking or unexpected visual effects. They label their sketches."
+            },
+            {
+              "minutes": "30-37",
+              "activity": "Small group sharing: each group describes the most surprising colour-mixing result they observed. Teacher notes responses on the board."
+            },
+            {
+              "minutes": "37-40",
+              "activity": "Whole-class oral reflection: 'Can you think of any everyday object that uses spinning to create an effect?' Students share ideas freely."
+            }
+          ],
+          "implied_lo": "Students can express and communicate observations about a physical phenomenon through drawing and verbal description.",
+          "section_context": "Coloured cardboard spinners — observing colour-mixing effects during rapid rotation.",
+          "teacher_facilitation_note": "Ask: 'Does the speed of spinning change what you see?' Encourage students to look for a connection between how fast the spinner goes and how the colours appear."
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 40,
+          "activity_title": "Predict, Then Test — What Floats and What Sinks?",
+          "section_ref": "Floating and Sinking",
+          "dominant_mode": "HI",
+          "textbook_anchor": "Floating and Sinking — Students predict then test whether leaf, iron nail, empty bowl, stone, bottle, and other objects float or sink in a bucket of water (p. 110)",
+          "materials": [
+            "Bucket or tub of water",
+            "Leaf",
+            "Iron nail",
+            "Empty steel bowl (katori)",
+            "Plastic bottle with lid (empty and water-filled)",
+            "Small stone",
+            "Aluminium foil",
+            "Additional objects of students' choice",
+            "Notebook"
+          ],
+          "visual_aids": "Textbook p. 110 observation table",
+          "time_bands": [
+            {
+              "minutes": "0-5",
+              "activity": "Teacher opens with the story of Meera and Dhruv making paper boats after rain. Asks: 'Why do some boats float while others tip over?' Students share initial ideas."
+            },
+            {
+              "minutes": "5-15",
+              "activity": "Students open Textbook p. 110 and fill in their predictions (F or S) for each object in the table before testing. Teacher asks them to briefly explain their prediction for at least one object."
+            },
+            {
+              "minutes": "15-30",
+              "activity": "In groups of three, students take turns dropping each object into the water tub and recording the actual result (F or S) in the Textbook p. 110 table. They note any surprising results."
+            },
+            {
+              "minutes": "30-37",
+              "activity": "Class discusses Textbook p. 111 question: 'Did all light objects float and all heavy objects sink?' Students name objects that defied their expectation and try to explain why."
+            },
+            {
+              "minutes": "37-40",
+              "activity": "Teacher poses a bridging question: 'The empty bowl floated — what do you think will happen if we shape aluminium foil differently?' Students predict for next period."
+            }
+          ],
+          "implied_lo": "Students can formulate predictions about physical behaviour and compare them systematically with experimental results to identify patterns.",
+          "section_context": "Float-or-sink testing of leaf, iron nail, empty bowl, stone, plastic bottle, aluminium foil in water.",
+          "teacher_facilitation_note": "Ask: 'Does the size of an object always tell us whether it will float?' Push students to articulate what they notice about the shape of the bowl versus the nail."
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 35,
+          "activity_title": "Shape and Floating — Aluminium Foil in Three Forms",
+          "section_ref": "Floating and Sinking",
+          "dominant_mode": "HI",
+          "textbook_anchor": "Floating and Sinking — Students test aluminium foil in spread-out, ball, and cup shapes, recording float or sink and the possible reason (p. 112)",
+          "materials": [
+            "Aluminium foil (same piece cut into three equal parts per group)",
+            "Bucket or tub of water",
+            "Notebook"
+          ],
+          "visual_aids": "Textbook p. 112 activity table",
+          "time_bands": [
+            {
+              "minutes": "0-5",
+              "activity": "Teacher revisits the bridging question from the previous period. Students share their predictions about what will happen to the aluminium foil in different shapes."
+            },
+            {
+              "minutes": "5-20",
+              "activity": "Students open Textbook p. 112. Each group takes three equal pieces of aluminium foil, shapes them as instructed (spread flat, pressed into a ball, folded into a cup), and tests each in water. They record F or S and write a possible reason in the table."
+            },
+            {
+              "minutes": "20-28",
+              "activity": "Groups compare results. Teacher asks: 'The foil is the same material and the same amount — why did the shape make a difference?' Students discuss in their groups and share one explanation each."
+            },
+            {
+              "minutes": "28-35",
+              "activity": "Teacher draws three simple foil shapes on the board and asks the class to agree on a class explanation. Students copy the summary explanation into their notebooks."
+            }
+          ],
+          "implied_lo": "Students can investigate how the shape of the same material affects its physical behaviour and explain the relationship between shape and outcome.",
+          "section_context": "Aluminium foil tested in three shapes: spread flat, compressed ball, cup — float or sink results.",
+          "teacher_facilitation_note": "Ask: 'If you were designing a boat, what shape would you choose and why?' This connects the experiment to the upcoming boat-building activity and to the idea of engineering design."
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 40,
+          "activity_title": "Design and Build — Classroom Boat Exhibition",
+          "section_ref": "Floating and Sinking",
+          "dominant_mode": "C&E",
+          "textbook_anchor": "Floating and Sinking — Students design and build boats from local materials and organise a classroom exhibition (p. 113)",
+          "materials": [
+            "Paper",
+            "Cardboard boxes",
+            "Ice-cream sticks",
+            "Clay",
+            "Adhesive tape",
+            "Scissors",
+            "Pencils for drawing",
+            "Water tub for testing",
+            "Notebook"
+          ],
+          "visual_aids": null,
+          "time_bands": [
+            {
+              "minutes": "0-7",
+              "activity": "Teacher explains the challenge: each group of three or four students will design a boat from available materials, making it different from other groups' designs. Students open Textbook p. 113, read the task, and quickly discuss their design idea within their group."
+            },
+            {
+              "minutes": "7-13",
+              "activity": "Each student draws a picture of the group's planned boat design in their notebook, labelling the materials they will use."
+            },
+            {
+              "minutes": "13-28",
+              "activity": "Groups build their boats using the collected materials. Teacher circulates and asks probing questions without directing: 'Why did you choose that shape for the base?'"
+            },
+            {
+              "minutes": "28-35",
+              "activity": "Groups test their boats in the water tub and note whether the boat floats or sinks and how stable it is. Students begin filling in the strengths and challenges table from Textbook p. 114."
+            },
+            {
+              "minutes": "35-40",
+              "activity": "Boats are displayed in the classroom for a brief exhibition walk. Each group gives a one-sentence description of their design choice."
+            }
+          ],
+          "implied_lo": "Students can design and construct a simple functional object using locally available materials and evaluate its performance against a stated purpose.",
+          "section_context": "Group boat-building using paper, cardboard, ice-cream sticks, clay; classroom boat exhibition and comparison.",
+          "teacher_facilitation_note": "Ask: 'Have you seen boats made from natural materials — like coconut shells or leaves — at home or in a river or pond nearby?' Encourage students to share what they know about how people traditionally made small boats."
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 40,
+          "activity_title": "Reflecting on Boats — Comparing Designs and Writing About Floating",
+          "section_ref": "Floating and Sinking",
+          "dominant_mode": "D&C",
+          "textbook_anchor": "Floating and Sinking — Students compare their boat with others' boats and record strengths and challenges in the table (p. 114)",
+          "materials": [
+            "Completed boats from previous period",
+            "Notebook",
+            "Pencil"
+          ],
+          "visual_aids": "Textbook p. 114 comparison table",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Students revisit the boat exhibition. Each student walks around and observes at least two other groups' boats, noting one strength they see in each."
+            },
+            {
+              "minutes": "8-20",
+              "activity": "Students open Textbook p. 114 and complete the comparison table, recording the strengths of their own boat and the challenges they faced during construction or testing."
+            },
+            {
+              "minutes": "20-30",
+              "activity": "Class discussion: 'What made some boats better at floating than others?' Teacher guides students to connect their findings back to the aluminium foil shape experiment from Period 5."
+            },
+            {
+              "minutes": "30-37",
+              "activity": "Students write two or three sentences in their notebooks explaining what they would change about their boat design if they were to build it again, and why."
+            },
+            {
+              "minutes": "37-40",
+              "activity": "Teacher closes with the question: 'If someone only had a coconut shell or walnut shell, could they make a floating boat? Why or why not?' Students share briefly."
+            }
+          ],
+          "implied_lo": "Students can compare the performance of self-made objects, identify strengths and limitations, and propose evidence-based improvements.",
+          "section_context": "Comparison of group boats — strengths and challenges table; linking boat shape to float behaviour.",
+          "teacher_facilitation_note": "Ask: 'Which group's boat carried the most load without sinking? What did that group do differently?' This keeps the discussion grounded in evidence rather than opinion."
+        },
+        {
+          "period_number": 8,
+          "period_duration_minutes": 35,
+          "activity_title": "Let Us Reflect — Asking Questions, Balancing, and Classifying Floaters",
+          "section_ref": "Let us reflect",
+          "dominant_mode": "R&A",
+          "textbook_anchor": "Let us reflect — Students classify a list of everyday objects into floaters and sinkers in water (p. 116)",
+          "materials": [
+            "Notebook",
+            "Pencil",
+            "Textbook"
+          ],
+          "visual_aids": "Textbook p. 115 mobile figure; Textbook p. 116 classification activity",
+          "time_bands": [
+            {
+              "minutes": "0-7",
+              "activity": "Students open Textbook p. 115 and read the scenario of Ravi's spinner slowing down. Individually, they write at least two questions Ravi could ask his teacher. Pairs then compare their questions and choose the most interesting one to share with the class."
+            },
+            {
+              "minutes": "7-15",
+              "activity": "Students examine the hanging mobile figure on Textbook p. 115. They write what should be done to balance the mobile that is bending towards side A, and discuss their reasoning with a partner."
+            },
+            {
+              "minutes": "15-23",
+              "activity": "Students open Textbook p. 116 and classify the fourteen objects (wax, marble, thermocol, candle, coin, cork, leaf, eraser, spoon, ice-cube, potato, tomato, pumpkin, lemon) into two columns: floaters and sinkers. They mark objects they are unsure about and discuss with their neighbour."
+            },
+            {
+              "minutes": "23-30",
+              "activity": "Class shares and debates uncertain cases (lemon, potato, ice-cube). Teacher facilitates without giving the answer immediately: 'How could we find out for sure?'"
+            },
+            {
+              "minutes": "30-35",
+              "activity": "Students write one sentence each in their notebooks completing: 'Something I noticed about spinning is…' and 'Something I noticed about floating and sinking is…' to close the chapter."
+            }
+          ],
+          "implied_lo": "Students can formulate inquiry questions about an observed phenomenon and apply knowledge of physical behaviour to classify and reason about unfamiliar objects.",
+          "section_context": "Inquiry questions about a slowing spinner; mobile balance reasoning; classifying wax, marble, thermocol, candle, coin, cork, leaf, eraser, spoon, ice-cube, potato, tomato, pumpkin, lemon as floaters or sinkers.",
+          "teacher_facilitation_note": "For the classification task, ask: 'Does the shape or the material matter more for this object — or both?' Encourage students to apply what they learned from the foil experiment rather than guessing."
+        }
+      ]
+    },
+    "coverage_handoff": [
+      {
+        "period_number": 1,
+        "period_duration_minutes": 35,
+        "section_ref": "How Things Work",
+        "dominant_mode": "O&R",
+        "implied_lo": "Students can observe and record whether everyday objects exhibit a particular physical behaviour and identify patterns in their findings.",
+        "section_context": "Spinning behaviour of coin, bangle, pencil, stone, wooden top, eraser.",
+        "textbook_anchor": "How Things Work — Students list objects they think can spin and predict which ones from a given set will spin (p. 105)",
+        "activity_summary": "Students predict and test which of six objects spin, then record and discuss patterns in their observations."
+      },
+      {
+        "period_number": 2,
+        "period_duration_minutes": 30,
+        "section_ref": "How Things Work",
+        "dominant_mode": "HI",
+        "implied_lo": "Students can test how a single variable (position of axle) affects the performance of a self-made device and record the outcome.",
+        "section_context": "Cardboard spinners with toothpick axles — centre-hole and off-centre-hole configurations.",
+        "textbook_anchor": "How Things Work — Students make cardboard spinners with toothpick axles in different configurations and record observations (p. 106)",
+        "activity_summary": "Students build two cardboard spinners with axles at different positions and investigate the effect on spinning quality."
+      },
+      {
+        "period_number": 3,
+        "period_duration_minutes": 40,
+        "section_ref": "How Things Work",
+        "dominant_mode": "C&E",
+        "implied_lo": "Students can express and communicate observations about a physical phenomenon through drawing and verbal description.",
+        "section_context": "Coloured cardboard spinners — observing colour-mixing effects during rapid rotation.",
+        "textbook_anchor": "How Things Work — Students make cardboard spinners with toothpick axles in different configurations and record observations (p. 106)",
+        "activity_summary": "Students colour cardboard spinners with different combinations and sketch and describe the colour-mixing effects observed during spinning."
+      },
+      {
+        "period_number": 4,
+        "period_duration_minutes": 40,
+        "section_ref": "Floating and Sinking",
+        "dominant_mode": "HI",
+        "implied_lo": "Students can formulate predictions about physical behaviour and compare them systematically with experimental results to identify patterns.",
+        "section_context": "Float-or-sink testing of leaf, iron nail, empty bowl, stone, plastic bottle, aluminium foil in water.",
+        "textbook_anchor": "Floating and Sinking — Students predict then test whether leaf, iron nail, empty bowl, stone, bottle, and other objects float or sink in a bucket of water (p. 110)",
+        "activity_summary": "Students predict float or sink for each object, test in a water tub, and discuss why some results defied expectations."
+      },
+      {
+        "period_number": 5,
+        "period_duration_minutes": 35,
+        "section_ref": "Floating and Sinking",
+        "dominant_mode": "HI",
+        "implied_lo": "Students can investigate how the shape of the same material affects its physical behaviour and explain the relationship between shape and outcome.",
+        "section_context": "Aluminium foil tested in three shapes: spread flat, compressed ball, cup — float or sink results.",
+        "textbook_anchor": "Floating and Sinking — Students test aluminium foil in spread-out, ball, and cup shapes, recording float or sink and the possible reason (p. 112)",
+        "activity_summary": "Students shape equal pieces of aluminium foil three ways, test each in water, and construct an explanation for why shape changes the outcome."
+      },
+      {
+        "period_number": 6,
+        "period_duration_minutes": 40,
+        "section_ref": "Floating and Sinking",
+        "dominant_mode": "C&E",
+        "implied_lo": "Students can design and construct a simple functional object using locally available materials and evaluate its performance against a stated purpose.",
+        "section_context": "Group boat-building using paper, cardboard, ice-cream sticks, clay; classroom boat exhibition and comparison.",
+        "textbook_anchor": "Floating and Sinking — Students design and build boats from local materials and organise a classroom exhibition (p. 113)",
+        "activity_summary": "Student groups design, draw, build, and exhibit boats from available materials, testing each for floating and stability."
+      },
+      {
+        "period_number": 7,
+        "period_duration_minutes": 40,
+        "section_ref": "Floating and Sinking",
+        "dominant_mode": "D&C",
+        "implied_lo": "Students can compare the performance of self-made objects, identify strengths and limitations, and propose evidence-based improvements.",
+        "section_context": "Comparison of group boats — strengths and challenges table; linking boat shape to float behaviour.",
+        "textbook_anchor": "Floating and Sinking — Students compare their boat with others' boats and record strengths and challenges in the table (p. 114)",
+        "activity_summary": "Students compare boats across groups, complete a strengths-and-challenges table, and write an evidence-based improvement proposal."
+      },
+      {
+        "period_number": 8,
+        "period_duration_minutes": 35,
+        "section_ref": "Let us reflect",
+        "dominant_mode": "R&A",
+        "implied_lo": "Students can formulate inquiry questions about an observed phenomenon and apply knowledge of physical behaviour to classify and reason about unfamiliar objects.",
+        "section_context": "Inquiry questions about a slowing spinner; mobile balance reasoning; classifying wax, marble, thermocol, candle, coin, cork, leaf, eraser, spoon, ice-cube, potato, tomato, pumpkin, lemon as floaters or sinkers.",
+        "textbook_anchor": "Let us reflect — Students classify a list of everyday objects into floaters and sinkers in water (p. 116)",
+        "activity_summary": "Students write inquiry questions about a spinning phenomenon, reason about mobile balance, and classify fourteen everyday objects as floaters or sinkers."
+      }
+    ],
+    "assessment_items": [
+      {
+        "question_type": "MCQ",
+        "question_text": "Meera and Dhruv tested six objects to see which ones could spin. Which pair of observations best describes what they would likely find?",
+        "options": [
+          {
+            "label": "A",
+            "text": "The coin and the wooden top both spin well because they are round and balanced, while the pencil and the eraser do not spin well because they are not round.",
+            "is_correct": true
+          },
+          {
+            "label": "B",
+            "text": "All six objects — coin, bangle, pencil, stone, wooden top, and eraser — spin equally well because any object can spin if pushed hard enough.",
+            "is_correct": false
+          },
+          {
+            "label": "C",
+            "text": "Only the heaviest objects spin because weight gives them the force they need to keep rotating.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "The bangle spins better than the wooden top because it has a hole in the middle that helps it balance.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "performance_task": false,
+        "visual_stimulus": "",
+        "annotation": "Correct answer is A. This item checks whether students recorded the pattern that shape and roundness affect spinning ability — the core finding of the observation-and-record activity on p. 105.",
+        "cognitive_demand": "Understanding",
+        "period_ref": [
+          1
+        ],
+        "chapter_section": "How Things Work",
+        "implied_lo": "Students can observe and record whether everyday objects exhibit a particular physical behaviour and identify patterns in their findings.",
+        "competency": {
+          "c_code": "C-6.1",
+          "competency_text": "Performs simple inquiry related to specific questions independently or in groups"
+        },
+        "guide": {
+          "what_each_option_reveals": {
+            "B": "Indicates the student did not engage with the activity — they did not test objects and so hold the misconception that any object can spin with enough force, missing the role of shape.",
+            "C": "Indicates the student has confused weight (relevant to floating/sinking in the next section) with the spinning behaviour studied here; a cross-concept confusion within the same chapter.",
+            "D": "Indicates partial engagement — the student noticed the bangle's shape but incorrectly generalised that having a hole always improves spinning, without distinguishing between the bangle and the wooden top's superior spinning ability."
+          }
+        }
+      },
+      {
+        "question_type": "SCR",
+        "question_text": "In the spinner-making activity, two cardboard spinners were made: one with the toothpick axle through the centre of the cardboard, and one with the toothpick axle through a hole away from the centre. Describe what happened when each spinner was spun, and explain what this tells you about where the axle should be placed.",
+        "options": [],
+        "expected_elements": [
+          "States that the spinner with the axle at the centre spun smoothly and for longer.",
+          "States that the spinner with the axle off-centre wobbled, tilted, or stopped quickly.",
+          "Links the difference in spinning quality to the position of the axle (centre vs. off-centre).",
+          "Draws a conclusion: for a spinner to work well, the axle must be at the centre."
+        ],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "performance_task": false,
+        "visual_stimulus": "",
+        "annotation": "Award full credit when the student names both outcomes and explicitly connects the difference to axle position. Partial credit if the student describes only one spinner or omits the explanatory link. Accept any clear vocabulary (wobbled, fell, spun fast/slow) — precise scientific terminology is not required at this stage.",
+        "cognitive_demand": "Application",
+        "period_ref": [
+          2
+        ],
+        "chapter_section": "How Things Work",
+        "implied_lo": "Students can test how a single variable (position of axle) affects the performance of a self-made device and record the outcome.",
+        "competency": {
+          "c_code": "C-7.1",
+          "competency_text": "Gains familiarity with using the scientific method in investigations, as well as familiarity with other crosscutting concepts such as energy, matter, and systems that apply across the domains of science and engineering"
+        },
+        "guide": {
+          "expected_elements": [
+            "States that the spinner with the axle at the centre spun smoothly and for longer.",
+            "States that the spinner with the axle off-centre wobbled, tilted, or stopped quickly.",
+            "Links the difference in spinning quality to the position of the axle (centre vs. off-centre).",
+            "Draws a conclusion: for a spinner to work well, the axle must be at the centre."
+          ]
+        }
+      },
+      {
+        "question_type": "OPEN_TASK",
+        "question_text": "",
+        "options": [],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "Colour a cardboard spinner using two or more colours of your choice. Spin it as fast as you can. In the box below, draw what the spinner looks like while it is spinning rapidly. Then write two sentences describing what you notice about the colours when the spinner is moving fast.",
+        "scaffold": "Step 1 — Draw the spinner at rest and label each colour section.\nStep 2 — Draw what it looks like when spinning fast (use coloured pencils or write the colour name if pencils are not available).\nStep 3 — Write Sentence 1: What I see when the spinner spins fast is ___.\nStep 4 — Write Sentence 2: The colours look different from when it is still because ___.",
+        "format_of_output": [
+          "Drawing of the spinner at rest with labelled colour sections",
+          "Drawing or description of the spinning spinner showing colour-mixing effect",
+          "Two written sentences describing the observation"
+        ],
+        "performance_task": false,
+        "visual_stimulus": "",
+        "annotation": "Accept any two or more colours on the spinner. The drawing does not need to be artistically precise — look for evidence that the student depicted blending or merging of colours during rotation. If coloured pencils are unavailable, a written description of the colour-mixing effect is fully acceptable as an alternative to the coloured drawing.",
+        "cognitive_demand": "Application",
+        "period_ref": [
+          3
+        ],
+        "chapter_section": "How Things Work",
+        "implied_lo": "Students can express and communicate observations about a physical phenomenon through drawing and verbal description.",
+        "competency": {
+          "c_code": "C-6.2",
+          "competency_text": "Presents observations and findings through different creative modes (drawing, diagram, poem, play, skit, oral and written expression)"
+        },
+        "guide": {
+          "what_this_demonstrates": "Whether the student can translate a sensory observation (colours merging during rapid rotation) into a visual and verbal record — the core communication skill of C-6.2.",
+          "reading_the_scaffold": "The four-step scaffold separates the at-rest state from the spinning state, prompting students to notice change. Step 4 pushes toward a causal explanation rather than pure description.",
+          "strong_vs_weak_markers": "Strong: drawing shows mixed or blended colour in the spinning state distinct from the at-rest state; sentences name the specific colours used and describe the merged result (e.g., 'red and yellow looked orange'). Weak: drawing is identical for both states; sentences only say 'it looked different' without naming any colour relationship.",
+          "inclusivity": "Students who cannot draw may narrate their observation verbally to the teacher or write a longer description. Students with colour-vision differences may describe lightness/darkness patterns rather than hue mixing — accept this as equivalent evidence.",
+          "format_type": "Drawing plus short written description",
+          "format_rationale": "C-6.2 specifically names drawing and written expression as valid modes of presenting observations; combining both lets the student demonstrate the observation through whichever mode is stronger."
+        }
+      },
+      {
+        "question_type": "SCR",
+        "question_text": "In the float-or-sink activity, students predicted whether a leaf, an iron nail, an empty bowl (katori), and a stone would float or sink — then tested each in water. Which result was most surprising, and why did it turn out that way? Use what you observed in the activity to explain.",
+        "options": [],
+        "expected_elements": [
+          "Identifies a result that defied the student's prediction (e.g., the empty bowl floated even though it is made of metal, or the stone sank even though some heavy objects float).",
+          "Connects the surprising result to the observation that weight alone does not decide whether an object floats or sinks.",
+          "Refers to at least one specific object from the activity by name.",
+          "Provides a simple explanation linked to a property of the object (shape, material, whether it is hollow/flat) rather than weight alone."
+        ],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "performance_task": false,
+        "visual_stimulus": "",
+        "annotation": "Accept any object from the activity set (leaf, iron nail, empty bowl, stone, plastic bottle, aluminium foil). The key evaluative criterion is whether the student moves beyond 'heavy things sink' to a more nuanced explanation grounded in what they observed. Do not require the word 'density'; a functional explanation in everyday language is sufficient at Grade IV.",
+        "cognitive_demand": "Analysis",
+        "period_ref": [
+          4
+        ],
+        "chapter_section": "Floating and Sinking",
+        "implied_lo": "Students can formulate predictions about physical behaviour and compare them systematically with experimental results to identify patterns.",
+        "competency": {
+          "c_code": "C-6.1",
+          "competency_text": "Performs simple inquiry related to specific questions independently or in groups"
+        },
+        "guide": {
+          "expected_elements": [
+            "Identifies a result that defied the student's prediction (e.g., the empty bowl floated even though it is made of metal, or the stone sank even though some heavy objects float).",
+            "Connects the surprising result to the observation that weight alone does not decide whether an object floats or sinks.",
+            "Refers to at least one specific object from the activity by name.",
+            "Provides a simple explanation linked to a property of the object (shape, material, whether it is hollow/flat) rather than weight alone."
+          ]
+        }
+      },
+      {
+        "question_type": "SCR",
+        "question_text": "You tested three pieces of aluminium foil of the same size — one spread flat, one pressed into a tight ball, and one folded into a cup shape. Describe what happened when each piece was placed in water, and explain why the same material behaved differently in each shape.",
+        "options": [],
+        "expected_elements": [
+          "States the outcome for each of the three shapes: spread-flat floated, tight ball sank, cup shape floated.",
+          "Identifies that all three pieces are made of the same material (aluminium foil) and have the same weight.",
+          "Explains that shape — not the material or weight — determines whether each piece floats or sinks.",
+          "Gives a simple functional reason for at least one shape (e.g., the cup or flat sheet traps air or spreads out, while the ball is compact and heavy for its size)."
+        ],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "performance_task": false,
+        "visual_stimulus": "",
+        "annotation": "Full credit requires correct outcomes for at least two of the three shapes and a shape-based explanation. Do not penalise the absence of the word 'air' — accept equivalent descriptions such as 'it spreads out more' or 'the ball takes up less space'. The tight-ball outcome (sinks) is the most diagnostically important; if a student claims it floats, note this for follow-up.",
+        "cognitive_demand": "Understanding",
+        "period_ref": [
+          5
+        ],
+        "chapter_section": "Floating and Sinking",
+        "implied_lo": "Students can investigate how the shape of the same material affects its physical behaviour and explain the relationship between shape and outcome.",
+        "competency": {
+          "c_code": "C-7.1",
+          "competency_text": "Gains familiarity with using the scientific method in investigations, as well as familiarity with other crosscutting concepts such as energy, matter, and systems that apply across the domains of science and engineering"
+        },
+        "guide": {
+          "expected_elements": [
+            "States the outcome for each of the three shapes: spread-flat floated, tight ball sank, cup shape floated.",
+            "Identifies that all three pieces are made of the same material (aluminium foil) and have the same weight.",
+            "Explains that shape — not the material or weight — determines whether each piece floats or sinks.",
+            "Gives a simple functional reason for at least one shape (e.g., the cup or flat sheet traps air or spreads out, while the ball is compact and heavy for its size)."
+          ]
+        }
+      },
+      {
+        "question_type": "OPEN_TASK",
+        "question_text": "",
+        "options": [],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "Design and build a small boat using only the materials available in your classroom (paper, cardboard, ice-cream sticks, clay, adhesive tape). Your boat must float in a tub of water for at least 10 seconds without flipping. Draw your boat design before building it, build it, test it, and then write a short note saying whether it met the purpose and what you would change if you built it again.",
+        "scaffold": "Step 1 — Draw your boat design and label the materials you will use for each part.\nStep 2 — Build the boat using only classroom materials.\nStep 3 — Place the boat in water and observe: Does it float? Does it stay upright?\nStep 4 — Write: My boat [did / did not] float. It stayed upright for about ___ seconds.\nStep 5 — Write one thing that worked well and one thing you would change in your next design.",
+        "format_of_output": [
+          "Labelled design drawing",
+          "Physical boat (teacher observes during exhibition)",
+          "Written test record (float / did not float; duration)",
+          "Written reflection (one strength and one proposed change)"
+        ],
+        "performance_task": false,
+        "visual_stimulus": "",
+        "annotation": "The boat need not float for the full 10 seconds to receive credit — the criterion is engagement with design, construction, testing, and reflection, not engineering perfection. Accept any locally available material, including natural materials such as coconut shell or walnut shell fragments if students bring them. Regional variation in available materials is expected and fully acceptable.",
+        "cognitive_demand": "Evaluation",
+        "period_ref": [
+          6
+        ],
+        "chapter_section": "Floating and Sinking",
+        "implied_lo": "Students can design and construct a simple functional object using locally available materials and evaluate its performance against a stated purpose.",
+        "competency": {
+          "c_code": "C-1.5",
+          "competency_text": "Uses local materials to create simple objects (family tree, envelopes, origami animals) on their own for display or use in classroom processes"
+        },
+        "guide": {
+          "what_this_demonstrates": "Whether the student can move through the full design-build-test-reflect cycle and evaluate their product against a stated functional purpose — the core of C-1.5 applied to a TWAU engineering context.",
+          "reading_the_scaffold": "Steps 1–3 support the making process; Steps 4–5 push the student from doing to evaluating. The float-duration prompt in Step 4 gives a concrete observable criterion rather than a vague 'did it work?'",
+          "strong_vs_weak_markers": "Strong: design drawing shows labelled materials; the written test record specifies an approximate duration; the reflection names a specific feature (e.g., 'the flat bottom helped it stay upright') rather than a generic comment. Weak: boat is built without a prior drawing; reflection only says 'it was good / bad' without identifying a design feature.",
+          "inclusivity": "Students who struggle with drawing may describe their design verbally or dictate to the teacher. Groups that cannot access all listed materials may substitute equivalent locally available items — the design process and reflection are the assessed elements, not the specific materials.",
+          "format_type": "Design drawing + physical artefact + written test record + written reflection",
+          "format_rationale": "The task requires both a made object and written evidence of evaluation — together they allow the teacher to assess the full design-to-evaluation arc of C-1.5 in a single session."
+        }
+      },
+      {
+        "question_type": "ECR",
+        "question_text": "After the class boat exhibition, Priya noticed that her flat paper boat kept flipping over in the water, while Ramesh's boat — made with a flat cardboard base and clay pressed along the bottom edge — floated upright and steadily. Using your observations from the boat comparison activity, explain why Ramesh's boat performed better and suggest two specific changes Priya could make to improve her boat's stability.",
+        "options": [],
+        "expected_elements": [],
+        "look_for": [
+          "Identifies a specific structural or material feature of Ramesh's boat that improved stability (e.g., heavier base using clay lowers the centre of gravity / keeps the boat from tipping; flat cardboard spreads weight).",
+          "Links Priya's flipping problem to a weakness in her design (e.g., flat paper is too light at the base, no weight to anchor the bottom).",
+          "Proposes two distinct, actionable improvements grounded in the chapter's activity evidence (e.g., add clay or a heavier material to the bottom; widen the base; fold up the sides to form a hull shape).",
+          "Uses comparative language to connect observations from the exhibition to the proposed changes (e.g., 'like Ramesh's boat, Priya could…').",
+          "Response is coherent, logically ordered, and shows that the student draws on their own testing experience rather than general knowledge."
+        ],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "performance_task": false,
+        "visual_stimulus": "",
+        "annotation": "This is an evidence-based reasoning item. Award high credit when improvements are explicitly tied to observed evidence from the boat activity rather than guessed. Do not penalise use of everyday vocabulary in place of technical terms (e.g., 'heavy at the bottom' instead of 'low centre of gravity'). Suggested improvements are acceptable as long as they are achievable with classroom materials — regional variation in available materials is acceptable.",
+        "cognitive_demand": "Evaluation",
+        "period_ref": [
+          7
+        ],
+        "chapter_section": "Floating and Sinking",
+        "implied_lo": "Students can compare the performance of self-made objects, identify strengths and limitations, and propose evidence-based improvements.",
+        "competency": {
+          "c_code": "C-7.2",
+          "competency_text": "Gains familiarity with disciplinary core ideas in the natural sciences, as well as in engineering, technology, and applications of science, which reflect the content that will be learned across subject areas in later Grades"
+        },
+        "guide": {
+          "look_for": [
+            "Identifies a specific structural or material feature of Ramesh's boat that improved stability (e.g., heavier base using clay lowers the centre of gravity / keeps the boat from tipping; flat cardboard spreads weight).",
+            "Links Priya's flipping problem to a weakness in her design (e.g., flat paper is too light at the base, no weight to anchor the bottom).",
+            "Proposes two distinct, actionable improvements grounded in the chapter's activity evidence (e.g., add clay or a heavier material to the bottom; widen the base; fold up the sides to form a hull shape).",
+            "Uses comparative language to connect observations from the exhibition to the proposed changes (e.g., 'like Ramesh's boat, Priya could…').",
+            "Response is coherent, logically ordered, and shows that the student draws on their own testing experience rather than general knowledge."
+          ]
+        }
+      },
+      {
+        "question_type": "OPEN_TASK",
+        "question_text": "",
+        "options": [],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "Part A — Ravi notices his spinner slows down and stops. Write two questions he could ask his teacher about this. Part B — Look at the list of objects below and classify each as a Floater or a Sinker in water. Write each object's name in the correct column of the table.\n\nObjects: Wax, Marble, Thermocol, Candle, Coin, Cork, Leaf, Eraser, Spoon, Ice-cube, Potato, Tomato, Pumpkin, Lemon\n\n| Floaters | Sinkers |\n|----------|---------|\n|          |         |",
+        "scaffold": "Part A:\nQuestion 1: _______________________________________________\nQuestion 2: _______________________________________________\n\nPart B:\nFor each object, think: Is it light and spread out, or heavy and compact? Then place it in the correct column.",
+        "format_of_output": [
+          "Two written inquiry questions (Part A)",
+          "Completed two-column classification table with all 14 objects sorted (Part B)"
+        ],
+        "performance_task": false,
+        "visual_stimulus": "",
+        "annotation": "Part A — Accept any scientifically meaningful question about why the spinner slows or stops; questions do not need to use technical vocabulary. Sample acceptable questions: 'Why does the spinner slow down on its own?', 'What would happen if I spun it on a smoother surface?', 'Does the weight of the spinner affect how long it spins?'. Part B — Expected floaters: Wax, Thermocol, Candle, Cork, Leaf, Ice-cube, Tomato, Pumpkin, Lemon. Expected sinkers: Marble, Coin, Eraser, Spoon, Potato. Note: Some items (lemon, potato, tomato) may vary with variety, freshness, or salinity of water — if a student's classification differs and they can give a reason, accept it. Regional variation note: whether a lemon, tomato, or potato floats or sinks can depend on variety and freshness; regionally varied answers supported by a brief reason are acceptable.",
+        "cognitive_demand": "Analysis",
+        "period_ref": [
+          8
+        ],
+        "chapter_section": "Let us reflect",
+        "implied_lo": "Students can formulate inquiry questions about an observed phenomenon and apply knowledge of physical behaviour to classify and reason about unfamiliar objects.",
+        "competency": {
+          "c_code": "C-1.3",
+          "competency_text": "Asks questions and makes predictions about simple patterns (season change, food chain, phases of the moon, movement of stars and planets, shapes of trees, plants, leaves, and flowers, rituals, celebrations) observed in the immediate environment"
+        },
+        "guide": {
+          "what_this_demonstrates": "Whether the student can generate genuine inquiry questions about a physical phenomenon (spinning) they observed, and whether they can apply the chapter's float-or-sink framework independently to classify objects they did not test in class.",
+          "reading_the_scaffold": "Part A scaffold prompts two distinct questions — check that both questions are meaningfully different from each other and genuinely open (not yes/no). Part B scaffold reminds students of the shape-and-compactness heuristic developed in the aluminium-foil activity.",
+          "strong_vs_weak_markers": "Strong: Part A questions target a specific variable (friction, surface, weight of spinner) rather than restating the observation; Part B table is fully completed with no objects left unclassified. Weak: Part A questions are restatements ('Why did it stop?') without any variable; Part B has several objects missing or placed without apparent reasoning.",
+          "inclusivity": "Students who cannot write full sentences for Part A may dictate their questions to the teacher. For Part B, a student who cannot write may point to or verbally state the category for each object. Accept oral responses as equivalent.",
+          "format_type": "Written questions + classification table",
+          "format_rationale": "The two parts together cover both strands of the implied_lo — question-formulation (Part A) and knowledge-application classification (Part B) — in a single executably short session."
+        }
+      }
+    ],
+    "input_tokens": 8938,
+    "output_tokens": 6272,
+    "cost_inr": 11.1222,
+    "assess_input_tokens": 7515,
+    "assess_output_tokens": 6042,
+    "assess_cost_inr": 10.4121
+  }
+}

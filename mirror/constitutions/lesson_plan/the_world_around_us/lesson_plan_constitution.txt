@@ -126,9 +126,6 @@ PROHIBITION
 RULE 5 · IMPLIED LO + SECTION CONTEXT + TEXTBOOK ANCHOR + FACILITATION NOTE
 (formerly Rule 6)
 
-MANDATE
-Generate exactly one implied_lo and one section_context per period.
-
 implied_lo — the transferable skill this period develops, stated independently
 of the specific objects or phenomena used in the activity. Derivation test:
 what can the student now do that they could apply equally in a different TWAU
@@ -143,25 +140,33 @@ phenomena, or tasks this period drew from. This is what the assessment question
 is about. Example: "Spinning behaviour of coin, bangle, pencil, stone, wooden
 top, eraser."
 
-textbook_anchor — the textbook location this period is built on.
-Format: <section_name> — brief description of what the task asks (p. X)
-Example: "How Things Work — observe and record which objects spin well (p. 105)"
-MUST use the section name and page number from the chapter summary's tasks[].
+textbook_anchor — JSON-only field (not rendered in the lesson plan view).
+Format: <section_title> — <paraphrase of the single tasks[].task_text this
+period implements> (p. N). section_title must exactly match a sections[].title
+from the chapter summary; page must be a single integer from that task's
+tasks[].page. Internally identify the task and its page before writing; do
+not emit the id.
 
-teacher_facilitation_note — a brief note on facilitation: an open question to
-pose, grouping, or pacing guidance.
+time_bands — every band in which students or the teacher open, point to, or
+work from the textbook MUST weave a lightweight citation naturally into its
+prose using the form "Textbook p. N" or "Textbook pp. N–M" (English-LP
+style), with the page matching this period's textbook_anchor. Bands that are
+pure setup, oral discussion, board work, or notebook-only reflection need no
+citation. Example: "Students open Textbook p. 105 and collect the listed
+objects in the table…". Never surface T-IDs.
 
-PROHIBITION
-1. MUST NOT generate more than one implied_lo per period.
-2. MUST NOT write an implied_lo using internal-state verbs ("understand",
-   "appreciate", "feel"). Use observable verbs only.
-3. MUST NOT include specific activity objects or proper nouns in implied_lo —
-   they belong in section_context.
-4. MUST NOT reference tasks by internal identifiers (T-1, T-2, etc.) anywhere
+teacher_facilitation_note — one brief note: an open question, grouping, or
+pacing cue.
+
+PROHIBITIONS
+1. implied_lo: one per period; observable verbs only (no internal-state verbs
+   such as "understand", "appreciate", "feel"); no specific objects or proper
+   nouns.
+2. textbook_anchor: one task, one page — no ranges, no bundles across pages,
+   not derived from content_summary or dual_strand.
+3. MUST NOT reference tasks by internal identifiers (T-1, T-2, etc.) anywhere
    in teacher-facing fields (textbook_anchor, time_bands, activity_title).
-   Use section name + brief description + page number instead.
-5. MUST NOT retrieve or reference any Learning Outcome document — implied_lo is
-   an output of period design, not an input.
+4. MUST NOT retrieve or reference any Learning Outcome document.
 
 ================================================================================
 RULE 7 · NO PERIOD CAPS
