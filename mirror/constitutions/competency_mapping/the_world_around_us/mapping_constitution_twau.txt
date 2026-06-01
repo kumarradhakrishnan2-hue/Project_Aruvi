@@ -76,7 +76,7 @@ reading and architectural container identification.
 
 ----------------------------------------------------------------------
 
-RULE 4 - Flattened Weight (TWAU departure from Social Sciences)
+RULE 4 - Flattened Weight and Hard Cap (TWAU departure from Social Sciences)
 
 Every C-code that passes Pass 2 (Rule 2) and survives Rule 3 receives
 Weight 1 (Present). There is NO Weight 3 / Weight 2 distinction, NO
@@ -84,8 +84,34 @@ dissolution test, NO sub-discipline restriction, NO positional tie-break,
 and NO proportional-emphasis (Rule-4-style) hierarchy. All matched C-codes
 are treated at comparable depth.
 
-A chapter typically yields 3 to 5 matched C-codes. chapter_weight equals the
-count of matched C-codes (since every weight is 1).
+HARD CAP: A chapter MUST yield no more than 6 matched C-codes. If the
+two-pass process produces more than 6 candidates, apply the following
+prioritisation to reduce to 6 (or fewer):
+
+  Priority 1 — THEMATIC SPINE: The C-code whose CG directly names the
+    chapter's central natural phenomenon or system (e.g. C-2.1 for a water
+    chapter, C-4.1 for a biodiversity chapter). Accept the single strongest
+    spine code; do not accept a second spine code on the same subject.
+
+  Priority 2 — DEDICATED SECTION: C-codes developed by an entire named
+    section of the chapter (not a single activity). Prefer these over codes
+    supported by only one task or one sidebar.
+
+  Priority 3 — MULTI-SECTION SPREAD: Among remaining candidates, prefer
+    C-codes whose sections[] spans two or more sections over those confined
+    to one section.
+
+  Priority 4 — EXPLICIT CG NAMING: If the C-code's own definition explicitly
+    names the chapter's content (e.g. "water cycle", "food chain",
+    "rainwater"), prefer it over a code that matches only by general category.
+
+  Tiebreak — DROP OVERLAP: When two C-codes cover substantially the same
+    cognitive operation (e.g. C-6.1 inquiry and C-7.1 scientific method;
+    C-1.1 observe natural components and C-4.1 observe biodiversity), retain
+    the one with the stronger architectural container and drop the other.
+
+chapter_weight equals the final count of matched C-codes (≤ 6, since all
+weights are 1).
 
 Every matched C-code also carries its sections[] (Rule 2): the summary section
 titles it develops. Weight does not vary, but section coverage does — and that

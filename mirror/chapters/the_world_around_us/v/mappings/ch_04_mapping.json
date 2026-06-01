@@ -1,0 +1,91 @@
+{
+  "chapter_number": 4,
+  "chapter_title": "Our School—A Happy Place",
+  "grade": "v",
+  "stage": "preparatory",
+  "subject": "the_world_around_us",
+  "effort_index": 17.5,
+  "competencies": [
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.4",
+      "competency_text": "Explains the functioning of local institutions (family, school, bank/post office, market, and panchayat) in different forms (story, drawing, tabulating data, reports), and analyses their roles",
+      "weight": 1,
+      "justification": "The entire chapter is architecturally framed around the school as a local institution. Students analyse its functioning across five explorer domains (water, electricity, waste, greenery, traffic), map the school campus in Activity 1, discuss what makes it safe and happy, and extend their understanding to civic responsibilities in Traffic Signs and Fire Safety. Multiple sections compel students to explain the school's functioning and propose improvements.",
+      "sections": [
+        "Green School",
+        "Be a School Explorer!",
+        "Waste Management",
+        "Let Us be Cool!",
+        "Dripping Water",
+        "Greenery Around Us",
+        "Traffic Signs",
+        "Fire Safety",
+        "What We do Matters!",
+        "Let us reflect"
+      ]
+    },
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.1",
+      "competency_text": "Identifies natural and humanmade systems that support their lives (water supply, water cycle, river flow systems, seasons, life cycle of plants and animals, food, household items, transport, communication, electricity in the home)",
+      "weight": 1,
+      "justification": "Three dedicated sections compel identification of human-made systems: Waste Management (waste segregation system — dry/wet bins, sanitation workers, recyclers as a system supporting community health); Let Us be Cool! (electricity use — lights, fans — and natural ventilation as systems governing thermal comfort); Dripping Water (water supply system and the Jal Shakti Abhiyan campaign for water conservation).",
+      "sections": [
+        "Waste Management",
+        "Let Us be Cool!",
+        "Dripping Water"
+      ]
+    },
+    {
+      "cg": "CG-3",
+      "c_code": "C-3.2",
+      "competency_text": "Discusses how to prepare for emergency situations (smoke, fire, small injuries, burns, electrical safety, unseasonal rains, fallen trees) based on discussions with family and community, or personal experiences",
+      "weight": 1,
+      "justification": "Fire Safety is a dedicated section explicitly covering smoke and fire emergency preparedness. Students locate the school's fire extinguisher and assembly point, write what to do if they smell smoke, and practise a structured six-step fire drill — compelled discussion and practice of fire emergency preparedness exactly as the C-code defines.",
+      "sections": [
+        "Fire Safety"
+      ]
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.4",
+      "competency_text": "Demonstrates how natural resources can be shared, maintained, and conserved (trees, use of rainwater, benefits of millets)",
+      "weight": 1,
+      "justification": "Three sections architecturally compel demonstration of natural resource conservation. Dripping Water quantifies water wastage from a drip and discusses conservation strategies including rainwater collection (the C-code explicitly names 'use of rainwater'). Greenery Around Us identifies trees on campus, measures their cooling effect, and plans a butterfly garden — maintaining trees as natural resources. Waste Management teaches material recovery and recycling as conservation of resources through traditional recyclers.",
+      "sections": [
+        "Waste Management",
+        "Dripping Water",
+        "Greenery Around Us"
+      ]
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.7",
+      "competency_text": "Learns about basic social and behavioural norms, values, and dispositions that benefit our social and natural environments and that help our society function smoothly (using dustbins, standing in queues, conserving water, using public transportation, keeping one's environment clean, always helping others in need regardless of background)",
+      "weight": 1,
+      "justification": "The C-code's own definition explicitly names using dustbins, standing in queues, and conserving water — all three are architecturally compelled across multiple sections of this chapter. Waste Management covers segregation and bin use; Dripping Water covers water conservation; Traffic Signs addresses civic behaviour near school; What We do Matters! is entirely dedicated to evaluating scenarios of queue-skipping, littering, vandalism and teasing; Let us reflect asks students to extend these norms to home and community.",
+      "sections": [
+        "Waste Management",
+        "Dripping Water",
+        "Traffic Signs",
+        "What We do Matters!",
+        "Let us reflect"
+      ]
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.1",
+      "competency_text": "Performs simple inquiry related to specific questions independently or in groups",
+      "weight": 1,
+      "justification": "The School Explorer framework is the pedagogical spine of the chapter — five inquiry teams each investigate a specific question about the school environment and report findings. Three additional activities reinforce inquiry: Activity 3 (comparing heat absorption of black and white tiles), Activity 4 (measuring drip rate to quantify water wastage), and Activity 5 (temperature measurement under tree versus Sun). All are structured as simple inquiries with specific questions performed independently or in groups.",
+      "sections": [
+        "Be a School Explorer!",
+        "Let Us be Cool!",
+        "Dripping Water",
+        "Greenery Around Us"
+      ]
+    }
+  ],
+  "chapter_weight": 6
+}

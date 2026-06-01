@@ -1,0 +1,51 @@
+{
+  "chapter_number": 1,
+  "chapter_title": "Water — The Essence of Life",
+  "grade": "v",
+  "stage": "preparatory",
+  "subject": "the_world_around_us",
+  "effort_index": 15.5,
+  "competencies": [
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.1",
+      "competency_text": "Identifies natural and humanmade systems that support their lives (water supply, water cycle, river flow systems, seasons, life cycle of plants and animals, food, household items, transport, communication, electricity in the home)",
+      "weight": 1,
+      "justification": "The C-code explicitly names water cycle and river flow systems — the architectural spine of this chapter. The 'Water Cycle' section develops the water cycle through Activity 3 (sealed bag model). The 'Surface Water' section develops river flow systems through Activity 6 (mustard seed model) and Activity 7 (map of Indian rivers). The 'Groundwater' section develops groundwater as a humanmade-access system (wells, borewells).",
+      "sections": ["Water Cycle", "Groundwater", "Surface Water"]
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1",
+      "competency_text": "Observes and describes diversity among plants, and birds and animals in their immediate environment (shape, sounds, food habits, growth, habitat)",
+      "weight": 1,
+      "justification": "The 'Life in Water' section is architecturally dedicated to observing and describing freshwater biodiversity. The information card presents 8 organisms with habitat, food habits, and physical features. Activity 8 (field visit) asks students to record beak/mouth, movement, and draw plants with local names — directly matching the C-code's demand for observation of shape, food habits, and habitat.",
+      "sections": ["Life in Water"]
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.4",
+      "competency_text": "Demonstrates how natural resources can be shared, maintained, and conserved (trees, use of rainwater, benefits of millets)",
+      "weight": 1,
+      "justification": "The C-code explicitly names 'use of rainwater'. Activity 5 ('Groundwater') asks students to identify which surface type aids groundwater recharge, directly demonstrating rainwater conservation. Task T-20 in 'Let us reflect' asks students to design a water-conserving house or school — a creative demonstration of conservation practice.",
+      "sections": ["Groundwater", "Let us reflect"]
+    },
+    {
+      "cg": "CG-5",
+      "c_code": "C-5.3",
+      "competency_text": "Reads simple maps of city, state, and country to identify natural and humanmade features (well, lake, post office, school, hospital) with reference to symbols and directions",
+      "weight": 1,
+      "justification": "Activity 7 ('Surface Water') uses a map of India showing major rivers. Students observe river flow directions and fill in a table identifying which rivers flow towards the Bay of Bengal and which towards the Arabian Sea — a dedicated map-reading task on a country map using directions and natural features.",
+      "sections": ["Surface Water"]
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.1",
+      "competency_text": "Performs simple inquiry related to specific questions independently or in groups",
+      "weight": 1,
+      "justification": "The inquiry strand is the architectural backbone of the chapter across five sections: Activity 2 (states of water — observe and infer), Activity 3 (water cycle bag — observe, wonder, explain), Activity 4 (soil percolation — observe), Activity 6 (mustard seed river model — investigate), Activity 9 (wax paper and water — observe and explain). Each activity frames a specific question and requires students to investigate and record findings.",
+      "sections": ["Water has Different Forms", "Water Cycle", "Groundwater", "Surface Water", "Life in Water"]
+    }
+  ],
+  "chapter_weight": 5
+}
