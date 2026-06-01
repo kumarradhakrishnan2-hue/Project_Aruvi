@@ -4,7 +4,7 @@
   "grade": "iii",
   "stage": "preparatory",
   "subject": "the_world_around_us",
-  "effort_index": 11.5,
+  "effort_index": 9.5,
   "competencies": [
     {
       "cg": "CG-1",
@@ -12,7 +12,9 @@
       "competency_text": "Describes relationships (including between humans and animals/nature) and traditions (art forms, celebrations, festivals) in the family and community",
       "weight": 1,
       "justification": "The 'Reuse' section presents the traditional practice of grandparents making quilts from old sarees and bags from old cloth as an intergenerational cultural tradition of resource conservation — a family/community tradition directly linked to waste reduction.",
-      "sections": ["Reuse"]
+      "sections": [
+        "Reuse"
+      ]
     },
     {
       "cg": "CG-1",
@@ -20,7 +22,9 @@
       "competency_text": "Uses local materials to create simple objects (family tree, envelopes, origami animals) on their own for display or use in classroom processes",
       "weight": 1,
       "justification": "Activity 4 in the 'Reuse' section provides step-by-step instructions to make a paper bag using only newspaper (no scissors, no glue), and Activity 5 asks students to create a gift item from waste materials — directly paralleling the C-1.5 exemplars of envelopes and origami.",
-      "sections": ["Reuse"]
+      "sections": [
+        "Reuse"
+      ]
     },
     {
       "cg": "CG-2",
@@ -28,7 +32,9 @@
       "competency_text": "Identifies natural and humanmade systems that support their lives (water supply, water cycle, river flow systems, seasons, life cycle of plants and animals, food, household items, transport, communication, electricity in the home)",
       "weight": 1,
       "justification": "The 'Separate Different Types of Waste' section introduces the green bin (organic waste → compost → soil nutrients) as a natural decomposition system and the blue bin (metal, glass, plastic, paper → recycling) as a humanmade system for waste processing — students classify materials into these systems.",
-      "sections": ["Separate Different Types of Waste"]
+      "sections": [
+        "Separate Different Types of Waste"
+      ]
     },
     {
       "cg": "CG-3",
@@ -36,7 +42,9 @@
       "competency_text": "Describes the basic safety needs and protection (health and hygiene, food, water, shelter, precautions, awareness of emergency situations, abuse, and unsafe situations) of humans, birds, and animals",
       "weight": 1,
       "justification": "The 'Ways to Manage Waste' section explicitly describes how unmanaged waste causes disease in humans (mosquitoes, wastewater carrying germs), kills animals (cows dying from eating plastic), and releases harmful gases from burning plastic — framing waste management as a health and safety necessity.",
-      "sections": ["Ways to Manage Waste"]
+      "sections": [
+        "Ways to Manage Waste"
+      ]
     },
     {
       "cg": "CG-4",
@@ -44,7 +52,10 @@
       "competency_text": "Demonstrates how natural resources can be shared, maintained, and conserved (trees, use of rainwater, benefits of millets)",
       "weight": 1,
       "justification": "The 'Reduce' section demonstrates conservation by avoiding packaged goods, using cloth bags instead of plastic, and buying only what is needed. The 'Reuse' section demonstrates resource conservation through reusing paper, refilling steel/copper bottles, and repurposing old materials — both sections architecturally develop conservation as a practiced disposition.",
-      "sections": ["Reduce", "Reuse"]
+      "sections": [
+        "Reduce",
+        "Reuse"
+      ]
     },
     {
       "cg": "CG-4",
@@ -52,7 +63,11 @@
       "competency_text": "Learns about basic social and behavioural norms, values, and dispositions that benefit our social and natural environments and that help our society function smoothly (using dustbins, standing in queues, conserving water, using public transportation, keeping one's environment clean, always helping others in need regardless of background)",
       "weight": 1,
       "justification": "The chapter's central purpose is developing the civic norm of waste management: 'Separate Different Types of Waste' teaches correct use of green and blue dustbins (explicitly named in the C-code), 'A Place of Pride' models communities that have achieved cleanliness, and 'Keeping our Surroundings Clean' asks children to pledge and practise these norms.",
-      "sections": ["Separate Different Types of Waste", "A Place of Pride", "Keeping our Surroundings Clean"]
+      "sections": [
+        "Separate Different Types of Waste",
+        "A Place of Pride",
+        "Keeping our Surroundings Clean"
+      ]
     },
     {
       "cg": "CG-6",
@@ -60,7 +75,10 @@
       "competency_text": "Performs simple inquiry related to specific questions independently or in groups",
       "weight": 1,
       "justification": "The 'Reduce' section (Draw activity: find out how waste gets to identified spots) and 'A Place of Pride' (Find out tasks: ask elders about clean villages/towns and about the Swachh Bharat Mission) architecturally require children to perform community-based inquiry and report findings.",
-      "sections": ["Reduce", "A Place of Pride"]
+      "sections": [
+        "Reduce",
+        "A Place of Pride"
+      ]
     },
     {
       "cg": "CG-6",
@@ -68,7 +86,9 @@
       "competency_text": "Presents observations and findings through different creative modes (drawing, diagram, poem, play, skit, oral and written expression)",
       "weight": 1,
       "justification": "The 'Keeping our Surroundings Clean' section's 'Let us reflect' tasks require students to present through multiple modes: written lists (Write tasks), drawing (cleaning tools and a poster of a clean community), roleplay/enactment (clean town vs dirty town), and oral/reflective discussion (Think, Reflect and Share).",
-      "sections": ["Keeping our Surroundings Clean"]
+      "sections": [
+        "Keeping our Surroundings Clean"
+      ]
     }
   ],
   "chapter_weight": 8

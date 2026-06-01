@@ -104,7 +104,7 @@ Write one JSON record per chapter to:
   "grade": "iv",
   "stage": "preparatory",
   "subject": "the_world_around_us",
-  "effort_index": 15.0,
+  "effort_index": 12.0,
   "competencies": [
     {
       "cg": "CG-1",
@@ -153,7 +153,7 @@ to the next chapter.
 After each chapter, print one confirmation line:
 
 ```
-ch_07 | Solids, Liquids and Gases | C-codes: C-1.1, C-2.1, C-4.4, C-6.1 | chapter_weight: 4 | EI: 15.0
+ch_07 | Solids, Liquids and Gases | C-codes: C-1.1, C-2.1, C-4.4, C-6.1 | chapter_weight: 4 | EI: 12.0
 ```
 
 If any chapter summary was missing, list all skipped chapters at the end.

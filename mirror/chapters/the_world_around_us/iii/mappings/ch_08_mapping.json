@@ -4,7 +4,7 @@
   "grade": "iii",
   "stage": "preparatory",
   "subject": "the_world_around_us",
-  "effort_index": 5.0,
+  "effort_index": 4.0,
   "competencies": [
     {
       "cg": "CG-1",
@@ -12,7 +12,10 @@
       "competency_text": "Describes relationships (including between humans and animals/nature) and traditions (art forms, celebrations, festivals) in the family and community",
       "weight": 1,
       "justification": "'My Favourite Food' introduces the Chhappan Bhog tradition — 56 food varieties prepared on festivals and auspicious occasions representing six tastes — as a cultural practice in the family and community. 'Let us reflect' asks students to write a recipe from their family and describe hospitality practices when guests visit.",
-      "sections": ["My Favourite Food", "Let us reflect"]
+      "sections": [
+        "My Favourite Food",
+        "Let us reflect"
+      ]
     },
     {
       "cg": "CG-2",
@@ -20,7 +23,9 @@
       "competency_text": "Identifies natural and humanmade systems that support their lives (water supply, water cycle, river flow systems, seasons, life cycle of plants and animals, food, household items, transport, communication, electricity in the home)",
       "weight": 1,
       "justification": "'Where does food come from?' systematically categorises food by its natural sources — plant parts (roots, leaves, stems, seeds, fruits) and animal-based products (milk, curd, ghee, eggs, meat) — directly identifying the natural systems (plants and animals) that provide food and support life.",
-      "sections": ["Where does food come from?"]
+      "sections": [
+        "Where does food come from?"
+      ]
     },
     {
       "cg": "CG-2",
@@ -28,7 +33,9 @@
       "competency_text": "Describes the relationship between the natural environment and cultural practices in their immediate environment (nature of work, food, festivals, traditions)",
       "weight": 1,
       "justification": "'We Eat Different Things' explicitly describes how seasonal availability of produce shapes eating practices — kulfi and tender coconut in summer, soups and stew in winter — and how regional natural environments produce different cuisines across India, directly linking the natural environment to food-based cultural practices.",
-      "sections": ["We Eat Different Things"]
+      "sections": [
+        "We Eat Different Things"
+      ]
     },
     {
       "cg": "CG-4",
@@ -36,7 +43,10 @@
       "competency_text": "Observes and describes cultural diversity in their immediate environment (food, clothing, games, different seasons, festivals related to harvest and sowing)",
       "weight": 1,
       "justification": "'My Favourite Food' and 'We Eat Different Things' require students to draw and share diverse homemade food dishes, discuss Chhappan Bhog (festival food tradition with six tastes), and identify that people in different parts of India eat different foods — all directly observing and describing food-based cultural diversity.",
-      "sections": ["My Favourite Food", "We Eat Different Things"]
+      "sections": [
+        "My Favourite Food",
+        "We Eat Different Things"
+      ]
     },
     {
       "cg": "CG-4",
@@ -44,7 +54,9 @@
       "competency_text": "Learns about basic social and behavioural norms, values, and dispositions that benefit our social and natural environments and that help our society function smoothly (using dustbins, standing in queues, conserving water, using public transportation, keeping one's environment clean, always helping others in need regardless of background)",
       "weight": 1,
       "justification": "'Let us reflect' — Discuss task 4 asks students to discuss why it is important to avoid wasting food and find ways to reduce food waste at home — a behavioural norm benefiting the natural environment. The 'Eating Together' activity (D) establishes sharing food as a social value.",
-      "sections": ["Let us reflect"]
+      "sections": [
+        "Let us reflect"
+      ]
     },
     {
       "cg": "CG-6",
@@ -52,7 +64,9 @@
       "competency_text": "Presents observations and findings through different creative modes (drawing, diagram, poem, play, skit, oral and written expression)",
       "weight": 1,
       "justification": "'Let us reflect' — B.Write requires students to write a recipe; C.Draw requires drawing three thalis (morning, afternoon, night meals) with labelled food items — presenting food knowledge through written recipes and visual drawings.",
-      "sections": ["Let us reflect"]
+      "sections": [
+        "Let us reflect"
+      ]
     }
   ],
   "chapter_weight": 6

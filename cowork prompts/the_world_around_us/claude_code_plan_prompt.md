@@ -68,7 +68,7 @@ The summary is JSON format (same as mathematics and english — `.json` not `.tx
   "conceptual_demand": 3,
   "project_load": 0,
   "map_work": 0,
-  "effort_index": 15.0,
+  "effort_index": 12.0,
   "dual_strand": {
     "natural": "Properties and states of matter",
     "human_cultural": "Traditional and everyday uses of solids, liquids, gases"
@@ -78,10 +78,10 @@ The summary is JSON format (same as mathematics and english — `.json` not `.tx
 
 No `dominant_cg_codes` field. No `chapter_weight` field (that belongs in the mapping JSON). No `indian_knowledge_element` field (IKS content is captured naturally within `section.content_summary` — it does not need a dedicated field).
 
-Effort index formula:
-`effort_index = (conceptual_demand × 3) + activity_count + (project_load × 1.5) + map_work`
+Effort index formula (authoritative version lives in `step_1_chapter_summary.md`):
+`effort_index = (conceptual_demand × 2) + (task_load × 2) + (project_load × 1.5) + map_work`
 
-- `conceptual_demand`: integer 1–5 (1 = concrete/Grade III, 5 = abstract/Grade V)
+- `conceptual_demand`: integer 1–3 (1 = concrete/Grade III, 3 = abstract/Grade V) — aligned to all other subjects
 - `activity_count`: count of named hands-on activities across all sections
 - `project_load`: 0 (none), 1 (light multi-day observation), 2 (substantial artefact construction)
 - `map_work`: 0 (none), 1 (map reading), 2 (map drawing or regional comparison)
@@ -95,7 +95,7 @@ Effort index formula:
   "grade": "iv",
   "stage": "foundational",
   "subject": "the_world_around_us",
-  "effort_index": 15.0,
+  "effort_index": 12.0,
   "competencies": [
     {
       "cg": "CG-1",

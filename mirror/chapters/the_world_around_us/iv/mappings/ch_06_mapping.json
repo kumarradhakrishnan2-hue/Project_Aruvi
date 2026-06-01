@@ -4,7 +4,7 @@
   "grade": "iv",
   "stage": "preparatory",
   "subject": "the_world_around_us",
-  "effort_index": 16.0,
+  "effort_index": 11.0,
   "competencies": [
     {
       "cg": "CG-2",
@@ -12,7 +12,10 @@
       "competency_text": "Identifies natural and humanmade systems that support their lives (water supply, water cycle, river flow systems, seasons, life cycle of plants and animals, food, household items, transport, communication, electricity in the home)",
       "weight": 1,
       "justification": "The 'Journey of the Grains' section compels students to trace the 12-step journey of rice/wheat from farm to plate, identifying each natural input (soil, water, sunlight, earthworms) and human agent (farmer, cattle, mill worker, shopkeeper, cook) as components of the food production system. Activity 2 asks students to tick which elements assist a grain's journey. In 'Let us reflect', students reason about what would happen if each element (soil, water, sunlight, cattle, earthworm, farmer, shopkeeper, cook) were missing — directly reinforcing identification of the interdependent food system.",
-      "sections": ["Journey of the Grains", "Let us reflect"]
+      "sections": [
+        "Journey of the Grains",
+        "Let us reflect"
+      ]
     },
     {
       "cg": "CG-2",
@@ -20,7 +23,9 @@
       "competency_text": "Describes the relationship between the natural environment and cultural practices in their immediate environment (nature of work, food, festivals, traditions)",
       "weight": 1,
       "justification": "The 'Journey of the Grains' section includes a 'Do you know?' box that directly describes Indian harvest festivals — Makar Sankranti, Akshay Tritya, Raja Utsav, Onam, and Lohri — as cultural practices expressing gratitude to 'Mother Nature' for food. The section architecturally connects natural food production to these cultural traditions, requiring students to engage with the relationship between the natural environment (food grown from soil, water, sunlight) and cultural practices (harvest festivals and gratitude rituals).",
-      "sections": ["Journey of the Grains"]
+      "sections": [
+        "Journey of the Grains"
+      ]
     },
     {
       "cg": "CG-3",
@@ -28,7 +33,9 @@
       "competency_text": "Describes the basic safety needs and protection (health and hygiene, food, water, shelter, precautions, awareness of emergency situations, abuse, and unsafe situations) of humans, birds, and animals",
       "weight": 1,
       "justification": "The 'Feeling Safe' section is architecturally dedicated to awareness of unsafe situations and abuse. Students classify pictures as safe or unsafe touch situations (Activity 7), write what they would do if a touch made them uncomfortable, identify who they would tell in an unsafe situation, and list scenarios where they would firmly say 'No'. This compels students to describe protection needs and develop awareness of abuse and unsafe situations as defined in C-3.1.",
-      "sections": ["Feeling Safe"]
+      "sections": [
+        "Feeling Safe"
+      ]
     },
     {
       "cg": "CG-4",
@@ -36,7 +43,10 @@
       "competency_text": "Learns about basic social and behavioural norms, values, and dispositions that benefit our social and natural environments and that help our society function smoothly (using dustbins, standing in queues, conserving water, using public transportation, keeping one's environment clean, always helping others in need regardless of background)",
       "weight": 1,
       "justification": "The 'Valuing Food' section architecturally builds the behavioural norm of not wasting food: students track their own consumption and waste over seven days (Activity 4) and write responses about what to do when offered excess food or food they dislike. In 'Let us reflect', students plan specific daily habits — wake up early, yoga, balanced diet, exercise, less screen time, reading, peaceful sleep — as deliberate social and personal behavioural norms for healthy living. Both sections require the student to internalise and plan prosocial, resource-respecting dispositions.",
-      "sections": ["Valuing Food", "Let us reflect"]
+      "sections": [
+        "Valuing Food",
+        "Let us reflect"
+      ]
     },
     {
       "cg": "CG-6",
@@ -44,7 +54,11 @@
       "competency_text": "Performs simple inquiry related to specific questions independently or in groups",
       "weight": 1,
       "justification": "Three sections independently compel structured simple inquiry: 'Valuing Food' (Activity 4) asks students to conduct a 7-day self-observation on food consumption and waste, recording data in a table; 'Enjoy Sports' (Activity 5) asks students to practice yoga poses for a week and record their observations; 'Sleep Well too!' (Activity 6) asks students to record sleep onset, wake time, duration, and their wellbeing for three consecutive days. Each activity is a complete inquiry cycle — question, observation, data collection, and personal finding.",
-      "sections": ["Valuing Food", "Enjoy Sports", "Sleep Well too!"]
+      "sections": [
+        "Valuing Food",
+        "Enjoy Sports",
+        "Sleep Well too!"
+      ]
     }
   ],
   "chapter_weight": 5

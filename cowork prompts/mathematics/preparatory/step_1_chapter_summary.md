@@ -4,15 +4,6 @@ Reads a Maths Mela chapter PDF for the **Preparatory stage (Grades III–V)**
 and writes a structured summary JSON. Cowork reads the PDF and writes the
 file directly. No API calls.
 
-**Why this is separate from the middle prompt.** Middle maths (Ganita
-Prakash) is built on numbered sections (§5.3), `Example N` worked examples,
-and `Figure it Out` exercise banks. Maths Mela has none of these. Its
-chapters are **named conceptual sections in textbook order**, moving
-concrete → pictorial → symbolic, with student tasks sitting under intent
-banners (*Let us Do / Think / Explore / Discuss / Play / Solve / Find /
-Make*). So the spine here is **section flow** — the chapter's own sections,
-walked in order — exactly like TWAU and Science prep, not the English
-fixed-spine model. **Do not use this prompt for Grade VI or above.**
 
 ## Paths
 
@@ -48,13 +39,14 @@ For each section, in order, record:
   blocks, number line, pan-balance, paper-folding), and where it sits on
   the concrete → pictorial → symbolic path. Anchor every sentence to the
   chapter. No outside content.
-- `section_goal` — one OR two values, in textbook order, from:
-  `recall` (count, name, identify, read a number/shape) ·
-  `reason` (compare, explain why, spot a pattern, estimate) ·
-  `apply` (compute, construct, convert, solve a problem). Two values only
-  when the prose names two acts in sequence (e.g. *introduces … then
-  applies*). Default is one.
 - `tasks` — array of the student tasks in this section (Step 3). `[]` if none.
+
+There is **no `section_goal`**. The middle-stage recall/reason/apply axis
+was a backwards-invention from middle's assessment structure and does not
+fit prep maths — a prep section interleaves several acts (explore, then
+reason, then practice) with no single dominant goal. The pedagogical and
+assessment signal lives at the **task** level, in each task's `intent`
+(Step 3). One field, two downstream uses, both pedagogy-grounded.
 
 ## Step 3 — Tasks (one per textbook instruction, in order)
 
@@ -68,29 +60,62 @@ For each section, in order, record:
 }
 ```
 
-`intent` is read from the banner's purpose, not its name (the same banner
-can serve different intents in different chapters):
+`intent` is decided by what the task **asks the student to do**, judged
+from its `description` — NOT by the banner name. The same banner serves
+different intents in different places (e.g. *Let us Do* opens a concept in
+one section and drills practice in another), so the banner alone never
+fixes the intent. Choose the single best-fit:
 
-| Banner | Usual intent |
+| intent | The task asks the student to… |
 |---|---|
-| Let us Do (concept entry) · Let us Make · Let us Explore | `explore` |
-| Let us Think · Let us Discuss · Let us Find · "Who am I" | `reason` |
-| Let us Do (consolidation) · numbered practice lists | `practice` |
-| Let us Play · games · puzzles (Magical Count, Number Hunt, Show and Tell) | `play` |
-| Let us Solve · word problems | `solve` |
+| `explore` | handle material, fold/build, observe, enter a new idea by doing (matchsticks, Dienes blocks, paper-folding, firki) |
+| `reason` | compare, estimate, explain why, spot/extend a pattern, deduce ("Who am I", "which is more and why") |
+| `practice` | consolidate a known idea by repetition (drill lists, fill-in, mark on number line) |
+| `play` | a game or puzzle for joyful practice (Magical Count, Number Hunt, Show and Tell, Flag game) |
+| `solve` | work a routine or word problem to an answer (computation, unit conversion) |
+
+Banner is only a starting hint, overridden by the description: *Let us
+Explore/Make* → often `explore`; *Let us Think/Discuss/Find* → often
+`reason`; *Let us Play* → `play`; *Let us Solve* → `solve`; *Let us Do* →
+`explore` or `practice` by the task.
+
+**Why `intent` matters (two downstream uses).** It is the load-bearing
+field of the prep pipeline:
+
+1. *Pedagogical method (LP).* Each intent maps to the NCF method whose
+   described purpose matches it, applied **per task** (prep periods mix
+   intents, so method is a task property, not a period property):
+   `explore` → Play-way / Inquiry · `reason` → Inductive ·
+   `solve` → Problem-solving · `practice` → meaningful practice ·
+   `play` → Play-way. Prep frequency (Play-way & Inductive MORE_OFTEN,
+   Deductive LESS_OFTEN) is honoured by this mapping.
+2. *Assessment axis.* Prep assessment is organised on the intent axis,
+   not recall/reason/apply. Assessable intents are `explore`, `reason`,
+   `practice`, `solve` — one item per assessable intent present in the
+   chapter's enacted tasks. **`play` is taught-only, never assessed**
+   (prelims: most games need not be assessed).
 
 Rules: one task per instruction; sub-parts roll into one task. Unnumbered
-prompts omit `Q<n>`. Never invent placeholder labels. `play` tasks are
-captured but flagged — the prelims note most need not be assessed.
+prompts omit `Q<n>`. Never invent placeholder labels.
 
-## Step 4 — Effort signals (count, do not estimate)
+## Step 4 — Effort signals (count from `tasks`, do not estimate)
 
-- `conceptual_demand` (1–3): 1 = recall/practice dominates (>60%);
-  2 = reasoning/multi-step dominates or even; 3 = open-ended/estimation ≥30%.
-- `activity_count` (int): hands-on / material-based tasks (`explore`, `play`, `make`).
-- `demo_count` (int): teacher-demonstrated only (Teacher's Note walkthroughs). Usually 0.
-- `exec_load` (0–2): multi-step computation/construction weight —
-  0 = single-step; 1 = 30–60%; 2 = >60%.
+Four prep-native signals. Counts are over all task objects in the chapter;
+"share" means that count ÷ total tasks. These feed the **preparatory**
+mapping constitution's effort-index formula — they are NOT the middle
+signals (`activity_count`/`demo_count` have no meaning at prep maths).
+
+- `conceptual_demand` (1–3): abstraction on the concrete→symbolic path.
+  1 = concrete handling / counting / naming dominates; 2 = comparison,
+  estimation, or place-value/unit reasoning dominates; 3 = multi-step
+  conversion or pattern-generalisation is a substantial share (≥30%).
+- `task_load` (0–3): discrete tier from total task count —
+  <10 → 0 · 10–19 → 1 · 20–29 → 2 · ≥30 → 3.
+- `exploration_load` (0–2): share of `explore` + `play` tasks
+  (hands-on / manipulative / game). 0 = <20% · 1 = 20–50% · 2 = >50%.
+  This is the prep-distinctive signal — concrete doing is the stage's core.
+- `procedural_load` (0–2): share of `solve` + `practice` tasks
+  (computation / conversion / drill). 0 = <20% · 1 = 20–50% · 2 = >50%.
 
 ## Step 5 — Write summary JSON
 
@@ -102,28 +127,27 @@ captured but flagged — the prelims note most need not be assessed.
   "chapter_number": <int>,
   "chapter_title": "<verbatim>",
   "sections": [
-    { "ref": "S1", "title": "...", "section_goal": ["recall"],
+    { "ref": "S1", "title": "...",
       "prose_summary": "...",
       "tasks": [ { "id": "T-1", "banner": "...", "intent": "...", "book_ref": "...", "description": "..." } ] }
   ],
   "conceptual_demand": 2,
-  "activity_count": 6,
-  "demo_count": 0,
-  "exec_load": 1
+  "task_load": 1,
+  "exploration_load": 2,
+  "procedural_load": 1
 }
 ```
 
-Rules: every `section_goal` is an array of length 1 or 2 (length 2 in
-textbook order). Every task's section appears in `sections`. Every task
-has a non-empty `book_ref`. `tasks` may be `[]` but `sections` may not.
+Rules: every task's section appears in `sections`. Every task has a
+non-empty `book_ref` and an `intent`. `tasks` may be `[]` but `sections`
+may not. No `section_goal` field.
 
 ## Step 6 — Confirmation line
 
-Goal tally counts each section by its **first-listed** goal (totals equal
-section count); append `· dual:N` if any section carries two goals.
+Tally tasks by `intent` across the chapter.
 
 ```
-ch_NN — "<title>" — sections: <N> — tasks: <T> — goals: recall×_ reason×_ apply×_ · dual:N — CD:_ AC:_ DC:_ EL:_
+ch_NN — "<title>" — sections: <N> — tasks: <T> — intents: explore×_ reason×_ practice×_ play×_ solve×_ — CD:_ TL:_ EXP:_ PROC:_
 ```
 
 ## Constraints
@@ -132,8 +156,8 @@ No API calls. No consulting LOs, Pedagogy, Syllabus, Assessment, or
 Position Papers. Stay strictly within the chapter PDF. Process chapters in
 order. UTF-8. Overwrite.
 
-Step 2 (competency mapping) is unchanged: run the existing
-`step_2_competency_mapping.md` against `cg_preparatory_mathematics.txt`.
+Next: run `step_2_competency_mapping.md` in this folder, governed by the
+**preparatory** mapping constitution (`mapping_constitution_mathematics_preparatory.txt`).
 Mapping stays **dynamic** (core CG + core/adjunct competencies + effort
-index) — there is no static spine→CG lookup for maths, because core
-linkages arise only from the per-chapter mapping pass.
+index from the four signals above) — there is no static spine→CG lookup
+for maths, because core linkages arise only from the per-chapter pass.

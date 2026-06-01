@@ -18,7 +18,7 @@ Specify grade and chapter scope. Subject fixed to `mathematics`,
 |------|------|
 | Summary (input) | `mnt/data/mirror/chapters/mathematics/{grade}/summaries/ch_NN_summary.json` |
 | CG document | `mnt/data/mirror/framework/mathematics/preparatory/cg_preparatory_mathematics.txt` |
-| Constitution | `mnt/data/mirror/constitutions/competency_mapping/mathematics/mapping_constitution_mathematics.txt` |
+| Constitution | `mnt/data/mirror/constitutions/competency_mapping/mathematics/mapping_constitution_mathematics_preparatory.txt` |
 | Output | `mnt/data/mirror/chapters/mathematics/{grade}/mappings/ch_NN_mapping.json` |
 
 ## Procedure
@@ -29,13 +29,12 @@ For each chapter:
    summary or any effort signal is missing, warn and skip.
 2. Apply constitution Rules 1–6 exactly against the **preparatory** CGs
    (CG-1…CG-5). Read the chapter's organising purpose from the summary's
-   `sections` (their `title`, `prose_summary`, `section_goal`) and `tasks`
+   `sections` (their `title`, `prose_summary`) and `tasks` (banner, intent, description)
    — there is no worked-example tier at prep, so justify core/adjunct from
    sections and tasks.
-3. Copy the four effort signals verbatim from the summary
-   (`conceptual_demand`, `activity_count`, `demo_count`, `exec_load`;
-   `demo_count` is usually 0). Compute `effort_index` with the Maths
-   weights from Rule 5.
+3. Copy the four prep effort signals verbatim from the summary
+   (`conceptual_demand`, `task_load`, `exploration_load`, `procedural_load`).
+   Compute `effort_index` with the preparatory weights from Rule 5.
 4. Write mapping JSON per the constitution schema, with `stage: "preparatory"`.
 5. Verify the written file:
    - `core_cg` is a valid CG-N in the **preparatory** CG document
@@ -45,7 +44,7 @@ For each chapter:
    - `dissolution_test` names an operation associated with `core_cg`
    - `effort_index` matches the formula; signals match the summary
 6. Confirmation line:
-   `ch_06 | core_cg: CG-1 | core: C-1.1, C-1.3 | adjunct: C-4.1 | EI: 12.5`
+   `ch_06 | core_cg: CG-1 | core: C-1.1, C-1.3 | adjunct: C-4.1 | EI: 11.0`
 
 At session end, list skipped chapters.
 

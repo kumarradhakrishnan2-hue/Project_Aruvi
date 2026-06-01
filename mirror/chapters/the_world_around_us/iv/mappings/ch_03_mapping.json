@@ -4,7 +4,7 @@
   "grade": "iv",
   "stage": "preparatory",
   "subject": "the_world_around_us",
-  "effort_index": 14.5,
+  "effort_index": 9.5,
   "competencies": [
     {
       "cg": "CG-1",
@@ -12,7 +12,10 @@
       "competency_text": "Observes and identifies the natural (insects, plants, birds, animals, geographical features, sun and moon, stars, planets, natural resources) and social (houses, relationships) components in their immediate environment",
       "weight": 1,
       "justification": "Activities 1, 4, and 5 in 'Animals in the Forest' require students to identify land animals and birds from illustrations, name bird species, and identify plant species from leaf pictures. 'Tiny Animals' requires naming insects from home surroundings and from illustrated examples.",
-      "sections": ["Animals in the Forest", "Tiny Animals"]
+      "sections": [
+        "Animals in the Forest",
+        "Tiny Animals"
+      ]
     },
     {
       "cg": "CG-1",
@@ -20,7 +23,10 @@
       "competency_text": "Describes relationships (including between humans and animals/nature) and traditions (art forms, celebrations, festivals) in the family and community",
       "weight": 1,
       "justification": "The 'Web of Life' game architecturally models relationships between plants, animals, and natural elements through yarn-passing. 'Let us reflect' Q2 directly asks students to describe how different plants and animals are dependent on each other.",
-      "sections": ["Let us Play the Game 'Web of Life'", "Let us reflect"]
+      "sections": [
+        "Let us Play the Game 'Web of Life'",
+        "Let us reflect"
+      ]
     },
     {
       "cg": "CG-3",
@@ -28,7 +34,9 @@
       "competency_text": "Describes the basic safety needs and protection (health and hygiene, food, water, shelter, precautions, awareness of emergency situations, abuse, and unsafe situations) of humans, birds, and animals",
       "weight": 1,
       "justification": "'The Adventure Begins' section requires students to generate safety rules for forests/zoos and then compare them against 8 provided dos and don'ts covering protection of animals, plants, and public utilities. The Discuss task asks students to explain why these protection rules matter.",
-      "sections": ["The Adventure Begins"]
+      "sections": [
+        "The Adventure Begins"
+      ]
     },
     {
       "cg": "CG-4",
@@ -36,7 +44,10 @@
       "competency_text": "Observes and describes diversity among plants, and birds and animals in their immediate environment (shape, sounds, food habits, growth, habitat)",
       "weight": 1,
       "justification": "'Animals in the Forest' contains multiple activities requiring students to describe animal diversity by feature (Activity 1: land/air classification; Write task: animal features table; Activity 3: beak/claw/food-habit comparison; Activity 4: Bird Diary recording appearance and food habits; Activity 5: leaf diversity by colour, shape, texture). 'Tiny Animals' adds insect identification and feature description.",
-      "sections": ["Animals in the Forest", "Tiny Animals"]
+      "sections": [
+        "Animals in the Forest",
+        "Tiny Animals"
+      ]
     },
     {
       "cg": "CG-4",
@@ -44,7 +55,10 @@
       "competency_text": "Demonstrates how natural resources can be shared, maintained, and conserved (trees, use of rainwater, benefits of millets)",
       "weight": 1,
       "justification": "'The Adventure Begins' safety rules include not damaging trees and flowers, and not throwing garbage in the forest — embedding conservation norms. 'Let us reflect' role-play item focuses on protecting animals and plants; paper turtle activity uses recycled newspaper, modelling resource conservation through upcycling.",
-      "sections": ["The Adventure Begins", "Let us reflect"]
+      "sections": [
+        "The Adventure Begins",
+        "Let us reflect"
+      ]
     },
     {
       "cg": "CG-6",
@@ -52,7 +66,10 @@
       "competency_text": "Performs simple inquiry related to specific questions independently or in groups",
       "weight": 1,
       "justification": "'Animals in the Forest' Activity 4 (Bird Diary) is a structured independent field inquiry with specific observation questions. Activity 2 (footprint inference) requires inquiry-based guessing. 'Let us reflect' item 8 (Find out state animal/bird/plant) and item 5 (plan a nature walk through independent research) are explicit independent inquiry tasks.",
-      "sections": ["Animals in the Forest", "Let us reflect"]
+      "sections": [
+        "Animals in the Forest",
+        "Let us reflect"
+      ]
     }
   ],
   "chapter_weight": 6

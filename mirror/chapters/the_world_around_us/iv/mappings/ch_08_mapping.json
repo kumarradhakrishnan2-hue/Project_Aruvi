@@ -4,7 +4,7 @@
   "grade": "iv",
   "stage": "preparatory",
   "subject": "the_world_around_us",
-  "effort_index": 12.5,
+  "effort_index": 7.5,
   "competencies": [
     {
       "cg": "CG-1",
@@ -12,7 +12,9 @@
       "competency_text": "Uses local materials to create simple objects (family tree, envelopes, origami animals) on their own for display or use in classroom processes",
       "weight": 1,
       "justification": "Activity 1 compels students to use old newspapers and fenugreek seeds (local household materials) to make recycled paper through a multi-step process; Activity 3 then compels students to use that recycled paper to create a greeting card or paper mask for use or display — directly satisfying the architectural demand of creating objects from local materials.",
-      "sections": ["How Paper is Made"]
+      "sections": [
+        "How Paper is Made"
+      ]
     },
     {
       "cg": "CG-2",
@@ -20,7 +22,9 @@
       "competency_text": "Describes the relationship between the natural environment and cultural practices in their immediate environment (nature of work, food, festivals, traditions)",
       "weight": 1,
       "justification": "The 'How Paper is Made' section's IKS content explicitly describes how people in India historically used palm leaves (talapatra), cloth, and wooden boards for writing — cultural practices that arose from available natural materials — and notes that natural dyes from plant parts are used to colour cloth and pots, directly mapping natural resources to cultural practices.",
-      "sections": ["How Paper is Made"]
+      "sections": [
+        "How Paper is Made"
+      ]
     },
     {
       "cg": "CG-4",
@@ -28,7 +32,10 @@
       "competency_text": "Describes usage of natural resources in their immediate environment",
       "weight": 1,
       "justification": "The 'How Paper is Made' section explicitly states that making paper requires large numbers of trees, water, and energy, and that trees are cut at scale for wood pulp. Activity 4 extends this by having students observe, classify, and record different paper types and their uses, connecting material properties to natural resource consumption.",
-      "sections": ["How Paper is Made", "Different Types of Paper and their Uses"]
+      "sections": [
+        "How Paper is Made",
+        "Different Types of Paper and their Uses"
+      ]
     },
     {
       "cg": "CG-4",
@@ -36,7 +43,11 @@
       "competency_text": "Demonstrates how natural resources can be shared, maintained, and conserved (trees, use of rainwater, benefits of millets)",
       "weight": 1,
       "justification": "The 'Making Responsible Choices' section is architecturally structured around the 5Rs of waste management (Refuse, Reduce, Reuse, Repurpose, Recycle), which are explicitly framed as ways to conserve trees by reducing paper waste. Activity 5 compels students to classify real-life conservation behaviours into the 5Rs, and 'Let us reflect' asks students to write their own personal conservation action steps for each R.",
-      "sections": ["How Paper is Made", "Making Responsible Choices", "Let us reflect"]
+      "sections": [
+        "How Paper is Made",
+        "Making Responsible Choices",
+        "Let us reflect"
+      ]
     },
     {
       "cg": "CG-4",
@@ -44,7 +55,10 @@
       "competency_text": "Learns about basic social and behavioural norms, values, and dispositions that benefit our social and natural environments and that help our society function smoothly (using dustbins, standing in queues, conserving water, using public transportation, keeping one's environment clean, always helping others in need regardless of background)",
       "weight": 1,
       "justification": "The 5Rs (Refuse, Reduce, Reuse, Repurpose, Recycle) constitute a named behavioural norm framework explicitly taught in 'Making Responsible Choices'. Activity 5 compels students to apply these norms to real-life scenarios, and 'Let us reflect' compels students to internalise and commit to specific behavioural changes in their daily lives — directly developing dispositions that benefit social and natural environments.",
-      "sections": ["Making Responsible Choices", "Let us reflect"]
+      "sections": [
+        "Making Responsible Choices",
+        "Let us reflect"
+      ]
     },
     {
       "cg": "CG-6",
@@ -52,7 +66,9 @@
       "competency_text": "Performs simple inquiry related to specific questions independently or in groups",
       "weight": 1,
       "justification": "Activity 2 (Natural Colour Experiment) is a structured inquiry within 'How Paper is Made': students cut paper into pieces of the same size, apply different natural ingredients in the same quantity, and record the colour and brightness outcomes in an observation table — a controlled comparison that constitutes a simple, independently executed inquiry.",
-      "sections": ["How Paper is Made"]
+      "sections": [
+        "How Paper is Made"
+      ]
     }
   ],
   "chapter_weight": 6

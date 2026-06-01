@@ -4,7 +4,7 @@
   "grade": "v",
   "stage": "preparatory",
   "subject": "the_world_around_us",
-  "effort_index": 11.0,
+  "effort_index": 6.0,
   "competencies": [
     {
       "cg": "CG-2",
@@ -12,7 +12,11 @@
       "competency_text": "Identifies natural and humanmade systems that support their lives (water supply, water cycle, river flow systems, seasons, life cycle of plants and animals, food, household items, transport, communication, electricity in the home)",
       "weight": 1,
       "justification": "Food Spoilage identifies microbial systems as the natural threat to food; Food Preservation maps multiple humanmade systems (drying, pickling/oiling, refrigeration, salting/spicing, canning) that protect food; Food in Our Body synthesises the dual role of microbial systems in both spoilage and beneficial fermentation/digestion.",
-      "sections": ["Food Spoilage", "Food Preservation", "Food in Our Body"]
+      "sections": [
+        "Food Spoilage",
+        "Food Preservation",
+        "Food in Our Body"
+      ]
     },
     {
       "cg": "CG-2",
@@ -20,7 +24,10 @@
       "competency_text": "Describes the relationship between the natural environment and cultural practices in their immediate environment (nature of work, food, festivals, traditions)",
       "weight": 1,
       "justification": "My Food, My Pride and Food Preservation are architecturally centred on traditional Indian food preservation practices — pickling with mustard oil, sun-drying, use of spices like pepper, fermented idli batter, curd and buttermilk as home remedies — all cultural practices arising directly from the natural challenge of microbial food spoilage. Activity 3 explicitly asks students to describe family preservation traditions by consulting elders.",
-      "sections": ["Food Preservation", "My Food, My Pride"]
+      "sections": [
+        "Food Preservation",
+        "My Food, My Pride"
+      ]
     },
     {
       "cg": "CG-3",
@@ -28,7 +35,10 @@
       "competency_text": "Describes the basic safety needs and protection (health and hygiene, food, water, shelter, precautions, awareness of emergency situations, abuse, and unsafe situations) of humans, birds, and animals",
       "weight": 1,
       "justification": "Chew Right! is architecturally dedicated to food safety and personal hygiene: students learn oral hygiene practices (brushing, rinsing, dental check-ups), safe eating behaviour (smaller mouthfuls, chewing properly, avoiding choking). Food Spoilage introduces health risk from eating spoiled food (upset stomach, indigestion) and the conditions that make food unsafe.",
-      "sections": ["Food Spoilage", "Chew Right!"]
+      "sections": [
+        "Food Spoilage",
+        "Chew Right!"
+      ]
     },
     {
       "cg": "CG-6",
@@ -36,7 +46,11 @@
       "competency_text": "Performs simple inquiry related to specific questions independently or in groups",
       "weight": 1,
       "justification": "The chapter is structured as a detective inquiry through three explicit mysteries. Activity 2 (tomato drying observation experiment), Activity 3 (finding out family food preservation practices by asking elders), and Activity 4 (market observation visit) all compel students to perform independent inquiry to answer specific questions. Inquiry is the primary structural frame of the chapter, not incidental.",
-      "sections": ["Food Spoilage", "Food Preservation", "My Food, My Pride"]
+      "sections": [
+        "Food Spoilage",
+        "Food Preservation",
+        "My Food, My Pride"
+      ]
     },
     {
       "cg": "CG-7",
@@ -44,7 +58,12 @@
       "competency_text": "Gains familiarity with disciplinary core ideas in the natural sciences, as well as in engineering, technology, and applications of science, which reflect the content that will be learned across subject areas in later Grades",
       "weight": 1,
       "justification": "The chapter introduces foundational life-science concepts: microbes as living organisms requiring moisture, air, and temperature to grow; fermentation by good microbes (idli batter); teeth morphology (incisors, canines, premolars, molars) and their functions; saliva's role in digestion. These are core science ideas directly preparatory for later-grade biology, as confirmed by the chapter's Finding structure and Activity 5.",
-      "sections": ["Food Spoilage", "Food Preservation", "Chew Right!", "Food in Our Body"]
+      "sections": [
+        "Food Spoilage",
+        "Food Preservation",
+        "Chew Right!",
+        "Food in Our Body"
+      ]
     }
   ],
   "chapter_weight": 5

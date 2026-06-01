@@ -107,16 +107,16 @@ DOES NOT COUNT:
 
 Compute four signals for the whole chapter:
 
-- `conceptual_demand` (integer 1–5): how abstract the chapter's reasoning
-  is. 1 = concrete, immediate, tangible (typical Grade III: family,
-  community, simple observations); 2 = slight abstraction — comparisons,
-  simple cause-and-effect, or categorisation of familiar objects;
-  3 = classification, material properties, community context (typical
-  Grade IV); 4 = multi-step reasoning, unfamiliar systems, or concepts
-  requiring inference beyond direct observation (e.g. seasonal cycles,
-  ecosystem interdependence); 5 = geological, astronomical, or
-  cultural-history abstraction (typical Grade V). Judge from the chapter's
-  actual demand, not the grade alone — the grade ranges are guidance.
+- `conceptual_demand` (integer 1–3): how abstract the chapter's reasoning
+  is. 1 = concrete, immediate, tangible — observation, naming, comparison
+  of familiar objects (typical Grade III); 2 = moderate abstraction —
+  classification, material properties, simple cause-and-effect,
+  community/regional context (typical Grade IV); 3 = multi-step reasoning
+  or inference beyond direct observation — seasonal cycles, ecosystem
+  interdependence, geological/astronomical/cultural-history abstraction
+  (typical Grade V). Judge from the chapter's actual demand, not the grade
+  alone — the grade ranges are guidance. (Scale aligned to the 1–3
+  conceptual_demand used by all other subjects.)
 
 - `task_load` (integer 0–3): discrete score derived from the total count
   of task objects across all sections (sum of all `tasks` array lengths):
@@ -136,7 +136,7 @@ Compute four signals for the whole chapter:
   drawing or regional comparison.
 
 Effort index formula:
-`effort_index = (conceptual_demand × 3) + (task_load × 2) + (project_load × 1.5) + map_work`
+`effort_index = (conceptual_demand × 2) + (task_load × 2) + (project_load × 1.5) + map_work`
 
 ## Step 5 — Dual strand
 
@@ -178,7 +178,7 @@ Record both in a `dual_strand` object:
   "task_load": 2,
   "project_load": 0,
   "map_work": 0,
-  "effort_index": 13.0,
+  "effort_index": 10.0,
   "dual_strand": {
     "natural": "Properties and states of matter",
     "human_cultural": "Traditional and everyday uses of solids, liquids, gases"

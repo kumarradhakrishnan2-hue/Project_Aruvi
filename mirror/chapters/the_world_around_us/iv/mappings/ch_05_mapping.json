@@ -4,7 +4,7 @@
   "grade": "iv",
   "stage": "preparatory",
   "subject": "the_world_around_us",
-  "effort_index": 12.5,
+  "effort_index": 7.5,
   "competencies": [
     {
       "cg": "CG-2",
@@ -12,7 +12,11 @@
       "competency_text": "Identifies natural and humanmade systems that support their lives (water supply, water cycle, river flow systems, seasons, life cycle of plants and animals, food, household items, transport, communication, electricity in the home)",
       "weight": 1,
       "justification": "The chapter's three-food-group classification in 'How Does Food Help Us?' compels students to identify food as a system that supports life through energy, body-building, and protection. 'Water for Health' explicitly presents water as a natural system supporting digestion and waste removal. 'A Balanced Food Plate' (Activity 1 food diary) requires students to evaluate their food system over a week.",
-      "sections": ["How Does Food Help Us?", "Water for Health", "A Balanced Food Plate"]
+      "sections": [
+        "How Does Food Help Us?",
+        "Water for Health",
+        "A Balanced Food Plate"
+      ]
     },
     {
       "cg": "CG-2",
@@ -20,7 +24,11 @@
       "competency_text": "Describes the relationship between the natural environment and cultural practices in their immediate environment (nature of work, food, festivals, traditions)",
       "weight": 1,
       "justification": "'Mystery Masala' requires students to recognise Ugadi Pachadi — a traditional dish from Andhra Pradesh, Karnataka, and Telangana — as a cultural food practice encoding the natural Shad Rasa (six-taste) principle from Ayurveda. 'A Stall of Super Food' connects seasonal millet consumption (grandmother's winter/summer food practice) to the natural environment. 'How Does Food Help Us?' introduces regional thalis as culturally diverse balanced food practices.",
-      "sections": ["Mystery Masala", "A Stall of 'Super Food'", "How Does Food Help Us?"]
+      "sections": [
+        "Mystery Masala",
+        "A Stall of 'Super Food'",
+        "How Does Food Help Us?"
+      ]
     },
     {
       "cg": "CG-3",
@@ -28,7 +36,11 @@
       "competency_text": "Describes the basic safety needs and protection (health and hygiene, food, water, shelter, precautions, awareness of emergency situations, abuse, and unsafe situations) of humans, birds, and animals",
       "weight": 1,
       "justification": "'Say No to Junk Food' requires students to identify unhealthy foods and justify avoidance, directly engaging food as a safety/protection need. 'Water for Health' describes water's protective role for the body. 'A Balanced Food Plate' requires students to evaluate and design a balanced plate as a protection against nutritional deficiency.",
-      "sections": ["Say 'No' to Junk Food", "Water for Health", "A Balanced Food Plate"]
+      "sections": [
+        "Say 'No' to Junk Food",
+        "Water for Health",
+        "A Balanced Food Plate"
+      ]
     },
     {
       "cg": "CG-4",
@@ -36,7 +48,11 @@
       "competency_text": "Observes and describes cultural diversity in their immediate environment (food, clothing, games, different seasons, festivals related to harvest and sowing)",
       "weight": 1,
       "justification": "'Mystery Masala' introduces Ugadi Pachadi as a regionally specific traditional dish from three South Indian states, requiring students to observe food-based cultural diversity. 'A Stall of Super Food' presents millet foods as a traditional food practice from specific communities. 'How Does Food Help Us?' explicitly introduces regional thalis from across India as examples of culturally diverse balanced eating.",
-      "sections": ["Mystery Masala", "A Stall of 'Super Food'", "How Does Food Help Us?"]
+      "sections": [
+        "Mystery Masala",
+        "A Stall of 'Super Food'",
+        "How Does Food Help Us?"
+      ]
     },
     {
       "cg": "CG-4",
@@ -44,7 +60,9 @@
       "competency_text": "Demonstrates how natural resources can be shared, maintained, and conserved (trees, use of rainwater, benefits of millets)",
       "weight": 1,
       "justification": "The C-4.4 definition explicitly names 'benefits of millets' as an exemplar. 'A Stall of Super Food' directly engages this by presenting millets (jowar, bajra, jau) as nutrient-rich, traditionally valued, sustainable crops — their benefits are the subject of both the stall narrative and the Find out task.",
-      "sections": ["A Stall of 'Super Food'"]
+      "sections": [
+        "A Stall of 'Super Food'"
+      ]
     },
     {
       "cg": "CG-6",
@@ -52,8 +70,13 @@
       "competency_text": "Performs simple inquiry related to specific questions independently or in groups",
       "weight": 1,
       "justification": "Multiple sections require independent or group inquiry: 'A Stall of Super Food' has a Find out task on millet-based food at home; 'How Does Food Help Us?' has a Find out task on regional thali; 'A Balanced Food Plate' (Activity 1) requires a week-long personal food diary inquiry; 'Let us reflect' tasks include label-checking (independent home inquiry) and a food word-search.",
-      "sections": ["A Stall of 'Super Food'", "How Does Food Help Us?", "A Balanced Food Plate", "Let us reflect"]
-    },
+      "sections": [
+        "A Stall of 'Super Food'",
+        "How Does Food Help Us?",
+        "A Balanced Food Plate",
+        "Let us reflect"
+      ]
+    }
   ],
   "chapter_weight": 6
 }
