@@ -1,0 +1,59 @@
+{
+  "chapter_number": 8,
+  "chapter_title": "Clothes—How Things are Made",
+  "grade": "v",
+  "stage": "preparatory",
+  "subject": "the_world_around_us",
+  "effort_index": 12.5,
+  "competencies": [
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.1",
+      "competency_text": "Observes and identifies the natural (insects, plants, birds, animals, geographical features, sun and moon, stars, planets, natural resources) and social (houses, relationships) components in their immediate environment",
+      "weight": 1,
+      "justification": "Patterns with Threads requires students to observe the baya weaver bird building its nest; Thread introduces the silk moth (an insect) and its life cycle; Crafting with Needle and Thread introduces the tailorbird. All three sections compel direct observation of named birds and an insect as content objects.",
+      "sections": ["Patterns with Threads", "Thread", "Crafting with Needle and Thread"]
+    },
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.5",
+      "competency_text": "Uses local materials to create simple objects (family tree, envelopes, origami animals) on their own for display or use in classroom processes",
+      "weight": 1,
+      "justification": "Patterns with Threads has students weave a paper/reed mat (Activity 1). Crafting with Needle and Thread has students construct a leaf-and-twig plate or spoon (Activity 5) and stitch cloth pieces together into a usable mat, table cloth, or coaster (Activities 7–8), culminating in an Exhibition display — directly matching the C-code's requirement to create objects from local materials for display or classroom use.",
+      "sections": ["Patterns with Threads", "Crafting with Needle and Thread"]
+    },
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.2",
+      "competency_text": "Describes the relationship between the natural environment and cultural practices in their immediate environment (nature of work, food, festivals, traditions)",
+      "weight": 1,
+      "justification": "The chapter's thematic spine is the relationship between natural fibres (cotton, silk, wool, bamboo, jute) and India's handloom cultural practices and livelihoods. Traditions of Weaving describes how natural materials underpin community weaving traditions; Thread connects cotton to the khadi movement and Gandhi ji's cultural practice of spinning; Stitch and Decorate maps regional embroideries to their states, showing how natural and cultural contexts shape textile art forms.",
+      "sections": ["Traditions of Weaving", "Thread", "Stitch and Decorate"]
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.2",
+      "competency_text": "Observes and describes cultural diversity in their immediate environment (food, clothing, games, different seasons, festivals related to harvest and sowing)",
+      "weight": 1,
+      "justification": "Traditions of Weaving names distinct regional handloom traditions (Kanjeevaram – Tamil Nadu, Pashmina – Kashmir, Ikat – Odisha/Gujarat). Stitch and Decorate enumerates eight named regional embroideries — Chikankari, Banjara, Kantha, Gota, Phulkari, Toda, Kashmiri, Khneng — each from a different state or region, directly instantiating cultural diversity in clothing.",
+      "sections": ["Traditions of Weaving", "Stitch and Decorate"]
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.7",
+      "competency_text": "Learns about basic social and behavioural norms, values, and dispositions that benefit our social and natural environments and that help our society function smoothly (using dustbins, standing in queues, conserving water, using public transportation, keeping one's environment clean, always helping others in need regardless of background)",
+      "weight": 1,
+      "justification": "The Recycle section is architecturally dedicated to the social norm of not discarding old clothes — hand-me-downs, repurposing cloth, and making quilts from scraps. Let us reflect item 5 ('We should not throw the old clothes away. Why?') directly asks students to articulate the value behind this behavioural norm.",
+      "sections": ["Recycle"]
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.2",
+      "competency_text": "Gains familiarity with disciplinary core ideas in the natural sciences, as well as in engineering, technology, and applications of science, which reflect the content that will be learned across subject areas in later Grades",
+      "weight": 1,
+      "justification": "Thread teaches the silkworm life cycle (a life-science core idea) and the fibre-to-thread production process (spinning as a technology application). Patterns with Threads introduces the engineering principle of interlaced vertical and horizontal threads forming a unified structure — the same principle underlying textile science — grounding students in material science and technology concepts they will encounter in later grades.",
+      "sections": ["Patterns with Threads", "Thread"]
+    }
+  ],
+  "chapter_weight": 6
+}

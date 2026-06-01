@@ -1,0 +1,59 @@
+{
+  "chapter_number": 9,
+  "chapter_title": "Rhythms of Nature",
+  "grade": "v",
+  "stage": "preparatory",
+  "subject": "the_world_around_us",
+  "effort_index": 15.5,
+  "competencies": [
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.3",
+      "competency_text": "Asks questions and makes predictions about simple patterns (season change, food chain, phases of the moon, movement of stars and planets, shapes of trees, plants, leaves, and flowers, rituals, celebrations) observed in the immediate environment",
+      "weight": 1,
+      "justification": "The section 'Changes Around Us' opens by classifying change by timescale through five Write tasks that directly ask students to identify repeating vs. long-term vs. rapid patterns. The section 'Changes Around Us in a Year (Seasons)' is architecturally devoted to students discovering that annual nature changes follow a repeating pattern — culminating in the definition of seasons as cyclical. Season change is explicitly named in C-1.3.",
+      "sections": ["Changes Around Us", "Changes Around Us in a Year (Seasons)"]
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.2",
+      "competency_text": "Gains familiarity with disciplinary core ideas in the natural sciences, as well as in engineering, technology, and applications of science, which reflect the content that will be learned across subject areas in later Grades",
+      "weight": 1,
+      "justification": "The section 'Changes Around Us in a Day (Day and Night)' is entirely devoted to explaining Earth's rotation as the cause of day and night — a canonical earth science disciplinary core idea. Students enact this through a role-play game and a structured torch-and-globe demonstration, building foundational familiarity with this concept before it is deepened in later grades.",
+      "sections": ["Changes Around Us in a Day (Day and Night)"]
+    },
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.1",
+      "competency_text": "Identifies natural and humanmade systems that support their lives (water supply, water cycle, river flow systems, seasons, life cycle of plants and animals, food, household items, transport, communication, electricity in the home)",
+      "weight": 1,
+      "justification": "The section 'Changes Around Us in a Year (Seasons)' is architecturally structured around students identifying seasons as a natural system: they compile year-long observations across five themes (plant life, birds and animals, air/heat/light, water, human activities) into a Seasons' Chart, synthesise patterns, and discover the repeating annual cycle of six Indian seasons (Vasanta through Shishir). Seasons are explicitly named in C-2.1.",
+      "sections": ["Changes Around Us in a Year (Seasons)"]
+    },
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.2",
+      "competency_text": "Describes the relationship between the natural environment and cultural practices in their immediate environment (nature of work, food, festivals, traditions)",
+      "weight": 1,
+      "justification": "The section 'Celebrating Seasons' is entirely devoted to connecting seasons to cultural life: students name summer and winter crops in their region (work/food), match festivals (Pongal, Holi, Diwali, Baisakhi, Rongali Bihu) to seasons, find season-linked songs, and complete a table mapping each season to food eaten, clothes worn, festivals celebrated, and nature observed. Food, festivals, and traditions are explicitly named in C-2.2.",
+      "sections": ["Celebrating Seasons"]
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.2",
+      "competency_text": "Observes and describes cultural diversity in their immediate environment (food, clothing, games, different seasons, festivals related to harvest and sowing)",
+      "weight": 1,
+      "justification": "The section 'Celebrating Seasons' explicitly develops cultural diversity through the Discuss task (T-10) comparing winter in Kerala vs Kashmir valley and monsoon in Assam vs Rajasthan. Let us reflect tasks require students to write local season names in their own language (T-13) and fill a table of food, clothing, festivals, and nature for each of the six seasons (T-14). 'Different seasons' and 'festivals related to harvest and sowing' are explicitly named in C-4.2.",
+      "sections": ["Celebrating Seasons"]
+    },
+    {
+      "cg": "CG-6",
+      "c_code": "C-6.2",
+      "competency_text": "Presents observations and findings through different creative modes (drawing, diagram, poem, play, skit, oral and written expression)",
+      "weight": 1,
+      "justification": "The Classroom Activity — Seasons' Chart in 'Changes Around Us in a Year (Seasons)' architecturally mandates multiple creative presentation modes: group poster creation (Step 3) and oral class presentation, plus short story writing linking nature patterns to human life (Step 4). In 'Celebrating Seasons', Let us reflect T-16 requires a comparative drawing of three seasons. Poster, story, oral presentation, and drawing are all explicitly named creative modes in C-6.2.",
+      "sections": ["Changes Around Us in a Year (Seasons)", "Celebrating Seasons"]
+    }
+  ],
+  "chapter_weight": 6
+}

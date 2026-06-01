@@ -3465,7 +3465,10 @@ def _generate_pdf_bytes_alloc(
              "effort_index = (Conceptual demand x3) + (Task load x2) + (Project load x1.5) + Map work"),
             ("Conceptual demand (x3):",
              "How abstract the chapter's reasoning is. 1 = concrete/tangible (e.g. family, simple"
-             " observations); 3 = classification or material properties; 5 = geological, astronomical,"
+             " observations); 2 = slight abstraction — comparisons, simple cause-and-effect, or"
+             " categorisation of familiar objects; 3 = classification or material properties;"
+             " 4 = multi-step reasoning or concepts requiring inference beyond direct observation"
+             " (e.g. seasonal cycles, ecosystem interdependence); 5 = geological, astronomical,"
              " or cultural-history abstraction. Judged from the chapter content, not the grade alone."),
             ("Task load (x2):",
              "Discrete score (0-3) based on the total count of student tasks (Activities, Discuss,"
@@ -6710,9 +6713,12 @@ elif st.session_state.role == "Allocate":
             '<b>(Conceptual demand × 3) + (Task load × 2) + (Project load × 1.5) + Map work</b>. '
             'Chapters with a higher effort index get more periods.</p>'
             '<ul>'
-            '<li><b>Conceptual demand (×3)</b> — How abstract the chapter\'s reasoning is '
-            '(1 = concrete/tangible, 3 = classification or material properties, '
-            '5 = geological/astronomical/cultural-history abstraction).</li>'
+            '<li><b>Conceptual demand (×3)</b> — How abstract the chapter\'s reasoning is: '
+            '1 = concrete/tangible (family, simple observations); '
+            '2 = slight abstraction — comparisons, simple cause-and-effect, or categorisation of familiar objects; '
+            '3 = classification or material properties; '
+            '4 = multi-step reasoning or concepts requiring inference beyond direct observation (e.g. seasonal cycles, ecosystem interdependence); '
+            '5 = geological/astronomical/cultural-history abstraction.</li>'
             '<li><b>Task load (×2)</b> — Discrete score (0–3) based on the total count of '
             'student tasks (Activities, Discuss, Write, Find out, Draw, Let us reflect). '
             '0 = fewer than 10 tasks; 1 = 10–20; 2 = 21–30; 3 = more than 30.</li>'

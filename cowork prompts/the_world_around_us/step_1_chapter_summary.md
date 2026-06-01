@@ -109,8 +109,12 @@ Compute four signals for the whole chapter:
 
 - `conceptual_demand` (integer 1–5): how abstract the chapter's reasoning
   is. 1 = concrete, immediate, tangible (typical Grade III: family,
-  community, simple observations); 3 = classification, material properties,
-  community context (typical Grade IV); 5 = geological, astronomical, or
+  community, simple observations); 2 = slight abstraction — comparisons,
+  simple cause-and-effect, or categorisation of familiar objects;
+  3 = classification, material properties, community context (typical
+  Grade IV); 4 = multi-step reasoning, unfamiliar systems, or concepts
+  requiring inference beyond direct observation (e.g. seasonal cycles,
+  ecosystem interdependence); 5 = geological, astronomical, or
   cultural-history abstraction (typical Grade V). Judge from the chapter's
   actual demand, not the grade alone — the grade ranges are guidance.
 

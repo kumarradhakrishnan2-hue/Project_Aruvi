@@ -1,0 +1,81 @@
+{
+  "chapter_number": 6,
+  "chapter_title": "Some Unique Places",
+  "grade": "v",
+  "stage": "preparatory",
+  "subject": "the_world_around_us",
+  "effort_index": 20.5,
+  "competencies": [
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.1",
+      "competency_text": "Identifies natural and humanmade systems that support their lives (water supply, water cycle, river flow systems, seasons, life cycle of plants and animals, food, household items, transport, communication, electricity in the home)",
+      "weight": 1,
+      "justification": "The Sundarbans section compels students to identify the mangrove root system as a natural system that holds soil, protects coastlines, and supports local livelihoods. The Islands of India section presents the coral reef as a natural system sheltering marine creatures. The Western Ghats section introduces rivers originating from forested hills as natural river flow systems.",
+      "sections": [
+        "Islands of India",
+        "Sundarbans: Home of the Mangroves",
+        "Western Ghats"
+      ]
+    },
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.2",
+      "competency_text": "Describes the relationship between the natural environment and cultural practices in their immediate environment (nature of work, food, festivals, traditions)",
+      "weight": 1,
+      "justification": "Every main section architecturally compels students to describe nature-culture relationships: the North Sentinel Islanders' nature-reading survival knowledge (Islands of India); mangrove communities' generational dependence on the forest for livelihood (Sundarbans); the Hargila conservation effort led by women and community (Northeast India); and tribal communities' use of forest plants for food and medicine (Western Ghats). This is the thematic spine of the chapter.",
+      "sections": [
+        "Islands of India",
+        "Sundarbans: Home of the Mangroves",
+        "Northeast India: Green Hills and Great Traditions",
+        "Western Ghats"
+      ]
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1",
+      "competency_text": "Observes and describes diversity among plants, and birds and animals in their immediate environment (shape, sounds, food habits, growth, habitat)",
+      "weight": 1,
+      "justification": "Three full sections present plant and animal diversity with habitat descriptions that students must observe and describe: endemic birds (Andaman hornbill, Andaman wood pigeon) and unique tree root structures in Islands of India; the Hargila (Greater Adjutant Stork) and living root bridge trees in Northeast India; and lion-tailed macaques, medicinal plants, and forest species (mangoes, jackfruit, jamun) in Western Ghats.",
+      "sections": [
+        "Islands of India",
+        "Northeast India: Green Hills and Great Traditions",
+        "Western Ghats"
+      ]
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.4",
+      "competency_text": "Demonstrates how natural resources can be shared, maintained, and conserved (trees, use of rainwater, benefits of millets)",
+      "weight": 1,
+      "justification": "The Northeast India section asks students to create a conservation protection plan for a local animal or bird needing protection (T-20) and shows the Hargila conservation community effort. The Western Ghats section presents the Save Silent Valley Movement as a concrete example of people joining together to conserve a protected forest, and asks students to identify three protected areas in the Western Ghats.",
+      "sections": [
+        "Northeast India: Green Hills and Great Traditions",
+        "Western Ghats"
+      ]
+    },
+    {
+      "cg": "CG-5",
+      "c_code": "C-5.3",
+      "competency_text": "Reads simple maps of city, state, and country to identify natural and humanmade features (well, lake, post office, school, hospital) with reference to symbols and directions",
+      "weight": 1,
+      "justification": "The Islands of India section requires students to look at a map to identify the southernmost point of India (Indira Point) and the sea in which the Andaman and Nicobar Islands are located. The Western Ghats section requires students to locate the Western Ghats on a physical map and name the six states it passes through — a country-level map-reading task to identify a natural feature.",
+      "sections": [
+        "Islands of India",
+        "Western Ghats"
+      ]
+    },
+    {
+      "cg": "CG-7",
+      "c_code": "C-7.1",
+      "competency_text": "Gains familiarity with using the scientific method in investigations, as well as familiarity with other crosscutting concepts such as energy, matter, and systems that apply across the domains of science and engineering",
+      "weight": 1,
+      "justification": "Activity 1 (Islands of India) is an engineering design investigation where students build a paper-tube model with and without triangular supports, test stability, and infer the structural principle of buttress roots — directly engaging the crosscutting concept of systems and engineering design. Activity 3 (Northeast India) is the 'Root bridge challenge' where students test whether a string/stick structure between two chairs can hold a toy, applying the same engineering inquiry.",
+      "sections": [
+        "Islands of India",
+        "Northeast India: Green Hills and Great Traditions"
+      ]
+    }
+  ],
+  "chapter_weight": 6
+}

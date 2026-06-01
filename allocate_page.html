@@ -828,7 +828,7 @@ function setFootnote() {
       + '<h4>About the Effort Index</h4>'
       + '<p>Formula: <b>(Conceptual demand \u00d73) + (Task load \u00d72) + (Project load \u00d71.5) + Map work</b>. Chapters with a higher effort index get more periods.</p>'
       + '<ul>'
-      + '<li><b>Conceptual demand (\u00d73)</b> \u2014 How abstract the chapter\u2019s reasoning is. 1\u00a0=\u00a0concrete/tangible; 3\u00a0=\u00a0classification or material properties; 5\u00a0=\u00a0geological, astronomical, or cultural-history abstraction.</li>'
+      + '<li><b>Conceptual demand (\u00d73)</b> \u2014 How abstract the chapter\u2019s reasoning is: 1\u00a0=\u00a0concrete/tangible (family, simple observations); 2\u00a0=\u00a0slight abstraction \u2014 comparisons, simple cause-and-effect, or categorisation of familiar objects; 3\u00a0=\u00a0classification or material properties; 4\u00a0=\u00a0multi-step reasoning or concepts requiring inference beyond direct observation (e.g.\u00a0seasonal cycles, ecosystem interdependence); 5\u00a0=\u00a0geological, astronomical, or cultural-history abstraction.</li>'
       + '<li><b>Task load (\u00d72)</b> \u2014 Discrete score 0\u20133 based on the total count of student tasks (Activities, Discuss, Write, Find out, Draw, Let us reflect). 0\u00a0=\u00a0fewer than 10; 1\u00a0=\u00a010\u201320; 2\u00a0=\u00a021\u201330; 3\u00a0=\u00a0more than 30.</li>'
       + '<li><b>Project load (\u00d71.5)</b> \u2014 0\u00a0=\u00a0none; 1\u00a0=\u00a0light (multi-day observation); 2\u00a0=\u00a0substantial (artefact construction or sustained build project).</li>'
       + '<li><b>Map work (\u00d71)</b> \u2014 0\u00a0=\u00a0no maps; 1\u00a0=\u00a0map reading; 2\u00a0=\u00a0map drawing or regional comparison.</li>'
@@ -1944,7 +1944,7 @@ function _downloadPDF_legacy_unused() {
 
     var _twauEiRows = [
       { label: 'Formula:', body: 'effort_index = (Conceptual demand ×3) + (Task load ×2) + (Project load ×1.5) + Map work' },
-      { label: 'Conceptual demand (×3):', body: 'How abstract the chapter\'s reasoning is. 1 = concrete/tangible (e.g. family, simple observations); 3 = classification or material properties; 5 = geological, astronomical, or cultural-history abstraction. Judged from chapter content, not the grade alone.' },
+      { label: 'Conceptual demand (×3):', body: 'How abstract the chapter\'s reasoning is. 1 = concrete/tangible (e.g. family, simple observations); 2 = slight abstraction — comparisons, simple cause-and-effect, or categorisation of familiar objects; 3 = classification or material properties; 4 = multi-step reasoning or concepts requiring inference beyond direct observation (e.g. seasonal cycles, ecosystem interdependence); 5 = geological, astronomical, or cultural-history abstraction. Judged from chapter content, not the grade alone.' },
       { label: 'Task load (×2):', body: 'Discrete score 0–3 based on total student tasks (Activities, Discuss, Write, Find out, Draw, Let us reflect). 0 = fewer than 10; 1 = 10–20; 2 = 21–30; 3 = more than 30.' },
       { label: 'Project load (×1.5):', body: '0 = none; 1 = light (multi-day observation, e.g. watch a plant grow over a week); 2 = substantial (artefact construction or sustained build project).' },
       { label: 'Map work (×1):', body: '0 = no maps; 1 = map reading; 2 = map drawing or regional comparison.' },
