@@ -4,7 +4,7 @@
     "version": "V2.2",
     "last_refreshed": "2026-05-31",
     "date": "May 2026",
-    "total_pairs": 93,
+    "total_pairs": 95,
     "categories": [
       "cat_a",
       "cat_b",
@@ -147,7 +147,7 @@
         {
           "id": "a26",
           "q": "How does The World Around Us (TWAU) plan lessons?",
-          "a": "TWAU is designed for the Preparatory Stage (Grades III–V) and centres on structured interaction with the child's immediate natural and social environment — the NCF-prescribed pedagogical approach. Aruvi plans TWAU lessons by identifying the chapter's central inquiry and building activities from the chapter's own observation tasks, hands-on experiments, surveys, and discussion prompts. Each activity reflects one of the NCF's core TWAU pedagogical modes — observation, exploration, role play, or task-oriented work — and ends with one implied learning outcome describing what the student can notice, describe, or explain after that session."
+          "a": "TWAU chapters are organised around named textbook sections. Aruvi walks these sections in reading order, anchoring one activity per period to each section's own content, tasks, and observations. Every period carries a dominant pedagogical mode drawn from the NCF's five prescribed approaches for the Preparatory Stage: Observe and Record, Hands-on Investigation, Discussion and Connection, Create and Express, or Reflect and Act. The chapter's two strands — a natural phenomenon and the human-cultural response to it — are developed together through this section sequence. Each period ends with one implied learning outcome stating the transferable skill the student has developed."
         },
         {
           "id": "a27",
@@ -507,6 +507,16 @@
           "id": "e14",
           "q": "Can Aruvi tell me what activities to use for a specific pedagogical goal I have in mind?",
           "a": "Ask Aruvi is scoped to questions about how the platform works. Aruvi's Generate tab produces activities derived from chapter content and NCF pedagogy — the platform does not offer a reverse lookup from pedagogical goal to activity. Your question will be automatically logged and forwarded to Aruvi management for follow-up."
+        },
+        {
+          "id": "e15",
+          "q": "Why does Aruvi not cover the Foundational Stage?",
+          "a": "The Foundational Stage is built on play-based, experiential learning — the child learns through free exploration, storytelling, and guided play rather than structured classroom activities. Aruvi generates lesson plans and assessments anchored to textbook sections and period schedules, which is a classroom-based pedagogical model. In our view, imposing this structure on the Foundational Stage would work against the spirit of how young children learn best. We have therefore chosen not to extend the platform to Foundational Stage."
+        },
+        {
+          "id": "e16",
+          "q": "On what basis has Aruvi chosen which classes to cover, and why is Grade X not included?",
+          "a": "In line with NEP 2020 and NCF 2023, NCERT is progressively developing new textbook material that is competency-aligned and curriculum-framework compliant. Aruvi's purpose is to develop the targeted competencies defined in this framework. The platform therefore extends only to those grades where such NCERT material has already been developed and is available. Grade X textbooks compliant with NCF 2023 are not yet published. As and when that material becomes available, Aruvi will be extended to cover Grade X."
         }
       ]
     }
