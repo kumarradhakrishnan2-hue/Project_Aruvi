@@ -1,13 +1,14 @@
 # Cowork Session — Mathematics: Chapter Summary
 
-Reads a Mathematics chapter PDF (foundational / middle / secondary) and
+Reads a Mathematics chapter PDF (middle stage, Grades VI–VIII) and
 writes a structured summary JSON. Cowork reads and writes directly.
+
+**Grades VI–VIII only.** Preparatory (III–V) uses the section-flow prompt
+in `../preparatory/`.
 
 ## Run scope
 
-Specify grade and chapter scope. Subject is `mathematics`. `{stage}`
-derives from grade: III–V → `foundational`, VI–VIII → `middle`,
-IX–X → `secondary`.
+Specify grade and chapter scope. Subject is `mathematics`, `stage = middle`.
 
 ## Paths
 
@@ -25,20 +26,18 @@ not in this list.
 
 ## Step 2 — Inventory three item classes
 
-Recognise by stage conventions. **Labeled headers / banners locate the
-regions where exercises live — they are not the unit of count. The unit
-of enumeration is each discrete question inside a region: every numbered,
-lettered, or bulleted item, and every stand-alone question-marked prompt
-under the banner.** An exercise box with 8 numbered questions produces
-`E-1` … `E-8`, not a single `E-1`.
+**Labeled headers / banners locate the regions where exercises live —
+they are not the unit of count. The unit of enumeration is each discrete
+question inside a region: every numbered, lettered, or bulleted item, and
+every stand-alone question-marked prompt under the banner.** An exercise
+box with 8 numbered questions produces `E-1` … `E-8`, not a single `E-1`.
 
-| Stage | Activities | Worked examples | Exercise regions (locators) |
-|-------|-----------|-----------------|------------------------------|
-| Foundational | *Let Us Do*, boxed action prompts | walkthroughs in prose | *Let Us Think*, *Pastime Mathematics*, numbered question lists |
-| Middle | `Activity N`, boxed hands-on tasks | `Example N` | *Figure it Out*, *Math Talk*, *Try This* — every numbered question under each banner |
-| Secondary | `Activity:`, boxed constructions | `Example N`, `Theorem N` (with proof) | `Exercise Set N.M`, `End-of-Chapter Exercises`, `Think and Reflect`, starred items — every numbered question inside |
+Middle (Ganita Prakash) conventions:
+- **Activities** → `Activity N`, boxed hands-on tasks
+- **Worked examples** → `Example N`
+- **Exercises** → every numbered question under *Figure it Out*, *Math Talk*, *Try This*
 
-Beyond the banners above, **any numbered / lettered question list
+Beyond these banners, **any numbered / lettered question list
 directed at the student** also counts as exercises, even if it sits
 outside a named region.
 
@@ -60,7 +59,7 @@ question number (where applicable) + page number.    Examples:
 - Exercise (numbered) → `"Figure it Out Q1, section 5.1 p.107"`
 - Exercise (unnumbered) → `"Figure it Out, section 5.1 p.107"`
 
-The question number rule applies to all banners and stages: if the question carries a number, include `Q<n>`; if it does not, omit `Q<n>` entirely. Do NOT invent placeholder labels such as `Q (inline)`, `Q (standalone)`, `Q (unnumbered)`, or similar — the banner name alone suffices.
+The question number rule applies to all banners: if the question carries a number, include `Q<n>`; if it does not, omit `Q<n>` entirely. Do NOT invent placeholder labels such as `Q (inline)`, `Q (standalone)`, `Q (unnumbered)`, or similar — the banner name alone suffices.
 
 `book_ref` is what downstream LP and assessment outputs render to the
 teacher; the internal `id` is a join key only and never appears in

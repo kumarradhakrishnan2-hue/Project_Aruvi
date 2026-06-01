@@ -1,21 +1,22 @@
 # Cowork Session — Mathematics: Competency Mapping
 
 Reads the chapter summary JSON and writes a mapping JSON per chapter,
-governed by the Mathematics Mapping Constitution. Works across all stages.
+governed by the Mathematics Mapping Constitution. **Middle stage, Grades
+VI–VIII only** (preparatory uses the prompt in `../preparatory/`).
 
-Summary MUST exist first (run `chapter_summary_mathematics.md`).
+Summary MUST exist first (run `step_1_chapter_summary.md` in this folder).
 
 ## Run scope
 
-Specify grade and chapter scope. Subject fixed to `mathematics`.
-`{stage}` derives from grade.
+Specify grade and chapter scope. Subject fixed to `mathematics`,
+`stage = middle`.
 
 ## Paths
 
 | Item | Path |
 |------|------|
 | Summary (input) | `mnt/data/mirror/chapters/mathematics/{grade}/summaries/ch_NN_summary.json` |
-| CG document | `mnt/data/mirror/framework/mathematics/{stage}/cg_{stage}_mathematics.txt` |
+| CG document | `mnt/data/mirror/framework/mathematics/middle/cg_middle_mathematics.txt` |
 | Constitution | `mnt/data/mirror/constitutions/competency_mapping/mathematics/mapping_constitution_mathematics.txt` |
 | Output | `mnt/data/mirror/chapters/mathematics/{grade}/mappings/ch_NN_mapping.json` |
 
