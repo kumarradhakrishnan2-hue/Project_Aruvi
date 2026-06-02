@@ -41,43 +41,41 @@ For each section, in order, record:
   chapter. No outside content.
 - `tasks` — array of the student tasks in this section (Step 3). `[]` if none.
 
-There is **no `section_goal`**. The middle-stage recall/reason/apply axis
-was a backwards-invention from middle's assessment structure and does not
-fit prep maths — a prep section interleaves several acts (explore, then
-reason, then practice) with no single dominant goal. The pedagogical and
-assessment signal lives at the **task** level, in each task's `intent`
-(Step 3). One field, two downstream uses, both pedagogy-grounded.
-
 ## Step 3 — Tasks (one per textbook instruction, in order)
 
 ```json
 {
   "id":        "T-N",
   "banner":    "<verbatim banner, e.g. 'Let us Do'>",
-  "intent":    "explore" | "reason" | "practice" | "play" | "solve",
+  "intent":    "explore" | "reason" | "practice" | "solve",
   "book_ref":  "<banner + Q-number if numbered + page, e.g. 'Let us Do Q4, p.67'>",
   "description": "<verbatim instruction, ≤ 25 words; (a)/(b)/(c) sub-parts folded in>"
 }
 ```
 
-`intent` is decided by what the task **asks the student to do**, judged
-from its `description` — NOT by the banner name. The same banner serves
-different intents in different places (e.g. *Let us Do* opens a concept in
-one section and drills practice in another), so the banner alone never
-fixes the intent. Choose the single best-fit:
+`intent` is strictly **what the student is expected to do** — the
+cognitive act — judged from the `description`, NOT from the banner name.
+The same banner serves different intents in different places (e.g. *Let us
+Do* opens a concept in one section and drills practice in another), so the
+banner alone never fixes the intent. Choose exactly one of four:
 
 | intent | The task asks the student to… |
 |---|---|
 | `explore` | handle material, fold/build, observe, enter a new idea by doing (matchsticks, Dienes blocks, paper-folding, firki) |
 | `reason` | compare, estimate, explain why, spot/extend a pattern, deduce ("Who am I", "which is more and why") |
 | `practice` | consolidate a known idea by repetition (drill lists, fill-in, mark on number line) |
-| `play` | a game or puzzle for joyful practice (Magical Count, Number Hunt, Show and Tell, Flag game) |
 | `solve` | work a routine or word problem to an answer (computation, unit conversion) |
+
+There is **no `play` intent**. A game or puzzle is a *mode of delivery*,
+not an expected act — so a game's true intent is whichever of the four it
+actually exercises (a Number-Hunt is usually `practice` or `reason`). Tag
+that underlying act like any other task; game-ness is not separately
+recorded.
 
 Banner is only a starting hint, overridden by the description: *Let us
 Explore/Make* → often `explore`; *Let us Think/Discuss/Find* → often
-`reason`; *Let us Play* → `play`; *Let us Solve* → `solve`; *Let us Do* →
-`explore` or `practice` by the task.
+`reason`; *Let us Solve* → `solve`; *Let us Do* → `explore` or `practice`
+by the task; *Let us Play* / named games → tag the underlying act.
 
 **Why `intent` matters (two downstream uses).** It is the load-bearing
 field of the prep pipeline:
@@ -86,14 +84,15 @@ field of the prep pipeline:
    described purpose matches it, applied **per task** (prep periods mix
    intents, so method is a task property, not a period property):
    `explore` → Play-way / Inquiry · `reason` → Inductive ·
-   `solve` → Problem-solving · `practice` → meaningful practice ·
-   `play` → Play-way. Prep frequency (Play-way & Inductive MORE_OFTEN,
-   Deductive LESS_OFTEN) is honoured by this mapping.
-2. *Assessment axis.* Prep assessment is organised on the intent axis,
-   not recall/reason/apply. Assessable intents are `explore`, `reason`,
-   `practice`, `solve` — one item per assessable intent present in the
-   chapter's enacted tasks. **`play` is taught-only, never assessed**
-   (prelims: most games need not be assessed).
+   `solve` → Problem-solving · `practice` → meaningful practice. This
+   default map honours prep frequency (Play-way & Inductive MORE_OFTEN,
+   Deductive LESS_OFTEN); the LP may override it (it is a default, not a rule).
+2. *Assessment axis.* Prep assessment is organised on the intent axis —
+   the student's expected act — not recall/reason/apply, and never on the
+   teaching method. One item per intent present in the chapter's enacted
+   tasks. Game tasks carry a normal intent and are assessable like any
+   other (the book's "games needn't be assessed" is soft guidance, not a
+   hard exclusion).
 
 Rules: one task per instruction; sub-parts roll into one task. Unnumbered
 prompts omit `Q<n>`. Never invent placeholder labels.
@@ -111,9 +110,9 @@ signals (`activity_count`/`demo_count` have no meaning at prep maths).
   conversion or pattern-generalisation is a substantial share (≥30%).
 - `task_load` (0–3): discrete tier from total task count —
   <10 → 0 · 10–19 → 1 · 20–29 → 2 · ≥30 → 3.
-- `exploration_load` (0–2): share of `explore` + `play` tasks
-  (hands-on / manipulative / game). 0 = <20% · 1 = 20–50% · 2 = >50%.
-  This is the prep-distinctive signal — concrete doing is the stage's core.
+- `exploration_load` (0–2): share of `explore` tasks (hands-on /
+  manipulative / discovery). 0 = <20% · 1 = 20–50% · 2 = >50%.
+  The prep-distinctive signal — concrete doing is the stage's core.
 - `procedural_load` (0–2): share of `solve` + `practice` tasks
   (computation / conversion / drill). 0 = <20% · 1 = 20–50% · 2 = >50%.
 
@@ -139,15 +138,15 @@ signals (`activity_count`/`demo_count` have no meaning at prep maths).
 ```
 
 Rules: every task's section appears in `sections`. Every task has a
-non-empty `book_ref` and an `intent`. `tasks` may be `[]` but `sections`
-may not. No `section_goal` field.
+non-empty `book_ref` and an `intent` (one of four). `tasks` may be `[]`
+but `sections` may not. No `section_goal` field, no `play` intent.
 
 ## Step 6 — Confirmation line
 
-Tally tasks by `intent` across the chapter.
+Tally tasks by `intent`.
 
 ```
-ch_NN — "<title>" — sections: <N> — tasks: <T> — intents: explore×_ reason×_ practice×_ play×_ solve×_ — CD:_ TL:_ EXP:_ PROC:_
+ch_NN — "<title>" — sections: <N> — tasks: <T> — intents: explore×_ reason×_ practice×_ solve×_ — CD:_ TL:_ EXP:_ PROC:_
 ```
 
 ## Constraints

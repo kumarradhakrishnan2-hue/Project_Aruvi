@@ -1,0 +1,43 @@
+{
+    "stage": "preparatory",
+    "subject": "mathematics",
+    "grade": "iv",
+    "chapter_number": 8,
+    "chapter_title": "Weigh It, Pour It",
+
+    "core_cg": "CG-3",
+
+    "core_competencies": [
+        {
+            "c_code": "C-3.2",
+            "justification": "Throughout both the weight and capacity halves, students are asked to match objects and liquids to the appropriate unit — kg vs grams for everyday items like babies, erasers, fridges, and furniture in the weighing activities, and litres vs millilitres for liquids like eye drops, honey, cooking oil, and water in the capacity activities. Selecting the right unit and tool is a consistent expectation, not incidental."
+        },
+        {
+            "c_code": "C-3.5",
+            "justification": "Estimation is the structural backbone of this chapter. Students estimate the weight of produce before verifying with a balance — bananas, potatoes, tomatoes, onions — then judge whether familiar objects like a stapler, scissors, or schoolbag are heavy or light by lifting them, and finally estimate then verify the capacity of household containers — water bottle, glass, mug, jug, bucket. The estimate-then-verify cycle runs through both attributes."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-3.3",
+            "justification": "The chapter builds gram-to-kilogram conversions (500 g = ½ kg, 250 g = ¼ kg, 100 g = 1/10 kg) through pictorial pan-balance evidence and repeats the same structure for millilitres-to-litres in the capacity section. Tasks on converting bulk kg quantities to numbers of 1 kg packets (10 kg, 20 kg, 50 kg) extend this conversion work."
+        },
+        {
+            "c_code": "C-1.2",
+            "justification": "Fractions ½, ¼, and 1/10 are explicitly introduced through measurement contexts — two 500 g packets balance 1 kg, so 500 g = ½ kg; four 250 ml bottles fill 1 litre, so 250 ml = ¼ l. The Kaju-katli box packing task and the perfumed oil packing problem both require students to reason about sub-units as fractional parts of a whole."
+        },
+        {
+            "c_code": "C-4.1",
+            "justification": "The Boxes of Sweet scenario asks how many 500 g, 250 g, 100 g, and 50 g boxes are needed to make up 1 kg — a multi-step daily-life problem. The perfumed oil packing problem and the water drip conservation activity (collect water for one hour, calculate waste for a day and a week) similarly require students to work through realistic multi-step situations."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to measure, estimate, and convert weight and capacity by moving from hands-on comparison and estimation with standard tools to selecting appropriate units and applying fraction relationships between sub-units and wholes.",
+
+    "conceptual_demand": 2,
+    "task_load": 3,
+    "exploration_load": 1,
+    "procedural_load": 0,
+    "effort_index": 11.5
+}

@@ -28,6 +28,15 @@ For each chapter:
    signal is missing, warn and skip.
 2. Apply constitution Rules 1–6 exactly. Copy the four effort signals
    verbatim. Compute `effort_index` using Maths weights.
+
+   **Justification writing rule:** Write each justification as natural prose that a
+   teacher can read and immediately understand — as if explaining to a colleague
+   why this competency fits. Draw on the actual topic names, activity descriptions,
+   and learning contexts from the summary. For example: "The chapter's core work
+   is on constructing and interpreting data displays — students collect information
+   from their surroundings, organise it into bar graphs and pictographs, and draw
+   conclusions from what they've made." Never use internal codes like S1, S2, T-7
+   etc.; instead describe the section topic or activity directly in plain language.
 3. Write mapping JSON per schema.
 4. Verify the written file:
    - `core_cg` is a valid CG-N from the CG document
