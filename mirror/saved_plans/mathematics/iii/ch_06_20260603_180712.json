@@ -1,0 +1,1605 @@
+{
+  "filename": "ch_06_20260603_180712.json",
+  "saved_at": "2026-06-03T18:07:12",
+  "grade": "Grade III",
+  "subject": "Mathematics",
+  "chapter_number": 6,
+  "chapter_title": "House of Hundreds - I",
+  "period_schedule_display": "Period schedule:\n  Row 1: 40 minutes × 1 period = 40 minutes\nTotal: 1 periods · 40 minutes",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 40,
+      "count": 1
+    }
+  ],
+  "plan_status": "full_lpa",
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 35,
+          "section_refs": [
+            "S1"
+          ],
+          "section_titles": [
+            "Counting beyond 200"
+          ],
+          "activity_title": "Guess and Count: Numbers Beyond 200 at the Mela",
+          "tasks_in_class": [
+            {
+              "id": "T-1",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S1",
+              "book_ref": "Can you make a guess?, p.64",
+              "description": "Guess the number of triangular torans in the mela picture."
+            },
+            {
+              "id": "T-2",
+              "intent": "explore",
+              "method": "Play-way",
+              "section_ref": "S1",
+              "book_ref": "Now find out, p.64",
+              "description": "Count all the triangular torans by grouping in tens to verify the total."
+            },
+            {
+              "id": "T-4",
+              "intent": "explore",
+              "method": "Play-way",
+              "section_ref": "S1",
+              "book_ref": "Try counting, p.65",
+              "description": "Count the total number of bangles using Teji's counting strategy (groups of 10)."
+            },
+            {
+              "id": "T-7",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S1",
+              "book_ref": "Let us Do, p.65",
+              "description": "How many more triangles to make 300? How many bangles less than 300? Which is more: bangles or triangles?"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–7",
+              "description": "Display the mela picture and ask students to guess the torans using Can you make a guess?, p.64 ('Guess the number of triangular torans in the mela picture.'). Take three to four guesses aloud; write them on the board without judgement."
+            },
+            {
+              "minutes": "7–18",
+              "description": "Students work in pairs to verify using Now find out, p.64 ('Count all the triangular torans by grouping in tens...'). Then move to Try counting, p.65 ('Count the total number of bangles using Teji's counting strategy...'); ask pairs to circle groups of ten before counting."
+            },
+            {
+              "minutes": "18–28",
+              "description": "Whole-class discussion on Let us Do, p.65 ('How many more triangles to make 300? How many bangles less than 300?...'). Guide students to subtract from 300 and compare the two totals."
+            },
+            {
+              "minutes": "28–35",
+              "description": "Consolidate: ask students to explain in their own words why grouping in tens makes counting easier. Record the class totals on the board and note that these numbers are all close to 300."
+            }
+          ],
+          "teacher_notes": "This is the opening period; no prior period to recap. A common error is losing track when counting large clusters — remind students to circle or tick each group of ten as they count so they do not recount.",
+          "materials": [
+            "Mela picture from textbook p.64–65",
+            "Pencils for circling groups"
+          ]
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 35,
+          "section_refs": [
+            "S2",
+            "S3"
+          ],
+          "section_titles": [
+            "Sequences and number patterns on tiles",
+            "Matchstick bundles and number sentences"
+          ],
+          "activity_title": "Tile Paths, Arrow Sequences, and Matchstick Numbers",
+          "tasks_in_class": [
+            {
+              "id": "T-8",
+              "intent": "practice",
+              "method": "Problem-solving",
+              "section_ref": "S2",
+              "book_ref": "Let us Do Q1, p.66",
+              "description": "Fill in the empty tiles on Jojo's tiled path with the correct numbers (sequences around 211–216, etc.)."
+            },
+            {
+              "id": "T-10",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S2",
+              "book_ref": "Let us Do Q3, p.66",
+              "description": "Guess how many ants there are; count and check. Discuss why different children get different answers."
+            },
+            {
+              "id": "T-11",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S3",
+              "book_ref": "Let us Do Q4, p.67",
+              "description": "Fill in the blanks: for each matchstick picture write the number and number sentence; for '300 and 16 more' and '109' draw matchsticks and complete the row."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Students individually complete Let us Do Q1, p.66 ('Fill in the empty tiles on Jojo's tiled path with the correct numbers...'). Ask: what rule tells you which number comes next in each path?"
+            },
+            {
+              "minutes": "10–18",
+              "description": "Whole-class: tackle Let us Do Q3, p.66 ('Guess how many ants there are; count and check...'). After counting, invite two students with different totals to explain their method; use the discussion to reinforce grouping in tens."
+            },
+            {
+              "minutes": "18–30",
+              "description": "Introduce matchstick bundles using the textbook illustration, then students complete Let us Do Q4, p.67 ('Fill in the blanks: for each matchstick picture write the number and number sentence...'). Emphasise the row for '300 and 16 more' — students must work backwards from a word sentence to a number."
+            },
+            {
+              "minutes": "30–35",
+              "description": "Quick share: two students read their number sentences aloud. Clarify that the same number can be written in multiple ways (e.g. 235 = 200+35)."
+            }
+          ],
+          "teacher_notes": "In the previous period students counted mela objects in groups of ten; today that same grouping strategy underpins both tile sequences and matchstick hundreds. A common error in the matchstick table is reversing hundreds and tens bundles — draw attention to the size difference between a bundle of 100 and a bundle of 10 sticks.",
+          "materials": [
+            "Textbook p.66–67",
+            "Matchstick bundles (real or drawn cut-outs) for demonstration"
+          ]
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 40,
+          "section_refs": [
+            "S3",
+            "S4"
+          ],
+          "section_titles": [
+            "Matchstick bundles and number sentences",
+            "Number slider: increase and decrease by 1, 10, 20"
+          ],
+          "activity_title": "Number Lines and Sliders: Moving Through Hundreds",
+          "tasks_in_class": [
+            {
+              "id": "T-12",
+              "intent": "practice",
+              "method": "Problem-solving",
+              "section_ref": "S3",
+              "book_ref": "Let us Do Q5, p.67",
+              "description": "Place the numbers from Q4 on the number line (0–350)."
+            },
+            {
+              "id": "T-13",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S4",
+              "book_ref": "Let us Do Q6, p.68",
+              "description": "Look at six matchstick pictures and write the corresponding 3-digit numbers."
+            },
+            {
+              "id": "T-14",
+              "intent": "explore",
+              "method": "Play-way",
+              "section_ref": "S4",
+              "book_ref": "Let us Do Q7, p.68",
+              "description": "Make the number slider; use it to increase/decrease: (a) 285+1, (b) 147+10, (c) 367−2, (d) 289−10, (e) 290+20."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Students place the numbers from the previous period's matchstick table onto the number line using Let us Do Q5, p.67 ('Place the numbers from Q4 on the number line (0–350).'). Ask: which numbers are close to 300, and how do you know?"
+            },
+            {
+              "minutes": "8–18",
+              "description": "Students read Let us Do Q6, p.68 ('Look at six matchstick pictures and write the corresponding 3-digit numbers.'). Invite students to explain which bundle represents hundreds and which represents tens before writing."
+            },
+            {
+              "minutes": "18–35",
+              "description": "Students make the number slider from textbook instructions and work through Let us Do Q7, p.68 ('Make the number slider; use it to increase/decrease: 285+1, 147+10, 367−2, 289−10, 290+20.'). Pause after (b) to discuss: which digit wheel moves when you add 10?"
+            },
+            {
+              "minutes": "35–40",
+              "description": "Close with a quick oral round: teacher calls a number and a change (e.g. '210, add 20') and students show on their sliders. Consolidate the idea that adding 10 changes only the tens digit."
+            }
+          ],
+          "teacher_notes": "The previous period established matchstick notation; today students move those same numbers onto a number line and then manipulate them with the slider. Students often forget to carry over when adding 10 pushes the tens digit to 10 — use the slider to make this visible rather than correcting abstractly.",
+          "materials": [
+            "Textbook p.67–68",
+            "Number slider materials (card strips, scissors)",
+            "0–350 number line drawn on board"
+          ]
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 35,
+          "section_refs": [
+            "S5",
+            "S6"
+          ],
+          "section_titles": [
+            "Flag game: guessing a hidden number",
+            "Magical Count and extending hundreds on a number line"
+          ],
+          "activity_title": "Flag Game, Magical Count, and Reaching 400",
+          "tasks_in_class": [
+            {
+              "id": "T-15",
+              "intent": "reason",
+              "method": "Play-way",
+              "section_ref": "S5",
+              "book_ref": "Let us Play — Flag game, p.69",
+              "description": "Play the flag guessing game with a friend: one thinks of a number between 200 and 210, the other guesses using flag direction clues on the number line."
+            },
+            {
+              "id": "T-16",
+              "intent": "reason",
+              "method": "Inquiry",
+              "section_ref": "S6",
+              "book_ref": "Magical Count, p.70",
+              "description": "Write any number name, count its letters, write the name of that new number, keep repeating — what happens? Try with 187 and 204 as well."
+            },
+            {
+              "id": "T-17",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S6",
+              "book_ref": "Numbers on a line, p.70",
+              "description": "Tell what the next hundred number is after 300; write it on the number line (0–400) and show it using matchsticks."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–12",
+              "description": "Pairs play Let us Play — Flag game, p.69 ('Play the flag guessing game with a friend: one thinks of a number between 200 and 210, the other guesses using flag direction clues...'). After two rounds, ask: how did the flag direction help you narrow down the number?"
+            },
+            {
+              "minutes": "12–24",
+              "description": "Students individually work through Magical Count, p.70 ('Write any number name, count its letters, write the name of that new number, keep repeating — what happens? Try with 187 and 204...'). Let them discover the endpoint FOUR themselves before discussing as a class."
+            },
+            {
+              "minutes": "24–35",
+              "description": "Students complete Numbers on a line, p.70 ('Tell what the next hundred number is after 300; write it on the number line (0–400) and show it using matchsticks.'). Extend the number line on the board from 300 to 400 and invite a student to mark 400 and show the matchstick picture."
+            }
+          ],
+          "teacher_notes": "The slider work in the previous period built intuition for moving by ones and tens; the flag game now applies that to reasoning about a number's position relative to others. In the Magical Count activity, students sometimes miscount letters in longer number names — encourage them to write the name out in large letters and cross off each letter as they count.",
+          "materials": [
+            "Textbook p.69–70",
+            "Number line strip (0–400) for display",
+            "Matchsticks or drawn bundles"
+          ]
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 40,
+          "section_refs": [
+            "S7"
+          ],
+          "section_titles": [
+            "Locating numbers on number lines and distance reasoning"
+          ],
+          "activity_title": "Placing and Comparing Numbers: From 200 to 500",
+          "tasks_in_class": [
+            {
+              "id": "T-18",
+              "intent": "practice",
+              "method": "Problem-solving",
+              "section_ref": "S7",
+              "book_ref": "Let us Do Q1, p.71",
+              "description": "Locate 216, 243, 257 on the number line (200–260)."
+            },
+            {
+              "id": "T-20",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S7",
+              "book_ref": "Let us Do Q3, p.71",
+              "description": "Tell how far 387 is from 400 using the number line."
+            },
+            {
+              "id": "T-21",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S7",
+              "book_ref": "Let us Do Q4, p.71",
+              "description": "Which is more: 393 or 400? Use a number line and show by jumping how far 393 is from 400."
+            },
+            {
+              "id": "T-22",
+              "intent": "solve",
+              "method": "Problem-solving",
+              "section_ref": "S7",
+              "book_ref": "Let us Do Q5(a), p.72",
+              "description": "How many pieces of mysore pak are in one tray?"
+            },
+            {
+              "id": "T-23",
+              "intent": "solve",
+              "method": "Problem-solving",
+              "section_ref": "S7",
+              "book_ref": "Let us Do Q5(b), p.72",
+              "description": "How many pieces of mysore pak are there in total?"
+            },
+            {
+              "id": "T-26",
+              "intent": "solve",
+              "method": "Problem-solving",
+              "section_ref": "S7",
+              "book_ref": "Let us Do Q5(e), p.72",
+              "description": "Chacha is going to fill the tray with more laddoos. How many more laddoos will make the tray full?"
+            },
+            {
+              "id": "T-28",
+              "intent": "practice",
+              "method": "Problem-solving",
+              "section_ref": "S7",
+              "book_ref": "Let us Do Q5(g), p.72",
+              "description": "Mark 423, 487, 438, 476 on the number line (413–500); also mark Five Hundred (500)."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Students complete Let us Do Q1, p.71 ('Locate 216, 243, 257 on the number line (200–260).'). Discuss: how did you decide where to place 243 — did you count every step or estimate?"
+            },
+            {
+              "minutes": "10–20",
+              "description": "Students work on Let us Do Q3, p.71 ('Tell how far 387 is from 400 using the number line.') and Let us Do Q4, p.71 ('Which is more: 393 or 400? Use a number line and show by jumping...'). Ask students to show their jumps on the board number line."
+            },
+            {
+              "minutes": "20–32",
+              "description": "Introduce Farooq Chacha's sweet shop context; students solve Let us Do Q5(a), p.72 ('How many pieces of mysore pak are in one tray?') and Q5(b), p.72 ('How many pieces of mysore pak are there in total?'), then Q5(e), p.72 ('How many more laddoos will make the tray full?'). Encourage students to write a number sentence for each."
+            },
+            {
+              "minutes": "32–40",
+              "description": "Students complete Let us Do Q5(g), p.72 ('Mark 423, 487, 438, 476 on the number line (413–500); also mark Five Hundred.'). Close by asking which number is closest to 500 and how they know."
+            }
+          ],
+          "teacher_notes": "The previous period ended with 400 on the number line; today students work across a wider range up to 500. A common error when locating numbers is placing them at equal intervals regardless of scale — remind students to check the gap between the marked hundreds before placing a number.",
+          "materials": [
+            "Textbook p.71–72",
+            "Large number lines (200–260 and 413–500) on board or chart paper"
+          ]
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 40,
+          "section_refs": [
+            "S8"
+          ],
+          "section_titles": [
+            "Hop Hundreds Home: apartment grid and place value"
+          ],
+          "activity_title": "Apartment Grid: Reading House Numbers and Place Value",
+          "tasks_in_class": [
+            {
+              "id": "T-29",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S8",
+              "book_ref": "Let us Do Q1 (Hop Hundreds Home), p.73",
+              "description": "Find the house numbers of the shaded houses without counting; fill in shaded boxes with correct house numbers."
+            },
+            {
+              "id": "T-30",
+              "intent": "practice",
+              "method": "Problem-solving",
+              "section_ref": "S8",
+              "book_ref": "Let us Do Q2 (Jump Joy Residency), p.74",
+              "description": "Colour the houses to which Arvind Dada has to deliver sweets: 209, 228, 242, 258, 267, 276, 290, 315, 346, 367, 389, 395."
+            },
+            {
+              "id": "T-31",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S8",
+              "book_ref": "Let us Do Q3, p.75",
+              "description": "Write the floor and column number for each of: 13, 67, 106, 159, 192, 231, 245, 328, 380, 399."
+            },
+            {
+              "id": "T-33",
+              "intent": "reason",
+              "method": "Inquiry",
+              "section_ref": "S8",
+              "book_ref": "Let us Do Q5 (Who am I? — card 1), p.75",
+              "description": "Who am I? I have digits 9, 1 and 5. I am less than 200. I have 9 ones."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Introduce the apartment grid; students complete Let us Do Q1 (Hop Hundreds Home), p.73 ('Find the house numbers of the shaded houses without counting; fill in shaded boxes...'). Ask: what do you notice about how numbers change as you move up one floor or one step to the right?"
+            },
+            {
+              "minutes": "10–22",
+              "description": "Students colour houses for Let us Do Q2 (Jump Joy Residency), p.74 ('Colour the houses to which Arvind Dada has to deliver sweets: 209, 228, 242...'). Discuss: can you find 209 without counting from 1 — which floor and column would it be on?"
+            },
+            {
+              "minutes": "22–33",
+              "description": "Students complete Let us Do Q3, p.75 ('Write the floor and column number for each of: 13, 67, 106, 159...'). Guide students to see that the ones digit gives the column and the remaining digits give the floor."
+            },
+            {
+              "minutes": "33–40",
+              "description": "Students solve the riddle in Let us Do Q5 (Who am I? — card 1), p.75 ('I have digits 9, 1 and 5. I am less than 200. I have 9 ones.'). Ask one student to explain their reasoning step by step."
+            }
+          ],
+          "teacher_notes": "In the previous period students placed numbers on a number line; today the apartment grid gives the same numbers a two-dimensional home. Students often confuse 'floor' with 'column' when first reading the grid — physically tracing across a row and up a column with a finger helps clarify the structure.",
+          "materials": [
+            "Textbook p.73–75",
+            "Coloured pencils for Q2",
+            "Large apartment grid drawn on board"
+          ]
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 35,
+          "section_refs": [
+            "S8",
+            "S9"
+          ],
+          "section_titles": [
+            "Hop Hundreds Home: apartment grid and place value",
+            "Dienes blocks: drawing H-T-O for 3-digit numbers"
+          ],
+          "activity_title": "Grid Patterns, Who Am I Riddles, and Dienes Blocks",
+          "tasks_in_class": [
+            {
+              "id": "T-32",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S8",
+              "book_ref": "Let us Do Q4, p.75",
+              "description": "Find and write house numbers in the blank spaces of the partial grid (given 12, 144, 238, 319); discuss how numbers change moving up/down and left/right."
+            },
+            {
+              "id": "T-34",
+              "intent": "reason",
+              "method": "Inquiry",
+              "section_ref": "S8",
+              "book_ref": "Let us Do Q5 (Who am I? — card 2), p.75",
+              "description": "Who am I? I am a 3-digit number. I have only digits 4 and 0."
+            },
+            {
+              "id": "T-35",
+              "intent": "reason",
+              "method": "Inquiry",
+              "section_ref": "S8",
+              "book_ref": "Let us Do Q5 (Who am I? — card 3), p.75",
+              "description": "Who am I? I am greater than 300 but less than 400. I have no tens. My ones and hundreds digits are the same."
+            },
+            {
+              "id": "T-36",
+              "intent": "explore",
+              "method": "Play-way",
+              "section_ref": "S9",
+              "book_ref": "Let us Do Q6, p.76",
+              "description": "Draw Dienes block representations for house numbers 309, 275, 423, 365, 343, 458, 562, 606, 800; write types of boxes/packets and number sentence."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Students complete Let us Do Q4, p.75 ('Find and write house numbers in the blank spaces of the partial grid; discuss how numbers change moving up/down and left/right.'). After filling, ask students to state the rule in one sentence."
+            },
+            {
+              "minutes": "10–18",
+              "description": "Students work through the remaining riddles: Let us Do Q5 (Who am I? — card 2), p.75 ('I am a 3-digit number. I have only digits 4 and 0.') and Let us Do Q5 (Who am I? — card 3), p.75 ('I am greater than 300 but less than 400. I have no tens. My ones and hundreds digits are the same.'). Encourage students to think aloud and eliminate impossible numbers."
+            },
+            {
+              "minutes": "18–35",
+              "description": "Introduce Dienes blocks (boxes of 100, strips of 10, loose units); students draw representations and write number sentences for Let us Do Q6, p.76 ('Draw Dienes block representations for house numbers 309, 275, 423, 365, 343, 458, 562, 606, 800...'). Highlight 309 and 606 as numbers with zero tens — ask: how many tens strips do you draw for 309?"
+            }
+          ],
+          "teacher_notes": "The apartment grid from last period established that the ones column and tens-hundreds rows encode a number's structure; today students apply that same understanding to fill a partial grid and then draw Dienes blocks. A common error with zero-tens numbers like 309 is writing 3 tens blocks — explicitly model drawing zero strips before students begin.",
+          "materials": [
+            "Textbook p.75–76",
+            "Dienes block pictures or cut-outs",
+            "Pencils/crayons"
+          ]
+        },
+        {
+          "period_number": 8,
+          "period_duration_minutes": 35,
+          "section_refs": [
+            "S10"
+          ],
+          "section_titles": [
+            "Number hunt, patterns, and 100-10 relationships"
+          ],
+          "activity_title": "Patterns, Packing Hundreds, and the Clap-Snap-Pat Game",
+          "tasks_in_class": [
+            {
+              "id": "T-37",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S10",
+              "book_ref": "Let us Do Q7(a) (Spring Leap Homes), p.77",
+              "description": "Write the house numbers of the yellow and pink houses in the Spring Leap Homes grid."
+            },
+            {
+              "id": "T-38",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S10",
+              "book_ref": "Let us Do Q7(b), p.77",
+              "description": "Write the pattern you see in the yellow and pink house numbers."
+            },
+            {
+              "id": "T-39",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S10",
+              "book_ref": "Let us Do Q8, p.77",
+              "description": "How many boxes of 10 fit in: (a) 1 box of 100, (b) 2 boxes of 100, (c) 4 boxes of 100, (d) one opened box of 100?"
+            },
+            {
+              "id": "T-41",
+              "intent": "reason",
+              "method": "Play-way",
+              "section_ref": "S10",
+              "book_ref": "Let us Play — Clap-Snap-Pat, p.78",
+              "description": "Play Clap-Snap-Pat: record hundreds (clap clap), tens (snap), ones (pat) in the table; given 211 is done, record four more numbers."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Students read the Spring Leap Homes grid and complete Let us Do Q7(a), p.77 ('Write the house numbers of the yellow and pink houses...') and Q7(b), p.77 ('Write the pattern you see...'). Discuss: do the yellow numbers increase by 1 or by some other amount?"
+            },
+            {
+              "minutes": "10–20",
+              "description": "Students work through Let us Do Q8, p.77 ('How many boxes of 10 fit in 1, 2, 4 boxes of 100, and in one opened box?'). Use Dienes blocks from the previous period to physically show one large box opening into 10 strips."
+            },
+            {
+              "minutes": "20–35",
+              "description": "The class plays Let us Play — Clap-Snap-Pat, p.78 ('Record hundreds (clap), tens (snap), ones (pat) in the table; 211 is done, record four more numbers.'). Teacher calls a number, students perform the actions, then record; swap so a student calls the number."
+            }
+          ],
+          "teacher_notes": "Dienes blocks drawn in the previous period provide the concrete reference for today's 100-10 packing problem. Students sometimes think opening a box of 100 gives 100 loose ones rather than 10 tens — use actual grouping language ('10 groups of 10 make 100') to address this.",
+          "materials": [
+            "Textbook p.77–78",
+            "Dienes block cut-outs or real blocks",
+            "Table sheet for Clap-Snap-Pat recording"
+          ]
+        },
+        {
+          "period_number": 9,
+          "period_duration_minutes": 40,
+          "section_refs": [
+            "S11"
+          ],
+          "section_titles": [
+            "Comparing numbers using > and <"
+          ],
+          "activity_title": "Greater Than, Less Than: Comparing and Ordering 3-Digit Numbers",
+          "tasks_in_class": [
+            {
+              "id": "T-43",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S11",
+              "book_ref": "Let us Do Q1, p.79",
+              "description": "Compare using > or <: (a) 199 and 201, (b) 285 and 275."
+            },
+            {
+              "id": "T-44",
+              "intent": "reason",
+              "method": "Inquiry",
+              "section_ref": "S11",
+              "book_ref": "Let us Do Q2, p.80",
+              "description": "Think and match: link each comparison statement (a)–(f) to the correct reason (six pairs)."
+            },
+            {
+              "id": "T-47",
+              "intent": "reason",
+              "method": "Problem-solving",
+              "section_ref": "S11",
+              "book_ref": "Let us Do Q5, p.81",
+              "description": "Make all 3-digit numbers using digits 3, 2, 4 without repeating; colour the greatest red and smallest yellow."
+            },
+            {
+              "id": "T-49",
+              "intent": "practice",
+              "method": "Problem-solving",
+              "section_ref": "S11",
+              "book_ref": "Let us Do Q7(a), p.81",
+              "description": "Arrange from smallest to biggest: 456, 389, 207, 99, 110."
+            },
+            {
+              "id": "T-50",
+              "intent": "practice",
+              "method": "Problem-solving",
+              "section_ref": "S11",
+              "book_ref": "Let us Do Q7(b), p.81",
+              "description": "Arrange from biggest to smallest: 67, 376, 294, 249, 494."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Introduce the > and < symbols using the laddoo story from the textbook (487 laddoos vs 423 laddoos). Students complete Let us Do Q1, p.79 ('Compare using > or <: 199 and 201; 285 and 275.') and discuss the hundreds-first strategy."
+            },
+            {
+              "minutes": "10–20",
+              "description": "Students work on Let us Do Q2, p.80 ('Think and match: link each comparison statement to the correct reason — six pairs.'). After individual work, pairs check each other's reasoning."
+            },
+            {
+              "minutes": "20–30",
+              "description": "Students complete Let us Do Q5, p.81 ('Make all 3-digit numbers using digits 3, 2, 4 without repeating; colour the greatest red and smallest yellow.'). Ask: how many numbers can you make, and how did you make sure you found them all?"
+            },
+            {
+              "minutes": "30–40",
+              "description": "Students complete Let us Do Q7(a), p.81 ('Arrange from smallest to biggest: 456, 389, 207, 99, 110.') and Q7(b), p.81 ('Arrange from biggest to smallest: 67, 376, 294, 249, 494.'). Close by asking: when two numbers have a different number of digits, which is always greater, and why?"
+            }
+          ],
+          "teacher_notes": "The apartment grid and Dienes block work in earlier periods established that the hundreds digit carries the most weight; today's comparison tasks make that explicit through > and < symbols. A common error is comparing digits left to right without checking that both numbers have the same number of digits first — remind students that a 2-digit number is always less than a 3-digit number.",
+          "materials": [
+            "Textbook p.79–81",
+            "Digit cards (2, 3, 4) per student for Q5",
+            "Coloured pencils (red and yellow)"
+          ]
+        }
+      ]
+    },
+    "coverage_handoff": {
+      "explore": {
+        "tasks": [
+          {
+            "task_id": "T-2",
+            "intent": "explore",
+            "section_ref": "S1",
+            "book_ref": "Now find out, p.64",
+            "description": "Count all the triangular torans by grouping in tens to verify the total."
+          },
+          {
+            "task_id": "T-14",
+            "intent": "explore",
+            "section_ref": "S4",
+            "book_ref": "Let us Do Q7, p.68",
+            "description": "Make the number slider; use it to increase/decrease: (a) 285+1, (b) 147+10, (c) 367−2, (d) 289−10, (e) 290+20."
+          },
+          {
+            "task_id": "T-36",
+            "intent": "explore",
+            "section_ref": "S9",
+            "book_ref": "Let us Do Q6, p.76",
+            "description": "Draw Dienes block representations for house numbers 309, 275, 423, 365, 343, 458, 562, 606, 800; write types of boxes/packets and number sentence."
+          }
+        ]
+      },
+      "reason": {
+        "tasks": [
+          {
+            "task_id": "T-7",
+            "intent": "reason",
+            "section_ref": "S1",
+            "book_ref": "Let us Do, p.65",
+            "description": "How many more triangles to make 300? How many bangles less than 300? Which is more: bangles or triangles?"
+          },
+          {
+            "task_id": "T-10",
+            "intent": "reason",
+            "section_ref": "S2",
+            "book_ref": "Let us Do Q3, p.66",
+            "description": "Guess how many ants there are; count and check. Discuss why different children get different answers."
+          },
+          {
+            "task_id": "T-11",
+            "intent": "reason",
+            "section_ref": "S3",
+            "book_ref": "Let us Do Q4, p.67",
+            "description": "Fill in the blanks: for each matchstick picture write the number and number sentence; for '300 and 16 more' and '109' draw matchsticks and complete the row."
+          },
+          {
+            "task_id": "T-15",
+            "intent": "reason",
+            "section_ref": "S5",
+            "book_ref": "Let us Play — Flag game, p.69",
+            "description": "Play the flag guessing game with a friend: one thinks of a number between 200 and 210, the other guesses using flag direction clues on the number line."
+          },
+          {
+            "task_id": "T-16",
+            "intent": "reason",
+            "section_ref": "S6",
+            "book_ref": "Magical Count, p.70",
+            "description": "Write any number name, count its letters, write the name of that new number, keep repeating — what happens? Try with 187 and 204 as well."
+          },
+          {
+            "task_id": "T-17",
+            "intent": "reason",
+            "section_ref": "S6",
+            "book_ref": "Numbers on a line, p.70",
+            "description": "Tell what the next hundred number is after 300; write it on the number line (0–400) and show it using matchsticks."
+          },
+          {
+            "task_id": "T-20",
+            "intent": "reason",
+            "section_ref": "S7",
+            "book_ref": "Let us Do Q3, p.71",
+            "description": "Tell how far 387 is from 400 using the number line."
+          },
+          {
+            "task_id": "T-21",
+            "intent": "reason",
+            "section_ref": "S7",
+            "book_ref": "Let us Do Q4, p.71",
+            "description": "Which is more: 393 or 400? Use a number line and show by jumping how far 393 is from 400."
+          },
+          {
+            "task_id": "T-29",
+            "intent": "reason",
+            "section_ref": "S8",
+            "book_ref": "Let us Do Q1 (Hop Hundreds Home), p.73",
+            "description": "Find the house numbers of the shaded houses without counting; fill in shaded boxes with correct house numbers."
+          },
+          {
+            "task_id": "T-32",
+            "intent": "reason",
+            "section_ref": "S8",
+            "book_ref": "Let us Do Q4, p.75",
+            "description": "Find and write house numbers in the blank spaces of the partial grid (given 12, 144, 238, 319); discuss how numbers change moving up/down and left/right."
+          },
+          {
+            "task_id": "T-35",
+            "intent": "reason",
+            "section_ref": "S8",
+            "book_ref": "Let us Do Q5 (Who am I? — card 3), p.75",
+            "description": "Who am I? I am greater than 300 but less than 400. I have no tens. My ones and hundreds digits are the same."
+          },
+          {
+            "task_id": "T-39",
+            "intent": "reason",
+            "section_ref": "S10",
+            "book_ref": "Let us Do Q8, p.77",
+            "description": "How many boxes of 10 fit in: (a) 1 box of 100, (b) 2 boxes of 100, (c) 4 boxes of 100, (d) one opened box of 100?"
+          },
+          {
+            "task_id": "T-41",
+            "intent": "reason",
+            "section_ref": "S10",
+            "book_ref": "Let us Play — Clap-Snap-Pat, p.78",
+            "description": "Play Clap-Snap-Pat: record hundreds (clap clap), tens (snap), ones (pat) in the table; given 211 is done, record four more numbers."
+          },
+          {
+            "task_id": "T-44",
+            "intent": "reason",
+            "section_ref": "S11",
+            "book_ref": "Let us Do Q2, p.80",
+            "description": "Think and match: link each comparison statement (a)–(f) to the correct reason (six pairs)."
+          },
+          {
+            "task_id": "T-47",
+            "intent": "reason",
+            "section_ref": "S11",
+            "book_ref": "Let us Do Q5, p.81",
+            "description": "Make all 3-digit numbers using digits 3, 2, 4 without repeating; colour the greatest red and smallest yellow."
+          }
+        ]
+      },
+      "practice": {
+        "tasks": [
+          {
+            "task_id": "T-8",
+            "intent": "practice",
+            "section_ref": "S2",
+            "book_ref": "Let us Do Q1, p.66",
+            "description": "Fill in the empty tiles on Jojo's tiled path with the correct numbers (sequences around 211–216, etc.)."
+          },
+          {
+            "task_id": "T-12",
+            "intent": "practice",
+            "section_ref": "S3",
+            "book_ref": "Let us Do Q5, p.67",
+            "description": "Place the numbers from Q4 on the number line (0–350)."
+          },
+          {
+            "task_id": "T-18",
+            "intent": "practice",
+            "section_ref": "S7",
+            "book_ref": "Let us Do Q1, p.71",
+            "description": "Locate 216, 243, 257 on the number line (200–260)."
+          },
+          {
+            "task_id": "T-28",
+            "intent": "practice",
+            "section_ref": "S7",
+            "book_ref": "Let us Do Q5(g), p.72",
+            "description": "Mark 423, 487, 438, 476 on the number line (413–500); also mark Five Hundred (500)."
+          },
+          {
+            "task_id": "T-49",
+            "intent": "practice",
+            "section_ref": "S11",
+            "book_ref": "Let us Do Q7(a), p.81",
+            "description": "Arrange from smallest to biggest: 456, 389, 207, 99, 110."
+          },
+          {
+            "task_id": "T-50",
+            "intent": "practice",
+            "section_ref": "S11",
+            "book_ref": "Let us Do Q7(b), p.81",
+            "description": "Arrange from biggest to smallest: 67, 376, 294, 249, 494."
+          }
+        ]
+      },
+      "solve": {
+        "tasks": [
+          {
+            "task_id": "T-22",
+            "intent": "solve",
+            "section_ref": "S7",
+            "book_ref": "Let us Do Q5(a), p.72",
+            "description": "How many pieces of mysore pak are in one tray?"
+          },
+          {
+            "task_id": "T-26",
+            "intent": "solve",
+            "section_ref": "S7",
+            "book_ref": "Let us Do Q5(e), p.72",
+            "description": "Chacha is going to fill the tray with more laddoos. How many more laddoos will make the tray full?"
+          }
+        ]
+      }
+    },
+    "assessment_items": [
+      {
+        "section_code": "A",
+        "section_title": "Explore",
+        "items": [
+          {
+            "id": "Q-A-1",
+            "intent": "explore",
+            "section_ref": "S1",
+            "section_title": "Counting beyond 200",
+            "question_type": "SCR",
+            "prompt": "There are 230 beads on a table. Show how you would group them to count them easily. Draw circles to show groups of 10 and write how many groups you made.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "23 groups of 10 beads each. The student should draw 23 circles (or loops) each containing 10, and write 23 groups.",
+              "method_one_line": "Group objects into tens and count the number of groups to find the total.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student use actual counters to make physical groups of 10; stretch: ask them to show a different total like 250 in the same way."
+            },
+            "exercise": {
+              "book_ref": "Now find out, p.64",
+              "description": "Count all the triangular torans by grouping in tens to verify the total."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-A-2",
+            "intent": "explore",
+            "section_ref": "S4",
+            "section_title": "Number slider: increase and decrease by 1, 10, 20",
+            "question_type": "SCR",
+            "prompt": "The number slider shows 174. Write the new number you get when you increase it by 10. Then write the new number when you decrease 174 by 10.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "Increase by 10: 184. Decrease by 10: 164.",
+              "method_one_line": "Adding 10 changes only the tens digit by 1 (up or down), leaving hundreds and ones unchanged.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student use a drawn H-T-O slider and physically change the tens wheel; stretch: ask what happens if they increase 174 by 20 instead."
+            },
+            "exercise": {
+              "book_ref": "Let us Do Q7, p.68",
+              "description": "Make the number slider; use it to increase/decrease: (a) 285+1, (b) 147+10, (c) 367−2, (d) 289−10, (e) 290+20."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-A-3",
+            "intent": "explore",
+            "section_ref": "S9",
+            "section_title": "Dienes blocks: drawing H-T-O for 3-digit numbers",
+            "question_type": "SCR",
+            "prompt": "Draw Dienes blocks (big square = 100, long strip = 10, small square = 1) for the number 312. Write the types of boxes and the number sentence.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "3 big squares (hundreds), 1 long strip (ten), 2 small squares (ones). Types: 3H + 1T + 2O. Number sentence: 300 + 10 + 2 = 312.",
+              "method_one_line": "Decompose the number into hundreds, tens, and ones and draw one block shape for each unit.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student use actual Dienes blocks or pre-drawn block stamps to build the number; stretch: ask them to draw blocks for 406 (a number with zero tens)."
+            },
+            "exercise": {
+              "book_ref": "Let us Do Q6, p.76",
+              "description": "Draw Dienes block representations for house numbers 309, 275, 423, 365, 343, 458, 562, 606, 800; write types of boxes/packets and number sentence."
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "section_code": "B",
+        "section_title": "Reason",
+        "items": [
+          {
+            "id": "Q-B-1",
+            "intent": "reason",
+            "section_ref": "S1",
+            "section_title": "Counting beyond 200",
+            "question_type": "SCR",
+            "prompt": "There are 265 bangles and 248 triangular torans at a mela. Which is more — bangles or torans? How many more bangles are there than torans?",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "Bangles (265) are more. There are 17 more bangles than torans (265 − 248 = 17).",
+              "method_one_line": "Compare hundreds first (both 2), then tens (6 > 4), so 265 > 248; subtract to find the difference.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student use a number line to count up from 248 to 265; stretch: ask what number of torans would make them equal to the bangles."
+            },
+            "exercise": {
+              "book_ref": "Let us Do, p.65",
+              "description": "How many more triangles to make 300? How many bangles less than 300? Which is more: bangles or triangles?"
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-2",
+            "intent": "reason",
+            "section_ref": "S2",
+            "section_title": "Sequences and number patterns on tiles",
+            "question_type": "MCQ",
+            "prompt": "Riya counts a group of dots and gets 214. Sonu counts the same dots and gets 216. Why might they get different answers?",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "One of them may have counted some dots twice or missed some dots.",
+                "is_correct": true
+              },
+              {
+                "label": "B",
+                "text": "Dots always give different numbers to different children.",
+                "is_correct": false
+              },
+              {
+                "label": "C",
+                "text": "The number of dots changed between their counts.",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "Counting in tens never gives the correct answer.",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "Option A — one of them counted some dots twice or missed some.",
+              "method_one_line": "Grouping in tens helps avoid double-counting or missing, so errors occur when groups are not made carefully.",
+              "what_each_option_reveals": {
+                "A": "Student understands that counting errors come from missed or repeated objects.",
+                "B": "Student thinks counting is inherently variable, not understanding that a fixed set has one correct total.",
+                "C": "Student incorrectly believes the quantity itself changed, showing a conservation gap.",
+                "D": "Student has a misconception that grouping in tens is unreliable as a counting strategy."
+              },
+              "inclusivity": "Support: have the student pair-share by re-counting the same set together; stretch: ask them to describe how grouping in tens reduces this kind of error."
+            },
+            "exercise": {
+              "book_ref": "Let us Do Q3, p.66",
+              "description": "Guess how many ants there are; count and check. Discuss why different children get different answers."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-3",
+            "intent": "reason",
+            "section_ref": "S3",
+            "section_title": "Matchstick bundles and number sentences",
+            "question_type": "SCR",
+            "prompt": "Teji shows a number with matchstick bundles: 2 hundred-bundles, 3 ten-bundles, and 5 loose matchsticks. Write the number and complete the number sentence: ___ = 200 + ___ + ___.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "The number is 235. Number sentence: 235 = 200 + 30 + 5.",
+              "method_one_line": "Read hundreds, tens, and ones from the bundles and write the expanded form.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student talk through each bundle aloud before writing; stretch: ask them to write the number sentence a second way, such as 235 = 200 + 35."
+            },
+            "exercise": {
+              "book_ref": "Let us Do Q4, p.67",
+              "description": "Fill in the blanks: for each matchstick picture write the number and number sentence; for '300 and 16 more' and '109' draw matchsticks and complete the row."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-4",
+            "intent": "reason",
+            "section_ref": "S5",
+            "section_title": "Flag game: guessing a hidden number",
+            "question_type": "SCR",
+            "prompt": "Teji thinks of a number between 203 and 210. Jojo guesses 206 and the flag points right (the number is bigger). Jojo then guesses 209 and the flag points left (the number is smaller). Which numbers can Teji's number still be?",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "The number is greater than 206 and less than 209, so it can be 207 or 208.",
+              "method_one_line": "Use the flag clues to narrow the range: number > 206 and number < 209 leaves only 207 and 208.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student mark 203–210 on a drawn number line and cross out ruled-out numbers; stretch: ask which single guess next would identify the number for sure."
+            },
+            "exercise": {
+              "book_ref": "Let us Play — Flag game, p.69",
+              "description": "Play the flag guessing game with a friend: one thinks of a number between 200 and 210, the other guesses using flag direction clues on the number line."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-5",
+            "intent": "reason",
+            "section_ref": "S6",
+            "section_title": "Magical Count and extending hundreds on a number line",
+            "question_type": "SCR",
+            "prompt": "Write the number name for 312. Count the letters in it. Write the number name for that new number. Count its letters. Keep going. What number do you always reach in the end?",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "THREE HUNDRED AND TWELVE has 19 letters. NINETEEN has 8 letters. EIGHT has 5 letters. FIVE has 4 letters. FOUR has 4 letters. The chain always ends at FOUR (4 letters).",
+              "method_one_line": "Count letters in each number name and write the name of the new count, repeating until the number stops changing.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student pair-share and take turns counting letters; stretch: ask them to try starting from a different number and explain why it still ends at FOUR."
+            },
+            "exercise": {
+              "book_ref": "Magical Count, p.70",
+              "description": "Write any number name, count its letters, write the name of that new number, keep repeating — what happens? Try with 187 and 204 as well."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-6",
+            "intent": "reason",
+            "section_ref": "S6",
+            "section_title": "Magical Count and extending hundreds on a number line",
+            "question_type": "MCQ",
+            "prompt": "The numbers 100, 200, 300 are marked on a number line from 0 to 400. What is the next hundred number after 300?",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "350",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "400",
+                "is_correct": true
+              },
+              {
+                "label": "C",
+                "text": "310",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "330",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "400",
+              "method_one_line": "Count on by hundreds from 100, 200, 300 to reach the next hundred: 400.",
+              "what_each_option_reveals": {
+                "A": "Student is adding 50 instead of 100, confusing half-hundred with a full hundred.",
+                "B": "Student correctly identifies the next hundred by continuing the pattern 100, 200, 300, 400.",
+                "C": "Student is adding 10 instead of 100, conflating tens and hundreds.",
+                "D": "Student is adding 30, possibly confusing a partial jump with the full hundred step."
+              },
+              "inclusivity": "Support: let the student count out 100 matchstick bundles in steps of 100 on a drawn line; stretch: ask what the next hundred after 400 would be and how many hundreds fit between 0 and 400."
+            },
+            "exercise": {
+              "book_ref": "Numbers on a line, p.70",
+              "description": "Tell what the next hundred number is after 300; write it on the number line (0–400) and show it using matchsticks."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-7",
+            "intent": "reason",
+            "section_ref": "S7",
+            "section_title": "Locating numbers on number lines and distance reasoning",
+            "question_type": "SCR",
+            "prompt": "Look at a number line from 380 to 400. The number 392 is marked on it. How far is 392 from 400? Show your jumps.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "392 is 8 away from 400 (392 + 8 = 400). The student should show a jump of 8 from 392 to 400.",
+              "method_one_line": "Count on from 392 to 400 using the number line and record the size of the jump.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student count one step at a time from 392 to 400 on a drawn line; stretch: ask how far 385 would be from 400."
+            },
+            "exercise": {
+              "book_ref": "Let us Do Q3, p.71",
+              "description": "Tell how far 387 is from 400 using the number line."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-8",
+            "intent": "reason",
+            "section_ref": "S7",
+            "section_title": "Locating numbers on number lines and distance reasoning",
+            "question_type": "MCQ",
+            "prompt": "Which is more: 396 or 400? How do you know?",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "396 is more, because it has a 9 in the tens place.",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "400 is more, because it comes after 396 on the number line.",
+                "is_correct": true
+              },
+              {
+                "label": "C",
+                "text": "They are equal because both are close to 400.",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "396 is more, because it has more digits that are not zero.",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "400 is more. It comes to the right of 396 on the number line and has 4 hundreds while 396 has only 3 hundreds.",
+              "method_one_line": "Compare hundreds first: 4 hundreds (400) is greater than 3 hundreds (396).",
+              "what_each_option_reveals": {
+                "A": "Student is confused by a large digit in one place, ignoring that hundreds determine the comparison.",
+                "B": "Student correctly uses the number-line position to determine which number is greater.",
+                "C": "Student thinks proximity implies equality, a rounding-related misconception.",
+                "D": "Student counts non-zero digits instead of comparing place values, a surface-level strategy."
+              },
+              "inclusivity": "Support: draw a short number line from 390 to 405 and let the student mark both numbers; stretch: ask the student to show with jumps exactly how far apart 396 and 400 are."
+            },
+            "exercise": {
+              "book_ref": "Let us Do Q4, p.71",
+              "description": "Which is more: 393 or 400? Use a number line and show by jumping how far 393 is from 400."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-9",
+            "intent": "reason",
+            "section_ref": "S8",
+            "section_title": "Hop Hundreds Home: apartment grid and place value",
+            "question_type": "SCR",
+            "prompt": "In an apartment grid, house number 145 is shaded. The grid has 10 columns and each floor up adds 10 to the number. What is the house number directly above 145? What is the house number directly to the right of 145?",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "Directly above 145 is 155 (add 10). Directly to the right of 145 is 146 (add 1).",
+              "method_one_line": "Moving one floor up increases the number by 10; moving one column right increases the number by 1.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student draw a small 3×3 portion of the grid around 145 and fill in nearby numbers; stretch: ask what the house number two floors above and one column to the left of 145 would be."
+            },
+            "exercise": {
+              "book_ref": "Let us Do Q1 (Hop Hundreds Home), p.73",
+              "description": "Find the house numbers of the shaded houses without counting; fill in shaded boxes with correct house numbers."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-10",
+            "intent": "reason",
+            "section_ref": "S8",
+            "section_title": "Hop Hundreds Home: apartment grid and place value",
+            "question_type": "SCR",
+            "prompt": "In an apartment grid, some house numbers are given: the house at a certain spot is 130. Moving up one floor gives 140. Moving right one column gives 131. Fill in the house numbers for the spot two floors above 130 and two columns to the right of 130.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "Two floors above 130: 150 (130 + 10 + 10). Two columns to the right of 130: 132 (130 + 1 + 1).",
+              "method_one_line": "Each floor up adds 10 and each column right adds 1, so apply the rule twice for two steps.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student take one step at a time and write the intermediate number; stretch: ask them to find the house that is three floors up and three columns right of 130."
+            },
+            "exercise": {
+              "book_ref": "Let us Do Q4, p.75",
+              "description": "Find and write house numbers in the blank spaces of the partial grid (given 12, 144, 238, 319); discuss how numbers change moving up/down and left/right."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-11",
+            "intent": "reason",
+            "section_ref": "S8",
+            "section_title": "Hop Hundreds Home: apartment grid and place value",
+            "question_type": "SCR",
+            "prompt": "Who am I? I am a 3-digit number greater than 300 but less than 400. I have no tens. My ones digit and my hundreds digit are the same. Write my number.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "303. (Hundreds digit = 3, tens digit = 0, ones digit = 3; the number is between 300 and 400.)",
+              "method_one_line": "Use the clues: hundreds = 3 (between 300 and 400), tens = 0 (no tens), ones = hundreds = 3, giving 303.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student use a H-T-O frame and try filling each place using the clues one at a time; stretch: ask them to make up their own 'Who am I?' clue for a different 3-digit number."
+            },
+            "exercise": {
+              "book_ref": "Let us Do Q5 (Who am I? — card 3), p.75",
+              "description": "Who am I? I am greater than 300 but less than 400. I have no tens. My ones and hundreds digits are the same."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-12",
+            "intent": "reason",
+            "section_ref": "S10",
+            "section_title": "Number hunt, patterns, and 100-10 relationships",
+            "question_type": "MCQ",
+            "prompt": "Arvind Dada has 3 full boxes of 100 sweets each. How many boxes of 10 can he fill from all 3 boxes of 100?",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "10",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "20",
+                "is_correct": false
+              },
+              {
+                "label": "C",
+                "text": "30",
+                "is_correct": true
+              },
+              {
+                "label": "D",
+                "text": "3",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "30 boxes of 10.",
+              "method_one_line": "1 box of 100 = 10 boxes of 10, so 3 boxes of 100 = 3 × 10 = 30 boxes of 10.",
+              "what_each_option_reveals": {
+                "A": "Student applies the rule for 1 box of 100 only, not multiplying by 3.",
+                "B": "Student may be doubling instead of tripling, or confusing 2 boxes with 3 boxes.",
+                "C": "Student correctly multiplies 10 boxes per hundred by 3 hundreds to get 30.",
+                "D": "Student writes the number of hundred-boxes without converting, showing the relationship is not understood."
+              },
+              "inclusivity": "Support: let the student draw 3 large squares and fill each with 10 strips to count the total strips; stretch: ask how many boxes of 10 would come from 5 boxes of 100."
+            },
+            "exercise": {
+              "book_ref": "Let us Do Q8, p.77",
+              "description": "How many boxes of 10 fit in: (a) 1 box of 100, (b) 2 boxes of 100, (c) 4 boxes of 100, (d) one opened box of 100?"
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-13",
+            "intent": "reason",
+            "section_ref": "S10",
+            "section_title": "Number hunt, patterns, and 100-10 relationships",
+            "question_type": "SCR",
+            "prompt": "In the Clap-Snap-Pat game, clap means hundreds, snap means tens, pat means ones. For the number 324, write how many claps, snaps, and pats you make.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "3 claps (hundreds), 2 snaps (tens), 4 pats (ones).",
+              "method_one_line": "Read the H-T-O digits of the number and match hundreds to claps, tens to snaps, ones to pats.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student write the number in a H-T-O frame first and then fill in the moves; stretch: ask the student to write the number for 2 claps, 0 snaps, 5 pats."
+            },
+            "exercise": {
+              "book_ref": "Let us Play — Clap-Snap-Pat, p.78",
+              "description": "Play Clap-Snap-Pat: record hundreds (clap clap), tens (snap), ones (pat) in the table; given 211 is done, record four more numbers."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-14",
+            "intent": "reason",
+            "section_ref": "S11",
+            "section_title": "Comparing numbers using > and <",
+            "question_type": "SCR",
+            "prompt": "Look at these two numbers: 346 and 364. Write > or < between them. Explain how you decided.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "346 < 364. Both have 3 hundreds, so compare tens: 4 tens < 6 tens, so 346 is smaller.",
+              "method_one_line": "Compare hundreds first (equal), then compare tens (4 < 6), so 346 < 364.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student say the comparison aloud with a partner before writing; stretch: ask what if the tens digits were also equal — which digit would they compare next?"
+            },
+            "exercise": {
+              "book_ref": "Let us Do Q2, p.80",
+              "description": "Think and match: link each comparison statement (a)–(f) to the correct reason (six pairs)."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-15",
+            "intent": "reason",
+            "section_ref": "S11",
+            "section_title": "Comparing numbers using > and <",
+            "question_type": "SCR",
+            "prompt": "Using the digits 5, 1, and 3 (each used once), write all the 3-digit numbers you can make. Circle the greatest number in red and the smallest in yellow.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "The six numbers are: 513, 531, 135, 153, 315, 351. Greatest: 531 (circle red). Smallest: 135 (circle yellow).",
+              "method_one_line": "Arrange digits systematically starting with each digit in hundreds place; the greatest has the largest digit in hundreds, smallest has the smallest digit in hundreds.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: give the student digit cards (5, 1, 3) to physically rearrange; stretch: ask which of the six numbers is closest to 300."
+            },
+            "exercise": {
+              "book_ref": "Let us Do Q5, p.81",
+              "description": "Make all 3-digit numbers using digits 3, 2, 4 without repeating; colour the greatest red and smallest yellow."
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "section_code": "C",
+        "section_title": "Practise",
+        "items": [
+          {
+            "id": "Q-C-1",
+            "intent": "practice",
+            "section_ref": "S2",
+            "section_title": "Sequences and number patterns on tiles",
+            "question_type": "SCR",
+            "prompt": "Fill in the missing numbers in the tile path below.\n\n| 283 | ___ | 285 | ___ | 287 | ___ |",
+            "visual_stimulus": "| Tile 1 | Tile 2 | Tile 3 | Tile 4 | Tile 5 | Tile 6 |\n| 283 | ___ | 285 | ___ | 287 | ___ |",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "284, 286, 288.",
+              "method_one_line": "Count forward by 1 from each given number to find the next tile.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: give the student a worked first instance showing 283→284; stretch: ask them to extend the path two more tiles."
+            },
+            "exercise": {
+              "book_ref": "Let us Do Q1, p.66",
+              "description": "Fill in the empty tiles on Jojo's tiled path with the correct numbers (sequences around 211–216, etc.)."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-C-2",
+            "intent": "practice",
+            "section_ref": "S3",
+            "section_title": "Matchstick bundles and number sentences",
+            "question_type": "MCQ",
+            "prompt": "The number 316 is shown with matchstick bundles on a number line from 0 to 350. Between which two hundred-marks does 316 sit?",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "Between 200 and 300",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "Between 300 and 350",
+                "is_correct": true
+              },
+              {
+                "label": "C",
+                "text": "Between 0 and 100",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "Between 100 and 200",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "Between 300 and 350.",
+              "method_one_line": "316 has 3 hundreds, so it lies to the right of 300 and left of 350 on the number line.",
+              "what_each_option_reveals": {
+                "A": "Student identifies 3 as a digit but places the number in the 200s, confusing hundreds place.",
+                "B": "Student correctly places 316 between 300 and 350 using hundreds-place reasoning.",
+                "C": "Student ignores hundreds entirely, placing in the lowest segment.",
+                "D": "Student may be reading the tens digit (1) as hundreds, placing the number in the 100s."
+              },
+              "inclusivity": "Support: show a worked number line with 200, 300 marked and ask which side of 300 is 316; stretch: ask the student to estimate exactly where on the 300–350 segment 316 would be."
+            },
+            "exercise": {
+              "book_ref": "Let us Do Q5, p.67",
+              "description": "Place the numbers from Q4 on the number line (0–350)."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-C-3",
+            "intent": "practice",
+            "section_ref": "S7",
+            "section_title": "Locating numbers on number lines and distance reasoning",
+            "question_type": "SCR",
+            "prompt": "Mark the numbers 218, 232, and 248 on the number line below by writing each number at the correct position.\n\n| 200 | ___ | ___ | ___ | 260 |",
+            "visual_stimulus": "| 200 | ... | ... | ... | 260 |\n(Mark 218, 232, and 248 at their correct positions.)",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "218 is near the left of the line (18 units from 200), 232 is roughly in the middle (32 units from 200), and 248 is closer to 260 (48 units from 200). Students should place them in this left-to-right order.",
+              "method_one_line": "Count on from 200 by the ones digit to locate each number proportionally on the line between 200 and 260.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: show a first instance with 200 and 210 already marked; stretch: ask the student to mark a fourth number of their choice and explain its position."
+            },
+            "exercise": {
+              "book_ref": "Let us Do Q1, p.71",
+              "description": "Locate 216, 243, 257 on the number line (200–260)."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-C-4",
+            "intent": "practice",
+            "section_ref": "S7",
+            "section_title": "Locating numbers on number lines and distance reasoning",
+            "question_type": "SCR",
+            "prompt": "Mark the numbers 430, 465, and 490 on the number line from 413 to 500. Write each number at its correct position.",
+            "visual_stimulus": "| 413 | ... | ... | ... | 500 |\n(Mark 430, 465, and 490 at their correct positions.)",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "430 is near the left (17 units from 413), 465 is roughly in the middle of the range, and 490 is close to 500 (10 units from 500). They should appear in order: 430, 465, 490 from left to right.",
+              "method_one_line": "Count forward from 413 to each number and place it proportionally on the number line between 413 and 500.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: show 450 already marked as a midpoint reference; stretch: ask the student to also mark 500 and estimate which of the three numbers is farthest from 500."
+            },
+            "exercise": {
+              "book_ref": "Let us Do Q5(g), p.72",
+              "description": "Mark 423, 487, 438, 476 on the number line (413–500); also mark Five Hundred (500)."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-C-5",
+            "intent": "practice",
+            "section_ref": "S11",
+            "section_title": "Comparing numbers using > and <",
+            "question_type": "MCQ",
+            "prompt": "Arrange these numbers from smallest to biggest: 312, 98, 231, 150, 405.",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "98, 150, 231, 312, 405",
+                "is_correct": true
+              },
+              {
+                "label": "B",
+                "text": "98, 231, 150, 312, 405",
+                "is_correct": false
+              },
+              {
+                "label": "C",
+                "text": "150, 98, 231, 312, 405",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "405, 312, 231, 150, 98",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "98, 150, 231, 312, 405.",
+              "method_one_line": "Compare by number of digits first (2-digit numbers are smallest), then compare hundreds, then tens among 3-digit numbers.",
+              "what_each_option_reveals": {
+                "A": "Student correctly orders from smallest to largest by comparing digits systematically.",
+                "B": "Student places 98 first correctly but swaps 150 and 231, showing incomplete tens comparison.",
+                "C": "Student does not recognise that 2-digit 98 is smaller than all 3-digit numbers here.",
+                "D": "Student has reversed the order, arranging biggest to smallest instead of smallest to biggest."
+              },
+              "inclusivity": "Support: show a worked first instance ordering just 98 and 150; stretch: ask the student to add one more number between 231 and 312 and re-order the list."
+            },
+            "exercise": {
+              "book_ref": "Let us Do Q7(a), p.81",
+              "description": "Arrange from smallest to biggest: 456, 389, 207, 99, 110."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-C-6",
+            "intent": "practice",
+            "section_ref": "S11",
+            "section_title": "Comparing numbers using > and <",
+            "question_type": "MCQ",
+            "prompt": "Arrange these numbers from biggest to smallest: 85, 412, 278, 341, 199.",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "412, 341, 278, 199, 85",
+                "is_correct": true
+              },
+              {
+                "label": "B",
+                "text": "412, 278, 341, 199, 85",
+                "is_correct": false
+              },
+              {
+                "label": "C",
+                "text": "85, 199, 278, 341, 412",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "412, 341, 278, 85, 199",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "412, 341, 278, 199, 85.",
+              "method_one_line": "Compare hundreds first among 3-digit numbers (4 > 3 > 2 > 1), then place the 2-digit number last as it is smallest.",
+              "what_each_option_reveals": {
+                "A": "Student correctly orders from biggest to smallest by comparing hundreds then tens.",
+                "B": "Student places 412 correctly but swaps 278 and 341, showing a tens-comparison error.",
+                "C": "Student has arranged smallest to biggest instead of biggest to smallest.",
+                "D": "Student places 85 before 199, not recognising that a 2-digit number is always less than a 3-digit number."
+              },
+              "inclusivity": "Support: show a worked first instance comparing just 412 and 341; stretch: ask the student to insert 300 into the ordered list at the correct position."
+            },
+            "exercise": {
+              "book_ref": "Let us Do Q7(b), p.81",
+              "description": "Arrange from biggest to smallest: 67, 376, 294, 249, 494."
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "section_code": "D",
+        "section_title": "Solve",
+        "items": [
+          {
+            "id": "Q-D-1",
+            "intent": "solve",
+            "section_ref": "S7",
+            "section_title": "Locating numbers on number lines and distance reasoning",
+            "question_type": "NUM",
+            "prompt": "A sweet shop tray holds 100 pieces of barfi when full. There are 3 full trays of barfi. How many pieces of barfi are there in all?",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "300 pieces of barfi.",
+              "method_one_line": "Count 3 groups of 100: 100, 200, 300.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student draw 3 large squares each labelled 100 and count up in hundreds; stretch: ask what the total would be if a fourth tray were added."
+            },
+            "exercise": {
+              "book_ref": "Let us Do Q5(a), p.72",
+              "description": "How many pieces of mysore pak are in one tray?"
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-D-2",
+            "intent": "solve",
+            "section_ref": "S7",
+            "section_title": "Locating numbers on number lines and distance reasoning",
+            "question_type": "NUM",
+            "prompt": "Chacha has a tray that holds 100 laddoos when full. The tray now has 60 laddoos. How many more laddoos does Chacha need to fill the tray completely?",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "40 more laddoos (100 − 60 = 40).",
+              "method_one_line": "Count on from 60 to 100, or subtract 60 from 100, to find the missing quantity.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student draw a bar for 100 and shade 60 to see the remaining gap; stretch: ask what if the tray held 200 and there were already 60 — how many more would be needed?"
+            },
+            "exercise": {
+              "book_ref": "Let us Do Q5(e), p.72",
+              "description": "Chacha is going to fill the tray with more laddoos. How many more laddoos will make the tray full?"
+            },
+            "verified": true
+          }
+        ]
+      }
+    ],
+    "input_tokens": 14385,
+    "output_tokens": 11361,
+    "cost_inr": 19.6484,
+    "assess_input_tokens": 11762,
+    "assess_output_tokens": 10933,
+    "assess_cost_inr": 18.3339
+  }
+}

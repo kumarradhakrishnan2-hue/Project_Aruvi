@@ -104,6 +104,9 @@
 .qopt.correct { color: #0f6e56; font-weight: 500; }
 /* Visual stimulus */
 .vs-box { background: #f5f5f4; border: 0.5px solid #dedad5; border-radius: 4px; padding: 8px 10px; margin-bottom: 10px; }
+/* Number line */
+.vs-numberline { margin: 6px 0 4px; }
+.vs-numberline-caption { font-size: 10px; color: #5a5754; font-style: italic; margin-top: 6px; }
 .vs-label { font-size: 9.5px; font-weight: 600; color: #6b6864; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
 .vs-table { width: 100%; border-collapse: collapse; font-size: 10.5px; }
 .vs-table th { background: #e8e5e0; color: #1a1917; font-weight: 600; padding: 4px 8px; border: 0.5px solid #ccc; text-align: left; }
@@ -1528,7 +1531,9 @@ function buildGuideHtml(q, isSci) {
         .replace(/\bChallenge\b/g, '<strong>Challenge</strong>')
         .replace(/\bchallenge\b/g, '<strong>Challenge</strong>')
         .replace(/\bStruggling\b/g, '<strong>Struggling</strong>')
-        .replace(/\bstruggling\b/g, '<strong>Struggling</strong>');
+        .replace(/\bstruggling\b/g, '<strong>Struggling</strong>')
+        .replace(/\bStretch\b/g, '<strong>Stretch</strong>')
+        .replace(/\bstretch\b/g, '<strong>Stretch</strong>');
       parts.push(inclText);
     }
     while (parts.length && parts[parts.length - 1] === '') parts.pop();
@@ -1682,6 +1687,59 @@ function renderVisualStimulus(vs) {
   /* ── No vs-label rendered (fix c) ── */
 
   var lines = trimmed.split('\n').map(function(l) { return l.trim(); }).filter(Boolean);
+
+  /* ── Number line detector ─────────────────────────────────────────────────
+     Matches a single pipe-row whose cells are either integers or '...' / '…',
+     with at least two numeric endpoints, optionally followed by a prose caption.
+     Example: "| 200 | ... | ... | ... | 260 |\n(Mark 218 ...)"               */
+  var nlPipeLine = lines[0] && lines[0].indexOf('|') !== -1 ? lines[0] : null;
+  if (nlPipeLine) {
+    var nlCells = nlPipeLine.split('|').map(function(c){ return c.trim(); }).filter(function(c){ return c !== ''; });
+    var nlNums = nlCells.filter(function(c){ return /^\d+$/.test(c); });
+    var nlDots = nlCells.filter(function(c){ return /^\.{2,}$|^…$/.test(c); });
+    var isNumberLine = nlNums.length >= 2 && nlDots.length > 0 && (nlNums.length + nlDots.length === nlCells.length);
+
+    if (isNumberLine) {
+      var nlMin = parseInt(nlNums[0], 10);
+      var nlMax = parseInt(nlNums[nlNums.length - 1], 10);
+      var nlRange = nlMax - nlMin || 1;
+      var svgW = 340, svgH = 54, padL = 24, padR = 24, lineY = 34;
+      var lineW = svgW - padL - padR;
+
+      var svgParts = [];
+      svgParts.push('<svg class="vs-numberline" viewBox="0 0 ' + svgW + ' ' + svgH + '" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;">');
+      /* Main axis line */
+      svgParts.push('<line x1="' + padL + '" y1="' + lineY + '" x2="' + (svgW - padR) + '" y2="' + lineY + '" stroke="#555" stroke-width="1.5"/>');
+      /* Arrow heads */
+      svgParts.push('<polygon points="' + (svgW-padR+1) + ',' + lineY + ' ' + (svgW-padR-6) + ',' + (lineY-3.5) + ' ' + (svgW-padR-6) + ',' + (lineY+3.5) + '" fill="#555"/>');
+
+      /* Render each cell as a tick + label */
+      nlCells.forEach(function(cell, idx) {
+        var frac = idx / (nlCells.length - 1);
+        var x = padL + frac * lineW;
+        svgParts.push('<line x1="' + x + '" y1="' + (lineY - 6) + '" x2="' + x + '" y2="' + (lineY + 6) + '" stroke="#555" stroke-width="1.2"/>');
+        if (/^\d+$/.test(cell)) {
+          svgParts.push('<text x="' + x + '" y="' + (lineY - 10) + '" text-anchor="middle" font-size="9" fill="#1a1917" font-family="sans-serif">' + cell + '</text>');
+        } else {
+          /* Blank slot — show a short dotted underline for student to fill */
+          svgParts.push('<text x="' + x + '" y="' + (lineY + 18) + '" text-anchor="middle" font-size="9" fill="#9a9795" font-family="sans-serif">___</text>');
+        }
+      });
+
+      svgParts.push('</svg>');
+
+      /* Optional caption (prose lines after the pipe row) */
+      var caption = lines.slice(1).join(' ');
+      if (caption) {
+        svgParts.push('<div class="vs-numberline-caption">' + escHtml(caption) + '</div>');
+      }
+
+      html += svgParts.join('');
+      html += '</div>';
+      return html;
+    }
+  }
+
   var isTable = lines.length >= 2 && lines.every(function(l) { return l.indexOf('|') !== -1; });
 
   if (isTable) {

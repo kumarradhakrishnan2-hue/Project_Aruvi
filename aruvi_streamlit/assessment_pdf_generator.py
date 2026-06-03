@@ -23,6 +23,9 @@ from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle,
     KeepTogether, PageBreak,
 )
+from reportlab.graphics.shapes import Drawing, Line, String, Circle
+from reportlab.graphics import renderPDF
+from reportlab.platypus.flowables import Flowable
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_RIGHT
 from pypdf import PdfReader, PdfWriter
@@ -186,6 +189,70 @@ def _group_science(items):
 
 
 # ──────────────────────────────────────────────────────────────────────────────
+# Number line flowable
+
+class _NumberLineFlowable(Flowable):
+    """Draws a simple number line with labeled endpoints and blank tick slots."""
+
+    def __init__(self, cells, caption="", width=340, height=54):
+        Flowable.__init__(self)
+        self.cells   = cells    # list of str: integers or '...'
+        self.caption = caption
+        self.width   = width
+        self.height  = height + (12 if caption else 0)
+        self._cap_h  = 12 if caption else 0
+
+    def wrap(self, availW, availH):
+        self.width = min(self.width, availW)
+        return (self.width, self.height)
+
+    def draw(self):
+        c = self.canv
+        pad_l, pad_r = 20, 20
+        line_y = 28
+        line_w = self.width - pad_l - pad_r
+        n = len(self.cells)
+
+        # Axis line
+        c.setStrokeColorRGB(0.33, 0.33, 0.33)
+        c.setLineWidth(1.2)
+        ax = self.width - pad_r + 4
+        c.line(pad_l, line_y, ax, line_y)
+        # Arrow head (filled triangle)
+        c.setFillColorRGB(0.33, 0.33, 0.33)
+        p = c.beginPath()
+        p.moveTo(ax + 5, line_y)
+        p.lineTo(ax, line_y + 3.5)
+        p.lineTo(ax, line_y - 3.5)
+        p.close()
+        c.drawPath(p, fill=1, stroke=0)
+
+        for idx, cell in enumerate(self.cells):
+            frac = idx / (n - 1) if n > 1 else 0
+            x = pad_l + frac * line_w
+            # Tick
+            c.setStrokeColorRGB(0.33, 0.33, 0.33)
+            c.setLineWidth(1.0)
+            c.line(x, line_y - 5, x, line_y + 5)
+            is_num = cell.isdigit()
+            if is_num:
+                c.setFillColorRGB(0.1, 0.1, 0.1)
+                c.setFont("Helvetica-Bold", 7.5)
+                c.drawCentredString(x, line_y + 9, cell)
+            else:
+                # blank slot: dashed underline below axis
+                c.setFillColorRGB(0.6, 0.6, 0.6)
+                c.setFont("Helvetica-Oblique", 7)
+                c.drawCentredString(x, line_y - 14, "___")
+
+        # Caption
+        if self.caption:
+            c.setFillColorRGB(0.35, 0.35, 0.33)
+            c.setFont("Helvetica-Oblique", 7)
+            c.drawString(pad_l, 6, self.caption[:120])
+
+
+# ──────────────────────────────────────────────────────────────────────────────
 # Visual stimulus renderer
 # ──────────────────────────────────────────────────────────────────────────────
 def _render_visual_stimulus(vs_text: str, uw: float, story: list):
@@ -206,6 +273,19 @@ def _render_visual_stimulus(vs_text: str, uw: float, story: list):
     """
     vs = vs_text.strip()
     lines = [ln.strip() for ln in vs.splitlines() if ln.strip()]
+
+    # ── Detect number line: single pipe-row with numeric endpoints + '...' slots
+    if lines:
+        first = lines[0]
+        if "|" in first:
+            nl_cells = [c.strip() for c in first.split("|") if c.strip()]
+            nl_nums  = [c for c in nl_cells if c.isdigit()]
+            nl_dots  = [c for c in nl_cells if re.match(r'^\.{2,}$|^…$', c)]
+            if len(nl_nums) >= 2 and len(nl_dots) > 0 and (len(nl_nums) + len(nl_dots) == len(nl_cells)):
+                caption = " ".join(lines[1:]).strip("() ")
+                story.append(_NumberLineFlowable(nl_cells, caption=caption, width=340, height=54))
+                story.append(Spacer(1, 3))
+                return
 
     # Detect pipe-table: at least 2 lines, every line contains "|"
     is_table = len(lines) >= 2 and all("|" in ln for ln in lines)

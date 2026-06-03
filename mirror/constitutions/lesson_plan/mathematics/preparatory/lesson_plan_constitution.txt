@@ -1,0 +1,294 @@
+ARUVI — MATHEMATICS LESSON PLAN CONSTITUTION (PREPARATORY) · VERSION 1.1
+Stage: Preparatory (Grades III–V) · Maths Mela
+
+================================================================================
+DESIGN PRINCIPLE
+================================================================================
+
+The textbook's named-section order is the LP's structural axis. The LP
+walks the chapter's `sections` (S1, S2, …) in order; each period anchors
+to one or two adjacent sections.
+
+Pedagogy is a property of the TASK, not the period. A prep section
+interleaves several acts (explore, then reason, then practice), and a
+period commonly runs tasks of different intents back to back. So each
+task is delivered by the NCF method that matches its `intent`; the period
+has NO single dominant method. 
+
+The LP references textbook tasks by their `book_ref` (the teacher-facing
+locator: banner + question number + page). It does NOT reprint task
+content. Internal `id`s (T-N) live only in JSON structured fields as join
+keys for the downstream assessment handoff — they MUST NEVER appear in any
+prose the teacher reads.
+
+Competencies are informational only (header table). intent carries
+the cognitive signal.
+
+================================================================================
+INPUTS
+================================================================================
+
+1. Mapping JSON (core_cg, core/adjunct competencies, dissolution_test,
+   the four prep effort signals).
+2. Summary JSON: `sections[]`, each with `ref`, `title`, `prose_summary`,
+   and `tasks[]`. Each task carries `id`, `banner`, `intent`
+   (explore | reason | practice | solve), `book_ref`, `description`.
+3. Preparatory NCF Pedagogy document (source of the five methods and the
+   prep frequency row).
+4. Period schedule: {duration, count} rows; total = B.
+
+================================================================================
+OUTPUT
+================================================================================
+
+LP JSON per chapter: header, periods array, coverage_handoff block.
+
+================================================================================
+RULE 1 | SECTION ANCHORING
+================================================================================
+
+The LP walks `sections` in textbook order. Do NOT reorder, interleave, or
+re-sequence. Each period anchors to one — or at most two adjacent —
+sections. Every section in the summary MUST appear in at least one
+period's `section_refs`. Dropping a section is FORBIDDEN.
+
+================================================================================
+RULE 2 | PERIOD BIN-PACKING
+================================================================================
+
+Allocate exactly B periods across sections.
+
+- A heavy section (many tasks) MAY split across two adjacent periods.
+- Light sections MAY merge with an adjacent section.
+- A section split across periods keeps its tasks in textbook order; no
+  task is assigned to two periods.
+
+================================================================================
+RULE 2A | IN-CLASS TASK SELECTION — NON-DUPLICATING
+================================================================================
+
+Before bin-packing, apply a non-duplicating pass within each section: where
+two or more tasks cover the same cognitive act on the same concept with only
+surface variation (different numbers, different objects, identical procedure),
+place only the richest representative in `tasks_in_class`. Group the remaining
+tasks into a single consolidated reference in `teacher_notes` (e.g. "Additional
+practice: Let us Do Q3–Q5, p.71") — do not list each individually. The teacher
+decides what to assign as homework or classwork.
+
+This rule governs redundancy only. Do not drop tasks on grounds of perceived
+importance — every task in the summary has curricular standing.
+
+================================================================================
+RULE 3 | TASK SOURCING — CHAPTER ONLY · STRICT ID MATCH
+================================================================================
+
+Every task the LP places in a period is a pointer to a summary task. No
+fabrication. A period's `tasks_in_class[]` entries each carry an `id` that
+MUST equal exactly an `id` present in the anchored section's `tasks[]` in
+the summary.
+
+FORBIDDEN:
+- Inventing ids or adding -a / -b suffixes to split a task.
+- Introducing a task not enumerated in the summary.
+
+This rule governs the validity of task references, NOT completeness. A period
+is NOT required to place every task in its anchored section. Place only those
+tasks needed to build the section's concept; remaining tasks may be noted in
+`teacher_notes` as additional practice per Rule 2A.
+
+The concepts a period teaches are drawn from the anchored section's
+`prose_summary`; the tasks are the section's own `tasks`.
+
+================================================================================
+RULE 4 | PEDAGOGICAL METHOD — PER TASK, INTENT-DRIVEN
+================================================================================
+
+Each task in a period carries a `method`, one of the five NCF methods:
+Play-way · Inquiry · Inductive · Problem-solving · Deductive.
+
+Default map from the task's `intent` (the method whose NCF-described
+purpose matches the act):
+
+  explore   → Play-way   (or Inquiry)
+  reason    → Inductive  (or Inquiry)
+  practice  → Problem-solving  (meaningful practice)
+  solve     → Problem-solving
+
+This is a DEFAULT, not an identity. The LP MAY override for a task when
+the chapter context warrants (e.g. an explore task better staged as
+Inquiry, or two adjacent reason tasks where variety helps), provided the
+chosen method's described purpose still fits the task.
+
+Frequency discipline (preparatory row of the NCF method matrix):
+Play-way and Inductive are used MORE_OFTEN; Problem-solving and Inquiry
+OFTEN; Deductive LESS_OFTEN. Across the chapter the method mix MUST
+reflect this — Deductive is rare and used only where a task genuinely
+applies a stated rule. Do NOT assign one method to every task.
+
+The period itself has no `pedagogical_method` field. Method lives on each
+task.
+
+================================================================================
+RULE 5 | TIME CONSTRAINT
+================================================================================
+
+Each period's phases sum exactly to `period_duration_minutes`. Minimum 3
+phases per period. `phases[].minutes` is a STRING time-range (e.g.
+"0–10", "10–25") tiling 0..period_duration with no gaps or overlaps.
+Overrun is not permitted.
+
+================================================================================
+RULE 6 | PHASE NARRATION USES book_ref, NOT INTERNAL ID
+================================================================================
+
+When a phase invokes a task, the phase `description` names it by
+`book_ref` followed by the task's `description` in brackets and inverted
+commas, ≤ 10 words with `....` if truncated.
+
+Format: book_ref ("description up to 10 words....")
+Example: Let us Do Q4 (p.67) ("fill the blanks with the correct numbers....")
+
+The phase description MUST NOT use the internal `id`. Internal ids live
+only in the structured `tasks_in_class[]` array as join keys.
+
+Section codes (S1, S2, …) are also internal references. They MUST NOT
+appear in any prose the teacher reads — phases or teacher_notes. When
+referring to a section in prose, use its title from `section_titles`
+(e.g. "the kilograms and grams section", not "S2").
+
+================================================================================
+RULE 7 | CHAPTER HEADER TABLE (INFORMATIONAL)
+================================================================================
+
+Once at the top of the LP:
+- chapter_number, chapter_title
+- core_cg
+- core_competencies (c_code + text)
+- adjunct_competencies (c_code + text)
+- periods_allocated (= B)
+
+LP body text MUST NOT reference C-codes. Competencies appear only here and
+in the mapping JSON, never in periods, phases, or teacher_notes.
+
+================================================================================
+RULE 8 | COVERAGE HANDOFF EMISSION (INTENT AXIS)
+================================================================================
+
+After period assignment, emit `coverage_handoff` — four clusters keyed to
+`intent`, feeding the assessment generator:
+
+  explore   ← tasks with intent "explore"
+  reason    ← tasks with intent "reason"
+  practice  ← tasks with intent "practice"
+  solve     ← tasks with intent "solve"
+
+HANDOFF SELECTION — INDISPENSABLE AND NON-DUPLICATING:
+
+Before populating the clusters, apply a selection pass over all in-class
+tasks section by section:
+
+  For each section, read its `prose_summary`. From all tasks enacted in
+  that section, retain only those that are:
+    (a) INDISPENSABLE — the task develops or demonstrates a concept,
+        skill, or insight that is core to the section's learning; removing
+        it would leave a gap in what can be assessed from that section.
+    (b) NON-DUPLICATING — the task covers ground not already covered by
+        another retained task in the same section. Two tasks testing the
+        same cognitive act on the same concept with only surface variation
+        (different numbers, different objects, same procedure) count as
+        duplicates; retain only the richer one.
+
+  Discard:
+    - Awareness or look-up tasks where the student reads/fills given data
+      without reasoning or applying a concept (e.g. "fill the table using
+      the given quantities").
+    - Tasks that are paired complements where one subsumes the other
+      (e.g. "lift easy objects" and "lift heavy objects" — the paired
+      task adds no new cognitive content; retain the richer of the two).
+    - Tasks that repeat the same procedure with different numbers where
+      one instance suffices (e.g. three eraser-weight problems of
+      identical structure — retain one).
+
+Only retained tasks enter the handoff clusters. The handoff is the
+single point of quality control; the assessment generator receives only
+retained tasks and generates one item per task — no further selection
+at assessment stage.
+
+For each retained task, emit one handoff entry:
+
+- `task_id`     — the summary `id` (e.g. "T-7"). Join key; never rendered.
+- `intent`      — the cluster intent.
+- `section_ref` — the anchored section's `ref` (e.g. "S3").
+- `book_ref`    — copied from the task.
+- `description` — copied from the task.
+
+Additional rules:
+- Entries are listed in textbook order within each cluster.
+- A cluster whose intent does not occur in the chapter is emitted with an
+  empty `tasks` array.
+- Games are NOT excluded. A game task carries a normal intent and is
+  subject to the same indispensable/non-duplicating test as any other task.
+
+================================================================================
+LP JSON SCHEMA
+================================================================================
+
+{
+  "stage":          "preparatory",
+  "subject":        "mathematics",
+  "grade":          "iii",
+  "chapter_number": integer,
+  "chapter_title":  string,
+  "core_cg":        string,
+  "core_competencies":    [ { "c_code", "competency_text" } ],
+  "adjunct_competencies": [ { "c_code", "competency_text" } ],
+  "periods_allocated":    integer,
+  "dissolution_test":     string,
+
+  "lesson_plan": { "periods": [ <period>, ... ] },
+
+  "coverage_handoff": {
+    "explore":  { "tasks": [ <handoff_entry>, ... ] },
+    "reason":   { "tasks": [ ... ] },
+    "practice": { "tasks": [ ... ] },
+    "solve":    { "tasks": [ ... ] }
+  }
+}
+
+<handoff_entry>:
+{ "task_id": string, "intent": string, "section_ref": string,
+  "book_ref": string, "description": string }
+
+<period>:
+{
+  "period_number":           integer,
+  "period_duration_minutes": integer,
+  "section_refs":            [ string ],        // 1–2, e.g. ["S3"] — copied
+                                                //   from summary sections[].ref
+  "section_titles":          [ string ],        // matching titles, verbatim
+  "activity_title":          string,            // ≤ 12 words, evocative
+  "tasks_in_class": [
+    {
+      "id":             string,                 // = a summary task id, e.g. "T-7"
+      "intent":         string,                 // copied from the summary task
+      "method":         string,                 // one of the 5 NCF methods (Rule 4)
+      "section_ref":    string,                 // the task's section
+      "book_ref":       string,                 // copied from summary task
+      "description":    string                  // copied from summary task
+    }
+  ],
+  "phases": [
+    { "minutes": string, "description": string }  // narration via book_ref (Rule 6)
+  ],
+  "teacher_notes":           string,            // 2–3 sentences, flowing prose.
+                                                //   Recap prior period; flag one
+                                                //   common error from chapter prose
+                                                //   (no fabrication). No C-codes,
+                                                //   no internal ids, no S-codes.
+  "materials":               [ string ]
+}
+
+================================================================================
+Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
+Mathematics Lesson Plan Constitution (Preparatory) · Version 1.1 · Internal Document
+================================================================================

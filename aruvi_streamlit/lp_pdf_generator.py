@@ -2133,8 +2133,8 @@ def _json_to_maths_lp_data(j: dict, date_str: str, weight) -> dict:
         "Grade IX":   "ix",
     }
     _stage_map = {
-        "i": "primary", "ii": "primary", "iii": "primary",
-        "iv": "primary", "v": "primary",
+        "i": "preparatory", "ii": "preparatory", "iii": "preparatory",
+        "iv": "preparatory", "v": "preparatory",
         "vi": "middle",  "vii": "middle", "viii": "middle",
         "ix": "secondary", "x": "secondary",
     }

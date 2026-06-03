@@ -1,0 +1,273 @@
+ARUVI — MATHEMATICS ASSESSMENT CONSTITUTION (PREPARATORY) · VERSION 1.1
+Stage: Preparatory (Grades III–V) · Maths Mela
+
+================================================================================
+DESIGN PRINCIPLE
+================================================================================
+
+Prep assessment is organised on the INTENT axis — what the student is
+expected to do — not on the middle-stage recall/reason/apply structure
+(which does not fit prep and was a backwards-invention from middle's
+assessment need). The intent axis is a natural evolution of the chapter's
+own pedagogy: the same task `intent` that selected the teaching method in
+the LP now selects what is assessed and how it is phrased.
+
+Intent is the student's expected ACT. The teaching METHOD (Play-way,
+Inductive, …) is a delivery choice and is NEVER an object of assessment —
+no item tests "how it was taught."
+
+Each assessment item carries TWO artefacts:
+
+  1. A freshly generated, type-appropriate question grounded in the
+     anchored section's `prose_summary`. This is the student-facing
+     question.
+  2. An `exercise` companion — a teacher-facing pointer to the actual
+     textbook task (via `book_ref` + `description`) drawn from the LP
+     handoff, which the teacher can route the student to as parallel
+     practice.
+
+The textbook's answer key remains the canonical solution; Aruvi's only
+answer artefact is a structured `teacher_guide`. Items render to the
+teacher using `book_ref`; internal ids (`task_id`) stay in JSON only.
+
+================================================================================
+INPUTS
+================================================================================
+
+1. LP JSON → `coverage_handoff` (four intent clusters: explore, reason,
+   practice, solve — each a `tasks[]` list of enacted tasks with
+   `task_id`, `intent`, `section_ref`, `book_ref`, `description`). The
+   handoff trio (`book_ref`, `description`) seeds the exercise companion.
+2. Summary JSON → `prose_summary` per section (the source of truth for
+   question content) and section `title`.
+
+================================================================================
+RULE 1 | INTENT-AXIS STRUCTURE
+================================================================================
+
+The assessment has up to four sections, in this fixed order, each keyed to
+a handoff cluster:
+
+  A — Explore        ← handoff.explore
+  B — Reason         ← handoff.reason
+  C — Practise       ← handoff.practice
+  D — Solve          ← handoff.solve
+
+An intent that does not occur in the chapter yields NO assessment section
+(omit it — do not emit an empty placeholder). Section letters are assigned
+only to intents present, in the order above.
+
+================================================================================
+RULE 2 | ONE ITEM PER HANDOFF TASK
+================================================================================
+
+Emit exactly ONE assessment item per task present in `coverage_handoff`.
+Total items = total tasks across all four clusters. The handoff is the
+single point of quality control — it contains only indispensable,
+non-duplicating tasks (selected by the LP constitution's Rule 8). No
+further selection is performed here.
+
+Each handoff task is the anchor for its item. The task's `book_ref` and
+`description` seed the exercise companion (Rule 8); the task's
+`section_ref` locates the `prose_summary` that grounds the prompt (Rule 3).
+
+No bonus, mixed-review, or chapter-wrap items.
+
+Games are assessable: a game task in the handoff carries a normal intent
+and generates an item like any other. The book's "games need not be
+assessed" is soft guidance, not a hard exclusion.
+
+================================================================================
+RULE 3 | PROSE-GROUNDED GENERATION
+================================================================================
+
+Each item's `prompt` is freshly generated and MUST be solvable using only
+the concepts, vocabulary, models, and procedures present in the anchored
+section's `prose_summary` (plus earlier sections, since later ones build
+on them). Out-of-chapter procedures and notations are PROHIBITED.
+
+The anchor task does NOT constrain the prompt — anchor data feeds only the
+exercise companion (Rule 8). The prompt must NOT copy the anchor's
+specific numbers or wording.
+
+The prompt's cognitive level MUST match the intent:
+
+  explore  → recognise / observe / construct from a concrete model
+             (e.g. "draw the line of symmetry", "show 243 with H-T-O").
+  reason   → compare, estimate, explain why, extend a pattern
+             ("which is greater and how do you know?").
+  practice → carry out a single taught step in a fresh instance
+             (fill, mark on a number line, complete the sentence).
+  solve    → work a short word/number problem to an answer
+             (compute, convert units).
+
+Keep language minimal and age-appropriate (Grades III–V): short sentences,
+concrete context, no multi-clause stems.
+
+================================================================================
+RULE 4 | ANSWER VERIFICATION (NON-NEGOTIABLE)
+================================================================================
+
+Before emitting each item the system MUST:
+1. Solve the prompt using the chapter's method.
+2. Solve it again by an alternate route (reverse compute; count-check;
+   independent procedure; magnitude/units check).
+3. Confirm the two agree.
+4. Then set `verified: true`.
+
+The verification reasoning MUST NOT appear in any emitted field — only
+`teacher_guide.expected_answer` and `teacher_guide.method_one_line`
+reflect the verified result. If the routes disagree or no alternate can be
+built, the item falls back per Rule 5.
+
+================================================================================
+RULE 5 | FALLBACK (VERIFICATION-FAILURE ONLY)
+================================================================================
+
+When verification fails:
+- `prompt`            = ""
+- `visual_stimulus`   = ""
+- `options`           = []
+- `verified`          = false
+- `teacher_guide.expected_answer` = ""
+- `teacher_guide.method_one_line` = ""
+- `teacher_guide.what_each_option_reveals` = {}
+- `teacher_guide.inclusivity` = "[Verification failed] Refer to the book
+  task anchored to " + section_ref + "."
+
+The `exercise` companion is still emitted from the handoff anchor, so the
+teacher always has a textbook fallback.
+
+================================================================================
+RULE 6 | TEACHER GUIDE
+================================================================================
+
+Every non-fallback item carries `teacher_guide`:
+
+  expected_answer:   words and numbers only; no figure. The verified
+                     answer in plain prose.
+  method_one_line:   one sentence naming the CHAPTER method that yields
+                     the answer (e.g. "Compare hundreds first, then tens.").
+                     This is the solving method, NOT the teaching method.
+  what_each_option_reveals: MCQ only — object keyed "A".."D", each a
+                     one-sentence diagnostic of the misconception that
+                     option reveals. {} for non-MCQ.
+  inclusivity:       one sentence (≤ 25 words) giving BOTH a support for
+                     the struggling student AND a stretch, fitted to the
+                     intent:
+                       explore  → support: let them use the material/draw it;
+                                  stretch: make one more example.
+                       reason   → support: talk-before-write / pair-share;
+                                  stretch: a what-if (change one premise).
+                       practice → support: a worked first instance;
+                                  stretch: one harder instance.
+                       solve    → support: an alternate representation
+                                  (number line / manipulative);
+                                  stretch: change one number or unit and re-solve.
+
+No C-codes or competency labels anywhere in `teacher_guide`. No teaching
+method named (only the solving method, one line).
+
+================================================================================
+RULE 7 | VISUAL STIMULUS
+================================================================================
+
+`visual_stimulus` is non-empty only when the prompt genuinely needs
+tabular data the student must read or fill.
+
+Permitted:
+- Pipe-delimited table: 2+ lines, every line contains "|", first row is
+  the header.
+- Empty string "" — the default. A figure the student must look at is
+  reached via the textbook (the prompt may say "Refer to the picture in
+  <section> of your book") or via the exercise companion.
+
+PROHIBITED: inline SVG, italic-text figure specs, ASCII art, any image
+markup or external image reference. (Prep maths geometry/symmetry figures
+live in the textbook; do not redraw them.)
+
+================================================================================
+RULE 8 | EXERCISE COMPANION
+================================================================================
+
+Each item carries:
+  "exercise": { "book_ref": string, "description": string }
+
+Sourced verbatim from the handoff task that anchors this item:
+  exercise.book_ref    = handoff task `book_ref`
+  exercise.description = handoff task `description`
+
+The companion is a teacher-facing pointer only; it does NOT constrain the
+prompt (Rule 3). Rendering shows `book_ref` (bold) then `description`,
+under the label "Exercise". The internal `task_id` is NEVER rendered.
+
+================================================================================
+RULE 9 | QUESTION TYPE
+================================================================================
+
+Each item carries `question_type` from: MCQ · SCR · NUM.
+(ECR — extended constructed response — is NOT used at prep; long-form is
+beyond the stage.)
+
+Default by intent:
+  explore  → SCR (describe / draw-and-state) or MCQ
+  reason   → SCR
+  practice → MCQ (preferred) or SCR
+  solve    → NUM (preferred) or SCR
+
+MCQ requires exactly 4 options, exactly one `is_correct: true`, and a
+populated `what_each_option_reveals`. SCR/NUM need no options; the teacher
+reads the answer from `teacher_guide`.
+
+================================================================================
+ASSESSMENT JSON SCHEMA
+================================================================================
+
+{
+  "stage":          "preparatory",
+  "subject":        "mathematics",
+  "chapter_number": integer,
+  "chapter_title":  string,
+
+  "assessment_items": [
+    {
+      "section_code":  "A" | "B" | "C" | "D",
+      "section_title": "Explore" | "Reason" | "Practise" | "Solve",
+      "items": [
+        {
+          "id":              string,            // e.g. "Q-A-1"
+          "intent":          "explore" | "reason" | "practice" | "solve",
+          "section_ref":     string,            // e.g. "S3" (anchor task's section)
+          "section_title":   string,            // verbatim from summary
+          "question_type":   "MCQ" | "SCR" | "NUM",
+          "prompt":          string,            // "" only on Rule 5 fallback
+          "visual_stimulus": string,            // "" or pipe-table only
+
+          "options": [ { "label": string, "text": string,
+                         "is_correct": boolean } ],   // [] unless MCQ
+
+          "teacher_guide": {
+            "expected_answer":          string,
+            "method_one_line":          string,
+            "what_each_option_reveals": { "A": string, "B": string,
+                                          "C": string, "D": string } | {},
+            "inclusivity":              string
+          },
+
+          "exercise": { "book_ref": string, "description": string },
+
+          "verified":        boolean
+        }
+      ]
+    }
+  ]
+}
+
+Each `assessment_items` entry is one intent-section containing one item per
+handoff task of that intent (Rule 2). Sections appear in A→D order,
+omitting intents not present in the handoff.
+
+================================================================================
+Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
+Mathematics Assessment Constitution (Preparatory) · Version 1.1 · Internal Document
+================================================================================

@@ -1438,12 +1438,21 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                         )
                         _total_assess_groups = len(set(_spine_hits)) if _spine_hits else 6
                     # Maths: distinct single-letter section keys (section_a/b/c)
-                    # in coverage_handoff — future-proof against a Section D.
+                    # in coverage_handoff — middle uses section_a/b/c keys;
+                    # prep uses intent keys (explore/reason/practice/solve).
                     elif _subj_folder == "mathematics":
                         _sect_hits = _re_trans.findall(
                             r'"(section_[a-z])"(?:\s*:)', streamed_text
                         )
-                        _total_assess_groups = len(set(_sect_hits)) if _sect_hits else 3
+                        _intent_hits = _re_trans.findall(
+                            r'"(explore|reason|practice|solve)"(?:\s*:)', streamed_text
+                        )
+                        if _sect_hits:
+                            _total_assess_groups = len(set(_sect_hits))
+                        elif _intent_hits:
+                            _total_assess_groups = len(set(_intent_hits))
+                        else:
+                            _total_assess_groups = 3
                     progress_placeholder.markdown(
                         _progress_html(5, assess_ticks_row=_ticks_row(
                             0, _total_assess_groups, "Writing assessment questions"
@@ -2524,6 +2533,73 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
                     "teacher_notes":           p.get("teacher_facilitation_note", ""),
                 })
                 continue
+            # ── Mathematics v2 format detection (Grade IV / preparatory-stage schema)
+            # Signal: section_refs (list) + section_titles (list) + tasks_in_class +
+            # phases; no textbook_segments, no stage_label, no spines_taught,
+            # no competency dict, no dominant_mode. activity_title IS present here.
+            _is_maths_v2 = (
+                isinstance(p.get("section_refs"), list)
+                and isinstance(p.get("section_titles"), list)
+                and isinstance(p.get("tasks_in_class"), list)
+                and p.get("stage_label") is None
+                and p.get("progression_stage") is None
+                and not isinstance(p.get("spines_taught"), list)
+                and p.get("dominant_mode") not in {"O&R", "HI", "D&C", "C&E", "R&A"}
+                and not (p.get("competency") or {})
+            )
+            if _is_maths_v2:
+                mat = p.get("materials", "")
+                if isinstance(mat, list):
+                    mat = ", ".join(mat)
+                # phases [{minutes, description}] → time_slots
+                time_slots = [
+                    {"time": ph.get("minutes", ""), "desc": ph.get("description", "")}
+                    for ph in (p.get("phases") or [])
+                ]
+                # Section display: join section_titles (fall back to section_refs)
+                _sec_titles = [t for t in (p.get("section_titles") or []) if t]
+                _sec_refs   = [r for r in (p.get("section_refs")   or []) if r]
+                _section_title  = ", ".join(_sec_titles) if _sec_titles else ", ".join(_sec_refs)
+                _anchor         = ", ".join(_sec_refs)
+                # Homework items from tasks_in_class flagged as homework, or a
+                # separate homework list if present
+                _items_homework = p.get("homework") or []
+                _items_inclass  = p.get("tasks_in_class") or []
+                _hw_lines = "; ".join(
+                    (it.get("book_ref") or "").strip()
+                    for it in _items_homework if it.get("book_ref")
+                )
+                out.append({
+                    "period_number":           p.get("period_number"),
+                    "period_duration_minutes": p.get("period_duration_minutes"),
+                    "chapter_section":         _anchor,
+                    "activity_name":           p.get("activity_title", ""),
+                    "activity_summary":        p.get("activity_title", ""),
+                    "time_slots":              time_slots,
+                    "material":                mat,
+                    "implied_lo":              p.get("pedagogical_method", ""),
+                    "c_code":                  "",
+                    "cg":                      "",
+                    "weight":                  0,
+                    "competency_text":         "",
+                    "visual_representation":   None,
+                    # Maths-specific fields
+                    "is_mathematics":          True,
+                    "section_title":           _section_title,
+                    "section_goal":            p.get("section_goal", ""),
+                    "pedagogical_method":      p.get("pedagogical_method", ""),
+                    "textbook_segments":       [{"ref": r, "title": t} for r, t in zip(_sec_refs, _sec_titles)],
+                    "textbook_items_in_class": _items_inclass,
+                    "homework":                _items_homework,
+                    "items_in_class_book_refs": "; ".join(
+                        (it.get("book_ref") or "").strip()
+                        for it in _items_inclass if it.get("book_ref")
+                    ),
+                    "homework_book_refs":      _hw_lines,
+                    "teacher_notes":           p.get("teacher_notes", ""),
+                })
+                continue
+
             # ── Science format detection ────────────────────────────────────
             # Only use truly Science-specific fields (stage_label / progression_stage).
             # activity_title is NOT a reliable Science signal — Social Sciences plans
@@ -2637,6 +2713,10 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
         and isinstance(items[0].get("items"), list)
     )
     if _is_maths_assessment:
+        # Middle-stage fallback descriptions (A/B/C fixed).
+        # Prep-stage section_title comes directly from the JSON (Explore/Reason/
+        # Practise/Solve) so this dict is only consulted when note is absent AND
+        # section_title is missing — treat unknown codes as title-cased intent.
         _MATHS_SECTION_DESC = {
             "A": "Recall and Apply — short answers, definitions, and procedural fluency.",
             "B": "Reason and Explain — proofs, justifications, and constructions.",
@@ -2757,7 +2837,7 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
                 #   competency_short (description below)
                 "c_code":           ("Section " + _code) if _code else "",
                 "weight_label":     _title,
-                "competency_short": _note or _MATHS_SECTION_DESC.get(_code, ""),
+                "competency_short": _note or _title or _MATHS_SECTION_DESC.get(_code, ""),
                 "drawing_on":       _title,
                 "question_types":   " · ".join(_types_in_order),
                 "questions":        _qs,
@@ -3222,9 +3302,10 @@ def _generate_pdf_bytes_alloc(
     pdf.ln(3)
 
     # Detect subject group for column layout and footnote wording
-    is_twau    = subject == "The World Around Us"
-    is_science = subject in ("Science", "Mathematics") or is_twau
-    is_english = subject == "English"
+    is_twau      = subject == "The World Around Us"
+    is_math_prep = subject == "Mathematics" and get_stage(grade) == "preparatory"
+    is_science   = subject in ("Science", "Mathematics") or is_twau
+    is_english   = subject == "English"
     uses_effort_index = is_science or is_english
 
     # Column layout — switches on subject group
@@ -3486,6 +3567,56 @@ def _generate_pdf_bytes_alloc(
         _lbl_w = 54
         _body_w = 180 - _lbl_w
         for lbl, body in _ei_rows_twau:
+            y0 = pdf.get_y()
+            pdf.set_font("Helvetica", "B", 6.5)
+            pdf.set_text_color(26, 68, 128)
+            pdf.set_x(pdf.l_margin)
+            pdf.multi_cell(_lbl_w, 4, lbl, ln=False)
+            y1 = pdf.get_y()
+            pdf.set_xy(pdf.l_margin + _lbl_w, y0)
+            pdf.set_font("Helvetica", "", 6.5)
+            pdf.set_text_color(75, 75, 75)
+            pdf.multi_cell(_body_w, 4, body)
+            y2 = pdf.get_y()
+            pdf.set_y(max(y1, y2))
+            pdf.ln(1)
+
+    elif is_math_prep:
+        pdf.ln(4)
+        pdf.set_font("Helvetica", "B", 7)
+        pdf.set_text_color(26, 68, 128)
+        pdf.cell(0, 5, "About the Effort Index", ln=True)
+        pdf.set_draw_color(147, 188, 232)
+        pdf.set_line_width(0.3)
+        pdf.line(pdf.get_x(), pdf.get_y(), pdf.get_x() + 180, pdf.get_y())
+        pdf.ln(1)
+
+        _ei_rows_mp = [
+            ("Formula:",
+             "effort_index = (Conceptual demand x2) + (Task load x2)"
+             " + (Exploration load x1.5) + (Procedural load x1.5)"),
+            ("Conceptual demand (x2):",
+             "How abstract the chapter's reasoning is on the concrete-to-symbolic path."
+             " 1 = fully concrete (counting, matching, sorting tangible objects);"
+             " 2 = slight abstraction (place value, simple patterns, measurement with standard units);"
+             " 3 = symbolic or multi-step reasoning (multi-digit operations, fraction concepts,"
+             " area/perimeter reasoning)."),
+            ("Task load (x2):",
+             "Discrete tier from total task count."
+             " 0 = fewer than 8 tasks; 1 = 8-15; 2 = 16-25; 3 = more than 25."),
+            ("Exploration load (x1.5):",
+             "Share of hands-on, manipulative, or game-based tasks."
+             " 0 = none; 1 = a few; 2 = prominently exploratory."),
+            ("Procedural load (x1.5):",
+             "Share of compute, convert, or drill tasks."
+             " 0 = none; 1 = moderate; 2 = heavily procedural."),
+            ("Note:",
+             "Only relative values matter - the effort index is used to share your available"
+             " periods across chapters in proportion to their load."),
+        ]
+        _lbl_w = 54
+        _body_w = 180 - _lbl_w
+        for lbl, body in _ei_rows_mp:
             y0 = pdf.get_y()
             pdf.set_font("Helvetica", "B", 6.5)
             pdf.set_text_color(26, 68, 128)
@@ -6624,8 +6755,12 @@ elif st.session_state.role == "Allocate":
                 "project_load":      _twau_signals.get("project_load",
                                          _mapping.get("project_load", 0)),
                 # TWAU-specific signals
-                "task_load":         _twau_signals.get("task_load", 0),
+                "task_load":         _twau_signals.get("task_load",
+                                         _mapping.get("task_load", 0)),
                 "map_work":          _twau_signals.get("map_work", 0),
+                # Mathematics preparatory signals
+                "exploration_load":  _mapping.get("exploration_load", 0),
+                "procedural_load":   _mapping.get("procedural_load", 0),
                 "primary":           _enriched_primary,
                 "incidental":        _mapping.get("incidental", []),
             })
@@ -6663,6 +6798,7 @@ elif st.session_state.role == "Allocate":
         f"const GRADE_LABEL    = {json.dumps(st.session_state.grade    or '')};\n"
         f"const SUBJECT_LABEL  = {json.dumps(st.session_state.subject  or '')};\n"
         f"const IS_SCIENCE     = {json.dumps(st.session_state.subject in ('Science', 'Mathematics'))};\n"
+        f"const IS_MATH_PREP   = {json.dumps(st.session_state.subject == 'Mathematics' and get_stage(st.session_state.grade or '') == 'preparatory')};\n"
         f"const IS_ENGLISH     = {json.dumps(st.session_state.subject == 'English')};\n"
         f"const IS_TWAU        = {json.dumps(st.session_state.subject == 'The World Around Us')};\n"
         f"const ARUVI_LOGO_B64 = {json.dumps(_logo_b64)};\n"
@@ -6731,7 +6867,56 @@ elif st.session_state.role == "Allocate":
             'to share your available periods across chapters in proportion to their load.</p>'
             '</div>'
         )
-    elif _subject in ("Science", "Mathematics"):
+    elif _subject == "Mathematics" and get_stage(st.session_state.grade or "") == "preparatory":
+        _fn1_text = (
+            '<div class="about-ei">'
+            '<h4>About the Effort Index</h4>'
+            '<p>The effort index tells you how much classroom time a chapter typically needs '
+            'compared to other chapters. Formula: '
+            '<b>(Conceptual demand × 2) + (Task load × 2) + (Exploration load × 1.5) + (Procedural load × 1.5)</b>. '
+            'Chapters with a higher effort index get more periods.</p>'
+            '<ul>'
+            '<li><b>Conceptual demand (×2)</b> — How abstract the chapter\'s reasoning is on the '
+            'concrete-to-symbolic path. 1 = fully concrete (counting, matching, sorting tangible '
+            'objects); 2 = slight abstraction (place value, simple patterns, measurement with '
+            'standard units); 3 = symbolic or multi-step reasoning (multi-digit operations, '
+            'fraction concepts, area/perimeter reasoning).</li>'
+            '<li><b>Task load (×2)</b> — Discrete tier from total task count. '
+            '0 = fewer than 8 tasks; 1 = 8–15; 2 = 16–25; 3 = more than 25.</li>'
+            '<li><b>Exploration load (×1.5)</b> — Share of hands-on, manipulative, or game-based '
+            'tasks. 0 = none; 1 = a few; 2 = prominently exploratory.</li>'
+            '<li><b>Procedural load (×1.5)</b> — Share of compute, convert, or drill tasks. '
+            '0 = none; 1 = moderate; 2 = heavily procedural.</li>'
+            '</ul>'
+            '<p class="about-ei-close">Only relative values matter — the effort index is used '
+            'to share your available periods across chapters in proportion to their load.</p>'
+            '</div>'
+        )
+    elif _subject == "Mathematics":
+        _fn1_text = (
+            '<div class="about-ei">'
+            '<h4>About the Effort Index</h4>'
+            '<p>The effort index is a number that tells you how much classroom '
+            'time a chapter typically needs compared to other chapters in the '
+            'subject. Chapters with a higher effort index get more periods; '
+            'chapters with a lower one get fewer. It is calculated from four '
+            'signals read from the chapter content.</p>'
+            '<ul>'
+            '<li><b>Conceptual demand (×2)</b> — The cognitive complexity of exercises and questions '
+            'in the chapter. High-order thinking or multi-step reasoning raises the score.</li>'
+            '<li><b>Student activities (×1)</b> — The number of hands-on activities that students '
+            'perform themselves. Each activity adds classroom time for setup, execution and discussion.</li>'
+            '<li><b>Teacher demonstrations (×1.5)</b> — The number of demonstrations the teacher must '
+            'conduct. These need preparation and focused class attention.</li>'
+            '<li><b>Exercise execution load (×2)</b> — The total exercise items students must complete. '
+            'A heavier exercise count means more time for guided practice and assessment.</li>'
+            '</ul>'
+            '<p class="about-ei-close">The four signals are combined with fixed weights to give the '
+            'effort index. Only relative values matter — it is used to share your available periods '
+            'across chapters in proportion to their load.</p>'
+            '</div>'
+        )
+    elif _subject == "Science":
         _fn1_text = (
             '<div class="about-ei">'
             '<h4>About the Effort Index</h4>'

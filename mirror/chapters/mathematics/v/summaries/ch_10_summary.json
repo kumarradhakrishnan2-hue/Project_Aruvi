@@ -1,0 +1,209 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 10,
+  "chapter_title": "Symmetrical Designs",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Alphabet Cutout — Reflection Symmetry",
+      "prose_summary": "The chapter opens with a birthday-decoration context in which students cut out letter shapes using their prior knowledge of reflection symmetry and lines of symmetry from Grade 4. Students fold paper in half or in quarters to exploit vertical and/or horizontal lines of symmetry (e.g., 'A' requires one fold; 'H' requires two), then cut and unfold to reveal the complete letter. The section sits at the concrete end of the concrete→symbolic path: the physical act of folding and cutting makes the abstract idea of a line of symmetry tangible. Students then reason about a set of given letters to classify them by the type of symmetry they possess.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, p.136",
+          "description": "Which of the alphabet cutouts E N X T K V O can be made by drawing half or quarter of the letter? Draw lines of symmetry on the letters."
+        },
+        {
+          "id": "T-2",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, p.136",
+          "description": "Which letters have a horizontal line of symmetry? Which have a vertical line of symmetry? Which have both vertical and horizontal lines of symmetry?"
+        },
+        {
+          "id": "T-3",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do, p.136",
+          "description": "Use lines of symmetry to make paper cutouts of diya, boat, and other designs shown on the border of the page."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Making a Windmill Firki — Rotational Symmetry Introduced",
+      "prose_summary": "Students construct a windmill firki by folding a square paper diagonally twice, cutting along the four fold lines (stopping halfway to the centre), folding alternate corners to the centre, and pinning the result onto a stick — a nine-step concrete making activity. Having built the firki, students observe a marked dot and check whether the firki looks the same after ¼, ½, ¾, and a full turn, entering the idea of rotational symmetry through direct physical experience. This section is wholly on the concrete path: the manipulative (the firki itself) is the medium for encountering the concept.",
+      "tasks": [
+        {
+          "id": "T-4",
+          "banner": "Let Us Make a Windmill Firki",
+          "intent": "explore",
+          "book_ref": "Let Us Make a Windmill Firki, p.137",
+          "description": "Follow the nine steps to make your own windmill firki using a square paper, scissors, and a pin on a stick or straw."
+        },
+        {
+          "id": "T-5",
+          "banner": "Let Us Make a Windmill Firki",
+          "intent": "reason",
+          "book_ref": "Let Us Make a Windmill Firki, p.137",
+          "description": "Observe the dot in the firki. Does the firki look the same after ¼, ½, ¾, and a full turn?"
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Rotational Symmetry in Letters and Digits",
+      "prose_summary": "Building on the firki experience, this section formalises rotational symmetry: a shape has rotational symmetry if it looks the same at some fractional turn less than a full turn. Students complete a table by observing letters H, I, X, and Y at ¼, ½, ¾, and full turns (using cut-outs and tracing paper as tools), recording whether each has rotational symmetry and at which turn. The section then extends the investigation to the ten digits 0–9 — students identify which have reflection symmetry, which have rotational symmetry, and which have both. Multi-digit number examples (11, 1001) push reasoning toward combining digit-level symmetry into number-level symmetry. The section is at the pictorial-to-symbolic level, using visual images of letters and digits as the objects of reasoning.",
+      "tasks": [
+        {
+          "id": "T-6",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, p.138",
+          "description": "Observe letters H, I, X, Y at ¼, ½, ¾, and full turns; complete the rotational symmetry table for each letter."
+        },
+        {
+          "id": "T-7",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, p.138",
+          "description": "Find symmetry in digits 1–9 and 0: which have reflection symmetry? Which have rotational symmetry? Which have both?"
+        },
+        {
+          "id": "T-8",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, p.138",
+          "description": "Do the numbers 11 and 1001 have rotational symmetry, reflection symmetry, or both symmetries?"
+        },
+        {
+          "id": "T-9",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, p.138",
+          "description": "Give examples of 2-, 3-, and 4-digit numbers that have rotational symmetry, reflection symmetry, or both."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Making Designs with Rotational and Reflection Symmetry",
+      "prose_summary": "Students move from observing symmetry in given objects to creating and modifying designs that exhibit specific symmetry properties. They begin with a given cross-shaped design, check whether it has rotational symmetry, then iteratively modify it to achieve half-turn and quarter-turn symmetry, each time also checking for reflection symmetry. A 'Let Us Think' prompt asks them to reason about a two-colour 2×2 square and then colour a star-grid diagram so that it looks the same after every ¼ turn. The open-ended 'Let Us Do' activity uses cut-out square and equilateral-triangle shapes (from the textbook appendix) to construct free designs and sort them into three symmetry categories. The section progresses from pictorial reasoning about given designs to hands-on construction and classification — a concrete→pictorial→symbolic arc within a single section.",
+      "tasks": [
+        {
+          "id": "T-10",
+          "banner": "Making Designs",
+          "intent": "reason",
+          "book_ref": "Making Designs (a), p.139",
+          "description": "Does the given cross-shaped design (circle with four directional triangles) have rotational symmetry? Yes/No."
+        },
+        {
+          "id": "T-11",
+          "banner": "Making Designs",
+          "intent": "explore",
+          "book_ref": "Making Designs (b), p.139",
+          "description": "Change the design by adding shapes so the new design looks the same after a ½ turn. Draw the new design in your notebook."
+        },
+        {
+          "id": "T-12",
+          "banner": "Making Designs",
+          "intent": "explore",
+          "book_ref": "Making Designs (c), p.139",
+          "description": "Modify or add more shapes so the new design looks the same after ¼ turn. Draw the new design in your notebook."
+        },
+        {
+          "id": "T-13",
+          "banner": "Making Designs",
+          "intent": "reason",
+          "book_ref": "Making Designs (d), p.139",
+          "description": "Do the new designs have reflection symmetry? If yes, draw the lines of symmetry."
+        },
+        {
+          "id": "T-14",
+          "banner": "Let Us Think",
+          "intent": "reason",
+          "book_ref": "Let Us Think, p.139",
+          "description": "Does the 2-colour 2×2 square design look the same after ½ turn? Does it look the same after ¼ turn?"
+        },
+        {
+          "id": "T-15",
+          "banner": "Let Us Think",
+          "intent": "explore",
+          "book_ref": "Let Us Think, p.139",
+          "description": "Colour the given star-grid square using two colours so the design looks the same after every ¼ turn. How many times does the shape look the same during a full turn?"
+        },
+        {
+          "id": "T-16",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do, p.139",
+          "description": "Cut out squares and equilateral triangles (same side length, from end of book) and make different symmetrical designs using these two shapes."
+        },
+        {
+          "id": "T-17",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, p.139",
+          "description": "Do the designs made from squares and triangles have reflection symmetry also? Draw the line(s) of symmetry."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Block Printing — Symmetry in Cultural Context",
+      "prose_summary": "The chapter closes by situating symmetry in the traditional craft of Rajasthan block printing, where artisans carve wooden blocks and stamp them repeatedly on fabric. Students first examine a composite shape (triangles flanking a 2×2 square) and determine its reflection and rotational symmetry. They then match five wooden block designs to their printed outputs, connecting mirror-image reversal to reflection symmetry. A 'Let Us Do' task asks students to observe border shapes on the page and classify each as having reflection symmetry, rotational symmetry, or both. A 'Project Work' task invites students to create symmetrical patterns using vegetable printing blocks (okra, potato). The section anchors abstract symmetry concepts in a real-world, culturally significant context, and the project work returns to the concrete mode of making.",
+      "tasks": [
+        {
+          "id": "T-18",
+          "banner": "Let Us Explore",
+          "intent": "reason",
+          "book_ref": "Let Us Explore, p.140",
+          "description": "Does the composite shape (two triangles flanking a 2×2 square) have reflection symmetry? Draw lines. Does it have rotational symmetry? At which turn? Does it have both?"
+        },
+        {
+          "id": "T-19",
+          "banner": "Let Us Explore",
+          "intent": "reason",
+          "book_ref": "Let Us Explore, p.140",
+          "description": "Sort your designs into three categories: designs with only rotational symmetry, only reflection symmetry, and both rotational and reflection symmetry."
+        },
+        {
+          "id": "T-20",
+          "banner": "Let Us Explore",
+          "intent": "reason",
+          "book_ref": "Let Us Explore, p.140",
+          "description": "Match each wooden block (i–v) to its correct print (a–e) by drawing a line. One is done for you."
+        },
+        {
+          "id": "T-21",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, p.141",
+          "description": "Observe shapes on the border of the page. Put a ✓ on shapes with reflection symmetry. Put a * on shapes with rotational symmetry."
+        },
+        {
+          "id": "T-22",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, p.141",
+          "description": "Design B: fill in 'The design B looks the same after every __ turn. This design has __ symmetry.'"
+        },
+        {
+          "id": "T-23",
+          "banner": "Project Work",
+          "intent": "explore",
+          "book_ref": "Project Work, p.141",
+          "description": "Create symmetrical patterns and designs using vegetable blocks (okra, potato). Some examples are shown."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 2,
+  "exploration_load": 1,
+  "procedural_load": 0
+}

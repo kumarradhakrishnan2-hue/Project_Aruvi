@@ -1,0 +1,1318 @@
+{
+  "filename": "ch_08_20260603_175438.json",
+  "saved_at": "2026-06-03T17:54:38",
+  "grade": "Grade IV",
+  "subject": "Mathematics",
+  "chapter_number": 8,
+  "chapter_title": "Weigh It, Pour It",
+  "period_schedule_display": "Period schedule:\n  Row 1: 35 minutes × 1 period = 35 minutes\nTotal: 1 periods · 35 minutes",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 35,
+      "count": 1
+    }
+  ],
+  "plan_status": "full_lpa",
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 35,
+          "section_refs": [
+            "S1"
+          ],
+          "section_titles": [
+            "Fun at Vegetable Market — comparing weights"
+          ],
+          "activity_title": "Heaviest to Lightest: Making Sense of Weight Around Us",
+          "tasks_in_class": [
+            {
+              "id": "T-1",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S1",
+              "book_ref": "Opening Q1, p.115",
+              "description": "Look at pictures of animals and write their names from heaviest to lightest."
+            },
+            {
+              "id": "T-2",
+              "intent": "reason",
+              "method": "Inquiry",
+              "section_ref": "S1",
+              "book_ref": "Opening Q2, p.115",
+              "description": "Write the name of the heaviest object in your home and explain how you know."
+            },
+            {
+              "id": "T-6",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S1",
+              "book_ref": "Fun at Vegetable Market, p.115",
+              "description": "What do you think will be the weight of the half pumpkin? Write your estimate."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–7",
+              "description": "Open with a brief class discussion: ask students to name the heaviest animal they have seen and the lightest, recording responses on the board. Invite students to explain how they decided — did they see it, lift it, or just know?"
+            },
+            {
+              "minutes": "7–20",
+              "description": "Students work on Opening Q1, p.115 ('Look at pictures of animals and write their names from heaviest to lightest.'). After individual attempts, invite two or three students to share their ordering and justify their reasoning, prompting the class to agree or revise."
+            },
+            {
+              "minutes": "20–30",
+              "description": "Students respond to Opening Q2, p.115 ('Write the name of the heaviest object in your home and explain how you know.'). Encourage varied justifications — lifting, comparing, reading a label — so the class sees multiple ways of knowing weight."
+            },
+            {
+              "minutes": "30–35",
+              "description": "Display or describe the vegetable market scale image and pose Fun at Vegetable Market, p.115 ('What do you think will be the weight of the half pumpkin?'). Students write their estimates; collect a few answers to set up the next period's formal unit work."
+            }
+          ],
+          "teacher_notes": "This is the opening period; no prior class recap is needed. A common early error is students confusing size with weight — a large but hollow object may be lighter than a small dense one; prompt this with a quick counter-example if it arises. Tasks Opening Q3–Q5, p.115 on school bags and personal weight make good independent reflective writing or homework.",
+          "materials": [
+            "Textbook p.115",
+            "Blackboard or chart for recording animal names"
+          ]
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 40,
+          "section_refs": [
+            "S2"
+          ],
+          "section_titles": [
+            "Kilograms and grams — fractions of a kilogram"
+          ],
+          "activity_title": "Balancing Packets: Discovering Half, Quarter, and Tenth of a Kilogram",
+          "tasks_in_class": [
+            {
+              "id": "T-8",
+              "intent": "explore",
+              "method": "Play-way",
+              "section_ref": "S2",
+              "book_ref": "Let Us Explore Q1 (a)(b)(c), p.116–117",
+              "description": "Look at pictures: 2×500g=1kg so 500g=½kg; 4×250g=1kg so 250g=¼kg; 10×100g=1kg. Try doing the same with actual packets."
+            },
+            {
+              "id": "T-7",
+              "intent": "explore",
+              "method": "Inquiry",
+              "section_ref": "S2",
+              "book_ref": "Let Us Do, p.116",
+              "description": "Estimate the weight of 6 bananas, 5 potatoes, 10 tomatoes, 15 onions as less/more than 1 kg; verify using a weighing balance."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Briefly recap the previous period's pumpkin estimate and student answers. Ask: 'A whole pumpkin might weigh 1 kg — if we cut it in half, how many grams might each half be?' Accept guesses to activate curiosity."
+            },
+            {
+              "minutes": "5–22",
+              "description": "Work through Let Us Explore Q1 (a)(b)(c), p.116–117 ('Look at pictures: 2×500g=1kg so 500g=½kg; 4×250g=1kg so 250g=¼kg; 10×100g=1kg.'). Use actual 500 g, 250 g, and 100 g packets on a pan balance if available, or use the textbook pictures; build each relationship step by step with the class."
+            },
+            {
+              "minutes": "22–37",
+              "description": "Students work in small groups on Let Us Do, p.116 ('Estimate the weight of 6 bananas, 5 potatoes, 10 tomatoes, 15 onions as less/more than 1 kg; verify using a weighing balance.'). Groups record estimates first, then verify; discuss which estimations surprised them."
+            },
+            {
+              "minutes": "37–40",
+              "description": "Consolidate on the board: write the three relationships (500 g = ½ kg, 250 g = ¼ kg, 100 g = 1/10 kg) derived from the exploration. Students copy these into their notebooks as the section's key learning."
+            }
+          ],
+          "teacher_notes": "Students who covered fractions earlier may recall ½ and ¼ but may not yet connect them to measurement; the pan-balance picture is the critical bridge. A common error is writing '500 g = ½' without the unit — prompt students always to write '½ kg'. Bring or borrow 500 g, 250 g, and 100 g packets of dal or rice for the verification activity if possible.",
+          "materials": [
+            "Textbook p.116–117",
+            "Pan balance or kitchen scale",
+            "500 g, 250 g, and 100 g packets of produce or sand-filled bags",
+            "Vegetables: bananas, potatoes, tomatoes, onions"
+          ]
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 35,
+          "section_refs": [
+            "S3"
+          ],
+          "section_titles": [
+            "Comparing weights — pan balance and unit matching"
+          ],
+          "activity_title": "Tipping the Balance: Pan Reasoning and Unit Matching",
+          "tasks_in_class": [
+            {
+              "id": "T-9",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S3",
+              "book_ref": "Let Us Find Q1, p.117",
+              "description": "How many 250 g packets balance one 500 g packet? Draw packets on the empty pan; complete: 250 g = ___ of 500 g."
+            },
+            {
+              "id": "T-10",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S3",
+              "book_ref": "Let Us Find Q2, p.118",
+              "description": "Draw arrows to indicate which side the pan balance will tilt for each of the four pictures (a–d)."
+            },
+            {
+              "id": "T-11",
+              "intent": "reason",
+              "method": "Play-way",
+              "section_ref": "S3",
+              "book_ref": "Let Us Find Q3, p.118",
+              "description": "Match objects (baby, eraser, pen, books, table, fridge, etc.) to the units kilogram or grams."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Quickly recall the three fraction relationships from the previous period. Ask: 'If 500 g = ½ kg and 250 g = ¼ kg, how do 500 g and 250 g relate to each other?' Let students predict before opening the book."
+            },
+            {
+              "minutes": "5–15",
+              "description": "Students work on Let Us Find Q1, p.117 ('How many 250 g packets balance one 500 g packet? Draw packets on the empty pan; complete: 250 g = ___ of 500 g.'). Discuss the answer as a class and connect back to the fraction chain built in the previous period."
+            },
+            {
+              "minutes": "15–25",
+              "description": "Students attempt Let Us Find Q2, p.118 ('Draw arrows to indicate which side the pan balance will tilt for each of the four pictures (a–d).'). After individual work, pairs compare and justify their arrow directions to each other."
+            },
+            {
+              "minutes": "25–35",
+              "description": "Class activity: read aloud each object from Let Us Find Q3, p.118 ('Match objects — baby, eraser, pen, books, table, fridge — to kilogram or grams.') and have students signal their choice by raising a hand, then confirm and discuss edge cases."
+            }
+          ],
+          "teacher_notes": "Students are continuing directly from the kilogram-and-grams section; briefly reinforce that larger everyday objects use kilograms and tiny objects use grams. A common error at this stage is students choosing 'kg' for any named object simply because it sounds familiar — the matching task directly addresses this misconception. Tasks Let Us Do Q1–Q3, p.119 on eraser-unit problems may be used as classwork or assigned as additional practice after Period 4.",
+          "materials": [
+            "Textbook p.117–118",
+            "Blackboard for drawing pan-balance diagrams",
+            "Actual eraser for tactile reference"
+          ]
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 40,
+          "section_refs": [
+            "S3"
+          ],
+          "section_titles": [
+            "Comparing weights — pan balance and unit matching"
+          ],
+          "activity_title": "Erasers and Sweet Boxes: Applying Gram Relationships",
+          "tasks_in_class": [
+            {
+              "id": "T-12",
+              "intent": "solve",
+              "method": "Problem-solving",
+              "section_ref": "S3",
+              "book_ref": "Let Us Do Q1, p.119",
+              "description": "How many erasers (each 10 g) will weigh the same as a 50 g Haldi packet?"
+            },
+            {
+              "id": "T-15",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S3",
+              "book_ref": "Let Us Think Q1–Q4 (Boxes of Sweet), p.119",
+              "description": "How many boxes of 500 g, 250 g, 100 g, and 50 g each are needed to pack 1 kg Kaju-katli? Write the number for each customer."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Hold up (or describe) an eraser and tell students it weighs 10 g. Ask: 'How many erasers would you need to balance a 50 g packet of Haldi?' Let two students estimate aloud before solving."
+            },
+            {
+              "minutes": "5–18",
+              "description": "Students solve Let Us Do Q1, p.119 ('How many erasers each 10 g will weigh the same as a 50 g Haldi packet?') individually, then share working on the board. Use this as a bridge to discuss how multiplication and division of small numbers apply to weight."
+            },
+            {
+              "minutes": "18–35",
+              "description": "Introduce the Boxes of Sweet scenario and work through Let Us Think Q1–Q4, p.119 ('How many boxes of 500 g, 250 g, 100 g, and 50 g each are needed to pack 1 kg Kaju-katli?'). After individual attempts, bring out each answer and connect it to the corresponding fraction relationship (e.g. two 500 g boxes because 500 g = ½ kg)."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Consolidate by listing all four box sizes and their counts on the board in a table. Ask students: 'What pattern do you notice?' — guiding them to see that as box size halves, the count doubles."
+            }
+          ],
+          "teacher_notes": "This period continues the comparing weights section, now applying the gram relationships to multi-step problems. Students sometimes add gram values mechanically without using the fraction relationships — encourage them to connect '2 boxes of 500 g' to '2 × ½ kg = 1 kg'. Let Us Do Q2–Q3, p.119 (soap bar and sugar eraser problems) follow the same structure as Q1 and can be assigned as consolidated practice or homework.",
+          "materials": [
+            "Textbook p.119",
+            "Blackboard for table of box sizes",
+            "Actual eraser for reference weight"
+          ]
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 35,
+          "section_refs": [
+            "S4"
+          ],
+          "section_titles": [
+            "Weighing machines and real-life weight estimation"
+          ],
+          "activity_title": "Lift, Estimate, Convert: Weight in Everyday Life",
+          "tasks_in_class": [
+            {
+              "id": "T-17",
+              "intent": "explore",
+              "method": "Play-way",
+              "section_ref": "S4",
+              "book_ref": "Let Us Do Q1, p.121",
+              "description": "Lift objects around you; write names of three you can lift easily and estimate their weights."
+            },
+            {
+              "id": "T-19",
+              "intent": "solve",
+              "method": "Problem-solving",
+              "section_ref": "S4",
+              "book_ref": "Let Us Do Q3 (a–d), p.121",
+              "description": "How many 1 kg packets are in 10 kg, 20 kg, 50 kg, and 25 kg? Write the answers."
+            },
+            {
+              "id": "T-20",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S4",
+              "book_ref": "Let Us Do Q4, p.121",
+              "description": "Match objects (cat, elephant, 1-litre bottle, tiger, gas cylinder, pen, leaf, wooden chair) with estimated weight ranges."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Introduce the idea of different weighing machines using the textbook pictures (pan balance, baby scale, kitchen scale, bathroom scale, luggage scale). Ask students: 'Which machine would you use to weigh a baby? A suitcase?' — brief pair discussion."
+            },
+            {
+              "minutes": "5–17",
+              "description": "Students carry out Let Us Do Q1, p.121 ('Lift objects around you; write names of three you can lift easily and estimate their weights.'). Students physically lift three nearby objects (bag, book, pencil box) and record names and estimates, then share with the class."
+            },
+            {
+              "minutes": "17–27",
+              "description": "Students work on Let Us Do Q3 (a–d), p.121 ('How many 1 kg packets are in 10 kg, 20 kg, 50 kg, and 25 kg?'). Encourage students to explain their method — repeated addition, multiplication, or counting — rather than just writing the answer."
+            },
+            {
+              "minutes": "27–35",
+              "description": "Class completes Let Us Do Q4, p.121 ('Match objects — cat, elephant, 1-litre bottle, tiger, gas cylinder, pen, leaf, wooden chair — with estimated weight ranges.') as a group activity on the board; discuss surprising matches."
+            }
+          ],
+          "teacher_notes": "The previous periods focused on formal gram-kilogram relationships; this period shifts to estimation and real-world application. Students often underestimate heavy objects like a gas cylinder — the matching task surfaces these misconceptions productively. Let Us Do (monthly consumption table), p.120 and Let Us Do Q2, p.121 on lifting with effort are well suited for a homework conversation with parents.",
+          "materials": [
+            "Textbook p.120–121",
+            "Classroom objects of varying weights (bag, book, pencil box)",
+            "Blackboard for recording student estimates"
+          ]
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 40,
+          "section_refs": [
+            "S4",
+            "S5"
+          ],
+          "section_titles": [
+            "Weighing machines and real-life weight estimation",
+            "Measuring capacity — litre, millilitre, and fractions"
+          ],
+          "activity_title": "From Kilograms to Litres: Bridging Weight and Capacity",
+          "tasks_in_class": [
+            {
+              "id": "T-21",
+              "intent": "explore",
+              "method": "Play-way",
+              "section_ref": "S5",
+              "book_ref": "Measuring Capacity (containers table), p.122",
+              "description": "Find bottles/containers that hold less than 1 litre, exactly 1 litre, and more than 1 litre; write their names in the table."
+            },
+            {
+              "id": "T-22",
+              "intent": "explore",
+              "method": "Inquiry",
+              "section_ref": "S5",
+              "book_ref": "Let Us Find (a)(b)(c)(d), p.123–124",
+              "description": "How many 500 ml, 250 ml, 100 ml bottles fill a 1 l bottle? How many 250 ml in ½ l and 750 ml? How many 100 ml in ½ l and 800 ml?"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–7",
+              "description": "Briefly close the weighing machines section: ask one student to name the weighing machine used to weigh luggage and another to explain why we do not weigh an eraser on a bathroom scale. This 2-minute recap transitions into capacity."
+            },
+            {
+              "minutes": "7–20",
+              "description": "Introduce liquid capacity with Measuring Capacity (containers table), p.122 ('Find bottles/containers that hold less than 1 litre, exactly 1 litre, and more than 1 litre; write their names in the table.'). Students survey containers brought to class or those pictured, then share their table classifications."
+            },
+            {
+              "minutes": "20–38",
+              "description": "Students work through Let Us Find (a)(b)(c)(d), p.123–124 ('How many 500 ml, 250 ml, 100 ml bottles fill a 1 l bottle? How many 250 ml in ½ l and 750 ml? How many 100 ml in ½ l and 800 ml?'). After hands-on pouring or pictorial reasoning, draw out the parallel: 500 ml = ½ l mirrors 500 g = ½ kg."
+            },
+            {
+              "minutes": "38–40",
+              "description": "Consolidate by writing the three capacity fraction relationships on the board alongside their weight counterparts and ask students: 'What is the same about kilograms and litres in these relationships?' Accept verbal responses."
+            }
+          ],
+          "teacher_notes": "This period closes the weighing machines section and opens the capacity section in the same sitting; the explicit parallel between grams-to-kilograms and millilitres-to-litres is the key conceptual bridge. A common error is students thinking that 'litre' and 'kilogram' are interchangeable units — reinforce that litres measure liquid and kilograms measure solid weight. Bring 500 ml, 250 ml, and 100 ml bottles of water if possible to make the pouring activity concrete.",
+          "materials": [
+            "Textbook p.122–124",
+            "Bottles of 500 ml, 250 ml, and 100 ml capacity",
+            "1-litre bottle",
+            "Water",
+            "Blackboard for parallel fraction table"
+          ]
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 35,
+          "section_refs": [
+            "S5"
+          ],
+          "section_titles": [
+            "Measuring capacity — litre, millilitre, and fractions"
+          ],
+          "activity_title": "Drops, Spoons, and Cups: Exploring Very Small Volumes",
+          "tasks_in_class": [
+            {
+              "id": "T-23",
+              "intent": "explore",
+              "method": "Play-way",
+              "section_ref": "S5",
+              "book_ref": "Let Us Do Q1 (a–c), p.124",
+              "description": "Find a 10 ml dosing cup; find how many 10 ml fill 100 ml, 250 ml glass, 500 ml vessel, and 1 l bottle."
+            },
+            {
+              "id": "T-26",
+              "intent": "solve",
+              "method": "Problem-solving",
+              "section_ref": "S5",
+              "book_ref": "Let Us Do Q4 (a–d), p.125",
+              "description": "Mr Krishna has 1 l perfumed oil; how many bottles of 500 ml, 200 ml, 100 ml, and 50 ml does each customer get?"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Recall the three ml-to-litre relationships from the previous period. Ask: 'If 10 ml is one small dosing cup, how many cups would fill a 100 ml bottle?' — students estimate before the activity begins."
+            },
+            {
+              "minutes": "5–20",
+              "description": "Students work on Let Us Do Q1 (a–c), p.124 ('Find a 10 ml dosing cup; find how many 10 ml fill 100 ml, 250 ml glass, 500 ml vessel, and 1 l bottle.') using actual dosing cups and vessels if available, otherwise with pictorial reasoning."
+            },
+            {
+              "minutes": "20–33",
+              "description": "Students solve Let Us Do Q4 (a–d), p.125 ('Mr Krishna has 1 l perfumed oil; how many bottles of 500 ml, 200 ml, 100 ml, and 50 ml does each customer get?'). Encourage students to show their working and connect each answer to the capacity fraction relationships already established."
+            },
+            {
+              "minutes": "33–35",
+              "description": "Quick wrap-up: ask students to name one liquid at home measured in millilitres and one measured in litres. This consolidates unit selection for liquid capacity."
+            }
+          ],
+          "teacher_notes": "Students covered the large-unit relationships in the previous period; this period zooms in on very small volumes (10 ml, 1 ml) and then applies all capacity knowledge in the perfumed oil problem. A common error is multiplying instead of dividing when filling from a larger to smaller measure — encourage students to ask 'how many small bottles fit into 1 litre?' rather than working mechanically. Let Us Do Q2 (a–b), p.124 on the 1 ml dropper and Let Us Do Q3 (a–e), p.124 on liquid usage quantities work well as exploratory homework.",
+          "materials": [
+            "Textbook p.124–125",
+            "10 ml dosing cup (medicine cup)",
+            "100 ml, 250 ml, and 500 ml vessels",
+            "Water"
+          ]
+        },
+        {
+          "period_number": 8,
+          "period_duration_minutes": 35,
+          "section_refs": [
+            "S5"
+          ],
+          "section_titles": [
+            "Measuring capacity — litre, millilitre, and fractions"
+          ],
+          "activity_title": "Estimate, Verify, Explore: Household Containers and Shop Sizes",
+          "tasks_in_class": [
+            {
+              "id": "T-27",
+              "intent": "explore",
+              "method": "Play-way",
+              "section_ref": "S5",
+              "book_ref": "Let Us Do Q5, p.125",
+              "description": "Estimate and verify by measuring the capacity of: water bottle, glass, mug, jug, bucket, teaspoon, bowl."
+            },
+            {
+              "id": "T-28",
+              "intent": "explore",
+              "method": "Inquiry",
+              "section_ref": "S5",
+              "book_ref": "Let Us Explore, p.125",
+              "description": "Visit nearby shops; make a list of different items sold in quantities 50 ml, 100 ml, 200 ml, 250 ml, 500 ml, 900 ml."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Recall the previous period's perfumed oil problem. Ask students: 'Without measuring, can you guess how much your water bottle holds — more or less than 500 ml?' Collect estimates to motivate the verification activity."
+            },
+            {
+              "minutes": "5–22",
+              "description": "Students carry out Let Us Do Q5, p.125 ('Estimate and verify by measuring the capacity of: water bottle, glass, mug, jug, bucket, teaspoon, bowl.') in pairs — first writing estimates, then measuring using a measuring cup or bottle with markings, and recording actual capacities."
+            },
+            {
+              "minutes": "22–33",
+              "description": "Introduce Let Us Explore, p.125 ('Visit nearby shops; make a list of different items sold in quantities 50 ml, 100 ml, 200 ml, 250 ml, 500 ml, 900 ml.') as a planning activity — students brainstorm items they have seen in these quantities at home before the actual shop visit, noting them in their notebooks."
+            },
+            {
+              "minutes": "33–35",
+              "description": "Brief share-out: each pair reports one surprising estimate-versus-actual result. This reinforces the value of the estimate-then-verify cycle that runs throughout the chapter."
+            }
+          ],
+          "teacher_notes": "This period completes the capacity section with two estimation-and-exploration tasks that mirror the weight estimation tasks done earlier in the chapter. The shop-visit component of Let Us Explore, p.125 is best assigned as homework or a weekend task with parental involvement. A common error is students measuring volume by filling to the brim without reading a graduation mark — remind them to fill to a known marking on the vessel.",
+          "materials": [
+            "Textbook p.125",
+            "Household containers: water bottle, glass, mug, jug, teaspoon, bowl",
+            "Measuring cup or graduated bottle",
+            "Water",
+            "Notebook for recording estimates and actuals"
+          ]
+        },
+        {
+          "period_number": 9,
+          "period_duration_minutes": 40,
+          "section_refs": [
+            "S6"
+          ],
+          "section_titles": [
+            "Water use, conservation, and measuring containers"
+          ],
+          "activity_title": "Every Drop Counts: Water Use, Measurement, and Conservation",
+          "tasks_in_class": [
+            {
+              "id": "T-29",
+              "intent": "reason",
+              "method": "Inquiry",
+              "section_ref": "S6",
+              "book_ref": "Let Us Find (a–d), p.126",
+              "description": "How many litres of water do you drink daily? How much can a crow drink? How much milk do you drink? How much does an elephant drink?"
+            },
+            {
+              "id": "T-31",
+              "intent": "explore",
+              "method": "Play-way",
+              "section_ref": "S6",
+              "book_ref": "Water Conservation activity, p.127",
+              "description": "Put a container under a leaking tap for one hour; measure how much water is lost; calculate loss in a day and a week."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Recap the estimate-and-verify approach from the previous period. Ask students: 'How much water do you think you drink in a day — more or less than 1 litre?' Record three or four estimates on the board, then open Let Us Find (a–d), p.126."
+            },
+            {
+              "minutes": "8–20",
+              "description": "Students work through Let Us Find (a–d), p.126 ('How many litres of water do you drink daily? How much can a crow drink? How much milk do you drink? How much does an elephant drink?'). After individual responses, compare human, crow, and elephant figures to develop a sense of scale across very different quantities."
+            },
+            {
+              "minutes": "20–37",
+              "description": "Introduce the water conservation scenario from Water Conservation activity, p.127 ('Put a container under a leaking tap for one hour; measure how much water is lost; calculate loss in a day and a week.'). If a dripping tap is unavailable, teacher demonstrates with a container and known amount; students calculate daily and weekly loss using the measured hourly figure."
+            },
+            {
+              "minutes": "37–40",
+              "description": "Closing reflection: ask students to name one thing they will do to save water at home and connect that action to the litre quantities discussed. Summarise the chapter's journey from comparing weights in a vegetable market to calculating water waste."
+            }
+          ],
+          "teacher_notes": "This final period bridges measurement skill with environmental awareness, making the litre a meaningful unit in a real-world conservation context. The water-use activities table in Let Us Find (activities table), p.126 — covering shower, watering crops, washing clothes — is well suited for a group discussion or homework task where students compare their family's usage with the given quantities. Students sometimes confuse daily and weekly totals by adding instead of multiplying; encourage them to set up the calculation as a repeated addition before using multiplication.",
+          "materials": [
+            "Textbook p.126–127",
+            "Container (bowl or bucket)",
+            "Measuring cup",
+            "Water or access to a dripping tap",
+            "Blackboard for recording daily and weekly calculations"
+          ]
+        }
+      ]
+    },
+    "coverage_handoff": {
+      "explore": {
+        "tasks": [
+          {
+            "task_id": "T-7",
+            "intent": "explore",
+            "section_ref": "S2",
+            "book_ref": "Let Us Do, p.116",
+            "description": "Estimate the weight of 6 bananas, 5 potatoes, 10 tomatoes, 15 onions as less/more than 1 kg; verify using a weighing balance."
+          },
+          {
+            "task_id": "T-8",
+            "intent": "explore",
+            "section_ref": "S2",
+            "book_ref": "Let Us Explore Q1 (a)(b)(c), p.116–117",
+            "description": "Look at pictures: 2×500g=1kg so 500g=½kg; 4×250g=1kg so 250g=¼kg; 10×100g=1kg. Try doing the same with actual packets."
+          },
+          {
+            "task_id": "T-17",
+            "intent": "explore",
+            "section_ref": "S4",
+            "book_ref": "Let Us Do Q1, p.121",
+            "description": "Lift objects around you; write names of three you can lift easily and estimate their weights."
+          },
+          {
+            "task_id": "T-21",
+            "intent": "explore",
+            "section_ref": "S5",
+            "book_ref": "Measuring Capacity (containers table), p.122",
+            "description": "Find bottles/containers that hold less than 1 litre, exactly 1 litre, and more than 1 litre; write their names in the table."
+          },
+          {
+            "task_id": "T-22",
+            "intent": "explore",
+            "section_ref": "S5",
+            "book_ref": "Let Us Find (a)(b)(c)(d), p.123–124",
+            "description": "How many 500 ml, 250 ml, 100 ml bottles fill a 1 l bottle? How many 250 ml in ½ l and 750 ml? How many 100 ml in ½ l and 800 ml?"
+          },
+          {
+            "task_id": "T-23",
+            "intent": "explore",
+            "section_ref": "S5",
+            "book_ref": "Let Us Do Q1 (a–c), p.124",
+            "description": "Find a 10 ml dosing cup; find how many 10 ml fill 100 ml, 250 ml glass, 500 ml vessel, and 1 l bottle."
+          },
+          {
+            "task_id": "T-27",
+            "intent": "explore",
+            "section_ref": "S5",
+            "book_ref": "Let Us Do Q5, p.125",
+            "description": "Estimate and verify by measuring the capacity of: water bottle, glass, mug, jug, bucket, teaspoon, bowl."
+          },
+          {
+            "task_id": "T-31",
+            "intent": "explore",
+            "section_ref": "S6",
+            "book_ref": "Water Conservation activity, p.127",
+            "description": "Put a container under a leaking tap for one hour; measure how much water is lost; calculate loss in a day and a week."
+          }
+        ]
+      },
+      "reason": {
+        "tasks": [
+          {
+            "task_id": "T-1",
+            "intent": "reason",
+            "section_ref": "S1",
+            "book_ref": "Opening Q1, p.115",
+            "description": "Look at pictures of animals and write their names from heaviest to lightest."
+          },
+          {
+            "task_id": "T-2",
+            "intent": "reason",
+            "section_ref": "S1",
+            "book_ref": "Opening Q2, p.115",
+            "description": "Write the name of the heaviest object in your home and explain how you know."
+          },
+          {
+            "task_id": "T-6",
+            "intent": "reason",
+            "section_ref": "S1",
+            "book_ref": "Fun at Vegetable Market, p.115",
+            "description": "What do you think will be the weight of the half pumpkin? Write your estimate."
+          },
+          {
+            "task_id": "T-9",
+            "intent": "reason",
+            "section_ref": "S3",
+            "book_ref": "Let Us Find Q1, p.117",
+            "description": "How many 250 g packets balance one 500 g packet? Draw packets on the empty pan; complete: 250 g = ___ of 500 g."
+          },
+          {
+            "task_id": "T-10",
+            "intent": "reason",
+            "section_ref": "S3",
+            "book_ref": "Let Us Find Q2, p.118",
+            "description": "Draw arrows to indicate which side the pan balance will tilt for each of the four pictures (a–d)."
+          },
+          {
+            "task_id": "T-11",
+            "intent": "reason",
+            "section_ref": "S3",
+            "book_ref": "Let Us Find Q3, p.118",
+            "description": "Match objects (baby, eraser, pen, books, table, fridge, etc.) to the units kilogram or grams."
+          },
+          {
+            "task_id": "T-15",
+            "intent": "reason",
+            "section_ref": "S3",
+            "book_ref": "Let Us Think Q1–Q4 (Boxes of Sweet), p.119",
+            "description": "How many boxes of 500 g, 250 g, 100 g, and 50 g each are needed to pack 1 kg Kaju-katli? Write the number for each customer."
+          },
+          {
+            "task_id": "T-20",
+            "intent": "reason",
+            "section_ref": "S4",
+            "book_ref": "Let Us Do Q4, p.121",
+            "description": "Match objects (cat, elephant, 1-litre bottle, tiger, gas cylinder, pen, leaf, wooden chair) with estimated weight ranges."
+          },
+          {
+            "task_id": "T-29",
+            "intent": "reason",
+            "section_ref": "S6",
+            "book_ref": "Let Us Find (a–d), p.126",
+            "description": "How many litres of water do you drink daily? How much can a crow drink? How much milk do you drink? How much does an elephant drink?"
+          }
+        ]
+      },
+      "practice": {
+        "tasks": []
+      },
+      "solve": {
+        "tasks": [
+          {
+            "task_id": "T-12",
+            "intent": "solve",
+            "section_ref": "S3",
+            "book_ref": "Let Us Do Q1, p.119",
+            "description": "How many erasers (each 10 g) will weigh the same as a 50 g Haldi packet?"
+          },
+          {
+            "task_id": "T-19",
+            "intent": "solve",
+            "section_ref": "S4",
+            "book_ref": "Let Us Do Q3 (a–d), p.121",
+            "description": "How many 1 kg packets are in 10 kg, 20 kg, 50 kg, and 25 kg? Write the answers."
+          },
+          {
+            "task_id": "T-26",
+            "intent": "solve",
+            "section_ref": "S5",
+            "book_ref": "Let Us Do Q4 (a–d), p.125",
+            "description": "Mr Krishna has 1 l perfumed oil; how many bottles of 500 ml, 200 ml, 100 ml, and 50 ml does each customer get?"
+          }
+        ]
+      }
+    },
+    "assessment_items": [
+      {
+        "section_code": "A",
+        "section_title": "Explore",
+        "items": [
+          {
+            "id": "Q-A-1",
+            "intent": "explore",
+            "section_ref": "S2",
+            "section_title": "Kilograms and grams — fractions of a kilogram",
+            "question_type": "MCQ",
+            "prompt": "Priya holds a bag of 8 oranges in one hand and a bag of 3 oranges in the other. Which bag do you think weighs more than 1 kg?",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "The bag with 3 oranges",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "The bag with 8 oranges",
+                "is_correct": true
+              },
+              {
+                "label": "C",
+                "text": "Both bags weigh the same",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "Neither bag can weigh 1 kg",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "The bag with 8 oranges — more fruits means more total weight, making it more likely to exceed 1 kg.",
+              "method_one_line": "Compare the number of items: more items of similar size means greater total weight.",
+              "what_each_option_reveals": {
+                "A": "Student may think fewer items means heavier, confusing size of individual item with total weight.",
+                "B": "Correct — student understands more items of similar size adds up to more weight.",
+                "C": "Student does not connect quantity of items to total weight.",
+                "D": "Student does not believe a collection of fruits can reach 1 kg, lacking estimation sense."
+              },
+              "inclusivity": "Support: let them hold both bags to feel the difference; stretch: estimate the weight of 12 oranges."
+            },
+            "exercise": {
+              "book_ref": "Let Us Do, p.116",
+              "description": "Estimate the weight of 6 bananas, 5 potatoes, 10 tomatoes, 15 onions as less/more than 1 kg; verify using a weighing balance."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-A-2",
+            "intent": "explore",
+            "section_ref": "S2",
+            "section_title": "Kilograms and grams — fractions of a kilogram",
+            "question_type": "SCR",
+            "prompt": "A shopkeeper has three packets: one weighs 500 g, one weighs 250 g, and one weighs 100 g. He puts two 500 g packets on a pan balance with one 1 kg weight on the other side. What do you see? What does this tell you about 500 g?",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "The two pans balance. This tells us that 500 g is half of 1 kg (500 g = ½ kg).",
+              "method_one_line": "Use the pan-balance picture: two equal packets balancing 1 kg shows each packet is half a kilogram.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let them draw two 500 g packets on one side of a balance; stretch: draw a similar picture using 250 g packets and state what 250 g equals."
+            },
+            "exercise": {
+              "book_ref": "Let Us Explore Q1 (a)(b)(c), p.116–117",
+              "description": "Look at pictures: 2×500g=1kg so 500g=½kg; 4×250g=1kg so 250g=¼kg; 10×100g=1kg. Try doing the same with actual packets."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-A-3",
+            "intent": "explore",
+            "section_ref": "S4",
+            "section_title": "Weighing machines and real-life weight estimation",
+            "question_type": "MCQ",
+            "prompt": "Ravi lifts a full water bucket and finds it very heavy. He lifts a pencil box and finds it very light. Which object is most likely measured in kilograms?",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "Pencil box",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "Full water bucket",
+                "is_correct": true
+              },
+              {
+                "label": "C",
+                "text": "A pencil",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "An eraser",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "Full water bucket — it is heavy enough that its weight is measured in kilograms.",
+              "method_one_line": "Lift and judge effort: objects needing a lot of effort to lift are heavy and measured in kilograms.",
+              "what_each_option_reveals": {
+                "A": "Student has not connected lifting effort with the unit used for weight.",
+                "B": "Correct — student connects heavy objects with the kilogram unit.",
+                "C": "Student may confuse the everyday use of a pencil with a heavy object.",
+                "D": "Student has not grasped that grams are for light objects, kilograms for heavier ones."
+              },
+              "inclusivity": "Support: let them lift each object and describe the effort; stretch: name one more object measured in kg and one in g."
+            },
+            "exercise": {
+              "book_ref": "Let Us Do Q1, p.121",
+              "description": "Lift objects around you; write names of three you can lift easily and estimate their weights."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-A-4",
+            "intent": "explore",
+            "section_ref": "S5",
+            "section_title": "Measuring capacity — litre, millilitre, and fractions",
+            "question_type": "MCQ",
+            "prompt": "Look at these containers: a small medicine bottle, a 1-litre milk packet, and a large cooking pot. Which container holds exactly 1 litre?",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "Small medicine bottle",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "1-litre milk packet",
+                "is_correct": true
+              },
+              {
+                "label": "C",
+                "text": "Large cooking pot",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "All three hold 1 litre",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "The 1-litre milk packet holds exactly 1 litre.",
+              "method_one_line": "Classify containers by capacity: less than, equal to, or more than 1 litre based on size and label.",
+              "what_each_option_reveals": {
+                "A": "Student does not connect the small size of a medicine bottle with less than 1 litre.",
+                "B": "Correct — student recognises the standard 1-litre milk packet as holding exactly 1 litre.",
+                "C": "Student does not connect a large pot's capacity as more than 1 litre.",
+                "D": "Student has not yet developed a sense of comparing containers by capacity."
+              },
+              "inclusivity": "Support: show actual containers and discuss size; stretch: name one container from home that holds more than 1 litre."
+            },
+            "exercise": {
+              "book_ref": "Measuring Capacity (containers table), p.122",
+              "description": "Find bottles/containers that hold less than 1 litre, exactly 1 litre, and more than 1 litre; write their names in the table."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-A-5",
+            "intent": "explore",
+            "section_ref": "S5",
+            "section_title": "Measuring capacity — litre, millilitre, and fractions",
+            "question_type": "SCR",
+            "prompt": "Tina has a 1-litre bottle. She also has a 500 ml bottle. How many times must she fill the 500 ml bottle to fill the 1-litre bottle completely? What does this tell you about 500 ml?",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "She must fill the 500 ml bottle 2 times. This tells us that 500 ml = ½ litre.",
+              "method_one_line": "Pour the smaller measure into the larger: 2 × 500 ml = 1 litre, so 500 ml is half a litre.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let them physically pour water using containers; stretch: find how many 250 ml bottles fill the same 1-litre bottle."
+            },
+            "exercise": {
+              "book_ref": "Let Us Find (a)(b)(c)(d), p.123–124",
+              "description": "How many 500 ml, 250 ml, 100 ml bottles fill a 1 l bottle? How many 250 ml in ½ l and 750 ml? How many 100 ml in ½ l and 800 ml?"
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-A-6",
+            "intent": "explore",
+            "section_ref": "S5",
+            "section_title": "Measuring capacity — litre, millilitre, and fractions",
+            "question_type": "MCQ",
+            "prompt": "A dosing cup holds 10 ml. How many times must you fill it to measure out 100 ml of cough syrup?",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "5 times",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "100 times",
+                "is_correct": false
+              },
+              {
+                "label": "C",
+                "text": "10 times",
+                "is_correct": true
+              },
+              {
+                "label": "D",
+                "text": "20 times",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "10 times — because 10 × 10 ml = 100 ml.",
+              "method_one_line": "Count how many 10 ml cups fill 100 ml: 10 × 10 = 100.",
+              "what_each_option_reveals": {
+                "A": "Student may have halved 100 instead of dividing by 10.",
+                "B": "Student confused the total capacity (100 ml) with the count, not accounting for each cup holding 10 ml.",
+                "C": "Correct — student correctly finds 10 × 10 ml = 100 ml.",
+                "D": "Student may have divided 100 by 5 instead of 10."
+              },
+              "inclusivity": "Support: draw 10 cups of 10 ml each and count; stretch: find how many 10 ml cups fill 250 ml."
+            },
+            "exercise": {
+              "book_ref": "Let Us Do Q1 (a–c), p.124",
+              "description": "Find a 10 ml dosing cup; find how many 10 ml fill 100 ml, 250 ml glass, 500 ml vessel, and 1 l bottle."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-A-7",
+            "intent": "explore",
+            "section_ref": "S5",
+            "section_title": "Measuring capacity — litre, millilitre, and fractions",
+            "question_type": "SCR",
+            "prompt": "Meena has a glass, a mug, and a bucket at home. She wants to find their capacity. She knows a glass holds about 200 ml. Write whether each container holds less than 1 litre, exactly 1 litre, or more than 1 litre. Give a reason for each.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "Glass (about 200 ml) — less than 1 litre. Mug (about 300–400 ml) — less than 1 litre. Bucket (several litres) — more than 1 litre. Reasons should refer to size or how much liquid they hold.",
+              "method_one_line": "Compare each container's estimated capacity with 1 litre using size and everyday experience.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: show actual containers and discuss what fills them; stretch: estimate the bucket's capacity in litres."
+            },
+            "exercise": {
+              "book_ref": "Let Us Do Q5, p.125",
+              "description": "Estimate and verify by measuring the capacity of: water bottle, glass, mug, jug, bucket, teaspoon, bowl."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-A-8",
+            "intent": "explore",
+            "section_ref": "S6",
+            "section_title": "Water use, conservation, and measuring containers",
+            "question_type": "SCR",
+            "prompt": "Anu put a bowl under a leaking tap. After one hour she measured 200 ml of water in the bowl. How much water would be wasted in one full day (24 hours) if the tap keeps leaking at the same rate? Write your answer.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "200 ml × 24 = 4800 ml of water wasted in one day.",
+              "method_one_line": "Multiply the hourly loss by 24 hours to find daily waste: 200 × 24 = 4800 ml.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: draw 24 cups each showing 200 ml and count by adding; stretch: find how much is wasted in a week (7 days)."
+            },
+            "exercise": {
+              "book_ref": "Water Conservation activity, p.127",
+              "description": "Put a container under a leaking tap for one hour; measure how much water is lost; calculate loss in a day and a week."
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "section_code": "B",
+        "section_title": "Reason",
+        "items": [
+          {
+            "id": "Q-B-1",
+            "intent": "reason",
+            "section_ref": "S1",
+            "section_title": "Fun at Vegetable Market — comparing weights",
+            "question_type": "SCR",
+            "prompt": "Here are three animals: a rabbit, a horse, and a dog. Write their names in order from heaviest to lightest. Explain how you decided.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "Horse (heaviest), dog, rabbit (lightest). Explanation should refer to the animal's body size — bigger body means heavier.",
+              "method_one_line": "Compare animals by body size: bigger animal is heavier.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: talk with a partner first before writing; stretch: add a cow to the order and place it correctly."
+            },
+            "exercise": {
+              "book_ref": "Opening Q1, p.115",
+              "description": "Look at pictures of animals and write their names from heaviest to lightest."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-2",
+            "intent": "reason",
+            "section_ref": "S1",
+            "section_title": "Fun at Vegetable Market — comparing weights",
+            "question_type": "SCR",
+            "prompt": "Think about the objects in your classroom: a school bag full of books, a chalk piece, and a teacher's table. Which is the heaviest? How do you know?",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "The teacher's table is the heaviest. Students may say it needs a lot of effort to lift, or that it is big and made of wood/metal.",
+              "method_one_line": "Judge heaviness by the effort needed to lift or move the object.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: try to lift each object and feel the effort; stretch: order all three objects from heaviest to lightest."
+            },
+            "exercise": {
+              "book_ref": "Opening Q2, p.115",
+              "description": "Write the name of the heaviest object in your home and explain how you know."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-3",
+            "intent": "reason",
+            "section_ref": "S1",
+            "section_title": "Fun at Vegetable Market — comparing weights",
+            "question_type": "SCR",
+            "prompt": "A whole pumpkin weighs 2 kg. A shopkeeper cuts it exactly in half. What do you think each half weighs? How did you decide?",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "Each half weighs 1 kg. The whole is cut into two equal parts, so each part is half of 2 kg.",
+              "method_one_line": "Split the whole weight into two equal halves: 2 kg ÷ 2 = 1 kg each.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: draw a 2 kg weight and split it into two equal parts; stretch: what if the pumpkin weighed 3 kg — what would each half weigh?"
+            },
+            "exercise": {
+              "book_ref": "Fun at Vegetable Market, p.115",
+              "description": "What do you think will be the weight of the half pumpkin? Write your estimate."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-4",
+            "intent": "reason",
+            "section_ref": "S3",
+            "section_title": "Comparing weights — pan balance and unit matching",
+            "question_type": "MCQ",
+            "prompt": "One pan of a balance has a 500 g packet of rice. The other pan is empty. Ravi wants to balance it using only 250 g packets. How many 250 g packets does he need? Complete: 250 g = ___ of 500 g.",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "1 packet; 250 g = one whole of 500 g",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "3 packets; 250 g = one third of 500 g",
+                "is_correct": false
+              },
+              {
+                "label": "C",
+                "text": "2 packets; 250 g = half of 500 g",
+                "is_correct": true
+              },
+              {
+                "label": "D",
+                "text": "4 packets; 250 g = one quarter of 500 g",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "2 packets. 250 g = half of 500 g because 2 × 250 g = 500 g.",
+              "method_one_line": "Use pan-balance reasoning: find how many 250 g packets equal 500 g by counting up — 250 + 250 = 500.",
+              "what_each_option_reveals": {
+                "A": "Student thinks one 250 g packet equals 500 g, not recognising the doubling needed.",
+                "B": "Student incorrectly divides 500 by 3 instead of thinking about equal halves.",
+                "C": "Correct — student understands 2 × 250 = 500, so 250 g is half of 500 g.",
+                "D": "Student applies the 1 kg relationship (4 × 250 = 1 kg) to this sub-problem instead."
+              },
+              "inclusivity": "Support: draw two pans and place 250 g packets one by one until balanced; stretch: how many 250 g packets balance 750 g?"
+            },
+            "exercise": {
+              "book_ref": "Let Us Find Q1, p.117",
+              "description": "How many 250 g packets balance one 500 g packet? Draw packets on the empty pan; complete: 250 g = ___ of 500 g."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-5",
+            "intent": "reason",
+            "section_ref": "S3",
+            "section_title": "Comparing weights — pan balance and unit matching",
+            "question_type": "SCR",
+            "prompt": "One side of a pan balance has 300 g of rice. The other side has 200 g of dal. Which side will tilt down? How do you know?",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "The side with 300 g of rice tilts down because 300 g is heavier than 200 g.",
+              "method_one_line": "Compare the two weights: the heavier side of the pan balance always tilts down.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: pair-share the reasoning before writing; stretch: what weight on the 200 g side would make the pans balance?"
+            },
+            "exercise": {
+              "book_ref": "Let Us Find Q2, p.118",
+              "description": "Draw arrows to indicate which side the pan balance will tilt for each of the four pictures (a–d)."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-6",
+            "intent": "reason",
+            "section_ref": "S3",
+            "section_title": "Comparing weights — pan balance and unit matching",
+            "question_type": "MCQ",
+            "prompt": "Shirin wants to weigh a feather, a pen, and a refrigerator. Which unit should she use for the refrigerator?",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "Millilitres",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "Grams",
+                "is_correct": false
+              },
+              {
+                "label": "C",
+                "text": "Kilograms",
+                "is_correct": true
+              },
+              {
+                "label": "D",
+                "text": "Centimetres",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "Kilograms — the refrigerator is a very heavy object and is measured in kilograms.",
+              "method_one_line": "Match object to unit: heavy objects like furniture are measured in kilograms, light objects in grams.",
+              "what_each_option_reveals": {
+                "A": "Student has confused a capacity unit (millilitres) with a weight unit.",
+                "B": "Student does not distinguish between grams (for light objects) and kilograms (for heavy objects).",
+                "C": "Correct — student correctly identifies kilograms as the unit for heavy objects.",
+                "D": "Student has confused a length unit with a weight unit."
+              },
+              "inclusivity": "Support: sort given object cards into 'grams' and 'kilograms' piles before answering; stretch: name one object each for grams and kilograms not on the list."
+            },
+            "exercise": {
+              "book_ref": "Let Us Find Q3, p.118",
+              "description": "Match objects (baby, eraser, pen, books, table, fridge, etc.) to the units kilogram or grams."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-7",
+            "intent": "reason",
+            "section_ref": "S3",
+            "section_title": "Comparing weights — pan balance and unit matching",
+            "question_type": "SCR",
+            "prompt": "A sweet seller has 1 kg of Barfi. Customer A wants a 500 g box, Customer B wants a 250 g box, Customer C wants a 100 g box, and Customer D wants a 50 g box. How many boxes does each customer get from 1 kg? Write the number for each.",
+            "visual_stimulus": "Customer | Box size | Number of boxes\nCustomer A | 500 g | ___\nCustomer B | 250 g | ___\nCustomer C | 100 g | ___\nCustomer D | 50 g | ___",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "Customer A: 2 boxes (2 × 500 g = 1000 g = 1 kg). Customer B: 4 boxes (4 × 250 g = 1000 g). Customer C: 10 boxes (10 × 100 g = 1000 g). Customer D: 20 boxes (20 × 50 g = 1000 g).",
+              "method_one_line": "Use fraction-of-a-kilogram relationships: find how many equal parts of the given size make 1 kg (1000 g).",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: use the fraction facts (½ kg = 500 g, ¼ kg = 250 g) to anchor the first two answers; stretch: how many 200 g boxes would 1 kg fill?"
+            },
+            "exercise": {
+              "book_ref": "Let Us Think Q1–Q4 (Boxes of Sweet), p.119",
+              "description": "How many boxes of 500 g, 250 g, 100 g, and 50 g each are needed to pack 1 kg Kaju-katli? Write the number for each customer."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-8",
+            "intent": "reason",
+            "section_ref": "S4",
+            "section_title": "Weighing machines and real-life weight estimation",
+            "question_type": "MCQ",
+            "prompt": "Match the object with its likely weight. Which pair is correct?",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "A pen — about 5 kg",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "A cat — about 4 kg",
+                "is_correct": true
+              },
+              {
+                "label": "C",
+                "text": "An elephant — about 10 kg",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "A leaf — about 2 kg",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "A cat — about 4 kg. This is a reasonable estimate for a small domestic animal.",
+              "method_one_line": "Estimate weight by relating the object to known reference weights and everyday experience.",
+              "what_each_option_reveals": {
+                "A": "Student does not appreciate that a pen is a very light object measured in grams, not kilograms.",
+                "B": "Correct — student has a reasonable weight sense for a small animal like a cat.",
+                "C": "Student severely underestimates the weight of an elephant, which weighs several thousand kilograms.",
+                "D": "Student does not have a sense of how light a leaf is; it would be measured in grams."
+              },
+              "inclusivity": "Support: discuss each object and whether it is lighter or heavier than a school bag before choosing; stretch: estimate the weight of a tiger in kg."
+            },
+            "exercise": {
+              "book_ref": "Let Us Do Q4, p.121",
+              "description": "Match objects (cat, elephant, 1-litre bottle, tiger, gas cylinder, pen, leaf, wooden chair) with estimated weight ranges."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-9",
+            "intent": "reason",
+            "section_ref": "S6",
+            "section_title": "Water use, conservation, and measuring containers",
+            "question_type": "SCR",
+            "prompt": "Raju drinks 4 glasses of water a day. Each glass holds 250 ml. His grandmother drinks 2 glasses a day. Who drinks more water in a day and by how much?",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "Raju drinks 4 × 250 ml = 1000 ml. Grandmother drinks 2 × 250 ml = 500 ml. Raju drinks more by 1000 − 500 = 500 ml.",
+              "method_one_line": "Multiply number of glasses by capacity of each glass to find total, then compare the two totals.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: draw glasses for each person and count up by 250 ml; stretch: express the difference in litres (500 ml = ½ litre)."
+            },
+            "exercise": {
+              "book_ref": "Let Us Find (a–d), p.126",
+              "description": "How many litres of water do you drink daily? How much can a crow drink? How much milk do you drink? How much does an elephant drink?"
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "section_code": "C",
+        "section_title": "Solve",
+        "items": [
+          {
+            "id": "Q-C-1",
+            "intent": "solve",
+            "section_ref": "S3",
+            "section_title": "Comparing weights — pan balance and unit matching",
+            "question_type": "NUM",
+            "prompt": "Each eraser weighs 10 g. How many erasers weigh the same as a 70 g packet of pepper?",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "7 erasers. Because 7 × 10 g = 70 g.",
+              "method_one_line": "Divide the total weight by the weight of one eraser: 70 ÷ 10 = 7.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: draw erasers one by one and count up by 10 until reaching 70; stretch: how many erasers weigh the same as a 120 g bar of soap?"
+            },
+            "exercise": {
+              "book_ref": "Let Us Do Q1, p.119",
+              "description": "How many erasers (each 10 g) will weigh the same as a 50 g Haldi packet?"
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-C-2",
+            "intent": "solve",
+            "section_ref": "S4",
+            "section_title": "Weighing machines and real-life weight estimation",
+            "question_type": "NUM",
+            "prompt": "A sack of wheat weighs 30 kg. How many 1 kg packets can be filled from this sack?",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "30 packets. A 30 kg sack gives 30 one-kilogram packets.",
+              "method_one_line": "The number of 1 kg packets equals the total weight in kg: 30 kg = 30 packets of 1 kg.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: draw a number line and count by ones from 0 to 30; stretch: a 45 kg sack — how many 1 kg packets?"
+            },
+            "exercise": {
+              "book_ref": "Let Us Do Q3 (a–d), p.121",
+              "description": "How many 1 kg packets are in 10 kg, 20 kg, 50 kg, and 25 kg? Write the answers."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-C-3",
+            "intent": "solve",
+            "section_ref": "S5",
+            "section_title": "Measuring capacity — litre, millilitre, and fractions",
+            "question_type": "NUM",
+            "prompt": "Mrs Latha has 1 litre of rose water. She fills bottles of 250 ml each for her friends. How many 250 ml bottles can she fill?",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "4 bottles. Because 4 × 250 ml = 1000 ml = 1 litre.",
+              "method_one_line": "Use the fraction relationship: 250 ml = ¼ litre, so 4 bottles of 250 ml make 1 litre.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: draw four 250 ml cups and add them up to reach 1000 ml; stretch: how many 100 ml bottles could she fill instead?"
+            },
+            "exercise": {
+              "book_ref": "Let Us Do Q4 (a–d), p.125",
+              "description": "Mr Krishna has 1 l perfumed oil; how many bottles of 500 ml, 200 ml, 100 ml, and 50 ml does each customer get?"
+            },
+            "verified": true
+          }
+        ]
+      }
+    ],
+    "input_tokens": 11997,
+    "output_tokens": 9888,
+    "cost_inr": 16.9566,
+    "assess_input_tokens": 8976,
+    "assess_output_tokens": 8467,
+    "assess_cost_inr": 14.1618
+  }
+}

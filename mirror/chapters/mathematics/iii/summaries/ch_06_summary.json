@@ -1,0 +1,440 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 6,
+  "chapter_title": "House of Hundreds - I",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Counting beyond 200",
+      "prose_summary": "The chapter opens at a mela where children count triangular torans (250), bangles (280), and toffees (298) — all quantities beyond 200. Students group objects in tens to count accurately, continuing the same counting strategy used for smaller numbers. The section situates large numbers in a concrete, familiar context and introduces the idea of approaching 300 one-by-one (298+1=299, 299+1=300). It anchors place-value intuition at the concrete stage before moving to pictorial models.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Can you make a guess?",
+          "intent": "reason",
+          "book_ref": "Can you make a guess?, p.64",
+          "description": "Guess the number of triangular torans in the mela picture."
+        },
+        {
+          "id": "T-2",
+          "banner": "Now, find out how many there are.",
+          "intent": "explore",
+          "book_ref": "Now find out, p.64",
+          "description": "Count all the triangular torans by grouping in tens to verify the total."
+        },
+        {
+          "id": "T-3",
+          "banner": "Guess",
+          "intent": "reason",
+          "book_ref": "Guess, p.65",
+          "description": "Guess how many bangles there are in the picture."
+        },
+        {
+          "id": "T-4",
+          "banner": "Try counting",
+          "intent": "explore",
+          "book_ref": "Try counting, p.65",
+          "description": "Count the total number of bangles using Teji's counting strategy (groups of 10)."
+        },
+        {
+          "id": "T-5",
+          "banner": "Guess",
+          "intent": "reason",
+          "book_ref": "Guess, p.65",
+          "description": "Guess how many toffees are in the boxes."
+        },
+        {
+          "id": "T-6",
+          "banner": "Count and check",
+          "intent": "explore",
+          "book_ref": "Count and check, p.65",
+          "description": "Count the toffees in the boxes and check your guess."
+        },
+        {
+          "id": "T-7",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do, p.65",
+          "description": "How many more triangles to make 300? How many bangles less than 300? Which is more: bangles or triangles?"
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Sequences and number patterns on tiles",
+      "prose_summary": "Students fill missing numbers in sequential tile paths and arrow sequences spanning ranges such as 211–220, 291–310, 224–234, and 382–390. The section extends sequential counting beyond 200 into the 300s and 400s, using number-path and arrow models as pictorial representations. A third task asks students to guess and count a large cluster of ants, revisiting the strategy of grouping in tens. Teacher's notes emphasise using groups of 10 to count correctly.",
+      "tasks": [
+        {
+          "id": "T-8",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q1, p.66",
+          "description": "Fill in the empty tiles on Jojo's tiled path with the correct numbers (sequences around 211–216, etc.)."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q2, p.66",
+          "description": "Fill in blanks with correct numbers in three arrow sequences: (a) 294–310, (b) 227–234, (c) 382–390."
+        },
+        {
+          "id": "T-10",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q3, p.66",
+          "description": "Guess how many ants there are; count and check. Discuss why different children get different answers."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Matchstick bundles and number sentences",
+      "prose_summary": "Teji and Jojo represent 3-digit numbers using matchstick bundles (hundreds, tens, ones) and write the same number in multiple ways — e.g. 235 = 200+35 = 250−15. Students complete a table linking matchstick pictures, numbers, and number sentences, including working backwards from a number sentence ('300 and 16 more') to find the number. A number line task then asks students to place these numbers between 0 and 350. The section bridges concrete (matchstick) and symbolic (expanded notation) representations.",
+      "tasks": [
+        {
+          "id": "T-11",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q4, p.67",
+          "description": "Fill in the blanks: for each matchstick picture write the number and number sentence; for '300 and 16 more' and '109' draw matchsticks and complete the row."
+        },
+        {
+          "id": "T-12",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q5, p.67",
+          "description": "Place the numbers from Q4 on the number line (0–350)."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Number slider: increase and decrease by 1, 10, 20",
+      "prose_summary": "Students read matchstick bundle pictures and write the corresponding 3-digit numbers. They then use a physical number slider (H-T-O digit wheels) to increase or decrease numbers by 1, 10, or 20 — e.g. 285+1, 147+10, 289−10, 290+20. The slider is a concrete TLM (teaching-learning material) that makes the effect of changing a single digit position visible. The section anchors understanding of how ones, tens, and hundreds digits change independently.",
+      "tasks": [
+        {
+          "id": "T-13",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q6, p.68",
+          "description": "Look at six matchstick pictures and write the corresponding 3-digit numbers."
+        },
+        {
+          "id": "T-14",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q7, p.68",
+          "description": "Make the number slider; use it to increase/decrease: (a) 285+1, (b) 147+10, (c) 367−2, (d) 289−10, (e) 290+20."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Flag game: guessing a hidden number",
+      "prose_summary": "Teji thinks of a number between 200 and 210; Jojo guesses using a flag on a number line that points right (too small) or left (too big). Three guesses (205, 208, 206) narrow the answer to 207. The game develops number-line reasoning and the idea that a number's position relative to others can be determined by comparison alone. Students then play the game in pairs.",
+      "tasks": [
+        {
+          "id": "T-15",
+          "banner": "Let us Play",
+          "intent": "reason",
+          "book_ref": "Let us Play — Flag game, p.69",
+          "description": "Play the flag guessing game with a friend: one thinks of a number between 200 and 210, the other guesses using flag direction clues on the number line."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Magical Count and extending hundreds on a number line",
+      "prose_summary": "Students write any number name, count its letters, write the name of that new number, and keep repeating — discovering that the chain always ends at FOUR. This activity builds pattern-recognition and engages with number names as objects to reason about. A second idea ('Numbers on a line') asks students to identify the next hundred after 300 (i.e. 400) on a number line from 0 to 400, and show it using matchsticks.",
+      "tasks": [
+        {
+          "id": "T-16",
+          "banner": "Magical Count",
+          "intent": "reason",
+          "book_ref": "Magical Count, p.70",
+          "description": "Write any number name, count its letters, write the name of that new number, keep repeating — what happens? Try with 187 and 204 as well."
+        },
+        {
+          "id": "T-17",
+          "banner": "Numbers on a line",
+          "intent": "reason",
+          "book_ref": "Numbers on a line, p.70",
+          "description": "Tell what the next hundred number is after 300; write it on the number line (0–400) and show it using matchsticks."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Locating numbers on number lines and distance reasoning",
+      "prose_summary": "Students locate specific numbers (216, 243, 257; then 329–387) on number lines with different scales, reason about how far 387 is from 400, and determine which of 393 or 400 is more by showing jumps on a number line. A rich context task at Farooq Chacha's sweet shop asks students to count sweets in trays (groups of 100), compute totals, find differences, and locate shop-related numbers up to 500 on a number line. The section consolidates counting, estimation, and the number-line model across the range 200–500.",
+      "tasks": [
+        {
+          "id": "T-18",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q1, p.71",
+          "description": "Locate 216, 243, 257 on the number line (200–260)."
+        },
+        {
+          "id": "T-19",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q2, p.71",
+          "description": "Locate 329, 332, 337, 375 and 387 on the number line (320–390)."
+        },
+        {
+          "id": "T-20",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q3, p.71",
+          "description": "Tell how far 387 is from 400 using the number line."
+        },
+        {
+          "id": "T-21",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q4, p.71",
+          "description": "Which is more: 393 or 400? Use a number line and show by jumping how far 393 is from 400."
+        },
+        {
+          "id": "T-22",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q5(a), p.72",
+          "description": "How many pieces of mysore pak are in one tray?"
+        },
+        {
+          "id": "T-23",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q5(b), p.72",
+          "description": "How many pieces of mysore pak are there in total?"
+        },
+        {
+          "id": "T-24",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q5(c), p.72",
+          "description": "How many laddoos does chacha have in the trays?"
+        },
+        {
+          "id": "T-25",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q5(d), p.72",
+          "description": "How many dhoklas does chacha have?"
+        },
+        {
+          "id": "T-26",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q5(e), p.72",
+          "description": "Chacha is going to fill the tray with more laddoos. How many more laddoos will make the tray full?"
+        },
+        {
+          "id": "T-27",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q5(f), p.72",
+          "description": "How many total laddoos will he have after the last tray is full?"
+        },
+        {
+          "id": "T-28",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q5(g), p.72",
+          "description": "Mark 423, 487, 438, 476 on the number line (413–500); also mark Five Hundred (500)."
+        }
+      ]
+    },
+    {
+      "ref": "S8",
+      "title": "Hop Hundreds Home: apartment grid and place value",
+      "prose_summary": "Students read a tall apartment building numbered from 01 to 399+ in a 10-column grid; each floor-up increases the number by 10 (one ten), each step right increases by 1 (one). Students find house numbers of shaded cells without counting, then colour houses matching a delivery list (209–395). The grid makes the H-T-O structure of numbers visually explicit — columns correspond to ones, floors to tens and hundreds. Students also write floor and column numbers for given house numbers and identify patterns in diagonals and columns.",
+      "tasks": [
+        {
+          "id": "T-29",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1 (Hop Hundreds Home), p.73",
+          "description": "Find the house numbers of the shaded houses without counting; fill in shaded boxes with correct house numbers."
+        },
+        {
+          "id": "T-30",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q2 (Jump Joy Residency), p.74",
+          "description": "Colour the houses to which Arvind Dada has to deliver sweets: 209, 228, 242, 258, 267, 276, 290, 315, 346, 367, 389, 395."
+        },
+        {
+          "id": "T-31",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q3, p.75",
+          "description": "Write the floor and column number for each of: 13, 67, 106, 159, 192, 231, 245, 328, 380, 399."
+        },
+        {
+          "id": "T-32",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q4, p.75",
+          "description": "Find and write house numbers in the blank spaces of the partial grid (given 12, 144, 238, 319); discuss how numbers change moving up/down and left/right."
+        },
+        {
+          "id": "T-33",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q5 (Who am I? — card 1), p.75",
+          "description": "Who am I? I have digits 9, 1 and 5. I am less than 200. I have 9 ones."
+        },
+        {
+          "id": "T-34",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q5 (Who am I? — card 2), p.75",
+          "description": "Who am I? I am a 3-digit number. I have only digits 4 and 0."
+        },
+        {
+          "id": "T-35",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q5 (Who am I? — card 3), p.75",
+          "description": "Who am I? I am greater than 300 but less than 400. I have no tens. My ones and hundreds digits are the same."
+        }
+      ]
+    },
+    {
+      "ref": "S9",
+      "title": "Dienes blocks: drawing H-T-O for 3-digit numbers",
+      "prose_summary": "Arvind Dada packs sweets in boxes of 100 (H), 10 (T), and loose packets (O). Students draw Dienes-block representations for house numbers from 211 to 800, write the types of boxes and packets (e.g. 2H+1T+1O), and write the expanded number sentence (e.g. 200+10+1). This is the most explicit symbolic-concrete bridge in the chapter, applying H-T-O decomposition to a range of numbers including those with zero tens (309, 606) and a pure hundred (800).",
+      "tasks": [
+        {
+          "id": "T-36",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q6, p.76",
+          "description": "Draw Dienes block representations for house numbers 309, 275, 423, 365, 343, 458, 562, 606, 800; write types of boxes/packets and number sentence."
+        }
+      ]
+    },
+    {
+      "ref": "S10",
+      "title": "Number hunt, patterns, and 100-10 relationships",
+      "prose_summary": "Students identify numbers between 200 and 300 that contain the digit 5 (number hunt). A Spring Leap Homes diagonal grid asks students to read house numbers of colour-coded cells and describe the pattern they see. Arvind Dada's packing problem (Q8) asks how many boxes of 10 fit into 1, 2, and 4 boxes of 100, and what happens when a box of 100 is opened — establishing the 100=10×10 relationship. A Clap-Snap-Pat body-movement game encodes hundreds (clap), tens (snap), and ones (pat), and students record their moves in a table.",
+      "tasks": [
+        {
+          "id": "T-37",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q7(a) (Spring Leap Homes), p.77",
+          "description": "Write the house numbers of the yellow and pink houses in the Spring Leap Homes grid."
+        },
+        {
+          "id": "T-38",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q7(b), p.77",
+          "description": "Write the pattern you see in the yellow and pink house numbers."
+        },
+        {
+          "id": "T-39",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q8, p.77",
+          "description": "How many boxes of 10 fit in: (a) 1 box of 100, (b) 2 boxes of 100, (c) 4 boxes of 100, (d) one opened box of 100?"
+        },
+        {
+          "id": "T-40",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q9 (Number hunt), p.78",
+          "description": "Write all numbers between 200 and 300 that have 5 as a digit (Is 245 one such number? Write the others)."
+        },
+        {
+          "id": "T-41",
+          "banner": "Let us Play",
+          "intent": "reason",
+          "book_ref": "Let us Play — Clap-Snap-Pat, p.78",
+          "description": "Play Clap-Snap-Pat: record hundreds (clap clap), tens (snap), ones (pat) in the table; given 211 is done, record four more numbers."
+        },
+        {
+          "id": "T-42",
+          "banner": "Show and Tell",
+          "intent": "explore",
+          "book_ref": "Show and Tell, p.78",
+          "description": "Create a chain of cards: each card states a number and asks 'Who has …?'; distribute, read aloud, and identify the answer chain."
+        }
+      ]
+    },
+    {
+      "ref": "S11",
+      "title": "Comparing numbers using > and <",
+      "prose_summary": "The chapter introduces the > and < symbols using the laddoo story from Farooq Chacha's shop (487 > 423) and Dienes block pictures. The comparison strategy — compare hundreds first, then tens, then ones — is illustrated with three worked examples (487 vs 423; 321 vs 231; 209 vs 290). Students then practice with fill-in tasks, think-and-match reasoning, circling smallest and greatest, forming 3-digit numbers from given digits, and arranging sets of numbers in ascending or descending order.",
+      "tasks": [
+        {
+          "id": "T-43",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1, p.79",
+          "description": "Compare using > or <: (a) 199 and 201, (b) 285 and 275."
+        },
+        {
+          "id": "T-44",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q2, p.80",
+          "description": "Think and match: link each comparison statement (a)–(f) to the correct reason (six pairs)."
+        },
+        {
+          "id": "T-45",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q3, p.80",
+          "description": "Circle the smallest number in each row: (a) 374, 473, 347, 437; (b) 239, 123, 321, 456."
+        },
+        {
+          "id": "T-46",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q4, p.80",
+          "description": "Circle the greatest number in each row: (a) 466, 437, 439, 447, 483; (b) 464, 387, 123, 256, 348."
+        },
+        {
+          "id": "T-47",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q5, p.81",
+          "description": "Make all 3-digit numbers using digits 3, 2, 4 without repeating; colour the greatest red and smallest yellow."
+        },
+        {
+          "id": "T-48",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q6, p.81",
+          "description": "Make more 3-digit numbers using 3, 2, 4 allowing repeats; colour the greatest red and smallest yellow."
+        },
+        {
+          "id": "T-49",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q7(a), p.81",
+          "description": "Arrange from smallest to biggest: 456, 389, 207, 99, 110."
+        },
+        {
+          "id": "T-50",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q7(b), p.81",
+          "description": "Arrange from biggest to smallest: 67, 376, 294, 249, 494."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 0,
+  "procedural_load": 1
+}

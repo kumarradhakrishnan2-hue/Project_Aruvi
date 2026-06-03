@@ -1,0 +1,39 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 10,
+  "chapter_title": "Symmetrical Designs",
+
+  "core_cg": "CG-2",
+
+  "core_competencies": [
+    {
+      "c_code": "C-2.3",
+      "justification": "The chapter is organised entirely around recognising and creating both reflection symmetry and rotational symmetry. Students use paper-folding to cut alphabet shapes by exploiting lines of symmetry, observe that a handmade firki looks the same at every quarter-turn, classify letters and digits by their symmetry type, and create or modify grid and cut-shape designs to satisfy specified symmetry conditions (half-turn or quarter-turn rotational symmetry, with or without lines of reflection). These activities span the full breadth of what C-2.3 describes — recognition and creation of both symmetry types in familiar 2D shapes."
+    },
+    {
+      "c_code": "C-2.4",
+      "justification": "Beyond classifying individual shapes, the chapter asks students to recognise and extend symmetrical patterns: the firki's repeating appearance at every quarter-turn is a rotational pattern; combining digit symmetry to form multi-digit numbers with whole-number symmetry (e.g., 11, 1001) requires pattern extension; and the block-printing section shows how a single asymmetric wooden block generates a rotationally symmetric printed pattern when stamped four times. These are distinct, substantive encounters with pattern discovery and extension in 2D contexts, engaging C-2.4 independently of the symmetry-classification work."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-1.2",
+      "justification": "Rotational symmetry throughout the chapter is expressed exclusively in fractional-turn language — quarter-turn, half-turn, three-quarter turn, full turn. Students must interpret these fractions as parts of a whole rotation (the firki observation task, the letter-turn table, the design-modification prompts, and the block-print pattern tasks all use this language). This is a substantive use of the fraction concept from C-1.2 as the measuring tool for rotation, not merely incidental vocabulary."
+    },
+    {
+      "c_code": "C-4.2",
+      "justification": "The digit-symmetry investigation requires students to systematically work through all ten digits (0–9), checking each against two separate criteria (reflection symmetry and rotational symmetry), and then combine individual digit results to reason about multi-digit numbers — a structured enumeration under constraints. The wooden-block-to-print matching task similarly requires systematic one-to-one elimination across five pairs. Both tasks engage the systematic counting and listing under constraints that C-4.2 describes."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to recognise and create symmetry — both reflection and rotational — in familiar 2D shapes and designed patterns by physically making objects (paper cutouts, firki), classifying letters and digits by their symmetry properties, constructing and modifying designs to meet specified symmetry conditions, and connecting these ideas to the cultural practice of block printing.",
+
+  "conceptual_demand": 2,
+  "task_load": 2,
+  "exploration_load": 1,
+  "procedural_load": 0,
+  "effort_index": 9.5
+}

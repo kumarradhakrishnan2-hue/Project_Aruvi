@@ -1,0 +1,1153 @@
+{
+  "filename": "ch_10_20260603_202901.json",
+  "saved_at": "2026-06-03T20:29:01",
+  "grade": "Grade V",
+  "subject": "Mathematics",
+  "chapter_number": 10,
+  "chapter_title": "Symmetrical Designs",
+  "period_schedule_display": "Period schedule:\n  Row 1: 40 minutes × 1 period = 40 minutes\nTotal: 1 periods · 40 minutes",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 40,
+      "count": 1
+    }
+  ],
+  "plan_status": "full_lpa",
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 35,
+          "section_refs": [
+            "S1"
+          ],
+          "section_titles": [
+            "Alphabet Cutout — Reflection Symmetry"
+          ],
+          "activity_title": "Folding Letters: Lines of Symmetry Come Alive",
+          "tasks_in_class": [
+            {
+              "id": "T-1",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S1",
+              "book_ref": "Let Us Do, p.136",
+              "description": "Which of the alphabet cutouts E N X T K V O can be made by drawing half or quarter of the letter? Draw lines of symmetry on the letters."
+            },
+            {
+              "id": "T-3",
+              "intent": "explore",
+              "method": "Play-way",
+              "section_ref": "S1",
+              "book_ref": "Let Us Do, p.136",
+              "description": "Use lines of symmetry to make paper cutouts of diya, boat, and other designs shown on the border of the page."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Begin by having students fold a square sheet of paper in half vertically and cut a simple half-heart shape, then unfold to reveal the whole heart. Ask: 'What made the two halves match perfectly?' Elicit the word 'line of symmetry' and connect to their Grade 4 knowledge."
+            },
+            {
+              "minutes": "8–22",
+              "description": "Students work on Let Us Do, p.136 ('Which of the alphabet cutouts E N X T K V O can be made by drawing half or quarter of the letter?...'). They draw lines of symmetry directly onto printed or written letters and share findings in pairs, noting which letters need one fold versus two."
+            },
+            {
+              "minutes": "22–35",
+              "description": "Students attempt Let Us Do, p.136 ('Use lines of symmetry to make paper cutouts of diya, boat, and other designs...'). Each student chooses one design, folds paper appropriately, cuts, and unfolds; the class briefly shares and checks whether the cutout matches the intended design."
+            }
+          ],
+          "teacher_notes": "This is the opening period, so no recap is needed. A common error is folding on the wrong axis — watch for students who fold diagonally when a vertical fold is needed for letters like 'A'; prompt them to trace the line of symmetry first before folding.",
+          "materials": [
+            "Square sheets of paper (one per student)",
+            "Scissors",
+            "Pencils",
+            "Printed or hand-drawn letter outlines E N X T K V O"
+          ]
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 40,
+          "section_refs": [
+            "S1",
+            "S2"
+          ],
+          "section_titles": [
+            "Alphabet Cutout — Reflection Symmetry",
+            "Making a Windmill Firki — Rotational Symmetry Introduced"
+          ],
+          "activity_title": "From Symmetric Letters to a Spinning Firki",
+          "tasks_in_class": [
+            {
+              "id": "T-2",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S1",
+              "book_ref": "Let Us Do, p.136",
+              "description": "Which letters have a horizontal line of symmetry? Which have a vertical line of symmetry? Which have both vertical and horizontal lines of symmetry?"
+            },
+            {
+              "id": "T-4",
+              "intent": "explore",
+              "method": "Play-way",
+              "section_ref": "S2",
+              "book_ref": "Let Us Make a Windmill Firki, p.137",
+              "description": "Follow the nine steps to make your own windmill firki using a square paper, scissors, and a pin on a stick or straw."
+            },
+            {
+              "id": "T-5",
+              "intent": "reason",
+              "method": "Inquiry",
+              "section_ref": "S2",
+              "book_ref": "Let Us Make a Windmill Firki, p.137",
+              "description": "Observe the dot in the firki. Does the firki look the same after ¼, ½, ¾, and a full turn?"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Quickly review the letter cutouts from the previous session. Students complete Let Us Do, p.136 ('Which letters have a horizontal line of symmetry? Which have a vertical line of symmetry? Which have both?'), sorting the seven letters into a three-column table on their notebooks."
+            },
+            {
+              "minutes": "10–28",
+              "description": "Introduce the firki activity: students follow the nine steps of Let Us Make a Windmill Firki, p.137 ('Follow the nine steps to make your own windmill firki...'), working individually with teacher guidance at tricky steps (stopping the cut halfway to centre, folding alternate corners). Circulate to ensure pins are fixed safely."
+            },
+            {
+              "minutes": "28–40",
+              "description": "Students mark a dot on one blade and explore Let Us Make a Windmill Firki, p.137 ('Observe the dot in the firki. Does the firki look the same after ¼, ½, ¾, and a full turn?'). They record yes/no for each fractional turn, then discuss: 'What fraction of a turn brings the dot back to where it started?'"
+            }
+          ],
+          "teacher_notes": "Last period covered reflection symmetry and paper cutouts of letters and designs. Students sometimes confuse 'the shape looking the same' with 'the dot returning to its original position' — clarify that we are observing the overall appearance of the firki, not tracking a single point.",
+          "materials": [
+            "Square sheets of paper",
+            "Scissors",
+            "Pins or thumb tacks",
+            "Straws or sticks",
+            "Markers for dotting one blade"
+          ]
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 40,
+          "section_refs": [
+            "S3"
+          ],
+          "section_titles": [
+            "Rotational Symmetry in Letters and Digits"
+          ],
+          "activity_title": "Turning Letters and Digits: Patterns in Rotational Symmetry",
+          "tasks_in_class": [
+            {
+              "id": "T-6",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S3",
+              "book_ref": "Let Us Do, p.138",
+              "description": "Observe letters H, I, X, Y at ¼, ½, ¾, and full turns; complete the rotational symmetry table for each letter."
+            },
+            {
+              "id": "T-7",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S3",
+              "book_ref": "Let Us Do, p.138",
+              "description": "Find symmetry in digits 1–9 and 0: which have reflection symmetry? Which have rotational symmetry? Which have both?"
+            },
+            {
+              "id": "T-8",
+              "intent": "reason",
+              "method": "Inquiry",
+              "section_ref": "S3",
+              "book_ref": "Let Us Do, p.138",
+              "description": "Do the numbers 11 and 1001 have rotational symmetry, reflection symmetry, or both symmetries?"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Recap: hold up the firki and ask 'At which turn did it look the same?' Introduce the term 'rotational symmetry' formally — a shape has rotational symmetry if it looks the same after a fractional turn less than a full turn."
+            },
+            {
+              "minutes": "5–20",
+              "description": "Students cut out or trace letters H, I, X, Y on small cards, mark a dot, physically rotate them, and complete the table for Let Us Do, p.138 ('Observe letters H, I, X, Y at ¼, ½, ¾, and full turns; complete the rotational symmetry table...'). Pairs compare tables and resolve disagreements."
+            },
+            {
+              "minutes": "20–32",
+              "description": "Students work individually on Let Us Do, p.138 ('Find symmetry in digits 1–9 and 0: which have reflection symmetry? Which have rotational symmetry? Which have both?'), drawing a three-column chart in their notebooks and systematically working through each digit."
+            },
+            {
+              "minutes": "32–40",
+              "description": "Class discussion on Let Us Do, p.138 ('Do the numbers 11 and 1001 have rotational symmetry, reflection symmetry, or both?'). Students explain their reasoning aloud: 'Each digit has rotational symmetry and when placed together the whole number still looks the same after a ½ turn.' Note additional practice with T-9 as homework."
+            }
+          ],
+          "teacher_notes": "Last period students built and spun the firki, encountering rotational symmetry concretely. A common error here is treating symmetry in digits as purely visual (e.g., claiming '2' has reflection symmetry because it 'looks nearly balanced') — direct students to use cut-outs and tracing paper rather than guessing by eye. Additional practice: Let Us Do, p.138, the task on giving examples of 2-, 3-, and 4-digit numbers with various symmetry types can be assigned for homework.",
+          "materials": [
+            "Small letter-card cut-outs (H I X Y)",
+            "Tracing paper",
+            "Pencils",
+            "Rulers"
+          ]
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 35,
+          "section_refs": [
+            "S4"
+          ],
+          "section_titles": [
+            "Making Designs with Rotational and Reflection Symmetry"
+          ],
+          "activity_title": "Designing by Symmetry Rules: Half-Turns and Quarter-Turns",
+          "tasks_in_class": [
+            {
+              "id": "T-10",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S4",
+              "book_ref": "Making Designs (a), p.139",
+              "description": "Does the given cross-shaped design (circle with four directional triangles) have rotational symmetry? Yes/No."
+            },
+            {
+              "id": "T-11",
+              "intent": "explore",
+              "method": "Play-way",
+              "section_ref": "S4",
+              "book_ref": "Making Designs (b), p.139",
+              "description": "Change the design by adding shapes so the new design looks the same after a ½ turn. Draw the new design in your notebook."
+            },
+            {
+              "id": "T-12",
+              "intent": "explore",
+              "method": "Play-way",
+              "section_ref": "S4",
+              "book_ref": "Making Designs (c), p.139",
+              "description": "Modify or add more shapes so the new design looks the same after ¼ turn. Draw the new design in your notebook."
+            },
+            {
+              "id": "T-13",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S4",
+              "book_ref": "Making Designs (d), p.139",
+              "description": "Do the new designs have reflection symmetry? If yes, draw the lines of symmetry."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–7",
+              "description": "Recap digit symmetry briefly: ask a student to name one digit with both types of symmetry and explain why. Introduce the session goal: using symmetry rules to design and modify shapes, not just classify them."
+            },
+            {
+              "minutes": "7–18",
+              "description": "Students examine the cross-shaped design for Making Designs (a), p.139 ('Does the given cross-shaped design have rotational symmetry?') and record yes/no with a reason. Then they attempt Making Designs (b), p.139 ('Change the design by adding shapes so the new design looks the same after a ½ turn...'), drawing their new design in notebooks."
+            },
+            {
+              "minutes": "18–29",
+              "description": "Students continue with Making Designs (c), p.139 ('Modify or add more shapes so the new design looks the same after ¼ turn...'), iteratively adjusting their drawings. Encourage them to check by rotating their notebook 90° and seeing whether the design appears unchanged."
+            },
+            {
+              "minutes": "29–35",
+              "description": "Students complete Making Designs (d), p.139 ('Do the new designs have reflection symmetry? If yes, draw the lines of symmetry.') and share with a partner. Close by asking: 'Can a design have quarter-turn rotational symmetry but no lines of reflection?'"
+            }
+          ],
+          "teacher_notes": "Last period extended symmetry ideas to all ten digits and multi-digit numbers. Students frequently add shapes randomly and then check, rather than planning symmetrically from the start — encourage them to think 'If I add a shape here, where must I add its mirror or rotational copy?' to build strategic design thinking.",
+          "materials": [
+            "Notebooks",
+            "Pencils and rulers",
+            "Coloured pencils (optional)",
+            "Printed page 139 or textbook"
+          ]
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 40,
+          "section_refs": [
+            "S4"
+          ],
+          "section_titles": [
+            "Making Designs with Rotational and Reflection Symmetry"
+          ],
+          "activity_title": "Star Grids and Shape Tiles: Creating Symmetrical Designs",
+          "tasks_in_class": [
+            {
+              "id": "T-14",
+              "intent": "reason",
+              "method": "Inquiry",
+              "section_ref": "S4",
+              "book_ref": "Let Us Think, p.139",
+              "description": "Does the 2-colour 2×2 square design look the same after ½ turn? Does it look the same after ¼ turn?"
+            },
+            {
+              "id": "T-15",
+              "intent": "explore",
+              "method": "Play-way",
+              "section_ref": "S4",
+              "book_ref": "Let Us Think, p.139",
+              "description": "Colour the given star-grid square using two colours so the design looks the same after every ¼ turn. How many times does the shape look the same during a full turn?"
+            },
+            {
+              "id": "T-16",
+              "intent": "explore",
+              "method": "Play-way",
+              "section_ref": "S4",
+              "book_ref": "Let Us Do, p.139",
+              "description": "Cut out squares and equilateral triangles (same side length, from end of book) and make different symmetrical designs using these two shapes."
+            },
+            {
+              "id": "T-17",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S4",
+              "book_ref": "Let Us Do, p.139",
+              "description": "Do the designs made from squares and triangles have reflection symmetry also? Draw the line(s) of symmetry."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Revisit the half-turn and quarter-turn designs from the previous period. Students examine Let Us Think, p.139 ('Does the 2-colour 2×2 square design look the same after ½ turn? Does it look the same after ¼ turn?') and discuss: half-turn may work even when quarter-turn does not — why?"
+            },
+            {
+              "minutes": "10–22",
+              "description": "Students work on Let Us Think, p.139 ('Colour the given star-grid square using two colours so the design looks the same after every ¼ turn. How many times does the shape look the same during a full turn?'). They experiment with different colouring attempts, rotating the page to check, before settling on a valid solution."
+            },
+            {
+              "minutes": "22–35",
+              "description": "Students cut out shape tiles from the end of the book and freely arrange them on their desks for Let Us Do, p.139 ('Cut out squares and equilateral triangles... and make different symmetrical designs...'). They glue one design of their choice into their notebooks."
+            },
+            {
+              "minutes": "35–40",
+              "description": "Students complete Let Us Do, p.139 ('Do the designs made from squares and triangles have reflection symmetry also? Draw the line(s) of symmetry.'), drawing lines of symmetry on their pasted designs and sharing one observation with the class."
+            }
+          ],
+          "teacher_notes": "Last period students designed and modified drawings to meet half-turn and quarter-turn symmetry conditions. Students often colour the star grid randomly and claim it works — insist they rotate the page 90° physically at each step and verify before recording; this habit prevents guessing.",
+          "materials": [
+            "Textbook appendix cut-out squares and equilateral triangles",
+            "Scissors",
+            "Glue sticks",
+            "Notebooks",
+            "Coloured pencils or crayons"
+          ]
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 40,
+          "section_refs": [
+            "S5"
+          ],
+          "section_titles": [
+            "Block Printing — Symmetry in Cultural Context"
+          ],
+          "activity_title": "Block Printing Traditions: Symmetry in Craft and Culture",
+          "tasks_in_class": [
+            {
+              "id": "T-18",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S5",
+              "book_ref": "Let Us Explore, p.140",
+              "description": "Does the composite shape (two triangles flanking a 2×2 square) have reflection symmetry? Draw lines. Does it have rotational symmetry? At which turn? Does it have both?"
+            },
+            {
+              "id": "T-19",
+              "intent": "reason",
+              "method": "Inductive",
+              "section_ref": "S5",
+              "book_ref": "Let Us Explore, p.140",
+              "description": "Sort your designs into three categories: designs with only rotational symmetry, only reflection symmetry, and both rotational and reflection symmetry."
+            },
+            {
+              "id": "T-20",
+              "intent": "reason",
+              "method": "Problem-solving",
+              "section_ref": "S5",
+              "book_ref": "Let Us Explore, p.140",
+              "description": "Match each wooden block (i–v) to its correct print (a–e) by drawing a line. One is done for you."
+            },
+            {
+              "id": "T-21",
+              "intent": "reason",
+              "method": "Problem-solving",
+              "section_ref": "S5",
+              "book_ref": "Let Us Do, p.141",
+              "description": "Observe shapes on the border of the page. Put a ✓ on shapes with reflection symmetry. Put a * on shapes with rotational symmetry."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Introduce Rajasthan block printing with 2–3 images or a brief description: artisans carve a wooden block and stamp it repeatedly to create patterns. Ask: 'If you stamp the same block four times, turning it 90° each time, what symmetry will the pattern have?' Let students predict before investigating."
+            },
+            {
+              "minutes": "8–20",
+              "description": "Students work on Let Us Explore, p.140 ('Does the composite shape — two triangles flanking a 2×2 square — have reflection symmetry? Draw lines. Does it have rotational symmetry? At which turn?') and then Let Us Explore, p.140 ('Sort your designs into three categories: only rotational symmetry, only reflection symmetry, and both...'). Pairs compare category placements."
+            },
+            {
+              "minutes": "20–30",
+              "description": "Students complete the matching task at Let Us Explore, p.140 ('Match each wooden block (i–v) to its correct print (a–e)...'). Encourage them to use elimination: find the block whose shape is clearly mirrored in one of the prints and work systematically from there."
+            },
+            {
+              "minutes": "30–40",
+              "description": "Students observe the border shapes and complete Let Us Do, p.141 ('Put a ✓ on shapes with reflection symmetry. Put a * on shapes with rotational symmetry.'). Close with a quick show of hands: which shapes got both marks? Discuss why block printing naturally produces rotationally symmetric patterns."
+            }
+          ],
+          "teacher_notes": "Last period students created and classified free designs using cut-out tiles. Students often assume a block print and the block itself have the same symmetry — the matching task is designed to surface the mirror-reversal: prompt them to notice that the print is a mirror image of the block, not an identical copy. Additional practice: Let Us Do, p.141, the task on Design B ('The design B looks the same after every __ turn...') can be completed as homework.",
+          "materials": [
+            "Textbook pp.140–141",
+            "Pencils",
+            "Images or samples of Rajasthan block-printed fabric (optional)"
+          ]
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 40,
+          "section_refs": [
+            "S5"
+          ],
+          "section_titles": [
+            "Block Printing — Symmetry in Cultural Context"
+          ],
+          "activity_title": "Vegetable Block Printing: Making Symmetry with Your Hands",
+          "tasks_in_class": [
+            {
+              "id": "T-22",
+              "intent": "reason",
+              "method": "Problem-solving",
+              "section_ref": "S5",
+              "book_ref": "Let Us Do, p.141",
+              "description": "Design B: fill in 'The design B looks the same after every __ turn. This design has __ symmetry.'"
+            },
+            {
+              "id": "T-23",
+              "intent": "explore",
+              "method": "Play-way",
+              "section_ref": "S5",
+              "book_ref": "Project Work, p.141",
+              "description": "Create symmetrical patterns and designs using vegetable blocks (okra, potato). Some examples are shown."
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Begin by reviewing the block-to-print matching and the border-shape classification from the previous period. Students complete Let Us Do, p.141 ('The design B looks the same after every __ turn. This design has __ symmetry.'), writing their answers and justifying the turn fraction to a partner."
+            },
+            {
+              "minutes": "10–30",
+              "description": "Launch the project work from Project Work, p.141 ('Create symmetrical patterns and designs using vegetable blocks — okra, potato...'). Students plan which symmetry type they want to achieve (reflection, rotational, or both), then stamp their vegetable block in a deliberate pattern on paper, rotating or reflecting the block between stamps."
+            },
+            {
+              "minutes": "30–40",
+              "description": "Students display their printed designs and describe to a neighbour: 'My design has ___ symmetry because it looks the same after a ___ turn / has a line of symmetry here.' Close the chapter by revisiting the dissolution statement: students list on a sticky note one thing they can now do with symmetry that they could not do before."
+            }
+          ],
+          "teacher_notes": "Last period students classified border shapes and matched wooden blocks to their prints. A common error in the project work is stamping without planning — students press the vegetable randomly and then claim it is symmetric; ask them to mark the centre of their paper first and plan the stamp positions before they begin printing.",
+          "materials": [
+            "Halved okra or potato (prepared in advance)",
+            "Poster paint or ink pads",
+            "Plain paper sheets",
+            "Newspaper for covering desks",
+            "Pencils for planning marks"
+          ]
+        }
+      ]
+    },
+    "coverage_handoff": {
+      "explore": {
+        "tasks": [
+          {
+            "task_id": "T-3",
+            "intent": "explore",
+            "section_ref": "S1",
+            "book_ref": "Let Us Do, p.136",
+            "description": "Use lines of symmetry to make paper cutouts of diya, boat, and other designs shown on the border of the page."
+          },
+          {
+            "task_id": "T-4",
+            "intent": "explore",
+            "section_ref": "S2",
+            "book_ref": "Let Us Make a Windmill Firki, p.137",
+            "description": "Follow the nine steps to make your own windmill firki using a square paper, scissors, and a pin on a stick or straw."
+          },
+          {
+            "task_id": "T-12",
+            "intent": "explore",
+            "section_ref": "S4",
+            "book_ref": "Making Designs (c), p.139",
+            "description": "Modify or add more shapes so the new design looks the same after ¼ turn. Draw the new design in your notebook."
+          },
+          {
+            "task_id": "T-15",
+            "intent": "explore",
+            "section_ref": "S4",
+            "book_ref": "Let Us Think, p.139",
+            "description": "Colour the given star-grid square using two colours so the design looks the same after every ¼ turn. How many times does the shape look the same during a full turn?"
+          },
+          {
+            "task_id": "T-16",
+            "intent": "explore",
+            "section_ref": "S4",
+            "book_ref": "Let Us Do, p.139",
+            "description": "Cut out squares and equilateral triangles (same side length, from end of book) and make different symmetrical designs using these two shapes."
+          },
+          {
+            "task_id": "T-23",
+            "intent": "explore",
+            "section_ref": "S5",
+            "book_ref": "Project Work, p.141",
+            "description": "Create symmetrical patterns and designs using vegetable blocks (okra, potato). Some examples are shown."
+          }
+        ]
+      },
+      "reason": {
+        "tasks": [
+          {
+            "task_id": "T-1",
+            "intent": "reason",
+            "section_ref": "S1",
+            "book_ref": "Let Us Do, p.136",
+            "description": "Which of the alphabet cutouts E N X T K V O can be made by drawing half or quarter of the letter? Draw lines of symmetry on the letters."
+          },
+          {
+            "task_id": "T-2",
+            "intent": "reason",
+            "section_ref": "S1",
+            "book_ref": "Let Us Do, p.136",
+            "description": "Which letters have a horizontal line of symmetry? Which have a vertical line of symmetry? Which have both vertical and horizontal lines of symmetry?"
+          },
+          {
+            "task_id": "T-5",
+            "intent": "reason",
+            "section_ref": "S2",
+            "book_ref": "Let Us Make a Windmill Firki, p.137",
+            "description": "Observe the dot in the firki. Does the firki look the same after ¼, ½, ¾, and a full turn?"
+          },
+          {
+            "task_id": "T-6",
+            "intent": "reason",
+            "section_ref": "S3",
+            "book_ref": "Let Us Do, p.138",
+            "description": "Observe letters H, I, X, Y at ¼, ½, ¾, and full turns; complete the rotational symmetry table for each letter."
+          },
+          {
+            "task_id": "T-7",
+            "intent": "reason",
+            "section_ref": "S3",
+            "book_ref": "Let Us Do, p.138",
+            "description": "Find symmetry in digits 1–9 and 0: which have reflection symmetry? Which have rotational symmetry? Which have both?"
+          },
+          {
+            "task_id": "T-8",
+            "intent": "reason",
+            "section_ref": "S3",
+            "book_ref": "Let Us Do, p.138",
+            "description": "Do the numbers 11 and 1001 have rotational symmetry, reflection symmetry, or both symmetries?"
+          },
+          {
+            "task_id": "T-10",
+            "intent": "reason",
+            "section_ref": "S4",
+            "book_ref": "Making Designs (a), p.139",
+            "description": "Does the given cross-shaped design (circle with four directional triangles) have rotational symmetry? Yes/No."
+          },
+          {
+            "task_id": "T-13",
+            "intent": "reason",
+            "section_ref": "S4",
+            "book_ref": "Making Designs (d), p.139",
+            "description": "Do the new designs have reflection symmetry? If yes, draw the lines of symmetry."
+          },
+          {
+            "task_id": "T-14",
+            "intent": "reason",
+            "section_ref": "S4",
+            "book_ref": "Let Us Think, p.139",
+            "description": "Does the 2-colour 2×2 square design look the same after ½ turn? Does it look the same after ¼ turn?"
+          },
+          {
+            "task_id": "T-18",
+            "intent": "reason",
+            "section_ref": "S5",
+            "book_ref": "Let Us Explore, p.140",
+            "description": "Does the composite shape (two triangles flanking a 2×2 square) have reflection symmetry? Draw lines. Does it have rotational symmetry? At which turn? Does it have both?"
+          },
+          {
+            "task_id": "T-20",
+            "intent": "reason",
+            "section_ref": "S5",
+            "book_ref": "Let Us Explore, p.140",
+            "description": "Match each wooden block (i–v) to its correct print (a–e) by drawing a line. One is done for you."
+          },
+          {
+            "task_id": "T-22",
+            "intent": "reason",
+            "section_ref": "S5",
+            "book_ref": "Let Us Do, p.141",
+            "description": "Design B: fill in 'The design B looks the same after every __ turn. This design has __ symmetry.'"
+          }
+        ]
+      },
+      "practice": {
+        "tasks": []
+      },
+      "solve": {
+        "tasks": []
+      }
+    },
+    "assessment_items": [
+      {
+        "section_code": "A",
+        "section_title": "Explore",
+        "items": [
+          {
+            "id": "Q-A-1",
+            "intent": "explore",
+            "section_ref": "S1",
+            "section_title": "Alphabet Cutout — Reflection Symmetry",
+            "question_type": "SCR",
+            "prompt": "Fold a square piece of paper in half. Draw half of a leaf shape along the fold. Cut along your drawing and unfold the paper. What shape do you get? How many lines of symmetry does it have?",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "A whole leaf shape (symmetrical leaf). It has one line of symmetry — the fold line.",
+              "method_one_line": "Folding along a line of symmetry makes the two halves match exactly when unfolded.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student hold the paper on the fold to see the matching halves; stretch: fold in quarters and make a shape with two lines of symmetry."
+            },
+            "exercise": {
+              "book_ref": "Let Us Do, p.136",
+              "description": "Use lines of symmetry to make paper cutouts of diya, boat, and other designs shown on the border of the page."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-A-2",
+            "intent": "explore",
+            "section_ref": "S2",
+            "section_title": "Making a Windmill Firki — Rotational Symmetry Introduced",
+            "question_type": "SCR",
+            "prompt": "Look at your windmill firki. Put a small sticker on one blade. Hold the centre still and give it a half turn (½ turn). Does the firki look the same as before you turned it? Write Yes or No and explain why.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "Yes. After a ½ turn the firki looks the same because the blades are arranged evenly — the sticker has moved to where another blade was, and the overall pattern matches.",
+              "method_one_line": "Check by turning the firki and seeing whether the arrangement of blades looks identical to the starting position.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student physically hold and turn the firki while a partner watches; stretch: ask what happens at a ¼ turn and whether the answer changes."
+            },
+            "exercise": {
+              "book_ref": "Let Us Make a Windmill Firki, p.137",
+              "description": "Follow the nine steps to make your own windmill firki using a square paper, scissors, and a pin on a stick or straw."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-A-3",
+            "intent": "explore",
+            "section_ref": "S4",
+            "section_title": "Making Designs with Rotational and Reflection Symmetry",
+            "question_type": "SCR",
+            "prompt": "Draw a simple plus (+) shape in the centre of your notebook. Add one small square to the top of the plus. Now add more small squares so that the whole design looks the same after every ¼ turn. Draw your final design.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "The student should add a small square to the bottom, left, and right of the plus as well (one square at each arm end). The final design looks the same after ¼, ½, ¾, and a full turn.",
+              "method_one_line": "For ¼-turn symmetry, place identical shapes at all four positions that map onto each other under a quarter turn.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: show a finished example of a ½-turn design first and ask what else needs to be added; stretch: ask whether the completed design also has reflection symmetry and to draw those lines."
+            },
+            "exercise": {
+              "book_ref": "Making Designs (c), p.139",
+              "description": "Modify or add more shapes so the new design looks the same after ¼ turn. Draw the new design in your notebook."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-A-4",
+            "intent": "explore",
+            "section_ref": "S4",
+            "section_title": "Making Designs with Rotational and Reflection Symmetry",
+            "question_type": "SCR",
+            "prompt": "Below is a 2×2 grid of four squares. Colour the squares using only two colours so that the design looks the same after every ¼ turn. How many times does your design look the same during one full turn?",
+            "visual_stimulus": "| Square 1 (top-left) | Square 2 (top-right) |\n| Square 3 (bottom-left) | Square 4 (bottom-right) |",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "All four squares must be the same colour (e.g., all red) OR the student may use one colour for all four — the design then looks the same 4 times during a full turn (at ¼, ½, ¾, and full turn). Alternatively, a checkerboard colouring gives only ½-turn symmetry. The valid ¼-turn answer requires all four cells the same colour, looking the same 4 times per full turn.",
+              "method_one_line": "A design has ¼-turn symmetry if rotating it 90° produces an identical-looking arrangement; count all positions (¼, ½, ¾, full) where it matches.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student cut out the coloured grid and physically rotate it to check; stretch: ask whether the design also has reflection symmetry and to draw any lines of symmetry."
+            },
+            "exercise": {
+              "book_ref": "Let Us Think, p.139",
+              "description": "Colour the given star-grid square using two colours so the design looks the same after every ¼ turn. How many times does the shape look the same during a full turn?"
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-A-5",
+            "intent": "explore",
+            "section_ref": "S4",
+            "section_title": "Making Designs with Rotational and Reflection Symmetry",
+            "question_type": "SCR",
+            "prompt": "Use four small squares (all the same size) and two equilateral triangles to arrange a design on your desk. Make sure the design has at least one line of symmetry. Describe or sketch your design and draw the line of symmetry on it.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "Any valid arrangement in which placing a mirror on the line of symmetry makes both halves match. For example, two triangles point-to-point at the centre with two squares on each side creates a vertical line of symmetry. The teacher checks that the drawn line divides the design into two mirror-image halves.",
+              "method_one_line": "A line of symmetry divides the design so that each shape on one side has a matching shape at the same distance on the other side.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: ask the student to fold their sketch to check whether the two halves match; stretch: ask whether the design also has rotational symmetry and at which turn."
+            },
+            "exercise": {
+              "book_ref": "Let Us Do, p.139",
+              "description": "Cut out squares and equilateral triangles (same side length, from end of book) and make different symmetrical designs using these two shapes."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-A-6",
+            "intent": "explore",
+            "section_ref": "S5",
+            "section_title": "Block Printing — Symmetry in Cultural Context",
+            "question_type": "SCR",
+            "prompt": "Dip the flat side of a potato block into paint and stamp it once on paper. Now stamp it again right beside the first print so the two prints are mirror images of each other. What kind of symmetry does the pair of prints show? Draw a line on the prints to show it.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "The pair of prints shows reflection symmetry. The line of symmetry is drawn between the two prints (a vertical line separating them), with each print being the mirror image of the other.",
+              "method_one_line": "A wooden block print and its mirror-image stamp on the other side share a line of reflection symmetry between them.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student fold the paper along the drawn line to check that the two prints overlap; stretch: ask whether repeating the pair of prints as a border creates rotational symmetry and to explain why."
+            },
+            "exercise": {
+              "book_ref": "Project Work, p.141",
+              "description": "Create symmetrical patterns and designs using vegetable blocks (okra, potato). Some examples are shown."
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "section_code": "B",
+        "section_title": "Reason",
+        "items": [
+          {
+            "id": "Q-B-1",
+            "intent": "reason",
+            "section_ref": "S1",
+            "section_title": "Alphabet Cutout — Reflection Symmetry",
+            "question_type": "MCQ",
+            "prompt": "Riya wants to cut out the letter M by folding paper in half and cutting just one half. She folds the paper along a vertical line. Will her method work? Why?",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "Yes, because M has a vertical line of symmetry — the left half and right half are mirror images.",
+                "is_correct": true
+              },
+              {
+                "label": "B",
+                "text": "No, because M has a horizontal line of symmetry, not a vertical one.",
+                "is_correct": false
+              },
+              {
+                "label": "C",
+                "text": "Yes, because all letters can be made by folding paper in half.",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "No, because M has no line of symmetry at all.",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "A — Yes, because M has a vertical line of symmetry; folding along that line and cutting one half produces the full letter when unfolded.",
+              "method_one_line": "Check whether the letter looks the same on both sides of the fold line — if yes, one half can be cut to produce the whole.",
+              "what_each_option_reveals": {
+                "A": "Correct understanding of vertical line of symmetry in M.",
+                "B": "Confuses vertical and horizontal lines of symmetry.",
+                "C": "Overgeneralises — does not check whether a specific line of symmetry exists.",
+                "D": "Does not recognise that M has a vertical line of symmetry."
+              },
+              "inclusivity": "Support: ask the student to fold a drawing of M and hold it up to the light to see if the halves match; stretch: ask which letters from the set E, N, X, T, K, V, O also have a vertical line of symmetry and which do not."
+            },
+            "exercise": {
+              "book_ref": "Let Us Do, p.136",
+              "description": "Which of the alphabet cutouts E N X T K V O can be made by drawing half or quarter of the letter? Draw lines of symmetry on the letters."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-2",
+            "intent": "reason",
+            "section_ref": "S1",
+            "section_title": "Alphabet Cutout — Reflection Symmetry",
+            "question_type": "MCQ",
+            "prompt": "Look at these four letters: B, C, D, E. Which letter has a horizontal line of symmetry but NOT a vertical line of symmetry?",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "B",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "C",
+                "is_correct": false
+              },
+              {
+                "label": "C",
+                "text": "D",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "E",
+                "is_correct": true
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "D — The letter E has a horizontal line of symmetry (top and bottom halves mirror each other) but no vertical line of symmetry.",
+              "method_one_line": "Draw a horizontal line through the middle and check whether the top and bottom match; then draw a vertical line and check left and right.",
+              "what_each_option_reveals": {
+                "A": "May believe B has only a horizontal line of symmetry; B also has a vertical one in some print styles, but the key distinction is E which clearly has horizontal only.",
+                "B": "Confuses C, which has no standard line of symmetry in print form, with a letter that has horizontal symmetry.",
+                "C": "Confuses D, which has a horizontal line of symmetry, but may not check for vertical — however D does not have a vertical line of symmetry either, so this reveals difficulty distinguishing between letters.",
+                "D": "Correct: E has a horizontal line of symmetry and no vertical line of symmetry."
+              },
+              "inclusivity": "Support: have the student fold a printed letter along each axis to check; stretch: ask the student to find one more letter that has both a horizontal and vertical line of symmetry."
+            },
+            "exercise": {
+              "book_ref": "Let Us Do, p.136",
+              "description": "Which letters have a horizontal line of symmetry? Which have a vertical line of symmetry? Which have both vertical and horizontal lines of symmetry?"
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-3",
+            "intent": "reason",
+            "section_ref": "S2",
+            "section_title": "Making a Windmill Firki — Rotational Symmetry Introduced",
+            "question_type": "SCR",
+            "prompt": "Arjun marked a dot on one blade of his windmill firki. He turned the firki slowly. He says the firki looked the same at ¼ turn, ½ turn, and ¾ turn — and also at a full turn. How many times did the firki look the same during one full turn? Write your answer and explain.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "The firki looked the same 4 times during a full turn: at ¼ turn, ½ turn, ¾ turn, and full turn.",
+              "method_one_line": "Count each fractional position (¼, ½, ¾, full) at which the firki's pattern matches its starting look.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: pair-share — let the student talk through each position with a partner before writing; stretch: ask what this tells us about the firki's rotational symmetry — what kind of turn symmetry does it have?"
+            },
+            "exercise": {
+              "book_ref": "Let Us Make a Windmill Firki, p.137",
+              "description": "Observe the dot in the firki. Does the firki look the same after ¼, ½, ¾, and a full turn?"
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-4",
+            "intent": "reason",
+            "section_ref": "S3",
+            "section_title": "Rotational Symmetry in Letters and Digits",
+            "question_type": "SCR",
+            "prompt": "Look at the letters H, I, X, and Y. Which of these letters looks the same after a ½ turn but does NOT look the same after a ¼ turn? Name all such letters and explain your reasoning.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "H and I look the same after a ½ turn but not after a ¼ turn. X looks the same after both ¼ and ½ turns. Y does not have rotational symmetry at any fractional turn less than a full turn. So the letters that match ½ turn only (not ¼) are H and I.",
+              "method_one_line": "Rotate the letter image (or its cut-out) and compare its appearance at each fractional turn to its starting position.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student use cut-outs and trace paper to physically rotate each letter; stretch: ask whether any of these letters also have reflection symmetry and to draw the lines."
+            },
+            "exercise": {
+              "book_ref": "Let Us Do, p.138",
+              "description": "Observe letters H, I, X, Y at ¼, ½, ¾, and full turns; complete the rotational symmetry table for each letter."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-5",
+            "intent": "reason",
+            "section_ref": "S3",
+            "section_title": "Rotational Symmetry in Letters and Digits",
+            "question_type": "MCQ",
+            "prompt": "Which digit has BOTH reflection symmetry AND rotational symmetry?",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "3",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "8",
+                "is_correct": true
+              },
+              {
+                "label": "C",
+                "text": "6",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "7",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "B — The digit 8 has a horizontal line of symmetry, a vertical line of symmetry, and also looks the same after a ½ turn, giving it both reflection and rotational symmetry.",
+              "method_one_line": "Test each digit by checking whether a mirror line makes the two halves match (reflection) and whether a half-turn produces the same image (rotational).",
+              "what_each_option_reveals": {
+                "A": "Thinks 3 has rotational symmetry; 3 has a horizontal line of symmetry only — not rotational.",
+                "B": "Correct: 8 has both reflection and rotational symmetry.",
+                "C": "Thinks 6 has both; 6 becomes 9 after a half-turn so it does not have rotational symmetry; it also lacks a standard line of symmetry.",
+                "D": "Thinks 7 has some symmetry; 7 has neither standard reflection nor rotational symmetry."
+              },
+              "inclusivity": "Support: let the student draw each digit on a card and physically flip or rotate it; stretch: ask whether the number 88 also has both symmetries and to explain."
+            },
+            "exercise": {
+              "book_ref": "Let Us Do, p.138",
+              "description": "Find symmetry in digits 1–9 and 0: which have reflection symmetry? Which have rotational symmetry? Which have both?"
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-6",
+            "intent": "reason",
+            "section_ref": "S3",
+            "section_title": "Rotational Symmetry in Letters and Digits",
+            "question_type": "SCR",
+            "prompt": "Priya says the number 1881 has both rotational symmetry and reflection symmetry. Do you agree? Explain your thinking using what you know about the digits that make up 1881.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "Yes. Each digit in 1881 individually has both reflection and rotational symmetry. Together, 1881 reads the same from left to right as right to left (reflection), and after a ½ turn it still reads 1881 (rotational symmetry). So 1881 has both symmetries.",
+              "method_one_line": "Check digit-by-digit for rotational and reflection symmetry, then verify the whole number retains both properties.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: write each digit on a separate card; flip and rotate each card individually first; stretch: ask the student to write a different 4-digit number that has both symmetries."
+            },
+            "exercise": {
+              "book_ref": "Let Us Do, p.138",
+              "description": "Do the numbers 11 and 1001 have rotational symmetry, reflection symmetry, or both symmetries?"
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-7",
+            "intent": "reason",
+            "section_ref": "S4",
+            "section_title": "Making Designs with Rotational and Reflection Symmetry",
+            "question_type": "MCQ",
+            "prompt": "A design looks the same after a ¼ turn, a ½ turn, and a ¾ turn. Which statement about this design is correct?",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "The design has rotational symmetry only at the ½ turn.",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "The design has rotational symmetry — it looks the same 4 times in a full turn.",
+                "is_correct": true
+              },
+              {
+                "label": "C",
+                "text": "The design has reflection symmetry but not rotational symmetry.",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "The design has no symmetry because it keeps changing.",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "B — A design that looks the same at ¼, ½, and ¾ turns also looks the same at the full turn, so it matches its starting appearance 4 times in one full turn, confirming rotational symmetry.",
+              "method_one_line": "Count all positions (¼, ½, ¾, full) at which the design matches and conclude it has rotational symmetry appearing 4 times.",
+              "what_each_option_reveals": {
+                "A": "Understands half-turn symmetry but does not recognise that matching at ¼ implies it also matches at every multiple of ¼.",
+                "B": "Correct understanding of rotational symmetry and the count of matching positions.",
+                "C": "Confuses reflection and rotational symmetry; thinks matching at fractional turns means only reflection.",
+                "D": "Does not understand that 'looking the same' at multiple turns is the definition of rotational symmetry."
+              },
+              "inclusivity": "Support: have the student cut out the design and physically rotate it to each fractional position; stretch: ask whether such a design must also have a line of symmetry and to test it."
+            },
+            "exercise": {
+              "book_ref": "Making Designs (a), p.139",
+              "description": "Does the given cross-shaped design (circle with four directional triangles) have rotational symmetry? Yes/No."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-8",
+            "intent": "reason",
+            "section_ref": "S4",
+            "section_title": "Making Designs with Rotational and Reflection Symmetry",
+            "question_type": "SCR",
+            "prompt": "Meera drew a design that has ¼-turn rotational symmetry. She then drew lines of symmetry on it. She found 4 lines of symmetry. Is it possible for a design with ¼-turn rotational symmetry to also have lines of symmetry? Explain.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "Yes, it is possible. A design can have both rotational symmetry and reflection symmetry at the same time. For example, a design that looks the same after every ¼ turn can also have lines of symmetry if its parts mirror each other. The two types of symmetry are different and both can be present in the same design.",
+              "method_one_line": "Check rotational symmetry by turning the design and checking if it matches; check reflection symmetry by testing whether a mirror line makes the two halves identical — both can be true at once.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: ask the student to name one shape they know that has both types of symmetry (e.g., a square); stretch: ask whether a design can have rotational symmetry but NO lines of symmetry, and to try to draw one."
+            },
+            "exercise": {
+              "book_ref": "Making Designs (d), p.139",
+              "description": "Do the new designs have reflection symmetry? If yes, draw the lines of symmetry."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-9",
+            "intent": "reason",
+            "section_ref": "S4",
+            "section_title": "Making Designs with Rotational and Reflection Symmetry",
+            "question_type": "MCQ",
+            "prompt": "A 2×2 square is coloured with two colours: the top-left and bottom-right squares are red; the top-right and bottom-left squares are blue. Does this design look the same after a ½ turn?",
+            "visual_stimulus": "| Red | Blue |\n| Blue | Red |",
+            "options": [
+              {
+                "label": "A",
+                "text": "Yes — after a ½ turn the red and blue squares are in the same positions as before.",
+                "is_correct": true
+              },
+              {
+                "label": "B",
+                "text": "No — after a ½ turn the colours swap completely.",
+                "is_correct": false
+              },
+              {
+                "label": "C",
+                "text": "Yes — because it also looks the same after a ¼ turn.",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "No — a ½ turn never keeps any design looking the same.",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "A — After a ½ turn, the top-left red moves to the bottom-right (which was also red) and the top-right blue moves to the bottom-left (also blue), so the design looks identical to its starting position.",
+              "method_one_line": "Track where each coloured square goes after a ½ turn and check whether the colour pattern matches the original.",
+              "what_each_option_reveals": {
+                "A": "Correct: the diagonal symmetry of the colouring means a ½ turn reproduces the same pattern.",
+                "B": "Incorrectly traces the movement of squares and concludes colours swap; does not recognise the matching diagonal positions.",
+                "C": "Overgeneralises: assumes ½-turn symmetry implies ¼-turn symmetry, which is not true here.",
+                "D": "Holds the misconception that a ½ turn always changes a design."
+              },
+              "inclusivity": "Support: let the student cut out the 2×2 grid and physically rotate it 180°; stretch: ask whether this design also has a line of symmetry and to draw it if yes."
+            },
+            "exercise": {
+              "book_ref": "Let Us Think, p.139",
+              "description": "Does the 2-colour 2×2 square design look the same after ½ turn? Does it look the same after ¼ turn?"
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-10",
+            "intent": "reason",
+            "section_ref": "S5",
+            "section_title": "Block Printing — Symmetry in Cultural Context",
+            "question_type": "SCR",
+            "prompt": "A shape has one vertical line of symmetry. It does NOT look the same after a ½ turn. Write: Does it have reflection symmetry? Does it have rotational symmetry? Give one example of a letter or digit that fits this description.",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "It has reflection symmetry (because it has a vertical line of symmetry). It does not have rotational symmetry (because it looks different after a ½ turn). An example is the letter A, or the digit 3 (horizontal symmetry only — accept any letter/digit with one line of symmetry and no rotational symmetry, e.g., A, T, Y, 3).",
+              "method_one_line": "A shape has reflection symmetry if a mirror line divides it into matching halves; it has rotational symmetry only if it looks the same at a fractional turn less than a full turn.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: give the student a printed shape and ask them to fold it to find the line of symmetry first; stretch: ask the student to find a shape that has both a vertical line of symmetry AND rotational symmetry at ½ turn."
+            },
+            "exercise": {
+              "book_ref": "Let Us Explore, p.140",
+              "description": "Does the composite shape (two triangles flanking a 2×2 square) have reflection symmetry? Draw lines. Does it have rotational symmetry? At which turn? Does it have both?"
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-11",
+            "intent": "reason",
+            "section_ref": "S5",
+            "section_title": "Block Printing — Symmetry in Cultural Context",
+            "question_type": "MCQ",
+            "prompt": "A wooden block for printing looks like the letter R. When you press it onto paper and lift it, what will the print look like?",
+            "visual_stimulus": "",
+            "options": [
+              {
+                "label": "A",
+                "text": "The print will look exactly like the letter R.",
+                "is_correct": false
+              },
+              {
+                "label": "B",
+                "text": "The print will look like a mirror image of R — it will face the opposite way.",
+                "is_correct": true
+              },
+              {
+                "label": "C",
+                "text": "The print will look like an upside-down R.",
+                "is_correct": false
+              },
+              {
+                "label": "D",
+                "text": "The print will look like the letter R rotated ¼ turn.",
+                "is_correct": false
+              }
+            ],
+            "teacher_guide": {
+              "expected_answer": "B — Pressing a block onto paper creates a reflection (mirror image) of the block. If the block shows R, the print will show a reversed R facing the opposite direction.",
+              "method_one_line": "Stamping a block onto paper reverses the image — the print is the mirror image of the block, connected to the idea of reflection symmetry.",
+              "what_each_option_reveals": {
+                "A": "Does not understand that stamping reverses the image; treats the print as a direct copy.",
+                "B": "Correct: understands that block printing produces a mirror image of the carved block.",
+                "C": "Confuses reflection (left-right reversal) with rotation (upside-down = 180° turn); these are different.",
+                "D": "Confuses the reversal with a quarter-turn rotation."
+              },
+              "inclusivity": "Support: ask the student to write a letter on their palm with a marker and press it on paper — they see the mirror image result; stretch: ask which letters would look the same whether the block is pressed normally or in reverse."
+            },
+            "exercise": {
+              "book_ref": "Let Us Explore, p.140",
+              "description": "Match each wooden block (i–v) to its correct print (a–e) by drawing a line. One is done for you."
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-B-12",
+            "intent": "reason",
+            "section_ref": "S5",
+            "section_title": "Block Printing — Symmetry in Cultural Context",
+            "question_type": "SCR",
+            "prompt": "A border design on a fabric tile looks the same after every ½ turn. Complete these sentences: 'The design looks the same after every ___ turn. This design has ___ symmetry.'",
+            "visual_stimulus": "",
+            "options": [],
+            "teacher_guide": {
+              "expected_answer": "The design looks the same after every ½ turn. This design has rotational symmetry.",
+              "method_one_line": "A design that looks the same at a fractional turn less than a full turn has rotational symmetry; the smallest such turn identifies the type.",
+              "what_each_option_reveals": {},
+              "inclusivity": "Support: let the student physically rotate a printed copy of a simple ½-turn design to confirm it matches; stretch: ask whether this design also has reflection symmetry and how they would check."
+            },
+            "exercise": {
+              "book_ref": "Let Us Do, p.141",
+              "description": "Design B: fill in 'The design B looks the same after every __ turn. This design has __ symmetry.'"
+            },
+            "verified": true
+          }
+        ]
+      }
+    ],
+    "input_tokens": 11172,
+    "output_tokens": 7967,
+    "cost_inr": 14.0779,
+    "assess_input_tokens": 7885,
+    "assess_output_tokens": 8576,
+    "assess_cost_inr": 14.0111
+  }
+}

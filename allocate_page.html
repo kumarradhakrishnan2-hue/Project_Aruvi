@@ -838,6 +838,23 @@ function setFootnote() {
     return;
   }
   /* Science / Mathematics: structured "About the Effort Index" block */
+  /* Mathematics preparatory: own effort index formula */
+  if (IS_MATH_PREP && aboutEl) {
+    aboutEl.innerHTML =
+      '<div class="about-ei">'
+      + '<h4>About the Effort Index</h4>'
+      + '<p>The effort index tells you how much classroom time a chapter typically needs compared to other chapters. Formula: <b>(Conceptual demand \u00d72) + (Task load \u00d72) + (Exploration load \u00d71.5) + (Procedural load \u00d71.5)</b>. Chapters with a higher effort index get more periods.</p>'
+      + '<ul>'
+      + '<li><b>Conceptual demand (\u00d72)</b> \u2014 How abstract the chapter\'s reasoning is on the concrete-to-symbolic path. 1\u00a0=\u00a0fully concrete (counting, matching, sorting); 2\u00a0=\u00a0slight abstraction (place value, simple patterns, measurement); 3\u00a0=\u00a0symbolic or multi-step reasoning (multi-digit operations, fractions, area/perimeter).</li>'
+      + '<li><b>Task load (\u00d72)</b> \u2014 Discrete tier from total task count. 0\u00a0=\u00a0fewer than 8; 1\u00a0=\u00a08\u201315; 2\u00a0=\u00a016\u201325; 3\u00a0=\u00a0more than 25.</li>'
+      + '<li><b>Exploration load (\u00d71.5)</b> \u2014 Share of hands-on, manipulative, or game-based tasks. 0\u00a0=\u00a0none; 1\u00a0=\u00a0a few; 2\u00a0=\u00a0prominently exploratory.</li>'
+      + '<li><b>Procedural load (\u00d71.5)</b> \u2014 Share of compute, convert, or drill tasks. 0\u00a0=\u00a0none; 1\u00a0=\u00a0moderate; 2\u00a0=\u00a0heavily procedural.</li>'
+      + '</ul>'
+      + '<p class="about-ei-close">Only relative values matter \u2014 the effort index is used to share your available periods across chapters in proportion to their load.</p>'
+      + '</div>';
+    return;
+  }
+  /* Science / Mathematics (middle/secondary): structured "About the Effort Index" block */
   if (IS_SCIENCE && aboutEl) {
     aboutEl.innerHTML =
       '<div class="about-ei">'
@@ -945,6 +962,21 @@ function generateReport() {
             { label: 'Task load',         val: twTl, mult: '\u00d72',   cont: twTlC },
             { label: 'Project load',      val: twPl, mult: '\u00d71.5', cont: twPlC },
             { label: 'Map work',          val: twMw, mult: '\u00d71',   cont: twMwC }
+          ];
+        } else if (IS_MATH_PREP) {
+          var mpCd   = cd.conceptual_demand || 0;
+          var mpTl   = cd.task_load         || 0;
+          var mpEl   = cd.exploration_load  || 0;
+          var mpPl   = cd.procedural_load   || 0;
+          var mpCdC  = parseFloat((mpCd * 2).toFixed(1));
+          var mpTlC  = parseFloat((mpTl * 2).toFixed(1));
+          var mpElC  = parseFloat((mpEl * 1.5).toFixed(1));
+          var mpPlC  = parseFloat((mpPl * 1.5).toFixed(1));
+          _signals = [
+            { label: 'Conceptual demand',  val: mpCd, mult: '\u00d72',   cont: mpCdC },
+            { label: 'Task load',          val: mpTl, mult: '\u00d72',   cont: mpTlC },
+            { label: 'Exploration load',   val: mpEl, mult: '\u00d71.5', cont: mpElC },
+            { label: 'Procedural load',    val: mpPl, mult: '\u00d71.5', cont: mpPlC }
           ];
         } else {
           var cdVal  = cd.conceptual_demand || 0;
@@ -1964,7 +1996,34 @@ function _downloadPDF_legacy_unused() {
     y += 4;
   }
 
-  if (IS_SCIENCE) {
+  if (IS_MATH_PREP) {
+    if (y + 40 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 18; }
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(26, 68, 128);
+    doc.text('About the Effort Index', mL, y); doc.setCharSpace(0);
+    y += 4;
+    rule(y, 0.18, 180); y += 4;
+
+    var _mpEiRows = [
+      { label: 'Formula:', body: 'effort_index = (Conceptual demand ×2) + (Task load ×2) + (Exploration load ×1.5) + (Procedural load ×1.5)' },
+      { label: 'Conceptual demand (×2):', body: 'How abstract the chapter\'s reasoning is on the concrete-to-symbolic path. 1 = fully concrete (counting, matching, sorting tangible objects); 2 = slight abstraction (place value, simple patterns, measurement with standard units); 3 = symbolic or multi-step reasoning (multi-digit operations, fraction concepts, area/perimeter reasoning).' },
+      { label: 'Task load (×2):', body: 'Discrete tier from total task count. 0 = fewer than 8 tasks; 1 = 8–15; 2 = 16–25; 3 = more than 25.' },
+      { label: 'Exploration load (×1.5):', body: 'Share of hands-on, manipulative, or game-based tasks. 0 = none; 1 = a few; 2 = prominently exploratory.' },
+      { label: 'Procedural load (×1.5):', body: 'Share of compute, convert, or drill tasks. 0 = none; 1 = moderate; 2 = heavily procedural.' },
+      { label: 'Note:', body: 'Only relative values matter — the effort index is used to share your available periods across chapters in proportion to their load.' },
+    ];
+    var _mpEiLblW = 58;
+    var _mpEiBodyW = pageW - mL - mR - _mpEiLblW;
+    _mpEiRows.forEach(function(row) {
+      if (y + 8 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5); doc.setTextColor(26, 68, 128);
+      doc.text(row.label, mL, y); doc.setCharSpace(0);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(75, 75, 75);
+      var _mBLines = doc.splitTextToSize(row.body, _mpEiBodyW);
+      doc.text(_mBLines, mL + _mpEiLblW, y); doc.setCharSpace(0);
+      y += Math.max(5, _mBLines.length * 3.5);
+    });
+    y += 4;
+  } else if (IS_SCIENCE) {
     if (y + 40 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 18; }
     doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(26, 68, 128);
     doc.text('About the Effort Index', mL, y); doc.setCharSpace(0);

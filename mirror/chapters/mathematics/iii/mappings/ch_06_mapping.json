@@ -1,0 +1,43 @@
+{
+    "stage":          "preparatory",
+    "subject":        "mathematics",
+    "grade":          "iii",
+    "chapter_number": 6,
+    "chapter_title":  "House of Hundreds - I",
+
+    "core_cg": "CG-1",
+
+    "core_competencies": [
+        {
+            "c_code": "C-1.1",
+            "justification": "The entire chapter is organised around representing 3-digit numbers (up to 500+) through the Indian place value system. Students use matchstick bundles, Dienes blocks, number sliders, and apartment building grids to decompose numbers into hundreds, tens, and ones, write expanded number sentences, read large number names, and compare numbers using a hundreds-first strategy with the > and < symbols. Ordering sets of numbers in ascending and descending order, and locating numbers on multiple number lines, consolidates both representation and comparison at the core of C-1.1."
+        },
+        {
+            "c_code": "C-1.4",
+            "justification": "Several distinct activities push students to notice and extend patterns in number sequences. The Magical Count activity reveals that counting letters in any number name eventually always reaches FOUR — a surprising pattern students verify with multiple starting numbers. The sequential tile and arrow tasks require students to identify and extend counting patterns across the 200–400 range. The Spring Leap Homes diagonal grid asks students to describe the pattern in colour-coded house numbers, and the 100-10 packing problems establish the multiplicative pattern 1×100 = 10×10 = 2×50."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-4.1",
+            "justification": "The sweet shop context at Farooq Chacha's stall generates a sequence of word problems requiring students to count objects grouped in hundreds (trays of 100 each), find totals, compute how many more are needed to fill a tray, and determine overall counts after filling. The three 'Who am I?' riddles are word puzzles where students must deduce a 3-digit number from constraints on its digits and its position relative to given bounds — recreational puzzle-solving using whole numbers."
+        },
+        {
+            "c_code": "C-4.3",
+            "justification": "Multiple tasks explicitly foreground the choice of counting method. The ants task asks students to first guess and then verify, with the teacher's note using differences in answers to motivate grouping-in-tens as a more reliable tool than random counting. The number slider is introduced as a concrete tool for increasing and decreasing numbers by 1, 10, or 20, making visible how the choice of tool (slider vs. mental calculation) fits the operation being done."
+        },
+        {
+            "c_code": "C-2.2",
+            "justification": "The Hop Hundreds Home and Jump Joy Residency apartment building grids organise house numbers in a 10-column, multi-row layout where the column encodes the ones digit and the floor (row) encodes the tens-and-hundreds. Students locate specific houses, fill in shaded cells without counting, and colour houses from a delivery list — all of which require describing and navigating positions in a spatial grid using mathematical vocabulary (row, column, floor)."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to represent and compare 3-digit numbers by grounding the Indian place value system in concrete materials — matchstick bundles, Dienes blocks, number sliders, and apartment grids — and extending to symbolic comparison, ordering, and number-line placement.",
+
+    "conceptual_demand": 2,
+    "task_load":         3,
+    "exploration_load":  0,
+    "procedural_load":   1,
+    "effort_index":     11.5
+}
