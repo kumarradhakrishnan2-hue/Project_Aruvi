@@ -1,10 +1,10 @@
 {
   "metadata": {
     "document": "Ask Aruvi Q&A Knowledge Base",
-    "version": "V2.2",
-    "last_refreshed": "2026-05-31",
-    "date": "May 2026",
-    "total_pairs": 95,
+    "version": "V2.3",
+    "last_refreshed": "2026-06-04",
+    "date": "June 2026",
+    "total_pairs": 96,
     "categories": [
       "cat_a",
       "cat_b",
@@ -22,7 +22,7 @@
         {
           "id": "a01",
           "q": "How can Aruvi help me as a teacher?",
-          "a": "Aruvi generates a complete lesson plan and assessment for any NCERT chapter across five subjects: Social Sciences and Science (Grades VI–IX), Mathematics and English (Grades III–IX), and The World Around Us (Grades III–V). You enter your available periods — Aruvi builds a fully sequenced, NCF-aligned lesson plan with one activity per period and a matched chapter assessment. It reduces your planning time while ensuring every plan is traceable to the curriculum framework."
+          "a": "Aruvi generates a complete lesson plan and assessment for any NCERT chapter across five subjects: Social Sciences and Science (Grades VI–IX), Mathematics and English (Grades III–IX), and The World Around Us (Grades III–V). You enter your available periods — Aruvi builds a fully sequenced, NCF-aligned lesson plan and a matched chapter assessment. It reduces your planning time while ensuring every plan is traceable to the curriculum framework."
         },
         {
           "id": "a02",
@@ -32,7 +32,7 @@
         {
           "id": "a03",
           "q": "How can Aruvi help if I am home-schooling my child or supporting self-study?",
-          "a": "Aruvi generates a structured path through any NCERT chapter — activities in sequence, one per session, with clear learning outcomes at each step. The paired assessment lets you check understanding at the end of each chapter. A home educator or self-directed student gets the same NCF-aligned plan a classroom teacher would use, scaled to their own pace and available time."
+          "a": "Aruvi generates a structured path through any NCERT chapter — activities sequenced to build understanding progressively, with clear learning outcomes at each step. The paired assessment lets you check understanding at the end of each chapter. A home educator or self-directed student gets the same NCF-aligned plan a classroom teacher would use, scaled to their own pace and available time."
         },
         {
           "id": "a04",
@@ -73,6 +73,11 @@
           "id": "a11",
           "q": "How does Social Sciences plan lessons?",
           "a": "Social Sciences chapters develop several competencies across named sections. Aruvi walks the chapter section by section, anchoring each activity to a specific section of the textbook. Higher-weighted competencies receive more activities and more time. Each activity ends with one implied learning outcome — a single sentence describing what a student who completed that activity can now do. These implied LOs are the only input the assessment receives."
+        },
+        {
+          "id": "a26",
+          "q": "How does The World Around Us (TWAU) plan lessons?",
+          "a": "TWAU chapters are organised around named textbook sections. Aruvi walks these sections in reading order, anchoring one activity per period to each section's own content, tasks, and observations. Every period carries a dominant pedagogical mode drawn from the NCF's five prescribed approaches for the Preparatory Stage: Observe and Record, Hands-on Investigation, Discussion and Connection, Create and Express, or Reflect and Act. The chapter's two strands — a natural phenomenon and the human-cultural response to it — are developed together through this section sequence. Each period ends with one implied learning outcome stating the transferable skill the student has developed."
         },
         {
           "id": "a12",
@@ -135,19 +140,9 @@
           "a": "Activities are not invented. Every activity in a lesson plan is anchored to a named section of the chapter — it must be derivable from actual textbook content. The pedagogical approach — discussion, inquiry, map work, experiment, group task — is drawn from the NCF Pedagogy document for the relevant subject and stage. The chapter content and pedagogy document together produce the activity. Nothing generic or unanchored is introduced."
         },
         {
-          "id": "a24",
-          "q": "Why does Aruvi give one activity per period?",
-          "a": "A period has a fixed duration — 40, 45, or 60 minutes — and one well-designed activity calibrated to that duration is more executable than two rushed ones. This is a deliberate design principle, not a default. Each activity is built for the specific period length you have entered. Teachers are free to adapt delivery, but Aruvi's output is built on the one-activity-per-period principle to ensure every plan is realistically teachable."
-        },
-        {
           "id": "a25",
           "q": "Why is there suggested homework in the lesson plan?",
           "a": "Homework in Aruvi is not supplementary content — it is a deliberate extension of the period's cognitive work. Each homework suggestion is derived from the same chapter section and progression stage as the period's activity. It gives students time to consolidate or extend what the period introduced, without requiring additional classroom time. It is a suggestion, not a prescription — teachers adapt it to their school's homework norms."
-        },
-        {
-          "id": "a26",
-          "q": "How does The World Around Us (TWAU) plan lessons?",
-          "a": "TWAU chapters are organised around named textbook sections. Aruvi walks these sections in reading order, anchoring one activity per period to each section's own content, tasks, and observations. Every period carries a dominant pedagogical mode drawn from the NCF's five prescribed approaches for the Preparatory Stage: Observe and Record, Hands-on Investigation, Discussion and Connection, Create and Express, or Reflect and Act. The chapter's two strands — a natural phenomenon and the human-cultural response to it — are developed together through this section sequence. Each period ends with one implied learning outcome stating the transferable skill the student has developed."
         },
         {
           "id": "a27",
@@ -219,6 +214,16 @@
           "id": "b10",
           "q": "How is the assessment rubric developed in Mathematics?",
           "a": "In Mathematics, each implied learning outcome pairs with two artefacts in the assessment: a freshly written question that tests whether the method generalises to an unfamiliar context, and a companion exercise drawn from the textbook's own exercise set. This tests both transferable understanding and internalisation of the textbook's own progression. The teacher sees both side by side for each outcome."
+        },
+        {
+          "id": "b10b",
+          "q": "Within the approach to Maths assessment, is there a difference between the Middle Stage and the Preparatory Stage?",
+          "a": "Yes. In the Middle Stage, each period produces one implied learning outcome, and the assessment generates one item per period. In the Preparatory Stage, the unit of work is finer — implied outcomes are generated at the individual task level (a worked example, an in-chapter activity, or an exercise set), so a single period may produce multiple outcomes and multiple assessment items. This reflects the nature of early Mathematics learning: at Grades III–V, each discrete task introduces or drills a distinct micro-skill, and collapsing several tasks into one period-level outcome would obscure whether a student has actually grasped each step in the method chain."
+        },
+        {
+          "id": "b10a",
+          "q": "How is the assessment rubric developed in TWAU?",
+          "a": "TWAU has no competency weights — all mapped competencies sit at equal depth. The assessment generates exactly one item per period. The period's dominant pedagogical mode determines the question type — ranging from MCQs for observational periods through to open tasks for creative and reflective ones. When a Reflect-and-Act period targets a physical behaviour, the open task becomes a performance task with an observation rubric. Where answers depend on regional context, a teacher note confirms that locally varied answers are acceptable."
         },
         {
           "id": "b11",

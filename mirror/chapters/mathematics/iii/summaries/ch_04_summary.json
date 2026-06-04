@@ -1,0 +1,216 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 4,
+  "chapter_title": "Vacation with My Nani Maa",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Finding hidden numbers (missing addend)",
+      "prose_summary": "The chapter opens with Nani Maa's magic trick: given a total number of seeds and the seeds visible on the table, children must work out how many are hidden under a handkerchief. This introduces the missing-addend idea — subtraction as finding what is taken away to leave a known remainder. Students work concretely, performing the trick themselves with seeds and completing a table of six hidden-seed values. The task sits firmly on the concrete end of the concrete→symbolic path.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do, p.29",
+          "description": "Perform the hidden-seed magic trick with friends; write the number of hidden seeds in the table for six total-and-visible pairs."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Addition and subtraction within 20 using tens frames",
+      "prose_summary": "Children add and subtract small quantities set in familiar contexts — combining boxes of balushahi sweets and counting total books gifted to Nani Maa. The key concrete model is the tens frame, which bridges the pictorial (drawing dots) and symbolic (writing the number sentence). Students see that 7 + 5 and 7 – 5 use the same pair of quantities, connecting addition and subtraction. A card game then exercises the same relationships playfully with number cards 1–10.",
+      "tasks": [
+        {
+          "id": "T-2",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do, p.30",
+          "description": "Draw the number of dots for 7 balushahi + 5 balushahi and 7 balushahi – 5 balushahi; complete the number sentences."
+        },
+        {
+          "id": "T-3",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do, p.31",
+          "description": "Use the tens frame to solve: (a) 6+8 (b) 5+10 (c) 9–6 (d) 18–9."
+        },
+        {
+          "id": "T-4",
+          "banner": "Let us Play",
+          "intent": "reason",
+          "book_ref": "Let us Play, p.31",
+          "description": "Card Game: shuffle four sets of number cards 1–10; take turns opening one card; keep any three cards that form an addition or subtraction statement."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Addition and subtraction on the ginladi within 100",
+      "prose_summary": "The ginladi (bead string / number line) is the chapter's central concrete tool for arithmetic beyond 20. Through a stamp-collection storyline, children see three different jump strategies for 15 + 7 — counting on by ones, making the nearest ten then counting on, and overshooting then jumping back — establishing that there is no single correct path. Subsequent tasks build fluency with the ginladi across a range of additions and subtractions up to 100, including skip-jumping by 10s (modelled by a frog and a grasshopper) and filling jump tables for fixed step sizes (5, 6, 9).",
+      "tasks": [
+        {
+          "id": "T-5",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do, p.32",
+          "description": "Nandini and Chirag have 22 stamps; Nani Maa's brother gives 30 more — find the total using the ginladi."
+        },
+        {
+          "id": "T-6",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do, p.33",
+          "description": "52 stamps total, 37 with famous persons — find how many show monuments (52 – 37); find other ways on the number line."
+        },
+        {
+          "id": "T-7",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do, p.33",
+          "description": "They have 52 stamps and want 75 — figure out how many more stamps they need using the number line."
+        },
+        {
+          "id": "T-8",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q1, p.34",
+          "description": "Solve using a ginladi: (a) 34+6 (b) 23+12 (c) 33–5 (d) 42–15."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q2, p.34",
+          "description": "A frog is at 7 and jumps 10 beads at a time — mark the beads it will land on and write the numbers."
+        },
+        {
+          "id": "T-10",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q3, p.34",
+          "description": "The frog again jumps forward by 10 from 23 — mark all landing places on the ginladi."
+        },
+        {
+          "id": "T-11",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q4, p.34",
+          "description": "The grasshopper at 76 jumps backward by 10 each time — mark all beads it will jump on and write the numbers."
+        },
+        {
+          "id": "T-12",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q5, p.35",
+          "description": "Fill in the jump tables by jumping as instructed for Jump 5, Jump 6, and Jump 9 from given starting numbers."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Addition and subtraction on the 100-number grid",
+      "prose_summary": "The hundred-chart (number grid) is introduced as a second concrete/pictorial model alongside the ginladi. Moving a counter right adds ones, moving down adds tens — children see how the grid encodes place-value structure. A dice game gives open-ended practice at making and using two-digit numbers on the grid. Structured problems then ask children to show their jumps by drawing arrows, connecting the physical movement on the grid to the symbolic number sentence.",
+      "tasks": [
+        {
+          "id": "T-13",
+          "banner": "Let us Play",
+          "intent": "reason",
+          "book_ref": "Let us Play, p.35",
+          "description": "Number Grid Game: players roll two dice to form a two-digit number and move a counter forward or backward on the 100 grid; first to reach 91–100 wins."
+        },
+        {
+          "id": "T-14",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q1(a–d), p.36",
+          "description": "Use the number grid to find where each player lands: (a) 45+34 (b) 75+56 (c) 30+66 (d) 89+63; show thinking by drawing arrows in the grid."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Magic Sums — row and column addition puzzles",
+      "prose_summary": "Nani Maa's newspaper puzzle introduces a structural view of addition: a 3×3 grid where each row and column must sum to a given target, using digits 1–9 without repetition. Students observe the completed example, notice that the blue-box (diagonal) totals equal the red-box totals, and then complete three partially-filled grids. This moves beyond calculation into reasoning about number relationships. A magic square completion task (3×3 with three cells given) extends the challenge.",
+      "tasks": [
+        {
+          "id": "T-15",
+          "banner": "Magic Sums",
+          "intent": "reason",
+          "book_ref": "Magic Sums, p.37",
+          "description": "Observe the completed Magic Sums puzzle; fill three incomplete grids so each row and column adds to the given target; add blue-box and red-box numbers and describe what you find."
+        },
+        {
+          "id": "T-16",
+          "banner": "Magic Sums",
+          "intent": "reason",
+          "book_ref": "Magic Sums, p.37",
+          "description": "Fill the blanks to complete the magic square (3×3 grid with 3, 9, and 6 given)."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Adding and subtracting two-digit numbers beyond 100",
+      "prose_summary": "The final section extends addition and subtraction to sums beyond 100, using a field-harvest context (radishes, tomatoes, apples). Three representations are built up together: box diagrams (a part-part-whole bar model drawn on the ground), matchstick bundles (tens and ones physically grouped and regrouped), and the open number line. Estimation is foregrounded before every computation, and children are asked to compare two quantities (who collected more, and by how much) to connect addition and subtraction. A rich set of word problems and a two-player race-to-100 game consolidate flexible calculation strategies.",
+      "tasks": [
+        {
+          "id": "T-17",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do, p.38",
+          "description": "Estimate total radishes; draw the 25+36 problem as a box diagram; find the answer using matchstick bundles or the number line; find other ways on the number line."
+        },
+        {
+          "id": "T-18",
+          "banner": "embedded",
+          "intent": "reason",
+          "book_ref": "p.39",
+          "description": "Estimate the number of carrots in a box of 100 (with 65 tomatoes); circle the bundle of sticks showing the correct count; solve 100–65 on the number line."
+        },
+        {
+          "id": "T-19",
+          "banner": "embedded",
+          "intent": "explore",
+          "book_ref": "p.40",
+          "description": "Draw a box diagram for 85+67 apples; estimate whether the total is more or less than 100 and explain your reasoning."
+        },
+        {
+          "id": "T-20",
+          "banner": "embedded",
+          "intent": "solve",
+          "book_ref": "p.41",
+          "description": "Find 85+67 using the number line; find who collected more apples and by how much (85–67)."
+        },
+        {
+          "id": "T-21",
+          "banner": "embedded",
+          "intent": "solve",
+          "book_ref": "p.42",
+          "description": "Q1–Q5: Solve word problems (books sold, cricket runs, vadas, dried plants) by drawing box diagrams and using matchstick bundles or number line; make and share your own word problem."
+        },
+        {
+          "id": "T-22",
+          "banner": "Let us Play",
+          "intent": "reason",
+          "book_ref": "Let us Play, p.42",
+          "description": "Two-player game: alternate adding a number between 1 and 10 to a running total; first player to reach exactly 100 wins."
+        },
+        {
+          "id": "T-23",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1–2, p.43",
+          "description": "Q1: Estimate each expression and match it to 'more than 100' or 'less than 100'. Q2: Solve all the expressions using a number line and write the answers."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 2,
+  "exploration_load": 0,
+  "procedural_load": 1
+}

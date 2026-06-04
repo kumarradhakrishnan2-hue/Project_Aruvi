@@ -1,0 +1,39 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 2,
+  "chapter_title": "Toy Joy",
+
+  "core_cg": "CG-2",
+
+  "core_competencies": [
+    {
+      "c_code": "C-2.1",
+      "justification": "The entire chapter builds shape-attribute vocabulary and analysis — from naming faces, edges, and corners on real boxes, cans, and bottles through classifying shapes by geometric properties (no edges, only flat faces, only curved faces, both flat and curved) to systematically comparing how a cylinder, cube, cuboid, cone, and sphere are alike and different. The craft opening makes this concrete; the property-naming and classification tasks carry it to the pictorial–symbolic level."
+    },
+    {
+      "c_code": "C-2.2",
+      "justification": "Positional-language tasks — identifying which shape sits between the red and yellow cuboid, which is on top of the orange cylinder, and which is under the pink cone — establish spatial vocabulary in the context of Jaya's rocket. The Construct and Describe group game then deepens this further: one child describes the sequence and position of three assembled shapes entirely in words, and peers must replicate the arrangement without seeing it, making spatial communication the central act."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-2.4",
+      "justification": "The die investigation asks students to record the number on each opposite face (1 opposite 6, 2 opposite 5, 3 opposite 4) and then name the pattern they notice — a direct pattern-discovery task embedded in a three-dimensional object context."
+    },
+    {
+      "c_code": "C-4.2",
+      "justification": "The task of finding all different ways to join 3 cubes is a systematic enumeration of spatial arrangements under a constraint — students must work through possibilities methodically rather than settling for one or two configurations, which is the core of combinatorial counting at this stage."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to identify, describe, and compare three-dimensional shapes by analysing their faces, edges, and spatial relationships — moving from recognising shape names on real objects to classifying shapes by geometric properties and communicating spatial arrangements in words.",
+
+  "conceptual_demand": 2,
+  "task_load": 1,
+  "exploration_load": 1,
+  "procedural_load": 0,
+  "effort_index": 7.5
+}

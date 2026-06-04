@@ -1,0 +1,405 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 5,
+  "chapter_title": "Fun with Shapes",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Shapes in rangoli",
+      "prose_summary": "The chapter opens with a rangoli context that draws children into noticing and naming 2D shapes — circles, squares, triangles, and rectangles — present in a decorative pattern. Students work at the concrete level by drawing the rangoli on a dot grid and using shape cut-outs to create their own designs. The section sits firmly on the concrete path, with shape identification anchored to a culturally familiar visual stimulus.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q1, p.44",
+          "description": "Make Amma's rangoli on the dots given below."
+        },
+        {
+          "id": "T-2",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q2, p.45",
+          "description": "Name the shapes drawn in Amma's rangoli: _____, _____, _____"
+        },
+        {
+          "id": "T-3",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q3, p.45",
+          "description": "How many shapes are made with (a) Curved lines (b) Straight lines"
+        },
+        {
+          "id": "T-4",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q4, p.45",
+          "description": "Use cut outs of shapes to make a rangoli design. Outline the object and colour."
+        },
+        {
+          "id": "T-5",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q5, p.45",
+          "description": "Try to make the following objects using shape cutouts."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Shapes from boxes — cuboid faces",
+      "prose_summary": "This section introduces the idea that 3D objects (cuboids) have 2D faces by having children physically open cardboard boxes and trace the faces. Students discover that the faces of a cuboid are rectangles or squares, and that different faces of the same object can yield different rectangle sizes. The section moves from concrete handling (opening/tracing physical objects) toward early reasoning about 3D–2D relationships.",
+      "tasks": [
+        {
+          "id": "T-6",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q1, p.46",
+          "description": "Collect some cardboard boxes and open them up carefully. What shapes do you see in the flattened boxes?"
+        },
+        {
+          "id": "T-7",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q2, p.46",
+          "description": "Make an Envelope. Use a square piece of paper and fold it as shown in the picture."
+        },
+        {
+          "id": "T-8",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do p.47",
+          "description": "Name any three objects that have rectangular faces."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q1, p.48",
+          "description": "Trace all the faces of any cuboidal object (example—sharpener or eraser). Answer (a)–(f) about faces, shapes, squares, and triangles."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Rectangles — properties and drawing",
+      "prose_summary": "Students build understanding of rectangles through construction on dot grids: completing rectangles from given sides, drawing larger rectangles around a given one, and counting rectangles embedded in a figure. The section then formalises properties — 4 sides, 4 corners, opposite sides equal — by having students observe a set of differently-oriented rectangles and describe what they notice. The path is concrete–pictorial–symbolic, ending with student-generated descriptions.",
+      "tasks": [
+        {
+          "id": "T-10",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q2, p.49",
+          "description": "Construct the rectangles using the sides given below."
+        },
+        {
+          "id": "T-11",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q3, p.49",
+          "description": "Draw 3 bigger rectangles around the given rectangle."
+        },
+        {
+          "id": "T-12",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q4, p.50",
+          "description": "Count and write the number of rectangles in the following picture."
+        },
+        {
+          "id": "T-13",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q5, p.50",
+          "description": "Look at the different rectangles given below: (a) How many sides? (b) How many corners? (c) Equal sides? (d) Describe in your own words."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Same to Same — squares vs rectangles",
+      "prose_summary": "The section uses a board game context (chess and ludo boards, tiles) to introduce the square and contrast it with the rectangle. Students discover that a square has all four sides equal, while a rectangle only needs opposite sides to be equal. Hands-on work with matchsticks, dot-grid drawing, and square cut-outs deepens understanding of the square as a special case of the rectangle, and extends to composing new shapes from square units.",
+      "tasks": [
+        {
+          "id": "T-14",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do p.51",
+          "description": "How many squares do you see in this drawing? Both have ___ sides. Both have ___ corners."
+        },
+        {
+          "id": "T-15",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q1, p.52",
+          "description": "Here is a square. Draw 2 bigger squares around this square."
+        },
+        {
+          "id": "T-16",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q2, p.52",
+          "description": "Use matchsticks to make a square so that it has squares on all its sides. How many squares did you get?"
+        },
+        {
+          "id": "T-17",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q3, p.52",
+          "description": "Complete the squares using the sides given below."
+        },
+        {
+          "id": "T-18",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q4, p.53",
+          "description": "Use the square cutouts: How many different shapes can you make by joining (a) 2 squares (b) 3 squares (c) 4 squares. Show them in a dot grid."
+        },
+        {
+          "id": "T-19",
+          "banner": "Let us Explore",
+          "intent": "reason",
+          "book_ref": "Let us Explore Q1, p.53",
+          "description": "Tick the shapes that are rectangles. Which figures are not rectangles? Explain why."
+        },
+        {
+          "id": "T-20",
+          "banner": "Let us Explore",
+          "intent": "explore",
+          "book_ref": "Let us Explore Q2, p.53",
+          "description": "Can you fold all the corners of a square sheet so that the number of corners remains the same?"
+        },
+        {
+          "id": "T-21",
+          "banner": "Let us Explore",
+          "intent": "explore",
+          "book_ref": "Let us Explore Q3, p.53",
+          "description": "Make a square on cardboard, cut along dotted lines to get 4 triangles. Make as many different shapes as possible by joining three/four triangles."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Square corners — right angles",
+      "prose_summary": "Students physically handle paper strips joined at a pivot to make and compare three types of corners: less than, equal to, and more than a square corner (introducing the intuitive idea of a right angle). They use the strip-tester on real objects and on dot grids to identify, mark, and create square corners. Matchstick tasks extend to counting and reasoning about square corners in composite figures.",
+      "tasks": [
+        {
+          "id": "T-22",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do p.54",
+          "description": "Are the corners of a square the same? Are corners of square and rectangle the same? Name objects in class that have only square corners."
+        },
+        {
+          "id": "T-23",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q1, p.55",
+          "description": "Mark the square corners in these shapes."
+        },
+        {
+          "id": "T-24",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q2, p.55",
+          "description": "Connect the dots to make some squares. How many different squares did you get?"
+        },
+        {
+          "id": "T-25",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q3, p.56",
+          "description": "Look at the picture: (a) Count and write the number of corners. (b) Circle the square corners."
+        },
+        {
+          "id": "T-26",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q4, p.56",
+          "description": "Use two matchsticks to make two square corners and then four square corners. Draw and show it in the space given below."
+        },
+        {
+          "id": "T-27",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q5, p.56",
+          "description": "Murugan made three squares with 10 matchsticks. How many squares can you make with 12 matchsticks?"
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Triangles — three sides, three corners",
+      "prose_summary": "The triangle is introduced through culturally familiar objects with triangular faces (rangoli patterns, flags, food). Students observe that all triangles have 3 sides and 3 corners, then count triangles in rangoli figures, reason about how many triangles can be formed from dots on a circle, and use matchsticks to transform one triangle into two. The section stays on the concrete–pictorial path with strong exploratory and reasoning tasks.",
+      "tasks": [
+        {
+          "id": "T-28",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q1, p.57",
+          "description": "Draw and name some triangular objects that you see around yourself, in your notebook."
+        },
+        {
+          "id": "T-29",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q2, p.57",
+          "description": "Count the number of triangles in the given rangoli. (a) and (b)"
+        },
+        {
+          "id": "T-30",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q3, p.57",
+          "description": "How many different triangles can be made using the dots on this circle?"
+        },
+        {
+          "id": "T-31",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q4, p.57",
+          "description": "Move two matchsticks to turn the one triangle into two triangles."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Circus with circles — circle and centre",
+      "prose_summary": "Circles are introduced through a circus scene and everyday objects (bangles, bottle caps, rings). Students trace circles using physical objects and then fold a paper plate in halves to discover that folds through the circle all pass through one point — the centre — and that the longest fold line (diameter) is longer than others. This moves from concrete handling to an early pictorial understanding of the circle's properties.",
+      "tasks": [
+        {
+          "id": "T-32",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q1, p.58",
+          "description": "Name some objects that are like circles."
+        },
+        {
+          "id": "T-33",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q2, p.58",
+          "description": "Draw colourful circles to complete the circus scene."
+        },
+        {
+          "id": "T-34",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q3, p.58",
+          "description": "Draw circles by tracing bottle caps, bangles, and rings in your notebook."
+        },
+        {
+          "id": "T-35",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do p.59",
+          "description": "Try to make a circle on the playground."
+        }
+      ]
+    },
+    {
+      "ref": "S8",
+      "title": "Comparing and composing shapes",
+      "prose_summary": "The final section brings together all shapes studied — triangles, rectangles, squares, circles, and other polygons — in tasks that require comparison, decomposition, composition, and pattern extension. Students compare pairs of shapes for similarities and differences, find embedded rectangles, extend triangle-row patterns, count squares torn from rectangles, classify odd-one-out shapes, fill rectangle gaps, split shapes into triangles, reproduce shapes in multiple orientations, and create patterns using the Tangram and line work. This is the most cognitively varied section, consolidating the whole chapter.",
+      "tasks": [
+        {
+          "id": "T-36",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1, p.60",
+          "description": "Look at these two shapes (square and triangle): discuss similarities and differences. Tick (a) corners: same/different (b) number of sides: same/different."
+        },
+        {
+          "id": "T-37",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q2, p.60",
+          "description": "Choose any pair of shapes. Share the similarities and differences in these shapes with your friends."
+        },
+        {
+          "id": "T-38",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q3, p.61",
+          "description": "Find the largest rectangle in these shapes."
+        },
+        {
+          "id": "T-39",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q4, p.61",
+          "description": "I made one triangle, then another row. How many triangles in second figure? If one more row, how many in the third figure?"
+        },
+        {
+          "id": "T-40",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q5, p.61",
+          "description": "Here are some rectangles that are torn. How many square pieces have been torn from each shape?"
+        },
+        {
+          "id": "T-41",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q6, p.62",
+          "description": "Each of these shapes can be the odd one out. How is each one odd? Discuss."
+        },
+        {
+          "id": "T-42",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q7, p.62",
+          "description": "To complete the rectangle, tick the appropriate shapes from the left side to fill the gaps in the shape on the right side."
+        },
+        {
+          "id": "T-43",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q8, p.62",
+          "description": "Draw two lines to split the shape into three triangles."
+        },
+        {
+          "id": "T-44",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q9, p.62",
+          "description": "Draw one line to split the shape into 3 triangles."
+        },
+        {
+          "id": "T-45",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q10, p.62",
+          "description": "Make the following shapes with different sizes and orientations in your notebook: (a) Triangle (b) Rectangle (c) Circle (d) Any other shape of your choice."
+        },
+        {
+          "id": "T-46",
+          "banner": "Doors-dots-lines",
+          "intent": "explore",
+          "book_ref": "Doors-dots-lines p.63",
+          "description": "Try to make your own border designs using both curved and straight lines."
+        },
+        {
+          "id": "T-47",
+          "banner": "Doors-dots-lines",
+          "intent": "practice",
+          "book_ref": "Doors-dots-lines p.63",
+          "description": "Continue the following line pattern."
+        },
+        {
+          "id": "T-48",
+          "banner": "Tangram",
+          "intent": "explore",
+          "book_ref": "Tangram p.63",
+          "description": "Use the pieces from the tangram puzzle given in the end of the book. Can you create these shapes using some of the pieces?"
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 1,
+  "procedural_load": 1
+}

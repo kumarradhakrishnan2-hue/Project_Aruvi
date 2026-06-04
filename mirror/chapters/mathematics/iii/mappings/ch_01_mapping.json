@@ -1,0 +1,39 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 1,
+  "chapter_title": "What's in a Name?",
+
+  "core_cg": "CG-1",
+
+  "core_competencies": [
+    {
+      "c_code": "C-1.1",
+      "justification": "The central strand of the chapter asks students to read and compare number names — counting the letters in 'seventeen', 'forty-three', 'ninety-nine' and so on — to find which numbers between 1 and 99 have the longest or a specified number of letters. This directly exercises reading number names and comparing whole numbers as discrete quantities."
+    },
+    {
+      "c_code": "C-1.4",
+      "justification": "The 'Let us Think' and 'Find out' tasks ask students to identify all numbers between 1 and 99 that share a specific letter count (e.g. 8 letters like 'fifty-six') and to find the number with the smallest name within the range 63–78 — both require recognising and extending a pattern in number-name sequences, an independent strand from mere comparison."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-4.1",
+      "justification": "The two 'Find out' mystery-number puzzles present clue-sets (number of words, letters per word, proximity to 100; position within a named range) and ask students to deduce which number fits — these are word puzzles requiring structured reasoning, not routine computation."
+    },
+    {
+      "c_code": "C-4.2",
+      "justification": "The tasks asking students to list all numbers between 1 and 99 with 8 letters (or the longest names) require systematic enumeration of candidates under a letter-count constraint — an early instance of counting and listing exhaustively given a rule."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to compare and read number names by reasoning about discrete letter-counts as a measure of quantity.",
+
+  "conceptual_demand": 2,
+  "task_load": 1,
+  "exploration_load": 0,
+  "procedural_load": 0,
+  "effort_index": 6.0
+}

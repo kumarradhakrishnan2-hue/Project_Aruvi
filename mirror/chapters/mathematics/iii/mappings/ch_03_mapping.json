@@ -1,0 +1,43 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 3,
+  "chapter_title": "Double Century",
+
+  "core_cg": "CG-1",
+
+  "core_competencies": [
+    {
+      "c_code": "C-1.1",
+      "justification": "The chapter's entire organising purpose is representing whole numbers from 100 to 200 using the Indian place value system. Students use a three-column matchstick-bundle table (hundreds, tens, ones) to build, read, and write numbers such as 123, 145, and 172 in numeral, number name, and pictorial form. Matching numbers to their bundle representations, filling number lines from 100 to 200, and the Clap-Snap-Pat game (where one clap = 100, one snap = 10, one pat = 1) all directly develop the ability to represent numbers using the H-T-O place value structure."
+    },
+    {
+      "c_code": "C-1.4",
+      "justification": "The Jumping Game asks students to draw and continue jumps of 5 (on the 100–150 number line) and jumps of 20 (on the 100–200 number line), and to extend a counting table from 150 to 200. These tasks require recognising the repeated additive pattern in skip sequences and using that pattern to fill in missing values — a distinct strand from place-value representation that engages pattern recognition and extension."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-3.5",
+      "justification": "Two classroom exploration tasks and a home activity explicitly engage estimation and verification with physical objects. In one task students estimate and then count the matchsticks in a full box; in another they estimate and count a handful of seeds; the home task asks how many container-fills of seeds would approach 200. Each task follows the estimate-then-verify structure that is the core of C-3.5, making the engagement substantive rather than incidental."
+    },
+    {
+      "c_code": "C-4.3",
+      "justification": "Several tasks in the 150–200 section require students to represent the same number in at least two different ways — choosing from matchstick bundles, the ginladi (abacus-like tool), and the number line. The explicit instruction to 'show at least two different ways' for numbers like 125, 145, and 170 asks students to select appropriate tools and methods for representing whole numbers, which is the operative skill of C-4.3."
+    },
+    {
+      "c_code": "C-5.1",
+      "justification": "The opening section 'The Story of Our Numbers' directly narrates the ancient Indian invention of the ten-symbol decimal system (0–9), the critical role of zero as a place-holder that made the system work, and its modern impact on technology (TVs, computers, mobile phones). This is a primary, sustained engagement with C-5.1's content — not a passing mention."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to represent and read three-digit whole numbers (100–200) using the Indian place value system by concretely constructing and comparing hundreds, tens, and ones through matchstick bundles, the ginladi, number lines, and number names.",
+
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 1,
+  "procedural_load": 1,
+  "effort_index": 13.0
+}

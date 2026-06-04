@@ -1,0 +1,237 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 3,
+  "chapter_title": "Double Century",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "The Story of Our Numbers",
+      "prose_summary": "This section opens the chapter with a short historical narrative about how human beings developed number systems — from cave-wall tallies and groupings of 5, 10, 20, and 60, to the ancient Indian invention of the ten-symbol decimal system (0–9) that the world uses today. The role of zero as a placeholder is highlighted as the key innovation. Students then estimate quantities of familiar market objects (oranges, bangles, laddoos, barfi, bindis, bananas) from an illustrated bazaar scene, anchoring the abstract history in a concrete estimation act.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1, p.16",
+          "description": "Look at the picture. Estimate and write the number of each of the following objects: (a) Oranges (b) Bangles (c) Laddoos (d) Barfi (e) Bindis (f) Bananas."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Snakes and Ladders — Numbers to 100",
+      "prose_summary": "Students engage with a partly completed snakes-and-ladders board (1–100) to reinforce the sequence of numbers up to 100. The task of filling the missing numbers consolidates skip-counting and sequential order, while the follow-up questions require students to navigate the board's snake and ladder positions — identifying successor/predecessor relationships, working out die values, and representing a chosen number using bundles and loose sticks. The board is on the concrete–pictorial axis, and the matchstick representation is a hands-on model.",
+      "tasks": [
+        {
+          "id": "T-2",
+          "banner": "Let us Play",
+          "intent": "practice",
+          "book_ref": "Let us Play (fill missing numbers), p.17",
+          "description": "Fill the missing numbers on the snakes and ladders board."
+        },
+        {
+          "id": "T-3",
+          "banner": "Let us Play",
+          "intent": "reason",
+          "book_ref": "Let us Play Q1, p.17",
+          "description": "Which number will you reach if you take the ladder from 13?"
+        },
+        {
+          "id": "T-4",
+          "banner": "Let us Play",
+          "intent": "reason",
+          "book_ref": "Let us Play Q2, p.17",
+          "description": "If you are on the snake at number 25, which number will you reach?"
+        },
+        {
+          "id": "T-5",
+          "banner": "Let us Play",
+          "intent": "reason",
+          "book_ref": "Let us Play Q3, p.17",
+          "description": "You are standing on 96. Which number on the die will take you to the snake's mouth?"
+        },
+        {
+          "id": "T-6",
+          "banner": "Let us Play",
+          "intent": "explore",
+          "book_ref": "Let us Play Q4, p.17",
+          "description": "Show the number written on the tail of the longest snake using bundles and loose sticks."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Building 100 — What is 100?",
+      "prose_summary": "This section introduces 100 as 'one more than 99' using the Talking Pot character (which says the successor of any number) and concrete matchstick bundles — ten bundles of ten sticks each equals 100. Bindi packets (10 packets of 10) and a cricket century provide real-world anchors. Students then make 100 through complementary pairs on a number line and with matchstick bundles and a ginladi (abacus-like tool), moving from concrete manipulation to pictorial number-sentence recording on the concrete→symbolic path.",
+      "tasks": [
+        {
+          "id": "T-7",
+          "banner": "Let us Think",
+          "intent": "reason",
+          "book_ref": "Let us Think (Talking Pot), p.18",
+          "description": "Complete the Talking Pot exchanges: I said 39, Pot said ___; I said ___, Pot said 90; I said 63, Pot said ___; I said ___, Pot said ___."
+        },
+        {
+          "id": "T-8",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q1, p.19",
+          "description": "Fill in the blanks: use matchstick bundles (Making 100 table) and draw jumps on the number line to show 65+35=100 and make 100 by different jumps."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q2, p.19",
+          "description": "Use matchstick bundles and a ginladi to make 100 in different ways. Fill the table: 60 and 40 makes ___, 45 and ___ makes 100, ___ and 25 makes 100, ___ and 85 makes 100."
+        },
+        {
+          "id": "T-10",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q3, p.20",
+          "description": "Write numbers in the blank spaces inside the flower petals so that the numbers in each petal add up to 100."
+        },
+        {
+          "id": "T-11",
+          "banner": "Let us Explore",
+          "intent": "explore",
+          "book_ref": "Let us Explore Q1, p.20",
+          "description": "Open a full box of matchsticks. Estimate the number, count them, check how close your estimate was, and find how many boxes get close to 100 matchsticks."
+        },
+        {
+          "id": "T-12",
+          "banner": "Let us Explore",
+          "intent": "explore",
+          "book_ref": "Let us Explore Q2, p.20",
+          "description": "Take a handful of seeds (kidney beans, chickpeas). Estimate the number, count them, and find how many handfuls get close to 100 seeds."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Numbers from 100 to 150 — Place Value H-T-O",
+      "prose_summary": "Students move beyond 100 by observing a structured table showing 100 + 1 through 100 + 10, filling in number names and numerals, and filling a number line (100–124). The hundred bundle is introduced as the H (hundreds) position in a three-column matchstick-bundle table (100s | 10s | 1s). Students read and extend the table to 150, match numbers to their bundle representations, revisit the Talking Pot for three-digit successors, and place specific numbers on number lines (100–150), all within the concrete→pictorial→symbolic arc.",
+      "tasks": [
+        {
+          "id": "T-13",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do (fill table 101–110 + number line), p.21",
+          "description": "Fill in the blank spaces in the table (100 and 1 makes ___… 100 and 10 makes 110 — number names and numerals) and fill the number line from 100 to 124."
+        },
+        {
+          "id": "T-14",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q1, p.22",
+          "description": "Identify bundles and loose sticks in the H-T-O matchstick table and write the corresponding numbers. Extend the table in your notebook till 150."
+        },
+        {
+          "id": "T-15",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do (match numbers to bundles), p.23",
+          "description": "Match the numbers 101, 116, 110, 100, 140 with the correct bundles and loose sticks."
+        },
+        {
+          "id": "T-16",
+          "banner": "Let us Think",
+          "intent": "reason",
+          "book_ref": "Let us Think (Talking Pot 127–150), p.23",
+          "description": "Complete the Talking Pot table: 127→128, 109→___, 134→___, 105→___, ___→150, 100→___."
+        },
+        {
+          "id": "T-17",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do (number line 100–150 + show numbers), p.23",
+          "description": "Fill blank spaces on the number line (100–150). Show: place an arrow on 125, make a tree on 112, make a smiley on 149, put a cross on 137."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Numbers from 150 to 200 — Counting, Jumping, Multi-Representation",
+      "prose_summary": "The chapter's final section extends the number range to 200 (the 'double century'). A Clap-Snap-Pat body-rhythm game encodes hundreds, tens, and ones as physical actions, deepening place-value intuition. Students complete a counting table from 150 to 159 and are asked to extend it to 200, then work with number lines, jumping patterns (by 5 and by 20), a 1-less/1-more table, and multi-representation tasks using matchstick bundles, the ginladi, and the number line. A home exploration (seeds in a container, scaling to 200) closes the chapter on the concrete→symbolic path.",
+      "tasks": [
+        {
+          "id": "T-18",
+          "banner": "Let us Play",
+          "intent": "reason",
+          "book_ref": "Let us Play (Clap, Snap and Pat), p.24",
+          "description": "Play in two teams: one team shows a three-digit number using clap (100), snap (10), and pat (1); the other team guesses the number."
+        },
+        {
+          "id": "T-19",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do (table 150–159, extend to 200), p.24",
+          "description": "Fill the blank spaces in the counting table from 150 to 159 (pictorial form, matchstick bundles, number sentence, number name). Extend to 200 in your notebook."
+        },
+        {
+          "id": "T-20",
+          "banner": "Let us Do at Home",
+          "intent": "explore",
+          "book_ref": "Let us Do at Home, p.25",
+          "description": "Fill a small container with seeds. Estimate how many seeds are in it, count them, then guess how many container-fills get close to 200 seeds."
+        },
+        {
+          "id": "T-21",
+          "banner": "Let us Do at Home",
+          "intent": "practice",
+          "book_ref": "Let us Do at Home (stones), p.25",
+          "description": "Write the numbers in order on the stones (150…158…163…167…177…182…189…199)."
+        },
+        {
+          "id": "T-22",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q1, p.26",
+          "description": "Draw jumps of 5 on the number line (100–150) and write the numbers in the given spaces."
+        },
+        {
+          "id": "T-23",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q2, p.26",
+          "description": "Continue the jumps of 20 and write the missing numbers on the number line (100–200)."
+        },
+        {
+          "id": "T-24",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q3, p.26",
+          "description": "Fill in the 1-less/number/1-more table for 160, 129, 187, 134, 158."
+        },
+        {
+          "id": "T-25",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q4, p.27",
+          "description": "Show at least two different ways of making the following numbers: (a) use matchstick bundles to make 125; (b) make 145 using a ginladi; (c) make 170 on a number line."
+        },
+        {
+          "id": "T-26",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q5, p.27",
+          "description": "Fill the empty boxes in the multi-representation table (number, pictorial form, matchstick bundles, number sentence) for 114, 132, a pictorial form, 172, 108, 30 more than 150, and 160."
+        },
+        {
+          "id": "T-27",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q6, p.28",
+          "description": "Mark the following numbers on the number lines: (a) 109, 112, 124, 134, 146; (b) 155, 163, 178, 189, 198; (c) 125, 142, 153, 174, 199."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 1,
+  "procedural_load": 1
+}

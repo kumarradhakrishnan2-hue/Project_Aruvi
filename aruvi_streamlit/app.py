@@ -8051,7 +8051,11 @@ _fab_col = st.container()
 with _fab_col:
     if st.button(_fab_label, key="ask_aruvi_fab"):
         st.session_state.ask_aruvi_open = not st.session_state.ask_aruvi_open
+        # Always reset to main menu when closing/reopening
+        st.session_state.ask_aruvi_detail_cat = None
+        st.session_state.ask_aruvi_category = None
         st.session_state.ask_aruvi_response = ""
+        st.session_state.ask_aruvi_last_query = ""
         st.session_state.ask_aruvi_show_thumbs = False
         st.session_state.ask_aruvi_thumb_done = False
         st.session_state.ask_aruvi_show_followup = False

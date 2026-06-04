@@ -1,0 +1,167 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 2,
+  "chapter_title": "Toy Joy",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Recognising 3D shapes in toys",
+      "prose_summary": "The chapter opens with children making animal faces on real objects — a cube (box), cuboid, cylinder (bottle), and cone — introducing the four key solid shapes through a craft context. Jaya's rocket model then asks students to count and name each shape type, and positional questions (between, on top, under) build spatial language alongside shape names. Key vocabulary — face, edge, corner — is introduced visually through a labelled diagram of a cube. The entry point is fully concrete: handling actual boxes and bottles before any symbolic naming.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do, p.9",
+          "description": "Use old boxes (cubes and cuboids) and bottles (cylinders) to do craft work. Draw faces on them. What did you draw on their faces?"
+        },
+        {
+          "id": "T-2",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do, p.9",
+          "description": "Jaya's rocket: identify shapes used, count each type; answer which shape is between red and yellow cuboid, on top of orange cylinder, under pink cone."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Counting shapes in compound objects",
+      "prose_summary": "Students count specific shapes in Devika's toy engine (cylinders, cones, cuboids, cubes) and then discuss what shapes are used in a variety of toy-shop toys. The section extends to building houses, towers, and rockets from collected objects, asking students to name shapes, describe faces and edges, and talk about how shapes are arranged spatially. The note that a cube is a special type of cuboid is introduced here. Movement along the concrete path continues through handling and constructing with real objects.",
+      "tasks": [
+        {
+          "id": "T-3",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do, p.10",
+          "description": "Count and fill: how many red cylinders, yellow cones, grey cuboids, blue cubes in Devika's toy engine."
+        },
+        {
+          "id": "T-4",
+          "banner": "Let us Discuss",
+          "intent": "reason",
+          "book_ref": "Let us Discuss, p.10",
+          "description": "What shapes are used in these toys? (dog, lollipop, cat, block-set toy images)"
+        },
+        {
+          "id": "T-5",
+          "banner": "Let us Discuss",
+          "intent": "explore",
+          "book_ref": "Let us Discuss, p.10",
+          "description": "Collect objects to make a house; name shapes, talk about faces and edges (straight/curved); describe arrangement; what part of shapes can you see from a distance?"
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Classifying shapes by properties",
+      "prose_summary": "Students shift from recognising shapes by appearance to classifying them by geometric properties — flat vs. curved faces, straight vs. curved edges, presence or absence of edges — applied both to sets of real objects in the classroom and to drawn shapes. The Construct and Describe game embeds positional language (on, under, next to) into a communication task where one child describes a shape arrangement and peers replicate it. This section sits at the pictorial–symbolic boundary: students work with images and property-descriptions rather than only physical objects.",
+      "tasks": [
+        {
+          "id": "T-6",
+          "banner": "Let us Play",
+          "intent": "explore",
+          "book_ref": "Let us Play (Construct and Describe), p.11",
+          "description": "In groups: one student selects 3 shapes, assembles them, describes the sequence; others build the same without seeing the original. Take turns."
+        },
+        {
+          "id": "T-7",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q1, p.11",
+          "description": "Find classroom objects shaped like cylinder/sphere/cube/cuboid/cone; fill table; name shape found most and least; name objects made of more than one shape."
+        },
+        {
+          "id": "T-8",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q2, p.12",
+          "description": "Circle the cubes; tick the cones; cross the cylinders; draw a box around the cuboids (from a mixed group of shape images)."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q3, p.12",
+          "description": "Name shapes: with no edges; with only flat faces; with only curved faces; with both straight and curved edges; with both flat and curved faces."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Building and combining shapes",
+      "prose_summary": "The final section deepens spatial reasoning through constructive and analytical tasks: making 3D shapes from clay and sticks, assembling cube arrangements, comparing shape attributes across multiple solids, exploring opposite faces on a die (discovering the 1+6=7 pattern), sequencing the building of a model, and finding all ways to join three cubes. Students also use six dice to build composite shapes. The Let us Play board game along the page border provides a playful consolidation of shape recognition. Movement is primarily at the symbolic-reasoning end of the concrete→pictorial→symbolic path, with hands-on construction tasks anchoring abstract comparison.",
+      "tasks": [
+        {
+          "id": "T-10",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q4, p.13",
+          "description": "Which shapes can you build? Make shapes using clay and sticks (cube-skeleton and octahedron-skeleton shown as examples)."
+        },
+        {
+          "id": "T-11",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q5, p.13",
+          "description": "Try to make the given shapes using cubes (two example cube-block configurations shown)."
+        },
+        {
+          "id": "T-12",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q6, p.14",
+          "description": "In what ways are these shapes (cylinder, cube, cuboid, cone, sphere) the same? In what ways are they different?"
+        },
+        {
+          "id": "T-13",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q7, p.14",
+          "description": "Look at a die (faces 1–6). What number is on the face opposite 1? Opposite 2? Opposite 3? What pattern do you notice?"
+        },
+        {
+          "id": "T-14",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q8, p.14",
+          "description": "In what order is this model built? (table-like model with cuboid base, cylinder supports, and cone tops)"
+        },
+        {
+          "id": "T-15",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q9, p.15",
+          "description": "In how many different ways can you join 3 cubes? What shape do you get if you join a cube and a cuboid? How many cubes make the given shape?"
+        },
+        {
+          "id": "T-16",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q10, p.15",
+          "description": "Name the shapes used in models (a)(b)(c)(d). Describe how the shapes are arranged."
+        },
+        {
+          "id": "T-17",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q11, p.15",
+          "description": "Use six dice to make: (a) a cuboid (b) a tower (c) any other shape of your choice."
+        },
+        {
+          "id": "T-18",
+          "banner": "Let us Play",
+          "intent": "practice",
+          "book_ref": "Let us Play (Shape Board Game), p.12–13",
+          "description": "Roll die, move counter to next picture matching number's shape (1=Cylinder, 2=Sphere, 3=Cone, 4=Cube, 5=Cuboid, 6=Move 2 forward). First to Finish wins."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 1,
+  "exploration_load": 1,
+  "procedural_load": 0
+}

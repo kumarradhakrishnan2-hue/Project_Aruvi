@@ -1,0 +1,43 @@
+{
+    "stage":          "preparatory",
+    "subject":        "mathematics",
+    "grade":          "iii",
+    "chapter_number": 5,
+    "chapter_title":  "Fun with Shapes",
+
+    "core_cg": "CG-2",
+
+    "core_competencies": [
+        {
+            "c_code": "C-2.1",
+            "justification": "The entire chapter is organised around identifying, comparing, and analysing attributes of 2D and 3D shapes. Students name and sort shapes in a rangoli (circles, squares, triangles, rectangles), trace the faces of real cuboidal objects such as sharpeners and matchboxes to discover that cuboid faces are rectangles or squares, observe sets of differently-oriented rectangles to articulate properties (4 sides, 4 corners, opposite sides equal), compare squares and rectangles to isolate the all-sides-equal property, and describe triangle and circle attributes. Vocabulary — rectangle, square corner, centre of circle, cuboid face — is built across every section."
+        },
+        {
+            "c_code": "C-2.4",
+            "justification": "A distinct pattern strand runs alongside the property work. In the triangle-row growth task students observe one row of triangles, then two rows, and must predict the count for a third row — classic shape-pattern extension. The Doors-dots-lines section asks students to continue a geometric line pattern on a grid. The matchstick puzzle (Murugan's squares with 10 matchsticks; how many with 12?) and the composing-shapes tasks (how many shapes from 2, 3, or 4 joined squares?) both require students to discover and extend spatial patterns. These tasks are independent of property identification and meet the standard for a second core competency."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-4.2",
+            "justification": "Two tasks require systematic enumeration of distinct configurations under a constraint. The task asking how many different triangles can be formed from three dots on a circle demands listing all possible triangles without repetition. The square-joining task (how many different shapes from 2, 3, and 4 unit squares?) requires students to find all distinct polyomino configurations — an early combinatorial counting problem with a spatial constraint."
+        },
+        {
+            "c_code": "C-4.1",
+            "justification": "Several tasks are spatial puzzles that must be worked to a definite solution. Drawing two lines to split a house-shaped figure into three triangles, drawing one line to split an L-shaped figure into three triangles, and selecting the correct shape pieces to fill the gaps in an incomplete rectangle are all recreational spatial puzzles in the spirit of C-4.1. The matchstick square-count puzzle (how many squares from 12 matchsticks?) also belongs here."
+        },
+        {
+            "c_code": "C-2.3",
+            "justification": "The rangoli-making task and the make-your-own-border-design task invite students to create symmetric patterns. The pile-up-to-compare activity (stacking identical squares or rectangles to verify corner congruence) develops an intuitive sense of reflection symmetry in 2D shapes. The final task asking students to draw triangles, rectangles, and circles in different sizes and orientations directly engages rotational awareness."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to identify, compare, and analyse attributes of two- and three-dimensional shapes by handling real objects and shape cutouts, drawing on dot grids, and reasoning about sides, corners, and composition to build vocabulary and spatial understanding.",
+
+    "conceptual_demand": 2,
+    "task_load":         3,
+    "exploration_load":  1,
+    "procedural_load":   1,
+    "effort_index":     13.0
+}

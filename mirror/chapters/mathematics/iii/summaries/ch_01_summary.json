@@ -1,0 +1,139 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 1,
+  "chapter_title": "What's in a Name?",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Tally marks as a counting strategy",
+      "prose_summary": "The chapter opens with a story about cowherds Deba and Deep who use wall marks (tally marks) to track their cows — one mark per cow going out, struck out on return. This section establishes one-to-one correspondence as the foundational idea of counting without number symbols. Students engage with the concrete model of marks-on-wall before any numeral is introduced, positioning firmly on the concrete end of the concrete→symbolic path.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "(no banner)",
+          "intent": "explore",
+          "book_ref": "p.2",
+          "description": "Help Hemant keep track of his 36 cows and 23 sheep by making marks like Deba and Deep."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Counting letters in names",
+      "prose_summary": "Students compare names — animal names and classmates' names — by counting their letters, identifying longest and shortest. This section uses names as a concrete, familiar material to introduce the idea of measuring length by discrete count. The activity moves from comparing two objects (pictorial/concrete) to sorting a set and analysing patterns (starting letters, ending letters), building early data-reasoning skills.",
+      "tasks": [
+        {
+          "id": "T-2",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1, p.3",
+          "description": "Find the animal with the most letters (first-team captain) and fewest letters (second-team captain) from: tiger, elephant, deer, rat, monkey, ox, dog, snake, goat, lion."
+        },
+        {
+          "id": "T-3",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q2, p.3",
+          "description": "Who has a longer name — Mahesh or Kartik? Discuss."
+        },
+        {
+          "id": "T-4",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q3, p.4",
+          "description": "Write friends' names; tick longest and cross shortest; find starting letter of own name; count names with same starting letter; find most-used starting letter; count names with same ending letter; write letters not used as starting letters."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Number names and letter counts",
+      "prose_summary": "Students treat number names (e.g. 'forty-three', 'seventeen') as strings of letters and count those letters, connecting the symbolic numeral to its spoken/written name as an object of study. Number cards are used as a concrete manipulative to compose number names. The section escalates to pattern-spotting (which numbers share the same letter-count?) and puzzle-solving (deduce a number from clues about its name), moving across the pictorial-to-symbolic path while keeping reasoning central.",
+      "tasks": [
+        {
+          "id": "T-5",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q4(a), p.5",
+          "description": "Write your roll number using number cards as shown; count how many letters its number name has."
+        },
+        {
+          "id": "T-6",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q4(b), p.5",
+          "description": "Write some numbers and their number names in your notebook; count how many letters each has."
+        },
+        {
+          "id": "T-7",
+          "banner": "Let us Think",
+          "intent": "reason",
+          "book_ref": "Let us Think, p.5",
+          "description": "Write other numbers between 1 and 99 that have 8 letters (given that fifty-six = 8 letters)."
+        },
+        {
+          "id": "T-8",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1, p.6",
+          "description": "Write the number(s) between 1 and 99 that have the longest name."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q2 Find out (left), p.6",
+          "description": "My number name has two words; first word 6 letters, second word 5 letters; I am very near to 100. Who am I?"
+        },
+        {
+          "id": "T-10",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q2 Find out (right), p.6",
+          "description": "My friends and I are the numbers from 63 to 78; my number name is the smallest among all my friends. Who am I?"
+        },
+        {
+          "id": "T-11",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q3, p.6",
+          "description": "Make similar number-name puzzles of your own in your notebook and ask your classmates."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Sorting and classifying objects",
+      "prose_summary": "Students sort real-world objects and living things into groups by a shared attribute — first using Teji's grouping (eats food / doesn't eat food) and Jojo's regrouping of the same items differently, then classifying household objects by whether they need electricity. The section ends with a data-collection task: students observe classmates' hair styles and tabulate counts. This section builds the mathematical idea that the same set of objects can be classified in multiple valid ways, and that counting groups is meaningful data.",
+      "tasks": [
+        {
+          "id": "T-12",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q4, p.7",
+          "description": "Write TV, Lamp, Clock, Pillow, Chair, Bed, Blanket, Fan into two groups: things that need electricity and things that don't need electricity."
+        },
+        {
+          "id": "T-13",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do (group differently), p.8",
+          "description": "Group the same objects differently using your own criterion; write them in the space below."
+        },
+        {
+          "id": "T-14",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Hair Styles, p.8",
+          "description": "Look at children in your class; observe how each child has combed their hair; fill the hair-style vs number-of-children table."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 1,
+  "exploration_load": 0,
+  "procedural_load": 0
+}

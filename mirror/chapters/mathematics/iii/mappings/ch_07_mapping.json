@@ -1,0 +1,39 @@
+{
+    "stage":          "preparatory",
+    "subject":        "mathematics",
+    "grade":          "iii",
+    "chapter_number": 7,
+    "chapter_title":  "Raksha Bandhan",
+
+    "core_cg": "CG-1",
+
+    "core_competencies": [
+        {
+            "c_code": "C-1.3",
+            "justification": "The chapter's entire arc is the construction and application of multiplication and division. Starting from the Rakhi-making context (equal groups of threads and beads expressed as repeated addition and then as ×-notation), moving through sweet-shop groupings, the farm's times-2 table, the skip-jumping game that builds tables for ×3, ×4, ×6, the sticks method for ×5 through ×10, and concluding with a full display of all ten multiplication tables, the chapter systematically develops the ability to visualise and carry out multiplication. Division as equal sharing — distributing laddoos, kaju katlis, pedas among groups using repeated subtraction — establishes the inverse relationship. Students also apply both operations to daily-life festival problems (cost of rakhis, spokes for the rath, spider legs, auto rickshaw wheels), satisfying the 'applies the four basic operations to solve daily life problems' component of C-1.3 directly."
+        },
+        {
+            "c_code": "C-1.4",
+            "justification": "Pattern recognition and extension constitute a substantive, independent strand alongside the operational work. The skip-jumping game makes the multiples of 3 visible as a sequence on the number track and asks students to identify the step, extend the pattern, and then describe what they see. The Multiplication Tables section asks students to look at the times-5 table and spot the alternating last-digit pattern (5, 0, 5, 0 …), predict digits without computing, and investigate the structural relationship that the ×5 table equals the ×2 table plus the ×3 table row by row. Gopal's partially recorded jump sequence and Dhara's 32, 40, 48, 56 sequence both require students to identify a hidden skip-counting rule — extending and reasoning about number patterns rather than merely computing."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-4.1",
+            "justification": "Several tasks require multi-step problem-solving that goes well beyond table recall. The Puri Beach market problems chain multiplication with currency reasoning (5 × ₹75, then working out how many ₹100 notes and how much change). The sea-shells problem applies repeated subtraction to a three-digit dividend (112 ÷ 28) without a known table, demanding a strategy rather than a known fact. The animal-legs and auto-rickshaw problems form a cascade (horns of cows → number of cows → number of legs) that links two multiplication/division steps. The sealed-envelope factor puzzle requires working backwards from a product to identify a factor pair, combining puzzle-solving with multiplication knowledge."
+        },
+        {
+            "c_code": "C-4.3",
+            "justification": "The chapter explicitly develops method selection and estimation. The kaju katli 'Try it Out' asks students to first estimate before counting, placing estimation as a deliberate step before verification. The spoke problem introduces decomposing large multiplications into tens-groups as a mental strategy (10 × 5 twice, rather than 20 × 5 directly). The patterns section asks students to predict last digits of 18×5 and 23×5 without computing, developing mental short-cuts. Together these establish that choosing between estimation, mental strategy, and written calculation is itself a mathematical skill."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to understand and carry out multiplication and division with whole numbers by constructing multiplication tables through equal grouping, skip counting, and manipulative methods, and applying them to festival and daily-life problem contexts.",
+
+    "conceptual_demand": 2,
+    "task_load":         3,
+    "exploration_load":  1,
+    "procedural_load":   1,
+    "effort_index":     13.0
+}

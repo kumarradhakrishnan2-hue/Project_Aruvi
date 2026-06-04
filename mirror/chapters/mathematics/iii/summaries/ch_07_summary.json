@@ -1,0 +1,362 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 7,
+  "chapter_title": "Raksha Bandhan",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Counting in a Festive Scene",
+      "prose_summary": "The chapter opens with Gopal's decorated house on the eve of Raksha Bandhan. Students observe a rich pictorial scene and count specific objects (leaves, glasses, pomegranates, flowers) visible in the illustration. This is a concrete observation task that activates counting as a purposeful activity embedded in a familiar cultural context.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Find and count",
+          "intent": "explore",
+          "book_ref": "Find and count, p.82",
+          "description": "Find and count the number of each of these objects (leaves, glasses, pomegranate, flowers) and write."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Making Rakhis — Repeated Addition to Multiplication",
+      "prose_summary": "Students use the context of making 5 rakhis, each requiring 1 flower, 2 threads, and 4 beads, to move from repeated addition to the multiplication notation. The section shows how '1+1+1+1+1 = 5 times 1 = 5×1' and similarly for threads and beads, establishing multiplication as a compact notation for equal groups. Concrete counting with pictured objects forms the concrete step before the symbolic '5×2=10' notation.",
+      "tasks": [
+        {
+          "id": "T-2",
+          "banner": "How many threads, flowers and beads do they need?",
+          "intent": "solve",
+          "book_ref": "How many threads, flowers and beads, p.83",
+          "description": "For 5 rakhis, find how many threads, flowers and beads are needed (given per-rakhi amounts)."
+        },
+        {
+          "id": "T-3",
+          "banner": "Try it Out!",
+          "intent": "solve",
+          "book_ref": "Try it Out! p.85",
+          "description": "For making 10 rakhis, find flowers, threads and beads needed; and find how many rakhis 30 flowers, 30 threads and 30 beads can make."
+        },
+        {
+          "id": "T-4",
+          "banner": "FUN ACTIVITY",
+          "intent": "explore",
+          "book_ref": "FUN ACTIVITY, p.85",
+          "description": "Try making a colourful Rakhi at home and show it in class."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Grouping at the Sweet Shop — Multiplication as Equal Groups",
+      "prose_summary": "At the Jagannath Sweet Shop, laddoos arranged in a 3×3 box are counted two ways: by adding rows or using multiplication (3×3=9). Buying 2 boxes is shown both as 9+9=18 (two times nine) and as 6 lots of 3 (6×3=18), introducing students to the idea that the same total can be expressed through different groupings. This lays the concrete foundation for commutativity explored more explicitly in S5.",
+      "tasks": []
+    },
+    {
+      "ref": "S4",
+      "title": "Equal Sharing — Division as Repeated Subtraction",
+      "prose_summary": "The chapter introduces division through equal sharing of festival sweets. Distributing 18 laddoos equally among 9 people is modelled by drawing one laddoo per plate in repeated rounds, with a subtraction column tracking items left. The same approach is applied to distributing 20 kaju katlis among 5 (20÷5=4) and 15 pedas among 5 (15÷5=3), establishing division as repeated equal distribution and connecting it to the subtraction trail. Students enact the sharing physically by drawing.",
+      "tasks": [
+        {
+          "id": "T-5",
+          "banner": "Can you help Dhara find this out?",
+          "intent": "explore",
+          "book_ref": "Can you help Dhara, p.87",
+          "description": "Imagine yourself as Dhara. Distribute 18 laddoos equally among 9 friends; observe how repeated distribution works."
+        },
+        {
+          "id": "T-6",
+          "banner": "Try it Out!",
+          "intent": "reason",
+          "book_ref": "Try it Out! p.88",
+          "description": "Look at the figure carefully. Estimate the number of kaju katlis; then count and write the total."
+        },
+        {
+          "id": "T-7",
+          "banner": "Try it Out!",
+          "intent": "explore",
+          "book_ref": "Try it Out! p.88",
+          "description": "Distribute all kaju katlis equally among 5 people by drawing kaju katlis on the plates; compare your work with Dhara's."
+        },
+        {
+          "id": "T-8",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q1, p.90",
+          "description": "Distribute all kaju katlis equally among 4 people; strike out from tray and draw in plates; find 16÷4."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q2, p.91",
+          "description": "Distribute 15 pedas in plates equally among 5 people; how many pedas will each get? 15÷5=?"
+        },
+        {
+          "id": "T-10",
+          "banner": "Let us Think",
+          "intent": "solve",
+          "book_ref": "Let us Think Q1, p.91",
+          "description": "Each cycle needs 2 wheels. How many cycles can be fitted with 12 wheels? 12÷2=?"
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Plants in the Garden — Commutativity of Multiplication",
+      "prose_summary": "Dhara and Gopal count plants in a flower bed and disagree on the grouping: Dhara sees 8 groups of 6 (8×6) while Gopal sees 6 groups of 8 (6×8). The section uses a dot array to show that both groupings give the same total, establishing commutativity concretely. Students are then asked to find more equal groups from the same array, reinforcing the idea that multiplication can be organised in multiple valid ways.",
+      "tasks": [
+        {
+          "id": "T-11",
+          "banner": "Let us Think",
+          "intent": "reason",
+          "book_ref": "Let us Think Q2, p.92",
+          "description": "Count jalebis in groups (6 groups of 4); are there enough for 9 people to have 4 each? How many should Dhara buy?"
+        },
+        {
+          "id": "T-12",
+          "banner": "Different ways of grouping",
+          "intent": "reason",
+          "book_ref": "Different ways of grouping, p.93",
+          "description": "Complete the equal grouping shown and write it as multiplication; find more equal groups of different sizes and draw them."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Visit to a Farm — Times-2 Table",
+      "prose_summary": "A triangular arrangement of chickens at a farm provides a visual for building the times-2 table. Students observe that successive rows add 2 chickens and complete the table from 1×2 up to 10×2, writing both the 'N times 2' form and the N×2 = ? form. The staircase of chickens makes the pattern of counting in twos visible and concrete before students write the symbolic table.",
+      "tasks": [
+        {
+          "id": "T-13",
+          "banner": "Visit to a Farm",
+          "intent": "practice",
+          "book_ref": "Visit to a Farm, p.94",
+          "description": "Complete the times-2 table from 4×2 to 10×2 by observing the chicken arrangement and filling in the blanks."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Skip Jumping Game — Skip Counting and Multiplication Tables",
+      "prose_summary": "Atya draws a number track on the ground and Dhara skip-jumps by 3, connecting each jump to a multiplication fact (2 jumps → 2×3=6). Students continue the pattern to 10 jumps and then use the number track to skip-jump by 6 and by 4. The game format (fewest jumps to reach a target number) develops strategic reasoning about multiples and introduces the idea that some numbers are only reachable by jumping by 1 (primes). Gopal's jumps are given with gaps for students to deduce the step size.",
+      "tasks": [
+        {
+          "id": "T-14",
+          "banner": "Skip Jumping Game",
+          "intent": "practice",
+          "book_ref": "Skip Jumping Game, p.95",
+          "description": "Continue Dhara's skip-jumps by 3 from jump 4 to jump 10, writing the number reached each time."
+        },
+        {
+          "id": "T-15",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1, p.96",
+          "description": "Guess and write the next number Dhara will jump onto after the pattern shown."
+        },
+        {
+          "id": "T-16",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q2, p.96",
+          "description": "Is there a pattern in the numbers 3, 6, 9, …? Describe it."
+        },
+        {
+          "id": "T-17",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q3, p.96",
+          "description": "How many steps forward is Dhara jumping each time?"
+        },
+        {
+          "id": "T-18",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q4, p.96",
+          "description": "Continue skip jumping by 6 by drawing the jumps on the number track."
+        },
+        {
+          "id": "T-19",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q5, p.96",
+          "description": "Can skip jumping be used to form times-6 table? Write times-6 table in your notebook."
+        },
+        {
+          "id": "T-20",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q6, p.96",
+          "description": "Is there repeated addition happening? Make times-4 table using repeated addition in the picture given."
+        },
+        {
+          "id": "T-21",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q7, p.97",
+          "description": "Gopal is skip jumping — identify how many steps; write what number comes after 27."
+        },
+        {
+          "id": "T-22",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q8, p.97",
+          "description": "What times table can you construct from Gopal's jumps? Make it in your notebook."
+        },
+        {
+          "id": "T-23",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q9, p.97",
+          "description": "Given Dhara's jump sequence …32, 40, 48, 56, by what number was she skip jumping? Construct the times table."
+        },
+        {
+          "id": "T-24",
+          "banner": "Let us Play",
+          "intent": "reason",
+          "book_ref": "Let us Play, p.97",
+          "description": "Choose a skip-jump number to reach 12 in fewest jumps; find 3 numbers reachable only by skip jumping by 1."
+        }
+      ]
+    },
+    {
+      "ref": "S8",
+      "title": "Fun Way of Writing Tables — Sticks Method",
+      "prose_summary": "Mithu introduces a visual method of representing multiplication using intersecting sticks, where the number of intersection dots equals the product. Students use this to complete the times-5 table and then construct times-6 through times-10 tables independently. The sticks provide a concrete-pictorial bridge between repeated addition and the symbolic table, and also visually embed commutativity (swapping the two bundles of sticks swaps the factors).",
+      "tasks": [
+        {
+          "id": "T-25",
+          "banner": "Fun Way of Writing Tables",
+          "intent": "explore",
+          "book_ref": "Fun Way of Writing Tables, p.98",
+          "description": "Complete the times-5 table using the sticks method; make times-6 to times-10 tables using the sticks method."
+        }
+      ]
+    },
+    {
+      "ref": "S9",
+      "title": "Multiplication Tables and Patterns",
+      "prose_summary": "All ten multiplication tables (×1 through ×10) are displayed together. Students examine the times-5 table for patterns in last digits, predict products without computing, and investigate the relationship between the ×2, ×3, and ×5 tables (2+3=5, so each row of ×5 = corresponding row of ×2 + ×3). This section moves from concrete tables to symbolic pattern-recognition and generalisation, the highest conceptual level in the chapter.",
+      "tasks": [
+        {
+          "id": "T-26",
+          "banner": "Seeing Patterns in Multiplication Tables",
+          "intent": "reason",
+          "book_ref": "Seeing Patterns in Multiplication Tables, p.99",
+          "description": "Look at times-5 table; guess last digits of 11×5 and 12×5; give 3 examples each ending in 0 and 5; predict last digits of 18×5, 23×5, 32×5, 50×5 without computing. Identify relation between ×2, ×3, ×5 tables."
+        }
+      ]
+    },
+    {
+      "ref": "S10",
+      "title": "Multiplying by Tens — Spokes for the Rath",
+      "prose_summary": "Gopal's cardboard rath needs 5 spokes per wheel for 20 wheels. Students break 20 wheels into two groups of 10 and use 10×5=50 twice to find 20×5=100. The 'Try these' box extends this to 30×5 through 100×5 by repeated grouping of tens, and students describe the resulting pattern. This section introduces multiplication beyond the basic tables by leveraging the times-10 structure.",
+      "tasks": [
+        {
+          "id": "T-27",
+          "banner": "Help Bhim!",
+          "intent": "solve",
+          "book_ref": "Help Bhim!, p.101",
+          "description": "Find how many spokes Bhim needs for 20 wheels (5 spokes each), using 10×5 twice."
+        },
+        {
+          "id": "T-28",
+          "banner": "Try these",
+          "intent": "practice",
+          "book_ref": "Try these, p.101",
+          "description": "Complete 30×5 using groups of 10; then complete 40×5 through 100×5; describe the patterns you see."
+        }
+      ]
+    },
+    {
+      "ref": "S11",
+      "title": "Word Problems — Applying Multiplication and Division",
+      "prose_summary": "A rich set of word problems requires students to apply multiplication and division in context: spider legs (×8, ÷8), auto rickshaw wheels (×3, ÷3), spoke problems (÷5), and multi-part 'Let us Think' tasks with frogs jumping by 7 on a number line. The frog problems introduce backward skip counting (repeated subtraction) and the concept that not all numbers are reachable by a given step, which foreshadows divisibility and prime ideas. Multi-step problems (legs of animals given horns) develop chained multiplication and division reasoning.",
+      "tasks": [
+        {
+          "id": "T-29",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q1a-d, p.100",
+          "description": "Draw pictures and solve: cookies in jars (5×4), idlis in vessel (6×4), distribute 30 cookies among 5, equal jump size to reach 18 in 6 jumps; also how Toto jumps unevenly, days for Suma to save ₹56, and Mary's sea-shells after giving away (63−5×7)."
+        },
+        {
+          "id": "T-30",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q2, p.100",
+          "description": "Solve: (a) 4×9  (b) 32÷8  (c) 6×7  (d) 45÷5; try constructing a word problem."
+        },
+        {
+          "id": "T-31",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q1-3, p.102",
+          "description": "Spider has 8 legs: find legs for 5, 10, 15, 23 spiders; find number of spiders from 32 legs; find wheels in 18 and 34 auto rickshaws."
+        },
+        {
+          "id": "T-32",
+          "banner": "Let us Think",
+          "intent": "reason",
+          "book_ref": "Let us Think Q1-3, p.103",
+          "description": "Frog jumps of 7 from 0: largest reachable number before 50; jump backwards from 50 by 7, find cut-off; find starting numbers that land on 0 in jumps of 7."
+        },
+        {
+          "id": "T-33",
+          "banner": "Let us Think",
+          "intent": "solve",
+          "book_ref": "Let us Think Q4-7, p.103",
+          "description": "Auto rickshaws with 36 wheels total; 55 ants' legs; cows' legs from 48 legs; total legs from 24 horns."
+        }
+      ]
+    },
+    {
+      "ref": "S12",
+      "title": "Puri Beach and Sea-Shells — Larger Number Contexts",
+      "prose_summary": "Students compute 2×₹42 and 5×₹75 in a market context, the latter requiring multi-digit multiplication and reasoning about change from ₹100 notes. The sea-shells problem uses repeated subtraction (112−28−28−28...) to explore division of a 3-digit number by a 2-digit number, far beyond standard tables, connecting repeated subtraction to the concept of division. 'Try these' extends to estimating necklaces from 100 shells, distributing 127 pebbles, and currency exchange problems.",
+      "tasks": [
+        {
+          "id": "T-34",
+          "banner": "Puri Beach",
+          "intent": "solve",
+          "book_ref": "Puri Beach Q1-2, p.104",
+          "description": "Find cost of 2 wall-hangings at ₹42 each; find total cost of 5 rabdi cups at ₹75 each, how many ₹100 notes needed and change returned."
+        },
+        {
+          "id": "T-35",
+          "banner": "Sea-Shells",
+          "intent": "explore",
+          "book_ref": "Sea-Shells, p.104-105",
+          "description": "Dhruv has 112 shells; 28 per necklace. Step through repeated subtraction: how many shells left after 1st, 2nd, 3rd necklace? Are they enough? How many necklaces can he make?"
+        },
+        {
+          "id": "T-36",
+          "banner": "Try these",
+          "intent": "solve",
+          "book_ref": "Try these Q1-3, p.105",
+          "description": "Necklace of 17 shells — how many necklaces from 100 shells? Distribute 127 pebbles equally to 3 friends. Exchange ₹500 for all ₹50, all ₹20, all ₹10 notes."
+        }
+      ]
+    },
+    {
+      "ref": "S13",
+      "title": "Envelope Puzzle — Finding Factors",
+      "prose_summary": "Five sealed envelopes each hold two number cards from 1–10 and display their product on the outside. With envelope 5 (5×9=45) given as an example, students must deduce which two cards are inside each of the other envelopes (products: 7, 18, 32, 20). This reverses the multiplication direction — from product back to factors — and requires reasoning about multiplication facts rather than just computing them.",
+      "tasks": [
+        {
+          "id": "T-37",
+          "banner": "Let us Explore",
+          "intent": "reason",
+          "book_ref": "Let us Explore, p.106",
+          "description": "Identify which two number cards (from 1–10) are inside each of the four envelopes, given only the product on each envelope (7, 18, 32, 20)."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 1,
+  "procedural_load": 1
+}
