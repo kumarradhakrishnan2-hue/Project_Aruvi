@@ -1,0 +1,237 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 3,
+  "chapter_title": "Angles as Turns",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Full, Half, and Quarter Turns",
+      "prose_summary": "The chapter opens with the concrete experience of turning: children play the 'Statue' game, rotating their bodies and freezing, noticing how much they have turned relative to their starting position. Real-life examples — Ashutosh making a full circle, Sahana a half-moon, the minute hand returning to its start, a giant wheel completing a rotation — ground the idea that turns can be full, half, or quarter. The section sits squarely on the concrete end of the concrete→symbolic path, using bodily movement and familiar objects before any symbol is introduced.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let us play "Statue"",
+          "intent": "explore",
+          "book_ref": "Let us play Statue, p.32",
+          "description": "Keep turning around; freeze when teacher says 'Statue'. Notice how much you have turned from your original position."
+        },
+        {
+          "id": "T-2",
+          "banner": "Discuss",
+          "intent": "reason",
+          "book_ref": "Discuss, p.32",
+          "description": "Identify the child who made a full turn and the child who made a half turn. Give examples of real-life situations involving turns."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Combining Turns and Everyday Objects",
+      "prose_summary": "This section asks students to reason about what happens when turns are combined: two half turns equal a full turn, two quarter turns equal a half turn, four quarter turns equal a full turn. Students then survey everyday objects (taps, clothes clips, scissors, etc.) and classify the maximum possible turn each makes as less than a quarter, exactly a quarter, or more than a quarter turn. The straw-and-paper-clip model (Pragya's activity) introduces a simple physical manipulative to observe different turns. The section bridges concrete experience and early symbolic notation (1/4, 1/2) without yet naming angle types.",
+      "tasks": [
+        {
+          "id": "T-3",
+          "banner": "Fill in",
+          "intent": "reason",
+          "book_ref": "Fill in, p.33",
+          "description": "Complete: 2 half turns = ___ turn; 2 quarter turns = ___ turn; 4 quarter turns = ___ turn."
+        },
+        {
+          "id": "T-4",
+          "banner": "Write",
+          "intent": "explore",
+          "book_ref": "Write, p.33",
+          "description": "Write names of everyday objects that involve turns (e.g., taps, and five others)."
+        },
+        {
+          "id": "T-5",
+          "banner": "Check and tick",
+          "intent": "reason",
+          "book_ref": "Check and tick table, p.33",
+          "description": "For each object (clothes clip, door with hinge, tongs, scissors, file cover) tick the maximum possible turn: less than 1/4, exactly 1/4, or more than 1/4."
+        },
+        {
+          "id": "T-6",
+          "banner": "Check and tick",
+          "intent": "reason",
+          "book_ref": "Check and tick bullets, p.33",
+          "description": "From the table, identify which objects make a half turn and which make a full turn. Write their names."
+        },
+        {
+          "id": "T-7",
+          "banner": "Observe",
+          "intent": "explore",
+          "book_ref": "Observe, p.33",
+          "description": "Hold green straw steady; turn yellow straw. Observe different turns of the yellow straw using Pragya's straw-and-paper-clip model."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Turns and Angle Types",
+      "prose_summary": "The chapter now connects the amount of turn to the name of the resulting angle: a quarter turn produces a right angle, less than a quarter produces an acute angle, between a quarter and a half produces an obtuse angle, and a half turn produces a straight angle. A summary table of the paper fan shows all five angle types side by side. Students use a paper fan (made by accordion-folding a rectangle and attaching ice cream sticks) as the concrete manipulative to make and see angles. The section moves students along the concrete→pictorial path: physical fan positions are linked to drawn angle diagrams.",
+      "tasks": [
+        {
+          "id": "T-8",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do Q(a), p.34",
+          "description": "Make a paper fan by folding rectangular paper every 2 cm and pasting ice cream sticks. Use the fan to show different acute and obtuse angles."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q(b), p.35",
+          "description": "Look at angles A–H marked on the notebook-cover house. Write whether each is right, acute, or obtuse."
+        },
+        {
+          "id": "T-10",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do Q(c), p.35",
+          "description": "Make a 5-sided shape with 2 right angles, 2 obtuse angles, and 1 acute angle in your notebook."
+        },
+        {
+          "id": "T-11",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do acute-turns question, p.35",
+          "description": "Make an acute turn with straws or fan, then make another acute turn. Determine whether the two acute turns together can form another acute turn."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Angle Measuring Tool — Eighths",
+      "prose_summary": "Students construct a concrete angle-measuring tool by cutting a circle from tracing paper, folding it into 8 equal parts, attaching a straw at the centre, and marking a starting point. They then show turns of 1/8, 2/8, 3/8, 4/8, … 8/8 and identify which correspond to right, acute, obtuse, straight, and full angles. The 1/8 and 2/8 sectors are cut out and pasted on card to serve as portable measuring tools. Students then use these tools to guess and verify the measures of given angles and turns, and to measure angles inside geometric shapes. This section is firmly concrete→pictorial, with the folded-paper tool enabling direct comparison.",
+      "tasks": [
+        {
+          "id": "T-12",
+          "banner": "Angle Measuring Tool",
+          "intent": "explore",
+          "book_ref": "Angle Measuring Tool Q(a), p.36",
+          "description": "Cut a circle from tracing paper, fold into 8 equal parts, attach straw at centre, mark starting point."
+        },
+        {
+          "id": "T-13",
+          "banner": "Angle Measuring Tool",
+          "intent": "explore",
+          "book_ref": "Angle Measuring Tool Q(b), p.36",
+          "description": "Show 1/8, 2/8, 1/4, 3/8 turns of the straw. Identify angle type for 2/8 and 4/8 turns. Continue to 5/8, 6/8, 7/8, 8/8; check when 3/4 and full turn are complete. Cut 1/8 and 2/8 parts and paste on card as measuring tools."
+        },
+        {
+          "id": "T-14",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q1, p.38",
+          "description": "Guess the measure of each angle shown; then check using the angle-measuring tool (use combinations). State whether each is acute, right, or obtuse."
+        },
+        {
+          "id": "T-15",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q2, p.38",
+          "description": "Guess the measure of turns made by the arrow in cases (a)–(d). Verify using combinations of angle-measuring tools."
+        },
+        {
+          "id": "T-16",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q3, p.38",
+          "description": "Measure each angle in the given shapes (a), (b), (c). Write measures in terms of turns; describe each as acute, obtuse, or right."
+        },
+        {
+          "id": "T-17",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q4, p.39",
+          "description": "Draw angles for given measures of turns (1/2, 1/4, 1/8, 1/12, 1/4) using the given lines."
+        },
+        {
+          "id": "T-18",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q5, p.39",
+          "description": "Draw the angles formed by: 1/2, 1/4, 2/4, 1/6, 4/6, 3/12, 1/2+1/4, and 1/8+1/6 turns in your notebook."
+        },
+        {
+          "id": "T-19",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q6(a)–(g), p.39",
+          "description": "Find the turn made by the minute hand for each time interval [(a) 15 min, (b) 30 min, (c) 45 min, (d) 1/12 full turn → ? min, (e) full turn → ? min, (f) 1/6 full turn → ? min, (g) 4/12 full turn → ? min]; draw final clock positions."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Angle Measuring Tool — Sixths and Twelfths",
+      "prose_summary": "Students extend the circle-folding activity to divide a circle into 6 equal parts (folding in half then into thirds), attach a straw, and show turns of 1/6, 2/6, … through a full circle. Cutting 1/6 and 2/6 sectors and further folding a 1/6 piece in half introduces the 1/12 turn. These smaller sectors become additional portable measuring tools. The Let Us Think task requires students to reason backwards — given the endpoint of a 1/2, 1/4, or 1/8 turn, draw the starting point. The section reinforces fraction understanding through geometry and continues the concrete→pictorial trajectory.",
+      "tasks": [
+        {
+          "id": "T-20",
+          "banner": "Angle Measuring Tool",
+          "intent": "explore",
+          "book_ref": "Angle Measuring Tool sixths, p.37",
+          "description": "Cut a circle from tracing paper; fold in half then into 3 equal parts. Attach straw, mark starting point; show turns of 1/6, 2/6, … full circle. Cut 1/6 and 2/6 parts; fold 1/6 in half to make 1/12. Paste on card as measuring tools."
+        },
+        {
+          "id": "T-21",
+          "banner": "Let Us Think",
+          "intent": "reason",
+          "book_ref": "Let Us Think Q1, p.37",
+          "description": "In circles showing endpoints of 1/2, 1/4, and 1/8 turns, draw arrows to show the starting points."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Clockwise and Anti-clockwise Direction",
+      "prose_summary": "This section introduces direction of turn: clockwise (same as clock hands) and anti-clockwise (opposite). Students observe four pairs of creatures (ladybird, snail, bee, ant) each making a quarter turn and identify whether the movement is clockwise or anti-clockwise. A 'Try these' activity asks students to observe direction while opening taps, unscrewing lids, or loosening nuts — connecting the mathematical idea to everyday physical experience. The section sits at the concrete/pictorial boundary, using pictures and real-world actions rather than computation.",
+      "tasks": [
+        {
+          "id": "T-22",
+          "banner": "Tick",
+          "intent": "reason",
+          "book_ref": "Tick direction, p.40",
+          "description": "For each of the four creature pairs making a quarter turn, tick whether the movement is clockwise or anti-clockwise."
+        },
+        {
+          "id": "T-23",
+          "banner": "Try these",
+          "intent": "explore",
+          "book_ref": "Try these, p.40",
+          "description": "Observe direction while opening a tap, unscrewing a lid, and loosening a nut. Determine whether each moves clockwise or anti-clockwise."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Fun with Turns — Compass Directions",
+      "prose_summary": "The chapter closes with a game that applies turns to compass directions (North, South, East, West). Students complete a table: given a starting direction and a sequence of clockwise or anti-clockwise right-angle turns, they determine the ending direction. A second problem (Padma facing the toy shop) asks what place she faces after a half-turn clockwise and invites students to find an alternative way to reach the same facing. This section consolidates angle-as-turn in a spatial reasoning context, moving from concrete/pictorial to early symbolic reasoning with direction.",
+      "tasks": [
+        {
+          "id": "T-24",
+          "banner": "Fun with Turns",
+          "intent": "reason",
+          "book_ref": "Fun with Turns Q1, p.41",
+          "description": "Complete the table: given starting direction and turns (e.g., 'North, two right angles clockwise'), fill in the ending direction for all 7 rows."
+        },
+        {
+          "id": "T-25",
+          "banner": "Fun with Turns",
+          "intent": "reason",
+          "book_ref": "Fun with Turns Q2, p.41",
+          "description": "Padma faces the toy shop. Determine what place she faces after a half turn clockwise. Find another way she can turn to face the same place."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 2,
+  "exploration_load": 1,
+  "procedural_load": 1
+}

@@ -1,0 +1,39 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 2,
+  "chapter_title": "Fractions",
+
+  "core_cg": "CG-1",
+
+  "core_competencies": [
+    {
+      "c_code": "C-1.2",
+      "justification": "The entire chapter is organised around representing and comparing fractions: students shade unit fractions on grids, fit fraction-kit pieces to discover equivalence (1/3 = 2/6), locate improper fractions (5/2, 9/4) on number lines, and compare fraction pairs using strategies based on same denominator, same numerator, and the benchmarks 1 and 1/2. This directly enacts the competency's three modes — parts of a unit whole, locations on number lines, and relational reasoning about fraction size."
+    },
+    {
+      "c_code": "C-1.3",
+      "justification": "The Fractions Greater Than 1 sections require students to add unit fractions repeatedly (1/2 + 1/2 + 1/2 + 1/2 + 1/2 = 5/2) and convert the result to a mixed number, linking fraction arithmetic to whole-number addition structure. The kit activities (how many 1/6s make 1/3; how many 1/12s make 1/4) further engage multiplicative and additive relationships among fractions, constituting a substantive — if supporting — engagement with arithmetic operations."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-4.3",
+      "justification": "The chapter explicitly teaches students to choose among four distinct comparison strategies — same denominator, same numerator, reference to 1, reference to 1/2 — and to decide which is applicable for a given pair. This is exactly the competency's intent: selecting an appropriate method in accordance with the context rather than applying a single algorithm."
+    },
+    {
+      "c_code": "C-4.1",
+      "justification": "Several sections embed fractions in real daily-life contexts: sharing chikki and parathas, distributing pizza slices among family members, and measuring a line of ants using unit fractions of a centimetre. The 'Try This' ant-length problem in particular is a genuine word problem requiring students to apply fraction-number-line reasoning to find a total length."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to represent and compare fractions by grounding equivalence and ordering in concrete kit manipulation, pictorial number lines, and benchmark reasoning with 1 and 1/2.",
+
+  "conceptual_demand": 2,
+  "task_load": 1,
+  "exploration_load": 1,
+  "procedural_load": 0,
+  "effort_index": 7.5
+}

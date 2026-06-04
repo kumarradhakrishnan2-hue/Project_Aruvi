@@ -1,0 +1,419 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iv",
+  "chapter_number": 1,
+  "chapter_title": "Shapes Around Us",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "3D Shapes — Modelling and Exploring",
+      "prose_summary": "The chapter opens with Diksha building a model of India Gate using wooden blocks, inviting learners to recreate monument shapes with blocks. Students identify faces, corners, and parts of their models, comparing them to real buildings. The activity is firmly at the concrete end of the concrete → pictorial → symbolic path — physical manipulation of blocks drives the first encounter with 3D shape.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Try to make a model",
+          "intent": "explore",
+          "book_ref": "Try to make a model Q1–Q5 + Discussion, p.1",
+          "description": "Make a model of buildings using blocks; answer: what parts shown, why selected, what shapes, how similar/different, what if one piece removed."
+        },
+        {
+          "id": "T-2",
+          "banner": "Project Work",
+          "intent": "explore",
+          "book_ref": "Project Work, p.2",
+          "description": "Observe a Qutub Minar model; answer what shape to use, how many shapes, what is common to all bricks."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Nets, Prisms, and Pyramids",
+      "prose_summary": "Students fold open boxes to discover nets and use printed nets to construct prisms and pyramids — triangular, square, pentagonal, and hexagonal. Through making, they compare the face shapes common to all prisms vs. all pyramids and investigate the meeting-point of triangular faces in pyramids. This section sits at concrete→pictorial: physical folding, then recording observations.",
+      "tasks": [
+        {
+          "id": "T-3",
+          "banner": "Craft",
+          "intent": "explore",
+          "book_ref": "Craft Q1, p.3",
+          "description": "Make a sphere-like shape with paper strips."
+        },
+        {
+          "id": "T-4",
+          "banner": "Craft",
+          "intent": "explore",
+          "book_ref": "Craft Q2, p.3",
+          "description": "Use nets from the end of the book to make models of prisms (triangular, square, hexagonal) and pyramids (triangular, square, pentagonal); identify common face shapes and meeting points."
+        },
+        {
+          "id": "T-5",
+          "banner": "Craft",
+          "intent": "reason",
+          "book_ref": "Craft Q3, p.4",
+          "description": "Make shapes using straws and plasticine; fill in table of faces (F), corners (V), edges (E); identify F+V–E relationship."
+        },
+        {
+          "id": "T-6",
+          "banner": "Craft",
+          "intent": "reason",
+          "book_ref": "Craft Q3 (sort by flat faces), p.4",
+          "description": "Sort 3D shapes by number of flat faces and write names; determine if a 3D shape with 3 flat faces is possible."
+        },
+        {
+          "id": "T-7",
+          "banner": "Craft",
+          "intent": "reason",
+          "book_ref": "Craft Q3 (sort by edges), p.4",
+          "description": "Sort 3D shapes by number of straight edges (6, 8, 9, 12) and write names."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Faces, Edges, Corners — Observation and Classification",
+      "prose_summary": "Students observe a die to find opposite faces and shared edges, then work with three views of the same cube to deduce colour relationships. They follow a set of instructions to colour, mark, and circle shapes on a border — classifying by face type (rectangular, triangular, curved) and corners. The tasks shift from concrete handling to pictorial reasoning about properties.",
+      "tasks": [
+        {
+          "id": "T-8",
+          "banner": "Let Us Observe",
+          "intent": "reason",
+          "book_ref": "Let Us Observe Q1, p.5",
+          "description": "Take a die; identify the face opposite to faces numbered 2, 3, and 4."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let Us Observe",
+          "intent": "reason",
+          "book_ref": "Let Us Observe Q2, p.5",
+          "description": "Identify which faces share edges with face 1, and which face has no common edge with face 1."
+        },
+        {
+          "id": "T-10",
+          "banner": "Let Us Observe",
+          "intent": "reason",
+          "book_ref": "Let Us Observe Q3, p.5",
+          "description": "Look at three views of the same cube; deduce the colour of the face opposite to red, and opposite to yellow."
+        },
+        {
+          "id": "T-11",
+          "banner": "Let Us Observe",
+          "intent": "practice",
+          "book_ref": "Let Us Observe (border activity), p.5",
+          "description": "Follow 5 instructions: colour rectangular-faced shapes red, add smileys to triangular-faced shapes, stars to curved-faced shapes, blue to shapes with no corner, circle shapes with same opposite faces."
+        },
+        {
+          "id": "T-12",
+          "banner": "Sorting 3D Shapes",
+          "intent": "reason",
+          "book_ref": "Sorting 3D Shapes Q1–Q3, p.6–7",
+          "description": "Write names of 3D shapes in Venn-diagram circles sorted by: all faces same vs. not same; straight vs. curved edges; triangular vs. rectangular faces (with both-category)."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Building and Drawing with Cubes",
+      "prose_summary": "Students build models with unit cubes (from Jaadui Pitara Kit) replicating given structures and count the cubes in towers. They then move to drawing cubes on triangular dot paper, completing partially drawn cubes. This section spans concrete (building) to pictorial (dot-paper drawing), reinforcing spatial visualisation.",
+      "tasks": [
+        {
+          "id": "T-13",
+          "banner": "Build with Cubes",
+          "intent": "explore",
+          "book_ref": "Build with Cubes A–D, p.7",
+          "description": "Build models A, B, C, D with cubes from Jaadui Pitara Kit; count the cubes in each cube tower."
+        },
+        {
+          "id": "T-14",
+          "banner": "Drawing Cubes on a Triangular Dot Paper",
+          "intent": "practice",
+          "book_ref": "Drawing Cubes on a Triangular Dot Paper, p.8",
+          "description": "Complete the partially drawn cubes on triangular dot paper."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Identifying 3D Shapes by Properties and Nets",
+      "prose_summary": "Students match verbal descriptions (number of faces, corners, edges, face shapes) to shape names, distinguish how similar shapes differ, match nets to solids, identify which net folds into a given solid, and work out which solid's net has been cut into pieces. Tasks are at the pictorial→symbolic level: no physical models, reasoning from properties and diagrams.",
+      "tasks": [
+        {
+          "id": "T-15",
+          "banner": "Match the pictures",
+          "intent": "reason",
+          "book_ref": "Match the pictures Q1, p.8",
+          "description": "Match six property-descriptions (faces, corners, edges) to the correct 3D shape names (a–f)."
+        },
+        {
+          "id": "T-16",
+          "banner": "Each one is different",
+          "intent": "reason",
+          "book_ref": "Each one is different Q2, p.8",
+          "description": "Discuss how a set of similar-looking shapes are each different from one another."
+        },
+        {
+          "id": "T-17",
+          "banner": "Match the nets",
+          "intent": "reason",
+          "book_ref": "Match the nets Q3, p.9",
+          "description": "Match four nets (1–4) to the appropriate solids (a–d)."
+        },
+        {
+          "id": "T-18",
+          "banner": "Which net",
+          "intent": "reason",
+          "book_ref": "Which net Q4, p.9",
+          "description": "Identify which of nets A, B, C, D can be folded to make the given solid."
+        },
+        {
+          "id": "T-19",
+          "banner": "Pieces of net",
+          "intent": "reason",
+          "book_ref": "Pieces of net Q5, p.9",
+          "description": "Identify which solid (a–d) has the given pieces as parts of its net."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Angles — Introduction and Right Angles",
+      "prose_summary": "Students make angles with straws and observe angles in yoga postures and drawings. They mark angles in pictures and locate angles in the classroom. A folded-paper technique introduces the right angle; students check objects and draw right angles on dot grids. Tasks move from concrete making (straws, paper folding) to pictorial marking.",
+      "tasks": [
+        {
+          "id": "T-20",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q1 (mark angles), p.10",
+          "description": "Mark angles in five pictures (scissors, book corner, clock hands, etc.)."
+        },
+        {
+          "id": "T-21",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q2 (classroom angles), p.11",
+          "description": "Give a few examples of where angles are seen in the classroom."
+        },
+        {
+          "id": "T-22",
+          "banner": "Right Angles",
+          "intent": "explore",
+          "book_ref": "Right Angles (fold paper), p.11",
+          "description": "Make a right angle with paper-folding; identify right angles in dot grid using a right-angle checker; find right angles in book, window, other objects."
+        },
+        {
+          "id": "T-23",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q1 (draw right angles), p.12",
+          "description": "Draw some right angles on the dot grid."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Acute and Obtuse Angles",
+      "prose_summary": "Acute (less than right angle) and obtuse (greater than right angle) angles are introduced by comparison to the right angle. Students name classroom objects with each type and identify all angles in letter shapes. Tasks involve drawing angles and colour-coding angles in figures, bridging concrete identification to pictorial representation.",
+      "tasks": [
+        {
+          "id": "T-24",
+          "banner": "Acute and Obtuse Angles",
+          "intent": "reason",
+          "book_ref": "Acute and Obtuse Angles (naming objects), p.12",
+          "description": "Name classroom objects that have an acute angle; name objects that have an obtuse angle."
+        },
+        {
+          "id": "T-25",
+          "banner": "Acute and Obtuse Angles",
+          "intent": "practice",
+          "book_ref": "Acute and Obtuse Angles (letters), p.12",
+          "description": "Identify all angles in the given letter shapes."
+        },
+        {
+          "id": "T-26",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q1 (draw acute/obtuse), p.13",
+          "description": "Draw some acute angles on the top grid; draw a line to make an acute angle using each given line in the bottom grid. Repeat for obtuse angles."
+        },
+        {
+          "id": "T-27",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q2 (colour-code angles), p.13",
+          "description": "Mark acute angles in red, right angles in green, and obtuse angles in blue in given figures."
+        }
+      ]
+    },
+    {
+      "ref": "S8",
+      "title": "Shapes with Straws — Rigidity and 2D Shapes",
+      "prose_summary": "Students construct triangles and rectangles with straws and plasticine, push sides to test rigidity, and observe how angles change. They trace shapes, draw multiple three- and four-sided shapes on dot grids, and investigate which have right angles. The section builds the concept that triangles are rigid while quadrilaterals are not, and introduces properties of rectangles and squares at the concrete→pictorial level.",
+      "tasks": [
+        {
+          "id": "T-28",
+          "banner": "Shapes with Straws",
+          "intent": "explore",
+          "book_ref": "Shapes with Straws (triangle and rectangle), p.14",
+          "description": "Make triangle and rectangle with straws and clay; push sides; trace shapes; observe rigidity and angle changes. Repeat for square and pentagon."
+        },
+        {
+          "id": "T-29",
+          "banner": "Shapes with Straws",
+          "intent": "reason",
+          "book_ref": "Shapes with Straws (pentagon and circle), p.16",
+          "description": "Make a pentagon with equal straws; push a side and observe angle change. Investigate whether a circle can be made with straws; observe what happens with unequal straws."
+        },
+        {
+          "id": "T-30",
+          "banner": "Dot grid",
+          "intent": "practice",
+          "book_ref": "Dot grid (3- and 4-sided shapes), p.15",
+          "description": "Draw several three- and four-sided shapes on the dot grid; circle shapes with one or more right angles; count shapes with 1, 2, 3, all right angles."
+        },
+        {
+          "id": "T-31",
+          "banner": "4-sided shapes",
+          "intent": "reason",
+          "book_ref": "4-sided shapes, p.15",
+          "description": "Examine given 4-sided shapes; discuss in what ways rectangle and square differ from the other shapes shown."
+        }
+      ]
+    },
+    {
+      "ref": "S9",
+      "title": "Circles — Radius and Diameter",
+      "prose_summary": "Students draw a circle by marking equidistant points from a centre and then explore the circle's properties via paper folding: multiple folds of circular paper reveal that all creases (diameters) pass through the centre and are equal in length, while the radius is half the diameter. They use a compass to draw circles and create designs. Concrete paper-folding leads to the symbolic relationship radius = diameter ÷ 2.",
+      "tasks": [
+        {
+          "id": "T-32",
+          "banner": "Let Us Make",
+          "intent": "explore",
+          "book_ref": "Let Us Make (draw circle with scale), p.16",
+          "description": "Mark a point A; draw many points equidistant from A; connect dots freehand to get a circle. Identify centre and radius."
+        },
+        {
+          "id": "T-33",
+          "banner": "Amazing Circles",
+          "intent": "explore",
+          "book_ref": "Amazing Circles Q1–Q5, p.17",
+          "description": "Fold circular paper in half three different ways; measure each crease; note all creases are equal (diameters); measure radius; discuss relationship between radius and diameter."
+        },
+        {
+          "id": "T-34",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do (diameter fold), p.18",
+          "description": "Fold circular paper in half then half again to find that diameter is double the radius."
+        },
+        {
+          "id": "T-35",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do (compass design), p.18",
+          "description": "Use a compass (with teacher help) to draw the three-step circle design; mark centre, radius, and diameter on the carpet design."
+        },
+        {
+          "id": "T-36",
+          "banner": "Look at the wheels",
+          "intent": "reason",
+          "book_ref": "Look at the wheels, p.19",
+          "description": "Observe wheels A, B, C, D; name the wheel with longest radius, shortest radius, longest diameter, shortest diameter."
+        }
+      ]
+    },
+    {
+      "ref": "S10",
+      "title": "Puzzling Shapes and 2D Shape Sorting",
+      "prose_summary": "Students identify hidden shapes inside composite figures, divide shapes into specified sub-shapes by drawing lines, and sort 2D shape cards by number of sides. These puzzle tasks consolidate identification and decomposition of 2D shapes, operating at the pictorial level with spatial reasoning as the primary demand.",
+      "tasks": [
+        {
+          "id": "T-37",
+          "banner": "Puzzling Shapes",
+          "intent": "reason",
+          "book_ref": "Puzzling Shapes Q1–Q4, p.19–20",
+          "description": "Identify hidden shapes and write names; draw 2 lines to divide triangle into 1 square + 2 triangles; draw 2 lines to divide square into 3 triangles; draw cuts on shapes to get specified smaller shapes."
+        },
+        {
+          "id": "T-38",
+          "banner": "Card Game",
+          "intent": "practice",
+          "book_ref": "Card Game, p.20",
+          "description": "Sort 2D-shape cards into three groups by number of sides; draw sorted shapes and explain sorting."
+        }
+      ]
+    },
+    {
+      "ref": "S11",
+      "title": "Let Us Try — Reasoning and Puzzle Tasks",
+      "prose_summary": "A consolidation set of puzzle and reasoning tasks: counting triangles/rectangles in spider webs, tracing paths that traverse each edge once (Eulerian-path exploration), making triangles with matchsticks, moving and removing matchsticks to form new shapes, and modelling solids from straw-and-clay ball counts. Students also classify 2D shapes by number of angles and draw shapes with fewer or more than five angles, marking right angles. These tasks demand multi-step spatial reasoning at the pictorial→symbolic level.",
+      "tasks": [
+        {
+          "id": "T-39",
+          "banner": "Let Us Try",
+          "intent": "reason",
+          "book_ref": "Let Us Try Q1 (Squiggly spiders), p.21",
+          "description": "Count triangles in triangular web; trace a path from A back to A without reusing a wall. Count rectangles in rectangular web; trace a path from A to B without reusing a wall."
+        },
+        {
+          "id": "T-40",
+          "banner": "Let Us Try",
+          "intent": "explore",
+          "book_ref": "Let Us Try Q2 (matchsticks — 2 triangles), p.21",
+          "description": "Use 5 matchsticks to make 2 triangles; draw it."
+        },
+        {
+          "id": "T-41",
+          "banner": "Let Us Try",
+          "intent": "reason",
+          "book_ref": "Let Us Try Q3 (move 2 matchsticks — 4 triangles), p.22",
+          "description": "Move two matchsticks from the given arrangement to form 4 triangles."
+        },
+        {
+          "id": "T-42",
+          "banner": "Let Us Try",
+          "intent": "reason",
+          "book_ref": "Let Us Try Q4 (remove 4 matchsticks — 3 triangles), p.22",
+          "description": "Remove 4 matchsticks from the given arrangement to leave only 3 triangles."
+        },
+        {
+          "id": "T-43",
+          "banner": "Let Us Try",
+          "intent": "solve",
+          "book_ref": "Let Us Try Q5 (model challenge), p.22",
+          "description": "Make solid shape models using: (a) 12 straws + 8 clay balls; (b) 9 straws + 6 clay balls; (c) 15 straws + 10 clay balls; (d) 10 straws + 6 clay balls."
+        },
+        {
+          "id": "T-44",
+          "banner": "Let Us Try",
+          "intent": "reason",
+          "book_ref": "Let Us Try Q6 (classify by angles), p.22",
+          "description": "Classify shapes a–g into 3 angles / 4 angles / 5 angles groups; identify the relation between number of sides and number of angles."
+        },
+        {
+          "id": "T-45",
+          "banner": "Let Us Try",
+          "intent": "practice",
+          "book_ref": "Let Us Try Q7 (draw 2D shapes), p.23",
+          "description": "Draw a 2D shape with fewer than 5 angles; draw a 2D shape with more than 5 angles."
+        },
+        {
+          "id": "T-46",
+          "banner": "Let Us Try",
+          "intent": "practice",
+          "book_ref": "Let Us Try Q8 (mark right angles), p.23",
+          "description": "Mark right angles in each figure; write the number of right angles; identify shapes with only right angles."
+        },
+        {
+          "id": "T-47",
+          "banner": "Let Us Try",
+          "intent": "reason",
+          "book_ref": "Let Us Try Q9 (identify angle types in shapes), p.23",
+          "description": "Identify the shape that has: 2 right + 1 acute + 1 obtuse; 1 right + 2 obtuse + 1 acute; 2 obtuse + 2 acute; 4 right angles."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 1,
+  "procedural_load": 1
+}

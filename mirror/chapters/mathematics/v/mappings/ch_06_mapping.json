@@ -1,0 +1,43 @@
+{
+    "stage": "preparatory",
+    "subject": "mathematics",
+    "grade": "v",
+    "chapter_number": 6,
+    "chapter_title": "The Dairy Farm",
+
+    "core_cg": "CG-1",
+
+    "core_competencies": [
+        {
+            "c_code": "C-1.3",
+            "justification": "The entire chapter is organised around understanding multiplication as an operation and executing it in multiple ways. Students discover commutativity through butter-packet arrays, apply the distributive property via Nida's area-model grid, Kanti's partial-product expansion, and John's grouped-row method, and extend these to 3-digit by 3-digit problems in the Dairy Cooperative section. Throughout, the focus is on understanding why each method works and applying the operation to daily-life word problems — from milk production and fodder requirements to book-exhibition costs and auditorium seating."
+        },
+        {
+            "c_code": "C-1.4",
+            "justification": "Dedicated sections develop the ability to recognise, describe, and extend multiplicative number patterns at the symbolic level. Students observe and complete four distinct pattern sets: repunit products (1×1, 11×11, 111×111, 1111×1111), squares of numbers ending in 5 (5×5, 15×15, 25×25…55×55), multiplication-by-11 patterns (11×12=132, 11×34=374…), and the 1×9+1 digit sequence. A further task asks students to notice how halving one factor and doubling the other preserves the product, and to predict related products from a known one — for instance deriving 32×44 and 16×22 from 16×44=704."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-4.1",
+            "justification": "Multi-step word problems woven throughout the chapter require students to select and sequence operations to reach a solution. The football tournament problem asks students to compute ticket revenue (57 tickets × ₹115), participation fees (3 teams × ₹1,599), and total expenses in a single extended scenario. The King's Reward problem requires chaining seven successive multiplications for each of three reward schemes and comparing outcomes. The error-analysis 'Check, Check!' section also develops problem-solving disposition by asking students to reason about whether a given solution is valid and to locate the exact point of error."
+        },
+        {
+            "c_code": "C-4.3",
+            "justification": "The chapter explicitly teaches selection of computation method as a learning goal. The 'Many Ways to Multiply' section presents five different mental strategies for 18×5 and asks students to evaluate all of them, while the doubling-and-halving and nearest-multiple sections each specify contexts where those strategies are most efficient. The 'Let Us Do Easy Ways' task asks students to find the easiest method for problems like 16×25 and 199×63, and an estimation-and-matching task requires students to approximate products by rounding before computing — directly exercising the judgement described in this competency."
+        },
+        {
+            "c_code": "C-3.4",
+            "justification": "The area-model grid is the primary written method for multiplication introduced in this chapter: Nida's method explicitly partitions a rectangular array into sub-rectangles (e.g. 60×40, 60×5, 9×40, 9×5 for 69×45) and sums their areas to find the total. The chapter opens with counting butter-packet rectangular arrangements, and every 2-digit and 3-digit worked example uses a length × breadth rectangle divided into partial areas. Students encounter area as the geometric meaning of multiplication well before the standard algorithm, grounding the formula for rectangle area in lived computation experience."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to multiply whole numbers fluently by developing multiple equivalent strategies — commutativity, distributive decomposition, doubling-and-halving, and nearest-multiple compensation — and connecting each strategy to its place-value foundation, while also training the student to recognise and extend multiplicative patterns in number sequences.",
+
+    "conceptual_demand": 3,
+    "task_load": 3,
+    "exploration_load": 0,
+    "procedural_load": 1,
+    "effort_index": 13.5
+}

@@ -1,0 +1,174 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 15,
+  "chapter_title": "Data Through Pictures",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Child TV Reporter",
+      "prose_summary": "Samaira and Kabir collect data from 35 friends on hours spent watching TV, recording raw responses in a notebook. Students organise this unstructured data into a frequency table with categories (½ hr, 1 hr, 1½ hr, 2 hrs, more than 2 hrs). The section moves from raw data (concrete counting of faces) to a structured table (pictorial-to-symbolic). It introduces the idea that organising data makes it easier to answer questions.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do, p.180",
+          "description": "Complete the frequency table by counting children for each TV-watching duration from the notebook picture."
+        },
+        {
+          "id": "T-2",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1–Q4, p.180",
+          "description": "Answer 4 questions: how many watch more than half an hour, less than two hours, more than two hours; true/false comparison of two-hour vs half-hour watchers."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Stock-Taking in a Shop",
+      "prose_summary": "Joseph Uncle's shop has too many items to draw one picture per item, introducing the need for a scale in pictographs. Dipesh suggests 1 icon = 5 items, producing a pictograph for toys, board games, and sports items. Students read the pictograph to find counts and explore alternative scales, moving from the concrete problem (too many items) to the symbolic solution (scale-based icon representation). The section anchors the concept of scale as a tool for managing large data sets.",
+      "tasks": [
+        {
+          "id": "T-3",
+          "banner": "Let us Think",
+          "intent": "reason",
+          "book_ref": "Let us Think, p.180",
+          "description": "Suggest some ways for Joseph Uncle to show large numbers of items using pictures."
+        },
+        {
+          "id": "T-4",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q1–Q3, p.181",
+          "description": "Answer: how many toys, board games, and total play items does Joseph Uncle have, based on the pictograph with scale 1 icon = 5."
+        },
+        {
+          "id": "T-5",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do, p.181",
+          "description": "Choose your own scale and represent the same shop data using a pictograph in your notebook."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Two-wheelers on the Road",
+      "prose_summary": "Deepti records two-wheelers passing her house on Monday, Wednesday, and Friday, using 1 icon = 3 two-wheelers. The pictograph shows varying counts across three days, and students read and compare data using the given scale. The section reinforces scale reading and introduces comparison across categories (days) at the pictorial level. Students also create their own pictograph with an alternative scale, consolidating understanding of the scale concept.",
+      "tasks": [
+        {
+          "id": "T-6",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1–Q4, p.182",
+          "description": "Answer 4 questions from the two-wheelers pictograph: most two-wheelers day, total over three days, difference Monday vs Wednesday, difference Friday vs Wednesday."
+        },
+        {
+          "id": "T-7",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q5, p.182",
+          "description": "Choose any other scale and represent the same two-wheeler data using a pictograph in your notebook."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Recording a Day — Pictograph vs Bar Graph",
+      "prose_summary": "Raman records his daily routine using a pictograph (1 icon = 1 hour) showing sleeping, school, studying, eating/playing, and other activities. Sheela records the same type of data using a vertical bar graph with labelled axes, introducing the bar graph as a new representation. Students compare both methods and answer questions that require reading across two representations. The section marks the transition from pictograph to bar graph at the pictorial-to-symbolic stage.",
+      "tasks": [
+        {
+          "id": "T-8",
+          "banner": "Let us Discuss",
+          "intent": "reason",
+          "book_ref": "Let us Discuss, p.183",
+          "description": "Discuss in class: how is Sheela's recording (bar graph) different from Raman's recording (pictograph)?"
+        },
+        {
+          "id": "T-9",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1–Q5, p.183",
+          "description": "Answer 5 questions comparing Raman's and Sheela's daily routines: sleeping, school hours, studying hours, same-time activities, whose routine is more balanced."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Day in My Life",
+      "prose_summary": "Students record their own 24-hour daily routine in hours and minutes across activities (sleeping, school, studying, eating, others), then represent the data as a bar graph in a provided grid. This is an open-ended data collection task grounded in the student's own life, moving from concrete lived experience to a pictorial bar graph. The section connects the concept to self-generated data, making the representation personally meaningful.",
+      "tasks": [
+        {
+          "id": "T-10",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do, p.184",
+          "description": "Record your own daily routine (24 hours) in hours and minutes for activities like sleeping, studying, playing, eating, and others in the table."
+        },
+        {
+          "id": "T-11",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do, p.184",
+          "description": "Make a bar graph of the time you spend on different activities using the grid provided."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Whose Index Finger is Longer?",
+      "prose_summary": "Students cut paper strips to the exact length of their index finger and paste them as bars along a horizontal axis to create a physical bar graph of finger lengths. This hands-on activity grounds the bar graph concept in a concrete, measurable body measurement. It reinforces that bar height encodes quantity (length), and students read their physical bar graph to answer comparison questions. The activity is a pure concrete-to-pictorial bridge using manipulatives (paper strips).",
+      "tasks": [
+        {
+          "id": "T-12",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do, p.184–185",
+          "description": "Cut paper strips to the length of each friend's index finger and paste them along the horizontal line in the given bar graph."
+        },
+        {
+          "id": "T-13",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1–Q4, p.185",
+          "description": "Answer 4 questions from your paper-strip bar graph: whose finger is longest, length of longest, length of smallest, whose it belongs to."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Food Wastage in the School Canteen",
+      "prose_summary": "A bar graph shows daily food wastage (in kg) across five weekdays in Rani's school canteen, with different food items each day. Students read the bar graph to compare wastage across days, compute totals, and apply a unit-rate calculation (1 kg feeds 3 children). The section uses a real-world context (food waste) to build data literacy and introduces a value-based discussion on reducing waste. It reinforces bar graph reading at the symbolic interpretation level.",
+      "tasks": [
+        {
+          "id": "T-14",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1–Q6, p.186",
+          "description": "Answer 6 questions from the food wastage bar graph: highest wastage item, least wastage item, total wastage, children that could be fed, comparison across days, predict next week's wastage."
+        }
+      ]
+    },
+    {
+      "ref": "S8",
+      "title": "True or False",
+      "prose_summary": "A picture shows a group of school children with various attributes — caps, glasses, books, and backpacks. Students examine the picture carefully and judge eight True/False statements about counts and comparisons (e.g., 'All girls are wearing glasses', '10 children are wearing caps'). This section introduces data collection and reading from visual/pictorial data that is not pre-organised as a table or graph. It sharpens careful observation and counting from a real image, building foundational data sense.",
+      "tasks": [
+        {
+          "id": "T-15",
+          "banner": "True or False",
+          "intent": "reason",
+          "book_ref": "True or False, p.187",
+          "description": "Observe the picture of children and determine True or False for 8 statements about glasses, caps, books, and backpacks worn/held by boys and girls."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 1,
+  "exploration_load": 1,
+  "procedural_load": 0
+}

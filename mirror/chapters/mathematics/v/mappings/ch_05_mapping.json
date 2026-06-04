@@ -1,0 +1,43 @@
+{
+    "stage": "preparatory",
+    "subject": "mathematics",
+    "grade": "v",
+    "chapter_number": 5,
+    "chapter_title": "Far and Near",
+
+    "core_cg": "CG-3",
+
+    "core_competencies": [
+        {
+            "c_code": "C-3.2",
+            "justification": "The chapter opens by asking students to identify whether metres or centimetres is the appropriate unit for a range of real-world quantities — the height of India Gate, the length of a handkerchief, the depth of a well. It then introduces professional distance-measuring tools (long tape, rodometer, rangefinder, laser distance meter) and has students physically select and use the long tape to measure 100 m and 200 m on the school playground, developing genuine unit-and-tool sense across the full metric range."
+        },
+        {
+            "c_code": "C-3.3",
+            "justification": "Carrying out unit conversions is the dominant procedural strand of the chapter. The Relationships between Different Units section alone provides three complete double number lines (mm↔cm, cm↔m, m↔km) and a 14-part conversion drill that asks students to convert in both directions across all four metric units. The Adding and Subtracting Lengths section extends this by requiring students to convert compound lengths (e.g. km+m, m+cm) either before or during column computation, so conversion fluency is inseparable from every arithmetic task in the chapter."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-1.3",
+            "justification": "The Adding and Subtracting Lengths section and the Multiplying and Dividing Lengths section require students to apply all four arithmetic operations to compound lengths in real contexts — adding ribbon rolls, subtracting cable distances, multiplying cloth length by the number of shirts, and dividing a road-laying total across six equal days. The four operations are the computational engine driving the measurement problem-solving throughout the chapter."
+        },
+        {
+            "c_code": "C-4.1",
+            "justification": "The Kilometre Race tasks are multi-step planning problems that ask students to partition a 3 km course by dividing it into 500 m water-station intervals, 300 m marshalling positions, and 50 m flag placements — each requiring a distinct calculation and logical sequencing of positions. The Vivek Express distance table similarly poses five layered real-life questions that require subtraction, comparison, and inference from a data table. The Try This operation-sign grid is a direct puzzle task."
+        },
+        {
+            "c_code": "C-4.3",
+            "justification": "The Adding and Subtracting Lengths section explicitly presents two parallel strategies — adding like units then regrouping, versus converting all quantities to a single unit before computing — and the accompanying teacher note specifically asks teachers to encourage mental strategies for convenient numbers. The Let Us Estimate tasks require students to choose a real-world reference object and apply it to judge heights and depths, practising estimation as a deliberate computational strategy rather than guessing."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to measure and convert lengths and distances by working fluently across the full metric unit hierarchy — from millimetres to kilometres — through concrete playground measurement, pictorial double number line reasoning, and symbolic column arithmetic on compound quantities.",
+
+    "conceptual_demand": 3,
+    "task_load": 3,
+    "exploration_load": 1,
+    "procedural_load": 2,
+    "effort_index": 16.5
+}

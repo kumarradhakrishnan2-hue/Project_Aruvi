@@ -1,0 +1,167 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 14,
+  "chapter_title": "Maps And Locations",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Finding Directions",
+      "prose_summary": "This section introduces the four cardinal directions (North, South, East, West) by anchoring them to a child's body facing the rising Sun. Students physically enact the orientation — face East (rising Sun), left hand points North, right hand points West — making it a concrete, embodied entry to directional language. The concrete model is the body itself as a compass, placing the idea firmly on the concrete end of the concrete→symbolic path. A poem 'Four Little Chicks' reinforces the four directions through narrative.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "",
+          "intent": "reason",
+          "book_ref": "p.171",
+          "description": "Manu faces the rising Sun; fill: that direction is ___, left hand points ___ direction, right hand points ___ direction; which way is west?"
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Bird Watching — Directions on a Camp Map",
+      "prose_summary": "Students read a pictorial camp map and apply directional clues (west of road, closest to lake, north of green tent, south of lake) to colour-code tents correctly, then draw a new tent east of the lake. The map serves as a semi-pictorial model that bridges concrete orientation to map-reading. The task requires students to interpret relative directions from a top-down view rather than from their own body, a key conceptual shift.",
+      "tasks": [
+        {
+          "id": "T-2",
+          "banner": "Bird Watching!",
+          "intent": "reason",
+          "book_ref": "Bird Watching!, p.172",
+          "description": "Read clues about tent positions (west of road, closest to lake, north of green, south of lake); colour tents accordingly; draw a tent east of the lake."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Map of a Room",
+      "prose_summary": "Students read a pictorial room layout and name the direction of objects (window, bed, cupboard, bedside table) relative to a girl standing in the room, extending directional reasoning to interior space. They then apply this to their own room by making a freehand drawing with a direction arrow and listing objects in each cardinal direction. This section moves from pictorial (given map) to symbolic-personal (own room map), consolidating direction as a relational concept.",
+      "tasks": [
+        {
+          "id": "T-3",
+          "banner": "Map of a Room",
+          "intent": "reason",
+          "book_ref": "Map of a Room, p.172",
+          "description": "Write the directions of window, bed, cupboard, and bedside table in relation to the girl in the room diagram."
+        },
+        {
+          "id": "T-4",
+          "banner": "Map of a Room",
+          "intent": "explore",
+          "book_ref": "Map of a Room, p.173",
+          "description": "Make a drawing of your room; locate directions of things from the centre; draw the direction arrow for your room."
+        },
+        {
+          "id": "T-5",
+          "banner": "Map of a Room",
+          "intent": "practice",
+          "book_ref": "Map of a Room, p.173",
+          "description": "Write the names of things placed in East, West, North, and South directions in your room."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Zoo Trip — Street Map and Bus Route",
+      "prose_summary": "Students read a detailed street map showing named roads (Hospital Road, Market Road, Park Road), houses, landmarks, and two bus stops, and navigate a bus route by identifying direction changes and road names. This section introduces multi-landmark map reading — directions are now relative to a top-down map with compass rose, not just one's own body. Five sub-questions require students to locate neighbours, trace routes, compare distances, and determine movement directions, making it the most complex directional reasoning task in the chapter.",
+      "tasks": [
+        {
+          "id": "T-6",
+          "banner": "Bus Route",
+          "intent": "reason",
+          "book_ref": "Bus Route, p.174",
+          "description": "Fill blanks: bus goes north from parking, turns right onto ___ Road driving ___ direction to reach S1; turns right/left onto ___ Road driving ___ direction to reach S2."
+        },
+        {
+          "id": "T-7",
+          "banner": "Bus Route",
+          "intent": "reason",
+          "book_ref": "Bus Route, p.174",
+          "description": "(a) Houses east of Jaideep's; (b) route from Ravi's house to children's park; (c) stop closer to Lali's house; (d) route for Golu to nearest stop; (e) direction for Prem to reach Stop 2."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Delhi Metro Train Stations",
+      "prose_summary": "Students read a real Delhi Metro map with a colour-coded key (Red, Yellow, Blue, Green, Violet, Pink, Magenta, Airport Express lines) and learn to use map symbols and legends. They mark specific stations, trace multiple routes between two points, and evaluate routes by number of interchanges and stations. This section moves map reading to a more abstract, symbolic level — lines represent routes, circles represent stations — requiring students to decode a conventional map legend before reasoning about it.",
+      "tasks": [
+        {
+          "id": "T-8",
+          "banner": "Delhi Metro Train Stations",
+          "intent": "explore",
+          "book_ref": "Delhi Metro Train Stations, p.175",
+          "description": "Read the key; identify symbols on the metro map; name what different coloured lines represent; mark Qutb Minar on Yellow Line and Supreme Court on Blue Line."
+        },
+        {
+          "id": "T-9",
+          "banner": "Delhi Metro Train Stations",
+          "intent": "reason",
+          "book_ref": "Delhi Metro Train Stations, p.176",
+          "description": "(a) Trace different routes Qutb Minar→Supreme Court; (b) Lali's suggestion — which stations to change line again; (c) route with least stations; (d) best route to zoo from Qutb Minar."
+        },
+        {
+          "id": "T-10",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do, p.176",
+          "description": "Make a map of school with key for symbols; hide objects; mark positions with red dots/flags; challenge friends to find hidden things using the map."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Anthill in the Zoo — Grid Distances and Directions",
+      "prose_summary": "Students use a scaled grid (1 cm intervals) with compass directions to describe the ant's path from a starting point to different food items using distances and cardinal directions. Routes to closer items use a single direction; routes to farther items require two or three direction segments, introducing the idea of a multi-step path description. The grid is a pictorial-to-symbolic bridge: the student reads the picture but must express the path in symbolic direction-distance language. An open-ended prompt asks students to identify alternative routes and determine the shortest.",
+      "tasks": [
+        {
+          "id": "T-11",
+          "banner": "Anthill in the Zoo",
+          "intent": "reason",
+          "book_ref": "Anthill in the Zoo, p.177",
+          "description": "Fill blanks: distance and direction for ant to reach sugar (b), bread (c — two segments), apple (d — three segments); identify other routes to apple and which is shortest."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Locating Animals — Coordinate Grid (Ordered Pairs)",
+      "prose_summary": "Students read a 12×12 grid map of a zoo where animals are placed at specific intersections, and learn to locate points using ordered pairs (column, row) — move horizontally east first, then vertically north. The section introduces the coordinate system explicitly: the textbook models the reading rule (horizontal first, then vertical), asks students to fill in steps to reach the tortoise, then gives three sets of exercises — locate animals from coordinates, write coordinates of named animals, and place coloured dots at given coordinates. This is the chapter's most symbolic section, establishing early coordinate geometry on a concrete zoo-map context.",
+      "tasks": [
+        {
+          "id": "T-12",
+          "banner": "Locating the Animals in the Zoological Park (Zoo)",
+          "intent": "reason",
+          "book_ref": "Locating the Animals in the Zoological Park (Zoo), p.178",
+          "description": "Fill blanks to reach tortoise: steps east→column, steps north→row; state location of tortoise (4,1); identify what is at (1,4)."
+        },
+        {
+          "id": "T-13",
+          "banner": "Locating the Animals in the Zoological Park (Zoo)",
+          "intent": "practice",
+          "book_ref": "Locating the Animals in the Zoological Park (Zoo) Q1, p.178",
+          "description": "Locate the animal at positions (11,11), (2,6), (6,4), (3,10), (11,3), (10,9) on the zoo grid map."
+        },
+        {
+          "id": "T-14",
+          "banner": "Locating the Animals in the Zoological Park (Zoo)",
+          "intent": "practice",
+          "book_ref": "Locating the Animals in the Zoological Park (Zoo) Q2, p.178",
+          "description": "Write the ordered-pair position of Lion, Elephant, Tortoise, Deer, Panda, and Crocodile on the zoo map."
+        },
+        {
+          "id": "T-15",
+          "banner": "Locating the Animals in the Zoological Park (Zoo)",
+          "intent": "practice",
+          "book_ref": "Locating the Animals in the Zoological Park (Zoo) Q3, p.178",
+          "description": "Place coloured dots at positions (8,3) Red, (2,9) Green, (7,3) Blue, (3,8) Orange, (8,6) Black, (6,6) Pink on the zoo grid."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 1,
+  "exploration_load": 1,
+  "procedural_load": 1
+}

@@ -1,0 +1,43 @@
+{
+    "stage": "preparatory",
+    "subject": "mathematics",
+    "grade": "v",
+    "chapter_number": 11,
+    "chapter_title": "Grandmother's Quilt",
+
+    "core_cg": "CG-3",
+
+    "core_competencies": [
+        {
+            "c_code": "C-3.4",
+            "justification": "The chapter's central purpose is to derive and apply the area formula for rectangles and squares. Starting from the concrete observation that 6 rows of 4 patches each gives 24 patches without counting individually, students arrive at Area = Length × Breadth and then extend this to Area = Length × Length for squares. They apply these formulas to compute areas of grid-drawn shapes, the classroom floor, real objects like notebooks and blackboards, a 42 m × 34 m field, and a composite L-shaped figure — making the formula the load-bearing concept across the second half of the chapter."
+        },
+        {
+            "c_code": "C-3.6",
+            "justification": "An independently developed conceptual strand runs through the chapter explicitly to build the insight that equal areas do not imply equal perimeters, and equal perimeters do not imply equal areas. The Let Us Explore activities ask students to identify shapes with the same area and compare their perimeters, and then to identify shapes with the same perimeter and compare their areas. This is reinforced in the Let Us Do that asks students to draw multiple different shapes all having the same area as a given rectangle and record that the perimeters differ — a direct and deliberate construction of this competency."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-3.5",
+            "justification": "Students estimate and then verify the areas of genuinely irregular shapes — they trace their palm on a square grid and find an approximate area, place real leaves of different kinds on a grid to compare areas, and determine approximate areas by counting partial squares. These activities develop a strategy for estimating area for irregular shapes before any formula is available, which is exactly the estimation-then-verification work this competency describes."
+        },
+        {
+            "c_code": "C-1.3",
+            "justification": "The area formula connects directly to multiplication as a model: rows of unit squares multiplied by columns gives total area, building a geometric understanding of multiplication. Students apply this in several computation tasks — finding the area of a 42 m × 34 m field, working backwards from area 64 sq m and length 16 m to find the breadth using division, and computing the area of a composite figure by decomposing it into two rectangles and adding the results."
+        },
+        {
+            "c_code": "C-4.1",
+            "justification": "The perimeter game on the last page asks students to strategically arrange square tiles rolled from a die and then add tiles turn by turn until the perimeter of the growing figure reaches exactly 24 — a puzzle that requires reasoning about how tile placement affects perimeter, not just computation. The composite L-shaped figure in the final exercise also demands a problem-solving step of decomposing an irregular shape into two rectangles before applying the formula."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to measure the area of rectangular and square regions by deriving and applying the Length × Breadth formula from a concrete row-column tiling argument, while simultaneously developing the insight that area and perimeter are independent attributes that can vary independently of each other.",
+
+    "conceptual_demand": 2,
+    "task_load": 2,
+    "exploration_load": 1,
+    "procedural_load": 1,
+    "effort_index": 11.0
+}

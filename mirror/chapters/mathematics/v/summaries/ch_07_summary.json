@@ -1,0 +1,300 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 7,
+  "chapter_title": "Shapes and Patterns",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Weaving Mats",
+      "prose_summary": "Students make woven paper mats by folding a sheet, cutting slits, and weaving colour strips in alternating over-under sequences. The activity establishes the idea of a repeating rule as the generator of a pattern. Students then decode and write the weave rules for progressively complex mats — from 1-over-1-under to 2-over-1-under — and work out rules for given designs. The section sits firmly on the concrete end of the concrete→pictorial→symbolic path.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let us make paper mats",
+          "intent": "explore",
+          "book_ref": "Let us make paper mats, p.92",
+          "description": "Fold coloured paper, cut slits, and weave 8 strips in alternating 1-under-1-over / 1-over-1-under pattern to make a mat."
+        },
+        {
+          "id": "T-2",
+          "banner": "Q2",
+          "intent": "reason",
+          "book_ref": "Q2, p.93",
+          "description": "Figure out how the 2-over-1-under mat is woven by studying the first two rows and writing the pattern rule."
+        },
+        {
+          "id": "T-3",
+          "banner": "Q3",
+          "intent": "explore",
+          "book_ref": "Q3, p.93",
+          "description": "Weave a pattern using the 4-row rule given (2over-1under; 1under+3over-3under...; 2under-1over; 1over+3under-3over)."
+        },
+        {
+          "id": "T-4",
+          "banner": "Q4",
+          "intent": "reason",
+          "book_ref": "Q4, p.93",
+          "description": "Work out the steps for either of the two shown weave designs; write the pattern for each row until it starts repeating."
+        },
+        {
+          "id": "T-5",
+          "banner": "Let Us Try",
+          "intent": "practice",
+          "book_ref": "Let Us Try, p.93",
+          "description": "Draw the given weave pattern on grid paper; complete the rest of the grid to get the full design."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Tiling and Tessellation",
+      "prose_summary": "Students investigate which regular shapes — triangles, squares, hexagons, pentagons, octagons — tessellate by physically fitting cutouts around a point and checking for gaps or overlaps. The concept of regular shapes (equal sides) is introduced, and students discover that equilateral triangles, squares, and regular hexagons tessellate while pentagons and octagons do not. Students then extend to multi-shape tessellating patterns and continue them on dot/grid paper, moving from concrete manipulation to pictorial representation.",
+      "tasks": [
+        {
+          "id": "T-6",
+          "banner": "Find Out",
+          "intent": "explore",
+          "book_ref": "Find Out, p.94",
+          "description": "Fit regular triangle cutouts around a point without any gap; count how many fit together."
+        },
+        {
+          "id": "T-7",
+          "banner": "Find Out",
+          "intent": "explore",
+          "book_ref": "Find Out, p.94",
+          "description": "Try fitting square cutouts around a point without any gap or overlap; count how many squares are needed."
+        },
+        {
+          "id": "T-8",
+          "banner": "Find Out",
+          "intent": "reason",
+          "book_ref": "Find Out, p.94",
+          "description": "Can 5 squares fit together around a point without gaps or overlaps? Why or why not?"
+        },
+        {
+          "id": "T-9",
+          "banner": "Find Out",
+          "intent": "explore",
+          "book_ref": "Find Out, p.94",
+          "description": "Try fitting regular hexagon cutouts at a point; count how many fit together without gaps or overlaps."
+        },
+        {
+          "id": "T-10",
+          "banner": "Find Out",
+          "intent": "reason",
+          "book_ref": "Find Out, p.95",
+          "description": "Identify the two shapes in the given tessellating pattern; continue the pattern on the grid and colour it appropriately."
+        },
+        {
+          "id": "T-11",
+          "banner": "Find Out",
+          "intent": "explore",
+          "book_ref": "Find Out, p.95",
+          "description": "Try drawing regular octagons together to check whether they tessellate without gaps or overlaps."
+        },
+        {
+          "id": "T-12",
+          "banner": "Find Out",
+          "intent": "reason",
+          "book_ref": "Find Out, p.96",
+          "description": "Identify shapes meeting at marked points in the octagon+square tiling; check if same shapes meet at all points; continue and colour the pattern."
+        },
+        {
+          "id": "T-13",
+          "banner": "Find Out",
+          "intent": "reason",
+          "book_ref": "Find Out, p.96",
+          "description": "In the square+triangle tiling: identify shapes at marked points; check consistency; continue and colour it; reason whether triangles are equilateral."
+        },
+        {
+          "id": "T-14",
+          "banner": "Find Out",
+          "intent": "explore",
+          "book_ref": "Find Out, p.96",
+          "description": "Create similar tiling patterns using other cutouts of shapes."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Triangles from a Rhombus",
+      "prose_summary": "Students cut a rhombus into four congruent triangles and fit two or more together to make new shapes, discovering isosceles, equilateral, and scalene triangles. Through paper-folding, they compare sides and angles of each triangle type, building the classification of triangles by side equality. Using three pieces, students form 3-, 4-, and 5-sided shapes, and with all four pieces, they test which named polygons are achievable — bridging concrete manipulation with reasoning about shape properties.",
+      "tasks": [
+        {
+          "id": "T-15",
+          "banner": "Try This",
+          "intent": "explore",
+          "book_ref": "Try This, p.97",
+          "description": "Cut rhombus triangular pieces; fit 2 together; trace and identify the geometrical shapes created."
+        },
+        {
+          "id": "T-16",
+          "banner": "Try This Q1",
+          "intent": "reason",
+          "book_ref": "Try This Q1, p.97",
+          "description": "How many different types of triangles can you make with 2 rhombus pieces? Observe and measure their sides; what do you notice?"
+        },
+        {
+          "id": "T-17",
+          "banner": "Try This Q2",
+          "intent": "reason",
+          "book_ref": "Try This Q2, p.97",
+          "description": "Is it possible to make a triangle where all three sides are equal (equilateral triangle) from the rhombus pieces?"
+        },
+        {
+          "id": "T-18",
+          "banner": "Try This Q3",
+          "intent": "reason",
+          "book_ref": "Try This Q3, p.97",
+          "description": "Is it possible to make a triangle where all three sides are unequal (scalene) from the rhombus pieces?"
+        },
+        {
+          "id": "T-19",
+          "banner": "Try This",
+          "intent": "explore",
+          "book_ref": "Try This, p.97",
+          "description": "Cut equilateral triangle; fold to check all angles are equal; cut in half; observe the resulting scalene triangle and check its angles."
+        },
+        {
+          "id": "T-20",
+          "banner": "Try This Q4",
+          "intent": "explore",
+          "book_ref": "Try This Q4, p.98",
+          "description": "How many different 4-sided shapes (quadrilaterals) can you make by fitting 2 rhombus triangles? Explore the possibilities."
+        },
+        {
+          "id": "T-21",
+          "banner": "Try This Q5",
+          "intent": "reason",
+          "book_ref": "Try This Q5, p.98",
+          "description": "Measure sides of quadrilaterals A and B; find equal pairs (adjacent or opposite); identify what types of angles each has."
+        },
+        {
+          "id": "T-22",
+          "banner": "Try This Q6",
+          "intent": "practice",
+          "book_ref": "Try This Q6, p.99",
+          "description": "Draw two different kites and two different parallelograms in the grid given."
+        },
+        {
+          "id": "T-23",
+          "banner": "Try This Q7",
+          "intent": "explore",
+          "book_ref": "Try This Q7, p.99",
+          "description": "Use 3 rhombus triangles to form shapes; count sides of each; try creating a 3-sided, 4-sided, and 5-sided shape."
+        },
+        {
+          "id": "T-24",
+          "banner": "Try This Q8",
+          "intent": "explore",
+          "book_ref": "Try This Q8, p.99",
+          "description": "Use all 4 rhombus pieces; find which shapes (square, rectangle, triangle, pentagon, hexagon, octagon) can be made."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Quadrilaterals and Kites",
+      "prose_summary": "Students explore the kite as a quadrilateral with two pairs of equal adjacent sides, distinguished from parallelograms where opposite sides are equal. By matching property-statements to shapes (rectangle, square, rhombus, parallelogram), they reason about angle and side relationships — including that rectangles are special parallelograms. Paper-folding is used to make a kite from a square, reinforcing that shapes can be embedded in or derived from other shapes.",
+      "tasks": [
+        {
+          "id": "T-25",
+          "banner": "Tangram",
+          "intent": "explore",
+          "book_ref": "Tangram, p.99",
+          "description": "Cut out tangram shapes; compare sides and angles of each piece; use some or all pieces to make the given shapes (parallelogram, rectangle, triangle, trapezoid)."
+        },
+        {
+          "id": "T-26",
+          "banner": "Which Shape Am I?",
+          "intent": "reason",
+          "book_ref": "Which Shape Am I?, p.100",
+          "description": "Match 7 property statements to the correct shape from: square, rectangle, rhombus, parallelogram. Note shapes that match more than one statement."
+        },
+        {
+          "id": "T-27",
+          "banner": "Kites",
+          "intent": "explore",
+          "book_ref": "Kites, p.100",
+          "description": "Make a kite by paper-folding from a square (fold diagonal, fold corner A then B inward); observe what shapes appear inside the kite."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Play with Circles and Circle Designs",
+      "prose_summary": "Students revisit circles, using a compass to draw diameters and discover that joining the endpoints of two diameters always forms a rectangle. They then explore string-art by joining numbered points on a circle's circumference according to a skip-rule, building curve-stitching designs step by step. Students reason about the shape formed and attempt to replicate an overlapping-circles design, moving from guided construction to open-ended creative exploration.",
+      "tasks": [
+        {
+          "id": "T-28",
+          "banner": "Play with Circles",
+          "intent": "explore",
+          "book_ref": "Play with Circles, p.101",
+          "description": "Draw a circle with compass; mark two diameters; join the four endpoints; check the shape and angles formed; try with different diameter pairs."
+        },
+        {
+          "id": "T-29",
+          "banner": "Circle Designs",
+          "intent": "explore",
+          "book_ref": "Circle Designs, p.101",
+          "description": "Join numbered circle points (1 to 11, 11 to 2, 2 to 12, ...) to make a string-art design; think of a way to make the overlapping-circles image."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Cube Connections",
+      "prose_summary": "Students connect 2D nets to 3D cubes by mapping three views of a cube onto a given net. They then count how many small unit cubes have been removed from large cube frames, and solve a classic painted-cube puzzle involving a 3×3×3 cube painted on all faces — requiring systematic spatial reasoning about corner, edge, face-centre, and interior positions.",
+      "tasks": [
+        {
+          "id": "T-30",
+          "banner": "Cube Connections Q1",
+          "intent": "reason",
+          "book_ref": "Cube Connections Q1, p.102",
+          "description": "Given three views of a cube with different face patterns, draw each face on the correct position in the net."
+        },
+        {
+          "id": "T-31",
+          "banner": "Cube Connections Q2",
+          "intent": "solve",
+          "book_ref": "Cube Connections Q2, p.102",
+          "description": "Given three big solid cube frames with holes, work out how many small cubes have been removed from each (a, b, c)."
+        },
+        {
+          "id": "T-32",
+          "banner": "Cube Connections Q3",
+          "intent": "solve",
+          "book_ref": "Cube Connections Q3, p.102",
+          "description": "Nisha glues 27 small cubes into a 3×3×3 cube and paints it red; find how many small cubes have 3/2/1/0 painted faces."
+        },
+        {
+          "id": "T-33",
+          "banner": "Puzzle",
+          "intent": "reason",
+          "book_ref": "Puzzle, p.102",
+          "description": "Use 5 clues to find Tanu's arrangement of 7 shapes (2 squares, 2 triangles, 1 circle, 1 hexagon, 1 rectangle) in a line."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Icosahedron and Dodecahedron",
+      "prose_summary": "Students build 3D models of an icosahedron (20 triangular faces) and a dodecahedron (12 pentagonal faces) from nets at the back of the book, then investigate their properties — face shapes, face uniformity, faces meeting at a vertex, and edge counts. This section extends spatial reasoning from cubes to non-cubic regular polyhedra, encouraging systematic counting strategies and comparisons across solids.",
+      "tasks": [
+        {
+          "id": "T-34",
+          "banner": "Icosahedron and Dodecahedron",
+          "intent": "explore",
+          "book_ref": "Icosahedron and Dodecahedron, p.103",
+          "description": "Use nets to build icosahedron and dodecahedron models; observe face shapes, faces at each vertex, and count edges for each solid."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 1,
+  "procedural_load": 0
+}

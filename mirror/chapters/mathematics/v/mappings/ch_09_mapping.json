@@ -1,0 +1,43 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 9,
+  "chapter_title": "Coconut Farm",
+
+  "core_cg": "CG-1",
+
+  "core_competencies": [
+    {
+      "c_code": "C-1.3",
+      "justification": "Division is the organising operation of the entire chapter. Students first establish division as the inverse of multiplication through coconut arrays (5×7=35 gives 35÷5=7 and 35÷7=5), then build the relationship N=D×Q+R to handle remainders. They apply division through three distinct algorithmic approaches — mental splitting of the dividend into convenient parts, partial quotient subtraction (both Susie's step-by-step method and Sunitha's more efficient variant), and the place-value algorithm distributing Hundreds, Tens, and Ones in turn — culminating in multi-step word problems set on Susie and Sunitha's coconut farm and Munshi Lal's vegetable market."
+    },
+    {
+      "c_code": "C-1.4",
+      "justification": "Two distinct strands of pattern work run through the chapter. In the patterns-in-division section, students observe and describe how quotients change when dividends or divisors are scaled by 10 or 100 (e.g. 150÷3, 1500÷3, 15000÷3), filling place value charts to make the multiplicative pattern visible. In the mathematical statements section, students evaluate whether generalised claims about arithmetic operations — such as whether halving always gives an even number or whether multiplying by 5 always gives a zero in the ones place — are always, sometimes, or never true, which directly exercises pattern recognition and generalisation."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-1.1",
+      "justification": "The division-using-place-value section makes the place value structure of the dividend the operative mechanism of division. Students decompose numbers like 324 (3 Hundreds + 2 Tens + 4 Ones) and 7032 (Thousands, Hundreds, Tens, Ones), distribute each place-value group among the divisor, regroup when a digit cannot be divided evenly, and must place zeros correctly in the quotient when a digit yields nothing at that position. Place value representation is not background knowledge here — it is the algorithm itself."
+    },
+    {
+      "c_code": "C-4.1",
+      "justification": "Several tasks in the chapter require multi-operation reasoning beyond routine division. The four-operations number placement puzzle asks students to place the numbers 1–8 so that division, multiplication, addition, and subtraction sentences are simultaneously correct. The bookshelf resource constraint problem requires dividing five different material stocks by their respective requirements and identifying the binding constraint. The missing-information word problems ask students to identify what data is absent before they can compute. These go well beyond single-step division and draw on C-4.1's puzzle and daily-life problem domain."
+    },
+    {
+      "c_code": "C-4.3",
+      "justification": "The mental strategies section explicitly develops method-selection awareness. Students learn to split a dividend into convenient additive or subtractive parts (1248÷6 = 1200÷6 + 48÷6; 1992÷4 = 2000÷4 − 8÷4) and to use repeated halving when the divisor is a power of 2. Sunitha's method in the long division section further encourages students to choose a larger initial multiple to reduce computation steps. Across the chapter, students are prompted to estimate before computing and to compare methods, directly building the habit of selecting the appropriate tool for the context."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to carry out division of whole numbers by understanding the inverse relationship between multiplication and division, applying multiple strategies — mental splitting, repeated halving, partial quotients, and the place-value algorithm — and solving daily-life problems with and without remainders.",
+
+  "conceptual_demand": 3,
+  "task_load": 2,
+  "exploration_load": 0,
+  "procedural_load": 2,
+  "effort_index": 13.0
+}

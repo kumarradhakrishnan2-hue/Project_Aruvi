@@ -1,0 +1,43 @@
+{
+    "stage": "preparatory",
+    "subject": "mathematics",
+    "grade": "iv",
+    "chapter_number": 4,
+    "chapter_title": "Thousands Around Us",
+
+    "core_cg": "CG-1",
+
+    "core_competencies": [
+        {
+            "c_code": "C-1.1",
+            "justification": "The entire chapter is organised around extending the Indian place-value system from three digits to four, introducing the Thousands column through Dienes blocks, coloured tokens, and the THTO notation table. Children read, write, and name numbers up to ~9000, fill Tokens–Expanded Form–Number–Number Name tables for dozens of 4-digit numbers, and compare 4-digit numbers using the THTO structure — directly enacting 'represents numbers using the place value structure of the Indian number system, compares whole numbers, and knows and can read the names of very large numbers.'"
+        },
+        {
+            "c_code": "C-1.4",
+            "justification": "The times-10 grouping chain (10 Ones = 1 Ten, 10 Tens = 1 Hundred, 10 Hundreds = 1 Thousand) is explicitly taught as a pattern using Dienes block pictures, and children extend forward and backward number sequences (starting at 1027 and 2008) by applying the successor pattern. This constitutes a distinct and substantive engagement with recognising and extending a powers-of-10 number pattern."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-4.1",
+            "justification": "The complement-to-1000 section asks children to find missing addends for expressions like '670 + ___ = 1000', and the regrouping tasks require multi-step conversion of non-canonical forms such as '12 Hundreds, 18 Tens, and 2 Ones' into standard 4-digit numbers — both are whole-number problem-solving tasks embedded in the Gurudwara langar context. Ordering cricketers' scores and mountain heights extends this to multi-comparison daily-life problems."
+        },
+        {
+            "c_code": "C-4.2",
+            "justification": "The Let Us Explore task asks children to make all 24 four-digit numbers possible from the digits 2, 3, 4, and 7 without repetition, arrange them in decreasing order, and collaborate with classmates to check whether every possible number has been found — a direct, substantive exercise in systematic listing and combinatorial reasoning under a constraint."
+        },
+        {
+            "c_code": "C-5.1",
+            "justification": "The chapter explicitly states that the Indian number system was discovered in India around 2000 years ago and is now used worldwide, situating the THTO work in its historical context. The Let Us Think item confronts the zero-as-placeholder function of the Indian system by asking children to identify and correct the error of writing '7 Thousand 0 Hundreds 2 Tens 4 Ones' as 724 — a direct engagement with why zero must be written and why it matters in the Indian place-value representation."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to represent and compare 4-digit whole numbers by extending the Indian base-10 place-value system to the Thousands column and applying it to grouping, regrouping, ordering, and number-line positioning.",
+
+    "conceptual_demand": 2,
+    "task_load": 3,
+    "exploration_load": 0,
+    "procedural_load": 1,
+    "effort_index": 11.5
+}

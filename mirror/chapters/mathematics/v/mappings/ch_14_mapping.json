@@ -1,0 +1,39 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 14,
+  "chapter_title": "Maps And Locations",
+
+  "core_cg": "CG-2",
+
+  "core_competencies": [
+    {
+      "c_code": "C-2.2",
+      "justification": "The chapter's entire organising purpose is to build the student's ability to describe location and movement in mathematical language and to understand maps. Every section works this competency: students name cardinal directions from body orientation (facing the rising Sun), interpret a colour-coded tent camp map using directional clues, read room layouts and describe object positions relative to a person, navigate a street map with named roads and landmarks, decode a real Delhi Metro map with a colour-key legend, trace ant paths on a scaled grid using distance-and-direction language, and finally locate zoo animals using ordered pairs on a coordinate grid. The progression is deliberate — from the student's own body as compass, through pictorial maps, to the symbolic coordinate system — each step deepening the vocabulary and spatial reasoning that C-2.2 describes."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-3.2",
+      "justification": "The anthill grid activity requires students to use centimetres as the standard unit of distance to measure and express the ant's path to each food item. Students read off grid lengths in cm along cardinal directions and record two- and three-segment paths — for example, 'crawl 2 cm east' or 'crawl 1 cm south then 2 cm east'. This is a substantive application of selecting and using an appropriate unit (cm) for the attribute of length along a map grid, which is precisely what C-3.2 addresses."
+    },
+    {
+      "c_code": "C-4.1",
+      "justification": "The Delhi Metro route-planning task and the anthill shortest-path task both ask students to solve practical spatial navigation problems. For the metro, students must identify which of several possible routes between Qutb Minar and Supreme Court has the fewest stations or interchanges — a multi-step comparison problem embedded in a real-life context. For the anthill, students must identify alternate routes to the apple and determine the shortest one. Both require reasoning over multiple steps and options, not mere recall, placing them squarely in C-4.1's domain of daily-life and puzzle problem-solving."
+    },
+    {
+      "c_code": "C-4.3",
+      "justification": "The metro map route evaluation explicitly asks students to assess which route is 'best' — weighing number of stations against number of line changes — and to justify their choice. This requires selecting an appropriate method for comparison (counting stations vs. counting interchanges) rather than applying a fixed procedure. The open-ended nature of the question, where multiple valid routes exist and students must choose a criterion, develops the judgment over methods that C-4.3 targets."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to describe location and movement on maps by progressing from body-anchored cardinal direction naming, through reading pictorial and real-world maps with legends, to using ordered pairs on a coordinate grid to specify exact positions in space.",
+
+  "conceptual_demand": 2,
+  "task_load": 1,
+  "exploration_load": 1,
+  "procedural_load": 1,
+  "effort_index": 9.0
+}

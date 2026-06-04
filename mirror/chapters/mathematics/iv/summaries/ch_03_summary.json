@@ -1,0 +1,188 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iv",
+  "chapter_number": 3,
+  "chapter_title": "Patterns Around Us",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Let Us Count",
+      "prose_summary": "The chapter opens with real-life counting contexts — coconut trees arranged in a grid (top view), stacked cups, and laddoos and pedas arranged in trays. Students count objects by grouping rather than one-by-one, moving from concrete visual arrays to numerical answers. The section sits firmly at the concrete stage, using familiar objects and pictorial arrangements to build multiplicative counting intuition.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let Us Count",
+          "intent": "explore",
+          "book_ref": "Let Us Count, p.34",
+          "description": "Count the coconut trees in Gundappa's land from the top-view grid. Write the number. How do you know?"
+        },
+        {
+          "id": "T-2",
+          "banner": "Let Us Count",
+          "intent": "solve",
+          "book_ref": "Let Us Count, p.34",
+          "description": "Gundappa plucked 5 coconuts from each tree. How many coconuts has he plucked?"
+        },
+        {
+          "id": "T-3",
+          "banner": "Let Us Count",
+          "intent": "explore",
+          "book_ref": "Let Us Count, p.34",
+          "description": "Count the number of cups Muniamma has made and write the number."
+        },
+        {
+          "id": "T-4",
+          "banner": "Let Us Count",
+          "intent": "explore",
+          "book_ref": "Let Us Count, p.34",
+          "description": "How many coconut laddoos are there in the trays?"
+        },
+        {
+          "id": "T-5",
+          "banner": "Let Us Count",
+          "intent": "explore",
+          "book_ref": "Let Us Count, p.34",
+          "description": "How many milk pedas are there in the trays?"
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Patterns with Money",
+      "prose_summary": "Students observe coins and notes arranged in visual patterns and count the total amounts. They then arrange play money (₹1, ₹2, ₹5, ₹10) to represent given amounts and ask peers to identify totals. The 'Two Ways' activity shows Shirley (groups of 3 and 5 coins) and Shiv (groups of 4 coins) — introducing the idea that the same quantity can be arranged differently and that arrangement reveals grouping structure. The model is concrete (physical play money) moving toward pictorial.",
+      "tasks": [
+        {
+          "id": "T-6",
+          "banner": "Patterns with Money",
+          "intent": "explore",
+          "book_ref": "Patterns with Money, p.35",
+          "description": "Look at Shirley's coin arrangement (circular pattern). How much money is it?"
+        },
+        {
+          "id": "T-7",
+          "banner": "Patterns with Money",
+          "intent": "explore",
+          "book_ref": "Patterns with Money, p.35",
+          "description": "Look at Shiv's notes-and-coins grid arrangement. How much money is it?"
+        },
+        {
+          "id": "T-8",
+          "banner": "Patterns with Money",
+          "intent": "reason",
+          "book_ref": "Patterns with Money, p.35",
+          "description": "How did you count them? Discuss in class."
+        },
+        {
+          "id": "T-9",
+          "banner": "Patterns with Money",
+          "intent": "explore",
+          "book_ref": "Patterns with Money, p.35",
+          "description": "Arrange play money of amounts 1, 2, 5, and 10 to show ₹36, ₹125, and ₹183. Ask your peers to tell how much it is."
+        },
+        {
+          "id": "T-10",
+          "banner": "Two Ways",
+          "intent": "reason",
+          "book_ref": "Two Ways, p.35",
+          "description": "Shirley and Shiv arranged coins in groups. Write the number of coins in the blank triangles for each arrangement."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Even and Odd Numbers",
+      "prose_summary": "The pairing model (coins in pairs of 2) reveals even and odd numbers: Shiv's coins pair perfectly (even), Shirley's always have one left over (odd). Students describe each arrangement, list even and odd numbers from 1 to 20, and investigate whether times-2 numbers are always even. The section uses the concrete pairing act as a model, then moves to pictorial and symbolic classification.",
+      "tasks": [
+        {
+          "id": "T-11",
+          "banner": "Two Ways",
+          "intent": "reason",
+          "book_ref": "Two Ways / Even and Odd, p.36",
+          "description": "Describe Shiv's arrangement and write his numbers."
+        },
+        {
+          "id": "T-12",
+          "banner": "Two Ways",
+          "intent": "reason",
+          "book_ref": "Two Ways / Even and Odd, p.36",
+          "description": "Describe Shirley's arrangement and write her numbers."
+        },
+        {
+          "id": "T-13",
+          "banner": "Even and Odd",
+          "intent": "practice",
+          "book_ref": "Even and Odd, p.36",
+          "description": "Identify numbers between 1 and 20 as even or odd. You may draw the pairing arrangement."
+        },
+        {
+          "id": "T-14",
+          "banner": "Even and Odd",
+          "intent": "reason",
+          "book_ref": "Even and Odd, p.36",
+          "description": "Do you think all numbers in the times-2 table are even?"
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Crayons Arrangement and Patterns",
+      "prose_summary": "A crayon-shaped number chart (1–50) with odd and even numbers in adjacent columns provides a visual pattern structure. Students classify given numbers as even or odd, discover the alternating page-number pattern, reason about neighbours of odd and even numbers, and explore consecutive number sequences. The section builds toward a generalisation about even/odd structure using multiple representations — chart, page numbers, digit-based rules — on the pictorial-to-symbolic path.",
+      "tasks": [
+        {
+          "id": "T-15",
+          "banner": "Crayons Arrangement",
+          "intent": "practice",
+          "book_ref": "Crayons Arrangement, p.37",
+          "description": "Circle the odd numbers and put a square around each even number from the given set (5, 8, 36, 69, 22, 51, 30, 38, 37, 52, 43). Use the crayons arrangement if needed."
+        },
+        {
+          "id": "T-16",
+          "banner": "Crayons Arrangement",
+          "intent": "explore",
+          "book_ref": "Crayons Arrangement, p.37",
+          "description": "Explore your textbook and find out what Shirley has seen. Draw a square on the even page numbers. Put a circle on the odd page numbers."
+        },
+        {
+          "id": "T-17",
+          "banner": "Even and Odd",
+          "intent": "reason",
+          "book_ref": "Even and Odd, p.38",
+          "description": "Shirley notices numbers before and after an odd number are even. Shiv wonders if numbers before and after an even number are odd. Check and discuss."
+        },
+        {
+          "id": "T-18",
+          "banner": "Even and Odd",
+          "intent": "reason",
+          "book_ref": "Even and Odd, p.38",
+          "description": "Choose any 10 consecutive numbers. Write whether they are even or odd below each number. What do you notice? Discuss."
+        },
+        {
+          "id": "T-19",
+          "banner": "Even and Odd",
+          "intent": "reason",
+          "book_ref": "Even and Odd, p.38",
+          "description": "Identify which of the following numbers are even and which are odd. Explain your reasoning: 30, 78, 300, 415, 46, 67, 154, 99."
+        },
+        {
+          "id": "T-20",
+          "banner": "Even and Odd",
+          "intent": "reason",
+          "book_ref": "Even and Odd, p.38",
+          "description": "Make two 2-digit numbers using digits 1 and 6 without repetition; identify as even or odd. Then choose any two digits and make 2-digit even numbers."
+        },
+        {
+          "id": "T-21",
+          "banner": "Even and Odd",
+          "intent": "reason",
+          "book_ref": "Even and Odd, p.38",
+          "description": "Are there more even or odd numbers between 1 and 100?"
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 2,
+  "exploration_load": 1,
+  "procedural_load": 0
+}

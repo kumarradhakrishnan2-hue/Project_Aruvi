@@ -1,0 +1,174 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 13,
+  "chapter_title": "Animal Jumps",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Finding factors using arrays",
+      "prose_summary": "The chapter opens with a mystery-box activity where numbers come out multiplied by an unknown number, drawing children into the idea of factors as hidden multipliers. Students then build rectangular arrays for numbers like 12 and 15 to see all factor pairs concretely. The array model places the concept firmly at the concrete level — each arrangement shows a different way to express the same multiple as a product of two factors. Prime numbers (13, 37) arise naturally when students cannot build more than one non-trivial array.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Find the hidden numbers.",
+          "intent": "reason",
+          "book_ref": "Find the hidden numbers. (a)(b)(c), p.164",
+          "description": "Guess the multiplier from four numbers coming out of the box; determine if more than one multiplier is possible; identify what numbers were put inside."
+        },
+        {
+          "id": "T-2",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do (a)–(i), p.165",
+          "description": "Make different arrays for 10, 14, 13, 20, 25, 32, 37, 46, 54 and identify the factors in each case."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Common multiples via animal number-line jumps",
+      "prose_summary": "Using the engaging context of animals jumping along a number line, students physically trace the landing points of a rabbit (jumps of 4) and a frog (jumps of 3) to discover common multiples of 3 and 4. A second pair — spider (jumps of 3) and grasshopper (jumps of 6) — extends the exploration. Students move from number-line tracing (concrete/pictorial) to listing multiples from times tables (symbolic), noticing patterns in common multiples across different pairs. The section builds the definition of common multiples through action and observation rather than declaration.",
+      "tasks": [
+        {
+          "id": "T-3",
+          "banner": "Animal Jumps",
+          "intent": "explore",
+          "book_ref": "Animal Jumps, p.165",
+          "description": "Rabbit jumps 4 each time, frog jumps 3; use the number line to find numbers both animals will touch — common multiples of 3 and 4."
+        },
+        {
+          "id": "T-4",
+          "banner": "Animal Jumps",
+          "intent": "explore",
+          "book_ref": "Animal Jumps (spider/grasshopper), p.166",
+          "description": "Spider jumps 3 every time, grasshopper jumps 6; use the number line to find the common multiples of 3 and 6."
+        },
+        {
+          "id": "T-5",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q1 (a)–(h), p.166",
+          "description": "Find 5 common multiples for each of the following pairs: 2&3, 5&8, 2&4, 3&9, 5&10, 9&12, 8&12, 6&8, 6&9."
+        },
+        {
+          "id": "T-6",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q2, p.167",
+          "description": "Robby rabbit jumps 4, Deeku deer jumps 6, both start at 0; will both reach the food at the end of the road? Who reaches first? Explain."
+        },
+        {
+          "id": "T-7",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q3, p.167",
+          "description": "Mowgli jumps by 2 steps from 0 along a winding trail; identify which of his friends (at marked positions) he will be able to visit."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Common factors via jump model and divisibility",
+      "prose_summary": "The same Mowgli trail is now used in reverse — asking which jump size reaches given positions — to build the concept of common factors. Students discover that a jump of 2 reaches 4, 12, 14, and 50; a jump of 3 reaches 9, 21, 39, and 57; and so on, making common factors tangible as jump sizes that land on all specified numbers. The section culminates in a set of structured exercises covering common factors of number pairs, True/False reasoning about factor/multiple properties, and real-life contextual problems (hunting schedules, trail navigation) that require students to apply factor and multiple reasoning to find solutions.",
+      "tasks": [
+        {
+          "id": "T-8",
+          "banner": "Animal Jumps",
+          "intent": "reason",
+          "book_ref": "Mowgli trail — jump by 3, p.168",
+          "description": "On Mowgli's trail, identify which friends he meets jumping by 3 steps; confirm 3 is a common factor of the positions landed on."
+        },
+        {
+          "id": "T-9",
+          "banner": "Animal Jumps",
+          "intent": "practice",
+          "book_ref": "Mowgli trail — jump by 5, p.168",
+          "description": "List all numbers Mowgli touches jumping by 5 steps; complete: '5 is a common factor of the numbers ___'."
+        },
+        {
+          "id": "T-10",
+          "banner": "Animal Jumps",
+          "intent": "practice",
+          "book_ref": "Mowgli trail — jump by 10, p.168",
+          "description": "List all numbers Mowgli touches jumping by 10 steps; complete: '10 is a common factor of the numbers ___'."
+        },
+        {
+          "id": "T-11",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q4 (a)–(f), p.168",
+          "description": "Find common factors of 24 and 36 by testing jump sizes 2, 3, 4; find other jumps that reach both; list all common factors; check jump of 1."
+        },
+        {
+          "id": "T-12",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q5, p.168",
+          "description": "What are the common factors of 12 and 13?"
+        },
+        {
+          "id": "T-13",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q6, p.169",
+          "description": "From the numbers 0, 10, 16, 27, 36, 48 on a number line, find which can be reached by jumps of 4; complete '4 is the common factor of ___'."
+        },
+        {
+          "id": "T-14",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q7 (a)–(h), p.169",
+          "description": "Find the common factors of eight pairs: 12&16, 8&12, 4&16, 2&9, 3&5, 12&15, 20&5, 9&21, 6&27."
+        },
+        {
+          "id": "T-15",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q8 (a)–(f), p.169",
+          "description": "State True or False: factors of even numbers must be even; multiples of odd numbers cannot be even; factors of odd numbers cannot be even; one common multiple of two consecutive numbers is their product; the only common factor of consecutive numbers is 1; 0 cannot be a factor."
+        },
+        {
+          "id": "T-16",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q9, p.169",
+          "description": "Sher Khan hunts every 3rd day, Bagheera every 5th day; if both start on the same day, on which days will they hunt together?"
+        },
+        {
+          "id": "T-17",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q10(a), p.169",
+          "description": "Mowgli wants to visit Baloo at position 30 but avoid Sher Khan at 25; how long (in steps) could each jump be?"
+        },
+        {
+          "id": "T-18",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q10(b), p.169",
+          "description": "What jump size lets Mowgli meet both Kaa at position 21 and Akela at position 35?"
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Divisibility rules for 2, 5, and 10",
+      "prose_summary": "This closing section shifts to divisibility rules as a tool for quickly identifying factors. Students sort a set of 15 numbers into a three-circle Venn diagram — divisible by 2 only, by 5 only, by 10 only, or by all three — applying the rules for even numbers, numbers ending in 0 or 5, and numbers ending in 0. The Venn diagram format makes the overlapping relationships between divisibility by 2, 5, and 10 visually explicit, bridging the chapter's factor work with efficient mental-arithmetic strategies.",
+      "tasks": [
+        {
+          "id": "T-19",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q11 (a)–(d), p.170",
+          "description": "Sort 90, 45, 84, 22, 66, 56, 38, 78, 25, 30, 62, 95, 75, 40, 55 into a Venn diagram: divisible by 2 only, 5 only, 10 only, or 2 & 5 & 10."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 1,
+  "exploration_load": 0,
+  "procedural_load": 1
+}

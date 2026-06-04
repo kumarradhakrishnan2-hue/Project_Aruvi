@@ -1,0 +1,202 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 2,
+  "chapter_title": "Fractions",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Fractions of Different Wholes",
+      "prose_summary": "The chapter opens with a puzzle about whether 1/3 of one chocolate can be bigger than 1/2 of another, establishing the key idea that fractions can only be compared when derived from the same whole. Students shade unit fractions (1/8, 1/6, 1/12) on differently-sized grids and locate 1/3 within them, anchoring the concept concretely. This section sits firmly at the concrete stage, where direct handling of visual grids builds intuition before any symbolic rule is stated.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Playing with a Grid",
+          "intent": "explore",
+          "book_ref": "Playing with a Grid, p.17",
+          "description": "Shade 1/8 of Grid A in red, 1/6 of Grid B in blue, 1/12 of Grid C in yellow; mark 1/3 in any grid."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Fun with Fraction Kit — Equivalent Fractions",
+      "prose_summary": "Students use physical fraction kit pieces to discover equivalent fractions by assembling wholes from different-sized pieces. Starting from 1/2 = 2/4 (observed by fitting two 1/4 pieces into one 1/2 piece), students explore what other fractions equal 1/2, and then verify 1/3 = 2/6 through the same kit. The section is entirely concrete-manipulative: the fraction kit is the model, and equivalence emerges from physical fitting rather than multiplication rules.",
+      "tasks": [
+        {
+          "id": "T-2",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do Q1, p.19",
+          "description": "In groups of 3–4, find different ways to make a whole with different fraction pieces; write equivalent fractions for 1/3, 1/4, 1/5, 1/6."
+        },
+        {
+          "id": "T-3",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do Q2A, p.19",
+          "description": "Using kit or shading, find how many 1/6s make 1/3."
+        },
+        {
+          "id": "T-4",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do Q2B(a), p.19",
+          "description": "Using kit or shading, find how many 1/8s make 1/4."
+        },
+        {
+          "id": "T-5",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do Q2B(b), p.19",
+          "description": "Using kit or shading, find how many 1/8s make 1/2."
+        },
+        {
+          "id": "T-6",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do Q2C(a)–(d), p.19",
+          "description": "Using kit or shading, find how many 1/12s make 1/2, 1/3, 1/4, and 1/6."
+        },
+        {
+          "id": "T-7",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do Q3, p.20",
+          "description": "Using fraction kit, make a whole using only 1/6 and 1/12 pieces; using 1/12, 1/4, and 1/2 pieces; any five same-size pieces; any seven pieces."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Making Equivalent Fractions",
+      "prose_summary": "Moving from kit to pictorial, this section shows Sameer dividing a shaded 1/3 shape into more equal parts, producing 2/6, 3/9, 4/12 — all the same shaded region with different names. Students discover the multiplicative pattern (multiply both numerator and denominator by the same number) by dividing figures and filling in chains like 1/3 = 2/6 = 3/9 = 4/12 = .../24 = .../36. The section closes with 2/5 equivalents, moving the student from pictorial observation to symbolic generalisation on the concrete→pictorial→symbolic path.",
+      "tasks": [
+        {
+          "id": "T-8",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q1, p.22",
+          "description": "Fill in blanks with equivalent fractions for 1/7, 2/3, 3/4, 3/5 (more than one answer possible)."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q2, p.22",
+          "description": "Put a tick against pairs that are equivalent: 2/3 & 3/4; 3/5 & 6/10; 4/12 & 2/6; 6/9 & 1/3."
+        },
+        {
+          "id": "T-10",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q3, p.22",
+          "description": "Fill boxes to make equivalent fractions: 2/5 = ?/10; 3/4 = ?/16; 4/7 = 8/?; 5/9 = ?/25."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Comparing Fractions — Same Denominator",
+      "prose_summary": "Through a chikki-sharing story (Sevi ate 1/3, Shami ate 2/3), students see that with the same denominator, the larger numerator means the larger fraction — more pieces of the same size. The section introduces the < and > notation for fractions and has students apply the rule across six pairs. This is the first section where fractions are ordered symbolically without a physical model, sitting at the pictorial-to-symbolic transition.",
+      "tasks": [
+        {
+          "id": "T-11",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q1, p.23",
+          "description": "Compare fractions with same denominator using < and >: 1/4 & 3/4; 3/5 & 4/5; 5/7 & 2/7; 7/8 & 3/8; 5/10 & 6/10; 2/6 & 1/6."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Comparing Fractions — Same Numerator",
+      "prose_summary": "A paratha-eating comparison (4/6 vs 4/5) introduces the inverse relationship: when numerators are the same, the fraction with the larger denominator is smaller, because each piece is smaller. The fraction-kit circles (divided into fifths and sixths) provide the concrete image. Students apply this reasoning to six pairs, building a second comparison strategy at the pictorial-to-symbolic stage.",
+      "tasks": [
+        {
+          "id": "T-12",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q1, p.23",
+          "description": "Compare fractions with same numerator using < and >: 3/8 & 3/7; 4/9 & 4/10; 2/7 & 2/5; 5/7 & 5/6; 6/9 & 6/10; 7/9 & 7/11."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Fractions Greater Than 1",
+      "prose_summary": "Using Raman's family's paratha pieces, students discover that fractions can exceed 1 — 5/2 parathas = 2½ parathas, shown concretely by grouping halves and then placing them on a number line. The section extends to fourths (9/4 = 2¼) and has students locate multiple improper fractions on number lines. The model is concrete (paratha images + number line), and the key idea is converting between improper fractions and mixed numbers through repeated addition.",
+      "tasks": [
+        {
+          "id": "T-13",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do Q1, p.28",
+          "description": "Use parathas and number lines in notebook to show 2/3 & 5/3; 3/4 & 5/4; 4/8 & 9/8."
+        },
+        {
+          "id": "T-14",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q2, p.28",
+          "description": "Circle fractions greater than 1 from the given set; discuss reasoning in class."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Comparing Fractions With Reference to 1",
+      "prose_summary": "Students compare pairs where one fraction is less than 1 and one is greater (e.g. 7/8 vs 8/6), using 1 as a benchmark without needing common denominators. The fraction-kit circles make this visually clear: if numerator < denominator the fraction is less than 1; if numerator > denominator it exceeds 1. Six comparison tasks build fluency with this benchmark strategy at the symbolic stage.",
+      "tasks": [
+        {
+          "id": "T-15",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q1, p.29",
+          "description": "Compare fractions using 1 as reference: 8/7 & 9/15; 13/20 & 17/15; 7/6 & 8/8; 6/6 & 19/12; 12/9 & 4/5; 15/5 & 16/4."
+        }
+      ]
+    },
+    {
+      "ref": "S8",
+      "title": "Comparing Fractions With Reference to 1/2",
+      "prose_summary": "The final section introduces 1/2 as a second benchmark. Students first identify fractions equal to 1/2 (3/6, 4/8), then circle fractions less than half, and finally compare mixed pairs by deciding whether each is above or below 1/2 (e.g. 5/8 > 1/2 > 3/6). A 'Try This' challenge asks for the total length of 16 ants each 1/4 cm long, applying the number-line model to a measurement context. This is the most abstract section, requiring students to hold the 1/2 benchmark in mind without a physical kit.",
+      "tasks": [
+        {
+          "id": "T-16",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q1, p.30",
+          "description": "Circle fractions equal to 1/2 from the given set: 2/4, 3/5, 5/7, 7/14, 5/10, 8/16, 5/9, 6/12, 10/20, 6/8."
+        },
+        {
+          "id": "T-17",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q2, p.30",
+          "description": "Circle fractions less than half from the given set and discuss reasoning in class."
+        },
+        {
+          "id": "T-18",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q3, p.31",
+          "description": "Compare 8 fraction pairs using 1/2 as reference: 2/9 & 4/7; 11/14 & 7/20; 5/7 & 3/9; 6/7 & 4/10; 9/17 & 3/15; 7/12 & 3/11; 1/3 & 5/9; 3/9 & 4/7."
+        },
+        {
+          "id": "T-19",
+          "banner": "Try This",
+          "intent": "solve",
+          "book_ref": "Try This, p.31",
+          "description": "If an ant is 1/4 cm long, find total length of 16 such ants in a line using the number line."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 1,
+  "exploration_load": 1,
+  "procedural_load": 0
+}

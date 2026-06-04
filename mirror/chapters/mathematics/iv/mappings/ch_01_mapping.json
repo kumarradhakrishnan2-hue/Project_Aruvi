@@ -1,0 +1,43 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iv",
+  "chapter_number": 1,
+  "chapter_title": "Shapes Around Us",
+
+  "core_cg": "CG-2",
+
+  "core_competencies": [
+    {
+      "c_code": "C-2.1",
+      "justification": "The chapter is centrally organised around identifying, comparing, and analysing attributes of 3D and 2D shapes. Students construct prisms and pyramids from nets, fill tables of faces, edges, and corners, sort shapes by these properties, match verbal descriptions of face and corner counts to shape names, and classify 2D shapes by number of sides and types of angles — all of which directly build the vocabulary and analytical skills described in C-2.1."
+    },
+    {
+      "c_code": "C-2.4",
+      "justification": "An independent strand of pattern-discovery runs through the chapter. Students investigate the Euler relationship (F + V − E = constant across all polyhedra), observe that all diameters of a circle are equal and pass through the centre, notice that the number of sides equals the number of angles in a polygon, and sort shapes into Venn diagrams by overlapping properties. Each of these tasks asks learners to discover and describe a structural pattern in 2D or 3D shapes."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-4.1",
+      "justification": "Several tasks function as recreational puzzles requiring multi-step spatial reasoning: using exactly 5 matchsticks to form 2 triangles, moving 2 matchsticks to turn a configuration into 4 triangles, removing 4 matchsticks to leave exactly 3 triangles, determining which 3D solid can be built from a given straw-and-clay-ball count, and tracing a path through a spider-web figure without repeating an edge. These go beyond shape identification into deliberate puzzle-solving with constraints."
+    },
+    {
+      "c_code": "C-3.1",
+      "justification": "The Amazing Circles activity has students measure the length of paper-fold creases (diameters) and crease halves (radii) using a thread or paper strip — a direct encounter with non-standard measurement that motivates the need for consistent units and leads to comparing and reasoning about the relationship between radius and diameter."
+    },
+    {
+      "c_code": "C-1.3",
+      "justification": "Two tasks require students to apply arithmetic reasoning to geometric contexts: computing F + V − E for multiple polyhedra and noticing it is always 2, and verifying through repeated folding that the diameter is always exactly double the radius. Both tasks translate concrete measurement or counting into a symbolic arithmetic relationship."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to identify, compare, and analyse the properties of two- and three-dimensional geometric shapes by constructing, sorting, and pattern-hunting across a wide range of concrete and pictorial shape tasks.",
+
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 1,
+  "procedural_load": 1,
+  "effort_index": 13.0
+}

@@ -1,0 +1,300 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 4,
+  "chapter_title": "We the Travellers — II",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Making Sums Equal",
+      "prose_summary": "Students are given two groups of numbers and must interchange pairs between the groups so that both groups have the same sum, using the fewest moves. The section builds number sense through strategic reasoning about how swapping two numbers affects each group's total. No manipulatives are used; the concrete handle is writing numbers on paper slips that can be physically moved. This is a purely reasoning task sitting at the pictorial–symbolic boundary.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Making Sums Equal",
+          "intent": "reason",
+          "book_ref": "Making Sums Equal (a)–(d), p.42",
+          "description": "Interchange pairs of numbers between two groups to make their sums equal using the least number of moves. (a)–(d) four cases."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Fuel Arithmetic — Addition with Regrouping",
+      "prose_summary": "This section contextualises 2- to 3-digit addition using fuel quantities for lorries and motorbikes, introducing regrouping (10 ones = 1 ten) through place-value columns labelled H, T, O. Two worked examples (28+75, 49+89) build the procedure concretely before students practise independently. The progression is concrete place-value columns → symbolic column addition, consistent with the chapter's concrete-to-symbolic path.",
+      "tasks": [
+        {
+          "id": "T-2",
+          "banner": "Let Us Solve",
+          "intent": "practice",
+          "book_ref": "Let Us Solve (a)–(f), p.43",
+          "description": "Add the following numbers; find easier ways to add pairs where possible. (a) 15+79 (b) 46+99 (c) 38+35 (d) 5+89 (e) 76+28 (f) 69+20."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Relationship Between Addition and Subtraction",
+      "prose_summary": "Students derive related addition and subtraction facts from a single given equation, building understanding of inverse operations. The four worked frames (a–d) use 2- to 4-digit numbers and require students to fill blanks by reasoning from the relationship, not by computing fresh. This section is entirely symbolic and positions addition and subtraction as a family of facts rather than isolated procedures.",
+      "tasks": [
+        {
+          "id": "T-3",
+          "banner": "Relationship Between Addition and Subtraction",
+          "intent": "reason",
+          "book_ref": "Relationship Between Addition and Subtraction Q1(a)–(d), p.44",
+          "description": "Find the relationship between numbers and fill blanks. Given one add/subtract statement, complete the other three related statements. (a)–(d)."
+        },
+        {
+          "id": "T-4",
+          "banner": "Relationship Between Addition and Subtraction",
+          "intent": "reason",
+          "book_ref": "Relationship Between Addition and Subtraction Q2(a)–(d), p.44",
+          "description": "Write the subtraction and addition sentences that follow from the given sentence. (a)–(d) four cases."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "More Fuel Arithmetic — Subtraction with Regrouping",
+      "prose_summary": "Subtraction with regrouping (1 ten = 10 ones, 1 hundred = 10 tens) is developed through the context of a minibus fuel tank and sea distances between ports. The inverse-check (is 18+47=65?) reinforces the addition–subtraction relationship from S3. Students then drill 2- to 4-digit subtraction problems and solve a multi-step money problem involving Mary's train journey.",
+      "tasks": [
+        {
+          "id": "T-5",
+          "banner": "Let Us Solve",
+          "intent": "practice",
+          "book_ref": "Let Us Solve Q1–Q9, p.45",
+          "description": "Subtract: Q1 82−37 (with check). Q2–Q9: 57−11, 23−19, 49−21, 56−18, 93−35, 84−23, 70−43, 65−47."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Sums of Consecutive Numbers",
+      "prose_summary": "Students explore the sums of 2, 3, 4, and 5 consecutive numbers, observing whether the sums are even or odd and finding the constant difference between successive sums within each group. A visual triangular arrangement shows how the middle number of 3 consecutive numbers equals one-third of their sum, and analogous patterns hold for 4 and 5 numbers. Students then use these patterns to compute sums without direct addition.",
+      "tasks": [
+        {
+          "id": "T-6",
+          "banner": "Sums of Consecutive Numbers",
+          "intent": "reason",
+          "book_ref": "Sums of Consecutive Numbers Q1–Q3, p.45",
+          "description": "Q1: State whether sums of 2, 3, 4 consecutive numbers are even or odd; explain why. Q2: Find the constant difference between successive sums in each box. Q3: Find the difference for 5 and 6 consecutive numbers (a)–(b)."
+        },
+        {
+          "id": "T-7",
+          "banner": "Sums of Consecutive Numbers",
+          "intent": "reason",
+          "book_ref": "Sums of Consecutive Numbers pattern (a)–(d), p.46",
+          "description": "Use the pattern to find sums without adding directly. (a) 67+68+69 (b) 24+25+26+27 (c) 48+49+50+51+52 (d) 237+238+239+240+241+242."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Adding Large Numbers (4- and 5-digit)",
+      "prose_summary": "The context of the North–South Corridor (Srinagar to Kanniyakumari) and Mahesh's journey expenses introduces 4- and 5-digit addition. The section explicitly moves from labelled place-value columns (TTh, Th, H, T, O) to unlabelled column alignment, requiring students to track positions mentally. A road-trip problem extending to sums of multiple 4-digit distances, and a number-selection task asking which two numbers have a sum closest to a target, round out the section.",
+      "tasks": [
+        {
+          "id": "T-8",
+          "banner": "Let Us Solve",
+          "intent": "practice",
+          "book_ref": "Let Us Solve Q1(a)–(f), p.48",
+          "description": "Find the following sums without labelling place-value columns. (a) 238+367 (b) 1,234+12,345 (c) 12+123 (d) 46,120+12,890 (e) 878+8,789 (f) 1,749+17,490."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q2, p.48",
+          "description": "Road trip: starting from Delhi, find the total distance travelled through Mumbai, Goa, Hyderabad, and Puri using the distances marked on the map."
+        },
+        {
+          "id": "T-10",
+          "banner": "Let Us Solve",
+          "intent": "reason",
+          "book_ref": "Let Us Solve Q3(a)–(d), p.48",
+          "description": "Find 2 numbers among 5,205; 6,220; 7,095; 8,455; 4,840 whose sum is closest to: (a) 10,000 (b) 15,000 (c) 13,000 (d) 16,000."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Subtracting Large Numbers (4- and 5-digit)",
+      "prose_summary": "Subtraction of 4- and 5-digit numbers is contextualised through sea distances (Mumbai–Cochin–Chennai) and a comparison of the world's longest land routes. The section reinforces the same regrouping logic as S4 but at larger scales, and again moves toward unlabelled column alignment. Multi-step word problems (Mary's train journey, school council budget, truck weight) deepen the application of subtraction in real contexts.",
+      "tasks": [
+        {
+          "id": "T-11",
+          "banner": "Let Us Solve",
+          "intent": "practice",
+          "book_ref": "Let Us Solve Q1(a)–(f), p.50",
+          "description": "Subtract without labelling place-value columns. (a) 4,578−2,222 (b) 15,324−11,780 (c) 5,423−423 (d) 123−12 (e) 77,777−777 (f) 826−752."
+        },
+        {
+          "id": "T-12",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q2, p.51",
+          "description": "Mary's train journey: starting with ₹12,540, after expenses and a gift, how much money is she left with at the end of the Delhi trip?"
+        },
+        {
+          "id": "T-13",
+          "banner": "Let Us Solve",
+          "intent": "reason",
+          "book_ref": "Let Us Solve Q3(a)–(b), p.51",
+          "description": "School council raised ₹70,500; purchases total ₹39,785+₹9,545+₹19,548. (a) Estimate whether enough money raised; share thoughts. (b) Check estimate with calculation."
+        },
+        {
+          "id": "T-14",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q4(a)–(b), p.51",
+          "description": "Truck capacity 8,250 kg; loaded 3,675 kg cement + 2,850 kg steel. (a) Total weight loaded. (b) How much more can the truck carry?"
+        }
+      ]
+    },
+    {
+      "ref": "S8",
+      "title": "Quick Sums and Differences — Mental Strategies",
+      "prose_summary": "Piku's complement method (add to 99 then add 1) gives students a mental strategy to find what must be added to reach 100 or 1,000, exploiting the pattern that 99+1=100. Students extend this to 4-digit complements (to 10,000) and handle units-digit-zero cases. Namita's section develops a parallel strategy for quickly subtracting 9 or 99, and then reverses the problem (find the subtrahend to get a target answer). Both strategies sit firmly at the symbolic stage.",
+      "tasks": [
+        {
+          "id": "T-15",
+          "banner": "Quick Sums and Differences",
+          "intent": "reason",
+          "book_ref": "Quick Sums and Differences — Piku's method, p.51–52",
+          "description": "Use Piku's method to find the missing addend. 877+__=1,000; 666+__=1,000; 4,103+__=10,000; 5,555+__=10,000. Then (a) 180+__=1,000 (b) 760+__=1,000 (c) 400+__=1,000."
+        },
+        {
+          "id": "T-16",
+          "banner": "Quick Sums and Differences",
+          "intent": "practice",
+          "book_ref": "Quick Sums and Differences — subtract 9/99 (a)–(f), p.52",
+          "description": "Find a quick way to subtract 9 or 99. (a) 67−9 (b) 83−9 (c) 144−9 (d) 187−99 (e) 247−99 (f) 763−99."
+        },
+        {
+          "id": "T-17",
+          "banner": "Quick Sums and Differences",
+          "intent": "reason",
+          "book_ref": "Quick Sums and Differences — reverse (a)–(d), p.52",
+          "description": "Find the subtrahend to get 9 or 99 as the answer. (a) 32−__=9 (b) 56−__=9 (c) 877−__=99 (d) 666−__=99."
+        }
+      ]
+    },
+    {
+      "ref": "S9",
+      "title": "Even and Odd Numbers",
+      "prose_summary": "Students identify even and odd numbers up to 4 digits, then use a paired-arrangement model (pairing dots or objects) to observe what happens when 2 is added to an even or odd number. They reason about sum parity for three pair types (even+even, odd+odd, odd+even) by choosing five examples of each and generalising. The paired arrangement is the concrete model; the reasoning about all such pairs is the symbolic generalisation.",
+      "tasks": [
+        {
+          "id": "T-18",
+          "banner": "Even and Odd Numbers",
+          "intent": "practice",
+          "book_ref": "Even and Odd Numbers Q1(a)–(l), p.54",
+          "description": "Circle the numbers that are even. (a) 297 (b) 498 (c) 724 (d) 100 (e) 199 (f) 789 (g) 49 (h) 6,893 (i) 846 (j) 111 (k) 222 (l) 1,023."
+        },
+        {
+          "id": "T-19",
+          "banner": "Even and Odd Numbers",
+          "intent": "explore",
+          "book_ref": "Even and Odd Numbers Q2, p.54",
+          "description": "Observe the paired arrangement for 18 and 23. Add 2 to each. What changes or does not change in the arrangement?"
+        },
+        {
+          "id": "T-20",
+          "banner": "Even and Odd Numbers",
+          "intent": "reason",
+          "book_ref": "Even and Odd Numbers Q3(a)–(c), p.54",
+          "description": "Choose 5 pairs each of (a) even+even (b) odd+odd (c) odd+even; add each pair. What do you notice about the sums? Explain using paired arrangements."
+        }
+      ]
+    },
+    {
+      "ref": "S10",
+      "title": "Let Us Think and Solve — Extension Problems",
+      "prose_summary": "This section collects multi-step reasoning and problem-solving challenges: palindrome numbers (listing all within given ranges), grid-filling with increasing/decreasing row and column constraints, a mountain-heights data table with comparison questions, a torch ON/OFF pattern problem, and a coin-combination problem. The problems span pattern recognition, data handling, and logical reasoning, drawing on all the arithmetic developed earlier in the chapter.",
+      "tasks": [
+        {
+          "id": "T-21",
+          "banner": "Let Us Think and Solve",
+          "intent": "reason",
+          "book_ref": "Let Us Think and Solve Q1, p.53",
+          "description": "List all palindrome numbers between 100–200, 900–1,200, and 25,000–27,000."
+        },
+        {
+          "id": "T-22",
+          "banner": "Let Us Think and Solve",
+          "intent": "reason",
+          "book_ref": "Let Us Think and Solve Q2, p.53",
+          "description": "Arrange numbers 1–9 in a 3×3 grid so each row and column is in increasing (then decreasing) order. Fill four more grids with mixed inc/dec conditions."
+        },
+        {
+          "id": "T-23",
+          "banner": "Let Us Think",
+          "intent": "solve",
+          "book_ref": "Let Us Think Q1, p.54",
+          "description": "Jincy has 8×₹1 coins, 9×₹2 coins, 5×₹5 coins. What combination pays exactly ₹38?"
+        },
+        {
+          "id": "T-24",
+          "banner": "Let Us Think",
+          "intent": "reason",
+          "book_ref": "Let Us Think Q2, p.54–55",
+          "description": "Torch pressed 23 times: will it be ON or OFF? For what number of presses is it ON? OFF?"
+        },
+        {
+          "id": "T-25",
+          "banner": "Let Us Think",
+          "intent": "solve",
+          "book_ref": "Let Us Think Q3(a)–(d), p.55",
+          "description": "Mountain heights table (Priyanka Mohite): (a) highest peak (b) difference between highest and lowest (c) Elbrus vs Kanchenjunga difference (d) birth year if 20 in 2013."
+        },
+        {
+          "id": "T-26",
+          "banner": "Math Metric Mela",
+          "intent": "solve",
+          "book_ref": "Math Metric Mela, p.56",
+          "description": "For each district (Chittoor, Jaunpur, Raigad), find if certificates were sufficient; calculate shortfall or excess."
+        },
+        {
+          "id": "T-27",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q1(a)–(h), p.56",
+          "description": "Add: (a) 2,009+7,388 (b) 26,444+71,111 (c) 777+888 (d) 1,234+1,234 (e) 56+56,789 (f) 777+77,777 (g) 5,922+9,221 (h) 4,321+8,765 — wait, also 50,050+55,000."
+        },
+        {
+          "id": "T-28",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q2(a)–(h), p.56",
+          "description": "Subtract: (a) 458−226 (b) 7,777−4,449 (c) 65,447−47,299 (d) 1,234−123 (e) 12,345−1,234 (f) 56,789−56 (g) 87,326−11,111 (h) 878−52 — wait, also 749−222."
+        },
+        {
+          "id": "T-29",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q3, p.56",
+          "description": "Ambrish saved ₹92,375; spends on cow ₹26,000 + goat ₹17,000 + machine ₹19,873. Does he have enough? How much more or less?"
+        },
+        {
+          "id": "T-30",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q4, p.56",
+          "description": "Factory produces 54,000 nuts and bolts/day; order is 85,300. How many more to produce?"
+        },
+        {
+          "id": "T-31",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q5, p.56",
+          "description": "Virat Kohli scored 27,599 runs; 6,758 less than Sachin Tendulkar. How many runs has Sachin scored?"
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 0,
+  "procedural_load": 2
+}

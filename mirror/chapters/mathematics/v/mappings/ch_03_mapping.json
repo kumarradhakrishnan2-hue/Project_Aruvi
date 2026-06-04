@@ -1,0 +1,43 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 3,
+  "chapter_title": "Angles as Turns",
+
+  "core_cg": "CG-2",
+
+  "core_competencies": [
+    {
+      "c_code": "C-2.1",
+      "justification": "The entire chapter builds students' vocabulary and understanding of angle as a geometric attribute: full turn, half turn, quarter turn, acute angle, right angle, obtuse angle, and straight angle are introduced, compared, and applied across multiple contexts. Activities such as making a paper fan, observing the straw-and-paper-clip model, naming angles in a notebook-cover house, and measuring angles inside polygons all require identifying and analysing shape attributes — exactly what C-2.1 describes."
+    },
+    {
+      "c_code": "C-2.2",
+      "justification": "The 'Which direction?' section and the 'Fun with Turns' compass-direction game constitute an independent strand of spatial language: students learn and apply the terms clockwise and anti-clockwise, and then use compass bearings (North, South, East, West) to describe the outcome of sequences of right-angle turns. This is substantive use of mathematical vocabulary to describe movement and spatial relationships, not a sub-step of naming angle types."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-1.2",
+      "justification": "Throughout the chapter, turns are expressed as fractions of a full circle — 1/4, 1/2, 1/8, 1/6, 1/12 — and students are asked to compare and combine them (e.g., two quarter turns equal a half turn, two half turns equal a full turn). The angle-measuring-tool activities require students to physically partition a circle into eighths and sixths and reason about each fraction as a part of the whole, providing substantive engagement with fraction representation."
+    },
+    {
+      "c_code": "C-3.5",
+      "justification": "Several tasks ask students to first guess the measure of a turn or angle and then verify using the folded-circle measuring tool or a combination of tool sectors. This estimate-then-verify sequence, applied to both drawn angles and arrow-turn diagrams, directly exercises the strategy of estimation followed by measurement, which is the core of C-3.5."
+    },
+    {
+      "c_code": "C-4.1",
+      "justification": "The 'Fun with Turns' compass-direction table presents a spatial puzzle: students must track the cumulative effect of multiple right-angle (or half right-angle) turns from different starting directions to determine where they end up facing. This multi-step directional reasoning, culminating in finding an alternative route to reach the same final direction, functions as a problem-solving task of the kind described by C-4.1."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to identify and describe geometric attributes of angles — naming angle types by the fraction of a full turn they represent and specifying direction of movement using clockwise and anti-clockwise vocabulary — by grounding every concept in concrete physical action: turning one's own body, rotating a straw-and-paper-clip model, making and using folded-circle measuring tools, and applying turns to compass directions.",
+
+  "conceptual_demand": 2,
+  "task_load": 2,
+  "exploration_load": 1,
+  "procedural_load": 1,
+  "effort_index": 11.0
+}

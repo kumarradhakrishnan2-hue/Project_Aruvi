@@ -1,0 +1,43 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 8,
+  "chapter_title": "Weight and Capacity",
+
+  "core_cg": "CG-3",
+
+  "core_competencies": [
+    {
+      "c_code": "C-3.3",
+      "justification": "The chapter's central thread is conversion between units of weight and capacity. Every weight section — from the kg-to-g matching activity using a double number line, through the compound-quantity conversions (3 kg 500 g → 3,500 g), the milligram double number line, and the quintal/tonne equivalences — is organised around moving fluently within a measurement system. The same pattern repeats for capacity: the milkman's delivery double number line, the six-item l+ml conversion drill, and reading total container capacity all require carrying out unit conversions within the weight and volume measurement systems."
+    },
+    {
+      "c_code": "C-3.2",
+      "justification": "Reading six different dial weighing scales (with varying max capacities and sub-divisions) and evaluating whether Anu's recorded household weights are plausible both demand that students select and correctly interpret the appropriate measurement tool and unit for each object. The Note for Teachers explicitly flags understanding how the '0' works on each scale type as a key learning target, and the household plausibility check requires judging which unit (g vs kg) is appropriate for everyday objects — a distinct strand from conversion fluency."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-1.3",
+      "justification": "Addition, subtraction, multiplication, and division of compound weight and capacity quantities pervade the second half of the chapter. Rathna's grocery purchase (adding kg+g quantities with regrouping), the seven Let Us Do weight word problems, the grocery cost table (multiplying fractional-kg weights by per-kg prices), and the petrol pump addition and subtraction of l+ml quantities all apply the four basic arithmetic operations to solve daily-life problems — going well beyond incidental computation."
+    },
+    {
+      "c_code": "C-4.1",
+      "justification": "Several problems are explicitly multi-step real-life scenarios requiring students to plan a sequence of operations: the King's Weight puzzle (divide to find weight, subtract to find gain), the Gurdwara community kitchen problem (subtract used flour, then add new purchase), the juice vendor problem (divide to find glass count, subtract to find remainder, multiply to find earnings), and the factory oil division problem. These go beyond single-operation practice and require problem-solving thinking."
+    },
+    {
+      "c_code": "C-4.3",
+      "justification": "The chapter explicitly presents three computation strategies for adding and subtracting compound quantities — oral/mental decomposition, column addition in kg and g, and convert-to-grams-then-operate — and both the student text and the Note for Teachers invite learners to choose the method that suits the numbers at hand (multiples of 250, 500 that support mental work vs. irregular numbers that require column methods). This deliberate presentation of method selection as a learning target aligns directly with selecting appropriate methods for computing with whole numbers."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to convert and operate with standard measurement units for weight and capacity by working fluently with compound quantities (mg, g, kg, quintal, tonne; ml, l) through comparison, conversion, and the four arithmetic operations in daily-life contexts.",
+
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 0,
+  "procedural_load": 2,
+  "effort_index": 13.0
+}

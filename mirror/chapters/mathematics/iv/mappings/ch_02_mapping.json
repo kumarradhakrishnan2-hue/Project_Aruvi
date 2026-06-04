@@ -1,0 +1,39 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iv",
+  "chapter_number": 2,
+  "chapter_title": "Hide and Seek",
+
+  "core_cg": "CG-2",
+
+  "core_competencies": [
+    {
+      "c_code": "C-2.2",
+      "justification": "The chapter's backbone is location and movement language. In the classroom scene, students locate Jagat and other objects by specifying the row and column of their desk, using 'third desk, first row' as a two-coordinate address. The grid game and treasure-hunt activities extend this to sequential directional movement — students give and follow step-right/step-up instructions to navigate a 4×4 grid. The sight map section asks students to read a labelled school map, trace routes between named rooms, and write turn-by-turn directions for the water delivery man and for reaching the medical room — directly enacting the najri naksha idea."
+    },
+    {
+      "c_code": "C-2.1",
+      "justification": "The opening view-identification activities develop vocabulary for the spatial attributes of 3D objects. Students examine the same brick drawn by three children from different positions and learn to name those positions as top view, front view, and side view. They then look at nine everyday objects (TV, sofa, helmet, school bus, etc.) drawn from particular viewpoints and write both the object's name and which view is shown. The matchbox building activity asks students to physically construct 3D structures and produce their own top, side, and front view drawings — moving from concrete object to the vocabulary of its 2D projections."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-4.2",
+      "justification": "The sight map route-tracing tasks ask students to find all the different paths from the Grade 4 classroom to the stage and count how many routes exist — a simple constrained enumeration of paths within a grid-like layout. The treasure-hunt extension similarly asks students to enumerate multiple paths to the flower and record the step-count for each, practising systematic listing under the constraint that only horizontal and vertical moves are permitted."
+    },
+    {
+      "c_code": "C-4.1",
+      "justification": "The sight map section presents genuine daily-life navigation problems: guiding the water delivery man from the entrance to the MDM Kitchen, choosing the best route to take an unwell student from the library to the medical room, and comparing whether Bholu's path to the IT room or Rani's path to the sports room is longer. Each requires the student to reason about the problem context, plan a route, and communicate a solution — engaging problem-solving in a spatial, real-world setting."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to describe locations and spatial relationships by developing visual vocabulary for views of objects, navigating grid positions using row-column language, and reading and creating 2D maps.",
+
+  "conceptual_demand": 2,
+  "task_load": 1,
+  "exploration_load": 0,
+  "procedural_load": 0,
+  "effort_index": 6.0
+}

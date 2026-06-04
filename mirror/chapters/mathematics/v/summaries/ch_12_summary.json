@@ -1,0 +1,167 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 12,
+  "chapter_title": "Racing Seconds",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Reading time and finding elapsed duration",
+      "prose_summary": "The chapter opens with Raghav's yoga routine shown on two clock faces, asking children to read start and end times and find how long he practised. Children then find elapsed time between given time pairs (e.g. 01:15 p.m. to 01:42 p.m.) using their own strategies, and compare durations from a table of three children's painting times. The section also introduces the 12-hour and 24-hour clock formats through a fill-in table and a matching activity, anchoring time-reading firmly in the concrete-to-symbolic path.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let us find out",
+          "intent": "reason",
+          "book_ref": "Let us find out Q1–Q3, p.155",
+          "description": "Read the two clock images showing Raghav's yoga start and end times; find how long he spent practising."
+        },
+        {
+          "id": "T-2",
+          "banner": "Let us find out",
+          "intent": "reason",
+          "book_ref": "Let us find out Q4 (a)(b)(c), p.155",
+          "description": "Find the time elapsed between given time periods (01:15 p.m. to 01:42 p.m.; 03:18 p.m. to 08:18 p.m.; 09:15 a.m. to 11:30 a.m.) and share strategies."
+        },
+        {
+          "id": "T-3",
+          "banner": "Let us find out",
+          "intent": "reason",
+          "book_ref": "Let us find out Q5 (a)(b), p.155",
+          "description": "Using the table of painting times (Raghav 1 hr 20 min, Rani 2 hr 10 min, Ritu 1 hr 35 min), identify who took longest and who took least time."
+        },
+        {
+          "id": "T-4",
+          "banner": "Let us find out",
+          "intent": "practice",
+          "book_ref": "Let us find out Q6, p.156",
+          "description": "Fill in the blanks converting between 12-hour and 24-hour time formats in a given table."
+        },
+        {
+          "id": "T-5",
+          "banner": "Let us find out",
+          "intent": "practice",
+          "book_ref": "Let us find out Q7, p.156",
+          "description": "Match each time in 12-hour format to its equivalent in 24-hour format."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Seconds as a unit of time",
+      "prose_summary": "A school walking race (Akira, Sunita, Mary) introduces seconds as the unit needed when minutes alone cannot distinguish performance — all three took 1 minute plus a few seconds. The key fact '1 min = 60 seconds' is stated, and children identify the winner from the stopwatch displays. Children then estimate whether common activities (blinking, counting 1–20, melting ice) take seconds or minutes, list their own examples of sub-minute events, and carry out timed physical investigations (skipping rope in 10 sec, writing FRIEND, running 100 m). This concrete, embodied section positions seconds as a precision tool anchored in real experience.",
+      "tasks": [
+        {
+          "id": "T-6",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, p.157",
+          "description": "Estimate whether each listed activity (blinking, counting 1–20, melting ice-cube, etc.) takes seconds or minutes; tick the appropriate cell."
+        },
+        {
+          "id": "T-7",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do, p.158",
+          "description": "List events (other than those in the table) that can happen in less than a minute or in a few seconds."
+        },
+        {
+          "id": "T-8",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do, p.158",
+          "description": "Estimate then verify how many balloons, push-ups, breaths, or hops you can do in one minute; record estimated and actual numbers."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let Us Find",
+          "intent": "explore",
+          "book_ref": "Let Us Find Q1–Q3, p.158",
+          "description": "Time yourself: how many times can you skip rope in 10 seconds; how long to write FRIEND; how long to run 100 m."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Reading seconds on a clock face",
+      "prose_summary": "Children observe pairs of clocks showing start and end positions of the seconds hand and read the number of seconds elapsed for everyday actions (getting out of bed, moving room to kitchen, picking up paper, washing a spoon and plate). The section then reverses the task: given a duration in seconds, children draw the missing seconds hand on the blank clock face. This concrete-to-pictorial work builds fluency with the seconds hand as a distinct third hand on the clock.",
+      "tasks": [
+        {
+          "id": "T-10",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, p.159",
+          "description": "Observe four clock-pair images; read and fill in the number of seconds each child took (getting out of bed, moving to kitchen, picking up paper, washing plate)."
+        },
+        {
+          "id": "T-11",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do, p.160",
+          "description": "Draw the missing seconds hand on the right-side clock for four given durations (20 sec, 30 sec, 60 sec, 40 sec)."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Converting between hours, minutes, and seconds",
+      "prose_summary": "Two children model the conversion logic: 1 hr = 60 min, so 2 hr = 120 min and 180 min = 3 hr. Children use a double number line to fill in hours and minutes, then convert mixed quantities (e.g. 2 hours 45 minutes to minutes, 75 minutes to hours and minutes). A second double number line scales minutes to seconds (1 min = 60 sec) and children convert in both directions including larger values (320 sec, 700 sec, 10 min 13 sec). The number line is the concrete-pictorial scaffold; conversion problems are the symbolic step.",
+      "tasks": [
+        {
+          "id": "T-12",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q1(a), p.161",
+          "description": "Complete the double number line by filling in missing hours and minutes values using the ×2 relationship shown."
+        },
+        {
+          "id": "T-13",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q1(b)(i–viii), p.161",
+          "description": "Convert: 1 hr 10 min, 2 hr 45 min, 3 hr 15 min, 4 hr 20 min to minutes; and 75 min, 150 min, 220 min, 390 min to hours and minutes."
+        },
+        {
+          "id": "T-14",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q1(c)(i–vii), p.162",
+          "description": "Fill the min↔sec double number line; convert 320 sec, 225 sec, 700 sec, 1000 sec to min and sec; convert 10 min 13 sec, 4 min 8 sec, 15 min 40 sec to seconds."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Time word problems — elapsed, start, and end time",
+      "prose_summary": "A worked example (Raghu travels from 08:00 to 09:05 hours — total 1 hour 5 minutes) shows an oral, non-algorithmic strategy for finding elapsed time. Children then solve a range of word problems: finding total study time across subjects, and finding start or end times given one time and a duration. Problems span a.m./p.m. contexts, cross-hour boundaries, and involve durations up to several hours. Teachers are directed to encourage oral strategies rather than column algorithms.",
+      "tasks": [
+        {
+          "id": "T-15",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q2, p.162",
+          "description": "Raghav studies 4 subjects at 50 minutes each; find total time in hours and minutes and share strategies."
+        },
+        {
+          "id": "T-16",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q3, p.162",
+          "description": "Raghu leaves at 08:00 hours and arrives at 09:05 hours; find time taken to reach Nana ji's house."
+        },
+        {
+          "id": "T-17",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q4–Q10, p.163",
+          "description": "Solve word problems: find return/finish time given start time and duration, or find start time given finish time and duration (Jyoti, Ragini, picnic group, Raji, Alya, lunch break, 08:35 PM problems)."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 1,
+  "exploration_load": 0,
+  "procedural_load": 1
+}

@@ -1,0 +1,43 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 7,
+  "chapter_title": "Shapes and Patterns",
+
+  "core_cg": "CG-2",
+
+  "core_competencies": [
+    {
+      "c_code": "C-2.1",
+      "justification": "The chapter is organised around identifying, comparing, and naming attributes of 2D and 3D shapes across every section. Students classify triangles by side equality (equilateral, isosceles, scalene) through physical measurement and paper-folding, distinguish quadrilaterals by whether equal sides are adjacent or opposite (kite vs. parallelogram vs. rectangle), and recognise regular polygons by equal sides. In the 3D strand, students examine cube nets and build icosahedron and dodecahedron models, comparing their faces, vertices, and edges. Throughout, new vocabulary — adjacent sides, opposite angles, regular shapes, equilateral, scalene — is actively developed and applied."
+    },
+    {
+      "c_code": "C-2.4",
+      "justification": "Discovering and extending spatial patterns forms an independent and substantial second strand. In the weaving section students decode the over-under rule of several mat patterns and write the row-by-row rule until it repeats. In the tessellation section they discover which regular shapes (triangles, squares, hexagons but not pentagons or octagons) tile the plane without gaps, then continue multi-shape tiling patterns on dot paper. Circle string-art asks students to follow a numerical skip-rule and observe the curved design it generates. All three activities involve recognising the generative rule of a 2D spatial pattern and extending it systematically."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-4.1",
+      "justification": "Two genuine recreational puzzles appear in the cube section. In the painted-cube problem, students must figure out how many of the 27 small cubes in a 3×3×3 solid have exactly three, two, one, or zero painted faces — a classic combinatorial-spatial puzzle requiring systematic case analysis. Tanu's 7-shape arrangement puzzle asks students to place two squares, two triangles, a circle, a hexagon, and a rectangle in a line using five position clues, exercising deductive constraint-satisfaction rather than shape knowledge."
+    },
+    {
+      "c_code": "C-2.3",
+      "justification": "Symmetry recognition and creation appears in two places. Making a kite by paper-folding from a square (folding the diagonal then folding two corners inward) produces a bilaterally symmetric shape, and students observe the symmetry lines inside it. Weaving patterns generate translational and reflective symmetry by design, and circle string-art creates rotationally symmetric designs — making symmetry a recurrent though secondary thread."
+    },
+    {
+      "c_code": "C-4.2",
+      "justification": "The rhombus-triangle composition tasks require systematic enumeration. Students first list all distinct shapes makeable from 2 of the four triangular pieces, then from 3 pieces (finding 3-, 4-, and 5-sided shapes), and finally check all 4 pieces against a named list — square, rectangle, triangle, pentagon, hexagon, octagon — to find which are achievable. Listing all possible arrangements given the constraint of a fixed piece-count is precisely the systematic counting and combination skill described by this competency."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to identify and compare the properties of two- and three-dimensional shapes by engaging them in hands-on manipulation, measurement, and construction — classifying triangles and quadrilaterals by their sides and angles, discovering which regular polygons tessellate, and exploring 3D solids — while simultaneously recognising, describing, and extending the repeating rules that underlie weaving patterns, tilings, and circle designs.",
+
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 1,
+  "procedural_load": 0,
+  "effort_index": 11.5
+}

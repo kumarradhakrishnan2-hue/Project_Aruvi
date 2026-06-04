@@ -1,0 +1,43 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 1,
+  "chapter_title": "We the Travellers—I",
+
+  "core_cg": "CG-1",
+
+  "core_competencies": [
+    {
+      "c_code": "C-1.1",
+      "justification": "The chapter's dominant strand is representing and reading whole numbers up to 99,999 in the Indian place value system. Students extend the place value chart to the TTh column using concrete tokens, fill bidirectional number-name tables, compare numbers using a place value chart and a 0–80,000 number line, and order up to six 5-digit numbers in ascending and descending sequences. Non-standard decomposition tasks (how many ₹10/₹100/₹500 notes in a given amount) further reinforce flexible reading of place-value structure."
+    },
+    {
+      "c_code": "C-1.4",
+      "justification": "Two independent strands engage pattern recognition and extension. The number-sequence task presents nine sequences with varied step sizes (e.g., +111, +1,000, +2, +1,001) and asks students to continue and discuss them. The digit-swap subtraction puzzle — where subtracting a two-digit number from its digit-reversal always yields a multiple of 9 — requires students to observe differences across several iterations, extend Mira's table, and generalise the relationship between the digit gap and the resulting number difference."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-1.3",
+      "justification": "The travel-distance context introduces two whole-number operation tasks. Students multiply 15 km/h by 4 hours to find the distance a cyclist covers, and divide the total school group (900 students) by eight different vehicle capacities (2 to 180) to find the number of vehicles needed — applying multiplication and division on whole numbers to realistic daily-life problems."
+    },
+    {
+      "c_code": "C-4.1",
+      "justification": "The Pastime Mathematics section and the King's Horses puzzle together provide four recreational mathematics problems. The river-crossing puzzle demands systematic constraint-based logical reasoning; the pile-of-pebbles game asks for a winning strategy built by exploring small cases; the digit-swap subtraction puzzle is a structured investigation into number patterns; and the King's Horses arrangement asks students to see through a misleading perimeter count to discover that corner cells are shared — a combinatorial spatial reasoning task."
+    },
+    {
+      "c_code": "C-4.3",
+      "justification": "The rounding section makes estimating to the nearest ten, hundred, or thousand an explicit strategy — students choose the appropriate benchmark using a number line before any rule is stated. The currency-denomination tasks (how many notes of ₹10, ₹100, or ₹500 fit into ₹7,934 or ₹65,342) require selecting the right decomposition method depending on the denomination asked, developing flexible mental computation with large numbers."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to read, write, compare, and decompose whole numbers up to 99,999 by extending the Indian place value system to the ten-thousands place and working across concrete token models, number lines, and symbolic notation.",
+
+  "conceptual_demand": 2,
+  "task_load": 2,
+  "exploration_load": 0,
+  "procedural_load": 1,
+  "effort_index": 9.5
+}

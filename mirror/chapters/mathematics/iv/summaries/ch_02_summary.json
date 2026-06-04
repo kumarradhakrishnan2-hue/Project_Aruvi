@@ -1,0 +1,181 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iv",
+  "chapter_number": 2,
+  "chapter_title": "Hide and Seek",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Where Are You Hiding? — Views of Objects",
+      "prose_summary": "The chapter opens with children playing hide-and-seek, seen from different vantage points (top, front, side), prompting students to notice that position determines what is visible. Students then examine three different drawings of the same brick made by three children standing at different positions, and identify which drawing represents the top view, front view, and side view. Finally they look at pictures of everyday objects drawn from particular views and identify the object's name and the view shown. This section establishes the concrete→pictorial path: real scenes and physical objects ground the abstract idea of viewpoint.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q1, p.24",
+          "description": "Look at the hide-and-seek picture; answer: (a) which game, (b) who looks from top, (c) if Rani faces hut in Scene 1 can she see who is hiding — discuss."
+        },
+        {
+          "id": "T-2",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q2, p.25",
+          "description": "Mini, Bholu and Rani drew the same brick differently — discuss why; fill table: whose drawing shows top view, front view, side view."
+        },
+        {
+          "id": "T-3",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q3, p.26",
+          "description": "Look at nine pictures of objects (TV, sofa, slipper, cup, school bus, chair, bolt, pizza cutter, helmet); write each object's name and which view is shown."
+        },
+        {
+          "id": "T-4",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q4, p.27",
+          "description": "Match the side/front/top view drawings made by Jagat and Rani with the correct 3D objects (pyramid, cube, prism/wedge)."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Boxy Buildings — Building and Drawing Multiple Views",
+      "prose_summary": "Students use empty matchboxes (a concrete manipulative) to construct their own 3D 'buildings' and then draw the top view, side view, and front view of each construction. The activity deepens the concrete→pictorial transition by asking students to move between physical object and its 2D representations. A challenge extension invites students to swap drawings with a partner and identify which building matches which drawing, sharpening spatial reasoning through peer interaction.",
+      "tasks": [
+        {
+          "id": "T-5",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Boxy Buildings activity, p.27",
+          "description": "Collect empty matchboxes or boxes; build different buildings; draw their top, side, and front views; challenge friends to match drawing to building."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Cat Finds Jagat — Row and Column Positions",
+      "prose_summary": "A cat on a windowsill looks down at a classroom and locates Jagat by his row and column position (third desk, first row). Students work with a top-view illustration of the classroom grid to locate objects and people by specifying row and column coordinates. This introduces the idea of a two-coordinate address for a position — moving from informal spatial language to the row-column system — on the concrete→pictorial path using a pictorial classroom grid.",
+      "tasks": [
+        {
+          "id": "T-6",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q1–5, p.28",
+          "description": "Mark Jagat's position (3rd desk, 1st row); describe position of blue bag; identify object at middle desk of 2nd row; locate notebook; draw an apple at 3rd desk of 2nd row."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Grid Game — Describing Positions on a Grid",
+      "prose_summary": "Rani gives Bholu clues to place objects at specific row-column intersections on a 3×3 grid (e.g. 'eraser at top right corner', 'apple at row 2, column 2'). Students fill Bholu's grid by translating verbal positional clues into grid placements, consolidating the row-column coordinate idea. The section is pictorial: students work with a drawn grid rather than physical objects, practising the symbolic notation of row and column.",
+      "tasks": [
+        {
+          "id": "T-7",
+          "banner": "Grid Game",
+          "intent": "practice",
+          "book_ref": "Grid Game activity, p.29",
+          "description": "Fill Bholu's 3×3 grid using Rani's clues: eraser top right, pencil top left, apple at row 2 col 2, water bottle at row 3 col 2 (ball already placed at row 1 col 1)."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Grid Game — Treasure Hunt",
+      "prose_summary": "Students navigate a 4×4 grid by following step-direction clues (move right, move up) to reach a hidden object, mirroring Jagat and Mini's example where Mini takes 4 steps right then 2 left and 1 up to find the target. This section extends grid work to sequential directional movement — a precursor to coordinate geometry — and is explicitly enacted as a game with a partner, making the reasoning act social and embodied. Students also compare path lengths to different objects from a fixed starting point.",
+      "tasks": [
+        {
+          "id": "T-8",
+          "banner": "Grid Game — Treasure Hunt",
+          "intent": "reason",
+          "book_ref": "Treasure Hunt example, p.30",
+          "description": "Follow Mini's moves on the 4×4 grid (4 steps right; then 2 left, 1 up); mark Mini's final position; identify what object Jagat thought of."
+        },
+        {
+          "id": "T-9",
+          "banner": "Grid Game — Treasure Hunt",
+          "intent": "reason",
+          "book_ref": "Treasure Hunt partner game, p.31",
+          "description": "Play the treasure hunt game with a partner on the 4×4 grid; give and follow step-direction clues to locate the chosen object."
+        },
+        {
+          "id": "T-10",
+          "banner": "Grid Game — Treasure Hunt",
+          "intent": "reason",
+          "book_ref": "Treasure Hunt path questions, p.31",
+          "description": "From the starting point, trace paths to the flower and count steps for each path; determine whether mango or orange is reachable in fewer steps."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Drone Around the School — Aerial Top View",
+      "prose_summary": "Gyan's drone takes a top-view photograph of the school compound, presenting students with an authentic aerial image of a real space. Students identify and circle recognisable places and objects visible from above, connecting the abstract notion of 'top view' to a real-world drone image. This section bridges the earlier brick-view exercises to the map-reading section that follows, and is the first encounter with top view of an outdoor environment rather than a single object.",
+      "tasks": [
+        {
+          "id": "T-11",
+          "banner": "Drone Around the School",
+          "intent": "explore",
+          "book_ref": "Drone Around the School activity, p.31",
+          "description": "Circle the places or things visible in the drone top-view photograph of the school; write their names."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Sight Map of School — Reading and Drawing Maps",
+      "prose_summary": "A labelled 2D sight map of the school campus (with rooms, playground, entrance, roads) is introduced, and students use it to trace routes, compare path lengths, and write directional instructions. Tasks move from tracing a given path to generating directions for others (water delivery man, unwell student), making spatial reasoning communicative and purposeful. The section closes with a project task: students draw their own sight map of their school, completing the concrete→symbolic arc by producing an original 2D spatial representation.",
+      "tasks": [
+        {
+          "id": "T-12",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Sight Map Q1, p.32",
+          "description": "Trace the path from Grade 4 classroom to the stage on the school map; count how many routes you can find."
+        },
+        {
+          "id": "T-13",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Sight Map Q2, p.32",
+          "description": "Identify which traced route is the shortest and explain how you know."
+        },
+        {
+          "id": "T-14",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Sight Map Q3, p.32",
+          "description": "The water delivery man turned left from the entrance — write directions to help him reach the MDM Kitchen."
+        },
+        {
+          "id": "T-15",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Sight Map Q4, p.32",
+          "description": "Rajat is unwell — choose the best route from the library to the medical room and describe it."
+        },
+        {
+          "id": "T-16",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Sight Map Q5, p.32",
+          "description": "Trace Bholu's path (playground to IT room) and Rani's path (playground to sports room); compare which path is longer."
+        },
+        {
+          "id": "T-17",
+          "banner": "Let Us Do (Project Work)",
+          "intent": "explore",
+          "book_ref": "Let Us Do (Project Work), p.33",
+          "description": "Draw a sight map showing the route from your school entrance to your classroom and any other important places."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 1,
+  "exploration_load": 0,
+  "procedural_load": 0
+}

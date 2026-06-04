@@ -1,0 +1,237 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 1,
+  "chapter_title": "We the Travellers—I",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Reading and writing large numbers",
+      "prose_summary": "This section introduces the TTh (ten-thousands) place by extending the familiar Indian place value chart one column further, anchored in the concrete context of travel distances and vehicle counts. Students read and build numbers up to 99,999 using tokens (physical cut-outs) and a place-value table, moving from token groupings through written numerals to number names. The concrete-to-symbolic path is explicit: ten 1,000-tokens merge into one 10,000-token, mirroring the ×10 structure across all place values. Students then extend number sequences with varying step sizes to consolidate their reading of large numbers.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q1, p.5",
+          "description": "Fill in the blanks by continuing the pattern in each of the following sequences (a)–(i); discuss the patterns in class."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Comparing and ordering numbers",
+      "prose_summary": "Students compare and order multi-digit numbers up to 99,999 using a number line (0–80,000) and a place-value chart as dual concrete/pictorial tools. The section begins with a place-value chart comparison of 9,990 and 49,014 to expose the common misconception of comparing by leading digit value alone. Digit-swap tasks deepen understanding of how digit position — not digit value alone — determines the magnitude of a number.",
+      "tasks": [
+        {
+          "id": "T-2",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q2, p.6",
+          "description": "Fill in the blanks appropriately: given a number write its number name, or given a name write the number; use commas as required."
+        },
+        {
+          "id": "T-3",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q3, p.6",
+          "description": "Arrange the eight numbers (40,347; 34,407; 40,473; 34,740; 73,404; 74,430; 47,340; 18,926) in increasing order using the number line if required."
+        },
+        {
+          "id": "T-4",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q4, p.7",
+          "description": "A student said 9,990 is greater than 49,014 because 9 > 4. Is the student correct? Why or why not? Use the number line and place value chart to fill in the blanks."
+        },
+        {
+          "id": "T-5",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q5, p.7",
+          "description": "Digit swap: interchange two digits in 1,478 to make a number larger than 5,500; in 10,593 to make numbers in given ranges; in 48,247 to make numbers as small/big as possible."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Nearest Tens, Hundreds, and Thousands",
+      "prose_summary": "This section introduces rounding through a pictorial number-line model — a hungry rabbit whose food is placed at neighbouring tens, hundreds, and thousands. The rabbit's position (2,346) is fixed and students determine which benchmark it is closer to by counting jumps, making rounding a concrete spatial act before any rule is stated. Students fill a table for four numbers (3,176; 4,017; 5,789; 8,203) and then reason about edge cases where rounding to the nearest hundred and nearest thousand produce the same result.",
+      "tasks": [
+        {
+          "id": "T-6",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do (rounding table), p.8",
+          "description": "Complete the rabbit fill-in (nearest hundred and nearest thousand of 2,346); fill in the table giving nearest tens, hundreds, and thousands for 3,176; 4,017; 5,789; 8,203."
+        },
+        {
+          "id": "T-7",
+          "banner": "Let Us Think",
+          "intent": "reason",
+          "book_ref": "Let Us Think Q1, p.8",
+          "description": "Vijay rounded to the nearest hundred and Suma to the nearest thousand; both got the same result. Circle the numbers they might have used from 7,126; 7,835; 7,030; 6,999."
+        },
+        {
+          "id": "T-8",
+          "banner": "Let Us Think",
+          "intent": "reason",
+          "book_ref": "Let Us Think Q2, p.9",
+          "description": "Think and write two numbers that have the same (a) nearest ten, (b) nearest hundred, (c) nearest thousand."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let Us Think",
+          "intent": "reason",
+          "book_ref": "Let Us Think Q3, p.9",
+          "description": "Think and write numbers that have the same (a) nearest ten and nearest hundred, (b) nearest hundred and nearest thousand, (c) nearest ten, hundred and thousand."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Finding large numbers around us",
+      "prose_summary": "Using travel speeds of various modes of transport (foot: 3–5 km/h to spacecraft: 28,000 km/h) as a rich context, this section helps students see that large numbers arise naturally in everyday life. Students calculate simple distances from speed × time and divide a total group size (900 students) by vehicle capacity across eight modes — applying multiplication and division with large numbers in realistic word-problem settings. A final exploratory task asks students to locate 4-digit and 5-digit counts in their own environment (textbook, classroom, tree, town).",
+      "tasks": [
+        {
+          "id": "T-10",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q1, p.10",
+          "description": "A cyclist covers 15 km in one hour. How much distance will she cover in 4 hours at the same speed?"
+        },
+        {
+          "id": "T-11",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q2, p.10",
+          "description": "A school has 461 girls and 439 boys. How many vehicles are needed for all of them using modes (a) Bicycle(2) through (h) Aeroplane(180)?"
+        },
+        {
+          "id": "T-12",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do (large numbers exploration), p.10-11",
+          "description": "Find something in the textbook/classroom whose count is a 4-digit or 5-digit number; list quantities of 4- or 5-digit count in context of a tree and your village/town/city."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Pastime Mathematics — puzzles and games",
+      "prose_summary": "Set on a train journey, this section presents three recreational mathematics tasks that develop logical and strategic reasoning. The river-crossing puzzle requires systematic constraint-based thinking with no arithmetic; the pile-of-pebbles game asks students to build a winning strategy by exploring small cases; the digit-swap subtraction puzzle (always ending in 9) invites students to discover a multiplicative pattern between digit differences and number differences via a structured table, moving from specific examples to generalisation.",
+      "tasks": [
+        {
+          "id": "T-13",
+          "banner": "Pastime Mathematics",
+          "intent": "reason",
+          "book_ref": "Pastime Mathematics Q1, p.11",
+          "description": "River crossing puzzle: ferry a lion, sheep, and bundle of grass across a river one at a time so neither the sheep eats grass nor the lion eats sheep; find minimum trips."
+        },
+        {
+          "id": "T-14",
+          "banner": "Pastime Mathematics",
+          "intent": "reason",
+          "book_ref": "Pastime Mathematics Q2, p.12",
+          "description": "Pile of pebbles game (2 piles of 7 each; pick any number from one pile; last pebble wins): try the game with friends and find a winning strategy by starting with smaller piles."
+        },
+        {
+          "id": "T-15",
+          "banner": "Pastime Mathematics",
+          "intent": "reason",
+          "book_ref": "Pastime Mathematics Q3, p.12-13",
+          "description": "Digit-swap subtraction puzzle: observe differences in each step; try other digit pairs; identify digits giving 1-digit number in first step; extend Mira's table for differences 2,3,5,7; find relationship between digit difference and number difference."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Place value — expanded form and non-standard decomposition",
+      "prose_summary": "This section deepens place value understanding through two complementary lenses: standard expanded form (70,405 = 70,000 + 400 + 5) and non-standard decomposition where a number is regrouped across places in unusual ways (983 = 90 Tens + 83 Ones). The currency-denomination tasks (how many ₹10/₹100/₹500 notes in ₹7,934 or ₹65,342) make the non-standard decomposition practically meaningful — the same number of tens or hundreds can represent real-world currency groupings. Ordering tasks (ascending/descending by price and population) consolidate comparison skills from S2.",
+      "tasks": [
+        {
+          "id": "T-16",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q1, p.13",
+          "description": "Write 5 numbers between 23,568 and 24,234."
+        },
+        {
+          "id": "T-17",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q2, p.13",
+          "description": "Write 5 numbers that are more than 38,125 but less than 38,600."
+        },
+        {
+          "id": "T-18",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q3, p.13",
+          "description": "Ravi's car: 56,987 km; Sheetal's car: 67,543 km. Whose car has been driven more?"
+        },
+        {
+          "id": "T-19",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q4, p.13",
+          "description": "Arrange ₹90,000; ₹89,999; ₹94,983; ₹49,900; ₹93,743; ₹39,999 in ascending (increasing) order."
+        },
+        {
+          "id": "T-20",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q5, p.14",
+          "description": "Arrange town populations (65,232; 53,231; 56,380; 51,336; 45,858; 66,540) in descending (decreasing) order."
+        },
+        {
+          "id": "T-21",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q6, p.14",
+          "description": "Find numbers between 42,750 and 53,500 such that the ones, tens, and hundreds digits are all 0."
+        },
+        {
+          "id": "T-22",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q7, p.14",
+          "description": "Write numbers 8,062; 9,980; 10,304; 23,004; 70,405 in expanded form."
+        },
+        {
+          "id": "T-23",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q8, p.14-15",
+          "description": "Fill in the blanks with non-standard decompositions: e.g. 68 = __ Tens + 18 Ones; 607 = 4 Hundreds + __ Ones; 5,621 = 4 Thousand + __ Hundreds + 2 Tens + __ Ones; and similar (b)–(g)."
+        },
+        {
+          "id": "T-24",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q9, p.15",
+          "description": "Fill in: how many ₹10/₹100/₹500 notes in ₹7,934 and ₹65,342; how many thousands in each (b)–(h)."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "King's Horses — spatial reasoning puzzle",
+      "prose_summary": "A story-based puzzle in which a caretaker hides a stolen horse by rearranging 19 (then 18) horses around a square stable so each side still shows 5. Students first count to expose the caretaker's deception (corners are shared between two sides), then construct valid 18-horse and smaller arrangements. The puzzle builds combinatorial spatial reasoning — understanding that a perimeter-count can be fixed while the total changes — rather than any arithmetic algorithm.",
+      "tasks": [
+        {
+          "id": "T-25",
+          "banner": "King's Horses",
+          "intent": "reason",
+          "book_ref": "King's Horses, p.15-16",
+          "description": "Count horses in the given arrangement and find the caretaker's mistake; arrange 18 horses with 5 on each side; explore how many more can be stolen before the king notices."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 2,
+  "exploration_load": 0,
+  "procedural_load": 1
+}

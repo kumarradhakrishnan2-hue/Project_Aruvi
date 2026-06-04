@@ -1,0 +1,43 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 4,
+  "chapter_title": "We the Travellers — II",
+
+  "core_cg": "CG-1",
+
+  "core_competencies": [
+    {
+      "c_code": "C-1.3",
+      "justification": "The chapter's central work is understanding and carrying out addition and subtraction on whole numbers of up to five digits, including regrouping at every place-value boundary. The Fuel Arithmetic sections introduce the operations through fuel-quantity contexts with labelled H-T-O columns; the Relationship Between Addition and Subtraction section makes the inverse connection explicit; and the large-number sections (North–South Corridor distances, journey expenses, port distances) extend the same operations to 4- and 5-digit numbers. The bulk of the chapter's tasks — calculation drills, multi-step word problems, and mental complement strategies — directly enact fluent and flexible use of these two operations."
+    },
+    {
+      "c_code": "C-1.4",
+      "justification": "Two independent strands of pattern work run through the chapter. The Sums of Consecutive Numbers section asks students to observe whether sums of 2, 3, 4, and 5 consecutive numbers are always even or odd, to find the constant difference between successive sums, and to use the discovered pattern to compute sums without adding directly. The Even and Odd Numbers section then asks students to generalise the parity of sums for all even+even, odd+odd, and odd+even pairs using a paired-arrangement model. The palindrome listing and torch ON/OFF extension problems further require students to describe and extend number-based patterns systematically."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-4.1",
+      "justification": "Several tasks go beyond routine calculation into puzzle-solving. The opening Making Sums Equal task asks students to interchange the fewest pairs of numbers between two groups to equalise their sums — a combinatorial puzzle. The palindrome listing and grid inc/dec filling tasks require systematic enumeration under constraints. The coin-combination problem (finding which combinations of ₹1, ₹2, and ₹5 coins total ₹38) and the estimate-then-verify school council budget task similarly demand reasoning beyond a single operation."
+    },
+    {
+      "c_code": "C-4.3",
+      "justification": "The Quick Sums and Differences section explicitly develops mental-computation strategies: Piku's complement method (adding to 99 then adjusting by 1 to reach 100 or 1,000) and Namita's subtract-9/99 method are taught as deliberate alternatives to column calculation. The instruction in the large-number addition task — 'wherever possible, find easier ways to add the pairs' — further prompts students to select the most efficient method in context."
+    },
+    {
+      "c_code": "C-1.1",
+      "justification": "The 4- and 5-digit addition and subtraction sections require students to track and align digits across five place-value positions (ones through ten-thousands), extending place-value representation to numbers up to 99,999. Moving from labelled columns (TTh, Th, H, T, O) to unlabelled column alignment demands internalised understanding of the Indian place-value structure at larger magnitudes."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to carry out addition and subtraction on whole numbers of up to five digits — including regrouping, inverse relationships, and mental strategies — and to discover and extend number patterns, by moving from concrete place-value column work through increasingly symbolic and mental computation.",
+
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 0,
+  "procedural_load": 2,
+  "effort_index": 13.0
+}

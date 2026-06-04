@@ -1,0 +1,440 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 6,
+  "chapter_title": "The Dairy Farm",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Exploring Multiplication Facts (Opener)",
+      "prose_summary": "The chapter opens by activating prior multiplication knowledge through shape-coded puzzles and pouch-arrangement tasks set in a dairy context. Students decode shape equations (shapes standing for numbers 1–24), arrange digits to approach a target product, and count butter milk pouches arranged in rectangular arrays. A 'Which number am I?' clue-elimination task on a 100-grid and an open number-making activity with a grid of numbers and operations round out the section. The work is at the concrete-pictorial interface, emphasising flexible reasoning and elimination before any new procedure is introduced.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let Us Think",
+          "intent": "reason",
+          "book_ref": "Let Us Think Q1, p.70",
+          "description": "The given shapes stand for numbers between 1 and 24. Find the numbers hiding in all the shapes [equations a–f]."
+        },
+        {
+          "id": "T-2",
+          "banner": "Let Us Think",
+          "intent": "reason",
+          "book_ref": "Let Us Think Q2, p.70",
+          "description": "Place the digits 2, 5, and 3 appropriately to get a product close to 100. Share your reasoning in class."
+        },
+        {
+          "id": "T-3",
+          "banner": "Let Us Think",
+          "intent": "explore",
+          "book_ref": "Let Us Think Q3, p.70",
+          "description": "A dairy has packed butter milk pouches in the following manner. Find the number of pouches kept in each arrangement."
+        },
+        {
+          "id": "T-4",
+          "banner": "Let Us Think",
+          "intent": "reason",
+          "book_ref": "Let Us Think Q4, p.71",
+          "description": "Which number am I? Use clues (a)–(h) and the 100-grid to identify the two-digit number."
+        },
+        {
+          "id": "T-5",
+          "banner": "Let Us Think",
+          "intent": "reason",
+          "book_ref": "Let Us Think Q5, p.71",
+          "description": "Choose any two numbers and one operation from the grid. Try to make all numbers between 0 and 20; find which you cannot make."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Order of Numbers in Multiplication",
+      "prose_summary": "This section introduces the commutativity of multiplication through butter-packet arrays arranged in two orientations (e.g. 2×3 and 3×2). Students observe that interchanging the number of groups and the group size leaves the total unchanged, and extend this to a set of pairs (8×5/5×8, 6×13/13×6, 10×5/5×10, 8×20/20×8, 12×9/9×12). The pictorial rectangle model makes the concept concrete, and a prompt about 9×0 opens a brief discussion about the zero property. The section anchors commutativity as a reusable strategy before flexible methods are introduced.",
+      "tasks": [
+        {
+          "id": "T-6",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Order of Numbers in Multiplication, p.72",
+          "description": "Find butter packets in each arrangement (a–g pairs). What pattern do you notice? Discuss in class."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Patterns in Multiplication by 10s and 100s",
+      "prose_summary": "Students revise and extend multiplication by 10, 100, and 1,000 using place-value tables (Th H T O and TTh Th H T O). They observe that multiplying by 10 shifts every digit one place left, by 100 two places, and by 1,000 three places, and connect this to the pattern of zeros. Two structured tables — one for multiples of 1,000 and one for products like 40×500 and 70×600 — consolidate the pattern symbolically. The section sits on the pictorial-to-symbolic path and feeds directly into the flexible strategies that follow.",
+      "tasks": [
+        {
+          "id": "T-7",
+          "banner": "Let us revise",
+          "intent": "practice",
+          "book_ref": "Patterns in Multiplication by 10s and 100s Q1 a–i, p.72",
+          "description": "Find: 4×10, 20×10, 10×40, 10×10, 20×50, 80×10, 3×100, 8×100, 10×100."
+        },
+        {
+          "id": "T-8",
+          "banner": "Let us revise",
+          "intent": "practice",
+          "book_ref": "Patterns in Multiplication by 10s and 100s Q2, p.73",
+          "description": "Find answers; fill in the place-value table and describe the pattern [60×50, 220×20, 11×300, 80×90, 10×63, 40×12, etc.]."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let us fill in the table",
+          "intent": "practice",
+          "book_ref": "Patterns in Multiplication by 10s and 100s (tables), p.74",
+          "description": "Fill in place-value tables: 2×1,000 through 5×7,000; 20×100 through 70×600."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Many Ways to Multiply",
+      "prose_summary": "Five students' different mental strategies for 18×5 are presented: halving/doubling, repeated doubling with addition, splitting (distributive property), using a near fact (18×5=9×10), and compensation. Students are asked to verify whether all strategies are correct and to discuss why they yield the same answer. This section is conceptually the heart of the chapter — it establishes that there is no single correct procedure and that understanding why each strategy works matters. It operates entirely at the symbolic-reasoning level.",
+      "tasks": [
+        {
+          "id": "T-10",
+          "banner": "Many Ways to Multiply",
+          "intent": "reason",
+          "book_ref": "Many Ways to Multiply, p.74",
+          "description": "Five students show different ways to find 18×5. Do you think they are all correct? Why do you think so?"
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Doubling and Halving",
+      "prose_summary": "The halving-and-doubling strategy is developed using area-model pictures of butter packets: 3×18 is shown equal to 6×9, and 22×5 is explored pictorially. Students practise the strategy on four problems (14×3, 16×4, 38×5, 35×14) using the half/double scaffold, then apply it independently to six problems, and finally generate their own examples. The section moves from concrete (array pictures) to pictorial scaffold to symbolic application, grounding the strategy in visual justification before drill.",
+      "tasks": [
+        {
+          "id": "T-11",
+          "banner": "Doubling and Halving",
+          "intent": "explore",
+          "book_ref": "Doubling and Halving (a)–(b), p.75",
+          "description": "Find strategies to calculate butter packets: 3×18 shown as 6×9; find the equivalent for 22×5. Discuss why these are the same."
+        },
+        {
+          "id": "T-12",
+          "banner": "Doubling and Halving",
+          "intent": "practice",
+          "book_ref": "Doubling and Halving (c), p.75",
+          "description": "Solve using halving and doubling scaffold: 14×3, 16×4, 38×5, 35×14."
+        },
+        {
+          "id": "T-13",
+          "banner": "Doubling and Halving",
+          "intent": "practice",
+          "book_ref": "Doubling and Halving (d), p.76",
+          "description": "Find the product by halving and doubling: 5×18, 50×28, 15×22, 25×12, 12×45, 16×45."
+        },
+        {
+          "id": "T-14",
+          "banner": "Doubling and Halving",
+          "intent": "reason",
+          "book_ref": "Doubling and Halving (e), p.76",
+          "description": "Give 5 examples of multiplication problems where halving and doubling will help. Find the products as well."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Nearest Multiple",
+      "prose_summary": "Students learn to multiply by rounding one factor to the nearest multiple of 10, then compensating by adding or subtracting. Two worked examples — 4×19 (round up to 4×20, subtract 4) and 14×21 (round down to 14×20, add 14) — are illustrated with array pictures showing the compensation chunk clearly. Students then generate five of their own examples and apply the strategy to six given problems. The section develops the distributive property informally through a visual-then-symbolic sequence.",
+      "tasks": [
+        {
+          "id": "T-15",
+          "banner": "Nearest Multiple",
+          "intent": "reason",
+          "book_ref": "Nearest Multiple (a)–(b), p.76",
+          "description": "Observe pictures and explain: 4×19=4×20−4=76 and 14×21=14×20+14=294. Why do we add/subtract?"
+        },
+        {
+          "id": "T-16",
+          "banner": "Nearest Multiple",
+          "intent": "reason",
+          "book_ref": "Nearest Multiple (c), p.76",
+          "description": "Give 5 examples of problems where you can use the nearest multiple to find the product easily. Find the products as well."
+        },
+        {
+          "id": "T-17",
+          "banner": "Nearest Multiple",
+          "intent": "solve",
+          "book_ref": "Nearest Multiple (d), p.76",
+          "description": "Find products using nearest multiple: 7×52, 12×28, 75×31, 99×15, 8×25, 22×42."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Using Strategies Flexibly — Word Problems",
+      "prose_summary": "Six word problems set in real-life dairy and school contexts ask students to choose and apply any multiplication strategy flexibly. Problems include: auditorium seating (35×42), jogging distance (4×31), boxes of books (36×48), cloth for kurtas (unit rate scaling), milk production (29×5), and fodder for 297 cows (297×18). The emphasis is on strategic choice and class discussion, not on a single prescribed method. This section sits at the solve level — applying known strategies to new problem contexts.",
+      "tasks": [
+        {
+          "id": "T-18",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q1–6, p.77",
+          "description": "Use strategies flexibly: auditorium seats (35×42), Priya's jogging (4×31), school books (36×48), cloth for 8 kurtas, 29 cows×5L, 297 cows×18 kg fodder."
+        }
+      ]
+    },
+    {
+      "ref": "S8",
+      "title": "Waste and Composting — Distributive Model",
+      "prose_summary": "Two multi-digit problems (12×35 and 24×150) are presented with multiple solution methods side by side: Dienes-block arrays, Nida's area-model grid, Kanti's vertical expansion (each partial product listed), and John's grouped-row method (multiplying whole numbers at once). Students compare and discuss how the methods relate — why they all give the same answer and which is more efficient. This is the first section in which 2-digit × 2-digit multiplication is made explicit and multiple representations are compared, moving from pictorial to symbolic.",
+      "tasks": [
+        {
+          "id": "T-19",
+          "banner": "Let Us Solve",
+          "intent": "reason",
+          "book_ref": "Waste and Composting Q1, p.77–78",
+          "description": "12×35: Nida's area model shown; Kanti's and John's solutions given. How are these solutions the same or different?"
+        },
+        {
+          "id": "T-20",
+          "banner": "Let Us Solve",
+          "intent": "reason",
+          "book_ref": "Waste and Composting Q2, p.78",
+          "description": "24×150 (savings on compost). Area model and two other methods shown. How are these solutions the same or different?"
+        }
+      ]
+    },
+    {
+      "ref": "S9",
+      "title": "Let Us Multiply — Area Model Practice",
+      "prose_summary": "Worked examples for 32×8 (2-digit × 1-digit) and 69×45 (2-digit × 2-digit) are shown using three representations in parallel: the area-model grid, Kanti's vertical partial-product layout, and John's grouped-row format. Students then practise all three formats on four 2D×1D problems (78×4, 83×9, 67×28, 53×37) and four multi-step word problems requiring 2-digit and 3-digit multiplication. The section anchors the area model as the primary written method before the standard algorithm is introduced in S10.",
+      "tasks": [
+        {
+          "id": "T-21",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q1 a–d, p.79",
+          "description": "Solve like Nida [area model]: (a) 78×4, (b) 83×9, (c) 67×28, (d) 53×37."
+        },
+        {
+          "id": "T-22",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q2 a–d, p.80",
+          "description": "Solve like Kanti [vertical partial products]: 94×5, 49×6, 37×53, 28×79."
+        },
+        {
+          "id": "T-23",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q3 a–d, p.80",
+          "description": "Solve like John [grouped-row format]: 86×3, 72×7, 94×36, 66×22."
+        },
+        {
+          "id": "T-24",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q4 a–e, p.80",
+          "description": "Solve: movie theatre seats, cricket innings runs (24 fours and 18 sixes), Anjali's bulbs and tube lights cost, shopkeeper's rice bag earnings, library books (86×162)."
+        }
+      ]
+    },
+    {
+      "ref": "S10",
+      "title": "Dairy Cooperative — Multiplying Larger Numbers",
+      "prose_summary": "Three graded problems from a dairy cooperative context (268×4, 453×13, 574×125) introduce multiplication of 3-digit numbers by 1- and 2-digit multipliers, and then 3-digit × 3-digit. Each problem is solved using John's method (grouped partial products) alongside Mili's father's standard column algorithm, with teacher notes emphasising that the algorithm need not be over-emphasised. Students practise all three methods through three sets of Let Us Solve problems. The standard algorithm is connected to place value explicitly — carries are explained as regrouping, not procedural steps to memorise.",
+      "tasks": [
+        {
+          "id": "T-25",
+          "banner": "Dairy Cooperative",
+          "intent": "explore",
+          "book_ref": "Dairy Cooperative Q1, p.81",
+          "description": "268 villagers × 4 cows — find minimum cows. Mili's father's place-value method shown; discuss how the multiplication is carried out."
+        },
+        {
+          "id": "T-26",
+          "banner": "Dairy Cooperative",
+          "intent": "solve",
+          "book_ref": "Dairy Cooperative Q2, p.82",
+          "description": "453 Gir cows × 13 litres each day — how many litres does the cooperative receive from Gir cows everyday?"
+        },
+        {
+          "id": "T-27",
+          "banner": "Let Us Solve",
+          "intent": "practice",
+          "book_ref": "Let Us Solve Q1 a–e, p.83",
+          "description": "Solve like Nida [area model]: 548×6, 682×3, 324×18, 507×23, 190×65."
+        },
+        {
+          "id": "T-28",
+          "banner": "Let Us Solve",
+          "intent": "practice",
+          "book_ref": "Let Us Solve Q2 a–f, p.84",
+          "description": "Solve like John: 123×84, 368×32, 159×324, 239×401, 592×5, 101×22."
+        },
+        {
+          "id": "T-29",
+          "banner": "Let Us Solve",
+          "intent": "practice",
+          "book_ref": "Let Us Solve Q3 a–i, p.84",
+          "description": "Solve like Mili's father: 807×5, 143×28, 309×9, 450×38, 584×23, 302×13, 604×54, 112×23, 237×19."
+        }
+      ]
+    },
+    {
+      "ref": "S11",
+      "title": "Check, Check! — Error Analysis",
+      "prose_summary": "Five students' worked solutions for varied multiplication problems (46×59, 203×54, 38×150, 193×272, 626×323) are presented, some correct and some containing errors. Students must verify each solution, explain why a correct one works, and identify and fix errors in the incorrect ones. This is a reasoning section operating at the symbolic level — students must understand the underlying logic of the method well enough to spot procedural or conceptual mistakes.",
+      "tasks": [
+        {
+          "id": "T-30",
+          "banner": "Check, Check!",
+          "intent": "reason",
+          "book_ref": "Check, Check! a–e, p.85",
+          "description": "Check if Asma's (46×59), Pankaj's (203×54), Lado's (38×150), Kira's (193×272), and Asher's (626×323) solutions are correct. Identify errors and correct."
+        }
+      ]
+    },
+    {
+      "ref": "S12",
+      "title": "Equivalent Expressions and Easy Ways",
+      "prose_summary": "Students identify equivalent multiplication expressions (e.g. 12×17 = 6×34 = 11×18?) without calculating, applying properties of multiplication. A second task asks them to find easy ways to compute problems like 16×25 and 199×63, drawing on all the strategies from the chapter. A third task asks students to generate five of their own easy-method examples. This section operates at the abstract-symbolic level, consolidating the chapter's strategic repertoire as generalisable principles.",
+      "tasks": [
+        {
+          "id": "T-31",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q1, p.86",
+          "description": "Identify problems that have the same answer as the one given at the top of each box without calculating [12×17, 18×4, 26×11, 55×9, 101×42, 247×8, 1001×5, 1999×2]."
+        },
+        {
+          "id": "T-32",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q2 a–i, p.86",
+          "description": "Find easy ways of solving: 16×25, 12×125, 24×250, 36×25, 28×75, 300×15, 50×78, 199×63, 128×35."
+        },
+        {
+          "id": "T-33",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q3, p.86",
+          "description": "Write 5 other examples for which you can find easy ways of getting products."
+        }
+      ]
+    },
+    {
+      "ref": "S13",
+      "title": "Digit-Box Puzzles, Pattern Derivation, and Estimation",
+      "prose_summary": "Three types of tasks develop multiplicative reasoning at the symbolic level. Digit-box puzzles (coloured boxes representing unknown digits in column multiplication) require students to reason backwards from a partial product. A pattern-derivation task uses 17×23=391 as a given and asks students to derive related products (17×24, 16×23, 18×23) by reasoning about what changes when one factor increases or decreases by 1. An estimation task asks students to match five products to approximate answers by rounding, with class discussion of estimation strategy. Together these tasks develop structural understanding of how products change with factors.",
+      "tasks": [
+        {
+          "id": "T-34",
+          "banner": "Let Us Think",
+          "intent": "reason",
+          "book_ref": "Let Us Think Q1 a–i, p.87–88",
+          "description": "Find possible values of the coloured boxes in each multiplication problem [×3 equations and larger problems with missing digits; some have more than one answer]."
+        },
+        {
+          "id": "T-35",
+          "banner": "Let Us Think",
+          "intent": "reason",
+          "book_ref": "Let Us Think Q4, p.87",
+          "description": "Given 17×23=391, find without multiplying: 17×24, 17×22, 16×23, 18×9 (given 8×9=72), 28×9, 108×9, 18×23."
+        },
+        {
+          "id": "T-36",
+          "banner": "Let Us Think",
+          "intent": "reason",
+          "book_ref": "Let Us Think Q2, p.88",
+          "description": "Estimate the products and match: 25×31, 132×19, 101×11, 248×49, 12×25. Discuss how you estimated."
+        }
+      ]
+    },
+    {
+      "ref": "S14",
+      "title": "The King's Reward",
+      "prose_summary": "A story problem asks students to choose between three exponential reward schemes (5 coins doubling for 7 days; 3 coins tripling; 1 coin multiplied by 5) and then calculate the outcome for each minister. The problem requires multi-step chained multiplication and introduces the idea that a smaller starting value with a larger multiplier can exceed a larger starting value — connecting multiplication patterns to practical decision-making. Students must first guess, then calculate, making this a rich predict-and-verify reasoning task.",
+      "tasks": [
+        {
+          "id": "T-37",
+          "banner": "The King's Reward",
+          "intent": "reason",
+          "book_ref": "The King's Reward, p.88–89",
+          "description": "Calculate gold coins each minister received (×2 for 7 days from 5; ×3 for 7 days from 3; ×5 for 7 days from 1). Which reward would you have chosen?"
+        }
+      ]
+    },
+    {
+      "ref": "S15",
+      "title": "Multiplication Patterns",
+      "prose_summary": "Students explore how products change when multiplier or multiplicand is halved/doubled, and complete four pattern sets: repunit squares (1×1, 11×11, 111×111…), products of numbers ending in 5 (5×5, 15×15, 25×25…), multiplication by 11 patterns (11×12, 11×34…), and the 123×9+3 digit sequence. A final number-pair grid asks students to find the smallest and largest adjacent products by reasoning rather than computing all possibilities. The section extends symbolic pattern recognition to 4-digit numbers and develops predictive reasoning.",
+      "tasks": [
+        {
+          "id": "T-38",
+          "banner": "Multiplication Patterns",
+          "intent": "reason",
+          "book_ref": "Multiplication Patterns Q1 a–b, p.89",
+          "description": "Notice patterns; predict: 16×44=704 → derive 8×88, 8×22, 16×22, 32×44; similarly for 12×32=384 → 6×16, 24×16, 24×64, 12×16."
+        },
+        {
+          "id": "T-39",
+          "banner": "Multiplication Patterns",
+          "intent": "reason",
+          "book_ref": "Multiplication Patterns Q2, p.90",
+          "description": "Observe and complete: 1×1…1111×1111; 5×5…55×55; 11×12, 11×34…11×54, 11×82; 1×9+1…1234×9+4; find smallest and largest product pairs in the number grid."
+        }
+      ]
+    },
+    {
+      "ref": "S16",
+      "title": "Let Us Solve — Multi-Step Word Problems",
+      "prose_summary": "Six final problems consolidate the chapter: a book-shop problem requiring inverse reasoning (working backwards from remaining money), a football tournament with ticket and fee calculations across multiple operations, a Republic Day ground seating problem requiring row × column reasoning, a drill set of six multiplications, and two 'without multiplication' derivation problems (given 67×67, find 67×68; given 99×100, find 99×99). The section exercises all levels of the chapter's cognitive range — from routine multi-digit practice to structural reasoning.",
+      "tasks": [
+        {
+          "id": "T-40",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q1, p.91",
+          "description": "Mala bought 18 books (3 for ₹150) and had ₹20 left. How much money did she have at the beginning?"
+        },
+        {
+          "id": "T-41",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q2 a–b, p.91",
+          "description": "Football tournament: 57 tickets×₹115 and 3 teams×₹1,599 fees; expenses ₹1,750 ground + ₹1,129 food. Find total collection and total expenses."
+        },
+        {
+          "id": "T-42",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q3 a–c, p.91",
+          "description": "Republic Day ground: 12 rows in front + 17 behind + Ananya's row; 18 to right + 22 to left + Ananya. Find total rows, students in her row, total students."
+        },
+        {
+          "id": "T-43",
+          "banner": "Let Us Solve",
+          "intent": "practice",
+          "book_ref": "Let Us Solve Q4 a–f, p.91",
+          "description": "Multiply: 67×78, 34×56, 45×263, 86×542, 432×107, 310×120."
+        },
+        {
+          "id": "T-44",
+          "banner": "Let Us Solve",
+          "intent": "reason",
+          "book_ref": "Let Us Solve Q5, p.91",
+          "description": "If 67×67=4489, find 67×68 without multiplication."
+        },
+        {
+          "id": "T-45",
+          "banner": "Let Us Solve",
+          "intent": "reason",
+          "book_ref": "Let Us Solve Q6, p.91",
+          "description": "If 99×100=9900, find 99×99 without multiplication."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 3,
+  "task_load": 3,
+  "exploration_load": 0,
+  "procedural_load": 1
+}

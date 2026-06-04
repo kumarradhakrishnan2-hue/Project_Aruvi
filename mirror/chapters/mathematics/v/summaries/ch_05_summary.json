@@ -1,0 +1,300 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "v",
+  "chapter_number": 5,
+  "chapter_title": "Far and Near",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Choosing appropriate units (m vs cm)",
+      "prose_summary": "The chapter opens by activating prior knowledge of length units — metre and centimetre — through a matching activity. Students identify which unit is appropriate for everyday quantities such as the height of India Gate, the length of a handkerchief, or the depth of a well. This is a concrete-to-symbolic warm-up that anchors unit sense before new units are introduced.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let Us Find",
+          "intent": "reason",
+          "book_ref": "Let Us Find, p.57",
+          "description": "Identify the appropriate units (m or cm) for: height of India Gate, handkerchief, well, mobile phone, elephant's trunk, shirt buttons."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Different units but same measure",
+      "prose_summary": "Shikha and Sonu's sari-measuring context introduces the equivalence 100 cm = 1 m through a double number line, where students match measurements in cm to their metre equivalents. The double number line makes the multiplicative relationship (×100) visible and spatial, sitting at the pictorial level of the concrete→pictorial→symbolic path.",
+      "tasks": [
+        {
+          "id": "T-2",
+          "banner": "Different Units but Same Measure",
+          "intent": "reason",
+          "book_ref": "Different Units but Same Measure, p.57",
+          "description": "Find which measures (given in cm and m) represent the same sari or stole using the double number line."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Measuring long distances — kilometre",
+      "prose_summary": "The chapter introduces the kilometre (1,000 m = 1 km) as the unit for long distances, and presents real measuring tools — long tape, rodometer, rangefinder, laser distance meter. Students physically measure 100 m and 200 m on the playground, develop a personal step-distance relationship, and apply it to estimate distances around them. A table of rope lengths asks students to compute how many ropes of a given length make 1 km, building multiplicative understanding of the km definition.",
+      "tasks": [
+        {
+          "id": "T-3",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do, p.59",
+          "description": "Measure 100 m and 200 m on playground with long tape; walk lines and count steps; use step-distance relationship to find distances of at least 3 locations; identify nearest and farthest from home; write distances in increasing order; name a location ≥1,000 m away."
+        },
+        {
+          "id": "T-4",
+          "banner": "Let Us Explore",
+          "intent": "reason",
+          "book_ref": "Let Us Explore, p.59",
+          "description": "Complete the table: for each rope length (100 m, 10 m, 200 m, 500 m, 250 m), find how many ropes are needed to make 1 km."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Kilometre race — applying km in context",
+      "prose_summary": "The Kilometre Race context embeds km-and-m arithmetic in race-planning logistics: positioning water stations, children, and flags at regular intervals along a 3 km course. Students solve three related problems that require partitioning km distances into equal parts and counting placements, moving firmly to the symbolic level.",
+      "tasks": [
+        {
+          "id": "T-5",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q1, p.60",
+          "description": "Water stations every 500 m in a 3-km race — how many stations? At what positions from the start?"
+        },
+        {
+          "id": "T-6",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q2, p.60",
+          "description": "Children at 300 m intervals to direct runners in 3-km race — how many children needed? At what positions from the start?"
+        },
+        {
+          "id": "T-7",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q3, p.60",
+          "description": "Red and blue flags alternately every 50 m in a 3-km race — how many red and blue flags are needed till the finish line?"
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Longest train journey — km arithmetic with data",
+      "prose_summary": "The Vivek Express route from Dibrugarh to Kanniyakumari provides a real data table of station distances in km. Students read the table to compute totals, differences between stations, and make comparisons — practicing km subtraction and reasoning about relative distances in a rich geographical context.",
+      "tasks": [
+        {
+          "id": "T-8",
+          "banner": "Longest Train Journey",
+          "intent": "solve",
+          "book_ref": "Longest Train Journey Q1, p.61",
+          "description": "Find the total length of the route from Dibrugarh to Kanniyakumari."
+        },
+        {
+          "id": "T-9",
+          "banner": "Longest Train Journey",
+          "intent": "solve",
+          "book_ref": "Longest Train Journey Q2, p.61",
+          "description": "Find the distance between Vijayawada and Jalpaiguri Road."
+        },
+        {
+          "id": "T-10",
+          "banner": "Longest Train Journey",
+          "intent": "solve",
+          "book_ref": "Longest Train Journey Q3, p.61",
+          "description": "Find the distance between Vijayawada and Visakhapatnam."
+        },
+        {
+          "id": "T-11",
+          "banner": "Longest Train Journey",
+          "intent": "reason",
+          "book_ref": "Longest Train Journey Q4, p.61",
+          "description": "Which two stations are farther apart — Guwahati and Dimapur, or Bhubaneswar and Jalpaiguri Road?"
+        },
+        {
+          "id": "T-12",
+          "banner": "Longest Train Journey",
+          "intent": "solve",
+          "book_ref": "Longest Train Journey Q5, p.61",
+          "description": "Find the distance between Guwahati and Coimbatore JN."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "The world of small things — millimetre",
+      "prose_summary": "This section zooms in to introduce the millimetre (mm) as the unit for small objects — sprouts, screws, nails. Students examine a ruler, count the ten small marks between two centimetre marks, and discover 1 cm = 10 mm. Two hands-on tasks follow: measuring lines in a geometric design to the nearest mm, and a four-day seed-sprouting experiment where daily sprout growth is recorded in mm — placing measurement in a living, observational context.",
+      "tasks": [
+        {
+          "id": "T-13",
+          "banner": "Let Us Explore",
+          "intent": "explore",
+          "book_ref": "Let Us Explore, p.61",
+          "description": "Examine the scale markings between 1 cm and 2 cm; count mm marks; discover 1 cm = 10 mm."
+        },
+        {
+          "id": "T-14",
+          "banner": "Let Us Measure",
+          "intent": "explore",
+          "book_ref": "Let Us Measure, p.61",
+          "description": "Measure the lines in the geometric design and write their measurements in cm and mm."
+        },
+        {
+          "id": "T-15",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do, p.62",
+          "description": "Soak moong/chana seeds; over 4 days take one seed each day and measure sprout length in mm; record in table."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Relationships between different units",
+      "prose_summary": "The summary relationship box (10 mm = 1 cm; 100 cm = 1 m; 1,000 m = 1 km) anchors the full unit hierarchy. Students first draw lines to exact mm lengths — bridging pictorial and symbolic — then use three sets of double number lines (mm↔cm, cm↔m, m↔km) to fill in scaling relationships, and finally complete a large conversion drill (14 sub-parts) converting across all four units in both directions.",
+      "tasks": [
+        {
+          "id": "T-16",
+          "banner": "Let Us Draw",
+          "intent": "practice",
+          "book_ref": "Let Us Draw, p.62",
+          "description": "Draw lines of lengths 5 cm 5 mm, 3 cm 6 mm, 8 cm 3 mm, 36 mm, 67 mm in notebook using a scale."
+        },
+        {
+          "id": "T-17",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q1(a), p.63",
+          "description": "Fill in the blanks in the cm↔mm double number line (1 cm/10 mm to 50 cm/__ mm)."
+        },
+        {
+          "id": "T-18",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q1(b), p.63",
+          "description": "Fill in the blanks in the m↔cm double number line (1 m/__ cm to 21 m/__ cm)."
+        },
+        {
+          "id": "T-19",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q1(c), p.63",
+          "description": "Fill in the blanks in the km↔m double number line (1 km/1,000 m to 82 km/__ m)."
+        },
+        {
+          "id": "T-20",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q2, p.63–64",
+          "description": "Convert: 4 cm 5 mm to mm; 89 mm to cm mm; 234 cm to mm; 514 mm to cm mm; 6 m 34 cm to cm; 20 m 12 cm to cm; 397 m to cm; 5,792 cm to m cm; 9,108 cm to m cm; 34 km to m; 6,870 m to km m; 10,552 m to km m; 29 km 30 m to m; 32 km 359 m to m."
+        }
+      ]
+    },
+    {
+      "ref": "S8",
+      "title": "Adding and subtracting lengths",
+      "prose_summary": "Worked examples model two strategies for adding and subtracting compound lengths (km+m; m+cm): adding like units separately then regrouping, and converting everything to one unit before operating. Both column layouts are shown side by side. Students then solve real-world problems involving ribbon addition, distance subtraction, cable car totals, and cross-unit comparison with difference-finding.",
+      "tasks": [
+        {
+          "id": "T-21",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q1, p.66",
+          "description": "Rani has ribbon rolls of 3 m 75 cm and 2 m 25 cm. How much ribbon in total?"
+        },
+        {
+          "id": "T-22",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q2, p.66",
+          "description": "Bhopal to Sanchi is 48 km 700 m; Bhadbhada Ghat waterfall is 17 km 900 m from Bhopal. How far is Sanchi from the waterfall?"
+        },
+        {
+          "id": "T-23",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q3, p.66",
+          "description": "Gulmarg Gondola section 1 is 2 km 300 m and section 2 is 2 km 650 m. Find total distance covered."
+        },
+        {
+          "id": "T-24",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q4, p.66",
+          "description": "Circle the bigger length and find the difference for 7 pairs: 11 mm vs 1 cm; 26 mm vs 2 cm; 20 cm vs 201 mm; 1,020 mm vs 1 m; 2 m vs 245 cm; 5,678 m vs 6 km; 6 km 1,480 m vs 7 km 479 m."
+        }
+      ]
+    },
+    {
+      "ref": "S9",
+      "title": "Multiplying and dividing lengths",
+      "prose_summary": "A shirt-cloth problem models multiplication of a compound length (1 m 80 cm × 20) by breaking the quantity into like units and multiplying each part separately. A division problem (road-laying over 6 days) applies the inverse. A cloth-cost double number line develops proportional reasoning between length and price, and an embroidery thread problem requires multi-step multiplication then a cost calculation.",
+      "tasks": [
+        {
+          "id": "T-25",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q2, p.67",
+          "description": "Shop sells cloth at ₹100 for 5 m. Use the double number line to find cost or length for various quantities up to ₹2,000."
+        },
+        {
+          "id": "T-26",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q3, p.67",
+          "description": "Anita needs 1 m thread per 50 cm sari border. How much thread for 5 m sari? Thread costs ₹50 per metre — how much money needed?"
+        },
+        {
+          "id": "T-27",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q4, p.67",
+          "description": "Road 12 km 600 m long is completed in 6 equal days. How much road is laid each day?"
+        }
+      ]
+    },
+    {
+      "ref": "S10",
+      "title": "Other units — feet, inches, estimation",
+      "prose_summary": "The chapter closes by connecting the metric system to informal units used in everyday Indian life — feet and inches. Students examine a ruler to find inches marked alongside centimetres and discover 1 inch = 2 cm 5 mm and 1 foot = 30 cm. Estimation tasks ask students to use known references (a single-storeyed house, an electric pole) to judge the height of a building, a tree, and the depth of a well. A final Try This puzzle tasks students to complete a 4×4 grid of operation signs — an engaging reasoning challenge.",
+      "tasks": [
+        {
+          "id": "T-28",
+          "banner": "Let Us Estimate",
+          "intent": "reason",
+          "book_ref": "Let Us Estimate Q1–Q3, p.68",
+          "description": "Estimate the height of the tallest building in your neighbourhood; height of the tallest tree; depth of a well or swimming pool — share reasoning and reference used."
+        },
+        {
+          "id": "T-29",
+          "banner": "Let Us Explore",
+          "intent": "explore",
+          "book_ref": "Let Us Explore, p.68",
+          "description": "Look at ruler to find inches; find how many cm and mm equal 1 inch; note 1 inch = 2 cm 5 mm, 1 foot = 12 inches or 30 cm."
+        },
+        {
+          "id": "T-30",
+          "banner": "Try This",
+          "intent": "explore",
+          "book_ref": "Try This, p.69",
+          "description": "Stand against wall, mark your height; measure distance floor-to-mark in feet and inches; find tallest student in class and their height in feet and inches."
+        },
+        {
+          "id": "T-31",
+          "banner": "Try This",
+          "intent": "reason",
+          "book_ref": "Try This (puzzle), p.69",
+          "description": "Put appropriate operation signs (+, –, ×, ÷) in a 4×4 grid such that each row, column, and 4×4 box does not repeat any sign."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 3,
+  "task_load": 3,
+  "exploration_load": 1,
+  "procedural_load": 2
+}

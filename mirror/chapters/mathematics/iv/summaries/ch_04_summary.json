@@ -1,0 +1,299 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iv",
+  "chapter_number": 4,
+  "chapter_title": "Thousands Around Us",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Revision of 2- and 3-digit numbers",
+      "prose_summary": "The chapter opens with a community langar context in which Jaspreet and Gulnaz receive donations of various quantities, asking children to write the corresponding numbers from Dienes-block pictures, word descriptions, and expressions like '4 Ones + 7 Tens' or '100 – 7'. Children then draw HTO blocks for crowd counts (52, 145, 325, 508 people) at different time slots. The section consolidates 2- and 3-digit number representation on the concrete–pictorial boundary before extending to thousands.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do, p.39–40",
+          "description": "Write the number for each donation quantity shown as Dienes blocks, '4 Ones + 7 Tens', bundles, '100–7', and grids."
+        },
+        {
+          "id": "T-2",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, p.40–41",
+          "description": "Write the time and draw HTO blocks for 52, 145, 325, and 508 people at different time slots; identify the time slot with most and least people."
+        },
+        {
+          "id": "T-3",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q1(a), p.41",
+          "description": "Make 3-digit numbers using digits 3 and 7; write them in boxes, circle the smallest, and cross out the largest."
+        },
+        {
+          "id": "T-4",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q1(b), p.41",
+          "description": "Make six 3-digit numbers using digits 3, 5, 0, 8 such that all numbers are less than 550; digits may be repeated."
+        },
+        {
+          "id": "T-5",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q1(c), p.41",
+          "description": "Mark the six numbers made in Q1(b) on the number line from 200 to 600."
+        },
+        {
+          "id": "T-6",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q2, p.42",
+          "description": "Fill in the blanks with appropriate numbers in caterpillar, train, pumpkin garland, car, and fish sequences showing counting patterns."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "One Thousand — reading and estimating",
+      "prose_summary": "Using the langar number chart (1–1100), children discover the count of all lunch attendees and continue writing numbers beyond 1000. The section introduces the idea that the Indian base-10 system can write all numbers using ten symbols, and grounds one thousand in familiar real-world contexts — the Thousand Pillars Temple, Indian rhinoceros population, India's districts and coastline. Children then estimate which number range (Only 1, 2–5, 10–50, 50–100, 100–200, 200–500, 500–1000, More than 1000) applies to familiar quantities. This is a pictorial-to-symbolic transition, moving from the completed chart to reasoning about magnitude.",
+      "tasks": [
+        {
+          "id": "T-7",
+          "banner": "no banner",
+          "intent": "explore",
+          "book_ref": "p.43",
+          "description": "Count the full number chart up to 1100 to find how many people came for the community lunch; fill in blanks continuing the sequence beyond 1000."
+        },
+        {
+          "id": "T-8",
+          "banner": "no banner",
+          "intent": "reason",
+          "book_ref": "Q3, p.44",
+          "description": "Identify the number range (Only 1 to More than 1000) most suitable for each situation (leaves in a tree, books in classroom, ants in anthill, etc.) and name things around you that exceed 1000."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "One Thousand using Dienes Blocks",
+      "prose_summary": "This section visualises the times-10 pattern: 10 ones = 1 ten, 10 tens = 1 hundred, 10 hundreds = 1 thousand. Dienes block pictures show the unit square, rod, flat, and cube, making the grouping structure concrete. The teacher note directs hands-on grouping and regrouping experience with physical blocks. The key insight — that 1000 is a cube and the fourth place in our number system — is established here before symbolic notation is introduced.",
+      "tasks": []
+    },
+    {
+      "ref": "S4",
+      "title": "Breaking up One Thousand — complements and addition facts",
+      "prose_summary": "Children work with a vertical number line of Dienes hundreds to mark numbers like 900, 800, 850, 760, and 400, and find how much more is needed to reach 1000. Sub-task (f) asks children to complete eight addition facts of the form '___ + ___ = 1000' presented on orange segments of a sliced-orange diagram. The section sits squarely on the concrete-to-symbolic path, using the hundreds number line as the manipulative model and moving toward abstract complementary-addition fluency.",
+      "tasks": [
+        {
+          "id": "T-9",
+          "banner": "Let Us Break Up One-Thousand",
+          "intent": "solve",
+          "book_ref": "Let Us Break Up One-Thousand (a)–(f), p.47",
+          "description": "Mark 900, 800, 850, 760, 400 on the Dienes-hundreds number line and find how much more/less each is from 1000; complete eight addition facts of the form ___ + ___ = 1000."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Grouping and Regrouping with Dienes pictures",
+      "prose_summary": "Children circle groups of 10 ones or 10 tens in Dienes-block pictures and write the result as Tens + Ones or Hundreds + Tens + Ones, moving toward HTO tables. A second set extends this to circling groups of 10s across all three levels (units, tens, hundreds) and filling Tens/Ones or Hundreds/Tens/Ones tables. The Let Us Solve task strips away the pictures entirely and asks children to regroup abstract expressions like '15 Tens and 23 Ones' or '2 Hundreds, 13 Tens and 7 Ones' into standard form — a fully symbolic exercise on the concrete→pictorial→symbolic progression.",
+      "tasks": [
+        {
+          "id": "T-10",
+          "banner": "no banner",
+          "intent": "explore",
+          "book_ref": "p.48",
+          "description": "Look at Dienes pictures; circle groups of 10 Ones or 10 Tens as many times as possible; write expanded form (Tens + Ones or Hundreds + Tens + Ones) and the final number for two pictures."
+        },
+        {
+          "id": "T-11",
+          "banner": "no banner",
+          "intent": "explore",
+          "book_ref": "p.49",
+          "description": "Circle groups of ten 1s, 10s, and 100s in each picture; fill Tens/Ones or Hundreds/Tens/Ones tables for: 14 Ones, 23 Ones, 1 Ten and 27 Ones, 10 Tens and 6 Ones."
+        },
+        {
+          "id": "T-12",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve (a)–(i), p.50",
+          "description": "Identify and write the standard numbers for: 45 Ones, 39 Ones, 35 Tens, 86 Tens, 10T+1O, 15T+23O, 34T+12O, 19T+10O, 2H+13T+7O."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Numbers beyond 1000 — THTO place value, tokens, and sequences",
+      "prose_summary": "This is the central section, introducing the Thousands (Th) column through Dienes blocks and the token shorthand (coloured chips for 1, 10, 100, 1000). Children fill a multi-row Tokens–Expanded Form–Th–H–T–O–Number–Number Name table for numbers from 1001 to 3019, building symbolic fluency with 4-digit numbers. Sequences (forward and backward) through 1027–1032 and 2006–2014 practise successor/predecessor reasoning. The place value slider game operationalises increasing/decreasing by 1, 10, or 20. A Let Us Think item confronts the common misconception of dropping the zero placeholder (7 Th 0 H 2 T 4 O written as 724). Arrow card activity and Find Me grid extend the work to reading, constructing, and locating 4-digit numbers up to ~9000.",
+      "tasks": [
+        {
+          "id": "T-13",
+          "banner": "no banner",
+          "intent": "practice",
+          "book_ref": "p.52–53",
+          "description": "Fill in the Tokens–Expanded Form–Th–H–T–O–Number–Number Name table for multiple rows including numbers from 1001 to 3019."
+        },
+        {
+          "id": "T-14",
+          "banner": "no banner",
+          "intent": "practice",
+          "book_ref": "Q1(a)–(b), p.53",
+          "description": "Write numbers in sequence forward and backward: (a) starting at 1027, 1028…; (b) starting at …2008, 2009…"
+        },
+        {
+          "id": "T-15",
+          "banner": "Let Us Play",
+          "intent": "explore",
+          "book_ref": "Let Us Play (place value slider) (a)–(e), p.54",
+          "description": "Make the place value slider and take turns to increase or decrease: 1895 by 1, 2785 by 10, 3369 by 2, 5648 by 10, 6487 by 20."
+        },
+        {
+          "id": "T-16",
+          "banner": "Let Us Think",
+          "intent": "reason",
+          "book_ref": "Let Us Think Q1–2, p.54",
+          "description": "Decide whether Ram's writing of 7Th 0H 2T 4O as 724 is correct; write the correct number. Do the same for Richa's 5Th 6H 0T 3O written as 563."
+        },
+        {
+          "id": "T-17",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q1(a)–(e), p.57",
+          "description": "Use tokens to identify and write in the Th-H-T-O table: 6T+22O, 4T+12O, 3H+14T+8O, 12H+18T+2O, 1Th+5H+10T+17O."
+        },
+        {
+          "id": "T-18",
+          "banner": "Let Us Solve",
+          "intent": "reason",
+          "book_ref": "Let Us Solve 2A, p.57",
+          "description": "Circle the bigger number in each pair: 30 or 300; 6000 or 600; 6000 or 3000."
+        },
+        {
+          "id": "T-19",
+          "banner": "Let Us Solve",
+          "intent": "reason",
+          "book_ref": "Let Us Solve 2B, p.57",
+          "description": "Circle the smaller number in each pair: 2 Ones or 2 Hundreds; 5 Tens or 2 Thousands; 7 Tens or 4 Hundreds."
+        },
+        {
+          "id": "T-20",
+          "banner": "Let Us Play",
+          "intent": "reason",
+          "book_ref": "Let Us Play (Find Me! grid), p.56",
+          "description": "Read aloud eight clues (e.g. 'the number 3782', 'a 4-digit number with all digits the same') and locate the matching numbers in the digit grid."
+        },
+        {
+          "id": "T-21",
+          "banner": "Let Us Play",
+          "intent": "explore",
+          "book_ref": "Let Us Play (arrow cards), p.56",
+          "description": "Use arrow cards to make numbers like 3452 and 4085; read aloud each number and express it in expanded form and in words."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Number line with 4-digit numbers",
+      "prose_summary": "Children locate and order 4-digit numbers on number lines at progressively wider scales: 1000–1100 (intervals of 10), 2000–2500 (intervals of 100), 5500–5725 (intervals of 25), and 8500–9000 (intervals of 125). A prior task asks them to identify which of six given numbers lie strictly between 2226 and 3226, requiring them to reason about magnitude without a line. These tasks extend place-value comparison to estimation and spatial positioning on the symbolic number line.",
+      "tasks": [
+        {
+          "id": "T-22",
+          "banner": "Number Line",
+          "intent": "reason",
+          "book_ref": "Number Line Q1, p.55",
+          "description": "Circle which of {3316, 3236, 2236, 2216, 3126, 3216} lie between 2226 and 3226."
+        },
+        {
+          "id": "T-23",
+          "banner": "Number Line",
+          "intent": "practice",
+          "book_ref": "Number Line Q2(a)–(d), p.55",
+          "description": "Mark given 4-digit numbers on number lines: 1043/1069/1084 on a 1000–1100 line; 2025–2460 on a 2000–2500 line; 5512–5695 on a 5500–5725 line; 8679/8990/8923/8763 on an 8500–9000 line."
+        }
+      ]
+    },
+    {
+      "ref": "S8",
+      "title": "Comparing 4-digit numbers",
+      "prose_summary": "Jaspreet and Gulnaz's monthly Gurudwara plate-count data (represented as tokens) gives children practice reading and comparing 4-digit numbers using < and >. A worked example contrasts 3012 and 3102 in the THTO table to show that the hundreds digit decides the comparison when thousands are equal. Let Us Do then extends to pairs of numbers, ordered price lists, ODI cricket scores, and mountain heights — all requiring multi-step comparison of 4-digit numbers. A digit-filling challenge (e.g. 7_ _3 < 768_) and the exploration of all 24 permutations of {2,3,4,7} push comparison reasoning toward open-ended mathematical thinking.",
+      "tasks": [
+        {
+          "id": "T-24",
+          "banner": "no banner",
+          "intent": "practice",
+          "book_ref": "p.58",
+          "description": "Read plate counts from token pictures for February, March, September, October, November, December; compare each pair using < and >."
+        },
+        {
+          "id": "T-25",
+          "banner": "no banner",
+          "intent": "reason",
+          "book_ref": "p.58",
+          "description": "Compare 3012 and 3102 using the THTO table; describe which position (Th, H, T, O) helped decide which is bigger."
+        },
+        {
+          "id": "T-26",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q1(a)–(d), p.59",
+          "description": "Compare pairs using < or >: 2190/2910, 7087/7088, 1009/9001, 982/1024. Make a THTO table if needed."
+        },
+        {
+          "id": "T-27",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q2, p.59",
+          "description": "Order the prices ₹1986, ₹1099, ₹1899 from smallest to biggest and fill in the < signs."
+        },
+        {
+          "id": "T-28",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q3, p.59",
+          "description": "Arrange five women cricketers' ODI run totals (Debbie Hockley 4064, Suzie Bates 5114, Karen Rolton 4814, Mithali Raj 7805, Charlotte 6002) in increasing order."
+        },
+        {
+          "id": "T-29",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q4, p.60",
+          "description": "Arrange seven mountain ranges (including K2 8611 m, Kangchenjunga 8586 m, Nanda Devi 7816 m, and others) in decreasing order of height."
+        },
+        {
+          "id": "T-30",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q5(a)–(f), p.60",
+          "description": "Use <, =, > to compare expanded or word-form expressions (e.g. '2 Tens + 4 Thousands + 3 Hundreds') with standard numbers."
+        },
+        {
+          "id": "T-31",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q6(a)–(c), p.60",
+          "description": "Fill the blanks with digits 0–9 so the inequalities hold: 7_ _3 < 768_; 853_ < 8_3_; _2_1 < 5_2_."
+        },
+        {
+          "id": "T-32",
+          "banner": "CHALLENGE!",
+          "intent": "reason",
+          "book_ref": "CHALLENGE!, p.61",
+          "description": "How many whole numbers are strictly between 7000 and 8000? Circle from 900, 999, or 1000."
+        },
+        {
+          "id": "T-33",
+          "banner": "Let Us Explore",
+          "intent": "explore",
+          "book_ref": "Let Us Explore Q1–2, p.61",
+          "description": "Make as many four-digit numbers as possible using digits 2, 3, 4, 7 without repetition (24 possible); arrange in decreasing order; compare with classmates to find all 24."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 0,
+  "procedural_load": 1
+}
