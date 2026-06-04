@@ -1,0 +1,167 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iv",
+  "chapter_number": 14,
+  "chapter_title": "Data Handling",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Framing a question and collecting data",
+      "prose_summary": "The chapter opens with children in a classroom deciding how to find out which subject is most liked. Students examine two differently worded questions posed by Rohan (open-ended: 'Which subjects do you like?') and Anjali and must judge which question is most appropriate for identifying a single favourite — developing the idea that a well-framed survey question yields comparable, countable responses. Anjali and Rohan then record 45 classmates' favourite subjects using abbreviations (M, L, T, A, P.E.), generating a raw, unorganised list of responses. This section sits at the concrete-to-pictorial boundary: the act of asking and recording is the doing.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Look at the questions asked by Rohan and Anjali",
+          "intent": "reason",
+          "book_ref": "Look at the questions asked by Rohan and Anjali, p.203",
+          "description": "Tick the question that is the most appropriate for finding the 'most liked subject'. Why do you think so? Discuss with your friends and teacher."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Organising data into a frequency table",
+      "prose_summary": "Students work with the raw list of 45 responses and must count how many children named each subject, filling in a frequency table. The chapter then presents two ways of showing the same information — the raw list (Way 1) and the completed frequency table (Way 2) — and asks students to judge which is easier to understand and why. Students then use the table to identify the most and least common favourite subjects. This section moves from raw data (pictorial/symbolic) to an organised table, building the key insight that a table enables quicker comparison than scanning a list.",
+      "tasks": [
+        {
+          "id": "T-2",
+          "banner": "Look at the children's responses above and answer the following questions",
+          "intent": "practice",
+          "book_ref": "Look at the children's responses above and answer the following questions, p.204",
+          "description": "Fill in: the number of children who like Mathematics / Language / The World Around Us / Physical Education / Arts the most."
+        },
+        {
+          "id": "T-3",
+          "banner": "Let's fill the above information in this table",
+          "intent": "practice",
+          "book_ref": "Let's fill the above information in this table, p.205",
+          "description": "Fill in the frequency table: Subjects (M, L, T, P.E., A) against number of children who like each subject the most."
+        },
+        {
+          "id": "T-4",
+          "banner": "Now look at the above table and answer the following questions",
+          "intent": "reason",
+          "book_ref": "Now look at the above table and answer the following questions, p.205",
+          "description": "Identify the most common and least common favourite subject. Then decide which of the two ways of displaying information (raw list vs. table) is easier to understand and why."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Reading and interpreting a pictograph (Colourful Golas)",
+      "prose_summary": "The chapter introduces a pictograph-like representation where Rohan and Anjali have each recorded the golas (ice lollies) eaten by children, colour by colour, using repeated icons — Rohan using human figures and Anjali using coloured lolly icons. Students read and compare both representations to determine which colour gola was eaten most and least overall, which colour boys preferred and which girls preferred, and which colour Anjali and Rohan would themselves choose. This section is at the pictorial stage: no numbers are given; quantities are read by counting icons. Students also reflect on which data representation (Rohan's or Anjali's) was easier to use for answering each question.",
+      "tasks": [
+        {
+          "id": "T-5",
+          "banner": "Look at the information given above. Colour the line drawing of the golas appropriately",
+          "intent": "explore",
+          "book_ref": "Look at the information given above, p.206",
+          "description": "Colour the outline drawings of golas to match the colours shown in Rohan's and Anjali's data records."
+        },
+        {
+          "id": "T-6",
+          "banner": "1.",
+          "intent": "reason",
+          "book_ref": "Q1, p.206",
+          "description": "Which colour ice gola do the children eat (a) the most and (b) the least? How do you know?"
+        },
+        {
+          "id": "T-7",
+          "banner": "2.",
+          "intent": "reason",
+          "book_ref": "Q2, p.206",
+          "description": "Which colour gola would Anjali and Rohan have bought?"
+        },
+        {
+          "id": "T-8",
+          "banner": "3.",
+          "intent": "reason",
+          "book_ref": "Q3, p.207",
+          "description": "Which colour golas did boys eat the most?"
+        },
+        {
+          "id": "T-9",
+          "banner": "4.",
+          "intent": "reason",
+          "book_ref": "Q4, p.207",
+          "description": "Which colour golas did girls eat the most?"
+        },
+        {
+          "id": "T-10",
+          "banner": "5.",
+          "intent": "reason",
+          "book_ref": "Q5, p.207",
+          "description": "Which of the ways of representing data did you use to answer these questions and why?"
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Collecting and organising data in a two-way table (Chess or Cricket)",
+      "prose_summary": "Students conduct their own classroom survey to find how many classmates play only chess, only cricket, both, or neither. They record findings in a two-way table with Nature of Games as rows and No. of Girls / No. of Boys as columns. This section is at the concrete stage: students physically move around the class to collect data. The two-way table introduces a new organisational structure where rows and columns both carry meaning, allowing comparisons across gender as well as game type.",
+      "tasks": [
+        {
+          "id": "T-11",
+          "banner": "Activity — Chess or Cricket",
+          "intent": "explore",
+          "book_ref": "Activity — Chess or Cricket, p.207",
+          "description": "Find out from your classmates how many of them play only chess, only cricket, both or neither. Record in the space provided."
+        },
+        {
+          "id": "T-12",
+          "banner": "Now let us organise the above data in the table",
+          "intent": "practice",
+          "book_ref": "Now let us organise the above data in the table, p.207",
+          "description": "Fill the two-way table: rows Chess only / Cricket only / Both / Neither; columns No. of Girls and No. of Boys."
+        },
+        {
+          "id": "T-13",
+          "banner": "Answer these questions based on the data collected from your grade",
+          "intent": "reason",
+          "book_ref": "Answer these questions, p.207",
+          "description": "Answer: (1) Who plays Chess the most — Boys or Girls? (2) Who plays Cricket the most — Boys or Girls? (3) How many children play both types of games?"
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Reading a pictograph and computing totals (Bal Mela)",
+      "prose_summary": "Anjali and Rohan have recorded Bal Mela food sales over three days using two separate pictographs — one for fruit chaats and one for sandwiches — where each icon represents a fixed number of items. Students read both pictographs, compute row and column totals, identify which day had the highest sandwich sales and the highest combined sales, and determine which item sold more on a specific day. This section is at the pictorial-to-symbolic stage: students move from reading icons to computing and comparing numerical totals across a combined data set.",
+      "tasks": [
+        {
+          "id": "T-14",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q1, p.208",
+          "description": "Complete the table: total sold items for Fruit Chaats and Sandwiches across all three days."
+        },
+        {
+          "id": "T-15",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q2, p.208",
+          "description": "On which day were the most sandwiches sold?"
+        },
+        {
+          "id": "T-16",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q3, p.208",
+          "description": "Which item had the highest sale on Day 2?"
+        },
+        {
+          "id": "T-17",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q4, p.208",
+          "description": "Complete the total sales table (Day 1, Day 2, Day 3 combined) and circle the day that had the highest sales."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 1,
+  "exploration_load": 0,
+  "procedural_load": 1
+}

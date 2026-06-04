@@ -1,0 +1,307 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iv",
+  "chapter_number": 10,
+  "chapter_title": "Elephants, Tigers, and Leopards",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "NIM Game — Strategic Addition",
+      "prose_summary": "The chapter opens with the NIM game, a two-player game in which each player alternately adds 1 or 2 to a running total, and the player who reaches 10 wins. Students play multiple rounds and then reason about winning positions by working backwards from the target. The section sits on the concrete-to-symbolic path at the 'concrete doing' end, using the game itself as the manipulative. The key idea is that adding small numbers repeatedly can be controlled strategically — an informal entry to number sense and patterns in addition.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "NIM Game",
+          "intent": "explore",
+          "book_ref": "NIM Game, p.149",
+          "description": "Play the two-player NIM game: each player alternately chooses 1 or 2 to add to the running total; first to reach 10 wins. Play for a few rounds."
+        },
+        {
+          "id": "T-2",
+          "banner": "Can you win the game if",
+          "intent": "reason",
+          "book_ref": "Can you win the game if (a)(b)(c), p.149",
+          "description": "Can you win if: (a) opponent reached 6, (b) opponent reached 7, (c) opponent reached 8 and it is your turn? Who wins in each case?"
+        },
+        {
+          "id": "T-3",
+          "banner": "NIM Game extension",
+          "intent": "reason",
+          "book_ref": "NIM Game extension, p.150",
+          "description": "Play the game with target numbers 10, 11, or 12. Find a number in each case at which you are sure you can win."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Addition Chart — Patterns in a Table",
+      "prose_summary": "This section presents a 13×13 addition chart (0–12 on both axes) and asks students to observe and explain patterns. Students examine the frequency of numbers, the structure of rows and columns (odd/even), and the properties of 2×2 window frames placed on the table — finding that row sums, column sums, and diagonal sums within any window are equal. The section is entirely pictorial-to-symbolic: the table is the model, and the students' task is to extract numerical relationships from it, developing the idea that addition has structural regularity.",
+      "tasks": [
+        {
+          "id": "T-4",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q1, p.150",
+          "description": "Identify some patterns in the addition table."
+        },
+        {
+          "id": "T-5",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q2, p.150",
+          "description": "Observe where the number 9 appears in the table. How many times? What about other numbers?"
+        },
+        {
+          "id": "T-6",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q3, p.150",
+          "description": "Are there any rows or columns containing only even or only odd numbers? Explain your observation."
+        },
+        {
+          "id": "T-7",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q4(a)(b)(c)(d), p.151",
+          "description": "Red window frame: find row sums, column sums, diagonal sums; move frame to other places and compare. What do you notice?"
+        },
+        {
+          "id": "T-8",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q5, p.151",
+          "description": "Identify patterns and relationships among numbers in the blue window frame."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Reverse and Add — Digit Patterns and Sequences",
+      "prose_summary": "Students explore what happens when a 2-digit number is added to its digit-reversal, discovering that the result is always a multiple of 11. They list all 2-digit numbers that yield specific sums (55, 88) and investigate whether a 3-digit sum is possible. This section develops reasoning about place value at a symbolic level with no physical manipulative. It is followed by three 'fill in the blanks' sequence tasks — counting by 50 on a tree diagram, by 1000 on arches, and by 25 on a number line — which consolidate skip-counting and number-line reading at the pictorial-to-symbolic level.",
+      "tasks": [
+        {
+          "id": "T-9",
+          "banner": "Reverse and Add",
+          "intent": "explore",
+          "book_ref": "Reverse and Add (a), p.151",
+          "description": "Take a 2-digit number (e.g. 27), reverse its digits (72), add them (99). Repeat for different 2-digit numbers."
+        },
+        {
+          "id": "T-10",
+          "banner": "Reverse and Add",
+          "intent": "reason",
+          "book_ref": "Reverse and Add (b), p.151",
+          "description": "What sums can we get when we add a 2-digit number with its reverse?"
+        },
+        {
+          "id": "T-11",
+          "banner": "Reverse and Add",
+          "intent": "reason",
+          "book_ref": "Reverse and Add (c), p.151",
+          "description": "List all numbers which when added to their reverse give: (i) 55, (ii) 88."
+        },
+        {
+          "id": "T-12",
+          "banner": "Reverse and Add",
+          "intent": "reason",
+          "book_ref": "Reverse and Add (d), p.151",
+          "description": "Can we get a 3-digit sum? What is the smallest 3-digit sum that we can get?"
+        },
+        {
+          "id": "T-13",
+          "banner": "Fill in the blanks",
+          "intent": "practice",
+          "book_ref": "Fill in the blanks (a), p.151",
+          "description": "Number sequence on trees counting by 50 (2540, 2590, …); fill in the missing values."
+        },
+        {
+          "id": "T-14",
+          "banner": "Fill in the blanks",
+          "intent": "practice",
+          "book_ref": "Fill in the blanks (b), p.151",
+          "description": "Number sequence on arches counting by 1000 (354, 1354, …); fill in the missing values."
+        },
+        {
+          "id": "T-15",
+          "banner": "Fill in the blanks",
+          "intent": "practice",
+          "book_ref": "Fill in the blanks (c), p.151",
+          "description": "Number line with kangaroo: fill missing values at equal intervals between 7645 and beyond 7745."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "How Many Animals? — 4-Digit Addition with Regrouping",
+      "prose_summary": "Set in the context of India's endangered wildlife census, this section introduces 4-digit addition with regrouping using Dienes blocks (tokens for 1000, 100, 10, 1) alongside the standard column algorithm. Three worked examples show 2-addend addition (6049 + 3054 elephants), 3-addend addition (1355 + 1131 + 1817 leopards), and a multi-step problem chain involving tigers across states. Regrouping is explicitly modelled — 10 O = 1 T, 10 T = 1 H, 10 H = 1 Th — alongside the symbolic algorithm, positioning the section at the concrete-to-symbolic transition.",
+      "tasks": [
+        {
+          "id": "T-16",
+          "banner": "How Many Animals?",
+          "intent": "solve",
+          "book_ref": "How Many Animals? Q1, p.152",
+          "description": "Karnataka has 6049 elephants and Kerala has 3054. How many elephants in total? Estimate the answer first."
+        },
+        {
+          "id": "T-17",
+          "banner": "How Many Animals?",
+          "intent": "solve",
+          "book_ref": "How Many Animals? Q2, p.153",
+          "description": "Gujarat 1355, Karnataka 1131, Madhya Pradesh 1817 leopards. How many total? Estimate first."
+        },
+        {
+          "id": "T-18",
+          "banner": "How Many Animals?",
+          "intent": "solve",
+          "book_ref": "How Many Animals? Q3(a)(b)(c)(d), p.154",
+          "description": "Maharashtra has 444 tigers; MP has 341 more, Uttarakhand has 116 more. Find: (a) MP tigers, (b) UK tigers, (c) MP+UK total, (d) all three states total."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "More or Less? — 4-Digit Subtraction with Regrouping",
+      "prose_summary": "This section focuses on 4-digit subtraction requiring regrouping, also set within the wildlife census theme. The worked example (5719 − 3965 = 1754 elephants in Meghalaya) uses Dienes blocks to show regrouping — 1 H = 10 T, 1 Th = 10 H — alongside the column algorithm. Students solve a second subtraction problem independently (8820 − 749 leopards). The section closes with a map of India on which students write animal counts derived from all previous problems, consolidating both operations in a real-world geographic context.",
+      "tasks": [
+        {
+          "id": "T-19",
+          "banner": "More or Less?",
+          "intent": "solve",
+          "book_ref": "More or Less? Q1, p.155",
+          "description": "Assam has 5719 elephants, 3965 more than Meghalaya. How many elephants are in Meghalaya? Estimate first."
+        },
+        {
+          "id": "T-20",
+          "banner": "More or Less?",
+          "intent": "solve",
+          "book_ref": "More or Less? Q2, p.155–156",
+          "description": "2022 leopard count in Central India and Eastern Ghats is 8820, up 749 from 2018. How many leopards were there in 2018? Estimate first."
+        },
+        {
+          "id": "T-21",
+          "banner": "More or Less?",
+          "intent": "practice",
+          "book_ref": "Map activity, p.156",
+          "description": "Write the number of animals on the India map using data from previous problems (elephants, tigers, leopards by state/region)."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Let Us Do — Mixed Word Problems and Money",
+      "prose_summary": "This section provides a rich set of applied word problems requiring multi-step addition and subtraction within 10,000. Contexts include national park visitor counts (Kaziranga), a juice-making factory, vehicle registrations in a town, and — most distinctively — bank deposit slips for a school fundraiser (Baal Mela). The deposit slip task asks students to decompose amounts (₹2045, ₹3578, ₹1240) into denominations (500, 100, 50, 10, 5, 2, 1), integrating place value knowledge with real-life monetary reasoning. The section is entirely at the symbolic level, applying column addition and subtraction to authentic contexts.",
+      "tasks": [
+        {
+          "id": "T-22",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q1(a)(b), p.157",
+          "description": "Kaziranga: Dec 8591, Nov 6415 visitors. (a) How many more in Dec than Nov? (b) Nov is 1587 more than Oct; find Oct visitors."
+        },
+        {
+          "id": "T-23",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q2(a)(b)(c), p.157–158",
+          "description": "Juice factory: pineapple 1348, passion fruit 4781. (a) Guava = pineapple + 759. (b) Orange = guava + 1257. (c) Is guava + orange more or less than passion fruit?"
+        },
+        {
+          "id": "T-24",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q3(a)(b)(c)(d), p.158",
+          "description": "Vehicles: jeeps 6304. (a) Buses = jeeps + 253. (b) Tractors = buses − 5247. (c) Taxis = tractors + 1579. (d) Arrange vehicle counts lowest to highest."
+        },
+        {
+          "id": "T-25",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q4(a)–(j), p.158",
+          "description": "Solve 10 addition and subtraction problems: e.g. 1459+476, 3863+4188, 7293−2819, 8006−5567 (4-digit)."
+        },
+        {
+          "id": "T-26",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q5, p.159–160",
+          "description": "Baal Mela: help Raju (₹2045), Rani (₹3578), Roja (₹1240) fill deposit slips with possible combinations of notes (500, 100, 50, 10) and coins (5, 2, 1)."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Let Us Solve — Column Algorithm Practice",
+      "prose_summary": "This section provides structured column-form drill for 4-digit addition and subtraction. Students solve four pre-formatted column problems directly on the page, then arrange eight further expressions in columns in their notebooks. The work is entirely symbolic — no context, no manipulative — and consolidates the standard algorithm across a range of regrouping scenarios (including zeros in the minuend and carries across multiple places).",
+      "tasks": [
+        {
+          "id": "T-27",
+          "banner": "Let Us Solve",
+          "intent": "practice",
+          "book_ref": "Let Us Solve Q1(a)(b)(c)(d), p.161",
+          "description": "Solve 4 column-format problems: (a) 3695+4208, (b) 2507+6847, (c) 6352−3521, (d) 8803−5726."
+        },
+        {
+          "id": "T-28",
+          "banner": "Let Us Solve",
+          "intent": "practice",
+          "book_ref": "Let Us Solve Q2(a)–(h), p.161",
+          "description": "Arrange in columns and solve in notebook: 3683−971, 8432−46, 4011−3666, 5203−2745, 1465+632, 3567+77, 8263+3737, 5429+3287."
+        }
+      ]
+    },
+    {
+      "ref": "S8",
+      "title": "Let Us Solve — Mental Strategies and Reasoning",
+      "prose_summary": "The final section develops flexible, non-algorithmic thinking about addition and subtraction. Students find 'easy ways' to solve problems using strategies like 'subtract 100, add 1' for near-hundreds, use comparison signs without computing, and derive new facts from given ones (e.g. if 354+167=521, then 354+168=522). A final drill provides 20 computation problems and a grid puzzle asking students to place digits 1–9 so that differences between neighbouring squares are all odd (or all even), integrating pattern reasoning with subtraction. The section sits fully at the symbolic level, emphasising reasoning over rote procedure.",
+      "tasks": [
+        {
+          "id": "T-29",
+          "banner": "Let Us Solve",
+          "intent": "reason",
+          "book_ref": "Let Us Solve Q1(a)–(i), p.162",
+          "description": "Find easy ways to solve 9 problems (e.g. 8787−99, 4596+104, 3999+290). Share thinking with the class."
+        },
+        {
+          "id": "T-30",
+          "banner": "Let Us Solve",
+          "intent": "reason",
+          "book_ref": "Let Us Solve Q2, p.162",
+          "description": "Use <, =, > to compare 4 expression pairs without calculating (e.g. 54+97 vs 54+90; 73−54 vs 73−56). Reason and share."
+        },
+        {
+          "id": "T-31",
+          "banner": "Let Us Solve",
+          "intent": "reason",
+          "book_ref": "Let Us Solve Q3, p.162",
+          "description": "Use given equations to find derived values: e.g. 139+175=314 → 314−175=?; 354+167=521 → 354+168=?; 456+209=665 → 446+219=?; 845−394=451 → 845−395=?"
+        },
+        {
+          "id": "T-32",
+          "banner": "Add",
+          "intent": "practice",
+          "book_ref": "Add Q1(a)–(j), p.163",
+          "description": "Solve 10 addition problems: e.g. 2783+378, 8948+97, 4999+3888, 5768+4053."
+        },
+        {
+          "id": "T-33",
+          "banner": "Subtract",
+          "intent": "practice",
+          "book_ref": "Subtract Q2(a)–(j), p.163",
+          "description": "Solve 10 subtraction problems: e.g. 4456−2768, 5300−467, 8004−3107, 3444−2555."
+        },
+        {
+          "id": "T-34",
+          "banner": "Fill the squares",
+          "intent": "reason",
+          "book_ref": "Fill the squares Q3, p.163",
+          "description": "Fill a 3×3 grid with numbers 1–9 so the difference between any two neighbouring squares (connected by a line) is odd. Find other ways. Can you make all differences even?"
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 0,
+  "procedural_load": 1
+}

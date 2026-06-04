@@ -1,0 +1,608 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iv",
+  "chapter_number": 9,
+  "chapter_title": "Equal Groups",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Animal Jumps — skip counting and multiples",
+      "prose_summary": "Students fill in number lines by skip-counting in steps of 3, 4, 6, and 8 using animal jump scenarios (frog, squirrel, rabbit, kangaroo). The concrete model is a pictorial hop-sequence on numbered ovals, placing the chapter firmly on the pictorial path. Students reason about which numbers are touched (multiples) and how many jumps are needed to reach a target number, with an inquiry prompt about whether 67 is a multiple of 3.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Fill in the blank spaces",
+          "intent": "reason",
+          "book_ref": "Animal Jumps Q1, p.128",
+          "description": "Frog jumps 3 steps at a time. Which numbers will the frog touch? Will it touch 67?"
+        },
+        {
+          "id": "T-2",
+          "banner": "Fill in the blank spaces",
+          "intent": "practice",
+          "book_ref": "Animal Jumps Q2, p.128",
+          "description": "Squirrel jumps 4 steps at a time. Which numbers will it touch? How many jumps to reach 60?"
+        },
+        {
+          "id": "T-3",
+          "banner": "Fill in the blank spaces",
+          "intent": "reason",
+          "book_ref": "Animal Jumps Q3, p.129",
+          "description": "Rabbit jumps 6 steps at a time. Which numbers will it touch? What is the smallest 3-digit number it lands on? How many jumps?"
+        },
+        {
+          "id": "T-4",
+          "banner": "Fill in the blank spaces",
+          "intent": "reason",
+          "book_ref": "Animal Jumps Q4, p.129",
+          "description": "Kangaroo jumps 8 steps at a time. Which numbers will it touch? Are there numbers both the rabbit and kangaroo will touch?"
+        },
+        {
+          "id": "T-5",
+          "banner": "Fill in the blank spaces",
+          "intent": "reason",
+          "book_ref": "Animal Jumps Q5, p.129",
+          "description": "To reach 48, how many times did the rabbit jump? How many times did the kangaroo jump? What did you observe?"
+        },
+        {
+          "id": "T-6",
+          "banner": "Fill in the blank spaces",
+          "intent": "reason",
+          "book_ref": "Animal Jumps Q6, p.130",
+          "description": "To reach 60, how many times did the frog jump? How many times did the rabbit jump? What do you observe?"
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Common Multiples",
+      "prose_summary": "Building on the animal jumps, students identify numbers that two animals both land on — the concept of common multiples. The section moves from concrete number-line experience to naming common multiples of pairs (3 & 4, 6 & 8). A cat-and-rat chase puzzle asks students to reason about landing on the same number when the two animals jump at different rates, introducing informal LCM thinking. A number-grid task requires students to find and shade embedded multiplication and division sentences.",
+      "tasks": [
+        {
+          "id": "T-7",
+          "banner": "Common Multiples",
+          "intent": "reason",
+          "book_ref": "Common Multiples Q1, p.130",
+          "description": "Which numbers do both the frog and the squirrel touch? A few common multiples of 3 and 4 are ___."
+        },
+        {
+          "id": "T-8",
+          "banner": "Common Multiples",
+          "intent": "reason",
+          "book_ref": "Common Multiples Q2, p.130",
+          "description": "Which numbers do both the rabbit and the kangaroo touch? A few common multiples of 6 and 8 are ___."
+        },
+        {
+          "id": "T-9",
+          "banner": "Common Multiples",
+          "intent": "reason",
+          "book_ref": "Common Multiples Q7, p.130",
+          "description": "Cat on 6, rat on 12. Cat jumps 3 steps, rat jumps 2 steps. Will the cat catch the rat? If yes, at which number?"
+        },
+        {
+          "id": "T-10",
+          "banner": "Common Multiples",
+          "intent": "practice",
+          "book_ref": "Common Multiples Q8, p.130",
+          "description": "Find multiplication and division sentences in the number grid. Shade the sentences. How many can you find?"
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Gulabo's Garden — multiplication as equal groups",
+      "prose_summary": "Students move from skip counting to formal multiplication statements using a garden and bakery context. Gulabo's lily flowers (12 × 3 petals) are solved by decomposing into 10+2 groups, introducing the break-apart strategy on the concrete-to-symbolic path. Array tasks with marigold saplings and strawberry boxes build understanding of rows × columns as multiplication. Radha's cupcake trays extend arrays to multiple arrangements of the same number (18 = 6×3 = 9×2 etc.), and division appears as the inverse (108 ÷ 18).",
+      "tasks": [
+        {
+          "id": "T-11",
+          "banner": "Gulabo's Garden",
+          "intent": "solve",
+          "book_ref": "Gulabo's Garden Q1, p.131",
+          "description": "12 lily flowers, each with 3 petals. How many petals? Use the 10+2 break-apart strategy."
+        },
+        {
+          "id": "T-12",
+          "banner": "Gulabo's Garden",
+          "intent": "solve",
+          "book_ref": "Gulabo's Garden Q2, p.131",
+          "description": "Hibiscus has 5 petals. Gulabo counted 80 petals. How many flowers? Use the 5→10→50 build-up strategy."
+        },
+        {
+          "id": "T-13",
+          "banner": "Gulabo's Garden",
+          "intent": "explore",
+          "book_ref": "Gulabo's Garden Q3, p.132",
+          "description": "Gulabo plants marigold saplings in a box. Count rows and columns from the picture. Write the mathematical statement."
+        },
+        {
+          "id": "T-14",
+          "banner": "Gulabo's Garden",
+          "intent": "explore",
+          "book_ref": "Gulabo's Garden Q4, p.132",
+          "description": "Dailyfresh supermarket keeps strawberry boxes in a tray. Count columns and boxes per column from picture. Write the mathematical statement."
+        },
+        {
+          "id": "T-15",
+          "banner": "Gulabo's Garden",
+          "intent": "explore",
+          "book_ref": "Gulabo's Garden Q5a, p.132",
+          "description": "Complete arranging 18 cupcakes in two differently shaped trays given below."
+        },
+        {
+          "id": "T-16",
+          "banner": "Gulabo's Garden",
+          "intent": "solve",
+          "book_ref": "Gulabo's Garden Q5b, p.133",
+          "description": "She can use two such trays in her oven at a time. How many cupcakes can she make in one attempt?"
+        },
+        {
+          "id": "T-17",
+          "banner": "Gulabo's Garden",
+          "intent": "solve",
+          "book_ref": "Gulabo's Garden Q5c, p.133",
+          "description": "She has received a special order and made 108 cupcakes. How many trays has she baked?"
+        },
+        {
+          "id": "T-18",
+          "banner": "Gulabo's Garden",
+          "intent": "explore",
+          "book_ref": "Gulabo's Garden Q5d, p.133",
+          "description": "Square baking tray holds 36 mini cupcakes. Complete the arrangement. Write number of columns, cupcakes per column, and multiplication statement."
+        },
+        {
+          "id": "T-19",
+          "banner": "Gulabo's Garden",
+          "intent": "explore",
+          "book_ref": "Gulabo's Garden (open task), p.133",
+          "description": "Find different ways of arranging 36, 8, 12, and 24 cupcakes in rows and columns in your notebook."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "The Doubling Magic",
+      "prose_summary": "Magician Anvi's trick of doubling a bunch of flowers introduces doubling as a multiplication strategy. Students double 2- and 3-digit numbers and complete a table of before-and-after values. The section then zooms in on the ones digit after doubling — students predict patterns and generalise that doubled numbers are always even, reasoning about which ones digits are possible. Dienes blocks and ganit mala are recommended materials for the concrete path.",
+      "tasks": [
+        {
+          "id": "T-20",
+          "banner": "The Doubling Magic",
+          "intent": "practice",
+          "book_ref": "The Doubling Magic (opening), p.134",
+          "description": "Anvi doubled 23 flowers. How many are there now? Complete the before-and-after magic table for 10, 51, 95, 150, 199, 425, 500 and reverse for 222, 410, 500."
+        },
+        {
+          "id": "T-21",
+          "banner": "The Doubling Magic",
+          "intent": "practice",
+          "book_ref": "The Doubling Magic (drills), p.134",
+          "description": "Find: double of 32, 14, 26, 17, 39, 45."
+        },
+        {
+          "id": "T-22",
+          "banner": "The Doubling Magic",
+          "intent": "reason",
+          "book_ref": "The Doubling Magic Q1, p.134",
+          "description": "Guess the ones digit of the following numbers when doubled: 28, 56, 45, 17."
+        },
+        {
+          "id": "T-23",
+          "banner": "The Doubling Magic",
+          "intent": "reason",
+          "book_ref": "The Doubling Magic Q2, p.134",
+          "description": "Give examples of numbers that when doubled give 0, 2, 4, 6, 8 in the ones place. Can we get 3, 5, 7, 9? Even or odd?"
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Multiplication Table Exploration",
+      "prose_summary": "Students fill in a 10×10 multiplication chart and then investigate structural patterns: the commutativity of rows and columns, which rows produce all-even products, which produce only odd, and which produce both. The ones-digit pattern in each row is examined (e.g., row 8 cycles 8,6,4,2,0) and students extend this to predict products beyond the table. Common multiples are revisited by colouring shared entries. The section is heavily reasoning-oriented, moving students from numerical results to generalisation.",
+      "tasks": [
+        {
+          "id": "T-24",
+          "banner": "Multiplication Table",
+          "intent": "practice",
+          "book_ref": "Multiplication Table (chart fill), p.135",
+          "description": "Fill each square in the 10×10 chart by multiplying the row number by the column number."
+        },
+        {
+          "id": "T-25",
+          "banner": "Multiplication Table",
+          "intent": "reason",
+          "book_ref": "Multiplication Table (green shading), p.135",
+          "description": "What do you notice about the numbers shaded in green? Why is this happening?"
+        },
+        {
+          "id": "T-26",
+          "banner": "Multiplication Table",
+          "intent": "reason",
+          "book_ref": "Multiplication Table Q1, p.135",
+          "description": "Share the patterns that you notice in the table."
+        },
+        {
+          "id": "T-27",
+          "banner": "Multiplication Table",
+          "intent": "reason",
+          "book_ref": "Multiplication Table Q2, p.135",
+          "description": "Are the numbers in row 7 the same as in column 7? In general, are numbers in a given row the same as in the corresponding column? Why?"
+        },
+        {
+          "id": "T-28",
+          "banner": "Multiplication Table",
+          "intent": "reason",
+          "book_ref": "Multiplication Table Q3, p.135",
+          "description": "Is there a row where all products are even numbers? Which rows have this property?"
+        },
+        {
+          "id": "T-29",
+          "banner": "Multiplication Table",
+          "intent": "reason",
+          "book_ref": "Multiplication Table Q4, p.135",
+          "description": "Is there a row having only odd numbers as products?"
+        },
+        {
+          "id": "T-30",
+          "banner": "Multiplication Table",
+          "intent": "reason",
+          "book_ref": "Multiplication Table Q5, p.135",
+          "description": "Are there rows that have both even and odd numbers? What do you notice? Why is it so?"
+        },
+        {
+          "id": "T-31",
+          "banner": "Multiplication Table",
+          "intent": "reason",
+          "book_ref": "Multiplication Table Q6, p.135",
+          "description": "Are there more even numbers in the chart or odd numbers? How do you know?"
+        },
+        {
+          "id": "T-32",
+          "banner": "Multiplication Table",
+          "intent": "practice",
+          "book_ref": "Multiplication Table Q7, p.136",
+          "description": "Colour the common multiples of (a) 2 and 3, (b) 4 and 8, (c) 7 and 9 using different colours. Share observations."
+        },
+        {
+          "id": "T-33",
+          "banner": "Multiplication Table",
+          "intent": "reason",
+          "book_ref": "Multiplication Table Q8, p.136",
+          "description": "Observe the pattern in the ones digits of products in row 5. Observe other rows. What patterns do you notice?"
+        },
+        {
+          "id": "T-34",
+          "banner": "Multiplication Table",
+          "intent": "reason",
+          "book_ref": "Multiplication Table Q9, p.136",
+          "description": "Row 8 ones digits: 8,6,4,2,0,8,6,4,2,0. Guess the ones digit of 11×8, 12×8, 13×8. Verify by multiplying."
+        },
+        {
+          "id": "T-35",
+          "banner": "Multiplication Table",
+          "intent": "reason",
+          "book_ref": "Multiplication Table Q10, p.136",
+          "description": "In row 8, there is no number whose ones digit is 1. What other digits do not appear as the ones digit?"
+        },
+        {
+          "id": "T-36",
+          "banner": "Multiplication Table",
+          "intent": "reason",
+          "book_ref": "Multiplication Table Q11, p.136",
+          "description": "Is there a row in which all the digits from 0 to 9 appear as the ones digit? Which rows have this property?"
+        },
+        {
+          "id": "T-37",
+          "banner": "Multiplication Table",
+          "intent": "reason",
+          "book_ref": "Multiplication Table Q12, p.136",
+          "description": "In row 8, 0 appears as the ones digit two times. What numbers can go in the box (□ × 8 gives 0 as ones digit)? Give 5 examples."
+        },
+        {
+          "id": "T-38",
+          "banner": "Multiplication Table",
+          "intent": "reason",
+          "book_ref": "Multiplication Table Q13, p.136",
+          "description": "Is there a row in which 0 appears as the ones digit only once? Which rows have this property?"
+        },
+        {
+          "id": "T-39",
+          "banner": "Multiplication Table",
+          "intent": "reason",
+          "book_ref": "Multiplication Table Q14, p.136",
+          "description": "What do you notice about the answers for Questions 11 and 13? Share in the grade."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Multiples of Tens",
+      "prose_summary": "Students discover the rule for multiplying by multiples of 10 using contexts of tricycles (3 wheels each) and cars (4 wheels each). By building up 10 groups and then 20 groups, they see that 20 × 3 = 10 × 3 + 10 × 3. The structural pattern is then practised with a set of fact pairs (e.g., 10×6 and 40×6). Teacher notes encourage articulating the relationship as 'ten-times'.",
+      "tasks": [
+        {
+          "id": "T-40",
+          "banner": "Multiples of Tens",
+          "intent": "explore",
+          "book_ref": "Multiples of Tens Q1, p.137",
+          "description": "Count wheels in 10 tricycles (10×3), 10 more tricycles, and 20 tricycles. Fill blanks and notice the pattern."
+        },
+        {
+          "id": "T-41",
+          "banner": "Multiples of Tens",
+          "intent": "explore",
+          "book_ref": "Multiples of Tens Q2, p.137",
+          "description": "Count wheels in 10 cars (10×4) and 30 cars (30×4). Fill blanks and notice the pattern."
+        },
+        {
+          "id": "T-42",
+          "banner": "Multiples of Tens",
+          "intent": "practice",
+          "book_ref": "Multiples of Tens (solve set), p.137",
+          "description": "Solve in a similar way: 10×6, 40×6, 10×8, 60×8, 6×8, 60×8, 4×6, 40×8."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Multiplying Using 10s",
+      "prose_summary": "This section formalises the break-apart-by-tens strategy for multiplying 2-digit numbers by 1-digit numbers. Radha's cupcake packing problem (18×4 = 10×4 + 8×4) and the bullock cart bamboo rods problem (23×8 = 20×8 + 3×8) are worked through using a structured table showing partial products. A 'Let Us Solve' set extends the strategy to real-world contexts including geese legs, auditorium seating, books in a shop, and patchwork beads.",
+      "tasks": [
+        {
+          "id": "T-43",
+          "banner": "Multiplying Using 10s",
+          "intent": "solve",
+          "book_ref": "Multiplying Using 10s Q1, p.138",
+          "description": "Radha packs cupcakes in boxes of 4. She has packed 18 boxes. How many cupcakes? Use 10+8 decomposition."
+        },
+        {
+          "id": "T-44",
+          "banner": "Multiplying Using 10s",
+          "intent": "solve",
+          "book_ref": "Multiplying Using 10s Q2, p.139",
+          "description": "8 bamboo rods needed for each bullock cart. How many rods for 23 carts? Use 20+3 decomposition."
+        },
+        {
+          "id": "T-45",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q1, p.139",
+          "description": "25 geese and 12 sheep around a pond. Chippi the lizard sees many legs. How many legs does it see?"
+        },
+        {
+          "id": "T-46",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q2, p.139",
+          "description": "8 children sitting in each row, 15 such rows in an auditorium. How many children are in the auditorium?"
+        },
+        {
+          "id": "T-47",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q3, p.139",
+          "description": "A book shop has 9 books in each pile and 14 such piles. How many books does the shop have?"
+        },
+        {
+          "id": "T-48",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q4, p.139",
+          "description": "Surya is making a patchwork with two colours of beads as shown. How many beads has he used? How many of each colour?"
+        },
+        {
+          "id": "T-49",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q5, p.139",
+          "description": "Make your own stories for 34×3, 75×5, 46×6, 50×9 and find the products."
+        }
+      ]
+    },
+    {
+      "ref": "S8",
+      "title": "Division",
+      "prose_summary": "Division is introduced through the partial quotient method, where students take away groups of 10s, 5s, or other convenient multiples step by step. The factory-wheels problem (58 ÷ 3) and the dairy-farm problem (88 ÷ 4) are worked through concretely with a structured step-by-step table and long-division notation. Teacher notes distinguish share problems (number of equal groups given) from measure problems (size of group given) and encourage attention to remainders.",
+      "tasks": [
+        {
+          "id": "T-50",
+          "banner": "Division",
+          "intent": "solve",
+          "book_ref": "Division Q1, p.140",
+          "description": "Factory ordered 58 wheels for tempos, each with 3 wheels. How many tempos can be made? Discuss thinking at each step."
+        },
+        {
+          "id": "T-51",
+          "banner": "Division",
+          "intent": "solve",
+          "book_ref": "Division Q2, p.141",
+          "description": "Dairy farm: Chippi sees 88 legs. How many cows? Show work using the table, taking out groups of 10s."
+        },
+        {
+          "id": "T-52",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q1, p.141",
+          "description": "In a big aquarium, Jolly fish sees 72 legs of octopuses. How many octopuses are there?"
+        },
+        {
+          "id": "T-53",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q2, p.141",
+          "description": "Sports store packs 4 shuttlecocks in a box. They have 50 shuttlecocks. How many full boxes? How many are left?"
+        },
+        {
+          "id": "T-54",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q3, p.141",
+          "description": "Rakul Chachi planted 75 rose saplings with 5 saplings per row. How many rows has she planted?"
+        },
+        {
+          "id": "T-55",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q4, p.141",
+          "description": "Make stories for the following and solve: 70÷5, 84÷7, 69÷3, 93÷6."
+        }
+      ]
+    },
+    {
+      "ref": "S9",
+      "title": "Multiples of 100",
+      "prose_summary": "Using large arrays of dots representing bikes (2 people each) and cars (4 people each), students discover the pattern for multiplying by 100 and multiples of 100. The visual model of 100 identical units laid out in a 10×10 grid connects to place value. Students complete fact families (1×3, 10×3, 100×3 and 2×3, 20×3, 200×3 etc.) and describe the pattern as 'hundred-times'.",
+      "tasks": [
+        {
+          "id": "T-56",
+          "banner": "Multiples of 100",
+          "intent": "explore",
+          "book_ref": "Multiples of 100 (bikes and cars), p.142",
+          "description": "100 bikes with 2 people each, 200 bikes; 100 cars with 4 people each, 500 cars. Fill in the blanks and describe how you found it."
+        },
+        {
+          "id": "T-57",
+          "banner": "Multiples of 100",
+          "intent": "practice",
+          "book_ref": "Multiples of 100 (pattern table), p.143",
+          "description": "Observe the pattern and complete: 1×3, 10×3, 100×3; 2×3, 20×3, 200×3; 4×3, 40×3, 400×3; 2×4, 20×4, 200×4; 4×2, 40×2, 400×2; 8×1, 80×1, 800×1; 3×4, 30×4, 300×4; 3×5, 30×5, 300×5; 3×9, 30×9, 300×9."
+        }
+      ]
+    },
+    {
+      "ref": "S10",
+      "title": "More Multiplication",
+      "prose_summary": "The break-apart strategy extends to 3-digit multipliers using contexts of electric autorickshaws (125×8 = 100×8 + 20×8 + 5×8) and kulhad boxes (174×6 = 100×6 + 70×6 + 4×6). Students decompose into hundreds, tens, and ones, compute partial products, and sum them. A 'Let Us Solve' set applies this to 3-digit multipliers across diverse real-world stories.",
+      "tasks": [
+        {
+          "id": "T-58",
+          "banner": "More Multiplication",
+          "intent": "solve",
+          "book_ref": "More Multiplication Q1, p.143-144",
+          "description": "125 autorickshaws carry 8 passengers each. How many passengers total? Use 100+20+5 decomposition."
+        },
+        {
+          "id": "T-59",
+          "banner": "More Multiplication",
+          "intent": "solve",
+          "book_ref": "More Multiplication Q2, p.144",
+          "description": "Kahlu and Rabia pack 6 kulhads per box and packed 174 boxes. How many kulhads total? Use 100+70+4 decomposition."
+        },
+        {
+          "id": "T-60",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q1, p.144",
+          "description": "BP Girl's school has 465 students and gives each two pencils on the first day. How many pencils does the school need to buy?"
+        },
+        {
+          "id": "T-61",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q2, p.145",
+          "description": "234 children organise a school mela, each contributing ₹5. How much money do they collect?"
+        },
+        {
+          "id": "T-62",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q3, p.145",
+          "description": "Make stories for and solve: 439×4, 514×8, 356×5, 623×7."
+        }
+      ]
+    },
+    {
+      "ref": "S11",
+      "title": "More Division",
+      "prose_summary": "Division with larger dividends is explored using the same partial quotient approach. The Cauvery River ferry problem (108 ÷ 9) is worked out by taking away groups of 5 nines at a time. A 'Let Us Solve' set includes a wide range of multi-step and real-world problems including the Darjeeling Toy Train distance (88×7), Ganga river rafting (259÷7), and Anu's savings across months. An 'always/never/sometimes true' table closes the section, prompting critical evaluation of mathematical generalisations.",
+      "tasks": [
+        {
+          "id": "T-63",
+          "banner": "More Division",
+          "intent": "solve",
+          "book_ref": "More Division (Cauvery ferry), p.145",
+          "description": "9 boats ferry 108 people equally. How many people per boat? Use partial quotient method (5+5+2)."
+        },
+        {
+          "id": "T-64",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q1, p.147",
+          "description": "7 buses take 245 children to the transport museum, each bus carrying the same number. How many children in each bus?"
+        },
+        {
+          "id": "T-65",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q2, p.147",
+          "description": "Darjeeling Himalayan Railway (Toy Train) runs 88 km daily. How much distance does it travel in a week?"
+        },
+        {
+          "id": "T-66",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q3, p.147",
+          "description": "VentureOut took 259 people rafting on the Ganga. Each raft takes 7 people. How many rafts did it take?"
+        },
+        {
+          "id": "T-67",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q4, p.147",
+          "description": "Anu saves ₹45 every month. (a) How much in 6 months? (b) Distribute total among 6 friends, how much each? (c) Distribute among 3 friends, how much each?"
+        },
+        {
+          "id": "T-68",
+          "banner": "Let Us Solve",
+          "intent": "reason",
+          "book_ref": "Let Us Solve Q5, p.147",
+          "description": "Raju makes 8 auto trips a day. Which questions can be exactly calculated: (a) money per day? (b) trips in 7 days? (c) time per trip? (d) trips in 4 weeks?"
+        },
+        {
+          "id": "T-69",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q6, p.148",
+          "description": "Solve: 45×9, 507×7, 94÷4, 778÷6, 94×5, 396×4, 83÷3, 635÷5."
+        },
+        {
+          "id": "T-70",
+          "banner": "Let Us Solve",
+          "intent": "reason",
+          "book_ref": "Let Us Solve Q7, p.148",
+          "description": "Tick always/never/sometimes true: multiplying by 10 gives 0 in ones; ×2 gives odd; ×5 gives 5 in ones; number after odd is even; halving any number gives even; adding 0 increases by 1."
+        }
+      ]
+    },
+    {
+      "ref": "S12",
+      "title": "Patterns in Division",
+      "prose_summary": "Students discover patterns when dividing multiples of 10 and 100 — that 30÷3, 300÷3 follow directly from 3÷3 using place-value reasoning. Money-sharing contexts (₹30 and ₹900 shared among 3 children) and drawn-arrow activities make the pattern concrete. Pattern sets A, B, C drill this across different divisors. Word problems involving trucks, cars, ants, and rubber-band packets apply the pattern.",
+      "tasks": [
+        {
+          "id": "T-71",
+          "banner": "Patterns in Division",
+          "intent": "reason",
+          "book_ref": "Patterns in Division Q1-2, p.146",
+          "description": "₹30 shared equally among 3 children — how much each? ₹900 shared equally among 3 children — how much each? Draw arrows linking money and children."
+        },
+        {
+          "id": "T-72",
+          "banner": "Patterns in Division",
+          "intent": "practice",
+          "book_ref": "Patterns in Division (sets A, B, C), p.146",
+          "description": "Observe and explain patterns. Complete: A: 3÷3, 30÷3, 300÷3; 5÷5, 50÷5, 500÷5. B: 9÷3, 90÷3, 900÷3; 8÷4, 80÷4, 800÷4. C: 15÷3, 150÷3, 300÷3; 4÷2, 20÷2, 100÷2."
+        },
+        {
+          "id": "T-73",
+          "banner": "Patterns in Division",
+          "intent": "solve",
+          "book_ref": "Patterns in Division (word problems), p.146",
+          "description": "Solve: (1) 60 tyres ÷ 6 = how many trucks? (2) 80 wheels ÷ 4 = how many cars? (3) 600 ant legs ÷ 6 = how many ants? (4) 800 rubber bands ÷ 4 rubber bands per packet = how many packets?"
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 3,
+  "task_load": 3,
+  "exploration_load": 0,
+  "procedural_load": 2
+}

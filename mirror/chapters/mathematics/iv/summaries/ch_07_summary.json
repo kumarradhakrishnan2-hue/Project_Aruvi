@@ -1,0 +1,335 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iv",
+  "chapter_number": 7,
+  "chapter_title": "The Cleanest Village",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Daisy and Lou Go Shopping",
+      "prose_summary": "Set in a market context before a school trip to Mawlynnong, this section introduces addition and subtraction of money using a price list of fruits and vegetables. Students compute costs for different quantities, find combinations that sum to ₹163, work through Cost–Paid–Balance tables with missing values, and identify valid currency combinations to purchase 3 kg of bananas (₹165). The concrete model is play money and the number line, with the section sitting at the pictorial-to-symbolic transition.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, p.97",
+          "description": "Find costs for different quantities of fruits/vegetables; find what combinations sum to ₹163 (more than one possibility)."
+        },
+        {
+          "id": "T-2",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do, p.98",
+          "description": "Complete 9 Cost–Paid–Balance grids by finding the missing value in each row."
+        },
+        {
+          "id": "T-3",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, p.98",
+          "description": "Lou and Daisy buy 3 kg bananas (₹165). Which of the currency options a–e can they use to pay?"
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "A Strange Puzzle — Change from Oranges",
+      "prose_summary": "Presented as a rhyming puzzle, four children each buy 2 oranges at ₹21 each and pay with different notes (₹50, ₹100, ₹200, ₹500). Students compute the balance returned to each child, practising subtraction of 2- and 3-digit numbers from round numbers. The context keeps the arithmetic embedded in a real-world transaction without a concrete manipulative model.",
+      "tasks": [
+        {
+          "id": "T-4",
+          "banner": "A Strange Puzzle!",
+          "intent": "solve",
+          "book_ref": "A Strange Puzzle!, p.99",
+          "description": "Find the balance (paid amount minus ₹42) for Krishna (₹50), Sudama (₹100), Mala (₹200), and Neela (₹500)."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Let Us Play — Magic Triangle",
+      "prose_summary": "Students place the numbers 1–6 in the six nodes of a triangle (3 vertices, 3 midpoints) so that the sum along each side equals a target: first 9, then 10. They then explore which other target sums (e.g. 12, 13) are achievable with the same six numbers. The task develops combinatorial reasoning and additive thinking through a game-like puzzle requiring systematic trial.",
+      "tasks": [
+        {
+          "id": "T-5",
+          "banner": "Let Us Play",
+          "intent": "reason",
+          "book_ref": "Let Us Play, p.100",
+          "description": "Place numbers 1–6 in triangle nodes so that the sum on each side is 9. No numbers repeated."
+        },
+        {
+          "id": "T-6",
+          "banner": "Let Us Play",
+          "intent": "reason",
+          "book_ref": "Let Us Play, p.100",
+          "description": "Use same numbers 1–6 and arrange so that the sum on each side of the triangle is 10."
+        },
+        {
+          "id": "T-7",
+          "banner": "Let Us Play",
+          "intent": "reason",
+          "book_ref": "Let Us Play, p.100",
+          "description": "What other sums can you make with these 6 numbers? Can you make 12 on each side? Can you make 13?"
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Add Up — Addition with Regrouping",
+      "prose_summary": "This section develops multi-digit addition with regrouping (carrying) using Dienes blocks / tokens to move from concrete to algorithmic understanding. Worked examples cover 2-digit (24+28) and 3-digit (438+476, 38+16, 185+125) addition, each shown with block diagrams and the H-T-O column algorithm. Students are prompted to estimate before computing. Drill and word-problem tasks follow, including a table-completion task and column addition practice.",
+      "tasks": [
+        {
+          "id": "T-8",
+          "banner": "Add Up",
+          "intent": "reason",
+          "book_ref": "Add Up, p.101",
+          "description": "Estimate the number of teachers going on the trip (24 + 28) before computing."
+        },
+        {
+          "id": "T-9",
+          "banner": "Add Up",
+          "intent": "reason",
+          "book_ref": "Add Up, p.102",
+          "description": "Estimate the number of children going on the trip (438 + 476) before computing."
+        },
+        {
+          "id": "T-10",
+          "banner": "Add Up",
+          "intent": "solve",
+          "book_ref": "Add Up, p.103",
+          "description": "38 + 16: estimate the money spent on pusaw, then write the final answer after regrouping in the H-T-O boxes."
+        },
+        {
+          "id": "T-11",
+          "banner": "Add Up",
+          "intent": "solve",
+          "book_ref": "Add Up, p.104",
+          "description": "185 + 125: estimate the trip money, then write the final answer after regrouping in the H-T-O boxes."
+        },
+        {
+          "id": "T-12",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q1, p.105",
+          "description": "Complete the Kalakshitij table: find total boys, total girls, total tabla players, and total singers."
+        },
+        {
+          "id": "T-13",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q1 follow-up, p.105",
+          "description": "15 more girls join to play tabla. How many girls play tabla now?"
+        },
+        {
+          "id": "T-14",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q2, p.105",
+          "description": "Add by aligning numbers in columns: (a) 32+47 (b) 654+95 (c) 286+123 (d) 476+324 (e) 700+289 (f) 534+483."
+        },
+        {
+          "id": "T-15",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q3, p.105",
+          "description": "Preeti's school has 423 children; cousin's school has 178 more. How many children study in Preeti's cousin's school?"
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Subtract It — Subtraction with Regrouping",
+      "prose_summary": "Subtraction with regrouping is introduced through the same trip context: 83−46 (2-digit, regroup 1 ten to 10 ones) and 438−215 and 310−179 (3-digit, regroup hundreds and tens). Each worked example is shown with Dienes-block diagrams and the H-T-O column algorithm alongside an estimation prompt. Students are explicitly guided to start from the ones place and to use 'regrouping' (not 'borrowing').",
+      "tasks": [
+        {
+          "id": "T-16",
+          "banner": "Subtract It",
+          "intent": "reason",
+          "book_ref": "Subtract It, p.106",
+          "description": "Estimate the difference: how many more children bought Pusaw than fruit plates (83 − 46)?"
+        },
+        {
+          "id": "T-17",
+          "banner": "Subtract It",
+          "intent": "reason",
+          "book_ref": "Subtract It, p.106",
+          "description": "Estimate how many children are waiting to visit the Living Roots Bridge (438 − 215)."
+        },
+        {
+          "id": "T-18",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve, p.108",
+          "description": "Ram Chacha: 527 mangoes this year, 264 last year. Estimate then find how many more mangoes this year; use/draw tokens."
+        },
+        {
+          "id": "T-19",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q4, p.108",
+          "description": "Ranganna made 639 dolls, sold 531. Estimate then find how many dolls are left; use/draw tokens."
+        },
+        {
+          "id": "T-20",
+          "banner": "Let Us Solve",
+          "intent": "practice",
+          "book_ref": "Let Us Solve Q5, p.109",
+          "description": "Subtract by aligning in columns: (a) 83−29 (b) 345−123 (c) 763−437 (d) 803−350 (e) 900−328."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Problem Solving, Grid Hunt, and Missing Digits",
+      "prose_summary": "This section consolidates addition and subtraction through rich multi-step word problems (community library books, train journey across stations), quick mental-strategy computation, a Number Pair Hunt on a 4×4 grid (finding pairs with greatest/smallest sum or difference), and Missing Digits puzzles requiring reverse reasoning. The section moves across all four intent types and develops flexible, strategic thinking about addition and subtraction.",
+      "tasks": [
+        {
+          "id": "T-21",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q1a, p.110",
+          "description": "Rami read Panchatantra Tales (236 pages); Kesu read Akbar Birbal, Karadi Tales, and Blue Umbrella. Who read more? How many more pages?"
+        },
+        {
+          "id": "T-22",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q1b, p.110",
+          "description": "Sumi has read 23 pages of Adventures of Feluda (128 pages). How many more pages are left?"
+        },
+        {
+          "id": "T-23",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q1c, p.110",
+          "description": "Jaggu reads all 6 books (total pages). He has finished Swami and Friends, Akbar Birbal, and 50 pages of Feluda. How many pages left?"
+        },
+        {
+          "id": "T-24",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q2a, p.111",
+          "description": "Train problem: how many passengers on the train when it leaves Dadri (after boarding 158, alighting 23, boarding 67, alighting 75 at stops)?"
+        },
+        {
+          "id": "T-25",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q2b, p.111",
+          "description": "Find the number of people who got off the train at Aligarh (final destination)."
+        },
+        {
+          "id": "T-26",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q2c, p.111",
+          "description": "Were there more people on the train in New Delhi or in Aligarh? How much more/less?"
+        },
+        {
+          "id": "T-27",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q2d, p.111",
+          "description": "How many people travelled altogether by the train?"
+        },
+        {
+          "id": "T-28",
+          "banner": "Let Us Solve",
+          "intent": "practice",
+          "book_ref": "Let Us Solve a and b, p.111",
+          "description": "Column addition and subtraction: (a) 452+89 (b) 641−273."
+        },
+        {
+          "id": "T-29",
+          "banner": "Let Us Solve",
+          "intent": "reason",
+          "book_ref": "Let Us Solve c, p.111",
+          "description": "Find quick ways to solve: 326+25, 410−12, 675+5, 204−10, 811+99, 945−19 using strategies from Grade 3."
+        },
+        {
+          "id": "T-30",
+          "banner": "Let Us Solve",
+          "intent": "practice",
+          "book_ref": "Let Us Solve d, p.111",
+          "description": "Solve by aligning in columns: 38+943, 465+305, 435+462, 764−657, 518−209, 879−53."
+        },
+        {
+          "id": "T-31",
+          "banner": "Let Us Solve",
+          "intent": "reason",
+          "book_ref": "Let Us Solve e, p.112",
+          "description": "Find two numbers whose sum is 856 and two numbers whose difference is 563; then make your own word problems with these numbers."
+        },
+        {
+          "id": "T-32",
+          "banner": "Number Pair Hunt",
+          "intent": "reason",
+          "book_ref": "Number Pair Hunt, p.112",
+          "description": "How many number pairs (adjacent vertically or horizontally) are there in the 4×4 grid?"
+        },
+        {
+          "id": "T-33",
+          "banner": "Number Pair Hunt",
+          "intent": "reason",
+          "book_ref": "Number Pair Hunt Q1, p.113",
+          "description": "Find the number pair in the grid whose sum is the greatest."
+        },
+        {
+          "id": "T-34",
+          "banner": "Number Pair Hunt",
+          "intent": "reason",
+          "book_ref": "Number Pair Hunt Q2, p.113",
+          "description": "Find the number pair in the grid whose sum is the smallest."
+        },
+        {
+          "id": "T-35",
+          "banner": "Number Pair Hunt",
+          "intent": "reason",
+          "book_ref": "Number Pair Hunt Q3, p.113",
+          "description": "Find the number pair in the grid whose difference is the greatest."
+        },
+        {
+          "id": "T-36",
+          "banner": "Number Pair Hunt",
+          "intent": "reason",
+          "book_ref": "Number Pair Hunt Q4, p.113",
+          "description": "Find the number pair in the grid whose difference is the smallest."
+        },
+        {
+          "id": "T-37",
+          "banner": "The Missing Digits",
+          "intent": "reason",
+          "book_ref": "The Missing Digits, p.113",
+          "description": "Fill the missing digits in 3 addition puzzles and 3 subtraction puzzles to make each sum correct."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Let Us Do — Mixed Addition and Subtraction Drill",
+      "prose_summary": "A consolidation drill page with 9 addition and 9 subtraction problems covering a range of 2- and 3-digit numbers, including cases requiring multiple regroupings (e.g. 826+268, 962−268, 600−384). The section has no contextual story; it is pure symbolic practice to consolidate the algorithms developed across the chapter.",
+      "tasks": [
+        {
+          "id": "T-38",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q1, p.114",
+          "description": "Add: (a) 23+489 (b) 105+295 (c) 630+56 (d) 35+99 (e) 409+387 (f) 67+76 (g) 580+207 (h) 333+666 (i) 826+268."
+        },
+        {
+          "id": "T-39",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q2, p.114",
+          "description": "Subtract: (a) 300−45 (b) 962−268 (c) 706−209 (d) 842−387 (e) 674−76 (f) 754−409 (g) 403−245 (h) 600−384 (i) 546−538."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 0,
+  "procedural_load": 2
+}

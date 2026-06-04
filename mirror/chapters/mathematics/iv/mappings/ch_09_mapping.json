@@ -1,0 +1,39 @@
+{
+    "stage": "preparatory",
+    "subject": "mathematics",
+    "grade": "iv",
+    "chapter_number": 9,
+    "chapter_title": "Equal Groups",
+
+    "core_cg": "CG-1",
+
+    "core_competencies": [
+        {
+            "c_code": "C-1.3",
+            "justification": "The chapter's central purpose is building fluency with multiplication and division as operations on whole numbers. Students fill the 10×10 multiplication table, learn multiplication as equal groups and arrays, apply the break-apart-by-tens strategy to compute 2- and 3-digit × 1-digit products, and use the partial quotient method to divide 2–3 digit numbers. Daily-life word problems across the chapter require students to select and apply multiplication or division to find answers, precisely what C-1.3 describes."
+        },
+        {
+            "c_code": "C-1.4",
+            "justification": "The multiplication table exploration section is a sustained pattern-investigation: students discover that row 8 produces ones digits in the repeating cycle 8-6-4-2-0 and extend this to predict 11×8, 12×8, 13×8 without direct calculation. The animal jumps section frames multiples as skip-count patterns on a number line, and students generalise which rows of the table yield only even products, only odd, or both — constituting the discovery and extension of number patterns called for by C-1.4."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-4.1",
+            "justification": "The 'Let Us Solve' sets embedded in the multiplication and division sections require students to translate real-world stories — Chippi the lizard counting geese and sheep legs, the Ganga river rafting groups, Anu's monthly savings distributed among friends — into multiplication or division sentences and solve them. These are genuine daily-life problems involving one or more operations, the domain of C-4.1."
+        },
+        {
+            "c_code": "C-4.3",
+            "justification": "The break-apart-by-tens strategy (decomposing 18×4 into 10×4 + 8×4, or 125×8 into 100×8 + 20×8 + 5×8) and the doubling strategy introduced through Magician Anvi's trick explicitly develop the selection of appropriate computation methods for given contexts. The always/never/sometimes true table in the final Let Us Solve set further develops critical evaluation of computational strategies, directly engaging C-4.3."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to perform multiplication and division on whole numbers and discover patterns in equal-group sequences by experiencing skip counting on number lines, constructing arrays, applying the break-apart-by-tens and doubling strategies, and investigating ones-digit cycles and even/odd properties in the multiplication table.",
+
+    "conceptual_demand": 3,
+    "task_load": 3,
+    "exploration_load": 0,
+    "procedural_load": 2,
+    "effort_index": 15.0
+}

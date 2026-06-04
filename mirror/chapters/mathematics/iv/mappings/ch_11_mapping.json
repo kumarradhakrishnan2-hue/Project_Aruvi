@@ -1,0 +1,43 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iv",
+  "chapter_number": 11,
+  "chapter_title": "Fun with Symmetry",
+
+  "core_cg": "CG-2",
+
+  "core_competencies": [
+    {
+      "c_code": "C-2.3",
+      "justification": "Recognising and creating symmetry is the organising purpose of the entire chapter. Students make ink-blot designs by folding paper and pressing, directly experiencing how folding produces mirror halves. They mark lines of symmetry on each stage of a paper airplane fold, explore how the presence or absence of symmetry affects flight, and use a physical mirror to produce reflections of shapes and numbers. The fold-and-cut challenges require students to mentally transform a folded sheet and predict where cuts appear when opened, deepening their understanding of reflection. Completing half-shapes on dot grids and designing floor patterns practise the creation strand of this competency."
+    },
+    {
+      "c_code": "C-2.4",
+      "justification": "The tiling sections independently address pattern recognition and extension in 2D shapes. Students identify the repeating unit (tile) in two floor-pattern grids and continue those patterns. The 'Tiles at the Tile Shop' activity has students observe Bablu Chacha's ornamental tiles (hexagonal, star, pinwheel), design their own tile shapes, and make floor layouts with no gaps or overlaps. The rhombus and hexagon tessellation designs prompt discussion of how colour and position create different visual patterns from the same repeating shape. These are distinct tasks about geometric pattern rather than symmetry of individual shapes."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-2.1",
+      "justification": "Several tasks require students to name, compare, and analyse properties of 2D shapes alongside symmetry work. In the 'Symmetry in shapes' dot-grid activity, students draw border shapes (kite, arrow, envelope, triangle), count sides, and identify which are symmetrical. In the tiling tasks, students name which shapes compose each tile and assess symmetry for each. Developing vocabulary for shape attributes (sides, symmetry, regular/irregular) is a sustained thread through both the shapes section and the tiling section."
+    },
+    {
+      "c_code": "C-4.1",
+      "justification": "The fold-and-cut challenges are spatial puzzles that require systematic logical deduction: given a twice-folded paper with a corner cut and two side-square removals, students must predict where holes and edges appear when the paper is unfolded. The mirror-number tasks function as recreational number puzzles — students find which digits 0–9 have symmetric mirror images, construct 4-digit numbers whose mirror image is the same number, and solve the 'Guess my number' puzzle (a 3-digit number near 120 with the same mirror image). These are substantive recreational puzzles, not incidental number use."
+    },
+    {
+      "c_code": "C-2.2",
+      "justification": "The mirror-placement tasks require students to specify the position and orientation of a mirror to produce a target reflection. In 'Games with a Mirror', students decide where to place the mirror on a given shape to generate each of six derived shapes, and where to place it so that printed numbers (181, 686) read the same. The ambulance activity asks students to explain why letters on an ambulance are mirror-written and where a rear-view mirror must be positioned for the word to read correctly. These tasks meaningfully engage spatial language and reasoning about position and movement."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to recognise and create symmetry in familiar 2D shapes and patterns by engaging them in hands-on reflection activities — folding, cutting, mirror placement, and tile design — that make the abstract concept of a line of symmetry visible and manipulable.",
+
+  "conceptual_demand": 2,
+  "task_load": 2,
+  "exploration_load": 1,
+  "procedural_load": 0,
+  "effort_index": 9.5
+}

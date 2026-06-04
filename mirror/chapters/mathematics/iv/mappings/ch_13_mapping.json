@@ -1,0 +1,43 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iv",
+  "chapter_number": 13,
+  "chapter_title": "The Transport Museum",
+
+  "core_cg": "CG-1",
+
+  "core_competencies": [
+    {
+      "c_code": "C-1.3",
+      "justification": "The chapter's entire computational arc develops multiplication and division of whole numbers far beyond the 10×10 table: times-10 through place-value grouping, the splitting-and-doubling strategy for even multipliers (times-14 and times-15), the area-model grid for 2-digit by 2-digit products (15×14 using the toy-train scenario and 64×152 for the Vande Bharat evacuation), and long division with remainder via the repeated-subtraction table (324÷14 and 960÷64 from the snake-boat race). The 'Let Us Solve' sets in the snake-boat and Chinnu sections apply all four operations to multi-step transport word problems, consolidating operational understanding and its daily-life applicability."
+    },
+    {
+      "c_code": "C-1.4",
+      "justification": "Pattern recognition runs as an independent thread throughout the chapter. The times-15 construction activity asks students to spot regularities in the table and articulate differences between the times-5 and times-15 entries (each times-15 value exceeds the corresponding times-5 value by a multiple of 10). The Set A/B/C activity in the Multiples of 100 section builds the explicit pattern that multiplying the group size by 10 multiplies the product by 10, and students use this structure to derive Set B from Set A without fresh computation. The closing Chinnu's Coins observation — that 12×13, 11×14, 13×13, 11×12 share a digit pattern when one factor rises and the other falls — invites students to extend a multiplicative pattern and find five further examples, placing this squarely in the pattern-recognition competency."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-4.1",
+      "justification": "The Mystery Matrix opening presents two recreational puzzles requiring backward reasoning from given products to missing multiplicands and row/column totals — the chapter begins as a puzzle, not a drill. The number-grid sentence hunt near the close asks students to scan an 8×8 grid of numbers and identify valid multiplication and division sentences hidden within it, a recreational pattern-search that demands operational judgement rather than routine computation. The Chinnu's Coins denomination scenario (which notes pay exactly ₹750, how many coins does Chinnu need) adds a puzzle dimension to the money computation."
+    },
+    {
+      "c_code": "C-4.3",
+      "justification": "The three-voice presentation of 12×20 explicitly models three different valid strategies — splitting by tens, doubling, and Tens-language — and the 'Share your thoughts' prompts throughout the multiples-of-10 and multiples-of-100 sections encourage students to articulate and compare methods. The splitting-and-doubling section for even-number tables asks students to judge which tables are amenable to this shortcut and why, requiring selection among methods rather than execution of a fixed algorithm. The three approaches to 11×200 reinforce this method-selection habit at the hundreds level."
+    },
+    {
+      "c_code": "C-5.1",
+      "justification": "The times-10 and multiples-of-100 sections are organised around the language of Tens and Hundreds as named place-value columns: '2×10 = 2 Tens', '14×10 = 14 Tens = 10 Tens + 4 Tens = 140', '11 Hundreds = 1100'. This repeated translation between a multiplication statement and its place-value column reading gives students a working understanding of how the Indian positional system encodes magnitude, making the place-value system's structure — not just its symbols — an active cognitive tool across the chapter."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to multiply and divide whole numbers beyond the 10×10 tables by systematically applying place-value splitting to extend known facts into new computational territory.",
+
+  "conceptual_demand": 3,
+  "task_load": 3,
+  "exploration_load": 0,
+  "procedural_load": 2,
+  "effort_index": 15.0
+}

@@ -1,0 +1,349 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iv",
+  "chapter_number": 13,
+  "chapter_title": "The Transport Museum",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Mystery Matrix",
+      "prose_summary": "The chapter opens with two multiplication grid puzzles that ask students to fill in missing multiplicands and products. Students handle a structured matrix where row and column products constrain the possible values, placing them on the concrete-to-symbolic boundary. The task requires reasoning backward from products to factors rather than forward computation. No manipulative is used; the grid itself is the model.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Mystery Matrix",
+          "intent": "explore",
+          "book_ref": "Mystery Matrix, p.184",
+          "description": "Fill yellow boxes with 1-digit numbers (multiplicands and multipliers) to get given products; fill remaining white boxes with appropriate products. Second puzzle: identify numbers using row and column products in orange and blue boxes."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Times-10: multiplying by 10",
+      "prose_summary": "This section introduces multiplication by 10 using dot arrays grouped in rows of 10, linking repeated groups to the 'Tens' language of place value. Students match multiplications like 2×10, 5×10, 8×10 to pictorial arrays, then extend to 10×10 = 100 to bridge to the hundred. The concrete model (arrays of dots grouped in tens) anchors the symbolic statement 'N × 10 = N Tens'. The section sits firmly at the pictorial stage — students count and read groups rather than computing abstractly.",
+      "tasks": [
+        {
+          "id": "T-2",
+          "banner": "Times-10",
+          "intent": "explore",
+          "book_ref": "Times-10, p.184",
+          "description": "Match each problem with the appropriate pictorial representation and write the answer: 2×10=2 Tens=__, 5×10=__Tens=__, 8×10=__Tens=__."
+        },
+        {
+          "id": "T-3",
+          "banner": "Times-10",
+          "intent": "reason",
+          "book_ref": "Times-10, p.185",
+          "description": "What is 10×10 = __ Tens = __? (extending the ×10 pattern to 10 groups of 10 = 100)"
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Constructing Tables by splitting",
+      "prose_summary": "Students construct the times-15 table by splitting a pebble arrangement (15 wide) into columns of 10 and 5, using the distributive property concretely before symbolic recording. The section emphasises building the table entry by entry and then comparing times-15 with times-5 to discover additive and multiplicative patterns. Students also extend the strategy to construct all tables from 11 to 20 and systematically compare each with its unit counterpart (times-1 vs times-11, times-2 vs times-12, etc.). The movement is from concrete arrangement through pictorial split to symbolic table.",
+      "tasks": [
+        {
+          "id": "T-4",
+          "banner": "Constructing Tables",
+          "intent": "explore",
+          "book_ref": "Constructing Tables, p.185",
+          "description": "Count pebbles in a 5×15 arrangement; complete: 5×15 = 5×10 and 5×5 = __ + __ = __."
+        },
+        {
+          "id": "T-5",
+          "banner": "Constructing Tables",
+          "intent": "explore",
+          "book_ref": "Constructing Tables, p.186",
+          "description": "Construct a times-15 table (1×15 through 10×15) using the 10×15 pebble arrangement, splitting columns into 10 and 5."
+        },
+        {
+          "id": "T-6",
+          "banner": "Constructing Tables",
+          "intent": "reason",
+          "book_ref": "Constructing Tables Q1, p.186",
+          "description": "What patterns do you see in the times-15 table?"
+        },
+        {
+          "id": "T-7",
+          "banner": "Constructing Tables",
+          "intent": "reason",
+          "book_ref": "Constructing Tables Q2, p.186",
+          "description": "Compare the times-15 table with the times-5 table. What similarities and differences do you notice? Complete the difference column (15−5=10, 30−10=20, ...)."
+        },
+        {
+          "id": "T-8",
+          "banner": "Constructing Tables",
+          "intent": "explore",
+          "book_ref": "Constructing Tables Q3, p.186",
+          "description": "Construct other times-tables for numbers from 11 to 20, as done for 15."
+        },
+        {
+          "id": "T-9",
+          "banner": "Constructing Tables",
+          "intent": "reason",
+          "book_ref": "Constructing Tables Q4, p.186",
+          "description": "Compare times-1 with times-11, times-2 with times-12, and so on. Share your observations."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Making tables by splitting into equal groups",
+      "prose_summary": "This section introduces the doubling strategy for even multipliers, using a wheel arrangement where 3×14 is computed as double of 3×7 by splitting 14 into two equal groups of 7. Students see 6×14 presented visually as two identical rectangle-arrays, making the doubling relationship concrete before the symbolic generalisation. The central idea is that multiplying by an even number is equivalent to multiplying by half that number and doubling the result. Students are then asked to construct the full times-14 table and identify other tables suited to the same strategy.",
+      "tasks": [
+        {
+          "id": "T-10",
+          "banner": "Making tables by splitting into equal groups",
+          "intent": "reason",
+          "book_ref": "Making tables by splitting into equal groups, p.187",
+          "description": "6×14 = Double of 6×7. Why? (explain the splitting-and-doubling reasoning from the wheel arrangement)"
+        },
+        {
+          "id": "T-11",
+          "banner": "Making tables by splitting into equal groups",
+          "intent": "explore",
+          "book_ref": "Making tables by splitting into equal groups, p.188",
+          "description": "Can we construct the times-14 table by splitting and doubling? Try! What other times-tables can be constructed by splitting into equal groups and doubling? Give examples."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Multiples of 10: multiplying by 10 and 20",
+      "prose_summary": "Building on times-10, this section extends to multiplying 2-digit numbers by 10 and then by multiples of 10 (20, 30, … 80). Dienes flat-and-rod imagery (showing 14×10 as 10 Tens + 4 Tens = 140) anchors the place-value reasoning. Three child voices model 12×20 using different splitting approaches, establishing that multiplying by 20 = multiplying by 2 Tens. Students progress from single computations to multi-step word problems involving transport contexts (tempo travellers, small buses). The pictorial stage is prominent through flat-array diagrams; symbolic recording follows each.",
+      "tasks": [
+        {
+          "id": "T-12",
+          "banner": "Multiples of 10",
+          "intent": "practice",
+          "book_ref": "Multiples of 10, p.188",
+          "description": "Find the answers: a) 15×10=__Tens=__, b) 16×10=__Tens=__, c) 19×10=__Tens=__, d) 20×10=__Tens=__."
+        },
+        {
+          "id": "T-13",
+          "banner": "Multiples of 10",
+          "intent": "reason",
+          "book_ref": "Multiples of 10, p.188",
+          "description": "10×10=__; 2 times (double of) 10×10=__. Discuss in grade what happens when we take several groups of 10."
+        },
+        {
+          "id": "T-14",
+          "banner": "Now think and answer the following problems",
+          "intent": "practice",
+          "book_ref": "Now think and answer, p.189",
+          "description": "30×10=__, 40×10=__, 50×10=__, 60×10=__, 70×10=__, 80×10=__."
+        },
+        {
+          "id": "T-15",
+          "banner": "Now think and answer the following problems",
+          "intent": "solve",
+          "book_ref": "Now think and answer, p.189",
+          "description": "Answer: a) 21×10, b) 42×10, c) 65×10, d) 38×10, e) 53×10, f) 87×10. Share your thoughts."
+        },
+        {
+          "id": "T-16",
+          "banner": "Solve the following problems",
+          "intent": "solve",
+          "book_ref": "Solve the following problems, p.190",
+          "description": "24×40=__, 13×30=__, 50×60=__, 43×60=__, 70×80=__. Share your thoughts."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "A Day at the Transport Museum: 2-digit multiplication and division",
+      "prose_summary": "Set in a transport museum narrative, this section introduces 2-digit by 2-digit multiplication via the area model (15×14 split into 10×10, 10×4, 5×10, 5×4 sub-rectangles) and long division with remainder (324÷14 using a repeated-subtraction table). The area model is displayed as a grid on squared Dienes flats, making the partial products visible. Division is introduced through a grouping story — how many coaches of 14 children fit 324 — using a tabular method that builds toward the standard algorithm. The concept of 'remainder' is formally named here. Students then practise both operations through a further 'Let Us Solve' set.",
+      "tasks": [
+        {
+          "id": "T-17",
+          "banner": "A Day at the Transport Museum",
+          "intent": "solve",
+          "book_ref": "A Day at the Transport Museum, p.191",
+          "description": "Find 15×14 using the area-model grid (toy train: 15 coaches × 14 seats). How many children can be seated?"
+        },
+        {
+          "id": "T-18",
+          "banner": "A Day at the Transport Museum",
+          "intent": "solve",
+          "book_ref": "A Day at the Transport Museum, p.191",
+          "description": "Find 324÷14 using the repeated-subtraction table. How many coaches for 324 children? Identify the remainder."
+        },
+        {
+          "id": "T-19",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve, p.192",
+          "description": "Solve: a) 25×34, b) 16×43, c) 68×12, d) 39×13, e) 125÷15, f) 94÷11, g) 440÷22, h) 508÷18. Also identify remainder (if any) in division problems."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Multiples of 100: multiplying by 100 and multiples of 100",
+      "prose_summary": "This section extends place-value multiplication to hundreds, using rows of orange 100-flat Dienes blocks to show that N×100 = N Hundreds. 10×100=1000 bridges to thousands. Students explore 11×100=1100 by splitting into 10 Hundreds + 1 Hundred and then examine 11×200 through three different strategies, establishing the generalisation about multiplying by multiples of 100. A structured Set A/B/C activity asks students to find pattern-linked products (14×1, 14×10, 14×100; 14×5, 14×50, 14×500) and then use those relationships to fill Set B and reason about Set C. This is the most symbolically demanding section of the chapter.",
+      "tasks": [
+        {
+          "id": "T-20",
+          "banner": "Multiples of 100",
+          "intent": "practice",
+          "book_ref": "Multiples of 100, p.192",
+          "description": "Complete: 3×100=__Hundreds=__, 5×100=__=__, 8×100=__=__."
+        },
+        {
+          "id": "T-21",
+          "banner": "Multiples of 100",
+          "intent": "practice",
+          "book_ref": "Multiples of 100, p.192",
+          "description": "10×100=10 Hundreds=1000. What happens when we put 10 Hundreds together? Complete: 12×100=__, 15×100=__, 27×100=__, 70×100=__."
+        },
+        {
+          "id": "T-22",
+          "banner": "Now answer the following questions",
+          "intent": "practice",
+          "book_ref": "Now answer, p.193",
+          "description": "30×100=__, 40×100=__, 50×100=__, 24×100=__, 53×100=__, 19×100=__. Share your thoughts."
+        },
+        {
+          "id": "T-23",
+          "banner": "Now answer the following questions",
+          "intent": "reason",
+          "book_ref": "Now answer (We Know/Find), p.193",
+          "description": "We Know: 80×100=8000. Find: 80×50=__, 40×50=__. (Use relationship between ×100 and ×50)"
+        },
+        {
+          "id": "T-24",
+          "banner": "Answer the following questions",
+          "intent": "reason",
+          "book_ref": "Answer the following questions, p.194",
+          "description": "11×200 shown three ways. Share what you notice. Then: 11×100=__, 11×200=__, 22×100=__, 22×200=__. What do you notice about any number times-100s?"
+        },
+        {
+          "id": "T-25",
+          "banner": "Answer the following questions",
+          "intent": "practice",
+          "book_ref": "Answer the following questions, p.194",
+          "description": "18×100=__, 15×200=__, 23×200=__, 5×500=__, 14×300=__, 7×800=__. Share your thoughts."
+        },
+        {
+          "id": "T-26",
+          "banner": "Set A / Set B / Set C",
+          "intent": "reason",
+          "book_ref": "Set A/B/C, p.195",
+          "description": "Find answers in Set A (14×1/5/100/500, 7×5/50/500/250); use relationships to find Set B (30×1/2/10/20/100/200, 15×1/2/10/20/100/200); answer Set C (44×10, 22×20, 16×100, 4×400)."
+        }
+      ]
+    },
+    {
+      "ref": "S8",
+      "title": "Dividing by 10 and 100",
+      "prose_summary": "This section revisits division through the lens of place value, using a rice-sack packing story to motivate 60÷10, 600÷10, and 600÷100. Students explore the pattern that dividing by 10 removes a zero (or shifts digits right) and dividing by 100 removes two zeros, using a structured grid of related facts (40÷10, 400÷10, 400÷100; 4÷2, 40÷20, 400÷200). A snake-boat race story extends to 960÷64 via the repeated-subtraction method. A second 'Let Us Solve' set with large-number multiplication and division problems consolidates all techniques from the chapter.",
+      "tasks": [
+        {
+          "id": "T-27",
+          "banner": "Dividing by 10 and 100",
+          "intent": "solve",
+          "book_ref": "Dividing by 10 and 100, p.197",
+          "description": "Rice sack problems: a) 60 kg ÷ 10 kg sacks = __ sacks, b) 600 kg ÷ 10 kg sacks = __ sacks. If sack weighs 100 kg, 600÷100=__. Write: 60÷10=__, 600÷10=__, 600÷100=__."
+        },
+        {
+          "id": "T-28",
+          "banner": "Find the answers to the following questions",
+          "intent": "reason",
+          "book_ref": "Find the answers, p.198",
+          "description": "40÷10=__, 400÷10=__, 400÷100=__; 4÷2=__, 40÷20=__, 400÷200=__; 400÷2=__, 400÷20=__, 400÷200=__. Share your thoughts in grade (spot the pattern across related facts)."
+        },
+        {
+          "id": "T-29",
+          "banner": "Think and answer",
+          "intent": "solve",
+          "book_ref": "Think and answer, p.198",
+          "description": "1. Manku sees 870 bananas; each bunch has 10. How many bunches? 2. Rukhma Bi distributes ₹1000 equally among 10 grandchildren. How much each? Write the division statement."
+        },
+        {
+          "id": "T-30",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve, p.197",
+          "description": "Also identify remainder (if any): a) 237×28, b) 140×16, c) 389×57, d) 807÷24, e) 692÷33, f) 996÷45."
+        }
+      ]
+    },
+    {
+      "ref": "S9",
+      "title": "Chinnu's Coins: money problems and pattern exploration",
+      "prose_summary": "The closing section weaves multiplication and division into rich real-world and playful contexts: a transport museum visit with snake-boat race data, a school trip to Goa with multi-step money calculations, a brick kiln production problem, a Chilika lake dolphin trip, a number-grid sentence hunt, and an amusement-park coins scenario requiring students to think about denomination and divisibility. A final multiplication pattern observation (12×13=156, 11×14=154…) asks students to notice that a 1-unit increment in one factor and decrement in the other leaves a specific pattern in the product digits, developing early algebraic thinking. The section sits at the symbolic end of the concrete-to-symbolic path with heavy multi-step reasoning.",
+      "tasks": [
+        {
+          "id": "T-31",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q1, p.198",
+          "description": "Punjab Mail: a) 3 coaches carried 96 passengers — how many per coach? b) Train now has 24 coaches, each carrying 72 passengers — how many can travel?"
+        },
+        {
+          "id": "T-32",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q2, p.199",
+          "description": "School trip to Goa (36 children + 6 teachers, double-decker bus): a) seats needed vs. available (15 lower + 10 upper, 2 per seat); b) total ticket cost for all children; c) ticket cost for all teachers."
+        },
+        {
+          "id": "T-33",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q3, p.199",
+          "description": "Kedar's brick kiln: a) 125 bricks/day — how many in a month? b) each brick sold for ₹9 — monthly earnings?"
+        },
+        {
+          "id": "T-34",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q4, p.199",
+          "description": "Chilika lake trip (8 people): bus ticket ₹60 each, boat ride ₹1200 for all. How much per person? (multi-step)"
+        },
+        {
+          "id": "T-35",
+          "banner": "Let Us Solve",
+          "intent": "reason",
+          "book_ref": "Let Us Solve Q5, p.200",
+          "description": "Find multiplication and division sentences in the number grid. Shade them. How many can you find? (3 given: 250×4=1000, 50×20=1000, 525÷5=105; find more)"
+        },
+        {
+          "id": "T-36",
+          "banner": "Let Us Solve",
+          "intent": "solve",
+          "book_ref": "Let Us Solve Q6, p.200",
+          "description": "Solve: a) 35×76, b) 267×38, c) 498×9, d) 89×42, e) 55×23, f) 345×17, g) 66×22, h) 704×11, i) 319×26, j) 459÷3, k) 774÷18, l) 864÷26, m) 304÷12, n) 670÷9, o) 584÷25, p) 900÷15, q) 658÷32, r) 974÷9."
+        },
+        {
+          "id": "T-37",
+          "banner": "Chinnu's Coins",
+          "intent": "solve",
+          "book_ref": "Chinnu's Coins Q1, p.201",
+          "description": "Ticket costs ₹750. Bujji uses ₹200 notes, Munna ₹50 notes, Balu ₹20 notes, Chinnu ₹5 coins, Sansu ₹2 coins. a) How many notes/coins each needs; b) who gets no change; c) how long to count Chinnu's coins?"
+        },
+        {
+          "id": "T-38",
+          "banner": "Chinnu's Coins",
+          "intent": "reason",
+          "book_ref": "Chinnu's Coins Q2, p.201",
+          "description": "Observe: 12×13=156, 11×14=154, 13×13=169, 11×12=132. In each case, spot a pattern in the two numbers and their product (coloured digits). For what other multiplication problems does this pattern hold? Find 5 such examples."
+        },
+        {
+          "id": "T-39",
+          "banner": "Chinnu's Coins",
+          "intent": "solve",
+          "book_ref": "Chinnu's Coins Q3, p.202",
+          "description": "Match vehicles travelling at full capacity to total passengers: 75 cycles, 52 autos, 103 cars, 20 minibus, 30 aeroplanes, 15 train sleeper coaches."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 3,
+  "task_load": 3,
+  "exploration_load": 0,
+  "procedural_load": 2
+}

@@ -1,0 +1,174 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iv",
+  "chapter_number": 12,
+  "chapter_title": "Ticking Clocks and Turning Calendar",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Leap years, months, dates and the calendar",
+      "prose_summary": "The chapter opens with Parv's 29 February birthday, introducing leap years as years containing 29 February, occurring every four years and having 366 days. Students observe February calendars for 2024 and 2025 to notice the difference in days, then work with days of the week, the DD/MM/YYYY date format, and elapsed time in months and years across real-world contexts such as birthdays and expiry dates. The section sits at the concrete–pictorial level, using printed calendar grids as the primary model for counting and comparing across time.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q1, p.175",
+          "description": "Notice the number of days in February in the years 2024 and 2025 using the printed calendar grids."
+        },
+        {
+          "id": "T-2",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q2, p.176",
+          "description": "Fill in the blanks with consecutive leap years before and after 2024."
+        },
+        {
+          "id": "T-3",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q3, p.176",
+          "description": "We know that most years have 365 days. How many days would a leap year have?"
+        },
+        {
+          "id": "T-4",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q4, p.176",
+          "description": "Write the names of the months when you celebrate your favourite festivals in the given table."
+        },
+        {
+          "id": "T-5",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q5, p.176",
+          "description": "Answer questions by writing appropriate days of the week: today, yesterday, tomorrow, day after tomorrow, day before yesterday."
+        },
+        {
+          "id": "T-6",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q6, p.176",
+          "description": "July 1 is a Monday. Write the dates for the next two Mondays."
+        },
+        {
+          "id": "T-7",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q7, p.176",
+          "description": "Laali born 04/07/2014 and Chotu born 04/12/2019. Who is older and by how much? Find Laali's 5th birthday and Chotu's 10th birthday dates."
+        },
+        {
+          "id": "T-8",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q8, p.177",
+          "description": "Check manufacturing and expiry dates on a biscuit packet wrapper. Find (a) how old the packet is and (b) how many more days it is safe to eat."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q9, p.177",
+          "description": "Notice the day on which July 15 falls; find August 15, September 15, October 15. What pattern do you notice? Challenge friends to guess the same date in the following month."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Exploring other community calendars",
+      "prose_summary": "Students explore the names and structures of months in Hindu, Islamic, Sikh, or other community calendars with help from parents and teachers. The task focuses on comparing when different calendars begin their year, how their months correspond to the English calendar, which months hold important community festivals, and identifying new moon and full moon patterns. This section is at the concrete–exploratory level, using lived cultural knowledge as the learning material rather than a textbook diagram.",
+      "tasks": [
+        {
+          "id": "T-10",
+          "banner": "Let Us Explore",
+          "intent": "explore",
+          "book_ref": "Let Us Explore Q1–5, p.177",
+          "description": "Explore names of months in Hindu/Islamic/Sikh or community calendar. Find year-start, correspondence to English months, festival months, new/full moon patterns and their names."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "How many hours in a day?",
+      "prose_summary": "A circular 24-hour clock diagram showing a doctor's daily routine is used to establish that a full day has 24 hours. Students read the diagram to count the number of hours spent on each activity (sleeping, cooking, hospital stay, rest, etc.) and verify that all segments total 24. The model is pictorial — a partitioned circle — and the key learning is that day and night together make 24 hours.",
+      "tasks": [
+        {
+          "id": "T-11",
+          "banner": "How many hours in a day?",
+          "intent": "reason",
+          "book_ref": "How many hours in a day?, p.178",
+          "description": "Look at the doctor's 24-hour circle diagram. Write the number of hours spent on each activity and find the total number of hours from 6 o'clock morning to 6 o'clock morning the next day."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "AM/PM and the 24-hour digital clock",
+      "prose_summary": "The section introduces AM and PM as a way to distinguish morning and evening times when the clock face alone is ambiguous (e.g. 8:00 could be morning or night). Students compare the 12-hour AM/PM system with the 24-hour digital clock format through a reference table showing equivalent times, and then fill in missing values in both columns. The approach is symbolic — students work with written time notation rather than clock hands.",
+      "tasks": [
+        {
+          "id": "T-12",
+          "banner": "Fill in the blanks",
+          "intent": "practice",
+          "book_ref": "Fill in the blanks, p.180",
+          "description": "Fill in the blanks by writing time in the appropriate format — convert between AM/PM notation and 24-hour digital clock for given times."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Hours and minutes: reading clocks and elapsed time",
+      "prose_summary": "Using Raghav's milk trip (8:20 to 8:35) as the opening example, this section builds elapsed-time reasoning by asking students to show resulting times on analogue clock faces after given durations. Students work with quarter-hour and half-hour fractions of an hour (1 hour = 60 min; half = 30 min; quarter = 15 min; three-quarters = 45 min) through Akira's school-day sequence, and consolidate clock-reading accuracy in a 'Let Us Check' activity where three friends' answers are compared and errors discussed. The concrete model is the analogue clock face; the pictorial path is via the shaded-sector hour/half/quarter diagrams.",
+      "tasks": [
+        {
+          "id": "T-13",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q1a, p.181",
+          "description": "Raghav started homework at 10:20 AM and took 25 minutes. Show the finish time on the blank clock face."
+        },
+        {
+          "id": "T-14",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q1b, p.181",
+          "description": "Muneera starts reading at 4:15 PM and finishes in 45 minutes. Show the finish time on the blank clock face."
+        },
+        {
+          "id": "T-15",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q1c, p.182",
+          "description": "Akira leaves for school at 8:00 AM. Show times after +15 min, +15 min, +20 min, +10 min on the sequence of blank clock faces for school arrival, assembly end, dance practice end, break end."
+        },
+        {
+          "id": "T-16",
+          "banner": "Observe the shaded portions",
+          "intent": "reason",
+          "book_ref": "Observe the shaded portions, p.182",
+          "description": "Observe four shaded clock diagrams. Fill in: half hour = ___ minutes; three quarters of an hour = ___ minutes. Deduce whether 1 hour equals 60 minutes."
+        },
+        {
+          "id": "T-17",
+          "banner": "Find out",
+          "intent": "explore",
+          "book_ref": "Find out, p.183",
+          "description": "Find out how much time you take to (a) boil milk and (b) fill water from tap in a bucket. What activities can you do in 5 minutes?"
+        },
+        {
+          "id": "T-18",
+          "banner": "Let Us Check",
+          "intent": "reason",
+          "book_ref": "Let Us Check, p.183",
+          "description": "Three friends (Raghu, Raghav, Rani) read times from clock faces. Who is right? Discuss the error and explain how to read the clock correctly."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 1,
+  "exploration_load": 0,
+  "procedural_load": 1
+}

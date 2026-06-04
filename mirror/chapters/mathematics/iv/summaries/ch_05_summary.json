@@ -1,0 +1,279 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iv",
+  "chapter_number": 5,
+  "chapter_title": "Sharing and Measuring",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Parts and Wholes — Halves",
+      "prose_summary": "The chapter opens with Ikra and Samina sharing a drawing sheet, establishing through paper folding that one half and two quarters are equal amounts. Students handle paper to verify equal parts, then colour and draw lines to identify and create halves in various figures. The section anchors the idea that a half (1/2) means two equal parts of a whole, placing learners firmly on the concrete–pictorial path before introducing fraction notation.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let Us Discuss",
+          "intent": "reason",
+          "book_ref": "Let Us Discuss Q1–4, p.62",
+          "description": "Discuss which part of the paper you would have chosen (half or two quarters) and why; try with paper; reason about equal division and Samina's choice."
+        },
+        {
+          "id": "T-2",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q1, p.63",
+          "description": "Colour the figures that Samina has divided into halves correctly; explain how you got the answer."
+        },
+        {
+          "id": "T-3",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do Q2, p.63",
+          "description": "Divide the given shapes into halves by drawing a line."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Many Ways to Make Halves and Quarters",
+      "prose_summary": "This section extends paper-folding to discover that there are multiple ways to cut a rectangle into two or four equal parts, and introduces the quarter (1/4) as one of four equal parts. Students fold, cut, draw, and match pictorial parts to their wholes, moving from concrete manipulation to pictorial representation. The key idea is that the same fraction can look different depending on how the whole is divided, deepening understanding of equality of parts.",
+      "tasks": [
+        {
+          "id": "T-4",
+          "banner": "Let Us Try",
+          "intent": "explore",
+          "book_ref": "Let Us Try Q1, p.64",
+          "description": "Fold/cut a rectangular paper into two equal parts in as many different ways as you can; try with actual paper."
+        },
+        {
+          "id": "T-5",
+          "banner": "Let Us Try",
+          "intent": "explore",
+          "book_ref": "Let Us Try Q2, p.65",
+          "description": "Draw and show five different ways to fold/cut a rectangle into four equal parts (1/4 or quarter)."
+        },
+        {
+          "id": "T-6",
+          "banner": "Let Us Try",
+          "intent": "practice",
+          "book_ref": "Let Us Try Q3, p.64",
+          "description": "Divide the given shapes (diamond, rectangle, oval, L-shape, cross-shape) into 4 equal parts/quarters."
+        },
+        {
+          "id": "T-7",
+          "banner": "Let Us Try",
+          "intent": "reason",
+          "book_ref": "Let Us Try Q3, p.65",
+          "description": "Match the given part-shapes (hourglass, triangle, semicircle, rectangle) with their corresponding whole shapes using the 1/2 and 1/4 labels."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Ding Dong Bell — Sharing and Unit Fractions",
+      "prose_summary": "The dhokla story extends fractions beyond halves and quarters to thirds, fifths, and beyond by progressively adding guests who share a single dhokla. Students observe that as the number of people increases, each person's share (a unit fraction) decreases, discovering the inverse relationship between the denominator and the size of the fraction. The section uses a circular-paper model (dhokla) and a printed fraction kit as the key concrete materials, moving through 1/2, 1/3, 1/4, 1/5 and inviting comparison of unit fractions (e.g. 1/6 vs 1/8) using the fraction chart.",
+      "tasks": [
+        {
+          "id": "T-8",
+          "banner": "Let Us Discuss",
+          "intent": "reason",
+          "book_ref": "Let Us Discuss Q1–4, p.68",
+          "description": "Observe Sumedha's share as each guest arrives; reason about 9 vs 11 people; how many 1/6 pieces make a whole; Sumedha's share if two guests give theirs back."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q1, p.68",
+          "description": "How much dhokla per person when shared equally among 6 and among 8 people? Who gets bigger pieces? Draw and explain."
+        },
+        {
+          "id": "T-10",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do Q2, p.69",
+          "description": "Shade the dhokla circles to show Sumedha's share for 2, 3, 4, 5, 8, and 9 people; discuss why fractions get smaller as people increase."
+        },
+        {
+          "id": "T-11",
+          "banner": "Let Us Discuss",
+          "intent": "explore",
+          "book_ref": "Let Us Discuss Q1–5, p.69",
+          "description": "Use fraction kit to share observations about pieces and wholes; compare two pieces; verify that 5 pieces of 1/5 make a whole; explain why a given piece is one-third."
+        },
+        {
+          "id": "T-12",
+          "banner": "Let Us Discuss",
+          "intent": "reason",
+          "book_ref": "Let Us Discuss fill-in-blanks, p.70",
+          "description": "Fill in blanks to compare unit fractions: which is greater among 1/5 and 1/4; compare 1/9 and 1/6; compare 1/6 and 1/8; choose a pair where one is smaller."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "My Flower Garden — Non-unit Fractions",
+      "prose_summary": "Idha's flower garden introduces non-unit fractions (2/5, 3/5, 4/5, 5/5) by partitioning a row of five garden plots among different plants, progressively replacing plots with roses. Students identify that a fraction like 2/5 means two out of five equal parts, and that 5/5 represents the complete whole. The garden model is a linear (strip) concrete model, complementing the circular dhokla model, and students practice placing fractions of seven-sevenths in a follow-up activity.",
+      "tasks": [
+        {
+          "id": "T-13",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q(a)(b)(c), p.71",
+          "description": "Make a flower garden with 7 plots: (a) Marigold in 1/7, Rose and Hibiscus in 3/7 each; (b) Lily in 3/7, Marigold in 2/7, Periwinkle in 2/7; (c) Mogra in 5/7, Hibiscus in 2/7."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Dream Dosa Designer — Fractions of a Whole and Collection",
+      "prose_summary": "Karan's dosa restaurant applies fractions of a circular whole (1/4 per topping, then varied fractions) and introduces fractions of a discrete collection (Meena's 8 diyas, colour 1/4). Students read fraction tables, write fractions for topping sectors in pre-drawn dosas, and design their own dosas with given fractional toppings. The diya activity concretely shows that finding 1/4 of a collection means dividing it into 4 equal groups, bridging continuous and discrete models of fractions.",
+      "tasks": [
+        {
+          "id": "T-14",
+          "banner": "Do It Yourself",
+          "intent": "practice",
+          "book_ref": "Do It Yourself Q1–4 (four dosas), p.73",
+          "description": "Write the fractions for each topping in four given dosas (sectors marked with numbers show part size)."
+        },
+        {
+          "id": "T-15",
+          "banner": "Let Us Explore",
+          "intent": "explore",
+          "book_ref": "Let Us Explore, p.73",
+          "description": "Make a dosa with 2/3 spicy onion and 1/3 classic potato; make another with 3/8 classic potato, 1/8 chilly paneer, 4/8 tangy tomato."
+        },
+        {
+          "id": "T-16",
+          "banner": "Let Us Explore",
+          "intent": "explore",
+          "book_ref": "Let Us Explore (diyas), p.73",
+          "description": "Meena has 8 diyas — divide into 4 equal groups to find 1/4; colour 2 diyas red."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Fractions in Our Surroundings — Collections",
+      "prose_summary": "This section contextualises fractions in daily life using collections: cookies shared among children, hairbands given to 1/3 of friends, flowers in 1/5 of pots, barfis divided into quarters, and a ribbon whose length is 1/4 of another. Students find the fraction of a collection by dividing the total count into equal groups, solving straightforward fraction-of-a-number problems and reasoning about real-life sharing. The section is on the pictorial–symbolic path, inviting students to circle parts in pictures and draw comparisons.",
+      "tasks": [
+        {
+          "id": "T-17",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q1(a–d), p.74",
+          "description": "12 cookies shared equally; find the fraction each child gets for 3, 6, 2, and 4 children."
+        },
+        {
+          "id": "T-18",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q5, p.74",
+          "description": "Place hairbands on 1/3 of Simran's 9 school friends shown in a picture."
+        },
+        {
+          "id": "T-19",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q6, p.74",
+          "description": "Draw flowers in 1/5 of each given group of pots (groups of 5, 10, 15 pots)."
+        },
+        {
+          "id": "T-20",
+          "banner": "Let Us Find Fractions in Our Surroundings",
+          "intent": "solve",
+          "book_ref": "Let Us Find Fractions Q1, p.75",
+          "description": "16 barfis divided into 4 equal parts — draw the picture and find how many barfis are in 1/4."
+        },
+        {
+          "id": "T-21",
+          "banner": "Let Us Find Fractions in Our Surroundings",
+          "intent": "reason",
+          "book_ref": "Let Us Find Fractions Q2, p.75",
+          "description": "Mohan's ribbon is 1/4 as long as Rohan's; given Mohan's ribbon length, draw how long Rohan's ribbon would be."
+        },
+        {
+          "id": "T-22",
+          "banner": "Try Yourself",
+          "intent": "reason",
+          "book_ref": "Try Yourself, p.75",
+          "description": "Observe your surroundings and write two situations where fractions are used."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Equivalent Fractions through Paper Folding",
+      "prose_summary": "Students fold a rectangle into thirds, then keep halving it to discover that 1/3 = 2/6 = 4/12 and similarly 1/2 = 2/4 = 4/8 — an implicit introduction to equivalent fractions through physical action. A fraction chart (1/2 through 1/10) is then used to compare fractions and verify equivalences, such as whether three 1/6 pieces equal two 1/8 pieces or how many 1/8 make 1/4. This section sits on the concrete–pictorial boundary, using paper-folding as the model and the visual chart as a pictorial reference.",
+      "tasks": [
+        {
+          "id": "T-23",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do Q1–6, p.76",
+          "description": "Fold paper into thirds, colour one third, fold in half repeatedly; observe and write the fraction after each fold: 1/3 = 2/6 = ___ = ___ = ___."
+        },
+        {
+          "id": "T-24",
+          "banner": "Let Us Try",
+          "intent": "explore",
+          "book_ref": "Let Us Try, p.77",
+          "description": "Fold a new paper starting with two equal parts, halving each time; fill in: 1/2 = 2/4 = ___ = ___ = ___."
+        },
+        {
+          "id": "T-25",
+          "banner": "Let Us Discuss",
+          "intent": "reason",
+          "book_ref": "Let Us Discuss Q1–6, p.77",
+          "description": "Using the fraction chart: how many 1/4 equal 1/2; is 2/3 greater than 1/2; do ten 1/10 make a whole; do three 1/6 equal two 1/8; how many 1/8 make 1/4; find pieces that combine into a bigger piece."
+        }
+      ]
+    },
+    {
+      "ref": "S8",
+      "title": "Identifying and Shading Fractions in Figures",
+      "prose_summary": "The chapter closes with tasks that require students to judge whether divisions of shapes into parts are truly equal, identify the fraction named by a shaded region, and shade specified fractions (2/3, 4/6, 1/4, 3/4) in diverse shapes including irregular figures. Students also verify classmates' fraction claims, reasoning about whether shaded parts of triangles, circles, and crosses match stated fractions, and work with pattern blocks (hexagons, diamonds) to identify what fraction of the whole collection is blue. The section consolidates the entire chapter on the pictorial–symbolic path.",
+      "tasks": [
+        {
+          "id": "T-26",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q1, p.78",
+          "description": "Bablu's squares — circle the ones cut into equal parts; write the fraction for the shaded part wherever possible."
+        },
+        {
+          "id": "T-27",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q2, p.78",
+          "description": "Check whether Ameena, Kishore, Perry, Kunj, Balu, and Gita's fraction claims for shaded regions are correct; circle correct ones, cross out incorrect; draw lines to make parts equal if needed."
+        },
+        {
+          "id": "T-28",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q3, p.79",
+          "description": "Identify the fractions represented by the coloured parts in three given grid pictures (triangles in squares)."
+        },
+        {
+          "id": "T-29",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q4, p.79",
+          "description": "Identify the fraction of the whole that the blue parts make in each of three pattern-block pictures (hexagons, diamonds, arrow shapes)."
+        },
+        {
+          "id": "T-30",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q5, p.79",
+          "description": "Divide the given shapes and shade the appropriate parts: shade 2/3 of rectangle, 4/6 of circle, 1/4 of cross-shape (also show 1/8), 3/4 of L-shape."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 1,
+  "procedural_load": 1
+}

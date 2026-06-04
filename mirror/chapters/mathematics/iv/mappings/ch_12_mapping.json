@@ -1,0 +1,43 @@
+{
+    "stage":          "preparatory",
+    "subject":        "mathematics",
+    "grade":          "iv",
+    "chapter_number": 12,
+    "chapter_title":  "Ticking Clocks and Turning Calendar",
+
+    "core_cg": "CG-3",
+
+    "core_competencies": [
+        {
+            "c_code": "C-3.2",
+            "justification": "The chapter's central activity is matching the right tool and unit to the time attribute being measured — students use analogue clock faces to work with hours and minutes, calendar grids to work with days, months and years, and choose between 12-hour and 24-hour notation for the digital clock. Every section asks students to identify which unit (minutes, hours, days, months, years) and which instrument fits the situation, which is exactly what this competency describes."
+        },
+        {
+            "c_code": "C-3.3",
+            "justification": "The chapter has two explicit unit-conversion strands within the time system: the AM/PM-to-24-hour conversion table (e.g. 3:00 PM becomes 15:00) where students fill in missing values in both directions, and the 1 hour = 60 minutes relationship explored through the half-hour (30 min), quarter-hour (15 min) and three-quarter-hour (45 min) shaded-clock diagrams. Both require students to carry out simple, systematic conversions between representations of the same time quantity."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-1.2",
+            "justification": "The section on hours and minutes explicitly frames half an hour, a quarter of an hour and three-quarters of an hour as fractional parts of one whole hour, using shaded analogue clock sectors as the visual model. Students fill in 30 minutes and 45 minutes for ½ and ¾ of an hour respectively, engaging directly with the common fractions ½ and ¼ as parts of a unit whole in a measurement context."
+        },
+        {
+            "c_code": "C-1.4",
+            "justification": "Two tasks ask students to notice and extend calendar patterns: the leap-year sequence task (fill in consecutive leap years before and after 2024) requires recognising the every-four-years pattern, and the same-date-across-months task (find the day for July 15, August 15, September 15, October 15 and describe the pattern) requires spotting and describing a repeating day-shift pattern in the calendar."
+        },
+        {
+            "c_code": "C-4.1",
+            "justification": "The biscuit expiry task and the birthday age-comparison task are daily-life word problems that require operating on time quantities across months and years — calculating how old a packet is, how many days remain before expiry, which child is older and by how much, and on what date a future birthday will fall. These are multi-step problems set in real-world contexts that demand selecting and applying the right arithmetic operation."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to measure and convert time by using standard tools (analogue and digital clocks, calendars) to identify the appropriate unit for each time context and to carry out systematic conversions between hours and minutes, and between 12-hour and 24-hour notation.",
+
+    "conceptual_demand": 2,
+    "task_load":         1,
+    "exploration_load":  0,
+    "procedural_load":   1,
+    "effort_index":      7.5
+}

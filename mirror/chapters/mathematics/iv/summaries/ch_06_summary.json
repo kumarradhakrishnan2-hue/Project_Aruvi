@@ -1,0 +1,265 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iv",
+  "chapter_number": 6,
+  "chapter_title": "Measuring Length",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Observing and Recalling Length",
+      "prose_summary": "The chapter opens by asking students to observe a classroom scene and identify what is being measured and with which tools. Students revisit prior knowledge from Grade 3 — that lengths are measured in metres — and check whether familiar classroom measurements (student height, arm length, door height, blackboard breadth) are more or less than a metre. This section is at the concrete–symbolic boundary: students are not yet measuring but activating body-scale intuition and checking everyday comparisons against the metre benchmark.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let Us Observe",
+          "intent": "reason",
+          "book_ref": "Let Us Observe Q1, p.80",
+          "description": "Look at the picture; put a tick mark if length, height, weight, depth, breadth, or temperature is being measured."
+        },
+        {
+          "id": "T-2",
+          "banner": "Let Us Observe",
+          "intent": "reason",
+          "book_ref": "Let Us Observe Q2, p.80",
+          "description": "What is being used to measure height? What other tools can be used?"
+        },
+        {
+          "id": "T-3",
+          "banner": "Let Us Observe",
+          "intent": "reason",
+          "book_ref": "Let Us Observe Q3, p.80",
+          "description": "Recall Grade 3 learning; check and fill blanks — are the given classroom length statements correct or incorrect?"
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Measuring with Metre Ropes",
+      "prose_summary": "Students re-make metre, half-metre, and quarter-metre ropes and physically walk, jump, and crawl along 1 m, 5 m, and 10 m lines to build body-scale intuition of metric distances. A long-jump competition challenges them to estimate then measure jump distances using combinations of ropes, filling a table of estimated versus actual measurements. Finally, students estimate and measure the length and breadth of their classroom. This section is firmly concrete: the rope is the manipulative model, and the focus is on developing embodied metric sense before any formal unit conversion.",
+      "tasks": [
+        {
+          "id": "T-4",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do Q1, p.81",
+          "description": "Draw 1 m, 5 m, and 10 m lines on the floor; walk, jump, and crawl on the lines."
+        },
+        {
+          "id": "T-5",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do Q2, p.82",
+          "description": "Long jump competition: estimate then measure each student's jump distance using rope combinations; fill the table."
+        },
+        {
+          "id": "T-6",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q3, p.82",
+          "description": "Estimate how long and broad the classroom is; measure and check."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Estimating Lengths of Animals and Objects",
+      "prose_summary": "Students examine pictures showing the lengths of a blue whale (~30 m), a crocodile (~6 m), an ostrich (~3 m), and a cricket bat (~1 m), then answer reasoning questions by comparing and combining these reference lengths. This pictorial section develops proportional thinking and the ability to use a known benchmark to reason about unknown quantities without direct measurement.",
+      "tasks": [
+        {
+          "id": "T-7",
+          "banner": "Let Us Think",
+          "intent": "reason",
+          "book_ref": "Let Us Think Q1–Q5, p.83",
+          "description": "Answer 5 questions: bus length, bats per whale, buses per two whales, stacked ostriches, crocodiles per whale — using pictured reference lengths."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Introducing Centimetre",
+      "prose_summary": "The need for a smaller unit is motivated by everyday objects (eraser, rice grain) that cannot be measured meaningfully in metres. Students observe a metre scale divided into 100 equal parts, learning that each part is one centimetre (cm) and that 1 m = 100 cm. A measuring tape is compared with the metre rope to highlight that the tape is graduated in centimetres. Students then use the tape to track a plant's weekly height. This section sits at the pictorial-to-symbolic transition: the scale and tape are the concrete models, and the key relationship 1 m = 100 cm is established.",
+      "tasks": [
+        {
+          "id": "T-8",
+          "banner": "Let Us Observe",
+          "intent": "explore",
+          "book_ref": "Let Us Observe (centimetre section), p.84",
+          "description": "Compare the metre rope with a tailor's measuring tape; observe the marks and discuss how they help measure clearly."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let Us Observe",
+          "intent": "explore",
+          "book_ref": "Let Us Observe (red bar), p.84",
+          "description": "Observe the 1 cm red bar repeated 10 times to make 10 cm; fill: 1/2 m = ___ cm, 1/4 m = ___ cm."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Measuring with Centimetre Scale",
+      "prose_summary": "A rich sequence of tasks consolidates centimetre measurement using a ruler or tape. Students measure drawn objects, estimate then verify small lengths (fingernail, ant, rajma seed), race toy cars and measure travel distances, navigate a treasure-hunt map counting 1 cm tiles, trace their hand and measure its length, estimate using hand-spans and verify with a scale, and use a broken scale to measure by counting from a non-zero starting point. Symbolic reasoning is extended through a number line fill-in and a word problem (stickers on a board requiring m-to-cm conversion). The section spans the full concrete→pictorial→symbolic path within one context.",
+      "tasks": [
+        {
+          "id": "T-10",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q1, p.85",
+          "description": "Measure each drawn object using a scale; write the names in increasing order of length."
+        },
+        {
+          "id": "T-11",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q2, p.86",
+          "description": "Estimate lengths (fingernail, eraser, ant, grain, rajma): equal to, more than, or less than 1 cm; verify by measuring. Write things shorter than 1 cm."
+        },
+        {
+          "id": "T-12",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do Q3, p.86",
+          "description": "Race three toy cars down a ramp; measure the distance each travels in cm and rank them."
+        },
+        {
+          "id": "T-13",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q4, p.87",
+          "description": "Find the longest and shortest route in a treasure-hunt map (walking on yellow 1 cm tiles); find the length of your route in centimetres."
+        },
+        {
+          "id": "T-14",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do Q5, p.88",
+          "description": "Trace your hand on paper; measure its length using a scale."
+        },
+        {
+          "id": "T-15",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q6, p.88",
+          "description": "Use your hand to estimate the measurement of objects; convert into centimetres; verify using a scale. Fill the table."
+        },
+        {
+          "id": "T-16",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q7, p.88",
+          "description": "Help Ashwin measure using a broken scale (starting from a non-zero mark); find the two indicated lengths in cm."
+        },
+        {
+          "id": "T-17",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q8, p.89",
+          "description": "Fill the blanks on a number line marked in 10 cm intervals (0–100 cm) and in metres (0–1 m); include 25 cm and 33 m."
+        },
+        {
+          "id": "T-18",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q9, p.89",
+          "description": "A board is 2 m long; a decorative sticker is 20 cm long. How many stickers cover the board completely?"
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Metre and Centimetres Together",
+      "prose_summary": "Students encounter dual representations of the same length (120 cm vs 1 m 20 cm) and understand that both are correct, establishing flexible conversion between metres and centimetres. A village-wells context provides conversion practice (completing tables: 2 m = 200 cm; _m = 400 cm, etc.) and a matching exercise pairs equivalent depths expressed in mixed and pure-cm form. A class measurement activity where students record heights in both cm and m reinforces the dual notation and builds a class data set for comparison questions.",
+      "tasks": [
+        {
+          "id": "T-19",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q1a, p.90",
+          "description": "Fill blanks so well depths are equal: 2 m = 200 cm; __ m = 400 cm; 6 m = __ cm; __ m = 800 cm."
+        },
+        {
+          "id": "T-20",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q1b, p.90",
+          "description": "Match wells with the same depth: four pairs of mixed-unit and pure-cm representations."
+        },
+        {
+          "id": "T-21",
+          "banner": "Let Us Explore",
+          "intent": "explore",
+          "book_ref": "Let Us Explore, p.90",
+          "description": "Measure each student's height using a measuring tape; complete a class table with height in cm and in m."
+        },
+        {
+          "id": "T-22",
+          "banner": "Let Us Explore",
+          "intent": "reason",
+          "book_ref": "Let Us Explore Q1–Q4, p.91",
+          "description": "Answer questions: tallest height, shortest height, number of children more than 1 m tall, number shorter than 1 m."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Perimeter — Fencing and Lacing",
+      "prose_summary": "Perimeter is introduced informally as the length of the boundary of a closed shape, motivated by Bhola fencing a vegetable garden. Students count boundary bricks, compare boundaries visually, and then use 1 cm dot grids to measure the perimeter of polygons precisely. Tasks move from identifying and comparing perimeters (longest/shortest/same) to measuring real classroom objects and creatively drawing shapes with a given perimeter. The section sits at the pictorial-to-symbolic level: the dot grid provides the concrete scaffold and formal cm measurement completes the journey.",
+      "tasks": [
+        {
+          "id": "T-23",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do (Bhola's garden), p.91",
+          "description": "Colour the bricks on Bhola's garden boundary; count how many bricks are needed to make the boundary."
+        },
+        {
+          "id": "T-24",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q1, p.92",
+          "description": "Bhola made boundaries in three ways; circle the boundary that is longest."
+        },
+        {
+          "id": "T-25",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do Q2 (a–c), p.92",
+          "description": "Find perimeter of shapes on dot grid (1 cm spacing); colour longest boundary blue, shortest green; tick shapes with the same length."
+        },
+        {
+          "id": "T-26",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q3, p.93",
+          "description": "Do any of the six shapes (A–F) have the same perimeter? Tick them."
+        },
+        {
+          "id": "T-27",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do Q4, p.93",
+          "description": "Tick the garden with the minimum perimeter from four options."
+        },
+        {
+          "id": "T-28",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do Q5, p.94",
+          "description": "Estimate then measure the perimeters of desk, blackboard, classroom floor, and two chosen objects; record estimated and actual values in cm/m."
+        },
+        {
+          "id": "T-29",
+          "banner": "Let Us Do",
+          "intent": "solve",
+          "book_ref": "Let Us Do Q6, p.94",
+          "description": "Draw three different shapes each with a perimeter of 20 cm on a 1 cm dot grid."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 2,
+  "exploration_load": 1,
+  "procedural_load": 1
+}

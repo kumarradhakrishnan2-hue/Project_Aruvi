@@ -1,0 +1,43 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iv",
+  "chapter_number": 6,
+  "chapter_title": "Measuring Length",
+
+  "core_cg": "CG-3",
+
+  "core_competencies": [
+    {
+      "c_code": "C-3.2",
+      "justification": "The chapter's central thread is choosing the right tool and unit for the attribute being measured. Students begin with metre ropes for large distances (classroom dimensions, long-jump distances), then move to a graduated measuring tape and a centimetre scale for small objects like erasers, fingernails, and ant bodies. The final perimeter section extends this to selecting a scale or tape to measure the boundary of desks, blackboards, and classroom floors. Throughout, students are explicitly guided to match measurement tool and unit to the size of the object — the defining action of this competency."
+    },
+    {
+      "c_code": "C-3.5",
+      "justification": "Estimation is foregrounded as a distinct and recurring skill, not merely a warm-up. Students estimate jump distances before measuring them with ropes, predict classroom dimensions before verifying, judge whether small objects (fingernail, ant, rajma seed) are more than, equal to, or less than 1 cm before using a scale, and estimate object lengths using their hand-span before converting to centimetres with a tape. The perimeter section repeats the same estimate-then-measure structure for real shapes in the classroom. This sustained attention to estimation strategy and subsequent verification makes C-3.5 a substantively addressed strand independent of tool-selection."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-3.3",
+      "justification": "Unit conversion between metres and centimetres is a dedicated section of the chapter. Students fill conversion tables for well depths (e.g. 6 m = __ cm, __ m = 400 cm), match equivalent depth representations in mixed and pure-cm form, and apply the 1 m = 100 cm relationship to solve a word problem about covering a 2-metre board with 20 cm stickers. This goes well beyond incidental mention — conversion is a sustained exercise that occupies its own section and underpins the sticker problem's solution."
+    },
+    {
+      "c_code": "C-3.6",
+      "justification": "The perimeter section asks students to identify shapes that share the same perimeter despite having different forms, and to compare boundaries that enclose different shapes. Tasks include ticking shapes with equal perimeter from a set of six and designing three distinct shapes each with a perimeter of 20 cm. These activities engage the key deduction that equal perimeters can belong to differently shaped figures — the preparatory entry point into the relationship C-3.6 describes."
+    },
+    {
+      "c_code": "C-4.1",
+      "justification": "Several tasks go beyond straightforward measurement into problem-solving. The animal-length reasoning questions (how many cricket bats per blue whale, how many buses equal two whales) require students to use known reference lengths as multipliers to reach unknown quantities. The broken-scale task asks students to find a length by counting from a non-zero mark — a genuine puzzle requiring conceptual flexibility. The sticker word problem requires converting 2 m to 200 cm and then dividing to find the count. These contexts constitute daily-life and puzzle-style problems involving whole-number operations."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to measure lengths and perimeters by developing the selection of appropriate tools and standard units, and by practising estimation with verification across a range of everyday objects and classroom contexts.",
+
+  "conceptual_demand": 2,
+  "task_load": 2,
+  "exploration_load": 1,
+  "procedural_load": 1,
+  "effort_index": 11.0
+}

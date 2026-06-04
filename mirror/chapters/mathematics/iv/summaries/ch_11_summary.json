@@ -1,0 +1,209 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iv",
+  "chapter_number": 11,
+  "chapter_title": "Fun with Symmetry",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Line of symmetry and mirror line",
+      "prose_summary": "This section builds on Grade 3 knowledge of symmetry in rangolis and masks, reintroducing the line of symmetry through concrete paper-folding activities. Students fold paper, apply ink, and press to produce a symmetric ink-blot design, directly experiencing how folding creates mirror halves. The paper-airplane activity then deepens understanding: students mark lines of symmetry on successive folding stages and explore the link between symmetry and a plane's flight. The mirror-line (line of reflection) is introduced as a vocabulary upgrade alongside the familiar line of symmetry, situating the concept on the concrete → pictorial path.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do, 1. Ink Design, p.164",
+          "description": "Fold a sheet of paper in half, sprinkle water-colour drops at the fold, press to spread colour, open and observe the symmetrical ink design produced."
+        },
+        {
+          "id": "T-2",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, 2. Making a paper airplane (a)–(c), p.165",
+          "description": "Mark the line of symmetry in Fig. 3, 4, and 5; count how many lines of symmetry Fig. 8 has; decide where to place a mirror to see the right-half reflection and whether it matches the left half."
+        },
+        {
+          "id": "T-3",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do, 2. Making a paper airplane (d)–(h), p.165",
+          "description": "Fly the symmetrical plane; try making an asymmetrical plane; fly both and observe which flies longer; share observations with friends."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Holes and Cuts — fold-and-cut spatial reasoning",
+      "prose_summary": "Students use paper-folding and cutting as a physical model to reason about symmetry transformations: where holes and cut edges appear when folded paper is opened. Mini's existing design (fold-twice, corner + side cuts) serves as the entry example. Three escalating challenges then require students to predict outcomes — a 1-fold corner cut, a 1-fold double mid-cut counting sides of the resulting shape, and a 2-fold hole centred on the paper — before physically verifying. The activity is squarely at the concrete → pictorial boundary, emphasising spatial deduction over computation.",
+      "tasks": [
+        {
+          "id": "T-4",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do, 3. Holes and Cuts, p.166",
+          "description": "Take a square sheet of paper; fold and cut to reproduce Mini's design (fold twice, straight corner cut + two side squares removed)."
+        },
+        {
+          "id": "T-5",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, 3. Holes and Cuts, Challenge 1, p.166",
+          "description": "Predict where the hole and cut will appear when Rani's twice-folded paper (corner cut + two side squares) is opened."
+        },
+        {
+          "id": "T-6",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, 3. Holes and Cuts, Challenge 2, p.166",
+          "description": "Fold a piece of paper once; put two cuts in the middle as shown. How many sides will the shape have when you open the folded paper?"
+        },
+        {
+          "id": "T-7",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, 3. Holes and Cuts, Challenge 3, p.166",
+          "description": "Fold a paper twice. Where would you cut to make a square hole in the centre? How many cuts are required?"
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Symmetry in shapes, mirror games, and mirror writing",
+      "prose_summary": "This section extends symmetry to 2-D shapes and numbers, using dot grids and actual mirrors as manipulatives. Students draw border shapes on dot grids, identify which are symmetrical, and draw their lines of symmetry. The 'Games with a Mirror' sub-section has students place a physical mirror on shape A to generate six derived shapes, then decide which of the printed 3-digit numbers (181, 686) look the same in a mirror. Exploration of which digits 0–9 have symmetric mirror images leads to constructing 4-digit symmetric numbers. The ambulance activity introduces mirror writing — noticing that AMBULANCE is written in reverse on vehicles so it reads correctly in a car's rear-view mirror — and students try writing words/names in reverse. Finally, students complete half-shapes on dot grids to make symmetrical figures, practising the concept on the pictorial path.",
+      "tasks": [
+        {
+          "id": "T-8",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, Symmetry in shapes Q1, p.167",
+          "description": "Draw the border shapes (kite, arrow, envelope, triangle) on the dot grid; identify which are symmetrical; draw the lines of symmetry."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, 2. Games with a Mirror Q2a, p.168",
+          "description": "Where should the mirror be placed on shape A to produce each of the six given shapes (1–6)?"
+        },
+        {
+          "id": "T-10",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, 2. Games with a Mirror Q2b, p.168",
+          "description": "Circle the numbers (from: 181 vertical mirror, 181 horizontal mirror, 686 vertical, 686 horizontal) whose mirror image is the same number."
+        },
+        {
+          "id": "T-11",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, 2. Games with a Mirror Q2b extension, p.168",
+          "description": "Which digits from 0 to 9 have the same mirror image? Make some 4-digit numbers whose mirror image is the same number; state where the mirror is kept."
+        },
+        {
+          "id": "T-12",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do, 2. Games with a Mirror Q2c, p.168",
+          "description": "Make similar guess-my-number questions (e.g., 3-digit number near 120 with same mirror image) and ask friends to solve them."
+        },
+        {
+          "id": "T-13",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do, 3. Ambulance / mirror writing, p.169",
+          "description": "Discuss why letters on an ambulance are written in reverse; identify mirror-written words (TAP, CAN, WOW, HEN); write words/names in mirror writing and challenge friends; try with your own language script."
+        },
+        {
+          "id": "T-14",
+          "banner": "Let Us Do",
+          "intent": "practice",
+          "book_ref": "Let Us Do, 4. Complete symmetrical shapes, p.169",
+          "description": "Complete the four half-shapes on the dot grid (two using a vertical axis, two using a horizontal axis) to make symmetrical figures."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Tiling the Tiles — tessellation and creative tile design",
+      "prose_summary": "Students move from symmetry in single shapes to symmetry and pattern in repeating tile arrangements — tessellations. They observe two tile-pattern grids, identify the repeating unit, note symmetry of each tile, and continue the pattern. The 'Tiles at the Tile Shop' sub-section shows Bablu Chacha's ornamental tiles (hexagonal, star, pinwheel) and invites students to design their own in hexagonal and square grids using rangometry kits or shape cutouts. A floor-pattern task requires making a continuous layout with no gaps or overlaps, connecting tessellation to real-world flooring. The 'Making a catty wall' activity uses cut-slide-paste to create an irregular tile (cat shape) that still tessellates, concretely demonstrating that tessellating tiles need not be regular shapes.",
+      "tasks": [
+        {
+          "id": "T-15",
+          "banner": "Let Us Do",
+          "intent": "reason",
+          "book_ref": "Let Us Do, 5. Observe shapes, p.170",
+          "description": "Observe the given shapes; count sides for each; count lines of symmetry for each; trace and fold to verify lines of symmetry."
+        },
+        {
+          "id": "T-16",
+          "banner": "Tiling the Tiles",
+          "intent": "reason",
+          "book_ref": "Tiling the Tiles Q1, p.171",
+          "description": "Identify the repeating unit (tile) in each of the two given tile patterns and continue the patterns."
+        },
+        {
+          "id": "T-17",
+          "banner": "Tiling the Tiles",
+          "intent": "reason",
+          "book_ref": "Tiling the Tiles Q2, p.171",
+          "description": "Which shapes have you used to make the tiles? Which of the tiles are symmetrical? Draw the lines of symmetry if any."
+        },
+        {
+          "id": "T-18",
+          "banner": "Tiling the Tiles",
+          "intent": "explore",
+          "book_ref": "Tiling the Tiles Q3, p.171",
+          "description": "Make more tiles by joining two or more shapes; trace them in your notebook to create paths with no gaps or overlaps."
+        },
+        {
+          "id": "T-19",
+          "banner": "Tiles at the Tile Shop",
+          "intent": "explore",
+          "book_ref": "Tiles at the Tile Shop, p.171",
+          "description": "Design creative tiles of your own in the hexagonal and square spaces provided; use a rangometry kit or shape cutouts."
+        },
+        {
+          "id": "T-20",
+          "banner": "Tiles at the Tile Shop",
+          "intent": "reason",
+          "book_ref": "Tiles at the Tile Shop Q4, p.172",
+          "description": "Look at the two rhombus/hexagon tessellation designs; discuss what you notice (shapes used, effect of colour, how colours create different visual patterns)."
+        },
+        {
+          "id": "T-21",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do, 1. Make floor patterns, p.172",
+          "description": "Make a floor pattern with your tile (like Mini's triangle-diamond pattern); ensure no overlaps and no gaps."
+        },
+        {
+          "id": "T-22",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do, 2. Making a catty wall, p.173",
+          "description": "Take a square paper; mark cat ears/head outline; cut along outline; slide top piece down and tape; trace the cat tile to make a catty wall pattern with no gaps."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Nature walk — symmetry in the natural world",
+      "prose_summary": "Students go on an outdoor nature walk to observe patterns, designs, and symmetry in their environment. They collect leaves, petals, and flowers that have fallen on the ground and work with them in a project file. The activity bridges mathematical symmetry to natural science observation: categorising leaves as symmetrical or non-symmetrical, creating designs with natural materials, making leaf-imprint greeting cards, and constructing animals or designs from leaves and flowers. This project anchors the chapter's abstract concept in real, tangible objects.",
+      "tasks": [
+        {
+          "id": "T-23",
+          "banner": "Let Us Do",
+          "intent": "explore",
+          "book_ref": "Let Us Do, 3. Let us go on a nature walk, p.174",
+          "description": "Go on a nature walk; collect fallen leaves, petals, flowers; categorise as symmetrical/non-symmetrical; make designs and patterns; make a greeting card with leaf imprints; create animals or designs using leaves and flowers."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 2,
+  "exploration_load": 1,
+  "procedural_load": 0
+}
