@@ -460,11 +460,19 @@
   }
   .ei-pill.open .ei-chev { transform: rotate(90deg); }
 
-  /* Breakdown container — rendered inside the chapter name <td> */
+  /* Breakdown container — positioned inside EI pill <td>, drops right */
   .ei-bar-breakdown {
-    margin-top: 8px;
-    padding: 6px 0 4px 0;
-    min-width: 320px;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 280px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 8px 12px 6px 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+    z-index: 20;
+    text-align: left;
   }
 
   /* One signal row */
@@ -551,42 +559,124 @@
     line-height: 1.75;
   }
 
-  /* "About the Effort Index" block — sits below the alloc table (English + Science/Maths) */
-  .about-ei {
+  /* "About the Effort Index" accordion — sits below the alloc table */
+  .about-ei-wrap {
     margin: 14px 0 6px 0;
-    padding: 12px 14px 10px 14px;
-    background: #f8fbff;
-    border-left: 3px solid #93bce8;
-    border-radius: 4px;
+    border: 1px solid #d1dff0;
+    border-radius: 6px;
+    overflow: hidden;
     font-size: 0.72rem;
     color: #4b5563;
+  }
+  .about-ei-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: #eef4fb;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid transparent;
+  }
+  .about-ei-header.open {
+    border-bottom-color: #d1dff0;
+  }
+  .about-ei-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #1a4480;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .about-ei-htext {
+    flex: 1;
+  }
+  .about-ei-htitle {
+    font-weight: 700;
+    color: #1a4480;
+    font-size: 0.72rem;
+    line-height: 1.2;
+  }
+  .about-ei-hsub {
+    font-size: 0.67rem;
+    color: #6b7280;
+    margin-top: 1px;
+  }
+  .about-ei-chev {
+    font-size: 0.8rem;
+    color: #6b7280;
+    transition: transform 0.2s;
+    line-height: 1;
+  }
+  .about-ei-header.open .about-ei-chev {
+    transform: rotate(180deg);
+  }
+  .about-ei-body {
+    display: none;
+    padding: 12px 14px 14px 14px;
+    background: #f8fbff;
     line-height: 1.55;
   }
-  .about-ei h4 {
-    margin: 0 0 6px 0;
-    font-size: 0.72rem;
+  .about-ei-body.open {
+    display: block;
+  }
+  .about-ei-intro {
+    margin: 0 0 12px 0;
+    color: #374151;
+  }
+  /* Signal cards row */
+  .about-ei-cards {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .about-ei-card {
+    flex: 1 1 120px;
+    min-width: 110px;
+    background: #fff;
+    border: 1px solid #d1dff0;
+    border-radius: 6px;
+    padding: 10px 10px 8px 10px;
+  }
+  .about-ei-card-icon {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #374151;
+    flex-shrink: 0;
+  }
+  .about-ei-card-icon svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+  .about-ei-card-title {
     font-weight: 700;
     color: #1a4480;
-    letter-spacing: 0.01em;
-  }
-  .about-ei p {
-    margin: 0 0 8px 0;
-  }
-  .about-ei ul {
-    margin: 0 0 8px 0;
-    padding-left: 18px;
-  }
-  .about-ei li {
+    font-size: 0.69rem;
     margin-bottom: 4px;
+    line-height: 1.3;
   }
-  .about-ei li b {
-    font-weight: 700;
-    color: #1a4480;
-  }
-  .about-ei p.about-ei-close {
-    margin: 6px 0 0 0;
-    font-style: italic;
+  .about-ei-card-desc {
+    font-size: 0.66rem;
     color: #4b5563;
+    line-height: 1.45;
+  }
+  .about-ei-close {
+    margin: 0;
+    font-style: italic;
+    color: #6b7280;
+    font-size: 0.68rem;
   }
 
   /* ═══════════════════════════════════════════
@@ -802,75 +892,132 @@ function closeModal() {
   document.getElementById('modal-overlay').classList.remove('active');
 }
 
-/* ── generate report ────────────────────────────────────────────────────── */
-function setFootnote() {
-  /* English: inject "About the Effort Index" below the table into #eng-ei-about */
-  var aboutEl = document.getElementById('eng-ei-about');
-  if (IS_ENGLISH && aboutEl) {
-    aboutEl.innerHTML =
-      '<div class="about-ei">'
-      + '<h4>About the Effort Index</h4>'
-      + '<p>The effort index is a number that tells you how much classroom time a chapter typically needs compared to other chapters in the subject. Chapters with a higher effort index get more periods; chapters with a lower one get fewer. It is calculated from four signals, each scored on a simple scale.</p>'
-      + '<ul>'
-      + '<li><b>Spine load</b> \u2014 How many types of classroom work (reading for comprehension, listening, speaking, writing, vocabulary, beyond-text) appear on average per section. More types = higher score.</li>'
-      + '<li><b>Task density</b> \u2014 How many tasks appear on average within each block of work. More tasks per block = higher score.</li>'
-      + '<li><b>Writing demand</b> \u2014 Total exercise items under Writing and Beyond-the-Text across the chapter. These take longer to complete and assess, so a heavier count raises the score.</li>'
-      + '<li><b>Project load</b> \u2014 How many Beyond-the-Text sections the chapter has. Each one adds to the score as these activities need extra planning time.</li>'
-      + '</ul>'
-      + '<p class="about-ei-close">The four scores are combined with fixed weights to give the effort index. Only relative values matter \u2014 it is used to share your available periods across chapters in proportion to their load.</p>'
+
+var ABOUT_EI_ICONS = {
+  'icon-book':   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4V5z"/><path d="M20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6V5z"/></svg>',
+  'icon-list':   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6"  r="1.1" fill="currentColor"/><circle cx="5" cy="12" r="1.1" fill="currentColor"/><circle cx="5" cy="18" r="1.1" fill="currentColor"/><path d="M9 6h11M9 12h11M9 18h11"/></svg>',
+  'icon-pencil': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3l5 5L8 21H3v-5L16 3z"/><path d="M14 5l5 5"/></svg>',
+  'icon-folder': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg>',
+  'icon-brain':  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a3 3 0 0 0-3 3v0a3 3 0 0 0-3 3 3 3 0 0 0 1 2.2A3 3 0 0 0 8 17h1v3M12 3a3 3 0 0 1 3 3v0a3 3 0 0 1 3 3 3 3 0 0 1-1 2.2A3 3 0 0 1 16 17h-1v3M12 3v17"/></svg>',
+  'icon-map':    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg>',
+  'icon-puzzle': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h4v3a2 2 0 1 0 0 4 2 2 0 1 1 0 4H10v-3a2 2 0 1 0-4 0 2 2 0 1 1 0-4h4V3z"/></svg>',
+  'icon-calc':   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><rect x="8" y="6" width="8" height="3"/><circle cx="9"  cy="13" r="0.7" fill="currentColor"/><circle cx="12" cy="13" r="0.7" fill="currentColor"/><circle cx="15" cy="13" r="0.7" fill="currentColor"/><circle cx="9"  cy="17" r="0.7" fill="currentColor"/><circle cx="12" cy="17" r="0.7" fill="currentColor"/><circle cx="15" cy="17" r="0.7" fill="currentColor"/></svg>',
+  'icon-flask':  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v6L4.5 18a2 2 0 0 0 1.7 3h11.6a2 2 0 0 0 1.7-3L14 9V3"/></svg>',
+  'icon-screen': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M9 20h6M12 16v4"/></svg>'
+};
+
+function _buildAboutEI(subtitle, intro, cards, closing) {
+  var uid = 'aei-' + Date.now();
+  var cardsHTML = '';
+  cards.forEach(function(c) {
+    var iconHTML = ABOUT_EI_ICONS[c.cls] || '';
+    cardsHTML +=
+      '<div class="about-ei-card">'
+      + '<div class="about-ei-card-icon ' + c.cls + '">' + iconHTML + '</div>'
+      + '<div class="about-ei-card-title">' + c.title + '</div>'
+      + '<div class="about-ei-card-desc">' + c.desc + '</div>'
       + '</div>';
-    return;
-  }
-  /* TWAU: own effort index formula */
-  if (IS_TWAU && aboutEl) {
-    aboutEl.innerHTML =
-      '<div class="about-ei">'
-      + '<h4>About the Effort Index</h4>'
-      + '<p>Formula: <b>(Conceptual demand \u00d73) + (Task load \u00d72) + (Project load \u00d71.5) + Map work</b>. Chapters with a higher effort index get more periods.</p>'
-      + '<ul>'
-      + '<li><b>Conceptual demand (\u00d73)</b> \u2014 How abstract the chapter\u2019s reasoning is: 1\u00a0=\u00a0concrete/tangible (family, simple observations); 2\u00a0=\u00a0slight abstraction \u2014 comparisons, simple cause-and-effect, or categorisation of familiar objects; 3\u00a0=\u00a0classification or material properties; 4\u00a0=\u00a0multi-step reasoning or concepts requiring inference beyond direct observation (e.g.\u00a0seasonal cycles, ecosystem interdependence); 5\u00a0=\u00a0geological, astronomical, or cultural-history abstraction.</li>'
-      + '<li><b>Task load (\u00d72)</b> \u2014 Discrete score 0\u20133 based on the total count of student tasks (Activities, Discuss, Write, Find out, Draw, Let us reflect). 0\u00a0=\u00a0fewer than 10; 1\u00a0=\u00a010\u201320; 2\u00a0=\u00a021\u201330; 3\u00a0=\u00a0more than 30.</li>'
-      + '<li><b>Project load (\u00d71.5)</b> \u2014 0\u00a0=\u00a0none; 1\u00a0=\u00a0light (multi-day observation); 2\u00a0=\u00a0substantial (artefact construction or sustained build project).</li>'
-      + '<li><b>Map work (\u00d71)</b> \u2014 0\u00a0=\u00a0no maps; 1\u00a0=\u00a0map reading; 2\u00a0=\u00a0map drawing or regional comparison.</li>'
-      + '</ul>'
-      + '<p class="about-ei-close">Only relative values matter \u2014 the effort index is used to share your available periods across chapters in proportion to their load.</p>'
-      + '</div>';
-    return;
-  }
-  /* Mathematics preparatory: own effort index formula */
-  if (IS_MATH_PREP && aboutEl) {
-    aboutEl.innerHTML =
-      '<div class="about-ei">'
-      + '<h4>About the Effort Index</h4>'
-      + '<p>The effort index tells you how much classroom time a chapter typically needs compared to other chapters. Formula: <b>(Conceptual demand \u00d72) + (Task load \u00d72) + (Exploration load \u00d71.5) + (Procedural load \u00d71.5)</b>. Chapters with a higher effort index get more periods.</p>'
-      + '<ul>'
-      + '<li><b>Conceptual demand (\u00d72)</b> \u2014 How abstract the chapter\'s reasoning is on the concrete-to-symbolic path. 1\u00a0=\u00a0fully concrete (counting, matching, sorting); 2\u00a0=\u00a0slight abstraction (place value, simple patterns, measurement); 3\u00a0=\u00a0symbolic or multi-step reasoning (multi-digit operations, fractions, area/perimeter).</li>'
-      + '<li><b>Task load (\u00d72)</b> \u2014 Discrete tier from total task count. 0\u00a0=\u00a0fewer than 8; 1\u00a0=\u00a08\u201315; 2\u00a0=\u00a016\u201325; 3\u00a0=\u00a0more than 25.</li>'
-      + '<li><b>Exploration load (\u00d71.5)</b> \u2014 Share of hands-on, manipulative, or game-based tasks. 0\u00a0=\u00a0none; 1\u00a0=\u00a0a few; 2\u00a0=\u00a0prominently exploratory.</li>'
-      + '<li><b>Procedural load (\u00d71.5)</b> \u2014 Share of compute, convert, or drill tasks. 0\u00a0=\u00a0none; 1\u00a0=\u00a0moderate; 2\u00a0=\u00a0heavily procedural.</li>'
-      + '</ul>'
-      + '<p class="about-ei-close">Only relative values matter \u2014 the effort index is used to share your available periods across chapters in proportion to their load.</p>'
-      + '</div>';
-    return;
-  }
-  /* Science / Mathematics (middle/secondary): structured "About the Effort Index" block */
-  if (IS_SCIENCE && aboutEl) {
-    aboutEl.innerHTML =
-      '<div class="about-ei">'
-      + '<h4>About the Effort Index</h4>'
-      + '<p>The effort index is a number that tells you how much classroom time a chapter typically needs compared to other chapters in the subject. Chapters with a higher effort index get more periods; chapters with a lower one get fewer. It is calculated from four signals, each scored from the chapter content.</p>'
-      + '<ul>'
-      + '<li><b>Conceptual demand</b> \u2014 The cognitive complexity of exercises and questions in the chapter. High-order thinking or multi-step reasoning raises the score (\u00d72 weight).</li>'
-      + '<li><b>Student activities</b> \u2014 The number of hands-on activities that students perform themselves. Each activity adds classroom time for setup, execution and discussion (\u00d71 weight).</li>'
-      + '<li><b>Teacher demonstrations</b> \u2014 The number of demonstrations the teacher must conduct. These need preparation and focused class attention (\u00d71.5 weight).</li>'
-      + '<li><b>Exercise execution load</b> \u2014 The total exercise items students must complete. A heavier exercise count means more time for guided practice and assessment (\u00d72 weight).</li>'
-      + '</ul>'
-      + '<p class="about-ei-close">The four signals are combined with fixed weights to give the effort index. Only relative values matter \u2014 it is used to share your available periods across chapters in proportion to their load.</p>'
-      + '</div>';
-    return;
+  });
+  return (
+    '<div class="about-ei-wrap">'
+    + '<div class="about-ei-header" id="' + uid + '-hdr" onclick="toggleAboutEI(\'' + uid + '\')">'
+    + '<div class="about-ei-icon">i</div>'
+    + '<div class="about-ei-htext">'
+    + '<div class="about-ei-htitle">About the Effort Index</div>'
+    + '<div class="about-ei-hsub">' + subtitle + '</div>'
+    + '</div>'
+    + '<span class="about-ei-chev" id="' + uid + '-chev">&#x2228;</span>'
+    + '</div>'
+    + '<div class="about-ei-body" id="' + uid + '-body">'
+    + '<p class="about-ei-intro">' + intro + '</p>'
+    + '<div class="about-ei-cards">' + cardsHTML + '</div>'
+    + '<p class="about-ei-close">' + closing + '</p>'
+    + '</div>'
+    + '</div>'
+  );
+}
+function toggleAboutEI(uid) {
+  var hdr  = document.getElementById(uid + '-hdr');
+  var body = document.getElementById(uid + '-body');
+  if (!hdr || !body) return;
+  var isOpen = body.classList.contains('open');
+  if (isOpen) {
+    body.classList.remove('open');
+    hdr.classList.remove('open');
+  } else {
+    body.classList.add('open');
+    hdr.classList.add('open');
   }
 }
 
+function setFootnote() {
+  var aboutEl = document.getElementById('eng-ei-about');
+  if (!aboutEl) return;
+
+  /* English */
+  if (IS_ENGLISH) {
+    aboutEl.innerHTML = _buildAboutEI(
+      'Understand how chapter periods are calculated',
+      'The effort index tells you how much classroom time a chapter typically needs compared to others. Chapters with a higher effort index get more periods; chapters with a lower one get fewer. It is calculated from four signals.',
+      [
+        { cls: 'icon-book',    title: 'Spine load',     desc: 'How many types of classroom work (reading, listening, speaking, writing, vocabulary, beyond-text) appear per section on average. More types = higher score.' },
+        { cls: 'icon-list',    title: 'Task density',   desc: 'How many tasks appear on average within each block of work. More tasks per block = higher score.' },
+        { cls: 'icon-pencil',  title: 'Writing demand', desc: 'Total exercise items under Writing and Beyond-the-Text across the chapter. These take longer to complete and assess.' },
+        { cls: 'icon-folder',  title: 'Project load',   desc: 'How many Beyond-the-Text sections the chapter has. Each one adds to the score as these activities need extra planning time.' }
+      ],
+      'The Effort Index is calculated by combining the four scores, giving more weight to factors that have a greater impact on classroom time. Only relative values matter &mdash; it is used to share your available periods across chapters in proportion to their load.'
+    );
+    return;
+  }
+
+  /* TWAU */
+  if (IS_TWAU) {
+    aboutEl.innerHTML = _buildAboutEI(
+      'Understand how chapter periods are calculated',
+      'The effort index tells you how much classroom time a chapter typically needs compared to others. Chapters with a higher effort index get more periods; chapters with a lower one get fewer. It is calculated from four signals.',
+      [
+        { cls: 'icon-brain',   title: 'Conceptual demand', desc: 'How abstract the chapter reasoning is: 1 = concrete; 3 = classification; 5 = geological or cultural-history abstraction.' },
+        { cls: 'icon-list',    title: 'Task load',         desc: 'Scored 0&ndash;3 from total student tasks (Activities, Discuss, Write, Find out, Draw, Reflect). 0 = fewer than 10; 3 = more than 30.' },
+        { cls: 'icon-folder',  title: 'Project load',      desc: '0 = none; 1 = light multi-day observation; 2 = substantial artefact or sustained build project.' },
+        { cls: 'icon-map',     title: 'Map work',          desc: '0 = no maps; 1 = map reading; 2 = map drawing or regional comparison.' }
+      ],
+      'The Effort Index is calculated by combining the four scores, giving more weight to factors that have a greater impact on classroom time. Only relative values matter &mdash; it is used to share your available periods across chapters in proportion to their load.'
+    );
+    return;
+  }
+
+  /* Mathematics preparatory */
+  if (IS_MATH_PREP) {
+    aboutEl.innerHTML = _buildAboutEI(
+      'Understand how chapter periods are calculated',
+      'The effort index tells you how much classroom time a chapter typically needs compared to others. Chapters with a higher effort index get more periods; chapters with a lower one get fewer. It is calculated from four signals.',
+      [
+        { cls: 'icon-brain',   title: 'Conceptual demand', desc: 'Abstraction level on the concrete-to-symbolic path. 1 = fully concrete; 2 = slight abstraction; 3 = symbolic or multi-step reasoning.' },
+        { cls: 'icon-list',    title: 'Task load',         desc: 'Scored 0&ndash;3 from total task count. 0 = fewer than 8; 1 = 8&ndash;15; 2 = 16&ndash;25; 3 = more than 25.' },
+        { cls: 'icon-puzzle',  title: 'Exploration load',  desc: 'Share of hands-on, manipulative, or game-based tasks. 0 = none; 1 = a few; 2 = prominently exploratory.' },
+        { cls: 'icon-calc',    title: 'Procedural load',   desc: 'Share of compute, convert, or drill tasks. 0 = none; 1 = moderate; 2 = heavily procedural.' }
+      ],
+      'The Effort Index is calculated by combining the four scores, giving more weight to factors that have a greater impact on classroom time. Only relative values matter &mdash; it is used to share your available periods across chapters in proportion to their load.'
+    );
+    return;
+  }
+
+  /* Science / Mathematics middle & secondary */
+  if (IS_SCIENCE) {
+    aboutEl.innerHTML = _buildAboutEI(
+      'Understand how chapter periods are calculated',
+      'The effort index tells you how much classroom time a chapter typically needs compared to others. Chapters with a higher effort index get more periods; chapters with a lower one get fewer. It is calculated from four signals scored from the chapter content.',
+      [
+        { cls: 'icon-brain',   title: 'Conceptual demand',  desc: 'The cognitive complexity of exercises and questions. High-order thinking or multi-step reasoning raises the score.' },
+        { cls: 'icon-flask',   title: 'Student activities', desc: 'The number of hands-on activities students perform themselves. Each adds time for setup, execution, and discussion.' },
+        { cls: 'icon-screen',  title: 'Teacher demos',      desc: 'The number of demonstrations the teacher must conduct. These need preparation and focused class attention.' },
+        { cls: 'icon-pencil',  title: 'Exercise load',      desc: 'Total exercise items students must complete. A heavier count means more time for guided practice and assessment.' }
+      ],
+      'The Effort Index is calculated by combining the four scores, giving more weight to factors that have a greater impact on classroom time. Only relative values matter &mdash; it is used to share your available periods across chapters in proportion to their load.'
+    );
+    return;
+  }
+}
 function generateReport() {
   if (selected.size === 0) {
     openModal('Please select at least one chapter before generating.');
@@ -898,7 +1045,7 @@ function generateReport() {
   });
 
   var nPtCols   = sortedPts.length;
-  var totalCols = 5 + nPtCols;
+  var totalCols = 4 + nPtCols;
 
   var grandPeriods = 0, grandMinutes = 0;
   var colSums = {};
@@ -1010,38 +1157,42 @@ function generateReport() {
           '<hr class="ei-bar-divider">'
           + '<div class="ei-bar-total"><span>Effort index</span><span>' + ei + '</span></div>'
           + '<p class="ei-bar-note">Higher effort index\u00a0= more periods allocated via Largest Remainder Method.</p>';
-        bodyHTML +=
-          '<div id="ei-bd-' + cd.chapter_number + '" class="ei-bar-breakdown" style="display:none">'
-          + _bdHTML + '</div>';
       }
       bodyHTML += '</td>';
 
-      /* EI pill cell */
+      /* Total Periods column, then period-type columns, then EI last */
+      bodyHTML += '<td><strong>' + total + '</strong></td>';
+      sortedPts.forEach(function (pt) {
+        bodyHTML += '<td>' + (alloc[String(pt.mins)] || 0) + '</td>';
+      });
+
+      /* EI pill cell — last column; breakdown drops right inside it */
       if (!ei) {
-        bodyHTML += '<td class="ei-cell">&#8212;</td>';
+        bodyHTML += '<td class="ei-cell" style="position:relative">&#8212;</td>';
       } else {
         bodyHTML +=
-          '<td class="ei-cell">'
+          '<td class="ei-cell" style="position:relative">'
           + '<button class="ei-pill" onclick="toggleEI(' + cd.chapter_number + ',this)">'
           + '<span class="ei-chev">\u203a</span>\u00a0' + ei
           + '</button>'
+          + '<div id="ei-bd-' + cd.chapter_number + '" class="ei-bar-breakdown" style="display:none">'
+          + _bdHTML + '</div>'
           + '</td>';
       }
       /* No competency drawer for Science/Mathematics/English/TWAU chapters */
     } else {
       /* ── Social Sciences / other languages: weight button opens competency drawer ── */
       bodyHTML += '<td class="left wrap">' + esc(cd.chapter_title) + '</td>';
+      bodyHTML += '<td><strong>' + total + '</strong></td>';
+      sortedPts.forEach(function (pt) {
+        bodyHTML += '<td>' + (alloc[String(pt.mins)] || 0) + '</td>';
+      });
       bodyHTML += '<td>'
         + '<button class="wt-btn" onclick="toggleDrawer(' + cd.chapter_number + ',this)">'
         + '<span class="arr">&#9658;</span>' + wt
         + '</button></td>';
     }
 
-    sortedPts.forEach(function (pt) {
-      bodyHTML += '<td>' + (alloc[String(pt.mins)] || 0) + '</td>';
-    });
-    bodyHTML += '<td>' + total   + '</td>';
-    bodyHTML += '<td>' + minutes + '</td>';
     bodyHTML += '</tr>';
 
     /* ── competency drawer row (Social Sciences / other languages only) ── */
@@ -1102,18 +1253,19 @@ function generateReport() {
   var footHTML = '<tfoot><tr>';
   footHTML += '<td>&#8212;</td>';
   footHTML += '<td class="left"><strong>Total</strong></td>';
-  footHTML += '<td></td>';
+  footHTML += '<td><strong>' + grandPeriods + '</strong></td>';
   sortedPts.forEach(function (pt) {
     footHTML += '<td><strong>' + colSums[pt.mins] + '</strong></td>';
   });
-  footHTML += '<td><strong>' + grandPeriods + '</strong></td>';
-  footHTML += '<td><strong>' + grandMinutes + '</strong></td>';
+  footHTML += '<td></td>';
   footHTML += '</tr></tfoot>';
 
   /* ── thead ── */
   var headHTML = '<thead><tr>';
   headHTML += '<th>#</th>';
   headHTML += '<th class="left">Chapter</th>';
+  headHTML += '<th>Total Periods</th>';
+  sortedPts.forEach(function (pt) { headHTML += '<th>' + pt.mins + '-min Periods</th>'; });
   if (IS_SCIENCE || IS_ENGLISH || IS_TWAU) {
     /* Science / Mathematics / English / TWAU: single Effort Index column replaces Weight */
     headHTML += '<th class="ei-th">Effort Index<span class="ei-hint">(click value to expand)</span></th>';
@@ -1121,9 +1273,6 @@ function generateReport() {
     /* Social Sciences / other languages: competency-load weight column */
     headHTML += '<th>Weight</th>';
   }
-  sortedPts.forEach(function (pt) { headHTML += '<th>' + pt.mins + '-min</th>'; });
-  headHTML += '<th>Total</th>';
-  headHTML += '<th>Minutes</th>';
   headHTML += '</tr></thead>';
 
   /* ── inject into #root ── */

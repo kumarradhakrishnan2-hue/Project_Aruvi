@@ -272,6 +272,11 @@
       "description": "Why chapters get different period counts; how the Planning Tool works by subject; how to override",
       "pairs": [
         {
+          "id": "c09",
+          "q": "What does the Allocate Tab show me?",
+          "a": "The Planning Tool — accessible through the Allocate tab — shows the default period allocation for every chapter in a subject and grade, alongside the signals that drove it. For Social Sciences, you see each chapter's competency weight breakdown. For Science, English, and Mathematics, you see the effort index and its component signals. A principal view shows which Curricular Goals are served across the year and whether any are underserved."
+        },
+        {
           "id": "c01",
           "q": "Why do some chapters get more periods than others?",
           "a": "Period allocation in Aruvi reflects how much classroom effort a chapter genuinely requires — not how long it is in pages. The measure of effort differs by subject: Social Sciences uses competency weight; Science, English, and Mathematics use an effort index built from signals specific to each subject's architecture. The result is a defensible default allocation the teacher or administrator can audit and override for any chapter."
@@ -297,6 +302,11 @@
           "a": "Mathematics chapters are allocated periods using an effort index drawn from the textbook's own architecture: the size of the worked-example set, the count of in-chapter activities, the exercise load, and the conceptual demand of the methods introduced. Chapters with denser worked-example progressions and larger exercise sets naturally receive more periods. The allocation reflects how much the textbook itself signals a chapter requires."
         },
         {
+          "id": "c11",
+          "q": "How does period allocation work for TWAU?",
+          "a": "TWAU chapters are allocated periods using an effort index built from signals appropriate to the Preparatory Stage: the number of observation or field tasks the chapter requires, the count of hands-on classroom activities, the reading and description load, and any project or craft element. Chapters with more student-executed observation tasks and higher description demand receive more periods. The allocation is visible in the Allocate tab and can be adjusted."
+        },
+        {
           "id": "c06",
           "q": "What is competency weight and how is it calculated? (Social Sciences)",
           "a": "Competency weight is a numerical signal — 3, 2, or 1 — assigned to each competency mapped to a chapter. Weight 3 (Central): the chapter's teaching logic dissolves without this competency. Weight 2 (Substantive): the competency has dedicated architectural presence across multiple sections. Weight 1 (Present): it appears through at least one structural element. Weight is determined by applying structural tests to the chapter's architecture — not by content importance or difficulty."
@@ -312,25 +322,10 @@
           "a": "Yes. The Planning Tool's default allocation is a starting point, not a final answer. The chapter specific Lesson Plan and Assessment generator permits input of available periods (time in minutes and number of periods) manually."
         },
         {
-          "id": "c09",
-          "q": "What does the Planning Tool show me?",
-          "a": "The Planning Tool — accessible through the Allocate tab — shows the default period allocation for every chapter in a subject and grade, alongside the signals that drove it. For Social Sciences, you see each chapter's competency weight breakdown. For Science, English, and Mathematics, you see the effort index and its component signals. A principal view shows which Curricular Goals are served across the year and whether any are underserved."
-        },
-        {
           "id": "c10",
           "q": "How does Allocation tool help a school Administration?",
           "a": "At the beginning of the term or the year, the administrators are involved in detailed planning with respect to time available for subjects.  The allocation tool takes input of a constrained number like say 100 periods (of 40 minutes each) available for teaching class VI Science of a term and splits it across selected NCERT book chapters. The time allotted for each chapter then can be used by a teacher to plan her own class."
         },
-        {
-          "id": "c11",
-          "q": "How does period allocation work for TWAU?",
-          "a": "TWAU chapters are allocated periods using an effort index built from signals appropriate to the Preparatory Stage: the number of observation or field tasks the chapter requires, the count of hands-on classroom activities, the reading and description load, and any project or craft element. Chapters with more student-executed observation tasks and higher description demand receive more periods. The allocation is visible in the Allocate tab and can be adjusted."
-        },
-        {
-          "id": "c12",
-          "q": "Does TWAU use an effort index or competency weights for allocation?",
-          "a": "TWAU uses an effort index — the same approach as Science, English, and Mathematics — rather than competency weights. Competency weights are specific to Social Sciences, where multiple named competencies with defined centrality scores structure each chapter. TWAU chapters are not built around multiple competing competencies; they develop one central inquiry. An effort index built from observable task signals better reflects the actual classroom demand of a TWAU chapter."
-        }
       ]
     },
     "cat_d": {
@@ -370,7 +365,7 @@
         {
           "id": "d07",
           "q": "Can I access Aruvi's internal generation rules to study them?",
-          "a": "Aruvi's generation rules are internal documents — they are not published for teacher access. If you have questions about why Aruvi made a particular decision, Ask Aruvi can explain the relevant rule in plain language. Questions beyond Ask Aruvi's scope are automatically logged and forwarded to Aruvi management for follow-up."
+          "a": "Aruvi's generation rules are not published as separate documents, but the logic behind every decision is fully explained within Ask Aruvi itself. The Q&A covers why each subject uses a specific planning approach, how competency weights and effort indices are calculated, how question types are assigned, and how the lesson plan and assessment connect. If a specific decision is not covered, your question is automatically logged and forwarded to Aruvi management, who will respond directly."
         },
         {
           "id": "d08",
