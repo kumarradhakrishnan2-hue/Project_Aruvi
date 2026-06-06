@@ -1,0 +1,43 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 11,
+  "chapter_title": "Filling and Lifting",
+
+  "core_cg": "CG-3",
+
+  "core_competencies": [
+    {
+      "c_code": "C-3.1",
+      "justification": "The chapter systematically moves children through non-standard measurement to standard units for both capacity and weight. Children first count how many small bowls fill a glass or bottle, use coins and matchboxes as informal weights on a pan-balance, and then graduate to the 1-litre bottle and the 1-kilogram salt packet as standard references. The milkman discussion — asking children why measuring cups are used for giving milk — makes the evaluation of why standard units are needed an explicit learning moment, which is the defining intent of C-3.1."
+    },
+    {
+      "c_code": "C-3.5",
+      "justification": "Estimation followed by verification with a standard measure is the structural spine of the chapter across both capacity and weight. Children guess how many small bowls fill a glass before pouring water to check; they predict whether a bucket, mug, or glass holds more or less than 1 litre, half litre, or quarter litre before checking with the 1-litre bottle; they guess matchbox counts needed to balance a pencil box or spoon before actually using the pan-balance; and they estimate which everyday objects are more or less than 1 kilogram before verifying with the salt packet. This repeated guess-then-verify structure across two measurable attributes directly develops the estimation and verification strategies named in C-3.5."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-1.2",
+      "justification": "The chapter introduces half litre and quarter litre as practical subdivisions of the litre, and half kilogram and quarter kilogram as subdivisions of the kilogram. Children identify whether a mug holds a litre or half litre, whether a glass holds a litre, half litre, or quarter litre, and locate objects at home that weigh about half a kilogram or a quarter kilogram. These activities engage the fraction sense of ½ and ¼ as parts of a whole unit in real daily-life measurement contexts, which is precisely what C-1.2 addresses."
+    },
+    {
+      "c_code": "C-1.3",
+      "justification": "The lemonade stall questions require children to apply multiplication and division reasoning to solve capacity problems: how many glasses can be filled with 3 jugs, and how many ladles are needed to fill 4 glasses. These are whole-number operation problems embedded in a measurement context, directly engaging the daily-life problem-solving application strand of C-1.3."
+    },
+    {
+      "c_code": "C-4.1",
+      "justification": "The Tricky Balls section presents two explicit recreational puzzles involving a pan-balance and no standard weights. In the first, children must figure out which of three similar-looking balls is heavier using the balance only once. In the second, they must devise a strategy to order three differently-weighted coloured balls from lightest to heaviest using a sequence of comparisons. These are the kind of logical puzzles — recreational, constraint-based, requiring systematic reasoning — that C-4.1 specifically targets."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to measure and compare capacity and weight by progressing from informal vessel comparison and body-felt weight to formal standard units — the litre and the kilogram — through structured estimate-then-verify activities.",
+
+  "conceptual_demand": 2,
+  "task_load": 2,
+  "exploration_load": 1,
+  "procedural_load": 0,
+  "effort_index": 9.5
+}

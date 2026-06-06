@@ -1,0 +1,286 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 13,
+  "chapter_title": "Time Goes On",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Calendar and months of the year",
+      "prose_summary": "The chapter opens with a family noticing July is missing from a calendar, motivating exploration of the calendar. Students make the calendar for July 2024 by filling in a blank grid with days and dates. They then observe the completed July calendar to answer questions about Sundays, Thursdays, counting forward three days, and calculating a school re-opening date after a 15-day closure. This section operates concretely on a real calendar artefact before moving to symbolic date arithmetic.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do, p.166",
+          "description": "Make the calendar for the month of July 2024 by filling the blank grid."
+        },
+        {
+          "id": "T-2",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1, p.166",
+          "description": "Observe the July month and write the number of Sundays."
+        },
+        {
+          "id": "T-3",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q2, p.166",
+          "description": "Write the dates in July that are Thursdays."
+        },
+        {
+          "id": "T-4",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q3, p.166",
+          "description": "Three days after July 22 is July ___. The day on this date is ___."
+        },
+        {
+          "id": "T-5",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q4, p.166",
+          "description": "A school closes on July 7 for 15 days. Find the date on which the school will open."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Comparing calendars across years",
+      "prose_summary": "Students collect calendars for two years and compare them to identify what stays the same (names of months, days in a week) and what changes (number of Sundays, number of weeks). They record festival dates across two years and circle festivals that fall on the same date each year, distinguishing fixed-date from movable festivals. A follow-up task asks students to write the 12 months, identify months with fewer than 30 days, count total days in a year, and evaluate whether 53 weeks in a year is correct. This section builds reasoning about the structure and regularity of the calendar at the pictorial-to-symbolic level.",
+      "tasks": [
+        {
+          "id": "T-6",
+          "banner": "Let us Explore",
+          "intent": "explore",
+          "book_ref": "Let us Explore, p.167",
+          "description": "Collect calendars for last two years. Observe what is the same and what changes; tick (a) Names of months (b) Days in a month (c) Days in a week (d) Number of Sundays (e) Number of weeks."
+        },
+        {
+          "id": "T-7",
+          "banner": "Let us Explore",
+          "intent": "reason",
+          "book_ref": "Let us Explore, p.167",
+          "description": "Fill in festival dates (Deepawali, Ganesh Chaturthi, etc.) for two years in DD/MM/YY format and circle the festivals that fall on the same date."
+        },
+        {
+          "id": "T-8",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q1, p.167",
+          "description": "Write the names of the 12 months in a year."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q2, p.167",
+          "description": "Write the months that have less than 30 days."
+        },
+        {
+          "id": "T-10",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q3, p.167",
+          "description": "Write the number of days in a year."
+        },
+        {
+          "id": "T-11",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q4, p.167",
+          "description": "Hetal says there are 53 weeks in a year. Is she right? Yes/No. If not, how many weeks are in a year?"
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Age and dates using birth certificates",
+      "prose_summary": "This section introduces dates in DD/MM/YY format through a birth certificate context. Students examine Bincy's birth certificate and answer questions requiring them to interpret date format, calculate current age, project future age, identify a specific birthday date, count months elapsed, and find days between birth and certificate issuance. Students then make their own birth certificate and record key admission dates from their own school life. An \"Age Fun\" activity asks students to interview their mother to compute ages across three generations, and a puzzle about Hetal's age (twice her brother's, 10 years older) introduces informal algebraic reasoning.",
+      "tasks": [
+        {
+          "id": "T-12",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1, p.169",
+          "description": "2/5/2015 shows that Bincy was born on 2 (April/May/June/July) in the year 2015."
+        },
+        {
+          "id": "T-13",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q2, p.169",
+          "description": "How old will Bincy be on 2 May 2025?"
+        },
+        {
+          "id": "T-14",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q3, p.169",
+          "description": "How old will she be in 2030?"
+        },
+        {
+          "id": "T-15",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q4, p.169",
+          "description": "Eighth birthday of Bincy was on ___."
+        },
+        {
+          "id": "T-16",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q5, p.169",
+          "description": "Bincy was ___ months old on 2 August 2015."
+        },
+        {
+          "id": "T-17",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q6, p.169",
+          "description": "After how many days of her birth was the certificate issued?"
+        },
+        {
+          "id": "T-18",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q1, p.170",
+          "description": "Make your own birth certificate filling in name, sex, date of birth, place, parents' names, date of making certificate, and age on that date."
+        },
+        {
+          "id": "T-19",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q2, p.170",
+          "description": "Complete the table by writing: date of birth, date admitted to school, date admitted to Class 1, date admitted to Class 3."
+        },
+        {
+          "id": "T-20",
+          "banner": "Age Fun",
+          "intent": "explore",
+          "book_ref": "Age Fun, p.168",
+          "description": "Talk to your mother and find: my age, my mother's age today, her age when I was born, my mother's mother's age today, when my mother was born, and when I was born."
+        },
+        {
+          "id": "T-21",
+          "banner": "Age Fun",
+          "intent": "reason",
+          "book_ref": "Age Fun, p.168",
+          "description": "Hetal is twice as old as her brother and also 10 years older. Guess the age of Hetal and her brother."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Reading clock time — analog clocks",
+      "prose_summary": "Students get a working analog clock, observe the hour and minute hands, and discuss what they observe — establishing the concrete model for time-reading. They calculate duration (15 minutes for breakfast) by comparing two clock faces showing 07:00 and 07:15. They draw hour and minute hands for quarter past 8 (8:15) and half past 8 (8:30), moving to the pictorial-symbolic level. A day-in-the-life activity requires students to match eight daily activities to clock times and draw hands where missing, integrating reading and representing time.",
+      "tasks": [
+        {
+          "id": "T-22",
+          "banner": "Let us Play",
+          "intent": "explore",
+          "book_ref": "Let us Play, p.171",
+          "description": "Get a working analog clock or watch. Observe the face and movements of the hands; discuss what you observe."
+        },
+        {
+          "id": "T-23",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1, p.171",
+          "description": "Hetal started breakfast at 07:00 and finished at 07:15. She took ___ minutes; how do you know?"
+        },
+        {
+          "id": "T-24",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q2(a), p.171",
+          "description": "Draw the hour hand and minute hand on the clock to show 8:15 or quarter past 8."
+        },
+        {
+          "id": "T-25",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q2(b), p.171",
+          "description": "Draw the hour hand and minute hand on the clock to show 8:30 or half past 8."
+        },
+        {
+          "id": "T-26",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do, p.172",
+          "description": "A Day in the life of Hetal: match each activity to its time, write the missing o'clock times, and draw hands on blank clock faces."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Duration of time — minutes, hours, days, months",
+      "prose_summary": "Students develop a sense of time duration across multiple scales through a set of linked tasks. A \"Visit to Nani's House\" comic strip contextualises durations (months for a sweater, weeks for vegetables) before students independently classify life events into columns: takes months, weeks, days, hours, minutes. They then record actual durations for school activities (period, lunch break, play) and map given time frames (5–60 minutes) to appropriate activities. Finally, students read elapsed time from pairs of clock faces showing start and end times and write the number of minutes passed.",
+      "tasks": [
+        {
+          "id": "T-27",
+          "banner": "Let us Think",
+          "intent": "reason",
+          "book_ref": "Let us Think, p.173",
+          "description": "Fill the table with events from daily life under: takes months, takes weeks, takes days, takes hours, takes minutes."
+        },
+        {
+          "id": "T-28",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q3, p.174",
+          "description": "Write the number of minutes taken for: school period, lunch break, mid-day meal, play period, eating dinner, brushing teeth."
+        },
+        {
+          "id": "T-29",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q4, p.174",
+          "description": "Write down what you can do in each time frame: 5, 10, 15, 20, 25, 30, 45, 60 minutes."
+        },
+        {
+          "id": "T-30",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q5, p.175",
+          "description": "Write the number of minutes passed by looking at the movement of minute and hour hands across 6 pairs of start-and-end clock faces."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Digital and analog clocks; making a sand clock",
+      "prose_summary": "Students encounter digital clocks (showing digits, e.g. 18:02) alongside analog clocks and compare the two types, discussing differences and identifying which type is on their school wall. This introduces the symbolic representation of 24-hour/digital time. Students then make a functional sand clock (timer) using two transparent bottles and glued caps with a small hole, timing the sand transfer against a real clock — a hands-on return to concrete measurement of duration.",
+      "tasks": [
+        {
+          "id": "T-31",
+          "banner": "Let us Explore",
+          "intent": "reason",
+          "book_ref": "Let us Explore Q1, p.176",
+          "description": "What is the difference between the digital clock and the analog clock shown?"
+        },
+        {
+          "id": "T-32",
+          "banner": "Let us Explore",
+          "intent": "reason",
+          "book_ref": "Let us Explore Q2, p.176",
+          "description": "Which clock do you have on your school wall?"
+        },
+        {
+          "id": "T-33",
+          "banner": "Let us Explore",
+          "intent": "explore",
+          "book_ref": "Let us Explore, p.176",
+          "description": "Make your own sand clock using two transparent bottles with joined caps and fine sand; find out how long the sand takes to shift by looking at the clock."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 1,
+  "procedural_load": 1
+}

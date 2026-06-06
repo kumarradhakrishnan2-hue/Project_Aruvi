@@ -1,0 +1,39 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 8,
+  "chapter_title": "Fair Share",
+
+  "core_cg": "CG-1",
+
+  "core_competencies": [
+    {
+      "c_code": "C-1.2",
+      "justification": "The entire chapter centres on representing half and quarter as equal shares of a unit whole — exactly the fractions (½, ¼) named in C-1.2. The paratha-folding and paper-folding activities build the concept of half as a part of a unit whole through concrete manipulation; the chikki and paratha sharing activities, shape-partitioning tasks, and quarter-colouring and drawing exercises address ¼ as a part of a unit whole pictorially. The number line (0–17) in the Half and Double section additionally positions half-values as locations on a number line, covering all three representational strands of C-1.2."
+    },
+    {
+      "c_code": "C-1.3",
+      "justification": "The Half and Double section develops the inverse relationship between halving and doubling — a foundational aspect of understanding how arithmetic operations relate to each other, as specified in C-1.3. The marble blank-filling tasks (e.g., '4 marbles are ___ of 8; 8 marbles are ___ of 4') and the number-line distance questions (how far is 13 from the double of 7?) require students to visualise and reason about the ×2 / ÷2 relationship, which is a distinct competency strand from fraction representation."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-4.1",
+      "justification": "The two 'Guess Who am I?' marble puzzles ask students to apply simultaneous half and double constraints (e.g., less than double of 3 and more than half of 8) to identify a mystery count from three options — this is the recreational puzzle-solving with whole numbers that C-4.1 describes. The Amit-and-Bala fair-sharing story also embeds the mathematics in a daily-life problem about equitable division of resources."
+    },
+    {
+      "c_code": "C-2.3",
+      "justification": "The paper-folding tasks (rectangular and square sheets folded in half in multiple ways) and the 'complete the whole by drawing the other half' activities engage reflective symmetry directly: students physically verify that the two halves match and draw mirror-image completions. This is concrete and pictorial experience of line symmetry, which goes beyond incidental appearance and substantively engages C-2.3."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to represent and compare half and quarter as equal shares of a unit whole — and to recognise halving and doubling as inverse number relationships — by folding, drawing, and reasoning with concrete and pictorial fraction models.",
+
+  "conceptual_demand": 2,
+  "task_load": 2,
+  "exploration_load": 1,
+  "procedural_load": 0,
+  "effort_index": 9.5
+}

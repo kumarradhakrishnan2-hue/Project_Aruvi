@@ -1,0 +1,443 @@
+ARUVI — ENGLISH ASSESSMENT CONSTITUTION · VERSION 1.0 (SECONDARY)
+Stage: Secondary (Grade IX; extensible to X)
+Forked from English Assessment Constitution v3.1 (Middle). Secondary-only
+changes are flagged [SECONDARY DELTA].
+
+================================================================================
+DESIGN PRINCIPLE
+================================================================================
+
+The LP→Assessment arc has two phases:
+  LP         → selects priority tasks, enacts them in class, and writes
+               ONE spine-cell `implied_lo` per (section × spine) cell
+               taught — a broad, NCERT-style observable outcome.
+  Assessment → receives those implied_lo values from the LP handoff and
+               the section's prose/drama/poem content from the summary,
+               and generates ONE original item per implied_lo, grounded
+               entirely in the section's own text.
+
+THE ASSESSMENT GENERATOR DOES NOT READ `tasks_verbatim[]` OR
+`question_bank[]` — under any circumstance, for any reason. The
+implied_lo already encodes what was taught; those two fields are LP
+inputs only.
+
+This separation guarantees: items are original (from the section text,
+not the exercise wording); item count is manageable (one per taught
+section×spine cell, not per task); assessment reflects outcomes, not
+exercise replays.
+
+The six-spine structure is preserved for NCF compliance wherever spines
+are present. C-codes never appear in the assessment JSON.
+
+[SECONDARY DELTA — RAISED DEMAND] Secondary tests higher-order skills:
+close reading and critique of form/style (C-2.2), reasoning and argument
+with rationale (C-3.1/3.2), describing literature across periods/genres
+(C-2.1), and writing across styles and real-life forms (C-1.2/1.3).
+Therefore: Reading items lean to analysis/inference over recall; an
+EXTRACT_ANALYSIS item type (Rule 4) is first-class for Reading (it
+mirrors the textbook's "Critical Reflection" mode); open-item rubrics
+(Rule 11) carry deeper expected_elements.
+
+[SECONDARY DELTA — DRAMA] A drama main_section grounds items in
+`drama_summary` (act-by-act arc). Reading items may test character
+motivation/arc, dramatic conflict and resolution, theme (e.g. tradition
+vs. modernity), and dramatic devices (aside, stage directions, dialogue
+subtext). Treat `drama` like prose for grounding, plus these angles.
+
+
+================================================================================
+INPUTS
+================================================================================
+
+1. LP JSON → `coverage_handoff`, keyed by spine, each carrying
+   `section_contributions[]`. Each contribution (one taught section×spine
+   cell) provides:
+     - `section_id`, `section_title`
+     - `section_type`     // prose | drama | poem | narrative | dialogue | informational
+     - `implied_lo`       — transferable spine skill, content-independent;
+                            drives question type and cognitive demand.
+     - `section_context`  — 10–15 words naming the specific content/topic;
+                            drives what the question is about.
+     - `tasks_anchored[]` — LP audit record; the generator DOES NOT READ it.
+   This is the PRIMARY driver of item generation.
+
+2. Summary JSON → per main_section: `prose_summary` (prose/narrative/
+   dialogue/informational), `drama_summary` (drama), or `poem_text` +
+   `poem_appreciation_summary` (poem). These are the content sources.
+   EXCEPTION: when section_context names a skill with no foothold in the
+   text (phrasal verbs, reported-speech transformation, prefix/suffix
+   formation, non-lexical fillers, binomials), generate a fresh exercise
+   instance — new examples only, themed around the section's world (the
+   play's musicians, the memoir's village, the poem's imagery).
+
+   The generator does NOT read `tasks_verbatim[]` or `question_bank[]`
+   from the summary — reading either is a violation regardless of intent.
+
+   Listening cells: `transcript_ref` (page pointer), and at secondary the
+   baked-in `transcript_text` (see Rule 6).
+
+
+================================================================================
+OUTPUT
+================================================================================
+
+Assessment JSON per chapter: header + spine-keyed sections. Only spines
+with ≥1 section_contribution appear. Each spine's items are a flat array
+ordered by section_id (A before B before C).
+
+
+================================================================================
+RULE 1 | SPINE STRUCTURE — PRESENT SPINES ONLY
+================================================================================
+
+Emit only spines with ≥1 section_contribution in the LP handoff. A spine
+with zero contributions is OMITTED entirely — no note, no placeholder.
+
+Emit present spines in this fixed (canonical) order, skipping absent ones:
+  Reading for Comprehension, Listening, Speaking, Writing,
+  Vocabulary and Grammar, Beyond the Text.
+Within each spine, order items by section_id (A before B before C).
+
+
+================================================================================
+RULE 2 | ITEM GENERATION — ONE ITEM PER SPINE-CELL IMPLIED LO
+================================================================================
+
+For each section_contribution, generate exactly ONE item. Use
+`implied_lo` for question type + cognitive demand and `section_context`
+for what the question is about — both are needed; neither alone suffices.
+
+Constraints:
+  a) Grounded in the section's content — `prose_summary` /
+     `drama_summary` / `poem_text` + `poem_appreciation_summary`. Exception:
+     skill-type spines per INPUTS §2.
+  b) Original — must not reproduce, paraphrase, or structurally echo any
+     textbook exercise wording (guaranteed by never reading
+     tasks_verbatim[]/question_bank[], but stated as principle).
+  c) Directly tests the `implied_lo` — not a generic comprehension
+     question, not a tangential exercise.
+  d) Question type from the spine's permitted set (Rule 4).
+  e) Stage-appropriate depth (Rule 10) — at SECONDARY: inference,
+     analysis, evaluation, argument over recall.
+
+No fallback path: a cell with no section_contribution produces no item.
+Item count per chapter = total section_contributions across all spines.
+
+
+================================================================================
+RULE 3 | RICHNESS — GROUND ITEMS IN SECTION CONTENT
+================================================================================
+
+Every item must visibly anchor in the section's actual text; generic
+questions usable for any chapter are prohibited.
+
+REQUIRED — draw on at least ONE of:
+  - a named character, speaker, or person;
+  - a specific event/scene/episode/act from prose_/drama_summary;
+  - a specific line, image, or phrase from poem_text;
+  - the grammar/vocabulary concept as it appears in the section — for
+    Vocabulary/Grammar items the concept MUST be named in the stem
+    (e.g. "reported speech", "phrasal verbs", "prefixes giving negative
+    meaning", "the binomial 'hide and seek'");
+  - a writing prompt / communicative context from the section's theme;
+  - a fresh exercise instance of the section_context skill (when the text
+    has no foothold for it).
+
+[SECONDARY DELTA — DRAMA ANCHORS] A drama item may also draw on: a
+character's motivation/arc across acts; a line of dialogue and its
+subtext; a stage direction or aside and its dramatic function; the
+central thematic conflict (e.g. tradition vs. modernity) and its
+resolution.
+
+PROHIBITED:
+  - Stems answerable without reading the section (e.g. "What is the main
+    idea?" with no anchor).
+  - Stems recycled from exercise wording or question_bank entries.
+  - Grammar items testing a concept in isolation, unconnected to the
+    section's language/content.
+
+POOR (generic): "Identify the figure of speech in the following
+  sentence." [invented sentence, unrelated to the section]
+GOOD (grounded, secondary-depth, drama): "In Act II, Nabin tells Shruti
+  that to 'drown your individual style in the hubbub of an orchestra is
+  hardly a wise choice.' Analyse what this reveals about Nabin's view of
+  music here, and how that view changes by the end of Act III."
+
+
+================================================================================
+RULE 4 | QUESTION TYPE
+================================================================================
+
+`question_type` ∈ fixed set:
+  MCQ          — Multiple Choice (4 options, exactly one correct)
+  SCR          — Short Constructed Response (1–3 sentences)
+  ECR          — Extended Constructed Response (paragraph)
+  EXTRACT_ANALYSIS — [SECONDARY DELTA] a short verbatim extract (passage
+                 or stanza) from the section, placed in `visual_stimulus`
+                 (preferred) or inline, followed by 1–3 analytical
+                 sub-questions (inference, effect of language, tone,
+                 device, meaning) as a numbered list in `item_stem`
+                 (Rule 9). Mirrors "Critical Reflection". OPEN (Rule 5);
+                 carries `expected_elements`, not `options[]`.
+  MATCH        — Matching (Column 1 ↔ Column 2)
+  FILL_IN      — Fill in the blank (one or more blanks)
+  TRUE_FALSE   — True / False (optional justification)
+  ORAL_PROMPT  — Speaking task with rubric
+  WRITING_TASK — Writing task with rubric
+  PROJECT      — Beyond-text project / interdisciplinary task
+
+Default mapping by spine — pick the type best fitting the implied_lo:
+  Reading for Comprehension → EXTRACT_ANALYSIS, ECR, SCR, MCQ, TRUE_FALSE
+     [SECONDARY DELTA: prefer EXTRACT_ANALYSIS or ECR when the implied_lo
+     is analytical (close reading, character arc, theme, device, title
+     justification, evaluation); reserve MCQ/TRUE_FALSE for factual or
+     single-best-answer outcomes.]
+  Listening              → SCR, FILL_IN, MCQ, TRUE_FALSE
+  Speaking               → ORAL_PROMPT
+     [SECONDARY DELTA: frame around debate, agreement/disagreement with
+     reasons, or arguing with rationale.]
+  Writing                → WRITING_TASK
+     [SECONDARY DELTA: name the register/form — letter to editor,
+     invitation, narrative/descriptive paragraph, play script, media
+     script, critical review.]
+  Vocabulary and Grammar → MATCH, FILL_IN, SCR
+     [SECONDARY DELTA: also reported-speech / sentence-type transformation
+     (SCR), phrasal-verb / prefix-suffix (FILL_IN or MATCH).]
+  Beyond the Text        → PROJECT, ECR
+     [SECONDARY DELTA: multilingual / cultural-heritage exploration,
+     comparative study.]
+
+TRUE_FALSE vs MCQ (critical):
+  TRUE_FALSE — the student judges whether statement(s) are true, or picks
+     which of a numbered list are true. Signal: every option is a complete
+     declarative sentence independently judgeable true/false. Carries
+     `options[]` with per-statement `is_correct`. "Select the true
+     statements" is TRUE_FALSE, NOT MCQ.
+  MCQ        — exactly one option correct and options are NOT declarative
+     sentences judged for truth (e.g. "Choose the correct meaning of…").
+     Carries `options[]`; `suggested_answer` is OMITTED (correct option
+     already flagged via `is_correct`).
+
+
+================================================================================
+RULE 5 | ANSWER LAYER — CLOSED VS OPEN
+================================================================================
+
+CLOSED:  MCQ, FILL_IN, MATCH, TRUE_FALSE, SCR (factual)
+OPEN:    ORAL_PROMPT, WRITING_TASK, PROJECT, ECR, EXTRACT_ANALYSIS,
+         SCR (reflective)
+
+CLOSED items carry `teacher_guide.suggested_answer` (verified, plain prose):
+  MCQ        — `suggested_answer` = "" (correct option is flagged
+               `is_correct` and shown to the teacher). Instead populate
+               `note` with distractor analysis: one sentence per INCORRECT
+               option on the misconception a chooser likely holds.
+  MATCH      — the matched pairs (e.g. "1-c, 2-a, 3-b").
+  FILL_IN    — the fill values in order.
+  TRUE_FALSE — the correct verdicts + a one-sentence justification from
+               the source text.
+  SCR (factual) — the verified answer in 1–2 sentences.
+
+OPEN items carry `teacher_guide.expected_elements` (3–5 bullets, Rule 11);
+for EXTRACT_ANALYSIS, one bullet per sub-question.
+
+OPEN items MUST NOT carry `suggested_answer`. CLOSED items MUST NOT carry
+`expected_elements`.
+
+
+================================================================================
+RULE 6 | ANSWER VERIFICATION
+================================================================================
+
+For every CLOSED item, verify the suggested answer against:
+  - Reading / Vocabulary / Beyond → the section's `prose_summary` /
+    `drama_summary` (or `poem_text` + `poem_appreciation_summary`).
+  - Listening → [SECONDARY DELTA — TRANSCRIPT BAKED INTO SUMMARY] verify
+    against the `transcript_text` field already written into the summary's
+    listening cell. The assessment generator does NOT open the appendix
+    booklet: at chapter-summary time the step_1 prompt resolves each
+    listening cell and writes the shortened transcript body into
+    `transcript_text`, so the summary is self-contained. `transcript_ref`
+    (printed textbook page number) is a provenance pointer only.
+    FALLBACK only if `transcript_text` is missing/empty: open
+    `knowledge_commons/textbooks/english/{grade}/transcript.pdf` and find
+    the page whose printed footer number matches `transcript_ref` (the
+    footer alternates between the book-title marker, e.g. "<Title> 270",
+    and "Appendix 269"; booklet is by Unit 1…8 in textbook order).
+Set `verified: true` only if the answer is unambiguously supported.
+
+OPEN items (incl. EXTRACT_ANALYSIS): `verified` is always `true` (rubrics
+are not solved). If a closed item's answer cannot be verified, Rule 7.
+
+
+================================================================================
+RULE 7 | FALLBACK (VERIFICATION FAILURE)
+================================================================================
+
+When a closed item's answer cannot be verified, still EMIT it (do not
+drop) so the teacher sees the gap:
+  - `item_stem` = ""
+  - `verified`  = false
+  - `teacher_guide.suggested_answer` = ""
+  - `teacher_guide.note` = "[Verification failed] Refer to the section
+    text for <spine> content in <section_title>."
+
+
+================================================================================
+RULE 8 | SOURCE TAGGING
+================================================================================
+
+Every item carries, so the teacher sees the outcome tested and its source:
+  - `source_section_id`, `source_section_title`
+  - `source_section_type`  — prose | drama | poem | narrative | dialogue | informational
+  - `source_spine`         — spine key
+  - `source_lo`            — the implied_lo, copied verbatim from the handoff
+  - `source_context`       — the section_context, copied verbatim
+
+
+================================================================================
+RULE 9 | VISUAL STIMULUS AND STRUCTURAL FIDELITY
+================================================================================
+
+`visual_stimulus` is non-empty only for tabular data grounded in the
+section, OR [SECONDARY DELTA] for an EXTRACT_ANALYSIS verbatim extract.
+
+Permitted formats:
+  - Pipe-delimited table: 2+ lines, every line contains "|", first row is
+    header; built from the source text.
+  - Verbatim extract block [SECONDARY DELTA]: a short passage/stanza copied
+    verbatim from prose_/drama_summary / poem_text, plain lines (no "|"),
+    3–8 lines. Used by EXTRACT_ANALYSIS.
+  - "" : none. Default for most items.
+
+PROHIBITED: inline SVG, ASCII art, image markup, base64, external image
+ref, italic prose specs.
+
+MATCH with a table: `item_stem` holds only the instruction; column
+contents live entirely in `visual_stimulus` (do not inline them).
+
+STRUCTURAL FIDELITY: reproduce numbered/lettered lists line-by-line (the
+sub-questions of EXTRACT_ANALYSIS, or "statements: (1)… (2)…") — never
+collapse to one sentence. Render tabular structures as a pipe table in
+`visual_stimulus`.
+
+
+================================================================================
+RULE 10 | TRANSCRIPT REFERENCE FOR LISTENING ITEMS
+================================================================================
+
+Every Listening item carries `transcript_ref` at item level:
+  - Format "p. NN" — the PRINTED textbook page number, lifted verbatim from
+    the summary's listening cell (which copies the chapter's "(Transcript
+    for teacher on page NN)" note).
+  - [SECONDARY DELTA] This indexes the standalone `transcript.pdf` appendix
+    (Rule 6), NOT the chapter PDF. The summary's listening cell may also
+    carry `transcript_file` (default
+    `knowledge_commons/textbooks/english/{grade}/transcript.pdf`) and
+    `transcript_unit` (e.g. "Unit 6"); the generator copies these through
+    when present.
+
+The transcript is NOT inlined into the item — it is used for verification
+only (Rule 6), against the baked-in `transcript_text`.
+
+
+================================================================================
+RULE 11 | RUBRIC DEPTH FOR OPEN ITEMS
+================================================================================
+
+`expected_elements`: 3–5 bullets, each ≤ 12 words.
+[SECONDARY DELTA] Rubrics must reward analysis, not just recall — include
+where relevant: a register/form expectation ("Use formal letter-to-editor
+format"), a reasoning expectation ("Justify the claim with a textual
+reason"), and for literary items a device/craft expectation ("Name the
+device and explain its effect"). For EXTRACT_ANALYSIS, one bullet per
+sub-question.
+
+
+================================================================================
+RULE 12 | HEADER (INFORMATIONAL)
+================================================================================
+
+Once at the top: chapter_number, chapter_title, stage ("secondary"),
+main_sections inventory (id, title, type), total_items. Item bodies MUST
+NOT reference C-codes.
+
+
+================================================================================
+RULE 13 | NO INTERNAL IDS IN TEACHER PROSE
+================================================================================
+
+Internal item IDs (e.g. "Q-RFC-A-1") live only in JSON `id` fields as join
+keys; they MUST NEVER appear in teacher-facing prose (stems, suggested
+answers, expected_elements, notes).
+
+
+================================================================================
+ASSESSMENT JSON SCHEMA
+================================================================================
+
+{
+  "subject":        "english",
+  "stage":          string,           // "secondary"
+  "chapter_number": integer,
+  "chapter_title":  string,
+  "total_items":    integer,
+
+  "main_sections_inventory": [
+    { "section_id": string, "title": string, "type": string }
+  ],
+
+  "assessment_items": [
+    {
+      "spine_code":  string,          // reading_for_comprehension | listening |
+                                      // speaking | writing | vocabulary_grammar |
+                                      // beyond_text
+      "spine_title": string,          // "Reading for Comprehension" | …
+      "items": [
+        {
+          "id":                   string,   // e.g. "Q-RFC-A-1"
+          "source_section_id":    string,   // "A" | "B" | "C"
+          "source_section_title": string,
+          "source_section_type":  string,   // prose|drama|poem|narrative|
+                                            // dialogue|informational
+          "source_spine":         string,   // spine key
+          "source_lo":            string,   // implied_lo, verbatim from handoff
+          "source_context":       string,   // section_context, verbatim from handoff
+
+          "item_stem":            string,   // original question/task; grounded
+                                            // in section text (Rule 3). For
+                                            // EXTRACT_ANALYSIS, holds the
+                                            // numbered sub-questions.
+
+          "question_type":        string,   // Rule 4
+
+          "options": [                      // MCQ and TRUE_FALSE only; [] otherwise
+            { "label":      string,         // "A"–"D" (MCQ); "1"…"N" (TRUE_FALSE)
+              "text":       string,
+              "is_correct": boolean }
+          ],
+
+          "visual_stimulus":      string,   // "" | pipe-table | verbatim
+                                            // extract block (EXTRACT_ANALYSIS)
+
+          "transcript_ref":       string,   // Listening only; "" otherwise
+
+          "teacher_guide": {
+            "suggested_answer":   string,   // CLOSED non-MCQ: verified answer;
+                                            // "" for MCQ and OPEN
+            "expected_elements":  [string], // OPEN only; [] otherwise
+            "note":               string    // MCQ: distractor analysis; else ""
+          },
+
+          "verified":             boolean
+        }
+      ]
+    }
+  ]
+}
+
+
+================================================================================
+Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
+English Assessment Constitution · Version 1.0 (Secondary) · Internal Document
+================================================================================

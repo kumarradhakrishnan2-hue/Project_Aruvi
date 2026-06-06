@@ -1,0 +1,265 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 10,
+  "chapter_title": "Fun at Class Party!",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Comparing lengths using informal tools",
+      "prose_summary": "The chapter opens with a classroom party scene in which children use hand spans, footsteps, paper strings, and visual comparison to measure and compare lengths. Students discuss why different people get different measurements for the same object and identify the shortest and longest paper strings on a decorated board. The section operates entirely at the concrete stage, anchoring the idea that informal units give non-standard and person-dependent results.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1, p.128",
+          "description": "Discuss and explain what various activities are shown in the party picture."
+        },
+        {
+          "id": "T-2",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q2, p.128",
+          "description": "Discuss how Shelly finds the height of the door."
+        },
+        {
+          "id": "T-3",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q3, p.128",
+          "description": "Will Leena and Adi get the same measurement of the table using their hand spans? Discuss."
+        },
+        {
+          "id": "T-4",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q4, p.128",
+          "description": "Circle the child with the longest ponytail."
+        },
+        {
+          "id": "T-5",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q5, p.128",
+          "description": "Tick paper strings in the classroom that are as long as the height of the window."
+        },
+        {
+          "id": "T-6",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q6, p.128",
+          "description": "Find the distance between two walls of the classroom and discuss different ways of measuring it."
+        },
+        {
+          "id": "T-7",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q7, p.128",
+          "description": "Identify all ways children use to measure length in the picture; which way is better and why?"
+        },
+        {
+          "id": "T-8",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1, p.129",
+          "description": "Colour the shortest paper string red and the longest green; discuss how you identified each."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q2, p.129",
+          "description": "How many more paper strings are needed to decorate the border of the green board?"
+        },
+        {
+          "id": "T-10",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q3, p.129",
+          "description": "How many of the given unit-string are needed to decorate the entire border of the board?"
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Drawing and comparing lengths",
+      "prose_summary": "Students move from observing lengths to physically handling and reproducing them — cutting and pasting thread to match a given line, then drawing strings longer and shorter than given references. A symmetry task (completing the other half of a moustache) and a visual comparison task (choosing the longest string light) extend the idea of length comparison into drawing and estimation. This section bridges concrete manipulation and pictorial representation.",
+      "tasks": [
+        {
+          "id": "T-11",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q1, p.130",
+          "description": "Cut and paste a wool or cotton thread as long as the line given below."
+        },
+        {
+          "id": "T-12",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q2, p.130",
+          "description": "Draw a string longer than the string given below."
+        },
+        {
+          "id": "T-13",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q3, p.130",
+          "description": "Draw a string shorter than the decoration string Shelly and Adi are holding."
+        },
+        {
+          "id": "T-14",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q4, p.130",
+          "description": "Draw the other half of the moustache to match the given half."
+        },
+        {
+          "id": "T-15",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q5, p.130",
+          "description": "Look at the string lights and help Adi choose the longest one; discuss how you found out."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Indirect measurement with a common unit",
+      "prose_summary": "This section introduces the key idea that two lengths can be compared without placing them side by side, by using a thread as a common intermediary. The context is Shelly and Adi needing to check whether a table fits through a door. A follow-up play activity (making a bridge from boxes and checking which objects pass through) deepens the same reasoning in a new setting, keeping the stage firmly concrete-manipulative.",
+      "tasks": [
+        {
+          "id": "T-16",
+          "banner": "Let us Play",
+          "intent": "explore",
+          "book_ref": "Let us Play, p.132",
+          "description": "Make a bridge using boxes or bags; guess and check which classroom objects can go through it."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Body measurement exploration",
+      "prose_summary": "Students test three body-proportion claims — head circumference equals three hand spans, forearm equals foot length, and height equals arm span — by measuring each other and recording true/false. The activity is concrete (using hand spans and body parts as units) and emphasises checking generalisations with real data rather than assuming they hold. It motivates the need for units that do not vary from person to person.",
+      "tasks": [
+        {
+          "id": "T-17",
+          "banner": "Are these true for all?",
+          "intent": "explore",
+          "book_ref": "Are these true for all? Q1, p.133",
+          "description": "Measure and tick: Is your head 3 handspans round? True or False."
+        },
+        {
+          "id": "T-18",
+          "banner": "Are these true for all?",
+          "intent": "explore",
+          "book_ref": "Are these true for all? Q2, p.133",
+          "description": "Measure and tick: Is the length of your forearm equal to the length of your feet? True or False."
+        },
+        {
+          "id": "T-19",
+          "banner": "Are these true for all?",
+          "intent": "explore",
+          "book_ref": "Are these true for all? Q3, p.133",
+          "description": "Measure and tick: Is your height equal to the length of your arms wide open? True or False."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Introducing the metre as a standard unit",
+      "prose_summary": "The section motivates the metre by showing that informal units (pencil, paper strip, arm length) are inconveniently small or inconsistent when measuring long objects like a saree. Students make a one-metre rope using a metre rod, then use it to classify classmates' heights as more or less than one metre. Folding the rope introduces half metre and quarter metre as derived sub-units. The section is concrete throughout: making, marking, folding, and physically comparing.",
+      "tasks": [
+        {
+          "id": "T-20",
+          "banner": "Measure your height",
+          "intent": "explore",
+          "book_ref": "Measure your height activity, p.135",
+          "description": "Measure your height using the one-metre mark on the wall; record friends' names as more or less than one metre."
+        },
+        {
+          "id": "T-21",
+          "banner": "Circle the tallest",
+          "intent": "reason",
+          "book_ref": "Circle the tallest activity, p.135",
+          "description": "Circle the tallest among the children shown and discuss how you decided."
+        },
+        {
+          "id": "T-22",
+          "banner": "Objects table",
+          "intent": "explore",
+          "book_ref": "Objects table activity, p.136",
+          "description": "Write names of objects around you whose length is one metre, more than one metre, and less than one metre."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Measuring with metre, half metre, and quarter metre",
+      "prose_summary": "Students use metre, half-metre, and quarter-metre ropes to measure and classify a range of objects and distances. Tasks include a structured table (measuring objects across five length categories), a jumping competition (recording who jumps a quarter, half, or a full metre), and a throwing distance measurement. A second Let us Do block develops estimation and practical skill: measuring a teacher's height, estimating and cutting a one-metre thread, cutting a rope into four equal parts, counting footsteps per metre, and measuring a classroom wall side. The section anchors the standard unit through repeated concrete use.",
+      "tasks": [
+        {
+          "id": "T-23",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q1, p.137",
+          "description": "Find lengths of different objects using one metre, half metre, and quarter metre ropes; fill the table."
+        },
+        {
+          "id": "T-24",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q2, p.137",
+          "description": "Draw a start line and a one-metre line; jump and record which children jump more than a quarter, half, and a full metre."
+        },
+        {
+          "id": "T-25",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q3, p.137",
+          "description": "Throw a ball or disc as far as you can; measure how far the throw was."
+        },
+        {
+          "id": "T-26",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q1, p.138",
+          "description": "Measure the height of your teacher or parent using a metre-long rope or strip."
+        },
+        {
+          "id": "T-27",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q2, p.138",
+          "description": "Estimate and cut a one-metre long wool or thread; verify with the metre rope whose estimate is closest."
+        },
+        {
+          "id": "T-28",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q3, p.138",
+          "description": "Cut a one-metre rope into 4 equal pieces. How many cuts did you make?"
+        },
+        {
+          "id": "T-29",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q4, p.138",
+          "description": "How many footsteps fit into a metre rope?"
+        },
+        {
+          "id": "T-30",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q5, p.138",
+          "description": "Use a metre rope to find how long a side of the class wall is."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 2,
+  "procedural_load": 0
+}

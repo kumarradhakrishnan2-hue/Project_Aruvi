@@ -1,0 +1,195 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 12,
+  "chapter_title": "Give and Take",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "3-digit addition with Dienes blocks",
+      "prose_summary": "This section introduces addition of 3-digit numbers (e.g. 364 + 52) through a story about Kishan the plant nursery owner. Students build the problem using a box diagram and then model it with Dienes blocks (hundreds, tens, ones), combining 10 tens into 1 hundred to regroup. A number line strategy (+10 jumps) is also shown as an alternative concrete-to-pictorial path. The section sits at the pictorial stage, bridging concrete block manipulation and the HTO column layout.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "opening warm-up",
+          "intent": "practice",
+          "book_ref": "p.150",
+          "description": "Complete snake/caterpillar chains: Add 2 from 334; Add 5 from 375; Subtract 5 from 387."
+        },
+        {
+          "id": "T-2",
+          "banner": "opening warm-up",
+          "intent": "practice",
+          "book_ref": "p.150",
+          "description": "Complete row chains: Add 6 from 234; Subtract 6 from 357; Add 9 from 288; Subtract 9 from 331."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "3-digit subtraction with regrouping",
+      "prose_summary": "Using the context of packing saplings (230 − 75), this section develops subtraction with two levels of regrouping: exchanging 1 ten for 10 ones, and 1 hundred for 10 tens. Students work through the Dienes block model step-by-step in a HTO table, seeing each exchange visually before writing the result. The number line is offered as a parallel strategy. Students then apply the same box-diagram-first approach to three word problems.",
+      "tasks": [
+        {
+          "id": "T-3",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q1–3, p.154",
+          "description": "Draw box diagrams and use HTO blocks or number line to solve: (1) 456−63; (2) 309+80; (3) 270−36."
+        },
+        {
+          "id": "T-4",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do, p.154",
+          "description": "Write word problems for two given box diagrams (234 boys +156 girls; 356 books −138 books) and solve them using pictures as context clues."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Number grid: addition and subtraction",
+      "prose_summary": "A printed 451–530 hundred grid lets students locate and colour answers to addition and subtraction calculations, revealing the positional pattern of what happens to digits when 1, 10, or 100 is added or removed. The grid concretises the place-value structure by making moves across rows and columns visible. This is a pictorial consolidation activity between concrete block work and symbolic calculation.",
+      "tasks": [
+        {
+          "id": "T-5",
+          "banner": "grid task",
+          "intent": "practice",
+          "book_ref": "p.155",
+          "description": "Use the 451–530 grid to solve and colour answers: 456+10, 481+19, 489+21+15, 405+23, 467+51, 519−40."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Place-value patterns: adding 100, 10, 1",
+      "prose_summary": "Students extend two parallel chains — one starting at 269 and one at 454 — by repeatedly adding 100, then 10, then 1. The activity isolates each place-value position, training students to see which digit changes and which stays the same. A barter-exchange story (Jadupur village) provides the real-world context of give and take that links to the chapter title before the shift to money.",
+      "tasks": [
+        {
+          "id": "T-6",
+          "banner": "Do as directed",
+          "intent": "practice",
+          "book_ref": "Do as directed, p.156",
+          "description": "Extend two chains: Add 100 repeatedly from 269; Add 10 repeatedly from 269; Add 1 repeatedly from 269; repeat for 454."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Indian currency: notes, coins, and equivalence",
+      "prose_summary": "This section introduces Indian currency notes (₹10, ₹20, ₹50, ₹100, ₹500) and coins, focusing on the idea that the same amount can be made in multiple ways using different denominations. Students compare the buying power of the same note for different goods, match equivalent groupings of notes and coins, and explore multiple ways to make a given price. The ₹500 note is introduced with the question of how many ₹100 notes equal it, grounding face value reasoning concretely.",
+      "tasks": [
+        {
+          "id": "T-7",
+          "banner": "comparison task",
+          "intent": "reason",
+          "book_ref": "p.157",
+          "description": "Circle the item that costs more: a milk bottle or a pomegranate, when both are bought for ₹100."
+        },
+        {
+          "id": "T-8",
+          "banner": "open-ended think task",
+          "intent": "reason",
+          "book_ref": "p.157",
+          "description": "Think of two things that can be bought using the same ₹10 note, and then using the same ₹50 note."
+        },
+        {
+          "id": "T-9",
+          "banner": "matching task",
+          "intent": "reason",
+          "book_ref": "p.158",
+          "description": "Match notes and coins in two columns that have the same total values."
+        },
+        {
+          "id": "T-10",
+          "banner": "buying task",
+          "intent": "solve",
+          "book_ref": "p.159",
+          "description": "Use given notes and coins to buy items priced ₹55, ₹30, ₹28, ₹20; find at least two ways of making each amount."
+        },
+        {
+          "id": "T-11",
+          "banner": "₹500 note task",
+          "intent": "reason",
+          "book_ref": "p.159",
+          "description": "Draw as many ₹100 notes as equal one ₹500 note; state how many ₹100 notes = ₹500; name things you can buy with ₹500."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "Addition and subtraction with money",
+      "prose_summary": "Peter uncle's shop provides the context for multi-step money problems using box diagrams, Dienes-like note-and-coin manipulation, and the number line. The section begins with a modelled example (₹756 − ₹465 = ₹291) worked pictorially with actual note images. Students then apply the same strategy to four word problems involving earning, change-giving, repeated saving, and three-month totals, plus an estimation table rounding to the nearest hundred.",
+      "tasks": [
+        {
+          "id": "T-12",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q1–4, p.161–162",
+          "description": "Solve using box diagrams and notes or number line: (1) ₹650+₹250; (2) ₹500−₹209; (3) ₹150+₹100×4 weeks; (4) ₹250+₹125+₹350."
+        },
+        {
+          "id": "T-13",
+          "banner": "estimation table",
+          "intent": "reason",
+          "book_ref": "p.162",
+          "description": "Estimate 7 expressions to the nearest hundred and discuss: 156+34, 125−15, 105+195, 205+215, 500−395, 765−567, 505+405."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Mental comparison and number patterns",
+      "prose_summary": "Three distinct mental-arithmetic tasks consolidate the chapter's symbolic level. Students compare pairs of expressions without calculating (e.g. 373+23 vs 373+40) to develop number sense about the effect of adding a larger tens digit. They then identify equal pairs among six expressions and fill in missing numbers in a network diagram with +3/−3/+7/−7 operations connecting nodes at 120, 130, 156, and 175. The Teacher's Note explicitly calls for mental calculation.",
+      "tasks": [
+        {
+          "id": "T-14",
+          "banner": "comparison task",
+          "intent": "reason",
+          "book_ref": "p.163",
+          "description": "Compare 5 pairs of expressions without calculating; circle the one that is more in each pair."
+        },
+        {
+          "id": "T-15",
+          "banner": "equal pairs task",
+          "intent": "reason",
+          "book_ref": "p.163",
+          "description": "Find which pairs among 516+100, 400+15, 615−200, 450−50, 350+50, 816−200 are equal."
+        },
+        {
+          "id": "T-16",
+          "banner": "fill-in task",
+          "intent": "practice",
+          "book_ref": "p.163",
+          "description": "Fill in boxes in the number web connecting 120 and 130 via +3/−3/+7/−7 operations, extending to 156 and 175."
+        }
+      ]
+    },
+    {
+      "ref": "S8",
+      "title": "Number card game and computation drill",
+      "prose_summary": "Students make digit cards 0–5, form two 3-digit numbers, add and subtract them, then rearrange cards to maximise the sum and minimise the difference — comparing results with classmates. This hands-on game brings together all arithmetic of the chapter in an open exploratory format where strategy (place-value reasoning) drives the manipulation. A final Let us Do set (six equations) provides symbolic computation practice including regrouping across all operations met in the chapter.",
+      "tasks": [
+        {
+          "id": "T-17",
+          "banner": "card game",
+          "intent": "explore",
+          "book_ref": "p.164",
+          "description": "Make cards 0–5; form two 3-digit numbers; add and subtract them; rearrange for biggest sum and smallest difference; compare with friends."
+        },
+        {
+          "id": "T-18",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do (a)–(f), p.164",
+          "description": "Solve equations: (a) 265+9, (b) 405+56, (c) 825+175, (d) 600−82, (e) 568−5, (f) 653−356."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 1,
+  "exploration_load": 0,
+  "procedural_load": 1
+}

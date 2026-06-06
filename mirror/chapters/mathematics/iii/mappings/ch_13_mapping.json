@@ -1,0 +1,43 @@
+{
+    "stage":          "preparatory",
+    "subject":        "mathematics",
+    "grade":          "iii",
+    "chapter_number": 13,
+    "chapter_title":  "Time Goes On",
+
+    "core_cg": "CG-3",
+
+    "core_competencies": [
+        {
+            "c_code": "C-3.2",
+            "justification": "The chapter's central work is using appropriate tools and units for measuring time. Students use a real analog clock to read hour and minute positions, identify that minutes are the right unit for a breakfast duration, and choose between minutes, hours, days, weeks, and months when classifying everyday activities. The sand-clock making activity adds a non-standard timer to their repertoire, reinforcing the idea that a tool must match the attribute and scale being measured."
+        },
+        {
+            "c_code": "C-3.5",
+            "justification": "Students devise and apply estimation strategies for time throughout the chapter. They estimate how long school activities take (lunch break, play period, brushing teeth) and verify by recording actual durations, directly matching the estimate-then-verify structure of this competency. Reading elapsed time from pairs of clock faces — working out how many minutes have passed — similarly requires a strategic approach to time measurement rather than recall."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-1.3",
+            "justification": "Age and date calculations form a sustained strand across the birth-certificate section. Students subtract birth year from target year to find Bincy's age in 2025 and 2030, count forward months from birth to August 2015, and trace ages across three generations in the mother-interview activity. The Hetal age puzzle — she is twice her brother's age and also ten years older — requires applying arithmetic relationships to an informal two-condition problem, going well beyond simple recall."
+        },
+        {
+            "c_code": "C-4.1",
+            "justification": "Several tasks are genuine daily-life word problems requiring one or more operations. Finding the school re-opening date after a 15-day July closure, calculating the number of days between Bincy's birth and the certificate issuance date (18 May), and working out elapsed minutes from paired clock faces all demand that students set up and solve a problem rather than simply practise a procedure. These are not drill items — they require students to identify what operation is needed and apply it in context."
+        },
+        {
+            "c_code": "C-4.3",
+            "justification": "The chapter repeatedly surfaces the question of which method to use. The breakfast-duration task explicitly asks 'how do you know?', prompting students to explain their reasoning strategy rather than just give an answer. Calendar arithmetic (three days after July 22, counting forward 15 days from July 7) invites counting-on, mental addition, or using the calendar grid as a tool — all valid context-appropriate methods. This deliberate method-awareness distinguishes the chapter's problem work from rote computation."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to measure and reason about time by using appropriate tools (analog clock, calendar, sand clock) and units (minutes, hours, days, months) to read, record, calculate, and estimate durations across everyday contexts.",
+
+    "conceptual_demand": 2,
+    "task_load":         3,
+    "exploration_load":  1,
+    "procedural_load":   1,
+    "effort_index":     13.0
+}

@@ -1,0 +1,445 @@
+ARUVI — ENGLISH LESSON PLAN CONSTITUTION · VERSION 1.0 (SECONDARY)
+Stage: Secondary (Grade IX; extensible to X)
+Forked from English LP Constitution v1.5 (Middle). Secondary-only
+changes are flagged [SECONDARY DELTA].
+
+================================================================================
+DESIGN PRINCIPLE
+================================================================================
+
+Two-axis structure per chapter:
+  Outer axis → main_section: a prose memoir, multi-act play, poem,
+               narrative, dialogue, or informational piece (1–3 per chapter).
+  Inner axis → 6 spines (Reading for Comprehension, Listening, Speaking,
+               Writing, Vocabulary/Grammar, Beyond-the-Text), walked in
+               textbook order within each main_section.
+
+The LP walks main_sections in textbook order, and within each, only the
+spines that section actually contains (a closing poem may carry just
+Reading + Vocabulary). Period bin-packing is across (section × spine)
+cells, NOT across spines alone.
+
+The 6-spine carries NCF Languages compliance. Per-chapter competency
+mapping is NOT performed and MUST NOT be invoked. C-codes never appear
+in the LP JSON.
+
+[SECONDARY DELTA — DRAMA] A primary main_section may be a multi-act play
+(section_type `drama`). The 6 spines still apply, but Reading is read
+ACROSS acts (Act I → II → III) and the read-aloud phase (Rule 2A) is
+ROLE-ASSIGNED reading. Stage directions, asides, and parenthetical
+delivery cues are part of the text read.
+
+[SECONDARY DELTA — RAISED DEMAND] The secondary exercise apparatus is
+more analytical: extract-based close reading ("Critical Reflection"),
+character-arc analysis, title justification, evaluation of a text's
+effectiveness, device identification (ode, allusion, hyperbole,
+symbolism, refrain), grammar transformation (reported speech,
+sentence-type conversion). Task selection (Rule 3) and methods (Rule 4)
+must reflect this.
+
+
+================================================================================
+INPUTS
+================================================================================
+
+1. Summary JSON: chapter_title, stage, main_sections[] (each with
+   id/title/type/char_count) plus type-specific text fields:
+     - `prose_summary`            (prose / narrative / dialogue / informational)
+     - `drama_summary`            [SECONDARY DELTA] act-by-act arc (drama)
+     - `poem_text` + `poem_appreciation_summary`  (poem)
+   and `spines{}`, each spine carrying section_name and `tasks_verbatim[]`.
+   Each `tasks_verbatim[]` entry is an OBJECT `{ task_text, question_bank }`,
+   where question_bank holds that task's textbook sub-items (or `[]` for an
+   open prompt). There is no flat top-level question_bank.
+
+   Listening cells carry `transcript_ref` (the PRINTED textbook page number)
+   and [SECONDARY DELTA] may carry `transcript_file` + `transcript_unit`.
+   At secondary the transcript text lives in a SEPARATE appendix booklet
+   (`knowledge_commons/textbooks/english/{grade}/transcript.pdf`), not in
+   the chapter PDF. The LP does not read transcript bodies; it passes the
+   listening cell through, and a listening period's phase description
+   should note the transcript is read from the appendix booklet.
+
+   The text fields (prose_/drama_/poem_) are the source of truth for
+   teacher_notes and phase descriptions.
+
+2. Secondary pedagogy text:
+   `mirror/framework/english/secondary/pedagogy_secondary_english.txt`
+   — supplies permitted methods per spine.
+
+3. Period schedule: { period_duration_minutes, period_count }, where
+   period_count = B is supplied at generation time (allocation tab
+   suggests; user may override).
+
+
+================================================================================
+OUTPUT
+================================================================================
+
+LP JSON per chapter: header, periods array, coverage_handoff (keyed by spine).
+
+
+================================================================================
+RULE 1 | TWO-AXIS ANCHORING
+================================================================================
+
+Walk main_sections in textbook order; within each, walk spines in
+textbook order. Do NOT reorder, interleave across sections, or
+re-sequence spines within a section.
+
+[SECONDARY DELTA] "Textbook order" for spines = the literal on-page
+sequence recorded in the summary for that section, NOT the canonical
+key order. At secondary the page sequence differs (e.g. Vocab follows
+Reading; Listening appears late) — see Rule 2 Step 3.
+
+Each period anchors to exactly ONE main_section and one or two spines
+ADJACENT in that on-page sequence. A period MUST NOT straddle two
+main_sections.
+
+[SECONDARY DELTA] For a `drama` section, a period may cover one or more
+whole acts within Reading, but MUST NOT split an act across periods
+unless one long act legitimately spans two (treat like a long-writing
+split, Rule 3).
+
+
+================================================================================
+RULE 2 | PERIOD ALLOCATION — CAPACITY-FIRST, PROPORTIONAL BY SECTION
+================================================================================
+
+Allocate exactly B periods using these four steps in order.
+
+STEP 1 — Per-period task budget (hard ceiling):
+  RFC, Listening, Speaking  → 1 task / 12–15 min
+  Writing, Beyond-text      → 1 task / 20–25 min
+  Vocabulary/Grammar        → 1 task / 10–12 min
+A 40-min period holds ≤ 2–3 tasks; a 60-min period ≤ 3–5. Never exceed
+these regardless of how many tasks the summary contains.
+[SECONDARY DELTA] Extract-based "Critical Reflection" and character/
+theme analysis tasks are heavier — budget them at the slow end of RFC
+(15 min/task), not 12.
+
+STEP 2 — Distribute B across sections proportional to `char_count`,
+rounded. Only hard floor: no section gets zero (every section is
+taught); a section may get as few as one period. No post-hoc correction.
+[SECONDARY DELTA] A `drama` section normally draws the largest share
+(expected); a closing one-page poem may get a single period.
+
+STEP 3 — Within each section, cover spines in TEXTBOOK ORDER until the
+section's periods are full. "Textbook order" = the on-page sequence the
+summary records for THIS section; walk spines in that sequence and do
+NOT re-sort to the canonical list.
+[SECONDARY DELTA] In the secondary textbook, Vocabulary/Grammar follows the Reading
+cluster and Listening appears late ; two sections may differ on where Listening falls.
+  - WALKING / period-assignment order = summary's on-page order.
+  - ENUMERATION (coverage_handoff keys, and the assessment's spine
+    emission) = canonical order: reading_for_comprehension, listening,
+    speaking, writing, vocabulary_grammar, beyond_text.
+  These two orders are independent — walking is editorial fidelity,
+  enumeration is a stable downstream contract.
+Pack tasks per Step 1's budget. When the section's periods are exhausted,
+stop — remaining spines/tasks are unanchored. Do not force a spine into
+a period merely because it exists. Note an unfitted spine/task in the
+last period's `teacher_notes` as a self-study pointer; this is honest
+reflection of available time, not a defect.
+
+STEP 4 — VocGram isolation: `vocabulary_grammar` always occupies its own
+period slot, never merged with another spine, regardless of task count.
+
+
+================================================================================
+RULE 2A | TEXT READING IS CLASS TIME
+================================================================================
+
+Reading the section text aloud (teacher-led, students following) is a
+core classroom act, not a pre-class assumption. It MUST appear as an
+explicit timed phase within that section's periods — never collapsed
+into teacher_notes or treated as done outside class. Size it
+proportional to text length. It does not consume a `tasks_in_class[]`
+slot but counts toward period minutes (Rule 5). The period's `materials`
+must include the textbook with page range.
+
+[SECONDARY DELTA — DRAMA] For a `drama` section the read-aloud is
+ROLE-ASSIGNED: students take character parts and read the act observing
+stage directions and asides. The phase description must say so (e.g.
+"Act I read aloud, parts assigned — Shruti, Iqbal, Avinash, Peter").
+Still a timed reading phase, not a task slot.
+
+
+================================================================================
+RULE 3 | TASK SELECTION — CURATE, DON'T EXHAUST
+================================================================================
+
+Draw tasks from the anchored (section, spine)'s `tasks_verbatim[]`,
+selecting a SUBSET that fits the period's task budget (Rule 2 Step 1).
+Anchoring every task is neither required nor desirable — it overloads
+periods and creates meaningless time buckets.
+
+SELECTION PRIORITY (when the budget forces a choice):
+  1. The primary pedagogical move for the spine: pre-reading activation,
+     core comprehension discussion, key extract analysis, the main
+     writing prompt, the central grammar point.
+  2. [SECONDARY DELTA] Higher-order analytical tasks — "Critical
+     Reflection" extracts, character/theme analysis, title
+     justification, evaluation of the text's effectiveness, device
+     identification — over recall tasks. This is secondary's core work.
+  3. Tasks with the most substantive `question_bank` (more value/minute).
+  4. Teacher-facilitated tasks (oral, pair, discussion) over self-study
+     or research.
+
+Unselected tasks go to homework (max 1–2/period, Rule 8) or are left
+unanchored. Unanchored tasks do not appear in `tasks_in_class[]`,
+generate no `implied_lo`, and are invisible to assessment; flag them
+briefly in `teacher_notes`.
+
+ANCHORING A TASK = allocating period time for the teacher-led activity
+in `task_text` plus EVERY sub-item in its `question_bank` — all of them,
+not a subset. A task is anchored only if its whole question_bank fits the
+period budget; if it can't fit in full, do not anchor it — move it to
+homework or leave it unanchored. Partial anchoring (covering only some
+sub-items) is never permitted.
+
+`tasks_in_class[]` references a task by summary key (spine + 0-based
+task_index). Phase descriptions reference tasks by spine_section_name +
+brief — never restating full task_text or sub-items verbatim.
+
+FORBIDDEN:
+- Anchoring more tasks than the budget allows.
+- Inventing task descriptions not in the summary.
+- Substituting a paraphrase for a verbatim summary task.
+- Splitting one summary task into sub-parts unless the summary itself
+  enumerates them as separate task objects.
+
+A single long task legitimately referenced across two periods (e.g. a
+writing task: plan+draft in N, revise+share in N+1; or a long act read
+across two) lists the same key in each period; phase descriptions
+distinguish what happens in each.
+
+
+================================================================================
+RULE 4 | PEDAGOGICAL METHOD
+================================================================================
+
+One method per spine taught (keys = `spines_taught` exactly). Each
+method is drawn STRICTLY from that spine's permitted list below, sourced
+from `pedagogy_secondary_english.txt` and the secondary CG document. Do
+NOT invent methods absent from those sources.
+
+PERMITTED METHODS, by spine (secondary):
+  Reading for Comprehension → read-aloud · role-assigned-reading (drama) ·
+     shared-reading · guided-reading · close-reading (critiquing form,
+     style, vocabulary, ideas/feelings provoked) · critical-reading
+     (effect of words/ideas, author intent, interpreting meanings) ·
+     comprehension-discussion · literary-analysis (genre, period,
+     devices) · multicultural-comparative-reading (two writers / regions
+     / eras)
+  Listening → listen-and-respond · summarising-from-listening ·
+     critical-listening (analysing audio material) ·
+     note-taking-from-listening
+  Speaking → debate (formal / turncoat solo) · group-discussion ·
+     open-house-dialogue · interview · role-play · oral-presentation ·
+     expressing-agreement-disagreement-with-reasons · arguing-with-rationale
+  Writing → planning-drafting · modelled-writing · guided-writing ·
+     independent-writing · formative-feedback · functional-writing
+     (reports, essays, notes, applications, letters-to-editor,
+     advertisements, notices, invitations, blogs) · media-scripting
+     (video/podcast/YouTube scripts) · literary-writing (poems, stories,
+     plays with devices; critical review linking a text to its
+     historical / socio-economic context)
+  Vocabulary/Grammar → linguistic-aspects-in-context (sentence structure,
+     punctuation, tense, parts of speech) · grammar-in-writing (reported
+     speech, sentence-type conversion, prefixes/suffixes, phrasal verbs) ·
+     word-building · dictionary-work · contextual-prediction ·
+     wordplay-and-puns · domain-vocabulary (e.g. music / register
+     vocabulary from the text)
+  Beyond-text → project-work · interdisciplinary-study ·
+     multilingual-exploration (words across Indian languages, regional
+     poems/songs) · comparative-study · library-research ·
+     cultural-heritage-exploration
+
+Diversity: no spine's method may repeat across more than two consecutive
+periods (evaluated per spine). Each spine present in the chapter SHOULD
+get at least one period whose method is from its permitted list.
+
+
+================================================================================
+RULE 5 | TIME CONSTRAINT
+================================================================================
+
+Each period's phases sum EXACTLY to `period_duration_minutes`; minimum
+3 phases. `phases[].minutes` is a STRING range (e.g. "0–10", "10–25")
+that tiles 0..duration with no gaps or overlaps. No overrun.
+
+
+================================================================================
+RULE 6 | CHAPTER HEADER (INFORMATIONAL)
+================================================================================
+
+Once at the top: chapter_number, chapter_title, stage ("secondary"),
+main_sections inventory (id, title, type), periods_allocated (= B).
+
+
+================================================================================
+RULE 7 | COMPETENCIES DO NOT DRIVE LP
+================================================================================
+
+Periods need not cover specific C-codes. C-codes MUST NOT appear
+anywhere in the LP JSON — header, periods, phases, teacher_notes, or
+coverage_handoff.
+
+
+================================================================================
+RULE 8 | HOMEWORK IS OPTIONAL AND UN-OWNED
+================================================================================
+
+`homework` is `[]` by default; populate with 1–2 items only on time-box
+overflow or when reinforcement helps. Not consumed by assessment.
+
+
+================================================================================
+RULE 9 | PHASE NARRATION
+================================================================================
+
+A phase invoking a task names it by anchor location + a ≤10-word brief.
+Format: <spine_section_name> ("brief ≤10 words").
+Example: Critical Reflection ("night-terrace extract, close-reading +
+paired discussion").
+
+Teacher-facing text MUST NOT expose internal planning machinery: no task
+indices, rule numbers / constitutional refs, schema keys / planner
+identifiers, or implementation metadata. Such references live only in
+structured machine-readable fields.
+
+
+================================================================================
+RULE 10 | COVERAGE HANDOFF EMISSION
+================================================================================
+
+After period assignment, emit `coverage_handoff` keyed by the six spines
+(canonical order). Each spine lists `section_contributions[]`, one entry
+per (section × spine) cell:
+
+  - `section_id`      — main_section id (A, B, C, ...)
+  - `section_title`   — verbatim from summary
+  - `section_type`    — prose | drama | poem | narrative | dialogue | informational
+  - `implied_lo`      — the transferable spine skill, independent of this
+                        chapter's content.
+                        Format: "Student [skill verb phrase] using
+                        [section type / spine mode] as the vehicle."
+                        Ex (drama, Reading): "Student analyses character
+                        motivation and dramatic conflict by close-reading
+                        a play."
+  - `section_context` — 10–15 words naming the specific content/text/topic
+                        the assessment item must ground in.
+                        Ex (drama, Reading): "Shruti's dilemma over telling
+                        her father about the Indo-Western fusion concert."
+                        Assessment reads BOTH: `implied_lo` drives question
+                        type and cognitive demand; `section_context` drives
+                        what the question is about.
+  - `tasks_anchored`  — audit-only array; each entry { spine, task_index,
+                        task_brief }. Assessment DOES NOT read this; it
+                        exists only to record which tasks were covered.
+
+A spine with no anchored tasks across any section is emitted with empty
+`section_contributions: []`; assessment omits that spine entirely.
+
+Total assessment item count = total `section_contributions` across all
+spines — one item per (section × spine) cell, driven by `implied_lo`.
+
+
+================================================================================
+LP JSON SCHEMA
+================================================================================
+
+{
+  "subject": "english",
+  "stage":          string,           // "secondary"
+  "chapter_number": integer,
+  "chapter_title":  string,
+
+  "main_sections_inventory": [
+    { "section_id":   string,         // "A", "B", "C"
+      "title":        string,
+      "type":         string }        // "prose" | "drama" | "poem" | "narrative" | "dialogue" | "informational"
+  ],
+
+  "periods_allocated": integer,
+
+  "lesson_plan": { "periods": [ <period>, ... ] },
+
+  "coverage_handoff": {
+    "reading_for_comprehension": { "section_contributions": [ <contribution>, ... ] },
+    "listening":                 { "section_contributions": [ <contribution>, ... ] },
+    "speaking":                  { "section_contributions": [ <contribution>, ... ] },
+    "writing":                   { "section_contributions": [ <contribution>, ... ] },
+    "vocabulary_grammar":        { "section_contributions": [ <contribution>, ... ] },
+    "beyond_text":               { "section_contributions": [ <contribution>, ... ] }
+  }
+}
+
+<period>:
+{
+  "period_number":           integer,
+  "period_duration_minutes": integer,
+  "section_id":    string,            // "A" | "B" | "C" — exactly one
+  "section_title": string,            // copied from inventory
+
+  "spines_taught": [string],          // 1 or 2 entries, in on-page (textbook)
+                                      // order; each ∈ {reading_for_comprehension,
+                                      // listening, speaking, writing,
+                                      // vocabulary_grammar, beyond_text}
+
+  "activity_title": string,           // ≤ 12 words, evocative headline
+
+  "pedagogical_methods": {            // keys MUST equal `spines_taught`
+    "<spine>": string                 // exactly; each value a permitted
+  },                                  // method for that spine (Rule 4)
+
+  "tasks_in_class": [
+    { "spine":      string,           // one of spines_taught
+      "task_index": integer,          // 0-based into summary tasks_verbatim[]
+                                      // for this (section, spine)
+      "task_brief": string }          // ≤ 12 words, teacher-facing
+  ],
+
+  "homework": [ <same shape as a tasks_in_class entry> ],
+
+  "phases": [
+    { "minutes":     string,          // "0–10" — tiles 0..duration
+      "description": string }         // refers to tasks by
+                                      // spine_section_name + brief
+  ],
+
+  "teacher_notes": string,            // 2–3 sentences max, in priority order:
+                                      // 1. transition from prior / preview next;
+                                      // 2. common pitfall in this spine, drawn
+                                      //    only from the anchored section's
+                                      //    prose_/drama_/poem_appreciation_summary
+                                      //    (no fabrication);
+                                      // 3. self-study pointer (uncovered task).
+                                      // No C-code refs.
+
+  "materials": [string]
+}
+
+<contribution>:
+{
+  "section_id":    string,
+  "section_title": string,
+  "section_type":  string,            // prose | drama | poem | narrative | dialogue | informational
+  "implied_lo":      string,  // transferable spine skill, content-independent:
+                              // "Student [skill] using [section type / spine
+                              // mode] as the vehicle."
+  "section_context": string,  // 10–15 words: the specific content/text/topic
+                              // the assessment item must ground in.
+  "tasks_anchored": [
+    { "spine": string, "task_index": integer,
+      "task_brief": string }  // ≤ 12 words, copied from tasks_in_class;
+                              // audit only — not read by assessment
+  ]
+}
+
+
+================================================================================
+Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
+English Lesson Plan Constitution · Version 1.0 (Secondary) · Internal Document
+================================================================================

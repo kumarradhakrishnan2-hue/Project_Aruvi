@@ -1,0 +1,43 @@
+{
+    "stage": "preparatory",
+    "subject": "mathematics",
+    "grade": "iii",
+    "chapter_number": 12,
+    "chapter_title": "Give and Take",
+
+    "core_cg": "CG-1",
+
+    "core_competencies": [
+        {
+            "c_code": "C-1.3",
+            "justification": "Addition and subtraction of 3-digit numbers is the chapter's primary work. The Kishan nursery and Peter uncle shop problems develop students' ability to visualise these operations — especially regrouping (exchanging 10 tens into 1 hundred when adding, and breaking 1 ten into 10 ones when subtracting) — through Dienes block models, box diagrams, and number lines, before applying them to multi-step daily-life word problems involving saplings and money."
+        },
+        {
+            "c_code": "C-1.1",
+            "justification": "Place-value structure is the mechanical backbone of all regrouping in the chapter. Students extend chains by adding exactly 100, then 10, then 1, observing which digit changes and which stays the same; navigate a 451–530 number grid to locate answers positionally; and work with the ₹500/₹100 equivalence as a concrete anchor for face-value reasoning. This constitutes an independent strand of representing and understanding the H-T-O structure, distinct from the operations work."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-4.1",
+            "justification": "The sapling word problems and the four Peter uncle money problems are genuine daily-life problems requiring students to choose between addition and subtraction, draw a box diagram before computing, and in one case carry out a three-addend calculation (three months of savings). These go beyond routine drill and engage problem-solving with whole-number operations in context."
+        },
+        {
+            "c_code": "C-4.3",
+            "justification": "The chapter explicitly develops the selection of appropriate computational methods. The estimation table asks students to round seven expressions to the nearest hundred, the mental comparison task requires circling the larger expression without calculating, and the 'My Estimation' prompts beside worked examples all train students to judge when estimation is sufficient and when pencil-paper or manipulative calculation is needed."
+        },
+        {
+            "c_code": "C-1.4",
+            "justification": "The number web connecting 120, 130, 156, and 175 via symmetric +3/−3 and +7/−7 operations, and the Add 100/10/1 chain drill, engage students in recognising and extending number patterns — noticing that adding a fixed amount produces a regular sequence — as a secondary but genuine strand within the chapter."
+        }
+    ],
+
+    "dissolution_test": "This chapter builds the student's ability to add and subtract 3-digit whole numbers by developing a concrete-to-symbolic understanding of place-value regrouping, using Dienes blocks, box diagrams, number lines, and Indian currency notes to make the exchange between hundreds, tens, and ones visible and meaningful.",
+
+    "conceptual_demand": 2,
+    "task_load": 1,
+    "exploration_load": 0,
+    "procedural_load": 1,
+    "effort_index": 7.5
+}

@@ -299,3 +299,70 @@ Action taken: (1) Expanded _UNICODE_SUBS in lp_pdf_generator.py to cover all mat
 Critical ordering rule: _apply_superscripts MUST run BEFORE _clean_text. Correct: _clean_text(_apply_superscripts(raw)). Wrong: _apply_superscripts(_clean_text(raw)). If _clean_text runs first, it maps ⁴→^4 as a plain-text fallback and _apply_superscripts never sees the superscript chars.
 Carry-forward rule: Any new Mathematics (or other subject) content field that may contain Unicode superscripts must use the _clean_text(_apply_superscripts(raw)) pipeline for Paragraph text. Science/SS/English are not affected — their constitutions do not emit superscript digits. If a new subject constitution introduces superscripts, apply the same pattern. The _UNICODE_SUBS fallback (⁴→^4) is a last-resort for non-Paragraph contexts only (e.g. metadata strings, filenames).
 
+
+---
+
+[Learning #26] — 2026-06-06 — English Secondary (Grade IX): constitution fork + separate transcript file
+
+Context: Extending Aruvi English to the secondary stage (Grade IX, secondary textbook). Read Ch 1 (How I Taught My Grandmother to Read — prose memoir + "Bharat Our Land" poem) and Ch 6 (Twin Melodies — a three-act play + two poems).
+
+What was built: Forked SEPARATE secondary constitutions (not parameterized) at:
+  - mirror/constitutions/lesson_plan/english/secondary/lesson_plan_constitution.txt (v1.0)
+  - mirror/constitutions/assessment/english/secondary/assessment_constitution.txt (v1.0)
+All deltas from the middle constitution are flagged inline as [SECONDARY DELTA].
+
+Key structural decisions (carry forward):
+1. NEW section_type `drama` — a multi-act play is one main_section. Reading-for-Comprehension is read ACROSS acts; read-aloud is ROLE-ASSIGNED reading (Rule 2A); summary uses `drama_summary` (act-by-act arc). The assessment/renderer pipeline needs a `drama` branch wherever section_type is switched on (lpa_page.html + assessment_pdf_generator.py) before shipping — NOT yet wired.
+2. NEW assessment item type `EXTRACT_ANALYSIS` — verbatim extract in visual_stimulus + numbered analytical sub-questions in item_stem; classified OPEN; mirrors the textbook's dominant "Critical Reflection" mode. Renderer needs an EXTRACT_ANALYSIS branch (extract block + numbered sub-qs) before shipping.
+3. Raised cognitive demand: secondary Reading items prefer EXTRACT_ANALYSIS/ECR over MCQ; rubrics deeper (Rule 11); permitted methods include debate, close-reading, media-scripting, reported-speech grammar, multilingual exploration.
+4. Secondary framework assets ALREADY existed before this work: mirror/framework/english/secondary/ has cg_secondary_english.txt, pedagogy_secondary_english.txt, spine_to_cg.json, competency_descriptions_secondary.json. The secondary spine_to_cg.json already carries the correct secondary subheading names (Reading for Meaning, Check Your Understanding, Critical Reflection, Reflect and Respond, Reading for Appreciation, Vocabulary and Structures in Context, Listen and Respond, Speaking Activity, Writing Task, Learning Beyond the Text, POINTS TO REMEMBER).
+
+CRITICAL — SEPARATE TRANSCRIPT FILE (differs from middle):
+  - Middle: listening transcript lived INSIDE each chapter PDF; transcript_ref="p.NN" indexed the chapter PDF.
+  - Secondary: transcripts are in a standalone appendix booklet knowledge_commons/textbooks/english/ix/transcript.pdf (20 physical pages, all 8 units). transcript_ref (e.g. "p. 270") is the PRINTED textbook page number, NOT a chapter-PDF page and NOT a physical page in transcript.pdf.
+  - Page-offset mapping (verified): printed_page − 258 = physical_page in transcript.pdf, from printed 260 onward (physical 1 = printed 259, marker is "Appendix" header). Booklet organised by Unit 1…Unit 8 in textbook order. The printed page footer (book-title marker, e.g. "<Title> NNN", or "Appendix NNN") appears in page text → locate by text search, not by physical index.
+  - Ch 1 listening: printed 259 (digital literacy) + 260 (four travellers). Ch 6 listening: printed 270 (yazh) + 271 (music-centre dialogue).
+
+DESIGN DECISION (user, 2026-06-06) — bake transcript into summary:
+  When the secondary step_1 (chapter summary) prompt is authored, it MUST resolve each listening cell at summary time: open transcript.pdf, find the page by printed marker, and write the shortened transcript body (150–250 words, all speakers preserved — same as middle prompt's transcript_text) directly into the summary JSON listening cell. The summary becomes self-contained; LP and Assessment generators read transcript_text from the summary and NEVER open the appendix PDF. transcript_ref stays as a provenance pointer only. Optional summary fields transcript_file + transcript_unit make the lookup unambiguous. Assessment constitution Rule 6 already updated to verify against summary transcript_text, with PDF as fallback only.
+
+Open items for the secondary step_1 prompt (NOT yet written):
+  a. Drop the middle prompt's assumption that "a closing poem usually carries only Reading + Vocabulary" — Ch 1's "Bharat Our Land" poem section exercises ALL six spines.
+  b. Treat end-of-chapter "read and enjoy" enrichment poems (e.g. "Music" by Walter de la Mare at end of Ch 6) as beyond_text content of the preceding section, NOT as their own main_section.
+  c. Tune effort_signals for secondary (drama sections are long/multi-act; analytical task density is higher).
+  d. Add `drama` to the section-type detection and the drama_summary field.
+
+Still TODO before secondary is production-ready: renderer branches for `drama` section_type and `EXTRACT_ANALYSIS` item type; secondary step_1 combined prompt; update CLAUDE.md §4/§5 to register the secondary stage; consider adding english to any stage-list configs.
+
+[Learning #26 — correction, 2026-06-06] — Secondary LP: "textbook order" ≠ canonical spine order
+Issue found: LP constitution Rule 3 Step 3 originally said "walk spines in textbook order (RFC → Listening → Speaking → Writing → VocGram → Beyond-text)" — self-contradictory at secondary. In the secondary textbook the on-page spine sequence is NOT the canonical key order: Vocabulary/Grammar follows the Reading cluster, and "Listen and Respond" appears LATE (after Vocab in Ch 1; after Speaking+Writing in Ch 6), and the two chapters disagree on where Listening falls. (This held in middle only because "Let us read/listen/speak/write/learn/do" matched the canonical order — a coincidence not true at secondary.)
+Fix applied: LP Rule 1 and Rule 2 Step 3 now state two INDEPENDENT orders — (a) WALKING / period-assignment order = the literal on-page sequence recorded in the summary for that section; (b) ENUMERATION/emission order (coverage_handoff keys, assessment spine emission) = canonical fixed order. The generator must NOT re-sort walk order into the canonical list. "Adjacent spines" in a period means adjacent in the on-page sequence.
+Carry-forward: the secondary step_1 prompt MUST record each section's spines in on-page order (the summary's spine object order is the source of truth for walk order). Assessment constitution Rule 1 emission order stays canonical and is correct as-is — do not change it.
+
+[Learning #26 — addendum 2, 2026-06-06] — Secondary step_1 prompt forked + effort tiers recalibrated
+Forked the middle combined prompt to: cowork prompts/english/secondary/step_1_chapter_summary_and_mapping.md (457 lines). Fixed all 8 gap points vs middle:
+  1. secondary subheading table (Reading for Meaning / Check Your Understanding / Critical Reflection / Reflect and Respond / Reading for Appreciation; Listen and Respond; Speaking Activity; Writing Task; Vocabulary and Structures in Context / Vocabulary in Context; Learning Beyond the Text / POINTS TO REMEMBER) — replaces the middle "Let us …" table. Authoritative, matches secondary spine_to_cg.json.
+  2. drama section type + drama_summary (250–450 word act-by-act arc); a multi-act play is ONE section, not per-act sections.
+  3. Transcript BAKED at summary time: Step 6 resolves transcript.pdf (printed textbook page; offset printed−258=physical, but confirm by marker text), writes transcript_text (150–250w) + transcript_file + transcript_unit into the listening cell. LP/Assessment never open the appendix.
+  4. Spines recorded in ON-PAGE order (LP walk-order source of truth); mapping/competency emission stays canonical order (Step 8).
+  5. Dropped the "poem usually only Reading+Vocab" assumption — Bharat Our Land poem section exercises all 6 spines; template shows it.
+  6. Enrichment "read and enjoy" poems (e.g. "Music" de la Mare) are beyond_text tasks, NEVER their own main_section.
+  7. All paths → /secondary/, stage "secondary", grade ix.
+  8. Recalibrated effort tiers (see below).
+
+EFFORT-TIER RECALIBRATION (secondary-specific; middle tiers were broken here):
+  Root cause: every secondary section exercises all 6 spines, so middle spine_load (avg-spines-per-section) pinned at constant 3 → non-discriminating; both Ch1 and Ch6 collapsed to identical effort_index 11.0 under middle tiers.
+  New secondary tiers:
+    spine_load (re-based on TOTAL spine-cells, not avg/section): ≤6→1, 7–12→2, ≥13→3.
+    task_density (tightened): avg≤2.5→1, 2.6–4.5→2, ≥4.6→3.
+    writing_demand UNCHANGED: 0–5→0, 6–15→1, 16+→2.
+    project_load UNCHANGED: count of beyond_text cells.
+    formula UNCHANGED: (spine_load×2)+(task_density×1.5)+(writing_demand×1.5)+(project_load×1).
+  Calibration check (manual tally from chapter text, not a live run): Ch1 (prose+poem, 12 cells, ~28 tasks, ~7 write items, 2 beyond) → sl2/td1/wd1/pl2 = 9.0. Ch6 (drama+poem, 12 cells, ~35 tasks, ~9 write items, 2 beyond) → sl2/td2/wd1/pl2 = 10.5. Now they DIFFER (Ch6 heavier, as expected). These are reference values; the prompt recomputes per chapter, does not hardcode.
+
+HOLD: User instructed NOT to run the prompt on chapters yet (2026-06-06). Task "Run prompt on Ch 1 + Ch 6" is ON HOLD pending explicit go-ahead. Do not generate ix summary/mapping JSON until told.
+
+[Learning #26 — addendum 3, 2026-06-06] — task_density tiers reverted to middle; prompt slimmed
+User decision: restore the MIDDLE task_density tiers (≤3.0→1, 3.1–6.0→2, ≥6.1→3); keep the recalibrated spine_load (total spine-cells: ≤6→1, 7–12→2, ≥13→3); writing_demand, project_load, and the effort formula stay as middle. So the only secondary-specific tier change is spine_load.
+Effect on calibration reference: under restored density tiers, Ch1 and Ch6 BOTH read task_density 1 → effort_index 9.0 each (Ch6's 2.92 avg now falls in tier 1, not the previously-proposed tier 2). spine_load (re-based on cell count) remains the discriminating signal across chapters of different section counts. Prompt's Step 7 reference values updated to 9.0 / 9.0.
+Also: slimmed the secondary step_1 prompt 457 → 331 lines (crisp pass; no step/field/delta/constraint removed). Step 8b mapping JSON template verified strict-valid.

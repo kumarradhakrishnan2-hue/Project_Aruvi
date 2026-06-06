@@ -1,0 +1,223 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 8,
+  "chapter_title": "Fair Share",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Equal sharing and the concept of half",
+      "prose_summary": "The section opens with Shabnam and Mukta sharing a paratha and chocolates, establishing the need for equal division. Through paper-folding (folding the paratha over itself to verify equal halves) and physical shape manipulation, students discover that splitting one whole equally between two people yields a 'half.' Tasks span concrete checking (folding), pictorial recognition (circling halved shapes, drawing half-lines), and pictorial reconstruction (completing the other half), placing the section firmly on the concrete-to-pictorial path.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let us Discuss",
+          "intent": "reason",
+          "book_ref": "Let us Discuss Q1, p.107",
+          "description": "How do you share objects equally?"
+        },
+        {
+          "id": "T-2",
+          "banner": "Let us Discuss",
+          "intent": "reason",
+          "book_ref": "Let us Discuss Q2, p.107",
+          "description": "Why is Shabnam folding the paratha over itself?"
+        },
+        {
+          "id": "T-3",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1, p.108",
+          "description": "Circle the shapes where half of the whole is coloured."
+        },
+        {
+          "id": "T-4",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q2, p.108",
+          "description": "Draw a line to show one-half of the whole."
+        },
+        {
+          "id": "T-5",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q3, p.109",
+          "description": "Shabnam has eaten some chikki from 3 sides. Tick how much chikki is left: (a) less than half (b) more than half (c) half."
+        },
+        {
+          "id": "T-6",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q4, p.109",
+          "description": "Show by colouring half a chikki that has been eaten from 2 sides."
+        },
+        {
+          "id": "T-7",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q5, p.109",
+          "description": "Draw lines to show different ways of making a half."
+        },
+        {
+          "id": "T-8",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q6, p.109",
+          "description": "Complete the whole picture by drawing the other half."
+        },
+        {
+          "id": "T-9",
+          "banner": "Let us Explore",
+          "intent": "explore",
+          "book_ref": "Let us Explore, p.110",
+          "description": "Take a rectangular sheet of paper and fold it in half. Find all the different ways to make a half. Repeat with a square piece of paper."
+        },
+        {
+          "id": "T-10",
+          "banner": "Let us Discuss",
+          "intent": "reason",
+          "book_ref": "Let us Discuss, p.110",
+          "description": "Is Amit's way of sharing the mango tree, solar lamp, and woollen blanket fair? Is there another fair way?"
+        },
+        {
+          "id": "T-11",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do, p.110",
+          "description": "Here are some mangoes. Share them equally between the two children."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Half and Double",
+      "prose_summary": "This section extends the concept of half into the number domain, introducing the inverse relationship between halving and doubling through a marble-game scenario where pairs of girls compare their counts. A number line (0–17) anchors the pictorial model; students fill blanks using 'half' or 'double' and reason about the distance between values and their halves or doubles. The section concludes with two 'Guess Who am I?' clue puzzles that require students to apply both half and double constraints simultaneously to identify a mystery number.",
+      "tasks": [
+        {
+          "id": "T-12",
+          "banner": "Fill in the blanks",
+          "intent": "practice",
+          "book_ref": "Fill in blanks, p.111",
+          "description": "Fill in the blanks: 4 marbles are ___ of 8; 8 marbles are ___ of 4; 10 marbles are ___ of 5; 5 marbles are ___ of 10; 6 marbles are ___ of 12; 12 marbles are ___ of 6."
+        },
+        {
+          "id": "T-13",
+          "banner": "Number line",
+          "intent": "reason",
+          "book_ref": "Number line, p.111",
+          "description": "On a number line, how far is 13 from the double of 7? How far is 5 from half of 14?"
+        },
+        {
+          "id": "T-14",
+          "banner": "Guess Who am I?",
+          "intent": "reason",
+          "book_ref": "Guess Who am I? Q1, p.112",
+          "description": "I have less than the double of 3 marbles and more than the half of 8 marbles. Tick the correct answer from (a) 4, (b) 5, (c) 6 marbles."
+        },
+        {
+          "id": "T-15",
+          "banner": "Guess Who am I?",
+          "intent": "reason",
+          "book_ref": "Guess Who am I? Q2, p.112",
+          "description": "I have less than the double of 4 marbles and more than the half of 10 marbles. Tick the correct answer from (a) 8, (b) 6, (c) 3 marbles."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Quarter — concept and recognition",
+      "prose_summary": "Building on the half, this section introduces the quarter as the share each person receives when one whole is divided equally among four people, first illustrated through four children sharing a chikki. Paper-folding is the implied concrete model; students then work pictorially to identify objects that show quarters, draw lines to partition shapes into quarters, and reconstruct the whole from one or more quarter pieces. The section sits at the pictorial level while the teacher's note explicitly anchors terminology ('one quarter', not '1 out of 4').",
+      "tasks": [
+        {
+          "id": "T-16",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1, p.113",
+          "description": "Tick the objects that show quarters."
+        },
+        {
+          "id": "T-17",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q2, p.113",
+          "description": "Draw lines to make a quarter of the whole (square, circle, flower, diamond)."
+        },
+        {
+          "id": "T-18",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q3, p.113",
+          "description": "Draw the remaining three quarters and complete the whole: (a) fan shape (b) striped rectangle."
+        },
+        {
+          "id": "T-19",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q4, p.113",
+          "description": "Draw the remaining quarters to complete the whole: (a) chocolate bar quarter (b) L-shaped quarter."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Quarters and Whole — building 1 to 4 quarters",
+      "prose_summary": "This section consolidates quarters by showing the additive build-up: 1 quarter → 2 quarters (= half) → 3 quarters → 4 quarters (= complete whole), using a pictorial circle model. A 'Half or Quarter?' comparison activity with birds and flower-garlands asks students to choose between half, quarter, and double, linking all three concepts. Tasks progress from identification and reasoning about named fractions to colouring, drawing, and open grid-based exploration, culminating in a hands-on fraction-card puzzle from the book's perforated sheet to physically form a whole.",
+      "tasks": [
+        {
+          "id": "T-20",
+          "banner": "Half or Quarter?",
+          "intent": "reason",
+          "book_ref": "Half or Quarter?, p.114",
+          "description": "Tick the appropriate word (half/a quarter/double) to complete sentences about Shabnam's and Lakshanya's coloured birds and tied flowers."
+        },
+        {
+          "id": "T-21",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1, p.115",
+          "description": "Tick the shapes below that show three-quarters."
+        },
+        {
+          "id": "T-22",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q2, p.115",
+          "description": "Colour the shapes below to show the fractions as instructed: 2 quarters, 1 quarter, 3 quarters, 4 quarters, 3 quarters, 1 quarter."
+        },
+        {
+          "id": "T-23",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q3, p.116",
+          "description": "Draw lines and colour the shapes below to show the fractions as instructed: 2 quarters, 1 quarter, 3 quarters, 4 quarters, 3 quarters, 1 quarter."
+        },
+        {
+          "id": "T-24",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q4, p.116",
+          "description": "Here is a rectangle which shows quarters. Discuss how."
+        },
+        {
+          "id": "T-25",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q5, p.116",
+          "description": "Show quarters and halves in different ways in the grids given below."
+        },
+        {
+          "id": "T-26",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q6, p.116",
+          "description": "Use the fraction cards from your book to form a whole."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 2,
+  "exploration_load": 1,
+  "procedural_load": 0
+}

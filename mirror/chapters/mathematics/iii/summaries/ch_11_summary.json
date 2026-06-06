@@ -1,0 +1,237 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 11,
+  "chapter_title": "Filling and Lifting",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Whose glass holds more?",
+      "prose_summary": "This section introduces capacity comparison by asking children to observe that different-shaped vessels hold different amounts of liquid. Through the story of Ritu, Monu, and Nita with glasses of different sizes, children learn that 'how much a container holds' (capacity) cannot be judged by appearance alone. The concrete method — pouring contents into identical same-sized glasses — establishes the idea of a fair comparison. Children then extend this to vessels from home, guessing and verifying how many small bowls fill a glass and a bottle, sitting firmly on the concrete-handling end of the learning path.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let us Discuss",
+          "intent": "reason",
+          "book_ref": "Let us Discuss Q1–2, p.140",
+          "description": "Who drank the most milk? Who drank the least milk? (from the picture of three glasses poured into same-sized glasses)"
+        },
+        {
+          "id": "T-2",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q3(a–c), p.141",
+          "description": "Fill in the blanks with 'more' or 'less': Nita's glass holds ___ milk than Monu's; Monu's holds ___ than Nita's; Ritu's holds ___ than Nita's."
+        },
+        {
+          "id": "T-3",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q4(a–b), p.141",
+          "description": "Tick the right name: Nita/Monu/Ritu's glass holds the most milk. Nita/Monu/Ritu's glass holds the least milk."
+        },
+        {
+          "id": "T-4",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do (vessel activity), p.141",
+          "description": "Get three vessels (small bowl, glass, bottle) from home; guess how many small bowls fill each; pour water from one vessel into another to check."
+        },
+        {
+          "id": "T-5",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1(a–b), p.141",
+          "description": "Fill in the blanks with 'the most' or 'the least': the glass holds ___ water; the bottle holds ___ water."
+        },
+        {
+          "id": "T-6",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q2, p.141",
+          "description": "Name the vessels used in your home that can store more water than your bottle."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "A Measuring Bottle — the litre",
+      "prose_summary": "This section introduces the litre as a standard unit of capacity, building from informal comparison to a named standard. Children first reason about relationships between everyday vessels (ladle, bowl, glass, jug) using a lemonade stall picture, then Nita uses a 1-litre bottle to check whether a jug, glass, bowl, and ladle hold more, less, or exactly 1 litre. The section extends to half litre and quarter litre through pictorial and exploratory tasks. The path moves from concrete pouring and guessing to pictorial symbol reading (balance diagrams, pictures), with children cross-checking body sense against a standard measure.",
+      "tasks": [
+        {
+          "id": "T-7",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1–2, p.142",
+          "description": "How many ladles fill the bowl? How many glasses can be filled by the jug? (from the lemonade stall picture)"
+        },
+        {
+          "id": "T-8",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q3, p.142",
+          "description": "What will you use to fill half of the glass?"
+        },
+        {
+          "id": "T-9",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q4, p.142",
+          "description": "Which of these would you use for distributing the lemonade in glasses? Why?"
+        },
+        {
+          "id": "T-10",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q5, p.142",
+          "description": "How many glasses can be filled with 3 jugs of lemonade?"
+        },
+        {
+          "id": "T-11",
+          "banner": "Let us Do",
+          "intent": "solve",
+          "book_ref": "Let us Do Q6, p.142",
+          "description": "How many ladles are needed to fill 4 glasses?"
+        },
+        {
+          "id": "T-12",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q7, p.142",
+          "description": "Can you use a ladle, bowl or a glass to find out how much lemonade a jug can hold?"
+        },
+        {
+          "id": "T-13",
+          "banner": "Let us Discuss",
+          "intent": "reason",
+          "book_ref": "Let us Discuss Q1(a–c), p.143",
+          "description": "Tick the appropriate word: the glass holds more than/less than 1 litre; the bowl holds more than/less than 1 litre; the jug holds more than/less than/exactly 1 litre."
+        },
+        {
+          "id": "T-14",
+          "banner": "Let us Discuss",
+          "intent": "explore",
+          "book_ref": "Let us Discuss Q2–3, p.143",
+          "description": "Find vessels at home that are exactly 1 litre using the 1 litre bottle to check; identify vessels that are more than or less than 1 litre."
+        },
+        {
+          "id": "T-15",
+          "banner": "Let us Think",
+          "intent": "reason",
+          "book_ref": "Let us Think (a–b), p.144",
+          "description": "Look at the picture and tick the appropriate word: the mug holds a litre/half litre; the glass holds a litre/half litre/quarter litre of water."
+        },
+        {
+          "id": "T-16",
+          "banner": "Let us Explore",
+          "intent": "explore",
+          "book_ref": "Let us Explore (a–c), p.144",
+          "description": "First guess then check with the 1 litre bottle: how much water does a bucket/mug/glass hold — more than/less than/equal to 1 litre/half litre/quarter litre."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Heavy or Light? — comparing weights",
+      "prose_summary": "This section introduces the concept of weight by having children hold objects in both hands and compare which is heavier or lighter, using the body as an instrument. Children then graduate to a simple pan-balance, using informal weights (coins, erasers, sand-filled matchboxes) to express weight as 'how many coins balance this object'. The concrete model — pan-balance with everyday objects — grounds weight comparison before any standard unit appears, and the section ends with ordering objects from lightest to heaviest, placing it on the concrete-to-pictorial part of the path.",
+      "tasks": [
+        {
+          "id": "T-17",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do (hand-holding activity), p.145",
+          "description": "Hold listed things (lunch box & pencil box, school bag & lunch bag, apple & watermelon, balloon & basketball) in both hands in pairs; observe and record which is heavier."
+        },
+        {
+          "id": "T-18",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q1, p.146",
+          "description": "Write names of objects and how many coins or erasers balance the object on a pan-balance (pencil, ping pong ball, and other self-chosen objects)."
+        },
+        {
+          "id": "T-19",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q2, p.146",
+          "description": "Fill a matchbox with sand; guess and then verify how many matchboxes balance pencil box, a spoon, 4 marbles."
+        },
+        {
+          "id": "T-20",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do (ordering), p.146",
+          "description": "Write the names of all objects measured in the order of lightest to heaviest."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "How much is 1 Kilogram?",
+      "prose_summary": "This section introduces kilogram as the standard unit of weight, using a 1 kg salt packet as a concrete reference. Children first do a weight-hunt activity — comparing school bags in groups to find heavier and lighter ones — then locate 1 kg objects at home and develop a body sense of the kilogram. The section extends to half kilogram and quarter kilogram through estimation and verification activities, and uses pan-balance pictures to read relationships. Children move from concrete feel (hand and bag comparison) through pictorial inference (balance diagrams with daal and tea packets) to estimation against a standard, covering the concrete-to-pictorial arc.",
+      "tasks": [
+        {
+          "id": "T-21",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do (Weight hunt) Q1–3, p.147",
+          "description": "In groups, find a bag heavier and lighter than yours; discuss why; count books to see if there is a difference; can you equalise bags by moving a book?"
+        },
+        {
+          "id": "T-22",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q4, p.147",
+          "description": "With parents' help, find objects at home on which 1 kilogram is written; feel it; write names of the objects that are 1 kilogram."
+        },
+        {
+          "id": "T-23",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q5, p.147",
+          "description": "Can you guess which things (pencil, table, water bottle, lunch box, balloons, pillow, eraser) are likely to be lighter or heavier than 1 kilogram? Put a tick mark in the appropriate box."
+        },
+        {
+          "id": "T-24",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q6(a–b), p.148",
+          "description": "Look at the balance and tick the correct word: each daal packet weighs a half kilogram/kilogram; each tea packet weighs a half kilogram/quarter kilogram/kilogram."
+        },
+        {
+          "id": "T-25",
+          "banner": "Let us Explore",
+          "intent": "explore",
+          "book_ref": "Let us Explore, p.148",
+          "description": "Look around your house; identify objects about half a kilogram and quarter of a kilogram; feel and guess; list and verify with the 1 kilogram salt packet."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Tricky balls — reasoning with a pan-balance",
+      "prose_summary": "This section challenges children to reason logically about weight using a pan-balance without any standard weights — pure relational thinking. In the first puzzle, one of three similar-looking balls is heavier; children must work out the minimum number of weighings and describe the strategy to identify it in a single use of the balance. The second puzzle extends this to three balls of three different weights (red, orange, green) where children must figure out a sequence of comparisons to order all three. This section sits at the reasoning end of the concrete-to-symbolic path, demanding deduction rather than measurement.",
+      "tasks": [
+        {
+          "id": "T-26",
+          "banner": "Tricky balls",
+          "intent": "reason",
+          "book_ref": "Tricky balls Q1(a–b), p.149",
+          "description": "3 similar balls, one heavier, 2 equal; using only a pan-balance and no weights: (a) how many times will you have to weigh? (b) use the balance only once to identify the heavy ball."
+        },
+        {
+          "id": "T-27",
+          "banner": "Tricky balls",
+          "intent": "reason",
+          "book_ref": "Tricky balls Q2, p.149",
+          "description": "Three same-sized balls of different weights (red, orange, green); using pan-balance without weights, find which is heaviest and which is lightest."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 2,
+  "exploration_load": 1,
+  "procedural_load": 0
+}

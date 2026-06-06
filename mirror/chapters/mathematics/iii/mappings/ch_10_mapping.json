@@ -1,0 +1,43 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 10,
+  "chapter_title": "Fun at Class Party!",
+
+  "core_cg": "CG-3",
+
+  "core_competencies": [
+    {
+      "c_code": "C-3.1",
+      "justification": "The entire chapter builds around the transition from non-standard to standard units of length. Students measure the same classroom objects and distances using hand spans, footsteps, and paper strings, discover that different people get different results, and then make a one-metre rope to establish a shared reference. The body-measurement exploration (head circumference, forearm, height) surfaces the same limitation in informal units. This concrete arc — non-standard → inconsistency → need for standard — is precisely what C-3.1 describes."
+    },
+    {
+      "c_code": "C-3.5",
+      "justification": "Estimation is a distinct and recurring strand in the chapter, not a sub-step of measuring. Students guess which string light is longest before verifying, estimate whether the table fits through the door before using a thread to check, cut a one-metre thread from memory and then compare it to the metre rope, and guess which objects pass through the bridge before testing. Each cycle follows the estimate-then-verify structure that C-3.5 targets."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-3.2",
+      "justification": "The object-classification table requires students to choose among one-metre, half-metre, and quarter-metre ropes depending on the object being measured — the practical act of matching tool to the scale of the attribute. This is distinct from C-3.1 (which is about recognising the need for standard units) and directly instantiates C-3.2's selecting-the-right-unit-and-tool requirement."
+    },
+    {
+      "c_code": "C-4.3",
+      "justification": "Several tasks ask students to compare measurement methods and explain which is better: the opening picture discussion explicitly prompts 'Which way do you think is better and why?', and the saree-measuring dialogue models the progression from pencil to paper strip to arm length to metre rod, each chosen because the previous is inadequate. These are genuine method-selection tasks, not just measuring tasks."
+    },
+    {
+      "c_code": "C-2.3",
+      "justification": "The drawing task in the comparing-lengths section asks students to complete the missing half of a moustache so that it matches the given half — a direct symmetry (reflection) task embedded within a length-measurement chapter. While it is a single task, it requires students to apply symmetry reasoning rather than just length comparison."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to measure lengths and evaluate the need for standard units by moving concretely from informal tools (hand spans, footsteps, paper strings) through indirect comparison (using a thread to compare without direct contact) to making and using a metre rope — with estimation and verification woven throughout.",
+
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 2,
+  "procedural_load": 0,
+  "effort_index": 13.0
+}

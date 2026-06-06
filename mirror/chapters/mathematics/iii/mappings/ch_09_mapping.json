@@ -1,0 +1,43 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 9,
+  "chapter_title": "House of Hundreds - II",
+
+  "core_cg": "CG-1",
+
+  "core_competencies": [
+    {
+      "c_code": "C-1.1",
+      "justification": "The chapter's primary work is representing 3-digit numbers through the Indian place value structure and comparing them. Students draw Dienes-style tile arrangements for numbers like 832, 726, and 504; decompose numbers using paper slips labelled 100, 10, or 1; locate numbers on partial number lines; and fill inequality-condition puzzles requiring them to place numbers greater than or less than 400. Every one of these activities is grounded in the H-T-O place value structure and in comparing whole numbers up to 1000."
+    },
+    {
+      "c_code": "C-1.4",
+      "justification": "A substantial independent strand of the chapter asks students to recognise, describe, and extend number patterns. The Skip and Solve activities require completing skip sequences with steps of +10, +25, +30, and +100. The Number Detective section explicitly guides students to find and extend families of consecutive-digit numbers (123, 345, 789 ascending; 321, 876 descending), palindromic numbers (353, 868), twin-digit and triplet-digit numbers, and round hundreds — each requiring the student to identify the organising rule and generate new members."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-4.1",
+      "justification": "The chapter contains several recreational puzzle formats that require students to satisfy numerical constraints rather than execute routine procedures. In the Tambola game, students cross out grid entries matching six clue types (exact value, digit property, range, tens digit, relative value). The circle ordering puzzle asks students to place four numbers — 23, 176, 384, and 905 — in a circular arrangement satisfying directional ordering conditions. The Number Detective chain and the Bhutasankhya decoding tasks also function as word and pattern puzzles requiring systematic reasoning."
+    },
+    {
+      "c_code": "C-4.2",
+      "justification": "Two activities in the chapter require organised enumeration under constraints. In the My Numbers activity, students list all 2-digit and 3-digit numbers that can be formed from the digits 3 and 8 (repetition allowed) and arrange them systematically from smallest to greatest. In the paper-slip activity, students determine which numbers can and cannot be made using exactly 6 slips each labelled 100, 10, or 1, which is a combinatorial counting problem with a fixed-resource constraint."
+    },
+    {
+      "c_code": "C-5.1",
+      "justification": "The Bhutasankhya section explicitly introduces an ancient Indian system of encoding digits through culturally familiar words and objects — Sapta svara for 7, Moon for 1, Directions for 4, Sense organs for 5 — as a historical method of expressing numbers. Students decode card pairs and create their own word-numeral cards for 15, 27, and 94, directly engaging with the Indian cultural and historical roots of the place-value number system."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to represent, compare, and detect patterns in 3-digit whole numbers by working through the Indian place value structure using concrete models (tiles, paper slips), number-line reasoning, skip sequences, and culturally rooted encoding systems.",
+
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 0,
+  "procedural_load": 1,
+  "effort_index": 11.5
+}

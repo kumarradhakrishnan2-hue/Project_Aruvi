@@ -1,0 +1,39 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 14,
+  "chapter_title": "The Surajkund Fair",
+
+  "core_cg": "CG-2",
+
+  "core_competencies": [
+    {
+      "c_code": "C-2.3",
+      "justification": "Symmetry recognition and creation is the organising purpose of the chapter's first six sections. Children make bead-string malas and judge which arrangements are symmetrical by comparing both halves, trace and fold rangoli patterns (kolam, Pookalam, Aipan) to verify lines of symmetry, complete the missing half of given rangolis on a dot grid, and physically fold paper to produce a symmetrical cat mask — progressing from hands-on making to pictorial completion. The mirror counter game on a 4×4 grid further cements C-2.3 by asking children to reproduce a spatial arrangement as its reflection and verify with a physical mirror."
+    },
+    {
+      "c_code": "C-2.2",
+      "justification": "The fair map reading section engages C-2.2 directly: children decode a pictorial map of the Surajkund fair using a symbol legend, identify locations of the chaupal, play area, parking, and exit routes, then follow a multi-step colour-coded walking route (blue lane → turn right on green lane → left on red lane → first left on golden lane). The final task requires giving verbal directions from the chaupal to the ATM, exercising both the 'notion of map' and directional movement vocabulary that C-2.2 specifies."
+    }
+  ],
+
+  "adjunct_competencies": [
+    {
+      "c_code": "C-2.4",
+      "justification": "The tiling sections ask children to discover which rangometry shapes tessellate given outlines (rectangle, square, hexagon) without gaps or overlaps, and then to create their own composite tiles by joining two or more shapes and tracing them to form repeating paths. Recognising and extending the repeating unit in these tile patterns — including three given tessellation designs — directly engages the 'recognises, describes, and extends patterns in 2D shapes' strand of C-2.4."
+    },
+    {
+      "c_code": "C-4.2",
+      "justification": "The mirror-grid colouring task asks children to fill 4 boxes red and 3 boxes blue in a divided grid such that one side is the mirror image of the other, and then asks 'In how many ways can you fill it?' This is a constrained combinatorial task — systematically listing all valid colour arrangements that satisfy the mirror-image condition — which is the precise skill described in C-4.2."
+    }
+  ],
+
+  "dissolution_test": "This chapter builds the student's ability to recognise and create symmetry and spatial relationships in two-dimensional contexts by engaging with concrete manipulation of bead strings, paper-folded masks, and rangoli patterns to internalise reflection symmetry, and by reading and navigating a pictorial map of the fair using directional vocabulary and multi-step route-following.",
+
+  "conceptual_demand": 2,
+  "task_load": 2,
+  "exploration_load": 1,
+  "procedural_load": 0,
+  "effort_index": 9.5
+}

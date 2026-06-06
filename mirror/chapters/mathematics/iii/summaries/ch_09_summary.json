@@ -1,0 +1,265 @@
+{
+  "stage": "preparatory",
+  "subject": "mathematics",
+  "grade": "iii",
+  "chapter_number": 9,
+  "chapter_title": "House of Hundreds - II",
+  "sections": [
+    {
+      "ref": "S1",
+      "title": "Representing 3-digit numbers with tiles and number line",
+      "prose_summary": "This section introduces the tile model (flat/long/unit Dienes-style tiles) as a concrete representation for 3-digit numbers up to 999. Students first decode a truck driver's tile arrangement, then draw their own tiles for six given numbers. They then locate numbers on two partial number lines spanning 500–700 and 695–900, placing points by reasoning about equal intervals. The section sits at the concrete-to-pictorial boundary, connecting physical grouping to symbolic place value.",
+      "tasks": [
+        {
+          "id": "T-1",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q (draw tiles), p.118",
+          "description": "Draw tiles like the driver to show 832, 947, 726, 504, 620, 700 in your notebook."
+        },
+        {
+          "id": "T-2",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q (number line 1), p.118",
+          "description": "Locate 530, 540, 628, 696, 590 on the number line (500–700)."
+        },
+        {
+          "id": "T-3",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q (number line 2), p.118",
+          "description": "Locate 703, 721, 759, 810, 855, 887 on the number line (695–875)."
+        }
+      ]
+    },
+    {
+      "ref": "S2",
+      "title": "Estimating position: neighbouring hundreds, fifties, and tens",
+      "prose_summary": "This section builds estimation and number-sense by asking students to identify the neighbouring hundreds, neighbouring fifties, and neighbouring tens for a set of 3-digit numbers (183, 345, 693, 734, 899), with 468 modelled. A number-line crane activity extends this: students find how many steps a crane must jump—backward to reach a worm and forward to reach a fish—from a given position, and identify the step length used. Both activities develop the skill of placing a number in its interval context without computation.",
+      "tasks": [
+        {
+          "id": "T-4",
+          "banner": "Let us Think",
+          "intent": "reason",
+          "book_ref": "Let us Think Q1, p.119",
+          "description": "Write neighbouring hundreds, fifties, and tens for 183, 345, 693, 734, 899."
+        },
+        {
+          "id": "T-5",
+          "banner": "Let us Think",
+          "intent": "reason",
+          "book_ref": "Let us Think Q2 (crane 1), p.119",
+          "description": "Help the crane: find steps and step length for 667−__=650 and 667+__=700."
+        },
+        {
+          "id": "T-6",
+          "banner": "Let us Think",
+          "intent": "reason",
+          "book_ref": "Let us Think Q2 (crane 2), p.119",
+          "description": "Help the crane: find steps and step length for __−__=750 and __+__=800."
+        }
+      ]
+    },
+    {
+      "ref": "S3",
+      "title": "Number patterns and skip sequences",
+      "prose_summary": "This section develops pattern recognition and extension through a 'Skip and Solve' puzzle with multiple concurrent skip sequences (steps of +10, +100, +25, +30, +15). Students complete two footprint trails counting consecutive sequences and a branching diagram in which they fill missing values. The activity requires identifying the constant step size and applying it repeatedly, sitting at the reasoning-to-practice boundary.",
+      "tasks": [
+        {
+          "id": "T-7",
+          "banner": "Skip and Solve",
+          "intent": "reason",
+          "book_ref": "Skip and Solve (footprint trails), p.121",
+          "description": "Complete the skip-count footprint trails: consecutive sequences 940–969 with missing numbers."
+        },
+        {
+          "id": "T-8",
+          "banner": "Skip and Solve",
+          "intent": "reason",
+          "book_ref": "Skip and Solve (branching diagram), p.121",
+          "description": "Fill missing boxes in the branching skip pattern: +10, +100, +25, +30, +15 from starting values."
+        },
+        {
+          "id": "T-9",
+          "banner": "Skip and Solve",
+          "intent": "practice",
+          "book_ref": "Skip and Solve (footprint trails 2), p.122",
+          "description": "Complete the footprint trail for consecutive sequences 970–1000 with missing numbers."
+        }
+      ]
+    },
+    {
+      "ref": "S4",
+      "title": "Tambola: number properties and multiple representations",
+      "prose_summary": "Tambola (a Bingo-style game) consolidates number properties in the 570–630 range. Students fill a 4×4 grid with numbers in that range, then cross out entries matching six clue types: exact value, digit property, range membership, tens-digit identity, and relative value (two more than, five less than). A follow-up asks students to write multiple representations of given numbers (368, 555, 905, 736) using decomposition, addition, and word phrases. The section reviews place-value fluency and promotes flexible thinking about number identity.",
+      "tasks": [
+        {
+          "id": "T-10",
+          "banner": "Let us Think",
+          "intent": "reason",
+          "book_ref": "Let us Think Q3 (Tambola), p.120",
+          "description": "Fill a 4×4 grid with numbers 570–630; cross out numbers matching 6 given clues."
+        },
+        {
+          "id": "T-11",
+          "banner": "Let us Think",
+          "intent": "practice",
+          "book_ref": "Let us Think Q (multiple representations), p.120",
+          "description": "Write different ways of making 368, 555, 905, 736 (e.g., 3 hundreds 6 tens 8 ones, 300+60+8, 400−32)."
+        }
+      ]
+    },
+    {
+      "ref": "S5",
+      "title": "Number puzzles and ordering",
+      "prose_summary": "This section applies comparison and ordering in three puzzle formats: writing addition sentences for central numbers, filling blanks satisfying inequality conditions, and placing four numbers in a circle with directional ordering constraints. A match-the-quantity task connects real-world quantities to appropriate number ranges (0–10 through more than 1000), and a riddle-matching task links descriptive clues to specific values. These activities develop flexible comparison and ordering reasoning.",
+      "tasks": [
+        {
+          "id": "T-12",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q1 (number sentences), p.122",
+          "description": "Write number sentences for the centre numbers 400 (e.g., 290+110) and 775 (e.g., 750+25)."
+        },
+        {
+          "id": "T-13",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q2 (conditions), p.122",
+          "description": "Write numbers in blank spaces satisfying greater-than/less-than conditions around 400, with anchors 419, 425, 385, 436."
+        },
+        {
+          "id": "T-14",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q3 (circle puzzle), p.122",
+          "description": "Fill 384, 23, 176, 905 in empty circles so ordering conditions are met."
+        },
+        {
+          "id": "T-15",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q4 (match quantities), p.123",
+          "description": "Match real-world quantities (children in school, books in classroom, etc.) to number ranges 0–10 through more than 1000."
+        },
+        {
+          "id": "T-16",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q5 (riddle match), p.123",
+          "description": "Match number descriptions ('2 zeroes, close to 99'; '3 hundreds 6 tens 7 ones'; etc.) to values 150, 425, 367, 400, 100."
+        }
+      ]
+    },
+    {
+      "ref": "S6",
+      "title": "The Number Detective: special number patterns",
+      "prose_summary": "This section invites students to explore structured number families: round hundreds (100–1000), consecutive-digit numbers ascending (123, 345, 789) and descending (321, 876), twin-digit numbers (11, 22…), triplet-digit numbers (111, 222…), palindromic numbers (353, 868), and numbers with zeroes (210, 404, 800). Students find more examples of each pattern, encouraging systematic enumeration and generalisation within 3-digit numbers.",
+      "tasks": [
+        {
+          "id": "T-17",
+          "banner": "Let us Think",
+          "intent": "reason",
+          "book_ref": "Let us Think (Number Detective), p.124",
+          "description": "Find all hundreds (100–1000); find more consecutive-digit numbers (ascending and descending) beyond 789, 345, 123, 876, 321."
+        },
+        {
+          "id": "T-18",
+          "banner": "Let us Think",
+          "intent": "reason",
+          "book_ref": "Let us Think (Number Detective—twin/triplet/palindrome), p.124",
+          "description": "Find more twin-digit numbers (11, 22…), triplet-digit numbers (111…), and palindromes (353, 868…) up to 999."
+        },
+        {
+          "id": "T-19",
+          "banner": "Let us Think",
+          "intent": "reason",
+          "book_ref": "Let us Think (Number Detective—zeroes), p.124",
+          "description": "Write more 3-digit numbers with zeroes beyond 210, 404, 800."
+        }
+      ]
+    },
+    {
+      "ref": "S7",
+      "title": "Paper slips and place value decomposition",
+      "prose_summary": "Students use six blank paper slips (each labelled 100, 10, or 1) as a physical decomposition model. By choosing what to write on each slip, they construct any number buildable from six units of 100/10/1, discovering the range and limits of this representation. Guided tasks ask them to compose 231 and 123, make other numbers, find the largest/smallest makeable number, and identify numbers that cannot be made. This is a hands-on, concrete place-value exploration at the manipulative stage.",
+      "tasks": [
+        {
+          "id": "T-20",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q1a (paper slips—231), p.125",
+          "description": "Write 100/10/1 on 6 blank slips to make 231; show the slip arrangement."
+        },
+        {
+          "id": "T-21",
+          "banner": "Let us Do",
+          "intent": "explore",
+          "book_ref": "Let us Do Q1b (paper slips—123), p.125",
+          "description": "Write 100/10/1 on 6 blank slips to make 123; show the slip arrangement."
+        },
+        {
+          "id": "T-22",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q2 (make other numbers), p.125",
+          "description": "Make two other numbers using 6 slips (100/10/1 each); find the largest and smallest numbers makeable; find numbers that cannot be made."
+        }
+      ]
+    },
+    {
+      "ref": "S8",
+      "title": "My Numbers: making numbers from given digits",
+      "prose_summary": "Students take the digits 3 and 8 (repetition allowed) and systematically generate all possible 2-digit and 3-digit numbers. They arrange these in order from smallest to greatest and identify the smallest and largest. A follow-up 'Let us Think' puzzle presents Teji's Bhutasankhya teaser—Moon (1) and Twins (2) make 12—prompting students to reason out her coding system before the next section explains it. The section develops systematic enumeration and ordering.",
+      "tasks": [
+        {
+          "id": "T-23",
+          "banner": "My Numbers",
+          "intent": "reason",
+          "book_ref": "My Numbers (digits 3 and 8), p.126",
+          "description": "Make all 2-digit and 3-digit numbers using digits 3 and 8 (repeats allowed); list smaller to greater; identify smallest and largest."
+        },
+        {
+          "id": "T-24",
+          "banner": "Let us Think",
+          "intent": "reason",
+          "book_ref": "Let us Think (Teji's cards), p.126",
+          "description": "Figure out Teji's rule: Moon+Twins=12, Qutub minar+Char minar=14; what is she doing?"
+        }
+      ]
+    },
+    {
+      "ref": "S9",
+      "title": "Bhutasankhya: word numerals",
+      "prose_summary": "This section introduces Bhutasankhya (Word Numerals), an ancient Indian system encoding digits through familiar objects (Moon=1, Eyes=2, Directions=4, Sense organs=5, Hexagon=6). Students decode card pairs to read numbers (Directions+Eyes=42; Sense organs+Hexagon=56), then create their own word-numeral cards for 15, 27, and 94 by choosing words for digits 0–9. The activity connects cultural heritage with place-value understanding at the symbolic stage.",
+      "tasks": [
+        {
+          "id": "T-25",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q1a (Bhutasankhya decode), p.127",
+          "description": "Write the number for the card pair: Directions + Eyes."
+        },
+        {
+          "id": "T-26",
+          "banner": "Let us Do",
+          "intent": "practice",
+          "book_ref": "Let us Do Q1b (Bhutasankhya decode), p.127",
+          "description": "Write the number for the card pair: Sense organs + Hexagon."
+        },
+        {
+          "id": "T-27",
+          "banner": "Let us Do",
+          "intent": "reason",
+          "book_ref": "Let us Do Q2 (create cards), p.127",
+          "description": "Think of other words for digits 0–9; make new Bhutasankhya cards for 15, 27, and 94."
+        }
+      ]
+    }
+  ],
+  "conceptual_demand": 2,
+  "task_load": 3,
+  "exploration_load": 0,
+  "procedural_load": 1
+}
