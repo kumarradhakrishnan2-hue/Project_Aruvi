@@ -363,21 +363,19 @@ def _render_visual_stimulus(vs_text: str, uw: float, story: list):
         story.append(tbl_wrapper)
 
     else:
-        # Plain text / description — render in a light-grey box (no label, fix c)
+        # Plain text / description — light-grey background, no border, normal font
         body_para = Paragraph(
             _clean_text(vs),
-            ParagraphStyle("vs_plain", fontName="Helvetica-Oblique",
-                           fontSize=7.5, leading=11, textColor=MID),
+            ParagraphStyle("vs_plain", fontName="Helvetica",
+                           fontSize=7.5, leading=11, textColor=INK),
         )
-        # Single-row box — no label (fix c)
         box = Table([[body_para]], colWidths=[uw])
         box.setStyle(TableStyle([
-            ("BACKGROUND",    (0, 0), (-1, -1), colors.HexColor("#f5f5f5")),
-            ("BOX",           (0, 0), (-1, -1), 0.5, HAIRLINE),
-            ("TOPPADDING",    (0, 0), (-1, -1), 4),
-            ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
-            ("LEFTPADDING",   (0, 0), (-1, -1), 6),
-            ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+            ("BACKGROUND",    (0, 0), (-1, -1), colors.HexColor("#f2f2f2")),
+            ("TOPPADDING",    (0, 0), (-1, -1), 6),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+            ("LEFTPADDING",   (0, 0), (-1, -1), 8),
+            ("RIGHTPADDING",  (0, 0), (-1, -1), 8),
             ("VALIGN",        (0, 0), (-1, -1), "TOP"),
         ]))
         story.append(box)
@@ -779,6 +777,15 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
         if vs and isinstance(vs, str) and vs.strip():
             _render_visual_stimulus(vs, uw, story)
 
+    # ── EXTRACT_ANALYSIS: numbered questions follow the extract ───────────────
+    # When the item_stem was split upstream (_extract_questions set), render
+    # the numbered questions here — after visual_stimulus — so the order is:
+    # opening directive → extract box → questions.
+    _ea_qs = item.get("_extract_questions", "")
+    if _ea_qs and isinstance(_ea_qs, str) and _ea_qs.strip():
+        q_ea = "<br/>".join(_clean_text(ln) for ln in _ea_qs.split("\n"))
+        story.append(Paragraph(q_ea, AST["q_text"]))
+
     # ── MCQ options ───────────────────────────────────────────────────────────
     _is_true_false = (item.get("question_type", "") or "").upper() == "TRUE_FALSE"
     if qtype == "MCQ" and not item.get("_suppress_options") and not _is_true_false:
@@ -872,7 +879,6 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
                 )
                 for ei, elem in enumerate(_elems, 1):
                     story.append(Paragraph(f"{ei}. {_clean_text(str(elem))}", elem_style))
-            story.append(Spacer(1, 3))
 
         # LO below teacher guide -- 7.5 pt, one blank row gap (fix 3)
         lo_after = _clean_text(lo_text or "")
@@ -924,10 +930,16 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
         story.append(Spacer(1, 4))
 
     # ── Separator ─────────────────────────────────────────────────────────────
-    story.append(HLine(uw, thickness=0.3, color=ROW_LINE, sb=2, sa=2))
+    # English: double rule (thin + thick) to distinguish questions from each other.
+    # All other subjects: single thin line.
+    is_maths_item = bool(item.get("_maths_section_code"))
+    if item.get("is_english"):
+        story.append(HLine(uw, thickness=0.5, color=colors.black, sb=3, sa=1))
+        story.append(HLine(uw, thickness=1.5, color=colors.black, sb=1, sa=3))
+    else:
+        story.append(HLine(uw, thickness=0.3, color=ROW_LINE, sb=2, sa=2))
 
     # ── Two-row gap after separator (Science, SS, English, Mathematics) ─────────
-    is_maths_item = bool(item.get("_maths_section_code"))
     if meta_block is not None or item.get("is_english") or is_maths_item:
         story.append(Spacer(1, 24))
 
@@ -1059,6 +1071,24 @@ def build_assessment_pdf(output_path, data):
                     # Suppress the flat options list to avoid duplication (fix f).
                     item["question_text"] = raw_stem
                     item["_suppress_options"] = True
+
+                elif qtype_here == "EXTRACT_ANALYSIS" and raw_stem:
+                    # Split opening directive from numbered questions so the
+                    # extract (visual_stimulus) can be interleaved between them.
+                    # Order: opening line → extract box → numbered questions.
+                    ea_lines = raw_stem.splitlines()
+                    ea_intro_lines: list = []
+                    ea_q_lines: list = []
+                    ea_q_started = False
+                    for ln in ea_lines:
+                        if not ea_q_started and re.match(r"^\s*1\.", ln):
+                            ea_q_started = True
+                        if ea_q_started:
+                            ea_q_lines.append(ln)
+                        else:
+                            ea_intro_lines.append(ln)
+                    item["question_text"]      = "\n".join(ea_intro_lines).strip()
+                    item["_extract_questions"] = "\n".join(ea_q_lines).strip()
 
                 else:
                     item.setdefault("question_text", raw_stem)

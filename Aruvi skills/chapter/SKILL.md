@@ -9,7 +9,8 @@ description: >
   grade iv", "run the chapter pipeline", or any instruction that mentions a chapter number, subject, and
   grade together with intent to generate mirror data. Also trigger when the user says "run step 1" or
   "run step 2" for a chapter in the context of this project. Subjects include: science, social_sciences,
-  mathematics, english, and the_world_around_us (TWAU — preparatory stage only, Grades III–V).
+  mathematics, english (preparatory Grades III–V, middle Grades VI–VIII, secondary Grades IX–X),
+  and the_world_around_us (TWAU — preparatory stage only, Grades III–V).
 ---
 
 # Chapter Pipeline Skill
@@ -30,6 +31,7 @@ that the Allocate tab and the LP + Assessment generator depend on.
 | **The World Around Us (TWAU)** | Chapter summary (`.json`) | Competency mapping → `ch_NN_mapping.json` |
 | **English – Middle (VI–VIII)** | *(combined)* Chapter summary + mapping in one pass | — |
 | **English – Preparatory (III–V)** | *(combined)* Chapter summary + mapping in one pass | — |
+| **English – Secondary (IX–X)** | *(combined)* Chapter summary + mapping in one pass | — |
 
 English is a single-step subject. All others (including TWAU) are two-step: Step 1 must fully
 complete before Step 2 begins.
@@ -76,7 +78,7 @@ Prompt files:
   Step 2: cowork prompts/mathematics/step_2_competency_mapping.md
 ```
 
-For English:
+For English (middle stage example):
 ```
 Subject : English
 Grade   : VII (middle stage)
@@ -84,6 +86,16 @@ Chapters: 3
 Pipeline: Single step — Chapter summary + mapping (combined)
 Prompt file:
   Step 1: cowork prompts/english/middle/step_1_chapter_summary_and_mapping.md
+```
+
+For English (secondary stage example):
+```
+Subject : English
+Grade   : IX (secondary stage)
+Chapters: 1
+Pipeline: Single step — Chapter summary + mapping (combined)
+Prompt file:
+  Step 1: cowork prompts/english/secondary/step_1_chapter_summary_and_mapping.md
 ```
 
 For The World Around Us (TWAU):
@@ -128,6 +140,9 @@ All prompt files live under:
 
 **English (preparatory — grades III, IV, V):**
 - Step 1 (only): `mnt/data/cowork prompts/english/preparatory/step_1_chapter_summary_and_mapping.md`
+
+**English (secondary — grades IX, X):**
+- Step 1 (only): `mnt/data/cowork prompts/english/secondary/step_1_chapter_summary_and_mapping.md`
 
 Read the prompt file(s) now. The prompt file contains the full instructions for that step —
 follow them exactly.
@@ -198,7 +213,7 @@ ch_07   | Water              | summary ✓     | mapping ✓ EI:9.0 cw:4
 
 - **Summary file missing when Step 2 runs**: halt and report. Do not fabricate. Re-run Step 1.
 - **Grade out of range for stage**: warn and ask — e.g. English preparatory prompt used for grade VI
-  would be wrong; correct prompt is english/middle. TWAU requested for grade VI or above — reject;
+  would be wrong; correct prompt is english/middle or english/secondary. TWAU requested for grade VI or above — reject;
   TWAU only exists for grades III, IV, V.
 - **Chapter PDF not found**: log a warning for that chapter and skip — do not halt the whole run.
 - **Existing file will be overwritten**: this is expected behaviour — all prompts overwrite silently.

@@ -52,14 +52,6 @@ INPUTS
    where question_bank holds that task's textbook sub-items (or `[]` for an
    open prompt). There is no flat top-level question_bank.
 
-   Listening cells carry `transcript_ref` (the PRINTED textbook page number)
-   and [SECONDARY DELTA] may carry `transcript_file` + `transcript_unit`.
-   At secondary the transcript text lives in a SEPARATE appendix booklet
-   (`knowledge_commons/textbooks/english/{grade}/transcript.pdf`), not in
-   the chapter PDF. The LP does not read transcript bodies; it passes the
-   listening cell through, and a listening period's phase description
-   should note the transcript is read from the appendix booklet.
-
    The text fields (prose_/drama_/poem_) are the source of truth for
    teacher_notes and phase descriptions.
 
@@ -305,9 +297,39 @@ Example: Critical Reflection ("night-terrace extract, close-reading +
 paired discussion").
 
 Teacher-facing text MUST NOT expose internal planning machinery: no task
-indices, rule numbers / constitutional refs, schema keys / planner
-identifiers, or implementation metadata. Such references live only in
-structured machine-readable fields.
+indices ("task 3", "Tasks 5 and 6"), no `task_index`, no internal item IDs,
+no rule numbers / constitutional refs, no schema keys / planner identifiers,
+no C-codes, no internal question-type codes (MCQ, SCR, ECR, EXTRACT_ANALYSIS,
+MATCH, FILL_IN, TRUE_FALSE, ORAL_PROMPT, WRITING_TASK, PROJECT — write these in
+plain words, e.g. "multiple-choice", "extended-answer", "matching"), and no
+implementation metadata. Refer to a task only by its teacher-facing anchor (the
+spine subheading, e.g. "Reading for Meaning", "Critical Reflection",
+"Vocabulary and Structures in Context") plus a plain-English brief.
+
+THREE FIELDS ARE TEACHER-FACING and bound by this rule:
+  - phase `description`
+  - `teacher_notes`
+  - `task_brief` (inside `tasks_in_class`, `homework`, and the handoff's
+    `tasks_anchored`) — it is rendered to teachers, so it MUST carry no
+    internal codes AND MUST give a location descriptor the teacher can act on:
+    the subheading anchor PLUS a page locator, then the plain brief.
+    Format: "<Subheading> (p.NN): <plain brief>".
+    Example: "Critical Reflection (p.184): six extended-answer questions —
+    title justification, character analysis".
+    The page comes from the summary's per-task `page_ref`; if a task has none
+    (a warm-up / oral / open prompt), use the section's page range. This
+    applies to HOMEWORK briefs exactly as to in-class briefs — a homework item
+    a teacher cannot locate is a defect.
+
+The ONLY internal reference permitted inside the structured arrays is the
+numeric `task_index` join key. Everything human-readable obeys the rule above.
+
+VERIFICATION PASS (mandatory after every LP generation): run
+`aruvi-scripts/lint_lp_teacher_prose.py <plan.json>` over the produced LP. It
+scans every `teacher_notes`, phase `description`, and `task_brief` for all the
+leaks above (including missing-anchor briefs) and exits non-zero on any hit. A
+run is not complete until the lint passes; rewrite any flagged text to the
+anchor + plain-words form and re-lint.
 
 
 ================================================================================

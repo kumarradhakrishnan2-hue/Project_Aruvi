@@ -588,6 +588,9 @@
   letter-spacing: 0.04em; font-size: 9px; margin-right: 4px;
 }
 .eng-opts { margin: 6px 0 8px; }
+.eng-tf-list { margin: 8px 0 6px; }
+.eng-tf-stmt { font-size: 12px; line-height: 1.55; margin: 4px 0; display: flex; }
+.eng-tf-num  { font-weight: 600; white-space: nowrap; min-width: 20px; }
 .eng-tg-lbl {
   font-size: 9px; font-weight: 600; text-transform: uppercase;
   letter-spacing: 0.07em; color: #085041; margin-bottom: 5px;
@@ -663,13 +666,20 @@ function escHtml(s) {
    (b) run-together prose — inserts <br> before Part A/B/C, " 1." " 2.",
        " (a)" " (b)" patterns.
    Only for English — safe to call on any string. */
+
+/* Bold Part A / Part B / Part C headings in any already-escaped HTML string. */
+function boldPartHeadings(html) {
+  return html.replace(/(Part\s+[A-Z]\s*[\-—:][^<\n]*)/g, '<strong>$1</strong>');
+}
+
 function fmtGuide(s) {
   if (!s) return '';
   var esc = escHtml(s);
   /* If the string already has newlines, use those. */
   if (esc.indexOf('\n') !== -1) return esc.replace(/\n/g, '<br>');
-  /* Insert breaks before Part A / Part B / Part C labels (fix 7) */
-  esc = esc.replace(/\s+(Part\s+[A-Z][\s\-:—])/g, '<br>$1');
+  /* Insert breaks before Part A / Part B / Part C labels (fix 7); bold them */
+  esc = esc.replace(/\s+(Part\s+[A-Z][^\n<]*)/g, '<br>$1');
+  esc = boldPartHeadings(esc);
   /* Insert breaks before run-together numbered items: " 1." " 2." */
   esc = esc.replace(/ (\d+)\.\s+/g, '<br>$1. ');
   /* Insert breaks before lettered items: " (a)" " (b)" */
@@ -731,7 +741,10 @@ function renderMarkdownStemHtml(stemText) {
   segments.forEach(function(seg) {
     if (seg.type === 'text') {
       var txt = seg.lines.join('\n').trim();
-      if (txt) html += '<div class="qtext">' + escHtml(txt).replace(/\n/g, '<br>') + '</div>';
+      if (txt) {
+        var txtHtml = boldPartHeadings(escHtml(txt).replace(/\n/g, '<br>'));
+        html += '<div class="qtext">' + txtHtml + '</div>';
+      }
     } else {
       /* Parse pipe table */
       var parsedRows = seg.lines.map(function(line) {
@@ -1120,8 +1133,13 @@ function renderEnglishQuestionCard(q, n) {
           wordBoxWords = wbMatch[1].split(/\s{2,}|\t/).filter(function(w){ return w.trim(); });
           return;  /* don't add word box line to displayed stem */
         }
-        /* Strip numbered match-list lines already in vs table (fix d) */
+        /* Strip pipe-table lines (header, separator, data rows) when
+           visual_stimulus already carries the table — avoids duplication */
         var trimLine = line.trim();
+        if (vsForDedup && trimLine.charAt(0) === '|') {
+          return;
+        }
+        /* Strip numbered match-list lines already in vs table (fix d) */
         if (/^\d+\./.test(trimLine) && vsRowSet[trimLine.toLowerCase()]) {
           return;
         }
@@ -1130,7 +1148,7 @@ function renderEnglishQuestionCard(q, n) {
 
       var cleanFraming = cleanMatchLines.join('\n').trim();
       if (cleanFraming) {
-        html += '<div class="qtext">' + escHtml(cleanFraming).replace(/\n/g, '<br>') + '</div>';
+        html += '<div class="qtext">' + boldPartHeadings(escHtml(cleanFraming).replace(/\n/g, '<br>')) + '</div>';
       }
       if (wordBoxWords.length) {
         html += renderWordBox(wordBoxWords);
@@ -1142,6 +1160,37 @@ function renderEnglishQuestionCard(q, n) {
          segments, rendering each table inline at the correct position. The
          visual_stimulus field is suppressed below to avoid duplication. */
       html += renderMarkdownStemHtml(framing);
+
+    } else if (cardType === 'EXTRACT_ANALYSIS') {
+      /* ── EXTRACT_ANALYSIS: opening directive → extract → numbered questions ──
+         The item_stem carries the opening line ("Read the extract…") followed by
+         the numbered sub-questions. The extract itself is in visual_stimulus.
+         Correct order: opening line · extract box · questions.
+         Split on the first occurrence of a newline followed by "1." to separate
+         the directive from the questions. */
+      var eaLines = framing.split('\n');
+      var eaIntroLines = [];
+      var eaQLines = [];
+      var eaQStarted = false;
+      eaLines.forEach(function(line) {
+        if (!eaQStarted && /^\s*1\./.test(line)) { eaQStarted = true; }
+        if (eaQStarted) { eaQLines.push(line); } else { eaIntroLines.push(line); }
+      });
+      var eaIntro = eaIntroLines.join('\n').trim();
+      var eaQuestions = eaQLines.join('\n').trim();
+      /* 1. Opening directive */
+      if (eaIntro) {
+        html += '<div class="qtext">' + escHtml(eaIntro).replace(/\n/g, '<br>') + '</div>';
+      }
+      /* 2. Extract block — from card-level visual_stimulus */
+      var eaVs = q.visual_stimulus || '';
+      if (eaVs) {
+        html += renderVisualStimulus(eaVs);
+      }
+      /* 3. Numbered questions */
+      if (eaQuestions) {
+        html += '<div class="qtext">' + boldPartHeadings(escHtml(eaQuestions).replace(/\n/g, '<br>')) + '</div>';
+      }
 
     } else if (cardType === 'MCQ' && framing.indexOf('My prediction') !== -1) {
       /* ── Predict-then-listen MCQ: break into per-question blocks (fix f) ── */
@@ -1173,7 +1222,26 @@ function renderEnglishQuestionCard(q, n) {
       }
 
     } else {
-      html += '<div class="qtext">' + escHtml(framing).replace(/\n/g, '<br>') + '</div>';
+      html += '<div class="qtext">' + boldPartHeadings(escHtml(framing).replace(/\n/g, '<br>')) + '</div>';
+    }
+  }
+
+  /* Card-level TRUE_FALSE: render numbered statements from q.options.
+     These items have no sub_items — options live directly on the card. */
+  if (cardType === 'TRUE_FALSE' && q.options && q.options.length && !hasSubItems) {
+    html += '<div class="eng-tf-list">';
+    q.options.forEach(function(o, oi) {
+      var num = o.label || String(oi + 1);
+      html += '<div class="eng-tf-stmt"><span class="eng-tf-num">' + escHtml(num) + '.&nbsp;</span>' +
+              escHtml(o.text || '') + '</div>';
+    });
+    html += '</div>';
+    /* Teacher guide for card-level TRUE_FALSE */
+    var tg = q.teacher_guide || {};
+    var tfGuide = tg.suggested_answer || '';
+    if (tfGuide) {
+      html += '<div class="abox open"><div class="eng-tg-lbl">Teacher Guide</div>' +
+              '<div class="eng-tg-suggest">' + fmtGuide(tfGuide) + '</div></div>';
     }
   }
 
@@ -1240,7 +1308,7 @@ function renderEnglishQuestionCard(q, n) {
 
         var cleanStem = dedupedStemLines.join('\n').trim();
         if (cleanStem) {
-          s += '<div class="eng-sub-stem">' + escHtml(cleanStem).replace(/\n/g, '<br>') + '</div>';
+          s += '<div class="eng-sub-stem">' + boldPartHeadings(escHtml(cleanStem).replace(/\n/g, '<br>')) + '</div>';
         }
         /* Render word box before the table (fix b) */
         if (wordBoxWords.length) {
@@ -1281,7 +1349,7 @@ function renderEnglishQuestionCard(q, n) {
             s += '</div>';
           } else {
             /* First block is intro text, rest are questions */
-            s += '<div class="eng-sub-stem">' + escHtml(introBlock).replace(/\n/g, '<br>') + '</div>';
+            s += '<div class="eng-sub-stem">' + boldPartHeadings(escHtml(introBlock).replace(/\n/g, '<br>')) + '</div>';
             s += '<div class="eng-sub-stem eng-sub-stem-mcq">';
             mcqBlocks.slice(1).forEach(function(block) {
               s += '<div class="eng-mcq-q">' + escHtml(block).replace(/\n/g, '<br>') + '</div>';
@@ -1289,7 +1357,7 @@ function renderEnglishQuestionCard(q, n) {
             s += '</div>';
           }
         } else {
-          s += '<div class="eng-sub-stem">' + escHtml(stemText).replace(/\n/g, '<br>') + '</div>';
+          s += '<div class="eng-sub-stem">' + boldPartHeadings(escHtml(stemText).replace(/\n/g, '<br>')) + '</div>';
         }
 
       } else if (isFillIn) {
@@ -1300,13 +1368,15 @@ function renderEnglishQuestionCard(q, n) {
         s += renderMarkdownStemHtml(stemText);
 
       } else {
-        s += '<div class="eng-sub-stem">' + escHtml(stemText).replace(/\n/g, '<br>') + '</div>';
+        s += '<div class="eng-sub-stem">' + boldPartHeadings(escHtml(stemText).replace(/\n/g, '<br>')) + '</div>';
       }
     }
 
-    /* Suppress visual_stimulus for FILL_IN — tables already rendered inline
-       by renderMarkdownStemHtml (fix 5+6). Show it for all other types. */
-    if (si.visual_stimulus && !isFillIn) {
+    /* Suppress visual_stimulus for FILL_IN (tables already rendered inline)
+       and for EXTRACT_ANALYSIS (extract already rendered at card level above).
+       Show it for all other types. */
+    var isExtractAnalysis = (q.type || '').toUpperCase() === 'EXTRACT_ANALYSIS';
+    if (si.visual_stimulus && !isFillIn && !isExtractAnalysis) {
       s += renderVisualStimulus(si.visual_stimulus);
     }
 
@@ -1334,10 +1404,13 @@ function renderEnglishQuestionCard(q, n) {
     }
 
     /* For MCQ, distractor analysis is in si.expected (derived from
-       teacher_guide.note); for other closed types, si.suggested_answer. */
-    var guideText = si.suggested_answer || si.expected || '';
-    var hasSug = guideText.length > 0;
+       teacher_guide.note); for other closed types, si.suggested_answer.
+       For OPEN items, si.expected is built upstream as the newline-joined
+       expected_elements string — suppress it when expected_elements will
+       render as a <ul> below, otherwise the same bullets show twice. */
     var hasExp = si.expected_elements && si.expected_elements.length;
+    var guideText = si.suggested_answer || (hasExp ? '' : (si.expected || ''));
+    var hasSug = guideText.length > 0;
     /* When options were suppressed (predict-listen MCQ), surface correct
        answers in the teacher guide so the teacher can verify responses. */
     var suppressedCorrectAnswers = [];

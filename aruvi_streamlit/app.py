@@ -50,6 +50,7 @@ else:
     from ask_aruvi_qa import ask as aruvi_ask             # ← original Haiku (immobilised)
 
 from ask_aruvi_feedback import write_thumbs_feedback, write_general_feedback
+from prompt_redaction import redact_summary_for_assessment, redact_coverage_handoff
 
 # ── Project root (needed by helper functions below) ───────────────────────────
 
@@ -1832,6 +1833,15 @@ def generate_assessment_only(
     assess_const = read_file(paths["assessment_const"])
     summary      = read_file(paths["chapter_summary"])
 
+    # Originality guard (Rule 2(b)) — PILOT SCOPE: English Grade IX only.
+    # Strip tasks_verbatim[] / question_bank[] from the summary and
+    # tasks_anchored[] from the handoff before they enter the prompt envelope,
+    # so the model cannot echo textbook task structure. Other subjects/grades
+    # are deliberately untouched until the pilot validates the approach.
+    if subject_to_folder(subject) == "english" and grade == "Grade IX":
+        summary          = redact_summary_for_assessment(summary, True)
+        coverage_handoff = redact_coverage_handoff(coverage_handoff)
+
     # ── TWAU: build competency descriptions block from mapping JSON ───────────
     _subj_folder_da = subject_to_folder(subject)
     _comp_desc_block = ""
@@ -2965,10 +2975,12 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
                 # Card-level expected: when the outer task owns the answer
                 # layer (no sub_items), surface it; otherwise leave empty —
                 # the per-sub-item rows carry their own answers.
+                # Exception: EXTRACT_ANALYSIS always builds a synthetic sub_item
+                # that carries expected_elements — never duplicate them on the card.
                 _card_expected = ""
                 _card_exp_elems = []
                 _card_suggested = ""
-                if not _sub_items_raw:
+                if not _sub_items_raw and _outer_qtype != "EXTRACT_ANALYSIS":
                     _card_expected, _card_exp_elems = _eng_resolve_answer(_outer_qtype, _outer_tg, it.get("options") or [])
                     _card_suggested = (_outer_tg if isinstance(_outer_tg, dict) else {}).get("suggested_answer", "") or ""
 
@@ -3309,17 +3321,18 @@ def _generate_pdf_bytes_alloc(
     uses_effort_index = is_science or is_english
 
     # Column layout — switches on subject group
-    pt_headers = [f"{pt['mins']}min" for pt in sorted_pts]
+    # Mirrors the HTML: # | Chapter | Total | [pt-type cols...] | Effort Idx or Weight
+    pt_headers = [f"{pt['mins']}-min Periods" for pt in sorted_pts]
     if uses_effort_index:
-        # Science / Mathematics / English: single Effort Index column
-        all_headers = ["#", "Chapter", "Effort Idx"] + pt_headers + ["Total", "Minutes"]
-        fixed_w     = [8, 96, 24]
+        # Science / Mathematics / English / TWAU: Total 3rd, EI last
+        all_headers = ["#", "Chapter", "Total Periods"] + pt_headers + ["Effort Index"]
+        fixed_w     = [8, 88, 20]
     else:
-        # Social Sciences / other languages: three competency-weight columns
-        all_headers = ["#", "Chapter", "W3", "W2", "W1"] + pt_headers + ["Total", "Minutes"]
-        fixed_w     = [8, 68, 28, 28, 28]
-    pt_w       = [16] * len(sorted_pts)
-    tail_w     = [16, 18]
+        # Social Sciences / other languages: Total 3rd, Weight last
+        all_headers = ["#", "Chapter", "Total Periods"] + pt_headers + ["Weight"]
+        fixed_w     = [8, 88, 20]
+    pt_w       = [22] * len(sorted_pts)
+    tail_w     = [24]
     col_widths = fixed_w + pt_w + tail_w
 
     # Header row
@@ -3386,15 +3399,13 @@ def _generate_pdf_bytes_alloc(
     for idx, (ch, alloc) in enumerate(zip(chs, allocs)):
         if uses_effort_index:
             ei = ch.get("effort_index", 0)
-            ei_str = str(ei) if (isinstance(ei, (int, float)) and ei > 0) else "-"
+            tail_val = str(ei) if (isinstance(ei, (int, float)) and ei > 0) else "-"
         else:
-            w3 = ", ".join(_ch_w3_codes(ch)) or "-"
-            w2 = ", ".join(_ch_w2_codes(ch)) or "-"
-            w1 = ", ".join(_ch_w1_codes(ch)) or "-"
+            wt = ch.get("chapter_weight", 0)
+            tail_val = str(wt) if wt else "-"
         tp = alloc.get("total", 0)
-        tm = sum(alloc.get(pt["mins"], 0) * pt["mins"] for pt in sorted_pts)
         grand_p += tp
-        grand_m += tm
+        grand_m += sum(alloc.get(pt["mins"], 0) * pt["mins"] for pt in sorted_pts)
         fill = (idx % 2 == 0)
         if fill:
             pdf.set_fill_color(248, 247, 245)
@@ -3403,19 +3414,13 @@ def _generate_pdf_bytes_alloc(
 
         chapter_title = ch.get("chapter_title", "")
 
-        if uses_effort_index:
-            row_vals = [f"{ch['chapter_number']:02d}", chapter_title, ei_str]
-        else:
-            row_vals = [
-                f"{ch['chapter_number']:02d}",
-                chapter_title,
-                w3[:22], w2[:22], w1[:22],
-            ]
+        # # | Chapter | Total | [pt-type cols...] | Effort Idx or Weight
+        row_vals = [f"{ch['chapter_number']:02d}", chapter_title, str(tp)]
         for pt in sorted_pts:
             v = alloc.get(pt["mins"], 0)
             col_sums[pt["mins"]] += v
             row_vals.append(str(v))
-        row_vals += [str(tp), str(tm)]
+        row_vals.append(tail_val)
 
         # Determine row height — title may wrap
         n_title_lines = _count_title_lines(chapter_title, title_col_w)
@@ -3451,10 +3456,11 @@ def _generate_pdf_bytes_alloc(
     pdf.set_font("Helvetica", "B", 7)
     pdf.set_fill_color(214, 228, 248)
     # Number of blank cells before the period-type sums mirrors the fixed column count
-    foot_vals = ["", "Total"] + [""] * (len(fixed_w) - 2)
+    # Footer: blank | Total | grand_p | [pt-col sums...] | blank (last col = EI or Weight)
+    foot_vals = ["", "Total", str(grand_p)]
     for pt in sorted_pts:
         foot_vals.append(str(col_sums[pt["mins"]]))
-    foot_vals += [str(grand_p), str(grand_m)]
+    foot_vals.append("")
     for val, w in zip(foot_vals, col_widths):
         pdf.cell(w, 6, val, border=1, fill=True, align="C")
     pdf.ln()

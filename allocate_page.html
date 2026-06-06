@@ -1850,24 +1850,23 @@ function _downloadPDF_legacy_unused() {
     y += 4;
     rule(y, 0.18, 180); y += 3;
 
-    /* Column widths: #(8) | Chapter(66) | Effort Idx(20) | period-type cols(16 each) | Total(16) | Minutes(20) */
-    var palPtW = 16;
-    var palTailW = { total: 16, mins: 20 };
-    var palFixedCW = { seq: 8, name: 66, ei: 20 };
+    /* Column order mirrors the Allocate-tab HTML thead:
+       # | Chapter | Total Periods | {pt}-min Periods (each) | Effort Index */
+    var palPtW = 18;
+    var palFixedCW = { seq: 8, name: 70, total: 22, ei: 22 };
 
     /* Header row */
     doc.setFont('helvetica', 'bold'); doc.setFontSize(5.5); doc.setTextColor(107, 114, 128);
     var palHx = mL;
     var palHeaders = [
-      { label: '#',            w: palFixedCW.seq,  align: 'right'  },
-      { label: 'Chapter',      w: palFixedCW.name, align: 'left'   },
-      { label: 'Effort Index', w: palFixedCW.ei,   align: 'center' },
+      { label: '#',             w: palFixedCW.seq,   align: 'right'  },
+      { label: 'Chapter',       w: palFixedCW.name,  align: 'left'   },
+      { label: 'Total Periods', w: palFixedCW.total, align: 'center' },
     ];
     sortedPts.forEach(function(pt) {
-      palHeaders.push({ label: pt.mins + '-min', w: palPtW, align: 'center' });
+      palHeaders.push({ label: pt.mins + '-min Periods', w: palPtW, align: 'center' });
     });
-    palHeaders.push({ label: 'Total',   w: palTailW.total, align: 'center' });
-    palHeaders.push({ label: 'Minutes', w: palTailW.mins,  align: 'center' });
+    palHeaders.push({ label: 'Effort Index', w: palFixedCW.ei, align: 'center' });
 
     palHeaders.forEach(function(col) {
       doc.setCharSpace(0);
@@ -1884,9 +1883,11 @@ function _downloadPDF_legacy_unused() {
     y += 2; rule(y, 0.1, 210); y += 3;
 
     /* Data rows */
-    var palGrandPeriods = 0, palGrandMinutes = 0;
+    var palGrandPeriods = 0;
     var palColSums = {};
     sortedPts.forEach(function(pt) { palColSums[pt.mins] = 0; });
+
+    var palRowW = palFixedCW.seq + palFixedCW.name + palFixedCW.total + palPtW * sortedPts.length + palFixedCW.ei;
 
     selChapters.forEach(function(cd, idx) {
       /* Row height is dynamic — expand if the chapter name needs to wrap */
@@ -1897,14 +1898,11 @@ function _downloadPDF_legacy_unused() {
 
       var alloc2  = allocMap[cd.chapter_number] || {};
       var total2  = alloc2.total || 0;
-      var minutes2 = sortedPts.reduce(function(s, pt) { return s + (alloc2[String(pt.mins)] || 0) * pt.mins; }, 0);
       palGrandPeriods += total2;
-      palGrandMinutes += minutes2;
       sortedPts.forEach(function(pt) { palColSums[pt.mins] += (alloc2[String(pt.mins)] || 0); });
 
       var rowBg2 = (idx % 2 === 0);
       if (rowBg2) {
-        var palRowW = palFixedCW.seq + palFixedCW.name + palFixedCW.ei + palPtW * sortedPts.length + palTailW.total + palTailW.mins;
         doc.setFillColor(248, 247, 245);
         doc.rect(mL, y, palRowW, rowH, 'F');
       }
@@ -1927,12 +1925,11 @@ function _downloadPDF_legacy_unused() {
       doc.setCharSpace(0);
       cx2 += palFixedCW.name;
 
-      /* Effort Index */
-      var eiVal2 = (typeof cd.effort_index === 'number' && cd.effort_index > 0) ? String(cd.effort_index) : '-';
+      /* Total Periods */
       doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
-      doc.text(eiVal2, cx2 + palFixedCW.ei / 2, midY2, { align: 'center', baseline: 'middle' });
+      doc.text(String(total2), cx2 + palFixedCW.total / 2, midY2, { align: 'center', baseline: 'middle' });
       doc.setCharSpace(0);
-      cx2 += palFixedCW.ei;
+      cx2 += palFixedCW.total;
 
       /* Period-type columns */
       doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
@@ -1943,13 +1940,10 @@ function _downloadPDF_legacy_unused() {
         cx2 += palPtW;
       });
 
-      /* Total */
-      doc.text(String(total2), cx2 + palTailW.total / 2, midY2, { align: 'center', baseline: 'middle' });
-      doc.setCharSpace(0);
-      cx2 += palTailW.total;
-
-      /* Minutes */
-      doc.text(String(minutes2), cx2 + palTailW.mins / 2, midY2, { align: 'center', baseline: 'middle' });
+      /* Effort Index */
+      var eiVal2 = (typeof cd.effort_index === 'number' && cd.effort_index > 0) ? String(cd.effort_index) : '-';
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
+      doc.text(eiVal2, cx2 + palFixedCW.ei / 2, midY2, { align: 'center', baseline: 'middle' });
       doc.setCharSpace(0);
 
       y += rowH;
@@ -1959,25 +1953,22 @@ function _downloadPDF_legacy_unused() {
     /* Footer totals row */
     if (y + 7 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
     doc.setFillColor(214, 228, 248);
-    var palRowW3 = palFixedCW.seq + palFixedCW.name + palFixedCW.ei + palPtW * sortedPts.length + palTailW.total + palTailW.mins;
-    doc.rect(mL, y, palRowW3, 7, 'F');
+    doc.rect(mL, y, palRowW, 7, 'F');
     var midYf = y + 3.5;
     var cxf = mL;
     doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5); doc.setTextColor(26, 25, 23);
     cxf += palFixedCW.seq;
     doc.text('Total', cxf + CP, midYf, { baseline: 'middle' });
     cxf += palFixedCW.name;
-    cxf += palFixedCW.ei;
+    doc.text(String(palGrandPeriods), cxf + palFixedCW.total / 2, midYf, { align: 'center', baseline: 'middle' });
+    doc.setCharSpace(0);
+    cxf += palFixedCW.total;
     sortedPts.forEach(function(pt) {
       doc.text(String(palColSums[pt.mins]), cxf + palPtW / 2, midYf, { align: 'center', baseline: 'middle' });
       doc.setCharSpace(0);
       cxf += palPtW;
     });
-    doc.text(String(palGrandPeriods), cxf + palTailW.total / 2, midYf, { align: 'center', baseline: 'middle' });
-    doc.setCharSpace(0);
-    cxf += palTailW.total;
-    doc.text(String(palGrandMinutes), cxf + palTailW.mins / 2, midYf, { align: 'center', baseline: 'middle' });
-    doc.setCharSpace(0);
+    /* Effort Index footer cell is intentionally blank, mirroring the HTML tfoot */
     rule(y + 7, 0.3, 180);
     y += 18;
   }

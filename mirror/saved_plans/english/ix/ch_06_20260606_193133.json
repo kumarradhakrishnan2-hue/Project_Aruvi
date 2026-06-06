@@ -1,0 +1,1109 @@
+{
+  "filename": "ch_06_20260606_193133.json",
+  "saved_at": "2026-06-06T19:31:33",
+  "grade": "Grade IX",
+  "subject": "English",
+  "chapter_number": 6,
+  "chapter_title": "Twin Melodies",
+  "period_schedule_display": "Period schedule:\n  Row 1: 40 minutes × 1 period = 40 minutes\nTotal: 1 periods · 40 minutes",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 40,
+      "count": 1
+    }
+  ],
+  "plan_status": "full_lpa",
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 40,
+          "section_id": "A",
+          "section_title": "Twin Melodies",
+          "spines_taught": [
+            "reading_for_comprehension"
+          ],
+          "activity_title": "Opening the Play: Pre-reading and Act I Role-Assigned Reading",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "role-assigned-reading"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 0,
+              "task_brief": "Reflect and Respond (p.169): identify stringed instruments by first letter"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 1,
+              "task_brief": "Reflect and Respond (p.169): share personal instrument choice and reasons"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 2,
+              "task_brief": "Reflect and Respond (p.169): discuss music preference differences across generations"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–8",
+              "description": "Teacher introduces the drama Twin Melodies — playwright, setting, and the fusion-versus-classical conflict at its heart. Students skim the cast list and stage directions for Act I (p.169–174)."
+            },
+            {
+              "minutes": "8–18",
+              "description": "Reflect and Respond warm-up: pairs identify stringed instruments by first letter, then share instrument preferences and discuss generation gaps in music taste (Reflect and Respond, p.169 — all three oral prompts)."
+            },
+            {
+              "minutes": "18–40",
+              "description": "Role-assigned reading of Act I (p.169–174): Shruti, Iqbal, Avinash, Peter parts assigned; teacher reads stage directions and asides aloud, modelling delivery cues and pauses."
+            }
+          ],
+          "teacher_notes": "This is the entry period — keep pre-reading brisk so Act I reading gets at least twenty minutes of class time. Students may struggle with stage directions in brackets; model reading one aloud before assigning roles. The fill-in idiom task (Reflect and Respond, p.170) is left for the next period when students have read the act."
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 60,
+          "section_id": "A",
+          "section_title": "Twin Melodies",
+          "spines_taught": [
+            "reading_for_comprehension"
+          ],
+          "activity_title": "Act I Comprehension and Predictive Discussion",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "comprehension-discussion"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 3,
+              "task_brief": "Reflect and Respond (p.170): complete idiom paragraph — literal vs figurative discussion"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 4,
+              "task_brief": "Reading for Meaning (p.174): complete Act I table — setting, instruments, dialogues"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 5,
+              "task_brief": "Check Your Understanding (p.169-174): predict whether Shruti will speak to her father"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 6,
+              "task_brief": "Check Your Understanding (p.169-174): predict father's likely reaction and reasons"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Brief recap of Act I plot: teacher elicits who the characters are and what Shruti's dilemma is before moving to exercises."
+            },
+            {
+              "minutes": "5–20",
+              "description": "Reflect and Respond (p.170): pairs complete the idiom fill-in paragraph, then whole-class discussion on literal versus figurative meanings of each phrase — teacher clarifies 'bite the bullet' and 'get the ball rolling' in context."
+            },
+            {
+              "minutes": "20–40",
+              "description": "Reading for Meaning (p.174): students complete the Act I table covering setting details, characters and instruments, and speaker-identification for three dialogues; pairs compare answers, teacher confirms."
+            },
+            {
+              "minutes": "40–60",
+              "description": "Check Your Understanding predictive questions (p.169–174): students write a brief reasoned response to whether Shruti will speak to her father and what his reaction might be; three or four students share aloud, class discusses with reference to Act I evidence."
+            }
+          ],
+          "teacher_notes": "Shruti's distress is signalled entirely through subtext in Act I — draw students' attention to what she does NOT say rather than only what she says. The figurative idioms in the fill-in task are all drawn from the play's dramatic register; linking them back to actual dialogue lines deepens comprehension. Acts II and III will be read in the next period."
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 50,
+          "section_id": "A",
+          "section_title": "Twin Melodies",
+          "spines_taught": [
+            "reading_for_comprehension"
+          ],
+          "activity_title": "Acts II and III: Role-Assigned Reading and Mid-Play Comprehension",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "role-assigned-reading"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 7,
+              "task_brief": "Reading for Meaning (p.178): complete Act II summary — fill correct words from box"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 8,
+              "task_brief": "Check Your Understanding (p.178): predict whether Nabin will attend rehearsal"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 9,
+              "task_brief": "Check Your Understanding (p.178): discuss whether Shruti and parents will understand each other"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–20",
+              "description": "Role-assigned reading of Acts II and III (p.175–182): Shruti, Nabin, Leela, Iqbal, Avinash parts assigned; teacher reads stage directions including the unannounced arrival scene and Nabin's foot-tapping moment."
+            },
+            {
+              "minutes": "20–35",
+              "description": "Reading for Meaning (p.178): students complete the Act II summary fill-in (eight blanks from the word box), checking in pairs before teacher confirms answers and highlights the word 'clash' as the thematic key."
+            },
+            {
+              "minutes": "35–50",
+              "description": "Check Your Understanding predictive questions (p.178): students respond briefly to whether Nabin will attend the rehearsal and whether mutual understanding is achievable; brief whole-class share with textual justification."
+            }
+          ],
+          "teacher_notes": "Act II is the play's emotional pivot — Nabin's cold dismissal and Leela's quiet rebuke are the moments students most need to sit with. Note that Nabin's parallel history (defying his own family to play violin) is only revealed in Act III; caution students not to jump ahead when doing prediction tasks. The true/false task for Act III will be anchored in the next period."
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 50,
+          "section_id": "A",
+          "section_title": "Twin Melodies",
+          "spines_taught": [
+            "reading_for_comprehension"
+          ],
+          "activity_title": "Act III Close Reading and Extract Analysis",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "close-reading"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 10,
+              "task_brief": "Check Your Understanding (p.181-182): identify true statements about Act III"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 11,
+              "task_brief": "Critical Reflection (p.182-183): two extracts — close-reading and paired discussion"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Quick oral recap of Act III's resolution: teacher asks what changes Nabin's mind and students cite Leela's revelation about his own rebellion, orienting the class to the thematic payoff before close-reading."
+            },
+            {
+              "minutes": "10–22",
+              "description": "Check Your Understanding (p.181–182): pairs work through the six true/false statements about Act III, then class confirms with page-specific evidence for each; teacher flags the subtlety that Nabin did NOT defame the raga notes — a key detail students misread."
+            },
+            {
+              "minutes": "22–50",
+              "description": "Critical Reflection (p.182–183): both extracts worked in sequence — Extract 1 (Shruti/Iqbal dilemma exchange): four sub-questions including multiple-choice, short-answer, fill-in, and short explanation; Extract 2 (Nabin's breakthrough speech): five sub-questions including multiple-choice, fill-in, word-choice, extended inference, and phrase identification; pairs draft answers, whole-class discussion follows each extract."
+            }
+          ],
+          "teacher_notes": "The phrase 'each bay, its own wind' in Extract 2 is the play's thematic capstone — ensure students articulate what it means for each artist's unique journey rather than just translating it literally. The extended-answer inference on Shruti's future (Extract 2, sub-question iv) prepares students for the full analytical questions in the next period. Unselected sub-items from earlier Check Your Understanding tasks not revisited here may be used for personal reflection at home."
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 40,
+          "section_id": "A",
+          "section_title": "Twin Melodies",
+          "spines_taught": [
+            "reading_for_comprehension"
+          ],
+          "activity_title": "Critical Reflection: Analytical Essay Questions on the Drama",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "literary-analysis"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 12,
+              "task_brief": "Critical Reflection (p.184): six analytical questions — title, character arc, theme, conclusion evaluation"
+            }
+          ],
+          "homework": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 12,
+              "task_brief": "Critical Reflection (p.184): complete remaining extended-answer questions not finished in class"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–6",
+              "description": "Teacher frames the six analytical questions (p.184) as a set: title justification, character perspectives, Nabin's arc, Shruti's internal conflict, conclusion evaluation, and cultural diversity — students note the range of cognitive demands before writing."
+            },
+            {
+              "minutes": "6–28",
+              "description": "Students work individually on the six extended-answer questions; teacher circulates, prompting use of textual evidence and discouraging plot summary in favour of analysis — directing students to specific acts for each question."
+            },
+            {
+              "minutes": "28–40",
+              "description": "Structured share: two or three students read their response to the title-justification question aloud; class offers additions; teacher models how 'Twin Melodies' operates on both the literal (violin + fusion) and symbolic (tradition + modernity) levels."
+            }
+          ],
+          "teacher_notes": "Students often conflate plot summary with analysis on questions such as Nabin's character arc — remind them the question asks how his attitude evolves, which requires citing Act I dismissal, Act III foot-tapping, and the final speech as three distinct stages. Questions not completed in class serve as homework reinforcement. This period closes Section A's reading work; Vocabulary and Grammar begins next."
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 40,
+          "section_id": "A",
+          "section_title": "Twin Melodies",
+          "spines_taught": [
+            "vocabulary_grammar"
+          ],
+          "activity_title": "Vocabulary and Structures in Context: Dramatic Devices and Grammar",
+          "pedagogical_methods": {
+            "vocabulary_grammar": "grammar-in-writing"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 0,
+              "task_brief": "Vocabulary and Structures in Context (p.184): identify and explain the dramatic device 'aside'"
+            },
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 1,
+              "task_brief": "Vocabulary and Structures in Context (p.185): non-lexical fillers — why used; match fillers to emoticons"
+            },
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 2,
+              "task_brief": "Vocabulary and Structures in Context (p.186): match music-related vocabulary to meanings"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Vocabulary and Structures in Context (p.184): teacher reads the 'aside' excerpt aloud; students choose the correct option for what an aside does, then briefly discuss how Shruti's aside in Act III reveals her inner conflict to the audience but not to other characters."
+            },
+            {
+              "minutes": "10–22",
+              "description": "Vocabulary and Structures in Context (p.185): class identifies why non-lexical fillers appear in the play's dialogue (to fill gaps while speaking); pairs match 'whew, err, arrgh, hmmm' to four emoticons and share answers, noting the extra filler."
+            },
+            {
+              "minutes": "22–40",
+              "description": "Vocabulary and Structures in Context (p.186): music-related vocabulary matching — students work individually to pair 'rhythm, tempo, bass, baritone, cacophony, pitch, scale' with definitions, check in pairs, then teacher connects each term to moments in the play (e.g. Nabin praising Shruti for staying true to the raga's pitch)."
+            }
+          ],
+          "teacher_notes": "The aside and non-lexical filler tasks together consolidate dramatic-script literacy introduced in the Beyond-the-Text section; connecting them here avoids repetition later. Students frequently confuse 'baritone' (voice range) with 'bass' (lowest tone) — a brief contrast using the characters' voices helps. The phrase-meaning task (p.186: 'drown your individual style', etc.) and reported-speech tasks are anchored in the following period."
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 60,
+          "section_id": "A",
+          "section_title": "Twin Melodies",
+          "spines_taught": [
+            "vocabulary_grammar"
+          ],
+          "activity_title": "Reported Speech and Exclamatory-to-Declarative Conversion",
+          "pedagogical_methods": {
+            "vocabulary_grammar": "linguistic-aspects-in-context"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 3,
+              "task_brief": "Vocabulary and Structures in Context (p.186): write meanings of three play-derived phrases"
+            },
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 4,
+              "task_brief": "Vocabulary and Structures in Context (p.187): identify exclamatory sentences; convert to declarative with 'exclaimed'"
+            },
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 5,
+              "task_brief": "Vocabulary and Structures in Context (p.187): convert six play dialogues to reported speech"
+            }
+          ],
+          "homework": [
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 6,
+              "task_brief": "Vocabulary and Structures in Context (p.188): report Asma-Deepa dialogue in indirect speech"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–12",
+              "description": "Vocabulary and Structures in Context (p.186): students write meanings of 'drown your individual style', 'sense of musicality', and 'go down the drain' based on in-text usage; pairs compare, teacher confirms and links each phrase to the drama's conflict — Nabin's fear that fusion would 'drown' Shruti's classical style."
+            },
+            {
+              "minutes": "12–28",
+              "description": "Vocabulary and Structures in Context (p.187): teacher elicits the sentence type for the two play exclamations; students identify them as exclamatory, then individually convert both to declarative sentences using 'exclaimed' or 'exclaimed with (feeling)', removing interjections and exclamatory marks; two or three students read aloud and class refines wording."
+            },
+            {
+              "minutes": "28–55",
+              "description": "Vocabulary and Structures in Context (p.187): reported-speech transformation of six play dialogues — teacher models item 1 (already done), students work items 2–6 individually; pairs cross-check tense shifts and pronoun changes; teacher addresses the most common error (forgetting to shift 'are' to 'were') on the board."
+            },
+            {
+              "minutes": "55–60",
+              "description": "Teacher sets homework — the Asma-Deepa reported-speech dialogue (p.188) — and clarifies the four-blank format so students know what is expected before next class."
+            }
+          ],
+          "teacher_notes": "Reported speech of exclamatory sentences is a new grammatical territory at this level — students reliably omit 'with wonder/joy/disappointment' modifiers; keep the error-correction phase short but visible on the board. Connecting transformations to actual play lines (Avinash calling Shruti a sensation, Shruti apologising to her mother) keeps the grammar contextually meaningful. The Asma-Deepa dialogue (p.188) is assigned as homework to consolidate the pattern in a fresh context."
+        },
+        {
+          "period_number": 8,
+          "period_duration_minutes": 60,
+          "section_id": "A",
+          "section_title": "Twin Melodies",
+          "spines_taught": [
+            "listening",
+            "speaking"
+          ],
+          "activity_title": "Yazh Listening Notes and Stress-Intonation Speaking Activity",
+          "pedagogical_methods": {
+            "listening": "note-taking-from-listening",
+            "speaking": "oral-presentation"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "listening",
+              "task_index": 2,
+              "task_brief": "Listen and Respond (p.189): listen to yazh description; complete notes in three words or fewer"
+            },
+            {
+              "spine": "speaking",
+              "task_index": 0,
+              "task_brief": "Speaking Activity (p.189-190): stress and intonation exercise using four lines from the play"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–5",
+              "description": "Listen and Respond warm-up: teacher displays images of several Indian stringed instruments; students silently choose which one they believe could be the yazh — no answers given yet (p.189, pre-listening task)."
+            },
+            {
+              "minutes": "5–10",
+              "description": "Teacher reads the yazh transcript aloud (transcript: p.270) as students listen and check their image choice; brief show-of-hands confirmation before proceeding to note-taking."
+            },
+            {
+              "minutes": "10–28",
+              "description": "Listen and Respond (p.189): teacher reads the transcript a second time at moderate pace; students simultaneously complete the structured notes — instrument type, ancient Tamil use, earlier version, stem-tip carving, resonator shape and material, design variety names; pairs cross-check answers, teacher confirms correct completions."
+            },
+            {
+              "minutes": "28–50",
+              "description": "Speaking Activity (p.189–190): teacher models the four play lines with marked stress and intonation; students repeat chorally, then in pairs practise all four lines, experimenting with how shifting stress changes emotional impact (e.g. stressing 'papa' versus 'opinions'); three pairs perform for the class and class gives brief feedback on clarity and expressiveness."
+            },
+            {
+              "minutes": "50–60",
+              "description": "Brief debrief: teacher asks what the yazh listening and the stress-intonation work share — both foreground how sound shapes meaning; students connect this to Nabin's observation about Shruti never losing the raga notes even in fusion performance."
+            }
+          ],
+          "teacher_notes": "The yazh transcript (p.270) should be read at a natural pace for the first listening and slightly slower for the note-taking pass — do not rush the design-variety names as students often mishear 'matsya' and 'makara'. For the stress activity, the line 'Each bay, its own wind' is the most thematically rich and the most open to interpretive performance; give pairs a moment to discuss what emotion they are conveying before performing. The self-practice speaking task (p.190, task 2) is left for independent follow-up."
+        },
+        {
+          "period_number": 9,
+          "period_duration_minutes": 50,
+          "section_id": "A",
+          "section_title": "Twin Melodies",
+          "spines_taught": [
+            "writing",
+            "beyond_text"
+          ],
+          "activity_title": "Play-Script Writing and Dramatic Convention Exploration",
+          "pedagogical_methods": {
+            "writing": "guided-writing",
+            "beyond_text": "interdisciplinary-study"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "writing",
+              "task_index": 0,
+              "task_brief": "Writing Task (p.169-193): groups of four draft play script from Anuradha story prompt"
+            },
+            {
+              "spine": "beyond_text",
+              "task_index": 0,
+              "task_brief": "Learning Beyond the Text (p.192): analyse play-script conventions — no inverted commas, colons, brackets, stage directions"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–10",
+              "description": "Learning Beyond the Text (p.192): teacher projects two or three dialogue excerpts from the play and guides whole-class analysis of the four convention questions — why no inverted commas, where colons appear, what brackets convey, and how stage directions help actors; students respond orally, teacher summarises on board."
+            },
+            {
+              "minutes": "10–15",
+              "description": "Teacher introduces the Writing Task (p.169–193): reads the Anuradha story prompt aloud, assigns groups of four, and reviews the six script-writing tips — rough draft, setting and characters, colon after speaker name, brackets for stage directions, asides, non-lexical fillers, ellipsis for pauses."
+            },
+            {
+              "minutes": "15–50",
+              "description": "Guided writing: groups plan their setting and character list (5 min), then draft a two-scene script collaboratively using the tips as a checklist; teacher circulates, prompting groups to include at least one aside and one non-lexical filler; final 5 minutes each group reads their opening exchange aloud for the class."
+            }
+          ],
+          "teacher_notes": "The play-script writing task intentionally mirrors the Anuradha-tabla scenario (father disapproves, mother and brother support) with the structure of the drama just studied — this parallel is worth naming aloud so students draw on Twin Melodies as a model. Remind groups that stage directions must be in brackets and in the present tense, as modelled in the textbook play. Beyond-the-Text tasks on the Recycled Orchestra of Cateura, indigenous instruments, and reading Rigmarole are left as self-study enrichment pointers for interested students."
+        },
+        {
+          "period_number": 10,
+          "period_duration_minutes": 50,
+          "section_id": "B",
+          "section_title": "A Friend Found in Music",
+          "spines_taught": [
+            "reading_for_comprehension"
+          ],
+          "activity_title": "Poem Reading and Appreciation: Metaphors and Poetic Devices",
+          "pedagogical_methods": {
+            "reading_for_comprehension": "critical-reading"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 0,
+              "task_brief": "Reflect and Respond (p.194): share music preferences, favourite musicians, and reasons"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 1,
+              "task_brief": "Reading for Appreciation (p.195): complete poet's diary — fill blanks from poem"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 2,
+              "task_brief": "Reading for Appreciation (p.195): appreciate poem — device identification, metaphor-to-simile, rhyme scheme, anaphora, message, mood"
+            },
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 3,
+              "task_brief": "Critical Reflection (p.196): extract 'Music is the therapy…' — five sub-questions"
+            }
+          ],
+          "homework": [
+            {
+              "spine": "reading_for_comprehension",
+              "task_index": 4,
+              "task_brief": "Critical Reflection (p.196): five extended-answer questions on poet's attitude and universal appeal"
+            }
+          ],
+          "phases": [
+            {
+              "minutes": "0–7",
+              "description": "Reflect and Respond (p.194): students share their music preferences (vocal or instrumental), name favourite musicians, and give reasons in pairs; two or three pairs report to the class — teacher links the variety of responses to the poem's claim of music's universal appeal."
+            },
+            {
+              "minutes": "7–20",
+              "description": "Teacher reads the poem aloud twice — first for overall mood, second with students following text; students complete the poet's diary fill-in (p.195, six blanks using words from the poem) individually, then verify in pairs."
+            },
+            {
+              "minutes": "20–40",
+              "description": "Reading for Appreciation (p.195): teacher works through all seven sub-questions with the class — students identify the ambiguous meaning of 'moves me', convert each metaphor to a simile, name the ABCB rhyme scheme and its effect, explain the anaphoric repetition of 'Music is…', articulate the poem's message, identify the mood, and cite evidence that the speaker is the poet herself."
+            },
+            {
+              "minutes": "40–50",
+              "description": "Critical Reflection extract (p.196): 'Music is the therapy…' — students answer all five sub-questions individually (fill-in for 'feel blue', identify the happiness line, explain the last line, true/false, central idea multiple-choice); teacher confirms answers and highlights how 'pull through' functions as a phrasal verb — a bridge to Section B's vocabulary work."
+            }
+          ],
+          "teacher_notes": "The poem's anaphoric 'Music is…' structure is its most distinctive formal feature and students should be able to name it as anaphora and connect it to the meditative tone described in the appreciation summary. When converting metaphors to similes, caution students that 'Music is as an ocean as the shore' is a structural error — model the correct form before they attempt the others. The five extended-answer questions (p.196) are set as homework to free class time for vocabulary and listening work in the final period."
+        },
+        {
+          "period_number": 11,
+          "period_duration_minutes": 40,
+          "section_id": "B",
+          "section_title": "A Friend Found in Music",
+          "spines_taught": [
+            "vocabulary_grammar",
+            "listening"
+          ],
+          "activity_title": "Emotion Vocabulary, Phrasal Verbs, and Santoor Listening",
+          "pedagogical_methods": {
+            "vocabulary_grammar": "domain-vocabulary",
+            "listening": "listen-and-respond"
+          },
+          "tasks_in_class": [
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 0,
+              "task_brief": "Vocabulary in Context (p.197): classify emotion words; fill blanks with correct emotion vocabulary"
+            },
+            {
+              "spine": "vocabulary_grammar",
+              "task_index": 2,
+              "task_brief": "Vocabulary in Context (p.198): match six 'move' phrasal verbs to correct meanings"
+            },
+            {
+              "spine": "listening",
+              "task_index": 0,
+              "task_brief": "Listen and Respond (p.199): pre-listen; read questions and guess answers before hearing conversation"
+            },
+            {
+              "spine": "listening",
+              "task_index": 1,
+              "task_brief": "Listen and Respond (p.199): listen to santoor conversation; verify and correct guesses"
+            }
+          ],
+          "homework": [],
+          "phases": [
+            {
+              "minutes": "0–12",
+              "description": "Vocabulary in Context (p.197): students classify 'feel blue / lifts my spirits / most cheerful' as positive or negative emotions, then individually fill the four blanks choosing between paired words (nostalgia/elation, despondence/anguish, melancholy/despair, jubilant/euphoric); pairs compare, teacher confirms and briefly explains connotation differences within each pair."
+            },
+            {
+              "minutes": "12–22",
+              "description": "Vocabulary in Context (p.198): teacher explains phrasal verbs using 'pull through' from the poem, then students match six 'move' phrasal verbs (move out, move in, move on, move over, move along, move off) to their meanings from the box; pairs cross-check and teacher confirms."
+            },
+            {
+              "minutes": "22–32",
+              "description": "Listen and Respond pre-listening (p.199): students read all six multiple-choice questions and write their best guesses (relationship, location, instrument, problem, failed solution, final decision) before any audio — teacher clarifies that the purpose is to activate prediction, not to get the right answer."
+            },
+            {
+              "minutes": "32–40",
+              "description": "Teacher reads the santoor conversation transcript aloud (transcript: p.270); students check and correct their pre-listening guesses; brief show-of-hands for each item confirms answers, and teacher connects Jaspreet's santoor dilemma to Shruti's violin dilemma in the drama — a thematic thread across the chapter."
+            }
+          ],
+          "teacher_notes": "The emotion-vocabulary task (p.197) is intentionally placed after reading the poem so the words 'feel blue' and 'lifts my spirits' are already contextualised — students should not need to look them up. For the 'move' phrasal verb matching, note that 'move on' (to progress) is frequently confused with 'move off' (to start moving) — a brief contrast on the board helps. Section B's writing task (invitation letter, p.200), speaking task (role play, p.200), and beyond-text tasks are unanchored due to the available period count; flag the invitation letter as a worthwhile home exercise and the role play as a potential club or assembly activity."
+        }
+      ]
+    },
+    "coverage_handoff": {
+      "reading_for_comprehension": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Twin Melodies",
+            "section_type": "drama",
+            "implied_lo": "Student analyses character motivation, dramatic conflict, and thematic development by close-reading a play.",
+            "section_context": "Shruti's secret fusion rehearsals, Nabin's disapproval, and his eventual transformation through music's power.",
+            "tasks_anchored": [
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 0,
+                "task_brief": "Reflect and Respond (p.169): identify stringed instruments by first letter"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 1,
+                "task_brief": "Reflect and Respond (p.169): share personal instrument choice and reasons"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 2,
+                "task_brief": "Reflect and Respond (p.169): discuss music preference differences across generations"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 3,
+                "task_brief": "Reflect and Respond (p.170): complete idiom paragraph — literal vs figurative discussion"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 4,
+                "task_brief": "Reading for Meaning (p.174): complete Act I table — setting, instruments, dialogues"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 5,
+                "task_brief": "Check Your Understanding (p.169-174): predict whether Shruti will speak to her father"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 6,
+                "task_brief": "Check Your Understanding (p.169-174): predict father's likely reaction and reasons"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 7,
+                "task_brief": "Reading for Meaning (p.178): complete Act II summary — fill correct words from box"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 8,
+                "task_brief": "Check Your Understanding (p.178): predict whether Nabin will attend rehearsal"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 9,
+                "task_brief": "Check Your Understanding (p.178): discuss whether Shruti and parents will understand each other"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 10,
+                "task_brief": "Check Your Understanding (p.181-182): identify true statements about Act III"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 11,
+                "task_brief": "Critical Reflection (p.182-183): two extracts — close-reading and paired discussion"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 12,
+                "task_brief": "Critical Reflection (p.184): six analytical questions — title, character arc, theme, conclusion evaluation"
+              }
+            ]
+          },
+          {
+            "section_id": "B",
+            "section_title": "A Friend Found in Music",
+            "section_type": "poem",
+            "implied_lo": "Student identifies and evaluates poetic devices — metaphor, anaphora, rhyme scheme — and articulates thematic meaning by close-reading a lyric poem.",
+            "section_context": "Music portrayed through successive metaphors as ocean, therapy, and steadfast friend by poet Bryanna T. Perkins.",
+            "tasks_anchored": [
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 0,
+                "task_brief": "Reflect and Respond (p.194): share music preferences, favourite musicians, and reasons"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 1,
+                "task_brief": "Reading for Appreciation (p.195): complete poet's diary — fill blanks from poem"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 2,
+                "task_brief": "Reading for Appreciation (p.195): appreciate poem — device identification, metaphor-to-simile, rhyme scheme, anaphora, message, mood"
+              },
+              {
+                "spine": "reading_for_comprehension",
+                "task_index": 3,
+                "task_brief": "Critical Reflection (p.196): extract 'Music is the therapy…' — five sub-questions"
+              }
+            ]
+          }
+        ]
+      },
+      "listening": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Twin Melodies",
+            "section_type": "drama",
+            "implied_lo": "Student listens to a descriptive passage and completes structured notes with precise details using note-taking-from-listening.",
+            "section_context": "Musician's description of the yazh — ancient Indian harp, its materials, design variations, and cultural names.",
+            "tasks_anchored": [
+              {
+                "spine": "listening",
+                "task_index": 2,
+                "task_brief": "Listen and Respond (p.189): listen to yazh description; complete notes in three words or fewer"
+              }
+            ]
+          },
+          {
+            "section_id": "B",
+            "section_title": "A Friend Found in Music",
+            "section_type": "poem",
+            "implied_lo": "Student predicts content from pre-listening questions and verifies comprehension by listening to a conversation, using listen-and-respond.",
+            "section_context": "Mother and son at a music centre discussing the santoor's limited practice access and a home-loan solution.",
+            "tasks_anchored": [
+              {
+                "spine": "listening",
+                "task_index": 0,
+                "task_brief": "Listen and Respond (p.199): pre-listen; read questions and guess answers before hearing conversation"
+              },
+              {
+                "spine": "listening",
+                "task_index": 1,
+                "task_brief": "Listen and Respond (p.199): listen to santoor conversation; verify and correct guesses"
+              }
+            ]
+          }
+        ]
+      },
+      "speaking": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Twin Melodies",
+            "section_type": "drama",
+            "implied_lo": "Student performs scripted lines with deliberate stress and intonation, articulating how delivery choices alter emotional meaning.",
+            "section_context": "Four lines from Twin Melodies — including Shruti's resolve and Nabin's aphorism 'Each bay, its own wind'.",
+            "tasks_anchored": [
+              {
+                "spine": "speaking",
+                "task_index": 0,
+                "task_brief": "Speaking Activity (p.189-190): stress and intonation exercise using four lines from the play"
+              }
+            ]
+          }
+        ]
+      },
+      "writing": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Twin Melodies",
+            "section_type": "drama",
+            "implied_lo": "Student drafts an original play script using dramatic conventions — stage directions, asides, non-lexical fillers — modelled on a studied play.",
+            "section_context": "Anuradha, a tabla-playing teenager, defies her disapproving vocalist father to perform at a prestigious event.",
+            "tasks_anchored": [
+              {
+                "spine": "writing",
+                "task_index": 0,
+                "task_brief": "Writing Task (p.169-193): groups of four draft play script from Anuradha story prompt"
+              }
+            ]
+          }
+        ]
+      },
+      "vocabulary_grammar": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Twin Melodies",
+            "section_type": "drama",
+            "implied_lo": "Student identifies dramatic-script vocabulary and transforms exclamatory sentences and dialogue into reported speech, applying grammar-in-writing strategies.",
+            "section_context": "Play-derived grammar: asides, non-lexical fillers, music-vocabulary matching, and six dialogue transformations into reported speech.",
+            "tasks_anchored": [
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 0,
+                "task_brief": "Vocabulary and Structures in Context (p.184): identify and explain the dramatic device 'aside'"
+              },
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 1,
+                "task_brief": "Vocabulary and Structures in Context (p.185): non-lexical fillers — why used; match fillers to emoticons"
+              },
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 2,
+                "task_brief": "Vocabulary and Structures in Context (p.186): match music-related vocabulary to meanings"
+              },
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 3,
+                "task_brief": "Vocabulary and Structures in Context (p.186): write meanings of three play-derived phrases"
+              },
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 4,
+                "task_brief": "Vocabulary and Structures in Context (p.187): identify exclamatory sentences; convert to declarative with 'exclaimed'"
+              },
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 5,
+                "task_brief": "Vocabulary and Structures in Context (p.187): convert six play dialogues to reported speech"
+              }
+            ]
+          },
+          {
+            "section_id": "B",
+            "section_title": "A Friend Found in Music",
+            "section_type": "poem",
+            "implied_lo": "Student classifies emotion-register vocabulary and identifies phrasal verb meanings, applying domain-vocabulary strategies to a lyric poem's language.",
+            "section_context": "Poem-derived emotion words — 'feel blue', 'lifts my spirits' — and 'move' phrasal verbs in music and everyday contexts.",
+            "tasks_anchored": [
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 0,
+                "task_brief": "Vocabulary in Context (p.197): classify emotion words; fill blanks with correct emotion vocabulary"
+              },
+              {
+                "spine": "vocabulary_grammar",
+                "task_index": 2,
+                "task_brief": "Vocabulary in Context (p.198): match six 'move' phrasal verbs to correct meanings"
+              }
+            ]
+          }
+        ]
+      },
+      "beyond_text": {
+        "section_contributions": [
+          {
+            "section_id": "A",
+            "section_title": "Twin Melodies",
+            "section_type": "drama",
+            "implied_lo": "Student analyses the conventions of play-script writing and connects dramatic form to real-world interdisciplinary contexts through structured inquiry.",
+            "section_context": "Play-script conventions — colons, brackets, stage directions — and their function in performance, drawn from Twin Melodies.",
+            "tasks_anchored": [
+              {
+                "spine": "beyond_text",
+                "task_index": 0,
+                "task_brief": "Learning Beyond the Text (p.192): analyse play-script conventions — no inverted commas, colons, brackets, stage directions"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "assessment_items": [
+      {
+        "spine_code": "reading_for_comprehension",
+        "spine_title": "Reading for Comprehension",
+        "items": [
+          {
+            "id": "Q-RFC-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Twin Melodies",
+            "source_section_type": "drama",
+            "source_spine": "reading_for_comprehension",
+            "source_lo": "Student analyses character motivation, dramatic conflict, and thematic development by close-reading a play.",
+            "source_context": "Shruti's secret fusion rehearsals, Nabin's disapproval, and his eventual transformation through music's power.",
+            "item_stem": "Read the following exchange from Act II and answer the questions below.\n\n1. What does Nabin's statement reveal about his underlying fear regarding Shruti's musical future? Support your answer with a specific reason he gives.\n2. By the end of Act III, Nabin declares, 'I underestimated the power of our own music. I was afraid you would be lost to us.' Analyse how this admission marks a shift from his Act II position, and identify the dramatic device — Leela's revelation — that triggers this change.\n3. The play resolves the conflict between tradition and modernity not through argument but through music itself. Evaluate how effective this resolution is as a dramatic choice.",
+            "question_type": "EXTRACT_ANALYSIS",
+            "options": [],
+            "visual_stimulus": "NABIN: To drown your individual style in the hubbub of an orchestra is hardly a wise choice. You have a voice, Shruti. Guard it.\nSHRUTI: Baba, will you not come to just one rehearsal before you decide?\nNABIN: [mockingly] A rehearsal? So I may watch you disappear into someone else's tune? I think not.\n[He pushes back his chair and leaves the dining room without another word.]",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Nabin fears that fusion performance will erode Shruti's individual Hindustani voice; he cites the risk of losing her personal style to a collective sound.",
+                "In Act II Nabin is dismissive and leaves without hearing Shruti out; by Act III he admits his fear was misplaced once he hears her preserve the raga notes within the fusion piece.",
+                "Leela's aside — revealing Nabin's own defiance of a vocalist family to take up the violin — humanises his rigidity and creates the empathetic parallel that softens him.",
+                "Award credit for evaluating the 'show, don't tell' resolution: music bypasses argument and lets Nabin experience the answer rather than be persuaded by words.",
+                "Strong responses will name the dramatic irony: the audience learns Nabin's history before he voices his admission, amplifying the moment's impact."
+              ],
+              "note": ""
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-RFC-B-1",
+            "source_section_id": "B",
+            "source_section_title": "A Friend Found in Music",
+            "source_section_type": "poem",
+            "source_spine": "reading_for_comprehension",
+            "source_lo": "Student identifies and evaluates poetic devices — metaphor, anaphora, rhyme scheme — and articulates thematic meaning by close-reading a lyric poem.",
+            "source_context": "Music portrayed through successive metaphors as ocean, therapy, and steadfast friend by poet Bryanna T. Perkins.",
+            "item_stem": "Read the stanza below and answer the questions that follow.\n\n1. Identify the metaphor in this stanza and explain what quality of music it highlights.\n2. The poem repeats the opening 'Music is…' structure in every stanza. Name this device and explain how it shapes the overall tone of the poem.\n3. The poet describes music as 'the needed friend / When no one seems to care.' Evaluate whether the word 'needed' is more effective than 'only' would have been in the same line, giving a reason.",
+            "question_type": "EXTRACT_ANALYSIS",
+            "options": [],
+            "visual_stimulus": "Music is the therapy\nI need when I feel blue.\nMusic lifts my spirits\nTo make sure I pull through.",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "The metaphor 'Music is the therapy' casts music as a healing agent; it highlights music's power to relieve emotional pain or sadness ('when I feel blue').",
+                "The repeated 'Music is…' opening is anaphora; it creates a meditative, incantatory tone that reinforces the speaker's certainty about music's role.",
+                "The ABCB rhyme scheme ('blue' / 'through') lends the stanza its own gentle musicality, mirroring the subject.",
+                "'Needed' implies urgency and indispensability specifically in moments of loneliness, whereas 'only' would merely signal exclusivity; 'needed' carries greater emotional weight.",
+                "Strong responses will connect the cumulative metaphors (ocean → therapy → friend) to the poem's central theme: music as emotional sustenance across different states of feeling."
+              ],
+              "note": ""
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "spine_code": "listening",
+        "spine_title": "Listening",
+        "items": [
+          {
+            "id": "Q-LIS-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Twin Melodies",
+            "source_section_type": "drama",
+            "source_spine": "listening",
+            "source_lo": "Student listens to a descriptive passage and completes structured notes with precise details using note-taking-from-listening.",
+            "source_context": "Musician's description of the yazh — ancient Indian harp, its materials, design variations, and cultural names.",
+            "item_stem": "Your teacher will read aloud a passage about an ancient Indian musical instrument. Listen carefully and complete the notes below.\n\nThe Yazh — Structured Notes\n\n(i) Also known as: ___________\n(ii) Connection to modern instrument: ancestor of the ___________\n(iii) Why it is called 'yazh': the tip of its stem was carved into the head of a ___________\n(iv) Type of strings used: ___________\n(v) Shape of the resonator: ___________\n(vi) Two methods of tuning: ___________ and ___________\n(vii) Name one design variation with its meaning: ___________",
+            "question_type": "FILL_IN",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "p. 270",
+            "teacher_guide": {
+              "suggested_answer": "(i) Indian harp / yāḻ  (ii) veena  (iii) mythological animal Yali  (iv) gut strings  (v) wooden boat-shaped, skin-covered  (vi) pegs / rings of gut moved up and down the strings  (vii) any one of: mayuri yazh — peacock yazh; makara yazh — crocodile yazh; matsya yazh — fish yazh; vil yazh — bow string yazh",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-LIS-B-1",
+            "source_section_id": "B",
+            "source_section_title": "A Friend Found in Music",
+            "source_section_type": "poem",
+            "source_spine": "listening",
+            "source_lo": "Student predicts content from pre-listening questions and verifies comprehension by listening to a conversation, using listen-and-respond.",
+            "source_context": "Mother and son at a music centre discussing the santoor's limited practice access and a home-loan solution.",
+            "item_stem": "Your teacher will read aloud a conversation between a mother and her son at a music centre. Read the statements below before you listen, then mark each TRUE or FALSE after listening. Where a statement is FALSE, write one sentence of correction.",
+            "question_type": "TRUE_FALSE",
+            "options": [
+              {
+                "label": "1",
+                "text": "Jaspreet is upset because he dislikes the sound of the santoor.",
+                "is_correct": false
+              },
+              {
+                "label": "2",
+                "text": "The santoor teacher visits the music centre only twice a week.",
+                "is_correct": true
+              },
+              {
+                "label": "3",
+                "text": "Jaspreet found watching videos of the santoor being played helpful for improving his skill.",
+                "is_correct": false
+              },
+              {
+                "label": "4",
+                "text": "Jaspreet's mother plans to borrow a santoor from a friend who used to play it.",
+                "is_correct": true
+              },
+              {
+                "label": "5",
+                "text": "By the end of the conversation, Jaspreet is still worried about having to change his instrument.",
+                "is_correct": false
+              }
+            ],
+            "visual_stimulus": "",
+            "transcript_ref": "p. 270",
+            "teacher_guide": {
+              "suggested_answer": "1. FALSE — Jaspreet is upset because the teacher comes only twice a week, making regular practice difficult, not because he dislikes the instrument.  2. TRUE.  3. FALSE — Jaspreet tried watching videos but found them unhelpful because playing is a hands-on skill.  4. TRUE.  5. FALSE — Jaspreet is delighted by his mother's solution and asks her to place the request that very day.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "spine_code": "speaking",
+        "spine_title": "Speaking",
+        "items": [
+          {
+            "id": "Q-SPK-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Twin Melodies",
+            "source_section_type": "drama",
+            "source_spine": "speaking",
+            "source_lo": "Student performs scripted lines with deliberate stress and intonation, articulating how delivery choices alter emotional meaning.",
+            "source_context": "Four lines from Twin Melodies — including Shruti's resolve and Nabin's aphorism 'Each bay, its own wind'.",
+            "item_stem": "Read aloud the four lines below from Twin Melodies, one at a time. Before performing each line, state aloud: (a) which word or phrase you will stress most, and (b) whether your voice will rise, fall, or remain level at the end — and why that choice fits the character's emotion at that moment.\n\nLine 1 (Shruti, Act I): 'I have been hiding this long enough. Tonight, I will tell him.'\nLine 2 (Nabin, Act II): 'You have a voice, Shruti. Guard it.'\nLine 3 (Leela, Act II, aside): 'She is braver than she knows.'\nLine 4 (Nabin, Act III): 'Each bay, its own wind.'",
+            "question_type": "ORAL_PROMPT",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Student identifies a specific word or phrase to stress in each line and gives a reason linked to that character's emotional state (e.g. stressing 'Tonight' signals Shruti's determined resolve).",
+                "Student uses rising, falling, or level intonation deliberately — e.g. a falling tone on Nabin's 'Guard it' to convey firm authority; a quieter, level tone on Leela's aside to signal private observation.",
+                "Delivery is audible, paced, and distinct — pauses are used purposefully rather than filled with hesitation.",
+                "Student articulates how a different stress or intonation choice would change the emotional meaning (e.g. stressing 'you' vs. 'voice' in Nabin's line shifts emphasis from identity to artistry).",
+                "For Nabin's aphorism, student explains the reflective or philosophical tone appropriate to the character's transformation by Act III."
+              ],
+              "note": ""
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "spine_code": "writing",
+        "spine_title": "Writing",
+        "items": [
+          {
+            "id": "Q-WRT-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Twin Melodies",
+            "source_section_type": "drama",
+            "source_spine": "writing",
+            "source_lo": "Student drafts an original play script using dramatic conventions — stage directions, asides, non-lexical fillers — modelled on a studied play.",
+            "source_context": "Anuradha, a tabla-playing teenager, defies her disapproving vocalist father to perform at a prestigious event.",
+            "item_stem": "Write an original play-script scene (150–200 words) in which Anuradha, a teenage tabla player, tells her father — a classical vocalist who disapproves of her performing at a prestigious music festival — that she has accepted the invitation without his permission.\n\nYour script must include:\n- At least two stage directions in brackets that reveal character emotion or movement\n- One aside spoken by Anuradha (marked clearly as ASIDE)\n- At least one non-lexical filler (e.g. 'Hmm', 'Uh', 'Well...') in a character's dialogue to show hesitation or thought\n- A colon after each character's name before their dialogue\n\nBase your dramatic conventions on those used in Twin Melodies.",
+            "question_type": "WRITING_TASK",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Play-script format is correctly maintained: character names followed by colons, stage directions in brackets, and ASIDE clearly labelled.",
+                "At least two stage directions are present and do meaningful dramatic work — they reveal emotion or physical action rather than simply naming a location.",
+                "One non-lexical filler appears naturally in dialogue to convey hesitation, thought, or anxiety rather than as a random insertion.",
+                "The scene dramatises genuine conflict between Anuradha's aspiration and her father's disapproval, with each character's position made clear through dialogue.",
+                "Language and tone are consistent with the characters' roles; formal register suits the father's authority, while Anuradha's lines may shift between nervousness and resolve."
+              ],
+              "note": ""
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "spine_code": "vocabulary_grammar",
+        "spine_title": "Vocabulary and Grammar",
+        "items": [
+          {
+            "id": "Q-VG-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Twin Melodies",
+            "source_section_type": "drama",
+            "source_spine": "vocabulary_grammar",
+            "source_lo": "Student identifies dramatic-script vocabulary and transforms exclamatory sentences and dialogue into reported speech, applying grammar-in-writing strategies.",
+            "source_context": "Play-derived grammar: asides, non-lexical fillers, music-vocabulary matching, and six dialogue transformations into reported speech.",
+            "item_stem": "The lines below are taken from or modelled on dialogue in Twin Melodies. Rewrite each line in reported speech, making all necessary changes to tense, pronouns, and time expressions.\n\n1. Shruti said to her friends: 'I have been hiding this from my father for weeks.'\n2. Nabin told Shruti: 'You are drowning your individual style in an orchestra.'\n3. Leela asked her daughter: 'Why did you not tell us about the rehearsals?'\n4. Iqbal said: 'The concert will be held next Saturday.'\n5. Shruti told her mother: 'I am thinking of withdrawing from the performance.'\n6. Nabin admitted to Leela: 'I underestimated the power of our own music.'",
+            "question_type": "SCR",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "1. Shruti told her friends that she had been hiding that from her father for weeks. 2. Nabin told Shruti that she was drowning her individual style in an orchestra. 3. Leela asked her daughter why she had not told them about the rehearsals. 4. Iqbal said that the concert would be held the following Saturday. 5. Shruti told her mother that she was thinking of withdrawing from the performance. 6. Nabin admitted to Leela that he had underestimated the power of their own music.",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true
+          },
+          {
+            "id": "Q-VG-B-1",
+            "source_section_id": "B",
+            "source_section_title": "A Friend Found in Music",
+            "source_section_type": "poem",
+            "source_spine": "vocabulary_grammar",
+            "source_lo": "Student classifies emotion-register vocabulary and identifies phrasal verb meanings, applying domain-vocabulary strategies to a lyric poem's language.",
+            "source_context": "Poem-derived emotion words — 'feel blue', 'lifts my spirits' — and 'move' phrasal verbs in music and everyday contexts.",
+            "item_stem": "Part A — Emotion Vocabulary from the Poem\nThe expressions below are drawn from or linked to the language of 'A Friend Found in Music'. Classify each as expressing (i) a negative emotional state, (ii) a positive emotional state, or (iii) emotional improvement/recovery. Write the letter of each expression under the correct heading.\n\na. feel blue   b. lifts my spirits   c. pull through   d. most cheerful   e. no one seems to care   f. moved to the core\n\nPart B — Phrasal Verbs with 'move'\nThe poem says music 'moves me to the core'. The verb 'move' forms several phrasal verbs used in music and everyday life. Fill in the blank in each sentence with the correct phrasal verb from the box: move on, move up, move in, move through.\n\n1. The orchestra had to ___________ quickly to the final movement before the interval ended.\n2. After months of grief, she found that music helped her ___________ and feel hopeful again.\n3. The young musician was asked to ___________ to the advanced ensemble after her impressive audition.\n4. As the melody changed, a quiet sadness seemed to ___________ the audience like a wave.",
+            "question_type": "FILL_IN",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "Part A — (i) Negative: a. feel blue; e. no one seems to care  (ii) Positive: d. most cheerful; f. moved to the core  (iii) Improvement/recovery: b. lifts my spirits; c. pull through\n\nPart B — 1. move through  2. move on  3. move up  4. move through",
+              "expected_elements": [],
+              "note": ""
+            },
+            "verified": true
+          }
+        ]
+      },
+      {
+        "spine_code": "beyond_text",
+        "spine_title": "Beyond the Text",
+        "items": [
+          {
+            "id": "Q-BT-A-1",
+            "source_section_id": "A",
+            "source_section_title": "Twin Melodies",
+            "source_section_type": "drama",
+            "source_spine": "beyond_text",
+            "source_lo": "Student analyses the conventions of play-script writing and connects dramatic form to real-world interdisciplinary contexts through structured inquiry.",
+            "source_context": "Play-script conventions — colons, brackets, stage directions — and their function in performance, drawn from Twin Melodies.",
+            "item_stem": "Twin Melodies uses specific play-script conventions — colons after character names, stage directions in brackets, and asides — that serve distinct functions in performance.\n\nTask: Prepare a short illustrated guide (one A4 page or equivalent) titled 'How to Read a Play Script' aimed at a younger student who has never read a play before. Your guide must:\n\n(a) Name and explain three conventions used in Twin Melodies (colon after character name, bracketed stage directions, and asides), with one example from the play for each.\n(b) Explain why each convention exists — what it tells the reader or performer that ordinary prose cannot.\n(c) Include one brief paragraph connecting the play-script form to a real-world context — for example, how a film screenplay, a radio drama script, or a street-theatre performance uses similar or different conventions.\n\nYou may present your guide as a combination of labelled examples and short explanatory notes.",
+            "question_type": "PROJECT",
+            "options": [],
+            "visual_stimulus": "",
+            "transcript_ref": "",
+            "teacher_guide": {
+              "suggested_answer": "",
+              "expected_elements": [
+                "Three conventions are correctly named and exemplified directly from Twin Melodies, with each example drawn accurately from the play's text.",
+                "Explanations articulate the performative function of each convention — e.g. brackets signal action not spoken aloud; the colon separates voice from action on the page.",
+                "The real-world connection is specific and reasoned — student names a form (screenplay, radio script, street theatre) and identifies at least one similarity or difference with play-script conventions.",
+                "The guide is organised for a younger audience: language is accessible, examples are clearly labelled, and layout distinguishes convention names from explanations.",
+                "Strong responses will note that conventions bridge the gap between the written page and live performance, giving directors, actors, and readers a shared interpretive code."
+              ],
+              "note": ""
+            },
+            "verified": true
+          }
+        ]
+      }
+    ],
+    "input_tokens": 19859,
+    "output_tokens": 10672,
+    "cost_inr": 20.2084,
+    "assess_input_tokens": 8604,
+    "assess_output_tokens": 5667,
+    "assess_cost_inr": 10.1952
+  }
+}
