@@ -10,7 +10,7 @@
       "title": "The Sky — Picture Reading",
       "type": "picture_narrative",
       "page_range": "102–103",
-      "char_count": 0,
+      "page_count": 2,
       "picture_story_summary": "A busy street scene depicting daily life in an Indian town or village. On both sides of the street are shops — a clothing store ('Vastra Style'), a grocery store, a food stall ('Good Meals'), and a fruit vendor. A bullock cart loaded with sacks moves along the road. A man on a bicycle rides past. A woman in a green sari walks with a small dog on a leash. A herd of goats crosses the street. Children share ice golas (coloured ice treats). A man in dark glasses carries a white cane. Two dustbins — one blue, one green — stand near the food stall. A cat sits on a rooftop near a 'Study Point' board. Birds, including coloured ones, fly in the sky above with a kite and a rainbow. The scene celebrates everyday community life, diversity of occupations, and environmental awareness (two-coloured dustbins for waste segregation).",
       "dialogue_text": null,
       "spines": {
@@ -84,7 +84,7 @@
       "title": "Night",
       "type": "poem",
       "page_range": "104–108",
-      "char_count": 147,
+      "page_count": 5,
       "poem_text": "The sun that shines all day so bright,\nI wonder where it goes at night.\nIt sinks behind a distant hill\nAnd all the world grows dark and still.\n\nAnd then I go to bed and sleep\nUntil the day begins to peep.\nAnd when my eyes open,\nI see the Sun is\nshining down on me.",
       "poem_appreciation_summary": "A gentle, lyrical poem narrated from a child's perspective, tracing the sun's daily journey. The child wonders where the bright sun disappears at night and imagines it sinking behind a distant hill, darkening the world. The child then mirrors the sun — going to sleep — and wakes to find the sun shining again. Tone: curious, peaceful, wonder-filled. Central imagery: the sun as a companion that comes and goes. Key devices: rhyme (bright/night, still/hill, sleep/peep, me), personification of the sun and the day ('the day begins to peep'). Theme: the daily cycle of day and night seen through a child's wonder.",
       "spines": {
@@ -197,10 +197,23 @@
   ],
   "competency_reporting": {
     "by_spine": {
-      "oracy": ["C-1.1", "C-1.2", "C-1.3"],
-      "reading": ["C-2.1", "C-2.2"],
-      "word_work": ["C-4.1", "C-4.2"],
-      "beyond_text": ["C-5.1", "C-5.2"]
+      "oracy": [
+        "C-1.1",
+        "C-1.2",
+        "C-1.3"
+      ],
+      "reading": [
+        "C-2.1",
+        "C-2.2"
+      ],
+      "word_work": [
+        "C-4.1",
+        "C-4.2"
+      ],
+      "beyond_text": [
+        "C-5.1",
+        "C-5.2"
+      ]
     }
   },
   "effort_signals": {

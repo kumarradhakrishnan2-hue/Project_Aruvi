@@ -4,14 +4,13 @@
   "grade": "v",
   "chapter_number": 1,
   "chapter_title": "Papa's Spectacles",
-
   "main_sections": [
     {
       "section_id": "A",
       "title": "Papa's Spectacles",
       "type": "poem",
       "page_range": "p.1-10",
-      "char_count": 425,
+      "page_count": 10,
       "poem_text": "Today our papa\nIs searching everywhere,\nHe has lost his spectacles,\nIt was his only pair!\n\nHe can't read the newspaper,\nHe can't watch TV,\nHe can't cut the vegetables,\nOh! Where can it be?\n\nHe checked inside his pockets,\nHe glanced under his chair,\nHe searched near the window,\nHe looked everywhere.\n\nI told him, \"Stop, Papa!\"\nI went up close, and said!\n\"Papa, your spectacles\nAre right there on your head!\"",
       "poem_appreciation_summary": "The poem is a humorous, lighthearted narrative about a father who frantically searches for his spectacles without realising they are perched on his head. Told from a child's point of view, it captures the warm domestic scene with gentle comedy. The central theme is the irony of searching for something that is in plain sight, paired with a tender moment of a child helping a helpless parent. The tone is playful and affectionate, with a bouncy four-beat rhythm that suits oral recitation. The dominant device is anaphora — the repeated 'He can't…' and 'He checked… He glanced… He searched…' build comic anticipation before the cheerful revelation in the final stanza. Well-suited for dramatic recitation with expressive gestures.",
       "spines": {
@@ -134,13 +133,41 @@
             {
               "task_text": "B. Note the following phrase: a pair of shoes. The word 'pair' is used in all the phrases given below. Fill in the blanks and complete the phrases. [Pictures shown: trousers, scissors, spectacles, socks, gloves, earrings, badminton rackets]\n1. a pair of ________\n2. a pair of ________\n3. a pair of ________\n4. a pair of ________\n5. a pair of ________\n6. a pair of ________\n7. a pair of ________",
               "question_bank": [
-                { "stem": "a pair of ________ (picture: trousers)", "type": "FILL_IN", "page_ref": "p.4" },
-                { "stem": "a pair of ________ (picture: scissors)", "type": "FILL_IN", "page_ref": "p.4" },
-                { "stem": "a pair of ________ (picture: spectacles/glasses)", "type": "FILL_IN", "page_ref": "p.4" },
-                { "stem": "a pair of ________ (picture: socks)", "type": "FILL_IN", "page_ref": "p.4" },
-                { "stem": "a pair of ________ (picture: gloves)", "type": "FILL_IN", "page_ref": "p.4" },
-                { "stem": "a pair of ________ (picture: earrings)", "type": "FILL_IN", "page_ref": "p.4" },
-                { "stem": "a pair of ________ (picture: badminton rackets)", "type": "FILL_IN", "page_ref": "p.4" }
+                {
+                  "stem": "a pair of ________ (picture: trousers)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.4"
+                },
+                {
+                  "stem": "a pair of ________ (picture: scissors)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.4"
+                },
+                {
+                  "stem": "a pair of ________ (picture: spectacles/glasses)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.4"
+                },
+                {
+                  "stem": "a pair of ________ (picture: socks)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.4"
+                },
+                {
+                  "stem": "a pair of ________ (picture: gloves)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.4"
+                },
+                {
+                  "stem": "a pair of ________ (picture: earrings)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.4"
+                },
+                {
+                  "stem": "a pair of ________ (picture: badminton rackets)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.4"
+                }
               ],
               "visual_stimulus": [
                 {
@@ -154,42 +181,146 @@
             {
               "task_text": "C. Encircle the word that is spelt correctly. One has been done for you.\n1. watter / water / weter\n2. vegatables / veggetables / vegetables\n3. balloon / baloon / ballon\n4. hause / house / houze\n5. elephant / elefant / ellephant\n6. spactacles / spektacles / spectacles\n7. karpenter / carpenter / carpainter\n8. fruitt / friut / fruit\n9. receive / recieve / raceive\n10. prinsipal / principal / princpal",
               "question_bank": [
-                { "stem": "Encircle the correctly spelt word: watter / water / weter", "type": "FILL_IN", "page_ref": "p.5" },
-                { "stem": "Encircle the correctly spelt word: vegatables / veggetables / vegetables", "type": "FILL_IN", "page_ref": "p.5" },
-                { "stem": "Encircle the correctly spelt word: balloon / baloon / ballon", "type": "FILL_IN", "page_ref": "p.5" },
-                { "stem": "Encircle the correctly spelt word: hause / house / houze", "type": "FILL_IN", "page_ref": "p.5" },
-                { "stem": "Encircle the correctly spelt word: elephant / elefant / ellephant", "type": "FILL_IN", "page_ref": "p.5" },
-                { "stem": "Encircle the correctly spelt word: spactacles / spektacles / spectacles", "type": "FILL_IN", "page_ref": "p.5" },
-                { "stem": "Encircle the correctly spelt word: karpenter / carpenter / carpainter", "type": "FILL_IN", "page_ref": "p.5" },
-                { "stem": "Encircle the correctly spelt word: fruitt / friut / fruit", "type": "FILL_IN", "page_ref": "p.5" },
-                { "stem": "Encircle the correctly spelt word: receive / recieve / raceive", "type": "FILL_IN", "page_ref": "p.5" },
-                { "stem": "Encircle the correctly spelt word: prinsipal / principal / princpal", "type": "FILL_IN", "page_ref": "p.5" }
+                {
+                  "stem": "Encircle the correctly spelt word: watter / water / weter",
+                  "type": "FILL_IN",
+                  "page_ref": "p.5"
+                },
+                {
+                  "stem": "Encircle the correctly spelt word: vegatables / veggetables / vegetables",
+                  "type": "FILL_IN",
+                  "page_ref": "p.5"
+                },
+                {
+                  "stem": "Encircle the correctly spelt word: balloon / baloon / ballon",
+                  "type": "FILL_IN",
+                  "page_ref": "p.5"
+                },
+                {
+                  "stem": "Encircle the correctly spelt word: hause / house / houze",
+                  "type": "FILL_IN",
+                  "page_ref": "p.5"
+                },
+                {
+                  "stem": "Encircle the correctly spelt word: elephant / elefant / ellephant",
+                  "type": "FILL_IN",
+                  "page_ref": "p.5"
+                },
+                {
+                  "stem": "Encircle the correctly spelt word: spactacles / spektacles / spectacles",
+                  "type": "FILL_IN",
+                  "page_ref": "p.5"
+                },
+                {
+                  "stem": "Encircle the correctly spelt word: karpenter / carpenter / carpainter",
+                  "type": "FILL_IN",
+                  "page_ref": "p.5"
+                },
+                {
+                  "stem": "Encircle the correctly spelt word: fruitt / friut / fruit",
+                  "type": "FILL_IN",
+                  "page_ref": "p.5"
+                },
+                {
+                  "stem": "Encircle the correctly spelt word: receive / recieve / raceive",
+                  "type": "FILL_IN",
+                  "page_ref": "p.5"
+                },
+                {
+                  "stem": "Encircle the correctly spelt word: prinsipal / principal / princpal",
+                  "type": "FILL_IN",
+                  "page_ref": "p.5"
+                }
               ]
             },
             {
               "task_text": "D. Complete the story using the correct prepositions. [Word bank: around, after, before, in, above, on, among]\nMy father has a habit of keeping his spectacles ________ random places. Last week, he could not find his spectacles and looked ________ the house. We checked the big box that reached ________ our waists. My father looked for the spectacles ________ the newspapers kept ________ the table. He continued searching for two hours ________ finally giving up. He sat down on the bed ________ giving one final look to the room and said with a sigh, 'Looks like it is time to get a new pair.'",
               "question_bank": [
-                { "stem": "My father has a habit of keeping his spectacles ________ random places.", "type": "FILL_IN", "page_ref": "p.6" },
-                { "stem": "…he could not find his spectacles and looked ________ the house.", "type": "FILL_IN", "page_ref": "p.6" },
-                { "stem": "We checked the big box that reached ________ our waists.", "type": "FILL_IN", "page_ref": "p.6" },
-                { "stem": "My father looked for the spectacles ________ the newspapers kept ________ the table.", "type": "FILL_IN", "page_ref": "p.6" },
-                { "stem": "He continued searching for two hours ________ finally giving up.", "type": "FILL_IN", "page_ref": "p.6" },
-                { "stem": "He sat down on the bed ________ giving one final look to the room.", "type": "FILL_IN", "page_ref": "p.6" }
+                {
+                  "stem": "My father has a habit of keeping his spectacles ________ random places.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.6"
+                },
+                {
+                  "stem": "…he could not find his spectacles and looked ________ the house.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.6"
+                },
+                {
+                  "stem": "We checked the big box that reached ________ our waists.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.6"
+                },
+                {
+                  "stem": "My father looked for the spectacles ________ the newspapers kept ________ the table.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.6"
+                },
+                {
+                  "stem": "He continued searching for two hours ________ finally giving up.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.6"
+                },
+                {
+                  "stem": "He sat down on the bed ________ giving one final look to the room.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.6"
+                }
               ]
             },
             {
               "task_text": "E. Use the clues given below to complete the crossword puzzle!\nAcross: 2. Not far, it's ________. 6. I want ________ clothes, not the dirty ones. 8. Not inside, play ________. 9. When it's not bright, it's ________.\nDown: 1. I said no but he said ________. 3. Something small is not ________. 4. Don't be sad, be ________. 5. You are slow, she is ________. 6. Not hot, she likes ________ coffee. 7. Not bought, but ________.",
               "question_bank": [
-                { "stem": "Across 2: Not far, it's ________.", "type": "FILL_IN", "page_ref": "p.6-7" },
-                { "stem": "Across 6: I want ________ clothes, not the dirty ones.", "type": "FILL_IN", "page_ref": "p.6-7" },
-                { "stem": "Across 8: Not inside, play ________.", "type": "FILL_IN", "page_ref": "p.6-7" },
-                { "stem": "Across 9: When it's not bright, it's ________.", "type": "FILL_IN", "page_ref": "p.7" },
-                { "stem": "Down 1: I said no but he said ________.", "type": "FILL_IN", "page_ref": "p.6-7" },
-                { "stem": "Down 3: Something small is not ________.", "type": "FILL_IN", "page_ref": "p.6-7" },
-                { "stem": "Down 4: Don't be sad, be ________.", "type": "FILL_IN", "page_ref": "p.6-7" },
-                { "stem": "Down 5: You are slow, she is ________.", "type": "FILL_IN", "page_ref": "p.7" },
-                { "stem": "Down 6: Not hot, she likes ________ coffee.", "type": "FILL_IN", "page_ref": "p.7" },
-                { "stem": "Down 7: Not bought, but ________.", "type": "FILL_IN", "page_ref": "p.7" }
+                {
+                  "stem": "Across 2: Not far, it's ________.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.6-7"
+                },
+                {
+                  "stem": "Across 6: I want ________ clothes, not the dirty ones.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.6-7"
+                },
+                {
+                  "stem": "Across 8: Not inside, play ________.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.6-7"
+                },
+                {
+                  "stem": "Across 9: When it's not bright, it's ________.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.7"
+                },
+                {
+                  "stem": "Down 1: I said no but he said ________.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.6-7"
+                },
+                {
+                  "stem": "Down 3: Something small is not ________.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.6-7"
+                },
+                {
+                  "stem": "Down 4: Don't be sad, be ________.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.6-7"
+                },
+                {
+                  "stem": "Down 5: You are slow, she is ________.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.7"
+                },
+                {
+                  "stem": "Down 6: Not hot, she likes ________ coffee.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.7"
+                },
+                {
+                  "stem": "Down 7: Not bought, but ________.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.7"
+                }
               ]
             }
           ]
@@ -257,17 +388,33 @@
       }
     }
   ],
-
   "competency_reporting": {
     "by_spine": {
-      "reading":                        ["C-2.1", "C-2.2"],
-      "oracy":                          ["C-1.1", "C-1.2", "C-1.3"],
-      "word_work":   ["C-4.1", "C-4.2"],
-      "writing":                        ["C-3.1", "C-3.2", "C-3.3", "C-3.4"],
-      "beyond_text":                    ["C-5.1", "C-5.2"]
+      "reading": [
+        "C-2.1",
+        "C-2.2"
+      ],
+      "oracy": [
+        "C-1.1",
+        "C-1.2",
+        "C-1.3"
+      ],
+      "word_work": [
+        "C-4.1",
+        "C-4.2"
+      ],
+      "writing": [
+        "C-3.1",
+        "C-3.2",
+        "C-3.3",
+        "C-3.4"
+      ],
+      "beyond_text": [
+        "C-5.1",
+        "C-5.2"
+      ]
     }
   },
-
   "effort_signals": {
     "spine_load": 3,
     "task_density": 1,

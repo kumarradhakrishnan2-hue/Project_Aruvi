@@ -10,7 +10,7 @@
       "title": "Glass Bangles",
       "type": "informational",
       "page_range": "pp.119–133",
-      "char_count": 1680,
+      "page_count": 15,
       "prose_summary": "This informational narrative is set in Firozabad, Uttar Pradesh — India's hub of glassware. Ravi is a skilled glass artisan whose family has crafted glass bangles for generations. His workshop buzzes with activity as artisans heat glass in furnaces, carefully shape it into bangles, and add vibrant colours and traditional designs. Ravi takes pride in making each bangle beautiful and long-lasting. During Diwali the demand surges and the workshop runs around the clock. Ravi's daughter Ananya, fresh from schooling, joins him and introduces modern floral and geometric patterns to complement the traditional designs. Ravi is initially hesitant about changing the traditional craft but soon appreciates Ananya's vision. Their special Diwali collection — blending old and new — is a huge success, with women proudly wearing the bangles under festival lights. The success ripples outward: more work is created for local artisans and jobs are generated in packing and transportation. The story ends with Ravi and Ananya reflecting on their shared journey, their workshop continuing to prosper. The chapter introduces the themes of traditional craft, intergenerational collaboration, and the wider community impact of skilled work.",
       "spines": {
         "reading": {
@@ -91,30 +91,86 @@
             {
               "task_text": "A. For each word, list three other words you associate with it. One has been done for you.\n1. Festivals — Joy, Sweets, Family\n2. Bangle — ______  ______  ______\n3. Factory — ______  ______  ______\n4. Friend — ______  ______  ______\n5. School — ______  ______  ______",
               "question_bank": [
-                { "stem": "List three words you associate with 'Bangle'.", "type": "SCR", "page_ref": "p.124" },
-                { "stem": "List three words you associate with 'Factory'.", "type": "SCR", "page_ref": "p.124" },
-                { "stem": "List three words you associate with 'Friend'.", "type": "SCR", "page_ref": "p.124" },
-                { "stem": "List three words you associate with 'School'.", "type": "SCR", "page_ref": "p.124" }
+                {
+                  "stem": "List three words you associate with 'Bangle'.",
+                  "type": "SCR",
+                  "page_ref": "p.124"
+                },
+                {
+                  "stem": "List three words you associate with 'Factory'.",
+                  "type": "SCR",
+                  "page_ref": "p.124"
+                },
+                {
+                  "stem": "List three words you associate with 'Friend'.",
+                  "type": "SCR",
+                  "page_ref": "p.124"
+                },
+                {
+                  "stem": "List three words you associate with 'School'.",
+                  "type": "SCR",
+                  "page_ref": "p.124"
+                }
               ]
             },
             {
               "task_text": "B. Use capital letters, full stop (.), comma (,), question mark (?), wherever necessary and rewrite the following sentences.\n1. the air was filled with the clinking of glass\n2. On diwali night the streets of Firozabad were lit with lamps and lights\n3. did ravi like ananya's new designs at first\n4. ravi and ananya made a special collection for diwali\n5. did the customers love the new bangles",
               "question_bank": [
-                { "stem": "Correct: the air was filled with the clinking of glass", "type": "SCR", "page_ref": "p.124" },
-                { "stem": "Correct: On diwali night the streets of Firozabad were lit with lamps and lights", "type": "SCR", "page_ref": "p.124" },
-                { "stem": "Correct: did ravi like ananya's new designs at first", "type": "SCR", "page_ref": "p.124" },
-                { "stem": "Correct: ravi and ananya made a special collection for diwali", "type": "SCR", "page_ref": "p.124" },
-                { "stem": "Correct: did the customers love the new bangles", "type": "SCR", "page_ref": "p.124" }
+                {
+                  "stem": "Correct: the air was filled with the clinking of glass",
+                  "type": "SCR",
+                  "page_ref": "p.124"
+                },
+                {
+                  "stem": "Correct: On diwali night the streets of Firozabad were lit with lamps and lights",
+                  "type": "SCR",
+                  "page_ref": "p.124"
+                },
+                {
+                  "stem": "Correct: did ravi like ananya's new designs at first",
+                  "type": "SCR",
+                  "page_ref": "p.124"
+                },
+                {
+                  "stem": "Correct: ravi and ananya made a special collection for diwali",
+                  "type": "SCR",
+                  "page_ref": "p.124"
+                },
+                {
+                  "stem": "Correct: did the customers love the new bangles",
+                  "type": "SCR",
+                  "page_ref": "p.124"
+                }
               ]
             },
             {
               "task_text": "C. Read the following sentence: Ananya had completed her schooling before she joined the factory. The underlined part is an example of past perfect tense. We use the past perfect tense to talk about an action that took place and was completed before another action in the past.\n\nIdentify the first action and the second action in the given sentences.\n1. The crowd had dispersed when we reached the market.\n2. Shivangi had finished the portrait when I called her.\n3. When you rang the doorbell, I had switched off the TV.\n4. When we reached the cinema hall, the movie had ended.\n5. Samar had set the table when the phone rang.",
               "question_bank": [
-                { "stem": "Identify first and second action: The crowd had dispersed when we reached the market.", "type": "SCR", "page_ref": "p.125" },
-                { "stem": "Identify first and second action: Shivangi had finished the portrait when I called her.", "type": "SCR", "page_ref": "p.125" },
-                { "stem": "Identify first and second action: When you rang the doorbell, I had switched off the TV.", "type": "SCR", "page_ref": "p.125" },
-                { "stem": "Identify first and second action: When we reached the cinema hall, the movie had ended.", "type": "SCR", "page_ref": "p.125" },
-                { "stem": "Identify first and second action: Samar had set the table when the phone rang.", "type": "SCR", "page_ref": "p.125" }
+                {
+                  "stem": "Identify first and second action: The crowd had dispersed when we reached the market.",
+                  "type": "SCR",
+                  "page_ref": "p.125"
+                },
+                {
+                  "stem": "Identify first and second action: Shivangi had finished the portrait when I called her.",
+                  "type": "SCR",
+                  "page_ref": "p.125"
+                },
+                {
+                  "stem": "Identify first and second action: When you rang the doorbell, I had switched off the TV.",
+                  "type": "SCR",
+                  "page_ref": "p.125"
+                },
+                {
+                  "stem": "Identify first and second action: When we reached the cinema hall, the movie had ended.",
+                  "type": "SCR",
+                  "page_ref": "p.125"
+                },
+                {
+                  "stem": "Identify first and second action: Samar had set the table when the phone rang.",
+                  "type": "SCR",
+                  "page_ref": "p.125"
+                }
               ]
             },
             {
@@ -162,10 +218,26 @@
             {
               "task_text": "A. Firozabad is famous for glass bangles. Find out and write the names of places in India known for the following crafts.\n1. Madhubani painting\n2. Paithani Saree\n3. Blue pottery\n4. Phulkari embroidery",
               "question_bank": [
-                { "stem": "Which place in India is famous for Madhubani painting?", "type": "SCR", "page_ref": "p.129" },
-                { "stem": "Which place in India is famous for Paithani Saree?", "type": "SCR", "page_ref": "p.129" },
-                { "stem": "Which place in India is famous for Blue pottery?", "type": "SCR", "page_ref": "p.129" },
-                { "stem": "Which place in India is famous for Phulkari embroidery?", "type": "SCR", "page_ref": "p.129" }
+                {
+                  "stem": "Which place in India is famous for Madhubani painting?",
+                  "type": "SCR",
+                  "page_ref": "p.129"
+                },
+                {
+                  "stem": "Which place in India is famous for Paithani Saree?",
+                  "type": "SCR",
+                  "page_ref": "p.129"
+                },
+                {
+                  "stem": "Which place in India is famous for Blue pottery?",
+                  "type": "SCR",
+                  "page_ref": "p.129"
+                },
+                {
+                  "stem": "Which place in India is famous for Phulkari embroidery?",
+                  "type": "SCR",
+                  "page_ref": "p.129"
+                }
               ],
               "visual_stimulus": [
                 {
@@ -244,11 +316,29 @@
   ],
   "competency_reporting": {
     "by_spine": {
-      "oracy": ["C-1.1", "C-1.2", "C-1.3"],
-      "reading": ["C-2.1", "C-2.2"],
-      "writing": ["C-3.1", "C-3.2", "C-3.3", "C-3.4"],
-      "word_work": ["C-4.1", "C-4.2"],
-      "beyond_text": ["C-5.1", "C-5.2"]
+      "oracy": [
+        "C-1.1",
+        "C-1.2",
+        "C-1.3"
+      ],
+      "reading": [
+        "C-2.1",
+        "C-2.2"
+      ],
+      "writing": [
+        "C-3.1",
+        "C-3.2",
+        "C-3.3",
+        "C-3.4"
+      ],
+      "word_work": [
+        "C-4.1",
+        "C-4.2"
+      ],
+      "beyond_text": [
+        "C-5.1",
+        "C-5.2"
+      ]
     }
   },
   "effort_signals": {

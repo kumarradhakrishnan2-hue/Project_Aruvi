@@ -30,7 +30,7 @@ Extract `chapter_title` verbatim from the opening page. Set `stage = "preparator
 
 A new `main_section` begins when the textbook starts a distinct text or visual narrative — a fresh chapter-title-style heading, a new "Let us Read" / "Let us Recite", a shift from picture-only story to prose/poem, or a re-run of the spine cycle for a different text. Prep default is usually **1 section**, occasionally **2** (e.g. a picture story followed by a poem).
 
-Per section: `section_id` (A/B/C in textbook order), `title`, `type`, `page_range`, `char_count` (text body only — exclude exercises and speech-bubble dialogue; use `0` for `picture_narrative`).
+Per section: `section_id` (A/B/C in textbook order), `title`, `type`, `page_range`, `page_count` (integer = `last_page − first_page + 1` parsed from `page_range`, counting every textbook page the section occupies — body, picture spreads, and exercise apparatus together; the LP uses this to allocate periods proportionally across sections).
 
 | `type` | When |
 |---|---|
@@ -182,9 +182,9 @@ Top-level shape:
 ```
 
 Each `main_section` carries:
-- Common: `section_id`, `title`, `type`, `page_range`, `char_count`, `spines: { <spine>: { section_name, tasks_verbatim }, ... }`.
+- Common: `section_id`, `title`, `type`, `page_range`, `page_count`, `spines: { <spine>: { section_name, tasks_verbatim }, ... }`.
 - `poem`: add `poem_text`, `poem_appreciation_summary`.
-- `picture_narrative`: add `picture_story_summary`, `dialogue_text` (if any). `char_count: 0`.
+- `picture_narrative`: add `picture_story_summary`, `dialogue_text` (if any).
 - Prose family: add `prose_summary`.
 
 A spine with no tasks is omitted from `spines` entirely (do not emit empty cells). UTF-8. Overwrite.
@@ -194,15 +194,17 @@ For a full worked example, see the existing pilot files at `mirror/chapters/engl
 ## Step 9 — Confirmation line
 
 ```
-ch_NN — "<title>" — sections: <count> (<type breakdown>) — spines_total: <N> — tasks: <total_tasks> — sub_items: <total_subitems> — visuals: <total_visuals> — project_load: <N> — effort_index: <value>
+ch_NN — "<title>" — sections: <count> (<type breakdown>) — pages: A=<N> B=<N> [C=<N>] — spines_total: <N> — tasks: <total_tasks> — sub_items: <total_subitems> — visuals: <total_visuals> — project_load: <N> — effort_index: <value>
 ```
+
+`pages: ...` echoes each section's `page_count` integer so the value the LP uses to allocate periods is visible at confirmation time.
 
 Totals are sums over all (section, spine) cells:
 - `tasks` = `sum(len(spine.tasks_verbatim))`
 - `sub_items` = `sum(len(t.question_bank))` over all tasks
 - `visuals` = `sum(len(t.visual_stimulus))` over tasks that have it
 
-Example: `ch_01 — "Fun with Friends" — sections: 2 (1 picture_narrative + 1 poem) — spines_total: 7 — tasks: 9 — sub_items: 18 — visuals: 4 — project_load: 1 — effort_index: 6.5`
+Example: `ch_01 — "Fun with Friends" — sections: 2 (1 picture_narrative + 1 poem) — pages: A=3 B=11 — spines_total: 7 — tasks: 9 — sub_items: 18 — visuals: 4 — project_load: 1 — effort_index: 6.5`
 
 ## Constraints
 

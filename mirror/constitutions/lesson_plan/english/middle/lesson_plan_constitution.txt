@@ -30,7 +30,7 @@ INPUTS
 ================================================================================
 
 1. Summary JSON (chapter_title, stage, main_sections[] each carrying
-   id/title/type/char_count, plus the type-specific text-summary
+   id/title/type/page_count, plus the type-specific text-summary
    fields:
      - `prose_summary`             (for prose / narrative / dialogue /
                                     informational sections)
@@ -99,12 +99,11 @@ A 60-minute period holds at most 3–5 tasks. Do not exceed these
 ceilings regardless of how many tasks the summary contains.
 
 STEP 2 — Distribute B periods across sections proportionally.
-Allocate periods in proportion to each section's `char_count`. Round
-to the nearest integer. The only hard floor is that no section
-receives zero periods — every section in the chapter must be taught.
-A section may receive as few as one period if its char_count warrants
-it. No correction mechanism is applied after initial proportional
-allocation.
+Allocate periods in proportion to each section's `page_count` (textbook
+pages occupied, body + exercise apparatus together). Round to the
+nearest integer. The only hard floor is that no section receives zero
+periods — every section in the chapter must be taught. No
+correction mechanism is applied after initial proportional allocation.
 
 STEP 3 — Within each section, cover spines in textbook order,
 stopping when the section's periods are full.

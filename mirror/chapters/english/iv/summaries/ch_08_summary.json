@@ -10,7 +10,7 @@
       "title": "The Lagori Champions",
       "type": "dialogue",
       "page_range": "73–88",
-      "char_count": 2850,
+      "page_count": 16,
       "prose_summary": "Chapter 8 is a lively dialogue-and-narration story set in Sundarpur village. Ravi and his cousin Prakash from Rajasthan go to the children's park, where they meet Guneet, Deepa, Nidhi, and Imran. Guneet proposes including Prakash in the upcoming Lagori match because he is a fast runner. Prakash admits he has never heard of Lagori, so Imran explains the rules: seven flat stones are stacked in the centre, one team knocks them down with a ball, and the opposing team tries to rebuild the stack while the first team pelts players with the ball. Prakash recognises the game as 'Satoliya', its name in Rajasthan, which delights the group — they discover the same game has different regional names. Their team is called the Sundarpur Tigers, captained by Deepa, and their opponents are the Green Warriors from a nearby village. In Part II, the match unfolds with high drama: Deepa scores the first hit, the Tigers scramble to rebuild the stack while dodging the ball, and Prakash places the winning seventh stone just before the final whistle. The Tigers win. Both teams shake hands, the referee lifts the captains' hands, and the villagers celebrate together. The story closes with Deepa reflecting that traditional outdoor games are more exciting than video games, and Ravi affirming they should play them more often. Themes: teamwork, sportsmanship, cultural diversity, and the value of traditional games.",
       "spines": {
         "reading": {
@@ -268,49 +268,81 @@
                 {
                   "stem": "Circle the word that does NOT mean the same as 'large': huge / tiny / big",
                   "type": "MCQ",
-                  "options": ["huge", "tiny", "big"],
+                  "options": [
+                    "huge",
+                    "tiny",
+                    "big"
+                  ],
                   "page_ref": "p.82"
                 },
                 {
                   "stem": "Circle the word that does NOT mean the same as 'praised': celebrated / ignored / cheered",
                   "type": "MCQ",
-                  "options": ["celebrated", "ignored", "cheered"],
+                  "options": [
+                    "celebrated",
+                    "ignored",
+                    "cheered"
+                  ],
                   "page_ref": "p.82"
                 },
                 {
                   "stem": "Circle the word that does NOT mean the same as 'margin': boundary / border / center",
                   "type": "MCQ",
-                  "options": ["boundary", "border", "center"],
+                  "options": [
+                    "boundary",
+                    "border",
+                    "center"
+                  ],
                   "page_ref": "p.82"
                 },
                 {
                   "stem": "Circle the word that does NOT mean the same as 'contest': match / playground / activity",
                   "type": "MCQ",
-                  "options": ["match", "playground", "activity"],
+                  "options": [
+                    "match",
+                    "playground",
+                    "activity"
+                  ],
                   "page_ref": "p.82"
                 },
                 {
                   "stem": "Circle the word that does NOT mean the same as 'jolt': shock / calm / disturbance",
                   "type": "MCQ",
-                  "options": ["shock", "calm", "disturbance"],
+                  "options": [
+                    "shock",
+                    "calm",
+                    "disturbance"
+                  ],
                   "page_ref": "p.82"
                 },
                 {
                   "stem": "Circle the word that does NOT mean the same as 'repair': rebuild / mend / ruin",
                   "type": "MCQ",
-                  "options": ["rebuild", "mend", "ruin"],
+                  "options": [
+                    "rebuild",
+                    "mend",
+                    "ruin"
+                  ],
                   "page_ref": "p.82"
                 },
                 {
                   "stem": "Circle the word that does NOT mean the same as 'most-liked': favourite / beloved / disliked",
                   "type": "MCQ",
-                  "options": ["favourite", "beloved", "disliked"],
+                  "options": [
+                    "favourite",
+                    "beloved",
+                    "disliked"
+                  ],
                   "page_ref": "p.83"
                 },
                 {
                   "stem": "Circle the word that does NOT mean the same as 'rival': opponent / competitor / friend",
                   "type": "MCQ",
-                  "options": ["opponent", "competitor", "friend"],
+                  "options": [
+                    "opponent",
+                    "competitor",
+                    "friend"
+                  ],
                   "page_ref": "p.83"
                 }
               ]
@@ -399,31 +431,46 @@
                 {
                   "stem": "My name is Sonam. — Sentence or Question?",
                   "type": "MCQ",
-                  "options": ["Sentence", "Question"],
+                  "options": [
+                    "Sentence",
+                    "Question"
+                  ],
                   "page_ref": "p.87"
                 },
                 {
                   "stem": "What is your name? — Sentence or Question?",
                   "type": "MCQ",
-                  "options": ["Sentence", "Question"],
+                  "options": [
+                    "Sentence",
+                    "Question"
+                  ],
                   "page_ref": "p.87"
                 },
                 {
                   "stem": "Where do you stay? — Sentence or Question?",
                   "type": "MCQ",
-                  "options": ["Sentence", "Question"],
+                  "options": [
+                    "Sentence",
+                    "Question"
+                  ],
                   "page_ref": "p.87"
                 },
                 {
                   "stem": "This flower is beautiful. — Sentence or Question?",
                   "type": "MCQ",
-                  "options": ["Sentence", "Question"],
+                  "options": [
+                    "Sentence",
+                    "Question"
+                  ],
                   "page_ref": "p.87"
                 },
                 {
                   "stem": "My shirt is blue in colour. — Sentence or Question?",
                   "type": "MCQ",
-                  "options": ["Sentence", "Question"],
+                  "options": [
+                    "Sentence",
+                    "Question"
+                  ],
                   "page_ref": "p.87"
                 }
               ]
@@ -468,11 +515,29 @@
   ],
   "competency_reporting": {
     "by_spine": {
-      "oracy": ["C-1.1", "C-1.2", "C-1.3"],
-      "reading": ["C-2.1", "C-2.2"],
-      "writing": ["C-3.1", "C-3.2", "C-3.3", "C-3.4"],
-      "word_work": ["C-4.1", "C-4.2"],
-      "beyond_text": ["C-5.1", "C-5.2"]
+      "oracy": [
+        "C-1.1",
+        "C-1.2",
+        "C-1.3"
+      ],
+      "reading": [
+        "C-2.1",
+        "C-2.2"
+      ],
+      "writing": [
+        "C-3.1",
+        "C-3.2",
+        "C-3.3",
+        "C-3.4"
+      ],
+      "word_work": [
+        "C-4.1",
+        "C-4.2"
+      ],
+      "beyond_text": [
+        "C-5.1",
+        "C-5.2"
+      ]
     }
   },
   "effort_signals": {

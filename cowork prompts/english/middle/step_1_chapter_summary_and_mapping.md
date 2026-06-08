@@ -49,7 +49,13 @@ text plus a second text or closing poem).
 
 Per main_section capture: `section_id` ("A"/"B"/"C" in textbook
 order), `title`, `type` (`prose | poem | narrative | dialogue |
-informational`), `page_range`, `char_count` (text body, not exercises).
+informational`), `page_range`, `page_count` (integer — number of textbook
+pages this section spans, INCLUDING its exercise apparatus; compute as
+last_page − first_page + 1 from `page_range`). This is the teaching-load
+signal the LP uses to allocate periods across sections, so it must reflect
+the full footprint a teacher works through — the body text PLUS every
+Reading / Vocabulary / Listening / Speaking / Writing / Beyond-text
+subheading that belongs to this section.
 
 ## Step 3 — Per main_section, write the text summary
 
@@ -332,7 +338,7 @@ the file already exists.
       "title": "A Day in School",
       "type": "prose",
       "page_range": "p.1-12",
-      "char_count": 18000,
+      "page_count": 12,
       "prose_summary": "<200–400 word textbook-grounded summary>",
       "spines": {
         "reading_for_comprehension": {
@@ -367,7 +373,7 @@ the file already exists.
       "title": "The Morning Bell",
       "type": "poem",
       "page_range": "p.13",
-      "char_count": 600,
+      "page_count": 1,
       "poem_text": "The morning bell rings clear and loud,\nWaking the lanes, waking the crowd.\n...",
       "poem_appreciation_summary": "<80–150 word appreciation>",
       "spines": {
@@ -405,14 +411,17 @@ Overwrite.
 ## Step 10 — Confirmation line
 
 ```
-ch_NN — "<title>" — sections: <count> (<type breakdown>) — spines_total: <N> — tasks: <total_task_object_count> — sub_items: <total_subitem_count> — project_load: <N> — effort_index: <value>
+ch_NN — "<title>" — sections: <count> (<type breakdown>) — pages: A=<N> B=<N> [C=<N>] — spines_total: <N> — tasks: <total_task_object_count> — sub_items: <total_subitem_count> — project_load: <N> — effort_index: <value>
 ```
 
 Where:
+- `pages: ...` echoes each section's `page_count` integer
+  (last_page − first_page + 1) so the value used by the LP's
+  proportional-period allocation is visible at confirmation time.
 - `total_task_object_count` = sum of `len(spine.tasks_verbatim)` across all (section, spine) cells.
 - `total_subitem_count` = sum of `len(t.question_bank) for cell in all cells for t in cell.tasks_verbatim`.
 
-Example: `ch_01 — "Learning Together" — sections: 2 (1 prose + 1 poem) — spines_total: 8 — tasks: 24 — sub_items: 32 — project_load: 1 — effort_index: 13.5`
+Example: `ch_01 — "Learning Together" — sections: 3 (1 prose + 1 poem + 1 informational) — pages: A=15, B=12, C=15 — spines_total: 12 — tasks: 24 — sub_items: 32 — project_load: 1 — effort_index: 13.5`
 
 ## Constraints
 

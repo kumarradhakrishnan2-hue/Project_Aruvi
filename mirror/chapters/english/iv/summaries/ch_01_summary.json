@@ -4,14 +4,13 @@
   "grade": "iv",
   "chapter_number": 1,
   "chapter_title": "Together We Can",
-
   "main_sections": [
     {
       "section_id": "A",
       "title": "Together We Can",
       "type": "poem",
       "page_range": "p.1-8",
-      "char_count": 310,
+      "page_count": 8,
       "poem_text": "Together we stand, strong and tall,\nHelping each other, we never fall.\n\nCheering aloud, we shout and sing,\nTeamwork can overcome anything.\n\nWin or lose, we always share,\nOur bond of trust is always there.\n\nWith each hand joined, the goal is near,\nTeam spirit fills the air with cheer.\n\nTogether we shine, our hearts as one,\nFor in our team, the joy's begun!",
       "poem_appreciation_summary": "The poem celebrates the spirit of teamwork and unity. Its central theme is that people who work together and support one another are stronger than those who work alone. The tone is joyful, energetic, and affirming — conveying that both victories and losses are shared experiences that deepen the bond among team members. The dominant imagery is of joined hands and collective voices cheering together, reinforcing togetherness as both a physical and emotional act. The poem uses end rhyme (tall/fall, sing/anything, share/there, near/cheer, one/begun) to create a rhythmic, chant-like quality that mirrors its message of solidarity. The closing couplet lifts the mood with the idea that joy itself is born from collective effort.",
       "spines": {
@@ -214,17 +213,33 @@
       }
     }
   ],
-
   "competency_reporting": {
     "by_spine": {
-      "reading": ["C-2.1", "C-2.2"],
-      "oracy": ["C-1.1", "C-1.2", "C-1.3"],
-      "word_work": ["C-4.1", "C-4.2"],
-      "writing": ["C-3.1", "C-3.2", "C-3.3", "C-3.4"],
-      "beyond_text": ["C-5.1", "C-5.2"]
+      "reading": [
+        "C-2.1",
+        "C-2.2"
+      ],
+      "oracy": [
+        "C-1.1",
+        "C-1.2",
+        "C-1.3"
+      ],
+      "word_work": [
+        "C-4.1",
+        "C-4.2"
+      ],
+      "writing": [
+        "C-3.1",
+        "C-3.2",
+        "C-3.3",
+        "C-3.4"
+      ],
+      "beyond_text": [
+        "C-5.1",
+        "C-5.2"
+      ]
     }
   },
-
   "effort_signals": {
     "spine_load": 3,
     "task_density": 1,

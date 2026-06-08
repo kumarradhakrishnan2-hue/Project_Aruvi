@@ -4,14 +4,13 @@
   "grade": "v",
   "chapter_number": 2,
   "chapter_title": "Gone with the Scooter",
-
   "main_sections": [
     {
       "section_id": "A",
       "title": "Gone with the Scooter",
       "type": "prose",
       "page_range": "p.11-26",
-      "char_count": 1320,
+      "page_count": 16,
       "prose_summary": "On a hot summer afternoon, Gopi is reading on the veranda when he hears a rustling and a thud in the garden. He searches through the grass, bushes, and dry leaves and finds a hockey ball. He wonders whose it could be and decides he cannot keep it — he will ask around. That evening he goes to the nearby playground where his friends Manoj, Ramani, Deepak, and Jay have gathered. He asks if anyone lost a ball. Manoj says he lost one four months ago, but Gopi rules that out. Ramani tries to claim it without proof. Deepak boasts his father bought him a new football. Everyone laughs. Manoj grabs the ball and tosses it to Deepak, triggering a spontaneous game of hockey. Gopi passes to Deepak, who drives to Ramani, who dribbles to Jay. Jay hits the ball so hard it flies past the playground gate and lands in the basket of a passing scooter. By the time the children run to the gate, the scooter — and the ball — are gone. The friends burst into laughter. The story celebrates honesty, sharing, sportsmanship, and the joy of unexpected play, with a comic twist ending that mirrors the irony of the ball's journey: found by chance, lost again by chance.",
       "spines": {
         "reading": {
@@ -96,37 +95,101 @@
             {
               "task_text": "Let us Learn A. Match the following.\nWord — Meaning\nDribble — a soft crackling sound\nBoast — take something with a sudden movement\nRustle — moving a ball with small taps while playing hockey\nGrab — to speak too proudly",
               "question_bank": [
-                { "stem": "Match: Dribble → ?", "type": "MATCH", "page_ref": "p.16" },
-                { "stem": "Match: Boast → ?", "type": "MATCH", "page_ref": "p.16" },
-                { "stem": "Match: Rustle → ?", "type": "MATCH", "page_ref": "p.16" },
-                { "stem": "Match: Grab → ?", "type": "MATCH", "page_ref": "p.16" }
+                {
+                  "stem": "Match: Dribble → ?",
+                  "type": "MATCH",
+                  "page_ref": "p.16"
+                },
+                {
+                  "stem": "Match: Boast → ?",
+                  "type": "MATCH",
+                  "page_ref": "p.16"
+                },
+                {
+                  "stem": "Match: Rustle → ?",
+                  "type": "MATCH",
+                  "page_ref": "p.16"
+                },
+                {
+                  "stem": "Match: Grab → ?",
+                  "type": "MATCH",
+                  "page_ref": "p.16"
+                }
               ]
             },
             {
               "task_text": "Let us Learn B. Complete the following story using the words given in the box.\n[Word bank: since, however, because, when]\nGopi completed his work ________ he wanted to go outside and play. ________ when he reached the playground nobody was there. ________ his friends were yet to join him, he decided to take a walk. After 15 minutes, five of them came and everyone started to discuss the games. They decided to play hopscotch ________ they got to know that Ramani would not be joining them.",
               "question_bank": [
-                { "stem": "Gopi completed his work ________ he wanted to go outside and play. [since/however/because/when]", "type": "FILL_IN", "page_ref": "p.17" },
-                { "stem": "________ when he reached the playground nobody was there. [since/however/because/when]", "type": "FILL_IN", "page_ref": "p.17" },
-                { "stem": "________ his friends were yet to join him, he decided to take a walk. [since/however/because/when]", "type": "FILL_IN", "page_ref": "p.17" },
-                { "stem": "They decided to play hopscotch ________ they got to know that Ramani would not be joining them. [since/however/because/when]", "type": "FILL_IN", "page_ref": "p.17" }
+                {
+                  "stem": "Gopi completed his work ________ he wanted to go outside and play. [since/however/because/when]",
+                  "type": "FILL_IN",
+                  "page_ref": "p.17"
+                },
+                {
+                  "stem": "________ when he reached the playground nobody was there. [since/however/because/when]",
+                  "type": "FILL_IN",
+                  "page_ref": "p.17"
+                },
+                {
+                  "stem": "________ his friends were yet to join him, he decided to take a walk. [since/however/because/when]",
+                  "type": "FILL_IN",
+                  "page_ref": "p.17"
+                },
+                {
+                  "stem": "They decided to play hopscotch ________ they got to know that Ramani would not be joining them. [since/however/because/when]",
+                  "type": "FILL_IN",
+                  "page_ref": "p.17"
+                }
               ]
             },
             {
               "task_text": "Let us Learn C. Now encircle the adverbs in the following sentences. For each sentence, identify whether the adverb tells 'how many times the action happens/happened' (frequency) or 'time of the action'.\na. Gopi immediately got up and ran into the garden.\nb. Shama often writes in her diary.\nc. All his friends regularly gathered to play hockey.\nd. I always complete my homework.\ne. Yesterday I ate an ice cream after lunch.\nf. Monika never eats junk food.\ng. Now they are going to sing their favourite song.",
               "question_bank": [
-                { "stem": "Encircle the adverb and classify it (frequency/time): Gopi immediately got up and ran into the garden.", "type": "FILL_IN", "page_ref": "p.18" },
-                { "stem": "Encircle the adverb and classify it (frequency/time): Shama often writes in her diary.", "type": "FILL_IN", "page_ref": "p.18" },
-                { "stem": "Encircle the adverb and classify it (frequency/time): All his friends regularly gathered to play hockey.", "type": "FILL_IN", "page_ref": "p.18" },
-                { "stem": "Encircle the adverb and classify it (frequency/time): I always complete my homework.", "type": "FILL_IN", "page_ref": "p.18" },
-                { "stem": "Encircle the adverb and classify it (frequency/time): Yesterday I ate an ice cream after lunch.", "type": "FILL_IN", "page_ref": "p.18" },
-                { "stem": "Encircle the adverb and classify it (frequency/time): Monika never eats junk food.", "type": "FILL_IN", "page_ref": "p.18" },
-                { "stem": "Encircle the adverb and classify it (frequency/time): Now they are going to sing their favourite song.", "type": "FILL_IN", "page_ref": "p.18" }
+                {
+                  "stem": "Encircle the adverb and classify it (frequency/time): Gopi immediately got up and ran into the garden.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.18"
+                },
+                {
+                  "stem": "Encircle the adverb and classify it (frequency/time): Shama often writes in her diary.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.18"
+                },
+                {
+                  "stem": "Encircle the adverb and classify it (frequency/time): All his friends regularly gathered to play hockey.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.18"
+                },
+                {
+                  "stem": "Encircle the adverb and classify it (frequency/time): I always complete my homework.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.18"
+                },
+                {
+                  "stem": "Encircle the adverb and classify it (frequency/time): Yesterday I ate an ice cream after lunch.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.18"
+                },
+                {
+                  "stem": "Encircle the adverb and classify it (frequency/time): Monika never eats junk food.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.18"
+                },
+                {
+                  "stem": "Encircle the adverb and classify it (frequency/time): Now they are going to sing their favourite song.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.18"
+                }
               ]
             },
             {
               "task_text": "Let us Speak B. The title of this textbook is 'Santoor'. Say the word 'book'. Next, say the word 'Santoor'. Both have 'oo' in them — the sound of 'oo' in 'book' is short; the sound of 'oo' in 'Santoor' is long.\nSay aloud the following words. Encircle the words which have a long 'oo' sound.\n1. Hood  2. School  3. Foot  4. Maroon  5. Scooter  6. Shook  7. Bloom  8. Food  9. Look  10. Moon  11. Book  12. Took",
               "question_bank": [
-                { "stem": "Encircle words with a long 'oo' sound from the list: Hood, School, Foot, Maroon, Scooter, Shook, Bloom, Food, Look, Moon, Book, Took", "type": "FILL_IN", "page_ref": "p.20" }
+                {
+                  "stem": "Encircle words with a long 'oo' sound from the list: Hood, School, Foot, Maroon, Scooter, Shook, Bloom, Food, Look, Moon, Book, Took",
+                  "type": "FILL_IN",
+                  "page_ref": "p.20"
+                }
               ]
             }
           ]
@@ -141,26 +204,86 @@
             {
               "task_text": "Let us Write B. Form new words by following the examples given below:\nsun + rise = sunrise [also: sun + set = sunset; sun + shine = sunshine; sun + flower = sunflower]\nfoot + ball = football [also: foot + base = baseball; foot + basket = basketball; foot + volley = volleyball]\nWrite a sentence using each of these words in your notebook.",
               "question_bank": [
-                { "stem": "Form compound word: sun + set = ?", "type": "FILL_IN", "page_ref": "p.21" },
-                { "stem": "Form compound word: sun + shine = ?", "type": "FILL_IN", "page_ref": "p.21" },
-                { "stem": "Form compound word: sun + flower = ?", "type": "FILL_IN", "page_ref": "p.21" },
-                { "stem": "Form compound word: foot + base = ?", "type": "FILL_IN", "page_ref": "p.21" },
-                { "stem": "Form compound word: foot + basket = ?", "type": "FILL_IN", "page_ref": "p.21" },
-                { "stem": "Form compound word: foot + volley = ?", "type": "FILL_IN", "page_ref": "p.21" }
+                {
+                  "stem": "Form compound word: sun + set = ?",
+                  "type": "FILL_IN",
+                  "page_ref": "p.21"
+                },
+                {
+                  "stem": "Form compound word: sun + shine = ?",
+                  "type": "FILL_IN",
+                  "page_ref": "p.21"
+                },
+                {
+                  "stem": "Form compound word: sun + flower = ?",
+                  "type": "FILL_IN",
+                  "page_ref": "p.21"
+                },
+                {
+                  "stem": "Form compound word: foot + base = ?",
+                  "type": "FILL_IN",
+                  "page_ref": "p.21"
+                },
+                {
+                  "stem": "Form compound word: foot + basket = ?",
+                  "type": "FILL_IN",
+                  "page_ref": "p.21"
+                },
+                {
+                  "stem": "Form compound word: foot + volley = ?",
+                  "type": "FILL_IN",
+                  "page_ref": "p.21"
+                }
               ]
             },
             {
               "task_text": "Let us Write C. You have already noticed that the word 'scooter' has 'oo' in the middle. Using the clues given below, write ten words that have 'ai' in the middle. One has been done for you (chair).\n1. Something that has four legs, on which you generally sit. (chair)\n2. Water that falls from clouds.\n3. A vehicle that runs on tracks.\n4. You use this to colour your wall or pictures.\n5. The part of body that helps you think.\n6. A slow moving creature with a shell.\n7. Letters and packages you send or receive.\n8. The movements of boats on water.\n9. All animals have them, long or short.\n10. Steps that takes us from one floor to another.",
               "question_bank": [
-                { "stem": "Water that falls from clouds. (has 'ai' in the middle)", "type": "FILL_IN", "page_ref": "p.22" },
-                { "stem": "A vehicle that runs on tracks. (has 'ai' in the middle)", "type": "FILL_IN", "page_ref": "p.22" },
-                { "stem": "You use this to colour your wall or pictures. (has 'ai' in the middle)", "type": "FILL_IN", "page_ref": "p.22" },
-                { "stem": "The part of body that helps you think. (has 'ai' in the middle)", "type": "FILL_IN", "page_ref": "p.22" },
-                { "stem": "A slow moving creature with a shell. (has 'ai' in the middle)", "type": "FILL_IN", "page_ref": "p.22" },
-                { "stem": "Letters and packages you send or receive. (has 'ai' in the middle)", "type": "FILL_IN", "page_ref": "p.22" },
-                { "stem": "The movements of boats on water. (has 'ai' in the middle)", "type": "FILL_IN", "page_ref": "p.22" },
-                { "stem": "All animals have them, long or short. (has 'ai' in the middle)", "type": "FILL_IN", "page_ref": "p.22" },
-                { "stem": "Steps that takes us from one floor to another. (has 'ai' in the middle)", "type": "FILL_IN", "page_ref": "p.22" }
+                {
+                  "stem": "Water that falls from clouds. (has 'ai' in the middle)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.22"
+                },
+                {
+                  "stem": "A vehicle that runs on tracks. (has 'ai' in the middle)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.22"
+                },
+                {
+                  "stem": "You use this to colour your wall or pictures. (has 'ai' in the middle)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.22"
+                },
+                {
+                  "stem": "The part of body that helps you think. (has 'ai' in the middle)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.22"
+                },
+                {
+                  "stem": "A slow moving creature with a shell. (has 'ai' in the middle)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.22"
+                },
+                {
+                  "stem": "Letters and packages you send or receive. (has 'ai' in the middle)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.22"
+                },
+                {
+                  "stem": "The movements of boats on water. (has 'ai' in the middle)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.22"
+                },
+                {
+                  "stem": "All animals have them, long or short. (has 'ai' in the middle)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.22"
+                },
+                {
+                  "stem": "Steps that takes us from one floor to another. (has 'ai' in the middle)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.22"
+                }
               ]
             }
           ]
@@ -206,17 +329,33 @@
       }
     }
   ],
-
   "competency_reporting": {
     "by_spine": {
-      "reading":     ["C-2.1", "C-2.2"],
-      "oracy":       ["C-1.1", "C-1.2", "C-1.3"],
-      "word_work":   ["C-4.1", "C-4.2"],
-      "writing":     ["C-3.1", "C-3.2", "C-3.3", "C-3.4"],
-      "beyond_text": ["C-5.1", "C-5.2"]
+      "reading": [
+        "C-2.1",
+        "C-2.2"
+      ],
+      "oracy": [
+        "C-1.1",
+        "C-1.2",
+        "C-1.3"
+      ],
+      "word_work": [
+        "C-4.1",
+        "C-4.2"
+      ],
+      "writing": [
+        "C-3.1",
+        "C-3.2",
+        "C-3.3",
+        "C-3.4"
+      ],
+      "beyond_text": [
+        "C-5.1",
+        "C-5.2"
+      ]
     }
   },
-
   "effort_signals": {
     "spine_load": 3,
     "task_density": 1,

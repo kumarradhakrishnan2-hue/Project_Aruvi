@@ -4,14 +4,13 @@
   "grade": "v",
   "chapter_number": 3,
   "chapter_title": "The Rainbow",
-
   "main_sections": [
     {
       "section_id": "A",
       "title": "The Rainbow",
       "type": "poem",
       "page_range": "p.27-40",
-      "char_count": 271,
+      "page_count": 14,
       "poem_text": "Boats sail on the rivers,\nAnd ships sail on the seas;\nBut clouds that sail across the sky\nAre prettier far than these.\n\nThere are bridges on the rivers,\nAs pretty as you please;\nBut the bow that bridges heaven,\nAnd overtops the trees,\nAnd builds a road from earth to sky,\nIs prettier far than these.\n\n– Christina Rossetti",
       "poem_appreciation_summary": "This two-stanza poem by Christina Rossetti uses a classic comparative structure to celebrate the rainbow as nature's most beautiful creation. The first stanza contrasts boats and ships on rivers and seas with clouds sailing across the sky, declaring clouds 'prettier far.' The second stanza contrasts man-made bridges with the rainbow — described as 'the bow that bridges heaven' and 'builds a road from earth to sky' — which surpasses them all. The central theme is the sublime beauty of nature over human craft. The tone is quietly rapturous and contemplative. The dominant device is anaphora ('But…/But…') and epistrophe ('prettier far than these' ends both stanzas), creating a cumulative rhythmic effect. The metaphor of the rainbow as both 'bow' and 'road' is the poem's most striking image. Well-suited for recitation with attention to rising emphasis at each 'but' and the final revelation.",
       "spines": {
@@ -101,39 +100,131 @@
             {
               "task_text": "Let us Learn A. Rearrange the letters of each word to form a meaningful word from the poem. Write them in the space provided.\n1. sial → SAIL\n2. vierr\n3. sae\n4. oduscl\n5. risebgd\n6. nhveea\n7. eoptvros\n8. owb\n9. droa",
               "question_bank": [
-                { "stem": "Unscramble: vierr (from the poem)", "type": "FILL_IN", "page_ref": "p.29" },
-                { "stem": "Unscramble: sae (from the poem)", "type": "FILL_IN", "page_ref": "p.29" },
-                { "stem": "Unscramble: oduscl (from the poem)", "type": "FILL_IN", "page_ref": "p.29" },
-                { "stem": "Unscramble: risebgd (from the poem)", "type": "FILL_IN", "page_ref": "p.29" },
-                { "stem": "Unscramble: nhveea (from the poem)", "type": "FILL_IN", "page_ref": "p.29" },
-                { "stem": "Unscramble: eoptvros (from the poem)", "type": "FILL_IN", "page_ref": "p.29" },
-                { "stem": "Unscramble: owb (from the poem)", "type": "FILL_IN", "page_ref": "p.29" },
-                { "stem": "Unscramble: droa (from the poem)", "type": "FILL_IN", "page_ref": "p.29" }
+                {
+                  "stem": "Unscramble: vierr (from the poem)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.29"
+                },
+                {
+                  "stem": "Unscramble: sae (from the poem)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.29"
+                },
+                {
+                  "stem": "Unscramble: oduscl (from the poem)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.29"
+                },
+                {
+                  "stem": "Unscramble: risebgd (from the poem)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.29"
+                },
+                {
+                  "stem": "Unscramble: nhveea (from the poem)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.29"
+                },
+                {
+                  "stem": "Unscramble: eoptvros (from the poem)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.29"
+                },
+                {
+                  "stem": "Unscramble: owb (from the poem)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.29"
+                },
+                {
+                  "stem": "Unscramble: droa (from the poem)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.29"
+                }
               ]
             },
             {
               "task_text": "Let us Learn B. Work in pairs. One of you moves a finger around in the circle. When your partner says 'Stop', perform the action indicated by the segment the finger lands on. Segments: (1) Provide a new title for the poem. (2) Find two pairs of words from the poem that rhyme. (3) Share the images that come to your mind while reading the poem. (4) Name a musical instrument that you will use if you have to sing the poem. (5) Find those words from the poem which have been repeated.",
               "question_bank": [
-                { "stem": "Provide a new title for the poem.", "type": "ORAL_PROMPT", "page_ref": "p.29" },
-                { "stem": "Find two pairs of words from the poem that rhyme.", "type": "ORAL_PROMPT", "page_ref": "p.29" },
-                { "stem": "Share the images that come to your mind while reading the poem.", "type": "ORAL_PROMPT", "page_ref": "p.29" },
-                { "stem": "Name a musical instrument that you will use if you have to sing the poem.", "type": "ORAL_PROMPT", "page_ref": "p.29" },
-                { "stem": "Find those words from the poem which have been repeated.", "type": "ORAL_PROMPT", "page_ref": "p.29" }
+                {
+                  "stem": "Provide a new title for the poem.",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.29"
+                },
+                {
+                  "stem": "Find two pairs of words from the poem that rhyme.",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.29"
+                },
+                {
+                  "stem": "Share the images that come to your mind while reading the poem.",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.29"
+                },
+                {
+                  "stem": "Name a musical instrument that you will use if you have to sing the poem.",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.29"
+                },
+                {
+                  "stem": "Find those words from the poem which have been repeated.",
+                  "type": "ORAL_PROMPT",
+                  "page_ref": "p.29"
+                }
               ]
             },
             {
               "task_text": "Let us Write D.1. Write the opposites of the following words in the space provided. All your answers must begin with an 'S'.\na. large × small (given)\nb. weak × s________\nc. fast × s________\nd. rough × s________\ne. dull × s________\nf. curved × s________\ng. finish × s________\nh. addition × s________\ni. complicated × s________\nj. mild × s________\nk. blunt × s________\nNow, make sentences using the words that you have written in the blanks. Write them in your notebook.\n2. In small groups, choose a letter of the English alphabet and create an exercise similar to the one above.",
               "question_bank": [
-                { "stem": "Write the opposite of 'weak' beginning with 'S'.", "type": "FILL_IN", "page_ref": "p.36" },
-                { "stem": "Write the opposite of 'fast' beginning with 'S'.", "type": "FILL_IN", "page_ref": "p.36" },
-                { "stem": "Write the opposite of 'rough' beginning with 'S'.", "type": "FILL_IN", "page_ref": "p.36" },
-                { "stem": "Write the opposite of 'dull' beginning with 'S'.", "type": "FILL_IN", "page_ref": "p.36" },
-                { "stem": "Write the opposite of 'curved' beginning with 'S'.", "type": "FILL_IN", "page_ref": "p.36" },
-                { "stem": "Write the opposite of 'finish' beginning with 'S'.", "type": "FILL_IN", "page_ref": "p.36" },
-                { "stem": "Write the opposite of 'addition' beginning with 'S'.", "type": "FILL_IN", "page_ref": "p.36" },
-                { "stem": "Write the opposite of 'complicated' beginning with 'S'.", "type": "FILL_IN", "page_ref": "p.36" },
-                { "stem": "Write the opposite of 'mild' beginning with 'S'.", "type": "FILL_IN", "page_ref": "p.36" },
-                { "stem": "Write the opposite of 'blunt' beginning with 'S'.", "type": "FILL_IN", "page_ref": "p.36" }
+                {
+                  "stem": "Write the opposite of 'weak' beginning with 'S'.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.36"
+                },
+                {
+                  "stem": "Write the opposite of 'fast' beginning with 'S'.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.36"
+                },
+                {
+                  "stem": "Write the opposite of 'rough' beginning with 'S'.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.36"
+                },
+                {
+                  "stem": "Write the opposite of 'dull' beginning with 'S'.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.36"
+                },
+                {
+                  "stem": "Write the opposite of 'curved' beginning with 'S'.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.36"
+                },
+                {
+                  "stem": "Write the opposite of 'finish' beginning with 'S'.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.36"
+                },
+                {
+                  "stem": "Write the opposite of 'addition' beginning with 'S'.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.36"
+                },
+                {
+                  "stem": "Write the opposite of 'complicated' beginning with 'S'.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.36"
+                },
+                {
+                  "stem": "Write the opposite of 'mild' beginning with 'S'.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.36"
+                },
+                {
+                  "stem": "Write the opposite of 'blunt' beginning with 'S'.",
+                  "type": "FILL_IN",
+                  "page_ref": "p.36"
+                }
               ]
             },
             {
@@ -159,15 +250,51 @@
             {
               "task_text": "Let us Write B. A word joins a 'friend word' to make new words, as shown below. Complete the table.\n1. rain + bow = rainbow (given)\n2. tea + cup = ________\n3. wrist + ________ = ________\n4. arm + ________ = ________\n5. earth + ________ = earthworm\n6. ________ + ________ = sunflower\n7. table + cloth = ________\n8. note + ________ = notebook\n9. ________ + ________ = earring\n10. tooth + ________ = ________",
               "question_bank": [
-                { "stem": "Complete: tea + cup = ?", "type": "FILL_IN", "page_ref": "p.34" },
-                { "stem": "Complete: wrist + ? = ? (picture: wristwatch)", "type": "FILL_IN", "page_ref": "p.34" },
-                { "stem": "Complete: arm + ? = ? (picture: armchair)", "type": "FILL_IN", "page_ref": "p.34" },
-                { "stem": "Complete: earth + ? = earthworm", "type": "FILL_IN", "page_ref": "p.34" },
-                { "stem": "Complete: ? + ? = sunflower", "type": "FILL_IN", "page_ref": "p.34" },
-                { "stem": "Complete: table + cloth = ?", "type": "FILL_IN", "page_ref": "p.34" },
-                { "stem": "Complete: note + ? = notebook", "type": "FILL_IN", "page_ref": "p.34" },
-                { "stem": "Complete: ? + ? = earring", "type": "FILL_IN", "page_ref": "p.34" },
-                { "stem": "Complete: tooth + ? = ? (picture: toothpaste)", "type": "FILL_IN", "page_ref": "p.34" }
+                {
+                  "stem": "Complete: tea + cup = ?",
+                  "type": "FILL_IN",
+                  "page_ref": "p.34"
+                },
+                {
+                  "stem": "Complete: wrist + ? = ? (picture: wristwatch)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.34"
+                },
+                {
+                  "stem": "Complete: arm + ? = ? (picture: armchair)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.34"
+                },
+                {
+                  "stem": "Complete: earth + ? = earthworm",
+                  "type": "FILL_IN",
+                  "page_ref": "p.34"
+                },
+                {
+                  "stem": "Complete: ? + ? = sunflower",
+                  "type": "FILL_IN",
+                  "page_ref": "p.34"
+                },
+                {
+                  "stem": "Complete: table + cloth = ?",
+                  "type": "FILL_IN",
+                  "page_ref": "p.34"
+                },
+                {
+                  "stem": "Complete: note + ? = notebook",
+                  "type": "FILL_IN",
+                  "page_ref": "p.34"
+                },
+                {
+                  "stem": "Complete: ? + ? = earring",
+                  "type": "FILL_IN",
+                  "page_ref": "p.34"
+                },
+                {
+                  "stem": "Complete: tooth + ? = ? (picture: toothpaste)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.34"
+                }
               ],
               "visual_stimulus": [
                 {
@@ -181,16 +308,56 @@
             {
               "task_text": "Let us Write C. The following words are both nouns and verbs. Create two sentences for each word, once as a noun and then as a verb and write them in your notebook.\n1. cut  2. bat  3. picture  4. cry  5. filter  6. dance  7. plant  8. paint  9. fly  10. face\n[Worked example given: 'bridge' as noun — 'I have seen a bridge made of roots in Meghalaya.' As verb — 'Some planks of woods were used to bridge the stream.']",
               "question_bank": [
-                { "stem": "Write two sentences for 'cut': once as a noun and once as a verb.", "type": "WRITING_TASK", "page_ref": "p.35" },
-                { "stem": "Write two sentences for 'bat': once as a noun and once as a verb.", "type": "WRITING_TASK", "page_ref": "p.35" },
-                { "stem": "Write two sentences for 'picture': once as a noun and once as a verb.", "type": "WRITING_TASK", "page_ref": "p.35" },
-                { "stem": "Write two sentences for 'cry': once as a noun and once as a verb.", "type": "WRITING_TASK", "page_ref": "p.35" },
-                { "stem": "Write two sentences for 'filter': once as a noun and once as a verb.", "type": "WRITING_TASK", "page_ref": "p.35" },
-                { "stem": "Write two sentences for 'dance': once as a noun and once as a verb.", "type": "WRITING_TASK", "page_ref": "p.35" },
-                { "stem": "Write two sentences for 'plant': once as a noun and once as a verb.", "type": "WRITING_TASK", "page_ref": "p.35" },
-                { "stem": "Write two sentences for 'paint': once as a noun and once as a verb.", "type": "WRITING_TASK", "page_ref": "p.35" },
-                { "stem": "Write two sentences for 'fly': once as a noun and once as a verb.", "type": "WRITING_TASK", "page_ref": "p.35" },
-                { "stem": "Write two sentences for 'face': once as a noun and once as a verb.", "type": "WRITING_TASK", "page_ref": "p.35" }
+                {
+                  "stem": "Write two sentences for 'cut': once as a noun and once as a verb.",
+                  "type": "WRITING_TASK",
+                  "page_ref": "p.35"
+                },
+                {
+                  "stem": "Write two sentences for 'bat': once as a noun and once as a verb.",
+                  "type": "WRITING_TASK",
+                  "page_ref": "p.35"
+                },
+                {
+                  "stem": "Write two sentences for 'picture': once as a noun and once as a verb.",
+                  "type": "WRITING_TASK",
+                  "page_ref": "p.35"
+                },
+                {
+                  "stem": "Write two sentences for 'cry': once as a noun and once as a verb.",
+                  "type": "WRITING_TASK",
+                  "page_ref": "p.35"
+                },
+                {
+                  "stem": "Write two sentences for 'filter': once as a noun and once as a verb.",
+                  "type": "WRITING_TASK",
+                  "page_ref": "p.35"
+                },
+                {
+                  "stem": "Write two sentences for 'dance': once as a noun and once as a verb.",
+                  "type": "WRITING_TASK",
+                  "page_ref": "p.35"
+                },
+                {
+                  "stem": "Write two sentences for 'plant': once as a noun and once as a verb.",
+                  "type": "WRITING_TASK",
+                  "page_ref": "p.35"
+                },
+                {
+                  "stem": "Write two sentences for 'paint': once as a noun and once as a verb.",
+                  "type": "WRITING_TASK",
+                  "page_ref": "p.35"
+                },
+                {
+                  "stem": "Write two sentences for 'fly': once as a noun and once as a verb.",
+                  "type": "WRITING_TASK",
+                  "page_ref": "p.35"
+                },
+                {
+                  "stem": "Write two sentences for 'face': once as a noun and once as a verb.",
+                  "type": "WRITING_TASK",
+                  "page_ref": "p.35"
+                }
               ]
             }
           ]
@@ -213,12 +380,36 @@
             {
               "task_text": "Let us Do. Do you know these colour combinations? Colour within the outline and write the name of the new colour.\n1. red + blue = p__ __ __ __ e (purple)\n2. yellow + blue = g__ __ __ n (green)\n3. red + yellow = o__ __ __ __ e (orange)\n4. red + white = p__ __ k (pink)\n5. red + black = m__ __ __ __ n (maroon)\n6. red + yellow + blue = b__ __ __ n (brown)",
               "question_bank": [
-                { "stem": "red + blue = ? (fill the blank: p__ __ __ __ e)", "type": "FILL_IN", "page_ref": "p.39" },
-                { "stem": "yellow + blue = ? (fill the blank: g__ __ __ n)", "type": "FILL_IN", "page_ref": "p.39" },
-                { "stem": "red + yellow = ? (fill the blank: o__ __ __ __ e)", "type": "FILL_IN", "page_ref": "p.39" },
-                { "stem": "red + white = ? (fill the blank: p__ __ k)", "type": "FILL_IN", "page_ref": "p.39" },
-                { "stem": "red + black = ? (fill the blank: m__ __ __ __ n)", "type": "FILL_IN", "page_ref": "p.39" },
-                { "stem": "red + yellow + blue = ? (fill the blank: b__ __ __ n)", "type": "FILL_IN", "page_ref": "p.39" }
+                {
+                  "stem": "red + blue = ? (fill the blank: p__ __ __ __ e)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.39"
+                },
+                {
+                  "stem": "yellow + blue = ? (fill the blank: g__ __ __ n)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.39"
+                },
+                {
+                  "stem": "red + yellow = ? (fill the blank: o__ __ __ __ e)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.39"
+                },
+                {
+                  "stem": "red + white = ? (fill the blank: p__ __ k)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.39"
+                },
+                {
+                  "stem": "red + black = ? (fill the blank: m__ __ __ __ n)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.39"
+                },
+                {
+                  "stem": "red + yellow + blue = ? (fill the blank: b__ __ __ n)",
+                  "type": "FILL_IN",
+                  "page_ref": "p.39"
+                }
               ],
               "visual_stimulus": [
                 {
@@ -249,17 +440,33 @@
       }
     }
   ],
-
   "competency_reporting": {
     "by_spine": {
-      "reading":     ["C-2.1", "C-2.2"],
-      "oracy":       ["C-1.1", "C-1.2", "C-1.3"],
-      "word_work":   ["C-4.1", "C-4.2"],
-      "writing":     ["C-3.1", "C-3.2", "C-3.3", "C-3.4"],
-      "beyond_text": ["C-5.1", "C-5.2"]
+      "reading": [
+        "C-2.1",
+        "C-2.2"
+      ],
+      "oracy": [
+        "C-1.1",
+        "C-1.2",
+        "C-1.3"
+      ],
+      "word_work": [
+        "C-4.1",
+        "C-4.2"
+      ],
+      "writing": [
+        "C-3.1",
+        "C-3.2",
+        "C-3.3",
+        "C-3.4"
+      ],
+      "beyond_text": [
+        "C-5.1",
+        "C-5.2"
+      ]
     }
   },
-
   "effort_signals": {
     "spine_load": 3,
     "task_density": 1,

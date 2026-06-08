@@ -10,7 +10,7 @@
       "title": "The Frog",
       "type": "poem",
       "page_range": "pp.55–64",
-      "char_count": 0,
+      "page_count": 10,
       "poem_text": "I sit in ponds and in the rain,\nOr hop about in a muddy drain.\nAs a tadpole, I swim with cheer,\nA tiny fish-like thing, so clear!\n\nI flick my tongue to catch my food,\nIt works so fast—now that's quite good!\nI live on land and water too,\nIn places damp with drops of dew.\n\nMy colours match the plants and trees,\nI hide so well in grass and leaves!\nBut snakes are near, I must beware,\nOr else they'll catch me unaware!\n\nI croak my songs, they sound so loud,\nYet in my pond, I feel so proud.\nI hop around, I jump so high,\nUp I go into the sky!\n\nWith webbed feet, I swim with ease,\nAnd leap so high in joyful breeze!",
       "poem_appreciation_summary": "The poem is a first-person monologue by a frog, capturing its amphibious life with cheerful energy and wonder. The central theme is the frog's dual existence on land and in water, woven through vivid imagery of ponds, drains, dew, grass, and bright skies. The tone is playful and proud. Dominant devices include rhyming couplets that give the poem a bouncy rhythm echoing the frog's hopping movement. Key images — the darting tongue, webbed feet, camouflage amid leaves — build a portrait of the frog as a resilient, joyful creature. The poem also touches on danger (snakes as predators) before returning to the frog's confident, singing self-image.",
       "spines": {
@@ -144,31 +144,51 @@
                 {
                   "stem": "hunts/night/the/silently/tiger/at — choose the correctly arranged sentence.",
                   "type": "MCQ",
-                  "options": ["The tiger hunts silently at night.", "Tiger hunts the silently at night.", "Hunts the tiger at night silently."],
+                  "options": [
+                    "The tiger hunts silently at night.",
+                    "Tiger hunts the silently at night.",
+                    "Hunts the tiger at night silently."
+                  ],
                   "page_ref": "p.57"
                 },
                 {
                   "stem": "elephants/in/forests/live/large/groups/in — choose the correctly arranged sentence.",
                   "type": "MCQ",
-                  "options": ["Elephants live large in groups forests.", "In groups large, elephants live in forests.", "Elephants live in large groups in forests."],
+                  "options": [
+                    "Elephants live large in groups forests.",
+                    "In groups large, elephants live in forests.",
+                    "Elephants live in large groups in forests."
+                  ],
                   "page_ref": "p.57"
                 },
                 {
                   "stem": "web/a/spider/carefully/its/weaves — choose the correctly arranged sentence.",
                   "type": "MCQ",
-                  "options": ["A spider carefully weaves its web.", "Spider carefully weaves its web a.", "Carefully a spider weaves web its."],
+                  "options": [
+                    "A spider carefully weaves its web.",
+                    "Spider carefully weaves its web a.",
+                    "Carefully a spider weaves web its."
+                  ],
                   "page_ref": "p.58"
                 },
                 {
                   "stem": "crocodile/waits/the/silently/riverbank/the/near — choose the correctly arranged sentence.",
                   "type": "MCQ",
-                  "options": ["Crocodile waits the silently the near riverbank.", "The silently crocodile waits near the riverbank.", "The crocodile waits silently near the riverbank."],
+                  "options": [
+                    "Crocodile waits the silently the near riverbank.",
+                    "The silently crocodile waits near the riverbank.",
+                    "The crocodile waits silently near the riverbank."
+                  ],
                   "page_ref": "p.58"
                 },
                 {
                   "stem": "a/swims/turtle/slowly/in/ocean/the — choose the correctly arranged sentence.",
                   "type": "MCQ",
-                  "options": ["A turtle swims slowly in the ocean.", "Swims turtle slowly an ocean in.", "The ocean swims a slowly turtle in."],
+                  "options": [
+                    "A turtle swims slowly in the ocean.",
+                    "Swims turtle slowly an ocean in.",
+                    "The ocean swims a slowly turtle in."
+                  ],
                   "page_ref": "p.58"
                 }
               ]
@@ -234,11 +254,29 @@
   ],
   "competency_reporting": {
     "by_spine": {
-      "oracy": ["C-1.1", "C-1.2", "C-1.3"],
-      "reading": ["C-2.1", "C-2.2"],
-      "writing": ["C-3.1", "C-3.2", "C-3.3", "C-3.4"],
-      "word_work": ["C-4.1", "C-4.2"],
-      "beyond_text": ["C-5.1", "C-5.2"]
+      "oracy": [
+        "C-1.1",
+        "C-1.2",
+        "C-1.3"
+      ],
+      "reading": [
+        "C-2.1",
+        "C-2.2"
+      ],
+      "writing": [
+        "C-3.1",
+        "C-3.2",
+        "C-3.3",
+        "C-3.4"
+      ],
+      "word_work": [
+        "C-4.1",
+        "C-4.2"
+      ],
+      "beyond_text": [
+        "C-5.1",
+        "C-5.2"
+      ]
     }
   },
   "effort_signals": {

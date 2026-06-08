@@ -4,14 +4,13 @@
   "grade": "iv",
   "chapter_number": 3,
   "chapter_title": "Be Smart, Be Safe",
-
   "main_sections": [
     {
       "section_id": "A",
       "title": "Be Smart, Be Safe",
       "type": "informational",
       "page_range": "p.25-27",
-      "char_count": 890,
+      "page_count": 3,
       "prose_summary": "The chapter is a road safety guide written as a friendly letter from a traffic police officer named Bharat, addressed to children. The letter acknowledges that roads can be busy and dangerous, and promises police support to keep children safe. It then presents six numbered rules for pedestrian safety. Rule 1 (Always Use the Zebra Crossing): look right, left, again right before crossing and cross only when safe. Rule 2 (Follow the Traffic Lights): wait for the pedestrian green signal before crossing and walk calmly, never run. Rule 3 (Walk on the Footpaths): footpaths are for pedestrians, stay away from moving vehicles. Rule 4 (Hold an Adult's Hand): always hold an adult's hand near or while crossing the road. Rule 5 (Use Reflective Stickers in the Dark): stick reflective stickers on clothes in the evening so drivers can see you. Rule 6 (Be Alert): avoid playing, using headphones, or using mobile phones near traffic, as distractions can prevent you from hearing traffic sounds. The text concludes with a 'New Words' box introducing: pedestrian, footpath, reflective, distract. The tone is warm, direct, and instructional, with each rule accompanied by an illustration.",
       "spines": {
         "reading": {
@@ -78,19 +77,31 @@
                 {
                   "stem": "What should you do before crossing a road?",
                   "type": "MCQ",
-                  "options": ["Run quickly", "Stop, look right, then left, again right", "Close your eyes"],
+                  "options": [
+                    "Run quickly",
+                    "Stop, look right, then left, again right",
+                    "Close your eyes"
+                  ],
                   "page_ref": "p.28-29"
                 },
                 {
                   "stem": "Where should you walk near the road?",
                   "type": "MCQ",
-                  "options": ["On the footpath", "On the road", "In the middle of the vehicles"],
+                  "options": [
+                    "On the footpath",
+                    "On the road",
+                    "In the middle of the vehicles"
+                  ],
                   "page_ref": "p.29"
                 },
                 {
                   "stem": "Why should you avoid using headphones on the road?",
                   "type": "MCQ",
-                  "options": ["It looks bad", "It makes you run faster", "It can distract you from traffic sounds"],
+                  "options": [
+                    "It looks bad",
+                    "It makes you run faster",
+                    "It can distract you from traffic sounds"
+                  ],
                   "page_ref": "p.29"
                 }
               ]
@@ -118,85 +129,127 @@
                 {
                   "stem": "Bananas — Countable (C) or Uncountable (U)?",
                   "type": "MCQ",
-                  "options": ["C", "U"],
+                  "options": [
+                    "C",
+                    "U"
+                  ],
                   "page_ref": "p.32"
                 },
                 {
                   "stem": "Lemonade — Countable (C) or Uncountable (U)?",
                   "type": "MCQ",
-                  "options": ["C", "U"],
+                  "options": [
+                    "C",
+                    "U"
+                  ],
                   "page_ref": "p.32"
                 },
                 {
                   "stem": "Biscuits — Countable (C) or Uncountable (U)?",
                   "type": "MCQ",
-                  "options": ["C", "U"],
+                  "options": [
+                    "C",
+                    "U"
+                  ],
                   "page_ref": "p.32"
                 },
                 {
                   "stem": "Flour — Countable (C) or Uncountable (U)?",
                   "type": "MCQ",
-                  "options": ["C", "U"],
+                  "options": [
+                    "C",
+                    "U"
+                  ],
                   "page_ref": "p.32"
                 },
                 {
                   "stem": "Curd — Countable (C) or Uncountable (U)?",
                   "type": "MCQ",
-                  "options": ["C", "U"],
+                  "options": [
+                    "C",
+                    "U"
+                  ],
                   "page_ref": "p.32"
                 },
                 {
                   "stem": "Chocolates — Countable (C) or Uncountable (U)?",
                   "type": "MCQ",
-                  "options": ["C", "U"],
+                  "options": [
+                    "C",
+                    "U"
+                  ],
                   "page_ref": "p.32"
                 },
                 {
                   "stem": "Tomatoes — Countable (C) or Uncountable (U)?",
                   "type": "MCQ",
-                  "options": ["C", "U"],
+                  "options": [
+                    "C",
+                    "U"
+                  ],
                   "page_ref": "p.32"
                 },
                 {
                   "stem": "Tomato ketchup — Countable (C) or Uncountable (U)?",
                   "type": "MCQ",
-                  "options": ["C", "U"],
+                  "options": [
+                    "C",
+                    "U"
+                  ],
                   "page_ref": "p.32"
                 },
                 {
                   "stem": "Sandwiches — Countable (C) or Uncountable (U)?",
                   "type": "MCQ",
-                  "options": ["C", "U"],
+                  "options": [
+                    "C",
+                    "U"
+                  ],
                   "page_ref": "p.32"
                 },
                 {
                   "stem": "Potatoes — Countable (C) or Uncountable (U)?",
                   "type": "MCQ",
-                  "options": ["C", "U"],
+                  "options": [
+                    "C",
+                    "U"
+                  ],
                   "page_ref": "p.32"
                 },
                 {
                   "stem": "Mashed potatoes — Countable (C) or Uncountable (U)?",
                   "type": "MCQ",
-                  "options": ["C", "U"],
+                  "options": [
+                    "C",
+                    "U"
+                  ],
                   "page_ref": "p.32"
                 },
                 {
                   "stem": "Coffee — Countable (C) or Uncountable (U)?",
                   "type": "MCQ",
-                  "options": ["C", "U"],
+                  "options": [
+                    "C",
+                    "U"
+                  ],
                   "page_ref": "p.32"
                 },
                 {
                   "stem": "Coffee jars — Countable (C) or Uncountable (U)?",
                   "type": "MCQ",
-                  "options": ["C", "U"],
+                  "options": [
+                    "C",
+                    "U"
+                  ],
                   "page_ref": "p.32"
                 },
                 {
                   "stem": "Tables — Countable (C) or Uncountable (U)?",
                   "type": "MCQ",
-                  "options": ["C", "U"],
+                  "options": [
+                    "C",
+                    "U"
+                  ],
                   "page_ref": "p.32"
                 }
               ]
@@ -227,31 +280,46 @@
                 {
                   "stem": "Looking right and left before crossing — Safe or Unsafe?",
                   "type": "MCQ",
-                  "options": ["Safe", "Unsafe"],
+                  "options": [
+                    "Safe",
+                    "Unsafe"
+                  ],
                   "page_ref": "p.30"
                 },
                 {
                   "stem": "Playing on the road — Safe or Unsafe?",
                   "type": "MCQ",
-                  "options": ["Safe", "Unsafe"],
+                  "options": [
+                    "Safe",
+                    "Unsafe"
+                  ],
                   "page_ref": "p.30"
                 },
                 {
                   "stem": "Crossing at a zebra crossing — Safe or Unsafe?",
                   "type": "MCQ",
-                  "options": ["Safe", "Unsafe"],
+                  "options": [
+                    "Safe",
+                    "Unsafe"
+                  ],
                   "page_ref": "p.30"
                 },
                 {
                   "stem": "Walking on the footpath — Safe or Unsafe?",
                   "type": "MCQ",
-                  "options": ["Safe", "Unsafe"],
+                  "options": [
+                    "Safe",
+                    "Unsafe"
+                  ],
                   "page_ref": "p.30"
                 },
                 {
                   "stem": "Listening to loud music on the road — Safe or Unsafe?",
                   "type": "MCQ",
-                  "options": ["Safe", "Unsafe"],
+                  "options": [
+                    "Safe",
+                    "Unsafe"
+                  ],
                   "page_ref": "p.30"
                 }
               ]
@@ -302,16 +370,28 @@
       }
     }
   ],
-
   "competency_reporting": {
     "by_spine": {
-      "reading": ["C-2.1", "C-2.2"],
-      "word_work": ["C-4.1", "C-4.2"],
-      "writing": ["C-3.1", "C-3.2", "C-3.3", "C-3.4"],
-      "beyond_text": ["C-5.1", "C-5.2"]
+      "reading": [
+        "C-2.1",
+        "C-2.2"
+      ],
+      "word_work": [
+        "C-4.1",
+        "C-4.2"
+      ],
+      "writing": [
+        "C-3.1",
+        "C-3.2",
+        "C-3.3",
+        "C-3.4"
+      ],
+      "beyond_text": [
+        "C-5.1",
+        "C-5.2"
+      ]
     }
   },
-
   "effort_signals": {
     "spine_load": 2,
     "task_density": 2,

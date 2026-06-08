@@ -4,14 +4,13 @@
   "grade": "iv",
   "chapter_number": 2,
   "chapter_title": "The Tinkling Bells",
-
   "main_sections": [
     {
       "section_id": "A",
       "title": "The Tinkling Bells",
       "type": "narrative",
       "page_range": "p.9-13",
-      "char_count": 1820,
+      "page_count": 5,
       "prose_summary": "Chinna is a bright, curious Grade 4 boy who lives in a village and loves his pet goat kid, Tara. One day on the way home from school, he spots a pair of beautiful tinkling bells at Chacha's shop priced at ten rupees. When he reaches into his pocket, he finds his money missing and returns home dejected. His mother Kamala comforts him gently, promising to give him money for the bells but asking him to be careful in future. They then go to the market together and buy fruits and vegetables. At the pineapple stall, the fruit seller accidentally gives Chinna ten rupees extra in change. Chinna whispers to his mother that he could use it for the bells and chocolates. Kamala firmly tells him this would be stealing and reminds him how sad he himself felt when he lost his money. Moved by her words, Chinna runs back and returns the extra money. The fruit seller is delighted and praises Chinna's honesty. Kamala rewards him by taking him to Chacha's shop just before it closes, where he buys the tinkling bells for ten rupees. On reaching home, Tara the kid comes running out hearing the bells, and Chinna happily ties them around her neck. The story's central themes are honesty, empathy, and the joy of doing the right thing.",
       "spines": {
         "reading": {
@@ -184,25 +183,41 @@
                 {
                   "stem": "Chacha showed him some beautiful tinkling bells. Circle the opposite of 'beautiful'.",
                   "type": "MCQ",
-                  "options": ["Attractive", "Ugly", "Broken"],
+                  "options": [
+                    "Attractive",
+                    "Ugly",
+                    "Broken"
+                  ],
                   "page_ref": "p.17"
                 },
                 {
                   "stem": "The fruit seller was so happy that he gave Chinna ten rupees as a reward. Circle the opposite of 'reward'.",
                   "type": "MCQ",
-                  "options": ["Offer", "Prize", "Punishment"],
+                  "options": [
+                    "Offer",
+                    "Prize",
+                    "Punishment"
+                  ],
                   "page_ref": "p.17"
                 },
                 {
                   "stem": "I'll give you money to buy the bells. Circle the opposite of 'buy'.",
                   "type": "MCQ",
-                  "options": ["Sell", "Purchase", "Order"],
+                  "options": [
+                    "Sell",
+                    "Purchase",
+                    "Order"
+                  ],
                   "page_ref": "p.17"
                 },
                 {
                   "stem": "\"Can I buy chocolates with the money?\" whispered Chinna. Circle the opposite of 'whispered'.",
                   "type": "MCQ",
-                  "options": ["Murmured", "Shouted", "Talked"],
+                  "options": [
+                    "Murmured",
+                    "Shouted",
+                    "Talked"
+                  ],
                   "page_ref": "p.17-18"
                 }
               ]
@@ -276,17 +291,33 @@
       }
     }
   ],
-
   "competency_reporting": {
     "by_spine": {
-      "reading": ["C-2.1", "C-2.2"],
-      "oracy": ["C-1.1", "C-1.2", "C-1.3"],
-      "word_work": ["C-4.1", "C-4.2"],
-      "writing": ["C-3.1", "C-3.2", "C-3.3", "C-3.4"],
-      "beyond_text": ["C-5.1", "C-5.2"]
+      "reading": [
+        "C-2.1",
+        "C-2.2"
+      ],
+      "oracy": [
+        "C-1.1",
+        "C-1.2",
+        "C-1.3"
+      ],
+      "word_work": [
+        "C-4.1",
+        "C-4.2"
+      ],
+      "writing": [
+        "C-3.1",
+        "C-3.2",
+        "C-3.3",
+        "C-3.4"
+      ],
+      "beyond_text": [
+        "C-5.1",
+        "C-5.2"
+      ]
     }
   },
-
   "effort_signals": {
     "spine_load": 3,
     "task_density": 2,

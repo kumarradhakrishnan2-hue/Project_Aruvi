@@ -43,7 +43,7 @@ INPUTS
 ================================================================================
 
 1. Summary JSON: chapter_title, stage, main_sections[] (each with
-   id/title/type/char_count) plus type-specific text fields:
+   id/title/type/page_count) plus type-specific text fields:
      - `prose_summary`            (prose / narrative / dialogue / informational)
      - `drama_summary`            [SECONDARY DELTA] act-by-act arc (drama)
      - `poem_text` + `poem_appreciation_summary`  (poem)
@@ -110,11 +110,10 @@ these regardless of how many tasks the summary contains.
 theme analysis tasks are heavier — budget them at the slow end of RFC
 (15 min/task), not 12.
 
-STEP 2 — Distribute B across sections proportional to `char_count`,
-rounded. Only hard floor: no section gets zero (every section is
-taught); a section may get as few as one period. No post-hoc correction.
-[SECONDARY DELTA] A `drama` section normally draws the largest share
-(expected); a closing one-page poem may get a single period.
+STEP 2 — Distribute B across sections proportional to `page_count`
+(textbook pages occupied, body + exercise apparatus together), rounded.
+Only hard floor: no section gets zero (every section is taught).
+No post-hoc correction.
 
 STEP 3 — Within each section, cover spines in TEXTBOOK ORDER until the
 section's periods are full. "Textbook order" = the on-page sequence the
@@ -357,6 +356,17 @@ per (section × spine) cell:
                         Assessment reads BOTH: `implied_lo` drives question
                         type and cognitive demand; `section_context` drives
                         what the question is about.
+
+                        For the Writing spine specifically:
+                        `section_context` MUST NOT reproduce or paraphrase
+                        the scenario named in the textbook's writing task
+                        (tasks_verbatim under the writing spine). It MUST
+                        be an INVENTED 10–15 word context that reflects
+                        the section's broader theme — same thematic family,
+                        fresh scenario, comparable cognitive demand.
+                        Textbook task: letter to editor on adult literacy camps.
+                        ❌  "Letter to a newspaper editor advocating adult literacy volunteering."
+                        ✅  "Letter to the editor proposing extended evening library hours for working adults."
   - `tasks_anchored`  — audit-only array; each entry { spine, task_index,
                         task_brief }. Assessment DOES NOT read this; it
                         exists only to record which tasks were covered.

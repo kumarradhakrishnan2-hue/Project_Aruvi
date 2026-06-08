@@ -89,15 +89,10 @@ A 30-min period holds at most 2–3 tasks; a 35-min period holds 2–4.
 Do not exceed these ceilings regardless of summary task count.
 
 STEP 2 — Distribute B periods across sections proportional to
-`char_count`. Round to the nearest integer. No section may receive
-zero periods. No correction is applied after initial allocation.
-
-PICTURE_NARRATIVE CARVE-OUT: `picture_narrative` sections carry
-`char_count: 0`. For Step 2 only, substitute:
-
-  weight = 200 + (total_task_count_in_section × 30)
-
-The actual `char_count: 0` is preserved everywhere else.
+`page_count` (textbook pages the section occupies — body, picture
+spreads, and exercise apparatus together). Round to the nearest
+integer. Only hard floor: no section gets zero periods. No post-hoc
+correction.
 
 STEP 3 — Within each section, cover spines in textbook order, packing
 tasks per Step 1 budget. When the section's allocated periods are
@@ -129,7 +124,7 @@ Form depends on section type:
   poem                → read-aloud + repeated/choral reading.
                         6–10 min for a short prep poem.
   prose / narrative / → read-aloud + shared-reading. Proportional to
-  dialogue /            char_count; typically 8–15 min.
+  dialogue /            section length; typically 8–15 min.
   informational
   picture_narrative   → picture walk: teacher walks students through
                         the visual sequence picture by picture, elicits

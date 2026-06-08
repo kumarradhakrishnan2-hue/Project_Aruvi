@@ -37,7 +37,13 @@ A `main_section` is a distinct text that carries its own exercise apparatus.
 A new section starts at a new titled text (own byline), a genre shift
 (prose ↔ drama ↔ poem), or a re-run spine cycle for a different text. Capture
 per section: `section_id` (A/B/C in textbook order), `title`, `type`,
-`page_range`, `char_count` (text body, not exercises).
+`page_range`, `page_count` (integer — number of textbook pages this section
+spans, INCLUDING its exercise apparatus; compute as
+last_page − first_page + 1 from `page_range`). This is the teaching-load
+signal the LP uses to allocate periods across sections, so it must reflect
+the full footprint a teacher works through — the body text PLUS every
+Reading / Vocabulary / Listening / Speaking / Writing / Beyond-text
+subheading that belongs to this section.
 
 **[DELTA — DRAMA]** A multi-act play (ACT I/II/III) is ONE section,
 `type: "drama"` — acts are parts of one text, not separate sections.
@@ -240,7 +246,7 @@ spine. UTF-8. Create `mappings/` if absent; overwrite.
       "title": "How I Taught My Grandmother to Read",
       "type": "prose",
       "page_range": "p.1-22",
-      "char_count": 12000,
+      "page_count": 22,
       "prose_summary": "<200–400 w textbook-grounded summary>",
       "spines": {
         "reading_for_comprehension": {
@@ -271,7 +277,7 @@ spine. UTF-8. Create `mappings/` if absent; overwrite.
       "title": "Bharat Our Land",
       "type": "poem",
       "page_range": "p.23-32",
-      "char_count": 900,
+      "page_count": 10,
       "poem_text": "The mighty Himavant is ours-\nthere's no equal anywhere on earth.\n...",
       "poem_appreciation_summary": "<80–150 w>",
       "spines": {
@@ -306,10 +312,13 @@ no tasks is omitted from its section. UTF-8. Overwrite.
 
 ## Step 10 — Confirmation line
 ```
-ch_NN — "<title>" — sections: <count> (<type breakdown>) — spines_total: <N> — tasks: <task_objs> — sub_items: <subitems> — project_load: <N> — effort_index: <value>
+ch_NN — "<title>" — sections: <count> (<type breakdown>) — pages: A=<N> B=<N> [C=<N>] — spines_total: <N> — tasks: <task_objs> — sub_items: <subitems> — project_load: <N> — effort_index: <value>
 ```
 `task_objs` = Σ len(spine.tasks_verbatim); `subitems` = Σ len(t.question_bank).
-Example: `ch_06 — "Twin Melodies" — sections: 2 (1 drama + 1 poem) — spines_total: 12 — tasks: 35 — sub_items: 48 — project_load: 2 — effort_index: 9.0`
+The `pages: ...` block echoes each section's `page_count` integer
+(last_page − first_page + 1) so the value used by the LP's
+proportional-period allocation is visible at confirmation time.
+Example: `ch_06 — "Twin Melodies" — sections: 2 (1 drama + 1 poem) — pages: A=25, B=9 — spines_total: 12 — tasks: 35 — sub_items: 48 — project_load: 2 — effort_index: 9.0`
 
 ## Constraints
 - No API calls; Cowork reads PDFs and writes JSON directly.
