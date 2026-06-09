@@ -804,7 +804,7 @@ CRITICAL CONSTRAINTS:
 - Total LP period count = the teacher schedule's period_count. Distribute
   across (section × spine) cells in textbook order (LP Rule 1+2), with
   per-section period share roughly proportional to the section's
-  char_count + total task count (±1 period tolerance).
+  page_count (±1 period tolerance).
 - Total assessment item count = number of section_contributions across
   all spines in coverage_handoff that have at least one anchored task
   (one item per spine-cell implied_lo, per Assessment Rule 2). Spines

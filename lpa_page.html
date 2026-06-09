@@ -1221,6 +1221,23 @@ function renderEnglishQuestionCard(q, n) {
         html += '</div>';
       }
 
+    } else if (cardType === 'TRUE_FALSE') {
+      /* TRUE_FALSE: the item_stem contains the intro directive followed by
+         numbered statements (1. ... 2. ...). The statements are also in
+         options[] and will be rendered below as eng-tf-list. Strip the
+         numbered lines from the framing so they don't appear twice. */
+      var tfLines = framing.split('\n');
+      var tfIntroLines = [];
+      var tfNumberedStarted = false;
+      tfLines.forEach(function(line) {
+        if (!tfNumberedStarted && /^\s*(1\.|[(（]1[)）])/.test(line)) { tfNumberedStarted = true; }
+        if (!tfNumberedStarted) { tfIntroLines.push(line); }
+      });
+      var tfIntro = tfIntroLines.join('\n').trim();
+      if (tfIntro) {
+        html += '<div class="qtext">' + boldPartHeadings(escHtml(tfIntro).replace(/\n/g, '<br>')) + '</div>';
+      }
+
     } else {
       html += '<div class="qtext">' + boldPartHeadings(escHtml(framing).replace(/\n/g, '<br>')) + '</div>';
     }
