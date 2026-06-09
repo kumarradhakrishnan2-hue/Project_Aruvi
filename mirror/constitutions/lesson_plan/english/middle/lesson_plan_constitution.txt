@@ -301,14 +301,35 @@ discussion)".
 
 Format: <spine_section_name> ("brief description up to 10 words....")
 
-Visibility Constraint: Teacher-facing narrative text must not expose internal planning
-machinery. Do NOT include:
-1. internal task indices
-2. rule numbers or constitutional references
-3. schema keys or planner identifiers
-4. implementation metadata or internal labels
-5.Internal references may appear only in structured machine-readable
-fields.
+THREE FIELDS ARE TEACHER-FACING and bound by this rule:
+  - phase `description`
+  - `teacher_notes`
+  - `task_brief` (inside `tasks_in_class`, `homework`, and the handoff's
+    `tasks_anchored`) — must carry a location descriptor the teacher can
+    act on: the subheading anchor PLUS a page locator, then the plain brief.
+    Format: "<Subheading> (p.NN): <plain brief>".
+    Example: "Reading for Meaning (p.42): three comprehension questions —
+    inference and sequence."
+    The page comes from the summary's per-task `page_ref`; if absent,
+    use the section's page range. Applies to homework briefs equally —
+    a homework item a teacher cannot locate is a defect.
+
+Teacher-facing text MUST NOT expose internal planning machinery. Do NOT include:
+- task indices ("task 3", "Tasks 5 and 6") or `task_index`
+- rule numbers or constitutional references
+- schema keys or planner identifiers
+- internal question-type codes (MCQ, SCR, ECR, EXTRACT_ANALYSIS, MATCH,
+  FILL_IN, TRUE_FALSE, ORAL_PROMPT, WRITING_TASK, PROJECT — write in
+  plain words, e.g. "multiple-choice", "short-answer", "matching")
+- implementation metadata or internal labels
+
+Internal references appear only in structured machine-readable fields.
+
+VERIFICATION PASS (mandatory after every LP generation): run
+`aruvi-scripts/lint_lp_teacher_prose.py <plan.json>` over the produced LP.
+It scans every `teacher_notes`, phase `description`, and `task_brief` for
+the leaks above and exits non-zero on any hit. Rewrite flagged text and
+re-lint before considering the run complete.
 
 ================================================================================
 RULE 10 | COVERAGE HANDOFF EMISSION

@@ -5574,6 +5574,12 @@ with st.sidebar:
                 unsafe_allow_html=True,
             )
             ch_labels = [ch_label(ch) for ch in chapters]
+            # Guard: reset index if it is out of range for the current chapter list
+            if st.session_state.teacher_ch_idx is not None and (
+                st.session_state.teacher_ch_idx < 0
+                or st.session_state.teacher_ch_idx >= len(ch_labels)
+            ):
+                st.session_state.teacher_ch_idx = None
             sel_label = st.selectbox(
                 "Chapter",
                 ch_labels,

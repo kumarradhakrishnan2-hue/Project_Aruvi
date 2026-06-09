@@ -296,10 +296,33 @@ by anchor location + brief (≤ 10 words).
 Format: `<spine_section_name> ("brief ≤ 10 words")`
 Example: `Let us Learn — A. Consonant-cluster blend-and-say drill`
 
-Teacher-facing narrative must NOT expose internal planning machinery:
-no task indices, rule numbers, schema keys, planner identifiers, or
-implementation metadata. Internal references appear only in
-structured machine-readable fields.
+THREE FIELDS ARE TEACHER-FACING and bound by this rule:
+  - phase `description`
+  - `teacher_notes`
+  - `task_brief` (inside `tasks_in_class`, `homework`, and the handoff's
+    `tasks_anchored`) — must carry a location descriptor the teacher can
+    act on: the subheading anchor PLUS a page locator, then the plain brief.
+    Format: "<Subheading> (pp.NN–MM): <plain brief>".
+    Example: "Let us Learn (pp.14–15): consonant-cluster blend-and-say drill."
+    The page comes from the summary's per-task `page_ref`; if absent,
+    use the section's page range. Applies to homework briefs equally —
+    a homework item a teacher cannot locate is a defect.
+
+Teacher-facing text MUST NOT expose internal planning machinery. Do NOT include:
+- task indices or `task_index`
+- rule numbers or constitutional references
+- schema keys or planner identifiers
+- internal question-type codes (MCQ, SCR, ORAL_PROMPT, WRITING_TASK,
+  PROJECT, etc. — write in plain words, e.g. "short-answer", "matching")
+- implementation metadata or internal labels
+
+Internal references appear only in structured machine-readable fields.
+
+VERIFICATION PASS (mandatory after every LP generation): run
+`aruvi-scripts/lint_lp_teacher_prose.py <plan.json>` over the produced LP.
+It scans every `teacher_notes`, phase `description`, and `task_brief` for
+the leaks above and exits non-zero on any hit. Rewrite flagged text and
+re-lint before considering the run complete.
 
 
 ================================================================================
