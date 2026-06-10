@@ -46,9 +46,10 @@ def load_constitution(constitution_path: str) -> str:
     Load constitution text from the resolved mirror path.
 
     constitution_path is provided by config_resolver.resolve_paths() as
-    paths["constitution_path"] — always points to:
-      mirror/constitutions/competency_mapping/{subject_group}/
+    paths["constitution_path"] — stage-routed when the stage folder exists:
+      mirror/constitutions/competency_mapping/{subject_group}/{stage}/
       mapping_constitution_{subject_group}.txt
+    with a flat fallback (no {stage} folder) for subjects not yet split by stage.
     """
     path = Path(constitution_path)
     if not path.exists():

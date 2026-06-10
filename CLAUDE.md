@@ -124,7 +124,7 @@ The lesson plan and assessment generation is taking about 5 minutes. We need to 
 - **LP PDF v2 pending wiring**: `aruvi-scripts/aruvi_lp_v2.py` is a redesigned PDF generator ready for integration but not yet the default in `app.py`. When wiring in, replace the `generate_pdf_bytes_lp()` call.
 - **visual\_stimulus rendering branches**: Renderers (`assessment_pdf_generator.py` + `lpa_page.html`) must handle three content types — SVG (Mathematics), pipe-table (Science/SS tabular data), prose (fallback). Any new format permitted in a constitution needs a matching detection branch in both renderers before shipping.  
 - **Mirror-first reads**: At runtime, scripts read pre-extracted `.txt` files from `mirror/framework/` — never the source PDFs. PDFs are source-of-truth for humans, mirror is source-of-truth for the app.  
-- **Constitution location**: `mirror/constitutions/{type}/{subject}/` — not inside skill folders. Constitution files are plain `.txt` extracted from DOCX sources.  
+- **Constitution location**: `mirror/constitutions/{type}/{subject}/{stage}/` for stage-split subjects (English and Mathematics across all types; Science competency mapping), with a flat `{subject}/` fallback for subjects not yet split (Social Sciences, TWAU, Science LP/assessment). `config_resolver.py` prefers the stage-routed path and falls back to flat. Not inside skill folders. Constitution files are plain `.txt` extracted from DOCX sources. Stage-routed files use the canonical filename (e.g. `mapping_constitution_mathematics.txt` in both `middle/` and `preparatory/`) — never stage-suffixed filenames.  
 - **Saved plans**: Written to `mirror/saved_plans/{subject}/{grade}/` as timestamped JSON on explicit user save action.
 
 ---

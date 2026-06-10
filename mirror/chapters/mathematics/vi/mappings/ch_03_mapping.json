@@ -1,43 +1,40 @@
 {
-    "stage": "middle",
-    "subject": "mathematics",
-    "grade": "vi",
-    "chapter_number": 3,
-    "chapter_title": "Number Play",
-
-    "core_cg": "CG-1",
-
-    "core_competencies": [
-        {
-            "c_code": "C-1.2",
-            "justification": "The chapter's organising purpose is discovering and describing rules in numbers: students identify supercell patterns (§3.2), digit-sum regularities (§3.4), palindrome formation and the reverse-and-add procedure (§3.5), convergence to the Kaprekar constant (§3.6), Collatz sequences (§3.10), number-line patterns (§3.3), and winning-number patterns in games (§3.12) — all requiring the student to find, articulate, and generalise a rule from a number-based structure."
-        },
-        {
-            "c_code": "C-1.1",
-            "justification": "Sections 3.3, 3.8, and 3.11 form a structurally independent strand: students place large multi-digit numbers accurately on number lines (§3.3), perform and reason about 5-digit additions and subtractions using mental strategies (§3.8), and estimate real-world magnitudes ranging from steps walked to continental distances (§3.11), directly exercising the ability to compare, estimate, and operate on large whole numbers."
-        }
-    ],
-
-    "adjunct_competencies": [
-        {
-            "c_code": "C-8.1",
-            "justification": "The Kaprekar process (§3.6) and the Collatz procedure (§3.10) both require students to apply a precisely defined iterative algorithm — execute a step, check a condition, repeat — embodying the computational thinking capacities of iteration and algorithmic thinking explicitly named in C-8.1."
-        },
-        {
-            "c_code": "C-6.1",
-            "justification": "Section 3.1 asks students to justify whether particular height-neighbour sequences are achievable; §3.2 requires proving why the largest number must always be a supercell and why a table with no supercells is impossible; §3.12 requires identifying a game's winning strategy through conjectured patterns and logical argument — all exercises in constructing and evaluating mathematical proofs."
-        },
-        {
-            "c_code": "C-7.1",
-            "justification": "Sections 3.7, 3.9, and 3.12 explicitly invite students to create their own puzzle variations, design number-pattern arrangements summing to a chosen target, and discover winning strategies for self-invented game rules — sustained creative problem-making rather than solution of prescribed exercises."
-        }
-    ],
-
-    "dissolution_test": "This chapter builds the student's ability to discover and describe rules governing number patterns by engaging with structured number games, digit-based phenomena, iterative algorithms, and estimation challenges that each demand the recognition and articulation of a generalisable principle.",
-
-    "conceptual_demand": 2,
-    "activity_count": 0,
-    "demo_count": 0,
-    "exec_load": 1,
-    "effort_index": 6.0
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "vi",
+  "chapter_number": 3,
+  "chapter_title": "Number Play",
+  "core_cg": "CG-1",
+  "core_competencies": [
+    {
+      "c_code": "C-1.2",
+      "justification": "The chapter's organising purpose is discovering and describing rules in numbers: students identify supercell patterns (§3.2), digit-sum regularities (§3.4), palindrome formation and the reverse-and-add procedure (§3.5), convergence to the Kaprekar constant (§3.6), Collatz sequences (§3.10), number-line patterns (§3.3), and winning-number patterns in games (§3.12) — all requiring the student to find, articulate, and generalise a rule from a number-based structure."
+    },
+    {
+      "c_code": "C-1.1",
+      "justification": "Sections 3.3, 3.8, and 3.11 form a structurally independent strand: students place large multi-digit numbers accurately on number lines (§3.3), perform and reason about 5-digit additions and subtractions using mental strategies (§3.8), and estimate real-world magnitudes ranging from steps walked to continental distances (§3.11), directly exercising the ability to compare, estimate, and operate on large whole numbers."
+    }
+  ],
+  "adjunct_competencies": [
+    {
+      "c_code": "C-8.1",
+      "justification": "The Kaprekar process (§3.6) and the Collatz procedure (§3.10) both require students to apply a precisely defined iterative algorithm — execute a step, check a condition, repeat — embodying the computational thinking capacities of iteration and algorithmic thinking explicitly named in C-8.1."
+    },
+    {
+      "c_code": "C-6.1",
+      "justification": "Section 3.1 asks students to justify whether particular height-neighbour sequences are achievable; §3.2 requires proving why the largest number must always be a supercell and why a table with no supercells is impossible; §3.12 requires identifying a game's winning strategy through conjectured patterns and logical argument — all exercises in constructing and evaluating mathematical proofs."
+    },
+    {
+      "c_code": "C-7.1",
+      "justification": "Sections 3.7, 3.9, and 3.12 explicitly invite students to create their own puzzle variations, design number-pattern arrangements summing to a chosen target, and discover winning strategies for self-invented game rules — sustained creative problem-making rather than solution of prescribed exercises."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to discover and describe rules governing number patterns by engaging with structured number games, digit-based phenomena, iterative algorithms, and estimation challenges that each demand the recognition and articulation of a generalisable principle.",
+  "conceptual_demand": 2,
+  "activity_count": 0,
+  "activity_load": 0,
+  "demo_count": 0,
+  "demo_load": 0,
+  "exec_load": 1,
+  "effort_index": 6.0
 }

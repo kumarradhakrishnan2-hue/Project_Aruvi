@@ -1871,11 +1871,11 @@ def _json_to_twau_lp_data(j: dict, date_str: str, weight) -> dict:
     _grade_folder = str(j.get("grade", "")).lower().replace("grade ", "").strip()
     _project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-    # Canonical CG descriptions (nested curricular_goals format), flat file.
+    # Canonical CG descriptions (nested curricular_goals format).
     _comp_descs: dict = {}
     _cd_path = os.path.join(
         _project_root, "mirror", "framework", "the_world_around_us",
-        "competency_descriptions_twau.json",
+        "preparatory", "competency_descriptions_twau.json",
     )
     try:
         with open(_cd_path, encoding="utf-8") as _f:

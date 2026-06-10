@@ -1,28 +1,30 @@
 {
-    "stage": "middle",
-    "subject": "science",
-    "grade": "viii",
-    "chapter_number": 5,
-    "chapter_title": "Exploring Forces",
-    "min_viable_periods": 0,
-    "orientation_chapter": false,
-    "co_central": true,
-    "primary": [
-      {
-        "cg": "CG-2",
-        "c_code": "C-2.1",
-        "justification": "The chapter's central domain is force as the physical cause of changes in motion. It establishes that force is required to change the speed, direction, or shape of an object; introduces gravitational force as the cause of vertical motion (objects thrown upward slow, stop, then accelerate downward); and systematically classifies contact forces (muscular, friction) and non-contact forces (magnetic, electrostatic, gravitational) as the mechanisms underlying all observed changes in the physical world. This directly develops C-2.1's domain of understanding the physical world through the concept of force — the agent that governs one-dimensional motion (horizontal friction-deceleration, vertical gravitational motion)."
-      },
-      {
-        "cg": "CG-1",
-        "c_code": "C-1.3",
-        "justification": "A structurally independent strand in Sections 5.5 (Activities 5.9–5.12) teaches students to measure weight — a physical property of matter — using a spring balance. Students identify the instrument's range (0–10 N), calculate its least count (0.2 N), and measure the weight of different objects in newton (the standard SI unit of force). This strand directly satisfies C-1.3's requirement to measure physical properties of matter using simple instruments in standard units. It also distinguishes weight (gravitational force, measured in N, varies by location) from mass (amount of matter, measured in kg, constant everywhere) — reinforcing measurement concepts independent of the force-classification strand."
-      }
-    ],
-    "dissolution_test": "This chapter builds the student's ability to explain force as the physical cause of changes in motion, shape, and direction by classifying contact and non-contact forces, investigating friction across surfaces, and measuring weight with a spring balance to demonstrate that gravitational pull varies across objects.",
-    "conceptual_demand": 3,
-    "activity_count": 10,
-    "demo_count": 0,
-    "exec_load": 0,
-    "effort_index": 16.0
+  "stage": "middle",
+  "subject": "science",
+  "grade": "viii",
+  "chapter_number": 5,
+  "chapter_title": "Exploring Forces",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": true,
+  "primary": [
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.1",
+      "justification": "The chapter's central domain is force as the physical cause of changes in motion. It establishes that force is required to change the speed, direction, or shape of an object; introduces gravitational force as the cause of vertical motion (objects thrown upward slow, stop, then accelerate downward); and systematically classifies contact forces (muscular, friction) and non-contact forces (magnetic, electrostatic, gravitational) as the mechanisms underlying all observed changes in the physical world. This directly develops C-2.1's domain of understanding the physical world through the concept of force — the agent that governs one-dimensional motion (horizontal friction-deceleration, vertical gravitational motion)."
+    },
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.3",
+      "justification": "A structurally independent strand in Sections 5.5 (Activities 5.9–5.12) teaches students to measure weight — a physical property of matter — using a spring balance. Students identify the instrument's range (0–10 N), calculate its least count (0.2 N), and measure the weight of different objects in newton (the standard SI unit of force). This strand directly satisfies C-1.3's requirement to measure physical properties of matter using simple instruments in standard units. It also distinguishes weight (gravitational force, measured in N, varies by location) from mass (amount of matter, measured in kg, constant everywhere) — reinforcing measurement concepts independent of the force-classification strand."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to explain force as the physical cause of changes in motion, shape, and direction by classifying contact and non-contact forces, investigating friction across surfaces, and measuring weight with a spring balance to demonstrate that gravitational pull varies across objects.",
+  "conceptual_demand": 3,
+  "activity_count": 10,
+  "activity_load": 3,
+  "demo_count": 0,
+  "demo_load": 0,
+  "exec_load": 0,
+  "effort_index": 12.0
 }

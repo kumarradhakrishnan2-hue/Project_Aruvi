@@ -1,8 +1,8 @@
 {
   "metadata": {
     "document": "Ask Aruvi Q&A Knowledge Base",
-    "version": "V2.3",
-    "last_refreshed": "2026-06-04",
+    "version": "V2.4",
+    "last_refreshed": "2026-06-10",
     "date": "June 2026",
     "total_pairs": 96,
     "categories": [
@@ -22,7 +22,7 @@
         {
           "id": "a01",
           "q": "How can Aruvi help me as a teacher?",
-          "a": "Aruvi generates a complete lesson plan and assessment for any NCERT chapter across five subjects: Social Sciences and Science (Grades VI–IX), Mathematics and English (Grades III–IX), and The World Around Us (Grades III–V). You enter your available periods — Aruvi builds a fully sequenced, NCF-aligned lesson plan and a matched chapter assessment. It reduces your planning time while ensuring every plan is traceable to the curriculum framework."
+          "a": "Aruvi generates a complete lesson plan and assessment for any NCERT chapter across five subjects: Social Sciences (Grades VI–VIII), Science (Grades VI–IX), Mathematics and English (Grades III–IX), and The World Around Us (Grades III–V). You enter your available periods — Aruvi builds a fully sequenced, NCF-aligned lesson plan and a matched chapter assessment. It reduces your planning time while ensuring every plan is traceable to the curriculum framework."
         },
         {
           "id": "a02",
@@ -325,7 +325,7 @@
           "id": "c10",
           "q": "How does Allocation tool help a school Administration?",
           "a": "At the beginning of the term or the year, the administrators are involved in detailed planning with respect to time available for subjects.  The allocation tool takes input of a constrained number like say 100 periods (of 40 minutes each) available for teaching class VI Science of a term and splits it across selected NCERT book chapters. The time allotted for each chapter then can be used by a teacher to plan her own class."
-        },
+        }
       ]
     },
     "cat_d": {
@@ -486,7 +486,7 @@
         {
           "id": "e10",
           "q": "Can Aruvi generate plans for classes below Grade III or above Grade IX?",
-          "a": "No. Aruvi is currently scoped to Grades III through IX — covering the Preparatory Stage and Middle Stage — which correspond to the NCF 2023 stages for which Curricular Goals and competency frameworks are available in the format Aruvi uses. Foundational Stage and Secondary Stage content is outside current scope."
+          "a": "No. Aruvi covers Grades III through IX for most subjects — but Social Sciences is limited to Grades VI–VIII, as NCF-compliant NCERT textbooks for Social Sciences Grade IX are not yet available. Foundational Stage (below Grade III) and Grade X are outside current scope. Coverage will be extended as NCF-compliant textbooks are published."
         },
         {
           "id": "e11",

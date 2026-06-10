@@ -3652,21 +3652,25 @@ def _generate_pdf_bytes_alloc(
              "The effort index tells you how much classroom time a chapter typically needs compared to other"
              " chapters in the subject. Chapters with a higher effort index get more periods; chapters with"
              " a lower one get fewer. It is calculated from four signals read from the chapter content."),
+            ("Formula:",
+             "effort_index = (Conceptual demand x2) + (Activity load x2)"
+             " + (Demo load x1.5) + (Exercise execution load x2)"),
             ("Conceptual demand (x2):",
-             "The cognitive complexity of exercises and questions in the chapter. High-order thinking or"
+             "The cognitive complexity of exercises and questions in the chapter (1-3). High-order thinking or"
              " multi-step reasoning raises the score."),
-            ("Student activities (x1):",
-             "The number of hands-on activities that students perform themselves. Each activity adds"
-             " classroom time for setup, execution and discussion."),
-            ("Teacher demonstrations (x1.5):",
-             "The number of demonstrations the teacher must conduct. These need preparation and focused"
-             " class attention."),
+            ("Activity load (x2):",
+             "A discrete 0-3 tier from the number of hands-on activities students perform themselves:"
+             " 0 = none; 1 = 1-3 (light); 2 = 4-7 (standard); 3 = 8 or more (activity-heavy)."),
+            ("Demo load (x1.5):",
+             "A discrete 0-2 tier from the number of teacher demonstrations: 0 = none; 1 = 1-2;"
+             " 2 = 3 or more. These need preparation and focused class attention."),
             ("Exercise execution load (x2):",
-             "The total exercise items students must complete. A heavier exercise count means more time"
-             " for guided practice and assessment."),
+             "The weight of multi-step calculation or diagram production in the exercises (0-2)."
+             " A heavier execution load means more time for guided practice and assessment."),
             ("Note:",
-             "The four signals are combined with fixed weights to give the effort index. Only relative values"
-             " matter - it is used to share your available periods across chapters in proportion to their load."),
+             "All four signals are bounded discrete tiers combined with fixed weights, so no single signal"
+             " can dominate. Only relative values matter - the index shares your available periods across"
+             " chapters in proportion to their load."),
         ]
         _lbl_w = 50
         _body_w = 180 - _lbl_w
@@ -6510,7 +6514,7 @@ div[class*="st-key-gen-clear-top"] button p {
             if _subj_f == "the_world_around_us":
                 _comp_descs_raw = json.loads(
                     (PROJECT_ROOT / f"mirror/framework/{_subj_f}"
-                     / "competency_descriptions_twau.json")
+                     / "preparatory/competency_descriptions_twau.json")
                     .read_text(encoding="utf-8")
                 )
                 # TWAU file has curricular_goals list — flatten to {c_code: description}
@@ -6642,12 +6646,11 @@ elif st.session_state.role == "Allocate":
         _subj_f = subject_to_folder(subject)
 
         # Load competency descriptions lookup (keyed by c_code → description text)
-        # TWAU has a single file with no stage subfolder.
         if _subj_f == "the_world_around_us":
             _comp_desc_path = (
                 PROJECT_ROOT
                 / f"mirror/framework/{_subj_f}"
-                / "competency_descriptions_twau.json"
+                / "preparatory/competency_descriptions_twau.json"
             )
         else:
             _comp_desc_path = (
@@ -6758,7 +6761,9 @@ elif st.session_state.role == "Allocate":
                 "conceptual_demand": _twau_signals.get("conceptual_demand",
                                          _mapping.get("conceptual_demand", 0)),
                 "activity_count":    _mapping.get("activity_count", 0),
+                "activity_load":     _mapping.get("activity_load", 0),
                 "demo_count":        _mapping.get("demo_count", 0),
+                "demo_load":         _mapping.get("demo_load", 0),
                 "exec_load":         _mapping.get("exec_load", 0),
                 # English signals
                 "spine_load":        _mapping.get("spine_load", 0),
@@ -6913,19 +6918,23 @@ elif st.session_state.role == "Allocate":
             'subject. Chapters with a higher effort index get more periods; '
             'chapters with a lower one get fewer. It is calculated from four '
             'signals read from the chapter content.</p>'
+            '<p><b>effort_index = (Conceptual demand × 2) + (Activity load × 2) + '
+            '(Demo load × 1.5) + (Exercise execution load × 2)</b></p>'
             '<ul>'
             '<li><b>Conceptual demand (×2)</b> — The cognitive complexity of exercises and questions '
-            'in the chapter. High-order thinking or multi-step reasoning raises the score.</li>'
-            '<li><b>Student activities (×1)</b> — The number of hands-on activities that students '
-            'perform themselves. Each activity adds classroom time for setup, execution and discussion.</li>'
-            '<li><b>Teacher demonstrations (×1.5)</b> — The number of demonstrations the teacher must '
-            'conduct. These need preparation and focused class attention.</li>'
-            '<li><b>Exercise execution load (×2)</b> — The total exercise items students must complete. '
-            'A heavier exercise count means more time for guided practice and assessment.</li>'
+            'in the chapter (1–3). High-order thinking or multi-step reasoning raises the score.</li>'
+            '<li><b>Activity load (×2)</b> — A discrete 0–3 tier from the number of hands-on activities '
+            'students perform themselves: 0 = none; 1 = 1–3 (light); 2 = 4–7 (standard); '
+            '3 = 8 or more (activity-heavy).</li>'
+            '<li><b>Demo load (×1.5)</b> — A discrete 0–2 tier from the number of teacher demonstrations: '
+            '0 = none; 1 = 1–2; 2 = 3 or more. These need preparation and focused class attention.</li>'
+            '<li><b>Exercise execution load (×2)</b> — The weight of multi-step calculation or diagram '
+            'production in the exercises (0–2). A heavier execution load means more time for guided '
+            'practice and assessment.</li>'
             '</ul>'
-            '<p class="about-ei-close">The four signals are combined with fixed weights to give the '
-            'effort index. Only relative values matter — it is used to share your available periods '
-            'across chapters in proportion to their load.</p>'
+            '<p class="about-ei-close">All four signals are bounded discrete tiers combined with fixed '
+            'weights, so no single signal can dominate. Only relative values matter — the index shares '
+            'your available periods across chapters in proportion to their load.</p>'
             '</div>'
         )
     elif _subject == "Science":
@@ -6937,19 +6946,23 @@ elif st.session_state.role == "Allocate":
             'subject. Chapters with a higher effort index get more periods; '
             'chapters with a lower one get fewer. It is calculated from four '
             'signals read from the chapter content.</p>'
+            '<p><b>effort_index = (Conceptual demand × 2) + (Activity load × 2) + '
+            '(Demo load × 1.5) + (Exercise execution load × 2)</b></p>'
             '<ul>'
             '<li><b>Conceptual demand (×2)</b> — The cognitive complexity of exercises and questions '
-            'in the chapter. High-order thinking or multi-step reasoning raises the score.</li>'
-            '<li><b>Student activities (×1)</b> — The number of hands-on activities that students '
-            'perform themselves. Each activity adds classroom time for setup, execution and discussion.</li>'
-            '<li><b>Teacher demonstrations (×1.5)</b> — The number of demonstrations the teacher must '
-            'conduct. These need preparation and focused class attention.</li>'
-            '<li><b>Exercise execution load (×2)</b> — The total exercise items students must complete. '
-            'A heavier exercise count means more time for guided practice and assessment.</li>'
+            'in the chapter (1–3). High-order thinking or multi-step reasoning raises the score.</li>'
+            '<li><b>Activity load (×2)</b> — A discrete 0–3 tier from the number of hands-on activities '
+            'students perform themselves: 0 = none; 1 = 1–3 (light); 2 = 4–7 (standard); '
+            '3 = 8 or more (activity-heavy).</li>'
+            '<li><b>Demo load (×1.5)</b> — A discrete 0–2 tier from the number of teacher demonstrations: '
+            '0 = none; 1 = 1–2; 2 = 3 or more. These need preparation and focused class attention.</li>'
+            '<li><b>Exercise execution load (×2)</b> — The weight of multi-step calculation or diagram '
+            'production in the exercises (0–2). A heavier execution load means more time for guided '
+            'practice and assessment.</li>'
             '</ul>'
-            '<p class="about-ei-close">The four signals are combined with fixed weights to give the '
-            'effort index. Only relative values matter — it is used to share your available periods '
-            'across chapters in proportion to their load.</p>'
+            '<p class="about-ei-close">All four signals are bounded discrete tiers combined with fixed '
+            'weights, so no single signal can dominate. Only relative values matter — the index shares '
+            'your available periods across chapters in proportion to their load.</p>'
             '</div>'
         )
     else:

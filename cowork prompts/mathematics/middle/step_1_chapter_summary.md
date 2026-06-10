@@ -119,10 +119,14 @@ Two goals MUST NOT be used to:
 
 ## Step 5 — Four effort signals
 
+Record the raw counts here; the discrete tiers (`activity_load`,
+`demo_load`) that feed the effort index are derived in Step 2 (mapping)
+per the constitution's range tables. Raw counts are retained for audit.
+
 - `conceptual_demand` (1–3): 1 = recall/direct dominates (>60%);
   2 = reasoning/multi-step dominates or even; 3 = proof/open-ended ≥30%.
-- `activity_count` (int): student-executed activities only.
-- `demo_count` (int): teacher-demonstrated only.
+- `activity_count` (int): student-executed activities only. Raw count.
+- `demo_count` (int): teacher-demonstrated only. Raw count.
 - `exec_load` (0–2): multi-step computation/construction weight —
   0 = single-step; 1 = 30–60%; 2 = >60%.
 

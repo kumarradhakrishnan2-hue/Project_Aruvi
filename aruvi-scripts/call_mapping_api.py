@@ -46,9 +46,10 @@ def load_constitution(constitution_path: str) -> str:
     Load constitution text from the resolved mirror path.
 
     constitution_path is provided by config_resolver.resolve_paths() as
-    paths["constitution_path"] — always points to:
-      mirror/constitutions/competency_mapping/{subject_group}/
+    paths["constitution_path"] — stage-routed when the stage folder exists:
+      mirror/constitutions/competency_mapping/{subject_group}/{stage}/
       mapping_constitution_{subject_group}.txt
+    with a flat fallback (no {stage} folder) for subjects not yet split by stage.
     """
     path = Path(constitution_path)
     if not path.exists():
@@ -313,10 +314,9 @@ Respond with this exact JSON structure and nothing else:
     }
   ],
   "conceptual_demand": <1 | 2 | 3>,
-  "activity_count": <integer>,
-  "demo_count": <integer>,
-  "exec_load": <0 | 1 | 2>,
-  "effort_index": <number: (conceptual_demand×2)+(activity_count×1)+(demo_count×1.5)+(exec_load×2)>
+  "activity_count": <integer: raw count of student-executed activities>,
+  "demo_count": <integer: raw count of teacher demonstrations>,
+  "exec_load": <0 | 1 | 2>
 }
 
 CRITICAL CONSTRAINTS:
@@ -324,7 +324,7 @@ CRITICAL CONSTRAINTS:
 - content_inventory must list every distinct concept, phenomenon, process, or operation the chapter teaches as noun phrases only.
 - A C-code is primary only if specific inventory items fully and exactly satisfy its definition word for word. Partial or inferential matches are excluded.
 - co_central is false unless two C-codes are both fully satisfied by the inventory.
-- effort_index MUST be computed as the exact arithmetic result of (conceptual_demand × 2) + (activity_count × 1) + (demo_count × 1.5) + (exec_load × 2). Compute this yourself step by step before writing the value. Do not estimate or round.
+- Report activity_count and demo_count as raw integers. Do NOT compute effort_index — it is derived downstream from discrete tiers (activity_load 0–3 from activity_count, demo_load 0–2 from demo_count) and must not appear in your output.
 - Only use C-codes that appear in the Curricular Goals list provided above.
 - Respond with JSON only — no text before or after."""
     else:
@@ -354,16 +354,42 @@ CRITICAL CONSTRAINTS:
     return base + schema_block
 
 
+def _activity_load(activity_count: int) -> int:
+    """Discrete tier (0–3) from raw student-activity count.
+    0 → 0 · 1–3 → 1 · 4–7 → 2 · ≥8 → 3."""
+    n = activity_count or 0
+    if n == 0:
+        return 0
+    if n <= 3:
+        return 1
+    if n <= 7:
+        return 2
+    return 3
+
+
+def _demo_load(demo_count: int) -> int:
+    """Discrete tier (0–2) from raw teacher-demonstration count.
+    0 → 0 · 1–2 → 1 · ≥3 → 2."""
+    n = demo_count or 0
+    if n == 0:
+        return 0
+    if n <= 2:
+        return 1
+    return 2
+
+
 def _validate_mapping(mapping: dict, subject_group: str = "social_sciences") -> list:
     """Validate Call 2 output. Returns list of error strings."""
     errors = []
 
     if subject_group == "science":
         # ── Science schema validation ─────────────────────────────────────────
+        # activity_load, demo_load and effort_index are derived in Python
+        # before validation runs, so they are expected to be present here.
         required_fields = [
             "content_inventory", "primary", "min_viable_periods",
-            "conceptual_demand", "activity_count", "demo_count",
-            "exec_load", "effort_index",
+            "conceptual_demand", "activity_count", "activity_load",
+            "demo_count", "demo_load", "exec_load", "effort_index",
         ]
         for field in required_fields:
             if field not in mapping:
@@ -457,12 +483,17 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
 
             mapping = json.loads(raw_text)
 
-            # Compute effort_index in Python — do not trust model arithmetic
+            # Derive discrete tiers and compute effort_index in Python —
+            # raw counts are banded so no single signal dominates the index.
             if subject_group == "science":
+                activity_load = _activity_load(mapping.get("activity_count", 0))
+                demo_load     = _demo_load(mapping.get("demo_count", 0))
+                mapping["activity_load"] = activity_load
+                mapping["demo_load"]     = demo_load
                 mapping["effort_index"] = round(
                     mapping.get("conceptual_demand", 0) * 2 +
-                    mapping.get("activity_count", 0) * 1 +
-                    mapping.get("demo_count", 0) * 1.5 +
+                    activity_load * 2 +
+                    demo_load * 1.5 +
                     mapping.get("exec_load", 0) * 2,
                     1
                 )
@@ -503,7 +534,9 @@ def call_mapping_api(chapter_data: dict, cg_data: dict, subject_group: str,
                 record["co_central"]        = mapping.get("co_central")
                 record["conceptual_demand"] = mapping.get("conceptual_demand")
                 record["activity_count"]    = mapping.get("activity_count")
+                record["activity_load"]     = mapping.get("activity_load")
                 record["demo_count"]        = mapping.get("demo_count")
+                record["demo_load"]         = mapping.get("demo_load")
                 record["exec_load"]         = mapping.get("exec_load")
                 record["effort_index"]      = mapping.get("effort_index")
             else:

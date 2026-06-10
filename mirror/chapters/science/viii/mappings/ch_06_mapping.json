@@ -1,23 +1,25 @@
 {
-    "stage": "middle",
-    "subject": "science",
-    "grade": "viii",
-    "chapter_number": 6,
-    "chapter_title": "Pressure, Winds, Storms, and Cyclones",
-    "min_viable_periods": 0,
-    "orientation_chapter": false,
-    "co_central": false,
-    "primary": [
-      {
-        "cg": "CG-1",
-        "c_code": "C-1.4",
-        "justification": "The chapter's entire subject matter is pressure — its definition as force per unit area, its behaviour in solids (area-force relationship), liquids (column-height dependence, omnidirectional exertion), and the atmosphere (atmospheric pressure magnitude and effects). Every subsequent section — wind formation from pressure differences, the lowering of air pressure by high-speed winds, thunderstorm development through warm-air convection cycles, and cyclone formation as a self-reinforcing low-pressure system — is a direct application of C-1.4's mandate to observe and explain phenomena caused by differences in pressure, temperature, and density. The chapter explicitly names 'formation of winds' as an example within C-1.4's scope, and extends this to explain storms, lightning, and cyclones through the same pressure-difference framework."
-      }
-    ],
-    "dissolution_test": "This chapter builds the student's ability to observe and explain phenomena caused by differences in pressure in solids, liquids, and the atmosphere by tracing how pressure acts per unit area, how liquid columns and atmospheric air exert pressure in all directions, and how pressure differences drive wind formation, storm development, lightning, and cyclone creation.",
-    "conceptual_demand": 2,
-    "activity_count": 7,
-    "demo_count": 0,
-    "exec_load": 0,
-    "effort_index": 11.0
+  "stage": "middle",
+  "subject": "science",
+  "grade": "viii",
+  "chapter_number": 6,
+  "chapter_title": "Pressure, Winds, Storms, and Cyclones",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": false,
+  "primary": [
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.4",
+      "justification": "The chapter's entire subject matter is pressure — its definition as force per unit area, its behaviour in solids (area-force relationship), liquids (column-height dependence, omnidirectional exertion), and the atmosphere (atmospheric pressure magnitude and effects). Every subsequent section — wind formation from pressure differences, the lowering of air pressure by high-speed winds, thunderstorm development through warm-air convection cycles, and cyclone formation as a self-reinforcing low-pressure system — is a direct application of C-1.4's mandate to observe and explain phenomena caused by differences in pressure, temperature, and density. The chapter explicitly names 'formation of winds' as an example within C-1.4's scope, and extends this to explain storms, lightning, and cyclones through the same pressure-difference framework."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to observe and explain phenomena caused by differences in pressure in solids, liquids, and the atmosphere by tracing how pressure acts per unit area, how liquid columns and atmospheric air exert pressure in all directions, and how pressure differences drive wind formation, storm development, lightning, and cyclone creation.",
+  "conceptual_demand": 2,
+  "activity_count": 7,
+  "activity_load": 2,
+  "demo_count": 0,
+  "demo_load": 0,
+  "exec_load": 0,
+  "effort_index": 8.0
 }

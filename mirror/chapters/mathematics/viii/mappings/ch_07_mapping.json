@@ -4,16 +4,13 @@
   "grade": "viii",
   "chapter_number": 7,
   "chapter_title": "Proportional Reasoning-1",
-
   "core_cg": "CG-1",
-
   "core_competencies": [
     {
       "c_code": "C-1.6",
       "justification": "The entire chapter is built on exploring and applying ratios — a specific form of fractions — in daily-life situations. Sections 7.1–7.6 develop the concept from image similarity through ratio simplification, proportionality checks, the Rule of Three (cross multiplication), partitioning quantities in a given ratio, and unit-conversion problems; all 12 worked examples and 26 exercises operationalise C-1.6 across diverse real-world contexts (lemonade, cement, profit sharing, tea price, bus capacity, farming, ancient Lilavati problems)."
     }
   ],
-
   "adjunct_competencies": [
     {
       "c_code": "C-2.4",
@@ -28,12 +25,12 @@
       "justification": "Section 7.1 asks students to reason inductively from image measurements to discover why multiplicative change preserves similarity while additive change does not; Section 7.4 provides a deductive algebraic derivation of cross multiplication from the definition of proportionality; and the recurring Math Talk prompts throughout the chapter require students to formulate and evaluate arguments — collectively constituting substantive engagement with inductive and deductive logic."
     }
   ],
-
   "dissolution_test": "This chapter builds the student's ability to recognise, set up, and solve proportional relationships involving ratios by developing multiplicative reasoning — moving from visual similarity through ratio simplification and cross-multiplication to partitioning quantities — and applying these skills fluently across diverse real-world and historical contexts.",
-
   "conceptual_demand": 3,
   "activity_count": 3,
+  "activity_load": 1,
   "demo_count": 0,
+  "demo_load": 0,
   "exec_load": 2,
-  "effort_index": 14.5
+  "effort_index": 12.0
 }

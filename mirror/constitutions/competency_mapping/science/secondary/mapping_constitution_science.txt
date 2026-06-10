@@ -1,0 +1,146 @@
+ARUVI
+Science Competency Mapping Constitution
+Knowledge Commons · Chapter-to-Competency Mapping · Version 3.0 · Secondary Stage
+
+Subject group   : science
+Stage           : Secondary Stage
+Grades          : ix · x
+Task            : chapter_to_competency_mapping
+Fetch key       : competency_constitution_science
+Version         : 3.0 — Secondary-Stage edition of the Science mapping constitution
+Downstream      : lesson_plan_constitution_science · assessment_constitution_science
+CG reference    : cg_secondary_science.txt (NCF-SE 4.4.1.2 — Secondary Stage; CG-1 … CG-8)
+
+
+================================================================================
+Competency mapping
+================================================================================
+
+Rule 1 | competency list — development method
+--------------------------------------------------------------------------------
+The competency assignment for each Secondary Stage Science chapter (Grade IX / X) is
+determined by a two-step process applied to every chapter. The governing mechanism is
+identical to the Middle Stage; only the CG reference document changes (the Secondary CG
+set CG-1 … CG-8) and the stage-specific guidance below applies.
+
+Step 1 — Chapter summary reading & CG identification
+
+Pass 1: Before consulting the CG document or any framework document, the system MUST read
+the chapter summary section by section.
+
+Pass 2: Open the CG document. The single CG whose domain description matches the chapter's
+subject matter is selected. Selection is made from CG-level headings only; C-code
+definitions are not opened at this step. CG-5 through CG-8 are eligible only if no CG-1
+through CG-4 domain matches — which applies only to orientation, cross-linkage,
+India-contribution, or frontier/epistemology chapters. The selected CG is locked.
+
+Step 2 — C-code selection: only the C-codes under the locked CG are read. A maximum of two
+C-codes are selected — those whose definitions the chapter summary substantively addresses.
+A second C-code requires independent justification from a distinct strand of the chapter,
+not as a vehicle for the first. The dissolution test sentence is then written: "This chapter
+builds the student's ability to [verb] [object] by [cognitive mechanism]." co_central is set
+to true when, and only when, two C-codes are selected.
+
+
+Rule 2 | Secondary-Stage application guidance
+--------------------------------------------------------------------------------
+The Secondary CG set (cg_secondary_science.txt) is partitioned by domain — CG-1 matter at
+the atomic level, CG-2 the physical world, CG-3 the living world at the cellular level,
+CG-4 interconnectedness of organisms and environment. Most secondary chapters therefore
+have one obvious home CG. The following rules govern the cases where this is not
+immediately clean.
+
+2a | Whole-chapter domain match (not section-summing)
+Pass 2 selects the CG that matches the chapter's subject matter as a whole — NOT the union
+of the domains its individual sections touch. A chapter may contain a section that, read in
+isolation, looks like a different CG (e.g. a cell chapter whose opening section explains the
+microscope, resolution, and convex lenses — superficially CG-2 optics, or CG-8
+instrumentation). Such sections are instrumentation or scaffolding in service of the
+chapter's actual subject; they do NOT redirect the CG lock. Judge the chapter by what it is
+about, not by what tools or asides it passes through.
+
+2b | Same-CG co-central constraint
+A second (co-central) C-code MUST come from the same locked CG. A chapter may carry a
+genuinely distinct second strand that belongs to a NEIGHBOURING CG — for example, a CG-3
+cell chapter that also teaches the levels of organisation (cell → tissue → organ → organism),
+which lives under CG-4. Cross-CG co-centrality is NOT representable in this schema: record
+such a strand as tertiary in the justification prose if useful, but do not place it in
+primary and do not switch the lock. The strand is not lost — it survives in the chapter
+summary and is available to downstream lesson-plan and assessment generation.
+
+2c | Single-competency, cognitively dense chapters
+A secondary chapter may legitimately map to ONE C-code while being cognitively dense — the
+abstraction characteristic of this stage (reasoning about the unobservable, mathematisation,
+model-building) raises cognitive demand without broadening competency coverage. Do NOT force
+a second C-code to "reflect" a hard chapter. Breadth is a competency question; difficulty is
+captured separately by the effort-index signals (conceptual_demand, activity_count,
+demo_count, exec_load). The Journey Inside the Atom chapter is the canonical example: a
+single competency (C-1.1), high cognitive demand.
+
+2d | Introductory / deferred strands
+Secondary chapters frequently seed a strand that the textbook explicitly defers to higher
+grades ("you will learn this in detail later"). Such a strand still qualifies as co-central
+when it is (i) carried in its own named section(s), and (ii) cognitively distinct from the
+primary strand — even if treated at introductory depth. It does NOT qualify when it appears
+only as a passing mention inside a section governed by the primary C-code. Apply judgement:
+a sectioned, distinct strand counts; a one-line aside does not.
+
+
+================================================================================
+COMPETENCY MAPPING JSON SCHEMA — SCIENCE (SECONDARY)
+================================================================================
+
+The "stage" field MUST be "secondary" for all Grade IX and Grade X chapters.
+
+Example A — single-competency chapter (co_central = false)
+
+{
+    "stage": "secondary",
+    "subject": "science",
+    "grade": "ix",
+    "chapter_number": 8,
+    "chapter_title": "Journey Inside the Atom",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": false,
+    "primary": [
+      {
+        "cg": "CG-1",
+        "c_code": "C-1.1",
+        "justification": "The chapter's whole domain is atomic structure via the Bohr model and the combining capacity (valency) that follows from electronic configuration — the 'atomic structure (Bohr's model) and properties (valency)' clause of C-1.1. The periodic-table / compound-formation clause of C-1.1 is not developed here; it is the domain of the sibling chapter (Atomic Foundation of Matter). The chapter's four sub-topics (model evolution, atomic/mass number and configuration, valency, isotopes/isobars) are all facets of atomic structure and serve this single competency; no distinct second strand exists within CG-1 (mixtures C-1.2 and chemical equations C-1.3 are absent)."
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's ability to determine the subatomic composition, electronic configuration, and valency of an atom by reconstructing how successive experimental evidence (cathode rays, gold-foil scattering, the neutron) reshaped atomic models and by applying shell-filling (2n²) and octet rules."
+}
+
+Example B — co-central chapter (co_central = true), same locked CG
+
+{
+    "stage": "secondary",
+    "subject": "science",
+    "grade": "ix",
+    "chapter_number": 2,
+    "chapter_title": "Cell: The Building Block of Life",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": true,
+    "primary": [
+      {
+        "cg": "CG-3",
+        "c_code": "C-3.1",
+        "justification": "The chapter's bulk (sections on the cell membrane, cell wall, and the organelles — nucleus, ER, ribosomes, Golgi, lysosomes, mitochondria, plastids, vacuoles) explains the role of cellular components and the semipermeability of the cell membrane (osmosis activities) in making the cell the structural and functional unit of life — directly C-3.1."
+      },
+      {
+        "cg": "CG-3",
+        "c_code": "C-3.3",
+        "justification": "A distinct, sectioned strand establishes the carriers of heredity — DNA, genes, chromosomes, chromatin within the nucleus — and the division processes (mitosis producing identical daughters; meiosis halving chromosomes and generating variation) that transmit them. This is cognitively distinct from organelle structure and membrane transport and qualifies as co-central under Rule 2d even though the textbook defers full mechanism to higher grades. (The chapter's levels-of-organisation thread belongs to CG-4 and is therefore recorded as tertiary, not in primary — see Rule 2b.)"
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's ability to explain how a cell's organelles and semipermeable membrane make it the structural and functional unit of life AND how cell division transmits the DNA/chromosomal basis of heredity and variation, by comparing cell types under controlled observation and tracing the flow from DNA to chromosome to daughter cell."
+}
+
+
+================================================================================
+Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
+Science Competency Mapping Constitution · Version 3.0 · Secondary Stage · Internal Document
+================================================================================

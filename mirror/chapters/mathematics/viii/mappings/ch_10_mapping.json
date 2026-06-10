@@ -1,43 +1,40 @@
 {
-    "stage": "middle",
-    "subject": "mathematics",
-    "grade": "viii",
-    "chapter_number": 10,
-    "chapter_title": "Proportional Reasoning–2",
-
-    "core_cg": "CG-1",
-
-    "core_competencies": [
-        {
-            "c_code": "C-1.6",
-            "justification": "The entire chapter applies ratio and proportional reasoning to daily-life situations — cooking spice mixes, map scales, construction materials, paint mixing, cricket schedules, coin counts, food provisions, pumps, and workers. Every section (3.1–3.6) uses ratios or fractions in real-world problem contexts, making C-1.6 the organising spine of the chapter."
-        },
-        {
-            "c_code": "C-1.2",
-            "justification": "Section 3.6 architecturally builds the student's ability to discover two distinct numerical patterns — the constant-quotient pattern of direct proportions and the constant-product pattern of inverse proportions (xy = k). The speed-time table (5×18 = 15×6 = 30×3 = 60×1.5 = 90) exemplifies pattern discovery in numbers, and the chapter systematically contrasts both rules across 11 worked examples and 14 exercises."
-        }
-    ],
-
-    "adjunct_competencies": [
-        {
-            "c_code": "C-5.2",
-            "justification": "Section 3.5 provides a full pie chart construction sequence — reducing a ratio using HCF, dividing 360° proportionally, constructing sectors with protractor, and labelling. Exercises E-6, E-7, and E-8 extend this to three further data sets, making graphical data representation a substantive strand of the chapter."
-        },
-        {
-            "c_code": "C-3.4",
-            "justification": "Constructing geometric shapes with specified properties is engaged in section 3.5 (drawing a circle and marking successive angles to build a pie chart) and in WE-5 and E-4 (constructing triangles with angles or side lengths in a given ratio using compass and straightedge)."
-        },
-        {
-            "c_code": "C-2.4",
-            "justification": "Section 3.6's inverse proportion word problems (WE-8 through WE-11, E-16–E-22) all require setting up and solving a linear equation for an unknown value using x₁y₁ = x₂y₂, providing repeated practice in posing and solving one-variable equations in real-world contexts."
-        }
-    ],
-
-    "dissolution_test": "This chapter builds the student's ability to apply ratio and proportional reasoning — multi-term ratios, division of a whole in a ratio, and inverse proportions — to solve daily-life problems, by developing fluency with the direct proportionality relationship (constant quotient) and the inverse proportionality relationship (constant product).",
-
-    "conceptual_demand": 2,
-    "activity_count": 1,
-    "demo_count": 0,
-    "exec_load": 1,
-    "effort_index": 7.5
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "viii",
+  "chapter_number": 10,
+  "chapter_title": "Proportional Reasoning–2",
+  "core_cg": "CG-1",
+  "core_competencies": [
+    {
+      "c_code": "C-1.6",
+      "justification": "The entire chapter applies ratio and proportional reasoning to daily-life situations — cooking spice mixes, map scales, construction materials, paint mixing, cricket schedules, coin counts, food provisions, pumps, and workers. Every section (3.1–3.6) uses ratios or fractions in real-world problem contexts, making C-1.6 the organising spine of the chapter."
+    },
+    {
+      "c_code": "C-1.2",
+      "justification": "Section 3.6 architecturally builds the student's ability to discover two distinct numerical patterns — the constant-quotient pattern of direct proportions and the constant-product pattern of inverse proportions (xy = k). The speed-time table (5×18 = 15×6 = 30×3 = 60×1.5 = 90) exemplifies pattern discovery in numbers, and the chapter systematically contrasts both rules across 11 worked examples and 14 exercises."
+    }
+  ],
+  "adjunct_competencies": [
+    {
+      "c_code": "C-5.2",
+      "justification": "Section 3.5 provides a full pie chart construction sequence — reducing a ratio using HCF, dividing 360° proportionally, constructing sectors with protractor, and labelling. Exercises E-6, E-7, and E-8 extend this to three further data sets, making graphical data representation a substantive strand of the chapter."
+    },
+    {
+      "c_code": "C-3.4",
+      "justification": "Constructing geometric shapes with specified properties is engaged in section 3.5 (drawing a circle and marking successive angles to build a pie chart) and in WE-5 and E-4 (constructing triangles with angles or side lengths in a given ratio using compass and straightedge)."
+    },
+    {
+      "c_code": "C-2.4",
+      "justification": "Section 3.6's inverse proportion word problems (WE-8 through WE-11, E-16–E-22) all require setting up and solving a linear equation for an unknown value using x₁y₁ = x₂y₂, providing repeated practice in posing and solving one-variable equations in real-world contexts."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to apply ratio and proportional reasoning — multi-term ratios, division of a whole in a ratio, and inverse proportions — to solve daily-life problems, by developing fluency with the direct proportionality relationship (constant quotient) and the inverse proportionality relationship (constant product).",
+  "conceptual_demand": 2,
+  "activity_count": 1,
+  "activity_load": 1,
+  "demo_count": 0,
+  "demo_load": 0,
+  "exec_load": 1,
+  "effort_index": 8.0
 }

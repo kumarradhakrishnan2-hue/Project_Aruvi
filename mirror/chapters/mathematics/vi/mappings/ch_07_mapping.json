@@ -1,43 +1,40 @@
 {
-    "stage": "middle",
-    "subject": "mathematics",
-    "grade": "vi",
-    "chapter_number": 7,
-    "chapter_title": "Fractions",
-
-    "core_cg": "CG-1",
-
-    "core_competencies": [
-        {
-            "c_code": "C-1.4",
-            "justification": "Sections 7.1–7.7 systematically explore fractions as a number set — defining fractional units, understanding proper/improper/mixed forms, identifying equivalent fractions, expressing fractions in lowest terms, and visualising all of these on the number line. The chapter's structural arc is the student building a coherent understanding of what fractions are and how they relate to each other."
-        },
-        {
-            "c_code": "C-1.6",
-            "justification": "Section 7.8 is entirely devoted to applying Brahmagupta's method for adding and subtracting fractions in daily-life contexts — paint mixing, lace lengths, travel distances, and food sharing. This constitutes an independent apply-strand distinct from C-1.4's structural understanding of the number system."
-        }
-    ],
-
-    "adjunct_competencies": [
-        {
-            "c_code": "C-9.2",
-            "justification": "Section 7.9 substantively credits Brahmagupta's 628 CE codification of fraction arithmetic (quoting the original verse), traces Indian fraction notation from the Bakshali manuscript through Aryabhata, Sridharacharya, and Mahaviracharya, and explains the global transmission of Indian fraction methods via the Arabs to Europe."
-        },
-        {
-            "c_code": "C-7.1",
-            "justification": "Section 7.9's Try This puzzle challenges students to discover, through their own reasoning, all ways to write 1 as a sum of distinct fractional units — first three (unique solution), then four (six solutions). The text explicitly invites students to find their own method and appreciate that others may find the same result differently."
-        },
-        {
-            "c_code": "C-6.1",
-            "justification": "Sections 7.6–7.7 require students to formulate and evaluate logical arguments: the Mukta–Shabnam dialogues model deductive reasoning about why same-numerator fractions with a larger denominator are smaller, and exercises require students to justify comparison conclusions by constructing equivalent fractions — not merely computing them."
-        }
-    ],
-
-    "dissolution_test": "This chapter builds the student's ability to understand and compute with fractions by exploring fractional units, equivalent forms, and Brahmagupta's arithmetic methods through measurement, number-line representation, and daily-life problem solving.",
-
-    "conceptual_demand": 2,
-    "activity_count": 2,
-    "demo_count": 0,
-    "exec_load": 1,
-    "effort_index": 9.0
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "vi",
+  "chapter_number": 7,
+  "chapter_title": "Fractions",
+  "core_cg": "CG-1",
+  "core_competencies": [
+    {
+      "c_code": "C-1.4",
+      "justification": "Sections 7.1–7.7 systematically explore fractions as a number set — defining fractional units, understanding proper/improper/mixed forms, identifying equivalent fractions, expressing fractions in lowest terms, and visualising all of these on the number line. The chapter's structural arc is the student building a coherent understanding of what fractions are and how they relate to each other."
+    },
+    {
+      "c_code": "C-1.6",
+      "justification": "Section 7.8 is entirely devoted to applying Brahmagupta's method for adding and subtracting fractions in daily-life contexts — paint mixing, lace lengths, travel distances, and food sharing. This constitutes an independent apply-strand distinct from C-1.4's structural understanding of the number system."
+    }
+  ],
+  "adjunct_competencies": [
+    {
+      "c_code": "C-9.2",
+      "justification": "Section 7.9 substantively credits Brahmagupta's 628 CE codification of fraction arithmetic (quoting the original verse), traces Indian fraction notation from the Bakshali manuscript through Aryabhata, Sridharacharya, and Mahaviracharya, and explains the global transmission of Indian fraction methods via the Arabs to Europe."
+    },
+    {
+      "c_code": "C-7.1",
+      "justification": "Section 7.9's Try This puzzle challenges students to discover, through their own reasoning, all ways to write 1 as a sum of distinct fractional units — first three (unique solution), then four (six solutions). The text explicitly invites students to find their own method and appreciate that others may find the same result differently."
+    },
+    {
+      "c_code": "C-6.1",
+      "justification": "Sections 7.6–7.7 require students to formulate and evaluate logical arguments: the Mukta–Shabnam dialogues model deductive reasoning about why same-numerator fractions with a larger denominator are smaller, and exercises require students to justify comparison conclusions by constructing equivalent fractions — not merely computing them."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to understand and compute with fractions by exploring fractional units, equivalent forms, and Brahmagupta's arithmetic methods through measurement, number-line representation, and daily-life problem solving.",
+  "conceptual_demand": 2,
+  "activity_count": 2,
+  "activity_load": 1,
+  "demo_count": 0,
+  "demo_load": 0,
+  "exec_load": 1,
+  "effort_index": 8.0
 }

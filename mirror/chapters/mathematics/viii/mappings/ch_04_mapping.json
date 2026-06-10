@@ -1,39 +1,36 @@
 {
-    "stage":          "middle",
-    "subject":        "mathematics",
-    "grade":          "viii",
-    "chapter_number": 4,
-    "chapter_title":  "Quadrilaterals",
-
-    "core_cg": "CG-3",
-
-    "core_competencies": [
-        {
-            "c_code": "C-3.1",
-            "justification": "The entire chapter is organised around classifying quadrilaterals — rectangles, squares, parallelograms, rhombuses, kites, and trapeziums — by their defining properties, and establishing their hierarchical relationships through Venn diagrams. Section 4.1 distinguishes squares as a subset of rectangles, section 4.3 places rectangles within parallelograms, and section 4.4 situates squares within rhombuses; section 4.6 positions kites and trapeziums relative to all of these."
-        },
-        {
-            "c_code": "C-3.2",
-            "justification": "Ten named deductions derive the properties of each quadrilateral type — angle equalities, side equalities, diagonal bisection, perpendicularity, and angle bisection — and the exercises (E-2 to E-16, E-17 to E-35) require students to apply these properties to find missing angles, construct figures with specified diagonal lengths, and evaluate the truth of property statements for each quadrilateral class."
-        }
-    ],
-
-    "adjunct_competencies": [
-        {
-            "c_code": "C-6.1",
-            "justification": "The chapter's primary cognitive method is geometric deduction: all ten deductions (Deductions 1–10) use congruence conditions (SSS, SAS, AAS, ASA) to produce rigorous proofs of quadrilateral properties, and exercises E-29 through E-35 explicitly require students to state whether property claims are true or false and to justify their answers with logical arguments."
-        },
-        {
-            "c_code": "C-7.1",
-            "justification": "The Geoboard Activity (A-1) and Joining Triangles Activity (A-2) ask students to explore diagonal configurations and triangle-joining arrangements experimentally, discover what quadrilateral results, and construct their own justifications; open-ended exercises such as E-25 (inscribing a square in a square) and E-24 (constructing a square without a protractor) similarly demand creative problem-solving strategies."
-        }
-    ],
-
-    "dissolution_test": "This chapter builds the student's ability to classify and derive properties of quadrilaterals by reasoning from definitions through congruence-based geometric deduction.",
-
-    "conceptual_demand": 3,
-    "activity_count":    2,
-    "demo_count":        0,
-    "exec_load":         1,
-    "effort_index":      11.0
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "viii",
+  "chapter_number": 4,
+  "chapter_title": "Quadrilaterals",
+  "core_cg": "CG-3",
+  "core_competencies": [
+    {
+      "c_code": "C-3.1",
+      "justification": "The entire chapter is organised around classifying quadrilaterals — rectangles, squares, parallelograms, rhombuses, kites, and trapeziums — by their defining properties, and establishing their hierarchical relationships through Venn diagrams. Section 4.1 distinguishes squares as a subset of rectangles, section 4.3 places rectangles within parallelograms, and section 4.4 situates squares within rhombuses; section 4.6 positions kites and trapeziums relative to all of these."
+    },
+    {
+      "c_code": "C-3.2",
+      "justification": "Ten named deductions derive the properties of each quadrilateral type — angle equalities, side equalities, diagonal bisection, perpendicularity, and angle bisection — and the exercises (E-2 to E-16, E-17 to E-35) require students to apply these properties to find missing angles, construct figures with specified diagonal lengths, and evaluate the truth of property statements for each quadrilateral class."
+    }
+  ],
+  "adjunct_competencies": [
+    {
+      "c_code": "C-6.1",
+      "justification": "The chapter's primary cognitive method is geometric deduction: all ten deductions (Deductions 1–10) use congruence conditions (SSS, SAS, AAS, ASA) to produce rigorous proofs of quadrilateral properties, and exercises E-29 through E-35 explicitly require students to state whether property claims are true or false and to justify their answers with logical arguments."
+    },
+    {
+      "c_code": "C-7.1",
+      "justification": "The Geoboard Activity (A-1) and Joining Triangles Activity (A-2) ask students to explore diagonal configurations and triangle-joining arrangements experimentally, discover what quadrilateral results, and construct their own justifications; open-ended exercises such as E-25 (inscribing a square in a square) and E-24 (constructing a square without a protractor) similarly demand creative problem-solving strategies."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to classify and derive properties of quadrilaterals by reasoning from definitions through congruence-based geometric deduction.",
+  "conceptual_demand": 3,
+  "activity_count": 2,
+  "activity_load": 1,
+  "demo_count": 0,
+  "demo_load": 0,
+  "exec_load": 1,
+  "effort_index": 10.0
 }

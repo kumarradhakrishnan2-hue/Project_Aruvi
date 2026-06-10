@@ -1,39 +1,36 @@
 {
-    "stage":          "middle",
-    "subject":        "mathematics",
-    "grade":          "viii",
-    "chapter_number": 1,
-    "chapter_title":  "A Square and A Cube",
-
-    "core_cg": "CG-1",
-
-    "core_competencies": [
-        {
-            "c_code": "C-1.2",
-            "justification": "The entire chapter is organised around discovering, identifying, and describing patterns in special classes of numbers. Sections 1.1a–1.1c establish the units-digit patterns, trailing-zero rules, parity properties, and odd-number-sum structure of perfect squares; section 1.2 and 1.2a do the same for perfect cubes, including the pattern linking each cube to a group of consecutive odd numbers. Exercises E-15 through E-18 (Math Talk) directly ask students to articulate these patterns and make conjectures."
-        }
-    ],
-
-    "adjunct_competencies": [
-        {
-            "c_code": "C-6.1",
-            "justification": "Sections 1.1d and 1.2b require students to apply deductive logic — specifically prime factorisation — to determine whether a number is a perfect square or perfect cube and to prove the result. The opening locker puzzle, the visual proof of the odd-number sum for squares, and exercises such as E-12 (true/false with reasoning about cubes) all demand construction and evaluation of mathematical arguments."
-        },
-        {
-            "c_code": "C-9.2",
-            "justification": "Section 1.3 explicitly traces the Sanskrit origins of mathematical vocabulary (varga, ghana, mula) through Aryabhata (499 CE) and Brahmagupta (628 CE), and the Taxicab number passage in section 1.2 recounts the Hardy–Ramanujan story about 1729, directly engaging students with the contributions of Ramanujan and the broader tradition of Indian mathematical history."
-        },
-        {
-            "c_code": "C-7.1",
-            "justification": "The chapter opens with the creative Queen Ratnamanjuri locker puzzle requiring original reasoning about factor counts, the end-of-chapter 'Square Pairs!' puzzle asks students to arrange numbers 1–17 (and 1–32 in a circle) so adjacent pairs sum to a square, and the Try This item (E-19) challenges students to find two cube-sum representations for 4104 and 13832, all requiring students to devise their own creative strategies."
-        }
-    ],
-
-    "dissolution_test": "This chapter builds the student's ability to identify and reason about the properties of perfect squares and perfect cubes — including their digit patterns, factor structures, roots, and representations as sums of consecutive odd numbers — by guiding systematic pattern exploration and applying prime factorisation as a verification and computation tool.",
-
-    "conceptual_demand": 2,
-    "activity_count":    0,
-    "demo_count":        0,
-    "exec_load":         1,
-    "effort_index":      6.0
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "viii",
+  "chapter_number": 1,
+  "chapter_title": "A Square and A Cube",
+  "core_cg": "CG-1",
+  "core_competencies": [
+    {
+      "c_code": "C-1.2",
+      "justification": "The entire chapter is organised around discovering, identifying, and describing patterns in special classes of numbers. Sections 1.1a–1.1c establish the units-digit patterns, trailing-zero rules, parity properties, and odd-number-sum structure of perfect squares; section 1.2 and 1.2a do the same for perfect cubes, including the pattern linking each cube to a group of consecutive odd numbers. Exercises E-15 through E-18 (Math Talk) directly ask students to articulate these patterns and make conjectures."
+    }
+  ],
+  "adjunct_competencies": [
+    {
+      "c_code": "C-6.1",
+      "justification": "Sections 1.1d and 1.2b require students to apply deductive logic — specifically prime factorisation — to determine whether a number is a perfect square or perfect cube and to prove the result. The opening locker puzzle, the visual proof of the odd-number sum for squares, and exercises such as E-12 (true/false with reasoning about cubes) all demand construction and evaluation of mathematical arguments."
+    },
+    {
+      "c_code": "C-9.2",
+      "justification": "Section 1.3 explicitly traces the Sanskrit origins of mathematical vocabulary (varga, ghana, mula) through Aryabhata (499 CE) and Brahmagupta (628 CE), and the Taxicab number passage in section 1.2 recounts the Hardy–Ramanujan story about 1729, directly engaging students with the contributions of Ramanujan and the broader tradition of Indian mathematical history."
+    },
+    {
+      "c_code": "C-7.1",
+      "justification": "The chapter opens with the creative Queen Ratnamanjuri locker puzzle requiring original reasoning about factor counts, the end-of-chapter 'Square Pairs!' puzzle asks students to arrange numbers 1–17 (and 1–32 in a circle) so adjacent pairs sum to a square, and the Try This item (E-19) challenges students to find two cube-sum representations for 4104 and 13832, all requiring students to devise their own creative strategies."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to identify and reason about the properties of perfect squares and perfect cubes — including their digit patterns, factor structures, roots, and representations as sums of consecutive odd numbers — by guiding systematic pattern exploration and applying prime factorisation as a verification and computation tool.",
+  "conceptual_demand": 2,
+  "activity_count": 0,
+  "activity_load": 0,
+  "demo_count": 0,
+  "demo_load": 0,
+  "exec_load": 1,
+  "effort_index": 6.0
 }

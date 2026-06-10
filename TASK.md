@@ -61,24 +61,50 @@ The table below maps each subject to the cowork prompts that must be run (in ord
 
 2\. [DONE — May 2026] LP PDF v3 (`aruvi_streamlit/lp_pdf_generator.py`) wired into app.py for English and Mathematics. Science/SS LP PDF migration to v3 still pending.
 
-3\. [DONE — May 2026] Fix hardcoded `PROJECT_ROOT` in `app.py` and `ask_aruvi_agent.py`. Both now use `Path(__file__).parent.parent` for dynamic resolution. The `load_dotenv` call in `app.py` was also fixed and `Path` import moved to the top of the file.
+3\. [DONE — May 2026] Fix hardcoded `PROJECT_ROOT` in `app.py` and `ask_aruvi_agent.py`. Both now use `Path(__file__).parent.parent` for dynamic resolution.
 
-4\. [DONE — May 2026] Scratch test HTML files (test_debug.html, test_fixed.html, test_minimal.html, test_trycatch.html, test_assess_only.html, test_assessment.html, test_assessment_full.html, test_debug2.html) confirmed deleted — no longer present in the project.
+4\. [PENDING] Strip `tasks_verbatim[]` and `question_bank[]` from English assessment prompt in both `generate_assessment_only()` and `build_english_prompts()` in `app.py` (~10-line fix). Prevents textbook content contamination in poem chapters.
 
-5\. [IN PROGRESS] Complete English VII: Ch 02–05 done (summary + mapping). Ch 06–N — run combined summary+mapping prompt for remaining chapters, then full generate+test cycle. Note: English VI and English VIII each have only 5 chapters — both grades are now COMPLETE for summaries + mappings.
+5\. [PENDING] English secondary (Grade IX): Constitutions forked, step_1 prompt authored. Pipeline ON HOLD — do not run until explicit go-ahead.
 
-**Progress snapshot — as of 2026-05-19**
+---
 
-- Mathematics VII: COMPLETE (all 8 chapters — summaries, mappings, LP + assessment tested)
-- Mathematics VIII: Ch 01–05 done (prior sessions). Ch 06 done 2026-05-18 — "We Distribute, Yet Things Multiply"; CG-2, C-2.3 (core) + C-2.5 (core); adjuncts: C-6.1, C-1.3, C-9.2; effort_index 11.0 (conceptual_demand 3, activity_count 0, demo_count 3, exec_load 1). Ch 07 done 2026-05-18 — "Proportional Reasoning-1"; CG-1, C-1.6 (core, single); adjuncts: C-2.4, C-9.2, C-6.1; effort_index 14.5 (conceptual_demand 3, activity_count 3, demo_count 0, exec_load 2). Ch 10 done 2026-05-19 — "Proportional Reasoning-2"; CG-1, C-1.6 (core) + C-1.2 (core); adjuncts: C-5.2, C-3.4, C-2.4; effort_index 7.5 (conceptual_demand 2, activity_count 1, demo_count 0, exec_load 1). Ch 12 done 2026-05-19 — "Tales by Dots and Lines"; CG-5, C-5.1 (core) + C-5.2 (core); adjuncts: C-2.4, C-6.1, C-8.1; effort_index 13.5 (conceptual_demand 2, activity_count 3, demo_count 3, exec_load 1). Ch 13 done 2026-05-19 — "Algebra Play"; CG-2, C-2.4 (core) + C-2.5 (core); adjuncts: C-6.1, C-7.1, C-1.2; effort_index 4.0 (conceptual_demand 2, activity_count 0, demo_count 0, exec_load 0). Ch 14 done 2026-05-19 — "Area"; CG-4, C-4.1 (core, single); adjuncts: C-3.2, C-6.1, C-9.2; effort_index 12.5 (conceptual_demand 3, activity_count 3, demo_count 0, exec_load 1). Ch 08, 09, 11, 15–N pending.
-- Mathematics VI: Ch 01 done 2026-05-17 — "Patterns in Mathematics"; CG-1, C-1.2 (core, single); adjuncts: C-6.1, C-9.2, C-7.1; effort_index 4.0 (conceptual_demand 2, activity_count 0, demo_count 0, exec_load 0). Ch 02–10 pending.
-- English VII: Ch 01 complete (summary, mapping, LP, assessment tested). Ch 02–05 complete (summary + mapping, 2026-05-12). Ch 06–N pending. Assessment PDF/HTML layout fixes applied (2026-05-11): section name per-question, Notes to last page, LO below guide, word box pills, FILL_IN markdown tables, Part A/B guide splitting.
-- English VIII: Ch 01 complete (summary + mapping, 2026-05-15) — 3 sections (1 prose + 1 poem + 1 dialogue); effort_index 14.5. LP + assessment testing pending. Ch 02 complete (summary + mapping, 2026-05-15) — 3 sections (1 prose + 1 poem + 1 informational: A Tale of Valour, Somebody's Mother, Verghese Kurien); effort_index 15.0. Ch 03 complete (summary + mapping, 2026-05-15) — 3 sections; effort_index pending. Ch 04 complete (summary + mapping, 2026-05-15) — 3 sections (1 prose: The Cherry Tree + 1 poem: Harvest Hymn + 1 narrative: Waiting for the Rain); effort_index 16.0. Ch 05 complete (summary + mapping, 2026-05-15) — 3 sections (1 narrative: Feathered Friend by Arthur C. Clarke + 1 poem: Magnifying Glass by Walter de la Mare + 1 informational: Bibha Chowdhuri); effort_index 12.0. Ch 06–N pending.
-- English VI: Ch 01–05 complete (summary + mapping). Ch 05 done 2026-05-15 — 4 sections (Kalakritiyon ka Bharat, The Kites, Ila Sachani, National War Memorial); effort_index 11.0. Ch 06 pending.
-- Science VII: Complete (all 12 chapters)
-- Social Sciences VII: Complete (all 12 chapters)
-- Science VIII: Ch 01 done 2026-05-17 — "Exploring the Investigative World of Science"; orientation_chapter=true; CG-6, C-6.2 (primary, single); effort_index 4.0 (conceptual_demand 2, activity_count 0, demo_count 0, exec_load 0). Ch 02 done 2026-05-17 — "The Invisible Living World: Beyond Our Naked Eye"; CG-3, C-3.1 (primary) + C-3.2 (co-central); effort_index 14.5 (conceptual_demand 3, activity_count 7, demo_count 1, exec_load 0). Ch 03 done 2026-05-17 — "Health: The Ultimate Treasure"; CG-4, C-4.1 (primary, single); effort_index 6.0 (conceptual_demand 3, activity_count 0, demo_count 0, exec_load 0). Ch 04 done 2026-05-17 — "Electricity: Magnetic and Heating Effects"; CG-2, C-2.2 (primary) + C-2.3 (co-central); effort_index 12.0 (conceptual_demand 3, activity_count 6, demo_count 0, exec_load 0). Ch 05 done 2026-05-17 — "Exploring Forces"; CG-2, C-2.1 (primary) + CG-1, C-1.3 (co-central); effort_index 16.0 (conceptual_demand 3, activity_count 10, demo_count 0, exec_load 0). Ch 07 done 2026-05-17 — "Particulate Nature of Matter"; CG-1, C-1.2 (primary) + C-1.1 (co-central); effort_index 16.0 (conceptual_demand 3, activity_count 10, demo_count 0, exec_load 0). Ch 08 done 2026-05-17 — "Nature of Matter: Elements, Compounds, and Mixtures"; CG-1, C-1.1 (primary, single); effort_index 12.0 (conceptual_demand 3, activity_count 3, demo_count 2, exec_load 0). Ch 09 done 2026-05-17 — "The Amazing World of Solutes, Solvents, and Solutions"; CG-1, C-1.3 (primary) + C-1.1 (co-central); effort_index 13.5 (conceptual_demand 2, activity_count 6, demo_count 1, exec_load 1). Ch 11 done 2026-05-17 — "Keeping Time with the Skies"; CG-2, C-2.5 (primary, single); effort_index 10.0 (conceptual_demand 3, activity_count 4, demo_count 0, exec_load 0). Ch 12 done 2026-05-17 — "How Nature Works in Harmony"; CG-3, C-3.3 (primary, single); effort_index 9.0 (conceptual_demand 3, activity_count 3, demo_count 0, exec_load 0). Ch 13 done 2026-05-17 — "Our Home: Earth, a Unique Life Sustaining Planet"; CG-3, C-3.4 (primary) + C-3.2 (co-central); effort_index 7.0 (conceptual_demand 3, activity_count 1, demo_count 0, exec_load 0). Ch 06, 10 pending.
-- TWAU (The World Around Us — Preparatory Stage, Grades III–V): Design decision confirmed 2026-05-30 — TWAU will have its own lesson plan template with activity-type labels (Explore / Discuss / Create). No lesson view / time view toggle (Science's toggle not applicable — TWAU chapters blend inquiry and cultural strands within a single period). Constitution design pending; no pipeline work started.
-- Social Sciences VIII: Ch 01 done 2026-05-16 — "Natural Resources and Their Use"; C-6.2 (W3), C-6.3 (W2), C-6.4 (W1), C-10.1 (W1), C-9.1 (W1); chapter_weight 8. Ch 02–N pending.
-- Science VI / Social Sciences VI: Social Sciences VI — ch_02 through ch_12 complete (summary + mapping). Ch 10 done 2026-05-16 — "Grassroots Democracy – Part 1 Governance"; C-4.1 (W3), C-8.3 (W2), C-4.2 (W1), C-8.1 (W1), C-10.1 (W1); chapter_weight 8. Ch 11 done (summary + mapping, prior session). Ch 12 done 2026-05-16 — "Grassroots Democracy – Part 3 Local Government in Urban Areas"; C-4.1 (W3), C-4.2 (W2), C-8.3 (W2); chapter_weight 7. Ch 13–N pending. Science VI — ch_02 complete (prior session). Ch 03 done 2026-05-17 — "Mindful Eating: A Path to a Healthy Body"; CG-4, C-4.1 (primary) + C-4.2 (co-central); effort_index 9.5 (conceptual_demand 3, activity_count 2, demo_count 1, exec_load 0). Ch 06 done 2026-05-17 — "Materials Around Us"; CG-1, C-1.1 (primary) + C-1.3 (co-central); effort_index 9.0 (conceptual_demand 2, activity_count 5, demo_count 0, exec_load 0). Ch 07 done 2026-05-17 — "Temperature and its Measurement"; CG-1, C-1.3 (primary, single); effort_index 8.5 (conceptual_demand 1, activity_count 5, demo_count 1, exec_load 0). Ch 08 done 2026-05-17 — "A Journey through States of Water"; CG-1, C-1.1 (primary) + C-1.2 (co-central); effort_index 15.0 (conceptual_demand 3, activity_count 9, demo_count 0, exec_load 0). Ch 09 done 2026-05-17 — "Methods of Separation in Everyday Life"; CG-1, C-1.1 (primary) + C-1.2 (co-central); effort_index 12.5 (conceptual_demand 3, activity_count 5, demo_count 1, exec_load 0). Ch 10 done 2026-05-17 — "Living Creatures: Exploring their Characteristics"; CG-3, C-3.2 (primary, single); effort_index 12.0 (conceptual_demand 3, activity_count 6, demo_count 0, exec_load 0). Ch 11 done 2026-05-17 — "Nature's Treasures"; CG-5, C-5.1 (primary, single); effort_index 8.0 (conceptual_demand 2, activity_count 4, demo_count 0, exec_load 0). Ch 12 done 2026-05-17 — "Beyond Earth"; CG-2, C-2.5 (primary, single); effort_index 8.0 (conceptual_demand 2, activity_count 4, demo_count 0, exec_load 0). Ch 04, 05 pending.
+**Progress snapshot — verified against textbook PDFs vs mirror, 2026-06-10**
+
+## Middle Stage (VI–VIII) — Summary + Mapping status
+
+| Subject | VI (textbook ch) | VI mirror | VII (textbook ch) | VII mirror | VIII (textbook ch) | VIII mirror |
+|---|---|---|---|---|---|---|
+| Science | 12 | 12/12 ✅ | 12 | 12/12 ✅ | 13 | 13/13 ✅ |
+| Social Sciences | 14 | 14/14 ✅ | 12 | 12/12 ✅ | 7 | 7/7 ✅ |
+| Mathematics | 10 | 10/10 ✅ | 8 | 8/8 ✅ | 14 | 14/14 ✅ |
+| English | 5 | 5/5 ✅ | 5 | 5/5 ✅ | 5 | 5/5 ✅ |
+
+**Middle stage mirror data: 100% COMPLETE**
+
+## Preparatory Stage (III–V) — TWAU
+
+| Grade | Textbook ch | Mirror |
+|---|---|---|
+| III | 12 | 12/12 ✅ |
+| IV | 10 | 10/10 ✅ |
+| V | 10 | 10/10 ✅ |
+
+**TWAU mirror data: 100% COMPLETE**
+
+Note: TWAU constitution (LP + assessment) design is still pending. Mirror data is ready; pipeline not yet built.
+
+## Secondary Stage (IX) — Summary + Mapping status
+
+| Subject | IX textbook ch | IX mirror |
+|---|---|---|
+| English | 8 | 8/8 ✅ |
+| Science | 13 | 0 ❌ |
+| Mathematics | 8 | 0 ❌ |
+| Social Sciences | 0 PDFs loaded | 0 ❌ |
+
+**Next steps for secondary stage:**
+- Science IX: 13 chapters ready to run (textbook PDFs present)
+- Mathematics IX: 8 chapters ready to run (textbook PDFs present)
+- Social Sciences IX: **OUT OF SCOPE** — NCF-compliant textbooks not available. Aruvi covers Social Sciences only up to Grade VIII.
 

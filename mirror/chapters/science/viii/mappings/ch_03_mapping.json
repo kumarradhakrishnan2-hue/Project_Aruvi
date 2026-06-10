@@ -1,23 +1,25 @@
 {
-    "stage": "middle",
-    "subject": "science",
-    "grade": "viii",
-    "chapter_number": 3,
-    "chapter_title": "Health: The Ultimate Treasure",
-    "min_viable_periods": 0,
-    "orientation_chapter": false,
-    "co_central": false,
-    "primary": [
-      {
-        "cg": "CG-4",
-        "c_code": "C-4.1",
-        "justification": "The chapter's central domain is health and well-being. It develops the student's understanding of how lifestyle choices (diet, exercise, sleep, hygiene, avoidance of harmful substances), environmental factors (clean air, water, surroundings), and biological mechanisms (immunity, vaccines, pathogens) collectively determine health outcomes. The explicit focus on how nutrition and lifestyle affect health — including the rise of non-communicable diseases like diabetes through poor diet and inactivity, and communicable disease prevention through hygiene and vaccination — directly addresses C-4.1's requirement to explain the effect of nutrition and lifestyle on health."
-      }
-    ],
-    "dissolution_test": "This chapter builds the student's ability to distinguish holistic health from mere absence of disease by explaining how communicable and non-communicable diseases arise, spread, and can be prevented through lifestyle choices, environmental hygiene, immunity, and appropriate treatment.",
-    "conceptual_demand": 3,
-    "activity_count": 0,
-    "demo_count": 0,
-    "exec_load": 0,
-    "effort_index": 6.0
+  "stage": "middle",
+  "subject": "science",
+  "grade": "viii",
+  "chapter_number": 3,
+  "chapter_title": "Health: The Ultimate Treasure",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": false,
+  "primary": [
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1",
+      "justification": "The chapter's central domain is health and well-being. It develops the student's understanding of how lifestyle choices (diet, exercise, sleep, hygiene, avoidance of harmful substances), environmental factors (clean air, water, surroundings), and biological mechanisms (immunity, vaccines, pathogens) collectively determine health outcomes. The explicit focus on how nutrition and lifestyle affect health — including the rise of non-communicable diseases like diabetes through poor diet and inactivity, and communicable disease prevention through hygiene and vaccination — directly addresses C-4.1's requirement to explain the effect of nutrition and lifestyle on health."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to distinguish holistic health from mere absence of disease by explaining how communicable and non-communicable diseases arise, spread, and can be prevented through lifestyle choices, environmental hygiene, immunity, and appropriate treatment.",
+  "conceptual_demand": 3,
+  "activity_count": 0,
+  "activity_load": 0,
+  "demo_count": 0,
+  "demo_load": 0,
+  "exec_load": 0,
+  "effort_index": 6.0
 }

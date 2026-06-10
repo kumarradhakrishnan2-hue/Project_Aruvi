@@ -4,9 +4,7 @@
   "grade": "viii",
   "chapter_number": 12,
   "chapter_title": "Tales by Dots and Lines",
-
   "core_cg": "CG-5",
-
   "core_competencies": [
     {
       "c_code": "C-5.1",
@@ -17,7 +15,6 @@
       "justification": "Section 5.2 is wholly dedicated to selecting and interpreting graphical representations of data: line graphs are introduced as the appropriate choice for time-series data (with worked examples on temperature, space launches, and rainfall), a choropleth infographic is read and interpreted, activity strips are decoded and created, and a smooth sleep-duration curve is analysed. This constitutes a fully independent strand from C-5.1."
     }
   ],
-
   "adjunct_competencies": [
     {
       "c_code": "C-2.4",
@@ -32,12 +29,12 @@
       "justification": "The spreadsheets sub-section in section 5.1 introduces cell references, range notation (e.g., B3:G3, D2:D6), and formula syntax (=SUM(), =AVERAGE()), requiring students to think in terms of symbolic representation and algorithmic operations — foundational computational-thinking skills applied to a real data-organisation task."
     }
   ],
-
   "dissolution_test": "This chapter builds the student's ability to reason about and interpret data by deepening the balance-point model of mean and median, proving how uniform transformations affect them, and applying multiple graphical representations — line graphs, infographics, and activity strips — to draw valid inferences from real-world data.",
-
   "conceptual_demand": 2,
   "activity_count": 3,
+  "activity_load": 1,
   "demo_count": 3,
+  "demo_load": 2,
   "exec_load": 1,
-  "effort_index": 13.5
+  "effort_index": 11.0
 }

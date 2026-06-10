@@ -33,7 +33,7 @@ Tell Cowork the grade and chapter scope before starting.
 | Item | Path |
 |------|------|
 | Project root (Cowork mount) | mnt/data/ |
-| Constitution | mnt/data/mirror/constitutions/competency_mapping/{subject}/mapping_constitution_{subject}.txt |
+| Constitution | mnt/data/mirror/constitutions/competency_mapping/{subject}/{stage}/mapping_constitution_{subject}.txt (stage-routed; falls back to the flat .../{subject}/mapping_constitution_{subject}.txt for subjects not yet split by stage) |
 | Chapter PDFs | mnt/data/knowledge_commons/textbooks/science/{grade}/ |
 | Mapping output (per chapter) | mnt/data/mirror/chapters/science/{grade}/mappings/ch_NN_mapping.json |
 | Consolidated output | mnt/data/mirror/chapters/science/{grade}/mappings/chapter_mappings_science_{grade}.json |
@@ -96,7 +96,13 @@ invitations in the explanatory text.
 Exclude: explanatory prose with no student task. Sidebar boxes with no
 student task.
 
-### 3c — Compute the four signals
+### 3c — Compute the signals
+
+All four effort-index inputs must be **discrete bounded tiers** before they
+enter the formula. Two of them (conceptual_demand, exec_load) are already
+discrete. The other two are first counted as raw integers, then converted to
+a discrete tier via the range tables below — this prevents a single
+high-count chapter from swamping the bounded signals.
 
 **conceptual_demand (integer 1–3):**
 - 1 = recall and familiar-context questions dominate the exercise (>60%)
@@ -105,12 +111,29 @@ student task.
 - 3 = unfamiliar-context transfer, multi-step causal chain reasoning, or
       investigative design questions constitute 30% or more of the exercise
 
-**activity_count (integer):**
+**activity_count (integer) — raw count, retained for audit:**
 Count student-executed physical activities only.
 Exclude teacher demonstrations and discussion-only tasks.
 
-**demo_count (integer):**
+**activity_load (integer 0–3) — discrete tier derived from activity_count:**
+
+| Tier | activity_count |
+|------|----------------|
+| 0    | 0 (none)       |
+| 1    | 1–3 (light)    |
+| 2    | 4–7 (standard) |
+| 3    | ≥8 (activity-heavy) |
+
+**demo_count (integer) — raw count, retained for audit:**
 Count teacher-performed demonstrations only.
+
+**demo_load (integer 0–2) — discrete tier derived from demo_count:**
+
+| Tier | demo_count |
+|------|------------|
+| 0    | 0 (none)   |
+| 1    | 1–2        |
+| 2    | ≥3         |
 
 **exec_load (integer 0–2):**
 - 0 = exercise is predominantly written reasoning
@@ -118,7 +141,11 @@ Count teacher-performed demonstrations only.
 - 2 = >60%
 
 **effort_index (number):**
-`(conceptual_demand × 2) + (activity_count × 1) + (demo_count × 1.5) + (exec_load × 2)`
+`(conceptual_demand × 2) + (activity_load × 2) + (demo_load × 1.5) + (exec_load × 2)`
+
+All four terms are now bounded discrete tiers (CD 1–3, activity_load 0–3,
+demo_load 0–2, exec_load 0–2), so no single signal can dominate. Round to
+one decimal. Range is 2.0–19.0.
 
 ---
 
@@ -126,7 +153,7 @@ Count teacher-performed demonstrations only.
 
 For each chapter:
 1. Take the Competency mapping JSON output from step 2
-2. Append the five effort index fields with computed values for final JSON schema as per below:
+2. Append the effort index fields with computed values for final JSON schema as per below. Both the raw counts (`activity_count`, `demo_count`) and their derived tiers (`activity_load`, `demo_load`) are stored — the raw counts for audit, the tiers as the formula inputs:
 
 ```json
 {
@@ -153,10 +180,11 @@ For each chapter:
     "dissolution_test": "This chapter builds the student's....",
     "conceptual_demand": 2,
     "activity_count": 5,
+    "activity_load": 2,
     "demo_count": 0,
+    "demo_load": 0,
     "exec_load": 0,
-    "effort_index": 9.0,
-    
+    "effort_index": 8.0
   }
 ```
 3. Write the appended record to:
@@ -169,13 +197,13 @@ Do not modify any other field.
 ## Step 5 — Print verification summary
 
 ```
-Ch | Title (40 chars)                         | CD | AC | DC | EL | EI
----|------------------------------------------|----|----|----|----|---------
-09 | Life Processes in Animals                |  x |  x |  x |  x |   x.x
+Ch | Title (40 chars)                         | CD | AC>AL | DC>DL | EL | EI
+---|------------------------------------------|----|-------|-------|----|------
+09 | Life Processes in Animals                |  x |  x> x |  x> x |  x |  x.x
 ```
 
-CD = conceptual_demand, AC = activity_count, DC = demo_count,
-EL = exec_load, EI = effort_index
+CD = conceptual_demand, AC = activity_count, AL = activity_load,
+DC = demo_count, DL = demo_load, EL = exec_load, EI = effort_index
 
 Flag any chapter where effort_index = 0 as WARNING — evidence base
 was likely not located correctly in the PDF.

@@ -1008,10 +1008,10 @@ function setFootnote() {
       'Understand how chapter periods are calculated',
       'The effort index tells you how much classroom time a chapter typically needs compared to others. Chapters with a higher effort index get more periods; chapters with a lower one get fewer. It is calculated from four signals scored from the chapter content.',
       [
-        { cls: 'icon-brain',   title: 'Conceptual demand',  desc: 'The cognitive complexity of exercises and questions. High-order thinking or multi-step reasoning raises the score.' },
-        { cls: 'icon-flask',   title: 'Student activities', desc: 'The number of hands-on activities students perform themselves. Each adds time for setup, execution, and discussion.' },
-        { cls: 'icon-screen',  title: 'Teacher demos',      desc: 'The number of demonstrations the teacher must conduct. These need preparation and focused class attention.' },
-        { cls: 'icon-pencil',  title: 'Exercise load',      desc: 'Total exercise items students must complete. A heavier count means more time for guided practice and assessment.' }
+        { cls: 'icon-brain',   title: 'Conceptual demand', desc: 'The cognitive complexity of exercises and questions (1–3). High-order thinking or multi-step reasoning raises the score.' },
+        { cls: 'icon-flask',   title: 'Activity load',     desc: 'A discrete tier (0–3) from the count of hands-on student activities: 0 = none; 1 = 1–3; 2 = 4–7; 3 = 8 or more.' },
+        { cls: 'icon-screen',  title: 'Demo load',         desc: 'A discrete tier (0–2) from the count of teacher demonstrations: 0 = none; 1 = 1–2; 2 = 3 or more.' },
+        { cls: 'icon-pencil',  title: 'Exercise load',     desc: 'The weight of multi-step calculation or diagram production in the exercises (0–2). A heavier load means more guided-practice time.' }
       ],
       'The Effort Index is calculated by combining the four scores, giving more weight to factors that have a greater impact on classroom time. Only relative values matter &mdash; it is used to share your available periods across chapters in proportion to their load.'
     );
@@ -1124,20 +1124,41 @@ function generateReport() {
             { label: 'Exploration load',   val: mpEl, mult: '\u00d71.5', cont: mpElC },
             { label: 'Procedural load',    val: mpPl, mult: '\u00d71.5', cont: mpPlC }
           ];
-        } else {
+        } else if (SUBJECT_LABEL === 'Science') {
+          /* Science middle: discrete banded signals \u2014 activity_count and
+             demo_count are tiered to activity_load (0-3) and demo_load (0-2)
+             before entering the formula, so no raw count can dominate. */
           var cdVal  = cd.conceptual_demand || 0;
-          var acVal  = cd.activity_count    || 0;
-          var dcVal  = cd.demo_count        || 0;
+          var alVal  = cd.activity_load     || 0;
+          var dlVal  = cd.demo_load         || 0;
           var elVal  = cd.exec_load         || 0;
           var cdCont = parseFloat((cdVal * 2).toFixed(1));
-          var acCont = parseFloat((acVal * 1).toFixed(1));
-          var dcCont = parseFloat((dcVal * 1.5).toFixed(1));
+          var alCont = parseFloat((alVal * 2).toFixed(1));
+          var dlCont = parseFloat((dlVal * 1.5).toFixed(1));
           var elCont = parseFloat((elVal * 2).toFixed(1));
           _signals = [
             { label: 'Conceptual demand', val: cdVal, mult: '\u00d72',   cont: cdCont },
-            { label: 'Student activities', val: acVal, mult: '\u00d71',   cont: acCont },
-            { label: 'Teacher demos',      val: dcVal, mult: '\u00d71.5', cont: dcCont },
-            { label: 'Exercise load',      val: elVal, mult: '\u00d72',   cont: elCont }
+            { label: 'Activity load',     val: alVal, mult: '\u00d72',   cont: alCont },
+            { label: 'Demo load',         val: dlVal, mult: '\u00d71.5', cont: dlCont },
+            { label: 'Exercise load',     val: elVal, mult: '\u00d72',   cont: elCont }
+          ];
+        } else {
+          /* Mathematics middle: discrete banded signals, harmonised with
+             Science \u2014 activity_count and demo_count are tiered to
+             activity_load (0-3) and demo_load (0-2) before the formula. */
+          var cdVal  = cd.conceptual_demand || 0;
+          var alVal  = cd.activity_load     || 0;
+          var dlVal  = cd.demo_load         || 0;
+          var elVal  = cd.exec_load         || 0;
+          var cdCont = parseFloat((cdVal * 2).toFixed(1));
+          var alCont = parseFloat((alVal * 2).toFixed(1));
+          var dlCont = parseFloat((dlVal * 1.5).toFixed(1));
+          var elCont = parseFloat((elVal * 2).toFixed(1));
+          _signals = [
+            { label: 'Conceptual demand', val: cdVal, mult: '\u00d72',   cont: cdCont },
+            { label: 'Activity load',     val: alVal, mult: '\u00d72',   cont: alCont },
+            { label: 'Demo load',         val: dlVal, mult: '\u00d71.5', cont: dlCont },
+            { label: 'Exercise load',     val: elVal, mult: '\u00d72',   cont: elCont }
           ];
         }
         var _bdHTML = '';
@@ -1747,10 +1768,11 @@ function _downloadPDF_legacy_unused() {
               + '  Project load: ' + (cd.project_load || 0)
               + '  Map work: '     + (cd.map_work     || 0);
         } else {
+          /* Science and Mathematics middle — harmonised discrete bands */
           eiSuffix = '  Conceptual demand: ' + (cd.conceptual_demand || 0)
-              + '  Activities: ' + (cd.activity_count || 0)
-              + '  Demos: '      + (cd.demo_count    || 0)
-              + '  Exec load: '  + (cd.exec_load     || 0);
+              + '  Activity load: ' + (cd.activity_load || 0) + ' (' + (cd.activity_count || 0) + ' activities)'
+              + '  Demo load: '     + (cd.demo_load     || 0) + ' (' + (cd.demo_count    || 0) + ' demos)'
+              + '  Exec load: '     + (cd.exec_load     || 0);
         }
         doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(95, 95, 95);
         doc.text(eiSuffix, mL + _eiPart1Width, y + 3);
@@ -2170,12 +2192,13 @@ function _downloadPDF_legacy_unused() {
     rule(y, 0.18, 180); y += 4;
 
     var _sciEiRows2 = [
-      { label: 'What it measures:', body: "The effort index tells you how much classroom time a chapter typically needs compared to other chapters. Chapters with a higher effort index get more periods; chapters with a lower one get fewer. It is calculated from four signals read from the chapter content." },
-      { label: 'Conceptual demand (×2):', body: "The cognitive complexity of exercises and questions. High-order thinking or multi-step reasoning raises the score." },
-      { label: 'Student activities (×1):', body: "The number of hands-on activities students perform themselves. Each adds classroom time for setup, execution and discussion." },
-      { label: 'Teacher demonstrations (×1.5):', body: "The number of demonstrations the teacher must conduct. These need preparation and focused class attention." },
-      { label: 'Exercise execution load (×2):', body: "The total exercise items students must complete. A heavier exercise count means more time for guided practice and assessment." },
-      { label: 'Note:', body: "The four signals are combined with fixed weights to give the effort index. Only relative values matter — it is used to share your available periods across chapters in proportion to their load." },
+      { label: 'What it measures:', body: "The effort index tells you how much classroom time a chapter typically needs compared to other chapters. Chapters with a higher effort index get more periods; chapters with a lower one get fewer. It is calculated from four bounded signals read from the chapter content." },
+      { label: 'Formula:', body: "effort_index = (Conceptual demand ×2) + (Activity load ×2) + (Demo load ×1.5) + (Exercise execution load ×2)" },
+      { label: 'Conceptual demand (×2):', body: "The cognitive complexity of exercises and questions (1–3). High-order thinking or multi-step reasoning raises the score." },
+      { label: 'Activity load (×2):', body: "A discrete 0–3 tier from the number of hands-on student activities: 0 = none; 1 = 1–3 (light); 2 = 4–7 (standard); 3 = 8 or more (activity-heavy)." },
+      { label: 'Demo load (×1.5):', body: "A discrete 0–2 tier from the number of teacher demonstrations: 0 = none; 1 = 1–2; 2 = 3 or more. These need preparation and focused class attention." },
+      { label: 'Exercise execution load (×2):', body: "The weight of multi-step calculation or diagram production in the exercises (0–2). A heavier execution load means more time for guided practice and assessment." },
+      { label: 'Note:', body: "All four signals are bounded discrete tiers combined with fixed weights, so no single signal can dominate. Only relative values matter — the index shares your available periods across chapters in proportion to their load." },
     ];
     var _eiLblW2 = 56;
     var _eiBodyW2 = pageW - mL - mR - _eiLblW2;

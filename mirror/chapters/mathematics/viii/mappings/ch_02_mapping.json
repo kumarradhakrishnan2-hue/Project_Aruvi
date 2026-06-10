@@ -1,43 +1,40 @@
 {
-    "stage":          "middle",
-    "subject":        "mathematics",
-    "grade":          "viii",
-    "chapter_number": 2,
-    "chapter_title":  "Power Play",
-
-    "core_cg": "CG-1",
-
-    "core_competencies": [
-        {
-            "c_code": "C-1.1",
-            "justification": "The chapter's central purpose is developing fluency with exponential notation as a way to read, write, and apply operations on very large (and very small) numbers. Sections 2.2–2.4 define nᵃ, derive all five exponent laws, extend to zero and negative exponents, and culminate in scientific notation (x × 10ʸ) applied throughout section 2.5 to express quantities ranging from animal populations to geological timescales — directly enacting C-1.1's mandate to express large whole numbers in scientific notation using exponents and powers."
-        },
-        {
-            "c_code": "C-1.2",
-            "justification": "Section 2.1 and the Power Lines activity in section 2.3 engage students in discovering and describing multiplicative patterns (the doubling sequence of paper-fold thicknesses, the power-line structure for bases 4 and 7) and deriving rules for their formation — the product rule nᵃ × nᵇ = nᵃ⁺ᵇ, the power-of-a-power rule, and the division rule are each generalised from observed numeric patterns, constituting a distinct pattern-recognition and rule-formation strand independent of the notation-definition strand."
-        }
-    ],
-
-    "adjunct_competencies": [
-        {
-            "c_code": "C-6.1",
-            "justification": "Multiple Math Talk and Figure it Out items require deductive reasoning and proof-like justification: students explain why n ≠ 0 is required in the division law, evaluate whether statements about cubes, fourth powers, and fifth powers are Always/Sometimes/Never True (Q4, p.44), and argue whether the exponent laws extend to integer exponents — each requiring students to produce or evaluate convincing mathematical arguments rather than simply compute."
-        },
-        {
-            "c_code": "C-9.1",
-            "justification": "Section 2.5A (A Pinch of History) explicitly traces how ancient Indian civilisations — Buddhist (Lalitavistara), Jaina (Amalasiddhi), and classical Indian mathematicians (Mahaviracharya in Ganita-sara-sangraha) — developed and named large powers of ten up to 10¹⁴⁰, showing how the concept of exponential notation evolved over centuries across different Indian mathematical traditions."
-        },
-        {
-            "c_code": "C-8.2",
-            "justification": "The combinatorics strand in section 2.2 ('How Many Combinations') engages systematic counting of ordered arrangements: students enumerate passwords for 2-digit, 3-digit, and 5-digit locks as 10ⁿ, and then for an alphabetic lock as 26⁶ — directly practising systematic listing, iterative patterns, and reasoning about counts as described in C-8.2."
-        }
-    ],
-
-    "dissolution_test": "This chapter builds the student's ability to represent, operate on, and interpret large and small numbers by developing fluency with exponential notation — its laws, its extension to zero and negative exponents, and its application in scientific form — so that multiplicative structure becomes a tool for reasoning about quantities across mathematics and the natural world.",
-
-    "conceptual_demand": 2,
-    "activity_count":    2,
-    "demo_count":        0,
-    "exec_load":         1,
-    "effort_index":      9.0
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "viii",
+  "chapter_number": 2,
+  "chapter_title": "Power Play",
+  "core_cg": "CG-1",
+  "core_competencies": [
+    {
+      "c_code": "C-1.1",
+      "justification": "The chapter's central purpose is developing fluency with exponential notation as a way to read, write, and apply operations on very large (and very small) numbers. Sections 2.2–2.4 define nᵃ, derive all five exponent laws, extend to zero and negative exponents, and culminate in scientific notation (x × 10ʸ) applied throughout section 2.5 to express quantities ranging from animal populations to geological timescales — directly enacting C-1.1's mandate to express large whole numbers in scientific notation using exponents and powers."
+    },
+    {
+      "c_code": "C-1.2",
+      "justification": "Section 2.1 and the Power Lines activity in section 2.3 engage students in discovering and describing multiplicative patterns (the doubling sequence of paper-fold thicknesses, the power-line structure for bases 4 and 7) and deriving rules for their formation — the product rule nᵃ × nᵇ = nᵃ⁺ᵇ, the power-of-a-power rule, and the division rule are each generalised from observed numeric patterns, constituting a distinct pattern-recognition and rule-formation strand independent of the notation-definition strand."
+    }
+  ],
+  "adjunct_competencies": [
+    {
+      "c_code": "C-6.1",
+      "justification": "Multiple Math Talk and Figure it Out items require deductive reasoning and proof-like justification: students explain why n ≠ 0 is required in the division law, evaluate whether statements about cubes, fourth powers, and fifth powers are Always/Sometimes/Never True (Q4, p.44), and argue whether the exponent laws extend to integer exponents — each requiring students to produce or evaluate convincing mathematical arguments rather than simply compute."
+    },
+    {
+      "c_code": "C-9.1",
+      "justification": "Section 2.5A (A Pinch of History) explicitly traces how ancient Indian civilisations — Buddhist (Lalitavistara), Jaina (Amalasiddhi), and classical Indian mathematicians (Mahaviracharya in Ganita-sara-sangraha) — developed and named large powers of ten up to 10¹⁴⁰, showing how the concept of exponential notation evolved over centuries across different Indian mathematical traditions."
+    },
+    {
+      "c_code": "C-8.2",
+      "justification": "The combinatorics strand in section 2.2 ('How Many Combinations') engages systematic counting of ordered arrangements: students enumerate passwords for 2-digit, 3-digit, and 5-digit locks as 10ⁿ, and then for an alphabetic lock as 26⁶ — directly practising systematic listing, iterative patterns, and reasoning about counts as described in C-8.2."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to represent, operate on, and interpret large and small numbers by developing fluency with exponential notation — its laws, its extension to zero and negative exponents, and its application in scientific form — so that multiplicative structure becomes a tool for reasoning about quantities across mathematics and the natural world.",
+  "conceptual_demand": 2,
+  "activity_count": 2,
+  "activity_load": 1,
+  "demo_count": 0,
+  "demo_load": 0,
+  "exec_load": 1,
+  "effort_index": 8.0
 }

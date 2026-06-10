@@ -25,8 +25,9 @@ that the Allocate tab and the LP + Assessment generator depend on.
 
 | Subject | Step 1 | Step 2 |
 |---|---|---|
-| **Science** | Chapter summary (`.txt`) | Effort index computation → `ch_NN_mapping.json` |
-| **Social Sciences** | Chapter summary (`.txt`) | Competency mapping → `ch_NN_mapping.json` |
+| **Science – Middle (VI–VIII)** | Chapter summary (`.txt`) | Effort index computation → `ch_NN_mapping.json` |
+| **Science – Secondary (IX–X)** | Chapter summary (`.txt`) | Effort index computation → `ch_NN_mapping.json` |
+| **Social Sciences – Middle (VI–VIII)** | Chapter summary (`.txt`) | Competency mapping → `ch_NN_mapping.json` |
 | **Mathematics** | Chapter summary (`.json`) | Competency mapping → `ch_NN_mapping.json` |
 | **The World Around Us (TWAU)** | Chapter summary (`.json`) | Competency mapping → `ch_NN_mapping.json` |
 | **English – Middle (VI–VIII)** | *(combined)* Chapter summary + mapping in one pass | — |
@@ -74,8 +75,8 @@ Grade   : VII (middle stage)
 Chapters: 5
 Pipeline: Step 1 — Chapter summary (JSON) → Step 2 — Competency mapping
 Prompt files:
-  Step 1: cowork prompts/mathematics/step_1_chapter_summary.md
-  Step 2: cowork prompts/mathematics/step_2_competency_mapping.md
+  Step 1: cowork prompts/mathematics/middle/step_1_chapter_summary.md
+  Step 2: cowork prompts/mathematics/middle/step_2_competency_mapping.md
 ```
 
 For English (middle stage example):
@@ -98,6 +99,28 @@ Prompt file:
   Step 1: cowork prompts/english/secondary/step_1_chapter_summary_and_mapping.md
 ```
 
+For Science (secondary stage example):
+```
+Subject : Science
+Grade   : IX (secondary stage)
+Chapters: 3
+Pipeline: Step 1 — Chapter summary (txt) → Step 2 — Effort index
+Prompt files:
+  Step 1: cowork prompts/science/secondary/step_1_chapter_summary.md
+  Step 2: cowork prompts/science/secondary/step_2_effort_index.md
+```
+
+For Social Sciences (middle stage example):
+```
+Subject : Social Sciences
+Grade   : VII (middle stage)
+Chapters: 3
+Pipeline: Step 1 — Chapter summary (txt) → Step 2 — Competency mapping
+Prompt files:
+  Step 1: cowork prompts/social_sciences/middle/step_1_chapter_summary.md
+  Step 2: cowork prompts/social_sciences/middle/step_2_competency_mapping.md
+```
+
 For The World Around Us (TWAU):
 ```
 Subject : The World Around Us (TWAU)
@@ -105,8 +128,8 @@ Grade   : IV (preparatory stage)
 Chapters: 7
 Pipeline: Step 1 — Chapter summary (JSON) → Step 2 — Competency mapping
 Prompt files:
-  Step 1: cowork prompts/the_world_around_us/step_1_chapter_summary.md
-  Step 2: cowork prompts/the_world_around_us/step_2_competency_mapping.md
+  Step 1: cowork prompts/the_world_around_us/preparatory/step_1_chapter_summary.md
+  Step 2: cowork prompts/the_world_around_us/preparatory/step_2_competency_mapping.md
 ```
 
 ---
@@ -114,26 +137,33 @@ Prompt files:
 ## Step 2 — Locate and read the prompt file(s)
 
 All prompt files live under:
-`mnt/data/cowork prompts/{subject}/` (for science, social_sciences, mathematics, the_world_around_us)
-`mnt/data/cowork prompts/english/{stage}/` (for english)
+`mnt/data/cowork prompts/{subject}/{stage}/` (for all subjects — social_sciences, science, mathematics, english, the_world_around_us)
 
 ### Subject → prompt file map
 
-**Science:**
-- Step 1: `mnt/data/cowork prompts/science/step_1_chapter_summary.md`
-- Step 2: `mnt/data/cowork prompts/science/step_2_effort_index.md`
+**Science (middle — grades VI, VII, VIII):**
+- Step 1: `mnt/data/cowork prompts/science/middle/step_1_chapter_summary.md`
+- Step 2: `mnt/data/cowork prompts/science/middle/step_2_effort_index.md`
 
-**Social Sciences:**
-- Step 1: `mnt/data/cowork prompts/social_sciences/step_1_chapter_summary.md`
-- Step 2: `mnt/data/cowork prompts/social_sciences/step_2_competency_mapping.md`
+**Science (secondary — grades IX, X):**
+- Step 1: `mnt/data/cowork prompts/science/secondary/step_1_chapter_summary.md`
+- Step 2: `mnt/data/cowork prompts/science/secondary/step_2_effort_index.md`
 
-**Mathematics:**
-- Step 1: `mnt/data/cowork prompts/mathematics/step_1_chapter_summary.md`
-- Step 2: `mnt/data/cowork prompts/mathematics/step_2_competency_mapping.md`
+**Social Sciences (middle — grades VI, VII, VIII):**
+- Step 1: `mnt/data/cowork prompts/social_sciences/middle/step_1_chapter_summary.md`
+- Step 2: `mnt/data/cowork prompts/social_sciences/middle/step_2_competency_mapping.md`
+
+**Mathematics (middle — grades VI, VII, VIII):**
+- Step 1: `mnt/data/cowork prompts/mathematics/middle/step_1_chapter_summary.md`
+- Step 2: `mnt/data/cowork prompts/mathematics/middle/step_2_competency_mapping.md`
+
+**Mathematics (preparatory — grades III, IV, V):**
+- Step 1: `mnt/data/cowork prompts/mathematics/preparatory/step_1_chapter_summary.md`
+- Step 2: `mnt/data/cowork prompts/mathematics/preparatory/step_2_competency_mapping.md`
 
 **The World Around Us / TWAU (preparatory — grades III, IV, V):**
-- Step 1: `mnt/data/cowork prompts/the_world_around_us/step_1_chapter_summary.md`
-- Step 2: `mnt/data/cowork prompts/the_world_around_us/step_2_competency_mapping.md`
+- Step 1: `mnt/data/cowork prompts/the_world_around_us/preparatory/step_1_chapter_summary.md`
+- Step 2: `mnt/data/cowork prompts/the_world_around_us/preparatory/step_2_competency_mapping.md`
 
 **English (middle — grades VI, VII, VIII):**
 - Step 1 (only): `mnt/data/cowork prompts/english/middle/step_1_chapter_summary_and_mapping.md`
@@ -176,8 +206,8 @@ After all Step 1 files are confirmed written, read the Step 2 prompt file and fo
 Step 2 reads from the summary files produced in Step 1 — it never reads the source PDF.
 
 **TWAU note:** TWAU Step 2 reads the summary JSON (`.json`, same as Mathematics) and the CG
-reference file at `mnt/data/mirror/framework/the_world_around_us/competency_descriptions_twau.json`.
-The constitution is at `mnt/data/mirror/constitutions/competency_mapping/the_world_around_us/mapping_constitution_twau.txt`.
+reference file at `mnt/data/mirror/framework/the_world_around_us/preparatory/competency_descriptions_twau.json`.
+The constitution is at `mnt/data/mirror/constitutions/competency_mapping/the_world_around_us/preparatory/mapping_constitution_twau.txt`.
 All TWAU folders (framework, chapters, textbooks) use the subject token `the_world_around_us`,
 matching the app's `subject_to_folder`.
 
@@ -213,7 +243,8 @@ ch_07   | Water              | summary ✓     | mapping ✓ EI:9.0 cw:4
 
 - **Summary file missing when Step 2 runs**: halt and report. Do not fabricate. Re-run Step 1.
 - **Grade out of range for stage**: warn and ask — e.g. English preparatory prompt used for grade VI
-  would be wrong; correct prompt is english/middle or english/secondary. TWAU requested for grade VI or above — reject;
+  would be wrong; correct prompt is english/middle or english/secondary. Science requested for grade V or below — reject;
+  Science is only available for middle (VI–VIII) and secondary (IX–X) stages. TWAU requested for grade VI or above — reject;
   TWAU only exists for grades III, IV, V.
 - **Chapter PDF not found**: log a warning for that chapter and skip — do not halt the whole run.
 - **Existing file will be overwritten**: this is expected behaviour — all prompts overwrite silently.

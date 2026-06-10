@@ -1,43 +1,40 @@
 {
-    "stage":          "middle",
-    "subject":        "mathematics",
-    "grade":          "viii",
-    "chapter_number": 9,
-    "chapter_title":  "The Baudhāyana-Pythagoras Theorem",
-
-    "core_cg": "CG-4",
-
-    "core_competencies": [
-        {
-            "c_code": "C-4.2",
-            "justification": "The chapter's entire organising arc is the discovery and geometric proof of the Baudhāyana-Pythagoras theorem using areas of squares erected on the sides of a right-angled triangle, with explicit citation of Baudhāyana's Śulba-Sūtra verses (1.9, 1.12, 1.13, 2.1) and three hands-on construction activities (A-1, A-2, A-3) that enact these geometric constructions directly."
-        },
-        {
-            "c_code": "C-4.1",
-            "justification": "Sections 2.1 and 2.2 develop strategies for computing areas of composite shapes formed by triangles and squares (doubling/halving constructions); section 2.7 applies area-of-square and area-of-triangle formulae to solve the Bhāskarāchārya Līlāvatī problem (E-15 type) and find missing sides in composite geometric figures including a rhombus (E-16) and equilateral triangle (E-22)."
-        }
-    ],
-
-    "adjunct_competencies": [
-        {
-            "c_code": "C-3.2",
-            "justification": "Section 2.4 requires reasoning about angle sums and congruence of right triangles to prove the combined four-sided figure is a square; exercises E-17 (is hypotenuse the longest side?), E-16 (rhombus sidelength from diagonals using perpendicularity), and E-15 (missing sides of triangles from given dimensions) all apply properties of triangles and quadrilaterals."
-        },
-        {
-            "c_code": "C-1.4",
-            "justification": "Section 2.3 establishes that √2 is a real number that cannot be expressed as a terminating decimal or as a fraction m/n with m, n positive integers, introducing the concept of irrational numbers as a distinct class within the real number system beyond the rationals."
-        },
-        {
-            "c_code": "C-9.2",
-            "justification": "The chapter is structured around the historical contributions of Baudhāyana (Śulba-Sūtra, c. 800 BCE) and Bhāskarāchārya (Līlāvatī); section 2.6 recounts Fermat's 17th-century conjecture and Andrew Wiles's 1994 proof, situating the theorem in a living mathematical tradition."
-        }
-    ],
-
-    "dissolution_test": "This chapter builds the student's ability to prove and apply the Baudhāyana-Pythagoras theorem by discovering its geometric basis through area relationships between squares constructed on the sides of right-angled triangles.",
-
-    "conceptual_demand": 3,
-    "activity_count":    3,
-    "demo_count":        0,
-    "exec_load":         1,
-    "effort_index":      12.5
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "viii",
+  "chapter_number": 9,
+  "chapter_title": "The Baudhāyana-Pythagoras Theorem",
+  "core_cg": "CG-4",
+  "core_competencies": [
+    {
+      "c_code": "C-4.2",
+      "justification": "The chapter's entire organising arc is the discovery and geometric proof of the Baudhāyana-Pythagoras theorem using areas of squares erected on the sides of a right-angled triangle, with explicit citation of Baudhāyana's Śulba-Sūtra verses (1.9, 1.12, 1.13, 2.1) and three hands-on construction activities (A-1, A-2, A-3) that enact these geometric constructions directly."
+    },
+    {
+      "c_code": "C-4.1",
+      "justification": "Sections 2.1 and 2.2 develop strategies for computing areas of composite shapes formed by triangles and squares (doubling/halving constructions); section 2.7 applies area-of-square and area-of-triangle formulae to solve the Bhāskarāchārya Līlāvatī problem (E-15 type) and find missing sides in composite geometric figures including a rhombus (E-16) and equilateral triangle (E-22)."
+    }
+  ],
+  "adjunct_competencies": [
+    {
+      "c_code": "C-3.2",
+      "justification": "Section 2.4 requires reasoning about angle sums and congruence of right triangles to prove the combined four-sided figure is a square; exercises E-17 (is hypotenuse the longest side?), E-16 (rhombus sidelength from diagonals using perpendicularity), and E-15 (missing sides of triangles from given dimensions) all apply properties of triangles and quadrilaterals."
+    },
+    {
+      "c_code": "C-1.4",
+      "justification": "Section 2.3 establishes that √2 is a real number that cannot be expressed as a terminating decimal or as a fraction m/n with m, n positive integers, introducing the concept of irrational numbers as a distinct class within the real number system beyond the rationals."
+    },
+    {
+      "c_code": "C-9.2",
+      "justification": "The chapter is structured around the historical contributions of Baudhāyana (Śulba-Sūtra, c. 800 BCE) and Bhāskarāchārya (Līlāvatī); section 2.6 recounts Fermat's 17th-century conjecture and Andrew Wiles's 1994 proof, situating the theorem in a living mathematical tradition."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to prove and apply the Baudhāyana-Pythagoras theorem by discovering its geometric basis through area relationships between squares constructed on the sides of right-angled triangles.",
+  "conceptual_demand": 3,
+  "activity_count": 3,
+  "activity_load": 1,
+  "demo_count": 0,
+  "demo_load": 0,
+  "exec_load": 1,
+  "effort_index": 10.0
 }

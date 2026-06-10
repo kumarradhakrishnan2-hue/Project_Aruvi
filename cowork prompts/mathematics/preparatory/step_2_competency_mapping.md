@@ -18,7 +18,7 @@ Specify grade and chapter scope. Subject fixed to `mathematics`,
 |------|------|
 | Summary (input) | `mnt/data/mirror/chapters/mathematics/{grade}/summaries/ch_NN_summary.json` |
 | CG document | `mnt/data/mirror/framework/mathematics/preparatory/cg_preparatory_mathematics.txt` |
-| Constitution | `mnt/data/mirror/constitutions/competency_mapping/mathematics/mapping_constitution_mathematics_preparatory.txt` |
+| Constitution | `mnt/data/mirror/constitutions/competency_mapping/mathematics/preparatory/mapping_constitution_mathematics.txt` |
 | Output | `mnt/data/mirror/chapters/mathematics/{grade}/mappings/ch_NN_mapping.json` |
 
 ## Procedure

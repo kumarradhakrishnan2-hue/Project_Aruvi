@@ -1,43 +1,40 @@
 {
-    "stage": "middle",
-    "subject": "mathematics",
-    "grade": "viii",
-    "chapter_number": 11,
-    "chapter_title": "Exploring Some Geometric Themes",
-
-    "core_cg": "CG-3",
-
-    "core_competencies": [
-        {
-            "c_code": "C-3.3",
-            "justification": "Sections 4.2.2 through 4.2.7 are architecturally organised around C-3.3: students identify attributes of 3D shapes (faces, edges, vertices of prisms, pyramids, tetrahedra, octahedra, dodecahedra), work hands-on to construct them from nets (E-21 through E-29, A-4), and use 2D representations — nets, front/top/side projections, and isometric grid drawings — to visualise and solve problems about 3D solids (WE-3, WE-5, WE-6, E-33 through E-45)."
-        },
-        {
-            "c_code": "C-3.1",
-            "justification": "Section 4.2.2 explicitly classifies and describes relationships among 3D shapes: it defines prisms (two congruent polygonal faces with parallelogram lateral faces) and pyramids (polygonal base with a apex), names subcategories (triangular, pentagonal, hexagonal prisms and pyramids), introduces the octahedron and dodecahedron, and requires students to generalise face/edge/vertex counts to n-sided prisms and pyramids (E-30, E-31) — a distinct classification strand from the construction and projection work of C-3.3."
-        }
-    ],
-
-    "adjunct_competencies": [
-        {
-            "c_code": "C-4.4",
-            "justification": "Section 4.1 (four subsections) is entirely devoted to fractals: students construct the Sierpinski Carpet, Sierpinski Gasket, and Koch Snowflake iteratively, derive formulas for counts and areas, and the section explicitly connects fractals to nature and to art in India (Kandariya Mahadev Temple, Khajuraho) and Africa (Nigerian Fulani wedding blankets) — directly fulfilling C-4.4's requirement to develop familiarity with fractals and appreciate their appearances in nature and art in India and around the world."
-        },
-        {
-            "c_code": "C-4.2",
-            "justification": "Section 4.2.3 architecturally applies the Baudhayana–Pythagoras theorem to find shortest surface paths on cuboids: the theorem is named explicitly, and WE-3 and E-32 both require computing d using d² = 24² + 32² in a right triangle formed by the unfolded net — making the theorem an essential computational tool rather than an incidental reference."
-        },
-        {
-            "c_code": "C-6.1",
-            "justification": "Sections 4.1.1–4.1.3 engage inductive and deductive logic: students observe tables of Rn and Hn values, formulate recurrence conjectures, and prove them (WE-1, E-2 asks students to prove the midpoint-triangle property); section 4.2.7 asks students to evaluate whether an impossible path and a Penrose triangle are physically realisable (E-44, E-45), requiring deductive arguments about what geometric configurations can and cannot exist."
-        }
-    ],
-
-    "dissolution_test": "This chapter builds the student's ability to identify, classify, and represent three-dimensional geometric shapes by working hands-on with nets, projections, and isometric drawings, while simultaneously developing familiarity with fractals as self-similar geometric structures found in nature and art.",
-
-    "conceptual_demand": 3,
-    "activity_count": 4,
-    "demo_count": 0,
-    "exec_load": 1,
-    "effort_index": 14.0
+  "stage": "middle",
+  "subject": "mathematics",
+  "grade": "viii",
+  "chapter_number": 11,
+  "chapter_title": "Exploring Some Geometric Themes",
+  "core_cg": "CG-3",
+  "core_competencies": [
+    {
+      "c_code": "C-3.3",
+      "justification": "Sections 4.2.2 through 4.2.7 are architecturally organised around C-3.3: students identify attributes of 3D shapes (faces, edges, vertices of prisms, pyramids, tetrahedra, octahedra, dodecahedra), work hands-on to construct them from nets (E-21 through E-29, A-4), and use 2D representations — nets, front/top/side projections, and isometric grid drawings — to visualise and solve problems about 3D solids (WE-3, WE-5, WE-6, E-33 through E-45)."
+    },
+    {
+      "c_code": "C-3.1",
+      "justification": "Section 4.2.2 explicitly classifies and describes relationships among 3D shapes: it defines prisms (two congruent polygonal faces with parallelogram lateral faces) and pyramids (polygonal base with a apex), names subcategories (triangular, pentagonal, hexagonal prisms and pyramids), introduces the octahedron and dodecahedron, and requires students to generalise face/edge/vertex counts to n-sided prisms and pyramids (E-30, E-31) — a distinct classification strand from the construction and projection work of C-3.3."
+    }
+  ],
+  "adjunct_competencies": [
+    {
+      "c_code": "C-4.4",
+      "justification": "Section 4.1 (four subsections) is entirely devoted to fractals: students construct the Sierpinski Carpet, Sierpinski Gasket, and Koch Snowflake iteratively, derive formulas for counts and areas, and the section explicitly connects fractals to nature and to art in India (Kandariya Mahadev Temple, Khajuraho) and Africa (Nigerian Fulani wedding blankets) — directly fulfilling C-4.4's requirement to develop familiarity with fractals and appreciate their appearances in nature and art in India and around the world."
+    },
+    {
+      "c_code": "C-4.2",
+      "justification": "Section 4.2.3 architecturally applies the Baudhayana–Pythagoras theorem to find shortest surface paths on cuboids: the theorem is named explicitly, and WE-3 and E-32 both require computing d using d² = 24² + 32² in a right triangle formed by the unfolded net — making the theorem an essential computational tool rather than an incidental reference."
+    },
+    {
+      "c_code": "C-6.1",
+      "justification": "Sections 4.1.1–4.1.3 engage inductive and deductive logic: students observe tables of Rn and Hn values, formulate recurrence conjectures, and prove them (WE-1, E-2 asks students to prove the midpoint-triangle property); section 4.2.7 asks students to evaluate whether an impossible path and a Penrose triangle are physically realisable (E-44, E-45), requiring deductive arguments about what geometric configurations can and cannot exist."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to identify, classify, and represent three-dimensional geometric shapes by working hands-on with nets, projections, and isometric drawings, while simultaneously developing familiarity with fractals as self-similar geometric structures found in nature and art.",
+  "conceptual_demand": 3,
+  "activity_count": 4,
+  "activity_load": 2,
+  "demo_count": 0,
+  "demo_load": 0,
+  "exec_load": 1,
+  "effort_index": 12.0
 }

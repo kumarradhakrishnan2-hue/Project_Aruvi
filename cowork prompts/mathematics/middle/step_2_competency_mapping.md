@@ -17,7 +17,7 @@ Specify grade and chapter scope. Subject fixed to `mathematics`,
 |------|------|
 | Summary (input) | `mnt/data/mirror/chapters/mathematics/{grade}/summaries/ch_NN_summary.json` |
 | CG document | `mnt/data/mirror/framework/mathematics/middle/cg_middle_mathematics.txt` |
-| Constitution | `mnt/data/mirror/constitutions/competency_mapping/mathematics/mapping_constitution_mathematics.txt` |
+| Constitution | `mnt/data/mirror/constitutions/competency_mapping/mathematics/middle/mapping_constitution_mathematics.txt` |
 | Output | `mnt/data/mirror/chapters/mathematics/{grade}/mappings/ch_NN_mapping.json` |
 
 ## Procedure
@@ -26,8 +26,13 @@ For each chapter:
 
 1. Load summary, CG document, constitution. If summary or any effort
    signal is missing, warn and skip.
-2. Apply constitution Rules 1–6 exactly. Copy the four effort signals
-   verbatim. Compute `effort_index` using Maths weights.
+2. Apply constitution Rules 1–6 exactly. Copy the raw signals
+   (`conceptual_demand`, `activity_count`, `demo_count`, `exec_load`)
+   verbatim from the summary. Per Rule 5, derive the discrete tiers
+   `activity_load` (0–3) and `demo_load` (0–2) from the raw counts using
+   the range tables, then compute `effort_index` with the harmonised
+   formula `(CD×2) + (activity_load×2) + (demo_load×1.5) + (exec_load×2)`.
+   Store both the raw counts and the derived tiers in the mapping JSON.
 
    **Justification writing rule:** Write each justification as natural prose that a
    teacher can read and immediately understand — as if explaining to a colleague
@@ -44,10 +49,12 @@ For each chapter:
    - every `adjunct_competencies.c_code` lies outside `core_cg`
    - |core| ≤ 2, |adjunct| ≤ 3
    - `dissolution_test` names an operation associated with `core_cg`
-   - `effort_index` matches the formula
-   - signals match the summary
+   - `activity_load` and `demo_load` are correctly tiered from the raw counts
+   - `effort_index` matches the harmonised formula
+   - raw signals (`conceptual_demand`, `activity_count`, `demo_count`,
+     `exec_load`) match the summary
 5. Confirmation line:
-   `ch_05 | core_cg: CG-3 | core: C-3.2, C-3.4 | adjunct: C-6.1, C-9.2 | EI: 13.5`
+   `ch_05 | core_cg: CG-3 | core: C-3.2, C-3.4 | adjunct: C-6.1, C-9.2 | EI: 11.5`
 
 At session end, list skipped chapters.
 

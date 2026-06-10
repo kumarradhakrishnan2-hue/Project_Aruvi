@@ -1,23 +1,25 @@
 {
-    "stage": "middle",
-    "subject": "science",
-    "grade": "viii",
-    "chapter_number": 11,
-    "chapter_title": "Keeping Time with the Skies",
-    "min_viable_periods": 0,
-    "orientation_chapter": false,
-    "co_central": false,
-    "primary": [
-      {
-        "cg": "CG-2",
-        "c_code": "C-2.5",
-        "justification": "The chapter's entire architecture is dedicated to celestial observation and explanation. Section 11.1 develops understanding of Moon phases through direct observation (Activity 11.1) and geometric modelling (Activity 11.2), explaining why the illuminated portion of the Moon changes as it revolves around the Earth. Section 11.2 derives the three calendar units — day, month, and year — from the periodic motions of the Earth and Moon. Sections 11.2.1–11.2.4 systematically build from lunar to solar to luni-solar to the Indian National Calendar, explaining the astronomical basis of each. Section 11.3 links Indian festivals to specific lunar phases. Section 11.4 introduces artificial satellites orbiting Earth, describes their uses (communication, navigation, weather, disaster management, scientific research), and includes Activity 11.4 in which students spot satellites in the night sky. Every section fulfils a distinct facet of C-2.5: celestial observation, explanation of phases and eclipses, role in calendars, and artificial satellites."
-      }
-    ],
-    "dissolution_test": "This chapter builds the student's ability to explain celestial phenomena — the phases of the Moon, the structure of calendars, and the role of artificial satellites — by tracing each to the observable periodic motions of the Earth and Moon in their orbits.",
-    "conceptual_demand": 3,
-    "activity_count": 4,
-    "demo_count": 0,
-    "exec_load": 0,
-    "effort_index": 10.0
+  "stage": "middle",
+  "subject": "science",
+  "grade": "viii",
+  "chapter_number": 11,
+  "chapter_title": "Keeping Time with the Skies",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": false,
+  "primary": [
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.5",
+      "justification": "The chapter's entire architecture is dedicated to celestial observation and explanation. Section 11.1 develops understanding of Moon phases through direct observation (Activity 11.1) and geometric modelling (Activity 11.2), explaining why the illuminated portion of the Moon changes as it revolves around the Earth. Section 11.2 derives the three calendar units — day, month, and year — from the periodic motions of the Earth and Moon. Sections 11.2.1–11.2.4 systematically build from lunar to solar to luni-solar to the Indian National Calendar, explaining the astronomical basis of each. Section 11.3 links Indian festivals to specific lunar phases. Section 11.4 introduces artificial satellites orbiting Earth, describes their uses (communication, navigation, weather, disaster management, scientific research), and includes Activity 11.4 in which students spot satellites in the night sky. Every section fulfils a distinct facet of C-2.5: celestial observation, explanation of phases and eclipses, role in calendars, and artificial satellites."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to explain celestial phenomena — the phases of the Moon, the structure of calendars, and the role of artificial satellites — by tracing each to the observable periodic motions of the Earth and Moon in their orbits.",
+  "conceptual_demand": 3,
+  "activity_count": 4,
+  "activity_load": 2,
+  "demo_count": 0,
+  "demo_load": 0,
+  "exec_load": 0,
+  "effort_index": 10.0
 }

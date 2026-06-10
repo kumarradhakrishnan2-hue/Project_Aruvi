@@ -1,28 +1,30 @@
 {
-    "stage": "middle",
-    "subject": "science",
-    "grade": "vi",
-    "chapter_number": 9,
-    "chapter_title": "Methods of Separation in Everyday Life",
-    "min_viable_periods": 0,
-    "orientation_chapter": false,
-    "co_central": true,
-    "primary": [
-      {
-        "cg": "CG-1",
-        "c_code": "C-1.1",
-        "justification": "The chapter's entire architectural work is organising nine separation methods — handpicking, threshing, winnowing, sieving, decantation, filtration, churning, evaporation, and magnetic separation — around the observable physical properties that make each method possible: differences in size (sieving, handpicking), density and weight (winnowing, decantation, churning), solubility (evaporation), and magnetic character (magnetic separation). Every section requires the student to classify mixture components by observable physical characteristics and then select the method appropriate to those characteristics. Activities 9.1, 9.4, 9.5, and 9.6 consolidate this classification work. This constitutes primary engagement with C-1.1's classification of matter by observable physical characteristics."
-      },
-      {
-        "cg": "CG-1",
-        "c_code": "C-1.2",
-        "justification": "A distinct strand of the chapter addresses evaporation as a physical change in matter — the conversion of liquid water into water vapour — as a mechanism for separating a dissolved solid (salt) from a liquid. Sections on obtaining salt from seawater, Activity 9.2 (salt solution dried on paper), and Activity 9.3 (heating salt solution in a china dish) build a coherent account of this state change independent of the classification strand. The chapter explicitly defines evaporation as a process in which a liquid is converted into its vapour, directly addressing C-1.2's description of physical changes in matter."
-      }
-    ],
-    "dissolution_test": "This chapter builds the student's ability to classify the components of a mixture by their observable physical properties and to select and apply the appropriate separation method by investigating how differences in size, density, solubility, and magnetic character determine which technique — including handpicking, sieving, winnowing, filtration, decantation, churning, evaporation, and magnetic separation — is effective for a given mixture.",
-    "conceptual_demand": 3,
-    "activity_count": 5,
-    "demo_count": 1,
-    "exec_load": 0,
-    "effort_index": 12.5
+  "stage": "middle",
+  "subject": "science",
+  "grade": "vi",
+  "chapter_number": 9,
+  "chapter_title": "Methods of Separation in Everyday Life",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": true,
+  "primary": [
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.1",
+      "justification": "The chapter's entire architectural work is organising nine separation methods — handpicking, threshing, winnowing, sieving, decantation, filtration, churning, evaporation, and magnetic separation — around the observable physical properties that make each method possible: differences in size (sieving, handpicking), density and weight (winnowing, decantation, churning), solubility (evaporation), and magnetic character (magnetic separation). Every section requires the student to classify mixture components by observable physical characteristics and then select the method appropriate to those characteristics. Activities 9.1, 9.4, 9.5, and 9.6 consolidate this classification work. This constitutes primary engagement with C-1.1's classification of matter by observable physical characteristics."
+    },
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.2",
+      "justification": "A distinct strand of the chapter addresses evaporation as a physical change in matter — the conversion of liquid water into water vapour — as a mechanism for separating a dissolved solid (salt) from a liquid. Sections on obtaining salt from seawater, Activity 9.2 (salt solution dried on paper), and Activity 9.3 (heating salt solution in a china dish) build a coherent account of this state change independent of the classification strand. The chapter explicitly defines evaporation as a process in which a liquid is converted into its vapour, directly addressing C-1.2's description of physical changes in matter."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to classify the components of a mixture by their observable physical properties and to select and apply the appropriate separation method by investigating how differences in size, density, solubility, and magnetic character determine which technique — including handpicking, sieving, winnowing, filtration, decantation, churning, evaporation, and magnetic separation — is effective for a given mixture.",
+  "conceptual_demand": 3,
+  "activity_count": 5,
+  "activity_load": 2,
+  "demo_count": 1,
+  "demo_load": 1,
+  "exec_load": 0,
+  "effort_index": 11.5
 }

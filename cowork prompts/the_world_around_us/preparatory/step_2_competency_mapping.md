@@ -26,8 +26,8 @@ All chapters    : map all chapters for this grade
 |------|------|
 | Project root (Cowork mount) | `mnt/data/` |
 | Chapter summary (input) | `mnt/data/mirror/chapters/the_world_around_us/{grade}/summaries/ch_NN_summary.json` |
-| CG reference | `mnt/data/mirror/framework/the_world_around_us/competency_descriptions_twau.json` |
-| Constitution | `mnt/data/mirror/constitutions/competency_mapping/the_world_around_us/mapping_constitution_twau.txt` |
+| CG reference | `mnt/data/mirror/framework/the_world_around_us/preparatory/competency_descriptions_twau.json` |
+| Constitution | `mnt/data/mirror/constitutions/competency_mapping/the_world_around_us/preparatory/mapping_constitution_twau.txt` |
 | Mapping output (per chapter) | `mnt/data/mirror/chapters/the_world_around_us/{grade}/mappings/ch_NN_mapping.json` |
 
 `{grade}` is the lowercase Roman numeral: `iii`, `iv`, or `v`. All TWAU folders

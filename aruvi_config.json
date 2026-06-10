@@ -35,8 +35,9 @@
       "framework_subdir":  "mathematics",
       "textbook_subdir":   "mathematics",
       "stages": {
-        "middle":    ["vi", "vii", "viii"],
-        "secondary": ["ix", "x"]
+        "preparatory": ["iii", "iv", "v"],
+        "middle":      ["vi", "vii", "viii"],
+        "secondary":   ["ix", "x"]
       }
     },
     "science": {

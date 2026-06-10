@@ -1,28 +1,30 @@
 {
-    "stage": "middle",
-    "subject": "science",
-    "grade": "vi",
-    "chapter_number": 8,
-    "chapter_title": "A Journey through States of Water",
-    "min_viable_periods": 0,
-    "orientation_chapter": false,
-    "co_central": true,
-    "primary": [
-      {
-        "cg": "CG-1",
-        "c_code": "C-1.1",
-        "justification": "The chapter's central architectural work is classifying water into three physically observable states — solid (ice), liquid (water), and gaseous (water vapour) — and systematically comparing their observable properties: shape retention, ability to flow, and ability to spread. Activity 8.5 explicitly asks students to record and compare these properties across all three states, and section 8.3 consolidates the distinctions. This constitutes primary engagement with C-1.1's classification of matter by observable physical characteristics."
-      },
-      {
-        "cg": "CG-1",
-        "c_code": "C-1.2",
-        "justification": "A distinct and substantial strand of the chapter addresses changes in matter: evaporation (liquid to gas), condensation (gas to liquid), melting (solid to liquid), and freezing (liquid to solid). Sections 8.1, 8.2, 8.4, and 8.7 build a full account of physical changes of state, with students investigating the conditions that drive each transition. Activity 8.6 directly requires students to map all four state-change processes. This is independent of the classification strand and directly addresses C-1.2's description of physical changes in matter."
-      }
-    ],
-    "dissolution_test": "This chapter builds the student's ability to classify water and other matter by their observable physical state and to explain the conditions that cause matter to change between states by investigating evaporation, condensation, melting, and freezing through guided inquiry.",
-    "conceptual_demand": 3,
-    "activity_count": 9,
-    "demo_count": 0,
-    "exec_load": 0,
-    "effort_index": 15.0
+  "stage": "middle",
+  "subject": "science",
+  "grade": "vi",
+  "chapter_number": 8,
+  "chapter_title": "A Journey through States of Water",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": true,
+  "primary": [
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.1",
+      "justification": "The chapter's central architectural work is classifying water into three physically observable states — solid (ice), liquid (water), and gaseous (water vapour) — and systematically comparing their observable properties: shape retention, ability to flow, and ability to spread. Activity 8.5 explicitly asks students to record and compare these properties across all three states, and section 8.3 consolidates the distinctions. This constitutes primary engagement with C-1.1's classification of matter by observable physical characteristics."
+    },
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.2",
+      "justification": "A distinct and substantial strand of the chapter addresses changes in matter: evaporation (liquid to gas), condensation (gas to liquid), melting (solid to liquid), and freezing (liquid to solid). Sections 8.1, 8.2, 8.4, and 8.7 build a full account of physical changes of state, with students investigating the conditions that drive each transition. Activity 8.6 directly requires students to map all four state-change processes. This is independent of the classification strand and directly addresses C-1.2's description of physical changes in matter."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to classify water and other matter by their observable physical state and to explain the conditions that cause matter to change between states by investigating evaporation, condensation, melting, and freezing through guided inquiry.",
+  "conceptual_demand": 3,
+  "activity_count": 9,
+  "activity_load": 3,
+  "demo_count": 0,
+  "demo_load": 0,
+  "exec_load": 0,
+  "effort_index": 12.0
 }

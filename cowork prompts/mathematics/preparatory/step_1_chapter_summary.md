@@ -156,7 +156,8 @@ Position Papers. Stay strictly within the chapter PDF. Process chapters in
 order. UTF-8. Overwrite.
 
 Next: run `step_2_competency_mapping.md` in this folder, governed by the
-**preparatory** mapping constitution (`mapping_constitution_mathematics_preparatory.txt`).
+**preparatory** mapping constitution
+(`competency_mapping/mathematics/preparatory/mapping_constitution_mathematics.txt`).
 Mapping stays **dynamic** (core CG + core/adjunct competencies + effort
 index from the four signals above) — there is no static spine→CG lookup
 for maths, because core linkages arise only from the per-chapter pass.

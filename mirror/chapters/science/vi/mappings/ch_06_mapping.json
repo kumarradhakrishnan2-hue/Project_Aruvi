@@ -1,28 +1,30 @@
 {
-    "stage": "middle",
-    "subject": "science",
-    "grade": "vi",
-    "chapter_number": 6,
-    "chapter_title": "Materials Around Us",
-    "min_viable_periods": 0,
-    "orientation_chapter": false,
-    "co_central": true,
-    "primary": [
-      {
-        "cg": "CG-1",
-        "c_code": "C-1.1",
-        "justification": "The chapter's architectural spine is the systematic classification of materials by observable physical properties. Sections 6.3.1 through 6.3.4 build a classification framework covering lustre (lustrous vs. non-lustrous), hardness (hard vs. soft), light transmission (transparent, translucent, opaque), and solubility (soluble vs. insoluble in water). Every major activity in the chapter — grouping objects, sorting by appearance, pressing and scratching to test hardness, classifying glass/butter paper/wood by transparency, and stirring sugar/salt/chalk/sand in water — is in service of building the student's capacity to classify matter by observable physical characteristics. This directly addresses C-1.1's mandate to classify matter based on observable physical characteristics including transparent, opaque, and translucent."
-      },
-      {
-        "cg": "CG-1",
-        "c_code": "C-1.3",
-        "justification": "The second architecturally independent strand of the chapter (Sections 6.3.5 and 6.3.6) introduces mass and volume as measurable physical properties of matter. Section 6.3.5 introduces mass through Activity 6.8 where students weigh identical cups of water, sand, and pebbles using a balance to determine which is heavier. Section 6.3.6 introduces volume as the space occupied by matter, using water levels in identical tumblers to show that volume varies, and connects this to real-world labelling of bottles in litres and millilitres. Section 6.4 consolidates both by defining matter as anything with mass and volume, and introduces SI units for each (kg, g for mass; L, mL, m³ for volume) with correct notation conventions. This directly addresses C-1.3's mandate to explain the importance of measurement and measure physical properties of matter in standard units using simple instruments."
-      }
-    ],
-    "dissolution_test": "This chapter builds the student's ability to classify materials by their observable physical properties and to measure the physical properties of mass and volume using standard units, developing the foundational framework for understanding matter.",
-    "conceptual_demand": 2,
-    "activity_count": 5,
-    "demo_count": 0,
-    "exec_load": 0,
-    "effort_index": 9.0
+  "stage": "middle",
+  "subject": "science",
+  "grade": "vi",
+  "chapter_number": 6,
+  "chapter_title": "Materials Around Us",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": true,
+  "primary": [
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.1",
+      "justification": "The chapter's architectural spine is the systematic classification of materials by observable physical properties. Sections 6.3.1 through 6.3.4 build a classification framework covering lustre (lustrous vs. non-lustrous), hardness (hard vs. soft), light transmission (transparent, translucent, opaque), and solubility (soluble vs. insoluble in water). Every major activity in the chapter — grouping objects, sorting by appearance, pressing and scratching to test hardness, classifying glass/butter paper/wood by transparency, and stirring sugar/salt/chalk/sand in water — is in service of building the student's capacity to classify matter by observable physical characteristics. This directly addresses C-1.1's mandate to classify matter based on observable physical characteristics including transparent, opaque, and translucent."
+    },
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.3",
+      "justification": "The second architecturally independent strand of the chapter (Sections 6.3.5 and 6.3.6) introduces mass and volume as measurable physical properties of matter. Section 6.3.5 introduces mass through Activity 6.8 where students weigh identical cups of water, sand, and pebbles using a balance to determine which is heavier. Section 6.3.6 introduces volume as the space occupied by matter, using water levels in identical tumblers to show that volume varies, and connects this to real-world labelling of bottles in litres and millilitres. Section 6.4 consolidates both by defining matter as anything with mass and volume, and introduces SI units for each (kg, g for mass; L, mL, m³ for volume) with correct notation conventions. This directly addresses C-1.3's mandate to explain the importance of measurement and measure physical properties of matter in standard units using simple instruments."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to classify materials by their observable physical properties and to measure the physical properties of mass and volume using standard units, developing the foundational framework for understanding matter.",
+  "conceptual_demand": 2,
+  "activity_count": 5,
+  "activity_load": 2,
+  "demo_count": 0,
+  "demo_load": 0,
+  "exec_load": 0,
+  "effort_index": 8.0
 }

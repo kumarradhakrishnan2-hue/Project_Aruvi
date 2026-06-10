@@ -72,20 +72,25 @@ def resolve_paths(config_path: str, subject_group: str, grade: str,
     token_log = root / config["paths"]["token_log"]
 
     # ── Constitution path — resolved from mirror, no skill_dir required ──────
+    # Prefer the stage-routed mapping constitution
+    # (`competency_mapping/{subject}/{stage}/mapping_constitution_{subject}.txt`);
+    # fall back to the flat `competency_mapping/{subject}/mapping_constitution_{subject}.txt`
+    # for subjects that have not been split by stage yet.
     constitution_key  = subject_config["constitution_key"]
     mirror_const_base = root / config["paths"]["mirror_constitutions"]
-    constitution_path = (
-        mirror_const_base
-        / "competency_mapping"
-        / subject_group
-        / f"mapping_constitution_{subject_group}.txt"
-    )
+    _const_filename   = f"mapping_constitution_{subject_group}.txt"
+    _const_dir        = mirror_const_base / "competency_mapping" / subject_group
+    _const_staged     = _const_dir / stage / _const_filename
+    _const_flat       = _const_dir / _const_filename
+    constitution_path = _const_staged if _const_staged.exists() else _const_flat
 
     if not constitution_path.exists():
         raise FileNotFoundError(
             f"Constitution file not found: {constitution_path}\n"
-            f"Expected: mirror/constitutions/competency_mapping/"
-            f"{subject_group}/mapping_constitution_{subject_group}.txt\n"
+            f"Expected (stage-routed): mirror/constitutions/competency_mapping/"
+            f"{subject_group}/{stage}/{_const_filename}\n"
+            f"or (flat fallback): mirror/constitutions/competency_mapping/"
+            f"{subject_group}/{_const_filename}\n"
             f"Extract the source DOCX with pandoc and save it there first."
         )
 
