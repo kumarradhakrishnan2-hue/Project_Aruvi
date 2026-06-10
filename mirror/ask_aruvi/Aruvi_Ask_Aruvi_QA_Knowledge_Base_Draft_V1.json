@@ -1,7 +1,7 @@
 {
   "metadata": {
     "document": "Ask Aruvi Q&A Knowledge Base",
-    "version": "V2.4",
+    "version": "V2.5",
     "last_refreshed": "2026-06-10",
     "date": "June 2026",
     "total_pairs": 96,
@@ -289,7 +289,7 @@
         {
           "id": "c03",
           "q": "How does period allocation work for Science?",
-          "a": "Science chapters are allocated periods using an effort index — a composite score built from four signals: conceptual demand of the exercises, number of student-executed activities, number of teacher demonstrations, and exercise execution load (whether students must produce diagrams or multi-step calculations). Each signal carries a multiplier reflecting its true classroom time cost. Higher effort index chapters receive more periods. The breakdown is visible in the Allocate tab — the score is never opaque."
+          "a": "Science chapters are allocated periods using an effort index — a composite score built from four signals: conceptual demand of the exercises, student-executed activity load, teacher demonstration load, and exercise execution load (whether students must produce diagrams or multi-step calculations). Activity count and demo count are first converted to discrete bounded tiers before entering the formula — this prevents a single high-count chapter from distorting the index. The formula is: (conceptual demand × 2) + (activity load × 2) + (demo load × 1.5) + (exec load × 2). Higher effort index chapters receive more periods. The breakdown is visible in the Allocate tab — the score is never opaque."
         },
         {
           "id": "c04",
@@ -299,7 +299,7 @@
         {
           "id": "c05",
           "q": "How does period allocation work for Mathematics?",
-          "a": "Mathematics chapters are allocated periods using an effort index drawn from the textbook's own architecture: the size of the worked-example set, the count of in-chapter activities, the exercise load, and the conceptual demand of the methods introduced. Chapters with denser worked-example progressions and larger exercise sets naturally receive more periods. The allocation reflects how much the textbook itself signals a chapter requires."
+          "a": "Mathematics chapters are allocated periods using an effort index built from the same four signals as Science: conceptual demand of the exercises, student-executed activity load, teacher demonstration load, and exercise execution load. As in Science, activity count and demo count are first converted to discrete bounded tiers before entering the formula. The formula is: (conceptual demand × 2) + (activity load × 2) + (demo load × 1.5) + (exec load × 2). Chapters with higher conceptual demand and denser activity sets receive more periods. The allocation reflects how much the textbook itself signals a chapter requires."
         },
         {
           "id": "c11",
@@ -314,7 +314,7 @@
         {
           "id": "c07",
           "q": "What is the effort index?",
-          "a": "The effort index is Aruvi's measure of how much classroom effort a chapter requires — used for Science, English, and Mathematics. It is a composite score built from subject-specific signals, each carrying a multiplier that reflects its true classroom time cost. The index is computed once during the mapping step and stored with the chapter record. It is the basis for the Planning Tool's default period allocation for those subjects."
+          "a": "The effort index is Aruvi's measure of how much classroom effort a chapter requires — used for Science, English, and Mathematics. For Science and Mathematics, it is a weighted sum of four discrete-tier signals: conceptual demand (1–3), activity load (0–3), demo load (0–2), and exec load (0–2). Raw activity and demo counts are first bucketed into bounded tiers so no single high-count chapter can distort the index. The index is computed once during the mapping step and stored with the chapter record. It is the basis for the Planning Tool's default period allocation for those subjects."
         },
         {
           "id": "c08",
