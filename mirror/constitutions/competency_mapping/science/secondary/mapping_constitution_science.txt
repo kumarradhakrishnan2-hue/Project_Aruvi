@@ -19,9 +19,7 @@ Competency mapping
 Rule 1 | competency list — development method
 --------------------------------------------------------------------------------
 The competency assignment for each Secondary Stage Science chapter (Grade IX / X) is
-determined by a two-step process applied to every chapter. The governing mechanism is
-identical to the Middle Stage; only the CG reference document changes (the Secondary CG
-set CG-1 … CG-8) and the stage-specific guidance below applies.
+determined by a two-step process applied to every chapter. 
 
 Step 1 — Chapter summary reading & CG identification
 
@@ -113,31 +111,7 @@ Example A — single-competency chapter (co_central = false)
     "dissolution_test": "This chapter builds the student's ability to determine the subatomic composition, electronic configuration, and valency of an atom by reconstructing how successive experimental evidence (cathode rays, gold-foil scattering, the neutron) reshaped atomic models and by applying shell-filling (2n²) and octet rules."
 }
 
-Example B — co-central chapter (co_central = true), same locked CG
 
-{
-    "stage": "secondary",
-    "subject": "science",
-    "grade": "ix",
-    "chapter_number": 2,
-    "chapter_title": "Cell: The Building Block of Life",
-    "min_viable_periods": 0,
-    "orientation_chapter": false,
-    "co_central": true,
-    "primary": [
-      {
-        "cg": "CG-3",
-        "c_code": "C-3.1",
-        "justification": "The chapter's bulk (sections on the cell membrane, cell wall, and the organelles — nucleus, ER, ribosomes, Golgi, lysosomes, mitochondria, plastids, vacuoles) explains the role of cellular components and the semipermeability of the cell membrane (osmosis activities) in making the cell the structural and functional unit of life — directly C-3.1."
-      },
-      {
-        "cg": "CG-3",
-        "c_code": "C-3.3",
-        "justification": "A distinct, sectioned strand establishes the carriers of heredity — DNA, genes, chromosomes, chromatin within the nucleus — and the division processes (mitosis producing identical daughters; meiosis halving chromosomes and generating variation) that transmit them. This is cognitively distinct from organelle structure and membrane transport and qualifies as co-central under Rule 2d even though the textbook defers full mechanism to higher grades. (The chapter's levels-of-organisation thread belongs to CG-4 and is therefore recorded as tertiary, not in primary — see Rule 2b.)"
-      }
-    ],
-    "dissolution_test": "This chapter builds the student's ability to explain how a cell's organelles and semipermeable membrane make it the structural and functional unit of life AND how cell division transmits the DNA/chromosomal basis of heredity and variation, by comparing cell types under controlled observation and tracing the flow from DNA to chromosome to daughter cell."
-}
 
 
 ================================================================================

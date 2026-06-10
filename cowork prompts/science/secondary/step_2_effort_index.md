@@ -12,11 +12,6 @@ sessions and must not be touched here.
 This session uses Cowork's own context to read the PDF and compute
 signals. No API call is made.
 
-This is the **Secondary Stage** edition. The signal definitions, discrete
-tiers, and effort-index formula are identical to the Middle Stage prompt — so
-indices remain comparable in method. Only the evidence-location cues change for
-the secondary textbook's structure; these are marked **[SECONDARY]** below.
-
 ---
 
 ## Run Scope
@@ -90,15 +85,14 @@ Read the full chapter PDF. The evidence base comprises exactly four elements:
 **(a) Embedded student activities** — boxed tasks labelled "Let us explore /
 investigate / construct / experiment" and equivalents. Classify each as
 student-executed or teacher-demonstrated.
-**[SECONDARY]** The secondary textbook uses additional "Activity N.N: Let us …"
-labels — including **"Let us estimate / study / enhance our skills /
-experiment / investigate"**. All of these count as embedded student activities;
-classify each as student-executed or teacher-demonstrated as above.
+The textbook uses "Activity N.N: Let us …" labels — including **"Let us estimate /
+study / enhance our skills / experiment / investigate"**. All of these count as
+embedded student activities; classify each as student-executed or
+teacher-demonstrated as above.
 
-**(b) End-of-chapter exercises** — **[SECONDARY]** in the secondary textbook this
-section is titled **"Revise, Reflect, Refine"** (the equivalent of the middle
-stage's "Let Us Enhance Our Learning"). Use it as the exercise base for the
-conceptual_demand and exec_load signals.
+**(b) End-of-chapter exercises** — this section is titled **"Revise, Reflect,
+Refine"**. Use it as the exercise base for the conceptual_demand and exec_load
+signals.
 
 **(c) Embedded diagram tasks** — questions placed beneath body-text figures
 requiring the student to read or reason from the diagram.
@@ -106,8 +100,8 @@ requiring the student to read or reason from the diagram.
 **(d) Body-text thought prompts** — italicised questions or "can you think of"
 invitations in the explanatory text.
 
-**[SECONDARY] Classifying secondary sidebar boxes.** The secondary textbook is
-dense with recurring boxes. Classify them as follows so scoring is reproducible:
+**Classifying sidebar boxes.** The textbook is dense with recurring boxes.
+Classify them as follows so scoring is reproducible:
 - `Think as a Scientist`, `Ready to Go Beyond` — usually a predict-and/or-draw
   task: count under (c) diagram tasks if it requires reasoning from a figure,
   otherwise under (d) thought prompts. They are NOT physical activities — do not
@@ -141,11 +135,11 @@ high-count chapter from swamping the bounded signals.
 **activity_count (integer) — raw count, retained for audit:**
 Count student-executed physical activities only.
 Exclude teacher demonstrations and discussion-only tasks.
-**[SECONDARY]** Many abstraction-led secondary chapters (e.g. atomic structure)
-legitimately have activity_count = 0. This is expected — it is not an error and
-must not be inflated by counting thought prompts or predict-and-draw boxes as
-activities. The chapter's difficulty surfaces through conceptual_demand and
-exec_load instead.
+Many abstraction-led chapters (e.g. atomic structure) legitimately have
+activity_count = 0. This is expected — it is not an error and must not be
+inflated by counting thought prompts or predict-and-draw boxes as activities.
+The chapter's difficulty surfaces through conceptual_demand and exec_load
+instead.
 
 **activity_load (integer 0–3) — discrete tier derived from activity_count:**
 
@@ -171,11 +165,10 @@ Count teacher-performed demonstrations only.
 - 0 = exercise is predominantly written reasoning
 - 1 = multi-step calculation or diagram production is 30–60% of questions
 - 2 = >60%
-**[SECONDARY]** Calculation- and representation-heavy secondary chapters
-(atomic mass and electronic configuration; numerical physics — motion, force,
-work-energy, sound; chemical equations) will commonly reach exec_load = 2. Score
-it from the actual proportion of calculation / diagram-production questions, not
-from the topic.
+Calculation- and representation-heavy chapters (atomic mass and electronic
+configuration; numerical physics — motion, force, work-energy, sound; chemical
+equations) will commonly reach exec_load = 2. Score it from the actual
+proportion of calculation / diagram-production questions, not from the topic.
 
 **effort_index (number):**
 `(conceptual_demand × 2) + (activity_load × 2) + (demo_load × 1.5) + (exec_load × 2)`
@@ -190,7 +183,7 @@ one decimal. Range is 2.0–19.0.
 
 For each chapter:
 1. Take the Competency mapping JSON output from step 2
-2. Append the effort index fields with computed values for final JSON schema as per below. Both the raw counts (`activity_count`, `demo_count`) and their derived tiers (`activity_load`, `demo_load`) are stored — the raw counts for audit, the tiers as the formula inputs. **[SECONDARY]** The `stage` field MUST be `"secondary"`:
+2. Append the effort index fields with computed values for final JSON schema as per below. Both the raw counts (`activity_count`, `demo_count`) and their derived tiers (`activity_load`, `demo_load`) are stored — the raw counts for audit, the tiers as the formula inputs. The `stage` field MUST be `"secondary"`:
 
 ```json
 {
@@ -243,10 +236,10 @@ Ch | Title (40 chars)                         | CD | AC>AL | DC>DL | EL | EI
 CD = conceptual_demand, AC = activity_count, AL = activity_load,
 DC = demo_count, DL = demo_load, EL = exec_load, EI = effort_index
 
-(The two rows above illustrate the secondary contrast: an activity-led chapter
-and an abstraction-led chapter land close together under the bounded tiers,
-because activity_load is capped and conceptual_demand + exec_load carry the
-abstract chapter's effort.)
+(The two rows above illustrate how an activity-led chapter and an
+abstraction-led chapter land close together under the bounded tiers, because
+activity_load is capped and conceptual_demand + exec_load carry the abstract
+chapter's effort.)
 
 Flag any chapter where effort_index = 0 as WARNING — evidence base
 was likely not located correctly in the PDF. (Note: under the bounded formula

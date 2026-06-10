@@ -10,11 +10,6 @@ generation.
 This session uses Cowork's own context to read the PDF and write the summary. No API call
 is made.
 
-This is the **Secondary Stage** edition. It follows the same method as the Middle Stage
-summary prompt, with three calibrations for the structure of the secondary textbook:
-deeper heading nesting (named content-blocks), denser pedagogical sidebar boxes, and longer
-chapters. The differences are marked **[SECONDARY]** below.
-
 ---
 
 ## Run Scope
@@ -73,7 +68,7 @@ the summary unless it is anchored to one of these headings. This rule is absolut
 prevents content from outside this chapter (e.g. from a neighbouring chapter that shares
 vocabulary) appearing in the summary even if the topic is familiar.
 
-**[SECONDARY] Two kinds of heading belong in the scope boundary:**
+**Two kinds of heading belong in the scope boundary:**
 
 1. **Numbered headings and subsections** — e.g. `8.1`, `8.2`, `8.2.1`, `2.2.1`, `2.3.1`.
 2. **Named content-blocks** — bold-titled blocks that introduce a distinct concept,
@@ -88,7 +83,7 @@ vocabulary) appearing in the summary even if the topic is familiar.
    Distinguish a named content-block (introduces chapter content → include) from a
    pedagogical sidebar box (recurring furniture → exclude; see below).
 
-**[SECONDARY] Exclude these recurring pedagogical sidebar boxes** — they are NOT section
+**Exclude these recurring pedagogical sidebar boxes** — they are NOT section
 headings, MUST NOT appear in the heading list, and MUST NOT structure the summary:
 `Think It Over`, `Pause and Ponder`, `Threads of Curiosity`, `Ready to Go Beyond`,
 `Think as a Scientist`, `What if ...`, `Next Level Up`, `Meet a Scientist`, `At a Glance`,
@@ -96,7 +91,7 @@ headings, MUST NOT appear in the heading list, and MUST NOT structure the summar
 (`Revise, Reflect, Refine` is the secondary end-of-chapter exercise section — it is excluded
 under the same rule that excludes exercises, see Step 4.)
 
-**[SECONDARY] Controlled exception — real-world / India-contribution boxes.** Two named
+**Controlled exception — real-world / India-contribution boxes.** Two named
 boxes carry substantive NCF content (curricular goals CG-5 linkages, CG-6 India's
 contribution, CG-7 frontiers) rather than motivational framing:
 `India's Scientific Contributions` and `Bridging Science and Society`. Capture their
@@ -111,21 +106,20 @@ biographies under this exception.
 Write the summary addressing every heading identified in Step 3 — both numbered headings
 and named content-blocks — in the order they appear.
 
-For each heading or named content-block write 2–4 sentences covering:
+For each heading or named content-block write 3–4 sentences covering:
 - What the section teaches
 - The key concepts or terms it introduces
 - Any significant phenomena, processes, formulae, or examples it uses
 - Whether the section contains a student activity — note existence only, do not elaborate
   activity steps
 
-**[SECONDARY] Length is content-driven, not capped.** Give every heading and named
-content-block its 2–4 sentences; do not compress several organelles or model-blocks into a
-single clause to hit a word target, and do not pad to reach one. A typical secondary chapter
-has roughly 16–20 heading units and lands at approximately **1200–1800 words**; a
-heading-dense chapter may run longer. Coverage of every unit takes precedence over any word
-figure.
+**Length is content-driven, not capped.** Give every heading and named content-block its
+3–4 sentences; do not compress several organelles or model-blocks into a single clause to
+hit a word target, and do not pad to reach one. A typical chapter has roughly 16–20 heading
+units and lands at approximately **1200–1800 words**; a heading-dense chapter may run
+longer. Coverage of every unit takes precedence over any word figure.
 
-**[SECONDARY] One closing CG-5/6/7 paragraph (optional, only if such content exists).**
+**One closing CG-5/6/7 paragraph (optional, only if such content exists).**
 After the heading-anchored body, if the chapter contained an `India's Scientific
 Contributions` or `Bridging Science and Society` box, add ONE final short paragraph (2–4
 sentences) recording its substantive real-world / Indian-contribution / frontier content.
