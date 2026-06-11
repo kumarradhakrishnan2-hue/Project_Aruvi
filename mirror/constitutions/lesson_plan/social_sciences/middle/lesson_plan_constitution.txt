@@ -98,6 +98,21 @@ PROHIBITION
 4. MUST NOT include chapter-specific proper nouns in implied_lo — they belong in section_context.
 
 ================================================================================
+RULE 8 · HOMEWORK IS OPTIONAL AND UN-OWNED
+
+`homework` per period is `[]` by default. Populate with 1–2 items only
+when in-class time-box overflows or when reinforcement is judged useful.
+Homework is not consumed by the assessment generator downstream.
+
+Homework items follow the same cognitive floor as Rule 2 — recall-only
+tasks (copy, list, define) are not acceptable homework. Each item must
+require students to do something with the content: apply, analyse,
+connect, construct, or evaluate using the section's material.
+
+Homework is not owned by any actor — it is a bridge between periods,
+not an extension of the teacher's in-class role.
+
+================================================================================
 INTEGRITY CONSTRAINTS
 
 These apply at system level and override any other instruction:
@@ -141,8 +156,11 @@ visual_aids: name any visual resource the activity naturally requires (textbook 
           "cg": "string",
           "weight": "integer — 3 | 2 | 1",
           "competency_text": "string"
-        }
+        },
+        "homework": ["string"]
       }
     ]
   }
 }
+
+Note on homework: `homework` is `[]` by default. Populate with 1–2 plain-language items only when Rule 8 applies. Same cognitive floor as in-class activities — no recall-only tasks.

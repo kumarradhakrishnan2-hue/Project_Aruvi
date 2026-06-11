@@ -87,7 +87,22 @@ MUST NOT use the same approach in more than two consecutive periods.
 Approach must fit the progression stage: early stages (observation, classification) suit hands-on and guided inquiry; later stages (causal reasoning, application to unfamiliar context) suit discussion, think-pair-share, and problem-solving.
 
 ================================================================================
-RULE 8 — COVERAGE HANDOFF — REQUIRED COMPANION OUTPUT
+RULE 8 — HOMEWORK IS OPTIONAL AND UN-OWNED
+
+`homework` per period is `[]` by default. Populate with 1–2 items only
+when in-class time-box overflows or when reinforcement is judged useful.
+Homework is not consumed by the assessment generator downstream.
+
+Homework items follow the same cognitive floor as Rule 4 — recall-only
+tasks (copy, list, define) are not acceptable homework. Each item must
+require students to do something with the content: apply, explain,
+calculate, sketch, or connect to a new context.
+
+Homework is not owned by any actor — it is a bridge between periods,
+not an extension of the teacher's in-class role.
+
+================================================================================
+RULE 9 — COVERAGE HANDOFF — REQUIRED COMPANION OUTPUT
 
 At the close of the lesson plan, produce the Coverage Handoff as a JSON array under the key "coverage_handoff", conforming to Amendment A4. This is the sole input to the assessment constitution. Outputting it as an explicit, named field in the JSON response enforces chain-of-thought discipline: the assessment generator MUST ground every question in the committed handoff, not in a re-derived or hallucinated intermediate.
 
@@ -124,7 +139,8 @@ Each period in lesson_plan.periods[] MUST conform to this object schema:
                                }
                              ]
                              — phases must cover the full period from 0 to period_duration_minutes with no gaps; durations must sum exactly to period_duration_minutes,
-  "materials":               [string]
+  "materials":               [string],
+  "homework":                [string] — [] by default; 1–2 plain-language items max; same cognitive floor as in-class activities
 }
 
 ================================================================================

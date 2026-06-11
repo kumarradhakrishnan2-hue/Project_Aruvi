@@ -1195,6 +1195,207 @@ def _build_science_lp(output_path, data):
 
 
 # ──────────────────────────────────────────────────────────────────────────────
+# Secondary-stage Science building blocks
+#
+# Secondary Science (Grades IX/X) uses the section-anchored LP constitution:
+# a FLAT list of periods (no progression-stage grouping), one pedagogical
+# approach per period, a learning outcome shown at the END of each period, and
+# NO materials row (kept out deliberately — board/notebook noise). visual_aids,
+# when present, is surfaced as a compact cue line.
+# ──────────────────────────────────────────────────────────────────────────────
+
+def _secondary_science_period_block(period, uw, show_ped_label=False):
+    """
+    Returns a list of flowables for one secondary-Science period.
+
+    Layout (top to bottom):
+      Row 1 — Period header: Period N | Duration | Activity title | Pedagogical approach
+      Row 2 — Anchored section (+ optional 'Visual:' cue from visual_aids)
+      Rows 3+ — Phase rows (minutes | activity)  [from time_bands]
+      Row N — Learning outcome (LO brace box) at the END
+    No materials row.
+
+    show_ped_label: when True (first period only), the approach cell reads
+    "Pedagogical approach: <value>"; for all later periods only the bare value
+    is shown, as the column meaning is implied from the first period.
+    """
+    story = []
+
+    period_num = period.get("period_number") or "—"
+    duration   = period.get("period_duration_minutes") or "—"
+    act_title  = _clean_text(str(period.get("activity_title") or "—"))
+    anchored   = _clean_text(str(period.get("anchored_section") or ""))
+    approach   = _clean_text(str(period.get("pedagogical_approach") or ""))
+    # visual_aids frequently carries scientific notation (e.g. ²³⁵U, ⁶⁰Co), so
+    # apply superscript conversion BEFORE _clean_text (correct order per the
+    # _apply_superscripts docstring).
+    visual     = _clean_text(_apply_superscripts(str(period.get("visual_aids") or "")))
+    lo_text    = _clean_text(str(period.get("learning_outcome") or ""))
+    phases     = period.get("time_breakdown") or []
+
+    # ── Row 1: Period header (Period | Duration | Activity | Approach) ────────
+    if approach:
+        _ped_cell = (
+            f"<b>Pedagogical approach:</b> {approach}" if show_ped_label
+            else approach
+        )
+        hdr_data = [[
+            Paragraph(f"<b>Period {period_num}</b>",       ST["period_lbl"]),
+            Paragraph(f"{duration} min",                    ST["period_time"]),
+            Paragraph(f"<b>{act_title}</b>",                ST["period_act"]),
+            Paragraph(_ped_cell,                            ST["mat_text"]),
+        ]]
+        hdr_t = Table(hdr_data, colWidths=[uw * f for f in [0.13, 0.09, 0.55, 0.23]])
+        hdr_style = [("ALIGN", (3, 0), (3, 0), "RIGHT")]
+    else:
+        hdr_data = [[
+            Paragraph(f"<b>Period {period_num}</b>",  ST["period_lbl"]),
+            Paragraph(f"{duration} min",               ST["period_time"]),
+            Paragraph(f"<b>{act_title}</b>",           ST["period_act"]),
+        ]]
+        hdr_t = Table(hdr_data, colWidths=[uw * f for f in [0.13, 0.09, 0.78]])
+        hdr_style = []
+    hdr_t.setStyle(TableStyle([
+        ("BACKGROUND",    (0, 0), (-1, -1), BG_META),
+        ("LINEABOVE",     (0, 0), (-1, -1), 1.0, INK),
+        ("LINEBELOW",     (0, 0), (-1, -1), 0.5, HAIRLINE),
+        ("VALIGN",        (0, 0), (-1, -1), "MIDDLE"),
+        ("TOPPADDING",    (0, 0), (-1, -1), 6),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+        ("LEFTPADDING",   (0, 0), (-1, -1), 6),
+        ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+    ] + hdr_style))
+
+    # ── Row 2: Anchored section, and (if present) Visual — on SEPARATE rows ───
+    info_rows = []
+    if anchored:
+        info_rows.append([Paragraph(f"<b>Anchored section:</b> {anchored}", ST["mat_text"])])
+    if visual:
+        info_rows.append([Paragraph(f"<b>Visual:</b> {visual}", ST["mat_text"])])
+
+    sec_t = None
+    if info_rows:
+        sec_t = Table(info_rows, colWidths=[uw])
+        _n = len(info_rows)
+        sec_t.setStyle(TableStyle([
+            ("BACKGROUND",    (0, 0), (-1, -1), colors.white),
+            # hairline below every row (separates anchored-section from visual,
+            # and the block from the phases that follow)
+            ("LINEBELOW",     (0, 0), (-1, -1), 0.5, HAIRLINE),
+            ("VALIGN",        (0, 0), (-1, -1), "MIDDLE"),
+            ("TOPPADDING",    (0, 0), (-1, -1), 4),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+            ("LEFTPADDING",   (0, 0), (-1, -1), 8),
+            ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+        ]))
+
+    # Anchor: keep header + info rows together so the header never orphans.
+    if sec_t is not None:
+        story.append(KeepTogether([hdr_t, Spacer(1, 3), sec_t]))
+    else:
+        story.append(hdr_t)
+
+    # ── Rows 3+: Phase rows (from time_bands) ────────────────────────────────
+    if phases:
+        tb_rows = []
+        for span, desc in phases:
+            tb_rows.append([
+                Paragraph(_clean_text(str(span)), ST["tb_time"]),
+                Paragraph(_clean_text(_apply_superscripts(str(desc))), ST["tb_desc"]),
+            ])
+        tb_t = Table(tb_rows, colWidths=[uw * 0.10, uw * 0.90])
+        tb_t.setStyle(TableStyle([
+            ("BACKGROUND",    (0, 0), (-1, -1), colors.white),
+            ("VALIGN",        (0, 0), (-1, -1), "TOP"),
+            ("TOPPADDING",    (0, 0), (-1, -1), 4),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+            ("LEFTPADDING",   (0, 0), ( 0,  0), 8),
+            ("LEFTPADDING",   (1, 0), ( 1, -1), 6),
+            ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
+            ("LINEBELOW",     (0, 0), (-1, -2), 0.3, ROW_LINE),
+            ("LINEBELOW",     (0,-1), (-1, -1), 0.5, HAIRLINE),
+        ]))
+        story.append(tb_t)
+
+    # ── Learning outcome — at the END of the period (brace/italic box) ───────
+    if lo_text:
+        story.append(LOBox(lo_text, uw))
+    story.append(Spacer(1, 4 * mm))
+    return story
+
+
+def _build_science_secondary_lp(output_path, data):
+    """
+    Renders the secondary-stage Science LP PDF: meta strip, competency table,
+    then a FLAT list of period blocks (no progression-stage layer).
+    Page setup / header / footer mirror the other subject paths.
+    """
+    doc_meta = {
+        "doc_type":     "Lesson Plan",
+        "doc_sub":      f"Grade {data['grade']} · {data['subject']} · {data['date']}",
+        "footer_left":  (
+            f"Aruvi · Lesson Plan · Grade {data['grade']} · "
+            f"{data['subject']} · Ch {data['chapter_num']:02d}"
+        ),
+        "footer_right": "",
+    }
+    doc = SimpleDocTemplate(
+        output_path, pagesize=A4,
+        leftMargin=L_MAR, rightMargin=R_MAR,
+        topMargin=T_MAR + 14 * mm,
+        bottomMargin=B_MAR + 8 * mm,
+    )
+    uw = PAGE_W - L_MAR - R_MAR
+
+    periods       = data.get("periods") or []
+    total_periods = len(periods)
+    total_time    = sum((p.get("period_duration_minutes") or 0) for p in periods)
+
+    story = []
+    story.append(meta_strip_full(
+        data["chapter_num"], data["chapter_title"], data["weight"],
+        total_periods, total_time, data["date"],
+    ))
+    story.append(Spacer(1, 3 * mm))
+
+    if data.get("competencies"):
+        story.append(competency_table(data["competencies"]))
+        story.append(Spacer(1, 4 * mm))
+
+    for _idx, p in enumerate(periods):
+        story.extend(_secondary_science_period_block(p, uw, show_ped_label=(_idx == 0)))
+
+    # ── Pass 1: build without page numbers ───────────────────────────────────
+    doc.build(
+        story,
+        onFirstPage=lambda c, d: on_page(c, d, doc_meta),
+        onLaterPages=lambda c, d: on_page(c, d, doc_meta),
+    )
+
+    # ── Pass 2: stamp "Page N of M" ──────────────────────────────────────────
+    reader = PdfReader(output_path)
+    total  = len(reader.pages)
+    writer = PdfWriter()
+    fy     = B_MAR - 4 * mm
+    for i, page in enumerate(reader.pages):
+        packet  = io.BytesIO()
+        stamp_c = rl_canvas.Canvas(packet, pagesize=A4)
+        stamp_c.setFont("Helvetica", 5.5)
+        stamp_c.setFillColor(colors.HexColor("#bbbbbb"))
+        stamp_c.drawRightString(
+            PAGE_W - R_MAR, fy + 1.2 * mm, f"Page {i + 1} of {total}",
+        )
+        stamp_c.save()
+        packet.seek(0)
+        overlay = PdfReader(packet)
+        page.merge_page(overlay.pages[0])
+        writer.add_page(page)
+    with open(output_path, "wb") as out_f:
+        writer.write(out_f)
+    print(f"✓  {output_path}  ({total} page{'s' if total != 1 else ''})")
+
+
+# ──────────────────────────────────────────────────────────────────────────────
 # English-specific building blocks
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -1630,7 +1831,11 @@ def _json_to_english_lp_data(j: dict, date_str: str, weight) -> dict:
 def build_lp_pdf(output_path, data):
     # ── Subject routing ───────────────────────────────────────────────────────
     if data.get("subject") == "Science":
-        _build_science_lp(output_path, data)
+        # Secondary-stage Science → flat section-anchored renderer.
+        if data.get("science_secondary"):
+            _build_science_secondary_lp(output_path, data)
+        else:
+            _build_science_lp(output_path, data)
         return
     if data.get("subject") == "English":
         _build_english_lp(output_path, data)
@@ -1770,6 +1975,19 @@ def json_to_lp_data(j: dict) -> dict:
 
     # ── Subject routing: Science uses a different JSON structure ──────────────
     if j.get("subject") == "Science":
+        # Secondary-stage Science (section-anchored, flat-period constitution)
+        # has NO progression_stage / cognitive_progression. Route it to the
+        # dedicated flat renderer; middle Science keeps the stage-grouped path.
+        _lp = (j.get("result") or {}).get("lesson_plan") or {}
+        _periods = _lp.get("periods") or []
+        _has_stages = bool(_lp.get("cognitive_progression")) or any(
+            p.get("progression_stage") is not None for p in _periods
+        )
+        _is_secondary_shape = bool(_periods) and not _has_stages and any(
+            p.get("section_anchor") is not None for p in _periods
+        )
+        if _is_secondary_shape:
+            return _json_to_science_secondary_lp_data(j, date_str, weight)
         return _json_to_science_lp_data(j, date_str, weight)
 
     # ── Subject routing: Mathematics uses v2.1 LP shape ───────────────────────
@@ -2093,6 +2311,112 @@ def _json_to_science_lp_data(j: dict, date_str: str, weight) -> dict:
         "weight":             weight,
         "competencies":       competencies,
         "progression_stages": progression_stages,
+    }
+
+
+def _json_to_science_secondary_lp_data(j: dict, date_str: str, weight) -> dict:
+    """
+    Adapter for the secondary-stage Science LP JSON (section-anchored,
+    flat-period constitution) → data dict consumed by
+    _build_science_secondary_lp().
+
+    Secondary JSON period shape:
+      {period_number, period_duration_minutes, activity_title, section_anchor,
+       pedagogical_approach, materials (ignored), visual_aids, time_bands[
+       {minutes, activity} ], implied_lo, section_context, competency{...}}
+
+    Competencies for the header table are loaded from the per-chapter mapping
+    JSON + framework descriptions (same authoritative source as the middle path),
+    falling back to the per-period competency object's text when descriptions
+    are unavailable.
+    """
+    import json as _json
+
+    lp = (j.get("result") or {}).get("lesson_plan") or {}
+
+    _grade_map = {
+        "Grade VI": "vi", "Grade VII": "vii", "Grade VIII": "viii",
+        "Grade IX": "ix", "Grade X": "x",
+    }
+    _project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    _raw_grade    = j.get("grade", "")
+    _grade_folder = _grade_map.get(_raw_grade, _raw_grade.lower().replace("grade ", ""))
+    _ch_num       = j.get("chapter_number", 0)
+
+    # ── c_codes from per-chapter mapping JSON ────────────────────────────────
+    _ch_map_path = os.path.join(
+        _project_root, "mirror", "chapters", "science", _grade_folder, "mappings",
+        f"ch_{_ch_num:02d}_mapping.json",
+    )
+    _c_codes = []
+    try:
+        _ch_map = _json.load(open(_ch_map_path, encoding="utf-8"))
+        for entry in _ch_map.get("primary") or []:
+            code = entry.get("c_code", "")
+            if code and code not in _c_codes:
+                _c_codes.append(code)
+    except Exception:
+        pass
+
+    # ── descriptions from framework (secondary) ──────────────────────────────
+    _comp_desc_path = os.path.join(
+        _project_root, "mirror", "framework", "science", "secondary",
+        "competency_descriptions_secondary.json",
+    )
+    _comp_descs: dict = {}
+    try:
+        _raw = _json.load(open(_comp_desc_path, encoding="utf-8"))
+        if "curricular_goals" in _raw:
+            for _cg in _raw["curricular_goals"]:
+                for _comp in _cg.get("competencies", []):
+                    _comp_descs[_comp.get("code", "")] = _comp.get("description", "")
+        else:
+            _comp_descs = _raw
+    except Exception:
+        pass
+
+    # Fallback: per-period competency text if descriptions file missing
+    if not _comp_descs:
+        for p in lp.get("periods") or []:
+            comp = p.get("competency") or {}
+            code = comp.get("c_code", "")
+            if code and code not in _comp_descs:
+                _comp_descs[code] = comp.get("competency_text", "")
+                if code not in _c_codes:
+                    _c_codes.append(code)
+
+    competencies = [(code, _comp_descs.get(code, "")) for code in _c_codes]
+
+    # ── Flat period list ─────────────────────────────────────────────────────
+    periods = []
+    for p in lp.get("periods") or []:
+        # time_bands [{minutes, activity}] → [(span, desc), ...]
+        time_breakdown = [
+            (tb.get("minutes", ""), tb.get("activity", ""))
+            for tb in (p.get("time_bands") or [])
+        ]
+        periods.append({
+            "period_number":           p.get("period_number") or "—",
+            "period_duration_minutes": p.get("period_duration_minutes") or 0,
+            "activity_title":          p.get("activity_title") or "—",
+            "anchored_section":        p.get("section_anchor") or "",
+            "pedagogical_approach":    p.get("pedagogical_approach") or "",
+            "visual_aids":             p.get("visual_aids") or "",
+            "time_breakdown":          time_breakdown,
+            "learning_outcome":        p.get("implied_lo") or "",
+        })
+
+    return {
+        "chapter_num":   j["chapter_number"],
+        "chapter_title": j["chapter_title"],
+        "grade":         str(j["grade"]).replace("Grade ", ""),
+        "subject":       j["subject"],
+        "date":          date_str,
+        "weight":        weight,
+        "competencies":  competencies,
+        "periods":       periods,
+        # Marker so build_lp_pdf() routes to the flat secondary renderer.
+        "science_secondary": True,
     }
 
 

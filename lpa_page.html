@@ -2244,11 +2244,88 @@ function renderLPA() {
   if (!isEnglish && !isScience && subjectKey === '' && periods.length > 0) {
     isScience = (periods[0].stage_label !== undefined || periods[0].activity_title !== undefined);
   }
+  /* Secondary-stage Science: section-anchored flat plan (no progression
+     stages). Marked per-period with science_secondary:true by the adapter.
+     Rendered as a flat list (no stage layer, no Lesson-view toggle, no
+     materials row), approach column, LO shown at end of each period. */
+  var isScienceSecondary = periods.length > 0 && periods[0].science_secondary === true;
 
   /* Column header — rendered inside each stage / competency group body,
      below its collapsible bar. Nothing is rendered at panel level here. */
 
-  if (isEnglish) {
+  if (isScienceSecondary) {
+    /* ── Secondary-stage Science rendering path ───────────────────────────────
+       Flat list of periods (no progression-stage grouping, no Lesson-view
+       toggle, no materials row). Header columns: # | Time | Name of Activity |
+       Anchored Section | Pedagogical Approach. Learning outcome shown at the
+       END of each period. */
+
+    var hdrEl = document.createElement('div');
+    hdrEl.className = 'lp-col-hdr';
+    hdrEl.innerHTML =
+      '<div class="lpch-num">#</div>' +
+      '<div class="lpch-time">Time</div>' +
+      '<div class="lpch-name">Name of Activity</div>' +
+      '<div class="lpch-sec">Anchored Section</div>' +
+      '<div class="lpch-spc"></div>';
+    panel.appendChild(hdrEl);
+
+    periods.forEach(function(p, pIdx) {
+      var id = 'p' + p.period_number;
+
+      var _rawActivity = (p.activity_name || (p.activity_summary || '').split(',')[0].substring(0, 80))
+        .replace(/^Anchored to:\s*/i, '').replace(/^Activity:\s*/i, '').trim();
+      var activityLabel = '<div class="pname">' + escHtml(_rawActivity) + '</div>';
+
+      /* Header right column shows the anchored section. */
+      var _section = (p.chapter_section || '').trim();
+      var sectionTag = _section
+        ? '<div class="ptag">' + escHtml(_section) + '</div>'
+        : '';
+
+      /* Approach bar at top of body (replaces the SS competency bar). */
+      var approachBar = (p.pedagogical_approach || '').trim()
+        ? '<div class="ss-comp-bar">' +
+            '<span class="twau-ped-label">Pedagogical Approach:</span>' +
+            '<span class="twau-ped-mode">' + escHtml(p.pedagogical_approach) + '</span>' +
+          '</div>'
+        : '';
+
+      /* Optional visual cue line. */
+      var visualBar = (p.visual_aids || '').trim()
+        ? '<div class="matrow"><div class="matlabel">Visual</div>' +
+          '<div class="mattext">' + escHtml(p.visual_aids) + '</div></div>'
+        : '';
+
+      var timeSlotsHtml = renderTimeSlots(p.time_slots || []);
+
+      /* Learning outcome at the END of the period. */
+      var loBar = (p.implied_lo || '').trim()
+        ? '<div class="lobar"><div class="lolabel">Learning Outcome</div>' +
+          '<div class="lotext">' + escHtml(p.implied_lo) + '</div></div>'
+        : '';
+
+      var cardEl = document.createElement('div');
+      cardEl.className = 'period-card ss-period-card' + (pIdx === 0 ? ' open' : '');
+      cardEl.id = id;
+      cardEl.innerHTML =
+        '<div class="period-header" onclick="toggleP(\'' + id + '\')">' +
+          '<div class="pnum">Period ' + p.period_number + '</div>' +
+          '<div class="pdur">' + p.period_duration_minutes + ' min</div>' +
+          activityLabel +
+          sectionTag +
+          '<div class="pchev">▼</div>' +
+        '</div>' +
+        '<div class="pbody">' +
+          approachBar +
+          visualBar +
+          timeSlotsHtml +
+          loBar +
+        '</div>';
+      panel.appendChild(cardEl);
+    });
+
+  } else if (isEnglish) {
     /* ── English rendering path ────────────────────────────────────────────
        Step 1: Section row styled like Science stage row (#787674 / #4a4a4a).
        Step 2: Column header row below section: # | Time | Spine | Name | Ped. Approach.

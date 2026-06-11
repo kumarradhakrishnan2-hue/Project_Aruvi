@@ -1,0 +1,288 @@
+ARUVI · LESSON PLAN GENERATION CONSTITUTION · SCIENCE · SECONDARY STAGE · VERSION 1.0
+
+Subject group : science
+Stage         : Secondary Stage
+Grades        : ix · x
+Task          : lesson_plan_generation
+Downstream    : assessment_constitution_science
+
+INPUTS (given — do not regenerate or supplement):
+1. Competency mapping JSON (core CG, one or two complementary C-codes under
+   that CG, dissolution_test sentence, co_central flag, effort_index fields)
+2. Chapter summary (.txt)
+3. NCF Pedagogy document for Science, Secondary Stage
+4. Period schedule — one or more rows of {duration_minutes, count}
+
+OUTPUTS REQUIRED:
+1. Human-readable lesson plan — prose + time-band format, one section per
+   period, intended for teacher use only.
+2. Full LP JSON conforming exactly to Amendment A3 — the authoritative
+   machine-readable record for this chapter. Read directly by the Assessment
+   Constitution as the source of implied_lo and section context.
+
+================================================================================
+RULE 1 · SECTION ANCHORING — THE ORGANIZING SPINE
+
+MANDATE
+Every activity MUST be anchored to a named section of the Chapter Summary. The
+section's content — not the competency statement, not the dissolution test
+sentence — is the content vehicle for the activity.
+
+The lesson plan follows the chapter summary's own section order. Periods are
+assigned to sections in the sequence the sections appear in the chapter. Where
+the chapter's own sequence carries a natural build, that build is preserved as
+the chapter gives it.
+
+The ordering principle is therefore source-given, not designed: take the order
+the chapter already has. Do NOT invent, super-impose, or re-engineer an
+ordering the chapter does not itself present — whether a concrete-to-abstract
+ramp, a low-to-high cognitive-demand ramp, or a prerequisite arc. Cognitive
+demand is read off each section as it stands; it is neither smoothed into a
+rising curve nor flagged as a defect when it does not rise.
+
+PROHIBITION
+1. MUST NOT include any activity whose content cannot be traced to a specific
+   named section of the Chapter Summary.
+2. MUST NOT use the competency statement or dissolution test sentence as a
+   content source for activities.
+3. MUST NOT re-order, skip, or compress sections to fit a narrative shape the
+   chapter does not itself contain.
+
+================================================================================
+RULE 2 · CONTENT-DRIVEN CALIBRATION
+
+MANDATE
+Use the Chapter Summary's own vocabulary, examples, and the cognitive demand of
+each section as the age-appropriateness signal. Where complexity signals are
+mixed within a section, the cognitive demand of the implied task takes
+precedence over surface vocabulary.
+
+Secondary-stage Science content is frequently abstract by nature — reasoning
+about what cannot be directly observed, model-based explanation, symbolic and
+mathematical representation. A section that involves no hands-on activity is
+normal at this stage and MUST NOT be treated as deficient or padded with
+invented practical work.
+
+PROHIBITION
+MUST NOT adjust or retrieve grade-level calibration from the Pedagogy document.
+The Pedagogy document governs approach and method only; the Chapter Summary
+governs content complexity.
+
+================================================================================
+RULE 3 · PEDAGOGICAL COGNITIVE FLOOR
+
+MANDATE
+Every activity MUST require students to do something with the section's
+content — observe, classify, explain, reason from evidence, model, represent,
+calculate, apply, or construct — at the level the Pedagogy document specifies.
+
+Symbolic, mathematical, and diagrammatic work counts fully as "doing" at this
+stage. Where a section's substance is the use of a rule, formula, notation, or
+representation (for example shell-filling, mass/atomic number, weighted
+averages, equations of motion, ray or circuit diagrams), an activity built on
+that representation satisfies the floor on its own. It MUST NOT be judged
+incomplete for lacking a hands-on or laboratory component, and a practical
+activity MUST NOT be invented to stand in for it.
+
+PROHIBITION
+1. MUST NOT satisfy an activity through recall-only tasks (state, name, recall,
+   list, define).
+2. MUST NOT treat the competency code as the activity target. The competency
+   code is a destination, not a task description.
+
+================================================================================
+RULE 4 · FULL-SECTION COVERAGE
+
+MANDATE
+Across the period budget, every substantive section of the Chapter Summary
+MUST receive at least one activity. A section may span more than one period
+where its content warrants it; emphasis follows the substance of the section,
+not any external score.
+
+If the section count exceeds the available period budget, produce the best
+possible plan that covers the chapter in section order AND include a
+section_coverage_note in the JSON naming the sections that could not be
+allotted their own period.
+
+PROHIBITION
+1. MUST NOT apply any numerical allocation formula across sections.
+2. MUST NOT front-load the plan by exhausting early sections and compressing or
+   skipping later ones.
+3. MUST NOT leave a substantive section without at least one activity except
+   under a genuine budget shortfall recorded in section_coverage_note.
+
+================================================================================
+RULE 5 · PEDAGOGICAL APPROACH DIVERSITY
+
+MANDATE
+Draw pedagogical approaches exclusively from the attached Pedagogy document for
+Science, Secondary Stage. Each period's approach MUST be justified by the
+content of its anchored section — the match between section content and
+approach must be defensible.
+
+Each period MUST record exactly one pedagogical_approach as a named field in
+its period object (Amendment A3). The value MUST be the name of a single
+approach as written in the attached Pedagogy document (for example: Hands-on
+Science, Discovery approach, Inquiry approach, Project-centred approach,
+Didactic approach, Demonstration). One period carries one approach — the
+dominant approach of that period's activity.
+
+PROHIBITION
+1. MUST NOT repeat the same approach across more than two consecutive periods.
+2. MUST NOT use approach categories outside the attached Pedagogy document.
+3. MUST NOT choose an approach for variety alone.
+4. MUST NOT leave pedagogical_approach blank, and MUST NOT list more than one
+   approach in the field — record the single dominant approach only.
+
+================================================================================
+RULE 6 · INVERTED LO FLOW — ONE IMPLIED LO + SECTION CONTEXT PER ACTIVITY
+
+MANDATE
+Generate exactly one implied_lo and one section_context per activity.
+
+implied_lo — the transferable skill this activity develops, stated
+independently of chapter content. Format: "Students can [observable skill verb
+phrase]." Derivation test: what can the student now do that they could apply
+equally in a different chapter?
+
+section_context — a compact label of 10–12 words naming the specific phenomena,
+models, quantities, or structures this activity drew from. This is what the
+assessment question is about. Name the key items only; do not inventory the
+whole section.
+
+The assessment generator reads both together: implied_lo drives cognitive
+demand; section_context drives content.
+
+PROHIBITION
+1. MUST NOT generate more than one implied_lo per activity.
+2. MUST NOT retrieve or reference any Learning Outcome document. LOs are outputs
+   of activity design, not inputs.
+3. MUST NOT write LOs that restate the competency or dissolution test, or use
+   internal-state verbs ("understand", "appreciate"). Use observable verbs only.
+4. MUST NOT include chapter-specific proper nouns (named scientists, models,
+   elements, organelles) in implied_lo — they belong in section_context.
+
+================================================================================
+RULE 7 · TEACHER-FACING TEXT — NO INTERNAL MACHINERY
+
+MANDATE
+The lesson plan is read by teachers. All teacher-facing text MUST be written in
+plain language a teacher can act on directly.
+
+The teacher-facing fields bound by this rule are:
+  - activity_title
+  - the "activity" text inside each time_band
+  - section_anchor (as rendered to the teacher)
+
+Refer to chapter content by its plain name and the section it sits in. Where it
+helps a teacher locate the material, name the section heading the activity draws
+from.
+
+PROHIBITION
+Teacher-facing text MUST NOT expose internal planning machinery. Specifically,
+it MUST NOT contain:
+1. Competency codes (C-codes), CG codes, or the dissolution test sentence.
+2. Rule numbers or any reference to this constitution.
+3. Schema field names, keys, or planner identifiers.
+4. Effort-index terms or any internal scoring vocabulary
+   (conceptual_demand, exec_load, effort_index, and the like).
+5. Period or activity index references used only for internal joining.
+
+The competency object in the JSON (Amendment A3) is structured metadata, not
+teacher-facing text, and is exempt — but its contents MUST NOT leak into any of
+the teacher-facing fields named above.
+
+================================================================================
+RULE 8 · HOMEWORK IS OPTIONAL AND UN-OWNED
+
+`homework` per period is `[]` by default. Populate with 1–2 items only
+when in-class time-box overflows or when reinforcement is judged useful.
+Homework is not consumed by the assessment generator downstream.
+
+Homework items follow the same cognitive floor as Rule 3 — recall-only
+tasks (copy, list, define) are not acceptable homework. Each item must
+require students to do something with the section's content: apply,
+explain, calculate, represent, or connect to a new context.
+
+Homework is not owned by any actor — it is a bridge between periods,
+not an extension of the teacher's in-class role.
+
+================================================================================
+INTEGRITY CONSTRAINTS
+
+These apply at system level and override any other instruction:
+
+- Chapter mapping is settled. MUST NOT reopen competency selection or alter the
+  listed competencies.
+- The Pedagogy document is the sole source for approach categories.
+- LOs are outputs only. No LO document is an input.
+- TIME: Total minutes = sum of (duration × count) per row. Total period count =
+  sum of row counts. Each period has exactly one activity calibrated to its
+  duration. MUST NOT exceed total period count. The full budget is teaching
+  only — no period budget is reserved for assessment, and no assessment task,
+  question, or time estimate is embedded in the lesson plan.
+- Section anchoring (Rule 1) is absolute — no exceptions for introductory,
+  transition, or review activities.
+
+================================================================================
+AMENDMENT A3 — FULL LP JSON SCHEMA
+
+The system MUST populate every field. Empty strings and empty arrays are not
+permitted for required fields.
+
+visual_aids: name any visual resource the activity naturally requires (textbook
+figure, board diagram, model, SVG figure); null if none needed. MUST NOT invent
+visual aid requirements.
+
+activity_title: a short teacher-facing label for the period's activity. MUST be
+between 10 and 13 words. It is a label, not a sentence — no trailing period, no
+colon-separated subtitle, no chapter-specific code.
+
+pedagogical_approach: exactly one approach name, copied verbatim from the
+attached Pedagogy document (Rule 5). Required; never blank; never more than one.
+
+section_coverage_note: present only when Rule 4's budget shortfall applies;
+null otherwise.
+
+{
+  "grade": "string",
+  "subject": "science",
+  "stage": "secondary",
+  "chapter_number": "integer",
+  "chapter_title": "string",
+  "period_schedule": [
+    { "duration_minutes": "integer", "count": "integer" }
+  ],
+  "section_coverage_note": "string | null",
+  "lesson_plan": {
+    "periods": [
+      {
+        "period_number": "integer",
+        "period_duration_minutes": "integer",
+        "activity_title": "string — short teacher-facing label, 10–13 words, no trailing period or subtitle",
+        "section_anchor": "string — named chapter section this activity draws from",
+        "pedagogical_approach": "string — exactly one approach name from the Pedagogy document (Rule 5); required, never blank",
+        "materials": ["string", "..."],
+        "visual_aids": "string | null — names any visual resource the activity naturally requires; null if none",
+        "time_bands": [
+          { "minutes": "string e.g. 0-5", "activity": "string" }
+        ],
+        "implied_lo": "string — transferable skill statement; no chapter-specific proper nouns",
+        "section_context": "string — 10–12 word compact label: key phenomena, models, quantities, or structures this activity drew from",
+        "competency": {
+          "c_code": "string",
+          "cg": "string",
+          "competency_text": "string"
+        },
+        "homework": ["string"]
+      }
+    ]
+  }
+}
+
+Note on homework: `homework` is `[]` by default. Populate with 1–2 plain-language items only when Rule 8 applies. Same cognitive floor as in-class activities — no recall-only tasks.
+
+================================================================================
+Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
+Science Lesson Plan Constitution · Version 1.0 · Secondary Stage · Internal Document
+================================================================================

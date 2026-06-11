@@ -2650,6 +2650,51 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
                     "actors":                  p.get("roles", []),
                     "pedagogical_approach":    p.get("pedagogical_approach", ""),
                 })
+            # ── Secondary-stage Science (section-anchored, flat) ─────────────
+            # Distinguisher vs Social Sciences A3: secondary Science periods
+            # carry `section_context` (and, once regenerated, a per-period
+            # `pedagogical_approach`); Social Sciences periods carry neither.
+            # Shape: section_anchor + time_bands + competency{C-code}, NO stage
+            # fields. Rendered FLAT (no stage layer), approach column, LO at end,
+            # NO materials row.
+            _is_science_secondary = (
+                p.get("section_context") is not None
+                and p.get("section_anchor") is not None
+                and isinstance(p.get("time_bands"), list)
+                and p.get("stage_label") is None
+                and p.get("progression_stage") is None
+                and not isinstance(p.get("spines_taught"), list)
+                and not isinstance(p.get("textbook_segments"), list)
+                and p.get("dominant_mode") not in {"O&R", "HI", "D&C", "C&E", "R&A"}
+            )
+            if _is_science_secondary:
+                comp = p.get("competency") or {}
+                time_slots = [
+                    {"time": tb.get("minutes", ""), "desc": tb.get("activity", "")}
+                    for tb in (p.get("time_bands") or [])
+                ]
+                c_code = comp.get("c_code", "")
+                out.append({
+                    "period_number":           p.get("period_number"),
+                    "period_duration_minutes": p.get("period_duration_minutes"),
+                    "chapter_section":         p.get("section_anchor", ""),
+                    "activity_name":           p.get("activity_title") or p.get("activity_name", ""),
+                    "activity_summary":        p.get("activity_title") or p.get("activity_name", ""),
+                    "time_slots":              time_slots,
+                    # No materials row for secondary Science — deliberately blank.
+                    "material":                "",
+                    "implied_lo":              p.get("implied_lo", ""),
+                    "c_code":                  c_code,
+                    "cg":                      comp.get("cg", ""),
+                    "weight":                  0,
+                    "competency_text":         comp_descs.get(c_code, "") or comp.get("competency_text", ""),
+                    "visual_representation":   None,
+                    # ── Secondary-Science render fields for lpa_page.html ────────
+                    "science_secondary":       True,
+                    "pedagogical_approach":    p.get("pedagogical_approach", ""),
+                    "visual_aids":             p.get("visual_aids", ""),
+                })
+                continue
             else:
                 # ── Social Sciences A3 format ────────────────────────────────
                 comp = p.get("competency") or {}
@@ -3300,7 +3345,23 @@ def _generate_pdf_bytes_alloc(
     subject: str,
 ) -> bytes:
     """PDF export for the period allocation report (landscape)."""
-    pdf = FPDF(orientation="L", unit="mm", format="A4")
+
+    class _AllocPDF(FPDF):
+        """Allocation report PDF with a consistent top margin on every page.
+
+        The title block is drawn once in the body (page 1 only). Without an
+        explicit header, FPDF's auto page break starts continuation pages
+        (page 2+) flush against the top edge with no breathing room. This
+        header() reserves the same top margin on every page so the table
+        never sits tight against the top edge — applies to all subjects and
+        stages, since the layout below is shared across them.
+        """
+
+        def header(self):
+            self.set_y(self.t_margin)
+
+    pdf = _AllocPDF(orientation="L", unit="mm", format="A4")
+    pdf.set_top_margin(16)
     pdf.set_auto_page_break(auto=True, margin=12)
     pdf.add_page()
 

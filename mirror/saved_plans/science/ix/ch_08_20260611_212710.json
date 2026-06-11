@@ -1,0 +1,511 @@
+{
+  "filename": "ch_08_20260611_212710.json",
+  "saved_at": "2026-06-11T21:27:10",
+  "grade": "Grade IX",
+  "subject": "Science",
+  "chapter_number": 8,
+  "chapter_title": "Journey Inside the Atom",
+  "period_schedule_display": "Period schedule:\n  Row 1: 45 minutes × 1 period = 45 minutes\nTotal: 1 periods · 45 minutes",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 45,
+      "count": 1
+    }
+  ],
+  "plan_status": "lp_only",
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 45,
+          "activity_title": "Tracing Ancient and Dalton-Era Ideas About Matter's Building Blocks",
+          "section_anchor": "8.1 Rediscovering the Roots of Atomic Theory",
+          "pedagogical_approach": "Inquiry approach",
+          "materials": [
+            "Blackboard or whiteboard",
+            "Timeline strip (hand-drawn or printed)",
+            "Copies of the chapter summary excerpt for Section 8.1"
+          ],
+          "visual_aids": "Board-drawn timeline from ancient India/Greece to Dalton 1808",
+          "time_bands": [
+            {
+              "minutes": "0-7",
+              "activity": "Pose the question: 'If you kept cutting a piece of iron into smaller and smaller pieces, where would you stop?' Allow 2–3 students to share their reasoning. Do not correct yet; record key ideas on the board to revisit at the end."
+            },
+            {
+              "minutes": "7-20",
+              "activity": "Students read the section silently, then in pairs identify: (a) what Acharya Kanada called the indivisible unit and how he said these units combine; (b) what Leucippus/Democritus named their particle and what the name means; (c) what distinguishes Dalton's 1808 treatment from the earlier philosophical proposals. Pairs note answers briefly."
+            },
+            {
+              "minutes": "20-33",
+              "activity": "Class discussion: each pair shares one finding. Teacher builds a three-column comparison table on the board — thinker, particle name/description, basis (philosophical vs. experimental). Students copy the table. Encourage students to question: 'Why does it matter whether an idea is philosophical or experimental?'"
+            },
+            {
+              "minutes": "33-42",
+              "activity": "Students individually write two sentences: one stating the key difference between Kanada/Greek atomic ideas and Dalton's proposal, and one explaining why Dalton's formulation is called scientific. Two volunteers read aloud; class evaluates using the table on the board."
+            },
+            {
+              "minutes": "42-45",
+              "activity": "Revisit the opening question. Ask: 'Has your answer changed after the reading? What would Dalton say?' Brief whole-class response to close the period."
+            }
+          ],
+          "implied_lo": "Students can distinguish between philosophical speculation and experimentally grounded scientific claims using stated evidence criteria.",
+          "section_context": "Kanada's parmanu, Greek atomos, Dalton's 1808 scientific atomic proposal, philosophical vs. experimental basis",
+          "competency": {
+            "c_code": "C-1.1",
+            "cg": "CG-1",
+            "competency_text": "Atomic structure (Bohr's model) and properties (valency) of atoms, and the formation of compounds from constituent elements."
+          }
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 60,
+          "activity_title": "Electrons, the Cathode Ray Tube, and Thomson's Plum Pudding Model",
+          "section_anchor": "8.2 A Short Historical Journey Through Atomic Models; 8.2.1 Thomson's model of an atom",
+          "pedagogical_approach": "Didactic approach",
+          "materials": [
+            "Blackboard or whiteboard",
+            "Chalk/markers in two colours",
+            "Chapter textbook or summary for Sections 8.2 and 8.2.1"
+          ],
+          "visual_aids": "Board diagram of cathode ray tube (low-pressure gas, cathode, anode, deflection plates, ray path); board sketch of plum pudding model with labelled positive sphere and embedded electrons",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher poses: 'By the late 1800s, scientists suspected atoms might not be indivisible. What evidence could possibly convince you that something smaller exists inside an atom?' Collect 3–4 student ideas on the board without confirming or denying."
+            },
+            {
+              "minutes": "8-22",
+              "activity": "Teacher explains the cathode ray tube experiment: apparatus set-up (low-pressure gas, cathode, anode), observation of a ray, deflection toward a positive plate showing negative charge, independence from cathode material. Draw the labelled diagram on the board step by step. Pause twice to ask: 'What does this deflection tell us about the charge of the ray particles?'"
+            },
+            {
+              "minutes": "22-35",
+              "activity": "Teacher introduces the key conclusions Thomson drew: electrons are negatively charged, their mass is far smaller than atoms, and they are a universal component of all elements. Students note these three conclusions with a brief justification for each in their own words."
+            },
+            {
+              "minutes": "35-50",
+              "activity": "Teacher presents the problem Thomson then faced: the atom is neutral, so where does the positive charge reside? Explain the plum pudding model — uniform positive sphere with embedded electrons — drawing it on the board. Students annotate their own sketch labelling: positive matter (the 'pulp'), electrons (the 'seeds'), and the requirement for charge neutrality. Prompt: 'How does this model ensure the atom is electrically neutral?'"
+            },
+            {
+              "minutes": "50-58",
+              "activity": "Students answer the Pause and Ponder question from Section 8.2.1: if the positive charge were less than the total electron charge, would the atom be neutral? Students also decide whether an orange or a lemon is a better analogy than a watermelon and explain one flaw in any fruit analogy. Two volunteers share; class critiques."
+            },
+            {
+              "minutes": "58-60",
+              "activity": "Quick oral recap: teacher asks three rapid questions — What particle did Thomson discover? What charge does it carry? What is the plum pudding model? Students answer chorally or individually."
+            }
+          ],
+          "implied_lo": "Students can construct and evaluate a scientific model by mapping experimental observations onto model features and identifying where the model's assumptions create limitations.",
+          "section_context": "Cathode ray tube experiment, electron properties, Thomson's plum pudding model, charge neutrality requirement",
+          "competency": {
+            "c_code": "C-1.1",
+            "cg": "CG-1",
+            "competency_text": "Atomic structure (Bohr's model) and properties (valency) of atoms, and the formation of compounds from constituent elements."
+          }
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 60,
+          "activity_title": "Gold Foil Scattering, Rutherford's Nuclear Model, and Its Limitations",
+          "section_anchor": "8.2.2 Testing Thomson's model: The gold foil experiment; A. Rutherford's model of an atom; B. Limitations of Rutherford's model; C. Discovery of the proton",
+          "pedagogical_approach": "Inquiry approach",
+          "materials": [
+            "Blackboard or whiteboard",
+            "Rulers for scale sketches",
+            "Printed or projected diagram of gold foil experiment (Fig. referenced in chapter)"
+          ],
+          "visual_aids": "Textbook figure of the gold foil experiment; board scale comparison: atom ~10⁻¹⁰ m, nucleus ~10⁻¹⁵ m, cricket-ground analogy",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Display the gold foil experiment diagram. Ask students: 'Based on Thomson's plum pudding model, what pattern of alpha-particle deflection would you predict?' Students sketch their prediction on paper (most pass through; slight, uniform deflections). Collect two or three predictions on the board."
+            },
+            {
+              "minutes": "8-22",
+              "activity": "Teacher narrates the actual experimental results: most pass straight through, a small fraction deflect at large angles, a tiny fraction bounce back. Students compare these results with their predictions on the board. Teacher asks: 'Which prediction was correct? What does the large deflection and backscattering tell us about how positive charge is distributed?'"
+            },
+            {
+              "minutes": "22-35",
+              "activity": "Students work the Think as a Scientist task from Section 8.2.2: predict, with a drawn diagram, how results would change if the gold foil were thicker. Students explain their diagram in one sentence. Teacher selects two contrasting diagrams and facilitates a brief class comparison — focusing on why more nuclei in the path increases large-angle deflections."
+            },
+            {
+              "minutes": "35-48",
+              "activity": "Teacher presents Rutherford's three conclusions (empty space, concentrated positive nucleus, orbiting electrons) and the planetary model. Students annotate a board sketch with: (i) path of undeflected alpha particle, (ii) path of large-angle deflection, (iii) backscattered alpha particle, and (iv) nucleus label. Teacher uses the cricket-ground/pepper-grain analogy for the size ratio; students calculate in their notes: if the atom is 10⁻¹⁰ m and nucleus is 10⁻¹⁵ m, how many times larger is the atom?"
+            },
+            {
+              "minutes": "48-57",
+              "activity": "Teacher explains the stability problem: classical physics requires an accelerating charged particle to radiate energy, so orbiting electrons should spiral inward. Students work the Pause and Ponder assertion-reason question from the end of Section 8.2.2 on whether Rutherford's nuclear-mass conclusion is explained by Thomson's model. Then teacher introduces the proton: positive charge, mass much greater than electron, number equals electron count for neutrality. Students verify for helium and sodium."
+            },
+            {
+              "minutes": "57-60",
+              "activity": "Exit check: students state in one sentence why Rutherford's model is an improvement over Thomson's AND one reason it is still incomplete."
+            }
+          ],
+          "implied_lo": "Students can use experimental evidence to evaluate competing models, identify the explanatory gap a model leaves, and reason about what new structural feature would resolve that gap.",
+          "section_context": "Gold foil alpha-particle scattering, Rutherford's planetary model, nuclear size ratio, orbital stability problem, proton discovery",
+          "competency": {
+            "c_code": "C-1.1",
+            "cg": "CG-1",
+            "competency_text": "Atomic structure (Bohr's model) and properties (valency) of atoms, and the formation of compounds from constituent elements."
+          }
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 45,
+          "activity_title": "Bohr's Shell Model and the Stability of Electrons in Fixed Energy Levels",
+          "section_anchor": "8.2.3 Bohr's model of the atom",
+          "pedagogical_approach": "Didactic approach",
+          "materials": [
+            "Blackboard or whiteboard",
+            "Coloured chalk or markers",
+            "Student notebooks"
+          ],
+          "visual_aids": "Board diagram of concentric K, L, M, N shells with energy increasing outward and electron transitions shown as arrows",
+          "time_bands": [
+            {
+              "minutes": "0-6",
+              "activity": "Recall from the previous period: 'Rutherford's model could not explain why electrons don't spiral in. What kind of rule about electron motion would prevent energy loss?' Take two student ideas and record them without evaluating yet."
+            },
+            {
+              "minutes": "6-20",
+              "activity": "Teacher explains Bohr's three key postulates: electrons occupy fixed stationary states (shells) with definite energies; energy increases with shell number (K is lowest); electrons move between shells only by absorbing or emitting the exact energy difference. Draw the concentric-shell diagram on the board labelling K, L, M, N and marking n = 1, 2, 3, 4. Show an upward arrow (absorption) and a downward arrow (emission) between shells."
+            },
+            {
+              "minutes": "20-32",
+              "activity": "Students copy the shell diagram, label each shell with its symbol and n-value, and annotate: 'In a stationary state, no energy is lost' beside the K shell. Teacher poses: 'How does Bohr's stationary-state idea directly solve the collapse problem Rutherford's model left?' Students write a two-sentence answer in their notes."
+            },
+            {
+              "minutes": "32-40",
+              "activity": "Introduce the Threads of Curiosity note: why are shells labelled K, L, M, N? Teacher explains Barkla's X-ray convention and Bohr's adoption of it. Students then answer: 'If A, B, C labelling had been used instead, what would the K shell be called, and does the letter choice affect the science?'"
+            },
+            {
+              "minutes": "40-45",
+              "activity": "Pair check: one student explains Bohr's model to a partner in under 60 seconds without looking at notes. Partner identifies one thing that was missing or unclear. Brief whole-class share of one gap identified."
+            }
+          ],
+          "implied_lo": "Students can explain how a revised theoretical postulate resolves a specific contradiction left by a prior model, using the concept of discrete energy states.",
+          "section_context": "Bohr's stationary states, shell labels K-L-M-N, energy levels, electron transition by energy absorption or emission",
+          "competency": {
+            "c_code": "C-1.1",
+            "cg": "CG-1",
+            "competency_text": "Atomic structure (Bohr's model) and properties (valency) of atoms, and the formation of compounds from constituent elements."
+          }
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 45,
+          "activity_title": "Neutron Discovery and the Mass Puzzle Solved by Chadwick",
+          "section_anchor": "8.3 What Components Contribute to the Mass of an Atom?; 8.3.1 Discovery of the Neutron",
+          "pedagogical_approach": "Discovery approach",
+          "materials": [
+            "Blackboard or whiteboard",
+            "Printed or hand-drawn table template for three subatomic particles",
+            "Student notebooks"
+          ],
+          "visual_aids": "Board table of three subatomic particles: symbol, charge, relative mass, location",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher writes on the board: 'Hydrogen has 1 proton. Helium has 2 protons. If mass came only from protons, how many times heavier than hydrogen should helium be? What do we actually observe?' Students calculate the expected ratio (×2) and the actual ratio (×4). Teacher records both on the board without explaining yet."
+            },
+            {
+              "minutes": "8-20",
+              "activity": "Teacher poses the mass-discrepancy puzzle from Section 8.3 and asks: 'What hypotheses can you generate to explain why helium is four times heavier, not twice?' Students suggest possibilities in pairs (e.g., protons are heavier in helium; something else is in the nucleus). Teacher lists hypotheses on the board."
+            },
+            {
+              "minutes": "20-33",
+              "activity": "Teacher narrates Chadwick's 1932 discovery: a particle with mass close to a proton but no electrical charge — the neutron. Students evaluate which of their board hypotheses this discovery confirms. Teacher builds the three-particle table on the board; students fill in their printed template: electron (e⁻, –1, negligible mass, shells), proton (p⁺, +1, ~1 u, nucleus), neutron (n⁰, 0, ~1 u, nucleus)."
+            },
+            {
+              "minutes": "33-41",
+              "activity": "Teacher explains why heavier nuclei need more neutrons: proton-proton electrostatic repulsion, neutrons diluting repulsion and strengthening nuclear force. Uranium example (92 protons, 146 neutrons) is placed on the board. Students answer: 'Why does uranium need 146 neutrons while carbon needs only 6 for its 6 protons?'"
+            },
+            {
+              "minutes": "41-45",
+              "activity": "Quick written check: students write the neutron count of helium (A=4, Z=2) and sodium (A=23, Z=11) using A – Z. Teacher verifies on the board."
+            }
+          ],
+          "implied_lo": "Students can identify an unexplained quantitative discrepancy in a model and explain how the discovery of a new entity resolves it.",
+          "section_context": "Helium-hydrogen mass discrepancy, Chadwick's neutron discovery, three subatomic particles and their properties, neutron role in nuclear stability",
+          "competency": {
+            "c_code": "C-1.1",
+            "cg": "CG-1",
+            "competency_text": "Atomic structure (Bohr's model) and properties (valency) of atoms, and the formation of compounds from constituent elements."
+          }
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 60,
+          "activity_title": "Element Symbols, Atomic Number, and Mass Number in Standard Notation",
+          "section_anchor": "8.4 Symbols of Elements; 8.5 Atomic Number; 8.6 Mass Number",
+          "pedagogical_approach": "Didactic approach",
+          "materials": [
+            "Blackboard or whiteboard",
+            "Reference table of 27 element symbols (from chapter)",
+            "Student notebooks"
+          ],
+          "visual_aids": "Board display of standard nuclide notation (A superscript, Z subscript, element symbol) with worked examples ¹²₆C, ¹₁H, ⁴₂He, ⁷₃Li",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher asks: 'Why would it be a problem if every country used different symbols for the same element?' Students give two or three answers. Teacher links this to IUPAC standardisation as the motivating purpose of Section 8.4."
+            },
+            {
+              "minutes": "8-22",
+              "activity": "Teacher presents the Berzelius/IUPAC rules: first letter capitalised, second lowercase, some symbols from Latin/Greek/German names. Teacher walks through eight examples from the 27-element table — Na, Fe, Hg, W, Cl, Zn, Mg, Ca — asking students to identify which name-origin each uses. Students complete the Pause and Ponder task: invent a name and symbol for a hypothetical new element and check it against the four IUPAC rules."
+            },
+            {
+              "minutes": "22-35",
+              "activity": "Teacher introduces atomic number Z: number of protons, equals number of electrons in a neutral atom. Write H (Z=1), He (Z=2), Li (Z=3) on the board and verify electron count equals proton count for each. Teacher asks: 'What would change about an atom's identity if you added or removed a proton?' Students answer in one sentence."
+            },
+            {
+              "minutes": "35-50",
+              "activity": "Teacher introduces mass number A = protons + neutrons. Explain why electron mass is negligible. Show examples: H (1+0=1), He (2+2=4), Li (3+4=7). Present the nuclide notation on the board (A as superscript, Z as subscript). Students write standard notation for H, He, Li, and carbon-12 in their notebooks. Derive the formula: neutrons = A – Z. Students calculate neutron counts for the four examples."
+            },
+            {
+              "minutes": "50-58",
+              "activity": "Students work the Pause and Ponder numerical problems from Section 8.6: find electrons, protons, and neutrons given atomic number and nucleon count; find neutrons given Z and A; find A given neutrons and Z. Teacher circulates and checks working."
+            },
+            {
+              "minutes": "58-60",
+              "activity": "Teacher reads out three nuclide notations; students call out the neutron count immediately. Rapid fire to confirm fluency."
+            }
+          ],
+          "implied_lo": "Students can decode and construct standard scientific notation to extract and calculate the subatomic composition of any given atom.",
+          "section_context": "IUPAC element symbol rules, atomic number Z as proton and electron count, mass number A as nucleon count, nuclide notation, neutron count formula A–Z",
+          "competency": {
+            "c_code": "C-1.1",
+            "cg": "CG-1",
+            "competency_text": "Atomic structure (Bohr's model) and properties (valency) of atoms, and the formation of compounds from constituent elements."
+          }
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 45,
+          "activity_title": "Applying the 2n² Shell-Filling Rules to Build Atomic Configurations",
+          "section_anchor": "8.7 How Are Electrons Distributed in Different Energy Levels?; 8.7.1 Building up atoms",
+          "pedagogical_approach": "Hands-on Science",
+          "materials": [
+            "Blackboard or whiteboard",
+            "Printed shell-diagram templates (concentric circles labelled K, L, M) — one per student",
+            "Pencils",
+            "Reference table of first 18 elements"
+          ],
+          "visual_aids": "Board summary of Bohr-Bury rules: 2n² maximum per shell, outermost ≤ 8, fill inward to outward",
+          "time_bands": [
+            {
+              "minutes": "0-7",
+              "activity": "Teacher writes the three Bohr-Bury rules on the board with the 2n² formula. Demonstrate application for n=1 (K: 2×1²=2), n=2 (L: 2×2²=8), n=3 (M: 2×3²=18). Ask: 'Why can the outermost shell never hold more than 8 even if the formula gives more?' Students suggest a reason before the teacher explains the constraint."
+            },
+            {
+              "minutes": "7-25",
+              "activity": "Students receive the printed shell-diagram templates. They fill in electron configurations for H (Z=1) through Ar (Z=18), placing the correct number of dots in each shell according to the rules. Teacher circulates, checking that electrons fill K before L, L before M, and that the outermost-8 rule is applied correctly from Na (Z=11) onward."
+            },
+            {
+              "minutes": "25-37",
+              "activity": "Students verify their diagrams against the tabulated configurations in Section 8.7.1. They identify the two elements whose outermost shells are completely filled (Ne: 2,8; Ar: 2,8,8) and record what is notable about these configurations. Teacher asks: 'What pattern do you notice about completely filled outermost shells?'"
+            },
+            {
+              "minutes": "37-43",
+              "activity": "Students work the Pause and Ponder task from Section 8.7.1: write electronic configurations for Z=12, Z=16, Z=18 and identify the number of valence electrons for ¹²₆C, ¹⁹₉F, ²⁸₁₄Si. They also solve the sodium riddle (mass number and properties given)."
+            },
+            {
+              "minutes": "43-45",
+              "activity": "Teacher asks two rapid questions: 'How many electrons can the M shell hold at most? How many can the outermost shell of any element hold?' Students answer in writing and swap to peer-check."
+            }
+          ],
+          "implied_lo": "Students can apply a quantitative filling rule to construct a structured representation of how discrete units are distributed across ordered levels.",
+          "section_context": "Bohr-Bury 2n² rule, K-L-M shell capacities, outermost-shell limit of 8, electronic configurations for elements Z=1 to Z=18",
+          "competency": {
+            "c_code": "C-1.1",
+            "cg": "CG-1",
+            "competency_text": "Atomic structure (Bohr's model) and properties (valency) of atoms, and the formation of compounds from constituent elements."
+          }
+        },
+        {
+          "period_number": 8,
+          "period_duration_minutes": 45,
+          "activity_title": "Valence Electrons, the Octet Rule, and Predicting Combining Capacity",
+          "section_anchor": "8.8 Combining Capacity of an Atom: Valency",
+          "pedagogical_approach": "Inquiry approach",
+          "materials": [
+            "Blackboard or whiteboard",
+            "Student notebooks with electronic configurations from previous period",
+            "Blank table template for valency column"
+          ],
+          "visual_aids": "Board table showing element, configuration, valence electrons, and valency for Na, O, C, He, Ne",
+          "time_bands": [
+            {
+              "minutes": "0-7",
+              "activity": "Teacher asks: 'You now know how electrons are arranged. But why do some atoms react easily while noble gases do not?' Students suggest answers using their completed shell diagrams from the previous period. Record key ideas."
+            },
+            {
+              "minutes": "7-20",
+              "activity": "Teacher introduces the valence shell, valence electrons, and the octet rule. Explain: atoms react to complete their outermost shell to 8 (or 2 for helium). Use Na (2,8,1 — loses 1, valency 1), O (2,6 — gains 2, valency 2), and C (2,4 — shares 4, valency 4) as worked examples on the board. Students copy the board table."
+            },
+            {
+              "minutes": "20-33",
+              "activity": "Students use their electronic configurations from Period 7 to determine the valency of: Li, Be, B, N, F, Mg, Al, Si, P, S, Cl, Ar. For each element, they state whether it loses, gains, or shares electrons and give the valency number. Teacher circulates and addresses errors."
+            },
+            {
+              "minutes": "33-41",
+              "activity": "Students extend Table 8.4 from the chapter by adding a valency column, as the section instructs. Two students write their completed rows for Na and Cl on the board; class verifies. Teacher asks: 'Elements at the far right of each row (noble gases) have valency 0 — why?'"
+            },
+            {
+              "minutes": "41-45",
+              "activity": "Students answer in writing: 'Carbon has valency 4. Write its electronic configuration and explain, using the octet rule, why it shares rather than simply gains or loses electrons.' Swap and peer-correct."
+            }
+          ],
+          "implied_lo": "Students can use a structural representation of a system to predict the behaviour of its components based on a completion or equilibrium rule.",
+          "section_context": "Valence shell and valence electrons, octet rule, valency by electron loss-gain-sharing, noble gas valency 0, octet completion for Na-O-C",
+          "competency": {
+            "c_code": "C-1.1",
+            "cg": "CG-1",
+            "competency_text": "Atomic structure (Bohr's model) and properties (valency) of atoms, and the formation of compounds from constituent elements."
+          }
+        },
+        {
+          "period_number": 9,
+          "period_duration_minutes": 60,
+          "activity_title": "Isotopes: Same Element, Different Neutron Counts, and Weighted Atomic Mass",
+          "section_anchor": "8.9 A Deeper Look into Atomic Structure; 8.9.1 Isotopes; A. Average atomic mass",
+          "pedagogical_approach": "Inquiry approach",
+          "materials": [
+            "Blackboard or whiteboard",
+            "Scientific calculators or rough-calculation paper",
+            "Student notebooks"
+          ],
+          "visual_aids": "Board diagram comparing protium, deuterium, and tritium: same Z, different A; board worked calculation for chlorine weighted average",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher writes on the board: 'Two atoms both have 11 protons. One has 12 neutrons; the other has 13. Are they the same element? Are they identical atoms?' Students reason in pairs and share. Do not confirm until after the investigation."
+            },
+            {
+              "minutes": "8-22",
+              "activity": "Students read Section 8.9.1 independently and then answer: (i) What is the definition of an isotope? (ii) List the three isotopes of hydrogen with their A, Z, and neutron count. (iii) What property — chemical or physical — differs between isotopes, and why? Teacher cold-calls three students and builds answers on the board."
+            },
+            {
+              "minutes": "22-37",
+              "activity": "Teacher returns to the opening sodium pair: students now confirm they are isotopes, state both atomic numbers (both 11), and state both mass numbers (23 and 24). Teacher then introduces the problem of average atomic mass: 'Chlorine's isotopes are ³⁵Cl (75%) and ³⁷Cl (25%). The simple mean is 36 u. But the periodic table shows 35.5 u. Why?' Students attempt the weighted average calculation themselves before teacher confirms: (35 × 0.75) + (37 × 0.25) = 35.5 u."
+            },
+            {
+              "minutes": "37-50",
+              "activity": "Students work the Pause and Ponder bromine problem: given bromine's two isotopes and their natural abundances, calculate the weighted average atomic mass. Teacher circulates. After students finish, teacher confirms answer on the board and asks: 'Why is the weighted average a fraction even though no single bromine atom has a fractional mass?'"
+            },
+            {
+              "minutes": "50-58",
+              "activity": "Teacher connects to real applications from the Bridging Science and Society box: ¹⁴₆C for radiocarbon dating, ¹³¹₅₃I for thyroid treatment, ²³⁵₉₂U for nuclear power, ⁶⁰₂₇Co for cancer treatment. Students write standard nuclide notation for each and identify its use. Teacher notes BARC's Dhruva reactor and Homi Bhabha's role briefly."
+            },
+            {
+              "minutes": "58-60",
+              "activity": "Exit question: 'Two carbon isotopes both have Z=6. One has A=12, the other A=14. How many neutrons does each have? Do they behave the same chemically? Why?' Students answer in two sentences."
+            }
+          ],
+          "implied_lo": "Students can calculate a weighted average from proportional data and explain why a weighted average is more accurate than a simple mean for a naturally occurring mixture.",
+          "section_context": "Isotope definition, hydrogen and carbon isotopes, same Z different A, weighted average atomic mass, chlorine 35.5 u calculation",
+          "competency": {
+            "c_code": "C-1.1",
+            "cg": "CG-1",
+            "competency_text": "Atomic structure (Bohr's model) and properties (valency) of atoms, and the formation of compounds from constituent elements."
+          }
+        },
+        {
+          "period_number": 10,
+          "period_duration_minutes": 45,
+          "activity_title": "Isobars: Same Mass Number but Different Elements Compared to Isotopes",
+          "section_anchor": "8.9.2 Isobars",
+          "pedagogical_approach": "Discovery approach",
+          "materials": [
+            "Blackboard or whiteboard",
+            "Printed or board-drawn comparison table template (isotopes vs. isobars)",
+            "Student notebooks"
+          ],
+          "visual_aids": "Board table: Ca (Z=20, A=40), K (Z=19, A=40), Ar (Z=18, A=40) side by side with column headers Z, A, neutrons, element identity",
+          "time_bands": [
+            {
+              "minutes": "0-7",
+              "activity": "Teacher writes on the board: 'Calcium (Z=20, A=40), Potassium (Z=19, A=40), Argon (Z=18, A=40). These three are not the same element — yet they share something. What is it, and how is this different from isotopes?' Students examine the numbers and discuss in pairs."
+            },
+            {
+              "minutes": "7-20",
+              "activity": "Students complete the board table for each of the three atoms: fill in Z, A, neutron count (A–Z), and element name. Teacher guides: 'Isotopes share the same Z. What do these three share?' Students identify that all three have the same A (same total nucleons) but different Z. Teacher introduces the term isobar and students formulate a definition in their own words before teacher refines it."
+            },
+            {
+              "minutes": "20-33",
+              "activity": "Students construct a two-column comparison table in their notebooks: ISOTOPES vs. ISOBARS, with rows for: what is the same, what is different, example, and chemical properties the same or different. They complete this independently, then compare with a partner."
+            },
+            {
+              "minutes": "33-40",
+              "activity": "Teacher poses: 'Bohr's model gives electrons fixed orbits, but Section 8.9.2 notes that electrons actually exist as probability clouds, not well-defined paths. What does this tell us about the limits of the Bohr model?' Students write one sentence acknowledging the model's boundary and what comes next (quantum mechanical model in higher grades)."
+            },
+            {
+              "minutes": "40-45",
+              "activity": "Rapid pair quiz: one partner gives a nuclide notation; the other states whether it is related to a second given nuclide as an isotope, an isobar, or neither. Three rounds, then swap roles."
+            }
+          ],
+          "implied_lo": "Students can differentiate between two classification categories by identifying which defining property each preserves and which it varies.",
+          "section_context": "Isobars defined by same A different Z, Ca-K-Ar example with A=40, contrast with isotopes same Z different A, Bohr model limits",
+          "competency": {
+            "c_code": "C-1.1",
+            "cg": "CG-1",
+            "competency_text": "Atomic structure (Bohr's model) and properties (valency) of atoms, and the formation of compounds from constituent elements."
+          }
+        },
+        {
+          "period_number": 11,
+          "period_duration_minutes": 60,
+          "activity_title": "Connecting Subatomic Structure, Models, and Applications Across the Whole Chapter",
+          "section_anchor": "8.2 through 8.9.2 — whole-chapter synthesis including Bridging Science and Society",
+          "pedagogical_approach": "Project-centred approach",
+          "materials": [
+            "Blackboard or whiteboard",
+            "Large sheets of paper or chart paper (one per group)",
+            "Markers in multiple colours",
+            "Student notebooks with all prior period work"
+          ],
+          "visual_aids": "Student-produced summary charts displayed on the board or walls",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher divides the class into groups of 4–5 students. Each group is assigned one strand of the chapter: (A) Model evolution — Thomson → Rutherford → Bohr; (B) Subatomic particles and atomic notation (Z, A, neutrons, nuclide notation); (C) Electron configuration and valency; (D) Isotopes and isobars with worked examples; (E) Real-world applications and BARC/isotope uses. Groups receive chart paper and markers."
+            },
+            {
+              "minutes": "8-30",
+              "activity": "Groups construct a visual summary poster for their strand. Each poster must include: a diagram or worked example, the key rule or definition in their own words, and one question their strand raises that another strand answers. Teacher circulates and prompts groups to ensure accuracy and that the key rule is stated as the group's own words (not copied verbatim from notes)."
+            },
+            {
+              "minutes": "30-48",
+              "activity": "Gallery walk: posters are placed around the room. Each student visits at least three other groups' posters (not their own), writes one piece of evidence or example that supports the other group's key claim, and notes the question the poster poses. Teacher sets a 6-minute rotation timer."
+            },
+            {
+              "minutes": "48-58",
+              "activity": "Each group reads aloud the best question they received from visiting students and answers it using their poster. Class can challenge or supplement the answer. Teacher uses this to address any persistent misconceptions seen during circulation — particularly on the distinction between isotopes and isobars, or on why Bohr's model resolved Rutherford's stability problem."
+            },
+            {
+              "minutes": "58-60",
+              "activity": "Teacher closes by restating the chapter's central thread: each experimental discovery forced a model revision; the atom went from indivisible (Dalton) to structured (Thomson, Rutherford, Bohr), and even Bohr's picture is a stepping stone to the quantum model ahead."
+            }
+          ],
+          "implied_lo": "Students can synthesise findings from multiple sections of an inquiry into a coherent explanatory account and evaluate peers' representations for accuracy and completeness.",
+          "section_context": "Whole-chapter arc from Dalton to Bohr, subatomic composition, electronic configuration, valency, isotopes and isobars, isotope applications",
+          "competency": {
+            "c_code": "C-1.1",
+            "cg": "CG-1",
+            "competency_text": "Atomic structure (Bohr's model) and properties (valency) of atoms, and the formation of compounds from constituent elements."
+          }
+        }
+      ]
+    },
+    "coverage_handoff": {},
+    "assessment_items": [],
+    "input_tokens": 10012,
+    "output_tokens": 9181,
+    "cost_inr": 15.4331,
+    "assess_input_tokens": 0,
+    "assess_output_tokens": 0,
+    "assess_cost_inr": 0.0
+  }
+}
