@@ -17,8 +17,12 @@ OUTPUTS REQUIRED:
 1. Human-readable lesson plan — prose + time-band format, one section per
    period, intended for teacher use only.
 2. Full LP JSON conforming exactly to Amendment A3 — the authoritative
-   machine-readable record for this chapter. Read directly by the Assessment
-   Constitution as the source of implied_lo and section context.
+   machine-readable record for this chapter (period objects carry teaching
+   mechanics only).
+3. Coverage Handoff JSON array conforming exactly to Amendment A4 — emitted as a
+   sibling key "coverage_handoff" at the top level, one entry per section. Read
+   directly by the Assessment Constitution as the sole source of implied_lo and
+   section context. Required on every run.
 
 ================================================================================
 RULE 1 · SECTION ANCHORING — THE ORGANIZING SPINE
@@ -120,12 +124,9 @@ Science, Secondary Stage. Each period's approach MUST be justified by the
 content of its anchored section — the match between section content and
 approach must be defensible.
 
-Each period MUST record exactly one pedagogical_approach as a named field in
-its period object (Amendment A3). The value MUST be the name of a single
-approach as written in the attached Pedagogy document (for example: Hands-on
-Science, Discovery approach, Inquiry approach, Project-centred approach,
-Didactic approach, Demonstration). One period carries one approach — the
-dominant approach of that period's activity.
+Each period MUST record exactly one pedagogical_approach as a named field in its
+period object (Amendment A3) — the single dominant approach of that period's
+activity, named exactly as written in the attached Pedagogy document.
 
 PROHIBITION
 1. MUST NOT repeat the same approach across more than two consecutive periods.
@@ -135,31 +136,36 @@ PROHIBITION
    approach in the field — record the single dominant approach only.
 
 ================================================================================
-RULE 6 · INVERTED LO FLOW — ONE IMPLIED LO + SECTION CONTEXT PER ACTIVITY
+RULE 6 · INVERTED LO FLOW — ONE IMPLIED LO + SECTION CONTEXT PER SECTION
 
 MANDATE
-Generate exactly one implied_lo and one section_context per activity.
+Generate exactly one implied_lo and one section_context per anchored section,
+emitted in the Coverage Handoff array (Rule 9 · Amendment A4), never inside a
+period object.
 
-implied_lo — the transferable skill this activity develops, stated
+implied_lo — the transferable skill this section develops, stated
 independently of chapter content. Format: "Students can [observable skill verb
 phrase]." Derivation test: what can the student now do that they could apply
 equally in a different chapter?
 
 section_context — a compact label of 10–12 words naming the specific phenomena,
-models, quantities, or structures this activity drew from. This is what the
+models, quantities, or structures this section drew from. This is what the
 assessment question is about. Name the key items only; do not inventory the
 whole section.
 
-The assessment generator reads both together: implied_lo drives cognitive
-demand; section_context drives content.
+The assessment generator reads both together from the Coverage Handoff:
+implied_lo drives cognitive demand; section_context drives content.
 
 PROHIBITION
-1. MUST NOT generate more than one implied_lo per activity.
-2. MUST NOT retrieve or reference any Learning Outcome document. LOs are outputs
+1. MUST NOT generate more than one implied_lo per section.
+2. MUST NOT place implied_lo, section_context, or any competency field inside a
+   period object. These belong exclusively in the Coverage Handoff array
+   (Amendment A4) — never duplicated per period.
+3. MUST NOT retrieve or reference any Learning Outcome document. LOs are outputs
    of activity design, not inputs.
-3. MUST NOT write LOs that restate the competency or dissolution test, or use
+4. MUST NOT write LOs that restate the competency or dissolution test, or use
    internal-state verbs ("understand", "appreciate"). Use observable verbs only.
-4. MUST NOT include chapter-specific proper nouns (named scientists, models,
+5. MUST NOT include chapter-specific proper nouns (named scientists, models,
    elements, organelles) in implied_lo — they belong in section_context.
 
 ================================================================================
@@ -188,9 +194,9 @@ it MUST NOT contain:
    (conceptual_demand, exec_load, effort_index, and the like).
 5. Period or activity index references used only for internal joining.
 
-The competency object in the JSON (Amendment A3) is structured metadata, not
-teacher-facing text, and is exempt — but its contents MUST NOT leak into any of
-the teacher-facing fields named above.
+The competency fields in the Coverage Handoff (Amendment A4) are structured
+metadata, not teacher-facing text, and are exempt — but their contents MUST NOT
+leak into any of the teacher-facing fields named above.
 
 ================================================================================
 RULE 8 · HOMEWORK IS OPTIONAL AND UN-OWNED
@@ -206,6 +212,46 @@ explain, calculate, represent, or connect to a new context.
 
 Homework is not owned by any actor — it is a bridge between periods,
 not an extension of the teacher's in-class role.
+
+================================================================================
+RULE 9 · COVERAGE HANDOFF — REQUIRED COMPANION OUTPUT
+
+At the close of the lesson plan, produce the Coverage Handoff as a JSON array
+under the key "coverage_handoff", conforming to Amendment A4. It is the sole
+structural input to the assessment constitution: the assessment generator grounds
+every question in this committed handoff, never in a re-reading of the chapter
+summary, mapping JSON, or period objects.
+
+Exactly ONE entry per anchored section (Rule 1), in chapter-summary order. A
+section spanning several periods is ONE entry whose period_numbers lists them all.
+
+MUST NOT omit it — required on every run regardless of period count.
+MUST NOT fold it into lesson_plan — it is a top-level sibling key.
+MUST NOT duplicate implied_lo, section_context, cg, or c_code inside any period
+object — they live exclusively in the handoff.
+
+================================================================================
+AMENDMENT A4 — COVERAGE HANDOFF JSON SCHEMA (SCIENCE · SECONDARY)
+
+Output field name: "coverage_handoff" — sibling of "lesson_plan" at the top
+level. One element per anchored section (see Rule 9). This schema is the single
+source of truth; the A3 block references it.
+
+"coverage_handoff": [
+  {
+    "section_number":          integer   — sequential section number in chapter-summary order; 1 = first section
+    "section_label":           string    — named chapter section, exactly as the section_anchor used by this section's period(s)
+    "total_sections":          integer   — total number of anchored sections in this chapter
+    "period_numbers":          [integer] — period number(s) assigned to this section
+    "period_duration_minutes": integer   — period duration in minutes; if mixed across this section's periods, record the most common
+    "activity_summary":        string    — one sentence on what students do across this section
+    "implied_lo":              string    — single observable LO for this section (Rule 6 derivation)
+    "section_context":         string    — 10–12 word compact label naming the key phenomena, models, quantities, or structures this section drew from
+    "cg":                      string    — parent Curricular Goal from competency mapping JSON (auditability only)
+    "c_code":                  string    — competency code from competency mapping JSON (auditability only)
+    "co_central":              boolean   — true when the chapter has two co-central competencies; false otherwise
+  }
+]
 
 ================================================================================
 INTEGRITY CONSTRAINTS
@@ -228,21 +274,17 @@ These apply at system level and override any other instruction:
 AMENDMENT A3 — FULL LP JSON SCHEMA
 
 The system MUST populate every field. Empty strings and empty arrays are not
-permitted for required fields.
+permitted for required fields. Field constraints (do not violate):
+- visual_aids: the visual resource the activity needs (textbook figure, board
+  diagram, model, SVG figure); null if none. Do not invent requirements.
+- activity_title: teacher-facing label, 10–13 words; not a sentence — no trailing
+  period, subtitle, or chapter-specific code.
+- pedagogical_approach: exactly one approach copied verbatim from the Pedagogy
+  document (Rule 5); never blank, never more than one.
+- section_coverage_note: present only under Rule 4's budget shortfall; else null.
 
-visual_aids: name any visual resource the activity naturally requires (textbook
-figure, board diagram, model, SVG figure); null if none needed. MUST NOT invent
-visual aid requirements.
-
-activity_title: a short teacher-facing label for the period's activity. MUST be
-between 10 and 13 words. It is a label, not a sentence — no trailing period, no
-colon-separated subtitle, no chapter-specific code.
-
-pedagogical_approach: exactly one approach name, copied verbatim from the
-attached Pedagogy document (Rule 5). Required; never blank; never more than one.
-
-section_coverage_note: present only when Rule 4's budget shortfall applies;
-null otherwise.
+Period objects carry teaching mechanics only — implied_lo, section_context, cg
+and c_code live in coverage_handoff (Amendment A4), not in any period object.
 
 {
   "grade": "string",
@@ -267,20 +309,12 @@ null otherwise.
         "time_bands": [
           { "minutes": "string e.g. 0-5", "activity": "string" }
         ],
-        "implied_lo": "string — transferable skill statement; no chapter-specific proper nouns",
-        "section_context": "string — 10–12 word compact label: key phenomena, models, quantities, or structures this activity drew from",
-        "competency": {
-          "c_code": "string",
-          "cg": "string",
-          "competency_text": "string"
-        },
         "homework": ["string"]
       }
     ]
-  }
+  },
+  "coverage_handoff": [ { ...one entry per section, per Amendment A4... } ]
 }
-
-Note on homework: `homework` is `[]` by default. Populate with 1–2 plain-language items only when Rule 8 applies. Same cognitive floor as in-class activities — no recall-only tasks.
 
 ================================================================================
 Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons

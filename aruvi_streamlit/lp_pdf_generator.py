@@ -2320,19 +2320,43 @@ def _json_to_science_secondary_lp_data(j: dict, date_str: str, weight) -> dict:
     flat-period constitution) → data dict consumed by
     _build_science_secondary_lp().
 
-    Secondary JSON period shape:
+    Secondary JSON period shape (teaching mechanics only):
       {period_number, period_duration_minutes, activity_title, section_anchor,
        pedagogical_approach, materials (ignored), visual_aids, time_bands[
-       {minutes, activity} ], implied_lo, section_context, competency{...}}
+       {minutes, activity} ]}
+    implied_lo, section_context, cg and c_code now live in the top-level
+    coverage_handoff array (one entry per section), NOT in the period object.
 
     Competencies for the header table are loaded from the per-chapter mapping
     JSON + framework descriptions (same authoritative source as the middle path),
-    falling back to the per-period competency object's text when descriptions
-    are unavailable.
+    falling back to the coverage_handoff's c_codes (or, for legacy saved plans,
+    the per-period competency object) when descriptions are unavailable.
     """
     import json as _json
 
-    lp = (j.get("result") or {}).get("lesson_plan") or {}
+    _result = j.get("result") or {}
+    lp = _result.get("lesson_plan") or {}
+
+    # Coverage handoff is now a sibling of lesson_plan (one entry per section).
+    # Build lookups so per-period rendering can resolve implied_lo and the
+    # competency fallback from the handoff rather than from the period object.
+    # Backward-compatible: older saved plans embed these fields per period and
+    # have an empty/absent handoff, in which case the per-period values are used.
+    _handoff = _result.get("coverage_handoff") or []
+    _lo_by_period: dict = {}      # period_number -> implied_lo
+    _handoff_codes: list = []     # c_codes seen in the handoff, in order
+    _handoff_code_text: dict = {} # c_code -> text (auditability only)
+    if isinstance(_handoff, list):
+        for _entry in _handoff:
+            if not isinstance(_entry, dict):
+                continue
+            _lo = _entry.get("implied_lo") or ""
+            for _pn in _entry.get("period_numbers") or []:
+                _lo_by_period[_pn] = _lo
+            _hc = _entry.get("c_code", "")
+            if _hc and _hc not in _handoff_codes:
+                _handoff_codes.append(_hc)
+                _handoff_code_text[_hc] = _entry.get("competency_text", "")
 
     _grade_map = {
         "Grade VI": "vi", "Grade VII": "vii", "Grade VIII": "viii",
@@ -2375,15 +2399,29 @@ def _json_to_science_secondary_lp_data(j: dict, date_str: str, weight) -> dict:
     except Exception:
         pass
 
-    # Fallback: per-period competency text if descriptions file missing
+    # Fallback when the framework descriptions file is missing.
+    # New structure: read c_codes/text from the coverage_handoff.
+    # Old structure: read from the per-period competency object.
     if not _comp_descs:
-        for p in lp.get("periods") or []:
-            comp = p.get("competency") or {}
-            code = comp.get("c_code", "")
-            if code and code not in _comp_descs:
-                _comp_descs[code] = comp.get("competency_text", "")
+        if _handoff_codes:
+            for code in _handoff_codes:
+                if code not in _comp_descs:
+                    _comp_descs[code] = _handoff_code_text.get(code, "")
                 if code not in _c_codes:
                     _c_codes.append(code)
+        else:
+            for p in lp.get("periods") or []:
+                comp = p.get("competency") or {}
+                code = comp.get("c_code", "")
+                if code and code not in _comp_descs:
+                    _comp_descs[code] = comp.get("competency_text", "")
+                    if code not in _c_codes:
+                        _c_codes.append(code)
+    # Even when descriptions exist, ensure handoff c_codes are represented.
+    elif _handoff_codes:
+        for code in _handoff_codes:
+            if code not in _c_codes:
+                _c_codes.append(code)
 
     competencies = [(code, _comp_descs.get(code, "")) for code in _c_codes]
 
@@ -2403,7 +2441,11 @@ def _json_to_science_secondary_lp_data(j: dict, date_str: str, weight) -> dict:
             "pedagogical_approach":    p.get("pedagogical_approach") or "",
             "visual_aids":             p.get("visual_aids") or "",
             "time_breakdown":          time_breakdown,
-            "learning_outcome":        p.get("implied_lo") or "",
+            # New structure: implied_lo lives in coverage_handoff (per section).
+            # Resolve via period_number; fall back to per-period implied_lo for
+            # older saved plans that still embed it.
+            "learning_outcome":        _lo_by_period.get(p.get("period_number"))
+                                       or p.get("implied_lo") or "",
         })
 
     return {

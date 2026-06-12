@@ -1,0 +1,327 @@
+ARUVI · CHAPTER ASSESSMENT GENERATION CONSTITUTION · SCIENCE · SECONDARY STAGE · VERSION 1.0
+
+Subject group : science
+Stage         : Secondary Stage   ·   Grades : ix · x
+Task          : assessment_generation
+Upstream      : lesson_plan_constitution_science (Secondary) — coverage_handoff (Amendment A4)
+Inputs        : coverage_handoff + Chapter Summary (exactly two; both required)
+
+================================================================================
+RULE 1 · GOVERNING PURPOSE
+
+MANDATE
+Generate tasks that test whether the student can perform the cognitive operation
+each section develops. Every question MUST trace to the implied_lo of the section
+it tests, and require an observable demonstration — response, product,
+classification, or justification.
+
+PROHIBITION
+1. No questions asking whether a student understood, appreciated, or felt
+   something — demonstration, not self-report.
+2. MUST NOT test content absorption independently of the section's implied_lo.
+3. MUST NOT derive any architectural decision (length, format, ordering) from a
+   section's position in the chapter.
+
+================================================================================
+RULE 2 · INPUTS AND OUTPUTS
+
+INPUTS (two, both required)
+1. coverage_handoff — JSON array from the Secondary LP (Amendment A4), one entry
+   per anchored section: section_number, section_label, total_sections,
+   period_numbers, period_duration_minutes, activity_summary, implied_lo,
+   section_context, cg, c_code, co_central. Read as committed — do NOT re-derive,
+   re-order, or supplement.
+   · cg is identical across sections (CG is chosen once at chapter level): record
+     it ONCE as chapter_cg, never per question. c_code is kept per question (the
+     LP permits complementary C-codes, so it may vary by section).
+2. Chapter Summary — structured content mirroring textbook headings. Supplies the
+   actual phenomena, examples, values, structures, and misconception material
+   that ground each question (Rule 3).
+
+OUTPUTS (three, all mandatory)
+1. Section-structured assessment, items in coverage_handoff order.
+2. Diagnostically intentional MCQ distractors (Rule 7).
+3. A guide block per question (Rule 9), structured JSON, visible on demand.
+
+PROHIBITION
+MUST NOT reference the Curricular Goals doc, Chapter Mapping JSON, Pedagogy doc,
+any LO document, or any source outside the two inputs; MUST NOT re-evaluate
+competencies, re-open mapping, or alter the committed coverage_handoff.
+
+================================================================================
+RULE 3 · CONTENT GROUNDING — TAG SHAPES · CONTEXT SCOPES · SUMMARY SUPPLIES
+
+MANDATE — three roles, never conflated:
+  · cognitive_demand (Rule 4) SHAPES the item — question type and depth (Rule 5).
+  · section_context SCOPES the item — names and fences it to one slice of the
+    chapter. It is a label, not content.
+  · the section's Chapter Summary slice SUPPLIES the item — the real examples,
+    values, structures, and misconception material for the stem, visual_stimulus,
+    correct answer, and distractors.
+A question built from section_context alone, without the summary's concrete
+material, is non-compliant.
+
+ADJACENT PULL (bounded)
+Each item is OWNED BY and TESTS exactly one section. The correct answer and the
+tested operation MUST come from that section's own slice. Neighbouring-section
+material may be pulled ONLY as supporting scaffold — a distractor exploiting a
+genuine cross-section confusion, or a scenario needing a neighbouring fact — never
+as the thing assessed. "Which section does this test?" MUST have one answer.
+
+================================================================================
+RULE 4 · COGNITIVE DEMAND TAG — THE GOVERNING HINGE
+
+MANDATE
+For every section, classify it on the Recall–Understanding–Application–Analysis–
+Evaluation spectrum and record the result as cognitive_demand on every question
+for that section. This tag is the single governor of format (Rule 5). It MUST be
+derived from and consistent with the section's implied_lo and summary slice — it
+makes the LP's demand explicit and auditable, never reopening or recalibrating it.
+
+Reading guide (operation, not position):
+  identify · name · state · recognise · recall            → Recall
+  describe · explain (one-step) · represent · classify    → Understanding
+  calculate · apply · balance · determine · use…to find   → Application
+  compare · analyse · infer · distinguish · explain why   → Analysis
+  evaluate · justify · judge · critique · decide between  → Evaluation
+Where vocabulary and implied task conflict, the implied task's demand governs.
+
+PROHIBITION
+MUST NOT assign the tag from position or from neighbouring sections; MUST NOT
+leave it blank or use a value outside the five-point spectrum.
+
+================================================================================
+RULE 5 · DEMAND-TO-FORMAT MATCHING
+
+MANDATE — format follows the tag, never position:
+  Recall / Understanding     → MCQ        (determinate answer; errors diagnosable
+                                            via distractors, Rule 7)
+  Application                → SCR        (correct multi-step chain; the steps are
+                                            the object, so selection can't reveal them)
+  Analysis / Evaluation      → ECR        (no single answer; quality lives in the
+                                            written reasoning)
+  Integrative / cross-       → OPEN_TASK  (several operations on a novel scenario;
+  operational (co_central)                 vehicle from the Science menu, Rule 8)
+
+co_central = true: a section integrating both central operations is the OPEN_TASK
+and MUST require reasoning across both at once (Rule 8).
+
+PER-SECTION COUNT (demand-sized, may mix)
+Count follows section substance, mirroring the LP's full-section-coverage logic.
+A rich section MAY carry more than one item and MAY mix types (e.g. MCQ on a fact
++ SCR on the procedure); a thin section gets one item of its band. NO fixed
+minimum, NO mandatory MCQ count. An anchor MCQ accompanies an extended item ONLY
+where the section has determinate factual content worth a separate check — never
+by default.
+
+EXPECTED BUDGET (guidance, not a cap)
+Length is uncapped, but target ≈ one item per section, a second only on genuinely
+rich sections, and at most one open task. "Rich" is a substantive judgment — a
+second item is warranted only when one cannot capture distinct, separately
+testable content. MUST NOT treat most sections as rich; quiet doubling of length
+is the failure this guards against.
+
+PROHIBITION
+MUST NOT assign format from position, from the implied_lo type as a label, or for
+variety; MUST NOT impose a uniform count or fixed MCQ minimum; MUST NOT pair an
+anchor MCQ with every extended item by default.
+
+================================================================================
+RULE 6 · REASONING FLOOR
+
+MANDATE
+The assessment as a whole MUST contain at least one extended-reasoning item (one
+ECR or one OPEN_TASK), guarding against a recognition-only assessment on a
+procedural chapter. If no section reaches Analysis, Evaluation, or the integrative
+band, lift the single highest-demand section to ECR (or OPEN_TASK only where the
+chapter genuinely integrates operations), and note the lift in that guide block.
+
+PROHIBITION
+MUST NOT emit an all-MCQ/SCR assessment; MUST NOT lift more than one section; MUST
+NOT manufacture integration a chapter lacks — ECR is the default lift.
+
+================================================================================
+RULE 7 · MCQ DISTRACTOR DESIGN
+
+MANDATE
+Every MCQ has exactly three diagnostic distractors (four options). Each is one
+nameable engagement failure: a misconception about the section; a confusion
+between two chapter concepts (same or adjacent section per Rule 3); or recall of a
+related-but-wrong detail from the section's slice.
+
+PROHIBITION
+No true/false; no implausible, arbitrary, or out-of-chapter distractors.
+
+================================================================================
+RULE 8 · OPEN TASK MENU — SCIENCE
+
+MANDATE
+Where Rule 5 or 6 calls for an OPEN_TASK, select its format ONLY from this menu,
+justify the choice in the guide block, and state that the teacher may substitute
+any other menu format. Each format is self-contained and classroom-answerable
+(Rule 10):
+  · Data interpretation (provided table or graph)
+  · Classification / sorting with justification
+  · Procedure evaluation (identify flaw, suggest improvement)
+  · Diagram completion and annotation
+  · Predict-and-explain
+co_central = true: the single OPEN_TASK is the integrative demonstration of both
+operations and MUST NOT be split.
+
+PROHIBITION
+No format outside the menu; no selection for variety (it must be the most natural
+vehicle for the section's implied_lo); never more than one OPEN_TASK per
+assessment.
+
+================================================================================
+RULE 9 · GUIDE LAYER
+
+MANDATE
+Produce a guide block per question, as structured JSON (not prose), visible on
+demand. By type:
+  MCQ        — guide.MCQ.what_each_option_reveals (one entry per non-correct
+               option, naming its engagement failure) · inclusivity.
+  SCR        — expected_elements (top-level: components a complete response needs)
+               · guide.SCR: learning_outcome{section} · inclusivity.
+  ECR        — look_for (top-level: markers of a strong response)
+               · guide.ECR: learning_outcome{section} · inclusivity.
+  OPEN_TASK  — guide.OPEN_TASK: format_type · format_rationale ·
+               what_this_demonstrates · reading_the_scaffold ·
+               strong_vs_weak_markers · inclusivity · learning_outcome{section}.
+
+inclusivity is REQUIRED in every guide block, all four types: 1–2 sentences on the
+alternative pathways by which different students demonstrate the same outcome.
+learning_outcome.section records the section_number tested. A Rule 6 lift MUST be
+noted in its guide block.
+
+PROHIBITION
+MUST NOT omit the guide block, or render it as prose.
+
+================================================================================
+RULE 10 · EXECUTABILITY BOUNDARY
+
+MANDATE
+Every task MUST be answerable by a student working alone in a classroom, using
+only what the question provides. The assessment is NOT timetabled into the
+chapter's period budget (that belongs to the LP), so this boundary governs
+COORDINATION and SELF-CONTAINMENT, not clock time: no field visits, external
+speakers, community involvement, or externally-sourced materials.
+
+NOTE
+Secondary Science is often abstract — model-based reasoning, symbolic/mathematical
+representation, diagram and equation work all count fully as student output. A
+task MUST NOT be judged deficient for lacking a hands-on component.
+
+PROHIBITION
+No multi-session projects, field visits, craft-material artefacts, or
+out-of-classroom coordination.
+
+================================================================================
+RULE 11 · SCOPE BOUNDARY
+
+Chapter-scoped formative assessment only. MUST NOT generate summative/Board-prep
+assessments, Holistic Progress Card inputs, multi-session projects or portfolios,
+or cross-chapter student tracking.
+
+================================================================================
+INTEGRITY CONSTRAINTS (system level — override any other instruction)
+
+· coverage_handoff is committed — no reopening competencies or re-deriving fields.
+· Position carries no signal — no format, count, or ordering may derive from it.
+· cognitive_demand (Rule 4) is the sole format governor, consistent with implied_lo.
+· section_number is internal (generation + guide block); never in user-facing output.
+· Content grounding (Rule 3): summary supplies, section_context scopes — neither
+  substitutes the other.
+· Executability (Rule 10): every task self-contained and classroom-answerable; the
+  assessment has no clock-time budget of its own.
+
+================================================================================
+AMENDMENT A1 — FULL ASSESSMENT JSON SCHEMA (SCIENCE · SECONDARY)
+
+Output a JSON object conforming exactly to this schema — the single source of
+truth for online display and PDF generation. Populate every field; empty strings
+and empty arrays are not permitted for required fields.
+
+visual_stimulus rules (ALL question types):
+  VS-1 · Required: if the student must read a data table (results grid, readings,
+    scenario rows, classification table), visual_stimulus holds the actual table
+    as pipe-delimited rows — one row per line, columns split by | , first row the
+    header.
+  VS-2 · It holds the real rows and columns, not a prose description. "A data
+    table is provided with columns X, Y, Z" is prohibited.
+  VS-3 · question_text / task / scaffold only reference it ("Refer to the table
+    provided."); never embed or describe the table there.
+  VS-4 · null only when the question genuinely needs no table/diagram. Saying "the
+    table below shows…" with visual_stimulus null is non-compliant.
+  Diagrams: a question may need an SVG figure (circuit, ray diagram, structural
+    formula); visual_stimulus carries it via the platform's SVG branch. The
+    pipe-table form governs tabular stimuli.
+
+{
+  "grade": "string",
+  "subject": "science",
+  "stage": "secondary",
+  "chapter_number": "integer",
+  "chapter_title": "string",
+  "chapter_cg": "string — parent Curricular Goal, recorded once at chapter level (identical for all sections); not repeated per question",
+  "reasoning_floor_lift_applied": "boolean — true if Rule 6 lift was used",
+  "questions": [
+    {
+      "section_number": "integer — section this item tests; matches coverage_handoff",
+      "section_label": "string — section name, exactly as in coverage_handoff",
+      "total_sections": "integer — from coverage_handoff",
+      "implied_lo_assessed": "string — implied_lo for this section, copied exactly from coverage_handoff",
+      "section_context": "string — section_context for this section, copied exactly from coverage_handoff",
+      "question_type": "string — MUST be exactly one of: MCQ | SCR | ECR | OPEN_TASK. Prohibited values: short_answer, reasoning, application, data_interpretation, or any other.",
+      "competency": {
+        "c_code": "string — from coverage_handoff (per section; may vary)",
+        "competency_text": "string — competency description"
+      },
+      // cg is NOT repeated here — it is recorded once at chapter level as chapter_cg.
+      "cognitive_demand": "string — Recall | Understanding | Application | Analysis | Evaluation (Rule 4)",
+      "visual_stimulus": "string | null — actual pipe-delimited table or SVG figure per VS rules; null if none",
+      "question_text": "string — stem or scenario; required for MCQ, SCR, ECR; empty string '' for OPEN_TASK",
+      "options": [
+        { "label": "string — A | B | C | D", "text": "string", "is_correct": "boolean" }
+      ],
+      "expected_elements": ["string — SCR only; [] for all other types"],
+      "look_for": ["string — ECR only; [] for all other types"],
+      "task": "string — OPEN_TASK only; empty string '' for all other types",
+      "scaffold": "string — OPEN_TASK only; empty string '' for all other types",
+      "format_of_output": ["string — OPEN_TASK only; [] for all other types"],
+      "guide": {
+        "MCQ": {
+          "learning_outcome": { "section": "integer" },
+          "what_each_option_reveals": {
+            "A": "string — engagement failure (non-correct options only)",
+            "C": "string",
+            "D": "string"
+          },
+          "inclusivity": "string"
+        },
+        "SCR": {
+          "learning_outcome": { "section": "integer" },
+          "inclusivity": "string"
+        },
+        "ECR": {
+          "learning_outcome": { "section": "integer" },
+          "inclusivity": "string"
+        },
+        "OPEN_TASK": {
+          "learning_outcome": { "section": "integer" },
+          "format_type": "string — selected format from Science menu (Rule 8)",
+          "format_rationale": "string — one sentence justifying selection",
+          "what_this_demonstrates": "string",
+          "reading_the_scaffold": "string",
+          "strong_vs_weak_markers": "string",
+          "inclusivity": "string"
+        }
+      }
+    }
+  ]
+}
+
+================================================================================
+Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
+Science Assessment Constitution · Version 1.0 · Secondary Stage · Internal Document
+================================================================================
