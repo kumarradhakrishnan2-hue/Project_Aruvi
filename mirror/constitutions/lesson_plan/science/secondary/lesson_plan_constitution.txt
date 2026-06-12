@@ -247,11 +247,14 @@ source of truth; the A3 block references it.
     "activity_summary":        string    — one sentence on what students do across this section
     "implied_lo":              string    — single observable LO for this section (Rule 6 derivation)
     "section_context":         string    — 10–12 word compact label naming the key phenomena, models, quantities, or structures this section drew from
-    "cg":                      string    — parent Curricular Goal from competency mapping JSON (auditability only)
-    "c_code":                  string    — competency code from competency mapping JSON (auditability only)
+    "c_code":                  string    — competency code from competency mapping JSON (auditability only; may vary by section under the chapter CG)
     "co_central":              boolean   — true when the chapter has two co-central competencies; false otherwise
   }
 ]
+
+NOTE: cg (parent Curricular Goal) is chosen once at chapter level and is identical
+across all sections. It is therefore NOT repeated per section entry — it is emitted
+once at the top level of the LP JSON as "chapter_cg" (Amendment A3).
 
 ================================================================================
 INTEGRITY CONSTRAINTS
@@ -283,8 +286,9 @@ permitted for required fields. Field constraints (do not violate):
   document (Rule 5); never blank, never more than one.
 - section_coverage_note: present only under Rule 4's budget shortfall; else null.
 
-Period objects carry teaching mechanics only — implied_lo, section_context, cg
-and c_code live in coverage_handoff (Amendment A4), not in any period object.
+Period objects carry teaching mechanics only — implied_lo, section_context and
+c_code live in coverage_handoff (Amendment A4), not in any period object. cg is
+emitted once at the top level as chapter_cg (below), never per section.
 
 {
   "grade": "string",
@@ -292,6 +296,7 @@ and c_code live in coverage_handoff (Amendment A4), not in any period object.
   "stage": "secondary",
   "chapter_number": "integer",
   "chapter_title": "string",
+  "chapter_cg": "string — parent Curricular Goal from competency mapping JSON; chosen once at chapter level, identical for all sections (auditability)",
   "period_schedule": [
     { "duration_minutes": "integer", "count": "integer" }
   ],

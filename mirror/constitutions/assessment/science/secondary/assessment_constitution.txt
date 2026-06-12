@@ -26,14 +26,14 @@ PROHIBITION
 RULE 2 · INPUTS AND OUTPUTS
 
 INPUTS (two, both required)
-1. coverage_handoff — JSON array from the Secondary LP (Amendment A4), one entry
-   per anchored section: section_number, section_label, total_sections,
-   period_numbers, period_duration_minutes, activity_summary, implied_lo,
-   section_context, cg, c_code, co_central. Read as committed — do NOT re-derive,
+1. coverage_handoff — from the Secondary LP (Amendment A4). One entry per anchored
+   section: section_number, section_label, total_sections, period_numbers,
+   period_duration_minutes, activity_summary, implied_lo, section_context, c_code,
+   co_central. The parent Curricular Goal arrives once at chapter level (chapter_cg
+   in the LP JSON), NOT per section. Read as committed — do NOT re-derive,
    re-order, or supplement.
-   · cg is identical across sections (CG is chosen once at chapter level): record
-     it ONCE as chapter_cg, never per question. c_code is kept per question (the
-     LP permits complementary C-codes, so it may vary by section).
+   · Emit chapter_cg once at chapter level, never per question. c_code is kept per
+     question (the LP permits complementary C-codes, so it may vary by section).
 2. Chapter Summary — structured content mirroring textbook headings. Supplies the
    actual phenomena, examples, values, structures, and misconception material
    that ground each question (Rule 3).
