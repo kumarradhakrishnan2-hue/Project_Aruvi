@@ -1,0 +1,30 @@
+{
+    "stage": "secondary",
+    "subject": "science",
+    "grade": "ix",
+    "chapter_number": 11,
+    "chapter_title": "Reproduction: How Life Continues",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": true,
+    "primary": [
+      {
+        "cg": "CG-3",
+        "c_code": "C-3.2",
+        "justification": "The chapter's entire domain is reproduction as a life process — it systematically traces asexual reproduction (vegetative propagation, budding, spore formation) and sexual reproduction across the spectrum from plants (flower structure, pollination, fertilisation, seed formation) through animals (external vs. internal fertilisation, variation in reproductive strategies) to humans (male and female reproductive systems, gametogenesis, ovulation, pregnancy, childbirth, contraception). This matches C-3.2's 'reproduction' clause directly. All six student activities (11.1–11.6) operationalise aspects of this reproductive life process from propagation techniques to pollination mechanics."
+      },
+      {
+        "cg": "CG-3",
+        "c_code": "C-3.3",
+        "justification": "Section 11.2.1 constitutes a cognitively distinct, named sectioned strand on the mechanisms of heredity and variation: it explains chromosomes as carriers of genetic information, meiosis as the mechanism that halves chromosome number into haploid gametes, and the random independent assortment of 23 chromosome pairs as the source of the enormous variation among offspring. Activity 11.4 directly operationalises chromosome segregation by simulating gamete formation with bead combinations. The section explains how this variation enables adaptation and evolution — meeting C-3.3's 'variation' clause. This strand is independent from the reproductive-process mechanics of C-3.2 and carries co-central weight."
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's ability to analyse how organisms reproduce through asexual and sexual methods AND how meiotic chromosome segregation generates the genetic variation that drives adaptation, by tracing reproduction from unicellular budding and plant vegetative propagation through flowering plant pollination and fertilisation to human gametogenesis and the menstrual cycle.",
+    "conceptual_demand": 3,
+    "activity_count": 6,
+    "activity_load": 2,
+    "demo_count": 0,
+    "demo_load": 0,
+    "exec_load": 0,
+    "effort_index": 10.0
+}

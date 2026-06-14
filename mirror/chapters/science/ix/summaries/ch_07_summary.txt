@@ -1,0 +1,74 @@
+Chapter 7: Work, Energy, and Simple Machines
+
+7.1 Work Done by a Constant Force
+
+This section introduces the scientific definition of work by building from everyday intuitions about lifting objects. Using the example of lifting wheat bags to different heights and in different quantities, the chapter shows that work done is proportional both to the force applied and to the displacement in the direction of that force. The formal definition states that work done by a constant force on an object equals force multiplied by displacement in the direction of the force (W = F × s), with the SI unit being the joule (J), defined as 1 newton of force over 1 metre of displacement. The section also introduces the force-displacement graph, showing that work equals the area under the graph, a method valid even when force is not constant.
+
+7.1.1 When is work done equal to zero?
+
+This subsection establishes three conditions under which no work is done: when force is zero, when displacement is zero (such as pushing a rigid wall), and when force is perpendicular to displacement (such as carrying a box horizontally while applying an upward force). The distinction between the everyday sense of effort and the scientific sense of work is highlighted — muscles can exhaust the body's internal energy even when zero scientific work is done on an object.
+(Pause and Ponder) Students consider whether a weightlifter holding a barbell steady does any work on it, and whether friction on a sliding stack of coins does positive, negative, or zero work.
+
+7.1.2 Positive and negative work done
+
+The section explains that work is positive when force and displacement are in the same direction, and negative when they are opposite. The example of a goalkeeper stopping a football illustrates negative work: the force is opposite to the ball's displacement, yielding a negative product. Worked examples include a girl lifting and lowering a dumbbell (positive then negative work) and a goalkeeper exerting 200 N over 15 cm, performing –30 J of work on the ball. A note clarifies that by Newton's third law, both the ball and the goalkeeper do work on each other simultaneously, in opposite signs.
+
+7.2 The Work-Energy Theorem
+
+This section introduces the concept of energy as the capacity to do work, illustrated through a cricket ball thrown at a wicket and a flowerpot falling from a height. When positive work is done on an object, it gains energy; the object can then transfer that energy to another object by applying force and displacing it. The work-energy theorem formalises this as: work done on an object = change in its energy (W = ΔE). The theorem holds for systems of objects and for non-constant forces. The SI unit of energy is the joule. A worked example on a carrom shot traces the energy transfers through collisions between striker, white coin, and black coin, applying Newton's third law to identify positive and negative work at each collision.
+(Pause and Ponder) Students trace the forms in which muscular energy appears when pedalling a bicycle on a flat road.
+
+7.3 Forms of Energy
+
+The chapter catalogues the major forms energy can take: mechanical, thermal, light, sound, electrical, nuclear, and chemical. It emphasises that energy can be converted from one form to another — electrical energy becomes light in a bulb, chemical energy in food powers muscles into mechanical energy, and a ringing bell converts mechanical energy into sound. The section connects to mechanical energy as the primary focus of this chapter, noting its direct link to the forces and motions studied in earlier chapters.
+
+7.4 Mechanical Energy
+
+Mechanical energy is defined as the energy an object possesses due to its motion or its position. The section frames kinetic and potential energy as the two components of mechanical energy and introduces them through the work-energy theorem.
+
+7.4.1 Kinetic energy
+
+This subsection derives the expression for kinetic energy by applying the definition of work and Newton's second law to an object of mass m accelerating from initial velocity u to final velocity v under constant force F over displacement s. Using kinematics (v² = u² + 2as) and substituting into W = F × s = ma × s, the chapter arrives at W = ½m(v² – u²), which represents the change in energy. When the initial velocity is zero, the kinetic energy is K = ½mv². The kinetic energy has no direction, increases with positive work, decreases with negative work, and remains constant when no work is done. Worked examples include: velocity doubling gives four times the kinetic energy; calculating the kinetic energy of a cricket ball bowled at 154.8 km h⁻¹ (≈184.9 J); and finding the landing speed of a jet aircraft stopped by a wire exerting 367,500 N over 100 m (70 m s⁻¹).
+(Pause and Ponder) Students compare kinetic energies of two objects with the same KE but masses m and 4m, and consider whether constant velocity changes kinetic energy with position.
+
+7.4.2 Potential energy
+
+This subsection introduces potential energy through examples of deformed objects storing energy: a stretched rubber band in a slingshot releases kinetic energy when let go, a bent bow transfers stored energy to an arrow, and a compressed or stretched spring stores the work done in deforming it. The broader principle is stated: whenever a system of objects interacts through gravitational, electric, or magnetic forces, the system stores energy due to the relative positions of the objects. This stored energy — whether due to deformation or relative position — is called potential energy.
+
+Gravitational Potential Energy
+
+This named content-block focuses on the gravitational potential energy of the Earth-ball system, treating the Earth as essentially stationary. Activity 7.1 has students drop a heavy ball into loose sand from heights of 1 m and 2 m and compare the depths of the depressions formed, establishing that greater height means greater potential energy. The derivation uses the work-energy theorem: to raise a mass m to height h at constant speed requires a force equal to mg, so the work done W = mgh = the potential energy gained, giving U = mgh. The unit is the joule. A worked example calculates the potential energy of a 200 g cricket ball thrown 10 m high as 20 J.
+(Activity 7.1 — Let us investigate) Students drop a heavy ball into sand from heights of 1 m and 2 m at different positions and compare the depths of the depressions to observe the relationship between height and stored gravitational potential energy.
+
+7.4.3 Conservation of mechanical energy
+
+Mechanical energy is defined as the sum of kinetic and potential energy. The section proves conservation algebraically by tracking a freely falling object: at height h the mechanical energy is mgh (all potential); at intermediate time t, potential energy has decreased by ½mg²t² while kinetic energy has increased by the same amount, leaving total mechanical energy = mgh throughout. This principle is called conservation of mechanical energy and holds when no external forces other than gravity act on the object. Activity 7.2 uses a simple pendulum: starting the bob at height h on one side (all potential energy), the bob swings through the lowest point (all kinetic energy) and rises to nearly the same height on the other side, demonstrating that mechanical energy stays constant. The slight shortfall in real life is attributed to friction at the support and air resistance. Worked examples include: velocity at the bottom of a slide of height h (v = √(2gh), independent of mass and slide shape); and the minimum ramp length to stop a 10,000 kg truck travelling at 72 km h⁻¹ against a 50,000 N sand force on a 30° incline (20 m).
+(Activity 7.2 — Let us experiment) Students set up a simple pendulum, mark the starting height, release the bob, and observe whether it returns to the same height at the other extreme, verifying that mechanical energy is conserved.
+(Pause and Ponder) Students calculate the mechanical energy of a falling ball just before it hits the ground and verify it equals mgh; they also trace KE and PE changes at points on a ball roller coaster and reason why successive peaks are lower due to friction losses.
+
+7.5 Power
+
+Power is introduced through the contrast between running and walking up the same staircase — identical work done, but different rates. Power is defined as the rate at which work is done: P = W/t. To do the same work in less time, or more work in the same time, requires greater power. The SI unit is the watt (W), equal to 1 joule per second. Worked examples include: a weightlifter raising 75 kg by 2 m in 5 seconds requiring 300 W; and a car of mass 1000 kg accelerating from rest to 72 km h⁻¹ in 10 seconds requiring an engine power of 20,000 W.
+
+7.6 Simple Machines
+
+Simple machines are introduced as devices that make work easier by changing the magnitude or direction of the force required, without reducing the total work to be done. The terms effort (force applied to the machine) and load (force to be overcome) are defined, along with mechanical advantage as the ratio of load to effort (MA = load/effort). Three simple machines are studied.
+
+7.6.1 Pulley
+
+A pulley is a grooved wheel that guides a rope. A fixed pulley does not reduce the force required but changes its direction — allowing a downward pull instead of an upward lift — giving a mechanical advantage of 1. Movable pulley systems can achieve mechanical advantage greater than 1, allowing heavy loads to be lifted with smaller effort. Real-life applications include elevators and cranes.
+
+7.6.2 Inclined plane
+
+An inclined plane is a simple machine that reduces the force needed to raise a heavy object to a height by spreading the effort over a longer distance. Activity 7.3 has students pull a toy cart attached to a spring balance up a plank of varying steepness to measure how force changes with angle. The mechanical advantage is derived from the work-energy theorem: effort × length (F′ × L) = weight × height (mgh), giving MA = L/h. Since L > h, MA > 1, and a longer (shallower) plane gives a greater mechanical advantage. A worked example finds the MA of a ramp 50 cm long raising a load 30 cm (MA = 1.67).
+(Activity 7.3 — Let us experiment) Students use a spring balance to measure the force required to pull a toy cart up a plank at different angles, observing that the force required decreases as the plank becomes less steep, while the distance over which force must be applied increases.
+(Pause and Ponder) Students reason why hill roads wind around in gentle slopes rather than going straight up, and why an inclined ladder is easier to climb than a vertical one.
+
+7.6.3 Lever
+
+A lever is a rigid bar that rotates about a fixed point (fulcrum), with three parts: fulcrum, load, and effort. Activity 7.4 uses a ruler balanced on a pencil to lift a stapler (heavy load) with an eraser (light effort), demonstrating that a small effort over a long effort arm can overcome a large load. The principle is derived from the work-energy theorem: since the work done at both ends is equal, F₁ × d₁ = F₂ × d₂, meaning the larger force is exerted over the shorter distance. The mechanical advantage of a lever equals effort arm ÷ load arm. Activity 7.5 builds a beam balance from a scale and coins, measuring distances from the fulcrum needed to balance different coin loads, and deriving the principle: effort × effort arm = load × load arm. A seesaw example (15 kg child at 2 m, 30 kg child at 1 m) illustrates the calculation. Levers are classified into three classes based on the relative positions of fulcrum, load, and effort: Class I (fulcrum between load and effort — scissors, crowbar, seesaw), Class II (load between fulcrum and effort — lemon squeezer, wheelbarrow), and Class III (effort between fulcrum and load — tweezers, broom, hammer). In all cases, total work done is conserved — machines do not create energy, only redistribute it more conveniently.
+(Activity 7.4 — Let us investigate) Students balance a ruler on a pencil, place a stapler near the fulcrum, and use increasing numbers of erasers on the far end to discover that a small effort over a long distance can lift a heavy load.
+(Activity 7.5 — Let us experiment) Students construct a beam balance from a scale and paper cups, adding coins to one side and adjusting the distance from the fulcrum to balance increasing loads, recording observations in a table and deriving the lever principle.
+(Pause and Ponder) Students reason why a spoon makes it easier to open a can lid, why hard objects should be pushed closer to a scissors' fulcrum, and why perpetual motion machines cannot work in terms of energy dissipation through friction.
+
+The chapter also connects these concepts to traditional Indian technology. The Bridging Science and Society box describes the gharat or panchakki — a traditional water mill used in Himalayan communities to grind grain. Water flowing downhill converts gravitational potential energy into kinetic energy, which drives a wheel connected to a grinding stone. The box draws a direct link to modern hydroelectric power generation, where dams store water at height and release it to generate electricity, illustrating energy transformation from potential to kinetic to electrical across both traditional and contemporary contexts.

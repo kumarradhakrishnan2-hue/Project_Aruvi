@@ -1,0 +1,25 @@
+{
+    "stage": "secondary",
+    "subject": "science",
+    "grade": "ix",
+    "chapter_number": 6,
+    "chapter_title": "How Forces Affect Motion",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": false,
+    "primary": [
+      {
+        "cg": "CG-2",
+        "c_code": "C-2.1",
+        "justification": "The chapter's entire domain is Newton's three laws of motion and their application to explaining changes in state of motion — the core clause of C-2.1. Sections 6.1–6.3 build the concepts of force, balanced/unbalanced forces, and friction as the physical cause of deceleration. Sections 6.4–6.6 state and apply Newton's first, second, and third laws, including graphical analysis of position-time and velocity-time graphs and the mathematical relation F = ma. Section 6.7 extends Newton's second law to a system of two connected objects. No distinct second strand exists: the F = mg derivation is instrumental to Newton's second law, not an independent treatment of gravitation (C-2.2), and simple machines (C-2.6) and work-energy (C-2.5) are absent."
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's ability to apply Newton's three laws to explain and predict changes in the state of motion of objects by analysing how balanced and unbalanced forces, friction, mass, and Newton's third-law force pairs determine acceleration, using graphical and mathematical representations including F = ma and velocity-time graphs.",
+    "conceptual_demand": 3,
+    "activity_count": 5,
+    "activity_load": 2,
+    "demo_count": 2,
+    "demo_load": 1,
+    "exec_load": 1,
+    "effort_index": 13.5
+}

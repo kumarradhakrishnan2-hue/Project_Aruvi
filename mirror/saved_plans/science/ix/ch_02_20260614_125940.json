@@ -1,0 +1,1236 @@
+{
+  "filename": "ch_02_20260614_125940.json",
+  "saved_at": "2026-06-14T12:59:40",
+  "grade": "Grade IX",
+  "subject": "Science",
+  "chapter_number": 2,
+  "chapter_title": "Cell: The Building Block of Life",
+  "period_schedule_display": "Period schedule:\n  Row 1: 60 minutes × 1 period = 60 minutes\nTotal: 1 periods · 1h 0min",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 60,
+      "count": 1
+    }
+  ],
+  "plan_status": "full_lpa",
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 60,
+          "activity_title": "Measuring Cells Through the Microscope Field of View",
+          "section_anchor": "Section 2.1 — The Challenge of Studying Cells",
+          "pedagogical_approach": "Hands-on Science",
+          "materials": [
+            "Transparent ruler",
+            "Light microscope",
+            "Onion peel slide",
+            "Prepared onion peel cells slide",
+            "Graph paper",
+            "Worksheet for calculation"
+          ],
+          "visual_aids": "Textbook diagram of a light microscope with labelled objective lens and eyepiece",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher sets context: most cells measure 10–100 µm — far below the 0.1 mm limit of human eye resolution. Ask students to estimate how many onion cells placed end-to-end would span 1 mm, then reveal the resolution limit to frame why a microscope is essential."
+            },
+            {
+              "minutes": "8-18",
+              "activity": "Brief teacher explanation of how the combination of objective lens and eyepiece produces magnification and improved resolution. Students label a microscope diagram identifying both lenses, then discuss how magnification multiplies (e.g. 10× eyepiece × 40× objective = 400×)."
+            },
+            {
+              "minutes": "18-38",
+              "activity": "Activity 2.1: Students place a transparent ruler across the microscope stage, focus under low power, and measure the diameter of the visible field in millimetres, then convert to micrometres. They then switch to the onion peel slide, count cells visible along the diameter, and apply the formula: estimated cell size (µm) = field diameter (µm) ÷ number of cells along the diameter."
+            },
+            {
+              "minutes": "38-50",
+              "activity": "Pairs compare their computed cell-size estimates, discuss sources of error (cells not perfectly aligned, partial cells at edge), and write one sentence explaining why their estimate is approximate rather than exact."
+            },
+            {
+              "minutes": "50-60",
+              "activity": "Class discussion: Hooke's 1665 observation of cork cells is introduced — he used a 200–300× microscope and saw box-like compartments. Students reason about what Hooke could and could not have concluded (shape and boundaries yes; internal structure no) given his instrument's resolution."
+            }
+          ],
+          "homework": [
+            "Using the formula from Activity 2.1, calculate the estimated size of a cell if the field diameter is 1200 µm and 15 cells are counted along the diameter. State one assumption you must make and explain how it affects the estimate."
+          ]
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 50,
+          "activity_title": "Mapping the Cell Boundary: Membrane and Wall Structures",
+          "section_anchor": "Section 2.2 — Cell Boundaries: Cell Membrane and Cell Wall",
+          "pedagogical_approach": "Didactic approach",
+          "materials": [
+            "Textbook",
+            "Whiteboard and markers",
+            "Printed diagrams of lipid bilayer fluid-mosaic model",
+            "Student notebooks"
+          ],
+          "visual_aids": "Textbook figure of the fluid-mosaic model showing hydrophilic heads, hydrophobic tails, and embedded proteins",
+          "time_bands": [
+            {
+              "minutes": "0-7",
+              "activity": "Teacher poses the organising question: every cell, whether alone or part of a tissue, must manage what enters and leaves. Students suggest examples (nutrients in, waste out) and the teacher maps these onto the idea of a boundary that selects rather than simply blocks."
+            },
+            {
+              "minutes": "7-22",
+              "activity": "Teacher explains the fluid-mosaic model using the textbook diagram: lipid bilayer with hydrophilic heads facing aqueous environments, hydrophobic tails facing inward, and embedded proteins acting as gatekeepers. Students annotate their own copy of the diagram, labelling all four components and writing a one-line function beside each."
+            },
+            {
+              "minutes": "22-35",
+              "activity": "Teacher introduces selective permeability and connects it to osmosis (water moves from hypotonic to hypertonic across the membrane) and diffusion (substances move from high to low concentration, no membrane needed). Students complete a two-column table: Diffusion vs Osmosis — comparing driving force, materials involved, and membrane requirement."
+            },
+            {
+              "minutes": "35-45",
+              "activity": "Teacher introduces the cell wall (plant, fungal, bacterial) as a permeable, rigid outer layer made primarily of cellulose, contrasting it with the selectively permeable membrane. Students draw a simple diagram showing a plant cell with both layers, labelling permeability for each."
+            },
+            {
+              "minutes": "45-50",
+              "activity": "Exit task: students write two sentences explaining why the cell membrane, not the cell wall, controls what enters a plant cell."
+            }
+          ],
+          "homework": []
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 50,
+          "activity_title": "Observing Osmosis in Potato Pieces and Predicting Cell Volume Changes",
+          "section_anchor": "Section 2.2.1 — Cell Membrane",
+          "pedagogical_approach": "Inquiry approach",
+          "materials": [
+            "Two equal-sized potato pieces (per group)",
+            "Plain water (beaker)",
+            "20% salt or sugar solution (beaker)",
+            "Balance or weighing scale",
+            "Ruler",
+            "Worksheet"
+          ],
+          "visual_aids": "Textbook diagram showing isotonic, hypotonic, and hypertonic effects on cell volume",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher presents the inquiry question: if osmosis moves water across the cell membrane according to relative solute concentration, what will happen to the mass of a potato piece placed in plain water versus in a concentrated salt solution? Students write their predictions with brief reasoning before touching any materials."
+            },
+            {
+              "minutes": "8-28",
+              "activity": "Activity 2.2: Student groups weigh two equal potato pieces, record initial masses, then place one in plain water and one in 20% salt/sugar solution for 15–20 minutes. While waiting, students complete the 'What if…' prediction: mung bean seeds soaked in water then transferred to a concentrated solution — will they gain or lose water? Students write a mechanistic explanation using the terms hypotonic and hypertonic."
+            },
+            {
+              "minutes": "28-38",
+              "activity": "Groups remove potato pieces, gently blot, re-weigh, and record final masses. Each group calculates percentage change in mass and records data in a class table on the board."
+            },
+            {
+              "minutes": "38-48",
+              "activity": "Using the class data table and the isotonic/hypotonic/hypertonic diagram, students answer: which potato was in a hypotonic environment? Which in hypertonic? They connect their numerical results to the direction of osmotic water movement and predict what would happen at isotonic conditions."
+            },
+            {
+              "minutes": "48-50",
+              "activity": "Teacher closes by asking: what does this experiment tell us about the membrane — is it simply a barrier or does it do something more selective? Students respond verbally."
+            }
+          ],
+          "homework": [
+            "Design a modified version of Activity 2.2 that tests a third condition — isotonic solution. State what salt concentration you would use, predict the result, and explain your reasoning using osmosis principles."
+          ]
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 60,
+          "activity_title": "Comparing Plasmolysis in Plant Cells and Shrinkage in Animal Cells",
+          "section_anchor": "Section 2.2.2 — Cell Wall",
+          "pedagogical_approach": "Hands-on Science",
+          "materials": [
+            "Onion peel or Rhoeo leaf sections",
+            "Human cheek cell sample (prepared)",
+            "Safranin stain",
+            "Methylene blue stain",
+            "20% sugar solution",
+            "Glass slides and coverslips",
+            "Forceps",
+            "Dropper",
+            "Microscope"
+          ],
+          "visual_aids": "Textbook diagram showing plasmolysis: cell membrane pulling away from cell wall in a hypertonic solution",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher reviews the cell wall's key property — rigid and permeable — and poses the question: if a plant cell loses water by osmosis, what prevents it from collapsing entirely? Students recall yesterday's osmosis results and hypothesise the role of the wall."
+            },
+            {
+              "minutes": "8-30",
+              "activity": "Activity 2.3: Student groups prepare temporary slides of onion peel or Rhoeo leaf cells stained with safranin and human cheek cells stained with methylene blue. They observe both under the microscope, sketch cell outlines, and note which shows a defined outer wall and which does not."
+            },
+            {
+              "minutes": "30-47",
+              "activity": "Groups add a drop of 20% sugar solution to each slide, allow 2–3 minutes, then re-examine. Students sketch observations: plant cells show the cytoplasmic content shrinking away from the outer wall (plasmolysis) while the outer boundary stays fixed; cheek cells show overall shrinkage. Students annotate sketches with the terms plasmolysis and hypertonic."
+            },
+            {
+              "minutes": "47-56",
+              "activity": "Pause and Ponder discussion: Why do fixed plants need a cell wall while mobile animals do not? What would happen if the cell wall became as flexible as the membrane? Students reason in pairs, then share answers. Teacher uses responses to confirm the structural role of the wall in preventing collapse and maintaining turgor."
+            },
+            {
+              "minutes": "56-60",
+              "activity": "Teacher closes with the experimental design question from Pause and Ponder: why must potato pieces be equal in size and weighed at the start? Students articulate the concept of a controlled variable in their own words."
+            }
+          ],
+          "homework": []
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 45,
+          "activity_title": "Comparing Prokaryotic and Eukaryotic Cell Organisation Using Diagrams",
+          "section_anchor": "Section 2.3 — Internal Organisation of the Cell",
+          "pedagogical_approach": "Discovery approach",
+          "materials": [
+            "Textbook labelled diagrams of bacterial cell, plant cell, animal cell",
+            "Comparison table worksheet",
+            "Coloured pencils"
+          ],
+          "visual_aids": "Textbook labelled diagrams of bacterial cell, plant cell, and animal cell side by side",
+          "time_bands": [
+            {
+              "minutes": "0-7",
+              "activity": "Teacher asks: if cells vary from 1 µm bacteria to 100 µm plant cells, what organisational differences might explain how a bacterium manages all life functions in one tiny space while a plant cell distributes tasks? Students speculate before seeing any diagrams."
+            },
+            {
+              "minutes": "7-25",
+              "activity": "Activity 2.4: Students examine labelled diagrams of all three cell types and complete a comparison table — rows: cell membrane, cell wall, cytoplasm, well-defined nucleus, nucleoid, membrane-bound organelles, cytoskeleton — marking each as present or absent in bacterial, plant, and animal cells. Students use coloured pencils to highlight the nucleus column, noting that prokaryotes have a nucleoid region rather than a membrane-bound nucleus."
+            },
+            {
+              "minutes": "25-37",
+              "activity": "Students use the completed table to answer: what does the absence of membrane-bound organelles in a prokaryote imply for how it runs its cellular processes? They write two sentences explaining how the nucleoid differs from a eukaryotic nucleus and what consequence this has for gene organisation."
+            },
+            {
+              "minutes": "37-45",
+              "activity": "Class debrief: teacher connects the cytoskeleton to internal transport and structural support in eukaryotes, showing how scale (10–100 µm) makes this necessary. Students add a row for cytoskeleton to their table and annotate its function."
+            }
+          ],
+          "homework": []
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 45,
+          "activity_title": "Tracing Organelle Functions in the Eukaryotic Cell Factory",
+          "section_anchor": "Section 2.3.1 — Organelles of the Cell",
+          "pedagogical_approach": "Didactic approach",
+          "materials": [
+            "Textbook diagrams of nucleus, ER, Golgi apparatus, ribosome, lysosome, mitochondria, plastids, vacuole",
+            "Organelle function card set (teacher-prepared)",
+            "Student notebooks"
+          ],
+          "visual_aids": "Textbook figure showing the eukaryotic cell with all organelles labelled, including cristae detail for mitochondria and stroma/chlorophyll disc detail for chloroplasts",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher uses the factory analogy: a eukaryotic cell divides labour among organelles just as a factory divides work among departments. Teacher walks through the nucleus (genetic instructions, nuclear pores, nucleolus, chromosomes vs chromatin, gene definition) with students annotating their textbook diagram."
+            },
+            {
+              "minutes": "8-20",
+              "activity": "Teacher explains ribosomes (protein synthesis sites, free vs ER-attached), RER (protein synthesis and secretion, ribosome-studded), and SER (lipid and hormone synthesis, no ribosomes). Students draw a simple flow: DNA in nucleus → mRNA exits via nuclear pore → ribosome on RER → protein synthesised."
+            },
+            {
+              "minutes": "20-32",
+              "activity": "Teacher explains the Golgi apparatus as the cell's post office: receives from ER, modifies and packages proteins and lipids into vesicles, dispatches to membrane or lysosomes. Then lysosomes: enzyme-filled, break down damaged organelles and unwanted molecules, products recycled. Students write a two-step delivery route: ER → Golgi → destination."
+            },
+            {
+              "minutes": "32-45",
+              "activity": "Teacher covers mitochondria (double membrane, cristae increase surface area, ATP as energy currency, own DNA and ribosomes), plastids (chloroplasts with chlorophyll and stroma, chromoplasts with non-green pigments for flower and fruit colour, leucoplasts storing starch), and vacuoles (central vacuole in plants for turgor and storage; smaller vacuoles in animal cells). Students complete a four-column organelle summary table: organelle name, location (all/plant only/animal-specific), key structural feature, main function."
+            }
+          ],
+          "homework": [
+            "A pancreatic gland cell secretes large quantities of digestive enzymes. Using your organelle summary, list in order the organelles this cell would need most, and explain the role of each in enzyme production and secretion."
+          ]
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 60,
+          "activity_title": "Observing Dividing Cells in Onion Root Tips Under the Microscope",
+          "section_anchor": "Section 2.4 — How Do Normal Cells Grow and Divide?",
+          "pedagogical_approach": "Hands-on Science",
+          "materials": [
+            "Onion root tips (grown 5–6 days in water)",
+            "Aceto-alcohol (fixative)",
+            "Aceto-carmine stain",
+            "Microscope slides and coverslips",
+            "Forceps",
+            "Dropper",
+            "Microscope",
+            "Observation recording sheets"
+          ],
+          "visual_aids": "Textbook diagrams showing structurally distinct stages of cell division visible under a light microscope",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher sets the context: cells drive growth not by enlarging indefinitely but by dividing. Students predict what structural difference they would expect to see between a cell that is about to divide and one that is not — focusing on nucleus appearance and cell size."
+            },
+            {
+              "minutes": "8-35",
+              "activity": "Activity 2.5: Student groups work with pre-fixed and stained onion root tip squash slides (or teacher-prepared squash completed in advance if full protocol time is unavailable). Students focus under low then high power, scan the root tip, and identify at least two structurally distinct cell types — one with clear, visible chromosomes or condensed nuclear material and one with a diffuse nucleus. Students sketch and annotate both types on their recording sheet."
+            },
+            {
+              "minutes": "35-48",
+              "activity": "Students compare their sketches across groups and discuss: in which region of the root tip were dividing cells most concentrated, and why might that be? Teacher explains the role of the meristematic zone as the growth region, connecting to Section 2.4's argument that division — not enlargement alone — drives growth and replaces damaged cells."
+            },
+            {
+              "minutes": "48-58",
+              "activity": "Teacher introduces the cell cycle concept as the ordered sequence governing eukaryotic division, contrasting with prokaryotic division which is simpler. Students reason: if eukaryotic division is 'more controlled and orderly', what risk does less-controlled division pose? (Foreshadowing Section 2.5.1.)"
+            },
+            {
+              "minutes": "58-60",
+              "activity": "Students write one sentence connecting what they observed in the microscope (structurally distinct cells) to the claim that eukaryotic cell division is an ordered, staged process."
+            }
+          ],
+          "homework": []
+        },
+        {
+          "period_number": 8,
+          "period_duration_minutes": 50,
+          "activity_title": "Comparing Mitosis and Meiosis: Chromosome Numbers and Genetic Outcomes",
+          "section_anchor": "Section 2.4.1 — Cell Division: Mitosis and Meiosis",
+          "pedagogical_approach": "Inquiry approach",
+          "materials": [
+            "Textbook diagrams of mitosis and meiosis outcomes",
+            "Chromosome number cards (teacher-prepared, e.g. 2n=4 parent)",
+            "Worksheet with division outcome tables",
+            "Coloured pencils"
+          ],
+          "visual_aids": "Textbook diagram comparing parent cell chromosome number to daughter cell chromosome number after mitosis and meiosis",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher poses the inquiry: if every body cell must carry the same genetic information as the original fertilised egg, what rule must cell division follow? And if gametes fuse at fertilisation, what rule must the division producing gametes follow? Students reason through both constraints before the terms mitosis and meiosis are introduced."
+            },
+            {
+              "minutes": "8-22",
+              "activity": "Using chromosome number cards (e.g. parent cell 2n=4), students work through mitosis: one parent → two daughter cells, each 2n=4. They confirm genetic identity is preserved. Teacher explains this underpins normal growth, tissue repair, and asexual reproduction. Students annotate a mitosis outcome diagram with chromosome counts."
+            },
+            {
+              "minutes": "22-38",
+              "activity": "Students work through meiosis with the same cards: parent 2n=4 → first division halves to n=2 in two cells → second mitosis-like division → four daughter cells each n=2. Students annotate a meiosis outcome diagram. Teacher identifies where in animals (testes, ovaries) and plants (anthers, ovaries) meiosis occurs. Students reason: at fertilisation, n + n = 2n, so the full chromosome number is restored. They write a two-sentence explanation of how meiosis and fertilisation together maintain species chromosome number across generations."
+            },
+            {
+              "minutes": "38-48",
+              "activity": "Pause and Ponder: what would happen if skin cells divided by meiosis instead of mitosis? Students reason about chromosome number consequences and genetic consequences for skin repair, writing their answer before discussing. Teacher uses the Venter DNA experiment summary to reinforce that DNA controls cell structure and division."
+            },
+            {
+              "minutes": "48-50",
+              "activity": "Exit check: students state one way mitosis and meiosis are similar and one way they differ, using chromosome number as the criterion."
+            }
+          ],
+          "homework": [
+            "A species has 2n = 46 chromosomes. State the chromosome number in (a) a liver cell after mitosis, (b) a sperm cell after meiosis, (c) a fertilised egg after fusion. Explain your reasoning for each using the rules of mitosis and meiosis."
+          ]
+        },
+        {
+          "period_number": 9,
+          "period_duration_minutes": 60,
+          "activity_title": "Building and Evaluating the Cell Theory as a Unifying Framework",
+          "section_anchor": "Section 2.5 — Cell Theory",
+          "pedagogical_approach": "Discovery approach",
+          "materials": [
+            "Textbook",
+            "Timeline cards with Schleiden (1838), Schwann (1839), Virchow (1855) contributions",
+            "Worksheet with Cell Theory statements",
+            "Student notebooks"
+          ],
+          "visual_aids": null,
+          "time_bands": [
+            {
+              "minutes": "0-10",
+              "activity": "Teacher distributes timeline cards in scrambled order. Student pairs arrange them chronologically and write one sentence summarising what each scientist contributed (plants → animals → all cells from pre-existing cells). Class compares arrangements and discusses why Virchow's addition was necessary — without it, could cells arise spontaneously?"
+            },
+            {
+              "minutes": "10-22",
+              "activity": "Students receive the three Cell Theory statements with one word blanked in each. Using their timeline cards and Chapter Summary, they complete the statements and then write a single paragraph explaining how the three statements together make the Cell Theory a unifying principle — linking bacteria, plants, and animals under one framework."
+            },
+            {
+              "minutes": "22-40",
+              "activity": "Teacher introduces Section 2.5.1: contact inhibition as the mechanism by which normal animal cells stop dividing when they touch neighbours. Students reason: if cancer cells lose contact inhibition, what will happen to tissue architecture? Teacher explains benign vs malignant tumours and metastasis. Students sketch a simple diagram contrasting controlled mitosis (tissue stays organised) with uncontrolled division (tumour formation)."
+            },
+            {
+              "minutes": "40-52",
+              "activity": "Teacher presents cell culture technology: cells grown outside the body in nutrient media under controlled conditions — used to study function and produce medicines, vaccines, biochemicals, and food. Students connect this to the Cell Theory: cell culture works because cells are the fundamental unit and can survive and divide independently. Students evaluate: what conditions (temperature, pH, sterility) must be maintained and why does a disruption in any one condition matter?"
+            },
+            {
+              "minutes": "52-60",
+              "activity": "Threads of Curiosity consolidation: students reason about why mature RBCs are enucleate (more haemoglobin space, but no repair or division → 120-day lifespan). Then they address: errors in mitosis → tumours; errors in meiosis → genetic disorders, pregnancy loss, reduced fertility. Students write two sentences linking each error type to its consequence using the chapter's logic."
+            }
+          ],
+          "homework": []
+        },
+        {
+          "period_number": 10,
+          "period_duration_minutes": 50,
+          "activity_title": "Synthesising Organelle Structure, Function, and Metabolic Role in Cells",
+          "section_anchor": "Section 2.3.1 — Organelles of the Cell",
+          "pedagogical_approach": "Project-centred approach",
+          "materials": [
+            "Large paper or poster board",
+            "Coloured markers",
+            "Textbook organelle diagrams",
+            "Organelle function summary from Period 6",
+            "Scissors and tape (optional)"
+          ],
+          "visual_aids": "Textbook figure of complete eukaryotic cell with all organelles; cristae detail in mitochondria; stroma and chlorophyll discs in chloroplast",
+          "time_bands": [
+            {
+              "minutes": "0-7",
+              "activity": "Teacher poses the integrating challenge: using everything learned about organelles, student groups will construct an annotated cell diagram that functions as a reference resource — each organelle shown with its key structural feature and function, with arrows showing functional relationships (ER → Golgi → vesicle → membrane)."
+            },
+            {
+              "minutes": "7-32",
+              "activity": "Groups work on their annotated diagram, assigning each member one or two organelles to draw and annotate. Annotations must include: structural feature (e.g. cristae in mitochondria, ribosome studs on RER), function (e.g. ATP synthesis, protein secretion), and one structural-function link sentence (e.g. 'Cristae increase surface area, maximising ATP production'). Groups also mark which organelles contain their own DNA and ribosomes and annotate what this implies about their evolutionary origin."
+            },
+            {
+              "minutes": "32-44",
+              "activity": "Groups add a second layer: a flow-path showing how energy (mitochondria → ATP) and materials (nucleus → ribosome → RER → Golgi → secretion) move through the cell. They annotate the Pause and Ponder question: why are multiple small mitochondria functionally superior to one large one? (Surface area argument.)"
+            },
+            {
+              "minutes": "44-50",
+              "activity": "Two groups share their diagrams; class identifies any organelle whose structural-function link was described differently across groups and discusses which description is more precise. Teacher confirms the surface area argument for mitochondria and the white-flower pigment question (leucoplasts may hold pigment precursors; chromoplasts absent → white petals)."
+            }
+          ],
+          "homework": []
+        },
+        {
+          "period_number": 11,
+          "period_duration_minutes": 45,
+          "activity_title": "Connecting Nucleus, DNA, Chromosomes, and Genes Across Cell Types",
+          "section_anchor": "Section 2.3.1 — Organelles of the Cell (Nucleus sub-section)",
+          "pedagogical_approach": "Inquiry approach",
+          "materials": [
+            "Textbook diagrams of nucleus structure, chromatin vs chromosomes, prokaryotic nucleoid",
+            "Worksheet with nucleus structure labelling and reasoning questions",
+            "Student notebooks"
+          ],
+          "visual_aids": "Textbook figure showing nucleus with double membrane, nuclear pores, nucleolus, and chromatin; alongside prokaryotic nucleoid region",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher presents the inquiry: the nucleus is described as the 'house of coded instructions' — what physical structures carry those instructions and how do they change form depending on what the cell is doing? Students examine the nucleus diagram and identify double membrane, nuclear pores, nucleolus, and chromatin."
+            },
+            {
+              "minutes": "8-22",
+              "activity": "Students work through a structured reasoning sequence: (1) During cell division, chromatin condenses into visible chromosomes — what does this suggest about the relationship between chromatin and chromosomes? (2) Chromosomes are made of DNA and protein; genes are functional segments of DNA — how many genes might one chromosome carry? Students write answers, then compare with a partner before teacher confirms."
+            },
+            {
+              "minutes": "22-35",
+              "activity": "Students examine the prokaryotic nucleoid diagram alongside the eukaryotic nucleus. They construct a comparison table: location, membrane, DNA shape (circular vs linear), presence of proteins, and presence of nucleolus. Students write one sentence explaining why the absence of a nuclear membrane in prokaryotes means gene expression and translation can occur simultaneously."
+            },
+            {
+              "minutes": "35-45",
+              "activity": "Teacher introduces the enucleate RBC and sperm lysosome examples as functional consequences of nucleus and lysosome structure. Students reason: (1) RBC has no nucleus — what two functions does it lose? (2) Sperm lysosomal enzymes break the egg's outer layer — which organelle is responsible and why does the sperm need this capability? Students write answers and the teacher connects these to the chapter's broader argument that structure determines function at the cellular level."
+            }
+          ],
+          "homework": []
+        }
+      ]
+    },
+    "coverage_handoff": [
+      {
+        "section_number": 1,
+        "section_label": "Section 2.1 — The Challenge of Studying Cells",
+        "total_sections": 10,
+        "period_numbers": [
+          1
+        ],
+        "period_duration_minutes": 60,
+        "activity_summary": "Students measure the microscope field-of-view diameter, count onion peel cells along the diameter, and calculate estimated cell size using the given formula, then reason about what Hooke's 200–300× instrument could and could not have resolved.",
+        "implied_lo": "Students can apply a measurement formula to compute an estimated quantity and evaluate the limitations of that estimate based on instrument resolution.",
+        "section_context": "Limit of resolution 0.1 mm, light microscope objective and eyepiece, Hooke 1665, Activity 2.1 cell-size calculation formula",
+        "c_code": "C-3.1",
+        "co_central": true
+      },
+      {
+        "section_number": 2,
+        "section_label": "Section 2.2 — Cell Boundaries: Cell Membrane and Cell Wall",
+        "total_sections": 10,
+        "period_numbers": [
+          2
+        ],
+        "period_duration_minutes": 50,
+        "activity_summary": "Students annotate a fluid-mosaic model diagram, complete a diffusion-versus-osmosis comparison table, and draw a labelled plant cell showing both the selectively permeable membrane and the permeable cell wall.",
+        "implied_lo": "Students can distinguish two structures based on contrasting permeability properties and represent their functional difference in a labelled diagram.",
+        "section_context": "Cell membrane selective permeability, fluid-mosaic lipid bilayer, cell wall cellulose rigidity, diffusion versus osmosis",
+        "c_code": "C-3.1",
+        "co_central": true
+      },
+      {
+        "section_number": 3,
+        "section_label": "Section 2.2.1 — Cell Membrane",
+        "total_sections": 10,
+        "period_numbers": [
+          3
+        ],
+        "period_duration_minutes": 50,
+        "activity_summary": "Students predict and then measure mass changes in potato pieces placed in plain water versus concentrated salt solution, connect percentage mass change to the direction of osmotic water movement, and apply hypotonic/hypertonic reasoning to a new scenario.",
+        "implied_lo": "Students can use quantitative evidence to infer the direction of a transport process and apply the underlying principle to predict outcomes in an unfamiliar context.",
+        "section_context": "Osmosis across cell membrane, hypotonic hypertonic isotonic conditions, Activity 2.2 potato mass change, solute concentration gradient",
+        "c_code": "C-3.1",
+        "co_central": true
+      },
+      {
+        "section_number": 4,
+        "section_label": "Section 2.2.2 — Cell Wall",
+        "total_sections": 10,
+        "period_numbers": [
+          4
+        ],
+        "period_duration_minutes": 60,
+        "activity_summary": "Students prepare and observe microscope slides of plant and cheek cells before and after exposure to sugar solution, sketch plasmolysis in plant cells versus overall shrinkage in animal cells, and reason about why a rigid wall prevents collapse while a flexible membrane cannot.",
+        "implied_lo": "Students can explain contrasting outcomes in two cell types under identical conditions by reference to a structural difference between them.",
+        "section_context": "Plasmolysis in plant cells, animal cell shrinkage in hypertonic solution, cell wall preventing collapse, Activity 2.3 onion and cheek cells",
+        "c_code": "C-3.1",
+        "co_central": true
+      },
+      {
+        "section_number": 5,
+        "section_label": "Section 2.3 — Internal Organisation of the Cell",
+        "total_sections": 10,
+        "period_numbers": [
+          5
+        ],
+        "period_duration_minutes": 45,
+        "activity_summary": "Students complete a comparison table for bacterial, plant, and animal cells across six structural features using labelled diagrams, then reason about the functional implications of absent membrane-bound organelles in prokaryotes.",
+        "implied_lo": "Students can construct a comparative table from multiple diagrams and draw an inference about functional consequences from a pattern of structural absence.",
+        "section_context": "Prokaryote nucleoid versus eukaryote nucleus, membrane-bound organelles, cytoskeleton, Activity 2.4 three-cell comparison table",
+        "c_code": "C-3.1",
+        "co_central": true
+      },
+      {
+        "section_number": 6,
+        "section_label": "Section 2.3.1 — Organelles of the Cell",
+        "total_sections": 10,
+        "period_numbers": [
+          6,
+          10
+        ],
+        "period_duration_minutes": 50,
+        "activity_summary": "Students build an annotated organelle summary table and later construct an annotated cell diagram with functional flow paths, identifying structural features that explain each organelle's role and connecting organelles that work in sequence.",
+        "implied_lo": "Students can link a structural feature of a subcellular component to its specific function and trace a multi-step functional pathway across connected components.",
+        "section_context": "Nucleus, ribosomes, RER SER, Golgi apparatus, lysosomes, mitochondria cristae ATP, chloroplasts stroma, chromoplasts leucoplasts, vacuole turgor",
+        "c_code": "C-3.1",
+        "co_central": true
+      },
+      {
+        "section_number": 7,
+        "section_label": "Section 2.3.1 — Organelles of the Cell (Nucleus sub-section)",
+        "total_sections": 10,
+        "period_numbers": [
+          11
+        ],
+        "period_duration_minutes": 45,
+        "activity_summary": "Students reason through the chromatin-to-chromosome transition, compare the eukaryotic nucleus and prokaryotic nucleoid in a structured table, and explain functional consequences of being enucleate or carrying lysosomal enzymes.",
+        "implied_lo": "Students can infer a functional consequence from a specific structural feature and explain why the same absence or presence of a structure produces different outcomes in different cell types.",
+        "section_context": "Nucleus double membrane nuclear pores nucleolus chromosomes chromatin genes, prokaryotic nucleoid circular DNA, enucleate RBC, sperm lysosomal enzymes",
+        "c_code": "C-3.3",
+        "co_central": true
+      },
+      {
+        "section_number": 8,
+        "section_label": "Section 2.4 — How Do Normal Cells Grow and Divide?",
+        "total_sections": 10,
+        "period_numbers": [
+          7
+        ],
+        "period_duration_minutes": 60,
+        "activity_summary": "Students observe and sketch structurally distinct cells in onion root tip squash slides, identify the meristematic zone as the site of concentrated division, and reason about what ordered versus less-controlled division implies for tissue integrity.",
+        "implied_lo": "Students can interpret structural variation in observed specimens as evidence of a staged process and connect the location of that variation to a functional explanation.",
+        "section_context": "Onion root tip cell division Activity 2.5, meristematic zone, eukaryotic cell cycle ordered division, prokaryotic versus eukaryotic division",
+        "c_code": "C-3.3",
+        "co_central": true
+      },
+      {
+        "section_number": 9,
+        "section_label": "Section 2.4.1 — Cell Division: Mitosis and Meiosis",
+        "total_sections": 10,
+        "period_numbers": [
+          8
+        ],
+        "period_duration_minutes": 50,
+        "activity_summary": "Students trace chromosome number through mitosis and meiosis using number cards, annotate outcome diagrams, and reason about the consequences of the wrong division type occurring in body cells or gamete-producing tissue.",
+        "implied_lo": "Students can apply a quantitative rule to predict an outcome across sequential steps and evaluate what happens when the rule is violated in a specific context.",
+        "section_context": "Mitosis two identical daughter cells chromosome number preserved, meiosis four cells half chromosome number, fertilisation restoring 2n, gamete production testes ovaries anthers",
+        "c_code": "C-3.3",
+        "co_central": true
+      },
+      {
+        "section_number": 10,
+        "section_label": "Section 2.5 — Cell Theory",
+        "total_sections": 10,
+        "period_numbers": [
+          9
+        ],
+        "period_duration_minutes": 60,
+        "activity_summary": "Students reconstruct the Cell Theory from timeline cards, evaluate contact inhibition and its loss in cancer cells, and connect cell culture technology to the Cell Theory's claim that the cell is the fundamental unit of life.",
+        "implied_lo": "Students can evaluate a unifying scientific framework by tracing how its component claims were established and applying it to explain a real-world phenomenon.",
+        "section_context": "Schleiden Schwann Virchow Cell Theory three statements, contact inhibition cancer tumour metastasis, cell culture technology applications, mitosis and meiosis errors consequences",
+        "c_code": "C-3.1",
+        "co_central": true
+      }
+    ],
+    "assessment_items": {
+      "grade": "ix-x",
+      "subject": "science",
+      "stage": "secondary",
+      "chapter_number": 2,
+      "chapter_title": "Cell: The Building Block of Life",
+      "chapter_cg": "Students develop an understanding of the cell as the structural and functional unit of life, examining how cell structure, organisation, and division underpin the processes of growth, maintenance, and reproduction in living organisms.",
+      "reasoning_floor_lift_applied": false,
+      "questions": [
+        {
+          "section_number": 1,
+          "section_label": "Section 2.1 — The Challenge of Studying Cells",
+          "total_sections": 10,
+          "implied_lo_assessed": "Students can apply a measurement formula to compute an estimated quantity and evaluate the limitations of that estimate based on instrument resolution.",
+          "section_context": "Limit of resolution 0.1 mm, light microscope objective and eyepiece, Hooke 1665, Activity 2.1 cell-size calculation formula",
+          "question_type": "OPEN_TASK",
+          "competency": {
+            "c_code": "C-3.1",
+            "competency_text": "Students apply scientific tools, measurements, and formulae to generate and evaluate quantitative data about biological structures."
+          },
+          "cognitive_demand": "Application",
+          "visual_stimulus": "Field of view diameter (µm) | Number of cells counted along diameter | Estimated cell size (µm)\n400 | 8 | ?\n300 | 5 | ?\n200 | 4 | ?",
+          "question_text": "",
+          "options": [],
+          "expected_elements": [],
+          "look_for": [],
+          "task": "A student measured the field-of-view diameter of a light microscope at three different settings and counted onion peel cells along the diameter each time. The results are recorded in the table provided. (a) Use the formula — estimated cell size = diameter of visible field (µm) ÷ number of cells along the diameter — to complete the table. Show your working for each row. (b) The three estimates are not identical. Identify one source of measurement error in this method that could explain the variation, and explain how it would affect the result. (c) Robert Hooke used a microscope with 200–300× magnification in 1665. The human eye's limit of resolution is 0.1 mm. Using your calculated cell sizes, evaluate whether Hooke's instrument would have been sufficient to distinguish individual onion peel cells from one another. Justify your answer with a numerical comparison.",
+          "scaffold": "For part (a): apply the formula to each row separately and show the division clearly. For part (b): think about what a student does when counting cells along the diameter — where might imprecision enter? For part (c): convert 0.1 mm to µm, then compare to your estimates; state whether the magnified image of the cell would appear larger than the eye's resolution limit.",
+          "format_of_output": [
+            "Completed table with three calculated values and working shown",
+            "One identified source of error with a causal explanation of its effect on the estimate",
+            "A numerical comparison (cell size in µm vs. resolution limit converted to µm) followed by a justified conclusion about Hooke's instrument"
+          ],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 1
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 1
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 1
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 1
+              },
+              "format_type": "Data interpretation (provided table)",
+              "format_rationale": "The implied_lo requires applying the Activity 2.1 formula to quantitative data and evaluating the estimate's limitations — a provided results table is the most direct vehicle for both operations simultaneously.",
+              "what_this_demonstrates": "The student demonstrates ability to execute a measurement formula, detect sources of error in a procedure, and use a numerical comparison to evaluate the adequacy of a historical instrument — integrating both central operations of the section.",
+              "reading_the_scaffold": "Part (a) checks procedural formula application; part (b) probes awareness of the counting step as a locus of error; part (c) requires unit conversion and a reasoned conclusion, revealing whether the student can connect instrument capability to the resolution limit concept.",
+              "strong_vs_weak_markers": "Strong: correct arithmetic in all three rows with units; a specific, causal error source (e.g., partial cells at the edge counted inconsistently); unit conversion from 0.1 mm to 100 µm stated explicitly; a conclusion that a 50 µm cell magnified 200× would appear 10 000 µm = 10 mm, well above the 100 µm resolution limit. Weak: formula applied to only one row; error named vaguely ('human error'); comparison made without converting units; conclusion stated without numerical support.",
+              "inclusivity": "Students who struggle with the numerical comparison in part (c) can still earn credit on parts (a) and (b); students with stronger mathematical confidence can engage deeply with the magnification calculation. The scaffold breaks the task into sequential steps so students enter at any stage."
+            }
+          }
+        },
+        {
+          "section_number": 2,
+          "section_label": "Section 2.2 — Cell Boundaries: Cell Membrane and Cell Wall",
+          "total_sections": 10,
+          "implied_lo_assessed": "Students can distinguish two structures based on contrasting permeability properties and represent their functional difference in a labelled diagram.",
+          "section_context": "Cell membrane selective permeability, fluid-mosaic lipid bilayer, cell wall cellulose rigidity, diffusion versus osmosis",
+          "question_type": "MCQ",
+          "competency": {
+            "c_code": "C-3.1",
+            "competency_text": "Students apply scientific tools, measurements, and formulae to generate and evaluate quantitative data about biological structures."
+          },
+          "cognitive_demand": "Understanding",
+          "visual_stimulus": null,
+          "question_text": "A plant cell is placed in a dilute salt solution. Water molecules pass freely across the cell wall and enter the cell through the cell membrane. Which statement best explains why water moves through the cell membrane but large sugar molecules do not?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The cell wall is rigid and blocks large molecules before they reach the cell membrane.",
+              "is_correct": false
+            },
+            {
+              "label": "B",
+              "text": "The cell membrane is selectively permeable, allowing water to pass while restricting larger solute molecules based on their size and properties.",
+              "is_correct": true
+            },
+            {
+              "label": "C",
+              "text": "The cell membrane is fully permeable to all molecules but the cell wall is selectively permeable.",
+              "is_correct": false
+            },
+            {
+              "label": "D",
+              "text": "Water moves through the cell wall by diffusion, and the cell membrane plays no role in controlling this movement.",
+              "is_correct": false
+            }
+          ],
+          "expected_elements": [],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 2
+              },
+              "what_each_option_reveals": {
+                "A": "Confuses the roles of the two boundary structures — attributes the filtering function to the rigid cell wall rather than the selectively permeable membrane; a misconception about which structure regulates passage.",
+                "C": "Reverses the permeability properties of the two structures, assigning selective permeability to the cell wall and full permeability to the membrane — a direct inversion of the section's core distinction.",
+                "D": "Conflates diffusion with osmosis and attributes water movement to the cell wall, erasing the membrane's role as the selective boundary — misses the section's central functional point."
+              },
+              "inclusivity": "Students who can name the two structures but have not yet internalised their contrasting permeability properties can narrow options through elimination; students who have built a clear functional model will immediately identify the correct structural explanation."
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 2
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 2
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 2
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 3,
+          "section_label": "Section 2.2.1 — Cell Membrane",
+          "total_sections": 10,
+          "implied_lo_assessed": "Students can use quantitative evidence to infer the direction of a transport process and apply the underlying principle to predict outcomes in an unfamiliar context.",
+          "section_context": "Osmosis across cell membrane, hypotonic hypertonic isotonic conditions, Activity 2.2 potato mass change, solute concentration gradient",
+          "question_type": "SCR",
+          "competency": {
+            "c_code": "C-3.1",
+            "competency_text": "Students apply scientific tools, measurements, and formulae to generate and evaluate quantitative data about biological structures."
+          },
+          "cognitive_demand": "Application",
+          "visual_stimulus": "Potato piece | Initial mass (g) | Final mass (g) | % mass change\nPiece 1 (plain water) | 5.0 | 5.8 | +16%\nPiece 2 (20% salt solution) | 5.0 | 4.3 | −14%",
+          "question_text": "Refer to the table provided, which shows mass changes in two potato pieces after 30 minutes. (a) For each piece, state the direction of osmotic water movement and identify whether the external solution was hypotonic or hypertonic relative to the cell contents. (b) A student then transfers Piece 1 (originally in plain water) into the 20% salt solution used for Piece 2. Predict the direction of water movement and the expected mass change (gain, loss, or no change). Justify your prediction using the concept of solute concentration gradient.",
+          "options": [],
+          "expected_elements": [
+            "For Piece 1: water moved into the cell (osmosis from hypotonic external solution into the cell); plain water is hypotonic relative to cell contents.",
+            "For Piece 2: water moved out of the cell (osmosis from cell into hypertonic external solution); 20% salt solution is hypertonic relative to cell contents.",
+            "For the transfer scenario: Piece 1 cells now have higher water concentration than they had before (swollen) placed into hypertonic solution, so water will move out of the cell by osmosis.",
+            "Predicted outcome: mass will decrease.",
+            "Justification references solute concentration gradient: the 20% salt solution has a higher solute (lower water) concentration than the cell contents of the now-swollen Piece 1, driving water out across the cell membrane."
+          ],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 3
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 3
+              },
+              "inclusivity": "Students who recall osmosis terminology but find the transfer scenario unfamiliar can still earn partial credit by correctly analysing parts (a) for both pieces; students who fully apply the concentration gradient principle will produce a complete response for part (b)."
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 3
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 3
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 4,
+          "section_label": "Section 2.2.2 — Cell Wall",
+          "total_sections": 10,
+          "implied_lo_assessed": "Students can explain contrasting outcomes in two cell types under identical conditions by reference to a structural difference between them.",
+          "section_context": "Plasmolysis in plant cells, animal cell shrinkage in hypertonic solution, cell wall preventing collapse, Activity 2.3 onion and cheek cells",
+          "question_type": "ECR",
+          "competency": {
+            "c_code": "C-3.1",
+            "competency_text": "Students apply scientific tools, measurements, and formulae to generate and evaluate quantitative data about biological structures."
+          },
+          "cognitive_demand": "Analysis",
+          "visual_stimulus": null,
+          "question_text": "In Activity 2.3, students placed onion peel cells and human cheek cells in a 20% sugar solution and observed both under a microscope. The onion cell's outer boundary remained unchanged while the inner cytoplasmic content shrank and pulled away from the wall. The cheek cell shrank overall and lost its regular shape. Both cell types lost water by osmosis under the same external conditions. Explain, with reference to a specific structural difference between the two cell types, why the onion cell and the cheek cell responded differently. In your answer, name the phenomenon observed in the onion cell and describe the structural reason it cannot occur in the same way in the cheek cell.",
+          "options": [],
+          "expected_elements": [],
+          "look_for": [
+            "Identifies plasmolysis as the phenomenon in the onion cell: the cytoplasm (and cell membrane) pulls away from the cell wall as water leaves by osmosis.",
+            "Correctly identifies the structural difference: plant cells have a rigid cellulose cell wall; animal cells (cheek cells) lack a cell wall.",
+            "Explains the causal mechanism: the cell wall is rigid and maintains the outer boundary dimensions of the plant cell even when internal water content decreases, so only the inner content shrinks.",
+            "Explains why the cheek cell cannot plasmolyse in the same way: without a cell wall, there is no rigid outer boundary to hold shape, so the entire cell including the membrane shrinks and deforms as water is lost.",
+            "Response makes the contrast explicit — same osmotic condition, different structural constraint, different observable outcome."
+          ],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 4
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 4
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 4
+              },
+              "inclusivity": "Students who can name plasmolysis but find mechanistic explanation difficult can still demonstrate understanding by accurately describing the observable differences; students with stronger analytical reasoning will connect the structural presence or absence of the cell wall to the distinct outcomes causally."
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 4
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 5,
+          "section_label": "Section 2.3 — Internal Organisation of the Cell",
+          "total_sections": 10,
+          "implied_lo_assessed": "Students can construct a comparative table from multiple diagrams and draw an inference about functional consequences from a pattern of structural absence.",
+          "section_context": "Prokaryote nucleoid versus eukaryote nucleus, membrane-bound organelles, cytoskeleton, Activity 2.4 three-cell comparison table",
+          "question_type": "SCR",
+          "competency": {
+            "c_code": "C-3.1",
+            "competency_text": "Students apply scientific tools, measurements, and formulae to generate and evaluate quantitative data about biological structures."
+          },
+          "cognitive_demand": "Application",
+          "visual_stimulus": "Structure | Bacterial cell | Plant cell | Animal cell\nCell membrane | ? | ? | ?\nCell wall | ? | ? | ?\nCytoplasm | ? | ? | ?\nWell-defined nucleus | ? | ? | ?\nNucleoid | ? | ? | ?\nMembrane-bound organelles | ? | ? | ?",
+          "question_text": "Refer to the table provided. (a) Complete the table by writing 'Present' or 'Absent' in each cell marked with '?', based on the structural features of bacterial, plant, and animal cells. (b) Looking at the row for membrane-bound organelles, a bacterial cell lacks them entirely. State one functional consequence of this absence for how a bacterial cell carries out its cellular activities, compared to a eukaryotic cell.",
+          "options": [],
+          "expected_elements": [
+            "Cell membrane: Present in all three cell types.",
+            "Cell wall: Present in bacterial cell; Present in plant cell; Absent in animal cell.",
+            "Cytoplasm: Present in all three cell types.",
+            "Well-defined nucleus: Absent in bacterial cell; Present in plant cell; Present in animal cell.",
+            "Nucleoid: Present in bacterial cell; Absent in plant cell; Absent in animal cell.",
+            "Membrane-bound organelles: Absent in bacterial cell; Present in plant cell; Present in animal cell.",
+            "Functional consequence: In a bacterial cell, all cellular activities (such as protein synthesis and energy production) occur directly in the cytoplasm without the compartmentalisation that organelles provide; processes cannot be separated or run simultaneously in dedicated internal compartments as they are in eukaryotic cells."
+          ],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 5
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 5
+              },
+              "inclusivity": "Students who recall individual cell features from diagrams can complete part (a) correctly even if part (b) inference is partial; students who have internalised the functional significance of compartmentalisation will produce a full inference in part (b). The table format allows entry at the recognition level while part (b) demands a step beyond."
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 5
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 5
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 6,
+          "section_label": "Section 2.3.1 — Organelles of the Cell",
+          "total_sections": 10,
+          "implied_lo_assessed": "Students can link a structural feature of a subcellular component to its specific function and trace a multi-step functional pathway across connected components.",
+          "section_context": "Nucleus, ribosomes, RER SER, Golgi apparatus, lysosomes, mitochondria cristae ATP, chloroplasts stroma, chromoplasts leucoplasts, vacuole turgor",
+          "question_type": "SCR",
+          "competency": {
+            "c_code": "C-3.1",
+            "competency_text": "Students apply scientific tools, measurements, and formulae to generate and evaluate quantitative data about biological structures."
+          },
+          "cognitive_demand": "Application",
+          "visual_stimulus": null,
+          "question_text": "A pancreatic gland cell produces and secretes a digestive enzyme. (a) List, in order, the organelles involved in producing this enzyme and transporting it out of the cell. For each organelle, name the one structural feature that enables it to perform its role in this pathway. (b) Mitochondria have an inner membrane folded into cristae. Explain how this structural feature is directly related to the mitochondrion's function of producing ATP.",
+          "options": [],
+          "expected_elements": [
+            "Pathway order: Nucleus (contains DNA/genes that carry instructions for the enzyme) → Ribosomes on RER (site of protein synthesis; ribosomes are studded on the RER surface) → Rough Endoplasmic Reticulum (RER) (membrane network continuous with nuclear envelope; transports newly synthesised protein) → Golgi apparatus (stacks of flattened membrane sacs; modifies, sorts, and packages the protein into vesicles) → Cell membrane (selectively permeable boundary; vesicles fuse with it to release the enzyme outside the cell).",
+            "Each organelle must be named AND one structural feature identified for credit.",
+            "For part (b): cristae are finger-like folds of the inner mitochondrial membrane that greatly increase the surface area available for the chemical reactions of cellular respiration that produce ATP; greater surface area means more reaction sites and thus greater ATP output."
+          ],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 6
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 6
+              },
+              "inclusivity": "Students who can name organelles but are less confident about the pathway order may still earn partial credit for correctly linking a structural feature to function; students who have built an integrated model will produce the full ordered sequence with structural justifications. Part (b) is independently answerable, so students can demonstrate the structure-function link even if the full pathway is incomplete."
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 6
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 6
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 7,
+          "section_label": "Section 2.3.1 — Organelles of the Cell (Nucleus sub-section)",
+          "total_sections": 10,
+          "implied_lo_assessed": "Students can infer a functional consequence from a specific structural feature and explain why the same absence or presence of a structure produces different outcomes in different cell types.",
+          "section_context": "Nucleus double membrane nuclear pores nucleolus chromosomes chromatin genes, prokaryotic nucleoid circular DNA, enucleate RBC, sperm lysosomal enzymes",
+          "question_type": "MCQ",
+          "competency": {
+            "c_code": "C-3.3",
+            "competency_text": "Students infer functional consequences from structural features and explain differential outcomes produced by the presence or absence of a structure across cell types."
+          },
+          "cognitive_demand": "Understanding",
+          "visual_stimulus": null,
+          "question_text": "Mature human red blood cells (RBCs) are enucleate — they have no nucleus. Which statement correctly identifies one functional consequence of this structural feature?",
+          "options": [
+            {
+              "label": "A",
+              "text": "RBCs cannot perform cellular respiration because the nucleus is required to produce ATP.",
+              "is_correct": false
+            },
+            {
+              "label": "B",
+              "text": "RBCs cannot repair themselves or divide, limiting their lifespan to approximately 120 days.",
+              "is_correct": true
+            },
+            {
+              "label": "C",
+              "text": "RBCs lack ribosomes because ribosomes are stored inside the nucleus.",
+              "is_correct": false
+            },
+            {
+              "label": "D",
+              "text": "RBCs cannot carry oxygen because haemoglobin requires a nucleus for its function.",
+              "is_correct": false
+            }
+          ],
+          "expected_elements": [],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 7
+              },
+              "what_each_option_reveals": {
+                "A": "Confuses the nucleus with mitochondria as the site of ATP production — a misconception that places energy-generating functions in the nucleus rather than in the mitochondria's cristae.",
+                "C": "Mislocates ribosomes as stored inside the nucleus rather than synthesised there (nucleolus makes ribosomal subunits) and assembled in the cytoplasm — a structural misconception about the relationship between nucleus and ribosomes.",
+                "D": "Inverts the functional logic of enucleation: the RBC is enucleate precisely to maximise haemoglobin space; this option wrongly implies the nucleus is required for haemoglobin function, confusing structural absence as a disadvantage in all respects."
+              },
+              "inclusivity": "Students who recall the enucleate RBC fact without deeper inference can still reason by elimination; students who have internalised the nucleus as the site of genetic instructions for repair and division will directly identify the correct consequence."
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 7
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 7
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 7
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 8,
+          "section_label": "Section 2.4 — How Do Normal Cells Grow and Divide?",
+          "total_sections": 10,
+          "implied_lo_assessed": "Students can interpret structural variation in observed specimens as evidence of a staged process and connect the location of that variation to a functional explanation.",
+          "section_context": "Onion root tip cell division Activity 2.5, meristematic zone, eukaryotic cell cycle ordered division, prokaryotic versus eukaryotic division",
+          "question_type": "MCQ",
+          "competency": {
+            "c_code": "C-3.3",
+            "competency_text": "Students infer functional consequences from structural features and explain differential outcomes produced by the presence or absence of a structure across cell types."
+          },
+          "cognitive_demand": "Understanding",
+          "visual_stimulus": null,
+          "question_text": "In Activity 2.5, students prepared squash slides of onion root tips and observed cells that looked structurally different from one another in the same slide. Which statement best explains why cells in the same root tip appear structurally distinct?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Each region of the root tip is genetically different, so cells are programmed to have permanently different structures.",
+              "is_correct": false
+            },
+            {
+              "label": "B",
+              "text": "The cells are at different stages of the cell cycle, so they show different structural states of the same ordered division process.",
+              "is_correct": true
+            },
+            {
+              "label": "C",
+              "text": "Only cells in the meristematic zone contain DNA; cells elsewhere have lost their DNA and therefore look different.",
+              "is_correct": false
+            },
+            {
+              "label": "D",
+              "text": "Cells near the tip divide more randomly and without order, producing structural variation as a sign of less-controlled division.",
+              "is_correct": false
+            }
+          ],
+          "expected_elements": [],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 8
+              },
+              "what_each_option_reveals": {
+                "A": "Confuses structural variation within the same organism with genetic differentiation — fails to connect the observation to a staged temporal process and instead invents a genetic explanation for within-tissue variation.",
+                "C": "Misconceives DNA localisation — asserts that only dividing (meristematic) cells retain DNA, misunderstanding that all nucleated eukaryotic cells contain the cell's genetic material regardless of division activity.",
+                "D": "Contradicts the section's core point that eukaryotic division is ordered and governed by the cell cycle; attributes structural diversity to randomness rather than to staged progression through an ordered process."
+              },
+              "inclusivity": "Students who observed and sketched the slides in Activity 2.5 will recognise the visual evidence; students who primarily engaged with the conceptual description of the cell cycle can reason from the idea of stages to select the correct interpretation."
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 8
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 8
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 8
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 9,
+          "section_label": "Section 2.4.1 — Cell Division: Mitosis and Meiosis",
+          "total_sections": 10,
+          "implied_lo_assessed": "Students can apply a quantitative rule to predict an outcome across sequential steps and evaluate what happens when the rule is violated in a specific context.",
+          "section_context": "Mitosis two identical daughter cells chromosome number preserved, meiosis four cells half chromosome number, fertilisation restoring 2n, gamete production testes ovaries anthers",
+          "question_type": "SCR",
+          "competency": {
+            "c_code": "C-3.3",
+            "competency_text": "Students infer functional consequences from structural features and explain differential outcomes produced by the presence or absence of a structure across cell types."
+          },
+          "cognitive_demand": "Application",
+          "visual_stimulus": null,
+          "question_text": "A human body cell contains 46 chromosomes. (a) A skin cell divides by mitosis. State the chromosome number in each daughter cell and explain, in one sentence, why this number is the outcome. (b) A cell in the testes undergoes meiosis. State the chromosome number in each of the four cells produced. Explain what must happen at fertilisation for the chromosome number in a new individual to be restored. (c) A student proposes: 'If skin cells divided by meiosis instead of mitosis, the body could not maintain itself.' Evaluate this claim using your answers to parts (a) and (b).",
+          "options": [],
+          "expected_elements": [
+            "Part (a): Each daughter cell has 46 chromosomes. Mitosis preserves the chromosome number because the DNA is copied and then divided equally, producing two genetically identical cells each with the same number as the parent cell.",
+            "Part (b): Each of the four cells has 23 chromosomes (half of 46). At fertilisation, a sperm cell (23 chromosomes) fuses with an egg cell (23 chromosomes), restoring the full complement of 46 chromosomes in the new individual.",
+            "Part (c): The claim is correct. If skin cells divided by meiosis, each new cell would have only 23 chromosomes instead of 46. Body cells require the full chromosome complement to function correctly and maintain genetic continuity across tissues. Each round of division would halve the chromosome number further, making self-maintenance impossible."
+          ],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 9
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 9
+              },
+              "inclusivity": "Students who can apply the numerical rules for mitosis and meiosis separately will earn credit on parts (a) and (b); part (c) asks them to integrate both rules to evaluate a claim, rewarding students who have built a connected understanding. The sequential structure allows partial demonstration at each step."
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 9
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 9
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 10,
+          "section_label": "Section 2.5 — Cell Theory",
+          "total_sections": 10,
+          "implied_lo_assessed": "Students can evaluate a unifying scientific framework by tracing how its component claims were established and applying it to explain a real-world phenomenon.",
+          "section_context": "Schleiden Schwann Virchow Cell Theory three statements, contact inhibition cancer tumour metastasis, cell culture technology applications, mitosis and meiosis errors consequences",
+          "question_type": "ECR",
+          "competency": {
+            "c_code": "C-3.1",
+            "competency_text": "Students apply scientific tools, measurements, and formulae to generate and evaluate quantitative data about biological structures."
+          },
+          "cognitive_demand": "Evaluation",
+          "visual_stimulus": null,
+          "question_text": "The classical Cell Theory rests on three statements, each contributed by a different scientist. Cancer cells divide uncontrollably, forming tumours that can invade and spread to other parts of the body. Using the Cell Theory as your framework, evaluate the claim: 'Cancer is a breakdown of cellular order, not a separate life form.' In your response: (i) state which statement of the Cell Theory is most directly violated by cancer cell behaviour and name the scientist who established it; (ii) explain how the concept of contact inhibition — and its loss in cancer cells — connects to this violation; (iii) assess whether the remaining two statements of the Cell Theory still apply to cancer cells, giving a reason for each.",
+          "options": [],
+          "expected_elements": [],
+          "look_for": [
+            "Identifies Rudolf Virchow's statement — all cells arise from pre-existing cells — as directly relevant, since cancer cells do arise from pre-existing (body) cells but violate the controlled, orderly nature of normal cell division implied by the Cell Theory framework.",
+            "Alternatively, or additionally, identifies that cancer cells violate the principle that cells divide in a controlled, contact-inhibited manner: normal cells cease division when they contact neighbouring cells (contact inhibition); cancer cells lose this control and divide uncontrollably, producing tumours that can metastasise.",
+            "Correctly explains contact inhibition: in normal tissue, when cells make physical contact with neighbours, a signal stops further division; cancer cells lose this mechanism, driving uncontrolled proliferation.",
+            "Assesses the remaining two statements with reasons: (1) All living organisms consist of one or more cells — cancer cells are cells within an organism, so this still applies; cancer is not a separate organism. (2) The cell is the basic structural and functional unit of life — cancer cells are still cells, even if their function is dysregulated; this statement still applies structurally.",
+            "The response makes a coherent evaluative judgement: cancer is a breakdown of ordered cellular behaviour (contact inhibition, controlled division) within the Cell Theory's framework, not a new life form — because cancer cells remain cells of the same organism, originating from pre-existing cells."
+          ],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 10
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 10
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 10
+              },
+              "inclusivity": "Students who recall the three Cell Theory statements and the scientists can earn credit in part (i) even if their evaluation in part (iii) is partial; students who have connected the Cell Theory to real-world phenomena will produce a fuller evaluative response. The three-part structure allows differentiated entry: factual recall in (i), mechanistic explanation in (ii), and reasoned evaluation in (iii)."
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 10
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        }
+      ]
+    },
+    "input_tokens": 10312,
+    "output_tokens": 9212,
+    "cost_inr": 15.5587,
+    "assess_input_tokens": 9855,
+    "assess_output_tokens": 9478,
+    "assess_cost_inr": 15.7996
+  }
+}

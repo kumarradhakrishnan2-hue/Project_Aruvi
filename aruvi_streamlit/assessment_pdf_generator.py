@@ -163,24 +163,30 @@ def assessment_meta_strip(chapter_num, title, total_questions, date_str):
 # ──────────────────────────────────────────────────────────────────────────────
 # Science grouping helper
 # ──────────────────────────────────────────────────────────────────────────────
-def _group_science(items):
+def _group_science(items, secondary=False):
     """
-    Groups Science assessment items by stage_label, preserving insertion order
+    Groups Science assessment items, preserving insertion order
     (dict is ordered in Python 3.7+).
 
+    Middle stage  → grouped by stage_label; header "Stage {progression_stage} · {label}".
+    Secondary     → grouped by section_label; header is the chapter section label
+                    itself (e.g. "8.1 Rediscovering the Roots of Atomic Theory"),
+                    since secondary science has no progression stages.
+
     Returns a list of 3-tuples:
-        (stage_label: str, progression_stage: int, items: list[dict])
+        (label: str, progression_stage: int, items: list[dict])
 
-    Each tuple becomes one rendered section in the PDF, with section header:
-        "Stage {progression_stage} · {stage_label}"
-
-    Missing / null stage_label values are handled gracefully (grouped under "").
+    Missing / null label values are handled gracefully (grouped under "").
     """
-    groups     = {}   # stage_label → [item, ...]
-    stage_meta = {}   # stage_label → progression_stage
+    groups     = {}   # label → [item, ...]
+    stage_meta = {}   # label → progression_stage
     for item in items:
-        label = item.get("stage_label") or ""
-        stage = item.get("progression_stage") or 0
+        if secondary:
+            label = item.get("section_label") or ""
+            stage = 0
+        else:
+            label = item.get("stage_label") or ""
+            stage = item.get("progression_stage") or 0
         if label not in groups:
             groups[label]     = []
             stage_meta[label] = stage
@@ -930,10 +936,10 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
         story.append(Spacer(1, 4))
 
     # ── Separator ─────────────────────────────────────────────────────────────
-    # English: double rule (thin + thick) to distinguish questions from each other.
+    # English + Science (middle and secondary): double rule (thin + thick).
     # All other subjects: single thin line.
     is_maths_item = bool(item.get("_maths_section_code"))
-    if item.get("is_english"):
+    if item.get("is_english") or item.get("is_science"):
         story.append(HLine(uw, thickness=0.5, color=colors.black, sb=3, sa=1))
         story.append(HLine(uw, thickness=1.5, color=colors.black, sb=1, sa=3))
     else:
@@ -980,6 +986,7 @@ def build_assessment_pdf(output_path, data):
     items      = data["assessment_items"]
     lo_map     = data["lo_map"]
     is_science = data.get("is_science", False)
+    is_sci_secondary = data.get("is_sci_secondary", False)
     is_maths   = data.get("is_maths",   False)
     is_english = data.get("is_english", False)
     q_counter  = 0
@@ -1157,15 +1164,21 @@ def build_assessment_pdf(output_path, data):
         # ── Science: sections grouped by stage_label ───────────────────────────
         # Section header: "STAGE N · LABEL"
         # LO label:       item["implied_lo_assessed"]  (carried on each item)
-        groups = _group_science(items)
+        groups = _group_science(items, secondary=is_sci_secondary)
         for stage_label, progression_stage, group_items in groups:
-            sec_text  = f"Stage {progression_stage} \u00b7 {stage_label}"
+            if is_sci_secondary:
+                # Section-anchored header: the chapter section label itself,
+                # e.g. "8.1 Rediscovering the Roots of Atomic Theory".
+                sec_text = stage_label
+            else:
+                sec_text = f"Stage {progression_stage} \u00b7 {stage_label}"
             sec_para  = Paragraph(sec_text.upper(), AST["sec_hdr"])
             sec_hline = HLine(uw, thickness=0.4, color=HAIRLINE, sb=1, sa=3)
 
             for idx, item in enumerate(group_items):
                 q_counter += 1
                 lo_text = item.get("implied_lo_assessed") or ""
+                item["is_science"] = True   # stamp so question_block uses double-rule separator
 
                 header_items = [sec_para, sec_hline] if idx == 0 else None
                 story.extend(question_block(
@@ -1308,6 +1321,12 @@ def json_to_assessment_data(j: dict) -> dict:
     is_english = (subject == "English")
 
     raw_items = (j.get("result") or {}).get("assessment_items", []) or []
+    # Secondary-stage science wraps its questions in an envelope dict
+    # {grade, subject, stage, ..., "questions": [...]} instead of a flat list.
+    # Unwrap to the inner list so downstream grouping works. (Middle stage and
+    # SS ship a flat list; English/Maths ship section lists — all no-ops here.)
+    if isinstance(raw_items, dict) and isinstance(raw_items.get("questions"), list):
+        raw_items = raw_items["questions"]
 
     if is_maths:
         # Maths assessment ships as a list of section-objects (A/B/C), each
@@ -1371,6 +1390,18 @@ def json_to_assessment_data(j: dict) -> dict:
             "is_english":       True,
         }
 
+    # Secondary-stage science is section-anchored (section_label, no
+    # progression stage_label). Detected on the first item so the renderer can
+    # group/label by chapter section instead of "Stage N".
+    is_sci_secondary = bool(
+        is_science
+        and isinstance(raw_items, list)
+        and raw_items
+        and isinstance(raw_items[0], dict)
+        and raw_items[0].get("stage_label") is None
+        and raw_items[0].get("section_label") is not None
+    )
+
     if is_science:
         # Science items carry implied_lo_assessed directly — no period map needed.
         lo_map = {}
@@ -1391,6 +1422,7 @@ def json_to_assessment_data(j: dict) -> dict:
         "assessment_items": raw_items,
         "lo_map":           lo_map,
         "is_science":       is_science,
+        "is_sci_secondary": is_sci_secondary,
         "is_maths":         False,
         "is_english":       False,
     }

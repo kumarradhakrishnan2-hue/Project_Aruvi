@@ -1,0 +1,25 @@
+{
+    "stage": "secondary",
+    "subject": "science",
+    "grade": "ix",
+    "chapter_number": 10,
+    "chapter_title": "Sound Waves: Characteristics and Applications",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": false,
+    "primary": [
+      {
+        "cg": "CG-2",
+        "c_code": "C-2.7",
+        "justification": "The chapter's entire domain is the origin, propagation, and quantitative characteristics of sound waves — directly the 'describes the origin and properties of sound (wavelength, frequency, amplitude)' clause of C-2.7. All major sections (production via vibration, compression-rarefaction wave mechanics, graphical representation, wave equation v = λν, pitch/loudness, reflection leading to echo and reverberation, and ultrasound/infrasound applications including echolocation and sonar) are facets of this single competency. No second C-code within CG-2 is substantively addressed: C-2.5 (energy conservation, work) is referenced only at the level of 'sound carries energy' without mathematical treatment of potential/kinetic energy, and no other CG-2 domain strand is developed as an independent section."
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's ability to describe the origin, propagation, and quantitative characteristics of sound waves by modelling compression-rarefaction mechanics, applying the wave equation (v = λν), and interpreting graphical representations to explain phenomena such as echo, reverberation, and the applications of ultrasound and infrasound.",
+    "conceptual_demand": 2,
+    "activity_count": 6,
+    "activity_load": 2,
+    "demo_count": 2,
+    "demo_load": 1,
+    "exec_load": 1,
+    "effort_index": 11.5
+}

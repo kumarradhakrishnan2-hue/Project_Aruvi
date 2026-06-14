@@ -1,0 +1,30 @@
+{
+    "stage": "secondary",
+    "subject": "science",
+    "grade": "ix",
+    "chapter_number": 3,
+    "chapter_title": "Tissues in Action",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": true,
+    "primary": [
+      {
+        "cg": "CG-3",
+        "c_code": "C-3.1",
+        "justification": "The chapter's dominant instructional strand is the structure–function relationship of tissue types at the cellular level: meristematic cell characteristics (thin walls, prominent nucleus, dense cytoplasm, absence of vacuoles) that enable continuous division; the cellular basis of differentiation into permanent tissues; and the detailed structural descriptions of every tissue type — epidermis, parenchyma, collenchyma, sclerenchyma, xylem/phloem components, epithelial variants, connective tissue matrix differences, and the three muscle types (skeletal, smooth, cardiac) plus the neuron — all showing how cell-level features (wall composition, shape, branching, striations, multinucleation) make each tissue the structural and functional basis of its specific life role. This is the C-3.1 domain of cellular components making cells the structural and functional basis of living organisms."
+      },
+      {
+        "cg": "CG-3",
+        "c_code": "C-3.2",
+        "justification": "A distinct, sectioned strand running through section (iii) Conducting tissues and section 3.3.1 directly addresses life processes named in C-3.2: xylem transporting water and minerals from roots upward (transport of water in plants), phloem transporting assimilates from leaves to other parts (food transport), and epithelial tissue enabling rapid gas and liquid diffusion at lung and blood-vessel linings (exchange of materials) and efficient nutrient/water absorption at the small intestine lining (absorption). These are covered in their own named subsections and constitute a cognitively independent strand from the structural catalogue of C-3.1."
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's ability to explain how cellular-level structural features — cell wall composition, shape, arrangement, and organelle profile — determine tissue function across plant and animal types, AND how specific tissue types carry out the life processes of transport, exchange, and absorption, by tracing the connection from individual cell characteristics through tissue identity to the functional role each tissue serves in the organism.",
+    "conceptual_demand": 3,
+    "activity_count": 4,
+    "activity_load": 2,
+    "demo_count": 0,
+    "demo_load": 0,
+    "exec_load": 0,
+    "effort_index": 10.0
+}

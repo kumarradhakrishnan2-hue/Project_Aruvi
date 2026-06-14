@@ -1,30 +1,30 @@
 {
-  "stage": "secondary",
-  "subject": "science",
-  "grade": "ix",
-  "chapter_number": 2,
-  "chapter_title": "Cell: The Building Block of Life",
-  "min_viable_periods": 0,
-  "orientation_chapter": false,
-  "co_central": true,
-  "primary": [
-    {
-      "cg": "CG-3",
-      "c_code": "C-3.1",
-      "justification": "The chapter's bulk — sections 2.2 through 2.3.1 and all organelle content-blocks — directly addresses C-3.1. It explains the semipermeability of the cell membrane (osmosis, diffusion, fluid-mosaic model), the cell wall's structural role, and the function of every named organelle (nucleus, ribosomes, ER, Golgi apparatus, lysosomes, mitochondria, plastids, vacuoles), making the cell the structural and functional unit of living organisms."
-    },
-    {
-      "cg": "CG-3",
-      "c_code": "C-3.3",
-      "justification": "Sections 2.4, 2.4.1 (Mitosis, Meiosis), 2.5, and 2.5.1 form a cognitively distinct second strand on heredity mechanisms. The chapter introduces chromosomes, DNA, genes, and chromatin as carriers of hereditary information, and explains how mitosis preserves genetic identity across body cells while meiosis produces gametes with half the chromosome number, creating variation. This strand is carried in its own named sections and sections and is independent of the organelle content."
-    }
-  ],
-  "dissolution_test": "This chapter builds the student's ability to explain how a cell's organelles (including the semipermeable membrane, nucleus, ER, Golgi, mitochondria, plastids, and vacuoles) make it the structural and functional unit of life AND how cell division — mitosis preserving chromosome number, meiosis halving it — transmits the DNA/chromosomal basis of heredity and enables variation, by comparing cell types through observation and tracing the flow from DNA to chromosome to daughter cell.",
-  "conceptual_demand": 3,
-  "activity_count": 4,
-  "activity_load": 2,
-  "demo_count": 0,
-  "demo_load": 0,
-  "exec_load": 0,
-  "effort_index": 10.0
+    "stage": "secondary",
+    "subject": "science",
+    "grade": "ix",
+    "chapter_number": 2,
+    "chapter_title": "Cell: The Building Block of Life",
+    "min_viable_periods": 0,
+    "orientation_chapter": false,
+    "co_central": true,
+    "primary": [
+      {
+        "cg": "CG-3",
+        "c_code": "C-3.1",
+        "justification": "The chapter's bulk explains the role of cellular components — nucleus, mitochondria, ER, Golgi apparatus, ribosomes, lysosomes, plastids, vacuoles, and cell wall — and specifically the semipermeability of the cell membrane (osmosis, fluid-mosaic model, isotonic/hypotonic/hypertonic effects) in making the cell the structural and functional unit of life. Activities 2.2 and 2.3 directly operationalise selective permeability. Sections 2.2–2.3.1 and 2.5 are the chapter's dominant instructional strand."
+      },
+      {
+        "cg": "CG-3",
+        "c_code": "C-3.3",
+        "justification": "A distinct, sectioned strand (Nucleus — House of coded instructions; Section 2.4 How do Normal Cells Grow and Divide?; Section 2.4.1 Cell division; Mitosis; Meiosis) establishes DNA, genes, and chromosomes as the carriers of heredity, explains how mitosis preserves genetic identity across body cells, and how meiosis halves chromosome number to produce gametes — with fertilisation restoring the full count and introducing variation. This strand is cognitively independent from C-3.1 and constitutes a distinct, co-central competency in its own right."
+      }
+    ],
+    "dissolution_test": "This chapter builds the student's ability to explain how a cell's organelles and semipermeable membrane make it the unit of life AND how cell division transmits the DNA/chromosomal basis of heredity and variation, by comparing cell types under controlled observation and tracing the flow from DNA to chromosome to daughter cell.",
+    "conceptual_demand": 3,
+    "activity_count": 4,
+    "activity_load": 2,
+    "demo_count": 0,
+    "demo_load": 0,
+    "exec_load": 0,
+    "effort_index": 10.0
 }

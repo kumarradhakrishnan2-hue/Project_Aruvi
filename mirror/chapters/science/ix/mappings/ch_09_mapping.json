@@ -1,0 +1,25 @@
+{
+  "stage": "secondary",
+  "subject": "science",
+  "grade": "ix",
+  "chapter_number": 9,
+  "chapter_title": "Atomic Foundations of Matter",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": false,
+  "primary": [
+    {
+      "cg": "CG-1",
+      "c_code": "C-1.1",
+      "justification": "The chapter's whole domain is how atoms combine to form compounds — the central clause of C-1.1. The two empirical laws (conservation of mass, constant proportions) and Dalton's atomic theory serve as the foundational scaffolding that explains why atoms combine in fixed ratios. The bulk of the chapter then develops exactly the two bonding mechanisms the C-1.1 clause refers to: covalent bonding (electron sharing in H₂, Cl₂, O₂, HCl, H₂O) and ionic bonding (electron transfer in NaCl, MgCl₂, etc.), together with the valency-based criss-cross method for writing chemical formulae, naming conventions, properties of the resulting compounds, and the mass calculations (molecular mass and formula unit mass) that follow from knowing the formula. No distinct second strand within CG-1 is present: C-1.2 (mixtures and separation) and C-1.3 (chemical equations with acids/bases/metals/non-metals) are both absent as taught content. The Laws of Conservation of Mass and Constant Proportions appear as historical motivation and verification exercises, not as a developed C-1.3 strand of balanced equations and reaction-type classification."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to explain how atoms combine to form covalent and ionic compounds by applying the octet/duplet rule to determine whether atoms share or transfer electrons, then using valency and the criss-cross method to write and name the resulting chemical formulae, and finally calculating molecular or formula unit masses — all anchored in the empirical laws and Dalton's atomic theory that establish why atoms combine in fixed ratios.",
+  "conceptual_demand": 3,
+  "activity_count": 4,
+  "activity_load": 2,
+  "demo_count": 0,
+  "demo_load": 0,
+  "exec_load": 2,
+  "effort_index": 14.0
+}

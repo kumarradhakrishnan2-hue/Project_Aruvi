@@ -1,0 +1,30 @@
+{
+  "stage": "secondary",
+  "subject": "science",
+  "grade": "ix",
+  "chapter_number": 12,
+  "chapter_title": "Patterns in Life: Diversity and Classification",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": true,
+  "primary": [
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.1",
+      "justification": "The chapter's dominant strand delivers the five-kingdom classification using cellular diversity and ecological roles as the organising criteria — cell type (prokaryote/eukaryote), level of organisation (unicellular/multicellular), cell wall composition and mode of nutrition (autotrophic/heterotrophic/decomposer) — applied systematically across Monera, Protista, Fungi, Plantae (five classes) and Animalia (eight invertebrate phyla, protochordates and five vertebrate groups). This is precisely the scope of C-4.1: applying knowledge of cellular diversity and ecological role to classify organisms into the five kingdoms."
+    },
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.2",
+      "justification": "A distinct, sectioned second strand develops levels of biological organisation. The invertebrate sequence (sections 12.6.5 Porifera through Echinodermata) is explicitly structured around the progression from cellular-level organisation (Porifera) → tissue level (Cnidaria) → organ level (Platyhelminthes) → organ system level (Nematoda through Echinodermata), and section 12.7.1 introduces the hierarchical classification pyramid from Kingdom down to Species. Together these constitute an independent, cognitively distinct treatment of C-4.2 — illustrating levels of organisation from molecules to organisms — that runs alongside but is separable from the five-kingdom classification strand."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to classify the diversity of life into five kingdoms AND trace the levels of biological organisation by applying criteria of cellular diversity (prokaryote vs. eukaryote, unicellular vs. multicellular, cell wall composition) and ecological role (autotrophic, heterotrophic, decomposer) to place organisms from bacteria to vertebrates, while mapping the progression from cellular to tissue to organ to organ-system levels of organisation across the animal kingdom.",
+  "conceptual_demand": 3,
+  "activity_count": 6,
+  "activity_load": 2,
+  "demo_count": 0,
+  "demo_load": 0,
+  "exec_load": 0,
+  "effort_index": 10.0
+}

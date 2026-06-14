@@ -535,6 +535,12 @@
 .eng-asec .asec-stage-hdr { background: #5a6c7d; }
 .eng-asec .asec-stage-hdr.open { background: #2c3e50; }
 .eng-asec .asec-stage-body { border-color: #2c3e50; }
+
+/* Science secondary Assessment: match the English spine bar colour scheme */
+.sci-sec-asec .asec-stage-hdr { background: #5a6c7d; }
+.sci-sec-asec .asec-stage-hdr.open { background: #2c3e50; }
+.sci-sec-asec .asec-stage-body { border-color: #2c3e50; }
+.sci-sec-asec .asec-stage-title { font-size: 11px; }
 .eng-spine-blurb {
   font-size: 11px; color: #5a5754; line-height: 1.45;
   font-style: italic; padding: 6px 4px 8px;
@@ -1915,7 +1921,10 @@ function renderAssessment(sections) {
   };
 
   sections.forEach(function(sec) {
-    html += '<div class="asec' + (isEnglish ? ' eng-asec' : '') + '">';
+    var asecExtra = isEnglish ? ' eng-asec'
+                  : (isScience && sec.science_secondary === true) ? ' sci-sec-asec'
+                  : '';
+    html += '<div class="asec' + asecExtra + '">';
 
     if (isEnglish) {
       /* ── English: collapsible row per spine. Reading open by default. ─────── */
@@ -1950,17 +1959,30 @@ function renderAssessment(sections) {
     }
 
     if (isScience) {
-      /* ── Science: collapsible Progression Stage row ─────────────────────────
-         First stage open by default; rest collapsed. Accordion toggle. */
+      /* ── Science: collapsible section row ────────────────────────────────────
+         Middle stage  → "Progression Stage: <stage_label>"
+         Secondary     → section-anchored, header shows the chapter section
+                         label (e.g. "8.1 Rediscovering the Roots…") with no
+                         "Progression Stage" prefix, since secondary science has
+                         no progression stages.
+         First row open by default; rest collapsed. Accordion toggle. */
       sciStageIdx++;
       var stageId     = 'asec-s' + sciStageIdx;
-      var stageText   = sec.stage_label || sec.c_code || '';
-      var sciOpenCls  = sciStageIdx === 1 ? ' open' : '';  /* first stage open by default */
+      var sciOpenCls  = sciStageIdx === 1 ? ' open' : '';  /* first row open by default */
+      var isSciSecondary = sec.science_secondary === true;
+      var stageHdrInner;
+      if (isSciSecondary) {
+        var secLbl = sec.section_label || sec.drawing_on || sec.c_code || '';
+        stageHdrInner = escHtml(secLbl);
+      } else {
+        var stageText = sec.stage_label || sec.c_code || '';
+        stageHdrInner = '<strong>Progression Stage:</strong> ' + escHtml(stageText);
+      }
 
       html += '<div class="asec-stage-hdr' + sciOpenCls + '" id="' + stageId + '-hdr" ' +
                    'onclick="toggleAssessStage(\'' + stageId + '\')">' +
                 '<div class="asec-stage-title">' +
-                  '<strong>Progression Stage:</strong> ' + escHtml(stageText) +
+                  stageHdrInner +
                 '</div>' +
                 '<div class="asec-stage-chev">▼</div>' +
               '</div>';
@@ -2712,6 +2734,24 @@ function renderLPA() {
 }
 
 renderLPA();
+/* ── Science secondary: open the first question of the first assessment
+   section on initial load (question + answer visible, guide stays collapsed).
+   Other subjects/stages keep all question cards collapsed by default. */
+(function openFirstSciSecondaryQuestion() {
+  var d = window.LPA_DATA || {};
+  var secs = d.assessment_sections || [];
+  var isSciSecondary = (secs[0] && secs[0].science_secondary === true);
+  if (!isSciSecondary) return;
+  var firstBody = document.querySelector('.asec-stage-body.open');
+  if (!firstBody) return;
+  var firstCard = firstBody.querySelector('.qcard');
+  if (!firstCard) return;
+  var body = firstCard.querySelector('.qbody');
+  if (body) body.classList.add('open');           /* question + answer shown */
+  var chev = firstCard.querySelector('.qchev');
+  if (chev) chev.style.transform = 'rotate(180deg)';
+  /* Guide (.abox) is intentionally left collapsed. */
+})();
 /* Fire once after initial render so the parent knows the true height */
 reportHeight();
 /* Fire again at increasing delays to catch layout shifts in both

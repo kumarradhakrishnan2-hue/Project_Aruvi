@@ -1,0 +1,1318 @@
+{
+  "filename": "ch_08_20260612_151832.json",
+  "saved_at": "2026-06-12T15:18:32",
+  "grade": "Grade IX",
+  "subject": "Science",
+  "chapter_number": 8,
+  "chapter_title": "Journey Inside the Atom",
+  "period_schedule_display": "Period schedule:\n  Row 1: 40 minutes × 1 period = 40 minutes\nTotal: 1 periods · 40 minutes",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 40,
+      "count": 1
+    }
+  ],
+  "plan_status": "full_lpa",
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 60,
+          "activity_title": "Tracing the Philosophical Roots of Atomic Thinking Across Cultures",
+          "section_anchor": "8.1 Rediscovering the Roots of Atomic Theory",
+          "pedagogical_approach": "Didactic approach",
+          "materials": [
+            "Whiteboard and markers",
+            "Printed timeline handout (optional)",
+            "Textbook"
+          ],
+          "visual_aids": "Board-drawn timeline from Kanada and Democritus to Dalton 1808",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher opens with a provocation: 'If you kept cutting a piece of iron in half, again and again — would you ever reach something you could not cut further?' Students share initial ideas in pairs, then a few respond aloud. Teacher records contrasting student ideas on the board without resolving them yet."
+            },
+            {
+              "minutes": "8-20",
+              "activity": "Teacher narrates and explains the contributions of Acharya Kanada — the concept of parmanus in the Vaisesika Sutras, the idea of dyads and triads — and places this alongside the Greek philosophers Leucippus and Democritus and their atomos. Teacher draws a side-by-side comparison on the board: origin, name given, language of description, basis (philosophical vs. experimental)."
+            },
+            {
+              "minutes": "20-32",
+              "activity": "Students receive or copy a two-column comparison table: 'Kanada's parmanu' vs. 'Greek atomos', with rows for origin, key claim, basis, and whether it was testable. They complete the table using the explanation just given, then compare with a neighbour. Teacher circulates and asks pairs to justify their entries."
+            },
+            {
+              "minutes": "32-45",
+              "activity": "Teacher explains Dalton's 1808 contribution as the first scientific treatment: atoms as fundamental, indivisible building blocks — the shift from philosophical idea to scientific proposal. Students annotate the board timeline into their notebooks. Teacher asks: 'What changed between the ancient philosophers and Dalton that made the atomic idea scientific rather than philosophical?' Students write a two-sentence response."
+            },
+            {
+              "minutes": "45-55",
+              "activity": "Class discussion on the written responses. Teacher draws out the distinction between a philosophical claim and a testable scientific proposal, connecting to how scientific ideas develop over time. Students revise their written responses if needed."
+            },
+            {
+              "minutes": "55-60",
+              "activity": "Exit consolidation: each student writes one sentence identifying the single most important difference between the ancient philosophical atomic idea and Dalton's scientific one. Teacher collects or reads two or three aloud to close."
+            }
+          ],
+          "homework": [
+            "Using the comparison you made in class between Kanada and Democritus, write a short paragraph explaining why the ancient atomic idea — however insightful — could not count as a scientific theory. What would have been needed to make it one?"
+          ]
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 45,
+          "activity_title": "Thomson's Cathode Ray Discovery and the Plum Pudding Model",
+          "section_anchor": "8.2 A Short Historical Journey Through Atomic Models / 8.2.1 Thomson's model of an atom",
+          "pedagogical_approach": "Didactic approach",
+          "materials": [
+            "Whiteboard and markers",
+            "Textbook",
+            "A small watermelon or printed image of a watermelon cross-section (optional)"
+          ],
+          "visual_aids": "Board diagram of a cathode ray tube showing cathode, anode, low-pressure gas, and ray direction; board sketch of Thomson's plum pudding model",
+          "time_bands": [
+            {
+              "minutes": "0-7",
+              "activity": "Teacher recalls that Dalton saw atoms as indivisible. Poses the question: 'What kind of evidence would make you revise that idea?' Students think for 30 seconds and share. Teacher introduces the late-19th century discovery of radioactivity as the first crack — atoms must contain smaller pieces."
+            },
+            {
+              "minutes": "7-22",
+              "activity": "Teacher explains Thomson's 1897 cathode ray tube experiment with a board diagram: setup, observation that rays travel from cathode regardless of material, identification of rays as negatively charged particles far lighter than atoms, naming them electrons, and the convention that electron charge is –1. Teacher emphasises the inference: because cathode material did not matter, electrons must be present in every element."
+            },
+            {
+              "minutes": "22-33",
+              "activity": "Teacher presents the logical puzzle Thomson faced — atoms are neutral overall, so where is the positive charge? — and explains the plum pudding model using the watermelon analogy. Students sketch the model in their notebooks with labels. Then the Pause and Ponder task: students reason in writing about what would happen if the positive charge were less than the total negative charge of the electrons, and evaluate whether an orange or lemon is a better analogy than a watermelon and where each falls short."
+            },
+            {
+              "minutes": "33-40",
+              "activity": "Two or three students share their analogy evaluations. Teacher guides the class to identify what an analogy must preserve (spatial distribution of charges, overall neutrality) and where any fruit analogy breaks down. Teacher affirms Thomson's model as the first genuine attempt to describe charge coexistence."
+            },
+            {
+              "minutes": "40-45",
+              "activity": "Consolidation: students write a two-sentence summary — (1) the key evidence Thomson used, (2) the key claim his model made. Teacher reads two or three aloud."
+            }
+          ],
+          "homework": []
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 60,
+          "activity_title": "Testing Thomson's Model — The Gold Foil Experiment and Its Evidence",
+          "section_anchor": "8.2.2 Testing Thomson's model: The gold foil experiment",
+          "pedagogical_approach": "Inquiry approach",
+          "materials": [
+            "Whiteboard and markers",
+            "Textbook figure of the gold foil experiment",
+            "Blank paper for student diagrams"
+          ],
+          "visual_aids": "Textbook figure 8.x showing the Geiger-Marsden setup with gold foil, alpha source, and detection screen; board sketch of expected vs. observed scattering patterns",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher briefly recaps Thomson's model (uniform positive sphere, electrons embedded). Poses the inquiry question: 'If Thomson's model were correct, what would you predict would happen to a beam of positively charged particles fired at a thin gold foil?' Students write individual predictions and sketch a diagram of expected paths."
+            },
+            {
+              "minutes": "8-20",
+              "activity": "Students share predictions. Teacher collects the range — most expect slight deflections at most. Teacher then displays the textbook figure of the actual experiment setup and describes what Geiger and Marsden observed: most particles pass through undeflected, some deflect at large angles, a few bounce directly back."
+            },
+            {
+              "minutes": "20-35",
+              "activity": "Think as a Scientist task: students work individually on the question of what would happen if the gold foil were made thicker. They draw a diagram predicting the change in scattering pattern and write two sentences explaining their reasoning in terms of the probability of alpha particles encountering a nucleus. Teacher circulates, prompting students to connect their prediction to the structure of the foil."
+            },
+            {
+              "minutes": "35-45",
+              "activity": "Paired discussion: students share their diagrams and reasoning. Then whole-class: Pause and Ponder — what would happen if negatively charged particles replaced alpha particles? Students reason aloud. Teacher facilitates without supplying the answer immediately, drawing out the idea that attraction rather than repulsion would change the deflection pattern."
+            },
+            {
+              "minutes": "45-55",
+              "activity": "Second Pause and Ponder: how does a single result — the sharp backscattering of a few particles — suffice to rule out Thomson's model entirely? Students write a two-sentence argument. Teacher discusses: one decisive counter-example is enough to falsify a model; Thomson's uniform distribution could not produce a strong enough force to bounce a particle back."
+            },
+            {
+              "minutes": "55-60",
+              "activity": "Students draw a before-and-after board summary: Thomson's prediction vs. Rutherford's observation vs. what this implies about atomic structure. Teacher consolidates the idea that the experiment demolished the plum pudding picture and set up the need for a new model."
+            }
+          ],
+          "homework": []
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 60,
+          "activity_title": "Rutherford's Planetary Model, Its Limits, and the Discovery of the Proton",
+          "section_anchor": "8.2.2 A. Rutherford's model / B. Limitations / C. Discovery of the proton",
+          "pedagogical_approach": "Didactic approach",
+          "materials": [
+            "Whiteboard and markers",
+            "Textbook",
+            "Pepper grain and a large circle drawn on paper (to illustrate nucleus-to-atom size ratio)"
+          ],
+          "visual_aids": "Board diagram of Rutherford's planetary model with nucleus, electron orbits, and scale annotation (10⁻¹⁰ m atom, 10⁻¹⁵ m nucleus); board sketch of spiralling electron collapse",
+          "time_bands": [
+            {
+              "minutes": "0-10",
+              "activity": "Teacher reconstructs Rutherford's three conclusions from the previous period's evidence: empty space, concentrated nucleus, orbiting electrons. Teacher draws the planetary model on the board, labels nucleus and electron orbits, and introduces the scale — atom ~10⁻¹⁰ m, nucleus ~10⁻¹⁵ m. Places a pepper grain at the centre of a large circle on paper to make the ratio tangible."
+            },
+            {
+              "minutes": "10-25",
+              "activity": "Teacher explains the stability problem: classical physics requires that an accelerating charged particle radiates energy, so an orbiting electron should spiral inward and collapse into the nucleus. Students draw the spiralling-collapse scenario in their notebooks. Pause and Ponder assertion-reason task: students evaluate whether Rutherford's conclusion about nuclear mass concentration is correctly explained by Thomson's model of uniformly distributed positive charge, writing a two-sentence verdict with justification."
+            },
+            {
+              "minutes": "25-35",
+              "activity": "Two or three students read their assertion-reason responses. Teacher clarifies the logic: Thomson's model is precisely what the scattering disproved, so it cannot be the explanation for Rutherford's finding. The class identifies the gap — Rutherford's model explained scattering but not stability."
+            },
+            {
+              "minutes": "35-48",
+              "activity": "Teacher introduces the proton: Rutherford's identification of positive nuclear particles, their mass relative to electrons, and charge +1. Students work through the charge-balance argument for helium (2 protons, 2 electrons) and sodium (11 protons, 11 electrons) in their notebooks, confirming electrical neutrality. Teacher asks: 'What would happen to an atom's charge if it had 11 protons but only 10 electrons?' Students respond."
+            },
+            {
+              "minutes": "48-57",
+              "activity": "Students construct a small comparison table in their notebooks: three subatomic particles (electron, proton) known so far — symbol, location, charge, relative mass. Leave the neutron row blank for the next period. Teacher circulates to check for accuracy."
+            },
+            {
+              "minutes": "57-60",
+              "activity": "Consolidation: teacher poses the mass puzzle aloud — helium has 2 protons but mass ~4 times hydrogen's 1 proton. 'Where is the extra mass coming from?' Students note this as an open question for the next period."
+            }
+          ],
+          "homework": [
+            "Explain in three to four sentences why Rutherford's planetary model was a step forward compared to Thomson's model, and identify the one physical phenomenon it could not account for. Use the stability argument specifically."
+          ]
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 45,
+          "activity_title": "Bohr's Stationary Shells — Resolving the Electron Stability Problem",
+          "section_anchor": "8.2.3 Bohr's model of the atom",
+          "pedagogical_approach": "Didactic approach",
+          "materials": [
+            "Whiteboard and markers",
+            "Textbook",
+            "Coloured chalk or markers for energy-level diagram"
+          ],
+          "visual_aids": "Board diagram of concentric electron shells labelled K, L, M, N with energy increasing outward; arrow indicating electron transition with energy absorbed or emitted",
+          "time_bands": [
+            {
+              "minutes": "0-7",
+              "activity": "Teacher recaps the stability problem from the previous period: orbiting electrons should radiate energy and collapse. Poses the question: 'What constraint on electron motion would prevent that collapse?' Students speculate briefly."
+            },
+            {
+              "minutes": "7-22",
+              "activity": "Teacher introduces Bohr's 1913 proposal: electrons occupy fixed circular paths called stationary states (shells), each with a definite, constant energy — they do not radiate in a stationary state. Teacher draws the concentric shell diagram with labels K (n=1), L (n=2), M (n=3), N (n=4), energy increasing outward. Explains the naming origin: Barkla's X-ray notation adopted by Bohr, letters starting at K in case earlier series were found."
+            },
+            {
+              "minutes": "22-33",
+              "activity": "Teacher explains electron transitions: electrons can move between shells only by absorbing or emitting energy exactly equal to the difference between the two energy levels. Students draw two transitions in their notebooks — one absorption (arrow outward) and one emission (arrow inward) — with a label indicating energy change. Teacher asks: 'Why does each shell hold only a limited number of electrons?' — introduces this as a rule to be applied, not yet explained from first principles."
+            },
+            {
+              "minutes": "33-40",
+              "activity": "Students write a comparison between Rutherford's model and Bohr's model in their notebooks, using three criteria: electron location, energy of electron, stability of atom. Pairs compare and resolve differences."
+            },
+            {
+              "minutes": "40-45",
+              "activity": "Consolidation: teacher poses — 'Bohr solved the collapse problem. What new question does his model raise about how electrons fill the available shells?' Students note this as the content of the next section."
+            }
+          ],
+          "homework": []
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 45,
+          "activity_title": "Nuclear Mass Puzzle and Chadwick's Neutron Discovery",
+          "section_anchor": "8.3 What Components Contribute to the Mass of an Atom? / 8.3.1 Discovery of the Neutron",
+          "pedagogical_approach": "Discovery approach",
+          "materials": [
+            "Whiteboard and markers",
+            "Textbook",
+            "A simple balance or printed image of a balance for analogy (optional)"
+          ],
+          "visual_aids": "Board table of three subatomic particles: symbol, location, charge, relative mass; board illustration of helium nucleus showing 2 protons + 2 neutrons",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher re-presents the mass puzzle from Period 4: hydrogen (1 proton) has mass 1 u; helium (2 protons) should have mass ~2 u but actually has ~4 u. Teacher invites students to reason: 'What could account for the extra mass without adding extra charge?' Students suggest possibilities and Teacher records them on the board without evaluation."
+            },
+            {
+              "minutes": "8-22",
+              "activity": "Teacher introduces Chadwick's 1932 discovery: a particle with mass nearly equal to the proton but with no charge — the neutron (n⁰). Teacher draws the completed subatomic particle table (electron, proton, neutron) and shows how 2 protons + 2 neutrons in helium give mass 4 u, resolving the puzzle. Students complete the neutron row left blank in Period 4."
+            },
+            {
+              "minutes": "22-33",
+              "activity": "Teacher explains nuclear stability: protons repel each other electrostatically, so heavier nuclei need progressively more neutrons to dilute repulsion and strengthen the nuclear binding force. Students examine the uranium case (92 protons, 146 neutrons) and compare to carbon/oxygen (roughly equal protons and neutrons). Students write: 'Why does uranium need so many more neutrons than protons compared to carbon?' in two sentences."
+            },
+            {
+              "minutes": "33-40",
+              "activity": "What if task: students reason about how everyday objects would be different if atoms had no empty space — connecting the nuclear size ratio from Period 4 to macroscopic scale. Two or three students share ideas; teacher connects to the density of neutron stars as a real-world consequence."
+            },
+            {
+              "minutes": "40-45",
+              "activity": "Consolidation: students complete the full three-particle table from memory on a blank sheet — symbol, location, charge, mass — and exchange with a partner to check. Teacher clarifies any errors on the board."
+            }
+          ],
+          "homework": []
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 60,
+          "activity_title": "Element Symbols, Atomic Number, and Mass Number in Standard Notation",
+          "section_anchor": "8.4 Symbols of Elements / 8.5 Atomic Number / 8.6 Mass Number",
+          "pedagogical_approach": "Hands-on Science",
+          "materials": [
+            "Whiteboard and markers",
+            "Textbook",
+            "Index cards (one per student, pre-printed or blank)",
+            "Reference list of 27 element symbols from textbook table"
+          ],
+          "visual_aids": "Board display of standard nuclide notation (A as superscript, Z as subscript to the left of element symbol); board table showing H, He, Li examples with Z, A, neutron count",
+          "time_bands": [
+            {
+              "minutes": "0-10",
+              "activity": "Teacher introduces section 8.4 on element symbols: Dalton's pictorial system, Berzelius's 1813 alphabetic proposal, IUPAC rules (first letter capitalised, second lowercase, some from Latin/Greek/German). Teacher displays a selection of symbols (Fe, Hg, W, Cl, Zn) and students work in pairs to match symbol to element name using the reference table, noting which derive from non-English names."
+            },
+            {
+              "minutes": "10-20",
+              "activity": "Pause and Ponder task: students invent a name and symbol for a hypothetical newly discovered element, apply IUPAC rules, and write a two-sentence explanation of the confusion that would arise if different scientists used different symbols for the same element. Pairs share with another pair and check each other's proposed symbols against the rules."
+            },
+            {
+              "minutes": "20-33",
+              "activity": "Teacher introduces atomic number Z (number of protons, unique element identifier) and the neutrality argument (protons = electrons). Students work through H (Z=1), He (Z=2), Li (Z=3) on the board, confirming proton and electron counts. Teacher then introduces mass number A = protons + neutrons, explains why electron mass is negligible, and shows the standard notation (e.g., ¹²₆C) with superscript A and subscript Z."
+            },
+            {
+              "minutes": "33-47",
+              "activity": "Hands-on index card activity: each student receives a card showing a nuclide in standard notation (different cards for different students, covering H, He, Li, Be, B, C, N, O, Na, Mg, Al, Si, P, S, Cl, Ar, Ca, Fe). Students work out on the card's reverse: element name, Z, A, protons, electrons, neutrons (using A – Z). Students then find a partner with a different element and cross-check each other's working."
+            },
+            {
+              "minutes": "47-55",
+              "activity": "Pause and Ponder numerical problems from section 8.6: teacher writes three problems on the board — (1) given Z=11 and A=23, find protons, electrons, neutrons; (2) given Z=8 and 8 neutrons, find A; (3) given 10 neutrons and Z=9, find A. Students solve individually, then compare with a neighbour."
+            },
+            {
+              "minutes": "55-60",
+              "activity": "Teacher reviews answers on the board, highlighting the formula neutrons = A – Z. Students correct their work and note any errors."
+            }
+          ],
+          "homework": [
+            "From the reference table of 27 elements, select any five whose symbols derive from Latin, Greek, or German names. For each, write the symbol, the modern element name, and the language-of-origin name it comes from. Then write one sentence explaining why an internationally standardised symbol system matters for scientific communication."
+          ]
+        },
+        {
+          "period_number": 8,
+          "period_duration_minutes": 45,
+          "activity_title": "Shell-Filling Rules and Writing Electronic Configurations for Elements 1–18",
+          "section_anchor": "8.7 How Are Electrons Distributed in Different Energy Levels? / 8.7.1 Building up atoms",
+          "pedagogical_approach": "Hands-on Science",
+          "materials": [
+            "Whiteboard and markers",
+            "Textbook Fig. 8.11",
+            "Blank atomic structure worksheet (concentric circle diagrams for students to fill in)"
+          ],
+          "visual_aids": "Board diagram of K, L, M shells with maximum capacities labelled (2, 8, 18); textbook Fig. 8.11 showing 2-D atomic structures for elements 1–18",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher introduces the Bohr–Bury rules: maximum electrons in shell n = 2n² (K=2, L=8, M=18); outermost shell ≤ 8; fill from innermost outward. Teacher writes the rules on the board and works through hydrogen (1 electron in K) and helium (2 electrons, K full) as demonstrations."
+            },
+            {
+              "minutes": "8-22",
+              "activity": "Students receive blank concentric-circle worksheets. Working individually, they fill in electronic configurations for Li (Z=3), C (Z=6), N (Z=7), O (Z=8), Na (Z=11), Mg (Z=12), Al (Z=13), Si (Z=14), P (Z=15), S (Z=16), Cl (Z=17), Ar (Z=18) — distributing electrons across shells following the three rules and labelling each shell with its electron count."
+            },
+            {
+              "minutes": "22-32",
+              "activity": "Pause and Ponder tasks: students identify the number of valence electrons in ¹²₆C, ¹⁹₉F, and ²⁸₁₄Si using their configurations; write electronic configurations for Z=12, 16, and 18; and solve the sodium riddle (identify an element from its mass number and given properties). Students work individually, then check with a neighbour."
+            },
+            {
+              "minutes": "32-40",
+              "activity": "Teacher reviews configurations for Na (2,8,1), Ar (2,8,8), and Ne (2,8) on the board, emphasising that neon and argon both have filled outermost shells. Teacher asks: 'What do you predict about the chemical reactivity of neon and argon based on their configurations?' Students answer and teacher connects to the next period's topic."
+            },
+            {
+              "minutes": "40-45",
+              "activity": "Exit check: teacher writes three nuclides on the board and asks students to write the electronic configuration and identify the valence electron count for each. Students hand in or show their response."
+            }
+          ],
+          "homework": []
+        },
+        {
+          "period_number": 9,
+          "period_duration_minutes": 60,
+          "activity_title": "Valence Electrons, the Octet Rule, and Predicting Valency from Configuration",
+          "section_anchor": "8.8 Combining Capacity of an Atom: Valency",
+          "pedagogical_approach": "Inquiry approach",
+          "materials": [
+            "Whiteboard and markers",
+            "Textbook Table 8.4",
+            "Blank valency extension table for students"
+          ],
+          "visual_aids": "Board table with electronic configurations and valence electron counts for Na (2,8,1), O (2,6), C (2,4), He (2), Ne (2,8); board illustration of electron loss, gain, and sharing to reach octet",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher opens with the inquiry question: 'Neon and argon are chemically unreactive. Sodium and chlorine are highly reactive. Looking at their electronic configurations, what pattern can you find that explains this difference?' Students examine configurations from Period 8 and write a hypothesis."
+            },
+            {
+              "minutes": "8-20",
+              "activity": "Students share hypotheses. Teacher draws out the pattern: filled outermost shell (octet, or 2 for helium) = stability = low reactivity. Teacher introduces valence shell and valence electrons, the octet rule, and defines valency as the number of electrons lost, gained, or shared to complete the outermost shell."
+            },
+            {
+              "minutes": "20-35",
+              "activity": "Teacher works through three cases on the board: sodium (2,8,1 — loses 1, valency 1), oxygen (2,6 — gains 2, valency 2), carbon (2,4 — shares 4, valency 4). For each, teacher draws the before-and-after electron count in the outer shell. Students then independently determine valency for Mg (2,8,2), Cl (2,8,7), N (2,5), and Al (2,8,3), writing whether each loses, gains, or shares and stating its valency."
+            },
+            {
+              "minutes": "35-47",
+              "activity": "Students extend Table 8.4 by adding a valency column for all elements listed, using their configurations from Period 8. They identify noble gases (He, Ne, Ar) as valency 0. Pairs cross-check their tables."
+            },
+            {
+              "minutes": "47-55",
+              "activity": "Teacher poses the closing inquiry: 'Carbon has valency 4 and can share electrons with other carbons. What does this suggest about the number of carbon-carbon bonds possible in a molecule?' Students reason from the valency definition and share responses. Teacher notes that some compounds violate simple valency rules — to be addressed in higher grades."
+            },
+            {
+              "minutes": "55-60",
+              "activity": "Consolidation: students write a three-row summary table — element, electronic configuration, valency — for Na, Cl, and C, then state the octet rule in one sentence in their own words."
+            }
+          ],
+          "homework": [
+            "For each of the following elements — Mg, N, S, Ar — write the electronic configuration, identify the number of valence electrons, state whether the atom achieves an octet by losing, gaining, or sharing electrons, and write its valency. Show your reasoning for each."
+          ]
+        },
+        {
+          "period_number": 10,
+          "period_duration_minutes": 60,
+          "activity_title": "Isotopes, Average Atomic Mass, and Isobars — Same Nucleons, Different Identities",
+          "section_anchor": "8.9 A Deeper Look into Atomic Structure / 8.9.1 Isotopes / A. Average atomic mass / 8.9.2 Isobars",
+          "pedagogical_approach": "Inquiry approach",
+          "materials": [
+            "Whiteboard and markers",
+            "Textbook",
+            "Calculator (one per student or per pair)"
+          ],
+          "visual_aids": "Board diagram showing three hydrogen isotopes (protium, deuterium, tritium) with Z, A, and neutron count labelled; board worked example of weighted average atomic mass for chlorine",
+          "time_bands": [
+            {
+              "minutes": "0-10",
+              "activity": "Teacher opens with the inquiry question: 'Dalton proposed that all atoms of the same element are identical. The chapter now challenges this. What evidence would make you revise that claim?' Students recall the A and Z definitions from Period 7 and speculate. Teacher introduces isotopes as the counter-example."
+            },
+            {
+              "minutes": "10-25",
+              "activity": "Teacher explains isotopes: same Z, different A, different neutron count. Works through hydrogen's three isotopes (protium, deuterium, tritium) and carbon's three (¹²C, ¹³C, ¹⁴C) on the board with diagrams. Pause and Ponder: students reason about two sodium atoms — one with 12 neutrons, one with 13 — comparing their atomic numbers, mass numbers, electron configurations, and chemical properties, then identifying them as isotopes. Students work individually and compare with a partner."
+            },
+            {
+              "minutes": "25-40",
+              "activity": "Teacher introduces average atomic mass: arithmetic mean vs. weighted average. Works through chlorine (³⁵Cl at 75%, ³⁷Cl at 25%) on the board: simple average = 36 u, weighted average = (35×0.75) + (37×0.25) = 35.5 u. Teacher explains why 35.5 u is not the mass of any real atom — it is a population average. Students then solve the Pause and Ponder problem: calculate the average atomic mass of bromine from its two isotopes at given natural abundances, showing full working."
+            },
+            {
+              "minutes": "40-50",
+              "activity": "Teacher introduces isobars: same A, different Z. Works through the example of Ca (Z=20), K (Z=19), and Ar (Z=18) all with A=40. Students construct a comparison table: isotopes vs. isobars — what is the same, what is different (Z, A, element identity, neutron count)."
+            },
+            {
+              "minutes": "50-57",
+              "activity": "Bridging science and society: teacher presents the isotope applications — ²³⁵U in nuclear power, ⁶⁰Co in cancer treatment, ¹³¹I in thyroid treatment, ¹⁴C in radiocarbon dating — and the BARC/Homi Bhabha context. Students connect these applications to the isotope properties discussed (same element chemistry, different nuclear properties)."
+            },
+            {
+              "minutes": "57-60",
+              "activity": "Closing reflection: teacher notes that Bohr's model is itself incomplete — electrons exist as probability clouds rather than fixed orbits — and that the quantum mechanical model extends the story. Students note this as a forward connection to higher grades."
+            }
+          ],
+          "homework": []
+        },
+        {
+          "period_number": 11,
+          "period_duration_minutes": 50,
+          "activity_title": "Connecting the Atomic Story — Composition, Configuration, and Combining Capacity",
+          "section_anchor": "8.5 Atomic Number / 8.6 Mass Number / 8.7 How Are Electrons Distributed / 8.8 Combining Capacity of an Atom: Valency",
+          "pedagogical_approach": "Inquiry approach",
+          "materials": [
+            "Whiteboard and markers",
+            "Textbook",
+            "Printed or board-displayed set of nuclide notation problems"
+          ],
+          "visual_aids": "Board summary table linking Z, A, electronic configuration, valence electrons, and valency for a set of six elements",
+          "time_bands": [
+            {
+              "minutes": "0-8",
+              "activity": "Teacher poses a unifying problem: given the nuclide notation ³²₁₆S, students must derive — without a table — the number of protons, neutrons, electrons, the electronic configuration, the number of valence electrons, and the valency of sulfur. Students attempt this individually."
+            },
+            {
+              "minutes": "8-20",
+              "activity": "Students share their working step by step. Teacher builds the solution on the board, explicitly naming each rule used at each step: Z gives protons and electrons; A−Z gives neutrons; Bohr–Bury rules give configuration; outermost shell electrons give valence electrons; octet rule gives valency. Teacher corrects misconceptions as they arise."
+            },
+            {
+              "minutes": "20-35",
+              "activity": "Students work in pairs on three further nuclides (chosen from ²⁴₁₂Mg, ¹⁴₇N, ⁴⁰₁₈Ar or similar), producing the full derivation chain for each. Each pair then identifies which of their three elements would be most chemically reactive and justifies the claim using valency."
+            },
+            {
+              "minutes": "35-43",
+              "activity": "Pairs share their reactivity judgements with another pair. Class resolves any disagreements. Teacher asks: 'If two elements each have valency 1 — one by losing an electron and one by gaining an electron — predict what kind of bond they could form.' Students reason about electron transfer and teacher confirms the connection to compound formation (to be developed in the next chapter)."
+            },
+            {
+              "minutes": "43-50",
+              "activity": "Consolidation: students individually complete a six-row summary table (one row per element studied across periods 7–10, chosen by teacher) filling in symbol, Z, A, electronic configuration, and valency. Students identify which rows represent isotopes and which could represent isobars. Teacher reviews two rows aloud to close."
+            }
+          ],
+          "homework": []
+        }
+      ]
+    },
+    "coverage_handoff": [
+      {
+        "section_number": 1,
+        "section_label": "8.1 Rediscovering the Roots of Atomic Theory",
+        "total_sections": 11,
+        "period_numbers": [
+          1
+        ],
+        "period_duration_minutes": 60,
+        "activity_summary": "Students construct a comparison of Kanada's parmanu, the Greek atomos, and Dalton's scientific proposal, identifying what distinguishes a philosophical claim from a testable scientific one.",
+        "implied_lo": "Students can distinguish a philosophical explanatory claim from a scientific proposal by identifying the criteria that make an idea empirically testable.",
+        "section_context": "Kanada's parmanu, Greek atomos, Dalton's 1808 scientific atomic proposal",
+        "c_code": "C-1.1",
+        "co_central": false
+      },
+      {
+        "section_number": 2,
+        "section_label": "8.2 A Short Historical Journey Through Atomic Models / 8.2.1 Thomson's model of an atom",
+        "total_sections": 11,
+        "period_numbers": [
+          2
+        ],
+        "period_duration_minutes": 45,
+        "activity_summary": "Students analyse the cathode ray tube evidence that identified electrons as universal subatomic particles and evaluate Thomson's plum pudding model using the watermelon analogy and charge-balance reasoning.",
+        "implied_lo": "Students can evaluate a scientific model by tracing the experimental evidence that motivated it and identifying the constraints it was designed to satisfy.",
+        "section_context": "Cathode ray tube, electrons as universal particles, plum pudding model charge distribution",
+        "c_code": "C-1.1",
+        "co_central": false
+      },
+      {
+        "section_number": 3,
+        "section_label": "8.2.2 Testing Thomson's model: The gold foil experiment",
+        "total_sections": 11,
+        "period_numbers": [
+          3
+        ],
+        "period_duration_minutes": 60,
+        "activity_summary": "Students predict scattering outcomes from Thomson's model, compare predictions to actual observations, reason about what changed if foil thickness or particle charge changed, and construct the logical argument that backscattering falsifies Thomson's model.",
+        "implied_lo": "Students can construct a falsification argument by identifying the single experimental observation that is inconsistent with a model's predictions.",
+        "section_context": "Gold foil alpha-particle scattering, predicted vs. observed deflection, backscattering evidence",
+        "c_code": "C-1.1",
+        "co_central": false
+      },
+      {
+        "section_number": 4,
+        "section_label": "8.2.2 A. Rutherford's model / B. Limitations / C. Discovery of the proton",
+        "total_sections": 11,
+        "period_numbers": [
+          4
+        ],
+        "period_duration_minutes": 60,
+        "activity_summary": "Students derive Rutherford's three conclusions from the scattering results, apply the stability-collapse argument to identify the model's limitation, and use proton-electron equality to confirm charge neutrality for given elements.",
+        "implied_lo": "Students can identify the internal contradiction in a physical model by applying a governing law to the model's own structural claims.",
+        "section_context": "Rutherford's planetary model, nucleus size ratio, electron orbital collapse, proton discovery",
+        "c_code": "C-1.1",
+        "co_central": false
+      },
+      {
+        "section_number": 5,
+        "section_label": "8.2.3 Bohr's model of the atom",
+        "total_sections": 11,
+        "period_numbers": [
+          5
+        ],
+        "period_duration_minutes": 45,
+        "activity_summary": "Students compare Rutherford's and Bohr's models on electron location, energy, and stability, and represent electron transitions between shells with absorption and emission diagrams.",
+        "implied_lo": "Students can represent a model's resolution of a predecessor's limitation by specifying the constraint added and the phenomenon it explains.",
+        "section_context": "Bohr's stationary shells K–N, energy levels, electron transitions, stability resolution",
+        "c_code": "C-1.1",
+        "co_central": false
+      },
+      {
+        "section_number": 6,
+        "section_label": "8.3 What Components Contribute to the Mass of an Atom? / 8.3.1 Discovery of the Neutron",
+        "total_sections": 11,
+        "period_numbers": [
+          6
+        ],
+        "period_duration_minutes": 45,
+        "activity_summary": "Students reason from the helium mass discrepancy to the need for a neutral nuclear particle, apply the neutron discovery to complete the three-particle model, and explain why heavier nuclei require proportionally more neutrons for stability.",
+        "implied_lo": "Students can infer the existence of an unobserved particle by identifying a quantitative discrepancy that existing particles cannot account for.",
+        "section_context": "Helium mass discrepancy, neutron discovery, nuclear stability and neutron-proton ratio",
+        "c_code": "C-1.1",
+        "co_central": false
+      },
+      {
+        "section_number": 7,
+        "section_label": "8.4 Symbols of Elements / 8.5 Atomic Number / 8.6 Mass Number",
+        "total_sections": 11,
+        "period_numbers": [
+          7
+        ],
+        "period_duration_minutes": 60,
+        "activity_summary": "Students apply IUPAC symbol rules to decode and invent element symbols, and use standard nuclide notation to derive proton, electron, and neutron counts for a range of elements.",
+        "implied_lo": "Students can extract and calculate subatomic particle counts from standardised symbolic notation using the relationships between atomic number and mass number.",
+        "section_context": "IUPAC element symbols, atomic number Z, mass number A, nuclide notation, neutron calculation",
+        "c_code": "C-1.1",
+        "co_central": false
+      },
+      {
+        "section_number": 8,
+        "section_label": "8.7 How Are Electrons Distributed in Different Energy Levels? / 8.7.1 Building up atoms",
+        "total_sections": 11,
+        "period_numbers": [
+          8
+        ],
+        "period_duration_minutes": 45,
+        "activity_summary": "Students apply the Bohr–Bury filling rules to construct 2-D electronic configurations for elements Z=1 to Z=18, identify valence electron counts, and solve nuclide-based configuration problems.",
+        "implied_lo": "Students can construct the electron shell distribution of an atom by applying a set of sequential filling rules to a given atomic number.",
+        "section_context": "Bohr–Bury rules, 2n² capacity, electronic configurations for elements 1–18, K L M shells",
+        "c_code": "C-1.1",
+        "co_central": false
+      },
+      {
+        "section_number": 9,
+        "section_label": "8.8 Combining Capacity of an Atom: Valency",
+        "total_sections": 11,
+        "period_numbers": [
+          9
+        ],
+        "period_duration_minutes": 60,
+        "activity_summary": "Students apply the octet rule to predict whether atoms lose, gain, or share electrons to achieve stability, determine valency from electronic configuration for a range of elements, and extend a valency table.",
+        "implied_lo": "Students can predict an atom's combining capacity by applying the octet rule to its electronic configuration and specifying the mode of electron exchange.",
+        "section_context": "Valence electrons, octet rule, electron loss gain sharing, valency values for common elements",
+        "c_code": "C-1.1",
+        "co_central": false
+      },
+      {
+        "section_number": 10,
+        "section_label": "8.9 A Deeper Look into Atomic Structure / 8.9.1 Isotopes / A. Average atomic mass / 8.9.2 Isobars",
+        "total_sections": 11,
+        "period_numbers": [
+          10
+        ],
+        "period_duration_minutes": 60,
+        "activity_summary": "Students identify isotopes and isobars using Z and A, calculate weighted average atomic mass from natural abundance data, and compare isotopes and isobars in a structured table.",
+        "implied_lo": "Students can calculate a weighted average from proportional data and use it to explain why a measured quantity differs from a simple arithmetic mean.",
+        "section_context": "Isotopes same Z different A, isobars same A different Z, weighted average atomic mass calculation",
+        "c_code": "C-1.1",
+        "co_central": false
+      },
+      {
+        "section_number": 11,
+        "section_label": "8.5 Atomic Number / 8.6 Mass Number / 8.7 How Are Electrons Distributed / 8.8 Combining Capacity of an Atom: Valency",
+        "total_sections": 11,
+        "period_numbers": [
+          11
+        ],
+        "period_duration_minutes": 50,
+        "activity_summary": "Students derive the complete subatomic profile — protons, neutrons, electrons, electronic configuration, valence electrons, and valency — from nuclide notation for multiple elements, and connect valency to chemical bonding.",
+        "implied_lo": "Students can integrate multiple symbolic and rule-based representations to derive a complete structural and chemical profile of an atom from minimal notation.",
+        "section_context": "Integrated derivation chain from nuclide notation to Z A configuration valency, isotope and isobar identification",
+        "c_code": "C-1.1",
+        "co_central": false
+      }
+    ],
+    "assessment_items": {
+      "grade": "ix–x",
+      "subject": "science",
+      "stage": "secondary",
+      "chapter_number": 8,
+      "chapter_title": "Journey Inside the Atom",
+      "chapter_cg": "Students develop an understanding of the structure of matter at the atomic and subatomic level by tracing the historical development of atomic models, applying symbolic and quantitative representations, and reasoning about how experimental evidence drives revision of scientific ideas.",
+      "reasoning_floor_lift_applied": false,
+      "questions": [
+        {
+          "section_number": 1,
+          "section_label": "8.1 Rediscovering the Roots of Atomic Theory",
+          "total_sections": 11,
+          "implied_lo_assessed": "Students can distinguish a philosophical explanatory claim from a scientific proposal by identifying the criteria that make an idea empirically testable.",
+          "section_context": "Kanada's parmanu, Greek atomos, Dalton's 1808 scientific atomic proposal",
+          "question_type": "MCQ",
+          "competency": {
+            "c_code": "C-1.1",
+            "competency_text": "Students engage with the nature of scientific knowledge by distinguishing empirically testable claims from philosophical or speculative ones."
+          },
+          "cognitive_demand": "Analysis",
+          "visual_stimulus": null,
+          "question_text": "Acharya Kanada proposed that all matter is ultimately made of parmanus — indivisible particles that combine in dyads and triads. Independently, Leucippus and Democritus proposed atomos with the same core idea. John Dalton, in 1808, also proposed that matter is made of indivisible atoms. Which statement best explains why Dalton's proposal is classified as a scientific theory whereas Kanada's and Democritus's proposals are not?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Dalton proposed that atoms are indivisible, while Kanada and Democritus allowed for further division.",
+              "is_correct": false
+            },
+            {
+              "label": "B",
+              "text": "Dalton's proposal was framed to account for quantitative experimental data on combining masses, making it open to empirical testing and falsification; the ancient proposals were purely philosophical deductions.",
+              "is_correct": true
+            },
+            {
+              "label": "C",
+              "text": "Dalton's proposal was made much later in history, when chemistry had advanced sufficiently to accept new ideas.",
+              "is_correct": false
+            },
+            {
+              "label": "D",
+              "text": "Kanada and Democritus described atoms as identical to each other, while Dalton proposed that atoms of different elements differ in mass.",
+              "is_correct": false
+            }
+          ],
+          "expected_elements": [],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 1
+              },
+              "what_each_option_reveals": {
+                "A": "The student confuses the content of the proposals (what atoms do) with their epistemic status (whether they are testable); both ancient and modern proposals treated atoms as indivisible, so this distinction does not separate philosophy from science.",
+                "C": "The student attributes the scientific status of Dalton's work to historical timing rather than to its relationship with empirical evidence — a chronological rather than methodological criterion.",
+                "D": "The student identifies a real feature of Dalton's atomic theory (atoms of different elements have different masses) but mistakes a content difference for the criterion that makes a claim scientific, missing the role of testability."
+              },
+              "inclusivity": "Students who recall the historical names but struggle with epistemological vocabulary can still engage by being asked which proposal could be proven wrong using a measurement — this restates testability without jargon. Students who find multiple-choice constraining may be invited to annotate why they eliminated each option."
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 1
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 1
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 1
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 2,
+          "section_label": "8.2 A Short Historical Journey Through Atomic Models / 8.2.1 Thomson's model of an atom",
+          "total_sections": 11,
+          "implied_lo_assessed": "Students can evaluate a scientific model by tracing the experimental evidence that motivated it and identifying the constraints it was designed to satisfy.",
+          "section_context": "Cathode ray tube, electrons as universal particles, plum pudding model charge distribution",
+          "question_type": "ECR",
+          "competency": {
+            "c_code": "C-1.1",
+            "competency_text": "Students engage with the nature of scientific knowledge by evaluating models in relation to the experimental evidence and constraints that shaped them."
+          },
+          "cognitive_demand": "Evaluation",
+          "visual_stimulus": null,
+          "question_text": "J. J. Thomson's 1897 cathode ray tube experiments led him to propose the plum pudding model of the atom. (a) State two pieces of evidence from the cathode ray tube experiment that Thomson used to justify his conclusion that electrons are a universal subatomic component present in every element. (b) Explain what problem the plum pudding model was specifically designed to solve, and identify one constraint the model must satisfy if the atom is to be electrically neutral. (c) Evaluate whether the watermelon analogy (red pulp = positive charge, seeds = electrons) accurately captures the constraint you identified in (b), and state one way the analogy fails.",
+          "options": [],
+          "expected_elements": [],
+          "look_for": [
+            "For (a): Cathode rays were produced regardless of the material of the cathode — showing the particles are universal, not element-specific; the particles had mass far smaller than atoms, identifying them as sub-atomic; cathode rays were deflected toward positive plates, confirming negative charge. Any two of these three, stated precisely, constitute a complete response.",
+            "For (b): The model was designed to answer where the positive charge resides once electrons (negative) are established as components — the atom is overall neutral, so positive charge must coexist with electrons. The explicit constraint: the total positive charge must exactly equal the total negative charge of all electrons.",
+            "For (c): The analogy captures charge coexistence (both positive and negative components present throughout the sphere), satisfying the neutrality constraint. It fails in that a real watermelon's seeds are discrete and countable while the positive 'pulp' in Thomson's model is a continuous, uniform distribution — the analogy does not distinguish discrete electrons from a diffuse positive background, and a real watermelon is not electrically charged at all, so the physical mapping breaks down at any quantitative level.",
+            "Strong responses make the constraint explicit (total positive = total negative) before evaluating the analogy against it, rather than merely describing both independently.",
+            "Weak responses list features of the plum pudding model without connecting them to the charge-neutrality constraint, or evaluate the analogy on visual similarity alone."
+          ],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 2
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 2
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 2
+              },
+              "inclusivity": "Students who find extended prose difficult may structure their response as three numbered parts mirroring (a), (b), (c); they demonstrate the same reasoning regardless of paragraph form. Students who recall the watermelon analogy but struggle to articulate its failure may be prompted to consider: 'What is the pulp in the real watermelon made of, and does that match Thomson's positive matter?'"
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 2
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 3,
+          "section_label": "8.2.2 Testing Thomson's model: The gold foil experiment",
+          "total_sections": 11,
+          "implied_lo_assessed": "Students can construct a falsification argument by identifying the single experimental observation that is inconsistent with a model's predictions.",
+          "section_context": "Gold foil alpha-particle scattering, predicted vs. observed deflection, backscattering evidence",
+          "question_type": "ECR",
+          "competency": {
+            "c_code": "C-1.1",
+            "competency_text": "Students engage with scientific reasoning by constructing falsification arguments from experimental evidence."
+          },
+          "cognitive_demand": "Evaluation",
+          "visual_stimulus": null,
+          "question_text": "In Geiger and Marsden's gold foil experiment, a beam of positively charged alpha particles was fired at an extremely thin gold foil. Thomson's model predicted that the diffuse positive charge in every gold atom would cause only slight deflections of the incoming alpha particles. The actual results were: (i) most alpha particles passed straight through, (ii) some were deflected at large angles, and (iii) a very small number bounced almost straight back. Construct a falsification argument that uses exactly one of these three observations to rule out Thomson's model. Your argument must: state which observation you are using; explain what Thomson's model predicts for that observation; and explain why the actual result is logically inconsistent with that prediction.",
+          "options": [],
+          "expected_elements": [],
+          "look_for": [
+            "The student selects observation (iii) — the sharp backscattering of a very small number of alpha particles — as the key falsifying observation (observation (ii) at very large angles also works and should be credited).",
+            "The student states Thomson's prediction: because positive charge is spread uniformly throughout every atom, the electrostatic force on an incoming alpha particle is never large enough in any localised region to reverse its direction; backscattering is therefore not predicted.",
+            "The student makes the logical inconsistency explicit: the observed backscattering requires a region of highly concentrated positive charge capable of exerting a very large repulsive force — the existence of such a region contradicts the assumption of uniformly diffuse positive charge that defines Thomson's model. The model is therefore falsified.",
+            "Strong responses articulate the mismatch as a logical contradiction (the model forbids what was observed), not merely a difference in degree. They do not need all three observations — focusing on one with tight reasoning is preferred.",
+            "Weak responses describe all three observations without using any single one to construct a logical argument against Thomson's prediction, or they simply state 'Thomson was wrong' without specifying the predictive failure."
+          ],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 3
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 3
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 3
+              },
+              "inclusivity": "Students who struggle to begin may be guided to write out Thomson's prediction in one sentence before selecting their observation — structuring the argument from the prediction side rather than the observation side demonstrates the same logical operation. Students who are more comfortable with diagrams may draw a labelled sketch contrasting the expected trajectory (slight deflection) with the observed backscattering to anchor their written argument."
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 3
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 4,
+          "section_label": "8.2.2 A. Rutherford's model / B. Limitations / C. Discovery of the proton",
+          "total_sections": 11,
+          "implied_lo_assessed": "Students can identify the internal contradiction in a physical model by applying a governing law to the model's own structural claims.",
+          "section_context": "Rutherford's planetary model, nucleus size ratio, electron orbital collapse, proton discovery",
+          "question_type": "MCQ",
+          "competency": {
+            "c_code": "C-1.1",
+            "competency_text": "Students engage with scientific reasoning by identifying internal contradictions in models through application of governing physical laws."
+          },
+          "cognitive_demand": "Analysis",
+          "visual_stimulus": null,
+          "question_text": "Rutherford's model states that electrons revolve around the nucleus in circular orbits. Classical physics requires that any charged particle moving in a circular orbit — and therefore continuously accelerating — must radiate energy. Which statement correctly identifies the internal contradiction this creates within Rutherford's own model?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The model places electrons far from the nucleus, but classical physics predicts electrons should be found inside the nucleus.",
+              "is_correct": false
+            },
+            {
+              "label": "B",
+              "text": "If electrons radiate energy continuously as required by classical physics, they must spiral inward and collapse into the nucleus — contradicting the model's own claim that electrons orbit stably.",
+              "is_correct": true
+            },
+            {
+              "label": "C",
+              "text": "The model does not specify how many electrons orbit the nucleus, so classical physics cannot be applied to calculate their energy.",
+              "is_correct": false
+            },
+            {
+              "label": "D",
+              "text": "Classical physics predicts that positively charged protons in the nucleus will repel each other and break the nucleus apart, so the model cannot be stable.",
+              "is_correct": false
+            }
+          ],
+          "expected_elements": [],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 4
+              },
+              "what_each_option_reveals": {
+                "A": "The student misreads the contradiction as being about electron location (inside vs. outside the nucleus) rather than about the energy-loss argument; this confusion arises from conflating the nucleus-size result with the stability problem.",
+                "C": "The student deflects the contradiction by raising an unspecified-count objection, failing to engage with the actual classical-physics argument about energy radiation; this suggests the student has not followed the logical chain from circular motion to energy loss to orbital decay.",
+                "D": "The student has drawn on a real phenomenon — proton–proton electrostatic repulsion — but this is a separate nuclear-stability issue introduced in section 8.3, not the electron-orbital-collapse contradiction that is the specific limitation of Rutherford's model; this reveals adjacent-section confusion."
+              },
+              "inclusivity": "Students who find the classical-physics language challenging can restate the argument informally: 'If the electron is losing energy, where does it go?' — this version of the question tests the same logical operation without requiring prior knowledge of electromagnetic radiation theory. Students who mark D may be invited to explain which particle they are concerned about, distinguishing electron behaviour from nuclear behaviour."
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 4
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 4
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 4
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 5,
+          "section_label": "8.2.3 Bohr's model of the atom",
+          "total_sections": 11,
+          "implied_lo_assessed": "Students can represent a model's resolution of a predecessor's limitation by specifying the constraint added and the phenomenon it explains.",
+          "section_context": "Bohr's stationary shells K–N, energy levels, electron transitions, stability resolution",
+          "question_type": "SCR",
+          "competency": {
+            "c_code": "C-1.1",
+            "competency_text": "Students represent the development of atomic models by specifying the constraints each model adds and the phenomena each constraint explains."
+          },
+          "cognitive_demand": "Application",
+          "visual_stimulus": null,
+          "question_text": "Bohr proposed in 1913 that electrons occupy fixed stationary shells (K, L, M, N…), each with a definite, constant energy. (a) State the single constraint Bohr added that Rutherford's model lacked, and explain in one sentence why this constraint prevents the orbital-collapse problem. (b) An electron in shell M absorbs energy and moves to shell N. Later it returns to shell M. Describe, in terms of energy, what happens during each of these two transitions, specifying whether energy is absorbed or emitted.",
+          "options": [],
+          "expected_elements": [
+            "For (a): The constraint is that electrons in stationary states do NOT radiate energy despite their motion — only when an electron transitions between shells is energy absorbed or emitted. This prevents collapse because, without continuous energy loss, the electron has no mechanism to spiral inward; it remains in its shell at constant energy.",
+            "For (b): Moving from M to N — the electron absorbs energy exactly equal to the difference between the energy of shell N and shell M (energy increases with distance from nucleus, so shell N has higher energy than shell M); this is absorption. Returning from N to M — the electron emits energy exactly equal to the difference between shell N and shell M energies; this is emission. Both transitions involve precisely the energy gap between the two shells, no more and no less."
+          ],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 5
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 5
+              },
+              "inclusivity": "Students who find verbal description of energy transitions difficult may draw a labelled arrow diagram showing M → N (upward arrow, 'absorbs energy') and N → M (downward arrow, 'emits energy') — this graphic response demonstrates the same operational understanding. Students who know the answer to (b) but struggle with (a) should not be penalised on (b); the parts are independently creditworthy."
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 5
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 5
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 6,
+          "section_label": "8.3 What Components Contribute to the Mass of an Atom? / 8.3.1 Discovery of the Neutron",
+          "total_sections": 11,
+          "implied_lo_assessed": "Students can infer the existence of an unobserved particle by identifying a quantitative discrepancy that existing particles cannot account for.",
+          "section_context": "Helium mass discrepancy, neutron discovery, nuclear stability and neutron-proton ratio",
+          "question_type": "SCR",
+          "competency": {
+            "c_code": "C-1.1",
+            "competency_text": "Students reason from quantitative discrepancies to infer the existence of unobserved entities, applying principles of nuclear structure."
+          },
+          "cognitive_demand": "Application",
+          "visual_stimulus": null,
+          "question_text": "Hydrogen has 1 proton and its atomic mass is approximately 1 u. Helium has 2 protons, so if protons alone determined mass, helium's mass should be approximately 2 u. Its actual mass is approximately 4 u. (a) Show numerically why 2 protons and 2 electrons alone cannot account for helium's mass of 4 u, assuming the electron mass is negligible. (b) Chadwick in 1932 discovered a particle that resolved this discrepancy. Identify the particle and state its two defining properties. (c) Uranium has 92 protons and 146 neutrons. Explain, using the role of neutrons in nuclear stability, why uranium needs more than twice as many neutrons as protons.",
+          "options": [],
+          "expected_elements": [
+            "For (a): 2 protons contribute approximately 2 u; electrons contribute negligible mass; total from known particles ≈ 2 u. Actual mass = 4 u. Discrepancy = 4 – 2 = 2 u. This unaccounted mass cannot be explained by protons or electrons alone.",
+            "For (b): The particle is the neutron. Its two defining properties: mass nearly equal to a proton (approximately 1 u), and zero electrical charge (electrically neutral). Symbol n⁰.",
+            "For (c): Protons carry positive charge and repel each other electrostatically; in the nucleus, many protons are packed into an extremely small volume, creating intense repulsion. Neutrons dilute this repulsion by spacing protons apart and strengthen the short-range nuclear binding force. As the number of protons increases, the repulsive force grows faster than the binding force from equal numbers of neutrons, so progressively more neutrons are required to maintain stability — hence uranium's 146 neutrons to 92 protons, a ratio greater than 1.5:1."
+          ],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 6
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 6
+              },
+              "inclusivity": "Students who are confident with parts (a) and (b) but find part (c) abstract may be anchored to the uranium numbers given in the question: 'If neutrons simply needed to equal protons, how many would uranium have? It has 146 — why more?' This reframing prompts the stability reasoning without additional content. For (a), students who write a clear sentence explanation rather than a numerical subtraction should receive full credit if the discrepancy is correctly identified."
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 6
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 6
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 7,
+          "section_label": "8.4 Symbols of Elements / 8.5 Atomic Number / 8.6 Mass Number",
+          "total_sections": 11,
+          "implied_lo_assessed": "Students can extract and calculate subatomic particle counts from standardised symbolic notation using the relationships between atomic number and mass number.",
+          "section_context": "IUPAC element symbols, atomic number Z, mass number A, nuclide notation, neutron calculation",
+          "question_type": "SCR",
+          "competency": {
+            "c_code": "C-1.1",
+            "competency_text": "Students apply standardised symbolic notation to extract quantitative structural information about atoms."
+          },
+          "cognitive_demand": "Application",
+          "visual_stimulus": null,
+          "question_text": "Use the nuclide notation ᴬ_Z X to answer the following. (a) For ²³₁₁Na: state the number of protons, electrons, and neutrons. (b) For ³⁵₁₇Cl: state the number of protons, electrons, and neutrons. (c) A chemist writes the symbol 'CL' for chlorine. State one IUPAC rule this violates and write the correct symbol. (d) The symbol 'Fe' for iron does not come from the English word 'iron'. State what language the symbol derives from and what that word is.",
+          "options": [],
+          "expected_elements": [
+            "For (a) ²³₁₁Na: protons = 11 (= Z); electrons = 11 (atom is neutral, so electrons = protons); neutrons = A – Z = 23 – 11 = 12.",
+            "For (b) ³⁵₁₇Cl: protons = 17; electrons = 17; neutrons = 35 – 17 = 18.",
+            "For (c): The symbol 'CL' violates the rule that only the first letter of an element symbol is capitalised; if two letters are used, the second must be lowercase. Correct symbol: Cl.",
+            "For (d): 'Fe' derives from Latin; the Latin word is ferrum."
+          ],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 7
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 7
+              },
+              "inclusivity": "Parts (a) and (b) are independently creditworthy so students who make an arithmetic error in one do not forfeit marks on the other. Students who find multi-part questions disorienting may be encouraged to write the formula neutrons = A – Z explicitly before substituting, making the reasoning chain visible and partially creditable. For part (c), students who correctly state the capitalisation rule but write 'cl' as the corrected symbol should receive partial credit and a note on the first-letter capitalisation requirement."
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 7
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 7
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 8,
+          "section_label": "8.7 How Are Electrons Distributed in Different Energy Levels? / 8.7.1 Building up atoms",
+          "total_sections": 11,
+          "implied_lo_assessed": "Students can construct the electron shell distribution of an atom by applying a set of sequential filling rules to a given atomic number.",
+          "section_context": "Bohr–Bury rules, 2n² capacity, electronic configurations for elements 1–18, K L M shells",
+          "question_type": "SCR",
+          "competency": {
+            "c_code": "C-1.1",
+            "competency_text": "Students apply sequential rule-based procedures to construct correct electron shell distributions for atoms."
+          },
+          "cognitive_demand": "Application",
+          "visual_stimulus": null,
+          "question_text": "The Bohr–Bury rules for filling electron shells state: (i) the maximum number of electrons in shell n is given by 2n²; (ii) the outermost shell can hold no more than 8 electrons; (iii) shells fill in order from innermost to outermost. Apply these rules to answer the following. (a) Calculate the maximum electron capacity of shells K (n=1), L (n=2), and M (n=3) using the 2n² formula. (b) Write the electronic configuration (distribution across K, L, M shells) for silicon (Z = 14) and chlorine (Z = 17). (c) Phosphorus has the configuration 2, 8, 5. State how many valence electrons phosphorus has and identify which shell they occupy.",
+          "options": [],
+          "expected_elements": [
+            "For (a): K (n=1): 2×1² = 2 electrons; L (n=2): 2×2² = 8 electrons; M (n=3): 2×3² = 18 electrons (though rule (ii) limits the outermost shell to 8 for elements up to Z=18).",
+            "For (b) Silicon (Z=14): K=2, L=8, M=4 (configuration 2,8,4). Working: K fills to 2 (12 remaining), L fills to 8 (4 remaining), M gets 4. Chlorine (Z=17): K=2, L=8, M=7 (configuration 2,8,7). Working: K=2, L=8, M=7.",
+            "For (c): Phosphorus configuration 2,8,5. The outermost shell is M (shell 3), which holds 5 electrons. Therefore phosphorus has 5 valence electrons, located in the M shell."
+          ],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 8
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 8
+              },
+              "inclusivity": "Students who arrive at an incorrect total in (b) but apply the filling rules correctly should receive process credit; the marker should check whether the error was arithmetic (miscounting Z) rather than procedural (wrong filling order). For part (c), students who correctly identify 5 valence electrons but do not name the shell still demonstrate the core operation of the section and should receive partial credit."
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 8
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 8
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 9,
+          "section_label": "8.8 Combining Capacity of an Atom: Valency",
+          "total_sections": 11,
+          "implied_lo_assessed": "Students can predict an atom's combining capacity by applying the octet rule to its electronic configuration and specifying the mode of electron exchange.",
+          "section_context": "Valence electrons, octet rule, electron loss gain sharing, valency values for common elements",
+          "question_type": "MCQ",
+          "competency": {
+            "c_code": "C-1.1",
+            "competency_text": "Students apply the octet rule to electronic configurations to predict combining capacity and mode of electron exchange."
+          },
+          "cognitive_demand": "Understanding",
+          "visual_stimulus": null,
+          "question_text": "Magnesium has the electronic configuration 2, 8, 2. Which statement correctly predicts magnesium's valency and the mode by which it achieves a stable electron configuration?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Magnesium gains 2 electrons to complete its outermost shell, giving it valency 2.",
+              "is_correct": false
+            },
+            {
+              "label": "B",
+              "text": "Magnesium loses 2 electrons from its outermost shell, leaving the L shell (8 electrons) as the new outermost shell and giving it valency 2.",
+              "is_correct": true
+            },
+            {
+              "label": "C",
+              "text": "Magnesium shares 2 electrons with another atom, giving it valency 2.",
+              "is_correct": false
+            },
+            {
+              "label": "D",
+              "text": "Magnesium has 2 valence electrons and already has a complete outermost shell, so its valency is 0.",
+              "is_correct": false
+            }
+          ],
+          "expected_elements": [],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 9
+              },
+              "what_each_option_reveals": {
+                "A": "The student applies the gaining strategy to an atom that should lose; this reveals confusion about which mode of exchange applies to atoms with few valence electrons (metals tend to lose) versus atoms with many (non-metals tend to gain), a key octet-rule application error.",
+                "C": "The student applies sharing to magnesium, suggesting they have not yet connected the number of valence electrons (2, which is far fewer than the 4 needed to make sharing as efficient as losing) to the preferred mode; this is a mode-selection error rather than a valency-count error.",
+                "D": "The student conflates 2 valence electrons with a complete shell; only the K shell (n=1) is complete at 2 electrons. The M shell requires 8 electrons for completion, so 2 electrons in M is an incomplete shell — this reveals a misconception about shell capacity and completion."
+              },
+              "inclusivity": "Students who are unsure of the rule can be redirected to count: 'How many electrons would the outermost shell need to reach 8? How many would need to be removed to expose a full inner shell? Which number is smaller?' — this heuristic operationalises the octet rule for students who have not yet internalised the gain/loss decision. Students who choose C and explain their reasoning in a note should receive partial diagnostic credit."
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 9
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 9
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 9
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 10,
+          "section_label": "8.9 A Deeper Look into Atomic Structure / 8.9.1 Isotopes / A. Average atomic mass / 8.9.2 Isobars",
+          "total_sections": 11,
+          "implied_lo_assessed": "Students can calculate a weighted average from proportional data and use it to explain why a measured quantity differs from a simple arithmetic mean.",
+          "section_context": "Isotopes same Z different A, isobars same A different Z, weighted average atomic mass calculation",
+          "question_type": "SCR",
+          "competency": {
+            "c_code": "C-1.1",
+            "competency_text": "Students apply proportional reasoning to calculate weighted averages and interpret the result in terms of isotopic composition."
+          },
+          "cognitive_demand": "Application",
+          "visual_stimulus": "Isotope | Atomic mass (u) | Natural abundance (%)\n³⁵Cl | 35 | 75\n³⁷Cl | 37 | 25",
+          "question_text": "Refer to the table provided. (a) Calculate the simple arithmetic mean of the two chlorine isotopes and calculate the weighted average atomic mass. Show your working for both. (b) The experimentally measured atomic mass of chlorine is 35.5 u. Explain why the weighted average matches the measured value while the simple arithmetic mean does not. (c) Atoms of ⁴⁰₁₈Ar and ⁴⁰₂₀Ca have the same mass number. State the term for this relationship and confirm, using atomic number and mass number, that these atoms belong to different elements.",
+          "options": [],
+          "expected_elements": [
+            "For (a): Simple arithmetic mean = (35 + 37) / 2 = 36 u. Weighted average = (35 × 75/100) + (37 × 25/100) = 26.25 + 9.25 = 35.5 u. Both calculations must be shown explicitly.",
+            "For (b): The simple mean treats both isotopes as equally common, but ³⁵Cl is three times more abundant than ³⁷Cl. The weighted average accounts for this unequal proportion by weighting each isotopic mass by its fractional abundance; the result (35.5 u) therefore accurately reflects the actual mixture of isotopes as found in nature, which is why it matches the experimentally measured value.",
+            "For (c): The term is isobars. ⁴⁰₁₈Ar has Z = 18 (element: argon); ⁴⁰₂₀Ca has Z = 20 (element: calcium). Same mass number A = 40, but different atomic numbers (18 ≠ 20), confirming they are different elements — the defining criterion for isobars."
+          ],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 10
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 10
+              },
+              "inclusivity": "Students who arrive at the correct weighted average numerically but cannot articulate the conceptual explanation in (b) should receive full marks for (a) and partial marks for (b); the marker should note that procedural fluency and conceptual articulation are separately valuable. Students who find the weighted average formula unfamiliar can be prompted: 'If 75 out of every 100 chlorine atoms have mass 35 u, how does each group contribute to the total mass per 100 atoms?' — this grounds the calculation in a concrete counting argument."
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 10
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 10
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 11,
+          "section_label": "8.5 Atomic Number / 8.6 Mass Number / 8.7 How Are Electrons Distributed / 8.8 Combining Capacity of an Atom: Valency",
+          "total_sections": 11,
+          "implied_lo_assessed": "Students can integrate multiple symbolic and rule-based representations to derive a complete structural and chemical profile of an atom from minimal notation.",
+          "section_context": "Integrated derivation chain from nuclide notation to Z A configuration valency, isotope and isobar identification",
+          "question_type": "OPEN_TASK",
+          "competency": {
+            "c_code": "C-1.1",
+            "competency_text": "Students integrate atomic number, mass number, electron filling rules, and the octet rule to construct a complete structural and chemical profile from nuclide notation."
+          },
+          "cognitive_demand": "Analysis",
+          "visual_stimulus": "Nuclide | Atomic number (Z) | Mass number (A) | Protons | Neutrons | Electrons | Electronic configuration | Valence electrons | Valency\n³²₁₆S | ? | ? | ? | ? | ? | ? | ? | ?\n²³₁₁Na | ? | ? | ? | ? | ? | ? | ? | ?\n⁴⁰₁₈Ar | ? | ? | ? | ? | ? | ? | ? | ?\n²⁸₁₄Si | ? | ? | ? | ? | ? | ? | ? | ?",
+          "question_text": "",
+          "options": [],
+          "expected_elements": [],
+          "look_for": [],
+          "task": "Complete the table provided for the four nuclides shown. Then answer the questions below using the completed table. (a) Which two nuclides in the table are isobars? State the criterion you used to identify them. (b) Which element in the table has valency 0, and why? (c) Sodium (²³₁₁Na) and silicon (²⁸₁₄Si) are both solids at room temperature. Without any additional information, predict which one is more likely to form a compound with chlorine (valency 1), explaining your prediction using valency.",
+          "scaffold": "Follow these steps for each nuclide row: Step 1 — read Z and A directly from the nuclide symbol (Z is the subscript, A is the superscript). Step 2 — set protons = Z and electrons = Z (neutral atom). Step 3 — calculate neutrons = A – Z. Step 4 — apply Bohr–Bury filling rules (K: max 2; L: max 8; M: fills remaining up to 8 for elements 1–18) to write the electronic configuration. Step 5 — identify the outermost shell electrons as valence electrons. Step 6 — determine valency: if valence electrons ≤ 4, valency = valence electron count (loss mode); if valence electrons > 4, valency = 8 – valence electrons (gain mode); if outermost shell is already complete (2 for K, 8 for others), valency = 0.",
+          "format_of_output": [
+            "A completed version of the provided table with all cells filled for all four nuclides.",
+            "Written answers to questions (a), (b), and (c), each clearly labelled."
+          ],
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 11
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 11
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 11
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 11
+              },
+              "format_type": "Classification / sorting with justification",
+              "format_rationale": "The section's implied_lo requires students to integrate multiple rule-based chains (Z→configuration, A–Z→neutrons, configuration→valency) and then apply classification criteria (isobars, stable configurations) to the outputs — a classification task with justification is the most natural vehicle for demonstrating that the integration produces correctly interpreted structural profiles, not just numbers.",
+              "what_this_demonstrates": "Students demonstrate that they can move fluently from symbolic nuclide notation through the full derivation chain (proton/neutron/electron counts, electron filling, valence electron identification, valency determination) and then use the resulting profiles to classify atomic relationships and make a chemistry prediction — all without being told which step to perform next.",
+              "reading_the_scaffold": "The scaffold is a sequenced reminder of the derivation chain, not additional content; it is intended for students who know each step individually but lose track of the order when working on multiple nuclides simultaneously. A student who completes the table without consulting the scaffold and arrives at correct values has demonstrated the same integration. The scaffold should not be read as constraining the order in which parts (a), (b), (c) are answered.",
+              "strong_vs_weak_markers": "Strong responses: complete table with correct values for all cells; (a) correctly identifies ²³₁₁Na and ²⁸₁₄Si as isobars only if A=23 and A=28 — actually these do NOT share A, so a strong response identifies ⁴⁰₁₈Ar (A=40) — note: only ⁴⁰₁₈Ar has A=40 here with no second A=40 nuclide in the table; strong responses note this and state that no isobar pair exists in the table (or re-examine — ³²₁₆S has A=32, ²³₁₁Na has A=23, ⁴⁰₁₈Ar has A=40, ²⁸₁₄Si has A=28 — no two share A, so a strong response correctly states no isobar pair exists within the table and defines the criterion; (b) correctly identifies Ar (config 2,8,8, outermost shell complete, valency 0) with explanation; (c) correctly predicts sodium (valency 1) forms NaCl (1:1 ratio with chlorine valency 1) more directly than silicon (valency 4), or notes both can form compounds but provides valency-based reasoning. Weak responses: arithmetic errors in neutron count propagated through; valency 0 attributed to argon without referencing the complete outermost shell; prediction in (c) made without referencing valency numbers.",
+              "inclusivity": "Students who complete the table correctly but struggle to articulate (c) in prose may present their answer as a valency equation (Na: 1, Cl: 1 → NaCl; Si: 4, Cl: 1 → SiCl₄) — this demonstrates the same valency-integration operation. Students who find the table format challenging may present their derivation chain as a numbered list for each element; the format of output is flexible as long as all required values are present and the reasoning for (a)–(c) is traceable."
+            }
+          }
+        }
+      ]
+    },
+    "input_tokens": 10926,
+    "output_tokens": 10703,
+    "cost_inr": 17.7857,
+    "assess_input_tokens": 10728,
+    "assess_output_tokens": 11790,
+    "assess_cost_inr": 19.2311
+  }
+}

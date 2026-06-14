@@ -2157,9 +2157,16 @@ Output only the raw JSON object. No markdown. No prose. No ```json fences.
                 # ── Assessment tick tracking (deferred path) ──────────────────
                 if _da_subj_folder == "science":
                     import re as _re_da
+                    # Secondary-stage science emits "section_number"; middle-stage
+                    # emits "progression_stage". Count whichever the schema uses so
+                    # the progress bar advances for both stages.
                     _dag = len(set(int(x) for x in _re_da.findall(
-                        r'"progression_stage"\s*:\s*(\d+)', streamed_text
+                        r'"section_number"\s*:\s*(\d+)', streamed_text
                     )))
+                    if _dag == 0:
+                        _dag = len(set(int(x) for x in _re_da.findall(
+                            r'"progression_stage"\s*:\s*(\d+)', streamed_text
+                        )))
                 elif _da_subj_folder == "social_sciences":
                     import re as _re_da2
                     _dag = len(set(_re_da2.findall(
@@ -2340,6 +2347,27 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
             for _s in _inv:
                 if isinstance(_s, dict) and _s.get("section_id"):
                     _eng_type_by_sec[_s["section_id"]] = _s.get("type", "") or _s.get("section_type", "") or ""
+
+        # ── Secondary-Science coverage_handoff lookup (Amendment A4) ──────────
+        # Under the secondary-Science LP Constitution, implied_lo /
+        # section_context / competency live in the top-level coverage_handoff
+        # ARRAY (one entry per section), NOT on the period object. Build two
+        # lookups so the secondary branch can rejoin a period to its section:
+        #   • by period_number  (primary — handles shared section_anchors)
+        #   • by section_label  (fallback — matches period.section_anchor)
+        _ho_by_period = {}
+        _ho_by_label  = {}
+        _ho_arr = result.get("coverage_handoff")
+        if isinstance(_ho_arr, list):
+            for _e in _ho_arr:
+                if not isinstance(_e, dict):
+                    continue
+                for _pn in (_e.get("period_numbers") or []):
+                    _ho_by_period[_pn] = _e
+                _lbl = _e.get("section_label")
+                if _lbl:
+                    _ho_by_label[_lbl] = _e
+
         out = []
         for p in lp["periods"]:
             # ── Mathematics format detection (v2.1 shape) ─────────────────────
@@ -2651,14 +2679,22 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
                     "pedagogical_approach":    p.get("pedagogical_approach", ""),
                 })
             # ── Secondary-stage Science (section-anchored, flat) ─────────────
-            # Distinguisher vs Social Sciences A3: secondary Science periods
-            # carry `section_context` (and, once regenerated, a per-period
-            # `pedagogical_approach`); Social Sciences periods carry neither.
-            # Shape: section_anchor + time_bands + competency{C-code}, NO stage
-            # fields. Rendered FLAT (no stage layer), approach column, LO at end,
+            # Current schema (LP Constitution · Amendment A4): the period object
+            # carries teaching mechanics only — section_anchor, time_bands,
+            # pedagogical_approach, homework — while implied_lo, section_context
+            # and the competency fields live in the top-level coverage_handoff
+            # ARRAY (rejoined here via _ho_by_period / _ho_by_label). Legacy
+            # saved plans that still inline section_context/competency on the
+            # period are also accepted (fallback reads below).
+            # Distinguisher vs Social Sciences A3: a matching coverage_handoff
+            # entry exists for this period, OR the period inlines section_context.
+            # Shape: rendered FLAT (no stage layer), approach column, LO at end,
             # NO materials row.
+            _ho = _ho_by_period.get(p.get("period_number")) \
+                or _ho_by_label.get(p.get("section_anchor")) \
+                or {}
             _is_science_secondary = (
-                p.get("section_context") is not None
+                (bool(_ho) or p.get("section_context") is not None)
                 and p.get("section_anchor") is not None
                 and isinstance(p.get("time_bands"), list)
                 and p.get("stage_label") is None
@@ -2668,12 +2704,18 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
                 and p.get("dominant_mode") not in {"O&R", "HI", "D&C", "C&E", "R&A"}
             )
             if _is_science_secondary:
+                # Competency: handoff entry is authoritative; fall back to any
+                # legacy inline competency{} object on the period.
                 comp = p.get("competency") or {}
                 time_slots = [
                     {"time": tb.get("minutes", ""), "desc": tb.get("activity", "")}
                     for tb in (p.get("time_bands") or [])
                 ]
-                c_code = comp.get("c_code", "")
+                # c_code / implied_lo / section_context: prefer coverage_handoff,
+                # fall back to inline period fields for legacy saved plans.
+                c_code = _ho.get("c_code") or comp.get("c_code", "")
+                _implied_lo     = _ho.get("implied_lo")     or p.get("implied_lo", "")
+                _section_context = _ho.get("section_context") or p.get("section_context", "")
                 out.append({
                     "period_number":           p.get("period_number"),
                     "period_duration_minutes": p.get("period_duration_minutes"),
@@ -2683,9 +2725,10 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
                     "time_slots":              time_slots,
                     # No materials row for secondary Science — deliberately blank.
                     "material":                "",
-                    "implied_lo":              p.get("implied_lo", ""),
+                    "implied_lo":              _implied_lo,
+                    "section_context":         _section_context,
                     "c_code":                  c_code,
-                    "cg":                      comp.get("cg", ""),
+                    "cg":                      _ho.get("cg", "") or comp.get("cg", ""),
                     "weight":                  0,
                     "competency_text":         comp_descs.get(c_code, "") or comp.get("competency_text", ""),
                     "visual_representation":   None,
@@ -2751,6 +2794,13 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
         return result["assessment_sections"]
 
     items = result.get("assessment_items", [])
+    # Secondary-stage science wraps its questions in an envelope dict
+    # {grade, subject, stage, ..., "questions": [...]} rather than shipping a
+    # flat list like middle-stage science. Unwrap to the inner question list so
+    # the flat-list science path below handles it. (Middle stage ships a list,
+    # so this is a no-op there.)
+    if isinstance(items, dict) and isinstance(items.get("questions"), list):
+        items = items["questions"]
     if not items:
         return []
 
@@ -3152,10 +3202,24 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
             bool(item.get("correct_answer"))               # Science MCQ correct key
         )
 
+        # Secondary-stage science is section-anchored (section_label /
+        # section_number) and carries NO progression stage_label. Middle-stage
+        # science is progression-stage-grouped (stage_label present). Detect the
+        # secondary shape so the renderer can label sections by chapter section
+        # rather than "Progression Stage".
+        _is_sci_secondary = (
+            _is_science
+            and item.get("stage_label") is None
+            and item.get("section_label") is not None
+        )
+
         if _is_science:
             _comp      = {}
             c_code     = ""
-            _group_key = item.get("stage_label") or item.get("implied_lo_assessed") or f"_sci_{len(sections)}"
+            if _is_sci_secondary:
+                _group_key = item.get("section_label") or f"_sci_{len(sections)}"
+            else:
+                _group_key = item.get("stage_label") or item.get("implied_lo_assessed") or f"_sci_{len(sections)}"
         else:
             # c_code may be a top-level field OR nested under item["competency"]["c_code"],
             # exactly as in lesson-plan periods (see _normalise_lo_handoff).
@@ -3167,9 +3231,16 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
 
         if _group_key not in sections:
             if _is_science:
-                _wlabel     = item.get("stage_label", "")
-                _ctext      = item.get("implied_lo_assessed", "")
-                _drawing_on = item.get("stage_label", "")
+                if _is_sci_secondary:
+                    # Section-anchored: header shows the chapter section label
+                    # (e.g. "8.1 Rediscovering the Roots of Atomic Theory").
+                    _wlabel     = ""
+                    _ctext      = item.get("implied_lo_assessed", "")
+                    _drawing_on = item.get("section_label", "")
+                else:
+                    _wlabel     = item.get("stage_label", "")
+                    _ctext      = item.get("implied_lo_assessed", "")
+                    _drawing_on = item.get("stage_label", "")
             else:
                 # weight_label: prefer explicit string; fall back to integer from competency
                 _wlabel = item.get("weight_label") or ""
@@ -3202,6 +3273,12 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
                 # is_science is the canonical flag; stage_label carried for display.
                 "is_science":  _is_science,
                 "stage_label": item.get("stage_label", "") if _is_science else None,
+                # Secondary-stage science: section-anchored, no progression stage.
+                # The HTML renderer uses this flag to drop the "Progression Stage"
+                # header and show section_label instead.
+                "science_secondary": _is_sci_secondary,
+                "section_label":     item.get("section_label", "") if _is_sci_secondary else "",
+                "section_number":    item.get("section_number", "") if _is_sci_secondary else "",
             }
         qtype = item.get("question_type", "")
         sections[_group_key]["questions"].append({
@@ -6637,7 +6714,7 @@ div[class*="st-key-gen-clear-top"] button p {
     try {
       var pDoc = window.parent.document;
       /* Streamlit renders: <iframe height="2200" ...> inside a wrapper div */
-      var targets = pDoc.querySelectorAll('iframe[height="2200"]');
+      var targets = pDoc.querySelectorAll('iframe[height="4000"]');
       for (var i = 0; i < targets.length; i++) {
         var fr = targets[i];
         fr.setAttribute('height', String(h));
@@ -6680,7 +6757,7 @@ div[class*="st-key-gen-clear-top"] button p {
 </script>
 """
         _lpa_html = _lpa_html + _lpa_height_script
-        components.html(_lpa_html, height=2200, scrolling=False)
+        components.html(_lpa_html, height=4000, scrolling=False)
 
 
 
@@ -7183,7 +7260,7 @@ else:
         _v_lpa_html = _v_lpa_tpl.replace("/* __LPA_DATA__ */", _v_lpa_inject) + _v_lpa_height_script
         components.html(
             _v_lpa_html,
-            height=2200, scrolling=False,
+            height=4000, scrolling=False,
         )
 
         st.markdown('<div style="height:1rem;"></div>', unsafe_allow_html=True)

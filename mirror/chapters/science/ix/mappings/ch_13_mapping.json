@@ -1,0 +1,25 @@
+{
+  "stage": "secondary",
+  "subject": "science",
+  "grade": "ix",
+  "chapter_number": 13,
+  "chapter_title": "Earth as a System: Energy, Matter, and Life",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": false,
+  "primary": [
+    {
+      "cg": "CG-4",
+      "c_code": "C-4.3",
+      "justification": "The chapter's entire domain is the analysis of how living organisms interact with their abiotic environment at the ecosystem level. It frames the Earth as five interacting spheres (geosphere, hydrosphere, cryosphere, atmosphere, biosphere) and traces how energy flow (solar radiation → wind → ocean currents) and matter cycling (water, carbon, nitrogen, oxygen biogeochemical cycles) interconnect biotic and abiotic components. Section 13.3 on biogeochemical cycles is an explicit treatment of the transfer of matter and energy between abiotic and biotic components that sustains ecosystems; Section 13.4 analyses how human disruption of these cycles cascades across all spheres. No other CG-4 competency is addressed: C-4.1 (five-kingdom classification), C-4.2 (molecular-to-organism levels of organisation), C-4.4 (Mendelian inheritance), and C-4.5 (natural selection and evolution) are all absent."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to analyse how energy and matter flow across the Earth's interconnected spheres (geosphere, hydrosphere, cryosphere, atmosphere, biosphere) by tracing how solar radiation drives atmospheric and oceanic circulation, how biogeochemical cycles (water, carbon, nitrogen, oxygen) move matter between abiotic and biotic components, and how human disruption of these cycles cascades across ecosystems.",
+  "conceptual_demand": 3,
+  "activity_count": 0,
+  "activity_load": 0,
+  "demo_count": 0,
+  "demo_load": 0,
+  "exec_load": 0,
+  "effort_index": 6.0
+}

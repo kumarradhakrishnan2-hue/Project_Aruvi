@@ -1,0 +1,25 @@
+{
+  "stage": "secondary",
+  "subject": "science",
+  "grade": "ix",
+  "chapter_number": 4,
+  "chapter_title": "Describing Motion Around Us",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": false,
+  "primary": [
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.1",
+      "justification": "The chapter's entire domain is the description of motion in one dimension and uniform circular motion — exactly the subject matter named in C-2.1. Sections 4.1–4.1.4 develop displacement and direction, average speed, average velocity, and average acceleration; Section 4.2 builds graphical representations (position-time and velocity-time graphs) and teaches how to extract velocity and acceleration from slopes and displacement from areas; Section 4.3 derives and applies kinematic equations, which are the mathematical representations of motion; Section 4.4.1 develops uniform circular motion including the role of continuously changing velocity direction. Acceleration due to gravity appears explicitly in Example 4.4. No second competency strand exists: the chapter never enters force mechanics (Newton's laws proper), optics, circuits, energy, or sound."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to describe and analyse motion in one dimension and uniform circular motion by applying the concepts of displacement, velocity, and acceleration, and by reading, plotting, and interpreting position-time and velocity-time graphs and kinematic equations to predict and explain motion outcomes.",
+  "conceptual_demand": 3,
+  "activity_count": 5,
+  "activity_load": 2,
+  "demo_count": 0,
+  "demo_load": 0,
+  "exec_load": 2,
+  "effort_index": 14.0
+}

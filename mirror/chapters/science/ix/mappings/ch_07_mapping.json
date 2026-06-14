@@ -1,0 +1,30 @@
+{
+  "stage": "secondary",
+  "subject": "science",
+  "grade": "ix",
+  "chapter_number": 7,
+  "chapter_title": "Work, Energy, and Simple Machines",
+  "min_viable_periods": 0,
+  "orientation_chapter": false,
+  "co_central": true,
+  "primary": [
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.5",
+      "justification": "The chapter's first and larger strand (sections 7.1–7.4.3) defines work in scientific terms (W = F × s), derives kinetic energy (K = ½mv²) and gravitational potential energy (U = mgh) using the work-energy theorem, and mathematises the conservation of mechanical energy. This directly addresses the 'defines work in scientific terms, and represents the relationship between potential and kinetic energy (conservation of energy) in mathematical expressions' clause of C-2.5."
+    },
+    {
+      "cg": "CG-2",
+      "c_code": "C-2.6",
+      "justification": "Section 7.6 constitutes a distinct second strand that develops mechanical advantage through hands-on construction and analysis of three simple machines — pulley (fixed and movable), inclined plane, and lever. Activities 7.3 (inclined plane spring-balance experiment), 7.4 (lever with ruler and coins), and 7.5 (beam balance) directly address the 'demonstrates the principle of mechanical advantage by constructing simple machines (system of levers and pulleys)' clause of C-2.6. This strand is cognitively and structurally independent of the energy strand."
+    }
+  ],
+  "dissolution_test": "This chapter builds the student's ability to define work mathematically and represent the interconversion of potential and kinetic energy (including conservation of mechanical energy) AND to demonstrate mechanical advantage through practical construction and analysis of simple machines (pulley, inclined plane, lever) by applying the work-energy theorem to derive both energy expressions and mechanical advantage formulae.",
+  "conceptual_demand": 3,
+  "activity_count": 5,
+  "activity_load": 2,
+  "demo_count": 0,
+  "demo_load": 0,
+  "exec_load": 2,
+  "effort_index": 14.0
+}
