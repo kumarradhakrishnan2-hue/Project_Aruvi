@@ -21,7 +21,7 @@ import uuid
 import streamlit as st
 import streamlit.components.v1 as components
 from streamlit.runtime.scriptrunner import add_script_run_ctx
-import anthropic
+from llm_client import stream as llm_stream, GENERATION_MODEL, HELPLINE_MODEL
 import os
 # ── Prompt caching toggle ─────────────────────────────────────────────────────
 # Set USE_PROMPT_CACHE = True  → cache_control blocks active (1h TTL)
@@ -178,7 +178,7 @@ def log_tokens(
     chapter_title:          str,
     input_tokens:           int,
     output_tokens:          int,
-    model:                  str = "claude-sonnet-4-6",
+    model:                  str = GENERATION_MODEL,
     cache_write_tokens:     int = 0,
     cache_read_tokens:      int = 0,
 ):
@@ -216,7 +216,7 @@ def log_ask_aruvi_tokens(
     output_tokens: int,
 ) -> None:
     try:
-        cost_inr      = calculate_cost_inr("claude-haiku-4-5-20251001", input_tokens, output_tokens)
+        cost_inr      = calculate_cost_inr(HELPLINE_MODEL, input_tokens, output_tokens)
         query_snippet = query[:60]
         category_val  = category if category else "none"
         write_header  = not ASK_ARUVI_LOG_PATH.exists()
@@ -1045,8 +1045,6 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
         ]
 
     try:
-        client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
-
         full_output = ""
         input_tokens = 0
         output_tokens = 0
@@ -1400,14 +1398,12 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
         _lp_periods_seen    = 0   # count of "period_number" tokens in LP portion
         _assess_groups_seen = 0   # count of assessment group tokens post-trigger
 
-        with client.messages.stream(
-            model="claude-sonnet-4-6",
+        with llm_stream(
+            model=GENERATION_MODEL,
             max_tokens=32000,
             system=system_prompt_blocks,
             messages=[{"role": "user", "content": user_message_blocks}],
-            extra_headers={
-                "anthropic-beta": "prompt-caching-2024-07-31"
-            },
+            prompt_cache=True,
         ) as stream:
             for text in stream.text_stream:
                 # ── Stop-button check ─────────────────────────────────────────
@@ -1574,7 +1570,7 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                 chapter_title      = chapter.get("chapter_title", ""),
                 input_tokens       = input_tokens,
                 output_tokens      = output_tokens,
-                model              = "claude-sonnet-4-6",
+                model              = GENERATION_MODEL,
                 cache_write_tokens = _cache_write_stopped,
                 cache_read_tokens  = _cache_read_stopped,
             )
@@ -1590,7 +1586,7 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                 "assessment_items": [],
                 "input_tokens":   input_tokens,
                 "output_tokens":  output_tokens,
-                "cost_inr":       calculate_cost_inr("claude-sonnet-4-6", input_tokens, output_tokens),
+                "cost_inr":       calculate_cost_inr(GENERATION_MODEL, input_tokens, output_tokens),
                 "plan_status":    "full_lpa" if include_assessment else "lp_only",
                 "stopped":        True,
             }
@@ -1612,7 +1608,7 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             chapter_title      = chapter.get("chapter_title", ""),
             input_tokens       = input_tokens,
             output_tokens      = output_tokens,
-            model              = "claude-sonnet-4-6",
+            model              = GENERATION_MODEL,
             cache_write_tokens = cache_write_tokens,
             cache_read_tokens  = cache_read_tokens,
         )
@@ -1759,7 +1755,7 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
             "assessment_items": parsed.get("assessment_items", []) if include_assessment else [],
             "input_tokens":     input_tokens,
             "output_tokens":    output_tokens,
-            "cost_inr":         calculate_cost_inr("claude-sonnet-4-6", input_tokens, output_tokens),
+            "cost_inr":         calculate_cost_inr(GENERATION_MODEL, input_tokens, output_tokens),
             "plan_status":      "full_lpa" if include_assessment else "lp_only",
         }
         if result_queue is not None:
@@ -1913,8 +1909,6 @@ Output only the raw JSON object. No markdown. No prose. No ```json fences.
     ]
 
     try:
-        client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
-
         import time as _time
         progress_placeholder = st.empty()
         timer_placeholder    = st.empty()
@@ -2141,12 +2135,12 @@ Output only the raw JSON object. No markdown. No prose. No ```json fences.
         _stopped_by_user = False
         _da_groups_seen = 0
 
-        with client.messages.stream(
-            model="claude-sonnet-4-6",
+        with llm_stream(
+            model=GENERATION_MODEL,
             max_tokens=32000,
             system=system_prompt_blocks,
             messages=[{"role": "user", "content": user_message_blocks}],
-            extra_headers={"anthropic-beta": "prompt-caching-2024-07-31"},
+            prompt_cache=True,
         ) as stream:
             for text in stream.text_stream:
                 if stop_event is not None and stop_event.is_set():
@@ -2207,7 +2201,7 @@ Output only the raw JSON object. No markdown. No prose. No ```json fences.
                 chapter_title      = chapter_title,
                 input_tokens       = _it,
                 output_tokens      = _ot,
-                model              = "claude-sonnet-4-6",
+                model              = GENERATION_MODEL,
                 cache_write_tokens = _cw,
                 cache_read_tokens  = _cr,
             )
@@ -2221,7 +2215,7 @@ Output only the raw JSON object. No markdown. No prose. No ```json fences.
                 "assessment_items":     [],
                 "assess_input_tokens":  _it,
                 "assess_output_tokens": _ot,
-                "assess_cost_inr":      calculate_cost_inr("claude-sonnet-4-6", _it, _ot),
+                "assess_cost_inr":      calculate_cost_inr(GENERATION_MODEL, _it, _ot),
                 "stopped":              True,
             }
             if result_queue is not None:
@@ -2241,7 +2235,7 @@ Output only the raw JSON object. No markdown. No prose. No ```json fences.
             chapter_title      = chapter_title,
             input_tokens       = input_tokens,
             output_tokens      = output_tokens,
-            model              = "claude-sonnet-4-6",
+            model              = GENERATION_MODEL,
             cache_write_tokens = cache_write_tokens,
             cache_read_tokens  = cache_read_tokens,
         )
@@ -2282,7 +2276,7 @@ Output only the raw JSON object. No markdown. No prose. No ```json fences.
                 "assessment_items":     [],
                 "assess_input_tokens":  input_tokens,
                 "assess_output_tokens": output_tokens,
-                "assess_cost_inr":      calculate_cost_inr("claude-sonnet-4-6", input_tokens, output_tokens),
+                "assess_cost_inr":      calculate_cost_inr(GENERATION_MODEL, input_tokens, output_tokens),
                 "error":                f"JSON parse failed: {_je}",
             }
             if result_queue is not None:
@@ -2300,7 +2294,7 @@ Output only the raw JSON object. No markdown. No prose. No ```json fences.
             "assessment_items":     parsed.get("assessment_items", []),
             "assess_input_tokens":  input_tokens,
             "assess_output_tokens": output_tokens,
-            "assess_cost_inr":      calculate_cost_inr("claude-sonnet-4-6", input_tokens, output_tokens),
+            "assess_cost_inr":      calculate_cost_inr(GENERATION_MODEL, input_tokens, output_tokens),
         }
         if result_queue is not None:
             result_queue.put(_final)

@@ -1,10 +1,10 @@
 {
   "metadata": {
     "document": "Ask Aruvi Q&A Knowledge Base",
-    "version": "V2.6",
+    "version": "V2.7",
     "last_refreshed": "2026-06-14",
     "date": "June 2026",
-    "total_pairs": 97,
+    "total_pairs": 98,
     "categories": [
       "cat_a",
       "cat_b",
@@ -441,6 +441,11 @@
           "id": "d20",
           "q": "How long does it take to generate the lesson plan and the assessment?",
           "a": "Each part takes between 2 and 5 minutes depending on chapter length and the number of periods. If you generate both in a single session, expect a combined time of 4 to 10 minutes. Generating the assessment separately from My Plans takes the same time as generating it at inception — the generation process is identical."
+        },
+        {
+          "id": "d21",
+          "q": "Can I ask Ask Aruvi questions in Hindi or any other Indian language and get a response in the same language?",
+          "a": "Yes. Ask Aruvi responds in whatever language you ask in. Type your question in Hindi, Tamil, Telugu, Kannada, Marathi, or any other language — Ask Aruvi will answer in the same language. This applies to all questions about how the platform works: navigation, generation, allocation, assessment design, and the subject-specific rules. Only lesson plan and assessment generation itself is currently in English; the Ask Aruvi helpline has no such restriction."
         }
       ]
     },

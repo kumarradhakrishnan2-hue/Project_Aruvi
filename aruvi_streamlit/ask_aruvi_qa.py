@@ -9,13 +9,13 @@ import uuid
 from datetime import datetime
 from pathlib import Path
 
-import anthropic
+from llm_client import create as llm_create, HELPLINE_MODEL
 
 # ── Constants ─────────────────────────────────────────────────────────────────
 PROJECT_ROOT            = Path("/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi")
 QA_KB_PATH              = PROJECT_ROOT / "mirror/ask_aruvi/qa_knowledge_base.json"
 FEEDBACK_FORWARDED_ROOT = PROJECT_ROOT / "mirror/feedback/forwarded_queries"
-HAIKU_MODEL             = "claude-haiku-4-5-20251001"
+HAIKU_MODEL             = HELPLINE_MODEL
 
 _VALID_CATEGORIES       = {"cat_a", "cat_b", "cat_c", "cat_d", "cat_e"}
 
@@ -143,7 +143,7 @@ def ask(
     Steps:
         1. Load knowledge base (filtered by category if provided)
         2. Build system prompt
-        3. Call claude-haiku-4-5-20251001 (max_tokens=300)
+        3. Call the helpline model (HAIKU_MODEL, max_tokens=300)
         4. Detect forwarded / out-of-scope responses and log them
         5. Return a dict with keys: "response", "input_tokens", "output_tokens"
 
@@ -165,8 +165,7 @@ def ask(
     system_prompt = build_system_prompt()
     user_content  = kb_text + "\n\nTeacher's question: " + query
 
-    client   = anthropic.Anthropic()
-    response = client.messages.create(
+    response = llm_create(
         model      = HAIKU_MODEL,
         max_tokens = 300,
         system     = system_prompt,
