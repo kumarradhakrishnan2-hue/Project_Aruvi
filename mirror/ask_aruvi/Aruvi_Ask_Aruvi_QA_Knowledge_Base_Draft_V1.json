@@ -1,10 +1,10 @@
 {
   "metadata": {
     "document": "Ask Aruvi Q&A Knowledge Base",
-    "version": "V2.5",
-    "last_refreshed": "2026-06-10",
+    "version": "V2.6",
+    "last_refreshed": "2026-06-14",
     "date": "June 2026",
-    "total_pairs": 96,
+    "total_pairs": 97,
     "categories": [
       "cat_a",
       "cat_b",
@@ -67,7 +67,7 @@
         {
           "id": "a10",
           "q": "Why does the NCERT textbook architecture differ by subject, and what is the implication for Aruvi's design?",
-          "a": "Social Sciences chapters sprawl across multiple competencies in named sections. Science chapters build one central cognitive operation through progressive stages. English is structured around six language skill spines applied to each text. Mathematics has an innate progression of worked examples, activities, and exercises. Because the textbook architectures are genuinely different, forcing one planning template across all subjects would flatten those differences. Aruvi uses four subject-specific sets of generation rules so each plan respects the textbook's own logic."
+          "a": "Social Sciences chapters sprawl across multiple competencies in named sections. Science chapters are built around a central cognitive operation — occasionally two, where the chapter genuinely integrates distinct operations. English is structured around six language skill spines applied to each text. Mathematics has an innate progression of worked examples, activities, and exercises. Because the textbook architectures are genuinely different, forcing one planning template across all subjects would flatten those differences. Aruvi uses four subject-specific sets of generation rules so each plan respects the textbook's own logic."
         },
         {
           "id": "a11",
@@ -96,13 +96,18 @@
         },
         {
           "id": "a15",
-          "q": "How does Science plan lessons?",
-          "a": "Science chapters build one central cognitive operation through clear, ordered stages — from first encounter with a phenomenon to the highest-order thinking the chapter is designed to produce. Aruvi derives this cognitive progression from the chapter and plans activities along its stages. Each stage ends with one implied learning outcome. Activities are drawn exclusively from the chapter's own experiments, exercises, and exploratory prompts — nothing is invented."
+          "q": "How does Science plan lessons at the Middle Stage (Grades VI–VIII)?",
+          "a": "Middle Stage Science chapters build one central cognitive operation through clear, ordered stages — from first encounter with a phenomenon to the highest-order thinking the chapter is designed to produce. Aruvi derives this cognitive progression from the chapter and plans activities along its stages. Each stage ends with one implied learning outcome. Activities are drawn exclusively from the chapter's own experiments, exercises, and exploratory prompts — nothing is invented."
+        },
+        {
+          "id": "a15b",
+          "q": "How does Science plan lessons at the Secondary Stage (Grade IX)?",
+          "a": "Secondary Stage Science chapters are planned section by section, following the chapter's own section order — not a designed cognitive arc. Every activity is anchored to a named section of the chapter summary; content from outside that section is not introduced. Each section produces one implied learning outcome stating the transferable skill the student develops. Where the chapter integrates two distinct cognitive operations across sections, both are reflected in the lesson plan. Activities are drawn exclusively from the chapter's content — nothing is invented."
         },
         {
           "id": "a16",
-          "q": "Why does Science use one Core Competency per chapter while Social Sciences uses multiple?",
-          "a": "Science chapters are built as self-contained competency units — each is designed to produce one cognitive ability, developed through progressive stages. Social Sciences chapters sprawl across multiple competencies simultaneously, with different sections developing different thinking skills. Because the textbook architectures are genuinely different, the generation rules differ by subject. Forcing multiple competencies onto a Science chapter would misrepresent how that chapter actually works."
+          "q": "Why does Science use fewer Core Competencies per chapter than Social Sciences?",
+          "a": "Science chapters are built as self-contained competency units — each is designed to produce one primary cognitive ability. In rare cases where a chapter genuinely develops a second, cognitively independent operation across its own named sections, a co-central competency is recognised alongside the primary one. Social Sciences chapters, by contrast, routinely sprawl across multiple competencies simultaneously, with different sections developing different thinking skills. Because the textbook architectures are genuinely different, the generation rules differ by subject."
         },
         {
           "id": "a17",
@@ -193,7 +198,7 @@
         {
           "id": "b06",
           "q": "Why does the number of questions differ across chapters?",
-          "a": "Assessment length in Aruvi is intentionally uncapped — it reflects how much the chapter itself demands. A chapter with more implied learning outcomes produces more questions. In Social Sciences, chapters with more or higher-weight competencies generate more LOs. In Science, more progression stages do the same. In English, more active spines per section add more outcomes. In Mathematics, more worked-example steps add more outcome pairs. Length is a function of chapter content, not an arbitrary target."
+          "a": "Assessment length in Aruvi is intentionally uncapped — it reflects how much the chapter itself demands. A chapter with more implied learning outcomes produces more questions. In Social Sciences, chapters with more or higher-weight competencies generate more LOs. In Science, more sections (or progression stages at the Middle Stage) produce more implied LOs and therefore more questions. In English, more active spines per section add more outcomes. In Mathematics, more worked-example steps add more outcome pairs. Length is a function of chapter content, not an arbitrary target."
         },
         {
           "id": "b07",
@@ -202,8 +207,13 @@
         },
         {
           "id": "b08",
-          "q": "How is the assessment rubric developed in Science?",
-          "a": "In Science, question type follows the chapter's cognitive progression stages. Foundational stages receive MCQs. Middle stages add short constructed responses. The final stage — the highest-order cognitive operation — receives the open task. Every question is traceable to the implied LO of its progression stage. MCQs at every stage include diagnostically intentional distractors with a teacher guide explaining what each wrong answer reveals about the student's specific misunderstanding."
+          "q": "How is the assessment rubric developed in Middle Stage Science (Grades VI–VIII)?",
+          "a": "In Middle Stage Science, question type follows the chapter's cognitive progression stages. Foundational stages receive MCQs. Middle stages add short constructed responses. The final stage — the highest-order cognitive operation — receives the open task. Every question is traceable to the implied LO of its progression stage. MCQs at every stage include diagnostically intentional distractors with a teacher guide explaining what each wrong answer reveals about the student's specific misunderstanding."
+        },
+        {
+          "id": "b08b",
+          "q": "How is the assessment rubric developed in Secondary Stage Science (Grade IX)?",
+          "a": "In Secondary Stage Science, question format is governed by the cognitive demand of each section — not by its position in the chapter. Recall and Understanding sections receive MCQs with diagnostic distractors. Application sections receive short constructed responses where the method chain is the object of assessment. Analysis and Evaluation sections receive extended constructed responses. Where a chapter has a co-central section integrating two distinct operations, that section receives an open task. Every question is traceable to the implied LO of its anchored section."
         },
         {
           "id": "b09",
@@ -228,7 +238,7 @@
         {
           "id": "b11",
           "q": "How are question types chosen in the assessment?",
-          "a": "Question type is prescribed by Aruvi's generation rules for each subject — it is not chosen freely by the AI. In Social Sciences, competency weight determines type. In Science, progression stage determines type. In English, each spine outcome maps to a specific question form. In Mathematics, every outcome gets a transfer question and a textbook exercise. The permitted types are MCQ, short constructed response, extended constructed response, and open task."
+          "a": "Question type is prescribed by Aruvi's generation rules for each subject — it is not chosen freely by the AI. In Social Sciences, competency weight determines type. In Science, progression stage determines type at the Middle Stage; cognitive demand of each section determines type at the Secondary Stage. In English, each spine outcome maps to a specific question form. In Mathematics, every outcome gets a transfer question and a textbook exercise. The permitted types are MCQ, short constructed response, extended constructed response, and open task."
         },
         {
           "id": "b12",
