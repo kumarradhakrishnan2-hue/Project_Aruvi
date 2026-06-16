@@ -7424,25 +7424,36 @@ else:
             # clicking View / a PDF download / Delete leaves the menu visually
             # open — there is no Python API to dismiss it. We install a single
             # delegated listener on the parent document (this runs in a child
-            # iframe, so st.markdown <script> stripping doesn't apply) that, when
-            # a control inside the popover body is clicked, fires the same Escape
-            # keypress a user would press to dismiss the menu.
+            # iframe, so st.markdown <script> stripping doesn't apply).
+            #
+            # BaseWeb ignores synthetic Escape / outside-click events, and the
+            # trigger button carries no aria-expanded/aria-controls marker, so
+            # the open popover can't be found from the DOM. Instead we remember
+            # the last-clicked popover trigger (the only way a popover opens) and
+            # re-click it — which toggles the menu shut — once a menu item is
+            # chosen.
             components.html(
                 """
 <script>
 (function(){
-  var doc = window.parent.document;
+  var doc;
+  try { doc = window.parent.document; } catch(err) { return; }
   if (doc.__aruviPopoverAutoClose) { return; }
   doc.__aruviPopoverAutoClose = true;
   doc.addEventListener('click', function(e){
-    if (!(e.target.closest &&
-          e.target.closest('[data-testid="stPopoverBody"]'))) { return; }
-    // Let Streamlit register the click first, then dismiss the popover.
-    setTimeout(function(){
-      var esc = {key:'Escape', code:'Escape', keyCode:27, which:27, bubbles:true};
-      doc.dispatchEvent(new KeyboardEvent('keydown', esc));
-      if (doc.body) { doc.body.dispatchEvent(new KeyboardEvent('keydown', esc)); }
-    }, 60);
+    var trigger = e.target.closest &&
+                  e.target.closest('[data-testid="stPopoverButton"]');
+    if (trigger) { doc.__aruviOpenPopoverTrigger = trigger; return; }
+    var inBody = e.target.closest &&
+                 e.target.closest('[data-testid="stPopoverBody"]');
+    if (inBody && doc.__aruviOpenPopoverTrigger) {
+      var trg = doc.__aruviOpenPopoverTrigger;
+      // Let Streamlit register the menu-item click first, then toggle the
+      // popover's own trigger to dismiss the menu.
+      setTimeout(function(){
+        if (doc.querySelector('[data-testid="stPopoverBody"]')) { trg.click(); }
+      }, 50);
+    }
   }, true);
 })();
 </script>
