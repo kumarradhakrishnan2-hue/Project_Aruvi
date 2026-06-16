@@ -1,0 +1,739 @@
+{
+  "grade": "Grade IX",
+  "subject": "science",
+  "stage": "secondary",
+  "chapter_number": 8,
+  "chapter_title": "Journey Inside the Atom",
+  "chapter_cg": "CG-1",
+  "period_schedule": [
+    { "duration_minutes": 60, "count": 6 },
+    { "duration_minutes": 45, "count": 4 },
+    { "duration_minutes": 50, "count": 1 }
+  ],
+  "section_coverage_note": "Period budget shortfall (11 periods for 19 sections). The following sections could not be allotted their own period and should be skimmed or integrated during adjacent periods as time permits: 8.2 A Short Historical Journey Through Atomic Models; 8.2 B. Limitations of Rutherford's model; 8.2 C. Discovery of the proton; 8.3 What Components Contribute to the Mass of an Atom?; 8.3.1 Discovery of the Neutron; 8.4 Symbols of Elements; 8.9 A Deeper Look into Atomic Structure; 8.9.2 Isobars.",
+  "lesson_plan": {
+    "periods": [
+      {
+        "period_number": 1,
+        "period_duration_minutes": 60,
+        "activity_title": "Tracing atom ideas from parmanus and atomos to Dalton's scientific model",
+        "section_anchor": "8.1 Rediscovering the Roots of Atomic Theory",
+        "pedagogical_approach": "Didactic approach",
+        "materials": ["textbook", "board and chalk", "sticky notes", "notebooks"],
+        "visual_aids": "board timeline sketched from section headings",
+        "time_bands": [
+          { "minutes": "0-10", "activity": "Elicit examples of philosophical ideas versus experimental claims; introduce the section focus." },
+          { "minutes": "10-25", "activity": "Present a quick timeline from ancient atomism to Dalton; pairs classify 4–5 statements as philosophical or scientific with justifications." },
+          { "minutes": "25-45", "activity": "Whole-class discuss criteria that separate philosophical speculation from testable models; annotate timeline with turning points." },
+          { "minutes": "45-60", "activity": "Students write a two-sentence exit note explaining how Dalton’s proposal changed the status of the atom idea." }
+        ],
+        "homework": []
+      },
+      {
+        "period_number": 2,
+        "period_duration_minutes": 60,
+        "activity_title": "Modelling Thomson’s plum pudding atom and testing analogy limits through charge-neutrality",
+        "section_anchor": "8.2.1 Thomson's model of an atom",
+        "pedagogical_approach": "Demonstration",
+        "materials": ["modelling clay", "small beads", "plastic knife", "tray", "textbook"],
+        "visual_aids": "board sketch of plum pudding model",
+        "time_bands": [
+          { "minutes": "0-10", "activity": "Recap electrons as negatively charged and overall atomic neutrality; pose the neutrality question." },
+          { "minutes": "10-25", "activity": "Demonstrate a clay sphere with embedded beads to represent uniform positive charge with electrons; show how total charges balance." },
+          { "minutes": "25-45", "activity": "Groups evaluate watermelon, orange, and lemon analogies, noting where each fits and where it fails to match the model." },
+          { "minutes": "45-60", "activity": "Quick-write: one strength and one limitation of the plum pudding model based on the analogy exercise." }
+        ],
+        "homework": []
+      },
+      {
+        "period_number": 3,
+        "period_duration_minutes": 60,
+        "activity_title": "Interpreting alpha scattering outcomes against predictions of Thomson’s model using diagrams",
+        "section_anchor": "8.2.2 Testing Thomson's model: The gold foil experiment",
+        "pedagogical_approach": "Inquiry approach",
+        "materials": ["textbook figure of scattering", "transparent sheets", "fine markers", "protractors"],
+        "visual_aids": "textbook figure of gold foil scattering",
+        "time_bands": [
+          { "minutes": "0-10", "activity": "Pose the prediction task: sketch expected alpha paths if positive charge were diffuse." },
+          { "minutes": "10-25", "activity": "Students overlay predicted paths on the diagram; annotate reasons based on charge distribution." },
+          { "minutes": "25-45", "activity": "Reveal observed outcomes; students redraw paths to match large-angle deflections and rare backscattering, then compare with predictions." },
+          { "minutes": "45-60", "activity": "Reason about a thicker foil: students explain and sketch how scattering probabilities change with increased thickness." }
+        ],
+        "homework": []
+      },
+      {
+        "period_number": 4,
+        "period_duration_minutes": 60,
+        "activity_title": "Linking scattering evidence to Rutherford’s nuclear model with scale reasoning",
+        "section_anchor": "A. Rutherford's model of an atom",
+        "pedagogical_approach": "Didactic approach",
+        "materials": ["textbook", "board and chalk", "calculators (optional)"],
+        "visual_aids": "board diagram of nucleus and electron orbits",
+        "time_bands": [
+          { "minutes": "0-10", "activity": "Recap key observations from scattering; list them as evidence items." },
+          { "minutes": "10-30", "activity": "Map each observation to a model feature: empty space, concentrated positive charge (nucleus), orbiting electrons." },
+          { "minutes": "30-50", "activity": "Compute size ratio using 10^-10 m and 10^-15 m; relate to pepper grain at cricket ground center." },
+          { "minutes": "50-60", "activity": "Students answer two board questions linking one observation to one conclusion with a brief justification." }
+        ],
+        "homework": []
+      },
+      {
+        "period_number": 5,
+        "period_duration_minutes": 60,
+        "activity_title": "Exploring discrete shells and energy jumps to resolve atomic stability",
+        "section_anchor": "8.2.3 Bohr's model of the atom",
+        "pedagogical_approach": "Discovery approach",
+        "materials": ["colored sticky dots", "printed shell templates", "textbook"],
+        "visual_aids": "board energy-level diagram K–L–M–N",
+        "time_bands": [
+          { "minutes": "0-10", "activity": "Surface the stability puzzle from Rutherford’s model; ask why electrons do not collapse." },
+          { "minutes": "10-30", "activity": "Students place dots on shells and move them only by absorbing/emitting exact energy jumps; note discrete energies." },
+          { "minutes": "30-50", "activity": "Label K, L, M, N shells and order their energies; discuss what is fixed in a stationary state." },
+          { "minutes": "50-60", "activity": "Pairs explain in two sentences how Bohr’s stationary states resolve the collapse problem." }
+        ],
+        "homework": []
+      },
+      {
+        "period_number": 6,
+        "period_duration_minutes": 45,
+        "activity_title": "Identifying elements by atomic number using proton–electron equality card sort",
+        "section_anchor": "8.5 Atomic Number",
+        "pedagogical_approach": "Hands-on Science",
+        "materials": ["element cards with Z values", "periodic table wall chart", "notebooks"],
+        "visual_aids": "table of sample elements with atomic numbers",
+        "time_bands": [
+          { "minutes": "0-10", "activity": "Introduce Z as proton count and, for neutral atoms, electron count; show two quick examples." },
+          { "minutes": "10-30", "activity": "Groups sort cards by Z, annotate proton/electron counts, and identify named elements for selected Z values." },
+          { "minutes": "30-45", "activity": "Debrief common errors and extract two rules linking Z, identity, and electron count." }
+        ],
+        "homework": ["Given Z = 3, 7, 12, 17, write proton and electron counts and name each element"]
+      },
+      {
+        "period_number": 7,
+        "period_duration_minutes": 45,
+        "activity_title": "Calculating neutrons and mass number from nuclide notation accurately",
+        "section_anchor": "8.6 Mass Number",
+        "pedagogical_approach": "Didactic approach",
+        "materials": ["worksheet with nuclide notations", "textbook", "board and chalk"],
+        "visual_aids": "board table of A, Z, N relationships",
+        "time_bands": [
+          { "minutes": "0-10", "activity": "Define A and N; derive N = A − Z with a simple example." },
+          { "minutes": "10-30", "activity": "Solve several nuclide problems together; students show working and units." },
+          { "minutes": "30-45", "activity": "Peer-check a partner’s two worked items and correct any step errors." }
+        ],
+        "homework": ["For 23_11Na, 40_20Ca, and 19_9F, find Z, A, and N; show steps"]
+      },
+      {
+        "period_number": 8,
+        "period_duration_minutes": 45,
+        "activity_title": "Applying Bohr–Bury rules and octet cap to fill electron shells",
+        "section_anchor": "8.7 How Are Electrons Distributed in Different Energy Levels?",
+        "pedagogical_approach": "Inquiry approach",
+        "materials": ["shell-capacity handout", "notebooks"],
+        "visual_aids": "board derivation of 2n^2 capacities",
+        "time_bands": [
+          { "minutes": "0-10", "activity": "Elicit 2n^2 and outermost octet cap; write constraints to test." },
+          { "minutes": "10-25", "activity": "Students apply constraints to Z = 4, 10, 15 and justify each placement." },
+          { "minutes": "25-45", "activity": "Pairs generate a rule-of-thumb checklist to avoid overfilling shells and violating the octet cap." }
+        ],
+        "homework": ["Write configurations for Z = 13, 16, 19 using 2n^2 and the octet cap; justify each shell count"]
+      },
+      {
+        "period_number": 9,
+        "period_duration_minutes": 45,
+        "activity_title": "Building configurations for first eighteen elements with shell templates collaboratively",
+        "section_anchor": "8.7.1 Building up atoms",
+        "pedagogical_approach": "Hands-on Science",
+        "materials": ["printed shell templates", "counters or stickers", "reference table (H to Ar)"],
+        "visual_aids": "table of configurations H to Ar",
+        "time_bands": [
+          { "minutes": "0-10", "activity": "Explain the build-up task and demonstrate hydrogen and helium as models." },
+          { "minutes": "10-30", "activity": "Groups place counters to construct configurations for Z = 1–18; mark valence electrons distinctly." },
+          { "minutes": "30-45", "activity": "Gallery walk to compare results; correct misplacements and note filled-shell cases (Ne, Ar)." }
+        ],
+        "homework": ["Sketch the configurations for Z = 8, 12, 17; circle valence electrons and state the outer shell count"]
+      },
+      {
+        "period_number": 10,
+        "period_duration_minutes": 60,
+        "activity_title": "Inferring valency from configurations by lose, gain, or share reasoning",
+        "section_anchor": "8.8 Combining Capacity of an Atom: Valency",
+        "pedagogical_approach": "Discovery approach",
+        "materials": ["table handout to extend with valency column", "markers", "notebooks"],
+        "visual_aids": "board examples of 2,8,1 and 2,6 configurations",
+        "time_bands": [
+          { "minutes": "0-10", "activity": "Recall valence shell and octet; pose how atoms achieve stability." },
+          { "minutes": "10-30", "activity": "Small groups infer valency for given configurations (e.g., 2,8,1; 2,6; 2,4) and state lose/gain/share actions." },
+          { "minutes": "30-50", "activity": "Extend the provided table by adding a valency column for ten common elements; compare across groups." },
+          { "minutes": "50-60", "activity": "Discuss noble gases as valency 0 and flag exceptions for later grades without detail." }
+        ],
+        "homework": ["For Mg, S, Cl, and Ar, write configuration, valence electrons, predicted valency, and action (lose/gain/share)"]
+      },
+      {
+        "period_number": 11,
+        "period_duration_minutes": 50,
+        "activity_title": "Distinguishing isotopes and computing weighted average atomic mass for chlorine",
+        "section_anchor": "8.9.1 Isotopes",
+        "pedagogical_approach": "Didactic approach",
+        "materials": ["calculator", "isotope cards with abundances", "textbook"],
+        "visual_aids": "board setup for weighted average calculation",
+        "time_bands": [
+          { "minutes": "0-10", "activity": "Define isotopes (same Z, different A) and contrast chemical versus physical properties." },
+          { "minutes": "10-25", "activity": "Work through hydrogen and carbon isotopes; identify constant electron configuration across isotopes." },
+          { "minutes": "25-40", "activity": "Compute chlorine’s weighted average mass (35.5 u) from 75% 35Cl and 25% 37Cl; interpret the fractional result." },
+          { "minutes": "40-50", "activity": "Quick pair task: classify two sodium atoms (11p, 12n) and (11p, 13n) and compare A, Z, and isotope label." }
+        ],
+        "homework": ["Given Br with two isotopes of 79 u (51%) and 81 u (49%), compute the weighted average mass and explain what the number represents"]
+      }
+    ]
+  },
+  "coverage_handoff": [
+    {
+      "section_number": 1,
+      "section_label": "8.1 Rediscovering the Roots of Atomic Theory",
+      "total_sections": 11,
+      "period_numbers": [1],
+      "period_duration_minutes": 60,
+      "activity_summary": "Students contrast philosophical atomism with Dalton’s scientific model using a timeline and classification criteria.",
+      "implied_lo": "Students can distinguish philosophical ideas from testable scientific models.",
+      "section_context": "ancient atomism parmanus and atomos, Dalton’s postulates, philosophical versus scientific status",
+      "c_code": "C-1.1",
+      "co_central": false
+    },
+    {
+      "section_number": 2,
+      "section_label": "8.2.1 Thomson's model of an atom",
+      "total_sections": 11,
+      "period_numbers": [2],
+      "period_duration_minutes": 60,
+      "activity_summary": "Students model a uniform positive sphere with embedded electrons and evaluate everyday analogies for fit and limits.",
+      "implied_lo": "Students can use an analogy to reason about system constraints.",
+      "section_context": "Thomson plum pudding model, uniform positive sphere, embedded electrons, charge balance neutrality",
+      "c_code": "C-1.1",
+      "co_central": false
+    },
+    {
+      "section_number": 3,
+      "section_label": "8.2.2 Testing Thomson's model: The gold foil experiment",
+      "total_sections": 11,
+      "period_numbers": [3],
+      "period_duration_minutes": 60,
+      "activity_summary": "Students predict alpha scattering from a diffuse charge model, compare with observed deflections, and reason about foil thickness effects.",
+      "implied_lo": "Students can infer model adequacy from unexpected experimental observations.",
+      "section_context": "gold foil alpha scattering, large-angle deflections, rare backscattering, prediction versus observation",
+      "c_code": "C-1.1",
+      "co_central": false
+    },
+    {
+      "section_number": 4,
+      "section_label": "A. Rutherford's model of an atom",
+      "total_sections": 11,
+      "period_numbers": [4],
+      "period_duration_minutes": 60,
+      "activity_summary": "Students link scattering evidence to nuclear model features and compute atom-to-nucleus size ratio using orders of magnitude.",
+      "implied_lo": "Students can connect evidence to model features using scale reasoning.",
+      "section_context": "nuclear atom, mostly empty space, tiny dense nucleus, orbiting electrons, size ratio 10^5",
+      "c_code": "C-1.1",
+      "co_central": false
+    },
+    {
+      "section_number": 5,
+      "section_label": "8.2.3 Bohr's model of the atom",
+      "total_sections": 11,
+      "period_numbers": [5],
+      "period_duration_minutes": 60,
+      "activity_summary": "Students represent discrete shells and energy changes to explain stability via stationary states and quantised transitions.",
+      "implied_lo": "Students can represent discrete states and energy transitions in a system.",
+      "section_context": "Bohr stationary orbits, K L M N shells, energy levels, absorb emit quanta",
+      "c_code": "C-1.1",
+      "co_central": false
+    },
+    {
+      "section_number": 6,
+      "section_label": "8.5 Atomic Number",
+      "total_sections": 11,
+      "period_numbers": [6],
+      "period_duration_minutes": 45,
+      "activity_summary": "Students use atomic number to determine proton and electron counts and identify elements in neutral atoms.",
+      "implied_lo": "Students can determine identity of an entity from a defining count.",
+      "section_context": "atomic number Z, proton count, electron count in neutral atoms, element identity",
+      "c_code": "C-1.1",
+      "co_central": false
+    },
+    {
+      "section_number": 7,
+      "section_label": "8.6 Mass Number",
+      "total_sections": 11,
+      "period_numbers": [7],
+      "period_duration_minutes": 45,
+      "activity_summary": "Students compute mass number and neutron count from nuclide notation and relate A, Z, and N.",
+      "implied_lo": "Students can compute a derived quantity from component counts.",
+      "section_context": "mass number A, nucleons, neutron count N = A − Z, nuclide notation",
+      "c_code": "C-1.1",
+      "co_central": false
+    },
+    {
+      "section_number": 8,
+      "section_label": "8.7 How Are Electrons Distributed in Different Energy Levels?",
+      "total_sections": 11,
+      "period_numbers": [8],
+      "period_duration_minutes": 45,
+      "activity_summary": "Students apply the 2n² rule, the octet cap, and filling order to generate valid shell configurations.",
+      "implied_lo": "Students can apply constraints to generate valid configurations.",
+      "section_context": "Bohr–Bury 2n² capacities, outermost octet limit, shell filling order K L M",
+      "c_code": "C-1.1",
+      "co_central": false
+    },
+    {
+      "section_number": 9,
+      "section_label": "8.7.1 Building up atoms",
+      "total_sections": 11,
+      "period_numbers": [9],
+      "period_duration_minutes": 45,
+      "activity_summary": "Students construct configurations for H to Ar stepwise and mark valence electrons, checking filled shells.",
+      "implied_lo": "Students can construct representations stepwise from generative rules.",
+      "section_context": "configurations for Z = 1–18, valence electrons, filled shells 2,8 and 2,8,8",
+      "c_code": "C-1.1",
+      "co_central": false
+    },
+    {
+      "section_number": 10,
+      "section_label": "8.8 Combining Capacity of an Atom: Valency",
+      "total_sections": 11,
+      "period_numbers": [10],
+      "period_duration_minutes": 60,
+      "activity_summary": "Students infer valency from configurations by deciding whether atoms lose, gain, or share electrons to reach an octet.",
+      "implied_lo": "Students can predict interaction tendencies from structural features.",
+      "section_context": "valence shell electrons, octet rule, lose gain share examples Na O C valency",
+      "c_code": "C-1.1",
+      "co_central": false
+    },
+    {
+      "section_number": 11,
+      "section_label": "8.9.1 Isotopes",
+      "total_sections": 11,
+      "period_numbers": [11],
+      "period_duration_minutes": 50,
+      "activity_summary": "Students distinguish isotopes using Z and A and compute a weighted average atomic mass for a natural mixture.",
+      "implied_lo": "Students can distinguish sameness and difference using rule-based criteria.",
+      "section_context": "isotopes same Z different A, hydrogen isotopes, chlorine weighted average mass",
+      "c_code": "C-1.1",
+      "co_central": false
+    }
+  ],
+  "assessment_items": {
+    "grade": "Grade IX",
+    "subject": "science",
+    "stage": "secondary",
+    "chapter_number": 8,
+    "chapter_title": "Journey Inside the Atom",
+    "chapter_cg": "CG-1",
+    "reasoning_floor_lift_applied": false,
+    "questions": [
+      {
+        "section_number": 1,
+        "section_label": "8.1 Rediscovering the Roots of Atomic Theory",
+        "total_sections": 11,
+        "implied_lo_assessed": "Students can distinguish philosophical ideas from testable scientific models.",
+        "section_context": "ancient atomism parmanus and atomos, Dalton’s postulates, philosophical versus scientific status",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Determine subatomic composition, electronic configuration, and valency using atomic models and rules."
+        },
+        "cognitive_demand": "Understanding",
+        "visual_stimulus": null,
+        "question_text": "Which statement best marks the shift from philosophical atomism to a scientific atomic model?",
+        "options": [
+          { "label": "A", "text": "Democritus named atomos as indivisible based on thought experiments.", "is_correct": false },
+          { "label": "B", "text": "Dalton proposed atoms as indivisible building blocks in a scientific model that could be tested against observations.", "is_correct": true },
+          { "label": "C", "text": "Kanada’s parmanus were verified by direct microscope observations in antiquity.", "is_correct": false },
+          { "label": "D", "text": "Atoms were proved indivisible in ancient times until radioactivity was discovered then.", "is_correct": false }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": { "section": 1 },
+            "what_each_option_reveals": {
+              "A": "Treats a philosophical claim as scientific when no testable evidence is involved",
+              "C": "Invents non-existent experimental verification for ancient ideas",
+              "D": "Misplaces the timeline and implies proof of indivisibility contrary to later findings"
+            },
+            "inclusivity": "Allow brief bullet-point reasoning; credit clearly stated criteria distinguishing testable models from speculation."
+          },
+          "SCR": { "learning_outcome": { "section": 1 }, "inclusivity": "" },
+          "ECR": { "learning_outcome": { "section": 1 }, "inclusivity": "" },
+          "OPEN_TASK": { "learning_outcome": { "section": 1 }, "format_type": "", "format_rationale": "", "what_this_demonstrates": "", "reading_the_scaffold": "", "strong_vs_weak_markers": "", "inclusivity": "" }
+        }
+      },
+      {
+        "section_number": 2,
+        "section_label": "8.2.1 Thomson's model of an atom",
+        "total_sections": 11,
+        "implied_lo_assessed": "Students can use an analogy to reason about system constraints.",
+        "section_context": "Thomson plum pudding model, uniform positive sphere, embedded electrons, charge balance neutrality",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Determine subatomic composition, electronic configuration, and valency using atomic models and rules."
+        },
+        "cognitive_demand": "Understanding",
+        "visual_stimulus": null,
+        "question_text": "In Thomson’s 'plum pudding' model, what feature ensures the atom is electrically neutral?",
+        "options": [
+          { "label": "A", "text": "The number of electrons equals the number of protons.", "is_correct": false },
+          { "label": "B", "text": "A uniformly spread positive charge equals the total negative charge of the embedded electrons.", "is_correct": true },
+          { "label": "C", "text": "Electrons cluster near the surface to cancel any outside charges.", "is_correct": false },
+          { "label": "D", "text": "Positive charge is concentrated in a tiny nucleus balancing electrons.", "is_correct": false }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": { "section": 2 },
+            "what_each_option_reveals": {
+              "A": "Imports proton language not present in Thomson’s uniform positive medium",
+              "C": "Assumes surface clustering absent from the model",
+              "D": "Confuses Thomson’s model with Rutherford’s nuclear model"
+            },
+            "inclusivity": "Read options aloud if needed; accept concise references to 'uniform positive medium equals total electrons'."
+          },
+          "SCR": { "learning_outcome": { "section": 2 }, "inclusivity": "" },
+          "ECR": { "learning_outcome": { "section": 2 }, "inclusivity": "" },
+          "OPEN_TASK": { "learning_outcome": { "section": 2 }, "format_type": "", "format_rationale": "", "what_this_demonstrates": "", "reading_the_scaffold": "", "strong_vs_weak_markers": "", "inclusivity": "" }
+        }
+      },
+      {
+        "section_number": 3,
+        "section_label": "8.2.2 Testing Thomson's model: The gold foil experiment",
+        "total_sections": 11,
+        "implied_lo_assessed": "Students can infer model adequacy from unexpected experimental observations.",
+        "section_context": "gold foil alpha scattering, large-angle deflections, rare backscattering, prediction versus observation",
+        "question_type": "ECR",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Determine subatomic composition, electronic configuration, and valency using atomic models and rules."
+        },
+        "cognitive_demand": "Analysis",
+        "visual_stimulus": null,
+        "question_text": "Explain why the observed large-angle deflections and rare backscattering of alpha particles in the gold foil experiment contradict Thomson’s diffuse-positive-charge model. Then predict how making the gold foil thicker would change the distribution of scattering angles, and justify your prediction.",
+        "options": [],
+        "expected_elements": [],
+        "look_for": [
+          "Correct link from rare backscattering to a very small, highly concentrated positive region (nucleus)",
+          "Explanation that a diffuse positive medium would give only small, cumulative deflections",
+          "Prediction that thicker foil increases probability of encounters with nuclei, raising the fraction of large-angle deflections/backscatters",
+          "Reference to unchanged underlying mechanism (Coulomb interaction) with increased interaction chances due to more layers"
+        ],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": { "learning_outcome": { "section": 3 }, "what_each_option_reveals": { "A": "", "C": "", "D": "" }, "inclusivity": "" },
+          "SCR": { "learning_outcome": { "section": 3 }, "inclusivity": "" },
+          "ECR": {
+            "learning_outcome": { "section": 3 },
+            "inclusivity": "Accept labeled sketches with brief annotations or purely written reasoning; credit clear causal links even if vocabulary is informal."
+          },
+          "OPEN_TASK": { "learning_outcome": { "section": 3 }, "format_type": "", "format_rationale": "", "what_this_demonstrates": "", "reading_the_scaffold": "", "strong_vs_weak_markers": "", "inclusivity": "" }
+        }
+      },
+      {
+        "section_number": 4,
+        "section_label": "A. Rutherford's model of an atom",
+        "total_sections": 11,
+        "implied_lo_assessed": "Students can connect evidence to model features using scale reasoning.",
+        "section_context": "nuclear atom, mostly empty space, tiny dense nucleus, orbiting electrons, size ratio 10^5",
+        "question_type": "SCR",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Determine subatomic composition, electronic configuration, and valency using atomic models and rules."
+        },
+        "cognitive_demand": "Application",
+        "visual_stimulus": null,
+        "question_text": "Rutherford estimated atomic diameter ≈ 10^-10 m and nuclear diameter ≈ 10^-15 m. (a) How many times smaller is the nucleus than the atom? (b) Briefly state how this scale difference supports the conclusion that most of the atom is empty space.",
+        "options": [],
+        "expected_elements": [
+          "Computes size ratio ~10^5 (atom about 100,000 times larger than nucleus)",
+          "Connects tiny nucleus volume to most alpha particles passing through empty space"
+        ],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": { "learning_outcome": { "section": 4 }, "what_each_option_reveals": { "A": "", "C": "", "D": "" }, "inclusivity": "" },
+          "SCR": {
+            "learning_outcome": { "section": 4 },
+            "inclusivity": "Permit scientific notation or words; a labeled comparison (e.g., 100,000×) with a one-sentence justification earns full credit."
+          },
+          "ECR": { "learning_outcome": { "section": 4 }, "inclusivity": "" },
+          "OPEN_TASK": { "learning_outcome": { "section": 4 }, "format_type": "", "format_rationale": "", "what_this_demonstrates": "", "reading_the_scaffold": "", "strong_vs_weak_markers": "", "inclusivity": "" }
+        }
+      },
+      {
+        "section_number": 5,
+        "section_label": "8.2.3 Bohr's model of the atom",
+        "total_sections": 11,
+        "implied_lo_assessed": "Students can represent discrete states and energy transitions in a system.",
+        "section_context": "Bohr stationary orbits, K L M N shells, energy levels, absorb emit quanta",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Determine subatomic composition, electronic configuration, and valency using atomic models and rules."
+        },
+        "cognitive_demand": "Understanding",
+        "visual_stimulus": null,
+        "question_text": "According to Bohr, what happens when an electron in a hydrogen atom moves from the L shell to the K shell?",
+        "options": [
+          { "label": "A", "text": "It absorbs energy equal to the difference between the two levels.", "is_correct": false },
+          { "label": "B", "text": "It emits a quantum of energy equal to the difference between the two levels.", "is_correct": true },
+          { "label": "C", "text": "It continuously loses energy while orbiting until it stops.", "is_correct": false },
+          { "label": "D", "text": "It changes speed without any energy exchange if the orbit is stationary.", "is_correct": false }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": { "section": 5 },
+            "what_each_option_reveals": {
+              "A": "Confuses direction of transition with required energy exchange",
+              "C": "Reintroduces classical collapse contradicted by stationary states",
+              "D": "Claims orbit change without quantised energy exchange"
+            },
+            "inclusivity": "Diagrams or words are acceptable; focus on the idea of discrete emission matching the level gap."
+          },
+          "SCR": { "learning_outcome": { "section": 5 }, "inclusivity": "" },
+          "ECR": { "learning_outcome": { "section": 5 }, "inclusivity": "" },
+          "OPEN_TASK": { "learning_outcome": { "section": 5 }, "format_type": "", "format_rationale": "", "what_this_demonstrates": "", "reading_the_scaffold": "", "strong_vs_weak_markers": "", "inclusivity": "" }
+        }
+      },
+      {
+        "section_number": 6,
+        "section_label": "8.5 Atomic Number",
+        "total_sections": 11,
+        "implied_lo_assessed": "Students can determine identity of an entity from a defining count.",
+        "section_context": "atomic number Z, proton count, electron count in neutral atoms, element identity",
+        "question_type": "SCR",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Determine subatomic composition, electronic configuration, and valency using atomic models and rules."
+        },
+        "cognitive_demand": "Application",
+        "visual_stimulus": null,
+        "question_text": "For neutral atoms with Z = 2, 11, and 17, state the number of protons and electrons in each. Name the element for Z = 11.",
+        "options": [],
+        "expected_elements": [
+          "Z = 2: 2 protons, 2 electrons",
+          "Z = 11: 11 protons, 11 electrons, element is sodium",
+          "Z = 17: 17 protons, 17 electrons"
+        ],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": { "learning_outcome": { "section": 6 }, "what_each_option_reveals": { "A": "", "C": "", "D": "" }, "inclusivity": "" },
+          "SCR": {
+            "learning_outcome": { "section": 6 },
+            "inclusivity": "Give credit for correct counts even if the element name is misspelled; tabular answers are acceptable."
+          },
+          "ECR": { "learning_outcome": { "section": 6 }, "inclusivity": "" },
+          "OPEN_TASK": { "learning_outcome": { "section": 6 }, "format_type": "", "format_rationale": "", "what_this_demonstrates": "", "reading_the_scaffold": "", "strong_vs_weak_markers": "", "inclusivity": "" }
+        }
+      },
+      {
+        "section_number": 7,
+        "section_label": "8.6 Mass Number",
+        "total_sections": 11,
+        "implied_lo_assessed": "Students can compute a derived quantity from component counts.",
+        "section_context": "mass number A, nucleons, neutron count N = A − Z, nuclide notation",
+        "question_type": "SCR",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Determine subatomic composition, electronic configuration, and valency using atomic models and rules."
+        },
+        "cognitive_demand": "Application",
+        "visual_stimulus": null,
+        "question_text": "Given 23_11Na and 14_7N, calculate the number of neutrons in each. Also, for an atom with Z = 8 and N = 8, state its mass number.",
+        "options": [],
+        "expected_elements": [
+          "23_11Na: N = 23 − 11 = 12 neutrons",
+          "14_7N: N = 14 − 7 = 7 neutrons",
+          "For Z = 8 and N = 8: A = 8 + 8 = 16"
+        ],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": { "learning_outcome": { "section": 7 }, "what_each_option_reveals": { "A": "", "C": "", "D": "" }, "inclusivity": "" },
+          "SCR": {
+            "learning_outcome": { "section": 7 },
+            "inclusivity": "Accept any clear notation; award method marks for the correct use of N = A − Z even if arithmetic slips occur."
+          },
+          "ECR": { "learning_outcome": { "section": 7 }, "inclusivity": "" },
+          "OPEN_TASK": { "learning_outcome": { "section": 7 }, "format_type": "", "format_rationale": "", "what_this_demonstrates": "", "reading_the_scaffold": "", "strong_vs_weak_markers": "", "inclusivity": "" }
+        }
+      },
+      {
+        "section_number": 8,
+        "section_label": "8.7 How Are Electrons Distributed in Different Energy Levels?",
+        "total_sections": 11,
+        "implied_lo_assessed": "Students can apply constraints to generate valid configurations.",
+        "section_context": "Bohr–Bury 2n² capacities, outermost octet limit, shell filling order K L M",
+        "question_type": "SCR",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Determine subatomic composition, electronic configuration, and valency using atomic models and rules."
+        },
+        "cognitive_demand": "Application",
+        "visual_stimulus": null,
+        "question_text": "Using the 2n² rule, the octet limit for the outermost shell, and inner-to-outer filling order, write the electronic configurations for Mg (Z = 12) and S (Z = 16).",
+        "options": [],
+        "expected_elements": [
+          "Mg: 2, 8, 2 (K=2, L=8, M=2)",
+          "S: 2, 8, 6 (K=2, L=8, M=6)",
+          "Constraint use is evident: capacities not exceeded; octet cap respected"
+        ],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": { "learning_outcome": { "section": 8 }, "what_each_option_reveals": { "A": "", "C": "", "D": "" }, "inclusivity": "" },
+          "SCR": {
+            "learning_outcome": { "section": 8 },
+            "inclusivity": "Allow list or comma-separated forms; partial credit if totals are right but a capacity rule is slightly misapplied."
+          },
+          "ECR": { "learning_outcome": { "section": 8 }, "inclusivity": "" },
+          "OPEN_TASK": { "learning_outcome": { "section": 8 }, "format_type": "", "format_rationale": "", "what_this_demonstrates": "", "reading_the_scaffold": "", "strong_vs_weak_markers": "", "inclusivity": "" }
+        }
+      },
+      {
+        "section_number": 9,
+        "section_label": "8.7.1 Building up atoms",
+        "total_sections": 11,
+        "implied_lo_assessed": "Students can construct representations stepwise from generative rules.",
+        "section_context": "configurations for Z = 1–18, valence electrons, filled shells 2,8 and 2,8,8",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Determine subatomic composition, electronic configuration, and valency using atomic models and rules."
+        },
+        "cognitive_demand": "Understanding",
+        "visual_stimulus": null,
+        "question_text": "Which of the following has a filled outermost shell according to the configurations up to Ar?",
+        "options": [
+          { "label": "A", "text": "Ne (2, 8)", "is_correct": true },
+          { "label": "B", "text": "Na (2, 8, 1)", "is_correct": false },
+          { "label": "C", "text": "Al (2, 8, 3)", "is_correct": false },
+          { "label": "D", "text": "Si (2, 8, 4)", "is_correct": false }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": { "section": 9 },
+            "what_each_option_reveals": {
+              "B": "Confuses near-filled outer shell with a filled octet",
+              "C": "Misreads valence electrons as indicating a filled shell",
+              "D": "Assumes half-filled outer shell means filled"
+            },
+            "inclusivity": "Allow students to jot configurations first; accept circled choice without full rewriting."
+          },
+          "SCR": { "learning_outcome": { "section": 9 }, "inclusivity": "" },
+          "ECR": { "learning_outcome": { "section": 9 }, "inclusivity": "" },
+          "OPEN_TASK": { "learning_outcome": { "section": 9 }, "format_type": "", "format_rationale": "", "what_this_demonstrates": "", "reading_the_scaffold": "", "strong_vs_weak_markers": "", "inclusivity": "" }
+        }
+      },
+      {
+        "section_number": 10,
+        "section_label": "8.8 Combining Capacity of an Atom: Valency",
+        "total_sections": 11,
+        "implied_lo_assessed": "Students can predict interaction tendencies from structural features.",
+        "section_context": "valence shell electrons, octet rule, lose gain share examples Na O C valency",
+        "question_type": "SCR",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Determine subatomic composition, electronic configuration, and valency using atomic models and rules."
+        },
+        "cognitive_demand": "Application",
+        "visual_stimulus": null,
+        "question_text": "Using their electronic configurations, state the valency of Na (2,8,1), O (2,6), and C (2,4), and indicate whether each would lose, gain, or share electrons to reach a stable octet.",
+        "options": [],
+        "expected_elements": [
+          "Na: valency 1, would lose 1 electron",
+          "O: valency 2, would gain 2 electrons",
+          "C: valency 4, would share 4 electrons"
+        ],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": { "learning_outcome": { "section": 10 }, "what_each_option_reveals": { "A": "", "C": "", "D": "" }, "inclusivity": "" },
+          "SCR": {
+            "learning_outcome": { "section": 10 },
+            "inclusivity": "Accept electron-dot sketches or words; partial credit for correct valencies even if the action (lose/gain/share) is mislabeled."
+          },
+          "ECR": { "learning_outcome": { "section": 10 }, "inclusivity": "" },
+          "OPEN_TASK": { "learning_outcome": { "section": 10 }, "format_type": "", "format_rationale": "", "what_this_demonstrates": "", "reading_the_scaffold": "", "strong_vs_weak_markers": "", "inclusivity": "" }
+        }
+      },
+      {
+        "section_number": 11,
+        "section_label": "8.9.1 Isotopes",
+        "total_sections": 11,
+        "implied_lo_assessed": "Students can distinguish sameness and difference using rule-based criteria.",
+        "section_context": "isotopes same Z different A, hydrogen isotopes, chlorine weighted average mass",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Determine subatomic composition, electronic configuration, and valency using atomic models and rules."
+        },
+        "cognitive_demand": "Understanding",
+        "visual_stimulus": null,
+        "question_text": "Which statement best explains why chlorine’s atomic mass is listed as about 35.5 u?",
+        "options": [
+          { "label": "A", "text": "Each chlorine atom has a mass of exactly 35.5 u.", "is_correct": false },
+          { "label": "B", "text": "Natural chlorine is a mixture of 35Cl (~75%) and 37Cl (~25%), so the weighted average is 35.5 u.", "is_correct": true },
+          { "label": "C", "text": "Chlorine sometimes loses half a neutron in reactions, lowering the average mass.", "is_correct": false },
+          { "label": "D", "text": "The periodic table rounds atomic masses to the nearest half unit.", "is_correct": false }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": { "section": 11 },
+            "what_each_option_reveals": {
+              "A": "Thinks fractional listing applies to individual atoms",
+              "C": "Invents non-physical neutron-halving process",
+              "D": "Assumes arbitrary rounding rather than physical weighted averaging"
+            },
+            "inclusivity": "Numerical details can be paraphrased; credit recognition of 'mixture of isotopes' and 'weighted average'."
+          },
+          "SCR": { "learning_outcome": { "section": 11 }, "inclusivity": "" },
+          "ECR": { "learning_outcome": { "section": 11 }, "inclusivity": "" },
+          "OPEN_TASK": { "learning_outcome": { "section": 11 }, "format_type": "", "format_rationale": "", "what_this_demonstrates": "", "reading_the_scaffold": "", "strong_vs_weak_markers": "", "inclusivity": "" }
+        }
+      }
+    ]
+  }
+}

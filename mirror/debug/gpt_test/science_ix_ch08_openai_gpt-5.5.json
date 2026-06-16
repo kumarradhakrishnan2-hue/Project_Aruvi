@@ -1,0 +1,498 @@
+{
+  "grade": "Grade IX",
+  "subject": "Science",
+  "stage": "secondary",
+  "chapter_number": 8,
+  "chapter_title": "Journey Inside the Atom",
+  "chapter_cg": "CG-1",
+  "period_schedule": [
+    {
+      "duration_minutes": 40,
+      "count": 5
+    }
+  ],
+  "section_coverage_note": "The five-period budget does not allow separate periods for every textbook subsection; 8.2.1, 8.2.2, Rutherford's model, limitations, proton discovery, 8.3.1, 8.5, 8.6, 8.7.1, 8.9.1, average atomic mass, and 8.9.2 are integrated into ordered section clusters.",
+  "lesson_plan": {
+    "periods": [
+      {
+        "period_number": 1,
+        "period_duration_minutes": 40,
+        "activity_title": "Tracing atomic ideas from ancient philosophy to Dalton's scientific atom",
+        "section_anchor": "8.1 Rediscovering the Roots of Atomic Theory",
+        "pedagogical_approach": "Didactic approach",
+        "materials": [
+          "textbook chapter summary",
+          "board or chart paper",
+          "sticky notes"
+        ],
+        "visual_aids": "board timeline from parmanus and atomos to Dalton's atom",
+        "time_bands": [
+          {
+            "minutes": "0-6",
+            "activity": "Begin with the section heading and ask students to place Acharya Kanada, Leucippus, Democritus, and Dalton on a simple timeline. Students mark whether each idea came mainly from philosophical reasoning or scientific treatment."
+          },
+          {
+            "minutes": "6-18",
+            "activity": "Read the descriptions of parmanus, atomos, and Dalton's atoms in small groups. Students identify one similarity across the ancient ideas and one difference introduced by Dalton's scientific treatment."
+          },
+          {
+            "minutes": "18-30",
+            "activity": "On the board, build a two-column comparison: philosophical idea and scientific treatment. Students justify where the idea of indivisible particles fits and why Dalton became the starting point for modern atomic structure."
+          },
+          {
+            "minutes": "30-40",
+            "activity": "Students write a short explanation responding to the claim that Dalton merely repeated ancient ideas. Invite two responses and refine them using the words indivisible, matter, atom, and experimental observation."
+          }
+        ],
+        "homework": [
+          "Write a paragraph comparing parmanus, atomos, and Dalton's atom by using the basis of each idea as the main point of comparison."
+        ]
+      },
+      {
+        "period_number": 2,
+        "period_duration_minutes": 40,
+        "activity_title": "Using scattering evidence to compare Thomson, Rutherford, and Bohr models",
+        "section_anchor": "8.2 A Short Historical Journey Through Atomic Models",
+        "pedagogical_approach": "Inquiry approach",
+        "materials": [
+          "textbook diagrams of cathode ray tube and gold foil experiment",
+          "board",
+          "student notebooks"
+        ],
+        "visual_aids": "textbook figures of cathode rays, Thomson's model, gold foil scattering, and Bohr shells",
+        "time_bands": [
+          {
+            "minutes": "0-7",
+            "activity": "Students inspect the cathode ray description and infer why Thomson concluded that electrons are universal subatomic particles. Record the evidence that cathode rays were independent of the cathode material."
+          },
+          {
+            "minutes": "7-16",
+            "activity": "Use the watermelon analogy for Thomson's model and ask students to predict how positive and negative charges balance in a neutral atom. Students note where the analogy works and where it fails."
+          },
+          {
+            "minutes": "16-29",
+            "activity": "Students study the gold foil observations: most particles passed through, some deflected, and a few bounced back. They draw what Thomson's model would predict and then explain why the observed backscattering points to a small dense nucleus."
+          },
+          {
+            "minutes": "29-40",
+            "activity": "Connect Rutherford's model to its stability problem and then introduce Bohr's fixed shells and energy levels. Students complete a cause-and-correction chain from electron discovery to positive charge, nucleus, instability, and stationary shells."
+          }
+        ],
+        "homework": [
+          "Draw two labelled paths for alpha particles in the gold foil experiment and explain what each path reveals about atomic structure."
+        ]
+      },
+      {
+        "period_number": 3,
+        "period_duration_minutes": 40,
+        "activity_title": "Solving the nuclear mass puzzle through protons and neutrons evidence",
+        "section_anchor": "8.3 What Components Contribute to the Mass of an Atom?",
+        "pedagogical_approach": "Inquiry approach",
+        "materials": [
+          "board",
+          "calculator or mental arithmetic",
+          "textbook particle table"
+        ],
+        "visual_aids": "board table comparing electron, proton, and neutron charge and mass role",
+        "time_bands": [
+          {
+            "minutes": "0-8",
+            "activity": "Present the puzzle from the section: helium has two protons but a mass about four times hydrogen. Students propose why proton count alone cannot account for atomic mass."
+          },
+          {
+            "minutes": "8-20",
+            "activity": "Introduce Chadwick's neutron as a particle with nearly proton-like mass and no charge. Students revise their helium explanation by adding neutrons to the nucleus."
+          },
+          {
+            "minutes": "20-31",
+            "activity": "Students use the electron, proton, and neutron table to decide which particles determine charge and which determine most mass. They explain why electrons contribute negligibly to atomic mass."
+          },
+          {
+            "minutes": "31-40",
+            "activity": "Use the uranium example to discuss why heavier nuclei need more neutrons. Students connect proton repulsion, spacing, and nuclear binding in a short evidence-based explanation."
+          }
+        ],
+        "homework": []
+      },
+      {
+        "period_number": 4,
+        "period_duration_minutes": 40,
+        "activity_title": "Applying element symbols and nuclide notation to find atomic counts",
+        "section_anchor": "8.4 Symbols of Elements; 8.5 Atomic Number; 8.6 Mass Number",
+        "pedagogical_approach": "Hands-on Science",
+        "materials": [
+          "element symbol cards",
+          "atomic number and mass number cards",
+          "student notebooks"
+        ],
+        "visual_aids": "board template for nuclide notation with mass number and atomic number positions",
+        "time_bands": [
+          {
+            "minutes": "0-8",
+            "activity": "Students sort element symbol cards into correctly and incorrectly written symbols. They correct capitalisation and second-letter errors using the IUPAC rules from the section."
+          },
+          {
+            "minutes": "8-18",
+            "activity": "Introduce atomic number as proton count and, for neutral atoms, electron count. Students match hydrogen, helium, and lithium cards to their proton and electron counts."
+          },
+          {
+            "minutes": "18-30",
+            "activity": "Introduce mass number as protons plus neutrons and show the superscript-subscript notation beside an element symbol. Students use the relation neutrons equal mass number minus atomic number for carbon, helium, and lithium examples."
+          },
+          {
+            "minutes": "30-40",
+            "activity": "Pairs receive mixed cards for symbol, atomic number, and mass number and build valid nuclide notations. Each pair explains one notation by naming the protons, electrons, and neutrons it represents."
+          }
+        ],
+        "homework": [
+          "Create three valid nuclide notations using common element symbols and calculate protons, electrons, and neutrons for each."
+        ]
+      },
+      {
+        "period_number": 5,
+        "period_duration_minutes": 40,
+        "activity_title": "Building electron configurations to explain valency, isotopes, and isobars patterns",
+        "section_anchor": "8.7 How Are Electrons Distributed in Different Energy Levels?; 8.8 Combining Capacity of an Atom: Valency; 8.9 A Deeper Look into Atomic Structure",
+        "pedagogical_approach": "Discovery approach",
+        "materials": [
+          "shell-filling table for first eighteen elements",
+          "blank atom diagrams",
+          "calculator"
+        ],
+        "visual_aids": "textbook figure of first eighteen electronic configurations and board isotope-isobar comparison table",
+        "time_bands": [
+          {
+            "minutes": "0-10",
+            "activity": "Students use the Bohr-Bury rules to fill K, L, and M shells for selected atomic numbers. They compare their configurations with the first eighteen elements table."
+          },
+          {
+            "minutes": "10-20",
+            "activity": "Students identify valence electrons and decide valency for sodium, oxygen, carbon, neon, and argon. They explain each answer through losing, gaining, sharing, or already having a complete outer shell."
+          },
+          {
+            "minutes": "20-31",
+            "activity": "Use hydrogen and carbon examples to distinguish isotopes as same atomic number with different mass numbers. Students calculate neutron counts and explain why chemical properties remain similar across isotopes."
+          },
+          {
+            "minutes": "31-40",
+            "activity": "Students compare isotopes with isobars using calcium, potassium, and argon with mass number 40. Close by calculating chlorine's weighted average atomic mass and clarifying why 35.5 u is an average, not a single atom's mass."
+          }
+        ],
+        "homework": [
+          "Extend a configuration table for three elements by adding valence electrons and valency, with one sentence explaining each valency."
+        ]
+      }
+    ]
+  },
+  "coverage_handoff": [
+    {
+      "section_number": 1,
+      "section_label": "8.1 Rediscovering the Roots of Atomic Theory",
+      "total_sections": 5,
+      "period_numbers": [
+        1
+      ],
+      "period_duration_minutes": 40,
+      "activity_summary": "Students compare ancient atomic ideas with Dalton's scientific treatment by sorting claims according to their basis and role in atomic theory.",
+      "implied_lo": "Students can distinguish idea origins by comparing their evidence basis.",
+      "section_context": "Parmanus, atomos, Dalton atoms, philosophical origins, experimental scientific treatment, indivisibility",
+      "c_code": "C-1.1",
+      "co_central": false
+    },
+    {
+      "section_number": 2,
+      "section_label": "8.2 A Short Historical Journey Through Atomic Models",
+      "total_sections": 5,
+      "period_numbers": [
+        2
+      ],
+      "period_duration_minutes": 40,
+      "activity_summary": "Students interpret cathode ray and gold foil evidence to compare Thomson's, Rutherford's, and Bohr's models of the atom.",
+      "implied_lo": "Students can infer model features from experimental observations.",
+      "section_context": "Cathode rays, plum pudding, gold foil scattering, nucleus, Bohr shells",
+      "c_code": "C-1.1",
+      "co_central": false
+    },
+    {
+      "section_number": 3,
+      "section_label": "8.3 What Components Contribute to the Mass of an Atom?",
+      "total_sections": 5,
+      "period_numbers": [
+        3
+      ],
+      "period_duration_minutes": 40,
+      "activity_summary": "Students use mass and charge evidence to explain why neutrons were needed in the nuclear model of the atom.",
+      "implied_lo": "Students can explain how an added component resolves a quantitative model discrepancy.",
+      "section_context": "Helium mass discrepancy, protons, neutrons, nucleons, nuclear stability, uranium nuclei",
+      "c_code": "C-1.1",
+      "co_central": false
+    },
+    {
+      "section_number": 4,
+      "section_label": "8.4 Symbols of Elements; 8.5 Atomic Number; 8.6 Mass Number",
+      "total_sections": 5,
+      "period_numbers": [
+        4
+      ],
+      "period_duration_minutes": 40,
+      "activity_summary": "Students apply symbol conventions and nuclide notation to determine proton, electron, and neutron counts in atoms.",
+      "implied_lo": "Students can apply notation rules to calculate represented quantities.",
+      "section_context": "Element symbols, IUPAC conventions, atomic number, mass number, nuclide notation",
+      "c_code": "C-1.1",
+      "co_central": false
+    },
+    {
+      "section_number": 5,
+      "section_label": "8.7 How Are Electrons Distributed in Different Energy Levels?; 8.8 Combining Capacity of an Atom: Valency; 8.9 A Deeper Look into Atomic Structure",
+      "total_sections": 5,
+      "period_numbers": [
+        5
+      ],
+      "period_duration_minutes": 40,
+      "activity_summary": "Students construct electronic configurations, determine valency, and classify isotopes and isobars using atomic and mass numbers.",
+      "implied_lo": "Students can apply structural rules to determine configurations and classify variants.",
+      "section_context": "Shell filling, electronic configuration, valency, isotopes, average mass, isobars, applications",
+      "c_code": "C-1.1",
+      "co_central": false
+    }
+  ],
+  "assessment_items": {
+    "grade": "Grade IX",
+    "subject": "Science",
+    "stage": "secondary",
+    "chapter_number": 8,
+    "chapter_title": "Journey Inside the Atom",
+    "chapter_cg": "CG-1",
+    "reasoning_floor_lift_applied": false,
+    "questions": [
+      {
+        "section_number": 1,
+        "section_label": "8.1 Rediscovering the Roots of Atomic Theory",
+        "total_sections": 5,
+        "implied_lo_assessed": "Students can distinguish idea origins by comparing their evidence basis.",
+        "section_context": "Parmanus, atomos, Dalton atoms, philosophical origins, experimental scientific treatment, indivisibility",
+        "question_type": "ECR",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Explains atomic structure using Bohr's model and relates electronic configuration to valency."
+        },
+        "cognitive_demand": "Analysis",
+        "visual_stimulus": null,
+        "question_text": "A student says, \"Kanada and Democritus already proved that atoms exist, so Dalton merely renamed their idea.\" Evaluate this claim using the historical details in the chapter. Explain what was similar in the ancient ideas and what changed with Dalton's scientific treatment.",
+        "options": [],
+        "expected_elements": [],
+        "look_for": [
+          "Recognises that Kanada's parmanus and the Greek atomos were early ideas of indivisible particles.",
+          "States that these ancient ideas arose mainly as philosophical reasoning, not experimental proof.",
+          "Explains that Dalton gave the first scientific treatment in 1808 by proposing atoms as fundamental building blocks of matter.",
+          "Makes a balanced judgement that Dalton built on the broad idea of indivisible particles but changed its scientific status."
+        ],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "ECR": {
+            "learning_outcome": {
+              "section": 1
+            },
+            "inclusivity": "Students may show the comparison through a paragraph, a two-column contrast, or a claim-evidence-reasoning response. Credit should focus on how they separate similarity of idea from difference in evidence basis."
+          }
+        }
+      },
+      {
+        "section_number": 2,
+        "section_label": "8.2 A Short Historical Journey Through Atomic Models",
+        "total_sections": 5,
+        "implied_lo_assessed": "Students can infer model features from experimental observations.",
+        "section_context": "Cathode rays, plum pudding, gold foil scattering, nucleus, Bohr shells",
+        "question_type": "ECR",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Explains atomic structure using Bohr's model and relates electronic configuration to valency."
+        },
+        "cognitive_demand": "Analysis",
+        "visual_stimulus": "Observation|Result\nMost alpha particles|Passed through the gold foil undeflected\nSome alpha particles|Deflected through large angles\nA few alpha particles|Bounced directly back",
+        "question_text": "Refer to the table provided. Use these observations to analyse why Thomson's model could not survive the gold foil experiment and what Rutherford inferred about atomic structure. Also state how Bohr's model later addressed the stability problem in Rutherford's model.",
+        "options": [],
+        "expected_elements": [],
+        "look_for": [
+          "Connects undeflected alpha particles to the conclusion that most of the atom is empty space.",
+          "Connects large deflections and rare backscattering to a small, dense, positively charged nucleus.",
+          "Explains why a uniformly spread positive charge in Thomson's model cannot cause sharp backscattering.",
+          "Identifies Rutherford's stability problem for orbiting electrons and Bohr's fixed energy shells as the response."
+        ],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "ECR": {
+            "learning_outcome": {
+              "section": 2
+            },
+            "inclusivity": "Students may reason from each observation separately or build one linked explanation from observation to model change. Diagrams of particle paths may be accepted when the inference is clearly stated."
+          }
+        }
+      },
+      {
+        "section_number": 3,
+        "section_label": "8.3 What Components Contribute to the Mass of an Atom?",
+        "total_sections": 5,
+        "implied_lo_assessed": "Students can explain how an added component resolves a quantitative model discrepancy.",
+        "section_context": "Helium mass discrepancy, protons, neutrons, nucleons, nuclear stability, uranium nuclei",
+        "question_type": "MCQ",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Explains atomic structure using Bohr's model and relates electronic configuration to valency."
+        },
+        "cognitive_demand": "Understanding",
+        "visual_stimulus": null,
+        "question_text": "Helium has 2 protons, but its mass is about four times that of ordinary hydrogen, which has 1 proton. Which explanation best resolves this puzzle?",
+        "options": [
+          {
+            "label": "A",
+            "text": "Helium electrons are heavy enough to double the mass beyond the proton contribution.",
+            "is_correct": false
+          },
+          {
+            "label": "B",
+            "text": "Helium contains neutrons in its nucleus, and neutrons add mass without adding charge.",
+            "is_correct": true
+          },
+          {
+            "label": "C",
+            "text": "Helium protons each carry twice the mass of hydrogen protons.",
+            "is_correct": false
+          },
+          {
+            "label": "D",
+            "text": "Helium has no empty space, so the same particles are packed into a smaller volume.",
+            "is_correct": false
+          }
+        ],
+        "expected_elements": [],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "MCQ": {
+            "learning_outcome": {
+              "section": 3
+            },
+            "what_each_option_reveals": {
+              "A": "Treats electron mass as significant, missing the section's point that electrons contribute negligibly to atomic mass.",
+              "C": "Assumes protons vary by element, rather than recognising the neutron as the missing mass component.",
+              "D": "Confuses the empty-space idea from atomic size with the mass discrepancy in the nucleus."
+            },
+            "inclusivity": "Students can reach the answer either through the helium-hydrogen mass comparison or through the charge-and-mass roles of subatomic particles. The item rewards the explanation of why an uncharged particle was needed, not memorisation of a name alone."
+          }
+        }
+      },
+      {
+        "section_number": 4,
+        "section_label": "8.4 Symbols of Elements; 8.5 Atomic Number; 8.6 Mass Number",
+        "total_sections": 5,
+        "implied_lo_assessed": "Students can apply notation rules to calculate represented quantities.",
+        "section_context": "Element symbols, IUPAC conventions, atomic number, mass number, nuclide notation",
+        "question_type": "SCR",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Explains atomic structure using Bohr's model and relates electronic configuration to valency."
+        },
+        "cognitive_demand": "Application",
+        "visual_stimulus": "Atom|Element symbol|Atomic number Z|Mass number A\n1|C|6|12\n2|Na|11|23\n3|O|8|16",
+        "question_text": "Refer to the table provided. For each atom, determine the number of protons, electrons, and neutrons, and write the nuclide notation.",
+        "options": [],
+        "expected_elements": [
+          "Uses atomic number as proton count.",
+          "Uses equal proton and electron counts for neutral atoms.",
+          "Calculates neutrons as mass number minus atomic number.",
+          "Writes nuclide notation with mass number as superscript and atomic number as subscript to the left of the element symbol.",
+          "Correct results: carbon has 6 protons, 6 electrons, 6 neutrons; sodium has 11 protons, 11 electrons, 12 neutrons; oxygen has 8 protons, 8 electrons, 8 neutrons."
+        ],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "SCR": {
+            "learning_outcome": {
+              "section": 4
+            },
+            "inclusivity": "Students may present the answer as a table, equations, or labelled nuclide symbols. Accept correct reasoning even if the nuclide formatting is handwritten rather than typographically perfect."
+          }
+        }
+      },
+      {
+        "section_number": 5,
+        "section_label": "8.7 How Are Electrons Distributed in Different Energy Levels?; 8.8 Combining Capacity of an Atom: Valency; 8.9 A Deeper Look into Atomic Structure",
+        "total_sections": 5,
+        "implied_lo_assessed": "Students can apply structural rules to determine configurations and classify variants.",
+        "section_context": "Shell filling, electronic configuration, valency, isotopes, average mass, isobars, applications",
+        "question_type": "SCR",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Explains atomic structure using Bohr's model and relates electronic configuration to valency."
+        },
+        "cognitive_demand": "Application",
+        "visual_stimulus": "Element|Atomic number Z\nNeon|10\nMagnesium|12\nSulfur|16\nArgon|18",
+        "question_text": "Refer to the table provided. Write the electronic configuration for each element using K, L, and M shells. Then identify the valence electrons and valency for each element.",
+        "options": [],
+        "expected_elements": [
+          "Applies shell filling in order from K to L to M.",
+          "Uses maximum shell capacities relevant here: K holds 2 and L holds up to 8.",
+          "Correct configurations: neon 2,8; magnesium 2,8,2; sulfur 2,8,6; argon 2,8,8.",
+          "Identifies valence electrons as outermost shell electrons.",
+          "Determines valencies: neon 0, magnesium 2, sulfur 2, argon 0, with reasoning from octet completion."
+        ],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "SCR": {
+            "learning_outcome": {
+              "section": 5
+            },
+            "inclusivity": "Students may show shell filling through numbers, shell diagrams, or labelled K-L-M entries. Credit should recognise correct octet reasoning even if students describe gaining, losing, or filled shells in different words."
+          }
+        }
+      },
+      {
+        "section_number": 5,
+        "section_label": "8.7 How Are Electrons Distributed in Different Energy Levels?; 8.8 Combining Capacity of an Atom: Valency; 8.9 A Deeper Look into Atomic Structure",
+        "total_sections": 5,
+        "implied_lo_assessed": "Students can apply structural rules to determine configurations and classify variants.",
+        "section_context": "Shell filling, electronic configuration, valency, isotopes, average mass, isobars, applications",
+        "question_type": "SCR",
+        "competency": {
+          "c_code": "C-1.1",
+          "competency_text": "Explains atomic structure using Bohr's model and relates electronic configuration to valency."
+        },
+        "cognitive_demand": "Application",
+        "visual_stimulus": "Species|Atomic number Z|Mass number A|Natural abundance\nChlorine-35|17|35|75%\nChlorine-37|17|37|25%\nCalcium-40|20|40|not given\nPotassium-40|19|40|not given",
+        "question_text": "Refer to the table provided. Calculate the weighted average atomic mass of chlorine. Then identify the isotope pair and explain why calcium-40 and potassium-40 are isobars, not isotopes.",
+        "options": [],
+        "expected_elements": [
+          "Calculates chlorine's weighted average as 35 × 75/100 plus 37 × 25/100.",
+          "Gives the weighted average atomic mass of chlorine as 35.5 u.",
+          "Identifies chlorine-35 and chlorine-37 as isotopes because they have the same atomic number but different mass numbers.",
+          "Explains that calcium-40 and potassium-40 are isobars because they have the same mass number but different atomic numbers.",
+          "Clarifies that 35.5 u is an average for a natural mixture, not the mass of one chlorine atom."
+        ],
+        "look_for": [],
+        "task": "",
+        "scaffold": "",
+        "format_of_output": [],
+        "guide": {
+          "SCR": {
+            "learning_outcome": {
+              "section": 5
+            },
+            "inclusivity": "Students may compute the average using fractions, percentages, or a weighted-sum table. Classification explanations may use either definitions or direct comparison of Z and A values, provided the reasoning is explicit."
+          }
+        }
+      }
+    ]
+  }
+}
