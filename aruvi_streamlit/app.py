@@ -5472,7 +5472,66 @@ def _no_chapter_dialog():
         if st.button("OK", key="no_chapter_ok_dlg", type="primary", use_container_width=True):
             st.session_state.no_chapter_warning = False
             st.rerun()
+
+@st.dialog(" ")
+def _confirm_delete_plan_dialog(plan: dict):
+    """Confirm modal for deleting a saved plan from My Plans.
+
+    Cancel  → secondary button, just closes the dialog.
+    Delete  → red button, unlinks the underlying JSON via delete_saved_plan()
+              and clears the selection, then reruns so the row disappears.
+    """
+    _ch_title = plan.get("chapter_title", "this plan")
+    st.markdown(
+        '<div style="text-align:center;padding:4px 0 6px;">'
+        '<div style="font-size:2rem;margin-bottom:10px;">🗑️</div>'
+        '<div style="font-size:1rem;font-weight:600;color:#3d3b38;margin-bottom:8px;">'
+        'Are you sure you want to delete this plan?</div>'
+        f'<div style="font-size:0.82rem;color:#6b6965;">{_ch_title}</div>'
+        '</div>',
+        unsafe_allow_html=True,
+    )
+    # Scope the red styling to this dialog's Delete button only.
+    # type="primary" is intentionally NOT used so the app's (orange) primary
+    # theme colour can't bleed through — we force pure red here with high
+    # specificity that wins over Streamlit's base button styles.
+    st.markdown(
+        """
+        <style>
+        div[class*="st-key-mp_confirm_delete_btn"] button,
+        div[class*="st-key-mp_confirm_delete_btn"] button:focus,
+        div[class*="st-key-mp_confirm_delete_btn"] button:active {
+            background:#e53935 !important; background-color:#e53935 !important;
+            border:1px solid #e53935 !important; color:#fff !important; box-shadow:none !important;
+        }
+        div[class*="st-key-mp_confirm_delete_btn"] button:hover {
+            background:#c62828 !important; background-color:#c62828 !important;
+            border-color:#c62828 !important;
+        }
+        div[class*="st-key-mp_confirm_delete_btn"] button p,
+        div[class*="st-key-mp_confirm_delete_btn"] button div { color:#fff !important; }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+    _c1, _c2 = st.columns(2)
+    with _c1:
+        if st.button("Cancel", key="mp_cancel_delete_btn", use_container_width=True):
+            st.session_state.mp_confirm_delete = False
+            st.rerun()
+    with _c2:
+        if st.button("Delete", key="mp_confirm_delete_btn", use_container_width=True):
+            delete_saved_plan(
+                plan.get("grade", ""),
+                plan.get("subject", ""),
+                plan.get("filename", ""),
+            )
+            st.session_state.mp_confirm_delete = False
+            st.session_state.mp_selected_plan  = None
+            st.rerun()
 if "mp_viewing_plan"          not in st.session_state: st.session_state.mp_viewing_plan          = None
+if "mp_selected_plan"         not in st.session_state: st.session_state.mp_selected_plan         = None   # filename of highlighted row
+if "mp_confirm_delete"        not in st.session_state: st.session_state.mp_confirm_delete        = False  # opens delete dialog
 if "period_rows"              not in st.session_state: st.session_state["period_rows"]            = []
 if "myplans_should_collapse"  not in st.session_state: st.session_state.myplans_should_collapse  = False
 if "show_save_prompt"         not in st.session_state: st.session_state.show_save_prompt         = False
@@ -7330,17 +7389,83 @@ else:
     .mp-ch-title { font-size:0.88rem; font-weight:500; color:#1a1917; margin-bottom:2px; }
     .mp-ch-meta  { font-size:0.72rem; color:#9c9693; }
     .mp-cell     { font-size:0.82rem; color:#3d3b38; padding-top:6px; }
+    /* "⋮" kebab trigger — borderless, grey, lights up on hover. */
+    div[data-testid="stPopover"] > div > button {
+        background:transparent !important; border:none !important; box-shadow:none !important;
+        color:#9c9693 !important; font-size:1.2rem !important; font-weight:700 !important;
+        padding:0 !important; min-height:auto !important; line-height:1.1 !important;
+    }
+    div[data-testid="stPopover"] > div > button:hover { color:#3d3b38 !important; background:#f0ede9 !important; }
+    /* Menu items inside the popover — left-aligned list of text actions. */
+    div[data-testid="stPopoverBody"] .mp-menu-head {
+        font-size:0.62rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
+        color:#9c9693; padding:2px 2px 6px;
+    }
+    div[data-testid="stPopoverBody"] button {
+        background:transparent !important; border:none !important; box-shadow:none !important;
+        color:#3d3b38 !important; font-weight:500 !important; justify-content:flex-start !important;
+        text-align:left !important; padding:6px 8px !important; min-height:auto !important;
+        border-radius:6px !important;
+    }
+    div[data-testid="stPopoverBody"] button:hover { background:#f4f1ed !important; }
+    div[data-testid="stPopoverBody"] button p { font-weight:500 !important; }
+    /* Delete item — black button, white text, sits last. */
+    div[class*="st-key-mp_del_menu_"] button {
+        background:#000 !important; color:#fff !important; font-weight:600 !important;
+        justify-content:center !important; text-align:center !important;
+    }
+    div[class*="st-key-mp_del_menu_"] button:hover { background:#222 !important; }
+    div[class*="st-key-mp_del_menu_"] button p { color:#fff !important; }
     </style>
     """, unsafe_allow_html=True)
 
-            # Header row
-            _hc = st.columns([3, 1, 1.5, 0.8, 1.2, 1.2])
+            # Auto-close the "⋮" popover after any menu item is clicked.
+            # Streamlit (1.50) manages popover open/closed state client-side, so
+            # clicking View / a PDF download / Delete leaves the menu visually
+            # open — there is no Python API to dismiss it. We install a single
+            # delegated listener on the parent document (this runs in a child
+            # iframe, so st.markdown <script> stripping doesn't apply) that, when
+            # a control inside the popover body is clicked, fires the same Escape
+            # keypress a user would press to dismiss the menu.
+            components.html(
+                """
+<script>
+(function(){
+  var doc = window.parent.document;
+  if (doc.__aruviPopoverAutoClose) { return; }
+  doc.__aruviPopoverAutoClose = true;
+  doc.addEventListener('click', function(e){
+    if (!(e.target.closest &&
+          e.target.closest('[data-testid="stPopoverBody"]'))) { return; }
+    // Let Streamlit register the click first, then dismiss the popover.
+    setTimeout(function(){
+      var esc = {key:'Escape', code:'Escape', keyCode:27, which:27, bubbles:true};
+      doc.dispatchEvent(new KeyboardEvent('keydown', esc));
+      if (doc.body) { doc.body.dispatchEvent(new KeyboardEvent('keydown', esc)); }
+    }, 60);
+  }, true);
+})();
+</script>
+""",
+                height=0,
+                scrolling=False,
+            )
+
+            # Open the confirm dialog when a row's "⋮ → Delete" has been clicked.
+            _sel_plan = next(
+                (p for p in _visible if p.get("filename") == st.session_state.mp_selected_plan),
+                None,
+            )
+            if st.session_state.mp_confirm_delete and _sel_plan is not None:
+                _confirm_delete_plan_dialog(_sel_plan)
+
+            # Header row — actions (View / PDFs / Delete) now live in the row's ⋮ menu.
+            # The trailing spacer column keeps Chapter from stretching full-width.
+            _hc = st.columns([2.6, 0.8, 1.3, 0.7, 2])
             _hc[0].markdown('<div class="mp-th">Chapter</div>',       unsafe_allow_html=True)
             _hc[1].markdown('<div class="mp-th">Grade</div>',         unsafe_allow_html=True)
             _hc[2].markdown('<div class="mp-th">Saved</div>',         unsafe_allow_html=True)
-            _hc[3].markdown('<div class="mp-th">Display</div>',       unsafe_allow_html=True)
-            _hc[4].markdown('<div class="mp-th" style="text-align:left;">Lesson plan</div>',   unsafe_allow_html=True)
-            _hc[5].markdown('<div class="mp-th" style="text-align:left;">Assessment</div>',    unsafe_allow_html=True)
+            _hc[3].markdown('<div class="mp-th" style="text-align:right;">Actions</div>', unsafe_allow_html=True)
             st.markdown(
                 '<hr style="margin:4px 0 6px;border:none;border-top:1px solid #e8e5e0;">',
                 unsafe_allow_html=True,
@@ -7352,14 +7477,20 @@ else:
                 _ch_title = _p.get("chapter_title", "")
                 _grade    = _p.get("grade", "")
                 _subject  = _p.get("subject", "")
-                _saved_at = _p.get("saved_at", "")[:10]
+                _saved_at = _p.get("saved_at", "")
                 _filename = _p.get("filename", "")
                 _safe_fn  = re.sub(r"[^a-zA-Z0-9_]", "_", _filename)
                 try:
                     from datetime import datetime as _dt
-                    _saved_disp = _dt.fromisoformat(_saved_at).strftime("%-d %b %Y")
+                    _saved_dt   = _dt.fromisoformat(_saved_at)
+                    # e.g. "15 Jun 2026" on the first line, "2:32 PM" on the second
+                    _saved_disp = (
+                        f'<div>{_saved_dt.strftime("%-d %b %Y")}</div>'
+                        f'<div style="font-size:0.7rem;color:#9c9693;">'
+                        f'{_saved_dt.strftime("%-I:%M %p")}</div>'
+                    )
                 except Exception:
-                    _saved_disp = _saved_at
+                    _saved_disp = _saved_at[:10]
                 _ch_for_pdf = next(
                     (c for c in chapters if c["chapter_number"] == _ch_num),
                     {"chapter_title": _ch_title, "chapter_weight": "",
@@ -7387,7 +7518,7 @@ else:
                     _mp_assess_bytes = b""
                 _safe_t = re.sub(r"[^\w\s-]", "", _ch_title).strip().replace(" ", "_")[:40]
 
-                _rc = st.columns([3, 1, 1.5, 0.8, 1.2, 1.2])
+                _rc = st.columns([2.6, 0.8, 1.3, 0.7, 2])
                 _rc[0].markdown(
                     f'<div class="mp-ch-title">{_ch_title}</div>'
                     f'<div class="mp-ch-meta">Ch {str(_ch_num).zfill(2)} · {_subject}</div>',
@@ -7396,61 +7527,71 @@ else:
                 _rc[1].markdown(f'<div class="mp-cell">{_grade}</div>',       unsafe_allow_html=True)
                 _rc[2].markdown(f'<div class="mp-cell">{_saved_disp}</div>',  unsafe_allow_html=True)
                 with _rc[3]:
-                    if st.button("View", key=f"view_{_safe_fn}", use_container_width=True):
-                        st.session_state.mp_viewing_plan = _p
-                        st.rerun()
-                with _rc[4]:
-                    st.download_button(
-                        label="PDF ⬇",
-                        data=_mp_lp_bytes,
-                        file_name=f"Aruvi_{_safe_t}_LP.pdf",
-                        mime="application/pdf",
-                        key=f"mp_lp_{_safe_fn}",
-                        type="primary",
-                    )
-                with _rc[5]:
-                    # LP/A split — assessment column branches on plan_status.
-                    # full_lpa  → PDF download (existing behaviour).
-                    # lp_only   → "Generate Assessment" button that triggers
-                    #             a deferred run handled by the workspace block
-                    #             at the top of this tab.
-                    # Old plans (no plan_status key) default to full_lpa so the
-                    # existing My Plans rows continue to work unchanged.
-                    _plan_status   = _p.get("plan_status", "full_lpa")
+                    # All row actions live in a single "⋮" menu (st.popover):
+                    # View → Lesson plan PDF → Assessment PDF → Delete (last).
+                    _plan_status    = _p.get("plan_status", "full_lpa")
                     _has_assessment = (_plan_status == "full_lpa")
-                    if _has_assessment:
-                        st.download_button(
-                            label="PDF ⬇",
-                            data=_mp_assess_bytes if _mp_assess_bytes else b"",
-                            file_name=f"Aruvi_{_safe_t}_Assessment.pdf",
-                            mime="application/pdf",
-                            key=f"mp_assess_{_safe_fn}",
-                            type="primary",
+                    with st.popover("⋮", use_container_width=True):
+                        st.markdown(
+                            '<div class="mp-menu-head">Actions</div>',
+                            unsafe_allow_html=True,
                         )
-                    else:
-                        if st.button(
-                            "Generate Assessment",
-                            key=f"mp_gen_assess_{_safe_fn}",
+                        # 1 — View
+                        if st.button("View", key=f"view_{_safe_fn}",
+                                     use_container_width=True):
+                            st.session_state.mp_viewing_plan = _p
+                            st.rerun()
+                        # 2 — Lesson plan PDF
+                        st.download_button(
+                            label="Lesson plan PDF",
+                            data=_mp_lp_bytes,
+                            file_name=f"Aruvi_{_safe_t}_LP.pdf",
+                            mime="application/pdf",
+                            key=f"mp_lp_{_safe_fn}",
                             use_container_width=True,
-                            type="secondary",
-                        ):
-                            st.session_state.mp_deferred_assess_plan       = _p
-                            st.session_state.mp_deferred_assess_generating = True
-                            # Clear any stale Generate-tab display state so the
-                            # Generate workspace renders cleanly (no shadow of a
-                            # previous LP result showing behind the deferred
-                            # assessment popup).
-                            st.session_state.lpa_result        = None
-                            st.session_state.lpa_generating    = False
-                            st.session_state.show_gen_confirm  = False
-                            st.session_state.show_save_prompt  = False
-                            st.session_state.teacher_ch_idx    = None
-                            # Switch to the Generate tab so the popup renders
-                            # in the same place as a normal LP/A run. The
-                            # deferred block below auto-switches back to
-                            # My Plans once the run completes.
-                            st.session_state.role = "Generate"
-                            st.query_params["role"] = "Generate"
+                        )
+                        # 3 — Assessment PDF  (or Generate Assessment for lp_only)
+                        if _has_assessment:
+                            st.download_button(
+                                label="Assessment PDF",
+                                data=_mp_assess_bytes if _mp_assess_bytes else b"",
+                                file_name=f"Aruvi_{_safe_t}_Assessment.pdf",
+                                mime="application/pdf",
+                                key=f"mp_assess_{_safe_fn}",
+                                use_container_width=True,
+                            )
+                        else:
+                            if st.button("Generate Assessment",
+                                         key=f"mp_gen_assess_{_safe_fn}",
+                                         use_container_width=True):
+                                st.session_state.mp_deferred_assess_plan       = _p
+                                st.session_state.mp_deferred_assess_generating = True
+                                # Clear any stale Generate-tab display state so the
+                                # Generate workspace renders cleanly (no shadow of a
+                                # previous LP result showing behind the deferred
+                                # assessment popup).
+                                st.session_state.lpa_result        = None
+                                st.session_state.lpa_generating    = False
+                                st.session_state.show_gen_confirm  = False
+                                st.session_state.show_save_prompt  = False
+                                st.session_state.teacher_ch_idx    = None
+                                # Switch to the Generate tab so the popup renders
+                                # in the same place as a normal LP/A run. The
+                                # deferred block below auto-switches back to
+                                # My Plans once the run completes.
+                                st.session_state.role = "Generate"
+                                st.query_params["role"] = "Generate"
+                                st.rerun()
+                        # divider before the destructive action
+                        st.markdown(
+                            '<hr style="margin:6px 0;border:none;border-top:1px solid #eee;">',
+                            unsafe_allow_html=True,
+                        )
+                        # 4 — Delete (last, black button → red confirm dialog)
+                        if st.button("Delete", key=f"mp_del_menu_{_safe_fn}",
+                                     use_container_width=True):
+                            st.session_state.mp_selected_plan  = _filename
+                            st.session_state.mp_confirm_delete = True
                             st.rerun()
                 st.markdown(
                     '<hr style="margin:2px 0;border:none;border-top:0.5px solid #f0ede9;">',
