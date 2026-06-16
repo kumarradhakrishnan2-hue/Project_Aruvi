@@ -1,250 +1,196 @@
 ---
 name: chapter
-description: >
-  Run the Aruvi chapter pipeline for any subject and grade — generates the chapter summary and
-  competency mapping (or effort index) in the correct serialized order.
-  USE THIS SKILL whenever the user says things like: "run chapter skill for chapter 5 maths grade vii",
-  "process chapter 3 science class vi", "generate chapter summary for social sciences chapter 8 grade viii",
-  "do chapter 2 english grade v", "run chapter 7 twau grade iii", "process the world around us chapter 4
-  grade iv", "run the chapter pipeline", or any instruction that mentions a chapter number, subject, and
-  grade together with intent to generate mirror data. Also trigger when the user says "run step 1" or
-  "run step 2" for a chapter in the context of this project. Subjects include: science, social_sciences,
-  mathematics, english (preparatory Grades III–V, middle Grades VI–VIII, secondary Grades IX–X),
-  and the_world_around_us (TWAU — preparatory stage only, Grades III–V).
+description: "Run the Aruvi chapter pipeline for any subject and grade — generates the chapter summary and competency mapping (or effort index) in the correct serialized order. Covers science (middle/secondary), social_sciences (middle only), mathematics (preparatory/middle/secondary), english (preparatory/middle/secondary), and the_world_around_us (preparatory only)."
 ---
 
 # Chapter Pipeline Skill
 
 This skill runs the Aruvi chapter data pipeline — producing the chapter summary and competency
 mapping (or effort index) for a given chapter, subject, and grade. These are the mirror files
-that the Allocate tab and the LP + Assessment generator depend on.
+the Streamlit app reads at runtime (chapter summaries + mapping JSONs); this skill never touches
+the app itself.
+
+## Quick reference — what exists today
+
+| Subject | Stages on disk | Steps | Output format |
+|---|---|---|---|
+| Mathematics | preparatory, middle, secondary | Step 1 (summary) → Step 2 (competency mapping) | `.json` |
+| English | preparatory, middle, secondary | Step 1+2 combined (single prompt) | `.json` |
+| Science | middle, secondary | Step 1 (summary) → Step 2 (effort index) | `.txt` summary, `.json` mapping |
+| Social Sciences | middle only | Step 1 (summary) → Step 2 (competency mapping) | `.txt` summary, `.json` mapping |
+| The World Around Us (TWAU) | preparatory only | Step 1 (summary) → Step 2 (competency mapping) | `.txt` summary, `.json` mapping |
+
+### Stage coverage is NOT uniform across subjects
+
+Do not assume every subject has all three stages, and do not assume a subject with only one
+stage folder is "flat" by design choice rather than by actual curriculum scope. The real picture,
+confirmed against the folder tree on disk:
+
+- **Mathematics** and **English** are genuinely stage-split across all three stages
+  (preparatory/middle/secondary) — each stage has its own prompt file(s) and constitution.
+- **Science** is stage-split, but only into **two** stages — middle and secondary. There is no
+  preparatory Science; TWAU is the preparatory-stage subject instead (Grades III–V). Both Science
+  stages share the IDENTICAL 4-signal effort-index formula and tiering tables — only the CG
+  document, constitution, and source textbook differ between them.
+- **Social Sciences** has a `middle/` stage folder, but only middle actually exists — there is no
+  preparatory or secondary content anywhere on disk (no NCF-compliant secondary Social Sciences
+  textbooks exist). This is a genuine curriculum-scope limit, not a missing build.
+- **TWAU** has a `preparatory/` stage folder, and only preparatory exists, by design — TWAU
+  covers Grades III–V and is superseded by Science/Social Sciences from Grade VI onward.
+
+When a user's request implies a stage/subject combination that does not exist (e.g. "Science
+grade iv" or "Social Sciences grade ix"), do not guess or substitute — stop and tell the user
+the combination is out of scope, per the Step 0 constraints below.
 
 ---
 
-## Quick reference — what runs for each subject
+## Step 0 — Confirm scope before doing anything
 
-| Subject | Step 1 | Step 2 |
-|---|---|---|
-| **Science – Middle (VI–VIII)** | Chapter summary (`.txt`) | Effort index computation → `ch_NN_mapping.json` |
-| **Science – Secondary (IX–X)** | Chapter summary (`.txt`) | Effort index computation → `ch_NN_mapping.json` |
-| **Social Sciences – Middle (VI–VIII)** | Chapter summary (`.txt`) | Competency mapping → `ch_NN_mapping.json` |
-| **Mathematics** | Chapter summary (`.json`) | Competency mapping → `ch_NN_mapping.json` |
-| **The World Around Us (TWAU)** | Chapter summary (`.json`) | Competency mapping → `ch_NN_mapping.json` |
-| **English – Middle (VI–VIII)** | *(combined)* Chapter summary + mapping in one pass | — |
-| **English – Preparatory (III–V)** | *(combined)* Chapter summary + mapping in one pass | — |
-| **English – Secondary (IX–X)** | *(combined)* Chapter summary + mapping in one pass | — |
+Before reading any file, confirm with the user (or infer unambiguously from their message):
+1. Subject
+2. Grade (and therefore stage — preparatory III–V, middle VI–VIII, secondary IX–X)
+3. Chapter number(s) — single, multiple, or "all"
+4. Which step(s) — summary only, mapping only, or both in sequence
 
-English is a single-step subject. All others (including TWAU) are two-step: Step 1 must fully
-complete before Step 2 begins.
+**Constraint — Science requested for a preparatory grade (III–V).** Science has no preparatory
+stage. Reject with: "Science does not have a preparatory stage — Grades III–V are covered by The
+World Around Us (TWAU) instead. Did you mean to run TWAU for this grade, or Science for a middle
+(VI–VIII) or secondary (IX–X) grade?"
 
----
+**Constraint — Social Sciences requested for a preparatory or secondary grade.** Social Sciences
+only has middle-stage content (VI–VIII). Reject with: "Social Sciences only has middle-stage
+content (Grades VI–VIII) — there is no preparatory or secondary Social Sciences in Aruvi yet (no
+NCF-compliant secondary textbooks exist for this subject). Did you mean a middle grade?"
 
-## Step 0 — Parse the request
-
-Extract from the user's instruction:
-
-- **subject** — one of: `science`, `social_sciences`, `mathematics`, `english`, `the_world_around_us`
-  (accept "twau", "the world around us", "TWAU" → normalise to `the_world_around_us`)
-- **grade** — roman numeral or arabic (e.g. "vii", "7", "grade 7", "class vii") → normalise to
-  lowercase roman: `iii`, `iv`, `v`, `vi`, `vii`, `viii`, `ix`, `x`
-- **chapter(s)** — single number, list, or "all"
-- **stage** — derived from grade:
-  - III–V → `preparatory`
-  - VI–VIII → `middle`
-  - IX–X → `secondary`
-
-**TWAU constraint:** The World Around Us is only available for the preparatory stage (Grades III, IV, V).
-If the user requests TWAU for grade VI or higher, reject with: "TWAU is a preparatory-stage subject
-(Grades III–V only). Did you mean a different subject?"
-
-If any of subject, grade, or chapter scope is missing or ambiguous, ask for clarification before
-proceeding. Do not guess.
-
-**Grade → Roman numeral mapping:**
-3→iii, 4→iv, 5→v, 6→vi, 7→vii, 8→viii, 9→ix, 10→x
+**Constraint — TWAU requested for grade VI or above.** TWAU is preparatory-only (III–V). Reject
+with: "TWAU only covers Grades III–V. From Grade VI onward, use Science and/or Social Sciences
+instead."
 
 ---
 
 ## Step 1 — Announce the plan
 
-Before running anything, print a brief plan so the user can confirm:
+State the resolved subject, stage, grade, chapter scope, and which step(s) will run, before
+reading any files. Examples:
 
-```
-Subject : Mathematics
-Grade   : VII (middle stage)
-Chapters: 5
-Pipeline: Step 1 — Chapter summary (JSON) → Step 2 — Competency mapping
-Prompt files:
-  Step 1: cowork prompts/mathematics/middle/step_1_chapter_summary.md
-  Step 2: cowork prompts/mathematics/middle/step_2_competency_mapping.md
-```
-
-For English (middle stage example):
-```
-Subject : English
-Grade   : VII (middle stage)
-Chapters: 3
-Pipeline: Single step — Chapter summary + mapping (combined)
-Prompt file:
-  Step 1: cowork prompts/english/middle/step_1_chapter_summary_and_mapping.md
-```
-
-For English (secondary stage example):
-```
-Subject : English
-Grade   : IX (secondary stage)
-Chapters: 1
-Pipeline: Single step — Chapter summary + mapping (combined)
-Prompt file:
-  Step 1: cowork prompts/english/secondary/step_1_chapter_summary_and_mapping.md
-```
-
-For Science (secondary stage example):
-```
-Subject : Science
-Grade   : IX (secondary stage)
-Chapters: 3
-Pipeline: Step 1 — Chapter summary (txt) → Step 2 — Effort index
-Prompt files:
-  Step 1: cowork prompts/science/secondary/step_1_chapter_summary.md
-  Step 2: cowork prompts/science/secondary/step_2_effort_index.md
-```
-
-For Social Sciences (middle stage example):
-```
-Subject : Social Sciences
-Grade   : VII (middle stage)
-Chapters: 3
-Pipeline: Step 1 — Chapter summary (txt) → Step 2 — Competency mapping
-Prompt files:
-  Step 1: cowork prompts/social_sciences/middle/step_1_chapter_summary.md
-  Step 2: cowork prompts/social_sciences/middle/step_2_competency_mapping.md
-```
-
-For The World Around Us (TWAU):
-```
-Subject : The World Around Us (TWAU)
-Grade   : IV (preparatory stage)
-Chapters: 7
-Pipeline: Step 1 — Chapter summary (JSON) → Step 2 — Competency mapping
-Prompt files:
-  Step 1: cowork prompts/the_world_around_us/preparatory/step_1_chapter_summary.md
-  Step 2: cowork prompts/the_world_around_us/preparatory/step_2_competency_mapping.md
-```
+- "Running Mathematics preparatory, Grade IV, Chapter 3 — Step 1 (chapter summary) then Step 2
+  (competency mapping)."
+- "Running Mathematics middle, Grade VII, Chapter 5 — Step 1 then Step 2."
+- "Running Mathematics secondary, Grade IX, Chapter 3 — Step 1 then Step 2."
+- "Running Science middle, Grade VII, Chapter 2 — Step 1 (chapter summary) then Step 2 (effort
+  index)."
+- "Running Science secondary, Grade IX, Chapter 8 — Step 1 then Step 2 (effort index)."
+- "Running Social Sciences middle, Grade VIII, Chapter 8 — Step 1 then Step 2 (competency
+  mapping)."
+- "Running English preparatory, Grade V, Chapter 2 — Step 1+2 combined (single prompt)."
+- "Running English middle, Grade VII, Chapter 4 — Step 1+2 combined."
+- "Running English secondary, Grade IX, Chapter 4 — Step 1+2 combined."
+- "Running TWAU, Grade III, Chapter 7 — Step 1 then Step 2 (competency mapping)."
 
 ---
 
-## Step 2 — Locate and read the prompt file(s)
+## Step 2 — Locate and run the correct prompt file
 
-All prompt files live under:
-`mnt/data/cowork prompts/{subject}/{stage}/` (for all subjects — social_sciences, science, mathematics, english, the_world_around_us)
+**Path pattern.** `{subject}/{stage}/` applies to mathematics, english, AND science — all three
+are stage-routed on disk. Social_sciences and the_world_around_us currently have only one stage
+folder each (`middle/` and `preparatory/` respectively), reflecting genuine curriculum scope, not
+an unfinished split.
 
 ### Subject → prompt file map
 
-**Science (middle — grades VI, VII, VIII):**
-- Step 1: `mnt/data/cowork prompts/science/middle/step_1_chapter_summary.md`
-- Step 2: `mnt/data/cowork prompts/science/middle/step_2_effort_index.md`
+| Subject | Stage | Step 1 file | Step 2 file |
+|---|---|---|---|
+| Mathematics | preparatory | `cowork prompts/mathematics/preparatory/step_1_chapter_summary.md` | `cowork prompts/mathematics/preparatory/step_2_competency_mapping.md` |
+| Mathematics | middle | `cowork prompts/mathematics/middle/step_1_chapter_summary.md` | `cowork prompts/mathematics/middle/step_2_competency_mapping.md` |
+| Mathematics | secondary | `cowork prompts/mathematics/secondary/step_1_chapter_summary.md` | `cowork prompts/mathematics/secondary/step_2_competency_mapping.md` |
+| Science | middle | `cowork prompts/science/middle/step_1_chapter_summary.md` | `cowork prompts/science/middle/step_2_effort_index.md` |
+| Science | secondary | `cowork prompts/science/secondary/step_1_chapter_summary.md` | `cowork prompts/science/secondary/step_2_effort_index.md` |
+| Social Sciences | middle | `cowork prompts/social_sciences/middle/step_1_chapter_summary.md` | `cowork prompts/social_sciences/middle/step_2_competency_mapping.md` |
+| English | preparatory | `cowork prompts/english/preparatory/step_1_chapter_summary_and_mapping.md` (combined) | — |
+| English | middle | `cowork prompts/english/middle/step_1_chapter_summary_and_mapping.md` (combined) | — |
+| English | secondary | `cowork prompts/english/secondary/step_1_chapter_summary_and_mapping.md` (combined) | — |
+| TWAU | preparatory | `cowork prompts/the_world_around_us/preparatory/step_1_chapter_summary.md` | `cowork prompts/the_world_around_us/preparatory/step_2_competency_mapping.md` |
 
-**Science (secondary — grades IX, X):**
-- Step 1: `mnt/data/cowork prompts/science/secondary/step_1_chapter_summary.md`
-- Step 2: `mnt/data/cowork prompts/science/secondary/step_2_effort_index.md`
-
-**Social Sciences (middle — grades VI, VII, VIII):**
-- Step 1: `mnt/data/cowork prompts/social_sciences/middle/step_1_chapter_summary.md`
-- Step 2: `mnt/data/cowork prompts/social_sciences/middle/step_2_competency_mapping.md`
-
-**Mathematics (middle — grades VI, VII, VIII):**
-- Step 1: `mnt/data/cowork prompts/mathematics/middle/step_1_chapter_summary.md`
-- Step 2: `mnt/data/cowork prompts/mathematics/middle/step_2_competency_mapping.md`
-
-**Mathematics (preparatory — grades III, IV, V):**
-- Step 1: `mnt/data/cowork prompts/mathematics/preparatory/step_1_chapter_summary.md`
-- Step 2: `mnt/data/cowork prompts/mathematics/preparatory/step_2_competency_mapping.md`
-
-**The World Around Us / TWAU (preparatory — grades III, IV, V):**
-- Step 1: `mnt/data/cowork prompts/the_world_around_us/preparatory/step_1_chapter_summary.md`
-- Step 2: `mnt/data/cowork prompts/the_world_around_us/preparatory/step_2_competency_mapping.md`
-
-**English (middle — grades VI, VII, VIII):**
-- Step 1 (only): `mnt/data/cowork prompts/english/middle/step_1_chapter_summary_and_mapping.md`
-
-**English (preparatory — grades III, IV, V):**
-- Step 1 (only): `mnt/data/cowork prompts/english/preparatory/step_1_chapter_summary_and_mapping.md`
-
-**English (secondary — grades IX, X):**
-- Step 1 (only): `mnt/data/cowork prompts/english/secondary/step_1_chapter_summary_and_mapping.md`
-
-Read the prompt file(s) now. The prompt file contains the full instructions for that step —
-follow them exactly.
+Read the prompt file in full before acting — it governs paths, scope rules, and output schema for
+that subject/stage. Do not improvise or reuse a different stage's or subject's rules from memory.
 
 ---
 
-## Step 3 — Execute Step 1
+## Step 3 — Run Step 1 (chapter summary)
 
-Follow the instructions in the Step 1 prompt exactly for the requested chapter(s) and grade.
-
-**Important serialization rule:** Step 1 must be fully complete — all requested chapters
-written and verified — before Step 2 begins. Never interleave steps across chapters
-(e.g. do not do ch_05 Step 1 + ch_05 Step 2, then ch_06 Step 1 + ch_06 Step 2).
-Instead: finish all Step 1 files first, then proceed to Step 2.
-
-Correct order for chapters 5 and 6:
-```
-ch_05 Step 1 ✓
-ch_06 Step 1 ✓
-  → then →
-ch_05 Step 2 ✓
-ch_06 Step 2 ✓
-```
+Follow the located Step 1 prompt file exactly: locate the source PDF, extract the chapter title,
+identify the scope boundary (headings/sections), write the summary per that prompt's own rules,
+and save to the path it specifies. Mathematics and English summaries are `.json`; Science and
+Social Sciences and TWAU summaries are `.txt`.
 
 ---
 
-## Step 4 — Execute Step 2 (non-English subjects only)
+## Step 4 — Run Step 2 (competency mapping / effort index), if applicable
 
-After all Step 1 files are confirmed written, read the Step 2 prompt file and follow it exactly.
+English combines Step 1 and Step 2 into a single prompt — do not run a separate Step 2 for
+English; the one prompt file produces both the summary JSON and the mapping JSON in one pass.
 
-Step 2 reads from the summary files produced in Step 1 — it never reads the source PDF.
+For all other subjects, follow the located Step 2 prompt file exactly — it specifies which
+constitution to apply, the effort-index or competency-weight formula for that subject/stage, and
+the output schema.
 
-**TWAU note:** TWAU Step 2 reads the summary JSON (`.json`, same as Mathematics) and the CG
-reference file at `mnt/data/mirror/framework/the_world_around_us/preparatory/competency_descriptions_twau.json`.
-The constitution is at `mnt/data/mirror/constitutions/competency_mapping/the_world_around_us/preparatory/mapping_constitution_twau.txt`.
-All TWAU folders (framework, chapters, textbooks) use the subject token `the_world_around_us`,
-matching the app's `subject_to_folder`.
+**Science note.** Unlike Mathematics (where each of the three stages has its own distinct effort
+formula and signal set — Mathematics middle, preparatory, and secondary all differ), Science
+middle and secondary share the IDENTICAL 4-signal formula:
+`(conceptual_demand × 2) + (activity_load × 2) + (demo_load × 1.5) + (exec_load × 2)`, range
+2.0–19.0. Only the CG document, constitution text, and source textbook folder differ between the
+two Science stages — never assume the Science formula changes by stage the way Mathematics's does.
 
 ---
 
-## Step 5 — Final confirmation
+## Step 5 — Print a verification summary
 
-After all steps complete, print a summary table:
+After writing the output file(s), print a short confirmation table covering: chapter number,
+title, key signal values, and the final mapping/effort score, per the verification format
+specified in that subject/stage's own prompt file (formats differ slightly by subject — follow
+the prompt's own Step 5/6, not a generic template).
+
+Example (Science Secondary):
 
 ```
-Chapter | Title                        | Step 1        | Step 2
---------|------------------------------|---------------|------------------
-ch_05   | Parallel and Intersecting... | summary ✓     | mapping ✓ EI:13.5
-```
-
-For English (single-step):
-```
-Chapter | Title          | Summary + Mapping
---------|----------------|------------------
-ch_03   | The Great Game | ✓ effort_index: 14.5
-```
-
-For TWAU (two-step, same format as Science/Mathematics):
-```
-Chapter | Title              | Step 1        | Step 2
---------|--------------------|---------------|----------------------------------
-ch_07   | Water              | summary ✓     | mapping ✓ EI:9.0 cw:4
+Ch | Title (40 chars)                         | CD | AC>AL | DC>DL | EL | EI
+---|------------------------------------------|----|-------|-------|----|------
+08 | Journey Inside the Atom                   |  3 |  0> 0 |  0> 0 |  1 |  8.0
 ```
 
 ---
 
 ## Common error guards
 
-- **Summary file missing when Step 2 runs**: halt and report. Do not fabricate. Re-run Step 1.
-- **Grade out of range for stage**: warn and ask — e.g. English preparatory prompt used for grade VI
-  would be wrong; correct prompt is english/middle or english/secondary. Science requested for grade V or below — reject;
-  Science is only available for middle (VI–VIII) and secondary (IX–X) stages. TWAU requested for grade VI or above — reject;
-  TWAU only exists for grades III, IV, V.
-- **Chapter PDF not found**: log a warning for that chapter and skip — do not halt the whole run.
-- **Existing file will be overwritten**: this is expected behaviour — all prompts overwrite silently.
+- **Science requested for a preparatory grade** — reject per Step 0; redirect to TWAU.
+- **Social Sciences requested for a preparatory or secondary grade** — reject per Step 0; no such
+  content exists.
+- **TWAU requested for grade VI or above** — reject per Step 0; redirect to Science/Social
+  Sciences.
+- **Mathematics prompt used for the wrong stage** — e.g. running the middle Mathematics prompt
+  against a Grade IX chapter. Always resolve stage from grade first (preparatory III–V, middle
+  VI–VIII, secondary IX–X), then pick the matching `{stage}/` folder. Never reuse a different
+  stage's prompt file even if it seems similar — Mathematics's effort-index signals differ by
+  stage and a wrong-stage run produces an invalid schema.
+- **Science prompt used for the wrong stage** — e.g. running the middle Science prompt against a
+  Grade IX chapter, or vice versa. The formula is identical across stages, but the constitution,
+  CG document, and source textbook are stage-specific — always use the matching `{stage}/` folder
+  even though the math would happen to come out the same either way.
+- **English Step 2 run separately** — there is no separate English Step 2 prompt; it does not
+  exist as a file. Re-run the combined Step 1+2 prompt instead.
+- **Summary file missing when Step 2 is requested** — Step 2 (or the combined English prompt)
+  always depends on Step 1's output existing first. If the summary file is missing, run Step 1
+  first, do not fabricate mapping content from the PDF directly.
+- **Wrong output format assumed** — Mathematics and English are `.json` summaries; Science, Social
+  Sciences, and TWAU are `.txt` summaries. All mapping outputs (every subject) are `.json`.
+
+---
+
+## Constraints
+
+- Do not call the Claude API from inside this skill unless the located prompt file explicitly
+  says to. Most Step 1/Step 2 prompts read the PDF directly using Cowork's own context.
+- Do not modify any field outside what the specific step's prompt file authorizes.
+- Do not generate or overwrite a chapter summary when only Step 2 was requested, and vice versa.
+- If a chapter PDF is not found, log a warning and skip — do not halt the whole run.
+- All files written in UTF-8 encoding.

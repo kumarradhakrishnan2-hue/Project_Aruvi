@@ -1,0 +1,169 @@
+ARUVI — MATHEMATICS COMPETENCY MAPPING CONSTITUTION · SECONDARY STAGE · VERSION 1.0
+
+================================================================================
+DESIGN PRINCIPLE
+================================================================================
+
+The textbook is the source of truth. The summary mirrors it. Mapping reads
+the summary and ONE external document — the Secondary CG document for
+Mathematics. Three passes for competencies, one pass for the effort index.
+
+Breadth and difficulty are separate questions. The competencies record what
+the chapter is ABOUT (breadth). The effort index records how heavy it is to
+TEACH (difficulty). A chapter may be cognitively heavy yet map to a single
+competency — do not add a competency to reflect difficulty, and do not lower
+the effort index because the competency list is short.
+
+
+================================================================================
+INPUTS
+================================================================================
+
+- Chapter summary JSON, carrying the section spine (with think_reflect notes
+  where present), prose_summary, enumerated worked examples and exercises,
+  and the three effort signals (conceptual_demand, reasoning_load, exec_load).
+- CG document: cg_secondary_mathematics.txt.
+
+
+================================================================================
+RULE 1 | PASS 1 — SUMMARY READING (CG-BLIND)
+================================================================================
+
+Read the summary in full: prose, sections, worked examples, exercises, and
+any think_reflect notes. No C-codes or CG labels are consulted in this pass.
+
+
+================================================================================
+RULE 2 | PASS 2 — CORE CG AND CORE COMPETENCIES
+================================================================================
+
+2a. Open the CG document. Select the single CG whose domain best matches the
+    chapter's organising purpose as a whole — NOT the union of the domains
+    its individual sections touch. A section that, read alone, looks like a
+    different CG (a graphing aside, a measurement scaffold, a historical
+    note) is in service of the chapter's actual subject and does NOT redirect
+    the selection. Select from CG-level headings and descriptions only. Lock
+    as core_cg.
+
+2b. Read the C-codes under core_cg. Select up to TWO core_competencies the
+    chapter substantively addresses. A second requires independent
+    justification from a distinct strand of the chapter — not a sub-step or
+    vehicle of the first. If no second qualifies, stop at one.
+
+    A strand the textbook treats at introductory depth, or explicitly defers
+    to a later grade, may still carry a second core competency when it has
+    its own section(s) and is cognitively distinct from the first. A one-line
+    aside inside a section governed by the first competency does not qualify.
+
+    Per competency: c_code + a 1–2 sentence justification, written as plain
+    prose a teacher can read, naming the actual section topics, worked
+    examples, or exercises from the summary. No internal codes in the text.
+
+
+================================================================================
+RULE 3 | PASS 3 — ADJUNCT COMPETENCIES (CROSS-CG)
+================================================================================
+
+Scan the C-codes across all CGs other than core_cg. Select up to TWO
+adjunct_competencies genuinely engaged by at least one section, worked
+example, or exercise. Shared vocabulary or an incidental mention is not
+enough.
+
+Per competency: c_code + a 1–2 sentence plain-prose justification. Do not pad.
+
+
+================================================================================
+RULE 4 | DISSOLUTION TEST
+================================================================================
+
+Write one sentence: "This chapter builds the student's ability to [verb]
+[object] by [cognitive mechanism]." It names the operation of core_cg and its
+core_competencies. Adjuncts do not drive the test.
+
+
+================================================================================
+RULE 5 | EFFORT INDEX
+================================================================================
+
+Three signals are copied verbatim from the summary — never re-adjudicated at
+mapping time. Each measures an independent axis, and the axes are kept
+independent: one signal does not raise or lower another.
+
+- conceptual_demand (1–3) — abstraction only. Distance of the chapter's
+  objects from concrete experience; new formal apparatus and notation. Proof
+  or justification volume does NOT enter this signal.
+- reasoning_load (0–3) — proof / justification volume. How much of the
+  chapter is spent justifying, deriving, proving, arguing across cases, or
+  asking the student to explain why a result holds.
+- exec_load (0–2) — procedural volume. Weight of multi-step computation,
+  construction, or graphing.
+
+All three are already discrete tiers; no derivation step precedes the formula.
+
+    effort_index = (conceptual_demand × 2)
+                 + (reasoning_load    × 2)
+                 + (exec_load         × 1.5)
+
+Round to one decimal. Range is 2.0–15.0.
+
+The weights express a stage claim: abstraction and justification are the
+harder-to-compress teaching costs and weigh equally at 2; procedural volume
+weighs 1.5 because it can be carried partly outside class and its tier tops
+out at 2, so a procedure-heavy chapter cannot outweigh a genuinely abstract
+or proof-heavy one. The index is used for within-grade time allocation only;
+it is not compared across grades.
+
+
+================================================================================
+RULE 6 | PROHIBITED DOCUMENTS
+================================================================================
+
+The CG document is the sole external input. Do NOT consult Learning Outcomes,
+Pedagogy, Syllabus, Assessment Framework, or Position Papers. Do NOT re-read
+the chapter PDF.
+
+
+================================================================================
+MAPPING JSON SCHEMA
+================================================================================
+
+{
+    "stage":          "secondary",
+    "subject":        "mathematics",
+    "grade":          "ix",
+    "chapter_number": 2,
+    "chapter_title":  "Introduction to Linear Polynomials",
+
+    "core_cg": "CG-3",
+
+    "core_competencies": [
+        { "c_code": "C-3.2", "justification": "..." }
+    ],
+
+    "adjunct_competencies": [
+        { "c_code": "C-4.5", "justification": "..." },
+        { "c_code": "C-8.1", "justification": "..." }
+    ],
+
+    "co_central": false,
+
+    "dissolution_test": "...",
+
+    "conceptual_demand": 2,
+    "reasoning_load":    2,
+    "exec_load":         2,
+    "effort_index":     11.0
+}
+
+Field notes:
+- core_competencies has 1 or 2 entries; every c_code lies inside core_cg.
+- adjunct_competencies has 0 to 2 entries; every c_code lies outside core_cg.
+- co_central is true when, and only when, two core_competencies are selected.
+- The three effort signals match the summary exactly; effort_index matches
+  the Rule 5 formula.
+
+
+================================================================================
+Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
+Mathematics Competency Mapping Constitution · Version 1.0 · Secondary Stage · Internal Document
+================================================================================

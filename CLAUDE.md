@@ -1,6 +1,6 @@
 # Aruvi — Project Context for Cowork Sessions
 
-This file is the standing briefing for every Cowork session on this project. It is updated automatically whenever meaningful progress is made. Last updated: 2026-05-10
+This file is the standing briefing for every Cowork session on this project. It is updated automatically whenever meaningful progress is made. Last updated: 2026-06-16
 
 ---
 
@@ -58,7 +58,7 @@ The constitution-based generation approach is the IP — the subject constitutio
 
 ### Constitutions in place
 
-- Competency mapping: Social Sciences, Science, Mathematics, Languages (English uses combined chapter_summary + competency_mapping prompt)
+- Competency mapping: Social Sciences, Science, Mathematics (preparatory, middle, secondary — secondary added 2026-06-16), Languages (English uses combined chapter_summary + competency_mapping prompt)
 - Lesson plan: Social Sciences, Science, Mathematics, English  
 - Assessment: Social Sciences, Science, Mathematics, English
 
@@ -70,7 +70,9 @@ The constitution-based generation approach is the IP — the subject constitutio
 - English VII: summaries \+ mappings (ch\_01, ch\_02 done — in progress; uses `.json` format)  
 - Science VI: summaries \+ mappings (ch\_02 only — in progress)  
 - Social Sciences VI: summaries \+ mappings (ch\_02 only — in progress)  
-- Framework text (CG \+ pedagogy): Science middle, Social Sciences middle, Mathematics middle/preparatory/secondary, English middle/preparatory/secondary
+- Framework text (CG \+ pedagogy): Science middle/secondary, Social Sciences middle, Mathematics middle/preparatory/secondary, English middle/preparatory/secondary
+- Mathematics Secondary (Grades IX–X): chapter-pipeline support added 2026-06-16 — step\_1 chapter-summary prompt already existed; step\_2 competency-mapping prompt and its mapping constitution (`mirror/constitutions/competency_mapping/mathematics/secondary/mapping_constitution_mathematics.txt`) are now written, using a 3-signal effort index (`conceptual_demand`, `reasoning_load`, `exec_load`) distinct from middle's 4-signal and preparatory's 4-signal schemes.
+- `chapter` skill SKILL.md found out of date for THREE subjects, not just Mathematics (2026-06-16): a full audit of the actual folder tree showed Science is stage-split (middle/secondary — both already built, sharing one effort-index formula) and English is stage-split across all three stages (preparatory/middle/secondary — secondary already built), but the skill's documentation only ever described Mathematics/English as stage-split and Science as flat. Social Sciences (middle-only) and TWAU (preparatory-only) are genuinely flat — not bugs. Full corrected replacement text covering all subjects/stages is staged at `chapter_skill_updated.md` in the project root; manual paste into Settings \> Capabilities is still pending (cannot be edited from inside a Cowork session — skill cache is read-only).
 
 ---
 ## 5\. Steps involved
