@@ -1,0 +1,1571 @@
+{
+  "filename": "ch_02_20260618_102702.json",
+  "saved_at": "2026-06-18T10:27:02",
+  "grade": "Grade IX",
+  "subject": "Mathematics",
+  "chapter_number": 2,
+  "chapter_title": "Introduction to Linear Polynomials",
+  "period_schedule_display": "Period schedule:\n  Row 1: 60 minutes × 1 period = 60 minutes\nTotal: 1 periods · 1h 0min",
+  "period_rows_snapshot": [
+    {
+      "id": 0,
+      "duration": 60,
+      "count": 1
+    }
+  ],
+  "plan_status": "full_lpa",
+  "result": {
+    "lesson_plan": {
+      "periods": [
+        {
+          "period_number": 1,
+          "period_duration_minutes": 60,
+          "activity_title": "Algebraic Expressions to Polynomials — Terms, Degree, and Classification",
+          "section_anchor": "2.1",
+          "pedagogical_method": "Problem solving",
+          "materials": [
+            "Textbook",
+            "Blackboard",
+            "Chalk"
+          ],
+          "visual_aids": "Board table listing each expression alongside its terms, coefficients, and degree",
+          "textbook_items_in_class": [
+            {
+              "id": "WE-1",
+              "type": "worked_example",
+              "source_section": "2.1",
+              "book_ref": "Example 1, p.16",
+              "description": "Pens-and-pencils scenario introducing terms, variables, coefficients, and constant in the expression 4x + 5y + 3."
+            },
+            {
+              "id": "WE-2",
+              "type": "worked_example",
+              "source_section": "2.1",
+              "book_ref": "Example 2, p.16-17",
+              "description": "Rectangular garden fencing and seeding cost scenario producing the two-variable expression 200l + 160w + 50lw."
+            },
+            {
+              "id": "WE-3",
+              "type": "worked_example",
+              "source_section": "2.1",
+              "book_ref": "Example 3, p.17",
+              "description": "Wire bent into a rectangle; area expressed as the one-variable expression x(10-x) = 10x - x^2."
+            },
+            {
+              "id": "E-1",
+              "type": "exercise",
+              "source_section": "2.1",
+              "book_ref": "Exercise Set 2.1 Q1, p.18",
+              "description": "Find the degrees of four given polynomials."
+            },
+            {
+              "id": "E-3",
+              "type": "exercise",
+              "source_section": "2.1",
+              "book_ref": "Exercise Set 2.1 Q3, p.18",
+              "description": "Find the coefficients of x^2 and x^3 in a given degree-4 polynomial."
+            }
+          ],
+          "time_bands": [
+            {
+              "minutes": "0-10",
+              "activity": "Open with the pens-and-pencils scenario (Example 1, p.16). Ask students to write out what they pay for various combinations and name each piece of the resulting expression — terms, variables, coefficients, and the constant. Record vocabulary on the board."
+            },
+            {
+              "minutes": "10-22",
+              "activity": "Work through the garden fencing and seeding scenario (Example 2, p.16-17) on the board, showing how two variables l and w appear together. Then do the wire-rectangle area (Example 3, p.17) to show how a one-variable expression arises and introduce the idea of degree by reading off the highest power."
+            },
+            {
+              "minutes": "22-32",
+              "activity": "Think-and-reflect pause: present two contrasting expressions (e.g. 3x + 2 and 3x^2 + 2x + 1) and ask students to identify all terms, coefficients, and degrees, then discuss with a neighbour what is similar and what differs. Cold-call two or three pairs for their observations."
+            },
+            {
+              "minutes": "32-45",
+              "activity": "Formally define univariate polynomials and the classification by degree — constant, linear, quadratic, cubic. Students then independently attempt Exercise Set 2.1 Q1 (p.18) to find degrees of four polynomials and Q3 (p.18) to pick out specific coefficients from a degree-4 polynomial. Teacher circulates and addresses errors."
+            },
+            {
+              "minutes": "45-60",
+              "activity": "Whole-class correction of Q1 and Q3. Introduce Q2 (p.18) — write polynomials of degrees 1, 2, and 3 — as a brief creative task completed in pairs, then share examples on the board. Close by asking: what distinguishes a polynomial from a general algebraic expression?"
+            }
+          ],
+          "teacher_notes": "This is the chapter's opening period, so begin from students' earlier work with algebraic expressions before naming terms, coefficients, and degree. Watch for the common slip of treating the constant term as having a variable, or reading the degree off the first term written rather than the highest power present. Students who finish early can read Example 3 (p.17) on their own to see how a one-variable expression arises from a bent wire.",
+          "homework": [
+            "Complete Exercise Set 2.1 Q4 and Q5, p.19 (find the coefficient of z and the constant term in given cubic polynomials)."
+          ]
+        },
+        {
+          "period_number": 2,
+          "period_duration_minutes": 60,
+          "activity_title": "Linear Polynomials as Models — Patterns, Equations, and Input-Output",
+          "section_anchor": "2.2",
+          "pedagogical_method": "Problem solving",
+          "materials": [
+            "Textbook",
+            "Blackboard",
+            "Chalk"
+          ],
+          "visual_aids": "Board input-output table for the chess-club polynomial 200 + 50m alongside the linear and quadratic polynomial columns",
+          "textbook_items_in_class": [
+            {
+              "id": "WE-4",
+              "type": "worked_example",
+              "source_section": "2.2",
+              "book_ref": "Example 4, p.19",
+              "description": "Perimeter of a square of side x as the linear polynomial 4x."
+            },
+            {
+              "id": "WE-5",
+              "type": "worked_example",
+              "source_section": "2.2",
+              "book_ref": "Example 5, p.19",
+              "description": "Chess club joining fee plus per-match charge modelled as the linear polynomial 200 + 50m."
+            },
+            {
+              "id": "WE-6",
+              "type": "worked_example",
+              "source_section": "2.2",
+              "book_ref": "Example 6, p.20",
+              "description": "Sum-of-two-numbers word problem solved via the linear equation 2x + 10 = 64; also introduces evaluating a linear expression as an input-output process."
+            },
+            {
+              "id": "E-6",
+              "type": "exercise",
+              "source_section": "2.2",
+              "book_ref": "Exercise Set 2.2 Q1, p.21",
+              "description": "Evaluate the linear polynomial 5x-3 at three given values of x (sub-parts i-iii)."
+            },
+            {
+              "id": "E-8",
+              "type": "exercise",
+              "source_section": "2.2",
+              "book_ref": "Exercise Set 2.2 Q3, p.21",
+              "description": "Find present ages of Salil and his mother from a linear-equation age relationship."
+            },
+            {
+              "id": "E-12",
+              "type": "exercise",
+              "source_section": "2.2",
+              "book_ref": "Exercise Set 2.2 Q7, p.21",
+              "description": "Find the dimensions of a rectangle given its perimeter and a relation between length and width."
+            }
+          ],
+          "time_bands": [
+            {
+              "minutes": "0-10",
+              "activity": "Use the square perimeter (Example 4, p.19) to recall what makes a polynomial linear — degree 1, one variable, constant difference between successive integer outputs. Build a short table of values for 4x and display it on the board."
+            },
+            {
+              "minutes": "10-25",
+              "activity": "Work through the chess-club scenario (Example 5, p.19) step by step: write the polynomial 200 + 50m, fill an input-output table for m = 0, 1, 2, 3, 4, and highlight that the difference between consecutive outputs is always 50. Ask students to compare this with a quadratic table they saw in Section 2.1 and identify what is different about the differences."
+            },
+            {
+              "minutes": "25-38",
+              "activity": "Think-and-reflect pause: pose the backward question — if Aryan paid Rs 450 to the chess club, how many matches has he played? Students write the linear equation 200 + 50m = 450, solve it individually, and discuss the process of working backward from an output. Then work through Example 6, p.20 as a class to formalise the equation-solving process."
+            },
+            {
+              "minutes": "38-50",
+              "activity": "Students attempt Exercise Set 2.2 Q1 (p.21) — evaluate 5x - 3 at three values — and Q3 (p.21) — Salil's age problem — independently. Teacher checks work and clears common errors on the board."
+            },
+            {
+              "minutes": "50-60",
+              "activity": "Pairs tackle Q7 (p.21) on rectangle dimensions. After five minutes, one pair presents their equation setup and solution. Close by naming the three representations practised: the polynomial expression, the input-output table, and the equation."
+            }
+          ],
+          "teacher_notes": "Recap from the previous period that degree distinguishes a linear polynomial (degree 1) from the others, then move into evaluating and solving. A frequent error here is sign mistakes when substituting negative values, and confusing 'evaluate the expression' with 'solve the equation' — keep the two acts visibly separate on the board. Example 6 (p.20) can be left for self-study as a second worked instance of forming an equation from a word problem.",
+          "homework": [
+            "Complete Exercise Set 2.2 Q4 and Q5, p.21 (coin and integer word problems using linear equations)."
+          ]
+        },
+        {
+          "period_number": 3,
+          "period_duration_minutes": 45,
+          "activity_title": "Generalising Growing Patterns into Linear Expressions",
+          "section_anchor": "2.3",
+          "pedagogical_method": "Discovery/Inquiry",
+          "materials": [
+            "Textbook",
+            "Blackboard",
+            "Chalk",
+            "Squared paper or rough sheets for drawing tile patterns"
+          ],
+          "visual_aids": "Board sketch of the growing square-tile pattern at stages 1, 2, 3, 4 alongside the count table",
+          "textbook_items_in_class": [
+            {
+              "id": "WE-7",
+              "type": "worked_example",
+              "source_section": "2.3",
+              "book_ref": "Example 7, p.22-23",
+              "description": "Bela's pocket money depletion modelled as 100 - 5n, solved for the day the amount left equals 40."
+            },
+            {
+              "id": "WE-8",
+              "type": "worked_example",
+              "source_section": "2.3",
+              "book_ref": "Example 8, p.23",
+              "description": "Auto-rickshaw fare with flat initial charge plus per-km rate, modelled as 15n - 5 for n >= 2."
+            },
+            {
+              "id": "E-13",
+              "type": "exercise",
+              "source_section": "2.3",
+              "book_ref": "Exercise Set 2.3 Q1, p.23",
+              "description": "Find a linear expression for a savings account balance growing by a fixed monthly amount."
+            },
+            {
+              "id": "E-17",
+              "type": "exercise",
+              "source_section": "2.3",
+              "book_ref": "Exercise Set 2.3 Q5, p.24",
+              "description": "Express remaining pages of a book read at a constant daily rate as a linear pattern."
+            }
+          ],
+          "time_bands": [
+            {
+              "minutes": "0-12",
+              "activity": "Draw the growing square-tile pattern on the board for stages 1 through 4. Ask students to count tiles at each stage and record in a table. Prompt: what is the pattern in consecutive differences? Guide them to write the general term as 2n - 1 and verify it for stage 5. Define a linear pattern as a sequence with constant difference between consecutive terms."
+            },
+            {
+              "minutes": "12-25",
+              "activity": "Work through Bela's pocket money (Example 7, p.22-23): build the expression 100 - 5n from the constant-difference observation, evaluate it for several days, then solve 100 - 5n = 40 to answer when the money equals Rs 40. Follow with the auto-rickshaw fare (Example 8, p.23), deriving 15n - 5 from a flat charge plus per-km rate."
+            },
+            {
+              "minutes": "25-35",
+              "activity": "Think-and-reflect pause: pose two reverse-solve questions — for what stage does Bela have Rs 25 left, and for what distance is the auto fare Rs 100? Students write and solve the equations individually, then compare with a neighbour. Address any sign errors or arithmetic slips as a class."
+            },
+            {
+              "minutes": "35-45",
+              "activity": "Students independently attempt Exercise Set 2.3 Q1 (p.23) on savings growth and Q5 (p.24) on book pages remaining. Teacher circulates; a volunteer shares the expression for each and the class verifies by checking one or two values against the scenario."
+            }
+          ],
+          "teacher_notes": "Connect back to the constant-difference idea from the chess-club table in the previous period; the tile pattern is the same idea seen visually. The usual stumble is writing the nth term as 2n or 2n+1 instead of 2n-1 — have students test their rule against stage 1 and stage 2 before trusting it. Sign slips also appear in decreasing patterns such as Bela's pocket money.",
+          "homework": [
+            "Attempt Exercise Set 2.3 Q2 and Q3, p.24 (rally membership decay and rectangle area as linear patterns)."
+          ]
+        },
+        {
+          "period_number": 4,
+          "period_duration_minutes": 50,
+          "activity_title": "Linear Growth and Decay — Constant Increase and Constant Decrease",
+          "section_anchor": "2.4",
+          "pedagogical_method": "Problem solving",
+          "materials": [
+            "Textbook",
+            "Blackboard",
+            "Chalk"
+          ],
+          "visual_aids": "Two-column board table comparing the growth table C(d) = 100 + 60d and the decay table h(t) = 3 - 0.5t side by side",
+          "textbook_items_in_class": [
+            {
+              "id": "WE-9",
+              "type": "worked_example",
+              "source_section": "2.4",
+              "book_ref": "Example 9, p.24",
+              "description": "Journey cost function C(d) = 100 + 60d illustrating linear growth via a table of values."
+            },
+            {
+              "id": "WE-10",
+              "type": "worked_example",
+              "source_section": "2.4",
+              "book_ref": "Example 10, p.24-25",
+              "description": "Water height in a tank h(t) = 3 - 0.5t illustrating linear decay via a table of values."
+            },
+            {
+              "id": "E-18",
+              "type": "exercise",
+              "source_section": "2.4",
+              "book_ref": "Exercise Set 2.4 Q1, p.25",
+              "description": "Model plant height growing at a constant monthly rate; find height after 7 months, tabulate, and justify linear growth (sub-parts i-iii)."
+            },
+            {
+              "id": "E-19",
+              "type": "exercise",
+              "source_section": "2.4",
+              "book_ref": "Exercise Set 2.4 Q2, p.25",
+              "description": "Model a depreciating mobile phone value; find value after 3 years, tabulate, and justify linear decay (sub-parts i-iii)."
+            }
+          ],
+          "time_bands": [
+            {
+              "minutes": "0-12",
+              "activity": "Present the journey cost scenario (Example 9, p.24). Students fill the table C(d) for d = 0, 1, 2, 3, 4 and identify the constant increase of Rs 60 per km. Formally define linear growth: a quantity that increases by the same amount over each equal interval."
+            },
+            {
+              "minutes": "12-24",
+              "activity": "Immediately contrast with the water-tank scenario (Example 10, p.24-25). Students fill the table h(t) and identify the constant decrease of 0.5 m per hour. Define linear decay. Place both tables side by side on the board and highlight what makes the expressions structurally the same except for the sign of the rate."
+            },
+            {
+              "minutes": "24-32",
+              "activity": "Think-and-reflect pause: extend each scenario — after how many hours is the tank empty, and what is the cost for a 7 km journey? Students solve both by substitution and equation, then share answers. Confirm that the same linear expression handles both evaluation and equation-solving."
+            },
+            {
+              "minutes": "32-44",
+              "activity": "Students work in pairs on Exercise Set 2.4 Q1 (p.25) — plant height growth — completing all three sub-parts: write the expression, evaluate at 7 months, build a table, and justify why it is linear growth. Pairs then swap papers and check each other's justification."
+            },
+            {
+              "minutes": "44-50",
+              "activity": "Introduce Q2 (p.25) — phone depreciation — as an individual task. Students write the decay expression and evaluate after 3 years. Teacher collects written responses to gauge progress before the next period."
+            }
+          ],
+          "teacher_notes": "Open by recalling that a linear pattern has a constant difference; today that difference becomes a rate of change with a sign. The error to watch is students labelling every changing quantity 'growth' — stress that a negative rate is decay, and that the expression is structurally identical apart from the sign. Example 10 (p.24-25) is a good self-study companion for the decay case.",
+          "homework": [
+            "Complete Exercise Set 2.4 Q3 and Q4, p.25-26 (village population growth and prepaid balance depletion)."
+          ]
+        },
+        {
+          "period_number": 5,
+          "period_duration_minutes": 50,
+          "activity_title": "Deriving a and b in y = ax + b from Two Real-World Data Points",
+          "section_anchor": "2.5",
+          "pedagogical_method": "Deductive",
+          "materials": [
+            "Textbook",
+            "Blackboard",
+            "Chalk"
+          ],
+          "visual_aids": "Board working showing the two simultaneous equations set up from the telecom data-billing scenario, solved step by step",
+          "textbook_items_in_class": [
+            {
+              "id": "WE-11",
+              "type": "worked_example",
+              "source_section": "2.5",
+              "book_ref": "Example 11, p.25-26",
+              "description": "Telecom data-billing scenario; finds a and b in y = ax + b from two given (x, y) pairs by solving simultaneous equations."
+            },
+            {
+              "id": "E-22",
+              "type": "exercise",
+              "source_section": "2.5",
+              "book_ref": "Exercise Set 2.5 Q1, p.27",
+              "description": "Find a and b in a learning-platform billing relation y = ax+b from two given module-count/bill pairs."
+            },
+            {
+              "id": "E-23",
+              "type": "exercise",
+              "source_section": "2.5",
+              "book_ref": "Exercise Set 2.5 Q2, p.27",
+              "description": "Find a and b in a gym court-rental billing relation y = ax+b from two given hour/bill pairs."
+            },
+            {
+              "id": "E-24",
+              "type": "exercise",
+              "source_section": "2.5",
+              "book_ref": "Exercise Set 2.5 Q3, p.27",
+              "description": "Find a and b in the Celsius-Fahrenheit linear relation from the freezing and boiling reference points."
+            }
+          ],
+          "time_bands": [
+            {
+              "minutes": "0-10",
+              "activity": "Frame the problem: if a quantity y depends linearly on x, then y = ax + b for some constants a and b. Ask students: if you know two (x, y) pairs, can you find a and b? Take brief student ideas, then state the method — substitute each pair to get two equations in two unknowns, then solve."
+            },
+            {
+              "minutes": "10-28",
+              "activity": "Work through the telecom data-billing example (Example 11, p.25-26) in full on the board. Set up the two equations by substituting the given pairs, subtract to eliminate b, solve for a, back-substitute to find b, and state the complete relation. Emphasise each algebraic step and ask students to follow along in their books, checking each line."
+            },
+            {
+              "minutes": "28-36",
+              "activity": "Think-and-reflect pause: ask students what a and b represent in the telecom context — what does the coefficient of x mean for a customer's bill, and what does the constant b represent when x = 0? Students discuss in pairs, then the class arrives at the interpretations together."
+            },
+            {
+              "minutes": "36-44",
+              "activity": "Students independently attempt Exercise Set 2.5 Q1 (p.27) — learning-platform billing — following the same two-equation method. Teacher monitors and prompts students who set up the subtraction incorrectly."
+            },
+            {
+              "minutes": "44-50",
+              "activity": "Students attempt Q2 (p.27) — court-rental — individually. Volunteers write their working on the board. Close by previewing Q3 (p.27), the Celsius-Fahrenheit relation, noting that the two reference points (freezing, boiling) are the given data pairs — to be completed as homework."
+            }
+          ],
+          "teacher_notes": "Build on the input-output and equation work already done; today two data points give two equations to solve together. The most common mistake is setting up the subtraction wrongly when eliminating b, or mislabelling which number is x and which is y — insist students write the two equations clearly before combining them. Watch also for students who stop at finding a and forget to back-substitute for b.",
+          "homework": [
+            "Complete Exercise Set 2.5 Q3, p.27 (Celsius-Fahrenheit conversion using the two reference data points)."
+          ]
+        },
+        {
+          "period_number": 6,
+          "period_duration_minutes": 45,
+          "activity_title": "Plotting Points and Identifying Lines — First Graphs of Linear Equations",
+          "section_anchor": "2.6",
+          "pedagogical_method": "Discovery/Inquiry",
+          "materials": [
+            "Textbook",
+            "Squared paper or graph sheets",
+            "Ruler",
+            "Pencil",
+            "Blackboard"
+          ],
+          "visual_aids": "Board coordinate grid showing plotted points for y = 3x and the resulting line, replicated for the negative-slope case",
+          "textbook_items_in_class": [
+            {
+              "id": "WE-12",
+              "type": "worked_example",
+              "source_section": "2.6",
+              "book_ref": "Example 12, p.28-29",
+              "description": "Plots five points and identifies the line y = 3x by observing the constant ratio between coordinates."
+            },
+            {
+              "id": "WE-13",
+              "type": "worked_example",
+              "source_section": "2.6",
+              "book_ref": "Example 13, p.29",
+              "description": "Plots five points and identifies the line through them (negative slope case)."
+            }
+          ],
+          "time_bands": [
+            {
+              "minutes": "0-10",
+              "activity": "Distribute graph sheets. Remind students how to set up coordinate axes. Ask them to choose five integer values of x and compute y = 3x for each, then plot the five points. Ask: what do you notice about where the points fall? Prompt them to draw the line through the points."
+            },
+            {
+              "minutes": "10-22",
+              "activity": "Compare student graphs against Example 12 (p.28-29). Observe together that all points lie on a straight line passing through the origin, and that the ratio y/x is constantly 3. Discuss: does any other point on this line satisfy y = 3x? Students pick an additional point from their ruler-drawn line and verify it by substitution."
+            },
+            {
+              "minutes": "22-33",
+              "activity": "Repeat the graphing process for Example 13 (p.29) — the negative-slope case. Students plot five points, draw the line, and describe in words what is different about the direction of this line compared with y = 3x. Think-and-reflect discussion: compare the two graphs on the same axes; what does the sign of the coefficient of x determine?"
+            },
+            {
+              "minutes": "33-45",
+              "activity": "Students write three observations in their notebooks: (1) two points determine a line, (2) the line y = 3x passes through the origin, (3) a positive coefficient gives an upward-sloping line while a negative coefficient gives a downward-sloping line. Share and refine as a class. Preview that the next period will explore what happens when we change the slope or shift the intercept systematically."
+            }
+          ],
+          "teacher_notes": "This is the chapter's first graphing period, so spend time on careful axis setup before plotting. The frequent errors are reversing the x- and y-coordinates and joining points freehand rather than with a ruler — both obscure the straight-line result. Encourage students to verify one extra point by substitution so they trust that the line represents the equation.",
+          "homework": []
+        },
+        {
+          "period_number": 7,
+          "period_duration_minutes": 60,
+          "activity_title": "Slope and Intercept — Comparing Families of Lines on Shared Axes",
+          "section_anchor": "2.6",
+          "pedagogical_method": "Problem solving",
+          "materials": [
+            "Textbook",
+            "Squared paper or graph sheets",
+            "Ruler",
+            "Pencil",
+            "Blackboard",
+            "Coloured chalk or markers"
+          ],
+          "visual_aids": "Board overlaid graphs of y = (1/2)x, y = x, y = 2x and separately y = 2x-1, y = 2x+1, y = 2x+5 on shared axes, with slope and intercept annotated",
+          "textbook_items_in_class": [
+            {
+              "id": "WE-14",
+              "type": "worked_example",
+              "source_section": "2.6",
+              "book_ref": "Example 14, p.29-31",
+              "description": "Graphs y = (1/2)x, y = x, y = 2x together to compare slope steepness as a varies for a > 0."
+            },
+            {
+              "id": "WE-15",
+              "type": "worked_example",
+              "source_section": "2.6",
+              "book_ref": "Example 15, p.31-33",
+              "description": "Graphs y = -(1/3)x, y = -x, y = -3x together to compare slope steepness as a varies for negative slopes."
+            },
+            {
+              "id": "WE-16",
+              "type": "worked_example",
+              "source_section": "2.6",
+              "book_ref": "Example 16, p.33-36",
+              "description": "Graphs y = 2x-1, y = 2x+1, y = 2x+5 individually and together, and y = x+3, y = 2x+5, y = 3x-2 together, to establish slope and y-intercept and the parallel-lines property."
+            },
+            {
+              "id": "E-25",
+              "type": "exercise",
+              "source_section": "2.6",
+              "book_ref": "Exercise Set 2.6 Q1, p.36",
+              "description": "Draw five sets of lines (sub-parts i-v) and reflect on the role of slope a and y-intercept b in each set."
+            }
+          ],
+          "time_bands": [
+            {
+              "minutes": "0-15",
+              "activity": "Students graph y = (1/2)x, y = x, and y = 2x on the same axes (Example 14, p.29-31), using two points each. Ask: as a increases from 1/2 to 2, what happens to the steepness? Introduce the word slope for a and record the observation: larger a means steeper incline."
+            },
+            {
+              "minutes": "15-28",
+              "activity": "Repeat with y = -(1/3)x, y = -x, y = -3x (Example 15, p.31-33). Students graph all three and identify that negative a gives a line sloping downward, and that the magnitude of a controls steepness regardless of sign. Connect back to linear growth (positive a) and linear decay (negative a) from Section 2.4."
+            },
+            {
+              "minutes": "28-45",
+              "activity": "Work through Example 16 (p.33-36) in two parts. First, graph y = 2x-1, y = 2x+1, y = 2x+5 together and ask students what is the same (slope a = 2) and what differs (the y-intercept b). Establish: parallel lines share the same slope. Second, graph y = x+3, y = 2x+5, y = 3x-2 together and ask which pair of lines, if any, would intersect at the same point on the y-axis."
+            },
+            {
+              "minutes": "45-55",
+              "activity": "Think-and-reflect: ask students to identify additional points on one of the graphed lines by reading off the graph, then verify by substituting into the equation. Also ask: if two lines have the same b but different a, where do they meet? Students write their conjecture and test it."
+            },
+            {
+              "minutes": "55-60",
+              "activity": "Begin Exercise Set 2.6 Q1 (p.36) sub-part i in class. Students sketch the first set of lines and note their observation about slope and intercept. Remaining sub-parts are assigned as homework."
+            }
+          ],
+          "teacher_notes": "Recap from the previous period that plotted points of a linear equation fall on a straight line; today we compare whole families of lines. Students often confuse the roles of a and b — that a controls steepness and b fixes where the line crosses the y-axis — so keep both changing one-at-a-time on shared axes. A sign error in the slope will flip the line's direction, so check direction against the sign of a.",
+          "homework": [
+            "Complete Exercise Set 2.6 Q1 (p.36) sub-parts ii–v (the remaining four families of lines with reflections on the role of a and b)."
+          ]
+        },
+        {
+          "period_number": 8,
+          "period_duration_minutes": 45,
+          "activity_title": "Consolidation and End-of-Chapter Problem Solving Across All Sections",
+          "section_anchor": "2.6",
+          "pedagogical_method": "Problem solving",
+          "materials": [
+            "Textbook",
+            "Blackboard",
+            "Chalk"
+          ],
+          "visual_aids": null,
+          "textbook_items_in_class": [
+            {
+              "id": "E-26",
+              "type": "exercise",
+              "source_section": "2.6",
+              "book_ref": "End of Chapter Q1, p.36",
+              "description": "Write a degree-3 polynomial in x with a specified coefficient of the x^2 term."
+            },
+            {
+              "id": "E-27",
+              "type": "exercise",
+              "source_section": "2.6",
+              "book_ref": "End of Chapter Q2, p.36",
+              "description": "Evaluate two given polynomials at specified values of the variable (sub-parts i-ii)."
+            },
+            {
+              "id": "E-28",
+              "type": "exercise",
+              "source_section": "2.6",
+              "book_ref": "End of Chapter Q3, p.37",
+              "description": "Find a number from a linear equation describing multiplying and adding fractions."
+            },
+            {
+              "id": "E-29",
+              "type": "exercise",
+              "source_section": "2.6",
+              "book_ref": "End of Chapter Q4, p.37",
+              "description": "Find two numbers given one is 5 times the other and a relation after adding 21 to both."
+            },
+            {
+              "id": "E-30",
+              "type": "exercise",
+              "source_section": "2.6",
+              "book_ref": "End of Chapter Q5, p.37",
+              "description": "Express savings growing at a fixed monthly rate as a linear pattern and evaluate after 6 months and 2 years."
+            }
+          ],
+          "time_bands": [
+            {
+              "minutes": "0-10",
+              "activity": "Brief review: ask one student to state the definition of a linear polynomial, a second to name what a and b represent in y = ax + b graphically, and a third to give one example each of linear growth and linear decay. Correct any residual misconceptions before moving to problems."
+            },
+            {
+              "minutes": "10-28",
+              "activity": "Students work through End of Chapter Q1 (p.36) — constructing a cubic polynomial with a given coefficient — and Q2 (p.36) — evaluating two polynomials — individually and silently. Teacher circulates, checking that students correctly substitute negative or fractional values. Correct Q1 and Q2 on the board."
+            },
+            {
+              "minutes": "28-40",
+              "activity": "Students tackle Q3 (p.37) — linear equation from a fraction-and-addition description — and Q4 (p.37) — two-number relationship — in pairs. Each pair writes out the full equation setup, not just the answer. Pairs compare setups before solving."
+            },
+            {
+              "minutes": "40-45",
+              "activity": "Introduce Q5 (p.37) — savings as a linear pattern evaluated at two time points — as the closing task. Students write the linear expression and evaluate for 6 months in class. Evaluation for 2 years and the written justification that the pattern is linear are assigned as take-home work."
+            }
+          ],
+          "teacher_notes": "This consolidation period draws on every section, so begin with a quick oral recap of definitions before problem-solving. The errors to anticipate are mis-substituting negative or fractional values in the end-of-chapter evaluation questions, and jumping to an answer in the word problems without first writing the equation — require the full equation setup. End of Chapter Q2 (p.36) makes a useful self-check for evaluation fluency.",
+          "homework": [
+            "Complete End of Chapter Q5, p.37 — evaluate the savings expression after 2 years and write a sentence justifying why the pattern is an example of linear growth."
+          ]
+        },
+        {
+          "period_number": 9,
+          "period_duration_minutes": 50,
+          "activity_title": "Building Linear Models from Context — Section 2.3 Exercise Deep Dive",
+          "section_anchor": "2.3",
+          "pedagogical_method": "Problem solving",
+          "materials": [
+            "Textbook",
+            "Blackboard",
+            "Chalk"
+          ],
+          "visual_aids": null,
+          "textbook_items_in_class": [
+            {
+              "id": "E-14",
+              "type": "exercise",
+              "source_section": "2.3",
+              "book_ref": "Exercise Set 2.3 Q2, p.24",
+              "description": "Find a linear expression for rally membership decreasing by a fixed amount each hour."
+            },
+            {
+              "id": "E-15",
+              "type": "exercise",
+              "source_section": "2.3",
+              "book_ref": "Exercise Set 2.3 Q3, p.24",
+              "description": "Find rectangle areas for given breadths and the linear pattern representing area at fixed length."
+            },
+            {
+              "id": "E-16",
+              "type": "exercise",
+              "source_section": "2.3",
+              "book_ref": "Exercise Set 2.3 Q4, p.24",
+              "description": "Find rectangular box volumes for given heights and the linear pattern representing volume at fixed length and breadth."
+            }
+          ],
+          "time_bands": [
+            {
+              "minutes": "0-12",
+              "activity": "Return and discuss homework from Period 3 (Exercise Set 2.3 Q2 and Q3). Students share their expressions on the board for the rally membership decay and the rectangle-area linear pattern. Highlight common errors — especially sign errors in decreasing sequences and forgetting to fix one variable before calling the expression linear."
+            },
+            {
+              "minutes": "12-28",
+              "activity": "Students independently attempt Exercise Set 2.3 Q4 (p.24) on rectangular box volumes, writing the expression for volume as a linear pattern in the height variable while treating length and breadth as fixed. Teacher circulates and prompts students to identify what the constant difference between consecutive volumes equals."
+            },
+            {
+              "minutes": "28-42",
+              "activity": "Whole-class discussion of Q4. One student writes the general expression on the board; the class verifies it for three values of height. Then pose a stretch question: for what height does the volume equal a specified target value? Students set up and solve the linear equation."
+            },
+            {
+              "minutes": "42-50",
+              "activity": "Students write a short summary in their own words: what is a linear pattern, how do you derive its expression, and how do you use it to answer a reverse-solve question? Collect three or four responses to check comprehension before the final period."
+            }
+          ],
+          "teacher_notes": "Return to the Section 2.3 homework on patterns; this period deepens the same skill on richer contexts. The recurring error is calling an expression linear without first fixing the other variables — for the box-volume question, length and breadth must be held constant before the volume is linear in height. Sign errors in decreasing sequences such as the rally membership are also common.",
+          "homework": []
+        },
+        {
+          "period_number": 10,
+          "period_duration_minutes": 45,
+          "activity_title": "Linking Tables, Expressions, Equations, and Graphs — Whole-Chapter Synthesis",
+          "section_anchor": "2.6",
+          "pedagogical_method": "Deductive",
+          "materials": [
+            "Textbook",
+            "Blackboard",
+            "Chalk",
+            "Graph sheets"
+          ],
+          "visual_aids": "Board summary diagram linking the four representations: table of values, linear expression, equation, and graph with slope and intercept labelled",
+          "textbook_items_in_class": [
+            {
+              "id": "E-7",
+              "type": "exercise",
+              "source_section": "2.2",
+              "book_ref": "Exercise Set 2.2 Q2, p.21",
+              "description": "Evaluate the quadratic polynomial 7s^2-4s+6 at three given values of s (sub-parts i-iii)."
+            },
+            {
+              "id": "E-9",
+              "type": "exercise",
+              "source_section": "2.2",
+              "book_ref": "Exercise Set 2.2 Q4, p.21",
+              "description": "Find two positive integers given their difference and ratio."
+            },
+            {
+              "id": "E-10",
+              "type": "exercise",
+              "source_section": "2.2",
+              "book_ref": "Exercise Set 2.2 Q5, p.21",
+              "description": "Find the number of two-rupee and five-rupee coins Ruby has given a total amount and a ratio."
+            },
+            {
+              "id": "E-11",
+              "type": "exercise",
+              "source_section": "2.2",
+              "book_ref": "Exercise Set 2.2 Q6, p.21",
+              "description": "Find the lengths of two pieces of a cut fence given a total length and a ratio."
+            }
+          ],
+          "time_bands": [
+            {
+              "minutes": "0-10",
+              "activity": "Draw a four-quadrant summary on the board: table of values, algebraic expression (y = ax + b), linear equation (set equal to a constant), and coordinate graph. Trace how a single scenario — the chess-club fee from Section 2.2 — appears in all four representations. Invite students to articulate the translation between each pair."
+            },
+            {
+              "minutes": "10-25",
+              "activity": "Students attempt Exercise Set 2.2 Q4 (p.21) and Q5 (p.21) — integer and coin problems requiring equation setup — as a deductive exercise: they start from the general form, substitute the given constraints, and solve. Teacher corrects on the board, emphasising that both problems follow the same deductive structure as the telecom example in Section 2.5."
+            },
+            {
+              "minutes": "25-37",
+              "activity": "Students attempt Q6 (p.21) — cut fence lengths — and Q2 (p.21) — evaluating the quadratic polynomial — individually. The quadratic evaluation is included deliberately to contrast with linear evaluation and reinforce that the constant-difference property does not hold for quadratics."
+            },
+            {
+              "minutes": "37-45",
+              "activity": "Closing discussion: a student draws one linear and one non-linear expression on the board and the class identifies which is linear and why. Teacher summarises the chapter's four key ideas: polynomial vocabulary and degree; linear patterns and their constant difference; linear growth and decay; graphing y = ax + b and reading slope and intercept."
+            }
+          ],
+          "teacher_notes": "This closing synthesis ties the table, expression, equation, and graph representations together, so recap each briefly before the problems. The deliberate trap today is the quadratic evaluation in Q2 (p.21), included so students see that the constant-difference property fails for non-linear expressions — flag this contrast explicitly. Watch for students applying linear shortcuts to the quadratic out of habit.",
+          "homework": []
+        }
+      ]
+    },
+    "coverage_handoff": [
+      {
+        "section_number": 1,
+        "section_ref": "2.1",
+        "section_title": "Introduction",
+        "total_sections": 6,
+        "period_numbers": [
+          1
+        ],
+        "period_duration_minutes": 60,
+        "implied_lo": [
+          "Students can identify the terms, coefficients, variables, constant term, and degree of a given algebraic expression or polynomial.",
+          "Students can classify a univariate polynomial as constant, linear, quadratic, or cubic based on its degree."
+        ],
+        "section_context": "Algebraic expressions — terms, coefficients, degree, polynomial classification by degree",
+        "c_code": "C-3.2",
+        "co_central": false
+      },
+      {
+        "section_number": 2,
+        "section_ref": "2.2",
+        "section_title": "Linear Polynomials",
+        "total_sections": 6,
+        "period_numbers": [
+          2
+        ],
+        "period_duration_minutes": 60,
+        "implied_lo": [
+          "Students can evaluate a linear polynomial at given input values and set up and solve a linear equation to find an unknown input from a given output.",
+          "Students can represent a linear polynomial as an input-output function and identify the constant difference between successive integer outputs."
+        ],
+        "section_context": "Linear polynomial evaluation, linear equations, constant-difference property, input-output function",
+        "c_code": "C-3.2",
+        "co_central": false
+      },
+      {
+        "section_number": 3,
+        "section_ref": "2.3",
+        "section_title": "Exploring linear patterns",
+        "total_sections": 6,
+        "period_numbers": [
+          3,
+          9
+        ],
+        "period_duration_minutes": 45,
+        "implied_lo": [
+          "Students can derive a linear expression for the nth term of a pattern or real-world sequence by identifying the constant difference and initial value.",
+          "Students can solve a linear equation to find the stage number or input corresponding to a specified term value in a linear pattern."
+        ],
+        "section_context": "Growing tile pattern, constant difference, nth-term linear expression, reverse-solve linear equation",
+        "c_code": "C-3.2",
+        "co_central": false
+      },
+      {
+        "section_number": 4,
+        "section_ref": "2.4",
+        "section_title": "Linear growth and linear decay",
+        "total_sections": 6,
+        "period_numbers": [
+          4
+        ],
+        "period_duration_minutes": 50,
+        "implied_lo": [
+          "Students can model a real-world scenario as a linear growth or linear decay expression and distinguish the two by the sign of the constant rate of change."
+        ],
+        "section_context": "Linear growth C(d) = 100+60d, linear decay h(t) = 3-0.5t, constant rate of change",
+        "c_code": "C-3.2",
+        "co_central": false
+      },
+      {
+        "section_number": 5,
+        "section_ref": "2.5",
+        "section_title": "Linear Relationships",
+        "total_sections": 6,
+        "period_numbers": [
+          5
+        ],
+        "period_duration_minutes": 50,
+        "implied_lo": [
+          "Students can find the slope and y-intercept of a linear relationship y = ax + b from two data points by setting up and solving simultaneous equations."
+        ],
+        "section_context": "Linear relationship y = ax+b, two data points, simultaneous equations, telecom billing scenario",
+        "c_code": "C-3.2",
+        "co_central": false
+      },
+      {
+        "section_number": 6,
+        "section_ref": "2.6",
+        "section_title": "Visualising linear relationships",
+        "total_sections": 6,
+        "period_numbers": [
+          6,
+          7,
+          8,
+          10
+        ],
+        "period_duration_minutes": 50,
+        "implied_lo": [
+          "Students can plot a linear equation on the coordinate plane by computing two points, draw the line, and identify additional points on it.",
+          "Students can determine the effect of varying the slope a or the y-intercept b on the graph of y = ax + b, including identifying parallel lines and lines with positive or negative slope."
+        ],
+        "section_context": "Coordinate graph of y = ax+b, slope steepness, y-intercept shift, parallel lines, positive and negative slope",
+        "c_code": "C-4.5",
+        "co_central": false
+      }
+    ],
+    "assessment_items": {
+      "grade": "ix",
+      "subject": "mathematics",
+      "stage": "secondary",
+      "chapter_number": 2,
+      "chapter_title": "Introduction to Linear Polynomials",
+      "chapter_cg": "Develop algebraic reasoning by understanding, representing, and operating with polynomials and linear relationships, including their graphical interpretation.",
+      "reasoning_floor_lift_applied": true,
+      "questions": [
+        {
+          "section_number": 1,
+          "section_ref": "2.1",
+          "section_title": "Introduction",
+          "total_sections": 6,
+          "implied_lo_assessed": "Students can identify the terms, coefficients, variables, constant term, and degree of a given algebraic expression or polynomial.",
+          "section_context": "Algebraic expressions — terms, coefficients, degree, polynomial classification by degree",
+          "question_type": "MCQ",
+          "competency": {
+            "c_code": "C-3.2",
+            "competency_text": "Understands and works with algebraic expressions, polynomials, and their properties."
+          },
+          "cognitive_demand": "Understanding",
+          "visual_stimulus": null,
+          "graph_paper": false,
+          "question_text": "In the polynomial 6x³ − 4x² + 9x − 7, which of the following correctly states the coefficient of x² and the constant term?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Coefficient of x² is −4; constant term is −7.",
+              "is_correct": true
+            },
+            {
+              "label": "B",
+              "text": "Coefficient of x² is 4; constant term is −7.",
+              "is_correct": false
+            },
+            {
+              "label": "C",
+              "text": "Coefficient of x² is −4; constant term is 9.",
+              "is_correct": false
+            },
+            {
+              "label": "D",
+              "text": "Coefficient of x² is 6; constant term is −7.",
+              "is_correct": false
+            }
+          ],
+          "expected_answer": "",
+          "method_one_line": "",
+          "expected_elements": [],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "verified": true,
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 1
+              },
+              "what_each_option_reveals": {
+                "B": "Drops the negative sign from the coefficient, treating the coefficient of x² as the absolute value 4 rather than the signed value −4.",
+                "C": "Confuses the constant term with the coefficient of x (the term immediately before the constant), identifying 9 as the constant term.",
+                "D": "Confuses the leading coefficient (coefficient of the highest-degree term, here 6 for x³) with the coefficient of x², a within-polynomial term confusion."
+              },
+              "inclusivity": "Support: ask the student to rewrite the polynomial listing each term on a separate line and label 'term | coefficient | power' before selecting an option. Challenge: ask the student to write a new polynomial in which the coefficient of x² is positive but the constant term is negative, and state both values."
+            },
+            "NUM": {
+              "learning_outcome": {
+                "section": 1
+              },
+              "inclusivity": ""
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 1
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 1
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 1
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 1,
+          "section_ref": "2.1",
+          "section_title": "Introduction",
+          "total_sections": 6,
+          "implied_lo_assessed": "Students can classify a univariate polynomial as constant, linear, quadratic, or cubic based on its degree.",
+          "section_context": "Algebraic expressions — terms, coefficients, degree, polynomial classification by degree",
+          "question_type": "MCQ",
+          "competency": {
+            "c_code": "C-3.2",
+            "competency_text": "Understands and works with algebraic expressions, polynomials, and their properties."
+          },
+          "cognitive_demand": "Understanding",
+          "visual_stimulus": null,
+          "graph_paper": false,
+          "question_text": "Which of the following is a correct classification of the polynomial 5x − 8 + 2x³ − x²?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Cubic, because the highest power of the variable that appears is 3.",
+              "is_correct": true
+            },
+            {
+              "label": "B",
+              "text": "Quadratic, because x² appears in the polynomial.",
+              "is_correct": false
+            },
+            {
+              "label": "C",
+              "text": "Linear, because the first term written is 5x, a degree-1 term.",
+              "is_correct": false
+            },
+            {
+              "label": "D",
+              "text": "Cubic, because the polynomial has four terms.",
+              "is_correct": false
+            }
+          ],
+          "expected_answer": "",
+          "method_one_line": "",
+          "expected_elements": [],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "verified": true,
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 1
+              },
+              "what_each_option_reveals": {
+                "B": "Classifies by a visible term (x²) rather than the highest-degree term, showing a misconception that degree is determined by any present power rather than the maximum power.",
+                "C": "Uses the order in which terms are written rather than degree to classify, treating the first-listed term as the degree-determining term.",
+                "D": "Confuses the number of terms (four, making it a polynomial of four terms) with the degree, a conceptual conflation of count of terms and degree."
+              },
+              "inclusivity": "Support: ask the student to rewrite the polynomial in standard (descending) order first, then read off the highest exponent. Challenge: ask the student to construct a polynomial with four terms that is quadratic, and explain why the number of terms does not determine the degree."
+            },
+            "NUM": {
+              "learning_outcome": {
+                "section": 1
+              },
+              "inclusivity": ""
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 1
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 1
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 1
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 2,
+          "section_ref": "2.2",
+          "section_title": "Linear Polynomials",
+          "total_sections": 6,
+          "implied_lo_assessed": "Students can evaluate a linear polynomial at given input values and set up and solve a linear equation to find an unknown input from a given output.",
+          "section_context": "Linear polynomial evaluation, linear equations, constant-difference property, input-output function",
+          "question_type": "NUM",
+          "competency": {
+            "c_code": "C-3.2",
+            "competency_text": "Understands and works with algebraic expressions, polynomials, and their properties."
+          },
+          "cognitive_demand": "Application",
+          "visual_stimulus": null,
+          "graph_paper": false,
+          "question_text": "A library charges a fixed membership fee of ₹120 plus ₹35 for every book borrowed. The total amount paid is modelled by the linear polynomial P(n) = 120 + 35n, where n is the number of books borrowed.\n\n(a) Find P(4) and P(7).\n(b) A member paid ₹330 in total. Set up a linear equation and find the number of books she borrowed.",
+          "options": [],
+          "expected_answer": "(a) P(4) = 120 + 35×4 = 120 + 140 = 260; P(7) = 120 + 35×7 = 120 + 245 = 365. (b) 120 + 35n = 330 → 35n = 210 → n = 6.",
+          "method_one_line": "Substitute the given values directly into P(n) = 120 + 35n for part (a); for part (b) set the polynomial equal to 330 and solve for n by isolating the variable.",
+          "expected_elements": [],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "verified": true,
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 2
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "NUM": {
+              "learning_outcome": {
+                "section": 2
+              },
+              "inclusivity": "Support: provide a partially completed substitution frame (P(4) = 120 + 35 × ___ = ___) so the student focuses on the arithmetic operation. Challenge: ask the student to find two values of n for which P(n) differs by exactly 105, and explain the connection to the coefficient of n."
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 2
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 2
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 2
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 2,
+          "section_ref": "2.2",
+          "section_title": "Linear Polynomials",
+          "total_sections": 6,
+          "implied_lo_assessed": "Students can represent a linear polynomial as an input-output function and identify the constant difference between successive integer outputs.",
+          "section_context": "Linear polynomial evaluation, linear equations, constant-difference property, input-output function",
+          "question_type": "MCQ",
+          "competency": {
+            "c_code": "C-3.2",
+            "competency_text": "Understands and works with algebraic expressions, polynomials, and their properties."
+          },
+          "cognitive_demand": "Understanding",
+          "visual_stimulus": "n | f(n) = 8n − 3\n1 | 5\n2 | 13\n3 | 21\n4 | 29",
+          "graph_paper": false,
+          "question_text": "Refer to the table provided, which shows successive integer inputs and outputs for f(n) = 8n − 3. What is the constant difference between consecutive outputs, and what feature of the polynomial determines it?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The constant difference is 8; it equals the coefficient of n.",
+              "is_correct": true
+            },
+            {
+              "label": "B",
+              "text": "The constant difference is 5; it equals the value of f(1).",
+              "is_correct": false
+            },
+            {
+              "label": "C",
+              "text": "The constant difference is 3; it equals the absolute value of the constant term.",
+              "is_correct": false
+            },
+            {
+              "label": "D",
+              "text": "The constant difference is 8; it equals the degree of the polynomial.",
+              "is_correct": false
+            }
+          ],
+          "expected_answer": "",
+          "method_one_line": "",
+          "expected_elements": [],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "verified": true,
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 2
+              },
+              "what_each_option_reveals": {
+                "B": "Confuses the first output value f(1) = 5 with the constant difference, showing a misconception between the initial output and the rate of change.",
+                "C": "Attributes the constant difference to the constant term (−3, absolute value 3) rather than the coefficient of n, confusing the role of the two parameters of a linear polynomial.",
+                "D": "Correctly computes the difference as 8 but incorrectly explains it as the degree of the polynomial (which is 1), confusing degree with the slope coefficient."
+              },
+              "inclusivity": "Support: ask the student to compute f(2) − f(1), f(3) − f(2), and f(4) − f(3) explicitly before selecting an option. Challenge: ask the student to explain what the constant difference would be for f(n) = 8n − 3 compared to g(n) = 8n + 10, and whether the constant term affects the difference."
+            },
+            "NUM": {
+              "learning_outcome": {
+                "section": 2
+              },
+              "inclusivity": ""
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 2
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 2
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 2
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 3,
+          "section_ref": "2.3",
+          "section_title": "Exploring linear patterns",
+          "total_sections": 6,
+          "implied_lo_assessed": "Students can derive a linear expression for the nth term of a pattern or real-world sequence by identifying the constant difference and initial value.",
+          "section_context": "Growing tile pattern, constant difference, nth-term linear expression, reverse-solve linear equation",
+          "question_type": "NUM",
+          "competency": {
+            "c_code": "C-3.2",
+            "competency_text": "Understands and works with algebraic expressions, polynomials, and their properties."
+          },
+          "cognitive_demand": "Application",
+          "visual_stimulus": "Stage (n) | Number of dots\n1 | 4\n2 | 7\n3 | 10\n4 | 13",
+          "graph_paper": false,
+          "question_text": "Refer to the table, which shows the number of dots arranged at each stage of a growing pattern.\n\n(a) Show that the pattern has a constant difference and state its value.\n(b) Derive a linear expression T(n) for the number of dots at stage n.\n(c) Find T(20).",
+          "options": [],
+          "expected_answer": "(a) Differences: 7−4=3, 10−7=3, 13−10=3; constant difference = 3. (b) T(n) = 3n + 1. (c) T(20) = 3(20) + 1 = 61.",
+          "method_one_line": "Identify the constant difference as the coefficient of n, use the first term to find the constant: T(1)=3(1)+b=4 gives b=1, so T(n)=3n+1; then substitute n=20.",
+          "expected_elements": [],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "verified": true,
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 3
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "NUM": {
+              "learning_outcome": {
+                "section": 3
+              },
+              "inclusivity": "Support: prompt the student to compute each successive difference first and write it down before attempting the expression. Challenge: ask what stage number gives exactly 100 dots, requiring the student to reverse-solve T(n) = 100 independently."
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 3
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 3
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 3
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 3,
+          "section_ref": "2.3",
+          "section_title": "Exploring linear patterns",
+          "total_sections": 6,
+          "implied_lo_assessed": "Students can solve a linear equation to find the stage number or input corresponding to a specified term value in a linear pattern.",
+          "section_context": "Growing tile pattern, constant difference, nth-term linear expression, reverse-solve linear equation",
+          "question_type": "NUM",
+          "competency": {
+            "c_code": "C-3.2",
+            "competency_text": "Understands and works with algebraic expressions, polynomials, and their properties."
+          },
+          "cognitive_demand": "Application",
+          "visual_stimulus": null,
+          "graph_paper": false,
+          "question_text": "A sequence of lamp-post arrangements follows a linear pattern. The number of lights at stage n is given by L(n) = 5n + 2.\n\nAt which stage does the arrangement have exactly 47 lights? Show all working.",
+          "options": [],
+          "expected_answer": "5n + 2 = 47 → 5n = 45 → n = 9.",
+          "method_one_line": "Set the linear expression equal to the target value and solve for n by subtracting the constant then dividing by the coefficient.",
+          "expected_elements": [],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "verified": true,
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 3
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "NUM": {
+              "learning_outcome": {
+                "section": 3
+              },
+              "inclusivity": "Support: provide the equation frame '5n + 2 = ___' with the target already inserted so the student focuses on the algebraic steps. Challenge: ask the student to find the stage number for a target of 97 lights and check the answer by substituting back into L(n)."
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 3
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 3
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 3
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 4,
+          "section_ref": "2.4",
+          "section_title": "Linear growth and linear decay",
+          "total_sections": 6,
+          "implied_lo_assessed": "Students can model a real-world scenario as a linear growth or linear decay expression and distinguish the two by the sign of the constant rate of change.",
+          "section_context": "Linear growth C(d) = 100+60d, linear decay h(t) = 3-0.5t, constant rate of change",
+          "question_type": "ECR",
+          "competency": {
+            "c_code": "C-3.2",
+            "competency_text": "Understands and works with algebraic expressions, polynomials, and their properties."
+          },
+          "cognitive_demand": "Analysis",
+          "visual_stimulus": null,
+          "graph_paper": false,
+          "question_text": "Two scenarios are described below.\n\nScenario A: A candle is 24 cm tall when lit. It burns at a constant rate and loses 3 cm of height every hour.\n\nScenario B: A sapling is 8 cm tall when planted. It grows at a constant rate of 5 cm every week.\n\n(a) Write a linear expression for the height of the candle after t hours and a linear expression for the height of the sapling after w weeks.\n(b) For each expression, identify the constant rate of change, state its sign, and explain what the sign tells you about the behaviour of the quantity.\n(c) Evaluate each expression after 4 units of time and explain whether each result is consistent with a growth or a decay model.",
+          "options": [],
+          "expected_answer": "",
+          "method_one_line": "",
+          "expected_elements": [],
+          "look_for": [
+            "Candle expression correctly formed as H(t) = 24 − 3t (decay) and sapling expression as S(w) = 8 + 5w (growth).",
+            "Correct identification of the rate of change: −3 for the candle (negative, indicating the height decreases over time) and +5 for the sapling (positive, indicating the height increases over time).",
+            "Sign analysis: clear statement that a negative coefficient signals linear decay (quantity diminishes with each unit step) and a positive coefficient signals linear growth (quantity increases with each unit step).",
+            "Correct evaluation: H(4) = 24 − 3×4 = 24 − 12 = 12 cm; S(4) = 8 + 5×4 = 8 + 20 = 28 cm.",
+            "Interpretation: H(4) = 12 < 24 (original value decreased — consistent with decay); S(4) = 28 > 8 (original value increased — consistent with growth).",
+            "The reasoning connects the sign of the coefficient in the expression to the direction of change, not just the computed values."
+          ],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "verified": true,
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 4
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "NUM": {
+              "learning_outcome": {
+                "section": 4
+              },
+              "inclusivity": ""
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 4
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 4
+              },
+              "inclusivity": "Support: ask the student to fill in a table of values for t = 0, 1, 2, 3, 4 for each scenario before writing the expression, so the pattern of increase or decrease is visible. Challenge: ask the student to find the time at which the candle burns out (H(t) = 0) and to explain why setting S(w) = 0 would be physically meaningless in this context. Note: this item is the Rule 6 reasoning-floor lift — the implied_lo's core task is modelling and distinguishing by sign, which is Analysis-level; the ECR format ensures the student produces a written argument connecting sign to behaviour rather than only computing values."
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 4
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 5,
+          "section_ref": "2.5",
+          "section_title": "Linear Relationships",
+          "total_sections": 6,
+          "implied_lo_assessed": "Students can find the slope and y-intercept of a linear relationship y = ax + b from two data points by setting up and solving simultaneous equations.",
+          "section_context": "Linear relationship y = ax+b, two data points, simultaneous equations, telecom billing scenario",
+          "question_type": "NUM",
+          "competency": {
+            "c_code": "C-3.2",
+            "competency_text": "Understands and works with algebraic expressions, polynomials, and their properties."
+          },
+          "cognitive_demand": "Application",
+          "visual_stimulus": "Hours of use (x) | Monthly bill in ₹ (y)\n3 | 230\n8 | 480",
+          "graph_paper": false,
+          "question_text": "Refer to the table, which shows two data points from a gym's court-rental billing plan. The billing follows the linear relationship y = ax + b, where x is the number of hours used and y is the monthly bill in ₹.\n\nSet up two simultaneous equations using the data points, solve for a and b, and write the complete billing equation.",
+          "options": [],
+          "expected_answer": "Equation 1: 3a + b = 230. Equation 2: 8a + b = 480. Subtracting Equation 1 from Equation 2: 5a = 250, so a = 50. Substituting back: b = 230 − 3(50) = 230 − 150 = 80. Billing equation: y = 50x + 80.",
+          "method_one_line": "Substitute each data point into y = ax + b to form two simultaneous equations, eliminate b by subtraction to find a, then back-substitute to find b.",
+          "expected_elements": [],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "verified": true,
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 5
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "NUM": {
+              "learning_outcome": {
+                "section": 5
+              },
+              "inclusivity": "Support: provide the frame '3a + b = ___' and '8a + b = ___' so the student focuses on solving the system rather than the substitution step. Challenge: ask the student to use the derived equation to find the number of hours a member used if their bill was ₹380, requiring a reverse-solve."
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 5
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 5
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 5
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 6,
+          "section_ref": "2.6",
+          "section_title": "Visualising linear relationships",
+          "total_sections": 6,
+          "implied_lo_assessed": "Students can plot a linear equation on the coordinate plane by computing two points, draw the line, and identify additional points on it.",
+          "section_context": "Coordinate graph of y = ax+b, slope steepness, y-intercept shift, parallel lines, positive and negative slope",
+          "question_type": "NUM",
+          "competency": {
+            "c_code": "C-4.5",
+            "competency_text": "Connects algebraic representations of linear relationships to their coordinate graphs, interpreting slope and intercept visually."
+          },
+          "cognitive_demand": "Application",
+          "visual_stimulus": null,
+          "graph_paper": true,
+          "question_text": "Consider the linear equation y = 2x − 3.\n\n(a) Compute the coordinates of the points on the line when x = 0 and when x = 4. Show your working.\n(b) On the coordinate plane provided, plot both points and draw the line through them.\n(c) Determine, with working, whether the point (3, 3) lies on this line.",
+          "options": [],
+          "expected_answer": "(a) x=0: y = 2(0)−3 = −3, giving point (0, −3). x=4: y = 2(4)−3 = 5, giving point (4, 5). (b) Points (0, −3) and (4, 5) plotted and joined. (c) Substitute x=3: y = 2(3)−3 = 3. Since y=3 matches the point's y-coordinate, (3, 3) lies on the line.",
+          "method_one_line": "Substitute each x-value into y = 2x − 3 to find the corresponding y-coordinate; then check a candidate point by substituting its x-value and comparing the computed y with the given y.",
+          "expected_elements": [],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "verified": true,
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 6
+              },
+              "what_each_option_reveals": {},
+              "inclusivity": ""
+            },
+            "NUM": {
+              "learning_outcome": {
+                "section": 6
+              },
+              "inclusivity": "Support: provide a coordinate grid with the point (0, −3) already marked so the student only needs to compute and plot the second point. Challenge: ask the student to find a third point on the line with a non-integer x-value (e.g. x = 1.5) and verify it lies on the drawn line."
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 6
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 6
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 6
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        },
+        {
+          "section_number": 6,
+          "section_ref": "2.6",
+          "section_title": "Visualising linear relationships",
+          "total_sections": 6,
+          "implied_lo_assessed": "Students can determine the effect of varying the slope a or the y-intercept b on the graph of y = ax + b, including identifying parallel lines and lines with positive or negative slope.",
+          "section_context": "Coordinate graph of y = ax+b, slope steepness, y-intercept shift, parallel lines, positive and negative slope",
+          "question_type": "MCQ",
+          "competency": {
+            "c_code": "C-4.5",
+            "competency_text": "Connects algebraic representations of linear relationships to their coordinate graphs, interpreting slope and intercept visually."
+          },
+          "cognitive_demand": "Understanding",
+          "visual_stimulus": null,
+          "graph_paper": false,
+          "question_text": "Four linear equations are listed: y = 3x + 1, y = 3x − 4, y = −3x + 1, and y = 5x + 1. Which statement correctly describes the relationship among their graphs?",
+          "options": [
+            {
+              "label": "A",
+              "text": "y = 3x + 1 and y = 3x − 4 are parallel because they have the same slope; y = −3x + 1 has a negative slope so it falls from left to right; y = 5x + 1 is steeper than y = 3x + 1 because |5| > |3|.",
+              "is_correct": true
+            },
+            {
+              "label": "B",
+              "text": "y = 3x + 1 and y = 3x − 4 intersect at the origin because both have slope 3.",
+              "is_correct": false
+            },
+            {
+              "label": "C",
+              "text": "y = 3x + 1 and y = −3x + 1 are parallel because both have y-intercept 1.",
+              "is_correct": false
+            },
+            {
+              "label": "D",
+              "text": "y = 5x + 1 is less steep than y = 3x + 1 because 5 > 3 means the line rises more slowly.",
+              "is_correct": false
+            }
+          ],
+          "expected_answer": "",
+          "method_one_line": "",
+          "expected_elements": [],
+          "look_for": [],
+          "task": "",
+          "scaffold": "",
+          "format_of_output": [],
+          "verified": true,
+          "guide": {
+            "MCQ": {
+              "learning_outcome": {
+                "section": 6
+              },
+              "what_each_option_reveals": {
+                "B": "Confuses 'same slope → parallel' with 'passes through origin'; misunderstands that parallel lines with different y-intercepts never intersect, let alone at the origin.",
+                "C": "Conflates the condition for parallelism (same slope) with the condition for the same y-intercept, believing a shared y-intercept makes lines parallel rather than concurrent at that intercept.",
+                "D": "Inverts the relationship between the magnitude of the slope coefficient and steepness, concluding that a larger coefficient means a shallower rise, the opposite of the chapter's definition."
+              },
+              "inclusivity": "Support: ask the student to write out the slope and y-intercept of each of the four equations in a two-column table before selecting, making both parameters explicit and comparable. Challenge: ask the student to write a fifth equation whose graph is parallel to y = 3x + 1 but passes through the point (0, 7), and explain why exactly one such line exists."
+            },
+            "NUM": {
+              "learning_outcome": {
+                "section": 6
+              },
+              "inclusivity": ""
+            },
+            "SCR": {
+              "learning_outcome": {
+                "section": 6
+              },
+              "inclusivity": ""
+            },
+            "ECR": {
+              "learning_outcome": {
+                "section": 6
+              },
+              "inclusivity": ""
+            },
+            "OPEN_TASK": {
+              "learning_outcome": {
+                "section": 6
+              },
+              "format_type": "",
+              "format_rationale": "",
+              "what_this_demonstrates": "",
+              "reading_the_scaffold": "",
+              "strong_vs_weak_markers": "",
+              "inclusivity": ""
+            }
+          }
+        }
+      ]
+    },
+    "input_tokens": 13303,
+    "output_tokens": 10375,
+    "cost_inr": 17.9891,
+    "assess_input_tokens": 12215,
+    "assess_output_tokens": 8808,
+    "assess_cost_inr": 15.5264
+  }
+}

@@ -1002,7 +1002,22 @@ function setFootnote() {
     return;
   }
 
-  /* Science / Mathematics middle & secondary */
+  /* Mathematics secondary — 3-signal scheme */
+  if (IS_MATH_SEC) {
+    aboutEl.innerHTML = _buildAboutEI(
+      'Understand how chapter periods are calculated',
+      'The effort index tells you how much classroom time a chapter typically needs compared to others. Chapters with a higher effort index get more periods; chapters with a lower one get fewer. It is calculated from three signals read from the chapter content.',
+      [
+        { cls: 'icon-brain',   title: 'Conceptual demand', desc: 'Abstraction only (1–3): how far the chapter\'s objects sit from concrete experience and how much new formal apparatus and notation it introduces. Proof volume does not enter this signal.' },
+        { cls: 'icon-list',    title: 'Reasoning load',    desc: 'Proof / justification volume (0–3): how much of the chapter is spent justifying, deriving, proving, arguing across cases, or explaining why a result holds.' },
+        { cls: 'icon-calc',    title: 'Execution load',    desc: 'Procedural volume (0–2): the weight of multi-step computation, construction, or graphing.' }
+      ],
+      'Abstraction and justification are the harder-to-compress teaching costs and weigh equally at ×2; procedural volume weighs ×1.5 as it can be carried partly outside class. Only relative values matter &mdash; the index shares your available periods across chapters in proportion to their load.'
+    );
+    return;
+  }
+
+  /* Science / Mathematics middle */
   if (IS_SCIENCE) {
     aboutEl.innerHTML = _buildAboutEI(
       'Understand how chapter periods are calculated',
@@ -1141,6 +1156,21 @@ function generateReport() {
             { label: 'Activity load',     val: alVal, mult: '\u00d72',   cont: alCont },
             { label: 'Demo load',         val: dlVal, mult: '\u00d71.5', cont: dlCont },
             { label: 'Exercise load',     val: elVal, mult: '\u00d72',   cont: elCont }
+          ];
+        } else if (IS_MATH_SEC) {
+          /* Mathematics secondary: 3-signal effort index \u2014
+             conceptual_demand (\u00d72), reasoning_load (\u00d72), exec_load (\u00d71.5).
+             Distinct from middle's 4-signal scheme. */
+          var smCd   = cd.conceptual_demand || 0;
+          var smRl   = cd.reasoning_load    || 0;
+          var smEl   = cd.exec_load         || 0;
+          var smCdC  = parseFloat((smCd * 2).toFixed(1));
+          var smRlC  = parseFloat((smRl * 2).toFixed(1));
+          var smElC  = parseFloat((smEl * 1.5).toFixed(1));
+          _signals = [
+            { label: 'Conceptual demand', val: smCd, mult: '\u00d72',   cont: smCdC },
+            { label: 'Reasoning load',    val: smRl, mult: '\u00d72',   cont: smRlC },
+            { label: 'Execution load',    val: smEl, mult: '\u00d71.5', cont: smElC }
           ];
         } else {
           /* Mathematics middle: discrete banded signals, harmonised with
@@ -2182,6 +2212,33 @@ function _downloadPDF_legacy_unused() {
       var _mBLines = doc.splitTextToSize(row.body, _mpEiBodyW);
       doc.text(_mBLines, mL + _mpEiLblW, y); doc.setCharSpace(0);
       y += Math.max(5, _mBLines.length * 3.5);
+    });
+    y += 4;
+  } else if (IS_MATH_SEC) {
+    if (y + 40 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 18; }
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(26, 68, 128);
+    doc.text('About the Effort Index', mL, y); doc.setCharSpace(0);
+    y += 4;
+    rule(y, 0.18, 180); y += 4;
+
+    var _msEiRows = [
+      { label: 'What it measures:', body: "The effort index tells you how much classroom time a chapter typically needs compared to other chapters. Chapters with a higher effort index get more periods; chapters with a lower one get fewer. It is calculated from three signals read from the chapter content." },
+      { label: 'Formula:', body: "effort_index = (Conceptual demand ×2) + (Reasoning load ×2) + (Execution load ×1.5)" },
+      { label: 'Conceptual demand (×2):', body: "Abstraction only — how far the chapter's objects sit from concrete experience and how much new formal apparatus and notation it introduces (1–3). Proof or justification volume does not enter this signal." },
+      { label: 'Reasoning load (×2):', body: "Proof / justification volume (0–3) — how much of the chapter is spent justifying, deriving, proving, arguing across cases, or asking the student to explain why a result holds." },
+      { label: 'Execution load (×1.5):', body: "Procedural volume (0–2) — the weight of multi-step computation, construction, or graphing." },
+      { label: 'Note:', body: "Abstraction and justification are the harder-to-compress teaching costs and weigh equally at ×2; procedural volume weighs ×1.5 as it can be carried partly outside class. Only relative values matter — the index shares your available periods across chapters in proportion to their load." },
+    ];
+    var _msEiLblW = 56;
+    var _msEiBodyW = pageW - mL - mR - _msEiLblW;
+    _msEiRows.forEach(function(row) {
+      if (y + 8 > pageH - mBot) { doc.addPage(); addHeader(); y = mTop + 8; }
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(6.5); doc.setTextColor(26, 68, 128);
+      doc.text(row.label, mL, y); doc.setCharSpace(0);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(6.5); doc.setTextColor(75, 75, 75);
+      var _msBLines = doc.splitTextToSize(row.body, _msEiBodyW);
+      doc.text(_msBLines, mL + _msEiLblW, y); doc.setCharSpace(0);
+      y += Math.max(5, _msBLines.length * 3.5);
     });
     y += 4;
   } else if (IS_SCIENCE) {

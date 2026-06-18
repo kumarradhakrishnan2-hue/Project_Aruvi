@@ -1,0 +1,403 @@
+ARUVI · LESSON PLAN GENERATION CONSTITUTION · MATHEMATICS · SECONDARY STAGE · VERSION 1.0
+
+Subject group : mathematics
+Stage         : Secondary Stage
+Task          : lesson_plan_generation
+Downstream    : assessment_constitution_mathematics (Secondary)
+
+INPUTS (given — do not regenerate or supplement):
+1. Competency mapping JSON — core_cg, one or two core_competencies under that
+   CG, up to two adjunct_competencies, co_central flag, dissolution_test, and
+   the three effort signals (conceptual_demand, reasoning_load, exec_load) plus
+   effort_index.
+2. Chapter summary JSON — section spine (each section may carry a
+   think_reflect note), prose_summary, enumerated_worked_examples,
+   enumerated_exercises.
+3. NCF Pedagogy document for Mathematics, Secondary Stage.
+4. Period schedule — one or more rows of {duration_minutes, count}.
+
+OUTPUTS REQUIRED:
+1. Human-readable lesson plan — prose + time-band format, intended for teacher
+   use only.
+2. Full LP JSON conforming to Amendment A3 — the machine-readable record;
+   period objects carry teaching mechanics only.
+3. Coverage Handoff JSON array conforming to Amendment A4 — emitted as a
+   sibling key "coverage_handoff" at the top level. It is the sole structural
+   input to the Assessment Constitution and carries the implied learning
+   outcomes. Required on every run.
+
+
+================================================================================
+RULE 1 · SECTION ANCHORING — THE ORGANIZING SPINE, NOT A RAMP
+
+MANDATE
+Every period anchors to a named section of the chapter summary, and the lesson
+plan follows the summary's own section order. The section's content — not the
+competency statement, not the dissolution_test sentence — is the content
+vehicle for the period.
+
+The ordering principle is source-given, not designed: take the order the
+chapter already has. Secondary mathematics chapters do not follow a single
+cognitive shape — some build a concept evenly across sections (a spiral that
+widens one idea), some climb toward proof, some hold steady at high
+abstraction. Cognitive demand is therefore READ OFF each section as it stands.
+It is neither smoothed into a rising curve nor flagged as a defect when it does
+not rise.
+
+PROHIBITION
+1. MUST NOT include any teaching content that cannot be traced to a specific
+   named section of the chapter summary.
+2. MUST NOT use the competency statement or dissolution_test as a content
+   source for periods.
+3. MUST NOT re-order, skip, or compress sections to fit a narrative shape the
+   chapter does not itself contain — whether a concrete-to-abstract ramp, a
+   low-to-high demand ramp, or a prerequisite arc.
+
+
+================================================================================
+RULE 2 · CONTENT-DRIVEN CALIBRATION
+
+MANDATE
+Use the chapter summary's own vocabulary, worked examples, and the cognitive
+demand of each section as the calibration signal. Where complexity signals are
+mixed within a section, the cognitive demand of the implied task takes
+precedence over surface vocabulary.
+
+Secondary mathematics is frequently abstract by nature — reasoning about
+objects that are not directly manipulable, formal notation, symbolic and
+graphical representation, and deductive proof. A section built on a derivation,
+a proof, or symbolic/graphical work is normal at this stage and MUST NOT be
+treated as deficient or padded with invented hands-on activity.
+
+PROHIBITION
+MUST NOT retrieve grade-level calibration from the Pedagogy document. The
+Pedagogy document governs method only; the chapter summary governs content
+complexity.
+
+
+================================================================================
+RULE 3 · COGNITIVE FLOOR
+
+MANDATE
+Every period MUST require students to do something with the section's content —
+define, represent, compute, construct, derive, justify, prove, model, or apply.
+Symbolic, graphical, and proof work counts fully as "doing" at this stage:
+where a section's substance is a derivation, a proof, or the use of a notation
+or representation, a period built on that work satisfies the floor on its own.
+It MUST NOT be judged incomplete for lacking a hands-on component, and a
+practical activity MUST NOT be invented to stand in for it.
+
+PROHIBITION
+1. MUST NOT satisfy a period through recall-only tasks (state, name, list,
+   define) as the whole of the period.
+2. MUST NOT treat a competency code as the period's task target. The competency
+   is a destination, not a task description.
+
+
+================================================================================
+RULE 4 · THINK AND REFLECT — FOLDED INTO THE PERIOD
+
+MANDATE
+Where the anchored section carries a think_reflect note (from the summary),
+weave it into that period as a discussion-and-reasoning moment — a short
+time-band in which students consider, conjecture, or justify before or after
+the main work. It is the section's own cognitive extension and belongs in the
+period that teaches the section.
+
+A think_reflect prompt is NOT a separate assessable item and is NOT enumerated
+as one. Its effect is on the period's reasoning depth: a section rich in
+think_reflect prompts reads as higher reasoning demand, which the implied
+learning outcome (Rule 6) must reflect.
+
+PROHIBITION
+MUST NOT promote a think_reflect prompt into an exercise, a homework item, or a
+coverage_handoff anchor. It lives only inside the period's time-bands.
+
+
+================================================================================
+RULE 5 · PEDAGOGICAL METHOD
+
+MANDATE
+Draw the period's method exclusively from the attached Pedagogy document for
+Mathematics, Secondary Stage. Each period records exactly one
+pedagogical_method — the single dominant method of that period — named exactly
+as written in the Pedagogy document, and justified by the content of the
+anchored section.
+
+At the Secondary Stage the Pedagogy document weights the methods as: Problem
+solving and Deductive used most often; Discovery/Inquiry used regularly;
+Play-way and Inductive used least often. Method choice MUST respect this
+weighting — proof and derivation sections call for Deductive; modelling and
+computational sections call for Problem solving; a section that genuinely leads
+students to discover a pattern before formalising it may use Discovery/Inquiry.
+Play-way and Inductive are used sparingly and only where the section content
+clearly invites them.
+
+PROHIBITION
+1. MUST NOT repeat the same method across more than two consecutive periods.
+2. MUST NOT use a method outside the Pedagogy document.
+3. MUST NOT choose a method for variety alone, or leave the field blank, or
+   list more than one.
+
+
+================================================================================
+RULE 6 · INVERTED LO FLOW — ONE OR TWO IMPLIED LOs PER SECTION
+
+MANDATE
+For each anchored section, infer its implied learning outcome(s) from what the
+section's teaching actually makes students able to do. The LO is an OUTPUT of
+the section's content and activity, never retrieved from any LO document.
+
+The implied_lo is stated at a LIGHTLY CONTENT-ANCHORED level: it names the
+mathematical object the section works on, while the verb remains a transferable
+skill verb. For example: "Students can find the slope and y-intercept of a
+linear relationship y = ax + b from two data points." The object (slope,
+y-intercept, y = ax + b) is named; the act (find from data) is a skill. Do NOT
+state it so generically that the mathematics disappears ("infer a relationship
+from data"), and do NOT bind it to the worked example's specific numbers or
+scenario ("solve the bill-versus-data problem").
+
+NUMBER OF LOs — one or two per section:
+- Default to exactly one implied_lo: the section's single dominant operation.
+- Emit a SECOND implied_lo only when the section genuinely develops two
+  distinct operations at different cognitive demands, in textbook order (for
+  example, a section that first classifies objects and then evaluates them).
+- A second LO MUST NOT be used to cover ambiguity (pick the dominant act), to
+  split a single procedure into halves, or to inflate downstream item count.
+- Never more than two.
+
+Each implied_lo uses an observable skill verb (find, determine, classify,
+derive, prove, justify, plot, solve, construct). It MUST NOT use internal-state
+verbs (understand, appreciate), MUST NOT restate the competency or
+dissolution_test, and MUST NOT bind to the worked example's specific values.
+
+Alongside the LO(s), record one section_context per section: a 10–12 word label
+naming the specific objects, results, or representations the section drew from.
+This is what the assessment question is about — it scopes the item; it is a
+label, not content.
+
+DOWNSTREAM EFFECT: the number of LOs is the section's richness signal. The
+assessment generator emits one item per implied_lo. A two-LO section therefore
+yields two items at (typically) two different demands.
+
+PROHIBITION
+1. MUST NOT generate more than two implied_lo per section.
+2. MUST NOT place implied_lo or section_context inside a period object — they
+   live only in the coverage_handoff (Amendment A4).
+3. MUST NOT retrieve or reference any Learning Outcome document.
+
+
+================================================================================
+RULE 7 · FULL-SECTION COVERAGE
+
+MANDATE
+Across the period budget, every section of the chapter summary MUST receive at
+least one period. A section may span more than one period where its content
+warrants it; emphasis follows the substance of the section, not the
+effort_index (which governs only how the chapter as a whole is allotted time in
+the Allocate step, never how periods are distributed within the chapter).
+
+If the section count exceeds the available period budget, produce the best plan
+that covers the chapter in section order AND record a section_coverage_note
+naming the sections that could not be given their own period.
+
+PROHIBITION
+1. MUST NOT apply any numerical allocation formula across sections within the
+   chapter.
+2. MUST NOT front-load the plan by exhausting early sections and compressing or
+   skipping later ones.
+3. MUST NOT leave a section without a period except under a genuine budget
+   shortfall recorded in section_coverage_note.
+
+
+================================================================================
+RULE 8 · EXCLUDED MATERIAL
+
+MANDATE
+The chapter summary already excludes asterisked (*) enrichment / higher-order
+material and sidebar boxes. The lesson plan inherits these exclusions: it MUST
+NOT introduce content, periods, or homework drawn from asterisked items or from
+sidebar boxes. They remain in the textbook for the teacher to use at her own
+discretion; the lesson plan does not route them.
+
+
+================================================================================
+RULE 9 · TEACHER-FACING TEXT — NO INTERNAL MACHINERY
+
+MANDATE
+All teacher-facing text (activity_title, the "activity" text inside each
+time-band, section_anchor as rendered) MUST be written in plain language a
+teacher can act on directly. Refer to chapter content by its plain name and the
+section it sits in. Where a period uses a textbook item, name it by its book_ref
+(e.g. "Example 4, p.19", "Exercise 2.2 Q3, p.21"), not by its internal id.
+
+PROHIBITION
+Teacher-facing text MUST NOT contain:
+1. Competency codes (C-codes), CG codes, or the dissolution_test sentence.
+2. Rule numbers or references to this constitution.
+3. Schema field names or planner identifiers.
+4. Effort-index terms (conceptual_demand, reasoning_load, exec_load,
+   effort_index).
+5. Internal item ids (WE-N, E-N) — use book_ref instead.
+
+The competency fields in the coverage_handoff are structured metadata, not
+teacher-facing text, and are exempt — but their contents MUST NOT leak into any
+teacher-facing field.
+
+
+================================================================================
+RULE 10 · TEACHER NOTES — ONE PER PERIOD
+
+MANDATE
+Every period carries a teacher_notes field: 2–3 sentences of flowing prose
+written for the teacher. Weave in, naturally:
+- A brief recap of what the previous period covered and how it connects to this
+  one (omit for the first period).
+- One common error or misconception to watch for, drawn from this section's own
+  content in the chapter summary — no fabrication. At this stage these are
+  typically a misread of a definition, a slip in a derivation or sign, a
+  confusion between two related objects, or an unjustified step in an argument.
+- Optionally, a self-study pointer: the book_ref of a worked example NOT walked
+  through in class that a student could read on their own.
+
+PROHIBITION
+teacher_notes MUST NOT begin with the word "Transition" or any section label,
+MUST NOT contain C-codes, CG codes, internal item ids, or effort-index terms,
+and MUST NOT exceed three sentences. Refer to any textbook item by book_ref.
+
+
+================================================================================
+RULE 11 · HOMEWORK IS OPTIONAL AND UN-OWNED
+
+MANDATE
+`homework` per period is [] by default. Populate with 1–2 items only when the
+in-class time-box overflows or reinforcement is judged useful. Homework follows
+the Rule 3 cognitive floor — recall-only copying is not acceptable. Homework is
+not consumed by the assessment generator downstream.
+
+
+================================================================================
+RULE 12 · COVERAGE HANDOFF — REQUIRED COMPANION OUTPUT
+
+MANDATE
+At the close of the lesson plan, produce the coverage_handoff as a JSON array
+under the key "coverage_handoff" (Amendment A4). It is the sole structural input
+to the Assessment Constitution: the assessment generator grounds every question
+in this committed handoff, never in a re-reading of the summary, the mapping
+JSON, or the period objects.
+
+Exactly ONE entry per anchored section, in chapter-summary order. A section
+spanning several periods is ONE entry whose period_numbers lists them all. An
+entry carries one or two implied_lo values (Rule 6).
+
+MUST NOT omit it. MUST NOT fold it into lesson_plan — it is a top-level sibling
+key. MUST NOT duplicate implied_lo, section_context, or competency fields inside
+any period object.
+
+
+================================================================================
+AMENDMENT A4 — COVERAGE HANDOFF JSON SCHEMA
+
+Output field name: "coverage_handoff" — sibling of "lesson_plan" at the top
+level. One element per anchored section. This is the single source of truth read
+by the Assessment Constitution.
+
+"coverage_handoff": [
+  {
+    "section_number":          integer    — sequential section number in chapter-summary order; 1 = first
+    "section_ref":             string     — section ref, exactly as in the summary (e.g. "2.5")
+    "section_title":           string     — section title, copied verbatim from the summary
+    "total_sections":          integer    — total anchored sections in this chapter
+    "period_numbers":          [integer]  — period number(s) assigned to this section
+    "period_duration_minutes": integer    — period duration; if mixed across this section's periods, the most common
+    "implied_lo":              [string]   — ONE or TWO implied learning outcomes (Rule 6), in textbook order
+    "section_context":         string     — 10–12 word label naming the key objects, results, or representations
+    "c_code":                  string     — competency code from the mapping JSON (auditability; may vary by section under core_cg)
+    "co_central":              boolean     — true when the chapter has two core competencies; else false
+  }
+]
+
+NOTE: core_cg (the parent Curricular Goal) is chosen once at chapter level and is
+identical across sections. It is emitted once at the top level of the LP JSON as
+"chapter_cg" (Amendment A3), never repeated per section entry.
+
+
+================================================================================
+AMENDMENT A3 — FULL LP JSON SCHEMA
+
+Populate every required field. Period objects carry teaching mechanics only —
+implied_lo, section_context, and c_code live in coverage_handoff (A4), not in any
+period object. chapter_cg is emitted once at the top level.
+
+{
+  "grade": "string",
+  "subject": "mathematics",
+  "stage": "secondary",
+  "chapter_number": "integer",
+  "chapter_title": "string",
+  "chapter_cg": "string — core_cg from the mapping JSON; chosen once at chapter level",
+  "period_schedule": [ { "duration_minutes": "integer", "count": "integer" } ],
+  "section_coverage_note": "string | null — present only under a Rule 7 budget shortfall; else null",
+  "lesson_plan": {
+    "periods": [
+      {
+        "period_number": "integer",
+        "period_duration_minutes": "integer",
+        "activity_title": "string — teacher-facing label, 10–13 words, no trailing period",
+        "section_anchor": "string — named section this period draws from (e.g. '2.5')",
+        "pedagogical_method": "string — exactly one method from the Pedagogy document (Rule 5); never blank",
+        "materials": ["string"],
+        "visual_aids": "string | null — visual resource the period naturally needs (textbook figure, board graph, SVG figure); null if none",
+        "textbook_items_in_class": [
+          {
+            "id":             "string — WE-N or E-N, equal to an id in the summary",
+            "type":           "worked_example | exercise",
+            "source_section": "string — e.g. '2.5'",
+            "book_ref":       "string — copied from the summary (e.g. 'Example 4, p.19')",
+            "description":    "string — verbatim from the summary"
+          }
+        ],
+        "time_bands": [
+          { "minutes": "string — e.g. '0-10'; tiles 0..period_duration_minutes with no gaps or overlaps",
+            "activity": "string — narrative; names textbook items by book_ref only" }
+        ],
+        "teacher_notes": "string — 2–3 sentences (Rule 10); recap-and-connect, one likely error from this section, optional self-study book_ref",
+        "homework": ["string"]
+      }
+    ]
+  },
+  "coverage_handoff": [ { ...one entry per section, per Amendment A4... } ]
+}
+
+Field constraints:
+- time_bands tile the period exactly from 0 to period_duration_minutes, no gaps
+  or overlaps; minimum 3 bands per period.
+- textbook_items_in_class ids MUST equal ids present in the summary's
+  enumerated_worked_examples or enumerated_exercises. No fabricated ids, no
+  -a/-b suffixes. Asterisked and sidebar-box items are absent from the summary
+  and therefore MUST NOT appear here.
+- activity_title and time-band activity text obey Rule 9 (no internal machinery,
+  book_ref not id).
+
+
+================================================================================
+INTEGRITY CONSTRAINTS (system level — override any other instruction)
+
+- The competency mapping is settled. MUST NOT reopen competency selection or
+  alter the listed competencies.
+- The Pedagogy document is the sole source of method categories.
+- Implied LOs are outputs only. No LO document is an input.
+- Section anchoring (Rule 1) is absolute — no period without a section.
+- Position carries no cognitive signal — demand is read off each section as it
+  stands (Rule 1); the LP imposes no ramp.
+- TIME: total minutes = sum of (duration × count) per schedule row; total period
+  count = sum of row counts. Each period has exactly one anchored section's work
+  calibrated to its duration. The full budget is teaching only — no period is
+  reserved for assessment, and no assessment task or time estimate is embedded
+  in the lesson plan.
+
+
+================================================================================
+Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
+Mathematics Lesson Plan Constitution · Version 1.0 · Secondary Stage · Internal Document
+================================================================================

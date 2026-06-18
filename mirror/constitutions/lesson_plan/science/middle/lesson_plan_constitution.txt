@@ -110,6 +110,34 @@ MUST NOT omit the coverage_handoff — it is a required output of every generati
 MUST NOT fold coverage_handoff into lesson_plan — it is a sibling key at the top level of the JSON response.
 
 ================================================================================
+RULE 10 — TEACHER NOTES — PER-PERIOD TEACHING GUIDANCE
+
+Every period MUST carry a `teacher_notes` field: 2–3 sentences of flowing
+prose addressed to the teacher, helping them run the period well. It is a
+required field — never blank.
+
+Write as natural prose. MUST NOT begin with the word "Transition" or any
+section/phase label. Weave in the following content priorities naturally
+(not as a labelled list):
+- Briefly connect this period to the previous one — recap what was covered
+  and how this period builds on it. The first period instead orients the
+  teacher to the chapter's starting point.
+- Flag one common misconception or error to watch for, drawn from the
+  chapter summary's own content. MUST NOT fabricate misconceptions not
+  grounded in the chapter.
+- Optionally add a facilitation pointer: a grouping suggestion, a probing
+  question, or a checkpoint that signals students are ready to move on.
+
+CONSTRAINTS:
+- Grounded in this period's activity and the chapter summary only — no
+  external examples, no invented phenomena (consistent with Rule 3).
+- MUST NOT reference C-codes, competency codes, progression-stage numbers,
+  or any internal ID in teacher-facing prose (consistent with Rule 8's bar
+  on C-codes in LP body text).
+- MUST NOT restate the activity_description verbatim — teacher_notes is
+  guidance on running the activity, not a second description of it.
+
+================================================================================
 AMENDMENT A3 — FULL LP JSON SCHEMA
 
 The system MUST populate every field. Empty strings and empty arrays are not permitted for required fields.
@@ -139,6 +167,7 @@ Each period in lesson_plan.periods[] MUST conform to this object schema:
                                }
                              ]
                              — phases must cover the full period from 0 to period_duration_minutes with no gaps; durations must sum exactly to period_duration_minutes,
+  "teacher_notes":           string — 2–3 sentences max, flowing prose; see Rule 10. Required field; never blank.,
   "materials":               [string],
   "homework":                [string] — [] by default; 1–2 plain-language items max; same cognitive floor as in-class activities
 }

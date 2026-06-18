@@ -49,6 +49,13 @@ from lp_pdf_generator import (
 # ── Assessment-only palette ───────────────────────────────────────────────────
 DARK_GREY = colors.HexColor("#444444")   # Fix 8: section headers
 
+# ── Graph-paper palette (VS-6, Mathematics Secondary) ─────────────────────────
+GP_MINOR = colors.HexColor("#cdeccd")   # light-green minor grid lines
+GP_MAJOR = colors.HexColor("#86c986")   # stronger green major grid lines (every 5)
+GP_AXIS  = colors.HexColor("#3a8f3a")   # axes through the origin
+GP_LABEL = colors.HexColor("#2f6f2f")   # axis number labels
+GP_FIG   = colors.HexColor("#1a3a8f")   # plotted figure (line/points) fallback colour
+
 
 # ── Assessment-only styles ────────────────────────────────────────────────────
 def _make_ast():
@@ -259,6 +266,159 @@ class _NumberLineFlowable(Flowable):
 
 
 # ──────────────────────────────────────────────────────────────────────────────
+# Graph-paper flowable (VS-6, Mathematics Secondary)
+# ──────────────────────────────────────────────────────────────────────────────
+def _parse_figure_svg(svg_text):
+    """
+    Extract a small, robust subset of a figure-only SVG into drawable primitives
+    expressed in the SVG's own user coordinates. We deliberately support only the
+    primitives the constitution asks the model to emit for graph work — straight
+    line segments, polylines, and marked points (plus their text labels) — rather
+    than a general SVG parser (svglib is not a dependency here).
+
+    Returns (viewbox, prims) where viewbox is (minx, miny, w, h) or None, and
+    prims is a list of tuples:
+        ("line",  x1, y1, x2, y2)
+        ("point", cx, cy)
+        ("text",  x, y, string)
+    All coordinates are in SVG user space (y grows downward, as in SVG).
+    """
+    if not svg_text or "<" not in svg_text:
+        return None, []
+    prims = []
+    vb = None
+    m = re.search(r'viewBox\s*=\s*["\']\s*([\d.+-]+)\s+([\d.+-]+)\s+([\d.+-]+)\s+([\d.+-]+)', svg_text)
+    if m:
+        vb = tuple(float(g) for g in m.groups())
+    for lm in re.finditer(r'<line\b[^>]*?x1="([\d.+-]+)"[^>]*?y1="([\d.+-]+)"[^>]*?x2="([\d.+-]+)"[^>]*?y2="([\d.+-]+)"', svg_text):
+        prims.append(("line", *(float(g) for g in lm.groups())))
+    for cm in re.finditer(r'<circle\b[^>]*?cx="([\d.+-]+)"[^>]*?cy="([\d.+-]+)"', svg_text):
+        prims.append(("point", float(cm.group(1)), float(cm.group(2))))
+    for pm in re.finditer(r'<polyline\b[^>]*?points="([^"]+)"', svg_text):
+        pts = re.findall(r'([\d.+-]+)[ ,]+([\d.+-]+)', pm.group(1))
+        for (ax, ay), (bx, by) in zip(pts, pts[1:]):
+            prims.append(("line", float(ax), float(ay), float(bx), float(by)))
+    for tm in re.finditer(r'<text\b[^>]*?x="([\d.+-]+)"[^>]*?y="([\d.+-]+)"[^>]*?>(.*?)</text>', svg_text, re.S):
+        txt = re.sub(r'<[^>]+>', '', tm.group(3)).strip()
+        if txt:
+            prims.append(("text", float(tm.group(1)), float(tm.group(2)), txt))
+    return vb, prims
+
+
+class _GraphPaperFlowable(Flowable):
+    """
+    Green Cartesian graph paper (VS-6). The grid is platform chrome drawn here
+    with native reportlab primitives so every graph-paper item looks identical;
+    the model supplies only the figure (line/points), which is overlaid in the
+    same coordinate system. When fig_svg is empty, a blank green plane renders
+    for the student to plot on.
+    """
+    def __init__(self, fig_svg=None, width=300, height=300, units=10):
+        super().__init__()
+        self.fig_svg = fig_svg or ""
+        self.width = width
+        self.height = height
+        self.units = units          # grid squares per axis half OR full span fallback
+        self._vb, self._prims = _parse_figure_svg(self.fig_svg)
+
+    def wrap(self, availWidth, availHeight):
+        # keep square, never wider than the column
+        side = min(self.width, availWidth)
+        self.width = self.height = side
+        return side, side
+
+    def _grid_geometry(self):
+        # Decide span from the SVG viewBox if present, else default symmetric.
+        if self._vb:
+            _mnx, _mny, vw, vh = self._vb
+            span = max(vw, vh) or (2 * self.units)
+        else:
+            span = 2 * self.units
+        n = max(4, int(round(span)))       # one grid square per unit
+        step = self.width / n
+        return n, step
+
+    def _to_canvas(self, x, y):
+        # Map SVG user coords (viewBox top-left origin, y down) → flowable coords
+        # (bottom-left origin, y up), scaling the viewBox to fill the square.
+        if self._vb:
+            mnx, mny, vw, vh = self._vb
+            vw = vw or 1.0
+            vh = vh or 1.0
+            cx = (x - mnx) / vw * self.width
+            cy = self.height - (y - mny) / vh * self.height
+            return cx, cy
+        return x, y
+
+    def draw(self):
+        c = self.canv
+        n, step = self._grid_geometry()
+        W = H = self.width
+
+        # ── Minor grid lines ──────────────────────────────────────────────
+        c.setLineWidth(0.4)
+        c.setStrokeColor(GP_MINOR)
+        for i in range(n + 1):
+            x = i * step
+            c.line(x, 0, x, H)
+            c.line(0, x, W, x)
+
+        # ── Major grid lines every 5 squares ──────────────────────────────
+        c.setLineWidth(0.8)
+        c.setStrokeColor(GP_MAJOR)
+        for i in range(0, n + 1, 5):
+            x = i * step
+            c.line(x, 0, x, H)
+            c.line(0, x, W, x)
+
+        # ── Axes through the centre (origin) ──────────────────────────────
+        mid = (n // 2) * step
+        c.setLineWidth(1.2)
+        c.setStrokeColor(GP_AXIS)
+        c.line(0, mid, W, mid)      # x-axis
+        c.line(mid, 0, mid, H)      # y-axis
+        # axis numbers at major ticks
+        c.setFont("Helvetica", 5.5)
+        c.setFillColor(GP_LABEL)
+        for i in range(0, n + 1, 5):
+            v = i - n // 2
+            if v == 0:
+                continue
+            c.drawCentredString(i * step, mid - 7, str(v))   # x labels
+            c.drawString(mid + 2, i * step - 2, str(v))      # y labels
+
+        # ── Figure overlay (model-supplied line/points) ───────────────────
+        c.setStrokeColor(GP_FIG)
+        c.setFillColor(GP_FIG)
+        c.setLineWidth(1.4)
+        for p in self._prims:
+            if p[0] == "line":
+                x1, y1 = self._to_canvas(p[1], p[2])
+                x2, y2 = self._to_canvas(p[3], p[4])
+                c.line(x1, y1, x2, y2)
+            elif p[0] == "point":
+                cx, cy = self._to_canvas(p[1], p[2])
+                c.circle(cx, cy, 2.0, stroke=1, fill=1)
+            elif p[0] == "text":
+                tx, ty = self._to_canvas(p[1], p[2])
+                c.setFont("Helvetica", 6)
+                c.drawString(tx + 2, ty + 2, p[3][:24])
+
+        # ── Frame ─────────────────────────────────────────────────────────
+        c.setStrokeColor(GP_MAJOR)
+        c.setLineWidth(0.8)
+        c.rect(0, 0, W, H, stroke=1, fill=0)
+
+
+def _render_graph_paper(fig_svg, uw, story):
+    """Render a VS-6 green graph-paper block (with optional figure overlay)."""
+    side = min(300, uw)
+    story.append(Spacer(1, 3))
+    story.append(_GraphPaperFlowable(fig_svg=fig_svg, width=side, height=side))
+    story.append(Spacer(1, 3))
+
+
+# ──────────────────────────────────────────────────────────────────────────────
 # Visual stimulus renderer
 # ──────────────────────────────────────────────────────────────────────────────
 def _render_visual_stimulus(vs_text: str, uw: float, story: list):
@@ -274,10 +434,22 @@ def _render_visual_stimulus(vs_text: str, uw: float, story: list):
     The "Visual stimulus" label is intentionally suppressed (fix c) — the box
     speaks for itself and the label adds unnecessary clutter.
 
-    Mathematics no longer permits inline SVG (Constitution v3.2 Rule 7);
-    figures are referenced via the Exercise companion block instead.
+    SVG note: Middle-stage Mathematics prohibits inline SVG (v3.2 Rule 7), but
+    Secondary-stage Mathematics permits figure SVG (VS-2) and graph paper
+    (VS-6). Graph-paper figures are routed to _render_graph_paper BEFORE this
+    function is reached (question_block checks item['graph_paper'] first). A
+    bare figure SVG that arrives here without the graph_paper flag is drawn on a
+    coordinate plane too, as the safest rendering of a coordinate figure; raw
+    SVG markup is never printed as text.
     """
     vs = vs_text.strip()
+
+    # ── VS-2: a figure-only SVG reaching this path (no graph_paper flag) ──────
+    # Render it on a graph-paper plane rather than dumping raw <svg> markup.
+    if vs.lstrip().startswith("<svg") or ("<line" in vs or "<circle" in vs or "<polyline" in vs):
+        _render_graph_paper(vs, uw, story)
+        return
+
     lines = [ln.strip() for ln in vs.splitlines() if ln.strip()]
 
     # ── Detect number line: single pipe-row with numeric endpoints + '...' slots
@@ -636,7 +808,13 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
     is_fill_in = (item.get("question_type", "") or "").upper() == "FILL_IN"
 
     # ── Meta block ────────────────────────────────────────────────────────────
-    if is_maths:
+    if is_maths and item.get("_maths_secondary"):
+        # Secondary maths: show the Learning Outcome (mirrors the HTML question
+        # header) instead of the Section / Type / Goal reference line.
+        _lo = _clean_text(item.get("implied_lo_assessed", "") or "")
+        lo_disp  = f"<b>Learning Outcome:</b> {_lo}" if _lo else "<b>Learning Outcome:</b> —"
+        meta_rows = [[Paragraph(lo_disp, AST["q_meta"])]]
+    elif is_maths:
         sec_ref   = _clean_text(item.get("section_ref", "") or "")
         qt_disp   = _clean_text((qtype or "").upper())
         goal_raw  = _clean_text(item.get("goal", "") or "")
@@ -694,6 +872,27 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
                 import re as _re
                 _q_lines = [ln for ln in _q_lines if ln.strip() not in _vs_lines]
                 q_raw = _re.sub(r'\n{3,}', '\n\n', "\n".join(_q_lines)).rstrip()
+        # ── Mathematics MCQ: strip A/B/C/D choice lines embedded in
+        # question_text when a separate options[] array is also present.
+        # The LLM sometimes duplicates the choices into the stem (confirmed
+        # defect in some secondary maths generations), causing them to render
+        # twice — once in the stem, once as the proper option rows below.
+        # Only strip a trailing contiguous block of "A. " / "B. " / "C. " /
+        # "D. " lines so a legitimate stem is never touched.
+        if item.get("is_mathematics") and qtype == "MCQ" and item.get("options") and q_raw:
+            import re as _re
+            _q_lines = q_raw.splitlines()
+            _trim_end = len(_q_lines)
+            while _trim_end > 0 and not _q_lines[_trim_end - 1].strip():
+                _trim_end -= 1
+            _choice_start = _trim_end
+            while _choice_start > 0 and _re.match(r'^\s*[A-D][\.\)]\s+', _q_lines[_choice_start - 1]):
+                _choice_start -= 1
+            if _choice_start < _trim_end and (_trim_end - _choice_start) >= 2:
+                _kept = _q_lines[:_choice_start]
+                while _kept and not _kept[-1].strip():
+                    _kept.pop()
+                q_raw = "\n".join(_kept).rstrip()
         if item.get("is_english") and q_raw and "\n" in q_raw:
             q_text = "<br/>".join(_clean_text(ln) for ln in q_raw.split("\n"))
         else:
@@ -780,7 +979,14 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
     # _render_fill_in_stem so visual_stimulus would be a duplicate.
     if not is_fill_in:
         vs = item.get("visual_stimulus")
-        if vs and isinstance(vs, str) and vs.strip():
+        # ── VS-6: graph paper (Mathematics Secondary) ───────────────────────
+        # graph_paper may be true even when visual_stimulus is null (a blank
+        # green plane for the student to plot on). The green grid is platform
+        # chrome; any SVG in visual_stimulus is the figure-only overlay.
+        if item.get("graph_paper") is True:
+            fig_svg = vs if (vs and isinstance(vs, str) and "<" in vs) else ""
+            _render_graph_paper(fig_svg, uw, story)
+        elif vs and isinstance(vs, str) and vs.strip():
             _render_visual_stimulus(vs, uw, story)
 
     # ── EXTRACT_ANALYSIS: numbered questions follow the extract ───────────────
@@ -818,6 +1024,18 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
             story.append(opt_t)
 
     # Math SCR / NUM / ECR: response boxes suppressed (teacher-facing PDF)
+
+    # ── Mathematics ECR: verified marking rubric (Secondary Rule 9) ───────────
+    # look_for ships as a top-level array, separate from guide.inclusivity.
+    # Without this branch the rubric is silently dropped from the PDF.
+    if is_maths and qtype == "ECR":
+        _look_for = item.get("look_for") or []
+        if _look_for:
+            story.append(Spacer(1, 3))
+            story.append(Paragraph("<b>Look for</b>", AST["ot_lbl"]))
+            for _li, _le in enumerate(_look_for, 1):
+                story.append(Paragraph(f"{_li}. {_clean_text(str(_le))}", AST["ot_txt"]))
+            story.append(Spacer(1, 3))
 
     # ── Open task ─────────────────────────────────────────────────────────────
     elif qtype == "open_task":
@@ -939,7 +1157,10 @@ def question_block(q_num, item, lo_text, uw, header_items=None):
     # English + Science (middle and secondary): double rule (thin + thick).
     # All other subjects: single thin line.
     is_maths_item = bool(item.get("_maths_section_code"))
-    if item.get("is_english") or item.get("is_science"):
+    # Secondary-stage maths adopts the secondary-science double-rule separator
+    # (a thin line over a heavy line) after every question; middle/prep maths
+    # keep the single thin row line.
+    if item.get("is_english") or item.get("is_science") or item.get("_maths_secondary"):
         story.append(HLine(uw, thickness=0.5, color=colors.black, sb=3, sa=1))
         story.append(HLine(uw, thickness=1.5, color=colors.black, sb=1, sa=3))
     else:
@@ -1134,10 +1355,18 @@ def build_assessment_pdf(output_path, data):
                 }
             groups[code]["items"].append(it)
 
-        for code in ("A", "B", "C"):
-            if code not in groups:
-                continue
+        # Middle/prep maths group by fixed A/B/C codes; secondary maths is
+        # section-anchored (codes are chapter section_refs like "2.1", "2.2").
+        # Iterate A/B/C in canonical order when present, then append any other
+        # codes in first-seen (document) order so secondary sections render too
+        # rather than being silently dropped by an A/B/C-only loop.
+        _ordered_codes = [c for c in ("A", "B", "C") if c in groups]
+        _ordered_codes += [c for c in groups if c not in ("A", "B", "C")]
+
+        for code in _ordered_codes:
             grp_title = groups[code]["title"] or ""
+            # Section-ref codes (e.g. "2.1") already include the chapter number;
+            # render "Section 2.1 — Title". Letter codes render "Section A — …".
             sec_text  = (f"Section {code} — {grp_title}".upper()
                          if grp_title else f"Section {code}".upper())
             sec_para  = Paragraph(sec_text, AST["sec_hdr"])
@@ -1321,6 +1550,75 @@ def json_to_assessment_data(j: dict) -> dict:
     is_english = (subject == "English")
 
     raw_items = (j.get("result") or {}).get("assessment_items", []) or []
+
+    # ── Secondary-stage Mathematics envelope ───────────────────────────────
+    # Secondary maths ships an envelope dict
+    #   {subject:"mathematics", stage:"secondary", ..., "questions":[...]}
+    # whose questions[] are FLAT item objects (section-anchored: section_ref /
+    # section_title, no A/B/C section_code and no nested items[]). The generic
+    # maths path below expects section-objects with nested items[], so without
+    # this guard the flatten loop finds no items and produces a BLANK PDF.
+    # Build the flat list directly here, carrying the section context each
+    # item already names.
+    _is_maths_secondary = (
+        is_maths
+        and isinstance(raw_items, dict)
+        and str(raw_items.get("stage", "")).strip().lower() == "secondary"
+        and isinstance(raw_items.get("questions"), list)
+    )
+    if _is_maths_secondary:
+        flat = []
+        for it in raw_items["questions"]:
+            if not isinstance(it, dict):
+                continue
+            _qtype = it.get("question_type", "")
+            _flat = dict(it)  # carry through all body fields
+            _flat["question_text"]        = it.get("question_text", "") or ""
+            _flat["question_type"]        = _qtype
+            _flat["marking_guidance"]     = ""
+            _flat["task"]                 = it.get("task", "") or ""
+            _flat["task_instructions"]    = ""
+            _ref   = it.get("section_ref", "") or ""
+            _stitle = it.get("section_title", "") or ""
+            _flat["_maths_section_code"]  = _ref
+            _flat["_maths_section_title"] = _stitle
+            _flat["is_mathematics"]       = True
+            # Drives the secondary-science double-rule separator after each item.
+            _flat["_maths_secondary"]     = True
+            _flat["section_ref"]          = _ref
+            _flat["visual_stimulus"]      = it.get("visual_stimulus", None)
+            # Flatten the type-nested guide into the flat shape the renderer
+            # reads (expected_answer/method_one_line sit at item top level in
+            # the secondary schema; what_each_option_reveals/inclusivity are
+            # nested under guide[<TYPE>]).
+            _g_raw  = it.get("guide", {}) or {}
+            _g_type = _g_raw.get(_qtype, {}) if isinstance(_g_raw, dict) else {}
+            if not isinstance(_g_type, dict):
+                _g_type = {}
+            _flat["guide"] = {
+                "expected_answer":          it.get("expected_answer", "") or "",
+                "method_one_line":          it.get("method_one_line", "") or "",
+                "what_each_option_reveals": _g_type.get("what_each_option_reveals", {}) or {},
+                "inclusivity":              _g_type.get("inclusivity", "") or "",
+            }
+            # ECR ships its verified marking rubric as a top-level look_for
+            # array (Secondary Assessment Constitution Rule 9) — carry it
+            # through so the renderer can print it for ECR items.
+            _flat["look_for"] = it.get("look_for", []) or []
+            flat.append(_flat)
+        return {
+            "chapter_num":      j["chapter_number"],
+            "chapter_title":    j["chapter_title"],
+            "grade":            str(j["grade"]).replace("Grade ", ""),
+            "subject":          subject,
+            "date":             date_str,
+            "total_questions":  len(flat),
+            "assessment_items": flat,
+            "lo_map":           {},
+            "is_science":       False,
+            "is_maths":         True,
+        }
+
     # Secondary-stage science wraps its questions in an envelope dict
     # {grade, subject, stage, ..., "questions": [...]} instead of a flat list.
     # Unwrap to the inner list so downstream grouping works. (Middle stage and

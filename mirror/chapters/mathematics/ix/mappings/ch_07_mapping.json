@@ -1,0 +1,26 @@
+{
+    "stage":          "secondary",
+    "subject":        "mathematics",
+    "grade":          "ix",
+    "chapter_number": 7,
+    "chapter_title":  "The Mathematics of Maybe: Introduction to Probability",
+
+    "core_cg": "CG-6",
+
+    "core_competencies": [
+        { "c_code": "C-6.2", "justification": "The entire chapter is built around applying probability to everyday likelihood questions: the probability scale anchored to rain, sports, and lucky-draw examples; experimental probability computed from die rolls, coin tosses, paper-cup tosses, and class surveys; theoretical probability computed for dice, cards, and letter-picking; and tree diagrams used to enumerate and assign probabilities to multi-step outcomes such as two coin tosses." }
+    ],
+
+    "adjunct_competencies": [
+        { "c_code": "C-8.1", "justification": "Sample spaces are represented as tables (the two-coin outcome table) and tree diagrams (two coin tosses, fruit-basket picks), and statistical survey data (favourite fruit, favourite club) is used to draw conclusions and project estimates from a sample onto a larger population, all of which are representation-driven modelling tasks distinct from the probability calculations themselves." }
+    ],
+
+    "co_central": false,
+
+    "dissolution_test": "This chapter builds the student's ability to estimate and reason about the likelihood of everyday random events by measuring outcomes against the 0-to-1 probability scale, computing relative frequency from experimental trials, and computing favourable-over-possible ratios from sample spaces and events under theoretical assumptions.",
+
+    "conceptual_demand": 2,
+    "reasoning_load":    1,
+    "exec_load":         1,
+    "effort_index":     7.5
+}

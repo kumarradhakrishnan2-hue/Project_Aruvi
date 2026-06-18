@@ -100,11 +100,11 @@ Note: TWAU constitution (LP + assessment) design is still pending. Mirror data i
 |---|---|---|
 | English | 8 | 8/8 ✅ |
 | Science | 13 | 0 ❌ |
-| Mathematics | 8 | 0 ❌ |
+| Mathematics | 8 | 1/8 ✅ (ch_07) |
 | Social Sciences | 0 PDFs loaded | 0 ❌ |
 
 **Next steps for secondary stage:**
 - Science IX: 13 chapters ready to run (textbook PDFs present)
-- Mathematics IX: 8 chapters ready to run (textbook PDFs present) — pipeline now fully wired (2026-06-16): step_1 chapter-summary prompt already existed, step_2 competency-mapping prompt + mapping constitution authored this session. Chapters have not yet been run — mirror still 0/8. The `chapter` skill's SKILL.md needs a manual update (paste `chapter_skill_updated.md` from project root via Settings > Capabilities) before the skill will route Mathematics secondary requests to the correct prompt folder; until that paste happens, request the secondary mathematics prompts by their explicit path.
+- Mathematics IX: 8 chapters ready to run (textbook PDFs present) — pipeline fully wired (2026-06-16). Chapter 7 ("The Mathematics of Maybe: Introduction to Probability") run 2026-06-18 via explicit prompt paths: `ch_07_summary.json` + `ch_07_mapping.json` (core_cg CG-6, core C-6.2, adjunct C-8.1, co_central false, EI 7.5). Remaining 7 chapters (1-6, 8) not yet run. The `chapter` skill's SKILL.md still needs a manual update (paste `chapter_skill_updated.md` from project root via Settings > Capabilities) before the skill will route Mathematics secondary requests to the correct prompt folder; until that paste happens, request the secondary mathematics prompts by their explicit path.
 - Social Sciences IX: **OUT OF SCOPE** — NCF-compliant textbooks not available. Aruvi covers Social Sciences only up to Grade VIII.
 

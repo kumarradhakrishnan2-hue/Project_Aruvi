@@ -54,6 +54,7 @@
               "activity": "Class discussion: Hooke's 1665 observation of cork cells is introduced — he used a 200–300× microscope and saw box-like compartments. Students reason about what Hooke could and could not have concluded (shape and boundaries yes; internal structure no) given his instrument's resolution."
             }
           ],
+          "teacher_notes": "Open the chapter by confronting the core difficulty — cells are too small to see unaided — so the microscope's field-of-view measurement feels necessary, not arbitrary. The common misconception is that magnification and actual size are the same thing; the ruler-across-the-field activity is what separates them. Make sure each group records the field diameter before estimating cell size.",
           "homework": [
             "Using the formula from Activity 2.1, calculate the estimated size of a cell if the field diameter is 1200 µm and 15 cells are counted along the diameter. State one assumption you must make and explain how it affects the estimate."
           ]
@@ -93,6 +94,7 @@
               "activity": "Exit task: students write two sentences explaining why the cell membrane, not the cell wall, controls what enters a plant cell."
             }
           ],
+          "teacher_notes": "Having established how we see cells, this period maps their boundaries using the fluid-mosaic model. Watch for students treating the membrane as a solid static skin rather than a dynamic, selectively permeable layer — the 'mosaic' wording is deliberate. Distinguishing membrane (all cells) from wall (plant cells) now prevents confusion in the osmosis work ahead.",
           "homework": []
         },
         {
@@ -132,6 +134,7 @@
               "activity": "Teacher closes by asking: what does this experiment tell us about the membrane — is it simply a barrier or does it do something more selective? Students respond verbally."
             }
           ],
+          "teacher_notes": "The potato-in-solution activity turns selective permeability into a measurable weight change, building directly on the membrane introduced last period. The frequent error is predicting water moves toward the lower concentration; anchor the direction by asking where there is more free water. Insist on weighing, blotting, and re-weighing carefully, since small mass changes carry the argument.",
           "homework": [
             "Design a modified version of Activity 2.2 that tests a third condition — isotonic solution. State what salt concentration you would use, predict the result, and explain your reasoning using osmosis principles."
           ]
@@ -176,6 +179,7 @@
               "activity": "Teacher closes with the experimental design question from Pause and Ponder: why must potato pieces be equal in size and weighed at the start? Students articulate the concept of a controlled variable in their own words."
             }
           ],
+          "teacher_notes": "Plasmolysis in onion cells versus shrinkage in animal cells contrasts how the cell wall changes the outcome of the same osmotic pull. The misconception to catch is that plant and animal cells respond identically to sugar solution — the rigid wall is exactly why they differ. Have students link what they see on the slide back to Period 3's weight results.",
           "homework": []
         },
         {
@@ -208,6 +212,7 @@
               "activity": "Class debrief: teacher connects the cytoskeleton to internal transport and structural support in eukaryotes, showing how scale (10–100 µm) makes this necessary. Students add a row for cytoskeleton to their table and annotate its function."
             }
           ],
+          "teacher_notes": "Comparing prokaryotic and eukaryotic organisation shifts attention from boundaries to internal structure. Expect the idea that prokaryotes are simply 'incomplete' eukaryotes; frame them instead as a different, complete organisation lacking a defined nucleus. The comparison table students build is the reference for the organelle work that follows.",
           "homework": []
         },
         {
@@ -240,6 +245,7 @@
               "activity": "Teacher covers mitochondria (double membrane, cristae increase surface area, ATP as energy currency, own DNA and ribosomes), plastids (chloroplasts with chlorophyll and stroma, chromoplasts with non-green pigments for flower and fruit colour, leucoplasts storing starch), and vacuoles (central vacuole in plants for turgor and storage; smaller vacuoles in animal cells). Students complete a four-column organelle summary table: organelle name, location (all/plant only/animal-specific), key structural feature, main function."
             }
           ],
+          "teacher_notes": "The factory analogy traces each organelle's function within the eukaryotic cell. The common slip is memorising organelle names without their roles — keep returning to what each 'department' produces or processes. A quick check that students can state one function per organelle signals readiness for the synthesis later.",
           "homework": [
             "A pancreatic gland cell secretes large quantities of digestive enzymes. Using your organelle summary, list in order the organelles this cell would need most, and explain the role of each in enzyme production and secretion."
           ]
@@ -283,6 +289,7 @@
               "activity": "Students write one sentence connecting what they observed in the microscope (structurally distinct cells) to the claim that eukaryotic cell division is an ordered, staged process."
             }
           ],
+          "teacher_notes": "Observing dividing cells in onion root tips makes cell division visible and grounds the abstract idea that growth comes from more cells, not bigger ones. Watch for students expecting every cell in the field to be mid-division; only a fraction will be, which is itself informative. Comparing sketches across groups builds a fuller picture than any single slide.",
           "homework": []
         },
         {
@@ -320,6 +327,7 @@
               "activity": "Exit check: students state one way mitosis and meiosis are similar and one way they differ, using chromosome number as the criterion."
             }
           ],
+          "teacher_notes": "Using chromosome-number cards, students contrast mitosis and meiosis by tracking chromosome numbers and genetic outcomes. The persistent confusion is that both divisions yield identical cells — the halving in meiosis is the distinguishing point to make explicit. Working the cards slowly through each stage prevents the two processes from blurring together.",
           "homework": [
             "A species has 2n = 46 chromosomes. State the chromosome number in (a) a liver cell after mitosis, (b) a sperm cell after meiosis, (c) a fertilised egg after fusion. Explain your reasoning for each using the rules of mitosis and meiosis."
           ]
@@ -359,6 +367,7 @@
               "activity": "Threads of Curiosity consolidation: students reason about why mature RBCs are enucleate (more haemoglobin space, but no repair or division → 120-day lifespan). Then they address: errors in mitosis → tumours; errors in meiosis → genetic disorders, pregnancy loss, reduced fertility. Students write two sentences linking each error type to its consequence using the chapter's logic."
             }
           ],
+          "teacher_notes": "Building and evaluating Cell Theory from scrambled timeline cards casts students as the scientists assembling a framework. The error to anticipate is treating the theory as fixed fact rather than evidence-built generalisation; the deliberately wrong statement they must correct guards against this. Use the contact-inhibition note to hint at where the theory's limits lie.",
           "homework": []
         },
         {
@@ -393,6 +402,7 @@
               "activity": "Two groups share their diagrams; class identifies any organelle whose structural-function link was described differently across groups and discusses which description is more precise. Teacher confirms the surface area argument for mitochondria and the white-flower pigment question (leucoplasts may hold pigment precursors; chromoplasts absent → white petals)."
             }
           ],
+          "teacher_notes": "This synthesis period asks groups to integrate organelle structure, function, and energy flow into an annotated diagram — pulling Periods 5–6 together. The temptation is to relabel a diagram without showing how parts interact; the energy flow-path is what forces genuine connection. Assign roles within groups so every member reasons about a part.",
           "homework": []
         },
         {
@@ -425,6 +435,7 @@
               "activity": "Teacher introduces the enucleate RBC and sperm lysosome examples as functional consequences of nucleus and lysosome structure. Students reason: (1) RBC has no nucleus — what two functions does it lose? (2) Sperm lysosomal enzymes break the egg's outer layer — which organelle is responsible and why does the sperm need this capability? Students write answers and the teacher connects these to the chapter's broader argument that structure determines function at the cellular level."
             }
           ],
+          "teacher_notes": "The closing period connects nucleus, DNA, chromosomes, and genes across cell types through a structured reasoning sequence. The common muddle is treating these four terms as interchangeable; the step-by-step chain is designed to nest them correctly. The prokaryotic nucleoid comparison is the final check that students can transfer the idea beyond the typical plant or animal cell.",
           "homework": []
         }
       ]

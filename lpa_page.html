@@ -104,6 +104,38 @@
 .qopt.correct { color: #0f6e56; font-weight: 500; }
 /* Visual stimulus */
 .vs-box { background: #f5f5f4; border: 0.5px solid #dedad5; border-radius: 4px; padding: 8px 10px; margin-bottom: 10px; }
+/* Graph paper (VS-6, Mathematics Secondary) — green Cartesian grid as platform
+   chrome; model-supplied figure SVG overlays it. 20 squares; major line every 5. */
+.vs-graphpaper {
+  position: relative;
+  width: 300px; max-width: 100%;
+  aspect-ratio: 1 / 1;
+  margin: 4px auto;
+  border: 1px solid #86c986;
+  background-color: #f3fbf3;
+  background-image:
+    linear-gradient(#86c986 1px, transparent 1px),
+    linear-gradient(90deg, #86c986 1px, transparent 1px),
+    linear-gradient(#cdeccd 1px, transparent 1px),
+    linear-gradient(90deg, #cdeccd 1px, transparent 1px);
+  background-size:
+    25% 25%, 25% 25%,   /* major lines every 5 of 20 squares = 25% */
+    5% 5%,   5% 5%;     /* minor lines every square = 5% */
+  background-position: 0 0, 0 0, 0 0, 0 0;
+}
+/* Axes through the centre (origin) */
+.vs-graphpaper::before, .vs-graphpaper::after {
+  content: ""; position: absolute; background: #3a8f3a;
+}
+.vs-graphpaper::before { left: 50%; top: 0; bottom: 0; width: 1.4px; transform: translateX(-50%); }
+.vs-graphpaper::after  { top: 50%; left: 0; right: 0; height: 1.4px; transform: translateY(-50%); }
+/* Model figure overlaid on the grid */
+.vs-graphpaper-fig {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  stroke: #1a3a8f; fill: none; overflow: visible;
+}
+.vs-graphpaper-fig circle { fill: #1a3a8f; stroke: #1a3a8f; }
+.vs-graphpaper-fig text   { fill: #1a3a8f; stroke: none; font-size: 0.7px; }
 /* Number line */
 .vs-numberline { margin: 6px 0 4px; }
 .vs-numberline-caption { font-size: 10px; color: #5a5754; font-style: italic; margin-top: 6px; }
@@ -177,6 +209,7 @@
 .ss-period-card .pdur  { color: rgba(255,255,255,0.75); }
 .ss-period-card .ptag  { color: rgba(255,255,255,0.88); }
 .ss-period-card .ptag-twau { color: rgba(255,255,255,0.88); }
+.ss-period-card .ptag-math-sec { color: rgba(255,255,255,0.88); }
 .ss-period-card .pchev { color: rgba(255,255,255,0.6); }
 
 /* ── Social Sciences LP: competency info bar inside period body ─────────── */
@@ -204,6 +237,9 @@
 
 /* ── TWAU LP: centre-align Anchored Section column value ────────────────── */
 .ptag-twau { font-size: 11px; font-weight: 400; color: #1a1917; width: 220px; flex-shrink: 0; white-space: normal; line-height: 1.4; text-align: center; }
+
+/* ── Secondary Mathematics LP: centre-align Anchored Section column value ── */
+.ptag-math-sec { font-size: 11px; font-weight: 400; color: #1a1917; width: 220px; flex-shrink: 0; white-space: normal; line-height: 1.4; text-align: center; }
 
 /* ── Science Assessment: collapsible Progression Stage rows ─────────────── */
 .asec-stage-hdr { display: flex; align-items: center; justify-content: center; background: #787674; border-radius: 8px; padding: 10px 12px; cursor: pointer; user-select: none; gap: 8px; margin-bottom: 0; }
@@ -541,6 +577,14 @@
 .sci-sec-asec .asec-stage-hdr.open { background: #2c3e50; }
 .sci-sec-asec .asec-stage-body { border-color: #2c3e50; }
 .sci-sec-asec .asec-stage-title { font-size: 11px; }
+
+/* Mathematics secondary Assessment: identical shell to secondary science so
+   the collapsible bar colour, font, size and centred section-name placement
+   match exactly. */
+.mth-sec-asec .asec-stage-hdr { background: #5a6c7d; }
+.mth-sec-asec .asec-stage-hdr.open { background: #2c3e50; }
+.mth-sec-asec .asec-stage-body { border-color: #2c3e50; }
+.mth-sec-asec .asec-stage-title { font-size: 11px; }
 .eng-spine-blurb {
   font-size: 11px; color: #5a5754; line-height: 1.45;
   font-style: italic; padding: 6px 4px 8px;
@@ -663,6 +707,16 @@ function escHtml(s) {
   return String(s)
     .replace(/&/g,'&amp;').replace(/</g,'&lt;')
     .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+/* HTML-escape, then render caret-notation exponents as superscripts.
+   e.g. "3x^2 + 2x + 1" → "3x<sup>2</sup> + 2x + 1", and "x^{12}" → "x<sup>12</sup>".
+   Used for Mathematics text where ^ denotes a power. */
+function escMath(s) {
+  if (!s) return '';
+  return escHtml(s)
+    .replace(/\^\{([^}]+)\}/g, '<sup>$1</sup>')   /* x^{12} */
+    .replace(/\^(-?\d+)/g, '<sup>$1</sup>');       /* x^2, x^-3 */
 }
 
 /* Format a teacher-guide answer string so numbered / lettered items and
@@ -1487,11 +1541,13 @@ function renderEnglishQuestionCard(q, n) {
   return html;
 }
 
-function renderTimeSlots(slots) {
+function renderTimeSlots(slots, isMath) {
   if (!slots || !slots.length) return '';
+  /* Mathematics: render caret-notation exponents (x^2) as superscripts. */
+  var _esc = isMath ? escMath : escHtml;
   return slots.map(function(s){
     var desc = (s.desc || '').trim().replace(/^\||\|$/g, '').trim();
-    return '<div class="ts"><div class="ttime">' + escHtml(s.time) + '</div><div class="tdesc">' + escHtml(desc) + '</div></div>';
+    return '<div class="ts"><div class="ttime">' + escHtml(s.time) + '</div><div class="tdesc">' + _esc(desc) + '</div></div>';
   }).join('');
 }
 
@@ -1577,11 +1633,13 @@ function buildGuideHtml(q, isSci) {
   if (!q) return '';
   var guide = q.guide || {};
 
-  /* ── Mathematics: structured guide object (Constitution v3.2 Rule 6) ──
-     { expected_answer, method_one_line, what_each_option_reveals, inclusivity }
+  /* ── Mathematics: structured guide object (Constitution v3.2 Rule 6 / Secondary Rule 9) ──
+     { expected_answer, method_one_line, what_each_option_reveals, look_for, inclusivity }
      Per-type diagnostic field:
        MCQ → what_each_option_reveals (in guide)
-     SCR / NUM / ECR carry no extra diagnostic — expected_answer +
+       ECR → look_for (top-level array on the question; Secondary Rule 9) —
+             the verified marking rubric, distinct from inclusivity.
+     SCR / NUM carry no extra diagnostic — expected_answer +
      method_one_line cover what the teacher needs. */
   if (q.is_mathematics) {
     var parts = [];
@@ -1614,6 +1672,18 @@ function buildGuideHtml(q, isSci) {
           if (lbl === mathCorrectLbl) return; /* skip correct answer */
           var v = mathReveals[lbl] || mathReveals[lbl.toLowerCase()];
           if (v) parts.push(escHtml(lbl) + '. ' + escHtml(String(v)));
+        });
+      }
+    }
+    if (mathType === 'ECR') {
+      var mathLookFor = (q.look_for && q.look_for.length)
+        ? q.look_for
+        : (guide.look_for || []);
+      if (mathLookFor.length) {
+        if (parts.length) parts.push('');
+        parts.push('<strong>Look for</strong>');
+        mathLookFor.forEach(function(e, i) {
+          parts.push((i + 1) + '. ' + escHtml(String(e)));
         });
       }
     }
@@ -1762,7 +1832,7 @@ function buildGuideHtml(q, isSci) {
 
 /* ── Visual stimulus renderer ────────────────────────────────────────────── */
 
-function renderVisualStimulus(vs) {
+function renderVisualStimulus(vs, graphPaper) {
   /* Returns an HTML string for the visual_stimulus field.
      Permitted formats per assessment constitutions:
        1. Pipe-delimited table (2+ lines, every line contains |) — rendered
@@ -1773,8 +1843,29 @@ function renderVisualStimulus(vs) {
      The "Visual stimulus" label is intentionally suppressed — the box speaks
      for itself and the label clutters the student-facing view.
 
-     Mathematics no longer permits inline SVG (Constitution v3.2 Rule 7);
-     figures are referenced via the Exercise companion block instead. */
+     SVG note: Middle-stage Mathematics prohibits inline SVG (v3.2 Rule 7), but
+     Secondary-stage Mathematics permits figure SVG (VS-2) and green graph paper
+     (VS-6). When graphPaper is true the figure SVG is laid over a green
+     graph-paper grid (grid is platform chrome); when vs is empty a blank green
+     plane renders for the student to plot on. A bare figure SVG without the
+     flag is also placed on a plane rather than printed as raw markup. */
+  /* ── VS-6 / VS-2: graph paper or figure SVG ──────────────────────────────── */
+  var looksLikeSvg = vs && typeof vs === 'string' &&
+    (/^\s*<svg/i.test(vs) || vs.indexOf('<line') !== -1 ||
+     vs.indexOf('<circle') !== -1 || vs.indexOf('<polyline') !== -1);
+  if (graphPaper || looksLikeSvg) {
+    var figSvg = looksLikeSvg ? vs.trim() : '';
+    var gp = '<div class="vs-box"><div class="vs-graphpaper">';
+    if (figSvg) {
+      /* Overlay the model's figure-only SVG on the grid. Force it to fill the
+         square and sit transparently over the green grid background. */
+      gp += figSvg.replace(/<svg\b/i,
+        '<svg preserveAspectRatio="xMidYMid meet" class="vs-graphpaper-fig"');
+    }
+    gp += '</div></div>';
+    return gp;
+  }
+
   if (!vs || typeof vs !== 'string' || !vs.trim()) return '';
 
   var trimmed = vs.trim();
@@ -1923,6 +2014,7 @@ function renderAssessment(sections) {
   sections.forEach(function(sec) {
     var asecExtra = isEnglish ? ' eng-asec'
                   : (isScience && sec.science_secondary === true) ? ' sci-sec-asec'
+                  : (sec.maths_secondary === true) ? ' mth-sec-asec'
                   : '';
     html += '<div class="asec' + asecExtra + '">';
 
@@ -1987,6 +2079,27 @@ function renderAssessment(sections) {
                 '<div class="asec-stage-chev">▼</div>' +
               '</div>';
       html += '<div class="asec-stage-body' + sciOpenCls + '" id="' + stageId + '-body">';
+
+    } else if (sec.maths_secondary === true) {
+      /* ── Mathematics secondary: adopt the secondary-science collapsible shell.
+         Same .asec-stage-hdr structure (centred section label, accordion
+         toggle, mth-sec-asec colour scheme) as science secondary. First row
+         open by default. The question cards below still use the Maths render
+         path (is_mathematics). */
+      sciStageIdx++;
+      var mStageId    = 'asec-m' + sciStageIdx;
+      var mOpenCls    = sciStageIdx === 1 ? ' open' : '';
+      var mSecLabel   = sec.section_label || sec.section_title || sec.c_code || '';
+      /* Reset LO dedup trackers at each section boundary so "same as above"
+         only applies within a section, not across sections. */
+      lastLO = ''; lastLOCompetency = '';
+
+      html += '<div class="asec-stage-hdr' + mOpenCls + '" id="' + mStageId + '-hdr" ' +
+                   'onclick="toggleAssessStage(\'' + mStageId + '\')">' +
+                '<div class="asec-stage-title">' + escHtml(mSecLabel) + '</div>' +
+                '<div class="asec-stage-chev">▼</div>' +
+              '</div>';
+      html += '<div class="asec-stage-body' + mOpenCls + '" id="' + mStageId + '-body">';
 
     } else {
       /* ── Social Sciences / Mathematics: collapsible competency / section row ─ */
@@ -2058,8 +2171,27 @@ function renderAssessment(sections) {
         html +=   '<div class="qhdr-num">' + qCounter + '</div>';
         html +=   '<div class="qhdr-type"><span class="qtype-lbl">' + typeLbl + '</span></div>';
 
-        if (q.is_mathematics) {
-          /* ── Mathematics: show item-level section_title in the Question column ── */
+        if (q.is_mathematics && q.maths_secondary === true) {
+          /* ── Mathematics secondary: show the Implied Learning Outcome in the
+             Question column, mirroring secondary science. Same dedup behaviour
+             ("same as above" when the LO repeats within a section/competency). */
+          var _mqlo   = (q.implied_lo || '').trim();
+          var _mqcode = ((q.competency && q.competency.c_code) || '').trim();
+          var _mLabel = 'Learning Outcome: ';
+          var _mLoLine;
+          if (!_mqlo) {
+            _mLoLine = '<div class="qhdr-lo"></div>';
+          } else if (_mqlo === lastLO && _mqcode === lastLOCompetency) {
+            _mLoLine = '<div class="qhdr-lo"><span class="lo-lbl">' + _mLabel + '</span><em>same as above</em></div>';
+          } else {
+            lastLO           = _mqlo;
+            lastLOCompetency = _mqcode;
+            _mLoLine = '<div class="qhdr-lo"><span class="lo-lbl">' + _mLabel + '</span>' + escHtml(_mqlo) + '</div>';
+          }
+          html +=   '<div class="qhdr-title">' + _mLoLine + '</div>';
+          html +=   '<div class="qhdr-ref" style="width:0;padding:0;border:none;overflow:hidden"><span class="qchev">▼</span></div>';
+        } else if (q.is_mathematics) {
+          /* ── Mathematics (middle/prep): show item-level section_title ── */
           var _secTitle = (q.section_title || '').trim();
           var _secLine = _secTitle
             ? '<div class="qhdr-lo"><span class="lo-lbl">Section: </span>' + escHtml(_secTitle) + '</div>'
@@ -2106,7 +2238,7 @@ function renderAssessment(sections) {
             html += '<div class="qtext">' + escHtml(taskText) + '</div>';
           }
           /* Visual stimulus — rendered after task text, before scaffold */
-          html += renderVisualStimulus(q.visual_stimulus);
+          html += renderVisualStimulus(q.visual_stimulus, q.graph_paper === true);
           if (q.scaffold) {
             html += '<div class="qtext"><strong>Scaffold</strong></div>';
             /* Split on newlines or step/numbered markers so each renders on its own row */
@@ -2139,11 +2271,29 @@ function renderAssessment(sections) {
           }
         } else {
           var bodyText = q.question || '';
+          /* Mathematics MCQ: the LLM sometimes embeds the A/B/C/D choice
+             lines inside question_text in addition to the separate options
+             array (confirmed defect in some secondary maths generations),
+             which then renders twice. Strip a trailing block of consecutive
+             "A. " / "B. " / "C. " / "D. " lines before display — mirrors the
+             existing pipe-table dedup pattern used for visual_stimulus. */
+          if (q.is_mathematics && type === 'MCQ' && Array.isArray(q.options) && q.options.length && bodyText) {
+            var _bodyLines = bodyText.split(/\n/);
+            var _trimEnd = _bodyLines.length;
+            while (_trimEnd > 0 && /^\s*$/.test(_bodyLines[_trimEnd - 1])) _trimEnd--;
+            var _choiceStart = _trimEnd;
+            while (_choiceStart > 0 && /^\s*[A-D][\.\)]\s+/.test(_bodyLines[_choiceStart - 1])) _choiceStart--;
+            if (_choiceStart < _trimEnd && (_trimEnd - _choiceStart) >= 2) {
+              var _kept = _bodyLines.slice(0, _choiceStart);
+              while (_kept.length && /^\s*$/.test(_kept[_kept.length - 1])) _kept.pop();
+              bodyText = _kept.join('\n');
+            }
+          }
           if (bodyText) {
             html += '<div class="qtext">' + escHtml(bodyText) + '</div>';
           }
           /* Visual stimulus — rendered after question stem, before options */
-          html += renderVisualStimulus(q.visual_stimulus);
+          html += renderVisualStimulus(q.visual_stimulus, q.graph_paper === true);
         }
 
         /* Options (MCQ):
@@ -2196,9 +2346,11 @@ function renderAssessment(sections) {
       });
     }
 
-    /* Close the Science collapsible stage body */
-    if (isScience) html += '</div>'; /* .asec-stage-body */
-    if (!isScience) html += '</div>'; /* .asec-body */
+    /* Close the collapsible body. Science and Maths-secondary use the
+       .asec-stage-body shell; SS / middle-maths use .asec-body. */
+    var _usesStageBody = isScience || sec.maths_secondary === true;
+    if (_usesStageBody) html += '</div>'; /* .asec-stage-body */
+    else                html += '</div>'; /* .asec-body */
 
     html += '</div>'; /* .asec */
   });
@@ -2327,6 +2479,12 @@ function renderLPA() {
           '<div class="lotext">' + escHtml(p.implied_lo) + '</div></div>'
         : '';
 
+      /* Teacher Notes bar (Science secondary) — shown after the LO. */
+      var teacherNotesBar = (p.teacher_notes || '').trim()
+        ? '<div class="tnbar"><div class="tnlabel">Teacher Notes</div>' +
+          '<div class="tntext">' + escHtml(p.teacher_notes) + '</div></div>'
+        : '';
+
       var cardEl = document.createElement('div');
       cardEl.className = 'period-card ss-period-card' + (pIdx === 0 ? ' open' : '');
       cardEl.id = id;
@@ -2343,6 +2501,7 @@ function renderLPA() {
           visualBar +
           timeSlotsHtml +
           loBar +
+          teacherNotesBar +
         '</div>';
       panel.appendChild(cardEl);
     });
@@ -2430,23 +2589,39 @@ function renderLPA() {
        Change 3: loBar omitted.
        Change 4: competencyRow omitted.                                        */
 
-    /* Group periods by progression_stage, preserving order of first appearance */
-    var stageMap   = {};
-    var stageOrder = [];
+    /* Group periods by progression_stage, preserving order of first appearance.
+       Guard against a bogus "Stage 0" catch-all: a period with a missing/zero
+       progression_stage is grouped by its stage_label instead, and the stage
+       NUMBER shown in the header is derived from group order (1-based), never
+       from a literal 0. */
+    var stageMap   = {};   /* key -> array of periods */
+    var stageOrder = [];   /* keys in first-appearance order */
     periods.forEach(function(p) {
-      var sNum = p.progression_stage || 0;
-      if (!stageMap[sNum]) { stageMap[sNum] = []; stageOrder.push(sNum); }
-      stageMap[sNum].push(p);
+      /* Prefer the explicit numeric stage; fall back to stage_label so an
+         un-numbered period still lands in the right conceptual group rather
+         than a Stage 0 bucket. */
+      var key = (p.progression_stage && p.progression_stage > 0)
+        ? 's' + p.progression_stage
+        : 'l:' + (p.stage_label || '');
+      if (!stageMap[key]) { stageMap[key] = []; stageOrder.push(key); }
+      stageMap[key].push(p);
     });
 
-    stageOrder.forEach(function(sNum, sIdx) {
-      var sPeriodsArr = stageMap[sNum];
+    stageOrder.forEach(function(sKey, sIdx) {
+      var sPeriodsArr = stageMap[sKey];
       var firstP      = sPeriodsArr[0];
       var sLabel      = firstP.stage_label || '';
+      /* Header number: use the period's own stage number when valid, else the
+         group's 1-based position. Never 0. */
+      var sNum        = (firstP.progression_stage && firstP.progression_stage > 0)
+        ? firstP.progression_stage
+        : (sIdx + 1);
       /* description field preferred; fall back to activity_summary from LO Handoff */
       var sDesc       = firstP.description || firstP.activity_summary || '';
 
-      var grpId    = 'stage-grp-' + sNum;
+      /* DOM id uses the group position (always unique) so collapse toggles
+         never collide, even if two groups resolve to the same display number. */
+      var grpId    = 'stage-grp-' + (sIdx + 1);
       var openCls  = sIdx === 0 ? ' open' : '';  /* first stage open by default */
       var grpEl    = document.createElement('div');
       grpEl.className = 'stage-group';
@@ -2531,27 +2706,34 @@ function renderLPA() {
             '<div class="lv-roles-grid">' + bubblesHtml + '</div>';
         }
 
+        // Teacher Notes bar (Science middle) — shown in the Time plan panel.
+        var lvTeacherNotesHtml = (p.teacher_notes || '').trim()
+          ? '<div class="tnbar"><div class="tnlabel">Teacher Notes</div>' +
+            '<div class="tntext">' + escHtml(p.teacher_notes) + '</div></div>'
+          : '';
+
         // ── assemble the new .pbody ──────────────────────────────────────────────
         var pbodyHtml =
           '<div class="pbody">' +
 
-            // Toggle bubbles
+            // Toggle bubbles — Time plan on the left (default), Lesson view on the right
             '<div class="lv-tabs">' +
-              '<span class="lv-tab active" onclick="switchLvTab(\'' + pid + '\',\'lv\',this)">Lesson view</span>' +
-              '<span class="lv-tab" onclick="switchLvTab(\'' + pid + '\',\'tp\',this)">Time plan</span>' +
+              '<span class="lv-tab active" onclick="switchLvTab(\'' + pid + '\',\'tp\',this)">Time plan</span>' +
+              '<span class="lv-tab" onclick="switchLvTab(\'' + pid + '\',\'lv\',this)">Lesson view</span>' +
+            '</div>' +
+
+            // ── Time plan panel (default active) ─────────────────────────────────
+            '<div class="lv-panel active" id="lv-' + pid + '-tp">' +
+              materialRow +
+              timeSlotsHtml +
+              lvTeacherNotesHtml +
             '</div>' +
 
             // ── Lesson view panel ───────────────────────────────────────────────
-            '<div class="lv-panel active" id="lv-' + pid + '-lv">' +
+            '<div class="lv-panel" id="lv-' + pid + '-lv">' +
               lvMaterialHtml +
               lvActivityHtml +
               lvRolesHtml +
-            '</div>' +
-
-            // ── Time plan panel ─────────────────────────────────────────────────
-            '<div class="lv-panel" id="lv-' + pid + '-tp">' +
-              materialRow +
-              timeSlotsHtml +
             '</div>' +
 
           '</div>'; // .pbody
@@ -2603,13 +2785,18 @@ function renderLPA() {
       var _displaySection = (isMath && (p.section_title || '').trim())
         ? (p.section_title || '').trim()
         : _rawSection;
+      var _secTagClass = p.is_twau
+        ? 'ptag-twau'
+        : (p.is_math_secondary ? 'ptag-math-sec' : 'ptag');
+      /* For Mathematics, render caret-notation exponents (x^2) as superscripts. */
+      var _esc = isMath ? escMath : escHtml;
       var sectionTag = _displaySection
-        ? '<div class="' + (p.is_twau ? 'ptag-twau' : 'ptag') + '">' + escHtml(_displaySection) + '</div>'
+        ? '<div class="' + _secTagClass + '">' + _esc(_displaySection) + '</div>'
         : '';
 
       var _rawActivity = (p.activity_name || (p.activity_summary||'').split(',')[0].substring(0,60))
         .replace(/^Anchored to:\s*/i, '').replace(/^Activity:\s*/i, '').trim();
-      var activityLabel = '<div class="pname">' + escHtml(_rawActivity) + '</div>';
+      var activityLabel = '<div class="pname">' + _esc(_rawActivity) + '</div>';
 
       /* Material row — for Mathematics, include Pedagogical Approach at the right end */
       var materialRow = '';
@@ -2617,18 +2804,18 @@ function renderLPA() {
         var pedHtml = (isMath && (p.pedagogical_method || '').trim())
           ? '<div class="mat-ped-wrap">' +
               '<span class="mat-ped-label">Pedagogical Approach:</span>' +
-              '<span class="mat-ped-text">' + escHtml(p.pedagogical_method) + '</span>' +
+              '<span class="mat-ped-text">' + _esc(p.pedagogical_method) + '</span>' +
             '</div>'
           : '';
         materialRow =
           '<div class="matrow">' +
             '<div class="matlabel">Material</div>' +
-            '<div class="mattext">' + escHtml(p.material) + '</div>' +
+            '<div class="mattext">' + _esc(p.material) + '</div>' +
             pedHtml +
           '</div>';
       }
 
-      var timeSlotsHtml = renderTimeSlots(p.time_slots || []);
+      var timeSlotsHtml = renderTimeSlots(p.time_slots || [], isMath);
 
       /* loBar — shown for SS only (Social Sciences rendering path);
          Maths uses materialRow for this; Science has its own path above */
@@ -2638,7 +2825,7 @@ function renderLPA() {
 
       var teacherNotesBar = (p.teacher_notes || '').trim()
         ? '<div class="tnbar"><div class="tnlabel">Teacher Notes</div>' +
-          '<div class="tntext">' + escHtml(p.teacher_notes) + '</div></div>'
+          '<div class="tntext">' + _esc(p.teacher_notes) + '</div></div>'
         : '';
 
       /* Homework bar — Mathematics only (Maths LP Rule 9). Build from the
@@ -2649,20 +2836,29 @@ function renderLPA() {
         var hwLines = [];
         if (Array.isArray(p.homework)) {
           p.homework.forEach(function (it) {
+            /* Secondary maths emits homework as plain strings; middle/prep
+               emit {book_ref, description} dicts. Handle both. A plain string
+               is a complete instruction — show it in FULL (no truncation);
+               only the dict-shape `description` hint is capped below. */
+            if (typeof it === 'string') {
+              var s = it.trim();
+              if (s) hwLines.push(escMath(s));
+              return;
+            }
             var ref  = ((it && it.book_ref)    || '').trim();
             var desc = ((it && it.description) || '').trim();
             if (desc) {
               var words = desc.split(/\s+/);
               if (words.length > 15) desc = words.slice(0, 15).join(' ') + '…';
             }
-            if (ref && desc)      hwLines.push(escHtml(ref) + ' — ' + escHtml(desc));
-            else if (ref)         hwLines.push(escHtml(ref));
-            else if (desc)        hwLines.push(escHtml(desc));
+            if (ref && desc)      hwLines.push(escMath(ref) + ' — ' + escMath(desc));
+            else if (ref)         hwLines.push(escMath(ref));
+            else if (desc)        hwLines.push(escMath(desc));
           });
         }
         var hwHtml = hwLines.length
           ? hwLines.join('<br/>')
-          : escHtml((p.homework_book_refs || '').trim());
+          : escMath((p.homework_book_refs || '').trim());
         if (hwHtml) {
           homeworkBar =
             '<div class="hwbar"><div class="hwlabel">Homework</div>' +

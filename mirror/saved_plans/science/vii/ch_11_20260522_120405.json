@@ -53,6 +53,7 @@
               "description": "Each student writes a single sentence defining luminous and non-luminous in their own words as a quick exit check."
             }
           ],
+          "teacher_notes": "Start by having students sort objects into luminous and non-luminous before any definition is given — the sorting exposes their working idea of 'light source'. The persistent misconception is that the Moon and mirrors are luminous; let the borrowed-light cases surface naturally during discussion. Keep the sorted set visible, as transparency comes next.",
           "materials": [
             "Object sorting cards (printed or hand-drawn)",
             "Two-column recording sheet",
@@ -95,6 +96,7 @@
               "description": "Students individually answer: 'Why does frosted glass cast a less sharp shadow than clear glass?' as a written consolidation sentence."
             }
           ],
+          "teacher_notes": "Building from light sources to materials, students now shine a torch through everyday materials to grade them transparent, translucent, or opaque. Watch for the all-or-nothing view that materials are simply 'see-through or not' — butter paper and thin cloth are the deliberate in-between cases. Encourage them to describe how clearly the object behind is seen, not just whether light passes.",
           "materials": [
             "Torch",
             "Clear glass piece or glass tumbler",
@@ -142,6 +144,7 @@
               "description": "The teacher introduces the term rectilinear propagation and the ray diagram convention, drawing a labelled ray with arrowhead on the board to formalise what groups have discovered."
             }
           ],
+          "teacher_notes": "The three-aligned-holes setup is the first move from observing to explaining: light reaching the eye only when the holes line up is direct evidence that light travels straight. The error to anticipate is students nudging the cards to 'make it work' and missing that misalignment blocks the flame — let a failed alignment stand as data. This straight-line idea underpins everything that follows on shadows.",
           "materials": [
             "Three cardboard sheets with small holes",
             "Candle and matchbox",
@@ -187,6 +190,7 @@
               "description": "Quick whole-class share: one group explains their ray diagram; the teacher corrects or affirms and links back to rectilinear propagation as the cause."
             }
           ],
+          "teacher_notes": "Now students vary torch-to-object and object-to-screen distances to find what controls shadow size, turning rectilinear propagation into a predictive tool. The common confusion is changing two variables at once and losing the pattern — coach them to move one distance at a time. A shadow that has a fuzzy edge is worth noticing but need not be explained fully here.",
           "materials": [
             "Torch",
             "Opaque cardboard cut-out or hand",
@@ -236,6 +240,7 @@
               "description": "The teacher connects the pinhole camera to the camera obscura historical fact and asks: 'What would happen if you made the pinhole bigger?' Students predict and note it for follow-up curiosity."
             }
           ],
+          "teacher_notes": "The pinhole camera applies straight-line travel to explain a real inverted image — a satisfying payoff for the previous periods. Expect students to be puzzled that the image is upside down; trace two rays from top and bottom of the object to show why. A larger pinhole gives a brighter but blurrier image, which is a useful trade-off to let them discover.",
           "materials": [
             "Two nested cardboard boxes of slightly different sizes",
             "Pin or sharp pencil for pinhole",
@@ -281,6 +286,7 @@
               "description": "The teacher consolidates the first law of reflection from group findings and notes that the second law (coplanarity) will be confirmed in the next period's discussion."
             }
           ],
+          "teacher_notes": "This period shifts from propagation to reflection: students trace incident and reflected rays at several angles and measure against the normal. The frequent mistake is measuring angles from the mirror surface instead of from the normal — establish the normal first, every time. Collecting clean angle pairs now matters, because Period 7 formalises the law from this very data.",
           "materials": [
             "Plane mirror",
             "Torch or ray box",
@@ -327,6 +333,7 @@
               "description": "Quick pair-share: each student tells their partner one property of a plane mirror image, and the teacher corrects any misconceptions on the board."
             }
           ],
+          "teacher_notes": "Here the teacher formalises the two laws of reflection using the students' own Period 6 measurements, so the law arrives as a summary of their data, not a decree. Watch for the idea that a virtual image is 'really behind' the mirror — clarify that no light actually reaches there. The Ibn al-Haytham profile is a chance to show optics as a human, cross-cultural enquiry.",
           "materials": [
             "Plane mirror with stand",
             "Two identical pins",
@@ -376,6 +383,7 @@
               "description": "Students individually write one sentence explaining why a periscope produces an upright (not inverted) image unlike the pinhole camera."
             }
           ],
+          "teacher_notes": "Lateral inversion and the periscope apply reflection to devices students can relate to, including the reversed AMBULANCE lettering. The common error is calling lateral inversion an up-down flip rather than left-right — the mirror-writing activity settles this directly. Have them predict the periscope's path before building, so the two-mirror logic is reasoned, not assembled by trial.",
           "materials": [
             "Plane mirrors (two per group)",
             "Cardboard periscope template or box",
@@ -426,6 +434,7 @@
               "description": "The teacher asks a closing question: 'What would happen with parallel mirrors?' to connect to the chapter's final point about a very large number of images, and students make a brief verbal prediction."
             }
           ],
+          "teacher_notes": "Counting images between two mirrors at shrinking angles links reflection to a pattern students can quantify, leading into the kaleidoscope. Anticipate the assumption that smaller angles simply give 'more' images randomly — guide them toward the regularity in the count. Keep mirror angles as close to 90°, 60°, and 45° as the setup allows so the pattern is clean.",
           "materials": [
             "Two plane mirrors with stands",
             "Three mirror strips for kaleidoscope",
@@ -477,6 +486,7 @@
               "description": "Students write a two-sentence reflection on which concept from the chapter they feel most confident applying and which they would like to revisit."
             }
           ],
+          "teacher_notes": "This synthesis period gives three unfamiliar scenarios spanning shadows, the pinhole camera, and reflection — the whole chapter in one reasoning set. The temptation is to recall a fact rather than reason from straight-line travel or the reflection laws; push for the 'why', traced ray by ray. Let groups disagree and resolve it with a diagram, since explaining is the target skill.",
           "materials": [
             "Three scenario problem cards",
             "Plain paper for diagrams",

@@ -1437,19 +1437,31 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                     # Maths: distinct single-letter section keys (section_a/b/c)
                     # in coverage_handoff — middle uses section_a/b/c keys;
                     # prep uses intent keys (explore/reason/practice/solve).
+                    # Secondary maths is section-anchored (one item per chapter
+                    # section_ref, no A/B/C grouping) — count distinct
+                    # section_ref values so the chart reflects LO/section items
+                    # rather than the wrong fixed-3 fallback.
                     elif _subj_folder == "mathematics":
-                        _sect_hits = _re_trans.findall(
-                            r'"(section_[a-z])"(?:\s*:)', streamed_text
-                        )
-                        _intent_hits = _re_trans.findall(
-                            r'"(explore|reason|practice|solve)"(?:\s*:)', streamed_text
-                        )
-                        if _sect_hits:
-                            _total_assess_groups = len(set(_sect_hits))
-                        elif _intent_hits:
-                            _total_assess_groups = len(set(_intent_hits))
+                        if get_stage(grade) == "secondary":
+                            _ref_hits = _re_trans.findall(
+                                r'"section_ref"\s*:\s*"([^"]+)"', streamed_text
+                            )
+                            _total_assess_groups = (
+                                len(set(_ref_hits)) if _ref_hits else 0
+                            )
                         else:
-                            _total_assess_groups = 3
+                            _sect_hits = _re_trans.findall(
+                                r'"(section_[a-z])"(?:\s*:)', streamed_text
+                            )
+                            _intent_hits = _re_trans.findall(
+                                r'"(explore|reason|practice|solve)"(?:\s*:)', streamed_text
+                            )
+                            if _sect_hits:
+                                _total_assess_groups = len(set(_sect_hits))
+                            elif _intent_hits:
+                                _total_assess_groups = len(set(_intent_hits))
+                            else:
+                                _total_assess_groups = 3
                     progress_placeholder.markdown(
                         _progress_html(5, assess_ticks_row=_ticks_row(
                             0, _total_assess_groups, "Writing assessment questions"
@@ -1497,7 +1509,16 @@ Output only the raw JSON object. No markdown. No prose. No section headers. No `
                             r'"weight_label"\s*:\s*"([^"]+)"', _assess_text
                         )))
                     elif _subj_folder == "mathematics":
-                        _ag = _assess_text.count('"section_code"')
+                        # Middle/prep group by section_code; secondary maths is
+                        # section-anchored and emits section_ref per item (no
+                        # section_code), so count distinct section_ref there.
+                        if get_stage(grade) == "secondary":
+                            import re as _re_ms
+                            _ag = len(set(_re_ms.findall(
+                                r'"section_ref"\s*:\s*"([^"]+)"', _assess_text
+                            )))
+                        else:
+                            _ag = _assess_text.count('"section_code"')
                     elif _subj_folder == "the_world_around_us":
                         # One item per period — count implied_lo occurrences
                         _ag = _assess_text.count('"implied_lo"')
@@ -2005,17 +2026,31 @@ Output only the raw JSON object. No markdown. No prose. No ```json fences.
             except Exception:
                 _da_total_groups = 0
         elif _da_subj_folder == "mathematics":
-            # coverage_handoff has section_a/b/c keys — count them directly.
-            # Future-proof: if a Section D is added, the count auto-adjusts.
-            try:
-                import re as _re_da_m
-                _da_sect = _re_da_m.findall(
-                    r'"(section_[a-z])"(?:\s*:)',
-                    json.dumps(coverage_handoff)
-                )
-                _da_total_groups = len(set(_da_sect)) if _da_sect else 3
-            except Exception:
-                _da_total_groups = 3
+            # Secondary maths is section-anchored: coverage_handoff carries a
+            # section_ref per section (no A/B/C keys). Count distinct
+            # section_ref so the chart reflects sections/LO items.
+            if get_stage(grade) == "secondary":
+                try:
+                    import re as _re_da_ms
+                    _da_refs = _re_da_ms.findall(
+                        r'"section_ref"\s*:\s*"([^"]+)"',
+                        json.dumps(coverage_handoff)
+                    )
+                    _da_total_groups = len(set(_da_refs)) if _da_refs else 0
+                except Exception:
+                    _da_total_groups = 0
+            else:
+                # coverage_handoff has section_a/b/c keys — count them directly.
+                # Future-proof: if a Section D is added, the count auto-adjusts.
+                try:
+                    import re as _re_da_m
+                    _da_sect = _re_da_m.findall(
+                        r'"(section_[a-z])"(?:\s*:)',
+                        json.dumps(coverage_handoff)
+                    )
+                    _da_total_groups = len(set(_da_sect)) if _da_sect else 3
+                except Exception:
+                    _da_total_groups = 3
         elif _da_subj_folder == "english":
             # coverage_handoff is a dict keyed by spine_code — only present
             # spines appear. len() gives the exact spine count for this chapter.
@@ -2167,7 +2202,15 @@ Output only the raw JSON object. No markdown. No prose. No ```json fences.
                         r'"c_code"\s*:\s*"([^"]+)"', streamed_text
                     )))
                 elif _da_subj_folder == "mathematics":
-                    _dag = streamed_text.count('"section_code"')
+                    # Secondary maths emits section_ref per item (no
+                    # section_code); count distinct section_ref there.
+                    if get_stage(grade) == "secondary":
+                        import re as _re_da_m2
+                        _dag = len(set(_re_da_m2.findall(
+                            r'"section_ref"\s*:\s*"([^"]+)"', streamed_text
+                        )))
+                    else:
+                        _dag = streamed_text.count('"section_code"')
                 elif _da_subj_folder == "the_world_around_us":
                     # One item per period — count completed items via implied_lo
                     # field occurrences (one per assessment item in the schema).
@@ -2671,7 +2714,112 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
                     "activity_description":    p.get("activity_description", ""),
                     "actors":                  p.get("roles", []),
                     "pedagogical_approach":    p.get("pedagogical_approach", ""),
+                    "teacher_notes":           p.get("teacher_notes", ""),
                 })
+                # Middle-stage Science is fully handled here. Without this
+                # `continue`, the period falls through to the Social Sciences
+                # A3 `else` branch below and is appended a SECOND time — which
+                # produced a phantom, label-less stage group (formerly "Stage 0",
+                # then a duplicate "Stage 2") collecting the doubled periods.
+                continue
+            _ho = _ho_by_period.get(p.get("period_number")) \
+                or _ho_by_label.get(p.get("section_anchor")) \
+                or {}
+
+            # ── Secondary-stage Mathematics (section-anchored, flat) ─────────
+            # The secondary Maths LP (added 2026-06-16) shares Science's
+            # section-anchored shape — section_anchor + time_bands + a
+            # coverage_handoff array carrying implied_lo/section_context — so it
+            # would otherwise be MISROUTED into the science_secondary branch
+            # (blank materials, list-typed implied_lo printed as a raw array,
+            # competency_text looked up in the wrong descriptions file).
+            # Unique signal: the period carries `textbook_items_in_class` (typed
+            # book-item pointers), which only the Maths LP Constitution emits —
+            # secondary Science periods never have it. Tested BEFORE science_sec.
+            # We emit the SAME shape as the prep/middle Maths branch above
+            # (is_mathematics:True) so lpa_page.html's Maths render path applies:
+            # section_title, pedagogical_method, material, homework, suppressed
+            # LO/competency bars.
+            _is_maths_secondary = (
+                "textbook_items_in_class" in p
+                and p.get("section_anchor") is not None
+                and isinstance(p.get("time_bands"), list)
+                and not isinstance(p.get("textbook_segments"), list)
+                and p.get("stage_label") is None
+                and p.get("progression_stage") is None
+                and not isinstance(p.get("spines_taught"), list)
+            )
+            if _is_maths_secondary:
+                mat = p.get("materials", "")
+                if isinstance(mat, list):
+                    mat = ", ".join(mat)
+                # time_bands [{minutes, activity}] → time_slots [{time, desc}]
+                time_slots = [
+                    {"time": tb.get("minutes", ""), "desc": tb.get("activity", "")}
+                    for tb in (p.get("time_bands") or [])
+                ]
+                # implied_lo lives in coverage_handoff and is a LIST of outcome
+                # strings (secondary effort-index schema). Join to a single
+                # string so the renderer never prints a raw array. The Maths
+                # render path suppresses the LO bar anyway, but other consumers
+                # (the assessment g_lo_map lookup) read this field as a string.
+                _raw_lo = _ho.get("implied_lo")
+                if _raw_lo is None:
+                    _raw_lo = p.get("implied_lo") or ""
+                if isinstance(_raw_lo, list):
+                    _raw_lo = " ".join(str(x).strip() for x in _raw_lo if x)
+                _items_inclass  = p.get("textbook_items_in_class") or []
+                _items_homework = p.get("homework") or []
+                _ic_lines = "; ".join(
+                    (it.get("book_ref") or "").strip()
+                    for it in _items_inclass
+                    if isinstance(it, dict) and it.get("book_ref")
+                )
+                # Secondary maths emits homework as plain strings (not
+                # {book_ref, description} dicts like middle/prep). Render both
+                # shapes so the HTML homework bar is never blank.
+                def _hw_to_str(it):
+                    if isinstance(it, dict):
+                        ref  = (it.get("book_ref") or "").strip()
+                        desc = (it.get("description") or "").strip()
+                        if ref and desc:
+                            return f"{ref} — {desc}"
+                        return ref or desc
+                    return str(it).strip() if it is not None else ""
+                _hw_lines = "; ".join(
+                    s for s in (_hw_to_str(it) for it in _items_homework) if s
+                )
+                out.append({
+                    "period_number":           p.get("period_number"),
+                    "period_duration_minutes": p.get("period_duration_minutes"),
+                    "chapter_section":         p.get("section_anchor", ""),
+                    "activity_name":           p.get("activity_title", ""),
+                    "activity_summary":        p.get("activity_title", ""),
+                    "time_slots":              time_slots,
+                    "material":                mat,
+                    "implied_lo":              _raw_lo,
+                    "c_code":                  "",
+                    "cg":                      "",
+                    "weight":                  0,
+                    "competency_text":         "",
+                    "visual_representation":   None,
+                    # ── Maths-specific fields surfaced to lpa_page.html ─────────
+                    "is_mathematics":          True,
+                    # Secondary-stage flag so the renderer can centre-align the
+                    # Anchored Section value (middle/prep maths stay left-aligned).
+                    "is_math_secondary":       True,
+                    "section_title":           (_ho.get("section_title")
+                                                or p.get("section_anchor", "")),
+                    "pedagogical_method":      p.get("pedagogical_method", ""),
+                    "textbook_items_in_class": _items_inclass,
+                    "homework":                _items_homework,
+                    "items_in_class_book_refs": _ic_lines,
+                    "homework_book_refs":      _hw_lines,
+                    "teacher_notes":           p.get("teacher_notes", ""),
+                    "visual_aids":             p.get("visual_aids", ""),
+                })
+                continue
+
             # ── Secondary-stage Science (section-anchored, flat) ─────────────
             # Current schema (LP Constitution · Amendment A4): the period object
             # carries teaching mechanics only — section_anchor, time_bands,
@@ -2684,9 +2832,6 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
             # entry exists for this period, OR the period inlines section_context.
             # Shape: rendered FLAT (no stage layer), approach column, LO at end,
             # NO materials row.
-            _ho = _ho_by_period.get(p.get("period_number")) \
-                or _ho_by_label.get(p.get("section_anchor")) \
-                or {}
             _is_science_secondary = (
                 (bool(_ho) or p.get("section_context") is not None)
                 and p.get("section_anchor") is not None
@@ -2730,6 +2875,7 @@ def _normalise_lo_handoff(result: dict, comp_descs: dict) -> list:
                     "science_secondary":       True,
                     "pedagogical_approach":    p.get("pedagogical_approach", ""),
                     "visual_aids":             p.get("visual_aids", ""),
+                    "teacher_notes":           p.get("teacher_notes", ""),
                 })
                 continue
             else:
@@ -2788,6 +2934,110 @@ def _normalise_assessment_sections(result: dict, comp_descs: dict = None) -> lis
         return result["assessment_sections"]
 
     items = result.get("assessment_items", [])
+
+    # ── Secondary-stage Mathematics envelope ───────────────────────────────
+    # Secondary maths ships an envelope dict
+    #   {grade, subject:"mathematics", stage:"secondary", ..., "questions":[...]}
+    # whose `questions[]` are FLAT item objects (no section_code grouping, no
+    # nested items[]). This shares the envelope shape with secondary science,
+    # and the flat items even carry `implied_lo_assessed` — so without an
+    # explicit guard they get unwrapped below and misclassified as Science,
+    # producing the wrong "Progression Stage" bands. Detect on the envelope's
+    # own subject/stage and build Maths-shaped sections (is_mathematics=True,
+    # is_science=False) grouped by chapter section_ref.
+    if (
+        isinstance(items, dict)
+        and str(items.get("subject", "")).strip().lower() == "mathematics"
+        and str(items.get("stage", "")).strip().lower() == "secondary"
+        and isinstance(items.get("questions"), list)
+    ):
+        from collections import OrderedDict as _OD
+        _sec_groups: dict = _OD()
+        for _q in items["questions"]:
+            if not isinstance(_q, dict):
+                continue
+            _ref   = _q.get("section_ref", "") or ""
+            _stitle = _q.get("section_title", "") or ""
+            _key = _ref or _stitle or f"_msec_{len(_sec_groups)}"
+            if _key not in _sec_groups:
+                # Header label mirrors secondary science: "2.1 Introduction".
+                _sec_label = (f"{_ref} {_stitle}".strip() if _ref else _stitle)
+                _sec_groups[_key] = {
+                    "c_code":         ("Section " + _ref) if _ref else "",
+                    "weight_label":   _stitle,
+                    "competency_short": _q.get("section_context", "") or _stitle,
+                    "drawing_on":     _stitle,
+                    "question_types": "",
+                    "questions":      [],
+                    "is_science":     False,
+                    "is_mathematics": True,
+                    # Adopt the secondary-science collapsible-bar shell: the HTML
+                    # renderer uses these flags to render an .asec-stage-hdr
+                    # (centred section label) styled via .mth-sec-asec, instead
+                    # of the boxed SS .asec-hdr.
+                    "maths_secondary": True,
+                    "section_label":  _sec_label,
+                    "section_code":   _ref,
+                    "section_title":  _stitle,
+                    "stage_label":    None,
+                }
+            _qtype = _q.get("question_type", "")
+            # Flatten the type-nested guide
+            #   guide = { <TYPE>: { what_each_option_reveals, inclusivity, ... } }
+            # into the flat shape buildGuideHtml() reads for Maths.
+            _g_raw  = _q.get("guide", {}) or {}
+            _g_type = _g_raw.get(_qtype, {}) if isinstance(_g_raw, dict) else {}
+            if not isinstance(_g_type, dict):
+                _g_type = {}
+            _maths_guide = {
+                "expected_answer":          _q.get("expected_answer", "") or "",
+                "method_one_line":          _q.get("method_one_line", "") or "",
+                "what_each_option_reveals": _g_type.get("what_each_option_reveals", {}) or {},
+                "inclusivity":              _g_type.get("inclusivity", "") or "",
+            }
+            _sec_groups[_key]["questions"].append({
+                "type":             _qtype,
+                "question":         _q.get("question_text", "") or "",
+                "task":             _q.get("task", "") or "",
+                "scaffold":         _q.get("scaffold", "") or "",
+                "format_of_output": _q.get("format_of_output", []) or [],
+                "task_instructions": "",
+                "options":          _q.get("options", []) or [],
+                "annotation":       "",
+                "period_ref":       "",
+                "title":            _stitle,
+                "expected":         _q.get("expected_answer", "") or "",
+                "cognitive_demand": _q.get("cognitive_demand", "") or "",
+                "guide":            _maths_guide,
+                "visual_stimulus":  _q.get("visual_stimulus", None),
+                "graph_paper":      _q.get("graph_paper", False),
+                # Carry the per-item Learning Outcome (and competency code for
+                # dedup) so the question header can show "Learning Outcome: …"
+                # exactly like secondary science, instead of "Section: <title>".
+                "implied_lo":       _q.get("implied_lo_assessed", "") or "",
+                "competency":       _q.get("competency", {}) or {},
+                "is_mathematics":   True,
+                "maths_secondary":  True,
+                "section_ref":      _ref,
+                "section_title":    _stitle,
+                "expected_answer":  _q.get("expected_answer", "") or "",
+                # Secondary maths has no textbook exercise companion field.
+                "exercise":         {"book_ref": "", "description": ""},
+                # ECR ships its verified marking rubric as a top-level
+                # look_for array (Secondary Assessment Constitution Rule 9) —
+                # carry it through so buildGuideHtml() can render it.
+                "look_for":         _q.get("look_for", []) or [],
+            })
+        # Build the question_types meta line per section (order-preserving).
+        for _grp in _sec_groups.values():
+            _types_seen = []
+            for _qq in _grp["questions"]:
+                _t = _qq["type"]
+                if _t and _t not in _types_seen:
+                    _types_seen.append(_t)
+            _grp["question_types"] = " · ".join(_types_seen)
+        return list(_sec_groups.values())
+
     # Secondary-stage science wraps its questions in an envelope dict
     # {grade, subject, stage, ..., "questions": [...]} rather than shipping a
     # flat list like middle-stage science. Unwrap to the inner question list so
@@ -3448,6 +3698,7 @@ def _generate_pdf_bytes_alloc(
     # Detect subject group for column layout and footnote wording
     is_twau      = subject == "The World Around Us"
     is_math_prep = subject == "Mathematics" and get_stage(grade) == "preparatory"
+    is_math_sec  = subject == "Mathematics" and get_stage(grade) == "secondary"
     is_science   = subject in ("Science", "Mathematics") or is_twau
     is_english   = subject == "English"
     uses_effort_index = is_science or is_english
@@ -3755,6 +4006,54 @@ def _generate_pdf_bytes_alloc(
         _lbl_w = 54
         _body_w = 180 - _lbl_w
         for lbl, body in _ei_rows_mp:
+            y0 = pdf.get_y()
+            pdf.set_font("Helvetica", "B", 6.5)
+            pdf.set_text_color(26, 68, 128)
+            pdf.set_x(pdf.l_margin)
+            pdf.multi_cell(_lbl_w, 4, lbl, ln=False)
+            y1 = pdf.get_y()
+            pdf.set_xy(pdf.l_margin + _lbl_w, y0)
+            pdf.set_font("Helvetica", "", 6.5)
+            pdf.set_text_color(75, 75, 75)
+            pdf.multi_cell(_body_w, 4, body)
+            y2 = pdf.get_y()
+            pdf.set_y(max(y1, y2))
+            pdf.ln(1)
+
+    elif is_math_sec:
+        pdf.ln(4)
+        pdf.set_font("Helvetica", "B", 7)
+        pdf.set_text_color(26, 68, 128)
+        pdf.cell(0, 5, "About the Effort Index", ln=True)
+        pdf.set_draw_color(147, 188, 232)
+        pdf.set_line_width(0.3)
+        pdf.line(pdf.get_x(), pdf.get_y(), pdf.get_x() + 180, pdf.get_y())
+        pdf.ln(1)
+
+        _ei_rows_ms = [
+            ("What it measures:",
+             "The effort index tells you how much classroom time a chapter typically needs compared to other"
+             " chapters in the subject. Chapters with a higher effort index get more periods; chapters with"
+             " a lower one get fewer. It is calculated from three signals read from the chapter content."),
+            ("Formula:",
+             "effort_index = (Conceptual demand x2) + (Reasoning load x2) + (Execution load x1.5)"),
+            ("Conceptual demand (x2):",
+             "Abstraction only - how far the chapter's objects sit from concrete experience and how much new"
+             " formal apparatus and notation it introduces (1-3). Proof or justification volume does not enter"
+             " this signal."),
+            ("Reasoning load (x2):",
+             "Proof / justification volume (0-3) - how much of the chapter is spent justifying, deriving,"
+             " proving, arguing across cases, or asking the student to explain why a result holds."),
+            ("Execution load (x1.5):",
+             "Procedural volume (0-2) - the weight of multi-step computation, construction, or graphing."),
+            ("Note:",
+             "Abstraction and justification are the harder-to-compress teaching costs and weigh equally at 2;"
+             " procedural volume weighs 1.5 because it can be carried partly outside class. Only relative"
+             " values matter - the index shares your available periods across chapters in proportion to their load."),
+        ]
+        _lbl_w = 50
+        _body_w = 180 - _lbl_w
+        for lbl, body in _ei_rows_ms:
             y0 = pdf.get_y()
             pdf.set_font("Helvetica", "B", 6.5)
             pdf.set_text_color(26, 68, 128)
@@ -5151,8 +5450,7 @@ div[class*="st-key-export_pdf"] button * {
    MY PLANS — VIEW / PDF BUTTONS
    ═══════════════════════════════════════════════════ */
 div[class*="st-key-view_"] button,
-div[class*="st-key-pdf_"] button,
-div[class*="st-key-mp_gen_assess_"] button {
+div[class*="st-key-pdf_"] button {
     background: #2c3e50 !important;
     border: none !important;
     color: #ffffff !important;
@@ -5164,28 +5462,15 @@ div[class*="st-key-pdf_"] button {
     font-size: 0.78rem !important;
 }
 div[class*="st-key-view_"] button:hover,
-div[class*="st-key-pdf_"] button:hover,
-div[class*="st-key-mp_gen_assess_"] button:hover {
+div[class*="st-key-pdf_"] button:hover {
     background: #3d5166 !important;
 }
-/* "Generate Assessment" sits in the same narrow column as View — drop the
-   font a notch and let the label wrap so "Generate" / "Assessment" stack
-   on two lines instead of clipping. */
-div[class*="st-key-mp_gen_assess_"] button {
-    font-size: 0.78rem !important;
-    line-height: 1.1 !important;
-    padding: 0.25rem 0.4rem !important;
-    white-space: normal !important;
-}
-div[class*="st-key-mp_gen_assess_"] button *,
-div[class*="st-key-mp_gen_assess_"] button p,
-div[class*="st-key-mp_gen_assess_"] button span {
-    color: #ffffff !important;
-    white-space: normal !important;
-    word-break: normal !important;
-    font-size: 0.78rem !important;
-    margin: 0 !important;
-}
+/* NOTE: "Generate Assessment" (st-key-mp_gen_assess_) is no longer a dark
+   column button — it now lives inside the My Plans "⋮" popover menu and must
+   inherit the plain menu-item style (dark text on transparent bg) defined in
+   div[data-testid="stPopoverBody"] button. The old dark-button rules that
+   forced white text were leaving the label invisible (white-on-white) until
+   hover, so they have been removed. */
 
 /* MY PLANS — BACK BUTTONS (match primary / Generate button colours) */
 div[class*="st-key-mp_back_"] button {
@@ -6956,6 +7241,8 @@ elif st.session_state.role == "Allocate":
                 "demo_count":        _mapping.get("demo_count", 0),
                 "demo_load":         _mapping.get("demo_load", 0),
                 "exec_load":         _mapping.get("exec_load", 0),
+                # Mathematics secondary signal (3-signal effort index)
+                "reasoning_load":    _mapping.get("reasoning_load", 0),
                 # English signals
                 "spine_load":        _mapping.get("spine_load", 0),
                 "task_density":      _mapping.get("task_density", 0),
@@ -7007,6 +7294,7 @@ elif st.session_state.role == "Allocate":
         f"const SUBJECT_LABEL  = {json.dumps(st.session_state.subject  or '')};\n"
         f"const IS_SCIENCE     = {json.dumps(st.session_state.subject in ('Science', 'Mathematics'))};\n"
         f"const IS_MATH_PREP   = {json.dumps(st.session_state.subject == 'Mathematics' and get_stage(st.session_state.grade or '') == 'preparatory')};\n"
+        f"const IS_MATH_SEC    = {json.dumps(st.session_state.subject == 'Mathematics' and get_stage(st.session_state.grade or '') == 'secondary')};\n"
         f"const IS_ENGLISH     = {json.dumps(st.session_state.subject == 'English')};\n"
         f"const IS_TWAU        = {json.dumps(st.session_state.subject == 'The World Around Us')};\n"
         f"const ARUVI_LOGO_B64 = {json.dumps(_logo_b64)};\n"
@@ -7098,6 +7386,33 @@ elif st.session_state.role == "Allocate":
             '</ul>'
             '<p class="about-ei-close">Only relative values matter — the effort index is used '
             'to share your available periods across chapters in proportion to their load.</p>'
+            '</div>'
+        )
+    elif _subject == "Mathematics" and get_stage(st.session_state.grade or "") == "secondary":
+        _fn1_text = (
+            '<div class="about-ei">'
+            '<h4>About the Effort Index</h4>'
+            '<p>The effort index is a number that tells you how much classroom '
+            'time a chapter typically needs compared to other chapters in the '
+            'subject. Chapters with a higher effort index get more periods; '
+            'chapters with a lower one get fewer. It is calculated from three '
+            'signals read from the chapter content.</p>'
+            '<p><b>effort_index = (Conceptual demand × 2) + (Reasoning load × 2) + '
+            '(Execution load × 1.5)</b></p>'
+            '<ul>'
+            '<li><b>Conceptual demand (×2)</b> — Abstraction only: how far the chapter\'s objects '
+            'sit from concrete experience and how much new formal apparatus and notation it '
+            'introduces (1–3). Proof or justification volume does not enter this signal.</li>'
+            '<li><b>Reasoning load (×2)</b> — Proof / justification volume (0–3): how much of the '
+            'chapter is spent justifying, deriving, proving, arguing across cases, or asking the '
+            'student to explain why a result holds.</li>'
+            '<li><b>Execution load (×1.5)</b> — Procedural volume (0–2): the weight of multi-step '
+            'computation, construction, or graphing.</li>'
+            '</ul>'
+            '<p class="about-ei-close">Abstraction and justification are the harder-to-compress '
+            'teaching costs and weigh equally at 2; procedural volume weighs 1.5 because it can be '
+            'carried partly outside class. Only relative values matter — the index shares your '
+            'available periods across chapters in proportion to their load.</p>'
             '</div>'
         )
     elif _subject == "Mathematics":

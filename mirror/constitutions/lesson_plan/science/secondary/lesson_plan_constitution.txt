@@ -227,6 +227,35 @@ section spanning several periods is ONE entry whose period_numbers lists them al
 
 MUST NOT omit it — required on every run regardless of period count.
 MUST NOT fold it into lesson_plan — it is a top-level sibling key.
+
+================================================================================
+RULE 10 · TEACHER NOTES — PER-PERIOD TEACHING GUIDANCE
+
+MANDATE
+Every period MUST carry a `teacher_notes` field: 2–3 sentences of flowing prose
+addressed to the teacher, helping them run the period well. It is a required,
+teacher-facing field — never blank — and is bound by Rule 7 (no internal
+machinery).
+
+Write as natural prose. MUST NOT begin with the word "Transition" or any
+section/phase label. Weave in these content priorities naturally, not as a
+labelled list:
+- Connect this period to the one before it — what was covered, how this builds
+  on it. The first period instead orients the teacher to the chapter's entry
+  point.
+- Flag one common misconception or error to watch for, drawn from the chapter
+  summary's own content. MUST NOT fabricate misconceptions not grounded in the
+  chapter.
+- Optionally add a facilitation pointer: a grouping suggestion, a probing
+  question, or a checkpoint that signals students are ready to move on.
+
+PROHIBITION
+1. MUST NOT contain C-codes, CG codes, effort-index terms, rule numbers, schema
+   field names, or any internal identifier (Rule 7 applies in full).
+2. MUST NOT introduce phenomena, examples, or procedures not anchored in the
+   period's section and the chapter summary.
+3. MUST NOT restate the period's activity text verbatim — teacher_notes guides
+   how to run the activity, it does not re-describe it.
 MUST NOT duplicate implied_lo, section_context, cg, or c_code inside any period
 object — they live exclusively in the handoff.
 
@@ -314,6 +343,7 @@ emitted once at the top level as chapter_cg (below), never per section.
         "time_bands": [
           { "minutes": "string e.g. 0-5", "activity": "string" }
         ],
+        "teacher_notes": "string — 2–3 sentences max, flowing prose; see Rule 10. Required, never blank; teacher-facing (Rule 7 applies)",
         "homework": ["string"]
       }
     ]

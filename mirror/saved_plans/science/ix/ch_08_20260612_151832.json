@@ -55,6 +55,7 @@
               "activity": "Exit consolidation: each student writes one sentence identifying the single most important difference between the ancient philosophical atomic idea and Dalton's scientific one. Teacher collects or reads two or three aloud to close."
             }
           ],
+          "teacher_notes": "Open with the cutting-a-piece provocation so the question of indivisibility feels alive before any model is named, and use the cross-cultural profiles to show atomic thinking as a shared human pursuit. The common starting assumption is that atoms were 'discovered' in one moment; the comparison table sets up a story of revision instead. Keep that table, as later periods keep extending it.",
           "homework": [
             "Using the comparison you made in class between Kanada and Democritus, write a short paragraph explaining why the ancient atomic idea — however insightful — could not count as a scientific theory. What would have been needed to make it one?"
           ]
@@ -93,6 +94,7 @@
               "activity": "Consolidation: students write a two-sentence summary — (1) the key evidence Thomson used, (2) the key claim his model made. Teacher reads two or three aloud."
             }
           ],
+          "teacher_notes": "Thomson's cathode-ray work introduces the first sub-atomic particle and breaks Dalton's indivisible atom. Watch for students picturing the plum-pudding model as literally pudding rather than positive charge with embedded electrons — name the analogy's limits as you use it. The logical puzzle Thomson faced is worth dwelling on, since it motivates the next experiment.",
           "homework": []
         },
         {
@@ -133,6 +135,7 @@
               "activity": "Students draw a before-and-after board summary: Thomson's prediction vs. Rutherford's observation vs. what this implies about atomic structure. Teacher consolidates the idea that the experiment demolished the plum pudding picture and set up the need for a new model."
             }
           ],
+          "teacher_notes": "The gold-foil experiment is the chapter's pivotal evidence; have students predict the outcome from Thomson's model first, so the surprise lands. The frequent error is expecting all particles to bounce back rather than a tiny fraction — the rarity of large deflections is precisely what implies a small dense nucleus. Treat this as reasoning from evidence, not a fact to memorise.",
           "homework": []
         },
         {
@@ -173,6 +176,7 @@
               "activity": "Consolidation: teacher poses the mass puzzle aloud — helium has 2 protons but mass ~4 times hydrogen's 1 proton. 'Where is the extra mass coming from?' Students note this as an open question for the next period."
             }
           ],
+          "teacher_notes": "Rutherford's planetary model, its stability problem, and the proton's discovery build directly on the foil results. Anticipate satisfaction with the planetary picture and reluctance to accept its flaw — the classical-physics instability is the tension that forces Bohr's model next. The assertion-reason responses are a good window into whether students see the limitation.",
           "homework": [
             "Explain in three to four sentences why Rutherford's planetary model was a step forward compared to Thomson's model, and identify the one physical phenomenon it could not account for. Use the stability argument specifically."
           ]
@@ -211,6 +215,7 @@
               "activity": "Consolidation: teacher poses — 'Bohr solved the collapse problem. What new question does his model raise about how electrons fill the available shells?' Students note this as the content of the next section."
             }
           ],
+          "teacher_notes": "Bohr's stationary shells resolve the stability problem raised last period, so present it as an answer to a question students already feel. The misconception to catch is that electrons drift freely between shells at will; stress that transitions need specific energy. Connecting shells back to the instability problem keeps the model from seeming like an arbitrary rule.",
           "homework": []
         },
         {
@@ -247,6 +252,7 @@
               "activity": "Consolidation: students complete the full three-particle table from memory on a blank sheet — symbol, location, charge, mass — and exchange with a partner to check. Teacher clarifies any errors on the board."
             }
           ],
+          "teacher_notes": "The neutron's discovery closes the nuclear-mass puzzle first raised with Rutherford. Watch for the assumption that protons alone account for atomic mass — the hydrogen-versus-helium mismatch is the clue that something neutral is missing. The nuclear-stability point (why like charges stay bound) is a good stretch question for stronger groups.",
           "homework": []
         },
         {
@@ -288,6 +294,7 @@
               "activity": "Teacher reviews answers on the board, highlighting the formula neutrons = A – Z. Students correct their work and note any errors."
             }
           ],
+          "teacher_notes": "With the three particles established, students move to standard notation — symbols, atomic number, and mass number. The common slip is confusing atomic number and mass number; anchor Z firmly to proton count before introducing A. The invent-a-symbol task is a light way to motivate why an agreed notation matters.",
           "homework": [
             "From the reference table of 27 elements, select any five whose symbols derive from Latin, Greek, or German names. For each, write the symbol, the modern element name, and the language-of-origin name it comes from. Then write one sentence explaining why an internationally standardised symbol system matters for scientific communication."
           ]
@@ -326,6 +333,7 @@
               "activity": "Exit check: teacher writes three nuclides on the board and asks students to write the electronic configuration and identify the valence electron count for each. Students hand in or show their response."
             }
           ],
+          "teacher_notes": "Shell-filling rules let students write electron configurations for the first eighteen elements, applying Bohr's shells concretely. Expect errors from filling shells beyond their capacity — the Bohr–Bury limits are the guardrails to reinforce. The blank concentric-circle worksheets give immediate, visible feedback on mistakes.",
           "homework": []
         },
         {
@@ -366,6 +374,7 @@
               "activity": "Consolidation: students write a three-row summary table — element, electronic configuration, valency — for Na, Cl, and C, then state the octet rule in one sentence in their own words."
             }
           ],
+          "teacher_notes": "Valency emerges from valence electrons and the octet rule, turning configuration into predictive power. The persistent confusion is between total electrons and valence electrons; keep redirecting attention to the outermost shell only. Working sodium and a couple of other cases on the board models the reasoning before students try their own.",
           "homework": [
             "For each of the following elements — Mg, N, S, Ar — write the electronic configuration, identify the number of valence electrons, state whether the atom achieves an octet by losing, gaining, or sharing electrons, and write its valency. Show your reasoning for each."
           ]
@@ -408,6 +417,7 @@
               "activity": "Closing reflection: teacher notes that Bohr's model is itself incomplete — electrons exist as probability clouds rather than fixed orbits — and that the quantum mechanical model extends the story. Students note this as a forward connection to higher grades."
             }
           ],
+          "teacher_notes": "Isotopes, average atomic mass, and isobars show that the same particle counts can vary — a subtle but important refinement. The common error is thinking isotopes are different elements; same Z, different A, is the line to hold firm. Average atomic mass is best framed as a weighted everyday average, not a whole-number count.",
           "homework": []
         },
         {
@@ -444,6 +454,7 @@
               "activity": "Consolidation: students individually complete a six-row summary table (one row per element studied across periods 7–10, chosen by teacher) filling in symbol, Z, A, electronic configuration, and valency. Students identify which rows represent isotopes and which could represent isobars. Teacher reviews two rows aloud to close."
             }
           ],
+          "teacher_notes": "This capstone asks students to connect composition, configuration, and combining capacity from nuclide notation alone — the chapter's full chain in one problem. The temptation is to solve one step and stop; insist they carry a nuclide through to its valency. The further nuclides in pairs are the transfer check, so let students narrate their reasoning aloud.",
           "homework": []
         }
       ]

@@ -1,0 +1,480 @@
+ARUVI · CHAPTER ASSESSMENT GENERATION CONSTITUTION · MATHEMATICS · SECONDARY STAGE · VERSION 1.0
+
+Subject group : mathematics
+Stage         : Secondary Stage   ·   Grades : ix · x
+Task          : assessment_generation
+Upstream      : lesson_plan_constitution_mathematics (Secondary) — coverage_handoff (Amendment A4)
+Inputs        : coverage_handoff + Chapter Summary (exactly two; both required)
+Textbook      : Ganita Manjari (Grade IX) — LTHC design, transition-to-proof
+
+================================================================================
+RULE 1 · GOVERNING PURPOSE
+
+MANDATE
+Generate tasks that test whether the student can perform the mathematical
+operation each section develops. Every question MUST trace to an implied_lo of
+the section it tests, and require an observable demonstration — a computed
+result with working, a constructed argument, a classification with
+justification, a plotted or read graph, or a derived relationship.
+
+PROHIBITION
+1. No questions asking whether a student understood, appreciated, or felt
+   something — demonstration, not self-report.
+2. MUST NOT test content recall independently of the section's implied_lo.
+3. MUST NOT derive any architectural decision (length, format, ordering,
+   demand) from a section's POSITION in the chapter. Secondary mathematics
+   chapters do not ramp uniformly — a chapter may be a flat spiral, a
+   proof-marathon, or abstract-but-low-justification, and all three MUST
+   produce defensible assessments through the same demand-driven rules.
+
+================================================================================
+RULE 2 · INPUTS AND OUTPUTS
+
+INPUTS (two, both required)
+1. coverage_handoff — from the Secondary LP (Amendment A4). One entry per
+   anchored section: section_number, section_ref, section_title,
+   total_sections, period_numbers, period_duration_minutes, implied_lo (ONE or
+   TWO values), section_context, c_code, co_central. The parent Curricular Goal
+   arrives once at chapter level (chapter_cg in the LP JSON), NOT per section.
+   Read as committed — do NOT re-derive, re-order, or supplement.
+   · Emit chapter_cg once at chapter level, never per question. c_code is kept
+     per question (the LP permits a complementary C-code, so it may vary by
+     section).
+2. Chapter Summary (JSON) — the section spine, prose_summary,
+   enumerated_worked_examples, and enumerated_exercises. The prose_summary is
+   the source of truth for question content: it supplies the actual scenarios,
+   numbers, expressions, definitions, and structures that ground each question
+   (Rule 3). Worked-example METHODS may be used to shape a question; their
+   specific numbers and scenarios MUST NOT be copied (Rule 3).
+
+OUTPUTS (three, all mandatory)
+1. Section-structured assessment, items in coverage_handoff order.
+2. Diagnostically intentional MCQ distractors (Rule 7).
+3. A guide block per question (Rule 9), structured JSON, visible on demand.
+
+PROHIBITION
+MUST NOT reference the Curricular Goals doc, Chapter Mapping JSON, Pedagogy
+doc, any Learning Outcome document, or any source outside the two inputs; MUST
+NOT re-evaluate competencies, re-open mapping, or alter the committed
+coverage_handoff. The effort_index (CD×2 + reasoning×2 + exec×1.5) is a
+within-grade time-allocation signal for the LP only — it is NOT an assessment
+signal and MUST NOT inform format, count, or demand here.
+
+================================================================================
+RULE 3 · CONTENT GROUNDING — TAG SHAPES · CONTEXT SCOPES · SUMMARY SUPPLIES
+
+MANDATE — three roles, never conflated:
+  · cognitive_demand (Rule 4) SHAPES the item — question type and depth (Rule 5).
+  · section_context SCOPES the item — names and fences it to one slice of the
+    chapter. It is a label, not content.
+  · the section's prose_summary slice SUPPLIES the item — the real scenarios,
+    numbers, expressions, definitions, and structures for the stem,
+    visual_stimulus, correct answer, and distractors.
+A question built from section_context alone, without the summary's concrete
+material, is non-compliant. A question that COPIES a worked example's specific
+numbers, named entities, or wording — rather than generating a fresh instance
+using the same method — is also non-compliant.
+
+ADJACENT PULL (bounded)
+Each item is OWNED BY and TESTS exactly one section. The correct answer and the
+tested operation MUST come from that section's own slice. Earlier-section
+material may be used as supporting scaffold (later sections build on earlier
+ones in the same chapter) — as a distractor exploiting a genuine cross-section
+confusion, or a scenario needing an earlier method — never as the thing
+assessed. "Which section does this test?" MUST have one answer.
+
+================================================================================
+RULE 4 · COGNITIVE DEMAND TAG — THE GOVERNING HINGE
+
+MANDATE
+For each implied_lo, classify it on the Recall–Understanding–Application–
+Analysis–Evaluation spectrum and record the result as cognitive_demand on the
+question for that LO. This tag is the single governor of format (Rule 5). It
+MUST be derived from and consistent with the implied_lo and the section's
+summary slice — it makes the LP's demand explicit and auditable, never
+reopening or recalibrating it. Where a section carries two implied_lo at
+different demands, each gets its own tag and its own item.
+
+Reading guide (operation, not position):
+  identify · name · state · recognise · recall              → Recall
+  describe · explain (one-step) · represent · classify      → Understanding
+  calculate · evaluate (a polynomial) · solve · plot ·
+    determine · find · model · use…to find · construct      → Application
+  compare · analyse · infer · distinguish · derive ·
+    generalise a pattern · explain why                      → Analysis
+  prove · justify · judge · critique · decide between ·
+    evaluate (an argument/method)                           → Evaluation
+Where vocabulary and implied task conflict, the implied task's demand governs.
+Note "evaluate" is read two ways: evaluating a polynomial at a value is
+Application; evaluating an argument or method is Evaluation. The implied_lo's
+object disambiguates.
+
+PROHIBITION
+MUST NOT assign the tag from position or from neighbouring sections; MUST NOT
+leave it blank or use a value outside the five-point spectrum.
+
+================================================================================
+RULE 5 · DEMAND-TO-FORMAT MATCHING
+
+MANDATE — format follows the tag, never position:
+  Recall / Understanding     → MCQ        (determinate answer; errors
+                                            diagnosable via distractors, Rule 7)
+  Application                → NUM or SCR  (NUM where the answer is a computed
+                                            value reached by shown working —
+                                            the default for evaluate / solve /
+                                            find; SCR where the demonstration is
+                                            a short worded procedure, modelling
+                                            step, or representation without a
+                                            single numeric answer)
+  Analysis / Evaluation      → ECR        (no single answer; quality lives in
+                                            the written reasoning, derivation,
+                                            or proof)
+  Integrative / cross-       → OPEN_TASK  (several operations on a novel
+  operational (co_central)                 scenario; vehicle from the
+                                            Mathematics menu, Rule 8)
+
+co_central = true: a section integrating both central operations is the
+OPEN_TASK and MUST require reasoning across both at once (Rule 8).
+
+NUM is the math-native Application format: a numerical/algebraic answer the
+student reaches by visible multi-step working, where selection from options
+would reveal the steps that are the object of the task. Use it for evaluate,
+solve, find a and b, model-and-compute, and plot-and-read items. Reserve SCR
+for Application demonstrations that are procedural or representational rather
+than single-answer numeric.
+
+PER-LO COUNT (the LO count is the richness signal)
+Emit exactly ONE item per implied_lo in the coverage_handoff. A one-LO section
+yields one item; a two-LO section yields two items, typically at two different
+demands and therefore two different formats (e.g. an MCQ classifying
+polynomials by degree + a NUM evaluating one at a value). The LP has already
+made the richness judgment by emitting one or two LOs — this constitution does
+NOT re-open it, does NOT add bonus / mixed-review / chapter-wrap items, and does
+NOT split one LO into two items.
+
+PROHIBITION
+MUST NOT assign format from position, from the implied_lo's verb as a mere
+label, or for variety; MUST NOT emit more or fewer items than there are
+implied_lo values; MUST NOT add an anchor MCQ to an extended item by default.
+
+================================================================================
+RULE 6 · REASONING FLOOR
+
+MANDATE
+The assessment as a whole MUST contain at least one extended-reasoning item
+(one ECR or one OPEN_TASK), guarding against a recognition-only assessment on a
+procedural or computational chapter. If no implied_lo reaches Analysis,
+Evaluation, or the integrative band, lift the single highest-demand LO to ECR
+(or OPEN_TASK only where the chapter genuinely integrates operations), and note
+the lift in that guide block. The lift changes the format of an EXISTING item;
+it does NOT add an item, preserving one-item-per-LO (Rule 5).
+
+PROHIBITION
+MUST NOT emit an all-MCQ/NUM/SCR assessment; MUST NOT lift more than one LO;
+MUST NOT manufacture integration a chapter lacks — ECR is the default lift.
+
+================================================================================
+RULE 7 · MCQ DISTRACTOR DESIGN
+
+MANDATE
+Every MCQ has exactly three diagnostic distractors (four options). Each is one
+nameable mathematical error: a misconception about the section's object (e.g.
+counting the constant term as a coefficient); a confusion between two chapter
+concepts (e.g. linear vs quadratic, slope vs intercept, growth vs decay); a
+predictable slip (sign error, off-by-one in a pattern's nth term, transposing a
+and b); or recall of a related-but-wrong definition from the section's slice.
+
+PROHIBITION
+No true/false; no implausible, arbitrary, or out-of-chapter distractors; no
+"none of the above" / "all of the above".
+
+================================================================================
+RULE 8 · OPEN TASK MENU — MATHEMATICS
+
+MANDATE
+Where Rule 5 or 6 calls for an OPEN_TASK, select its format ONLY from this menu,
+justify the choice in the guide block, and state that the teacher may substitute
+any other menu format. Each format is self-contained and classroom-answerable
+(Rule 10):
+  · Model-and-solve (build a linear expression/equation from a scenario, then
+    compute and interpret)
+  · Pattern generalisation (extend a sequence, derive its nth-term rule, justify)
+  · Data-to-relationship (find a relationship y = ax + b from given data points,
+    then interpret the constants)
+  · Graph construction and comparison (plot lines, read off slope/intercept,
+    compare families) — set graph_paper = true (VS-6); the green grid is
+    rendered behind the figure, and a "plot this yourself" variant uses a blank
+    green plane (visual_stimulus = null)
+  · Multi-representation translation (move a relationship between table, symbol,
+    graph, and word form and reconcile them)
+  · Proof or derivation (establish or justify a result using chapter
+    definitions and methods — the transition-to-proof vehicle at this stage)
+  · Procedure / argument evaluation (judge a worked method or claim, identify
+    the flaw, repair it)
+co_central = true: the single OPEN_TASK is the integrative demonstration of both
+operations and MUST NOT be split.
+
+PROHIBITION
+No format outside the menu; no selection for variety (it must be the most
+natural vehicle for the implied_lo); never more than one OPEN_TASK per
+assessment.
+
+================================================================================
+RULE 9 · GUIDE LAYER
+
+MANDATE
+Produce a guide block per question, as structured JSON (not prose), visible on
+demand. By type:
+  MCQ        — guide.MCQ.what_each_option_reveals (one entry per non-correct
+               option, naming its mathematical error) · learning_outcome{section}
+               · inclusivity.
+  NUM        — expected_answer (top-level: the verified numeric/algebraic
+               result) · method_one_line (top-level: the one-sentence chapter
+               method) · guide.NUM: learning_outcome{section} · inclusivity.
+  SCR        — expected_elements (top-level: components a complete response
+               needs) · guide.SCR: learning_outcome{section} · inclusivity.
+  ECR        — look_for (top-level: markers of a strong response/derivation/
+               proof) · guide.ECR: learning_outcome{section} · inclusivity.
+  OPEN_TASK  — guide.OPEN_TASK: format_type · format_rationale ·
+               what_this_demonstrates · reading_the_scaffold ·
+               strong_vs_weak_markers · inclusivity · learning_outcome{section}.
+
+inclusivity is REQUIRED in every guide block, all five types: 1–2 sentences on
+the alternative pathways by which different students demonstrate the same
+outcome — pairing one support for the struggling student with one challenge
+(e.g. an alternate representation / talk-before-write for support; a
+parameter-tweak / what-if for challenge). learning_outcome.section records the
+section_number tested. A Rule 6 lift MUST be noted in its guide block.
+
+PROHIBITION
+MUST NOT omit the guide block, or render it as prose; MUST NOT place C-codes or
+competency labels anywhere inside the guide; MUST NOT expose the verification
+reasoning of Rule 11 — only expected_answer and method_one_line carry the
+verified result.
+
+================================================================================
+RULE 10 · EXECUTABILITY BOUNDARY
+
+MANDATE
+Every task MUST be answerable by a student working alone in a classroom, using
+only what the question provides. The assessment is NOT timetabled into the
+chapter's period budget (that belongs to the LP), so this boundary governs
+SELF-CONTAINMENT, not clock time: no field visits, external speakers, community
+involvement, or externally-sourced materials.
+
+NOTE
+Secondary mathematics is often abstract — symbolic manipulation, algebraic
+derivation, graph work, and deductive proof all count fully as student output.
+A task MUST NOT be judged deficient for lacking a hands-on or real-world
+component; a pure derivation or proof item is complete on its own.
+
+PROHIBITION
+No multi-session projects, field visits, craft-material artefacts, or
+out-of-classroom coordination.
+
+================================================================================
+RULE 11 · ANSWER VERIFICATION (NON-NEGOTIABLE)
+
+MANDATE
+Mathematics admits a checkable answer; the assessment MUST exploit this. Before
+emitting any item with a determinate answer (MCQ, NUM, and SCR/OPEN_TASK
+components that resolve to a value), the system MUST:
+  1. Solve the question using the chapter's method.
+  2. Solve it again by an alternate route (substitute back; reverse-compute;
+     an independent procedure; a magnitude / dimensional sanity check).
+  3. Confirm the two routes agree.
+  4. Then set verified = true, and record the result ONLY in the guide's
+     expected_answer / method_one_line (or, for MCQ, in the correct option and
+     what_each_option_reveals).
+
+If the two routes disagree, OR an alternate route cannot be constructed, the
+item is regenerated on the same implied_lo (a different stem grounded in the
+same summary slice) rather than emitted unverified. The model's verification
+reasoning MUST NOT appear in any emitted field.
+
+For genuinely open ECR / OPEN_TASK items with no single answer, verification
+instead confirms that look_for / strong_vs_weak_markers describe a mathematically
+correct target and that the task is solvable with chapter methods; verified =
+true records that confirmation.
+
+PROHIBITION
+MUST NOT emit an item with verified = false; MUST NOT leak verification working
+into question_text, options, task, scaffold, expected_elements, or look_for.
+
+================================================================================
+RULE 12 · SCOPE BOUNDARY
+
+Chapter-scoped formative assessment only. MUST NOT generate summative/Board-prep
+assessments, Holistic Progress Card inputs, multi-session projects or
+portfolios, or cross-chapter student tracking. Asterisked (*) / HOTS material
+and sidebar boxes were excluded by the summary and the LP — they MUST NOT
+re-enter here.
+
+================================================================================
+INTEGRITY CONSTRAINTS (system level — override any other instruction)
+
+· coverage_handoff is committed — no reopening competencies or re-deriving fields.
+· Position carries no signal — no format, count, demand, or ordering may derive
+  from it; flat, ramped, and non-monotone chapters use the identical rules.
+· cognitive_demand (Rule 4) is the sole format governor, consistent with implied_lo.
+· One item per implied_lo (Rule 5); the LO count is the only richness signal.
+· section_number is internal (generation + guide block); never in user-facing output.
+· Content grounding (Rule 3): summary supplies, section_context scopes — neither
+  substitutes the other; worked-example numbers are never copied.
+· Verification (Rule 11): no determinate item ships unverified.
+· Executability (Rule 10): every task self-contained and classroom-answerable; the
+  assessment has no clock-time budget of its own.
+
+================================================================================
+AMENDMENT A1 — FULL ASSESSMENT JSON SCHEMA (MATHEMATICS · SECONDARY)
+
+Output a JSON object conforming exactly to this schema — the single source of
+truth for online display and PDF generation. Populate every field; empty
+strings and empty arrays are not permitted for required fields.
+
+visual_stimulus rules (ALL question types):
+  VS-1 · Required-table: if the student must read a data table (value table,
+    (x, y) pairs, comparison grid, computation table), visual_stimulus holds the
+    actual table as pipe-delimited rows — one row per line, columns split by | ,
+    first row the header.
+  VS-2 · Required-figure: if the student must read or produce a geometric figure
+    or coordinate graph (a plotted line, a family of lines, an angle/circle
+    figure), visual_stimulus carries an SVG figure rendered via the platform's
+    SVG branch. Secondary mathematics at the transition-to-proof stage is
+    figure-heavy; SVG is permitted and expected here (this is a deliberate
+    divergence from the Middle-stage maths constitution, which prohibits SVG).
+  VS-3 · It holds the real rows/columns or the real figure, not a prose
+    description. "A data table is provided with columns X, Y, Z" or "a graph of
+    two lines is shown" with visual_stimulus null is prohibited.
+  VS-4 · question_text / task / scaffold only REFERENCE it ("Refer to the table
+    provided." / "Refer to the graph provided."); never embed or describe the
+    table or figure there.
+  VS-5 · null only when the question genuinely needs no table/figure (most pure
+    algebra and word-problem items). Saying "the table below shows…" or "in the
+    figure…" with visual_stimulus null is non-compliant.
+  VS-6 · Graph-paper (coordinate-plane) items — green grid is platform chrome,
+    NOT model output. Secondary mathematics requires Cartesian graph work
+    (plotting a line, reading slope/intercept off a graph, comparing a family of
+    lines, or a blank plane for the student to plot on). When an item needs a
+    coordinate plane, set the question's graph_paper field to true; the renderer
+    then paints the green graph-paper grid (light-green minor lines, stronger
+    major lines, labelled axes through the origin) as a backdrop. The
+    visual_stimulus SVG MUST carry ONLY the figure that sits ON the grid — the
+    plotted line(s), marked points, and any point/line labels — drawn in the
+    SAME coordinate system the renderer grids (origin at centre-or-stated, one
+    grid unit = one data unit). The model MUST NOT draw grid lines, ruled
+    squares, or a green background into the SVG; the renderer owns the grid so
+    every graph-paper item looks identical. For a "plot this yourself" item
+    where the student does the plotting, set graph_paper = true and
+    visual_stimulus = null (a styled SVG marker, or null for a blank plane) so
+    the student receives an empty green grid. graph_paper defaults to false and
+    MUST be false whenever visual_stimulus is a pipe-table or a non-coordinate
+    figure (an angle/circle diagram is a figure, not graph paper).
+
+{
+  "grade": "string",
+  "subject": "mathematics",
+  "stage": "secondary",
+  "chapter_number": "integer",
+  "chapter_title": "string",
+  "chapter_cg": "string — parent Curricular Goal, recorded once at chapter level (identical for all sections); not repeated per question",
+  "reasoning_floor_lift_applied": "boolean — true if Rule 6 lift was used",
+  "questions": [
+    {
+      "section_number": "integer — section this item tests; matches coverage_handoff",
+      "section_ref": "string — section ref, exactly as in coverage_handoff (e.g. '2.5')",
+      "section_title": "string — section title, exactly as in coverage_handoff",
+      "total_sections": "integer — from coverage_handoff",
+      "implied_lo_assessed": "string — the single implied_lo this item tests, copied exactly from coverage_handoff (one of the section's one-or-two LOs)",
+      "section_context": "string — section_context for this section, copied exactly from coverage_handoff",
+      "question_type": "string — MUST be exactly one of: MCQ | NUM | SCR | ECR | OPEN_TASK. Prohibited values: short_answer, reasoning, numerical, application, or any other.",
+      "competency": {
+        "c_code": "string — from coverage_handoff (per section; may vary)",
+        "competency_text": "string — competency description"
+      },
+      // cg is NOT repeated here — it is recorded once at chapter level as chapter_cg.
+      "cognitive_demand": "string — Recall | Understanding | Application | Analysis | Evaluation (Rule 4)",
+      "visual_stimulus": "string | null — actual pipe-delimited table OR figure-only SVG per VS rules; null if none. For a graph_paper item, carries ONLY the line/points/labels that sit on the grid (no grid lines), or null for a blank plane",
+      "graph_paper": "boolean — VS-6. true when the item needs a Cartesian coordinate plane; the renderer paints the green graph-paper grid behind visual_stimulus. Defaults to false; MUST be false for pipe-tables and non-coordinate figures",
+      "question_text": "string — stem or scenario; required for MCQ, NUM, SCR, ECR; empty string '' for OPEN_TASK",
+      "options": [
+        { "label": "string — A | B | C | D", "text": "string", "is_correct": "boolean" }
+      ],
+      "expected_answer": "string — NUM only: the verified numeric/algebraic result; '' for all other types",
+      "method_one_line": "string — NUM only: one sentence naming the chapter method that yields the answer; '' for all other types",
+      "expected_elements": ["string — SCR only; [] for all other types"],
+      "look_for": ["string — ECR only; [] for all other types"],
+      "task": "string — OPEN_TASK only; empty string '' for all other types",
+      "scaffold": "string — OPEN_TASK only; empty string '' for all other types",
+      "format_of_output": ["string — OPEN_TASK only; [] for all other types"],
+      "verified": "boolean — true; Rule 11 satisfied before emission",
+      "guide": {
+        "MCQ": {
+          "learning_outcome": { "section": "integer" },
+          "what_each_option_reveals": {
+            "A": "string — mathematical error (non-correct options only)",
+            "C": "string",
+            "D": "string"
+          },
+          "inclusivity": "string"
+        },
+        "NUM": {
+          "learning_outcome": { "section": "integer" },
+          "inclusivity": "string"
+        },
+        "SCR": {
+          "learning_outcome": { "section": "integer" },
+          "inclusivity": "string"
+        },
+        "ECR": {
+          "learning_outcome": { "section": "integer" },
+          "inclusivity": "string"
+        },
+        "OPEN_TASK": {
+          "learning_outcome": { "section": "integer" },
+          "format_type": "string — selected format from Mathematics menu (Rule 8)",
+          "format_rationale": "string — one sentence justifying selection",
+          "what_this_demonstrates": "string",
+          "reading_the_scaffold": "string",
+          "strong_vs_weak_markers": "string",
+          "inclusivity": "string"
+        }
+      }
+    }
+  ]
+}
+
+Field notes:
+- The questions array has exactly one entry per implied_lo across all
+  coverage_handoff entries (Rule 5). A two-LO section produces two consecutive
+  entries sharing section_number / section_ref / section_title but carrying
+  different implied_lo_assessed, cognitive_demand, and question_type.
+- expected_answer / method_one_line are populated for NUM only and carry the
+  Rule 11 verified result; for MCQ the verified answer lives in the correct
+  option and what_each_option_reveals.
+- visual_stimulus carries a pipe-table OR an SVG figure (VS-1 / VS-2); both are
+  permitted at this stage, unlike Middle-stage maths.
+- graph_paper (VS-6) is an independent boolean. When true, the SVG holds only
+  the figure that sits on the plane; the renderer supplies the green grid. It is
+  false (and absent of effect) for every pipe-table and non-coordinate figure.
+
+================================================================================
+RENDERER WIRING NOTE (implementation dependency — not a constitution rule)
+
+This constitution permits figure SVG (VS-2) and green graph-paper backing
+(VS-6). The current renderers do NOT yet honour either: assessment_pdf_generator.py
+(_render_visual_stimulus) and lpa_page.html (renderVisualStimulus) handle only
+pipe-tables, number-lines, and prose, and both carry a comment that "Mathematics
+no longer permits inline SVG (Constitution v3.2 Rule 7)" — that comment reflects
+the MIDDLE-stage maths constitution and does not govern Secondary. Before this
+constitution runs on real assessments, both renderers need: (1) an SVG branch
+that passes a figure-only SVG through to the platform's SVG rendering path, and
+(2) a graph_paper branch that paints the green grid (light-green minor lines,
+stronger major lines, axes labelled through the origin) behind that SVG. Until
+wired, graph_paper items will render without their grid. Tracked as a follow-up
+task.
+
+================================================================================
+Aruvi · NCF 2023-Aligned Pedagogical Platform · Knowledge Commons
+Mathematics Assessment Constitution · Version 1.0 · Secondary Stage · Internal Document
+================================================================================

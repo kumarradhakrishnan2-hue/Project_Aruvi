@@ -1,0 +1,27 @@
+{
+    "stage":          "secondary",
+    "subject":        "mathematics",
+    "grade":          "ix",
+    "chapter_number": 2,
+    "chapter_title":  "Introduction to Linear Polynomials",
+
+    "core_cg": "CG-3",
+
+    "core_competencies": [
+        { "c_code": "C-3.2", "justification": "The chapter's organising purpose, across nearly every section, is taking a real-world situation — pocket money depleting at a fixed daily rate, an auto-rickshaw fare, a chess club's joining fee plus per-match charge, a telecom data bill, a depreciating phone — and modelling it as a linear expression or equation, then solving it to answer a concrete question (when will the money run out, what is the fare for 10 km, what are the values of a and b). This is the chapter's spine, not a side application." }
+    ],
+
+    "adjunct_competencies": [
+        { "c_code": "C-8.1", "justification": "Throughout the chapter, students build and read tables of values (chess-club payments, journey cost, water height, telecom balance) alongside the matching equation, and are repeatedly asked to move between the table, the expression, and the real-world quantity it represents — the core skill of representing daily-life phenomena with graphs, tables, and equations to draw conclusions." },
+        { "c_code": "C-4.5", "justification": "Section 2.6 has students plot points satisfying a linear equation on the coordinate plane, draw the resulting line, and compare several lines on shared axes to read off slope and y-intercept — a direct instance of using coordinate geometry to graph a linear equation and interpret its solution set." }
+    ],
+
+    "co_central": false,
+
+    "dissolution_test": "This chapter builds the student's ability to model contextualised real-world situations as linear equations and solve them by translating a verbal scenario into the algebraic form y = ax + b (or a single-variable linear equation), then manipulating or evaluating that form to draw a conclusion about the situation.",
+
+    "conceptual_demand": 2,
+    "reasoning_load":    1,
+    "exec_load":         2,
+    "effort_index":     9.0
+}

@@ -2580,20 +2580,33 @@ def _json_to_maths_lp_data(j: dict, date_str: str, weight) -> dict:
 
     periods = []
     for p in lp.get("periods") or []:
-        # Anchor display: §-locators joined
+        # Anchor display. Middle/prep maths use `textbook_segments` (list of
+        # {ref,title} dicts); secondary maths uses a flat `section_anchor`
+        # string. Prefer textbook_segments when present, else section_anchor.
         _segs = p.get("textbook_segments") or []
-        if isinstance(_segs, list):
+        if isinstance(_segs, list) and _segs:
             anchor = ", ".join(s for s in (_seg_to_str(x) for x in _segs) if s)
-        else:
+        elif _segs:
             anchor = _seg_to_str(_segs)
+        else:
+            anchor = str(p.get("section_anchor") or "").strip()
 
-        # Phases → time_breakdown (minutes is already a range string in v2.1)
+        # Time bands → time_breakdown. Middle/prep maths emit `phases`
+        # [{minutes, description}]; secondary maths emits `time_bands`
+        # [{minutes, activity}]. Accept whichever is present (minutes is
+        # already a range string in both schemas).
         time_breakdown = []
         for ph in (p.get("phases") or []):
             time_breakdown.append((
                 str(ph.get("minutes", "")),
                 ph.get("description", ""),
             ))
+        if not time_breakdown:
+            for tb in (p.get("time_bands") or []):
+                time_breakdown.append((
+                    str(tb.get("minutes", "")),
+                    tb.get("activity", ""),
+                ))
 
         # Materials list → joined string only (no "Items used:" appended here;
         # that prefix was moved to Teacher Notes / removed per design update).
@@ -2603,17 +2616,27 @@ def _json_to_maths_lp_data(j: dict, date_str: str, weight) -> dict:
         else:
             mat_str = str(raw_mat) if raw_mat else ""
 
-        # Homework array → display string. Each item: "<book_ref> — <desc>"
-        # with description truncated to 15 words, joined by <br/> for the
-        # ReportLab Paragraph renderer in period_card_maths().
+        # Homework array → display string. Each item may be a dict with
+        # {"book_ref", "description"} (middle-stage maths v2.1) OR a plain
+        # string (secondary-stage maths). Joined by <br/> for the ReportLab
+        # Paragraph renderer in period_card_maths().
+        #
+        # Truncation: only the dict-shape `description` is capped to 15 words —
+        # there it is a short hint accompanying a separate `book_ref`. A plain
+        # secondary-maths homework string is a complete, self-contained
+        # instruction and is shown IN FULL (no truncation).
         hw_lines: list[str] = []
         for it in (p.get("homework") or []):
-            ref  = (it.get("book_ref") or "").strip()
-            desc = (it.get("description") or "").strip()
-            if desc:
-                words = desc.split()
-                if len(words) > 15:
-                    desc = " ".join(words[:15]) + "…"
+            if isinstance(it, dict):
+                ref  = (it.get("book_ref") or "").strip()
+                desc = (it.get("description") or "").strip()
+                if desc:
+                    words = desc.split()
+                    if len(words) > 15:
+                        desc = " ".join(words[:15]) + "…"
+            else:
+                ref  = ""
+                desc = str(it).strip() if it is not None else ""
             if ref and desc:
                 hw_lines.append(f"{ref} — {desc}")
             elif ref:
