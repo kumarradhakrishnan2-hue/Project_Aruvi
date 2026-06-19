@@ -7,17 +7,17 @@
     "textbooks":            "knowledge_commons/textbooks",
     "framework":            "knowledge_commons/framework",
     "mappings":             "knowledge_commons/evaluation_mappings",
-    "token_log":            "knowledge_commons/evaluation_mappings/token_log.csv",
+    "token_log":            "app/runtime_data/token_log.csv",
     "knowledge_commons":    "knowledge_commons",
-    "mirror":               "mirror",
-    "mirror_framework":     "mirror/framework",
-    "mirror_chapters":      "mirror/chapters",
-    "mirror_constitutions": "mirror/constitutions",
-    "lp_constitution_root":         "mirror/constitutions/lesson_plan",
-    "assessment_constitution_root": "mirror/constitutions/assessment",
-    "mirror_summaries_dir": "mirror/chapters",
-    "mirror_mappings_dir":  "mirror/chapters",
-    "ask_aruvi_qa":         "mirror/ask_aruvi/qa_knowledge_base.json"    
+    "mirror":               "app/mirror",
+    "mirror_framework":     "app/mirror/framework",
+    "mirror_chapters":      "app/mirror/chapters",
+    "mirror_constitutions": "app/mirror/constitutions",
+    "lp_constitution_root":         "app/mirror/constitutions/lesson_plan",
+    "assessment_constitution_root": "app/mirror/constitutions/assessment",
+    "mirror_summaries_dir": "app/mirror/chapters",
+    "mirror_mappings_dir":  "app/mirror/chapters",
+    "ask_aruvi_qa":         "app/mirror/ask_aruvi/qa_knowledge_base.json"    
   },
 
   "subject_groups": {

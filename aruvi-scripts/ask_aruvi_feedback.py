@@ -10,7 +10,7 @@ from pathlib import Path
 
 # ── Constants ─────────────────────────────────────────────────────────────────
 PROJECT_ROOT      = Path(__file__).resolve().parent.parent
-FEEDBACK_ROOT     = PROJECT_ROOT / "mirror/feedback"
+FEEDBACK_ROOT     = PROJECT_ROOT / "app/mirror/feedback"
 ASK_ARUVI_FB_ROOT = FEEDBACK_ROOT / "ask_aruvi"
 GENERAL_FB_ROOT   = FEEDBACK_ROOT / "general"
 

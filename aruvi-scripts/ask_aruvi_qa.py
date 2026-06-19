@@ -13,8 +13,8 @@ import anthropic
 
 # ── Constants ─────────────────────────────────────────────────────────────────
 PROJECT_ROOT            = Path(__file__).resolve().parent.parent
-QA_KB_PATH              = PROJECT_ROOT / "mirror/ask_aruvi/qa_knowledge_base.json"
-FEEDBACK_FORWARDED_ROOT = PROJECT_ROOT / "mirror/feedback/forwarded_queries"
+QA_KB_PATH              = PROJECT_ROOT / "app/mirror/ask_aruvi/qa_knowledge_base.json"
+FEEDBACK_FORWARDED_ROOT = PROJECT_ROOT / "app/mirror/feedback/forwarded_queries"
 HAIKU_MODEL             = "claude-haiku-4-5-20251001"
 
 _VALID_CATEGORIES       = {"cat_a", "cat_b", "cat_c", "cat_d", "cat_e"}

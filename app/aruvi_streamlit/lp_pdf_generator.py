@@ -1937,8 +1937,8 @@ def json_to_lp_data(j: dict) -> dict:
     dt = datetime.fromisoformat(j["saved_at"])
     date_str = dt.strftime("%-d %B %Y")
 
-    # Weight: look up from the chapter_mappings JSON in knowledge_commons.
-    # Path pattern:  <project_root>/mirror/chapters/{subject_group}/{grade}/mappings/chapter_mappings_{subject_group}_{grade}.json
+    # Weight: look up from the chapter mapping JSON in the runtime mirror.
+    # Path pattern:  <project_root>/app/mirror/chapters/{subject_group}/{grade}/mappings/chapter_mappings_{subject_group}_{grade}.json
     # subject_group: "Social Science" → "social_sciences" etc. (mirrors app.py subject_to_folder)
     # grade:         "Grade VII" → "vii"  (roman-numeral folder name, matching mirror/ layout)
     _subject_map = {

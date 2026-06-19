@@ -19,11 +19,11 @@ from docx.oxml import OxmlElement
 
 # ── Paths ──────────────────────────────────────────────────────────────────
 PROJECT_ROOT = Path(__file__).parent.parent
-KB_JSON      = PROJECT_ROOT / "mirror" / "ask_aruvi" / "qa_knowledge_base.json"
-PENDING_JSON = PROJECT_ROOT / "mirror" / "ask_aruvi" / "kb_proposals_pending.json"
+KB_JSON      = PROJECT_ROOT / "app" / "mirror" / "ask_aruvi" / "qa_knowledge_base.json"
+PENDING_JSON = PROJECT_ROOT / "app" / "mirror" / "ask_aruvi" / "kb_proposals_pending.json"
 OUTPUT_DIR   = PROJECT_ROOT / "knowledge_commons" / "other commons"
 OUTPUT_DOCX  = OUTPUT_DIR / "qa_knowledge_base.docx"
-FWD_QUERIES  = PROJECT_ROOT / "mirror" / "ask_aruvi" / "forwarded_queries"
+FWD_QUERIES  = PROJECT_ROOT / "app" / "mirror" / "ask_aruvi" / "forwarded_queries"
 
 KNOWLEDGE_SOURCES = {
     "cat_a": [

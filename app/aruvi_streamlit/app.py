@@ -127,8 +127,8 @@ def read_file(path: Path) -> str:
 
 # ── API rates and token logging ───────────────────────────────────────────────
 
-API_RATES_PATH = PROJECT_ROOT / "knowledge_commons/evaluation_mappings/api_rates.json"
-TOKEN_LOG_PATH = PROJECT_ROOT / "knowledge_commons/evaluation_mappings/token_log.csv"
+API_RATES_PATH = PROJECT_ROOT / "runtime_data/api_rates.json"
+TOKEN_LOG_PATH = PROJECT_ROOT / "runtime_data/token_log.csv"
 
 @st.cache_data
 def load_api_rates() -> dict:
@@ -198,12 +198,13 @@ def log_tokens(
         cache_read_tokens,
     ]
     try:
+        TOKEN_LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
         with open(TOKEN_LOG_PATH, "a", newline="", encoding="utf-8") as f:
             csv.writer(f).writerow(row)
     except Exception:
         pass  # never crash the app over a logging failure
 
-ASK_ARUVI_LOG_PATH = PROJECT_ROOT / "knowledge_commons/evaluation_mappings/ask_aruvi.csv"
+ASK_ARUVI_LOG_PATH = PROJECT_ROOT / "runtime_data/ask_aruvi.csv"
 
 def log_ask_aruvi_tokens(
     session_id:    str,
@@ -219,6 +220,7 @@ def log_ask_aruvi_tokens(
         cost_inr      = calculate_cost_inr(HELPLINE_MODEL, input_tokens, output_tokens)
         query_snippet = query[:60]
         category_val  = category if category else "none"
+        ASK_ARUVI_LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
         write_header  = not ASK_ARUVI_LOG_PATH.exists()
         with open(ASK_ARUVI_LOG_PATH, "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)

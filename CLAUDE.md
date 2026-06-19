@@ -51,10 +51,10 @@ The constitution-based generation approach is the IP — the subject constitutio
 - **Assessment generation**: Working alongside lesson plans for Science, Social Sciences, Mathematics, and English. Each subject has its own assessment constitution.
 - **Ask Aruvi helpline**: A Q\&A assistant within the app. The managed-agent path (`ask_aruvi_agent.py`) is fully built and wired with `USE_MANAGED_AGENT` flag in `app.py`, but currently set to `False` (original Haiku path still active). Switch to `True` to activate managed agent.
 - **Feedback system**: Thumbs up/down and free-text feedback captured and stored in `mirror/feedback/` (monthly subfolders, per-interaction JSON files).
-- **Token/cost logging**: Every API call logged to `knowledge_commons/evaluation_mappings/token_log.csv` with cost in INR.
+- **Token/cost logging**: Every API call logged to `runtime_data/token_log.csv` with cost in INR (relocated 2026-06-19 from `knowledge_commons/evaluation_mappings/` so the runtime app has no dependency inside `knowledge_commons/` — see §7 porting note). `runtime_data/` also holds `api_rates.json` (cost rates, read) and `ask_aruvi.csv` (helpline log).
 - **Dynamic config**: `config_resolver.py` resolves all paths from `aruvi_config.json` dynamically — no hardcoded paths in the scripts.
 - **LP PDF v2**: `aruvi_lp_v2.py` is a redesigned lesson plan PDF generator (improved period pills, competency table, learning outcome styling). Lives in `aruvi-scripts/` — not yet wired into `app.py` as the default.
-- **SVG visual stimulus**: Both HTML and PDF assessment renderers support SVG figures (for Mathematics geometry questions), pipe-delimited tables (Science/SS), and prose fallback. svglib is a runtime dependency.
+- **SVG visual stimulus**: Both HTML and PDF assessment renderers support SVG figures (for Mathematics geometry questions), pipe-delimited tables (Science/SS), and prose fallback. SVG is rendered by a custom minimal parser in `assessment_pdf_generator.py` (`_parse_figure_svg`) built on reportlab primitives — svglib is NOT a dependency (corrected 2026-06-19).
 
 ### Constitutions in place
 
@@ -129,6 +129,8 @@ The lesson plan and assessment generation is taking about 5 minutes. We need to 
 - **Mirror-first reads**: At runtime, scripts read pre-extracted `.txt` files from `mirror/framework/` — never the source PDFs. PDFs are source-of-truth for humans, mirror is source-of-truth for the app.  
 - **Constitution location**: `mirror/constitutions/{type}/{subject}/{stage}/` for stage-split subjects (English and Mathematics across all types; Science competency mapping), with a flat `{subject}/` fallback for subjects not yet split (Social Sciences, TWAU, Science LP/assessment). `config_resolver.py` prefers the stage-routed path and falls back to flat. Not inside skill folders. Constitution files are plain `.txt` extracted from DOCX sources. Stage-routed files use the canonical filename (e.g. `mapping_constitution_mathematics.txt` in both `middle/` and `preparatory/`) — never stage-suffixed filenames.  
 - **Saved plans**: Written to `mirror/saved_plans/{subject}/{grade}/` as timestamped JSON on explicit user save action.
+- **Cloud-readiness deferred levers (documented 2026-06-19, no action until cloud path chosen)**: (a) **Caching** — `USE_PROMPT_CACHE=False` is correct at low test volume (first cache write costs 2×; savings only on re-reads inside the 1h TTL); flip to `True` when volume rises. (b) **User-data isolation** — `saved_plans`, `feedback`, and `token_log.csv` are local files with no user/tenant ID; in multi-tenant cloud they move to a DB keyed by user/school, while the read-only mirror inputs (constitutions, framework, summaries, mappings) move to shared/object storage or a vector store. (c) **Concurrency** — background generation uses in-process threads + `add_script_run_ctx`; fine for one instance, needs a task queue once multiple instances run behind a load balancer. (d) **Resilience** — no Anthropic retry/error handling yet; add with (c). (e) **Dependencies** — `requirements.txt` now exists at repo root (pinned); keep it in sync on any new import.
+- **Porting boundary — the `app/` folder (2026-06-19)**: the entire runtime bundle now lives under **`app/`** and that folder is the ONLY thing deployed to the cloud. It contains: `app/aruvi_streamlit/` (code), `app/mirror/` (all runtime data), `app/miscellaneous/` (logo + `DejaVuSans.ttf` font + UI icons — all read at runtime), `app/runtime_data/` (token/ask logs + `api_rates.json`), `app/lpa_page.html` + `app/allocate_page.html` (runtime render templates, read via `PROJECT_ROOT / "*.html"`), and `app/requirements.txt`. The runtime app needs NO code changes from the move — `PROJECT_ROOT = Path(__file__).resolve().parent.parent` auto-derives to `app/`, and every data read is `PROJECT_ROOT / "..."`. Secrets go to the host's env/secret panel, never as a file. **Stays at repo root, NOT ported** (authoring/source/archival): `knowledge_commons/`, `aruvi-scripts/`, `Aruvi skills/`, `cowork prompts/`, `run_mapping.sh`, `aruvi_config.json` (authoring-only — the runtime app never reads it), and the `CLAUDE/MEMORY/TASK` docs. The authoring pipeline writes into `app/mirror/` — `aruvi_config.json` path keys (`mirror*`, `token_log`) and hardcoded `mirror` refs in `aruvi-scripts/*.py` were updated to the `app/` prefix on 2026-06-19. Carry-forward: keep the runtime app free of any `knowledge_commons/` path (grep `knowledge_commons` under `app/aruvi_streamlit/*.py` must return nothing); any new authoring script that writes runtime data must target `app/mirror/`, not `mirror/`.
 
 ---
 
@@ -142,21 +144,37 @@ Project Aruvi/
 
 ├── TASK.md                            ← long-term and short-term task tracker
 
-├── aruvi\_config.json                  ← central config, DYNAMIC root
+│  NOTE (2026-06-19): the runtime bundle now lives under **app/** — that folder is the only thing ported to the cloud. Everything else at root is authoring/source/archival and stays local. See §7 "Porting boundary".
 
-├── aruvi-scripts/                     ← mapping \+ extraction scripts
+├── app/                               ← ★ RUNTIME BUNDLE (the only thing deployed to cloud)
+
+│   ├── aruvi\_streamlit/               ← Streamlit web app
+
+│   │   ├── app.py                     ← USE\_MANAGED\_AGENT flag; PROJECT\_ROOT auto-derives to app/
+
+│   │   ├── ask\_aruvi\_agent.py         ← managed-agent Ask Aruvi (inactive, flag=False)
+
+│   │   ├── assessment\_pdf\_generator.py ← handles SVG / pipe-table / prose stimuli
+
+│   │   └── lp\_pdf\_generator.py
+
+│   ├── mirror/                        ← all pre-computed / cached runtime data (see expanded tree below)
+
+│   ├── miscellaneous/                 ← logo, DejaVuSans.ttf font, UI icons (read at runtime)
+
+│   ├── runtime\_data/                  ← token\_log.csv, ask\_aruvi.csv, api\_rates.json
+
+│   ├── lpa\_page.html                  ← runtime LP/assessment render template
+
+│   ├── allocate\_page.html             ← runtime Allocate-tab render template
+
+│   └── requirements.txt               ← pinned runtime deps
+
+├── aruvi\_config.json                  ← authoring-only config, DYNAMIC root (runtime app does NOT read it)
+
+├── aruvi-scripts/                     ← mapping \+ extraction scripts (authoring; writes into app/mirror/)
 
 │   └── aruvi\_lp\_v2.py                ← ⚠️ redesigned LP PDF (not yet wired in)
-
-├── aruvi\_streamlit/                   ← Streamlit web app
-
-│   ├── app.py                         ← ⚠️ hardcoded path; USE\_MANAGED\_AGENT flag
-
-│   ├── ask\_aruvi\_agent.py             ← managed-agent Ask Aruvi (inactive, flag=False)
-
-│   ├── assessment\_pdf\_generator.py   ← handles SVG / pipe-table / prose stimuli
-
-│   └── lp\_pdf\_generator.py
 
 ├── knowledge\_commons/
 
@@ -166,9 +184,11 @@ Project Aruvi/
 
 │   ├── textbooks/                     ← source chapter PDFs incl. english, maths
 
-│   └── evaluation\_mappings/           ← token\_log.csv, ask\_aruvi.csv
+│   └── evaluation\_mappings/           ← archival eval-report DOCX only (logs moved to runtime\_data/ on 2026-06-19)
 
-├── mirror/                            ← all pre-computed / cached data
+★ Expanded view of app/mirror/ (lives under app/, shown here for detail):
+
+   app/mirror/                         ← all pre-computed / cached runtime data
 
 │   ├── chapters/{subject}/{grade}/
 

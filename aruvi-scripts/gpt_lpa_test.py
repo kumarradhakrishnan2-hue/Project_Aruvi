@@ -32,7 +32,7 @@ from pathlib import Path
 
 # Repo root = parent of this script's folder (aruvi-scripts/ sits at the root).
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-MIRROR = PROJECT_ROOT / "mirror"
+MIRROR = PROJECT_ROOT / "app" / "mirror"
 
 # Load .env (same file the app uses) so OPENAI_API_KEY / ANTHROPIC_API_KEY are
 # picked up automatically — no need to re-export each session.
@@ -256,7 +256,7 @@ def main():
         period_sched, include_assessment,
     )
 
-    out_dir = PROJECT_ROOT / "mirror" / "debug" / "gpt_test"
+    out_dir = PROJECT_ROOT / "app" / "mirror" / "debug" / "gpt_test"
     out_dir.mkdir(parents=True, exist_ok=True)
     nn = f"{args.chapter:02d}"
     _np = sum(c for _, c in rows)
