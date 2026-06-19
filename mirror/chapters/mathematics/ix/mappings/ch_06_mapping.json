@@ -1,0 +1,27 @@
+{
+    "stage": "secondary",
+    "subject": "mathematics",
+    "grade": "ix",
+    "chapter_number": 6,
+    "chapter_title": "Measuring Space: Perimeter and Area",
+
+    "core_cg": "CG-5",
+
+    "core_competencies": [
+        { "c_code": "C-5.1", "justification": "The chapter is built around deriving and applying Heron's formula to find the area of a triangle from its three sides, then generalising it to Brahmagupta's formula for the area of a cyclic quadrilateral, with worked examples and exercises on equilateral, isosceles, scalene, and right triangles, cyclic rectangles, and isosceles trapeziums." }
+    ],
+
+    "adjunct_competencies": [
+        { "c_code": "C-7.1", "justification": "The chapter proves that Heron's formula and the base-height formula give the same area, and shows algebraically that Brahmagupta's formula reduces to Heron's formula when one side of the quadrilateral shrinks to zero, both argued from stated definitions and prior results." },
+        { "c_code": "C-9.1", "justification": "Finding the area of borders, crossroads, circular paths, and composite figures throughout the end-of-chapter problems requires decomposing each shape into simpler rectangles, triangles, and circles whose areas are already known, then combining or subtracting them." }
+    ],
+
+    "co_central": false,
+
+    "dissolution_test": "This chapter builds the student's ability to calculate the area of triangles, quadrilaterals, and composite plane figures by deriving and applying Heron's and Brahmagupta's formulae from side lengths alone, without needing a measured height.",
+
+    "conceptual_demand": 2,
+    "reasoning_load": 2,
+    "exec_load": 2,
+    "effort_index": 11.0
+}

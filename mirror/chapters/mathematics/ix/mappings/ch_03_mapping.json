@@ -1,0 +1,27 @@
+{
+  "stage": "secondary",
+  "subject": "mathematics",
+  "grade": "ix",
+  "chapter_number": 3,
+  "chapter_title": "The World of Numbers",
+
+  "core_cg": "CG-1",
+
+  "core_competencies": [
+    { "c_code": "C-1.1", "justification": "The whole chapter builds the real-number system step by step — whole numbers and zero, integers and the need for negative numbers, rational numbers in standard form and on the number line, irrational numbers discovered through the diagonal of a unit square, and the decimal classification that separates terminating, recurring, and non-recurring expansions — which is exactly the understanding of the set of real numbers and its properties that this competency names." }
+  ],
+
+  "adjunct_competencies": [
+    { "c_code": "C-7.1", "justification": "The eight-step proof that √2 is irrational argues from a stated assumption (a coprime p/q form) through definitions to a contradiction, which is the kind of proof from stated assumptions and definitions this competency describes." },
+    { "c_code": "C-9.1", "justification": "Converting a recurring decimal back to p/q form, and the proof of √2's irrationality, both break a single claim into an ordered sequence of smaller justified steps, which is the decomposition this competency names." }
+  ],
+
+  "co_central": false,
+
+  "dissolution_test": "This chapter builds the student's ability to classify and place any number within the real number system by tracing each number set — whole, integer, rational, irrational — back to the property that distinguishes it from the sets before it.",
+
+  "conceptual_demand": 3,
+  "reasoning_load": 3,
+  "exec_load": 2,
+  "effort_index": 15.0
+}

@@ -1,0 +1,26 @@
+{
+    "stage":          "secondary",
+    "subject":        "mathematics",
+    "grade":          "ix",
+    "chapter_number": 5,
+    "chapter_title":  "I'm Up and Down, and Round and Round",
+
+    "core_cg": "CG-4",
+
+    "core_competencies": [
+        { "c_code": "C-4.3", "justification": "The chapter is built almost entirely around circle theorems: equal chords and the angles they subtend at the centre, the perpendicular-bisector and distance relationships between chords and the centre, the angle an arc subtends at the centre versus at the circle, and the properties of cyclic quadrilaterals — this is exactly the chord, subtended-angle, and inscribed-polygon content C-4.3 names." }
+    ],
+
+    "adjunct_competencies": [
+        { "c_code": "C-7.3", "justification": "Every result in the chapter, from the circumcircle theorem through the cyclic-quadrilateral angle-sum theorem, is established as a formal proof using stated definitions and prior results (congruence, exterior-angle property, proof by contradiction) rather than by measurement or observation, which is the axiomatic deductive practice C-7.3 describes for circle theorems specifically." }
+    ],
+
+    "co_central": false,
+
+    "dissolution_test": "This chapter builds the student's ability to prove properties of a circle's chords, subtended angles, and inscribed quadrilaterals by reasoning deductively from triangle congruence and the centre-radius structure of the circle.",
+
+    "conceptual_demand": 2,
+    "reasoning_load":    3,
+    "exec_load":         1,
+    "effort_index":     11.5
+}

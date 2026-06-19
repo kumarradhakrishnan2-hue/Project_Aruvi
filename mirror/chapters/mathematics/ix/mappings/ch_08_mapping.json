@@ -1,0 +1,28 @@
+{
+    "stage":          "secondary",
+    "subject":        "mathematics",
+    "grade":          "ix",
+    "chapter_number": 8,
+    "chapter_title":  "Predicting What Comes Next: Exploring Sequences and Progressions",
+
+    "core_cg": "CG-9",
+
+    "core_competencies": [
+        { "c_code": "C-9.2", "justification": "The chapter spends its first three sections building the student's ability to read and analyse a sequence as a rule that generates terms one after another, distinguishing an explicit rule that computes any term straight from its position from a recursive rule that builds each term out of the one or two terms before it, including the Virahanka-Fibonacci rule that depends on two prior terms at once." },
+        { "c_code": "C-9.4", "justification": "Once arithmetic and geometric progressions are introduced, the chapter repeatedly asks the student to work out the explicit and recursive formula that produces a given growing pattern, from the stage-by-stage square patterns and the Sierpinski triangle and square carpet to the bouncing-ball and taxi-fare scenarios, each time turning a description of how a quantity grows into a general procedure for finding any term." }
+    ],
+
+    "adjunct_competencies": [
+        { "c_code": "C-8.1", "justification": "The taxi-fare example modelled as an AP and the bouncing-ball height modelled as a GP both use tables and ordered-pair plots to represent a real situation and read off conclusions, such as the kilometre at which a fare is reached or the bounce after which the ball drops below a target height." },
+        { "c_code": "C-1.1", "justification": "Deriving the sum of the first n natural numbers by pairing terms forwards and backwards, and connecting the resulting formula to the triangular-number sequence, extends the student's facility with the structure and properties of the natural and real numbers used throughout the progression formulas." }
+    ],
+
+    "co_central": true,
+
+    "dissolution_test": "This chapter builds the student's ability to generate and predict the terms of a sequence by analysing whether the rule governing it is explicit or recursive and turning that analysis into a working procedure for any progression.",
+
+    "conceptual_demand": 2,
+    "reasoning_load":    1,
+    "exec_load":          2,
+    "effort_index":      9.0
+}

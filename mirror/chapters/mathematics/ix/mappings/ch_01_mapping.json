@@ -1,0 +1,32 @@
+{
+    "stage":          "secondary",
+    "subject":        "mathematics",
+    "grade":          "ix",
+    "chapter_number": 1,
+    "chapter_title":  "Orienting Yourself: The Use of Coordinates",
+
+    "core_cg": "CG-4",
+
+    "core_competencies": [
+        {
+            "c_code": "C-4.5",
+            "justification": "The whole chapter is built around specifying locations and describing spatial relationships using coordinate geometry: it defines the x-axis, y-axis, origin and the four quadrants, plots and reads off the coordinates of points such as B(4.5,0), G(0,-4.5) and H(0,4), and applies this throughout the Reiaan's-room exercises (Exercise Set 1.1, Exercise Set 1.2) to locate doors, furniture, and room corners by their coordinates."
+        }
+    ],
+
+    "adjunct_competencies": [
+        {
+            "c_code": "C-8.1",
+            "justification": "Several exercises model daily-life situations through coordinate representations — the city street-grid intersection problem (End of Chapter Q14) and the computer-graphics screen with circular icons (End of Chapter Q15) both require translating a real-world layout into coordinates and drawing conclusions from that representation."
+        }
+    ],
+
+    "co_central": false,
+
+    "dissolution_test": "This chapter builds the student's ability to specify the location of a point and describe spatial relationships between points by introducing the Cartesian coordinate system, its axes and quadrants, and the coordinate-based distance formula derived from the Baudhayana-Pythagoras theorem.",
+
+    "conceptual_demand": 2,
+    "reasoning_load":    1,
+    "exec_load":         1,
+    "effort_index":     7.5
+}

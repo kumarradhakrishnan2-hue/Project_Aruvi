@@ -1,0 +1,27 @@
+{
+    "stage":          "secondary",
+    "subject":        "mathematics",
+    "grade":          "ix",
+    "chapter_number": 4,
+    "chapter_title":  "Exploring Algebraic Identities",
+
+    "core_cg": "CG-3",
+
+    "core_competencies": [
+        { "c_code": "C-3.1", "justification": "The chapter's entire spine is the discovery and proof of algebraic identities: it derives (a+b)^2 = a^2+2ab+b^2 and (a-b)^2 = a^2-2ab+b^2 from a geometric square model and the distributive property, extends to the three-term square identity, and goes on to derive the sum-of-cubes, difference-of-cubes, binomial-cube, and three-variable cube identities, each time motivating, proving, and then using the result, which mirrors the prove-and-use treatment this competency targets for algebraic results such as the remainder and factor theorems." }
+    ],
+
+    "adjunct_competencies": [
+        { "c_code": "C-7.2", "justification": "Sections 4.2, 4.4, and 4.7 visualise the square and cube identities geometrically — partitioning a square of side (a+b) into smaller squares and rectangles, and a cube of edge (a+b) into smaller cubes and cuboids — giving the student a proof-without-words for each identity alongside its algebraic derivation." },
+        { "c_code": "C-9.3", "justification": "The middle-term-splitting method in section 4.6 (choosing a and b so that a+b and ab match the quadratic's coefficients) is taught as one repeatable procedure applied across several differently-signed quadratics, which is the chapter's clearest instance of adapting one solution method to work for multiple problems." }
+    ],
+
+    "co_central": false,
+
+    "dissolution_test": "This chapter builds the student's ability to discover and prove algebraic identities by deriving each identity from a geometric or distributive-property argument and then using it to factorise expressions, simplify rational expressions, and compute squares and cubes of numbers.",
+
+    "conceptual_demand": 2,
+    "reasoning_load":    2,
+    "exec_load":         2,
+    "effort_index":     11.0
+}

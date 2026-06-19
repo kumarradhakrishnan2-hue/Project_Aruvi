@@ -1,0 +1,41 @@
+{
+  "stage": "secondary",
+  "subject": "mathematics",
+  "grade": "ix",
+  "chapter_number": 1,
+  "chapter_title": "Orienting Yourself: The Use of Coordinates",
+  "sections": [
+    { "ref": "1.1", "title": "Introduction" },
+    { "ref": "1.2", "title": "Settling In" },
+    {
+      "ref": "1.3",
+      "title": "The 2-D Cartesian Coordinate System",
+      "think_reflect": "Students consider standard door widths and wheelchair accessibility from the room-plan context, and separately reason about whether a point on an axis must have a zero coordinate and whether swapping a point's coordinates ever yields the same point."
+    },
+    {
+      "ref": "1.4",
+      "title": "Distance Between Two Points in the 2-D Plane",
+      "think_reflect": "Students reason about how the horizontal and vertical shifts between two plotted points relate to the straight-line distance between them, and what stays the same versus what changes in a triangle's side lengths after reflecting it in an axis."
+    }
+  ],
+  "prose_summary": "Section 1.1 introduces the idea of a coordinate system as a structured grid framework that lets numbers describe exact physical locations, and situates this idea historically through a continuous account of grid-based thinking and coordinate geometry in Bharat and its transmission through Arabic and European mathematics, ending with Brahmagupta's formalisation of zero and negative numbers as the necessary precondition for the four-quadrant Cartesian plane studied in the chapter. Section 1.2 introduces, through the narrative of Reiaan and his sister Shalini, the practice of representing a room's layout on a rectangular grid using pins and thread, establishing the informal idea of marking key points of a real space at fixed scale before any axis or coordinate vocabulary is introduced. Section 1.3 defines the two-dimensional Cartesian coordinate system formally: it introduces the x-axis and y-axis as two perpendicular lines, the origin O as their point of intersection with coordinates (0, 0), and the sign convention that distances to the right of or above O are positive while distances to the left of or below O are negative; it explains how a point on either axis takes the form (x, 0) or (0, y), defines the Cartesian plane (also called the coordinate plane or xy-plane), and divides it into four quadrants, stating the sign pattern of coordinates in each quadrant; it then generalises to the coordinates (x, y) of any point in the plane, where x is the point's perpendicular distance from the y-axis and y is its perpendicular distance from the x-axis, and works through Reiaan's room-plan exercises (Exercise Set 1.1 and Exercise Set 1.2) to apply these ideas to locating doors, furniture, and room corners by their coordinates. Section 1.4 derives the distance formula between two points in the 2-D plane: it explains how to find the distance between two points lying on an axis or on a line parallel to an axis using a simple coordinate difference, then derives the general formula for the distance between any two points (x1, y1) and (x2, y2) by constructing a right triangle from the horizontal and vertical coordinate differences and applying the Baudhayana-Pythagoras theorem, illustrating this first with a triangle in the first quadrant (sides AD, DM, MA) and then with the same triangle reflected into negative coordinate regions, confirming that the formula and the preserved side lengths hold regardless of the sign of the coordinates.",
+  "enumerated_worked_examples": [],
+  "enumerated_exercises": [
+    { "id": "E-1", "source_section": "1.3", "book_ref": "Exercise Set 1.1 (i)-(iv), p.5", "description": "Using Fig. 1.3 (Reiaan's room with corners O, A, B, C marked on the axes), find the distance of the door D1R1 from the y-axis and x-axis, state the coordinates of D1, find the door's width given R1 = (11.5, 0), and compare the bathroom door width (B1 (0,1.5) to B2 (0,4)) with the room door's width." },
+    { "id": "E-2", "source_section": "1.3", "book_ref": "Exercise Set 1.2 Q1, p.8", "description": "Given three feet of a rectangular study table at (8,9), (11,9), (11,7), find the fourth foot's coordinates, judge whether the spot is suitable, and state the table's width and length from the coordinates." },
+    { "id": "E-3", "source_section": "1.3", "book_ref": "Exercise Set 1.2 Q2, p.8", "description": "Given the bathroom door hinge at B1 opening into the bedroom, determine whether it would hit the wardrobe and suggest changes if the door were made wider." },
+    { "id": "E-4", "source_section": "1.3", "book_ref": "Exercise Set 1.2 Q3, p.8", "description": "For Reiaan's bathroom: state the coordinates of corners O, F, R, P; identify the shape of the showering area SHWR and its corner coordinates; mark off a 3x2 ft washbasin space and a 2x3 ft toilet space and give their corner coordinates." },
+    { "id": "E-5", "source_section": "1.3", "book_ref": "Exercise Set 1.2 Q4, p.8", "description": "Sketch an 18 ft x 15 ft dining room running from point P to point A and mark its corner coordinates; place a 5x3 ft dining table at the centre of the room and give the coordinates of its feet." },
+    { "id": "E-6", "source_section": "1.4", "book_ref": "End of Chapter Q1, p.12", "description": "State the x-coordinate and y-coordinate of the point of intersection of the two axes." },
+    { "id": "E-7", "source_section": "1.3", "book_ref": "End of Chapter Q2, p.12", "description": "Given point W with x-coordinate -5, predict the coordinates of point H on the line through W parallel to the y-axis, and state which quadrants H can lie in." },
+    { "id": "E-8", "source_section": "1.3", "book_ref": "End of Chapter Q3, p.12", "description": "Given R(3,0), A(0,-2), M(-5,-2), P(-5,2) joined in order as quadrilateral RAMP, predict two perpendicular sides, one side parallel to an axis, and two points that are mirror images of each other in an axis; then plot and verify." },
+    { "id": "E-9", "source_section": "1.4", "book_ref": "End of Chapter Q4, p.12", "description": "Plot point Z(5,-6), construct a right-angled triangle IZN, and find the lengths of its three sides." },
+    { "id": "E-10", "source_section": "1.3", "book_ref": "End of Chapter Q5, p.12", "description": "Discuss what a coordinate system would be like without negative numbers, and whether such a system could locate all points on a 2-D plane." },
+    { "id": "E-11", "source_section": "1.3", "book_ref": "End of Chapter Q14, p.13", "description": "For a city grid of 10 streets in each of the N-S and E-W directions spaced 200 m apart, draw a 1 cm = 200 m model and, using the (N-S street, E-W street) intersection convention, find how many intersections can be labelled (4,3) and how many can be labelled (3,4)." },
+    { "id": "E-12", "source_section": "1.4", "book_ref": "End of Chapter Q15, p.14", "description": "On an 800x600 pixel screen with origin at the bottom-left, given a radius-80 circle centred at A(100,150) and a radius-100 circle centred at B(250,230), determine whether any part of either circle lies outside the screen and whether the two circles intersect." },
+    { "id": "E-13", "source_section": "1.3", "book_ref": "End of Chapter Q16, p.14", "description": "Plot A(2,1), B(-1,2), C(-2,-1), D(1,-2); determine whether ABCD is a square, explain why, and find its area." }
+  ],
+  "conceptual_demand": 2,
+  "reasoning_load": 1,
+  "exec_load": 1
+}
