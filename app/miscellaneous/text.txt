@@ -14,7 +14,7 @@ git push -u origin main
 
 OPENING SITE FROM TERMINAL
 cd "/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi"
-python3 -m streamlit run aruvi_streamlit/app.py
+python3 -m streamlit run app/aruvi_streamlit/app.py
 
 RUN CHAPTER MAPPING
 cd "/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi"
