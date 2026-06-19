@@ -12,7 +12,7 @@ from pathlib import Path
 import anthropic
 
 # ── Constants ─────────────────────────────────────────────────────────────────
-PROJECT_ROOT            = Path("/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi")
+PROJECT_ROOT            = Path(__file__).resolve().parent.parent
 QA_KB_PATH              = PROJECT_ROOT / "mirror/ask_aruvi/qa_knowledge_base.json"
 FEEDBACK_FORWARDED_ROOT = PROJECT_ROOT / "mirror/feedback/forwarded_queries"
 HAIKU_MODEL             = "claude-haiku-4-5-20251001"

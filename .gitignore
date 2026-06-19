@@ -1,8 +1,17 @@
+# Secrets — never commit
 .env
-.DS_Store
-__pycache__/
-*.pyc
-api key.txt
-api key.txt
 api key.txt
 github_commit.txt
+
+# OS / editor cruft
+.DS_Store
+~$*
+
+# Python
+__pycache__/
+*.pyc
+
+# Large binary source PDFs — source-of-truth for humans, but the app reads the
+# extracted .txt/.json in mirror/ at runtime, so these do not belong in git.
+# Files remain on local disk; they are simply untracked.
+knowledge_commons/textbooks/

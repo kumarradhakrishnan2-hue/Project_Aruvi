@@ -1,0 +1,26 @@
+# Aruvi runtime dependencies
+# Pinned to the versions verified in the working environment (2026-06-19).
+# Install with:  pip install -r requirements.txt
+#
+# Note: svglib is NOT required — assessment_pdf_generator.py uses a custom
+# minimal SVG parser built on reportlab primitives (see _parse_figure_svg).
+
+# Web app framework
+streamlit==1.50.0
+
+# Anthropic Claude SDK (LP/assessment generation + Ask Aruvi helpline)
+anthropic==0.95.0
+
+# Loads ANTHROPIC_API_KEY from .env at startup
+python-dotenv==1.2.1
+
+# PDF generation (lesson plan + assessment) and page-number overlay
+reportlab==4.4.10
+pypdf==6.9.2
+fpdf2==2.8.4
+
+# Word (.docx) export
+python-docx==1.2.0
+
+# Image handling for logo/figure embedding in PDFs (reportlab)
+Pillow==11.3.0

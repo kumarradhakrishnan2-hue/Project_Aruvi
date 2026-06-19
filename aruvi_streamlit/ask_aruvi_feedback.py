@@ -9,7 +9,7 @@ from datetime import datetime
 from pathlib import Path
 
 # ── Constants ─────────────────────────────────────────────────────────────────
-PROJECT_ROOT      = Path("/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi")
+PROJECT_ROOT      = Path(__file__).resolve().parent.parent
 FEEDBACK_ROOT     = PROJECT_ROOT / "mirror/feedback"
 ASK_ARUVI_FB_ROOT = FEEDBACK_ROOT / "ask_aruvi"
 GENERAL_FB_ROOT   = FEEDBACK_ROOT / "general"
