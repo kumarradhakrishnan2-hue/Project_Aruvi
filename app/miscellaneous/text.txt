@@ -13,33 +13,23 @@ git remote add origin https://github.com/kumarradhakrishnan2-hue/Project_Aruvi.g
 git push -u origin main
 
 OPENING SITE FROM TERMINAL
-cd "/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi"
-python3 -m streamlit run app/aruvi_streamlit/app.py
 
+ARUVI-SAAS
+# tab 1 — API (must be running for :3000 to load data)
 cd "/Users/kumar_radhakrishnan/main/kumar/AI/aruvi-saas"
-claude
+python3 -m uvicorn api.main:app --port 8000
 
-RUN CHAPTER MAPPING
+# tab 2 — web → http://localhost:3000
+cd "/Users/kumar_radhakrishnan/main/kumar/AI/aruvi-saas"
+npm --prefix web run dev
+
+PROJECT ARUVI
+
+CMD + T ON TERMINAL TO OPEN A NEW TERMINAL.
 cd "/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi"
-bash run_mapping.sh --subject social_sciences --grade vii --chapters 1
+python3 -m streamlit run app/aruvi_streamlit/app.py --server.port 8502
 
 
-RUN LESSON PLAN AND ASSESSMENT
-run from the Streamlit UI by invoking generate_lpa()
-
-MARKDOWN filen(terminal)
-pandoc input.docx -o output.md
-
-
-BEGINNING OF CONVERSATION
-
-* Be concise
-* No repetition
-* No explanations unless asked
-* Output minimal patch only (no full files)
-* Assume prior context from PROJECT SUMMARY below
-* If unclear, ask one short question only
-* NO coding strictly unless specifically asked for.
 
 PROJECT SUMMARY:
 "<PASTE LAST SUMMARY HERE>"
