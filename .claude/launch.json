@@ -4,15 +4,8 @@
     {
       "name": "aruvi",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "streamlit", "run", "aruvi_streamlit/app.py", "--server.headless", "true", "--server.port", "8502"],
+      "runtimeArgs": ["-m", "streamlit", "run", "app/aruvi_streamlit/app.py", "--server.headless", "true", "--server.port", "8502"],
       "port": 8502,
-      "autoPort": false
-    },
-    {
-      "name": "aruvi-demo",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8799", "--directory", "/Users/kumar_radhakrishnan/main/kumar/AI/aruvi-saas/out"],
-      "port": 8799,
       "autoPort": false
     }
   ]
