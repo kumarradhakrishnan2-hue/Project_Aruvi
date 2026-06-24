@@ -27,7 +27,7 @@ PROJECT ARUVI
 
 CMD + T ON TERMINAL TO OPEN A NEW TERMINAL.
 cd "/Users/kumar_radhakrishnan/main/kumar/AI/Project Aruvi"
-python3 -m streamlit run app/aruvi_streamlit/app.py --server.port 8502
+python3 -m streamlit run app/aruvi_streamlit/app.py
 
 
 

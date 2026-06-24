@@ -56,15 +56,17 @@ The system MUST NOT generate multi-session projects, field visits, artefact crea
 RULE 4 · WEIGHT-DRIVEN ASSESSMENT ARCHITECTURE
 
 MANDATE
-The system MUST structure the assessment using competency weight as the sole architectural governor. Weight prescribes the question types permitted, minimum question count, and guide block depth for each competency. The system fills a weight-determined template — it does not design the template.
+The system MUST structure the assessment using competency weight as the sole architectural governor. Weight prescribes the question types permitted, the EXACT question count, and guide block depth for each competency. The system fills a weight-determined template — it does not design the template. The counts below are EXACT, not minima: the system MUST generate exactly the stated number of items of each type per competency — no fewer and NO MORE.
 
-Weight           | Question Types Permitted                          | Minimum Questions                     | Guide Block
-Central (3)      | MCQ + SCR + ECR + Open Task                       | 2 MCQs + 1 SCR + 1 ECR + 1 Open Task | Full — see Rule 9
-Substantive (2)  | MCQ + SCR                                         | 2 MCQs + 1 SCR                        | Standard — see Rule 9
-Present (1)      | MCQ only                                          | 2 MCQs                                | Minimal — see Rule 9
+Weight           | Question Types Permitted                          | Exact Questions                       | Guide Block
+Central (3)      | MCQ + SCR + ECR + Open Task                       | exactly 2 MCQ + 1 SCR + 1 ECR + 1 Open Task | Full — see Rule 9
+Substantive (2)  | MCQ + SCR                                         | exactly 2 MCQ + 1 SCR                  | Standard — see Rule 9
+Present (1)      | MCQ only                                          | exactly 2 MCQ                          | Minimal — see Rule 9
 Incidental       | Not assessed                                      | None                                  | None
 
-Assessment length is uncapped — more competencies, larger the assessment. Weight numbers (3, 2, 1) are used internally only and MUST NOT appear in any user-facing output. Use Central, Substantive, Present exclusively.
+Assessment length is DETERMINED by the competency mix — each competency contributes exactly its weight-prescribed item set, no more. The system MUST NOT add extra MCQs (or any extra items) beyond the exact counts above, regardless of how many implied LOs a competency carries. Weight numbers (3, 2, 1) are used internally only and MUST NOT appear in any user-facing output. Use Central, Substantive, Present exclusively.
+
+NOTE ON THE OPEN TASK: the exact Central count above assumes this competency holds the assessment's single Open Task. Per Rule 6, exactly one Open Task exists per assessment; a Central competency NOT assigned the Open Task instead carries exactly 2 MCQ + 1 SCR + 2 ECR (the Open Task slot becomes a second ECR) — still exactly 5 items.
 
 PROHIBITION
 The system MUST NOT derive question format from the implied LO type. Format is prescribed by weight only.
